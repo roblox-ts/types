@@ -3141,6 +3141,10 @@ interface ScriptEditorService extends Instance {
 	 * Tags: Yields
 	 */
 	OpenScriptDocumentAsync(this: ScriptEditorService, script: LuaSourceContainer): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	UpdateSourceAsync(this: ScriptEditorService, script: LuaSourceContainer, callback: Callback): unknown;
 	readonly TextDocumentDidChange: RBXScriptSignal<(document: ScriptDocument, changesArray: unknown) => void>;
 	readonly TextDocumentDidClose: RBXScriptSignal<(oldDocument: ScriptDocument) => void>;
 	readonly TextDocumentDidOpen: RBXScriptSignal<(newDocument: ScriptDocument) => void>;
@@ -3596,7 +3600,6 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["Property Color"]: Color3;
-	["Render Throttle Percentage"]: number;
 	["Respect Studio shortcuts when game has focus"]: boolean;
 	/**
 	 * Tags: NotReplicated

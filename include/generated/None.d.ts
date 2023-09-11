@@ -44,6 +44,7 @@ interface Services {
 	EventIngestService: EventIngestService;
 	ExperienceAuthService: ExperienceAuthService;
 	ExperienceNotificationService: ExperienceNotificationService;
+	ExperienceService: ExperienceService;
 	FaceAnimatorService: FaceAnimatorService;
 	FacialAnimationRecordingService: FacialAnimationRecordingService;
 	FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
@@ -98,6 +99,7 @@ interface Services {
 	RemoteDebuggerServer: RemoteDebuggerServer;
 	ReplicatedFirst: ReplicatedFirst;
 	ReplicatedStorage: ReplicatedStorage;
+	RibbonNotificationService: RibbonNotificationService;
 	RobloxServerStorage: RobloxServerStorage;
 	RomarkService: RomarkService;
 	RtMessagingService: RtMessagingService;
@@ -238,6 +240,7 @@ interface CreatableInstances {
 	CylinderHandleAdornment: CylinderHandleAdornment;
 	CylinderMesh: CylinderMesh;
 	CylindricalConstraint: CylindricalConstraint;
+	DataStoreGetOptions: DataStoreGetOptions;
 	DataStoreIncrementOptions: DataStoreIncrementOptions;
 	DataStoreOptions: DataStoreOptions;
 	DataStoreSetOptions: DataStoreSetOptions;
@@ -249,6 +252,7 @@ interface CreatableInstances {
 	DoubleConstrainedValue: DoubleConstrainedValue;
 	DragDetector: DragDetector;
 	Dragger: Dragger;
+	DynamicImage: DynamicImage;
 	DynamicMesh: DynamicMesh;
 	EchoSoundEffect: EchoSoundEffect;
 	EqualizerSoundEffect: EqualizerSoundEffect;
@@ -512,7 +516,6 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	DebuggerConnection: DebuggerConnection;
 	DebuggerLuaResponse: DebuggerLuaResponse;
 	DebuggerVariable: DebuggerVariable;
-	DynamicImage: DynamicImage;
 	EmotesPages: EmotesPages;
 	FacialAnimationStreamingServiceStats: FacialAnimationStreamingServiceStats;
 	FacialAnimationStreamingSubsessionStats: FacialAnimationStreamingSubsessionStats;
@@ -1712,6 +1715,10 @@ interface AnimationClipProvider extends Instance {
 	 * Tags: Yields
 	 */
 	GetAnimations(this: AnimationClipProvider, userId: number): Instance | undefined;
+	/**
+	 * Tags: Yields
+	 */
+	GetClipEvaluatorAsync(this: AnimationClipProvider, assetId: string): ClipEvaluator;
 }
 
 /** An object which allows animations to be loaded and applied to a character or model in place of a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) when a Humanoid is not needed. Creates an [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator) and loads animations to update [Motor6Ds](https://developer.roblox.com/en-us/api-reference/class/Motor6D) of said character to react in the way that is described within the animation asset referenced by an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) object.
@@ -2258,6 +2265,10 @@ interface AssetService extends Instance {
 	 * Tags: Yields
 	 */
 	CreateDynamicImageAsync(this: AssetService, textureId: string): DynamicImage;
+	/**
+	 * Tags: Yields
+	 */
+	CreateDynamicMeshAsync(this: AssetService, meshId: string): DynamicMesh;
 	/**
 	 * Clones a place with placeId equal to given templatePlaceId. It is placed into the inventory of the place's creator with the given name and description. This method will also return the placeId of the new place, which can be used with TeleportService. This method cannot be used to clone places that you do not own.
 	 * 
@@ -7808,6 +7819,7 @@ interface LinearVelocity extends Constraint {
 	 */
 	readonly _nominal_LinearVelocity: unique symbol;
 	ForceLimitMode: Enum.ForceLimitMode;
+	ForceLimitsEnabled: boolean;
 	/**
 	 * The normalized [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3) direction for constraining the velocity along a line, when [ VelocityConstraintMode](https://developer.roblox.com/en-us/api-reference/property/LinearVelocity/VelocityConstraintMode) is set to **Line**. Default is \[1, 0, 0\].
 	 */
@@ -9331,8 +9343,6 @@ interface DynamicMesh extends DataModelMesh {
 	GetVertexColorAlpha(this: DynamicMesh, vertexId: number): number;
 	GetVertexNormal(this: DynamicMesh, vertexId: number): Vector3;
 	GetVertices(this: DynamicMesh): unknown;
-	InitializeFromMeshIdAsync(this: DynamicMesh, meshId: string): void;
-	InitializeFromMeshPartAsync(this: DynamicMesh, meshPart: MeshPart): void;
 	Raycast(this: DynamicMesh, origin: Vector3, direction: Vector3): unknown;
 	RemoveTriangle(this: DynamicMesh, triangleId: number): void;
 	RemoveVertex(this: DynamicMesh, vertexId: number): void;
@@ -9467,6 +9477,18 @@ interface DataModelPatchService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_DataModelPatchService: unique symbol;
+}
+
+interface DataStoreGetOptions extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_DataStoreGetOptions: unique symbol;
+	UseCache: boolean;
 }
 
 /** An object that specifies additional parameters for a [GlobalDataStore:IncrementAsync](https://developer.roblox.com/en-us/api-reference/function/GlobalDataStore/IncrementAsync) call.
@@ -10236,16 +10258,16 @@ interface DynamicImage extends Instance {
 	 */
 	readonly _nominal_DynamicImage: unique symbol;
 	Size: Vector2;
-	Clear(this: DynamicImage): void;
 	Crop(this: DynamicImage, min: Vector2, max: Vector2): void;
 	DrawCircle(this: DynamicImage, center: Vector2, radius: number, color: Color3, transparency: number): void;
 	DrawImage(this: DynamicImage, position: Vector2, image: DynamicImage, combineType: CastsToEnum<Enum.ImageCombineType>): void;
+	DrawRectangle(this: DynamicImage, position: Vector2, size: Vector2, color: Color3, transparency: number): void;
 	/**
 	 * Tags: CustomLuaState
 	 */
 	ReadPixels(this: DynamicImage, position: Vector2, size: Vector2): unknown;
-	Resize(this: DynamicImage, newSize: Vector2): void;
-	Rotate(this: DynamicImage, degrees: number, resizeCanvas?: boolean): void;
+	Resize(this: DynamicImage, size: Vector2): void;
+	Rotate(this: DynamicImage, degrees: number, changeSize: boolean): void;
 	/**
 	 * Tags: CustomLuaState
 	 */
@@ -10338,6 +10360,17 @@ interface ExperienceNotificationService extends Instance {
 	 * Tags: Yields
 	 */
 	CreateUserNotificationAsync(this: ExperienceNotificationService, userId: string, userNotification: UserNotification): Instance | undefined;
+}
+
+interface ExperienceService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ExperienceService: unique symbol;
 }
 
 /** An Explosion applies force to `BaseParts` within the explosion's [Explosion.BlastRadius](https://developer.roblox.com/en-us/api-reference/property/Explosion/BlastRadius). This force breaks joints between parts and kills [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) characters not protected by a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField).
@@ -14238,9 +14271,6 @@ interface SurfaceGui extends SurfaceGuiBase {
 	 * Controls how much the SurfaceGui is influenced by the lighting in the game world.
 	 */
 	LightInfluence: number;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	MaxDistance: number;
 	/**
 	 * **PixelsPerStud** determines the density of pixels used for each world-space stud to render the contents of the SurfaceGui.
@@ -21937,7 +21967,6 @@ interface MarketplaceService extends Instance {
 		currencyType?: CastsToEnum<Enum.CurrencyType>,
 	): void;
 	PromptSubscriptionPurchase(this: MarketplaceService, user: Player, subscriptionId: string): void;
-	SignalPromptSubscriptionPurchaseFinished(this: MarketplaceService, subscriptionId: string, didTryPurchasing: boolean): void;
 	/**
 	 * Returns a [Pages](https://developer.roblox.com/en-us/api-reference/class/Pages) object which contains information for all of the current game's developer products.
 	 * 
@@ -22164,6 +22193,18 @@ interface MarketplaceService extends Instance {
 		infoType?: CastsToEnum<Enum.InfoType>,
 	): AssetProductInfo | BundleInfo | GamePassProductInfo | DeveloperProductInfo | SubscriptionProductInfo;
 	/**
+	 * Tags: Yields
+	 */
+	GetSubscriptionProductInfoAsync(this: MarketplaceService, subscriptionId: string): object;
+	/**
+	 * Tags: Yields
+	 */
+	GetUserSubscriptionPaymentHistoryAsync(this: MarketplaceService, user: Player, subscriptionId: string): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	GetUserSubscriptionStatusAsync(this: MarketplaceService, user: Player, subscriptionId: string): object;
+	/**
 	 * Returns whether the inventory of given [Player](https://developer.roblox.com/en-us/api-reference/class/Player) contains an asset, given the ID. This method can query for hats, models, sounds, etc. This function takes a small amount of time to send a request the Roblox website.
 	 * 
 	 * In the case that a query fails, this function will throw an error. Therefore, it is recommended to wrap calls to this function in `pcall`.
@@ -22269,6 +22310,7 @@ interface MarketplaceService extends Instance {
 	 * end)
 	 */
 	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
+	readonly PromptSubscriptionPurchaseFinished: RBXScriptSignal<(user: Player, subscriptionId: string, didTryPurchasing: boolean) => void>;
 	ProcessReceipt: ((receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision) | undefined;
 }
 
@@ -29436,6 +29478,17 @@ interface ReplicatedStorage extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ReplicatedStorage: unique symbol;
+}
+
+interface RibbonNotificationService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RibbonNotificationService: unique symbol;
 }
 
 interface RobloxServerStorage extends Instance {
@@ -37215,6 +37268,10 @@ interface VRService extends Instance {
 	 * Since [VRService](https://developer.roblox.com/en-us/api-reference/class/VRService) only runs client-side, this property will only work when used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
 	 */
 	GuiInputUserCFrame: Enum.UserCFrame;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly ThirdPersonFollowCamEnabled: boolean;
 	/**
 	 * This property describes whether the user is using a virtual reality (VR) device.
 	 * 
