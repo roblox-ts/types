@@ -133,6 +133,7 @@ interface Services {
 	StudioPublishService: StudioPublishService;
 	StudioScriptDebugEventListener: StudioScriptDebugEventListener;
 	StudioSdkService: StudioSdkService;
+	StudioWidgetsService: StudioWidgetsService;
 	StylingService: StylingService;
 	TeamCreateData: TeamCreateData;
 	TeamCreatePublishService: TeamCreatePublishService;
@@ -2386,6 +2387,10 @@ interface AssetService extends Instance {
 	 * Tags: Yields
 	 */
 	PromptCreateAssetAsync(this: AssetService, player: Player, instance: Instance, assetType: CastsToEnum<Enum.AssetType>): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	PromptImportAnimationClipFromVideoAsync(this: AssetService, player: Player, progressCallback: Callback): unknown;
 	/**
 	 * Saves the state of the current place. This will only work for places that have been created with [AssetService:CreatePlaceAsync](https://developer.roblox.com/en-us/api-reference/function/AssetService/CreatePlaceAsync) or [AssetService:CreatePlaceInPlayerInventoryAsync](https://developer.roblox.com/en-us/api-reference/function/AssetService/CreatePlaceInPlayerInventoryAsync).
 	 * 
@@ -7574,9 +7579,29 @@ interface AnimationConstraint extends Constraint {
 	 * @deprecated
 	 */
 	readonly _nominal_AnimationConstraint: unique symbol;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 * @deprecated
+	 */
+	readonly C0: CFrame;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 * @deprecated
+	 */
+	readonly C1: CFrame;
 	IsKinematic: boolean;
 	MaxForce: number;
 	MaxTorque: number;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 * @deprecated
+	 */
+	readonly Part0: BasePart | undefined;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 * @deprecated
+	 */
+	readonly Part1: BasePart | undefined;
 	Transform: CFrame;
 }
 
@@ -10258,6 +10283,7 @@ interface DynamicImage extends Instance {
 	 */
 	readonly _nominal_DynamicImage: unique symbol;
 	Size: Vector2;
+	Copy(this: DynamicImage, min: Vector2, max: Vector2): DynamicImage;
 	Crop(this: DynamicImage, min: Vector2, max: Vector2): void;
 	DrawCircle(this: DynamicImage, center: Vector2, radius: number, color: Color3, transparency: number): void;
 	DrawImage(this: DynamicImage, position: Vector2, image: DynamicImage, combineType: CastsToEnum<Enum.ImageCombineType>): void;
@@ -28622,6 +28648,7 @@ interface Players extends Instance {
 	 * If you want to track when a player's character is added or removed from the game, such as when a player respawns or dies, you can use the [Player.CharacterAdded](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterAdded) and [Player.CharacterRemoving](https://developer.roblox.com/en-us/api-reference/event/Player/CharacterRemoving) functions.
 	 */
 	readonly PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
+	readonly UserSubscriptionStatusChanged: RBXScriptSignal<(user: Player, subscriptionId: string) => void>;
 }
 
 interface PluginCapabilities extends Instance {
@@ -32085,6 +32112,10 @@ interface StarterPlayer extends Instance {
 	 */
 	readonly AllowCustomAnimations: boolean;
 	/**
+	 * Tags: NotBrowsable
+	 */
+	AnimationCompositorMode: Enum.AnimationCompositorMode;
+	/**
 	 * The AutoJumpEnabled property sets whether the character will automatically jump when hitting an obstacle on a mobile device.
 	 * 
 	 * This property is copied from the [StarterPlayer](https://developer.roblox.com/en-us/api-reference/class/StarterPlayer) to a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) when they join the game. Following that. the value of this property is copied to [Humanoid.AutoJumpEnabled](https://developer.roblox.com/en-us/api-reference/property/Humanoid/AutoJumpEnabled) property of the [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character)s [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) on spawn. In other words, it is possible to set the auto-jump behavior on a per-character, per-player and per-game basis using these three properties.
@@ -32534,6 +32565,17 @@ interface StudioSdkService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_StudioSdkService: unique symbol;
+}
+
+interface StudioWidgetsService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StudioWidgetsService: unique symbol;
 }
 
 interface StyleBase extends Instance {
@@ -36162,6 +36204,7 @@ interface UserInputService extends Instance {
 	 * *   [UserInputService.GamepadEnabled](https://developer.roblox.com/en-us/api-reference/property/UserInputService/GamepadEnabled)
 	 */
 	GetGamepadState(this: UserInputService, gamepadNum: CastsToEnum<Enum.UserInputType>): Array<InputObject>;
+	GetImageForKeyCode(this: UserInputService, keyCode: CastsToEnum<Enum.KeyCode>): string;
 	/**
 	 * This function returns an array of [InputObjects](https://developer.roblox.com/en-us/api-reference/class/InputObject) associated with the keys currently being pressed down.
 	 * 
