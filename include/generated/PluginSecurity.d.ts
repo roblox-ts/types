@@ -1867,6 +1867,7 @@ interface PhysicsSettings extends Instance {
 	 * It's supposed to render an XYZ axis on the root part of a [Model](https://developer.roblox.com/en-us/api-reference/class/Model), but the axis rendering component doesn't work correctly.
 	 */
 	AreModelCoordsShown: boolean;
+	AreNonAnchorsShown: boolean;
 	/**
 	 * When set to true, each [Player](https://developer.roblox.com/en-us/api-reference/class/Player)'s character is outlined with a unique color, and each part that the player has network ownership over is outlined with the same color.
 	 */

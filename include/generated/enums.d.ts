@@ -573,6 +573,136 @@ declare namespace Enum {
 	}
 	export type AnalyticsProgressionStatus = AnalyticsProgressionStatus.Default | AnalyticsProgressionStatus.Begin | AnalyticsProgressionStatus.Complete | AnalyticsProgressionStatus.Abandon | AnalyticsProgressionStatus.Fail;
 
+	export namespace AnimationClipFromVideoStatus {
+		export interface Initializing extends globalThis.EnumItem {
+			Name: "Initializing";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AnimationClipFromVideoStatus;
+		}
+
+		export const Initializing: Initializing;
+
+		export interface Pending extends globalThis.EnumItem {
+			Name: "Pending";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AnimationClipFromVideoStatus;
+		}
+
+		export const Pending: Pending;
+
+		export interface Processing extends globalThis.EnumItem {
+			Name: "Processing";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AnimationClipFromVideoStatus;
+		}
+
+		export const Processing: Processing;
+
+		export interface ErrorGeneric extends globalThis.EnumItem {
+			Name: "ErrorGeneric";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.AnimationClipFromVideoStatus;
+		}
+
+		export const ErrorGeneric: ErrorGeneric;
+
+		export interface Success extends globalThis.EnumItem {
+			Name: "Success";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.AnimationClipFromVideoStatus;
+		}
+
+		export const Success: Success;
+
+		export interface ErrorVideoTooLong extends globalThis.EnumItem {
+			Name: "ErrorVideoTooLong";
+			Value: 7;
+			EnumType: typeof globalThis.Enum.AnimationClipFromVideoStatus;
+		}
+
+		export const ErrorVideoTooLong: ErrorVideoTooLong;
+
+		export interface ErrorNoPersonDetected extends globalThis.EnumItem {
+			Name: "ErrorNoPersonDetected";
+			Value: 8;
+			EnumType: typeof globalThis.Enum.AnimationClipFromVideoStatus;
+		}
+
+		export const ErrorNoPersonDetected: ErrorNoPersonDetected;
+
+		export interface ErrorVideoUnstable extends globalThis.EnumItem {
+			Name: "ErrorVideoUnstable";
+			Value: 9;
+			EnumType: typeof globalThis.Enum.AnimationClipFromVideoStatus;
+		}
+
+		export const ErrorVideoUnstable: ErrorVideoUnstable;
+
+		export interface Timeout extends globalThis.EnumItem {
+			Name: "Timeout";
+			Value: 10;
+			EnumType: typeof globalThis.Enum.AnimationClipFromVideoStatus;
+		}
+
+		export const Timeout: Timeout;
+
+		export interface Cancelled extends globalThis.EnumItem {
+			Name: "Cancelled";
+			Value: 11;
+			EnumType: typeof globalThis.Enum.AnimationClipFromVideoStatus;
+		}
+
+		export const Cancelled: Cancelled;
+
+		export interface ErrorMultiplePeople extends globalThis.EnumItem {
+			Name: "ErrorMultiplePeople";
+			Value: 12;
+			EnumType: typeof globalThis.Enum.AnimationClipFromVideoStatus;
+		}
+
+		export const ErrorMultiplePeople: ErrorMultiplePeople;
+
+		export interface ErrorUploadingVideo extends globalThis.EnumItem {
+			Name: "ErrorUploadingVideo";
+			Value: 2001;
+			EnumType: typeof globalThis.Enum.AnimationClipFromVideoStatus;
+		}
+
+		export const ErrorUploadingVideo: ErrorUploadingVideo;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationClipFromVideoStatus>;
+	}
+	export type AnimationClipFromVideoStatus = AnimationClipFromVideoStatus.Initializing | AnimationClipFromVideoStatus.Pending | AnimationClipFromVideoStatus.Processing | AnimationClipFromVideoStatus.ErrorGeneric | AnimationClipFromVideoStatus.Success | AnimationClipFromVideoStatus.ErrorVideoTooLong | AnimationClipFromVideoStatus.ErrorNoPersonDetected | AnimationClipFromVideoStatus.ErrorVideoUnstable | AnimationClipFromVideoStatus.Timeout | AnimationClipFromVideoStatus.Cancelled | AnimationClipFromVideoStatus.ErrorMultiplePeople | AnimationClipFromVideoStatus.ErrorUploadingVideo;
+
+	export namespace AnimationCompositorMode {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AnimationCompositorMode;
+		}
+
+		export const Default: Default;
+
+		export interface Enabled extends globalThis.EnumItem {
+			Name: "Enabled";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AnimationCompositorMode;
+		}
+
+		export const Enabled: Enabled;
+
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AnimationCompositorMode;
+		}
+
+		export const Disabled: Disabled;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationCompositorMode>;
+	}
+	export type AnimationCompositorMode = AnimationCompositorMode.Default | AnimationCompositorMode.Enabled | AnimationCompositorMode.Disabled;
+
 	export namespace AnimationPriority {
 		export interface Idle extends globalThis.EnumItem {
 			Name: "Idle";
@@ -17525,9 +17655,17 @@ declare namespace Enum {
 
 		export const TeleportPartyAsync: TeleportPartyAsync;
 
+		export interface TeleportToVIPServer extends globalThis.EnumItem {
+			Name: "TeleportToVIPServer";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.TeleportMethod;
+		}
+
+		export const TeleportToVIPServer: TeleportToVIPServer;
+
 		export interface TeleportUnknown extends globalThis.EnumItem {
 			Name: "TeleportUnknown";
-			Value: 4;
+			Value: 5;
 			EnumType: typeof globalThis.Enum.TeleportMethod;
 		}
 
@@ -17535,7 +17673,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TeleportMethod>;
 	}
-	export type TeleportMethod = TeleportMethod.TeleportToSpawnByName | TeleportMethod.TeleportToPlaceInstance | TeleportMethod.TeleportToPrivateServer | TeleportMethod.TeleportPartyAsync | TeleportMethod.TeleportUnknown;
+	export type TeleportMethod = TeleportMethod.TeleportToSpawnByName | TeleportMethod.TeleportToPlaceInstance | TeleportMethod.TeleportToPrivateServer | TeleportMethod.TeleportPartyAsync | TeleportMethod.TeleportToVIPServer | TeleportMethod.TeleportUnknown;
 
 	export namespace TeleportResult {
 		export interface Success extends globalThis.EnumItem {
@@ -17668,6 +17806,14 @@ declare namespace Enum {
 
 		export const ToInstance: ToInstance;
 
+		export interface ToVIPServer extends globalThis.EnumItem {
+			Name: "ToVIPServer";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.TeleportType;
+		}
+
+		export const ToVIPServer: ToVIPServer;
+
 		export interface ToReservedServer extends globalThis.EnumItem {
 			Name: "ToReservedServer";
 			Value: 2;
@@ -17678,7 +17824,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TeleportType>;
 	}
-	export type TeleportType = TeleportType.ToPlace | TeleportType.ToInstance | TeleportType.ToReservedServer;
+	export type TeleportType = TeleportType.ToPlace | TeleportType.ToInstance | TeleportType.ToVIPServer | TeleportType.ToReservedServer;
 
 	export namespace TerrainAcquisitionMethod {
 		export interface None extends globalThis.EnumItem {
@@ -18642,6 +18788,67 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerExtrapolationFlagMode>;
 	}
 	export type TrackerExtrapolationFlagMode = TrackerExtrapolationFlagMode.Auto | TrackerExtrapolationFlagMode.ForceDisabled | TrackerExtrapolationFlagMode.ExtrapolateFacsAndPose | TrackerExtrapolationFlagMode.ExtrapolateFacsOnly;
+
+	export namespace TrackerFaceTrackingStatus {
+		export interface FaceTrackingSuccess extends globalThis.EnumItem {
+			Name: "FaceTrackingSuccess";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.TrackerFaceTrackingStatus;
+		}
+
+		export const FaceTrackingSuccess: FaceTrackingSuccess;
+
+		export interface FaceTrackingNoFaceFound extends globalThis.EnumItem {
+			Name: "FaceTrackingNoFaceFound";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.TrackerFaceTrackingStatus;
+		}
+
+		export const FaceTrackingNoFaceFound: FaceTrackingNoFaceFound;
+
+		export interface FaceTrackingUnknown extends globalThis.EnumItem {
+			Name: "FaceTrackingUnknown";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.TrackerFaceTrackingStatus;
+		}
+
+		export const FaceTrackingUnknown: FaceTrackingUnknown;
+
+		export interface FaceTrackingLost extends globalThis.EnumItem {
+			Name: "FaceTrackingLost";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.TrackerFaceTrackingStatus;
+		}
+
+		export const FaceTrackingLost: FaceTrackingLost;
+
+		export interface FaceTrackingHasTrackingError extends globalThis.EnumItem {
+			Name: "FaceTrackingHasTrackingError";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.TrackerFaceTrackingStatus;
+		}
+
+		export const FaceTrackingHasTrackingError: FaceTrackingHasTrackingError;
+
+		export interface FaceTrackingIsOccluded extends globalThis.EnumItem {
+			Name: "FaceTrackingIsOccluded";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.TrackerFaceTrackingStatus;
+		}
+
+		export const FaceTrackingIsOccluded: FaceTrackingIsOccluded;
+
+		export interface FaceTrackingUninitialized extends globalThis.EnumItem {
+			Name: "FaceTrackingUninitialized";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.TrackerFaceTrackingStatus;
+		}
+
+		export const FaceTrackingUninitialized: FaceTrackingUninitialized;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerFaceTrackingStatus>;
+	}
+	export type TrackerFaceTrackingStatus = TrackerFaceTrackingStatus.FaceTrackingSuccess | TrackerFaceTrackingStatus.FaceTrackingNoFaceFound | TrackerFaceTrackingStatus.FaceTrackingUnknown | TrackerFaceTrackingStatus.FaceTrackingLost | TrackerFaceTrackingStatus.FaceTrackingHasTrackingError | TrackerFaceTrackingStatus.FaceTrackingIsOccluded | TrackerFaceTrackingStatus.FaceTrackingUninitialized;
 
 	export namespace TrackerLodFlagMode {
 		export interface Auto extends globalThis.EnumItem {
