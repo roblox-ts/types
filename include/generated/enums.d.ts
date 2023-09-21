@@ -8169,35 +8169,6 @@ declare namespace Enum {
 	}
 	export type HumanoidHealthDisplayType = HumanoidHealthDisplayType.DisplayWhenDamaged | HumanoidHealthDisplayType.AlwaysOn | HumanoidHealthDisplayType.AlwaysOff;
 
-	export namespace HumanoidOnlySetCollisionsOnStateChange {
-		export interface Default extends globalThis.EnumItem {
-			Name: "Default";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.HumanoidOnlySetCollisionsOnStateChange;
-		}
-
-		export const Default: Default;
-
-		export interface Disabled extends globalThis.EnumItem {
-			Name: "Disabled";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.HumanoidOnlySetCollisionsOnStateChange;
-		}
-
-		export const Disabled: Disabled;
-
-		export interface Enabled extends globalThis.EnumItem {
-			Name: "Enabled";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.HumanoidOnlySetCollisionsOnStateChange;
-		}
-
-		export const Enabled: Enabled;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HumanoidOnlySetCollisionsOnStateChange>;
-	}
-	export type HumanoidOnlySetCollisionsOnStateChange = HumanoidOnlySetCollisionsOnStateChange.Default | HumanoidOnlySetCollisionsOnStateChange.Disabled | HumanoidOnlySetCollisionsOnStateChange.Enabled;
-
 	export namespace HumanoidRigType {
 		export interface R6 extends globalThis.EnumItem {
 			Name: "R6";
@@ -12276,6 +12247,51 @@ declare namespace Enum {
 	}
 	export type NormalId = NormalId.Top | NormalId.Bottom | NormalId.Back | NormalId.Front | NormalId.Right | NormalId.Left;
 
+	export namespace OperationType {
+		export interface Null extends globalThis.EnumItem {
+			Name: "Null";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.OperationType;
+		}
+
+		export const Null: Null;
+
+		export interface Union extends globalThis.EnumItem {
+			Name: "Union";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.OperationType;
+		}
+
+		export const Union: Union;
+
+		export interface Subtraction extends globalThis.EnumItem {
+			Name: "Subtraction";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.OperationType;
+		}
+
+		export const Subtraction: Subtraction;
+
+		export interface Intersection extends globalThis.EnumItem {
+			Name: "Intersection";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.OperationType;
+		}
+
+		export const Intersection: Intersection;
+
+		export interface Primitive extends globalThis.EnumItem {
+			Name: "Primitive";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.OperationType;
+		}
+
+		export const Primitive: Primitive;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.OperationType>;
+	}
+	export type OperationType = OperationType.Null | OperationType.Union | OperationType.Subtraction | OperationType.Intersection | OperationType.Primitive;
+
 	export namespace OrientationAlignmentMode {
 		export interface OneAttachment extends globalThis.EnumItem {
 			Name: "OneAttachment";
@@ -13301,6 +13317,59 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PositionAlignmentMode>;
 	}
 	export type PositionAlignmentMode = PositionAlignmentMode.OneAttachment | PositionAlignmentMode.TwoAttachment;
+
+	export namespace PrimitiveType {
+		export interface Null extends globalThis.EnumItem {
+			Name: "Null";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.PrimitiveType;
+		}
+
+		export const Null: Null;
+
+		export interface Ball extends globalThis.EnumItem {
+			Name: "Ball";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.PrimitiveType;
+		}
+
+		export const Ball: Ball;
+
+		export interface Cylinder extends globalThis.EnumItem {
+			Name: "Cylinder";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.PrimitiveType;
+		}
+
+		export const Cylinder: Cylinder;
+
+		export interface Block extends globalThis.EnumItem {
+			Name: "Block";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.PrimitiveType;
+		}
+
+		export const Block: Block;
+
+		export interface Wedge extends globalThis.EnumItem {
+			Name: "Wedge";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.PrimitiveType;
+		}
+
+		export const Wedge: Wedge;
+
+		export interface CornerWedge extends globalThis.EnumItem {
+			Name: "CornerWedge";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.PrimitiveType;
+		}
+
+		export const CornerWedge: CornerWedge;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PrimitiveType>;
+	}
+	export type PrimitiveType = PrimitiveType.Null | PrimitiveType.Ball | PrimitiveType.Cylinder | PrimitiveType.Block | PrimitiveType.Wedge | PrimitiveType.CornerWedge;
 
 	export namespace PrivilegeType {
 		export interface Owner extends globalThis.EnumItem {
@@ -14776,9 +14845,17 @@ declare namespace Enum {
 
 		export const Other: Other;
 
+		export interface Throttled extends globalThis.EnumItem {
+			Name: "Throttled";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.SaveAvatarThumbnailCustomizationFailure;
+		}
+
+		export const Throttled: Throttled;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SaveAvatarThumbnailCustomizationFailure>;
 	}
-	export type SaveAvatarThumbnailCustomizationFailure = SaveAvatarThumbnailCustomizationFailure.BadThumbnailType | SaveAvatarThumbnailCustomizationFailure.BadYRotDeg | SaveAvatarThumbnailCustomizationFailure.BadFieldOfViewDeg | SaveAvatarThumbnailCustomizationFailure.BadDistanceScale | SaveAvatarThumbnailCustomizationFailure.Other;
+	export type SaveAvatarThumbnailCustomizationFailure = SaveAvatarThumbnailCustomizationFailure.BadThumbnailType | SaveAvatarThumbnailCustomizationFailure.BadYRotDeg | SaveAvatarThumbnailCustomizationFailure.BadFieldOfViewDeg | SaveAvatarThumbnailCustomizationFailure.BadDistanceScale | SaveAvatarThumbnailCustomizationFailure.Other | SaveAvatarThumbnailCustomizationFailure.Throttled;
 
 	export namespace SaveFilter {
 		export interface SaveAll extends globalThis.EnumItem {
@@ -15313,6 +15390,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ServerAudioBehavior>;
 	}
 	export type ServerAudioBehavior = ServerAudioBehavior.Enabled | ServerAudioBehavior.Muted | ServerAudioBehavior.OnlineGame;
+
+	export namespace ServerLiveEditingMode {
+		export interface Uninitialized extends globalThis.EnumItem {
+			Name: "Uninitialized";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.ServerLiveEditingMode;
+		}
+
+		export const Uninitialized: Uninitialized;
+
+		export interface Enabled extends globalThis.EnumItem {
+			Name: "Enabled";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ServerLiveEditingMode;
+		}
+
+		export const Enabled: Enabled;
+
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ServerLiveEditingMode;
+		}
+
+		export const Disabled: Disabled;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ServerLiveEditingMode>;
+	}
+	export type ServerLiveEditingMode = ServerLiveEditingMode.Uninitialized | ServerLiveEditingMode.Enabled | ServerLiveEditingMode.Disabled;
 
 	export namespace ServiceVisibility {
 		export interface Always extends globalThis.EnumItem {
