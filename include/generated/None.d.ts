@@ -89,6 +89,7 @@ interface Services {
 	PlaceStatsService: PlaceStatsService;
 	PlatformFriendsService: PlatformFriendsService;
 	Players: Players;
+	PlayerViewService: PlayerViewService;
 	PluginManagementService: PluginManagementService;
 	PluginPolicyService: PluginPolicyService;
 	PolicyService: PolicyService;
@@ -211,6 +212,7 @@ interface CreatableInstances {
 	BodyColors: BodyColors;
 	BodyForce: BodyForce;
 	BodyGyro: BodyGyro;
+	BodyPartDescription: BodyPartDescription;
 	BodyPosition: BodyPosition;
 	BodyThrust: BodyThrust;
 	BodyVelocity: BodyVelocity;
@@ -312,6 +314,7 @@ interface CreatableInstances {
 	NumberPose: NumberPose;
 	NumberValue: NumberValue;
 	ObjectValue: ObjectValue;
+	OperationTree: OperationTree;
 	Pants: Pants;
 	Part: Part;
 	ParticleEmitter: ParticleEmitter;
@@ -363,9 +366,7 @@ interface CreatableInstances {
 	SpringConstraint: SpringConstraint;
 	StarterGear: StarterGear;
 	StringValue: StringValue;
-	StudioCallout: StudioCallout;
-	StudioObjectBase: StudioObjectBase;
-	StudioWidget: StudioWidget;
+	StudioAttachment: StudioAttachment;
 	StyleDerive: StyleDerive;
 	StyleLink: StyleLink;
 	StyleRule: StyleRule;
@@ -568,6 +569,9 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
 	StarterPlayerScripts: StarterPlayerScripts;
+	StudioCallout: StudioCallout;
+	StudioObjectBase: StudioObjectBase;
+	StudioWidget: StudioWidget;
 	StyleBase: StyleBase;
 	SurfaceGuiBase: SurfaceGuiBase;
 	SyncScriptBuilder: SyncScriptBuilder;
@@ -5815,6 +5819,21 @@ interface RocketPropulsion extends BodyMover {
 	readonly ReachedTarget: RBXScriptSignal<() => void>;
 }
 
+interface BodyPartDescription extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_BodyPartDescription: unique symbol;
+	AssetId: number;
+	BodyPart: Enum.BodyPart;
+	Color: Color3;
+	Instance: Instance | undefined;
+}
+
 interface Breakpoint extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -10287,6 +10306,7 @@ interface DynamicImage extends Instance {
 	Crop(this: DynamicImage, min: Vector2, max: Vector2): void;
 	DrawCircle(this: DynamicImage, center: Vector2, radius: number, color: Color3, transparency: number): void;
 	DrawImage(this: DynamicImage, position: Vector2, image: DynamicImage, combineType: CastsToEnum<Enum.ImageCombineType>): void;
+	DrawLine(this: DynamicImage, p1: Vector2, p2: Vector2, color: Color3, transparency: number): void;
 	DrawRectangle(this: DynamicImage, position: Vector2, size: Vector2, color: Color3, transparency: number): void;
 	/**
 	 * Tags: CustomLuaState
@@ -23265,6 +23285,17 @@ interface OpenCloudService extends Instance {
 	GetApiV1(this: OpenCloudService): OpenCloudApiV1;
 }
 
+interface OperationTree extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_OperationTree: unique symbol;
+}
+
 /** A [PVInstance](https://developer.roblox.com/en-us/api-reference/class/PVInstance) (“Position Velocity Instance”) is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Models](https://developer.roblox.com/en-us/api-reference/class/Model). */
 interface PVInstance extends Instance {
 	/**
@@ -28191,6 +28222,18 @@ interface PlayerScripts extends Instance {
 	RegisterTouchMovementMode(this: PlayerScripts, movementMode: CastsToEnum<Enum.TouchMovementMode>): void;
 }
 
+interface PlayerViewService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PlayerViewService: unique symbol;
+	GetDeviceCameraCFrame(this: PlayerViewService, player?: Player): CFrame;
+}
+
 /** The Players game service contains only [Player](https://developer.roblox.com/en-us/api-reference/class/Player) objects for presently connected clients to a Roblox game server. It also contains information about a place's configuration (such as bubble chat or classic chat). It can fetch information about players not connected to the server, such as character appearances, friends and avatar thumbnail. */
 interface Players extends Instance {
 	/**
@@ -32490,6 +32533,22 @@ interface StudioAssetService extends Instance {
 	readonly _nominal_StudioAssetService: unique symbol;
 }
 
+interface StudioAttachment extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StudioAttachment: unique symbol;
+	AutoHideParent: boolean;
+	IsArrowVisible: boolean;
+	Offset: Vector2;
+	SourceAnchorPoint: Vector2;
+	TargetAnchorPoint: Vector2;
+}
+
 interface StudioCallout extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -33984,6 +34043,7 @@ interface TextChatMessage extends Instance {
 	TextChannel: TextChannel | undefined;
 	TextSource: TextSource | undefined;
 	Timestamp: DateTime;
+	Translation: string;
 }
 
 interface TextChatMessageProperties extends Instance {
@@ -33997,6 +34057,7 @@ interface TextChatMessageProperties extends Instance {
 	readonly _nominal_TextChatMessageProperties: unique symbol;
 	PrefixText: string;
 	Text: string;
+	Translation: string;
 }
 
 interface TextChatService extends Instance {
@@ -34008,6 +34069,7 @@ interface TextChatService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TextChatService: unique symbol;
+	readonly ChatTranslationEnabled: boolean;
 	readonly ChatVersion: Enum.ChatVersion;
 	CreateDefaultCommands: boolean;
 	CreateDefaultTextChannels: boolean;
