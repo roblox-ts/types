@@ -31937,11 +31937,12 @@ interface SoundService extends Instance {
 	 */
 	GetListener(
 		this: SoundService,
-	):
+	): LuaTuple<
 		| [Enum.ListenerType.Camera, undefined]
 		| [Enum.ListenerType.CFrame, CFrame]
 		| [Enum.ListenerType.ObjectCFrame, BasePart]
-		| [Enum.ListenerType.ObjectPosition, BasePart];
+		| [Enum.ListenerType.ObjectPosition, BasePart]
+	>;
 	/**
 	 * Plays a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) locally, meaning the sound will only be heard by the client calling this function, regardless of where it's parented to. This function is most useful for playing a [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) locally in the Studio client, for instance in a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) for a [custom plugin](https://developer.roblox.com/en-us/articles/intro-to-plugins).
 	 */
