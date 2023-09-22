@@ -826,11 +826,12 @@ interface SocialService extends Instance {
 interface SoundService extends Instance {
 	GetListener(
 		this: SoundService,
-	):
+	): LuaTuple<
 		| [Enum.ListenerType.Camera, undefined]
 		| [Enum.ListenerType.CFrame, CFrame]
 		| [Enum.ListenerType.ObjectCFrame, BasePart]
-		| [Enum.ListenerType.ObjectPosition, BasePart];
+		| [Enum.ListenerType.ObjectPosition, BasePart]
+	>;
 	SetListener(this: SoundService, listenerType: CastsToEnum<Enum.ListenerType.Camera>): void;
 	SetListener(this: SoundService, listenerType: CastsToEnum<Enum.ListenerType.CFrame>, cframe: CFrame): void;
 	SetListener(
