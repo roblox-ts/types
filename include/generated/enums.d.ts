@@ -6168,6 +6168,35 @@ declare namespace Enum {
 	}
 	export type EasingStyle = EasingStyle.Linear | EasingStyle.Sine | EasingStyle.Back | EasingStyle.Quad | EasingStyle.Quart | EasingStyle.Quint | EasingStyle.Bounce | EasingStyle.Elastic | EasingStyle.Exponential | EasingStyle.Circular | EasingStyle.Cubic;
 
+	export namespace EditorLiveScripting {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.EditorLiveScripting;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.EditorLiveScripting;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled extends globalThis.EnumItem {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.EditorLiveScripting;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EditorLiveScripting>;
+	}
+	export type EditorLiveScripting = EditorLiveScripting.Default | EditorLiveScripting.Disabled | EditorLiveScripting.Enabled;
+
 	export namespace ElasticBehavior {
 		export interface WhenScrollable extends globalThis.EnumItem {
 			Name: "WhenScrollable";
@@ -15118,9 +15147,17 @@ declare namespace Enum {
 
 		export const CoreUISafeInsets: CoreUISafeInsets;
 
+		export interface TopbarSafeInsets extends globalThis.EnumItem {
+			Name: "TopbarSafeInsets";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.ScreenInsets;
+		}
+
+		export const TopbarSafeInsets: TopbarSafeInsets;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScreenInsets>;
 	}
-	export type ScreenInsets = ScreenInsets.None | ScreenInsets.DeviceSafeInsets | ScreenInsets.CoreUISafeInsets;
+	export type ScreenInsets = ScreenInsets.None | ScreenInsets.DeviceSafeInsets | ScreenInsets.CoreUISafeInsets | ScreenInsets.TopbarSafeInsets;
 
 	export namespace ScreenOrientation {
 		export interface LandscapeLeft extends globalThis.EnumItem {
@@ -19065,13 +19102,13 @@ declare namespace Enum {
 	export type TrackerPromptEvent = TrackerPromptEvent.LODCameraRecommendDisable;
 
 	export namespace TriStateBoolean {
-		export interface Unknown extends globalThis.EnumItem {
-			Name: "Unknown";
-			Value: 0;
+		export interface False extends globalThis.EnumItem {
+			Name: "False";
+			Value: 2;
 			EnumType: typeof globalThis.Enum.TriStateBoolean;
 		}
 
-		export const Unknown: Unknown;
+		export const False: False;
 
 		export interface True extends globalThis.EnumItem {
 			Name: "True";
@@ -19081,17 +19118,17 @@ declare namespace Enum {
 
 		export const True: True;
 
-		export interface False extends globalThis.EnumItem {
-			Name: "False";
-			Value: 2;
+		export interface Unknown extends globalThis.EnumItem {
+			Name: "Unknown";
+			Value: 0;
 			EnumType: typeof globalThis.Enum.TriStateBoolean;
 		}
 
-		export const False: False;
+		export const Unknown: Unknown;
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TriStateBoolean>;
 	}
-	export type TriStateBoolean = TriStateBoolean.Unknown | TriStateBoolean.True | TriStateBoolean.False;
+	export type TriStateBoolean = TriStateBoolean.False | TriStateBoolean.True | TriStateBoolean.Unknown;
 
 	export namespace TweenStatus {
 		export interface Canceled extends globalThis.EnumItem {
