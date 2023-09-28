@@ -32,6 +32,7 @@ interface Services {
 	ContextActionService: ContextActionService;
 	ControllerService: ControllerService;
 	CoreScriptDebuggingManagerHelper: CoreScriptDebuggingManagerHelper;
+	CreationDBService: CreationDBService;
 	CrossDMScriptChangeListener: CrossDMScriptChangeListener;
 	DataModelPatchService: DataModelPatchService;
 	DataStoreService: DataStoreService;
@@ -96,6 +97,7 @@ interface Services {
 	ProcessInstancePhysicsService: ProcessInstancePhysicsService;
 	ProximityPromptService: ProximityPromptService;
 	PublishService: PublishService;
+	ReflectionService: ReflectionService;
 	RemoteCursorService: RemoteCursorService;
 	RemoteDebuggerServer: RemoteDebuggerServer;
 	ReplicatedFirst: ReplicatedFirst;
@@ -167,6 +169,7 @@ interface Services {
 
 interface CreatableInstances {
 	Accessory: Accessory;
+	AccessoryDescription: AccessoryDescription;
 	Accoutrement: Accoutrement;
 	Actor: Actor;
 	AdGui: AdGui;
@@ -1229,6 +1232,23 @@ interface Instance {
 	readonly Destroying: RBXScriptSignal<() => void>;
 }
 
+interface AccessoryDescription extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AccessoryDescription: unique symbol;
+	AccessoryType: Enum.AccessoryType;
+	AssetId: number;
+	Instance: Instance | undefined;
+	IsLayered: boolean;
+	Order: number;
+	Puffiness: number;
+}
+
 /** An Accoutrement is an object that welds its child [part](https://developer.roblox.com/en-us/api-reference/class/Part) called “Handle” to the Head of a player's character. The position and rotation of the Handle part can be changed with the [AttachmentPos](https://developer.roblox.com/en-us/api-reference/property/Accoutrement/AttachmentPos)/[Right](https://developer.roblox.com/en-us/api-reference/property/Accoutrement/AttachmentRight)/[Forward](https://developer.roblox.com/en-us/api-reference/property/Accoutrement/AttachmentForward)/[Up](https://developer.roblox.com/en-us/api-reference/property/Accoutrement/AttachmentUp) properties.
  * 
  * Parts descending from an accoutrement will be massless when attached to other parts (e.g. with a Weld) as long as they are not the root part of the assembly returned by [GetRootPart()](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetRootPart). [GetMass()](https://developer.roblox.com/en-us/api-reference/function/BasePart/GetMass) will return 0 for parts in this case and it will not add to the total mass or rotational inertia of the Assembly.
@@ -2128,6 +2148,14 @@ interface Animator extends Instance {
 	readonly EvaluationThrottled: boolean;
 	PreferLodEnabled: boolean;
 	/**
+	 * Tags: NotReplicated, NotBrowsable
+	 */
+	readonly RootMotion: CFrame;
+	/**
+	 * Tags: NotReplicated, NotBrowsable
+	 */
+	readonly RootMotionWeight: number;
+	/**
 	 * Given the current set of [AnimationTracks](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) playing, and their current times and play speeds, compute relative velocities between the parts and apply them to Motor6D.Part1 (the part which [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator) considers the “child” part). These relative velocity calculations and assignments happen in the order provided.
 	 * 
 	 * This method doesn't apply velocities for a given joint if both of the joint's parts are currently part of the same assembly, for example, if they are still connected directly or indirectly by Motors or Welds.
@@ -2227,7 +2255,6 @@ interface AssetImportSession extends Instance {
 	 */
 	readonly _nominal_AssetImportSession: unique symbol;
 	readonly UploadComplete: RBXScriptSignal<(results: object) => void>;
-	readonly UploadCompleteDeprecated: RBXScriptSignal<(succeeded: boolean, errorMap: object) => void>;
 	readonly UploadProgress: RBXScriptSignal<(progressRatio: number) => void>;
 }
 
@@ -3722,6 +3749,7 @@ interface RootImportData extends BaseImportData {
 	UseSceneOriginAsCFrame: boolean;
 	UseSceneOriginAsPivot: boolean;
 	UsesCages: boolean;
+	ValidateUgcBody: boolean;
 	WorldForward: Enum.NormalId;
 	WorldUp: Enum.NormalId;
 }
@@ -9188,6 +9216,17 @@ interface CoreScriptDebuggingManagerHelper extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_CoreScriptDebuggingManagerHelper: unique symbol;
+}
+
+interface CreationDBService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CreationDBService: unique symbol;
 }
 
 interface CrossDMScriptChangeListener extends Instance {
@@ -15295,6 +15334,7 @@ interface HttpService extends Instance {
 	 * *   **false** - _db454790-7563-44ed-ab4b-397ff5df737b_
 	 */
 	GenerateGUID(this: HttpService, wrapInCurlyBraces?: boolean): string;
+	GetSecret(this: HttpService, key: string): Secret;
 	/**
 	 * The JSONDecode function transforms a [JSON object or array](http://robloxdev.com/articles/JSON-Storage-Format) into a Lua [table](http://robloxdev.com/articles/Table) with the following characteristics:
 	 * 
@@ -29308,6 +29348,17 @@ interface PublishService extends Instance {
 	readonly _nominal_PublishService: unique symbol;
 }
 
+interface ReflectionService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ReflectionService: unique symbol;
+}
+
 interface RemoteCursorService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -33912,6 +33963,7 @@ interface TextChatCommand extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TextChatCommand: unique symbol;
+	AutocompleteVisible: boolean;
 	Enabled: boolean;
 	PrimaryAlias: string;
 	SecondaryAlias: string;
