@@ -15686,9 +15686,6 @@ interface Humanoid extends Instance {
 	 * When a Humanoid named `StarterHumanoid` is parented to [StarterPlayer](https://developer.roblox.com/api-reference/class/StarterPlayer), or when a Humanoid is present in a Model named `StarterCharacter`, the DisplayName property will be respected when Characters are loaded by Players in the game. The engine will only override the `DisplayName` property of the Humanoid with the `DisplayName` property of the player if the `StarterHumanoid`'s `DisplayName` property is an empty string.
 	 */
 	DisplayName: string;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	EvaluateStateMachine: boolean;
 	/**
 	 * This is a read-only property that describes the [Material](https://developer.roblox.com/en-us/api-reference/enum/Material) the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) is currently standing on.  
