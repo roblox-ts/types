@@ -1867,6 +1867,7 @@ interface PhysicsSettings extends Instance {
 	 * It's supposed to render an XYZ axis on the root part of a [Model](https://developer.roblox.com/en-us/api-reference/class/Model), but the axis rendering component doesn't work correctly.
 	 */
 	AreModelCoordsShown: boolean;
+	AreNonAnchorsShown: boolean;
 	/**
 	 * When set to true, each [Player](https://developer.roblox.com/en-us/api-reference/class/Player)'s character is outlined with a unique color, and each part that the player has network ownership over is outlined with the same color.
 	 */
@@ -3141,6 +3142,10 @@ interface ScriptEditorService extends Instance {
 	 * Tags: Yields
 	 */
 	OpenScriptDocumentAsync(this: ScriptEditorService, script: LuaSourceContainer): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	UpdateSourceAsync(this: ScriptEditorService, script: LuaSourceContainer, callback: Callback): unknown;
 	readonly TextDocumentDidChange: RBXScriptSignal<(document: ScriptDocument, changesArray: unknown) => void>;
 	readonly TextDocumentDidClose: RBXScriptSignal<(oldDocument: ScriptDocument) => void>;
 	readonly TextDocumentDidOpen: RBXScriptSignal<(newDocument: ScriptDocument) => void>;
@@ -3596,7 +3601,6 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["Property Color"]: Color3;
-	["Render Throttle Percentage"]: number;
 	["Respect Studio shortcuts when game has focus"]: boolean;
 	/**
 	 * Tags: NotReplicated

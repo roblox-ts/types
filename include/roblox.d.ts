@@ -1428,6 +1428,17 @@ interface CFrameConstructor {
 
 declare const CFrame: CFrameConstructor;
 
+interface ClipEvaluator {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ClipEvaluator: unique symbol;
+}
+
 interface Color3 {
 	/**
 	 * **DO NOT USE!**
@@ -2140,6 +2151,17 @@ type RotationCurveKeyConstructor = new (
 	interpolation: CastsToEnum<Enum.KeyInterpolationMode>,
 ) => RotationCurveKey;
 declare const RotationCurveKey: RotationCurveKeyConstructor;
+
+interface Secret {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Secret: unique symbol;
+}
 
 declare const SharedTableNominal: unique symbol;
 type SharedTableValue = boolean | number | Vector3 | string | SharedTable | Instance | typeof SharedTableNominal;
