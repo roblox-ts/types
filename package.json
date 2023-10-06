@@ -28,7 +28,7 @@
 	},
 	"homepage": "https://github.com/roblox-ts/types#readme",
 	"devDependencies": {
-		"@rbxts/compiler-types": "^2.1.1-types.0",
+		"@rbxts/compiler-types": "^2.2.0-types.0",
 		"@types/fs-extra": "^11.0.2",
 		"@types/jsdom": "^21.1.3",
 		"@types/libxmljs": "^0.18.10",
