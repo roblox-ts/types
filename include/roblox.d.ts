@@ -1230,7 +1230,9 @@ interface BrickColorConstructor {
 	Blue: () => BrickColor<23>;
 
 	/** Constructs a BrickColor from its name. */
-	new <T extends BrickColorsByNumber[keyof BrickColorsByNumber]>(val: T): BrickColor<
+	new <T extends BrickColorsByNumber[keyof BrickColorsByNumber]>(
+		val: T,
+	): BrickColor<
 		{ [K in keyof BrickColorsByNumber]: T extends BrickColorsByNumber[K] ? K : never }[keyof BrickColorsByNumber]
 	>;
 
