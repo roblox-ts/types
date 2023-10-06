@@ -7,7 +7,10 @@ export class Generator {
 	protected stream: fs.WriteStream;
 	protected indent = "";
 
-	constructor(filePath: string, protected metadata?: ReflectionMetadata) {
+	constructor(
+		filePath: string,
+		protected metadata?: ReflectionMetadata,
+	) {
 		fs.ensureFileSync(filePath);
 		this.stream = fs.createWriteStream(path.join(filePath));
 	}
