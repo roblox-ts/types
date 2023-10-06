@@ -16,6 +16,7 @@ interface Services {
 	AssetManagerService: AssetManagerService;
 	AssetService: AssetService;
 	AvatarChatService: AvatarChatService;
+	AvatarCreationService: AvatarCreationService;
 	AvatarEditorService: AvatarEditorService;
 	AvatarImportService: AvatarImportService;
 	BadgeService: BadgeService;
@@ -70,6 +71,7 @@ interface Services {
 	LiveScriptingService: LiveScriptingService;
 	LocalizationService: LocalizationService;
 	LodDataService: LodDataService;
+	LogReporterService: LogReporterService;
 	LogService: LogService;
 	LSPFileSyncService: LSPFileSyncService;
 	LuauScriptAnalyzerService: LuauScriptAnalyzerService;
@@ -370,6 +372,7 @@ interface CreatableInstances {
 	StarterGear: StarterGear;
 	StringValue: StringValue;
 	StudioAttachment: StudioAttachment;
+	StudioCallout: StudioCallout;
 	StyleDerive: StyleDerive;
 	StyleLink: StyleLink;
 	StyleRule: StyleRule;
@@ -572,7 +575,6 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	StandardPages: StandardPages;
 	StarterCharacterScripts: StarterCharacterScripts;
 	StarterPlayerScripts: StarterPlayerScripts;
-	StudioCallout: StudioCallout;
 	StudioObjectBase: StudioObjectBase;
 	StudioWidget: StudioWidget;
 	StyleBase: StyleBase;
@@ -2973,6 +2975,21 @@ interface AvatarChatService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AvatarChatService: unique symbol;
+}
+
+interface AvatarCreationService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AvatarCreationService: unique symbol;
+	/**
+	 * Tags: Yields
+	 */
+	PromptCreateAvatarAsync(this: AvatarCreationService, player: Player, humanoidDescription: HumanoidDescription): unknown;
 }
 
 /** AvatarEditorService is a service to support developer Avatar Editors. It provides methods to modify the player's platform avatar, request information about a user's inventory, and request information about the catalog.
@@ -21772,6 +21789,17 @@ interface LodDataService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_LodDataService: unique symbol;
+}
+
+interface LogReporterService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_LogReporterService: unique symbol;
 }
 
 /** **Unreliable Behavior**  

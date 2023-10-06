@@ -2888,6 +2888,35 @@ declare namespace Enum {
 	}
 	export type CameraPanMode = CameraPanMode.Classic | CameraPanMode.EdgeBump;
 
+	export namespace CameraSpeedAdjustBinding {
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.CameraSpeedAdjustBinding;
+		}
+
+		export const None: None;
+
+		export interface RmbScroll extends globalThis.EnumItem {
+			Name: "RmbScroll";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.CameraSpeedAdjustBinding;
+		}
+
+		export const RmbScroll: RmbScroll;
+
+		export interface AltScroll extends globalThis.EnumItem {
+			Name: "AltScroll";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.CameraSpeedAdjustBinding;
+		}
+
+		export const AltScroll: AltScroll;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CameraSpeedAdjustBinding>;
+	}
+	export type CameraSpeedAdjustBinding = CameraSpeedAdjustBinding.None | CameraSpeedAdjustBinding.RmbScroll | CameraSpeedAdjustBinding.AltScroll;
+
 	export namespace CameraType {
 		export interface Fixed extends globalThis.EnumItem {
 			Name: "Fixed";
@@ -9923,6 +9952,150 @@ declare namespace Enum {
 
 		export const F15: F15;
 
+		export interface ButtonX extends globalThis.EnumItem {
+			Name: "ButtonX";
+			Value: 1000;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonX: ButtonX;
+
+		export interface ButtonY extends globalThis.EnumItem {
+			Name: "ButtonY";
+			Value: 1001;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonY: ButtonY;
+
+		export interface ButtonA extends globalThis.EnumItem {
+			Name: "ButtonA";
+			Value: 1002;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonA: ButtonA;
+
+		export interface ButtonB extends globalThis.EnumItem {
+			Name: "ButtonB";
+			Value: 1003;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonB: ButtonB;
+
+		export interface ButtonR1 extends globalThis.EnumItem {
+			Name: "ButtonR1";
+			Value: 1004;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonR1: ButtonR1;
+
+		export interface ButtonL1 extends globalThis.EnumItem {
+			Name: "ButtonL1";
+			Value: 1005;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonL1: ButtonL1;
+
+		export interface ButtonR2 extends globalThis.EnumItem {
+			Name: "ButtonR2";
+			Value: 1006;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonR2: ButtonR2;
+
+		export interface ButtonL2 extends globalThis.EnumItem {
+			Name: "ButtonL2";
+			Value: 1007;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonL2: ButtonL2;
+
+		export interface ButtonR3 extends globalThis.EnumItem {
+			Name: "ButtonR3";
+			Value: 1008;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonR3: ButtonR3;
+
+		export interface ButtonL3 extends globalThis.EnumItem {
+			Name: "ButtonL3";
+			Value: 1009;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonL3: ButtonL3;
+
+		export interface ButtonStart extends globalThis.EnumItem {
+			Name: "ButtonStart";
+			Value: 1010;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonStart: ButtonStart;
+
+		export interface ButtonSelect extends globalThis.EnumItem {
+			Name: "ButtonSelect";
+			Value: 1011;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonSelect: ButtonSelect;
+
+		export interface DPadLeft extends globalThis.EnumItem {
+			Name: "DPadLeft";
+			Value: 1012;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const DPadLeft: DPadLeft;
+
+		export interface DPadRight extends globalThis.EnumItem {
+			Name: "DPadRight";
+			Value: 1013;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const DPadRight: DPadRight;
+
+		export interface DPadUp extends globalThis.EnumItem {
+			Name: "DPadUp";
+			Value: 1014;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const DPadUp: DPadUp;
+
+		export interface DPadDown extends globalThis.EnumItem {
+			Name: "DPadDown";
+			Value: 1015;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const DPadDown: DPadDown;
+
+		export interface Thumbstick1 extends globalThis.EnumItem {
+			Name: "Thumbstick1";
+			Value: 1016;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Thumbstick1: Thumbstick1;
+
+		export interface Thumbstick2 extends globalThis.EnumItem {
+			Name: "Thumbstick2";
+			Value: 1017;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Thumbstick2: Thumbstick2;
+
 		export interface World0 extends globalThis.EnumItem {
 			Name: "World0";
 			Value: 160;
@@ -10691,153 +10864,9 @@ declare namespace Enum {
 
 		export const World95: World95;
 
-		export interface ButtonX extends globalThis.EnumItem {
-			Name: "ButtonX";
-			Value: 1000;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonX: ButtonX;
-
-		export interface ButtonY extends globalThis.EnumItem {
-			Name: "ButtonY";
-			Value: 1001;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonY: ButtonY;
-
-		export interface ButtonA extends globalThis.EnumItem {
-			Name: "ButtonA";
-			Value: 1002;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonA: ButtonA;
-
-		export interface ButtonB extends globalThis.EnumItem {
-			Name: "ButtonB";
-			Value: 1003;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonB: ButtonB;
-
-		export interface ButtonR1 extends globalThis.EnumItem {
-			Name: "ButtonR1";
-			Value: 1004;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonR1: ButtonR1;
-
-		export interface ButtonL1 extends globalThis.EnumItem {
-			Name: "ButtonL1";
-			Value: 1005;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonL1: ButtonL1;
-
-		export interface ButtonR2 extends globalThis.EnumItem {
-			Name: "ButtonR2";
-			Value: 1006;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonR2: ButtonR2;
-
-		export interface ButtonL2 extends globalThis.EnumItem {
-			Name: "ButtonL2";
-			Value: 1007;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonL2: ButtonL2;
-
-		export interface ButtonR3 extends globalThis.EnumItem {
-			Name: "ButtonR3";
-			Value: 1008;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonR3: ButtonR3;
-
-		export interface ButtonL3 extends globalThis.EnumItem {
-			Name: "ButtonL3";
-			Value: 1009;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonL3: ButtonL3;
-
-		export interface ButtonStart extends globalThis.EnumItem {
-			Name: "ButtonStart";
-			Value: 1010;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonStart: ButtonStart;
-
-		export interface ButtonSelect extends globalThis.EnumItem {
-			Name: "ButtonSelect";
-			Value: 1011;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonSelect: ButtonSelect;
-
-		export interface DPadLeft extends globalThis.EnumItem {
-			Name: "DPadLeft";
-			Value: 1012;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const DPadLeft: DPadLeft;
-
-		export interface DPadRight extends globalThis.EnumItem {
-			Name: "DPadRight";
-			Value: 1013;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const DPadRight: DPadRight;
-
-		export interface DPadUp extends globalThis.EnumItem {
-			Name: "DPadUp";
-			Value: 1014;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const DPadUp: DPadUp;
-
-		export interface DPadDown extends globalThis.EnumItem {
-			Name: "DPadDown";
-			Value: 1015;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const DPadDown: DPadDown;
-
-		export interface Thumbstick1 extends globalThis.EnumItem {
-			Name: "Thumbstick1";
-			Value: 1016;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Thumbstick1: Thumbstick1;
-
-		export interface Thumbstick2 extends globalThis.EnumItem {
-			Name: "Thumbstick2";
-			Value: 1017;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Thumbstick2: Thumbstick2;
-
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.KeyCode>;
 	}
-	export type KeyCode = KeyCode.Unknown | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.LeftShift | KeyCode.RightShift | KeyCode.LeftMeta | KeyCode.RightMeta | KeyCode.LeftAlt | KeyCode.RightAlt | KeyCode.LeftControl | KeyCode.RightControl | KeyCode.CapsLock | KeyCode.NumLock | KeyCode.ScrollLock | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95 | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2;
+	export type KeyCode = KeyCode.Unknown | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.LeftShift | KeyCode.RightShift | KeyCode.LeftMeta | KeyCode.RightMeta | KeyCode.LeftAlt | KeyCode.RightAlt | KeyCode.LeftControl | KeyCode.RightControl | KeyCode.CapsLock | KeyCode.NumLock | KeyCode.ScrollLock | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2 | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95;
 
 	export namespace KeyInterpolationMode {
 		export interface Constant extends globalThis.EnumItem {
@@ -17372,9 +17401,33 @@ declare namespace Enum {
 
 		export const AttributeCog: AttributeCog;
 
+		export interface OnboardingCover extends globalThis.EnumItem {
+			Name: "OnboardingCover";
+			Value: 132;
+			EnumType: typeof globalThis.Enum.StudioStyleGuideColor;
+		}
+
+		export const OnboardingCover: OnboardingCover;
+
+		export interface OnboardingHighlight extends globalThis.EnumItem {
+			Name: "OnboardingHighlight";
+			Value: 133;
+			EnumType: typeof globalThis.Enum.StudioStyleGuideColor;
+		}
+
+		export const OnboardingHighlight: OnboardingHighlight;
+
+		export interface OnboardingShadow extends globalThis.EnumItem {
+			Name: "OnboardingShadow";
+			Value: 134;
+			EnumType: typeof globalThis.Enum.StudioStyleGuideColor;
+		}
+
+		export const OnboardingShadow: OnboardingShadow;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioStyleGuideColor>;
 	}
-	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.FilterButtonDefault | StudioStyleGuideColor.FilterButtonHover | StudioStyleGuideColor.FilterButtonChecked | StudioStyleGuideColor.FilterButtonAccent | StudioStyleGuideColor.FilterButtonBorder | StudioStyleGuideColor.FilterButtonBorderAlt | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.DropShadow | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptInformation | StudioStyleGuideColor.ScriptHint | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DocViewCodeBackground | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo | StudioStyleGuideColor.ScriptBracket | StudioStyleGuideColor.AICOOverlayText | StudioStyleGuideColor.AICOOverlayButtonBackground | StudioStyleGuideColor.AICOOverlayButtonBackgroundHover | StudioStyleGuideColor.AICOOverlayButtonBackgroundPressed | StudioStyleGuideColor.AttributeCog;
+	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.FilterButtonDefault | StudioStyleGuideColor.FilterButtonHover | StudioStyleGuideColor.FilterButtonChecked | StudioStyleGuideColor.FilterButtonAccent | StudioStyleGuideColor.FilterButtonBorder | StudioStyleGuideColor.FilterButtonBorderAlt | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.DropShadow | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptInformation | StudioStyleGuideColor.ScriptHint | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DocViewCodeBackground | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo | StudioStyleGuideColor.ScriptBracket | StudioStyleGuideColor.AICOOverlayText | StudioStyleGuideColor.AICOOverlayButtonBackground | StudioStyleGuideColor.AICOOverlayButtonBackgroundHover | StudioStyleGuideColor.AICOOverlayButtonBackgroundPressed | StudioStyleGuideColor.AttributeCog | StudioStyleGuideColor.OnboardingCover | StudioStyleGuideColor.OnboardingHighlight | StudioStyleGuideColor.OnboardingShadow;
 
 	export namespace StudioStyleGuideModifier {
 		export interface Default extends globalThis.EnumItem {
@@ -17949,14 +18002,6 @@ declare namespace Enum {
 
 		export const ToInstance: ToInstance;
 
-		export interface ToVIPServer extends globalThis.EnumItem {
-			Name: "ToVIPServer";
-			Value: 3;
-			EnumType: typeof globalThis.Enum.TeleportType;
-		}
-
-		export const ToVIPServer: ToVIPServer;
-
 		export interface ToReservedServer extends globalThis.EnumItem {
 			Name: "ToReservedServer";
 			Value: 2;
@@ -17965,9 +18010,17 @@ declare namespace Enum {
 
 		export const ToReservedServer: ToReservedServer;
 
+		export interface ToVIPServer extends globalThis.EnumItem {
+			Name: "ToVIPServer";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.TeleportType;
+		}
+
+		export const ToVIPServer: ToVIPServer;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TeleportType>;
 	}
-	export type TeleportType = TeleportType.ToPlace | TeleportType.ToInstance | TeleportType.ToVIPServer | TeleportType.ToReservedServer;
+	export type TeleportType = TeleportType.ToPlace | TeleportType.ToInstance | TeleportType.ToReservedServer | TeleportType.ToVIPServer;
 
 	export namespace TerrainAcquisitionMethod {
 		export interface None extends globalThis.EnumItem {

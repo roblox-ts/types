@@ -3145,7 +3145,7 @@ interface ScriptEditorService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	UpdateSourceAsync(this: ScriptEditorService, script: LuaSourceContainer, callback: Callback): unknown;
+	UpdateSourceAsync(this: ScriptEditorService, script: LuaSourceContainer, callback: Callback): void;
 	readonly TextDocumentDidChange: RBXScriptSignal<(document: ScriptDocument, changesArray: unknown) => void>;
 	readonly TextDocumentDidClose: RBXScriptSignal<(oldDocument: ScriptDocument) => void>;
 	readonly TextDocumentDidOpen: RBXScriptSignal<(newDocument: ScriptDocument) => void>;
@@ -3476,6 +3476,7 @@ interface Studio extends Instance {
 	["Camera Mouse Wheel Speed"]: number;
 	["Camera Shift Speed"]: number;
 	["Camera Speed"]: number;
+	["Camera Speed Adjust Binding"]: Enum.CameraSpeedAdjustBinding;
 	["Camera Zoom to Mouse Position"]: boolean;
 	["Clear Output On Start"]: boolean;
 	CommandBarLocalState: boolean;
