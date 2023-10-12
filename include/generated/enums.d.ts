@@ -704,6 +704,14 @@ declare namespace Enum {
 	export type AnimationCompositorMode = AnimationCompositorMode.Default | AnimationCompositorMode.Enabled | AnimationCompositorMode.Disabled;
 
 	export namespace AnimationPriority {
+		export interface Core extends globalThis.EnumItem {
+			Name: "Core";
+			Value: 1000;
+			EnumType: typeof globalThis.Enum.AnimationPriority;
+		}
+
+		export const Core: Core;
+
 		export interface Idle extends globalThis.EnumItem {
 			Name: "Idle";
 			Value: 0;
@@ -752,17 +760,9 @@ declare namespace Enum {
 
 		export const Action4: Action4;
 
-		export interface Core extends globalThis.EnumItem {
-			Name: "Core";
-			Value: 1000;
-			EnumType: typeof globalThis.Enum.AnimationPriority;
-		}
-
-		export const Core: Core;
-
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationPriority>;
 	}
-	export type AnimationPriority = AnimationPriority.Idle | AnimationPriority.Movement | AnimationPriority.Action | AnimationPriority.Action2 | AnimationPriority.Action3 | AnimationPriority.Action4 | AnimationPriority.Core;
+	export type AnimationPriority = AnimationPriority.Core | AnimationPriority.Idle | AnimationPriority.Movement | AnimationPriority.Action | AnimationPriority.Action2 | AnimationPriority.Action3 | AnimationPriority.Action4;
 
 	export namespace AnimatorRetargetingMode {
 		export interface Default extends globalThis.EnumItem {
@@ -1431,14 +1431,6 @@ declare namespace Enum {
 
 		export const PoseAnimation: PoseAnimation;
 
-		export interface MoodAnimation extends globalThis.EnumItem {
-			Name: "MoodAnimation";
-			Value: 78;
-			EnumType: typeof globalThis.Enum.AssetType;
-		}
-
-		export const MoodAnimation: MoodAnimation;
-
 		export interface EarAccessory extends globalThis.EnumItem {
 			Name: "EarAccessory";
 			Value: 57;
@@ -1545,6 +1537,14 @@ declare namespace Enum {
 
 		export const DressSkirtAccessory: DressSkirtAccessory;
 
+		export interface FontFamily extends globalThis.EnumItem {
+			Name: "FontFamily";
+			Value: 73;
+			EnumType: typeof globalThis.Enum.AssetType;
+		}
+
+		export const FontFamily: FontFamily;
+
 		export interface EyebrowAccessory extends globalThis.EnumItem {
 			Name: "EyebrowAccessory";
 			Value: 76;
@@ -1561,6 +1561,14 @@ declare namespace Enum {
 
 		export const EyelashAccessory: EyelashAccessory;
 
+		export interface MoodAnimation extends globalThis.EnumItem {
+			Name: "MoodAnimation";
+			Value: 78;
+			EnumType: typeof globalThis.Enum.AssetType;
+		}
+
+		export const MoodAnimation: MoodAnimation;
+
 		export interface DynamicHead extends globalThis.EnumItem {
 			Name: "DynamicHead";
 			Value: 79;
@@ -1569,17 +1577,9 @@ declare namespace Enum {
 
 		export const DynamicHead: DynamicHead;
 
-		export interface FontFamily extends globalThis.EnumItem {
-			Name: "FontFamily";
-			Value: 73;
-			EnumType: typeof globalThis.Enum.AssetType;
-		}
-
-		export const FontFamily: FontFamily;
-
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AssetType>;
 	}
-	export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.MoodAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.DynamicHead | AssetType.FontFamily;
+	export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.FontFamily | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.MoodAnimation | AssetType.DynamicHead;
 
 	export namespace AssetTypeVerification {
 		export interface Default extends globalThis.EnumItem {
@@ -1743,6 +1743,86 @@ declare namespace Enum {
 
 		export const Hat: Hat;
 
+		export interface Shirt extends globalThis.EnumItem {
+			Name: "Shirt";
+			Value: 11;
+			EnumType: typeof globalThis.Enum.AvatarAssetType;
+		}
+
+		export const Shirt: Shirt;
+
+		export interface Pants extends globalThis.EnumItem {
+			Name: "Pants";
+			Value: 12;
+			EnumType: typeof globalThis.Enum.AvatarAssetType;
+		}
+
+		export const Pants: Pants;
+
+		export interface Head extends globalThis.EnumItem {
+			Name: "Head";
+			Value: 17;
+			EnumType: typeof globalThis.Enum.AvatarAssetType;
+		}
+
+		export const Head: Head;
+
+		export interface Face extends globalThis.EnumItem {
+			Name: "Face";
+			Value: 18;
+			EnumType: typeof globalThis.Enum.AvatarAssetType;
+		}
+
+		export const Face: Face;
+
+		export interface Gear extends globalThis.EnumItem {
+			Name: "Gear";
+			Value: 19;
+			EnumType: typeof globalThis.Enum.AvatarAssetType;
+		}
+
+		export const Gear: Gear;
+
+		export interface Torso extends globalThis.EnumItem {
+			Name: "Torso";
+			Value: 27;
+			EnumType: typeof globalThis.Enum.AvatarAssetType;
+		}
+
+		export const Torso: Torso;
+
+		export interface RightArm extends globalThis.EnumItem {
+			Name: "RightArm";
+			Value: 28;
+			EnumType: typeof globalThis.Enum.AvatarAssetType;
+		}
+
+		export const RightArm: RightArm;
+
+		export interface LeftArm extends globalThis.EnumItem {
+			Name: "LeftArm";
+			Value: 29;
+			EnumType: typeof globalThis.Enum.AvatarAssetType;
+		}
+
+		export const LeftArm: LeftArm;
+
+		export interface LeftLeg extends globalThis.EnumItem {
+			Name: "LeftLeg";
+			Value: 30;
+			EnumType: typeof globalThis.Enum.AvatarAssetType;
+		}
+
+		export const LeftLeg: LeftLeg;
+
+		export interface RightLeg extends globalThis.EnumItem {
+			Name: "RightLeg";
+			Value: 31;
+			EnumType: typeof globalThis.Enum.AvatarAssetType;
+		}
+
+		export const RightLeg: RightLeg;
+
 		export interface HairAccessory extends globalThis.EnumItem {
 			Name: "HairAccessory";
 			Value: 41;
@@ -1798,86 +1878,6 @@ declare namespace Enum {
 		}
 
 		export const WaistAccessory: WaistAccessory;
-
-		export interface Shirt extends globalThis.EnumItem {
-			Name: "Shirt";
-			Value: 11;
-			EnumType: typeof globalThis.Enum.AvatarAssetType;
-		}
-
-		export const Shirt: Shirt;
-
-		export interface Pants extends globalThis.EnumItem {
-			Name: "Pants";
-			Value: 12;
-			EnumType: typeof globalThis.Enum.AvatarAssetType;
-		}
-
-		export const Pants: Pants;
-
-		export interface Gear extends globalThis.EnumItem {
-			Name: "Gear";
-			Value: 19;
-			EnumType: typeof globalThis.Enum.AvatarAssetType;
-		}
-
-		export const Gear: Gear;
-
-		export interface Head extends globalThis.EnumItem {
-			Name: "Head";
-			Value: 17;
-			EnumType: typeof globalThis.Enum.AvatarAssetType;
-		}
-
-		export const Head: Head;
-
-		export interface Face extends globalThis.EnumItem {
-			Name: "Face";
-			Value: 18;
-			EnumType: typeof globalThis.Enum.AvatarAssetType;
-		}
-
-		export const Face: Face;
-
-		export interface Torso extends globalThis.EnumItem {
-			Name: "Torso";
-			Value: 27;
-			EnumType: typeof globalThis.Enum.AvatarAssetType;
-		}
-
-		export const Torso: Torso;
-
-		export interface RightArm extends globalThis.EnumItem {
-			Name: "RightArm";
-			Value: 28;
-			EnumType: typeof globalThis.Enum.AvatarAssetType;
-		}
-
-		export const RightArm: RightArm;
-
-		export interface LeftArm extends globalThis.EnumItem {
-			Name: "LeftArm";
-			Value: 29;
-			EnumType: typeof globalThis.Enum.AvatarAssetType;
-		}
-
-		export const LeftArm: LeftArm;
-
-		export interface LeftLeg extends globalThis.EnumItem {
-			Name: "LeftLeg";
-			Value: 30;
-			EnumType: typeof globalThis.Enum.AvatarAssetType;
-		}
-
-		export const LeftLeg: LeftLeg;
-
-		export interface RightLeg extends globalThis.EnumItem {
-			Name: "RightLeg";
-			Value: 31;
-			EnumType: typeof globalThis.Enum.AvatarAssetType;
-		}
-
-		export const RightLeg: RightLeg;
 
 		export interface ClimbAnimation extends globalThis.EnumItem {
 			Name: "ClimbAnimation";
@@ -2051,7 +2051,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarAssetType>;
 	}
-	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Gear | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.MoodAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory | AvatarAssetType.DynamicHead;
+	export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Gear | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.MoodAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory | AvatarAssetType.DynamicHead;
 
 	export namespace AvatarChatServiceFeature {
 		export interface None extends globalThis.EnumItem {
@@ -2636,14 +2636,6 @@ declare namespace Enum {
 
 		export const Error: Error;
 
-		export interface UserBreakpoint extends globalThis.EnumItem {
-			Name: "UserBreakpoint";
-			Value: 3;
-			EnumType: typeof globalThis.Enum.BreakReason;
-		}
-
-		export const UserBreakpoint: UserBreakpoint;
-
 		export interface SpecialBreakpoint extends globalThis.EnumItem {
 			Name: "SpecialBreakpoint";
 			Value: 2;
@@ -2652,9 +2644,17 @@ declare namespace Enum {
 
 		export const SpecialBreakpoint: SpecialBreakpoint;
 
+		export interface UserBreakpoint extends globalThis.EnumItem {
+			Name: "UserBreakpoint";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.BreakReason;
+		}
+
+		export const UserBreakpoint: UserBreakpoint;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.BreakReason>;
 	}
-	export type BreakReason = BreakReason.Other | BreakReason.Error | BreakReason.UserBreakpoint | BreakReason.SpecialBreakpoint;
+	export type BreakReason = BreakReason.Other | BreakReason.Error | BreakReason.SpecialBreakpoint | BreakReason.UserBreakpoint;
 
 	export namespace BreakpointRemoveReason {
 		export interface Requested extends globalThis.EnumItem {
@@ -2926,14 +2926,6 @@ declare namespace Enum {
 
 		export const Fixed: Fixed;
 
-		export interface Watch extends globalThis.EnumItem {
-			Name: "Watch";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.CameraType;
-		}
-
-		export const Watch: Watch;
-
 		export interface Attach extends globalThis.EnumItem {
 			Name: "Attach";
 			Value: 1;
@@ -2941,6 +2933,14 @@ declare namespace Enum {
 		}
 
 		export const Attach: Attach;
+
+		export interface Watch extends globalThis.EnumItem {
+			Name: "Watch";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.CameraType;
+		}
+
+		export const Watch: Watch;
 
 		export interface Track extends globalThis.EnumItem {
 			Name: "Track";
@@ -2984,7 +2984,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CameraType>;
 	}
-	export type CameraType = CameraType.Fixed | CameraType.Watch | CameraType.Attach | CameraType.Track | CameraType.Follow | CameraType.Custom | CameraType.Scriptable | CameraType.Orbital;
+	export type CameraType = CameraType.Fixed | CameraType.Attach | CameraType.Watch | CameraType.Track | CameraType.Follow | CameraType.Custom | CameraType.Scriptable | CameraType.Orbital;
 
 	export namespace CatalogCategoryFilter {
 		export interface None extends globalThis.EnumItem {
@@ -4086,14 +4086,6 @@ declare namespace Enum {
 
 		export const Default: Default;
 
-		export interface Follow extends globalThis.EnumItem {
-			Name: "Follow";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.ComputerCameraMovementMode;
-		}
-
-		export const Follow: Follow;
-
 		export interface Classic extends globalThis.EnumItem {
 			Name: "Classic";
 			Value: 1;
@@ -4101,6 +4093,14 @@ declare namespace Enum {
 		}
 
 		export const Classic: Classic;
+
+		export interface Follow extends globalThis.EnumItem {
+			Name: "Follow";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ComputerCameraMovementMode;
+		}
+
+		export const Follow: Follow;
 
 		export interface Orbital extends globalThis.EnumItem {
 			Name: "Orbital";
@@ -4120,7 +4120,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ComputerCameraMovementMode>;
 	}
-	export type ComputerCameraMovementMode = ComputerCameraMovementMode.Default | ComputerCameraMovementMode.Follow | ComputerCameraMovementMode.Classic | ComputerCameraMovementMode.Orbital | ComputerCameraMovementMode.CameraToggle;
+	export type ComputerCameraMovementMode = ComputerCameraMovementMode.Default | ComputerCameraMovementMode.Classic | ComputerCameraMovementMode.Follow | ComputerCameraMovementMode.Orbital | ComputerCameraMovementMode.CameraToggle;
 
 	export namespace ComputerMovementMode {
 		export interface Default extends globalThis.EnumItem {
@@ -4761,14 +4761,6 @@ declare namespace Enum {
 	export type ContextActionPriority = ContextActionPriority.Low | ContextActionPriority.Medium | ContextActionPriority.High;
 
 	export namespace ContextActionResult {
-		export interface Pass extends globalThis.EnumItem {
-			Name: "Pass";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.ContextActionResult;
-		}
-
-		export const Pass: Pass;
-
 		export interface Sink extends globalThis.EnumItem {
 			Name: "Sink";
 			Value: 0;
@@ -4777,19 +4769,19 @@ declare namespace Enum {
 
 		export const Sink: Sink;
 
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ContextActionResult>;
-	}
-	export type ContextActionResult = ContextActionResult.Pass | ContextActionResult.Sink;
-
-	export namespace ControlMode {
-		export interface MouseLockSwitch extends globalThis.EnumItem {
-			Name: "MouseLockSwitch";
+		export interface Pass extends globalThis.EnumItem {
+			Name: "Pass";
 			Value: 1;
-			EnumType: typeof globalThis.Enum.ControlMode;
+			EnumType: typeof globalThis.Enum.ContextActionResult;
 		}
 
-		export const MouseLockSwitch: MouseLockSwitch;
+		export const Pass: Pass;
 
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ContextActionResult>;
+	}
+	export type ContextActionResult = ContextActionResult.Sink | ContextActionResult.Pass;
+
+	export namespace ControlMode {
 		export interface Classic extends globalThis.EnumItem {
 			Name: "Classic";
 			Value: 0;
@@ -4798,9 +4790,17 @@ declare namespace Enum {
 
 		export const Classic: Classic;
 
+		export interface MouseLockSwitch extends globalThis.EnumItem {
+			Name: "MouseLockSwitch";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ControlMode;
+		}
+
+		export const MouseLockSwitch: MouseLockSwitch;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ControlMode>;
 	}
-	export type ControlMode = ControlMode.MouseLockSwitch | ControlMode.Classic;
+	export type ControlMode = ControlMode.Classic | ControlMode.MouseLockSwitch;
 
 	export namespace CoreGuiType {
 		export interface PlayerList extends globalThis.EnumItem {
@@ -4980,14 +4980,6 @@ declare namespace Enum {
 
 		export const Default: Default;
 
-		export interface Follow extends globalThis.EnumItem {
-			Name: "Follow";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.CustomCameraMode;
-		}
-
-		export const Follow: Follow;
-
 		export interface Classic extends globalThis.EnumItem {
 			Name: "Classic";
 			Value: 1;
@@ -4996,9 +4988,17 @@ declare namespace Enum {
 
 		export const Classic: Classic;
 
+		export interface Follow extends globalThis.EnumItem {
+			Name: "Follow";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.CustomCameraMode;
+		}
+
+		export const Follow: Follow;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CustomCameraMode>;
 	}
-	export type CustomCameraMode = CustomCameraMode.Default | CustomCameraMode.Follow | CustomCameraMode.Classic;
+	export type CustomCameraMode = CustomCameraMode.Default | CustomCameraMode.Classic | CustomCameraMode.Follow;
 
 	export namespace DataStoreRequestType {
 		export interface GetAsync extends globalThis.EnumItem {
@@ -5192,14 +5192,6 @@ declare namespace Enum {
 
 		export const Never: Never;
 
-		export interface Unhandled extends globalThis.EnumItem {
-			Name: "Unhandled";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.DebuggerExceptionBreakMode;
-		}
-
-		export const Unhandled: Unhandled;
-
 		export interface Always extends globalThis.EnumItem {
 			Name: "Always";
 			Value: 1;
@@ -5208,9 +5200,17 @@ declare namespace Enum {
 
 		export const Always: Always;
 
+		export interface Unhandled extends globalThis.EnumItem {
+			Name: "Unhandled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.DebuggerExceptionBreakMode;
+		}
+
+		export const Unhandled: Unhandled;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DebuggerExceptionBreakMode>;
 	}
-	export type DebuggerExceptionBreakMode = DebuggerExceptionBreakMode.Never | DebuggerExceptionBreakMode.Unhandled | DebuggerExceptionBreakMode.Always;
+	export type DebuggerExceptionBreakMode = DebuggerExceptionBreakMode.Never | DebuggerExceptionBreakMode.Always | DebuggerExceptionBreakMode.Unhandled;
 
 	export namespace DebuggerFrameType {
 		export interface C extends globalThis.EnumItem {
@@ -6456,14 +6456,6 @@ declare namespace Enum {
 	export type FillDirection = FillDirection.Horizontal | FillDirection.Vertical;
 
 	export namespace FilterResult {
-		export interface Rejected extends globalThis.EnumItem {
-			Name: "Rejected";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.FilterResult;
-		}
-
-		export const Rejected: Rejected;
-
 		export interface Accepted extends globalThis.EnumItem {
 			Name: "Accepted";
 			Value: 0;
@@ -6472,9 +6464,17 @@ declare namespace Enum {
 
 		export const Accepted: Accepted;
 
+		export interface Rejected extends globalThis.EnumItem {
+			Name: "Rejected";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.FilterResult;
+		}
+
+		export const Rejected: Rejected;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FilterResult>;
 	}
-	export type FilterResult = FilterResult.Rejected | FilterResult.Accepted;
+	export type FilterResult = FilterResult.Accepted | FilterResult.Rejected;
 
 	export namespace FinishRecordingOperation {
 		export interface Cancel extends globalThis.EnumItem {
@@ -7752,14 +7752,6 @@ declare namespace Enum {
 
 		export const Custom: Custom;
 
-		export interface CustomBillboards extends globalThis.EnumItem {
-			Name: "CustomBillboards";
-			Value: 3;
-			EnumType: typeof globalThis.Enum.GuiType;
-		}
-
-		export const CustomBillboards: CustomBillboards;
-
 		export interface PlayerNameplates extends globalThis.EnumItem {
 			Name: "PlayerNameplates";
 			Value: 2;
@@ -7768,9 +7760,17 @@ declare namespace Enum {
 
 		export const PlayerNameplates: PlayerNameplates;
 
+		export interface CustomBillboards extends globalThis.EnumItem {
+			Name: "CustomBillboards";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.GuiType;
+		}
+
+		export const CustomBillboards: CustomBillboards;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GuiType>;
 	}
-	export type GuiType = GuiType.Core | GuiType.Custom | GuiType.CustomBillboards | GuiType.PlayerNameplates;
+	export type GuiType = GuiType.Core | GuiType.Custom | GuiType.PlayerNameplates | GuiType.CustomBillboards;
 
 	export namespace HandlesStyle {
 		export interface Resize extends globalThis.EnumItem {
@@ -8801,6 +8801,51 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InterpolationThrottlingMode>;
 	}
 	export type InterpolationThrottlingMode = InterpolationThrottlingMode.Default | InterpolationThrottlingMode.Disabled | InterpolationThrottlingMode.Enabled;
+
+	export namespace ItemLineAlignment {
+		export interface Automatic extends globalThis.EnumItem {
+			Name: "Automatic";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.ItemLineAlignment;
+		}
+
+		export const Automatic: Automatic;
+
+		export interface Start extends globalThis.EnumItem {
+			Name: "Start";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ItemLineAlignment;
+		}
+
+		export const Start: Start;
+
+		export interface Center extends globalThis.EnumItem {
+			Name: "Center";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ItemLineAlignment;
+		}
+
+		export const Center: Center;
+
+		export interface End extends globalThis.EnumItem {
+			Name: "End";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.ItemLineAlignment;
+		}
+
+		export const End: End;
+
+		export interface Stretch extends globalThis.EnumItem {
+			Name: "Stretch";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.ItemLineAlignment;
+		}
+
+		export const Stretch: Stretch;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ItemLineAlignment>;
+	}
+	export type ItemLineAlignment = ItemLineAlignment.Automatic | ItemLineAlignment.Start | ItemLineAlignment.Center | ItemLineAlignment.End | ItemLineAlignment.Stretch;
 
 	export namespace JointCreationMode {
 		export interface All extends globalThis.EnumItem {
@@ -11846,6 +11891,38 @@ declare namespace Enum {
 
 		export const Wedge: Wedge;
 
+		export interface Sphere extends globalThis.EnumItem {
+			Name: "Sphere";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.MeshType;
+		}
+
+		export const Sphere: Sphere;
+
+		export interface Cylinder extends globalThis.EnumItem {
+			Name: "Cylinder";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.MeshType;
+		}
+
+		export const Cylinder: Cylinder;
+
+		export interface FileMesh extends globalThis.EnumItem {
+			Name: "FileMesh";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.MeshType;
+		}
+
+		export const FileMesh: FileMesh;
+
+		export interface Brick extends globalThis.EnumItem {
+			Name: "Brick";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.MeshType;
+		}
+
+		export const Brick: Brick;
+
 		export interface Prism extends globalThis.EnumItem {
 			Name: "Prism";
 			Value: 7;
@@ -11886,41 +11963,9 @@ declare namespace Enum {
 
 		export const CornerWedge: CornerWedge;
 
-		export interface Brick extends globalThis.EnumItem {
-			Name: "Brick";
-			Value: 6;
-			EnumType: typeof globalThis.Enum.MeshType;
-		}
-
-		export const Brick: Brick;
-
-		export interface Sphere extends globalThis.EnumItem {
-			Name: "Sphere";
-			Value: 3;
-			EnumType: typeof globalThis.Enum.MeshType;
-		}
-
-		export const Sphere: Sphere;
-
-		export interface Cylinder extends globalThis.EnumItem {
-			Name: "Cylinder";
-			Value: 4;
-			EnumType: typeof globalThis.Enum.MeshType;
-		}
-
-		export const Cylinder: Cylinder;
-
-		export interface FileMesh extends globalThis.EnumItem {
-			Name: "FileMesh";
-			Value: 5;
-			EnumType: typeof globalThis.Enum.MeshType;
-		}
-
-		export const FileMesh: FileMesh;
-
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MeshType>;
 	}
-	export type MeshType = MeshType.Head | MeshType.Torso | MeshType.Wedge | MeshType.Prism | MeshType.Pyramid | MeshType.ParallelRamp | MeshType.RightAngleRamp | MeshType.CornerWedge | MeshType.Brick | MeshType.Sphere | MeshType.Cylinder | MeshType.FileMesh;
+	export type MeshType = MeshType.Head | MeshType.Torso | MeshType.Wedge | MeshType.Sphere | MeshType.Cylinder | MeshType.FileMesh | MeshType.Brick | MeshType.Prism | MeshType.Pyramid | MeshType.ParallelRamp | MeshType.RightAngleRamp | MeshType.CornerWedge;
 
 	export namespace MessageType {
 		export interface MessageOutput extends globalThis.EnumItem {
@@ -12063,13 +12108,13 @@ declare namespace Enum {
 	export type ModelStreamingMode = ModelStreamingMode.Default | ModelStreamingMode.Atomic | ModelStreamingMode.Persistent | ModelStreamingMode.PersistentPerPlayer | ModelStreamingMode.Nonatomic;
 
 	export namespace ModifierKey {
-		export interface Alt extends globalThis.EnumItem {
-			Name: "Alt";
-			Value: 2;
+		export interface Shift extends globalThis.EnumItem {
+			Name: "Shift";
+			Value: 0;
 			EnumType: typeof globalThis.Enum.ModifierKey;
 		}
 
-		export const Alt: Alt;
+		export const Shift: Shift;
 
 		export interface Ctrl extends globalThis.EnumItem {
 			Name: "Ctrl";
@@ -12079,6 +12124,14 @@ declare namespace Enum {
 
 		export const Ctrl: Ctrl;
 
+		export interface Alt extends globalThis.EnumItem {
+			Name: "Alt";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ModifierKey;
+		}
+
+		export const Alt: Alt;
+
 		export interface Meta extends globalThis.EnumItem {
 			Name: "Meta";
 			Value: 3;
@@ -12087,17 +12140,9 @@ declare namespace Enum {
 
 		export const Meta: Meta;
 
-		export interface Shift extends globalThis.EnumItem {
-			Name: "Shift";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.ModifierKey;
-		}
-
-		export const Shift: Shift;
-
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ModifierKey>;
 	}
-	export type ModifierKey = ModifierKey.Alt | ModifierKey.Ctrl | ModifierKey.Meta | ModifierKey.Shift;
+	export type ModifierKey = ModifierKey.Shift | ModifierKey.Ctrl | ModifierKey.Alt | ModifierKey.Meta;
 
 	export namespace MouseBehavior {
 		export interface Default extends globalThis.EnumItem {
@@ -12195,13 +12240,13 @@ declare namespace Enum {
 	export type MuteState = MuteState.Unmuted | MuteState.Muted;
 
 	export namespace NameOcclusion {
-		export interface OccludeAll extends globalThis.EnumItem {
-			Name: "OccludeAll";
-			Value: 2;
+		export interface NoOcclusion extends globalThis.EnumItem {
+			Name: "NoOcclusion";
+			Value: 0;
 			EnumType: typeof globalThis.Enum.NameOcclusion;
 		}
 
-		export const OccludeAll: OccludeAll;
+		export const NoOcclusion: NoOcclusion;
 
 		export interface EnemyOcclusion extends globalThis.EnumItem {
 			Name: "EnemyOcclusion";
@@ -12211,17 +12256,17 @@ declare namespace Enum {
 
 		export const EnemyOcclusion: EnemyOcclusion;
 
-		export interface NoOcclusion extends globalThis.EnumItem {
-			Name: "NoOcclusion";
-			Value: 0;
+		export interface OccludeAll extends globalThis.EnumItem {
+			Name: "OccludeAll";
+			Value: 2;
 			EnumType: typeof globalThis.Enum.NameOcclusion;
 		}
 
-		export const NoOcclusion: NoOcclusion;
+		export const OccludeAll: OccludeAll;
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.NameOcclusion>;
 	}
-	export type NameOcclusion = NameOcclusion.OccludeAll | NameOcclusion.EnemyOcclusion | NameOcclusion.NoOcclusion;
+	export type NameOcclusion = NameOcclusion.NoOcclusion | NameOcclusion.EnemyOcclusion | NameOcclusion.OccludeAll;
 
 	export namespace NetworkOwnership {
 		export interface Automatic extends globalThis.EnumItem {
@@ -12813,6 +12858,14 @@ declare namespace Enum {
 
 		export const Success: Success;
 
+		export interface NoPath extends globalThis.EnumItem {
+			Name: "NoPath";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.PathStatus;
+		}
+
+		export const NoPath: NoPath;
+
 		export interface ClosestNoPath extends globalThis.EnumItem {
 			Name: "ClosestNoPath";
 			Value: 1;
@@ -12845,17 +12898,9 @@ declare namespace Enum {
 
 		export const FailFinishNotEmpty: FailFinishNotEmpty;
 
-		export interface NoPath extends globalThis.EnumItem {
-			Name: "NoPath";
-			Value: 5;
-			EnumType: typeof globalThis.Enum.PathStatus;
-		}
-
-		export const NoPath: NoPath;
-
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PathStatus>;
 	}
-	export type PathStatus = PathStatus.Success | PathStatus.ClosestNoPath | PathStatus.ClosestOutOfRange | PathStatus.FailStartNotEmpty | PathStatus.FailFinishNotEmpty | PathStatus.NoPath;
+	export type PathStatus = PathStatus.Success | PathStatus.NoPath | PathStatus.ClosestNoPath | PathStatus.ClosestOutOfRange | PathStatus.FailStartNotEmpty | PathStatus.FailFinishNotEmpty;
 
 	export namespace PathWaypointAction {
 		export interface Walk extends globalThis.EnumItem {
@@ -13282,6 +13327,14 @@ declare namespace Enum {
 	export type PlayerChatType = PlayerChatType.All | PlayerChatType.Team | PlayerChatType.Whisper;
 
 	export namespace PoseEasingDirection {
+		export interface In extends globalThis.EnumItem {
+			Name: "In";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.PoseEasingDirection;
+		}
+
+		export const In: In;
+
 		export interface Out extends globalThis.EnumItem {
 			Name: "Out";
 			Value: 1;
@@ -13298,17 +13351,9 @@ declare namespace Enum {
 
 		export const InOut: InOut;
 
-		export interface In extends globalThis.EnumItem {
-			Name: "In";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.PoseEasingDirection;
-		}
-
-		export const In: In;
-
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PoseEasingDirection>;
 	}
-	export type PoseEasingDirection = PoseEasingDirection.Out | PoseEasingDirection.InOut | PoseEasingDirection.In;
+	export type PoseEasingDirection = PoseEasingDirection.In | PoseEasingDirection.Out | PoseEasingDirection.InOut;
 
 	export namespace PoseEasingStyle {
 		export interface Linear extends globalThis.EnumItem {
@@ -15690,14 +15735,6 @@ declare namespace Enum {
 	export type SortDirection = SortDirection.Ascending | SortDirection.Descending;
 
 	export namespace SortOrder {
-		export interface LayoutOrder extends globalThis.EnumItem {
-			Name: "LayoutOrder";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.SortOrder;
-		}
-
-		export const LayoutOrder: LayoutOrder;
-
 		export interface Name extends globalThis.EnumItem {
 			Name: "Name";
 			Value: 0;
@@ -15714,9 +15751,17 @@ declare namespace Enum {
 
 		export const Custom: Custom;
 
+		export interface LayoutOrder extends globalThis.EnumItem {
+			Name: "LayoutOrder";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.SortOrder;
+		}
+
+		export const LayoutOrder: LayoutOrder;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SortOrder>;
 	}
-	export type SortOrder = SortOrder.LayoutOrder | SortOrder.Name | SortOrder.Custom;
+	export type SortOrder = SortOrder.Name | SortOrder.Custom | SortOrder.LayoutOrder;
 
 	export namespace SpecialKey {
 		export interface Insert extends globalThis.EnumItem {
@@ -17774,14 +17819,6 @@ declare namespace Enum {
 	export type TableMajorAxis = TableMajorAxis.RowMajor | TableMajorAxis.ColumnMajor;
 
 	export namespace Technology {
-		export interface Compatibility extends globalThis.EnumItem {
-			Name: "Compatibility";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.Technology;
-		}
-
-		export const Compatibility: Compatibility;
-
 		export interface Voxel extends globalThis.EnumItem {
 			Name: "Voxel";
 			Value: 1;
@@ -17789,6 +17826,14 @@ declare namespace Enum {
 		}
 
 		export const Voxel: Voxel;
+
+		export interface Compatibility extends globalThis.EnumItem {
+			Name: "Compatibility";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.Technology;
+		}
+
+		export const Compatibility: Compatibility;
 
 		export interface ShadowMap extends globalThis.EnumItem {
 			Name: "ShadowMap";
@@ -17798,14 +17843,6 @@ declare namespace Enum {
 
 		export const ShadowMap: ShadowMap;
 
-		export interface Legacy extends globalThis.EnumItem {
-			Name: "Legacy";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.Technology;
-		}
-
-		export const Legacy: Legacy;
-
 		export interface Future extends globalThis.EnumItem {
 			Name: "Future";
 			Value: 4;
@@ -17814,9 +17851,17 @@ declare namespace Enum {
 
 		export const Future: Future;
 
+		export interface Legacy extends globalThis.EnumItem {
+			Name: "Legacy";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.Technology;
+		}
+
+		export const Legacy: Legacy;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Technology>;
 	}
-	export type Technology = Technology.Compatibility | Technology.Voxel | Technology.ShadowMap | Technology.Legacy | Technology.Future;
+	export type Technology = Technology.Voxel | Technology.Compatibility | Technology.ShadowMap | Technology.Future | Technology.Legacy;
 
 	export namespace TeleportMethod {
 		export interface TeleportToSpawnByName extends globalThis.EnumItem {
@@ -18378,14 +18423,6 @@ declare namespace Enum {
 
 		export const Left: Left;
 
-		export interface Center extends globalThis.EnumItem {
-			Name: "Center";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.TextXAlignment;
-		}
-
-		export const Center: Center;
-
 		export interface Right extends globalThis.EnumItem {
 			Name: "Right";
 			Value: 1;
@@ -18394,9 +18431,17 @@ declare namespace Enum {
 
 		export const Right: Right;
 
+		export interface Center extends globalThis.EnumItem {
+			Name: "Center";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.TextXAlignment;
+		}
+
+		export const Center: Center;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextXAlignment>;
 	}
-	export type TextXAlignment = TextXAlignment.Left | TextXAlignment.Center | TextXAlignment.Right;
+	export type TextXAlignment = TextXAlignment.Left | TextXAlignment.Right | TextXAlignment.Center;
 
 	export namespace TextYAlignment {
 		export interface Top extends globalThis.EnumItem {
@@ -18774,14 +18819,6 @@ declare namespace Enum {
 
 		export const Default: Default;
 
-		export interface Follow extends globalThis.EnumItem {
-			Name: "Follow";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.TouchCameraMovementMode;
-		}
-
-		export const Follow: Follow;
-
 		export interface Classic extends globalThis.EnumItem {
 			Name: "Classic";
 			Value: 1;
@@ -18789,6 +18826,14 @@ declare namespace Enum {
 		}
 
 		export const Classic: Classic;
+
+		export interface Follow extends globalThis.EnumItem {
+			Name: "Follow";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.TouchCameraMovementMode;
+		}
+
+		export const Follow: Follow;
 
 		export interface Orbital extends globalThis.EnumItem {
 			Name: "Orbital";
@@ -18800,7 +18845,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TouchCameraMovementMode>;
 	}
-	export type TouchCameraMovementMode = TouchCameraMovementMode.Default | TouchCameraMovementMode.Follow | TouchCameraMovementMode.Classic | TouchCameraMovementMode.Orbital;
+	export type TouchCameraMovementMode = TouchCameraMovementMode.Default | TouchCameraMovementMode.Classic | TouchCameraMovementMode.Follow | TouchCameraMovementMode.Orbital;
 
 	export namespace TouchMovementMode {
 		export interface Default extends globalThis.EnumItem {
@@ -19203,6 +19248,96 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TweenStatus>;
 	}
 	export type TweenStatus = TweenStatus.Canceled | TweenStatus.Completed;
+
+	export namespace UIFlexAlignment {
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.UIFlexAlignment;
+		}
+
+		export const None: None;
+
+		export interface Fill extends globalThis.EnumItem {
+			Name: "Fill";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.UIFlexAlignment;
+		}
+
+		export const Fill: Fill;
+
+		export interface SpaceAround extends globalThis.EnumItem {
+			Name: "SpaceAround";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.UIFlexAlignment;
+		}
+
+		export const SpaceAround: SpaceAround;
+
+		export interface SpaceBetween extends globalThis.EnumItem {
+			Name: "SpaceBetween";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.UIFlexAlignment;
+		}
+
+		export const SpaceBetween: SpaceBetween;
+
+		export interface SpaceEvenly extends globalThis.EnumItem {
+			Name: "SpaceEvenly";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.UIFlexAlignment;
+		}
+
+		export const SpaceEvenly: SpaceEvenly;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIFlexAlignment>;
+	}
+	export type UIFlexAlignment = UIFlexAlignment.None | UIFlexAlignment.Fill | UIFlexAlignment.SpaceAround | UIFlexAlignment.SpaceBetween | UIFlexAlignment.SpaceEvenly;
+
+	export namespace UIFlexMode {
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.UIFlexMode;
+		}
+
+		export const None: None;
+
+		export interface Grow extends globalThis.EnumItem {
+			Name: "Grow";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.UIFlexMode;
+		}
+
+		export const Grow: Grow;
+
+		export interface Shrink extends globalThis.EnumItem {
+			Name: "Shrink";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.UIFlexMode;
+		}
+
+		export const Shrink: Shrink;
+
+		export interface Fill extends globalThis.EnumItem {
+			Name: "Fill";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.UIFlexMode;
+		}
+
+		export const Fill: Fill;
+
+		export interface Custom extends globalThis.EnumItem {
+			Name: "Custom";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.UIFlexMode;
+		}
+
+		export const Custom: Custom;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIFlexMode>;
+	}
+	export type UIFlexMode = UIFlexMode.None | UIFlexMode.Grow | UIFlexMode.Shrink | UIFlexMode.Fill | UIFlexMode.Custom;
 
 	export namespace UITheme {
 		export interface Light extends globalThis.EnumItem {
@@ -19610,6 +19745,14 @@ declare namespace Enum {
 	export type VRScaling = VRScaling.World | VRScaling.Off;
 
 	export namespace VRSessionState {
+		export interface Undefined extends globalThis.EnumItem {
+			Name: "Undefined";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.VRSessionState;
+		}
+
+		export const Undefined: Undefined;
+
 		export interface Idle extends globalThis.EnumItem {
 			Name: "Idle";
 			Value: 1;
@@ -19642,17 +19785,9 @@ declare namespace Enum {
 
 		export const Stopping: Stopping;
 
-		export interface Undefined extends globalThis.EnumItem {
-			Name: "Undefined";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.VRSessionState;
-		}
-
-		export const Undefined: Undefined;
-
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRSessionState>;
 	}
-	export type VRSessionState = VRSessionState.Idle | VRSessionState.Visible | VRSessionState.Focused | VRSessionState.Stopping | VRSessionState.Undefined;
+	export type VRSessionState = VRSessionState.Undefined | VRSessionState.Idle | VRSessionState.Visible | VRSessionState.Focused | VRSessionState.Stopping;
 
 	export namespace VRTouchpad {
 		export interface Left extends globalThis.EnumItem {
@@ -19763,14 +19898,6 @@ declare namespace Enum {
 	export type VerticalAlignment = VerticalAlignment.Center | VerticalAlignment.Top | VerticalAlignment.Bottom;
 
 	export namespace VerticalScrollBarPosition {
-		export interface Left extends globalThis.EnumItem {
-			Name: "Left";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.VerticalScrollBarPosition;
-		}
-
-		export const Left: Left;
-
 		export interface Right extends globalThis.EnumItem {
 			Name: "Right";
 			Value: 0;
@@ -19779,9 +19906,17 @@ declare namespace Enum {
 
 		export const Right: Right;
 
+		export interface Left extends globalThis.EnumItem {
+			Name: "Left";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.VerticalScrollBarPosition;
+		}
+
+		export const Left: Left;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VerticalScrollBarPosition>;
 	}
-	export type VerticalScrollBarPosition = VerticalScrollBarPosition.Left | VerticalScrollBarPosition.Right;
+	export type VerticalScrollBarPosition = VerticalScrollBarPosition.Right | VerticalScrollBarPosition.Left;
 
 	export namespace VibrationMotor {
 		export interface Large extends globalThis.EnumItem {
