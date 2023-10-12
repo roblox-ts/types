@@ -403,6 +403,7 @@ interface CreatableInstances {
 	TrussPart: TrussPart;
 	UIAspectRatioConstraint: UIAspectRatioConstraint;
 	UICorner: UICorner;
+	UIFlexItem: UIFlexItem;
 	UIGradient: UIGradient;
 	UIGridLayout: UIGridLayout;
 	UIListLayout: UIListLayout;
@@ -6378,6 +6379,7 @@ interface Camera extends Instance {
 	 * When the \*'EdgeBump' [CameraPanMode](https://developer.roblox.com/en-us/api-reference/enum/CameraPanMode) is used, swipe to pan is disabled and the edge bump camera controls are enabled.
 	 * 
 	 * SetCameraPan mode has no effect on PC / Mac users.
+	 * @deprecated
 	 */
 	SetCameraPanMode(this: Camera, mode?: CastsToEnum<Enum.CameraPanMode>): void;
 	/**
@@ -11259,19 +11261,19 @@ interface GeometryService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_GeometryService: unique symbol;
-	CalculateConstraintsToPreserve(this: GeometryService, source: Instance, destination: Array<Instance>, options?: object): unknown;
+	CalculateConstraintsToPreserve(this: GeometryService, source: Instance, destination: Array<any>, options?: object): unknown;
 	/**
 	 * Tags: Yields
 	 */
-	IntersectAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options?: object): Array<Instance>;
+	IntersectAsync(this: GeometryService, part: BasePart, parts: Array<any>, options?: object): unknown;
 	/**
 	 * Tags: Yields
 	 */
-	SubtractAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options?: object): Array<Instance>;
+	SubtractAsync(this: GeometryService, part: BasePart, parts: Array<any>, options?: object): unknown;
 	/**
 	 * Tags: Yields
 	 */
-	UnionAsync(this: GeometryService, part: BasePart, parts: Array<Instance>, options?: object): Array<Instance>;
+	UnionAsync(this: GeometryService, part: BasePart, parts: Array<any>, options?: object): unknown;
 }
 
 interface GetTextBoundsParams extends Instance {
@@ -23348,6 +23350,10 @@ interface OpenCloudService extends Instance {
 	 */
 	readonly _nominal_OpenCloudService: unique symbol;
 	GetApiV1(this: OpenCloudService): OpenCloudApiV1;
+	/**
+	 * Tags: Yields
+	 */
+	InvokeAsync(this: OpenCloudService, version: string, methodName: string, arguments: object): object;
 }
 
 interface OperationTree extends Instance {
@@ -35130,6 +35136,21 @@ interface UICorner extends UIComponent {
 	CornerRadius: UDim;
 }
 
+interface UIFlexItem extends UIComponent {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_UIFlexItem: unique symbol;
+	FlexMode: Enum.UIFlexMode;
+	GrowRatio: number;
+	ItemLineAlignment: Enum.ItemLineAlignment;
+	ShrinkRatio: number;
+}
+
 /** **UIGradient** is a [UIComponent](https://developer.roblox.com/en-us/api-reference/class/UIComponent) that applies a color and transparency gradient to the UI elements rendered by the parent [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject). The appearance of the gradient is configurable through the following properties:
  * 
  * *   [Color](https://developer.roblox.com/en-us/api-reference/property/UIGradient/Color), a [ColorSequence](https://developer.roblox.com/en-us/api-reference/datatype/ColorSequence)
@@ -35370,12 +35391,15 @@ interface UIListLayout extends UIGridStyleLayout {
 	 * @deprecated
 	 */
 	readonly _nominal_UIListLayout: unique symbol;
+	HorizontalFlex: Enum.UIFlexAlignment;
 	/**
 	 * Determines the amount of free space between each element.
 	 * 
 	 * Can be set either using scale (Percentage of parent's size in the current direction) or offset (a static spacing value, similar to pixel size).Determines the amount of free space between each element.
 	 */
 	Padding: UDim;
+	VerticalFlex: Enum.UIFlexAlignment;
+	Wraps: boolean;
 }
 
 /** Creates a paged viewing window, like the home screen of a mobile device. You can use a UIPageLayout by parenting it to a GuiObject. The UIPageLayout will then apply itself to all of its GuiObject siblings. */
