@@ -2048,15 +2048,15 @@ interface RaycastParams {
 	 * property is omitted, the raycast will assume the **Default** collision group.
 	 */
 	CollisionGroup: string;
-	/** 
- 	 * This property, if `true`, makes the raycast operation use an intersected part's `CanCollide` value in favor of 
-   	 * its `CanQuery` value when determining whether that part is included in the `RaycastResult`
- 	*/
+	/**
+	 * This property, if `true`, makes the raycast operation use an intersected part's `CanCollide` value in favor of
+	 * its `CanQuery` value when determining whether that part is included in the `RaycastResult`
+	 */
 	RespectCanCollide: boolean;
 	/**
- 	 * When enabled, the query will ignore all part collision properties and perform a brute-force check on every part.
-   	 * This will negatively impact performance and should not be used in live experiences.
-	*/
+	 * When enabled, the query will ignore all part collision properties and perform a brute-force check on every part.
+	 * This will negatively impact performance and should not be used in live experiences.
+	 */
 	BruteForceAllSlow: boolean;
 	/**
 	 * For efficiency and simplicity, this method is the preferred way to add instances to the filter.
