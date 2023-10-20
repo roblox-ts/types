@@ -1315,7 +1315,7 @@ interface Accessory extends Accoutrement {
 	/**
 	 * Specifies the AccessoryType of the Accessory. Will be [AccessoryType.Unknown](https://developer.roblox.com/en-us/api-reference/enum/AccessoryType) unless the Accessory has been equipped through the player spawning process or [Humanoid:ApplyDescription](https://developer.roblox.com/en-us/api-reference/function/Humanoid/ApplyDescription). If available on the Avatar shop, the Accessory item is categorized by the set [AccessoryType](https://developer.roblox.com/en-us/api-reference/enum/AccessoryType) (for example, “Hat” or “Face”).
 	 */
-	readonly AccessoryType: Enum.AccessoryType;
+	AccessoryType: Enum.AccessoryType;
 }
 
 interface Hat extends Accoutrement {
@@ -14305,11 +14305,13 @@ interface AdGui extends SurfaceGuiBase {
 	 */
 	readonly _nominal_AdGui: unique symbol;
 	AdShape: Enum.AdShape;
+	EnableVideoAds: boolean;
 	FallbackImage: string;
 	/**
 	 * Tags: NotReplicated
 	 */
 	readonly Status: Enum.AdUnitStatus;
+	OnAdEvent: (eventInfo: object) => boolean;
 }
 
 /** **Note:** SurfaceGuis must be descendants of PlayerGui in order to know the player who is interacting with it.Allows for the rendering of GUI elements onto a part's surface in the 3D world, whilst allowing for basic user interaction to occur.
@@ -15081,7 +15083,7 @@ interface GuiService extends Instance {
 	 */
 	SelectedObject: GuiObject | undefined;
 	/**
-	 * Tags: Hidden, NotReplicated
+	 * Tags: NotReplicated
 	 */
 	readonly TopbarInset: Rect;
 	/**
@@ -31055,7 +31057,6 @@ interface Sound extends Instance {
 	 * Sounds parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) that are descendants of the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) are considered 3D sounds and their volume whilst playing is dependent on the distance between the client's sound listener ([Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) position by default) and the Sound's parent. Two properties influence this behavior EmitterSize and [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode).
 	 * 
 	 * The way the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) attenuates (fades out) after the distance between the listener and the sound exceeds the EmitterSize is determined by RollOffMode.
-	 * @deprecated Use `RollOffMinDistance` instead
 	 */
 	EmitterSize: number;
 	/**
@@ -31101,14 +31102,12 @@ interface Sound extends Instance {
 	 * How MaxDistance impacts the attenuation of a sound (manner in which it fades out) is dependent on the [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode) property. When RollOffMode is set to use an inverse type distance model (Inverse or InverseTapered) the MaxDistance will not effect the attenuation of the sound. This means that low values for MaxDistance will cause the sound to abruptly cut off when the listener reaches the MaxDistance. In most cases this is not desirable and developers are advised not to use low MaxDistance values.
 	 * 
 	 * When RollOffMode is set to a linear type distance model (Linear or LinearSquared) the sound will attenuate between [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) and MaxDistance (with playback volume reaching zero at MaxDistance). This is less realistic, but in some cases allows attenuation to be handled in a more intuitive way.
-	 * @deprecated Use `RollOffMaxDistance` instead
 	 */
 	MaxDistance: number;
 	/**
 	 * The minimum distance at which a 3D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) (direct child of a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment)) will begin to attenuate. Effectively, the emitter size.
 	 * 
 	 * Deprecated in favor of Sound.EmitterSize.
-	 * @deprecated Use `RollOffMinDistance` instead
 	 */
 	MinDistance: number;
 	/**
@@ -34153,6 +34152,9 @@ interface TextChatService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TextChatService: unique symbol;
+	/**
+	 * Tags: NotReplicated
+	 */
 	readonly ChatTranslationEnabled: boolean;
 	readonly ChatVersion: Enum.ChatVersion;
 	CreateDefaultCommands: boolean;
@@ -35392,6 +35394,7 @@ interface UIListLayout extends UIGridStyleLayout {
 	 */
 	readonly _nominal_UIListLayout: unique symbol;
 	HorizontalFlex: Enum.UIFlexAlignment;
+	ItemLineAlignment: Enum.ItemLineAlignment;
 	/**
 	 * Determines the amount of free space between each element.
 	 * 
