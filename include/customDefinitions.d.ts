@@ -1,4 +1,4 @@
-interface Actor extends Instance {
+interface Actor extends Model {
 	SendMessage(this: Actor, topic: string, ...message: Array<unknown>): void;
 }
 
