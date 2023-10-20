@@ -25512,7 +25512,7 @@ interface Actor extends Model {
 	readonly _nominal_Actor: unique symbol;
 	BindToMessage(this: Actor, topic: string, callback: Callback): RBXScriptConnection;
 	BindToMessageParallel(this: Actor, topic: string, callback: Callback): RBXScriptConnection;
-	SendMessage(this: Actor, topic: string, message: Array<any>): void;
+	SendMessage(this: Actor, topic: string, ...message: Array<unknown>): void;
 }
 
 /** BackpackItem is an abstract class for backpack items such as HopperBins and Tools. */

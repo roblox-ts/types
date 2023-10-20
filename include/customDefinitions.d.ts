@@ -1,3 +1,7 @@
+interface Actor extends Model {
+	SendMessage(this: Actor, topic: string, ...message: Array<unknown>): void;
+}
+
 interface AnalyticsService extends Instance {
 	FireCustomEvent(
 		this: AnalyticsService,
