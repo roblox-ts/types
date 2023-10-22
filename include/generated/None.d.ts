@@ -27345,12 +27345,12 @@ interface PhysicsService extends Instance {
 	 * The name of the group
 	 * @deprecated Use `GetRegisteredCollisionGroups` instead
 	 */
-	GetCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo>;
+	GetCollisionGroups(this: PhysicsService): unknown;
 	/**
 	 * Returns the maximum number of collision groups the engine supports. This value is currently 32.
 	 */
 	GetMaxCollisionGroups(this: PhysicsService): number;
-	GetRegisteredCollisionGroups(this: PhysicsService): unknown;
+	GetRegisteredCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo>;
 	IsCollisionGroupRegistered(this: PhysicsService, name: string): boolean;
 	RegisterCollisionGroup(this: PhysicsService, name: string): void;
 	/**
