@@ -37044,7 +37044,7 @@ interface UserInputService extends Instance {
 	 * *   [UserInputService.TouchEnded](https://developer.roblox.com/en-us/api-reference/event/UserInputService/TouchEnded)
 	 */
 	readonly TouchLongPress: RBXScriptSignal<
-		(touchPositions: Array<InputObject>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void
+		(touchPositions: Array<Vector2>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void
 	>;
 	/**
 	 * The TouchMoved event fires when a user moves their finger on a TouchEnabled device.
@@ -37118,7 +37118,7 @@ interface UserInputService extends Instance {
 	 */
 	readonly TouchPan: RBXScriptSignal<
 		(
-			touchPositions: Array<InputObject>,
+			touchPositions: Array<Vector2>,
 			totalTranslation: Vector2,
 			velocity: Vector2,
 			state: Enum.UserInputState,
@@ -37159,7 +37159,7 @@ interface UserInputService extends Instance {
 	 */
 	readonly TouchPinch: RBXScriptSignal<
 		(
-			touchPositions: Array<InputObject>,
+			touchPositions: Array<Vector2>,
 			scale: number,
 			velocity: number,
 			state: Enum.UserInputState,
@@ -37200,7 +37200,7 @@ interface UserInputService extends Instance {
 	 */
 	readonly TouchRotate: RBXScriptSignal<
 		(
-			touchPositions: Array<InputObject>,
+			touchPositions: Array<Vector2>,
 			rotation: number,
 			velocity: number,
 			state: Enum.UserInputState,

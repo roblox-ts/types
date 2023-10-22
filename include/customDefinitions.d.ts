@@ -1018,7 +1018,7 @@ interface UserInputService extends Instance {
 	readonly TouchMoved: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly TouchPan: RBXScriptSignal<
 		(
-			touchPositions: Array<InputObject>,
+			touchPositions: Array<Vector2>,
 			totalTranslation: Vector2,
 			velocity: Vector2,
 			state: Enum.UserInputState,
@@ -1027,7 +1027,7 @@ interface UserInputService extends Instance {
 	>;
 	readonly TouchRotate: RBXScriptSignal<
 		(
-			touchPositions: Array<InputObject>,
+			touchPositions: Array<Vector2>,
 			rotation: number,
 			velocity: number,
 			state: Enum.UserInputState,
@@ -1036,7 +1036,7 @@ interface UserInputService extends Instance {
 	>;
 	readonly TouchPinch: RBXScriptSignal<
 		(
-			touchPositions: Array<InputObject>,
+			touchPositions: Array<Vector2>,
 			scale: number,
 			velocity: number,
 			state: Enum.UserInputState,
@@ -1044,7 +1044,7 @@ interface UserInputService extends Instance {
 		) => void
 	>;
 	readonly TouchLongPress: RBXScriptSignal<
-		(touchPositions: Array<InputObject>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void
+		(touchPositions: Array<Vector2>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void
 	>;
 	readonly TouchStarted: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>, gameProcessedEvent: boolean) => void>;
