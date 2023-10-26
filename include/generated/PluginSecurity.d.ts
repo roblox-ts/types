@@ -1506,6 +1506,10 @@ interface TriangleMeshPart extends BasePart {
 	 * Tags: NotReplicated
 	 */
 	CollisionFidelity: Enum.CollisionFidelity;
+	/**
+	 * Tags: NotReplicated
+	 */
+	FluidFidelity: Enum.FluidFidelity;
 }
 
 interface MeshPart extends TriangleMeshPart {

@@ -43,6 +43,7 @@ interface Services {
 	DebuggerUIService: DebuggerUIService;
 	DeviceIdService: DeviceIdService;
 	DraggerService: DraggerService;
+	EngineAPICloudProcessingService: EngineAPICloudProcessingService;
 	EventIngestService: EventIngestService;
 	ExperienceAuthService: ExperienceAuthService;
 	ExperienceNotificationService: ExperienceNotificationService;
@@ -7816,6 +7817,7 @@ interface HingeConstraint extends Constraint {
 	 * The maximum torque a [HingeConstraint](https://developer.roblox.com/en-us/api-reference/class/HingeConstraint) with [HingeConstraint.ActuatorType](https://developer.roblox.com/en-us/api-reference/property/HingeConstraint/ActuatorType) set to [Servo](https://developer.roblox.com/en-us/api-reference/enum/ActuatorType) can apply when trying to reach its desired [HingeConstraint.AngularSpeed](https://developer.roblox.com/en-us/api-reference/property/HingeConstraint/AngularSpeed).
 	 */
 	ServoMaxTorque: number;
+	SoftlockServoUponReachingTarget: boolean;
 	/**
 	 * The target angle a [HingeConstraint](https://developer.roblox.com/en-us/api-reference/class/HingeConstraint) will attempt to rotate to if its [HingeConstraint.ActuatorType](https://developer.roblox.com/en-us/api-reference/property/HingeConstraint/ActuatorType) is set to [Servo](https://developer.roblox.com/en-us/api-reference/enum/ActuatorType). Measured in degrees.
 	 */
@@ -8206,6 +8208,7 @@ interface SlidingBallConstraint extends Constraint {
 	 * The visualized size of the SlidingBallConstraint.
 	 */
 	Size: number;
+	SoftlockServoUponReachingTarget: boolean;
 	/**
 	 * The desired speed a [SlidingBallConstraint](https://developer.roblox.com/en-us/api-reference/class/SlidingBallConstraint) with [SlidingBallConstraint.ActuatorType](https://developer.roblox.com/en-us/api-reference/property/SlidingBallConstraint/ActuatorType) set to [ActuatorType](https://developer.roblox.com/en-us/api-reference/enum/ActuatorType) will attempt to maintain while translating towards its [SlidingBallConstraint.TargetPosition](https://developer.roblox.com/en-us/api-reference/property/SlidingBallConstraint/TargetPosition). Measured in studs/second.
 	 */
@@ -8293,6 +8296,7 @@ interface CylindricalConstraint extends SlidingBallConstraint {
 	 * Maximum torque the servo motor can apply. The units are mass \* studs^2 / second^2. Value in \[0, inf).
 	 */
 	ServoMaxTorque: number;
+	SoftlockAngularServoUponReachingTarget: boolean;
 	/**
 	 * Target angle (in degrees) between the reference axis and the secondary axis of Attachment1 around the rotation axis. Value in \[-180, 180\].
 	 */
@@ -10376,6 +10380,17 @@ interface DynamicImage extends Instance {
 	 * Tags: CustomLuaState
 	 */
 	WritePixels(this: DynamicImage, position: Vector2, size: Vector2, pixels: Array<any>): void;
+}
+
+interface EngineAPICloudProcessingService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_EngineAPICloudProcessingService: unique symbol;
 }
 
 /** A EulerRotation Curve represents a 3D rotation curve, it groups 3 [FloatCurves](https://developer.roblox.com/en-us/api-reference/class/FloatCurve), stored as 3 FloatCurve child instances. The rotation is decomposed in 3 Euler angles channels that can be accessed via [EulerRotationCurve:X](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/X), [EulerRotationCurve:Y](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Y), [EulerRotationCurve:Z](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Z) methods. The 3 axes can be sampled simultaneously via the method [EulerRotationCurve:GetAnglesAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetAnglesAtTime) returning the 3 Euler angles as a Vector3. Similarly, [EulerRotationCurve:GetRotationAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetRotationAtTime) samples all channels simultaneously but returns a CFrame rotated by X, Y, and Z according to the specified rotation order. */
@@ -22600,7 +22615,7 @@ interface MemoryStoreSortedMap extends Instance {
 	 * 
 	 * Tags: Yields
 	 */
-	GetRangeAsync(this: MemoryStoreSortedMap, direction: CastsToEnum<Enum.SortDirection>, count: number, exclusiveLowerBound?: string, exclusiveUpperBound?: string): unknown;
+	GetRangeAsync(this: MemoryStoreSortedMap, direction: CastsToEnum<Enum.SortDirection>, count: number, exclusiveLowerBound: unknown, exclusiveUpperBound: unknown): unknown;
 	/**
 	 * Removes the provided key from the sorted map.
 	 * 
@@ -22614,7 +22629,7 @@ interface MemoryStoreSortedMap extends Instance {
 	 * 
 	 * Tags: Yields
 	 */
-	SetAsync(this: MemoryStoreSortedMap, key: string, value: unknown, expiration: number): boolean;
+	SetAsync(this: MemoryStoreSortedMap, key: string, value: unknown, expiration: number, sortKey: unknown): boolean;
 	/**
 	 * Retrieves the value of a key from a sorted map and lets you update it to a new value via a callback function.
 	 * 
@@ -24990,6 +25005,10 @@ interface TriangleMeshPart extends BasePart {
 	 * Tags: NotReplicated
 	 */
 	CollisionFidelity: Enum.CollisionFidelity;
+	/**
+	 * Tags: NotReplicated
+	 */
+	FluidFidelity: Enum.FluidFidelity;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -30981,7 +31000,12 @@ interface SocialService extends Instance {
 	 */
 	PromptGameInvite(this: SocialService, player: Player, experienceInviteOptions?: ExperienceInviteOptions): void;
 	PromptIrisInvite(this: SocialService, player: Player, tag: string): void;
+	PromptPhoneBook(this: SocialService, player: Player, tag: string): void;
 	ShowSelfView(this: SocialService, selfViewPosition?: CastsToEnum<Enum.SelfViewPosition>): void;
+	/**
+	 * Tags: Yields
+	 */
+	CanSendCallInviteAsync(this: SocialService, player: Player): boolean;
 	/**
 	 * **CanSendGameInviteAsync** indicates whether the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player) can invite other players to the current game. If they can, it returns true.
 	 * 
@@ -30994,6 +31018,7 @@ interface SocialService extends Instance {
 	 * Tags: Yields
 	 */
 	CanSendIrisInviteAsync(this: SocialService, player: Player): boolean;
+	readonly CallInviteStateChanged: RBXScriptSignal<(player: Player, inviteState: Enum.InviteState) => void>;
 	/**
 	 * This event is a signal invoked when a player has closed the game invite prompt and batches all users and conversation participants into a single array. This prompt can be prompted by the developer or accessed from the SettingsHub menu.
 	 * 
@@ -31020,6 +31045,8 @@ interface SocialService extends Instance {
 	 */
 	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
 	readonly IrisInvitePromptClosed: RBXScriptSignal<(player: Player) => void>;
+	readonly PhoneBookPromptClosed: RBXScriptSignal<(player: Player) => void>;
+	OnCallInviteInvoked: (tag: string, callParticipantIds: Array<any>) => Instance;
 	OnIrisInviteInvoked: (tag: string, irisParticipantIds: Array<any>) => Instance;
 }
 

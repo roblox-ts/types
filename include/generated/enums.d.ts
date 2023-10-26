@@ -6534,6 +6534,35 @@ declare namespace Enum {
 	}
 	export type FinishRecordingOperation = FinishRecordingOperation.Cancel | FinishRecordingOperation.Commit | FinishRecordingOperation.Append;
 
+	export namespace FluidFidelity {
+		export interface Automatic extends globalThis.EnumItem {
+			Name: "Automatic";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.FluidFidelity;
+		}
+
+		export const Automatic: Automatic;
+
+		export interface UseCollisionGeometry extends globalThis.EnumItem {
+			Name: "UseCollisionGeometry";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.FluidFidelity;
+		}
+
+		export const UseCollisionGeometry: UseCollisionGeometry;
+
+		export interface UsePreciseGeometry extends globalThis.EnumItem {
+			Name: "UsePreciseGeometry";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.FluidFidelity;
+		}
+
+		export const UsePreciseGeometry: UsePreciseGeometry;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FluidFidelity>;
+	}
+	export type FluidFidelity = FluidFidelity.Automatic | FluidFidelity.UseCollisionGeometry | FluidFidelity.UsePreciseGeometry;
+
 	export namespace FluidForces {
 		export interface Default extends globalThis.EnumItem {
 			Name: "Default";
@@ -6595,14 +6624,6 @@ declare namespace Enum {
 		}
 
 		export const SourceSansBold: SourceSansBold;
-
-		export interface SourceSansSemibold extends globalThis.EnumItem {
-			Name: "SourceSansSemibold";
-			Value: 16;
-			EnumType: typeof globalThis.Enum.Font;
-		}
-
-		export const SourceSansSemibold: SourceSansSemibold;
 
 		export interface SourceSansLight extends globalThis.EnumItem {
 			Name: "SourceSansLight";
@@ -6691,6 +6712,14 @@ declare namespace Enum {
 		}
 
 		export const Antique: Antique;
+
+		export interface SourceSansSemibold extends globalThis.EnumItem {
+			Name: "SourceSansSemibold";
+			Value: 16;
+			EnumType: typeof globalThis.Enum.Font;
+		}
+
+		export const SourceSansSemibold: SourceSansSemibold;
 
 		export interface Gotham extends globalThis.EnumItem {
 			Name: "Gotham";
@@ -6944,7 +6973,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Font>;
 	}
-	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansSemibold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.Gotham | Font.GothamMedium | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu | Font.Unknown;
+	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.SourceSansSemibold | Font.Gotham | Font.GothamMedium | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu | Font.Unknown;
 
 	export namespace FontSize {
 		export interface Size8 extends globalThis.EnumItem {
@@ -8831,6 +8860,43 @@ declare namespace Enum {
 	}
 	export type InterpolationThrottlingMode = InterpolationThrottlingMode.Default | InterpolationThrottlingMode.Disabled | InterpolationThrottlingMode.Enabled;
 
+	export namespace InviteState {
+		export interface Placed extends globalThis.EnumItem {
+			Name: "Placed";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.InviteState;
+		}
+
+		export const Placed: Placed;
+
+		export interface Accepted extends globalThis.EnumItem {
+			Name: "Accepted";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.InviteState;
+		}
+
+		export const Accepted: Accepted;
+
+		export interface Declined extends globalThis.EnumItem {
+			Name: "Declined";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.InviteState;
+		}
+
+		export const Declined: Declined;
+
+		export interface Missed extends globalThis.EnumItem {
+			Name: "Missed";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.InviteState;
+		}
+
+		export const Missed: Missed;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InviteState>;
+	}
+	export type InviteState = InviteState.Placed | InviteState.Accepted | InviteState.Declined | InviteState.Missed;
+
 	export namespace ItemLineAlignment {
 		export interface Automatic extends globalThis.EnumItem {
 			Name: "Automatic";
@@ -9513,662 +9579,6 @@ declare namespace Enum {
 		}
 
 		export const Delete: Delete;
-
-		export interface KeypadZero extends globalThis.EnumItem {
-			Name: "KeypadZero";
-			Value: 256;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadZero: KeypadZero;
-
-		export interface KeypadOne extends globalThis.EnumItem {
-			Name: "KeypadOne";
-			Value: 257;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadOne: KeypadOne;
-
-		export interface KeypadTwo extends globalThis.EnumItem {
-			Name: "KeypadTwo";
-			Value: 258;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadTwo: KeypadTwo;
-
-		export interface KeypadThree extends globalThis.EnumItem {
-			Name: "KeypadThree";
-			Value: 259;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadThree: KeypadThree;
-
-		export interface KeypadFour extends globalThis.EnumItem {
-			Name: "KeypadFour";
-			Value: 260;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadFour: KeypadFour;
-
-		export interface KeypadFive extends globalThis.EnumItem {
-			Name: "KeypadFive";
-			Value: 261;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadFive: KeypadFive;
-
-		export interface KeypadSix extends globalThis.EnumItem {
-			Name: "KeypadSix";
-			Value: 262;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadSix: KeypadSix;
-
-		export interface KeypadSeven extends globalThis.EnumItem {
-			Name: "KeypadSeven";
-			Value: 263;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadSeven: KeypadSeven;
-
-		export interface KeypadEight extends globalThis.EnumItem {
-			Name: "KeypadEight";
-			Value: 264;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadEight: KeypadEight;
-
-		export interface KeypadNine extends globalThis.EnumItem {
-			Name: "KeypadNine";
-			Value: 265;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadNine: KeypadNine;
-
-		export interface KeypadPeriod extends globalThis.EnumItem {
-			Name: "KeypadPeriod";
-			Value: 266;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadPeriod: KeypadPeriod;
-
-		export interface KeypadDivide extends globalThis.EnumItem {
-			Name: "KeypadDivide";
-			Value: 267;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadDivide: KeypadDivide;
-
-		export interface KeypadMultiply extends globalThis.EnumItem {
-			Name: "KeypadMultiply";
-			Value: 268;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadMultiply: KeypadMultiply;
-
-		export interface KeypadMinus extends globalThis.EnumItem {
-			Name: "KeypadMinus";
-			Value: 269;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadMinus: KeypadMinus;
-
-		export interface KeypadPlus extends globalThis.EnumItem {
-			Name: "KeypadPlus";
-			Value: 270;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadPlus: KeypadPlus;
-
-		export interface KeypadEnter extends globalThis.EnumItem {
-			Name: "KeypadEnter";
-			Value: 271;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadEnter: KeypadEnter;
-
-		export interface KeypadEquals extends globalThis.EnumItem {
-			Name: "KeypadEquals";
-			Value: 272;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const KeypadEquals: KeypadEquals;
-
-		export interface Up extends globalThis.EnumItem {
-			Name: "Up";
-			Value: 273;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Up: Up;
-
-		export interface Down extends globalThis.EnumItem {
-			Name: "Down";
-			Value: 274;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Down: Down;
-
-		export interface Right extends globalThis.EnumItem {
-			Name: "Right";
-			Value: 275;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Right: Right;
-
-		export interface Left extends globalThis.EnumItem {
-			Name: "Left";
-			Value: 276;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Left: Left;
-
-		export interface Insert extends globalThis.EnumItem {
-			Name: "Insert";
-			Value: 277;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Insert: Insert;
-
-		export interface Home extends globalThis.EnumItem {
-			Name: "Home";
-			Value: 278;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Home: Home;
-
-		export interface End extends globalThis.EnumItem {
-			Name: "End";
-			Value: 279;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const End: End;
-
-		export interface PageUp extends globalThis.EnumItem {
-			Name: "PageUp";
-			Value: 280;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const PageUp: PageUp;
-
-		export interface PageDown extends globalThis.EnumItem {
-			Name: "PageDown";
-			Value: 281;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const PageDown: PageDown;
-
-		export interface LeftShift extends globalThis.EnumItem {
-			Name: "LeftShift";
-			Value: 304;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const LeftShift: LeftShift;
-
-		export interface RightShift extends globalThis.EnumItem {
-			Name: "RightShift";
-			Value: 303;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const RightShift: RightShift;
-
-		export interface LeftMeta extends globalThis.EnumItem {
-			Name: "LeftMeta";
-			Value: 310;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const LeftMeta: LeftMeta;
-
-		export interface RightMeta extends globalThis.EnumItem {
-			Name: "RightMeta";
-			Value: 309;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const RightMeta: RightMeta;
-
-		export interface LeftAlt extends globalThis.EnumItem {
-			Name: "LeftAlt";
-			Value: 308;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const LeftAlt: LeftAlt;
-
-		export interface RightAlt extends globalThis.EnumItem {
-			Name: "RightAlt";
-			Value: 307;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const RightAlt: RightAlt;
-
-		export interface LeftControl extends globalThis.EnumItem {
-			Name: "LeftControl";
-			Value: 306;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const LeftControl: LeftControl;
-
-		export interface RightControl extends globalThis.EnumItem {
-			Name: "RightControl";
-			Value: 305;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const RightControl: RightControl;
-
-		export interface CapsLock extends globalThis.EnumItem {
-			Name: "CapsLock";
-			Value: 301;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const CapsLock: CapsLock;
-
-		export interface NumLock extends globalThis.EnumItem {
-			Name: "NumLock";
-			Value: 300;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const NumLock: NumLock;
-
-		export interface ScrollLock extends globalThis.EnumItem {
-			Name: "ScrollLock";
-			Value: 302;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ScrollLock: ScrollLock;
-
-		export interface LeftSuper extends globalThis.EnumItem {
-			Name: "LeftSuper";
-			Value: 311;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const LeftSuper: LeftSuper;
-
-		export interface RightSuper extends globalThis.EnumItem {
-			Name: "RightSuper";
-			Value: 312;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const RightSuper: RightSuper;
-
-		export interface Mode extends globalThis.EnumItem {
-			Name: "Mode";
-			Value: 313;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Mode: Mode;
-
-		export interface Compose extends globalThis.EnumItem {
-			Name: "Compose";
-			Value: 314;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Compose: Compose;
-
-		export interface Help extends globalThis.EnumItem {
-			Name: "Help";
-			Value: 315;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Help: Help;
-
-		export interface Print extends globalThis.EnumItem {
-			Name: "Print";
-			Value: 316;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Print: Print;
-
-		export interface SysReq extends globalThis.EnumItem {
-			Name: "SysReq";
-			Value: 317;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const SysReq: SysReq;
-
-		export interface Break extends globalThis.EnumItem {
-			Name: "Break";
-			Value: 318;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Break: Break;
-
-		export interface Menu extends globalThis.EnumItem {
-			Name: "Menu";
-			Value: 319;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Menu: Menu;
-
-		export interface Power extends globalThis.EnumItem {
-			Name: "Power";
-			Value: 320;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Power: Power;
-
-		export interface Euro extends globalThis.EnumItem {
-			Name: "Euro";
-			Value: 321;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Euro: Euro;
-
-		export interface Undo extends globalThis.EnumItem {
-			Name: "Undo";
-			Value: 322;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Undo: Undo;
-
-		export interface F1 extends globalThis.EnumItem {
-			Name: "F1";
-			Value: 282;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F1: F1;
-
-		export interface F2 extends globalThis.EnumItem {
-			Name: "F2";
-			Value: 283;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F2: F2;
-
-		export interface F3 extends globalThis.EnumItem {
-			Name: "F3";
-			Value: 284;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F3: F3;
-
-		export interface F4 extends globalThis.EnumItem {
-			Name: "F4";
-			Value: 285;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F4: F4;
-
-		export interface F5 extends globalThis.EnumItem {
-			Name: "F5";
-			Value: 286;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F5: F5;
-
-		export interface F6 extends globalThis.EnumItem {
-			Name: "F6";
-			Value: 287;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F6: F6;
-
-		export interface F7 extends globalThis.EnumItem {
-			Name: "F7";
-			Value: 288;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F7: F7;
-
-		export interface F8 extends globalThis.EnumItem {
-			Name: "F8";
-			Value: 289;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F8: F8;
-
-		export interface F9 extends globalThis.EnumItem {
-			Name: "F9";
-			Value: 290;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F9: F9;
-
-		export interface F10 extends globalThis.EnumItem {
-			Name: "F10";
-			Value: 291;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F10: F10;
-
-		export interface F11 extends globalThis.EnumItem {
-			Name: "F11";
-			Value: 292;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F11: F11;
-
-		export interface F12 extends globalThis.EnumItem {
-			Name: "F12";
-			Value: 293;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F12: F12;
-
-		export interface F13 extends globalThis.EnumItem {
-			Name: "F13";
-			Value: 294;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F13: F13;
-
-		export interface F14 extends globalThis.EnumItem {
-			Name: "F14";
-			Value: 295;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F14: F14;
-
-		export interface F15 extends globalThis.EnumItem {
-			Name: "F15";
-			Value: 296;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const F15: F15;
-
-		export interface ButtonX extends globalThis.EnumItem {
-			Name: "ButtonX";
-			Value: 1000;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonX: ButtonX;
-
-		export interface ButtonY extends globalThis.EnumItem {
-			Name: "ButtonY";
-			Value: 1001;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonY: ButtonY;
-
-		export interface ButtonA extends globalThis.EnumItem {
-			Name: "ButtonA";
-			Value: 1002;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonA: ButtonA;
-
-		export interface ButtonB extends globalThis.EnumItem {
-			Name: "ButtonB";
-			Value: 1003;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonB: ButtonB;
-
-		export interface ButtonR1 extends globalThis.EnumItem {
-			Name: "ButtonR1";
-			Value: 1004;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonR1: ButtonR1;
-
-		export interface ButtonL1 extends globalThis.EnumItem {
-			Name: "ButtonL1";
-			Value: 1005;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonL1: ButtonL1;
-
-		export interface ButtonR2 extends globalThis.EnumItem {
-			Name: "ButtonR2";
-			Value: 1006;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonR2: ButtonR2;
-
-		export interface ButtonL2 extends globalThis.EnumItem {
-			Name: "ButtonL2";
-			Value: 1007;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonL2: ButtonL2;
-
-		export interface ButtonR3 extends globalThis.EnumItem {
-			Name: "ButtonR3";
-			Value: 1008;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonR3: ButtonR3;
-
-		export interface ButtonL3 extends globalThis.EnumItem {
-			Name: "ButtonL3";
-			Value: 1009;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonL3: ButtonL3;
-
-		export interface ButtonStart extends globalThis.EnumItem {
-			Name: "ButtonStart";
-			Value: 1010;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonStart: ButtonStart;
-
-		export interface ButtonSelect extends globalThis.EnumItem {
-			Name: "ButtonSelect";
-			Value: 1011;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const ButtonSelect: ButtonSelect;
-
-		export interface DPadLeft extends globalThis.EnumItem {
-			Name: "DPadLeft";
-			Value: 1012;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const DPadLeft: DPadLeft;
-
-		export interface DPadRight extends globalThis.EnumItem {
-			Name: "DPadRight";
-			Value: 1013;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const DPadRight: DPadRight;
-
-		export interface DPadUp extends globalThis.EnumItem {
-			Name: "DPadUp";
-			Value: 1014;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const DPadUp: DPadUp;
-
-		export interface DPadDown extends globalThis.EnumItem {
-			Name: "DPadDown";
-			Value: 1015;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const DPadDown: DPadDown;
-
-		export interface Thumbstick1 extends globalThis.EnumItem {
-			Name: "Thumbstick1";
-			Value: 1016;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Thumbstick1: Thumbstick1;
-
-		export interface Thumbstick2 extends globalThis.EnumItem {
-			Name: "Thumbstick2";
-			Value: 1017;
-			EnumType: typeof globalThis.Enum.KeyCode;
-		}
-
-		export const Thumbstick2: Thumbstick2;
 
 		export interface World0 extends globalThis.EnumItem {
 			Name: "World0";
@@ -10938,9 +10348,665 @@ declare namespace Enum {
 
 		export const World95: World95;
 
+		export interface KeypadZero extends globalThis.EnumItem {
+			Name: "KeypadZero";
+			Value: 256;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadZero: KeypadZero;
+
+		export interface KeypadOne extends globalThis.EnumItem {
+			Name: "KeypadOne";
+			Value: 257;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadOne: KeypadOne;
+
+		export interface KeypadTwo extends globalThis.EnumItem {
+			Name: "KeypadTwo";
+			Value: 258;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadTwo: KeypadTwo;
+
+		export interface KeypadThree extends globalThis.EnumItem {
+			Name: "KeypadThree";
+			Value: 259;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadThree: KeypadThree;
+
+		export interface KeypadFour extends globalThis.EnumItem {
+			Name: "KeypadFour";
+			Value: 260;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadFour: KeypadFour;
+
+		export interface KeypadFive extends globalThis.EnumItem {
+			Name: "KeypadFive";
+			Value: 261;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadFive: KeypadFive;
+
+		export interface KeypadSix extends globalThis.EnumItem {
+			Name: "KeypadSix";
+			Value: 262;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadSix: KeypadSix;
+
+		export interface KeypadSeven extends globalThis.EnumItem {
+			Name: "KeypadSeven";
+			Value: 263;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadSeven: KeypadSeven;
+
+		export interface KeypadEight extends globalThis.EnumItem {
+			Name: "KeypadEight";
+			Value: 264;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadEight: KeypadEight;
+
+		export interface KeypadNine extends globalThis.EnumItem {
+			Name: "KeypadNine";
+			Value: 265;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadNine: KeypadNine;
+
+		export interface KeypadPeriod extends globalThis.EnumItem {
+			Name: "KeypadPeriod";
+			Value: 266;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadPeriod: KeypadPeriod;
+
+		export interface KeypadDivide extends globalThis.EnumItem {
+			Name: "KeypadDivide";
+			Value: 267;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadDivide: KeypadDivide;
+
+		export interface KeypadMultiply extends globalThis.EnumItem {
+			Name: "KeypadMultiply";
+			Value: 268;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadMultiply: KeypadMultiply;
+
+		export interface KeypadMinus extends globalThis.EnumItem {
+			Name: "KeypadMinus";
+			Value: 269;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadMinus: KeypadMinus;
+
+		export interface KeypadPlus extends globalThis.EnumItem {
+			Name: "KeypadPlus";
+			Value: 270;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadPlus: KeypadPlus;
+
+		export interface KeypadEnter extends globalThis.EnumItem {
+			Name: "KeypadEnter";
+			Value: 271;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadEnter: KeypadEnter;
+
+		export interface KeypadEquals extends globalThis.EnumItem {
+			Name: "KeypadEquals";
+			Value: 272;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const KeypadEquals: KeypadEquals;
+
+		export interface Up extends globalThis.EnumItem {
+			Name: "Up";
+			Value: 273;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Up: Up;
+
+		export interface Down extends globalThis.EnumItem {
+			Name: "Down";
+			Value: 274;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Down: Down;
+
+		export interface Right extends globalThis.EnumItem {
+			Name: "Right";
+			Value: 275;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Right: Right;
+
+		export interface Left extends globalThis.EnumItem {
+			Name: "Left";
+			Value: 276;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Left: Left;
+
+		export interface Insert extends globalThis.EnumItem {
+			Name: "Insert";
+			Value: 277;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Insert: Insert;
+
+		export interface Home extends globalThis.EnumItem {
+			Name: "Home";
+			Value: 278;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Home: Home;
+
+		export interface End extends globalThis.EnumItem {
+			Name: "End";
+			Value: 279;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const End: End;
+
+		export interface PageUp extends globalThis.EnumItem {
+			Name: "PageUp";
+			Value: 280;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const PageUp: PageUp;
+
+		export interface PageDown extends globalThis.EnumItem {
+			Name: "PageDown";
+			Value: 281;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const PageDown: PageDown;
+
+		export interface F1 extends globalThis.EnumItem {
+			Name: "F1";
+			Value: 282;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F1: F1;
+
+		export interface F2 extends globalThis.EnumItem {
+			Name: "F2";
+			Value: 283;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F2: F2;
+
+		export interface F3 extends globalThis.EnumItem {
+			Name: "F3";
+			Value: 284;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F3: F3;
+
+		export interface F4 extends globalThis.EnumItem {
+			Name: "F4";
+			Value: 285;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F4: F4;
+
+		export interface F5 extends globalThis.EnumItem {
+			Name: "F5";
+			Value: 286;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F5: F5;
+
+		export interface F6 extends globalThis.EnumItem {
+			Name: "F6";
+			Value: 287;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F6: F6;
+
+		export interface F7 extends globalThis.EnumItem {
+			Name: "F7";
+			Value: 288;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F7: F7;
+
+		export interface F8 extends globalThis.EnumItem {
+			Name: "F8";
+			Value: 289;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F8: F8;
+
+		export interface F9 extends globalThis.EnumItem {
+			Name: "F9";
+			Value: 290;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F9: F9;
+
+		export interface F10 extends globalThis.EnumItem {
+			Name: "F10";
+			Value: 291;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F10: F10;
+
+		export interface F11 extends globalThis.EnumItem {
+			Name: "F11";
+			Value: 292;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F11: F11;
+
+		export interface F12 extends globalThis.EnumItem {
+			Name: "F12";
+			Value: 293;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F12: F12;
+
+		export interface F13 extends globalThis.EnumItem {
+			Name: "F13";
+			Value: 294;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F13: F13;
+
+		export interface F14 extends globalThis.EnumItem {
+			Name: "F14";
+			Value: 295;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F14: F14;
+
+		export interface F15 extends globalThis.EnumItem {
+			Name: "F15";
+			Value: 296;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const F15: F15;
+
+		export interface NumLock extends globalThis.EnumItem {
+			Name: "NumLock";
+			Value: 300;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const NumLock: NumLock;
+
+		export interface CapsLock extends globalThis.EnumItem {
+			Name: "CapsLock";
+			Value: 301;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const CapsLock: CapsLock;
+
+		export interface ScrollLock extends globalThis.EnumItem {
+			Name: "ScrollLock";
+			Value: 302;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ScrollLock: ScrollLock;
+
+		export interface RightShift extends globalThis.EnumItem {
+			Name: "RightShift";
+			Value: 303;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const RightShift: RightShift;
+
+		export interface LeftShift extends globalThis.EnumItem {
+			Name: "LeftShift";
+			Value: 304;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const LeftShift: LeftShift;
+
+		export interface RightControl extends globalThis.EnumItem {
+			Name: "RightControl";
+			Value: 305;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const RightControl: RightControl;
+
+		export interface LeftControl extends globalThis.EnumItem {
+			Name: "LeftControl";
+			Value: 306;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const LeftControl: LeftControl;
+
+		export interface RightAlt extends globalThis.EnumItem {
+			Name: "RightAlt";
+			Value: 307;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const RightAlt: RightAlt;
+
+		export interface LeftAlt extends globalThis.EnumItem {
+			Name: "LeftAlt";
+			Value: 308;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const LeftAlt: LeftAlt;
+
+		export interface RightMeta extends globalThis.EnumItem {
+			Name: "RightMeta";
+			Value: 309;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const RightMeta: RightMeta;
+
+		export interface LeftMeta extends globalThis.EnumItem {
+			Name: "LeftMeta";
+			Value: 310;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const LeftMeta: LeftMeta;
+
+		export interface LeftSuper extends globalThis.EnumItem {
+			Name: "LeftSuper";
+			Value: 311;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const LeftSuper: LeftSuper;
+
+		export interface RightSuper extends globalThis.EnumItem {
+			Name: "RightSuper";
+			Value: 312;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const RightSuper: RightSuper;
+
+		export interface Mode extends globalThis.EnumItem {
+			Name: "Mode";
+			Value: 313;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Mode: Mode;
+
+		export interface Compose extends globalThis.EnumItem {
+			Name: "Compose";
+			Value: 314;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Compose: Compose;
+
+		export interface Help extends globalThis.EnumItem {
+			Name: "Help";
+			Value: 315;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Help: Help;
+
+		export interface Print extends globalThis.EnumItem {
+			Name: "Print";
+			Value: 316;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Print: Print;
+
+		export interface SysReq extends globalThis.EnumItem {
+			Name: "SysReq";
+			Value: 317;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const SysReq: SysReq;
+
+		export interface Break extends globalThis.EnumItem {
+			Name: "Break";
+			Value: 318;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Break: Break;
+
+		export interface Menu extends globalThis.EnumItem {
+			Name: "Menu";
+			Value: 319;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Menu: Menu;
+
+		export interface Power extends globalThis.EnumItem {
+			Name: "Power";
+			Value: 320;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Power: Power;
+
+		export interface Euro extends globalThis.EnumItem {
+			Name: "Euro";
+			Value: 321;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Euro: Euro;
+
+		export interface Undo extends globalThis.EnumItem {
+			Name: "Undo";
+			Value: 322;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Undo: Undo;
+
+		export interface ButtonX extends globalThis.EnumItem {
+			Name: "ButtonX";
+			Value: 1000;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonX: ButtonX;
+
+		export interface ButtonY extends globalThis.EnumItem {
+			Name: "ButtonY";
+			Value: 1001;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonY: ButtonY;
+
+		export interface ButtonA extends globalThis.EnumItem {
+			Name: "ButtonA";
+			Value: 1002;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonA: ButtonA;
+
+		export interface ButtonB extends globalThis.EnumItem {
+			Name: "ButtonB";
+			Value: 1003;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonB: ButtonB;
+
+		export interface ButtonR1 extends globalThis.EnumItem {
+			Name: "ButtonR1";
+			Value: 1004;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonR1: ButtonR1;
+
+		export interface ButtonL1 extends globalThis.EnumItem {
+			Name: "ButtonL1";
+			Value: 1005;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonL1: ButtonL1;
+
+		export interface ButtonR2 extends globalThis.EnumItem {
+			Name: "ButtonR2";
+			Value: 1006;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonR2: ButtonR2;
+
+		export interface ButtonL2 extends globalThis.EnumItem {
+			Name: "ButtonL2";
+			Value: 1007;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonL2: ButtonL2;
+
+		export interface ButtonR3 extends globalThis.EnumItem {
+			Name: "ButtonR3";
+			Value: 1008;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonR3: ButtonR3;
+
+		export interface ButtonL3 extends globalThis.EnumItem {
+			Name: "ButtonL3";
+			Value: 1009;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonL3: ButtonL3;
+
+		export interface ButtonStart extends globalThis.EnumItem {
+			Name: "ButtonStart";
+			Value: 1010;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonStart: ButtonStart;
+
+		export interface ButtonSelect extends globalThis.EnumItem {
+			Name: "ButtonSelect";
+			Value: 1011;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const ButtonSelect: ButtonSelect;
+
+		export interface DPadLeft extends globalThis.EnumItem {
+			Name: "DPadLeft";
+			Value: 1012;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const DPadLeft: DPadLeft;
+
+		export interface DPadRight extends globalThis.EnumItem {
+			Name: "DPadRight";
+			Value: 1013;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const DPadRight: DPadRight;
+
+		export interface DPadUp extends globalThis.EnumItem {
+			Name: "DPadUp";
+			Value: 1014;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const DPadUp: DPadUp;
+
+		export interface DPadDown extends globalThis.EnumItem {
+			Name: "DPadDown";
+			Value: 1015;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const DPadDown: DPadDown;
+
+		export interface Thumbstick1 extends globalThis.EnumItem {
+			Name: "Thumbstick1";
+			Value: 1016;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Thumbstick1: Thumbstick1;
+
+		export interface Thumbstick2 extends globalThis.EnumItem {
+			Name: "Thumbstick2";
+			Value: 1017;
+			EnumType: typeof globalThis.Enum.KeyCode;
+		}
+
+		export const Thumbstick2: Thumbstick2;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.KeyCode>;
 	}
-	export type KeyCode = KeyCode.Unknown | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.LeftShift | KeyCode.RightShift | KeyCode.LeftMeta | KeyCode.RightMeta | KeyCode.LeftAlt | KeyCode.RightAlt | KeyCode.LeftControl | KeyCode.RightControl | KeyCode.CapsLock | KeyCode.NumLock | KeyCode.ScrollLock | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2 | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95;
+	export type KeyCode = KeyCode.Unknown | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95 | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.NumLock | KeyCode.CapsLock | KeyCode.ScrollLock | KeyCode.RightShift | KeyCode.LeftShift | KeyCode.RightControl | KeyCode.LeftControl | KeyCode.RightAlt | KeyCode.LeftAlt | KeyCode.RightMeta | KeyCode.LeftMeta | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2;
 
 	export namespace KeyInterpolationMode {
 		export interface Constant extends globalThis.EnumItem {
@@ -12327,6 +12393,14 @@ declare namespace Enum {
 	export type NetworkOwnership = NetworkOwnership.Automatic | NetworkOwnership.Manual | NetworkOwnership.OnContact;
 
 	export namespace NormalId {
+		export interface Right extends globalThis.EnumItem {
+			Name: "Right";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.NormalId;
+		}
+
+		export const Right: Right;
+
 		export interface Top extends globalThis.EnumItem {
 			Name: "Top";
 			Value: 1;
@@ -12334,14 +12408,6 @@ declare namespace Enum {
 		}
 
 		export const Top: Top;
-
-		export interface Bottom extends globalThis.EnumItem {
-			Name: "Bottom";
-			Value: 4;
-			EnumType: typeof globalThis.Enum.NormalId;
-		}
-
-		export const Bottom: Bottom;
 
 		export interface Back extends globalThis.EnumItem {
 			Name: "Back";
@@ -12351,22 +12417,6 @@ declare namespace Enum {
 
 		export const Back: Back;
 
-		export interface Front extends globalThis.EnumItem {
-			Name: "Front";
-			Value: 5;
-			EnumType: typeof globalThis.Enum.NormalId;
-		}
-
-		export const Front: Front;
-
-		export interface Right extends globalThis.EnumItem {
-			Name: "Right";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.NormalId;
-		}
-
-		export const Right: Right;
-
 		export interface Left extends globalThis.EnumItem {
 			Name: "Left";
 			Value: 3;
@@ -12375,9 +12425,25 @@ declare namespace Enum {
 
 		export const Left: Left;
 
+		export interface Bottom extends globalThis.EnumItem {
+			Name: "Bottom";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.NormalId;
+		}
+
+		export const Bottom: Bottom;
+
+		export interface Front extends globalThis.EnumItem {
+			Name: "Front";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.NormalId;
+		}
+
+		export const Front: Front;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.NormalId>;
 	}
-	export type NormalId = NormalId.Top | NormalId.Bottom | NormalId.Back | NormalId.Front | NormalId.Right | NormalId.Left;
+	export type NormalId = NormalId.Right | NormalId.Top | NormalId.Back | NormalId.Left | NormalId.Bottom | NormalId.Front;
 
 	export namespace OperationType {
 		export interface Null extends globalThis.EnumItem {
@@ -13034,35 +13100,6 @@ declare namespace Enum {
 	}
 	export type PhysicsSimulationRate = PhysicsSimulationRate.Fixed240Hz | PhysicsSimulationRate.Fixed120Hz | PhysicsSimulationRate.Fixed60Hz;
 
-	export namespace PhysicsSolver {
-		export interface Default extends globalThis.EnumItem {
-			Name: "Default";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.PhysicsSolver;
-		}
-
-		export const Default: Default;
-
-		export interface Enabled extends globalThis.EnumItem {
-			Name: "Enabled";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.PhysicsSolver;
-		}
-
-		export const Enabled: Enabled;
-
-		export interface Disabled extends globalThis.EnumItem {
-			Name: "Disabled";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.PhysicsSolver;
-		}
-
-		export const Disabled: Disabled;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PhysicsSolver>;
-	}
-	export type PhysicsSolver = PhysicsSolver.Default | PhysicsSolver.Enabled | PhysicsSolver.Disabled;
-
 	export namespace PhysicsSteppingMethod {
 		export interface Default extends globalThis.EnumItem {
 			Name: "Default";
@@ -13486,6 +13523,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PositionAlignmentMode>;
 	}
 	export type PositionAlignmentMode = PositionAlignmentMode.OneAttachment | PositionAlignmentMode.TwoAttachment;
+
+	export namespace PrimalPhysicsSolver {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.PrimalPhysicsSolver;
+		}
+
+		export const Default: Default;
+
+		export interface Experimental extends globalThis.EnumItem {
+			Name: "Experimental";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.PrimalPhysicsSolver;
+		}
+
+		export const Experimental: Experimental;
+
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.PrimalPhysicsSolver;
+		}
+
+		export const Disabled: Disabled;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PrimalPhysicsSolver>;
+	}
+	export type PrimalPhysicsSolver = PrimalPhysicsSolver.Default | PrimalPhysicsSolver.Experimental | PrimalPhysicsSolver.Disabled;
 
 	export namespace PrimitiveType {
 		export interface Null extends globalThis.EnumItem {
