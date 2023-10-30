@@ -1,3 +1,7 @@
+interface Actor extends Model {
+	SendMessage(this: Actor, topic: string, ...message: Array<unknown>): void;
+}
+
 interface AnalyticsService extends Instance {
 	FireCustomEvent(
 		this: AnalyticsService,
@@ -61,6 +65,55 @@ interface AssetService extends Instance {
 interface Attachment extends Instance {
 	WorldCFrame: CFrame;
 }
+
+interface AvatarEditorService extends Instance {
+	GetAvatarRules(this: AvatarEditorService): AvatarRules;
+	GetBatchItemDetails(
+		this: AvatarEditorService,
+		itemIds: ReadonlyArray<number>,
+		itemType: CastsToEnum<Enum.AvatarItemType.Asset>,
+	): ReadonlyArray<AssetItemDetails>;
+	GetBatchItemDetails(
+		this: AvatarEditorService,
+		itemIds: ReadonlyArray<number>,
+		itemType: CastsToEnum<Enum.AvatarItemType.Bundle>,
+	): ReadonlyArray<BundleItemDetails>;
+	GetBatchItemDetails(
+		this: AvatarEditorService,
+		itemIds: ReadonlyArray<number>,
+		itemType: CastsToEnum<Enum.AvatarItemType>,
+	): ReadonlyArray<ItemDetails>;
+	GetInventory(this: AvatarEditorService, assetTypes: ReadonlyArray<Enum.AvatarAssetType>): InventoryPages;
+	GetItemDetails(
+		this: AvatarEditorService,
+		itemId: number,
+		itemType: CastsToEnum<Enum.AvatarItemType.Asset>,
+	): AssetItemDetails;
+	GetItemDetails(
+		this: AvatarEditorService,
+		itemId: number,
+		itemType: CastsToEnum<Enum.AvatarItemType.Bundle>,
+	): BundleItemDetails;
+	GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): ItemDetails;
+	GetRecommendedAssets(
+		this: AvatarEditorService,
+		assetType: CastsToEnum<Enum.AvatarAssetType>,
+		contextAssetId?: number,
+	): ReadonlyArray<RecommendedAsset>;
+	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): ReadonlyArray<RecommendedBundle>;
+	SearchCatalog(this: AvatarEditorService, searchParameters: CatalogSearchParams): CatalogPages;
+}
+
+interface CatalogPages extends Pages<SearchCatalogResult> {}
+
+interface OutfitPages
+	extends Pages<
+		ReadonlyArray<{
+			Id: number;
+			Name: string;
+			IsEditable: boolean;
+		}>
+	> {}
 
 interface BadgeService extends Instance {
 	/** @server */
@@ -136,10 +189,17 @@ interface Chat extends Instance {
 }
 
 interface CollectionService extends Instance {
+	AddTag(this: CollectionService, instance: Instance, tag: string): void;
+	AddTag(this: Instance, tag: string): void;
 	GetInstanceAddedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	GetInstanceRemovedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	GetTagged(this: CollectionService, tag: string): Array<Instance>;
 	GetTags(this: CollectionService, instance: Instance): Array<string>;
+	GetTags(this: Instance): Array<string>;
+	HasTag(this: CollectionService, instance: Instance, tag: string): boolean;
+	HasTag(this: Instance, tag: string): boolean;
+	RemoveTag(this: CollectionService, instance: Instance, tag: string): void;
+	RemoveTag(this: Instance, tag: string): void;
 }
 
 interface CompressorSoundEffect extends SoundEffect {
@@ -208,11 +268,9 @@ interface DataStore extends GlobalDataStore {
 		key: string,
 		transformFunction: (
 			oldValue: O | undefined,
-			keyInfo: DataStoreKeyInfo,
-		) => LuaTuple<[newValue: R, userIds?: Array<number>, metadata?: object]>,
-	): R extends undefined
-		? LuaTuple<[newValue: O | undefined, keyInfo: DataStoreKeyInfo]>
-		: LuaTuple<[newValue: R, keyInfo: DataStoreKeyInfo]>;
+			keyInfo: DataStoreKeyInfo | undefined,
+		) => LuaTuple<[newValue: R | undefined, userIds?: Array<number>, metadata?: object]>,
+	): LuaTuple<[newValue: R | undefined, keyInfo: DataStoreKeyInfo]>;
 	RemoveAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo | undefined]>;
 }
 
@@ -573,11 +631,11 @@ interface OrderedDataStore extends GlobalDataStore {
 	IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
 	RemoveAsync(this: OrderedDataStore, key: string): number | undefined;
 	SetAsync(this: OrderedDataStore, key: string, value?: unknown): void;
-	UpdateAsync<O, R>(
+	UpdateAsync(
 		this: OrderedDataStore,
 		key: string,
-		transformFunction: (oldValue: O | undefined) => R,
-	): R extends undefined ? O | undefined : R;
+		transformFunction: (oldValue: number | undefined) => number | undefined,
+	): number | undefined;
 }
 
 interface Pages<T = unknown> extends Instance {
@@ -594,7 +652,8 @@ interface PathfindingService extends Instance {
 }
 
 interface PhysicsService extends Instance {
-	GetCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo>;
+	GetCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo & { id: number }>;
+	GetRegisteredCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo>;
 }
 
 interface Player extends Instance {
@@ -758,11 +817,12 @@ interface SocialService extends Instance {
 interface SoundService extends Instance {
 	GetListener(
 		this: SoundService,
-	):
+	): LuaTuple<
 		| [Enum.ListenerType.Camera, undefined]
 		| [Enum.ListenerType.CFrame, CFrame]
 		| [Enum.ListenerType.ObjectCFrame, BasePart]
-		| [Enum.ListenerType.ObjectPosition, BasePart];
+		| [Enum.ListenerType.ObjectPosition, BasePart]
+	>;
 	SetListener(this: SoundService, listenerType: CastsToEnum<Enum.ListenerType.Camera>): void;
 	SetListener(this: SoundService, listenerType: CastsToEnum<Enum.ListenerType.CFrame>, cframe: CFrame): void;
 	SetListener(
@@ -894,6 +954,20 @@ interface TextBox extends GuiObject {
 	readonly FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: InputObject) => void>;
 }
 
+interface TextChannel extends Instance {
+	/** @client */
+	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
+	/** @server */
+	ShouldDeliverCallback: (message: TextChatMessage, textSource: TextSource) => boolean;
+}
+
+interface TextChatService extends Instance {
+	/** @client */
+	OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => TextChatMessageProperties | undefined;
+	/** @client */
+	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
+}
+
 interface TextService extends Instance {
 	/** @server */
 	FilterStringAsync(
@@ -931,7 +1005,7 @@ interface UserInputService extends Instance {
 	readonly TouchMoved: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly TouchPan: RBXScriptSignal<
 		(
-			touchPositions: Array<InputObject>,
+			touchPositions: Array<Vector2>,
 			totalTranslation: Vector2,
 			velocity: Vector2,
 			state: Enum.UserInputState,
@@ -940,7 +1014,7 @@ interface UserInputService extends Instance {
 	>;
 	readonly TouchRotate: RBXScriptSignal<
 		(
-			touchPositions: Array<InputObject>,
+			touchPositions: Array<Vector2>,
 			rotation: number,
 			velocity: number,
 			state: Enum.UserInputState,
@@ -949,7 +1023,7 @@ interface UserInputService extends Instance {
 	>;
 	readonly TouchPinch: RBXScriptSignal<
 		(
-			touchPositions: Array<InputObject>,
+			touchPositions: Array<Vector2>,
 			scale: number,
 			velocity: number,
 			state: Enum.UserInputState,
@@ -957,7 +1031,7 @@ interface UserInputService extends Instance {
 		) => void
 	>;
 	readonly TouchLongPress: RBXScriptSignal<
-		(touchPositions: Array<InputObject>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void
+		(touchPositions: Array<Vector2>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void
 	>;
 	readonly TouchStarted: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>, gameProcessedEvent: boolean) => void>;
@@ -1014,9 +1088,23 @@ interface Workspace extends WorldRoot {
 }
 
 interface WorldRoot extends Model {
+	Blockcast(
+		this: WorldRoot,
+		cframe: CFrame,
+		size: Vector3,
+		direction: Vector3,
+		raycastParams?: RaycastParams,
+	): RaycastResult | undefined;
 	Raycast(
 		this: WorldRoot,
 		origin: Vector3,
+		direction: Vector3,
+		raycastParams?: RaycastParams,
+	): RaycastResult | undefined;
+	Spherecast(
+		this: WorldRoot,
+		position: Vector3,
+		radius: number,
 		direction: Vector3,
 		raycastParams?: RaycastParams,
 	): RaycastResult | undefined;

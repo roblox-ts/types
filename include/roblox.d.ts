@@ -285,7 +285,7 @@ interface BoundActionInfo {
 
 declare const enum AssetTypeId {
 	Image = 1,
-	TeeShirt = 2,
+	TShirt = 2,
 	Audio = 3,
 	Mesh = 4,
 	Lua = 5,
@@ -327,6 +327,22 @@ declare const enum AssetTypeId {
 	PoseAnimation = 56,
 	EarAccessory = 57,
 	EyeAccessory = 58,
+	EmoteAnimation = 61,
+	Video = 62,
+	TShirtAccessory = 64,
+	ShirtAccessory = 65,
+	PantsAccessory = 66,
+	JacketAccessory = 67,
+	SweaterAccessory = 68,
+	ShortsAccessory = 69,
+	LeftShoeAccessory = 70,
+	RightShoeAccessory = 71,
+	DressSkirtAccessory = 72,
+	FontFamily = 73,
+	EyebrowAccessory = 76,
+	EyelashAccessory = 77,
+	MoodAnimation = 78,
+	DynamicHead = 79,
 }
 
 interface AgentParameters {
@@ -345,7 +361,6 @@ interface AgentParameters {
 }
 
 interface CollisionGroupInfo {
-	id: number;
 	mask: number;
 	name: string;
 }
@@ -409,7 +424,7 @@ type FriendOnlineInfo = FriendOnlineInfoWebsite | FriendOnlineInfoGame | FriendO
 /** A dictionary of an id and name containing information about what type an asset is */
 type AssetType =
 	| { id: AssetTypeId.Image; name: "Image" }
-	| { id: AssetTypeId.TeeShirt; name: "TeeShirt" }
+	| { id: AssetTypeId.TShirt; name: "TeeShirt" }
 	| { id: AssetTypeId.Audio; name: "Audio" }
 	| { id: AssetTypeId.Mesh; name: "Mesh" }
 	| { id: AssetTypeId.Lua; name: "Lua" }
@@ -529,6 +544,208 @@ interface PolicyInfo {
 	/** When true, an experience should enforce compliance changes. See [here](https://devforum.roblox.com/t/about-our-upcoming-global-compliance-system/461447) for details. */
 	IsSubjectToChinaPolicies: boolean;
 }
+
+interface AvatarRulesBodyColorsPalette {
+	HexColor: string;
+	Name: string;
+	BrickColorId: number;
+}
+
+interface AvatarRules {
+	BodyColorsPalette: ReadonlyArray<AvatarRulesBodyColorsPalette>;
+	BundlesEnabledForUser: boolean;
+	MinimumDeltaEBodyColorDifference: number;
+	WearableAssetTypes: ReadonlyArray<{
+		Id: number;
+		MaxNumber: number;
+		Name: string;
+	}>;
+	ProportionsAndBodyTypeEnabledForUser: boolean;
+	PlayerAvatarTypes: ReadonlyArray<string>;
+	Scales: {
+		BodyType: {
+			Max: number;
+			Increment: number;
+			Min: number;
+		};
+		Head: {
+			Max: number;
+			Increment: number;
+			Min: number;
+		};
+		Height: {
+			Max: number;
+			Increment: number;
+			Min: number;
+		};
+		Proportion: {
+			Max: number;
+			Increment: number;
+			Min: number;
+		};
+		Width: {
+			Max: number;
+			Increment: number;
+			Min: number;
+		};
+	};
+	DefaultClothingAssetLists: {
+		DefaultPantAssetIds: ReadonlyArray<number>;
+		DefaultShirtAssetIds: ReadonlyArray<number>;
+	};
+	EmotesEnabledForUser: boolean;
+	BasicBodyColorsPalette: ReadonlyArray<AvatarRulesBodyColorsPalette>;
+}
+
+interface ItemDetailsBase {
+	CreatorHasVerifiedBadge: boolean;
+	Genres: ReadonlyArray<Enum.Genre["Name"]>;
+	Price: number;
+	Owned: boolean;
+	ProductId: number;
+	ItemRestrictions: ReadonlyArray<string>;
+	ItemStatus: ReadonlyArray<string>;
+	SaleLocationType: string;
+	FavoriteCount: number;
+	Id: number;
+	Name: string;
+	Description: string;
+	IsPurchasable: boolean;
+	LowestPrice?: number;
+	LowestResalePrice?: number;
+	CreatorTargetId: number;
+	CreatorName: string;
+	CreatorType: string;
+	ExpectedSellerId: number;
+}
+
+interface AssetItemDetails extends ItemDetailsBase {
+	ItemType: "Asset";
+	AssetType: Enum.AssetType["Name"];
+}
+
+interface BundleItemDetails extends ItemDetailsBase {
+	ItemType: "Bundle";
+	BundleType: Enum.BundleType["Name"];
+	BundledItems: ReadonlyArray<{
+		Owned: boolean;
+		Id: number;
+		Name: string;
+		Type: "Asset" | "UserOutfit";
+	}>;
+}
+
+type ItemDetails = AssetItemDetails | BundleItemDetails;
+
+interface RecommendedAsset {
+	Item: {
+		AssetId: number;
+		Name: string;
+		Price: number;
+		PremiumPrice: number;
+		AbsoluteUrl: string;
+		AudioUrl: string;
+	};
+	Creator: {
+		CreatorId: number;
+		CreatorType: string;
+		Name: string;
+		CreatorProfileLink: string;
+	};
+	Product: {
+		Id: number;
+		PriceInRobux: number;
+		IsForSale: boolean;
+		IsPublicDomain: boolean;
+		IsResellable: boolean;
+		IsLimited: boolean;
+		IsLimitedUnique: boolean;
+		SerialNumber: number;
+		IsRental: boolean;
+		RentalDurationInHours: number;
+		BcRequirement: number;
+		TotalPrivateSales: number;
+		SellerId: number;
+		SellerName: string;
+		LowestPrivateSaleUserAssetId: number;
+		IsXboxExclusiveItem: boolean;
+		OffsaleDeadline: string;
+		NoPriceText: string;
+		IsFree: boolean;
+	};
+}
+
+interface RecommendedBundle {
+	Id: number;
+	Name: string;
+	Description: string;
+	BundleType: string;
+	Items: ReadonlyArray<{
+		Owned: boolean;
+		Id: number;
+		Name: string;
+		Type: string;
+	}>;
+	Creator: {
+		Id: number;
+		Name: string;
+		Type: string;
+	};
+	Product: {
+		Id: number;
+		Type: string;
+		IsPublicDomain: boolean;
+		IsForSale: boolean;
+		PriceInRobux: number;
+		PremiumPricing: {
+			PremiumDiscountPercentage: number;
+			PremiumPriceInRobux: number;
+		};
+	};
+}
+
+interface SearchCatalogResultBase {
+	Id: number;
+	Name: string;
+	Description: string;
+	ProductId: number;
+	Genres: ReadonlyArray<Enum.Genre["Name"]>;
+	ItemStatus: ReadonlyArray<string>;
+	ItemRestrictions: ReadonlyArray<string>;
+	CreatorType: "User" | "Group";
+	CreatorTargetId: number;
+	CreatorName: string;
+	Price: number;
+	PremiumPricing: {
+		PremiumDiscountPercentage: number;
+		PremiumPriceInRobux: number;
+	};
+	LowestPrice: number;
+	PriceStatus?: string;
+	UnitsAvailableForConsumption: number;
+	PurchaseCount: number;
+	FavoriteCount: number;
+	SaleLocationType: string;
+	CreatorHasVerifiedBadge: boolean;
+}
+
+interface SearchCatalogAssetResult extends SearchCatalogResultBase {
+	ItemType: "Asset";
+	AssetType: Enum.AssetType["Name"];
+}
+
+interface SearchCatalogBundleResult extends SearchCatalogResultBase {
+	ItemType: "Bundle";
+	BundleType: Enum.BundleType["Name"];
+	BundledItems: ReadonlyArray<{
+		Owned: boolean;
+		Id: number;
+		Name: string;
+		Type: "Asset" | "UserOutfit";
+	}>;
+}
+
+type SearchCatalogResult = SearchCatalogAssetResult | SearchCatalogBundleResult;
 
 /**
  * RBXScriptConnection, also known as a Connection,
@@ -1012,7 +1229,9 @@ interface BrickColorConstructor {
 	Blue: () => BrickColor<23>;
 
 	/** Constructs a BrickColor from its name. */
-	new <T extends BrickColorsByNumber[keyof BrickColorsByNumber]>(val: T): BrickColor<
+	new <T extends BrickColorsByNumber[keyof BrickColorsByNumber]>(
+		val: T,
+	): BrickColor<
 		{ [K in keyof BrickColorsByNumber]: T extends BrickColorsByNumber[K] ? K : never }[keyof BrickColorsByNumber]
 	>;
 
@@ -1045,11 +1264,28 @@ interface CatalogSearchParams {
 	 * @deprecated
 	 */
 	readonly _nominal_CatalogSearchParams: unique symbol;
+	/** The keyword to search for catalog results with. */
 	SearchKeyword: string;
-	CategoryFilter: Enum.CatalogCategoryFilter;
+	/** The minimum item price to search for. */
+	MinPrice: number;
+	/** The maximum item price to search for. */
+	MaxPrice: number;
+	/** The order in which to sort the results. */
 	SortType: Enum.CatalogSortType;
-	BundleTypes: string;
-	AssetTypes: string;
+	/** The time period to use to aggregate the sort results. */
+	SortAggregation: Enum.CatalogSortAggregation;
+	/** The category to filter the search by. */
+	CategoryFilter: Enum.CatalogCategoryFilter;
+	/** The sales type filter the search by. */
+	SalesTypeFilter: Enum.SalesTypeFilter;
+	/** An array containing BundleType values to filter the search by. */
+	BundleTypes: ReadonlyArray<Enum.BundleType>;
+	/** An array containing AvatarAssetType values to filter the search by. */
+	AssetTypes: ReadonlyArray<Enum.AvatarAssetType>;
+	/** Whether off sale items should be included in the results. */
+	IncludeOffSale: boolean;
+	/** Search for items with the given creator. */
+	CreatorName: string;
 }
 
 interface CatalogSearchParamsConstructor {
@@ -1185,6 +1421,17 @@ interface CFrameConstructor {
 }
 
 declare const CFrame: CFrameConstructor;
+
+interface ClipEvaluator {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ClipEvaluator: unique symbol;
+}
 
 interface Color3 {
 	/**
@@ -1593,6 +1840,17 @@ interface NumberSequenceKeypointConstructor {
 }
 declare const NumberSequenceKeypoint: NumberSequenceKeypointConstructor;
 
+interface OpenCloudModel {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_OpenCloudModel: unique symbol;
+}
+
 // OverlapParams
 interface OverlapParams {
 	/**
@@ -1621,6 +1879,14 @@ interface OverlapParams {
 	 * The collision group the region check is performed on. Parts set to not collide with this group will be ignored.
 	 */
 	CollisionGroup: string;
+	/**
+	 * This property, if true, makes the boundary-querying operation use an intersected part's BasePart.CanCollide value in favor of its BasePart.CanQuery value when determining whether that part is included in the array of spatial query results.
+	 */
+	RespectCanCollide: boolean;
+	/**
+	 * This property, if true, finds all parts that inserect the region even if they have CanQuery set to false.
+	 */
+	BruteForceAllSlow: boolean;
 }
 type OverlapParamsConstructor = new () => OverlapParams;
 declare const OverlapParams: OverlapParamsConstructor;
@@ -1781,6 +2047,21 @@ interface RaycastParams {
 	 * property is omitted, the raycast will assume the **Default** collision group.
 	 */
 	CollisionGroup: string;
+	/**
+	 * This property, if `true`, makes the raycast operation use an intersected part's `CanCollide` value in favor of
+	 * its `CanQuery` value when determining whether that part is included in the `RaycastResult`
+	 */
+	RespectCanCollide: boolean;
+	/**
+	 * When enabled, the query will ignore all part collision properties and perform a brute-force check on every part.
+	 * This will negatively impact performance and should not be used in live experiences.
+	 */
+	BruteForceAllSlow: boolean;
+	/**
+	 * For efficiency and simplicity, this method is the preferred way to add instances to the filter.
+	 * It has the additional advantage that it allows FilterDescendantsInstances to be updated from a parallel context.
+	 */
+	AddToFilter(this: RaycastParams, instances: Instance | Array<Instance>): void;
 }
 
 type RaycastParamsConstructor = new () => RaycastParams;
@@ -1875,6 +2156,19 @@ type RotationCurveKeyConstructor = new (
 ) => RotationCurveKey;
 declare const RotationCurveKey: RotationCurveKeyConstructor;
 
+interface Secret {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Secret: unique symbol;
+}
+
+declare const SharedTableNominal: unique symbol;
+type SharedTableValue = boolean | number | Vector3 | string | SharedTable | Instance | typeof SharedTableNominal;
 // SharedTable
 interface SharedTable {
 	/**
@@ -1884,8 +2178,79 @@ interface SharedTable {
 	 * @hidden
 	 * @deprecated
 	 */
-	readonly _nominal_SharedTable: unique symbol;
+	readonly _nominal_SharedTable: typeof SharedTableNominal;
+	[K: string | number]: SharedTableValue;
 }
+
+interface SharedTableConstructor {
+	/** Returns a new, empty SharedTable. */
+	new (): SharedTable;
+	/** Returns a new SharedTable containing elements equivalent to those in the provided object. */
+	new (t: object): SharedTable;
+	/** Removes all of the elements from the SharedTable. */
+	clear: (st: SharedTable) => void;
+	/**
+	 * Creates a clone of a SharedTable and returns the clone.
+	 *
+	 * If the optional deep argument is not present, or if it is present and its value is false, then a shallow clone is created.
+	 * A shallow clone copies only the top-level SharedTable object. If any value in the SharedTable itself is a SharedTable, then both the original SharedTable and the clone SharedTable will refer to the same SharedTable.
+	 *
+	 * The shallow clone operation is atomic, so the clone SharedTable will contain a consistent snapshot of the state in the original SharedTable, even if it is being modified concurrently from other scripts.
+	 *
+	 * If the optional deep argument is present and its value is true, then a deep clone is created.
+	 * A deep clone recursively copies a structure of SharedTable objects, such that there is no state shared between the original SharedTable and the clone.
+	 *
+	 * The clone of each SharedTable within the graph of SharedTable objects is atomic, but the deep clone as a whole is not atomic.
+	 * Thus, the clone of each SharedTable within the graph will contain a consistent snapshot of the state of the original SharedTable object from which it was cloned, but the states of different SharedTable objects may be inconsistent if the graph is being modified concurrently from other scripts.
+	 *
+	 * The SharedTable object(s) being cloned may be frozen (read-only) or not.
+	 * Regardless, the newly created clones are not frozen (and are thus modifiable).
+	 * To create frozen clones, use the SharedTable.cloneAndFreeze function.
+	 */
+	clone: (st: SharedTable, deep?: boolean) => SharedTable;
+	/**
+	 * Creates a frozen (read-only) clone of a SharedTable and returns the clone.
+	 * The behavior of this function is the same as the behavior of clone, except that the clone is frozen.
+	 *
+	 * If a deep clone is requested, then all of the cloned SharedTable objects are frozen.
+	 */
+	cloneAndFreeze: (st: SharedTable, deep?: boolean) => SharedTable;
+	/**
+	 * Atomically increments the value of an element.
+	 * An element with the specified key must exist in the SharedTable, and it must be of type number.
+	 * The specified delta is added to the value, and the original value is returned.
+	 *
+	 * The SharedTable.update function can also be used for this purpose; this increment function exists for convenience and performance.
+	 * In general, increment is much faster than update, so it should be preferred where possible.
+	 */
+	increment: (st: SharedTable, k: string | number, delta: number) => number;
+	/** Returns true if the SharedTable is frozen (read-only). */
+	isFrozen: (st: SharedTable) => boolean;
+	/**
+	 * Returns the number of elements stored in the SharedTable.
+	 * Note that if other scripts are concurrently modifying the SharedTable, the returned size may no longer be correct after it is returned, since other scripts may have added or removed elements from the SharedTable.
+	 */
+	size: (st: SharedTable) => number;
+	/**
+	 * Atomically updates the value of an element.
+	 *
+	 * When a SharedTable is accessed concurrently from scripts running in different execution contexts, it is possible for their accesses to interleave unpredictably.
+	 * Because of this, code like the following is generally incorrect, because the value may have changed between the read on the first line and the update on the second line:
+	 * ```ts
+	 * const oldValue = st["x"];
+	 * st["x"] = oldValue + ",x";
+	 * ```
+	 * The update function makes it possible to perform an atomic update to an element.
+	 * It takes a function that it will call with the current value of the element.
+	 * The function can then compute and return the new value.
+	 * Note that the function may be called multiple times if the SharedTable is being concurrently modified from other scripts.
+	 *
+	 * If the SharedTable is frozen, the operation fails and an error will be raised.
+	 */
+	update: (st: SharedTable, k: string | number, f: (v: SharedTableValue) => SharedTableValue) => void;
+}
+
+declare const SharedTable: SharedTableConstructor;
 
 // TextChatMessage
 interface TextChatMessage {

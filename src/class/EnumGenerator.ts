@@ -1,6 +1,8 @@
 import { ApiEnum } from "../api";
 import { Generator } from "./Generator";
 
+const IDENTIFIER_REGEX = /^[a-zA-Z_$][0-9a-zA-Z_$]*$/;
+
 export class EnumGenerator extends Generator {
 	public async generate(rbxEnums: Array<ApiEnum>) {
 		this.write(`// THIS FILE IS GENERATED AUTOMATICALLY AND SHOULD NOT BE EDITED BY HAND!`);
@@ -44,6 +46,7 @@ export class EnumGenerator extends Generator {
 				Value: enumItemValue,
 				LegacyNames: enumItemLegacyNames,
 			} of enumTypeItems) {
+				if (!IDENTIFIER_REGEX.test(enumItemName)) continue;
 				enumItemNames.push(enumItemName);
 				this.write(`export interface ${enumItemName} extends globalThis.EnumItem {`);
 				this.pushIndent();

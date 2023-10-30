@@ -43,11 +43,11 @@ void (async () => {
 	await new EnumGenerator(path.join(targetDir, "generated", "enums.d.ts"), reflectionMetadata).generate(api.Enums);
 	console.log(`\tDone! (${enumTimer.get()}ms)`);
 
-	const classTimer = new Timer();
-	console.log("\tGenerating classes..");
-
 	const definedClassNames = new Set<string>();
 	for (let i = 0; i < SECURITY_LEVELS.length; i++) {
+		const classTimer = new Timer();
+		console.log(`\tGenerating level ${SECURITY_LEVELS[i]} classes..`);
+
 		await new ClassGenerator(
 			path.join(targetDir, "generated", SECURITY_LEVELS[i] + ".d.ts"),
 			reflectionMetadata,
@@ -55,9 +55,9 @@ void (async () => {
 			SECURITY_LEVELS[i],
 			SECURITY_LEVELS[i - 1],
 		).generate(api.Classes);
-	}
 
-	console.log(`\tDone! (${classTimer.get()}ms)`);
+		console.log(`\tDone! (${classTimer.get()}ms)`);
+	}
 
 	const typeCheckTimer = new Timer();
 	console.log("\tTypechecking generated files..");
