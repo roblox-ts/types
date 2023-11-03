@@ -244,7 +244,7 @@ interface DataModel extends ServiceProvider<Services> {
 
 interface DataStore extends GlobalDataStore {
 	GetAsync<T>(
-		this: DataStore, 
+		this: DataStore,
 		key: string,
 		options?: DataStoreGetOptions,
 	): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
