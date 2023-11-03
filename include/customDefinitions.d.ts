@@ -243,7 +243,11 @@ interface DataModel extends ServiceProvider<Services> {
 }
 
 interface DataStore extends GlobalDataStore {
-	GetAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
+	GetAsync<T>(
+		this: DataStore, 
+		key: string,
+		options?: DataStoreGetOptions,
+	): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
 	GetVersionAsync(
 		this: DataStore,
 		key: string,
@@ -279,7 +283,7 @@ interface DataStorePages extends Pages<{ key: string; value: unknown }> {}
 /** @server */
 interface DataStoreService extends Instance {
 	GetDataStore(this: DataStoreService, name: string, scope?: string, options?: DataStoreOptions): DataStore;
-	GetGlobalDataStore(this: DataStoreService): GlobalDataStore;
+	GetGlobalDataStore(this: DataStoreService): DataStore;
 	GetOrderedDataStore(this: DataStoreService, name: string, scope?: string): OrderedDataStore;
 }
 

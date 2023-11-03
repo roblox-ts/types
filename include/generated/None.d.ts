@@ -9887,7 +9887,7 @@ interface DataStoreService extends Instance {
 	/**
 	 * This function returns the default [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore). If you want to access a specific **named** data store instead, you should use the [GetDataStore()](https://developer.roblox.com/en-us/api-reference/function/DataStoreService/GetDataStore) function.
 	 */
-	GetGlobalDataStore(this: DataStoreService): DataStore;
+	GetGlobalDataStore(this: DataStoreService): GlobalDataStore;
 	/**
 	 * This method returns an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore), similar to the way [GetDataStore()](https://developer.roblox.com/en-us/api-reference/function/DataStoreService/GetDataStore) does with [GlobalDataStores](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore). Subsequent calls to this method with the same name/scope will return the same object.
 	 */
@@ -11549,10 +11549,26 @@ interface OrderedDataStore extends GlobalDataStore {
 	 * @deprecated
 	 */
 	readonly _nominal_OrderedDataStore: unique symbol;
-	GetAsync(this: OrderedDataStore, key: string): number | undefined;
-	IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
+	GetAsync(
+		this: OrderedDataStore, 
+		key: string,
+		options?: DataStoreGetOptions,
+	): number | undefined;
+	IncrementAsync(
+		this: OrderedDataStore, 
+		key: string, 
+		delta?: number,
+		userIds?: Array<number>,
+		options?: DataStoreIncrementOptions,
+	): number;
 	RemoveAsync(this: OrderedDataStore, key: string): number | undefined;
-	SetAsync(this: OrderedDataStore, key: string, value?: unknown): void;
+	SetAsync(
+		this: OrderedDataStore, 
+		key: string, 
+		value?: number,
+		userIds?: Array<number>,
+		options?: DataStoreSetOptions,
+	): void;
 	UpdateAsync(
 		this: OrderedDataStore,
 		key: string,
