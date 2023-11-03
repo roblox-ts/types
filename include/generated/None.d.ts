@@ -11454,7 +11454,11 @@ interface DataStore extends GlobalDataStore {
 	 * @deprecated
 	 */
 	readonly _nominal_DataStore: unique symbol;
-	GetAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
+	GetAsync<T>(
+		this: DataStore, 
+		key: string,
+		options?: DataStoreGetOptions,
+	): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
 	IncrementAsync(
 		this: DataStore,
 		key: string,
