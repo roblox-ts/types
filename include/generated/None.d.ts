@@ -11549,26 +11549,10 @@ interface OrderedDataStore extends GlobalDataStore {
 	 * @deprecated
 	 */
 	readonly _nominal_OrderedDataStore: unique symbol;
-	GetAsync(
-		this: OrderedDataStore, 
-		key: string,
-		options?: DataStoreGetOptions,
-	): number | undefined;
-	IncrementAsync(
-		this: OrderedDataStore, 
-		key: string, 
-		delta?: number,
-		userIds?: Array<number>,
-		options?: DataStoreIncrementOptions,
-	): number;
+	GetAsync(this: OrderedDataStore, key: string): number | undefined;
+	IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
 	RemoveAsync(this: OrderedDataStore, key: string): number | undefined;
-	SetAsync(
-		this: OrderedDataStore, 
-		key: string, 
-		value?: number,
-		userIds?: Array<number>,
-		options?: DataStoreSetOptions,
-	): void;
+	SetAsync(this: OrderedDataStore, key: string, value?: unknown): void;
 	UpdateAsync(
 		this: OrderedDataStore,
 		key: string,
