@@ -9887,7 +9887,7 @@ interface DataStoreService extends Instance {
 	/**
 	 * This function returns the default [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore). If you want to access a specific **named** data store instead, you should use the [GetDataStore()](https://developer.roblox.com/en-us/api-reference/function/DataStoreService/GetDataStore) function.
 	 */
-	GetGlobalDataStore(this: DataStoreService): GlobalDataStore;
+	GetGlobalDataStore(this: DataStoreService): DataStore;
 	/**
 	 * This method returns an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore), similar to the way [GetDataStore()](https://developer.roblox.com/en-us/api-reference/function/DataStoreService/GetDataStore) does with [GlobalDataStores](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore). Subsequent calls to this method with the same name/scope will return the same object.
 	 */
