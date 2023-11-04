@@ -266,6 +266,7 @@ const MEMBER_BLACKLIST = new Map([
 	["Players", new Set(["playerFromCharacter", "players"])],
 	["ServiceProvider", new Set(["service"])],
 	["DataModel", new Set(["lighting"])],
+	["PackageLink", new Set(["SerializedDefaultAttributes"])],
 ]);
 
 const EXPECTED_EXTRA_MEMBERS = new Map([
