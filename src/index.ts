@@ -1,6 +1,9 @@
 import axios from "axios";
+import { readFileSync } from "fs";
 import * as path from "path";
 import { Project } from "ts-morph";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 
 import { ApiDump } from "./api";
 import { ClassGenerator } from "./class/ClassGenerator";
@@ -15,28 +18,42 @@ const API_DUMP_URL = BASE_URL + "Mini-API-Dump.json";
 const REFLECTION_METADATA_URL = BASE_URL + "ReflectionMetadata.xml";
 
 void (async () => {
+	const argv = await yargs(hideBin(process.argv)).argv;
+
 	const targetDir = path.resolve(__dirname, "..", "include");
 
 	const totalTimer = new Timer();
 	console.log("Generating..");
 
 	const apiDumpTimer = new Timer();
-	console.log("\tRequesting API Dump JSON..");
-	const apiDumpResponse = await axios.get(API_DUMP_URL);
-	console.log(`\tDone! (${apiDumpTimer.get()}ms)`);
-	if (apiDumpResponse.status !== 200) {
-		throw new Error("Response status non-200!");
+	console.log("\tGetting API Dump JSON..");
+
+	let api: ApiDump;
+	if (typeof argv.api === "string") {
+		api = JSON.parse(readFileSync(argv.api, "utf-8"));
+	} else {
+		const apiDumpResponse = await axios.get(API_DUMP_URL);
+		if (apiDumpResponse.status !== 200) {
+			throw new Error("Response status non-200!");
+		}
+		api = apiDumpResponse.data;
 	}
-	const api = apiDumpResponse.data as ApiDump;
+	console.log(`\tDone! (${apiDumpTimer.get()}ms)`);
 
 	const reflectionTimer = new Timer();
-	console.log("\tRequesting Reflection Metadata XML..");
-	const reflectionResponse = await axios.get(REFLECTION_METADATA_URL);
-	console.log(`\tDone! (${reflectionTimer.get()}ms)`);
-	if (reflectionResponse.status !== 200) {
-		throw new Error("Response status non-200!");
+	console.log("\tGetting Reflection Metadata XML..");
+
+	let reflectionMetadata: ReflectionMetadata;
+	if (typeof argv.reflection === "string") {
+		reflectionMetadata = new ReflectionMetadata(readFileSync(argv.reflection, "utf-8"));
+	} else {
+		const reflectionResponse = await axios.get(REFLECTION_METADATA_URL);
+		if (reflectionResponse.status !== 200) {
+			throw new Error("Response status non-200!");
+		}
+		reflectionMetadata = new ReflectionMetadata(reflectionResponse.data);
 	}
-	const reflectionMetadata = new ReflectionMetadata(reflectionResponse.data);
+	console.log(`\tDone! (${reflectionTimer.get()}ms)`);
 
 	const enumTimer = new Timer();
 	console.log("\tGenerating enums..");
