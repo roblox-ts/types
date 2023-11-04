@@ -2563,6 +2563,7 @@ interface QDir {}
 declare const game: DataModel;
 declare const script: LuaSourceContainer;
 declare const shared: object;
+declare const workspace: Workspace;
 
 type DelayedCallback =
 	/**
@@ -2614,6 +2615,8 @@ declare function wait(seconds?: number): LuaTuple<[number, number]>;
 /** Behaves identically to Lua’s print function, except the output is styled as a warning, with yellow text and a timestamp.
 This function accepts any number of arguments, and will attempt to convert them into strings which will then be joined together with spaces between them. */
 declare function warn(...params: Array<unknown>): void;
+/** Prints Current identity is [ID] to the output, where [ID] corresponds to the current thread's security context level. @deprecated*/
+declare function printidentity(prefix: string | undefined): void;
 
 // math functions
 declare namespace math {
