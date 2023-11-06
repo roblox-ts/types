@@ -4888,9 +4888,17 @@ declare namespace Enum {
 
 		export const SelfView: SelfView;
 
+		export interface Captures extends globalThis.EnumItem {
+			Name: "Captures";
+			Value: 7;
+			EnumType: typeof globalThis.Enum.CoreGuiType;
+		}
+
+		export const Captures: Captures;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CoreGuiType>;
 	}
-	export type CoreGuiType = CoreGuiType.PlayerList | CoreGuiType.Health | CoreGuiType.Backpack | CoreGuiType.Chat | CoreGuiType.All | CoreGuiType.EmotesMenu | CoreGuiType.SelfView;
+	export type CoreGuiType = CoreGuiType.PlayerList | CoreGuiType.Health | CoreGuiType.Backpack | CoreGuiType.Chat | CoreGuiType.All | CoreGuiType.EmotesMenu | CoreGuiType.SelfView | CoreGuiType.Captures;
 
 	export namespace CreateOutfitFailure {
 		export interface InvalidName extends globalThis.EnumItem {
@@ -11402,6 +11410,22 @@ declare namespace Enum {
 
 		export const Plastic: Plastic;
 
+		export interface SmoothPlastic extends globalThis.EnumItem {
+			Name: "SmoothPlastic";
+			Value: 272;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const SmoothPlastic: SmoothPlastic;
+
+		export interface Neon extends globalThis.EnumItem {
+			Name: "Neon";
+			Value: 288;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Neon: Neon;
+
 		export interface Wood extends globalThis.EnumItem {
 			Name: "Wood";
 			Value: 512;
@@ -11409,6 +11433,22 @@ declare namespace Enum {
 		}
 
 		export const Wood: Wood;
+
+		export interface WoodPlanks extends globalThis.EnumItem {
+			Name: "WoodPlanks";
+			Value: 528;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const WoodPlanks: WoodPlanks;
+
+		export interface Marble extends globalThis.EnumItem {
+			Name: "Marble";
+			Value: 784;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Marble: Marble;
 
 		export interface Slate extends globalThis.EnumItem {
 			Name: "Slate";
@@ -11425,6 +11465,86 @@ declare namespace Enum {
 		}
 
 		export const Concrete: Concrete;
+
+		export interface Granite extends globalThis.EnumItem {
+			Name: "Granite";
+			Value: 832;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Granite: Granite;
+
+		export interface Brick extends globalThis.EnumItem {
+			Name: "Brick";
+			Value: 848;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Brick: Brick;
+
+		export interface Pebble extends globalThis.EnumItem {
+			Name: "Pebble";
+			Value: 864;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Pebble: Pebble;
+
+		export interface Cobblestone extends globalThis.EnumItem {
+			Name: "Cobblestone";
+			Value: 880;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Cobblestone: Cobblestone;
+
+		export interface Rock extends globalThis.EnumItem {
+			Name: "Rock";
+			Value: 896;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Rock: Rock;
+
+		export interface Sandstone extends globalThis.EnumItem {
+			Name: "Sandstone";
+			Value: 912;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Sandstone: Sandstone;
+
+		export interface Basalt extends globalThis.EnumItem {
+			Name: "Basalt";
+			Value: 788;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Basalt: Basalt;
+
+		export interface CrackedLava extends globalThis.EnumItem {
+			Name: "CrackedLava";
+			Value: 804;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const CrackedLava: CrackedLava;
+
+		export interface Limestone extends globalThis.EnumItem {
+			Name: "Limestone";
+			Value: 820;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Limestone: Limestone;
+
+		export interface Pavement extends globalThis.EnumItem {
+			Name: "Pavement";
+			Value: 836;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Pavement: Pavement;
 
 		export interface CorrodedMetal extends globalThis.EnumItem {
 			Name: "CorrodedMetal";
@@ -11452,6 +11572,14 @@ declare namespace Enum {
 		/** @deprecated renamed to Foil */
 		export const Aluminum: Foil;
 
+		export interface Metal extends globalThis.EnumItem {
+			Name: "Metal";
+			Value: 1088;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Metal: Metal;
+
 		export interface Grass extends globalThis.EnumItem {
 			Name: "Grass";
 			Value: 1280;
@@ -11460,45 +11588,13 @@ declare namespace Enum {
 
 		export const Grass: Grass;
 
-		export interface Ice extends globalThis.EnumItem {
-			Name: "Ice";
-			Value: 1536;
+		export interface LeafyGrass extends globalThis.EnumItem {
+			Name: "LeafyGrass";
+			Value: 1284;
 			EnumType: typeof globalThis.Enum.Material;
 		}
 
-		export const Ice: Ice;
-
-		export interface Marble extends globalThis.EnumItem {
-			Name: "Marble";
-			Value: 784;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Marble: Marble;
-
-		export interface Granite extends globalThis.EnumItem {
-			Name: "Granite";
-			Value: 832;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Granite: Granite;
-
-		export interface Brick extends globalThis.EnumItem {
-			Name: "Brick";
-			Value: 848;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Brick: Brick;
-
-		export interface Pebble extends globalThis.EnumItem {
-			Name: "Pebble";
-			Value: 864;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Pebble: Pebble;
+		export const LeafyGrass: LeafyGrass;
 
 		export interface Sand extends globalThis.EnumItem {
 			Name: "Sand";
@@ -11516,37 +11612,77 @@ declare namespace Enum {
 
 		export const Fabric: Fabric;
 
-		export interface SmoothPlastic extends globalThis.EnumItem {
-			Name: "SmoothPlastic";
-			Value: 272;
+		export interface Snow extends globalThis.EnumItem {
+			Name: "Snow";
+			Value: 1328;
 			EnumType: typeof globalThis.Enum.Material;
 		}
 
-		export const SmoothPlastic: SmoothPlastic;
+		export const Snow: Snow;
 
-		export interface Metal extends globalThis.EnumItem {
-			Name: "Metal";
-			Value: 1088;
+		export interface Mud extends globalThis.EnumItem {
+			Name: "Mud";
+			Value: 1344;
 			EnumType: typeof globalThis.Enum.Material;
 		}
 
-		export const Metal: Metal;
+		export const Mud: Mud;
 
-		export interface WoodPlanks extends globalThis.EnumItem {
-			Name: "WoodPlanks";
-			Value: 528;
+		export interface Ground extends globalThis.EnumItem {
+			Name: "Ground";
+			Value: 1360;
 			EnumType: typeof globalThis.Enum.Material;
 		}
 
-		export const WoodPlanks: WoodPlanks;
+		export const Ground: Ground;
 
-		export interface Cobblestone extends globalThis.EnumItem {
-			Name: "Cobblestone";
-			Value: 880;
+		export interface Asphalt extends globalThis.EnumItem {
+			Name: "Asphalt";
+			Value: 1376;
 			EnumType: typeof globalThis.Enum.Material;
 		}
 
-		export const Cobblestone: Cobblestone;
+		export const Asphalt: Asphalt;
+
+		export interface Salt extends globalThis.EnumItem {
+			Name: "Salt";
+			Value: 1392;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Salt: Salt;
+
+		export interface Ice extends globalThis.EnumItem {
+			Name: "Ice";
+			Value: 1536;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Ice: Ice;
+
+		export interface Glacier extends globalThis.EnumItem {
+			Name: "Glacier";
+			Value: 1552;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Glacier: Glacier;
+
+		export interface Glass extends globalThis.EnumItem {
+			Name: "Glass";
+			Value: 1568;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const Glass: Glass;
+
+		export interface ForceField extends globalThis.EnumItem {
+			Name: "ForceField";
+			Value: 1584;
+			EnumType: typeof globalThis.Enum.Material;
+		}
+
+		export const ForceField: ForceField;
 
 		export interface Air extends globalThis.EnumItem {
 			Name: "Air";
@@ -11563,134 +11699,6 @@ declare namespace Enum {
 		}
 
 		export const Water: Water;
-
-		export interface Rock extends globalThis.EnumItem {
-			Name: "Rock";
-			Value: 896;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Rock: Rock;
-
-		export interface Glacier extends globalThis.EnumItem {
-			Name: "Glacier";
-			Value: 1552;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Glacier: Glacier;
-
-		export interface Snow extends globalThis.EnumItem {
-			Name: "Snow";
-			Value: 1328;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Snow: Snow;
-
-		export interface Sandstone extends globalThis.EnumItem {
-			Name: "Sandstone";
-			Value: 912;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Sandstone: Sandstone;
-
-		export interface Mud extends globalThis.EnumItem {
-			Name: "Mud";
-			Value: 1344;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Mud: Mud;
-
-		export interface Basalt extends globalThis.EnumItem {
-			Name: "Basalt";
-			Value: 788;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Basalt: Basalt;
-
-		export interface Ground extends globalThis.EnumItem {
-			Name: "Ground";
-			Value: 1360;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Ground: Ground;
-
-		export interface CrackedLava extends globalThis.EnumItem {
-			Name: "CrackedLava";
-			Value: 804;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const CrackedLava: CrackedLava;
-
-		export interface Neon extends globalThis.EnumItem {
-			Name: "Neon";
-			Value: 288;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Neon: Neon;
-
-		export interface Glass extends globalThis.EnumItem {
-			Name: "Glass";
-			Value: 1568;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Glass: Glass;
-
-		export interface Asphalt extends globalThis.EnumItem {
-			Name: "Asphalt";
-			Value: 1376;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Asphalt: Asphalt;
-
-		export interface LeafyGrass extends globalThis.EnumItem {
-			Name: "LeafyGrass";
-			Value: 1284;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const LeafyGrass: LeafyGrass;
-
-		export interface Salt extends globalThis.EnumItem {
-			Name: "Salt";
-			Value: 1392;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Salt: Salt;
-
-		export interface Limestone extends globalThis.EnumItem {
-			Name: "Limestone";
-			Value: 820;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Limestone: Limestone;
-
-		export interface Pavement extends globalThis.EnumItem {
-			Name: "Pavement";
-			Value: 836;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const Pavement: Pavement;
-
-		export interface ForceField extends globalThis.EnumItem {
-			Name: "ForceField";
-			Value: 1584;
-			EnumType: typeof globalThis.Enum.Material;
-		}
-
-		export const ForceField: ForceField;
 
 		export interface Cardboard extends globalThis.EnumItem {
 			Name: "Cardboard";
@@ -11758,7 +11766,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Material>;
 	}
-	export type Material = Material.Plastic | Material.Wood | Material.Slate | Material.Concrete | Material.CorrodedMetal | Material.DiamondPlate | Material.Foil | Material.Grass | Material.Ice | Material.Marble | Material.Granite | Material.Brick | Material.Pebble | Material.Sand | Material.Fabric | Material.SmoothPlastic | Material.Metal | Material.WoodPlanks | Material.Cobblestone | Material.Air | Material.Water | Material.Rock | Material.Glacier | Material.Snow | Material.Sandstone | Material.Mud | Material.Basalt | Material.Ground | Material.CrackedLava | Material.Neon | Material.Glass | Material.Asphalt | Material.LeafyGrass | Material.Salt | Material.Limestone | Material.Pavement | Material.ForceField | Material.Cardboard | Material.Carpet | Material.CeramicTiles | Material.ClayRoofTiles | Material.RoofShingles | Material.Leather | Material.Plaster | Material.Rubber;
+	export type Material = Material.Plastic | Material.SmoothPlastic | Material.Neon | Material.Wood | Material.WoodPlanks | Material.Marble | Material.Slate | Material.Concrete | Material.Granite | Material.Brick | Material.Pebble | Material.Cobblestone | Material.Rock | Material.Sandstone | Material.Basalt | Material.CrackedLava | Material.Limestone | Material.Pavement | Material.CorrodedMetal | Material.DiamondPlate | Material.Foil | Material.Metal | Material.Grass | Material.LeafyGrass | Material.Sand | Material.Fabric | Material.Snow | Material.Mud | Material.Ground | Material.Asphalt | Material.Salt | Material.Ice | Material.Glacier | Material.Glass | Material.ForceField | Material.Air | Material.Water | Material.Cardboard | Material.Carpet | Material.CeramicTiles | Material.ClayRoofTiles | Material.RoofShingles | Material.Leather | Material.Plaster | Material.Rubber;
 
 	export namespace MaterialPattern {
 		export interface Regular extends globalThis.EnumItem {
