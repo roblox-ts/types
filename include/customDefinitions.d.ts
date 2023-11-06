@@ -756,7 +756,7 @@ interface PolicyService extends Instance {
 	GetPolicyInfoForPlayerAsync(this: PolicyService, player: Player): PolicyInfo;
 }
 
-interface RemoteEvent<T extends Callback = Callback> extends Instance {
+interface RemoteEvent<T extends Callback = Callback> extends BaseRemoteEvent {
 	readonly OnClientEvent: RBXScriptSignal<T>;
 	/** The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
 	 * ```ts
