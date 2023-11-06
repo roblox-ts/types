@@ -84,5 +84,7 @@ export class EnumGenerator extends Generator {
 		this.write(`}`);
 		this.write(``);
 		this.write(`declare type CastsToEnum<T extends EnumItem> = T | T["Name" | "Value"];`);
+
+		await this.finish();
 	}
 }

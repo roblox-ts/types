@@ -261,9 +261,9 @@ interface CreatableInstances {
 	DoubleConstrainedValue: DoubleConstrainedValue;
 	DragDetector: DragDetector;
 	Dragger: Dragger;
-	DynamicImage: DynamicImage;
 	DynamicMesh: DynamicMesh;
 	EchoSoundEffect: EchoSoundEffect;
+	EditableImage: EditableImage;
 	EqualizerSoundEffect: EqualizerSoundEffect;
 	EulerRotationCurve: EulerRotationCurve;
 	ExperienceInviteOptions: ExperienceInviteOptions;
@@ -325,6 +325,7 @@ interface CreatableInstances {
 	Part: Part;
 	ParticleEmitter: ParticleEmitter;
 	PartOperation: PartOperation;
+	Path2D: Path2D;
 	PathfindingLink: PathfindingLink;
 	PathfindingModifier: PathfindingModifier;
 	PitchShiftSoundEffect: PitchShiftSoundEffect;
@@ -417,6 +418,7 @@ interface CreatableInstances {
 	UITextSizeConstraint: UITextSizeConstraint;
 	UnionOperation: UnionOperation;
 	UniversalConstraint: UniversalConstraint;
+	UnreliableRemoteEvent: UnreliableRemoteEvent;
 	UserNotification: UserNotification;
 	UserNotificationPayload: UserNotificationPayload;
 	UserNotificationPayloadAnalyticsData: UserNotificationPayloadAnalyticsData;
@@ -501,6 +503,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	AssetSoundEffect: AssetSoundEffect;
 	AudioPages: AudioPages;
 	BaseImportData: BaseImportData;
+	BaseRemoteEvent: BaseRemoteEvent;
 	BaseWrap: BaseWrap;
 	BubbleChatConfiguration: BubbleChatConfiguration;
 	CatalogPages: CatalogPages;
@@ -2300,11 +2303,11 @@ interface AssetService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	CreateDynamicImageAsync(this: AssetService, textureId: string): DynamicImage;
+	CreateDynamicMeshAsync(this: AssetService, meshId: string): DynamicMesh;
 	/**
 	 * Tags: Yields
 	 */
-	CreateDynamicMeshAsync(this: AssetService, meshId: string): DynamicMesh;
+	CreateEditableImageAsync(this: AssetService, textureId: string): EditableImage;
 	/**
 	 * Clones a place with placeId equal to given templatePlaceId. It is placed into the inventory of the place's creator with the given name and description. This method will also return the placeId of the new place, which can be used with TeleportService. This method cannot be used to clone places that you do not own.
 	 * 
@@ -2436,6 +2439,10 @@ interface AssetService extends Instance {
 	 * Tags: Yields
 	 */
 	SearchAudio(this: AssetService, searchParameters: AudioSearchParams): AudioPages;
+	/**
+	 * Tags: Yields
+	 */
+	createDynamicMeshFromPartAsync(this: AssetService, meshPart: MeshPart): DynamicMesh;
 }
 
 /** **Note**  
@@ -4650,6 +4657,112 @@ interface StarterGui extends BasePlayerGui {
 	 * Tags: Yields
 	 */
 	GetCore<T extends keyof GettableCores>(this: StarterGui, parameter: T): GettableCores[T];
+}
+
+interface BaseRemoteEvent extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_BaseRemoteEvent: unique symbol;
+}
+
+/** A **RemoteEvent** is designed to provide a one-way message between the server and clients, allowing [Scripts](https://developer.roblox.com/en-us/api-reference/class/Script) to call code in [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) and vice-versa. This message can be directed from one client to the server, from the server to a particular client, or from the server to all clients.
+ * 
+ * In order for both the server and clients to utilize a remote event, the RemoteEvent object itself must be in a place where both sides can see it. As such, we recommend that you store the RemoteEvent inside of [ReplicatedStorage](https://developer.roblox.com/en-us/api-reference/class/ReplicatedStorage), although in some cases it's appropriate to store it in the workspace or inside a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool).
+ * 
+ * If you need the result of the call, you should use a [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) instead. Otherwise a remote event is recommended since it will minimize network traffic/latency and won't yield the script to wait for a response. See [Remote Functions and Events](https://developer.roblox.com/en-us/articles/remote-functions-and-events) for more info.
+ */
+interface RemoteEvent<T extends Callback = Callback> extends BaseRemoteEvent {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RemoteEvent: unique symbol;
+	/**
+	 * The FireAllClients function fires the [RemoteEvent.OnClientEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnClientEvent) event for each client.
+	 * 
+	 * Unlike [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient), this event does not take a target player as an argument. Instead it will fire to all clients who have the same remote event connected to an OnClientEvent event.
+	 * 
+	 * Since this function is used to communicate from the server to the client, it will only work when used in a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
+	 * 
+	 * The behavior of this function, as well as other [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) and [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) events and functions, is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article.
+	 * 
+	 * There are limitations on the kinds of data that can be passed between the client and server. For more information, see [Parameter Limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations).
+	 * 
+	 * Note
+	 * ----
+	 * 
+	 * *   Data can be passed from server to client through remote events in the same way data is passed from client to server. Any extra information can be passed in as arguments to the [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient) and FireAllClients functions. Note that the FireClient function still needs to pass the player to send the message to as the first argument.
+	 */
+	FireAllClients(this: RemoteEvent, ...args: Parameters<T>): void;
+	/**
+	 * **FireClient** causes [OnClientEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnClientEvent) to be fired in [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s running for the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player). Additional data passed to this function is then provided to OnClientEvent; beware of [limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations) on this data.
+	 * 
+	 * Since this function is used for communication from server to client, so it will only work when used by a server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script). For client-to-server communication (the other direction), use [FireServer](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireServer). Direct client-to-client communication not possible on Roblox; however, it can be simulated using a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) that relays information received through some other means, such as [FireServer](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireServer).
+	 * 
+	 * There are limitations on the kinds of data that can be passed between the client and server. For more information, see [Parameter Limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations).
+	 * 
+	 * See also
+	 * --------
+	 * 
+	 * *   [FireAllClients](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireAllClients), which works similarly but for all [Player](https://developer.roblox.com/en-us/api-reference/class/Player)
+	 *     
+	 * *   [Remote Functions and Events](https://developer.roblox.com/articles/Remote-Functions-and-Events), which describes related classes, functions and events and also important limitations on the data that can be sent
+	 *     
+	 * *   Sometimes a game will need to send information from one client to another. Roblox does not support direct client to client contact, so any communication must first go through the server. This is typically done using remote events (although functions could be used if desired). First, the sending client would call FireServer. On the server, the function connected to OnServerEvent would hear this firing, and itself would then call FireClient.
+	 */
+	FireClient(this: RemoteEvent, player: Player, ...args: Parameters<T>): void;
+	/**
+	 * The FireServer event fires the [RemoteEvent.OnServerEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnServerEvent) event on the server using the arguments specified with an additional player argument at the beginning.
+	 * 
+	 * Since this function is used to communicate from the client to the server, it will only work when used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
+	 * 
+	 * When firing from the client note that nothing has to be passed in by default (unlike firing to the client from the server - where the player is passed in).
+	 * 
+	 * The behavior of this function, as well as other [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) and [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) events and functions, is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article.
+	 * 
+	 * There are limitations on the kinds of data that can be passed between the client and server. For more information, see [Parameter Limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations).
+	 */
+	FireServer(this: RemoteEvent, ...args: Parameters<T>): void;
+	/**
+	 * The OnClientEvent event fires listening functions in [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) when either [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient) or [RemoteEvent:FireAllClients](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireAllClients) is fired by the server from a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
+	 * 
+	 * This is used to retrieve remote events fired by the server and intended for the client. This event is in place to provide a method for communicating between the server and client, which is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article. This event retrieves remote events fired by the server to the client.
+	 * 
+	 * To fire from the client to the server, you should use [RemoteEvent:FireServer](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireServer) and [RemoteEvent.OnServerEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnServerEvent).
+	 */
+	readonly OnClientEvent: RBXScriptSignal<T>;
+	/**
+	 * Fires listening functions in [Script](https://developer.roblox.com/en-us/api-reference/class/Script) when [RemoteEvent:FireServer](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireServer) is called from a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
+	 * 
+	 * This is used to retrieve remote events fired by the client and intended for the server. This event is in place to provide a method for communicating between the client and server, which is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article. This event retrieves remote events fired by the client to the server.
+	 * 
+	 * To fire from the server to the client, you should use [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient) and [RemoteEvent.OnClientEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnClientEvent).
+	 */
+	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...args: Array<unknown>) => void>;
+}
+
+interface UnreliableRemoteEvent extends BaseRemoteEvent {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_UnreliableRemoteEvent: unique symbol;
+	FireAllClients(this: UnreliableRemoteEvent, arguments: Array<any>): void;
+	FireClient(this: UnreliableRemoteEvent, player: Player, arguments: Array<any>): void;
+	FireServer(this: UnreliableRemoteEvent, arguments: Array<any>): void;
+	readonly OnClientEvent: RBXScriptSignal<(arguments: Array<any>) => void>;
+	readonly OnServerEvent: RBXScriptSignal<(player: Player, arguments: Array<any>) => void>;
 }
 
 /** The base class for [WrapTarget](https://developer.roblox.com/en-us/api-reference/class/WrapTarget) and [WrapLayer](https://developer.roblox.com/en-us/api-reference/class/WrapLayer) objects. Note that [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) is the only valid parent type for [BaseWrap](https://developer.roblox.com/en-us/api-reference/class/BaseWrap) and that it behaves more like a component of [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) than an independent object. */
@@ -9887,7 +10000,7 @@ interface DataStoreService extends Instance {
 	/**
 	 * This function returns the default [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore). If you want to access a specific **named** data store instead, you should use the [GetDataStore()](https://developer.roblox.com/en-us/api-reference/function/DataStoreService/GetDataStore) function.
 	 */
-	GetGlobalDataStore(this: DataStoreService): GlobalDataStore;
+	GetGlobalDataStore(this: DataStoreService): DataStore;
 	/**
 	 * This method returns an [OrderedDataStore](https://developer.roblox.com/en-us/api-reference/class/OrderedDataStore), similar to the way [GetDataStore()](https://developer.roblox.com/en-us/api-reference/function/DataStoreService/GetDataStore) does with [GlobalDataStores](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore). Subsequent calls to this method with the same name/scope will return the same object.
 	 */
@@ -10354,7 +10467,7 @@ interface DraggerService extends Instance {
 	ShowPivotIndicator: boolean;
 }
 
-interface DynamicImage extends Instance {
+interface EditableImage extends Instance {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -10362,24 +10475,24 @@ interface DynamicImage extends Instance {
 	 * @hidden
 	 * @deprecated
 	 */
-	readonly _nominal_DynamicImage: unique symbol;
+	readonly _nominal_EditableImage: unique symbol;
 	Size: Vector2;
-	Copy(this: DynamicImage, min: Vector2, max: Vector2): DynamicImage;
-	Crop(this: DynamicImage, min: Vector2, max: Vector2): void;
-	DrawCircle(this: DynamicImage, center: Vector2, radius: number, color: Color3, transparency: number): void;
-	DrawImage(this: DynamicImage, position: Vector2, image: DynamicImage, combineType: CastsToEnum<Enum.ImageCombineType>): void;
-	DrawLine(this: DynamicImage, p1: Vector2, p2: Vector2, color: Color3, transparency: number): void;
-	DrawRectangle(this: DynamicImage, position: Vector2, size: Vector2, color: Color3, transparency: number): void;
+	Copy(this: EditableImage, min: Vector2, max: Vector2): EditableImage;
+	Crop(this: EditableImage, min: Vector2, max: Vector2): void;
+	DrawCircle(this: EditableImage, center: Vector2, radius: number, color: Color3, transparency: number): void;
+	DrawImage(this: EditableImage, position: Vector2, image: EditableImage, combineType: CastsToEnum<Enum.ImageCombineType>): void;
+	DrawLine(this: EditableImage, p1: Vector2, p2: Vector2, color: Color3, transparency: number): void;
+	DrawRectangle(this: EditableImage, position: Vector2, size: Vector2, color: Color3, transparency: number): void;
 	/**
 	 * Tags: CustomLuaState
 	 */
-	ReadPixels(this: DynamicImage, position: Vector2, size: Vector2): unknown;
-	Resize(this: DynamicImage, size: Vector2): void;
-	Rotate(this: DynamicImage, degrees: number, changeSize: boolean): void;
+	ReadPixels(this: EditableImage, position: Vector2, size: Vector2): unknown;
+	Resize(this: EditableImage, size: Vector2): void;
+	Rotate(this: EditableImage, degrees: number, changeSize: boolean): void;
 	/**
 	 * Tags: CustomLuaState
 	 */
-	WritePixels(this: DynamicImage, position: Vector2, size: Vector2, pixels: Array<any>): void;
+	WritePixels(this: EditableImage, position: Vector2, size: Vector2, pixels: Array<any>): void;
 }
 
 interface EngineAPICloudProcessingService extends Instance {
@@ -11454,7 +11567,11 @@ interface DataStore extends GlobalDataStore {
 	 * @deprecated
 	 */
 	readonly _nominal_DataStore: unique symbol;
-	GetAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
+	GetAsync<T>(
+		this: DataStore,
+		key: string,
+		options?: DataStoreGetOptions,
+	): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
 	IncrementAsync(
 		this: DataStore,
 		key: string,
@@ -15032,6 +15149,17 @@ interface SelectionPointLasso extends SelectionLasso {
 	 * Sets the Vector3 target of the lasso object.
 	 */
 	Point: Vector3;
+}
+
+interface Path2D extends GuiBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Path2D: unique symbol;
 }
 
 /** The GuiService is a service which currently allows developers to control what [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) is currently being selected by the gamepad navigator. It also allows clients to check if Roblox's main menu is currently open.
@@ -26430,6 +26558,7 @@ interface PackageLink extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_PackageLink: unique symbol;
+	readonly DefaultName: string;
 	/**
 	 * The id of the asset this package corresponds to.
 	 * 
@@ -29433,85 +29562,6 @@ interface RemoteDebuggerServer extends Instance {
 	readonly _nominal_RemoteDebuggerServer: unique symbol;
 }
 
-/** A **RemoteEvent** is designed to provide a one-way message between the server and clients, allowing [Scripts](https://developer.roblox.com/en-us/api-reference/class/Script) to call code in [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) and vice-versa. This message can be directed from one client to the server, from the server to a particular client, or from the server to all clients.
- * 
- * In order for both the server and clients to utilize a remote event, the RemoteEvent object itself must be in a place where both sides can see it. As such, we recommend that you store the RemoteEvent inside of [ReplicatedStorage](https://developer.roblox.com/en-us/api-reference/class/ReplicatedStorage), although in some cases it's appropriate to store it in the workspace or inside a [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool).
- * 
- * If you need the result of the call, you should use a [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) instead. Otherwise a remote event is recommended since it will minimize network traffic/latency and won't yield the script to wait for a response. See [Remote Functions and Events](https://developer.roblox.com/en-us/articles/remote-functions-and-events) for more info.
- */
-interface RemoteEvent<T extends Callback = Callback> extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_RemoteEvent: unique symbol;
-	/**
-	 * The FireAllClients function fires the [RemoteEvent.OnClientEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnClientEvent) event for each client.
-	 * 
-	 * Unlike [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient), this event does not take a target player as an argument. Instead it will fire to all clients who have the same remote event connected to an OnClientEvent event.
-	 * 
-	 * Since this function is used to communicate from the server to the client, it will only work when used in a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
-	 * 
-	 * The behavior of this function, as well as other [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) and [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) events and functions, is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article.
-	 * 
-	 * There are limitations on the kinds of data that can be passed between the client and server. For more information, see [Parameter Limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations).
-	 * 
-	 * Note
-	 * ----
-	 * 
-	 * *   Data can be passed from server to client through remote events in the same way data is passed from client to server. Any extra information can be passed in as arguments to the [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient) and FireAllClients functions. Note that the FireClient function still needs to pass the player to send the message to as the first argument.
-	 */
-	FireAllClients(this: RemoteEvent, ...args: Parameters<T>): void;
-	/**
-	 * **FireClient** causes [OnClientEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnClientEvent) to be fired in [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s running for the given [Player](https://developer.roblox.com/en-us/api-reference/class/Player). Additional data passed to this function is then provided to OnClientEvent; beware of [limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations) on this data.
-	 * 
-	 * Since this function is used for communication from server to client, so it will only work when used by a server-side [Script](https://developer.roblox.com/en-us/api-reference/class/Script). For client-to-server communication (the other direction), use [FireServer](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireServer). Direct client-to-client communication not possible on Roblox; however, it can be simulated using a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) that relays information received through some other means, such as [FireServer](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireServer).
-	 * 
-	 * There are limitations on the kinds of data that can be passed between the client and server. For more information, see [Parameter Limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations).
-	 * 
-	 * See also
-	 * --------
-	 * 
-	 * *   [FireAllClients](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireAllClients), which works similarly but for all [Player](https://developer.roblox.com/en-us/api-reference/class/Player)
-	 *     
-	 * *   [Remote Functions and Events](https://developer.roblox.com/articles/Remote-Functions-and-Events), which describes related classes, functions and events and also important limitations on the data that can be sent
-	 *     
-	 * *   Sometimes a game will need to send information from one client to another. Roblox does not support direct client to client contact, so any communication must first go through the server. This is typically done using remote events (although functions could be used if desired). First, the sending client would call FireServer. On the server, the function connected to OnServerEvent would hear this firing, and itself would then call FireClient.
-	 */
-	FireClient(this: RemoteEvent, player: Player, ...args: Parameters<T>): void;
-	/**
-	 * The FireServer event fires the [RemoteEvent.OnServerEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnServerEvent) event on the server using the arguments specified with an additional player argument at the beginning.
-	 * 
-	 * Since this function is used to communicate from the client to the server, it will only work when used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
-	 * 
-	 * When firing from the client note that nothing has to be passed in by default (unlike firing to the client from the server - where the player is passed in).
-	 * 
-	 * The behavior of this function, as well as other [RemoteEvent](https://developer.roblox.com/en-us/api-reference/class/RemoteEvent) and [RemoteFunction](https://developer.roblox.com/en-us/api-reference/class/RemoteFunction) events and functions, is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article.
-	 * 
-	 * There are limitations on the kinds of data that can be passed between the client and server. For more information, see [Parameter Limitations](https://developer.roblox.com/articles/Remote-Functions-and-Events#parameter-limitations).
-	 */
-	FireServer(this: RemoteEvent, ...args: Parameters<T>): void;
-	/**
-	 * The OnClientEvent event fires listening functions in [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) when either [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient) or [RemoteEvent:FireAllClients](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireAllClients) is fired by the server from a [Script](https://developer.roblox.com/en-us/api-reference/class/Script).
-	 * 
-	 * This is used to retrieve remote events fired by the server and intended for the client. This event is in place to provide a method for communicating between the server and client, which is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article. This event retrieves remote events fired by the server to the client.
-	 * 
-	 * To fire from the client to the server, you should use [RemoteEvent:FireServer](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireServer) and [RemoteEvent.OnServerEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnServerEvent).
-	 */
-	readonly OnClientEvent: RBXScriptSignal<T>;
-	/**
-	 * Fires listening functions in [Script](https://developer.roblox.com/en-us/api-reference/class/Script) when [RemoteEvent:FireServer](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireServer) is called from a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
-	 * 
-	 * This is used to retrieve remote events fired by the client and intended for the server. This event is in place to provide a method for communicating between the client and server, which is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article. This event retrieves remote events fired by the client to the server.
-	 * 
-	 * To fire from the server to the client, you should use [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient) and [RemoteEvent.OnClientEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnClientEvent).
-	 */
-	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...args: Array<unknown>) => void>;
-}
-
 /** A server should rarely invoke a client via [InvokeClient()](https://developer.roblox.com/en-us/api-reference/function/RemoteFunction/InvokeClient) as it can be potentially game breaking. For client-only actions that don't require a callback, like updating a GUI, a [server-to-client remote event](#server-to-client-remote-event) should be used instead. If [InvokeClient()](https://developer.roblox.com/en-us/api-reference/function/RemoteFunction/InvokeClient) is used, risks include:
  * 
  * *   If the client throws an error, the server will throw the error too.
@@ -29684,6 +29734,7 @@ interface RomarkService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_RomarkService: unique symbol;
+	EndRemoteRomarkTest(this: RomarkService): void;
 }
 
 /** A sorted list of [RotationCurveKey](https://developer.roblox.com/en-us/api-reference/class/RotationCurveKeys). RotationCurveKeys are value-time points on a curve that dictate the animation curves. It provides a sampling method returning its result as the rotation component of a CFrame. */
@@ -31084,6 +31135,7 @@ interface Sound extends Instance {
 	 * Sounds parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) that are descendants of the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) are considered 3D sounds and their volume whilst playing is dependent on the distance between the client's sound listener ([Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) position by default) and the Sound's parent. Two properties influence this behavior EmitterSize and [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode).
 	 * 
 	 * The way the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) attenuates (fades out) after the distance between the listener and the sound exceeds the EmitterSize is determined by RollOffMode.
+	 * @deprecated Use `RollOffMinDistance` instead
 	 */
 	EmitterSize: number;
 	/**
@@ -31129,12 +31181,14 @@ interface Sound extends Instance {
 	 * How MaxDistance impacts the attenuation of a sound (manner in which it fades out) is dependent on the [Sound.RollOffMode](https://developer.roblox.com/en-us/api-reference/property/Sound/RollOffMode) property. When RollOffMode is set to use an inverse type distance model (Inverse or InverseTapered) the MaxDistance will not effect the attenuation of the sound. This means that low values for MaxDistance will cause the sound to abruptly cut off when the listener reaches the MaxDistance. In most cases this is not desirable and developers are advised not to use low MaxDistance values.
 	 * 
 	 * When RollOffMode is set to a linear type distance model (Linear or LinearSquared) the sound will attenuate between [Sound.EmitterSize](https://developer.roblox.com/en-us/api-reference/property/Sound/EmitterSize) and MaxDistance (with playback volume reaching zero at MaxDistance). This is less realistic, but in some cases allows attenuation to be handled in a more intuitive way.
+	 * @deprecated Use `RollOffMaxDistance` instead
 	 */
 	MaxDistance: number;
 	/**
 	 * The minimum distance at which a 3D [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) (direct child of a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment)) will begin to attenuate. Effectively, the emitter size.
 	 * 
 	 * Deprecated in favor of Sound.EmitterSize.
+	 * @deprecated Use `RollOffMinDistance` instead
 	 */
 	MinDistance: number;
 	/**
