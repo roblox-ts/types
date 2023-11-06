@@ -724,6 +724,8 @@ interface Instance {
 	 * *   If a reference property refers to an object that was **not** cloned, an _external reference_, the same value is maintained in the copy.
 	 * 
 	 * This function is typically used to create models that can be regenerated. First, get a reference to the original object. Then, make a copy of the object and insert the copy by setting its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) to the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace) or one of its descendants. Finally, when it's time to regenerate the model, [Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) the copy and clone a new one from the original like before.
+	 * 
+	 * Clone will return nil if the root object has Archivable set to false.
 	 */
 	Clone<T extends Instance>(this: T): T;
 	/**
@@ -1150,6 +1152,13 @@ interface Instance {
 	 * This event does not fire for physics-related changes, like when the `CFrame`, `Velocity`, `RotVelocity`, `Position`, `Orientation` and `CFrame` properties of a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) change due to gravity. To detect changes in these properties, consider using a physics-based event like `RunService.Stepped` or `BasePart.Touched`. A while-true-do loop can also work.
 	 * 
 	 * For “-Value” objects, this event behaves differently: it only fires when the `Value` property changes. See individual pages for [IntValue](https://developer.roblox.com/en-us/api-reference/class/IntValue), [StringValue](https://developer.roblox.com/en-us/api-reference/class/StringValue), etc for more information. To detect other changes in these objects, you must use `GetPropertyChangedSignal` instead.
+	 * 
+	 * `Instance.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
+	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Instance.Changed` event.
+	 * @example
+	 * function f(p: Part) {
+	 * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
+	 * }
 	 */
 	readonly Changed: unknown;
 	/**
@@ -3483,6 +3492,7 @@ interface BadgeService extends Instance {
 	 * 
 	 * *   [BadgeService:GetBadgeInfoAsync()](https://developer.roblox.com/en-us/api-reference/function/BadgeService/GetBadgeInfoAsync)
 	 * *   [BadgeService:UserHasBadgeAsync()](https://developer.roblox.com/en-us/api-reference/function/BadgeService/UserHasBadgeAsync)
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -3525,6 +3535,7 @@ interface BadgeService extends Instance {
 	 * 
 	 * *   [BadgeService:AwardBadge()](https://developer.roblox.com/en-us/api-reference/function/BadgeService/AwardBadge)
 	 * *   [BadgeService:UserHasBadgeAsync()](https://developer.roblox.com/en-us/api-reference/function/BadgeService/UserHasBadgeAsync)
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -3584,6 +3595,7 @@ interface BadgeService extends Instance {
 	 * 
 	 * *   [BadgeService:GetBadgeInfoAsync()](https://developer.roblox.com/en-us/api-reference/function/BadgeService/GetBadgeInfoAsync)
 	 * *   [BadgeService:AwardBadge()](https://developer.roblox.com/en-us/api-reference/function/BadgeService/AwardBadge)
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -15424,6 +15436,7 @@ interface HttpService extends Instance {
 	 * The GetAsync function sends an HTTP GET request. It functions similarly to [RequestAsync](https://developer.roblox.com/en-us/api-reference/function/HttpService/RequestAsync) except that it accepts HTTP request parameters as method parameters instead of a single dictionary and returns only the body of the HTTP response. Generally, this method is useful only as a shorthand and [RequestAsync](https://developer.roblox.com/en-us/api-reference/function/HttpService/RequestAsync) should to be used in most cases. For a detailed guide on sending and retrieving data via HTTP requests, see the [Sending HTTP Requests](https://developer.roblox.com/articles/Sending-HTTP-requests) article.
 	 * 
 	 * When true, the `nocache` parameter prevents this function from caching results from previous calls with the same `url`.
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -15432,6 +15445,7 @@ interface HttpService extends Instance {
 	 * The PostAsync function sends an HTTP POST request. It functions similarly to [RequestAsync](https://developer.roblox.com/en-us/api-reference/function/HttpService/RequestAsync) except that it accepts HTTP request parameters as method parameters instead of a single dictionary and returns only the body of the HTTP response. Generally, this method is useful only as a shorthand and [RequestAsync](https://developer.roblox.com/en-us/api-reference/function/HttpService/RequestAsync) should to be used in most cases. For a detailed guide on sending and retrieving data via HTTP requests, see the [Sending HTTP Requests](https://developer.roblox.com/articles/Sending-HTTP-requests) article.
 	 * 
 	 * When true, the `compress` parameter controls whether large request bodies will be compressed using gzip.
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -15543,6 +15557,7 @@ interface HttpService extends Instance {
 	 * -----------
 	 * 
 	 * The current limitation for sending and receiving HTTP requests is 500 requests per minute. Requests over this threshold will fail. Additionally, Roblox domains are blacklisted. This means that HTTP requests cannot be sent to any Roblox owned site, such as [www.roblox.com](https://www.roblox.com).
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -24217,6 +24232,7 @@ interface BasePart extends PVInstance {
 	 * ##See Also
 	 * 
 	 * *   [Network ownership](https://developer.roblox.com/articles/Network-Ownership)
+	 * @server
 	 */
 	CanSetNetworkOwnership(this: BasePart): LuaTuple<[boolean, string | undefined]>;
 	GetClosestPointOnSurface(this: BasePart, position: Vector3): Vector3;
@@ -24251,10 +24267,12 @@ interface BasePart extends PVInstance {
 	GetMass(this: BasePart): number;
 	/**
 	 * Returns the current player who is the network owner of this part, or nil in case of the server.
+	 * @server
 	 */
 	GetNetworkOwner(this: BasePart): Player | undefined;
 	/**
 	 * Returns true if the game engine automatically decides the network owner for this part.
+	 * @server
 	 */
 	GetNetworkOwnershipAuto(this: BasePart): boolean;
 	GetNoCollisionConstraints(this: BasePart): Array<Instance>;
@@ -24328,10 +24346,12 @@ interface BasePart extends PVInstance {
 	 * --------
 	 * 
 	 * *   [NetworkOwnership](https://developer.roblox.com/articles/Network-Ownership "NetworkOwnership")
+	 * @server
 	 */
 	SetNetworkOwner(this: BasePart, playerInstance?: Player): void;
 	/**
 	 * Lets the game engine dynamically decide who will handle the part's physics (one of the clients or the server).
+	 * @server
 	 */
 	SetNetworkOwnershipAuto(this: BasePart): void;
 	/**
@@ -24347,6 +24367,7 @@ interface BasePart extends PVInstance {
 	 * local pinkParts = {workspace.PinkPart, workspace.PinkPart2}
 	 * local union = yellowPart:SubtractAsync(pinkParts)
 	 * union.Parent = workspace
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -24420,6 +24441,7 @@ interface BasePart extends PVInstance {
 	 * *   [In Game Solid Modeling](https://developer.roblox.com/en-us/articles/in-game-solid-modeling), create custom plugins for solid modeling techniques like unions, negations, and separations
 	 * *   [3D Modeling with Parts](https://developer.roblox.com/en-us/articles/3d-modeling-with-parts), how to combine and subtract parts to create complex solid shapes
 	 * *   [Making an Arch](https://developer.roblox.com/en-us/articles/making-an-arch), make an arch for your environment using the Negate tool
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -28149,6 +28171,7 @@ interface Player extends Instance {
 	 * 7.  The Character rig builds, and the Character scales
 	 * 8.  Character moves to the spawn location
 	 * 9.  LoadCharacter returns
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -28162,6 +28185,7 @@ interface Player extends Instance {
 	 * --------
 	 * 
 	 * *   [Humanoid Description System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), an article which explains the humanoid description system in greater detail and provides several scripting examples
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -28404,6 +28428,7 @@ interface Players extends Instance {
 	 * local player = Players.LocalPlayer or Players:GetPropertyChangedSignal("LocalPlayer"):wait()
 	 * 
 	 * Doing this isn't for a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) within [StarterGui](https://developer.roblox.com/en-us/api-reference/class/StarterGui), [StarterPlayerScripts](https://developer.roblox.com/en-us/api-reference/class/StarterPlayerScripts) or [StarterCharacterScripts](https://developer.roblox.com/en-us/api-reference/class/StarterCharacterScripts): these scripts can only run after a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) object is already available, and LocalPlayer will have been set by then.
+	 * @client
 	 * 
 	 * Tags: NotReplicated
 	 */
@@ -29508,6 +29533,17 @@ interface RemoteEvent<T extends Callback = Callback> extends Instance {
 	 * This is used to retrieve remote events fired by the client and intended for the server. This event is in place to provide a method for communicating between the client and server, which is well documented in [this](https://developer.roblox.com/articles/Remote-Functions-and-Events) article. This event retrieves remote events fired by the client to the server.
 	 * 
 	 * To fire from the server to the client, you should use [RemoteEvent:FireClient](https://developer.roblox.com/en-us/api-reference/function/RemoteEvent/FireClient) and [RemoteEvent.OnClientEvent](https://developer.roblox.com/en-us/api-reference/event/RemoteEvent/OnClientEvent).
+	 * 
+	 * The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
+	 * ```ts
+	 * (new Instance("RemoteEvent") as RemoteEvent<(num: number) => void>).OnServerEvent.Connect((plr, num) => {
+	 *     if (typeIs(num, "number") && num === num) {
+	 *         print(`Yay! Valid number: ${num}`);
+	 *     } else {
+	 *         print(`Bad argument received from ${plr.Name}! Exploit or bug?`);
+	 *     }
+	 * });
+	 * ```
 	 */
 	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...args: Array<unknown>) => void>;
 }
@@ -29591,6 +29627,18 @@ interface RemoteFunction<T extends Callback = Callback> extends Instance {
 	 */
 	readonly RemoteOnInvokeSuccess: RBXScriptSignal<(id: number, arguments: Array<any>) => void>;
 	OnClientInvoke: T | undefined;
+	/**
+	 * The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
+	 * ```ts
+	 * (new Instance("RemoteFunction") as RemoteFunction<(num: number) => void>).OnServerInvoke = (plr, num) => {
+	 *     if (typeIs(num, "number") && num === num) {
+	 *         print(`Yay! Valid number: ${num}`);
+	 *     } else {
+	 *         print(`Bad argument received from ${plr.Name}! Exploit or bug?`);
+	 *     }
+	 * };
+	 * ```
+	 */
 	OnServerInvoke: ((player: Player, ...args: Array<unknown>) => void) | undefined;
 }
 
@@ -30220,6 +30268,7 @@ interface ScriptContext extends Instance {
 	readonly _nominal_ScriptContext: unique symbol;
 	/**
 	 * Fired when an error occurs.
+	 * `script` will be `undefined` if the error originates from either the command bar or the F9 console
 	 */
 	readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script?: LuaSourceContainer) => void>;
 }
@@ -33221,12 +33270,14 @@ interface TeleportService extends Instance {
 	 * -----------------
 	 * 
 	 * This service does not work during playtesting in Roblox Studio — To test aspects of your game using it, you must publish the game and play it in the Roblox application.
+	 * @client
 	 */
 	GetArrivingTeleportGui(this: TeleportService): ScreenGui | undefined;
 	/**
 	 * This function returns the teleport data the [Players.LocalPlayer](https://developer.roblox.com/en-us/api-reference/property/Players/LocalPlayer) arrived with. It can only be called from the client.
 	 * 
 	 * Exploiters can spoof teleport data. Send secure data such as player currency through a server-side service such as \`DataStoreService\` to prevent tampering.
+	 * @client
 	 */
 	GetLocalPlayerTeleportData(this: TeleportService): unknown;
 	/**
@@ -33265,6 +33316,7 @@ interface TeleportService extends Instance {
 	 * -----------------
 	 * 
 	 * This service does not work during playtesting in Roblox Studio — To test aspects of your game using it, you must publish the game and play it in the Roblox application.
+	 * @client
 	 */
 	GetTeleportSetting(this: TeleportService, setting: string): unknown;
 	/**
@@ -33287,6 +33339,7 @@ interface TeleportService extends Instance {
 	 * -----------------
 	 * 
 	 * This service does not work during playtesting in Roblox Studio — To test aspects of your game using it, you must publish the game and play it in the Roblox application.
+	 * @client
 	 */
 	SetTeleportGui(this: TeleportService, gui: ScreenGui): void;
 	/**
@@ -33333,6 +33386,7 @@ interface TeleportService extends Instance {
 	 * -----------------
 	 * 
 	 * This service does not work during playtesting in Roblox Studio — To test aspects of your game using it, you must publish the game and play it in the Roblox application.
+	 * @client
 	 */
 	SetTeleportSetting(this: TeleportService, setting: string, value: TeleportData): void;
 	/**
@@ -33641,6 +33695,7 @@ interface TeleportService extends Instance {
 	 * --------
 	 * 
 	 * *   For the [PlaceIds](https://developer.roblox.com/en-us/api-reference/property/DataModel/PlaceId) and [JobIds](https://developer.roblox.com/en-us/api-reference/property/DataModel/JobId) of a [Player's](https://developer.roblox.com/en-us/api-reference/class/Player) friends, use [Player:GetFriendsOnline](https://developer.roblox.com/en-us/api-reference/function/Player/GetFriendsOnline)
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -33674,6 +33729,7 @@ interface TeleportService extends Instance {
 	 * -------------------
 	 * 
 	 * Players on Xbox One with cross-platform play disabled will arrive in a different server with players with cross-platform play enabled. This can cause multiple game servers with the same PrivateServerId to exist.
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -33733,6 +33789,7 @@ interface TeleportService extends Instance {
 	 * --------
 	 * 
 	 * For an in-depth guide on teleporting players and properly handling teleport failures, see the [Teleporting Between Places](https://developer.roblox.com/articles/Teleporting-Between-Places) article.
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -34007,7 +34064,13 @@ interface TextChannel extends Instance {
 	 */
 	SendAsync(this: TextChannel, message: string, metadata?: string): TextChatMessage;
 	readonly MessageReceived: RBXScriptSignal<(incomingMessage: TextChatMessage) => void>;
+	/**
+	 * @client
+	 */
 	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
+	/**
+	 * @server
+	 */
 	ShouldDeliverCallback: (message: TextChatMessage, textSource: TextSource) => boolean;
 }
 
@@ -34198,7 +34261,13 @@ interface TextChatService extends Instance {
 	readonly BubbleDisplayed: RBXScriptSignal<(partOrCharacter: BasePart | Model, textChatMessage: TextChatMessage) => void>;
 	readonly MessageReceived: RBXScriptSignal<(textChatMessage: TextChatMessage) => void>;
 	readonly SendingMessage: RBXScriptSignal<(textChatMessage: TextChatMessage) => void>;
+	/**
+	 * @client
+	 */
 	OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => TextChatMessageProperties | undefined;
+	/**
+	 * @client
+	 */
 	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
 }
 
@@ -34320,6 +34389,7 @@ interface TextService extends Instance {
 	 * *   This method always yields to make a text filtering service call
 	 * *   This method may throw if there is a service error that can not be resolved. If this function throws an error please do not retry the request; this method implements it's own retry logic internally. If this method fails do not display the text to any user.
 	 * *   This method currently throws if _fromUserId_ is not online on the current server. We plan to support users who are offline or on a different server in the future.
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
@@ -37465,6 +37535,7 @@ interface UserService extends Instance {
 	 * *   It's possible to receive less `UserInfoResponse` objects than requested if one or more of the `userIds` in the request array are invalid, such as negative numbers or user ID's that don't have accounts associated with them. It's possible to receive a response with zero results if all userIds are invalid.
 	 * *   If a Roblox user does not have a display name associated with their account, the function will return instead the same string as the user's username in the `DisplayName` field. See [Player.DisplayName](https://developer.roblox.com/api-reference/property/Player/DisplayName). While a user's UserId will never change, a user may change their username or display name. The same input `UserIds` may return a different string for these fields from one day to another.
 	 * *   Since `GetUserInfosByUserIdsAsync()` makes an external web request, it will yield and may fail if the backend service is experiencing interruptions. Ensure you can handle downtime appropriately by wrapping the method with a pcall.
+	 * @server
 	 * 
 	 * Tags: Yields
 	 */
