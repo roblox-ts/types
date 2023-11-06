@@ -1400,5 +1400,7 @@ export class ClassGenerator extends Generator {
 		this.generateHeader();
 		this.generateInstancesTables(rbxClasses.filter(rbxClass => !this.definedClassNames.has(rbxClass.Name)));
 		this.generateClasses(rbxClasses, sourceFile);
+
+		await this.finish();
 	}
 }
