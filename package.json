@@ -31,7 +31,7 @@
 		"@rbxts/compiler-types": "^2.2.0-types.0",
 		"@types/fs-extra": "^11.0.3",
 		"@types/jsdom": "^21.1.4",
-		"@types/libxmljs": "^0.18.11",
+		"@types/libxmljs": "^0.18.12",
 		"@types/node": "^20.8.10",
 		"@types/showdown": "^2.0.3",
 		"@typescript-eslint/eslint-plugin": "^6.9.1",
