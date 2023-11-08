@@ -5,6 +5,7 @@
 /// <reference path="enums.d.ts" />
 
 interface Services {
+	AccountService: AccountService;
 	AnalyticsService: AnalyticsService;
 	AnimationClipProvider: AnimationClipProvider;
 	AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
@@ -261,9 +262,9 @@ interface CreatableInstances {
 	DoubleConstrainedValue: DoubleConstrainedValue;
 	DragDetector: DragDetector;
 	Dragger: Dragger;
-	DynamicMesh: DynamicMesh;
 	EchoSoundEffect: EchoSoundEffect;
 	EditableImage: EditableImage;
+	EditableMesh: EditableMesh;
 	EqualizerSoundEffect: EqualizerSoundEffect;
 	EulerRotationCurve: EulerRotationCurve;
 	ExperienceInviteOptions: ExperienceInviteOptions;
@@ -1254,6 +1255,17 @@ interface AccessoryDescription extends Instance {
 	IsLayered: boolean;
 	Order: number;
 	Puffiness: number;
+}
+
+interface AccountService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AccountService: unique symbol;
 }
 
 /** An Accoutrement is an object that welds its child [part](https://developer.roblox.com/en-us/api-reference/class/Part) called “Handle” to the Head of a player's character. The position and rotation of the Handle part can be changed with the [AttachmentPos](https://developer.roblox.com/en-us/api-reference/property/Accoutrement/AttachmentPos)/[Right](https://developer.roblox.com/en-us/api-reference/property/Accoutrement/AttachmentRight)/[Forward](https://developer.roblox.com/en-us/api-reference/property/Accoutrement/AttachmentForward)/[Up](https://developer.roblox.com/en-us/api-reference/property/Accoutrement/AttachmentUp) properties.
@@ -2303,11 +2315,15 @@ interface AssetService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	CreateDynamicMeshAsync(this: AssetService, meshId: string): DynamicMesh;
+	CreateEditableImageAsync(this: AssetService, textureId: string): EditableImage;
 	/**
 	 * Tags: Yields
 	 */
-	CreateEditableImageAsync(this: AssetService, textureId: string): EditableImage;
+	CreateEditableMeshAsync(this: AssetService, meshId: string): EditableMesh;
+	/**
+	 * Tags: Yields
+	 */
+	CreateEditableMeshFromPartAsync(this: AssetService, meshPart: MeshPart): EditableMesh;
 	/**
 	 * Clones a place with placeId equal to given templatePlaceId. It is placed into the inventory of the place's creator with the given name and description. This method will also return the placeId of the new place, which can be used with TeleportService. This method cannot be used to clone places that you do not own.
 	 * 
@@ -2439,10 +2455,6 @@ interface AssetService extends Instance {
 	 * Tags: Yields
 	 */
 	SearchAudio(this: AssetService, searchParameters: AudioSearchParams): AudioPages;
-	/**
-	 * Tags: Yields
-	 */
-	createDynamicMeshFromPartAsync(this: AssetService, meshPart: MeshPart): DynamicMesh;
 }
 
 /** **Note**  
@@ -9534,7 +9546,7 @@ interface CylinderMesh extends BevelMesh {
 	readonly _nominal_CylinderMesh: unique symbol;
 }
 
-interface DynamicMesh extends DataModelMesh {
+interface EditableMesh extends DataModelMesh {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -9542,38 +9554,38 @@ interface DynamicMesh extends DataModelMesh {
 	 * @hidden
 	 * @deprecated
 	 */
-	readonly _nominal_DynamicMesh: unique symbol;
+	readonly _nominal_EditableMesh: unique symbol;
 	/**
 	 * Tags: Hidden
 	 */
 	readonly MeshVersion: number;
-	AddTriangle(this: DynamicMesh, vertexId0: number, vertexId1: number, vertexId2: number): number;
-	AddVertex(this: DynamicMesh, p: Vector3): number;
-	FindClosestPointOnSurface(this: DynamicMesh, point: Vector3): unknown;
-	FindClosestVertex(this: DynamicMesh, toThisPoint: Vector3): number;
-	FindVerticesWithinSphere(this: DynamicMesh, center: Vector3, radius: number): unknown;
-	GetAdjacentTriangles(this: DynamicMesh, triangleId: number): unknown;
-	GetAdjacentVertices(this: DynamicMesh, vertexId: number): unknown;
-	GetPosition(this: DynamicMesh, vertexId: number): Vector3;
-	GetTriangleVertices(this: DynamicMesh, triangleId: number): unknown;
-	GetTriangles(this: DynamicMesh): unknown;
-	GetUV(this: DynamicMesh, vertexId: number): Vector2;
-	GetVertexColor(this: DynamicMesh, vertexId: number): Color3;
-	GetVertexColorAlpha(this: DynamicMesh, vertexId: number): number;
-	GetVertexNormal(this: DynamicMesh, vertexId: number): Vector3;
-	GetVertices(this: DynamicMesh): unknown;
-	Raycast(this: DynamicMesh, origin: Vector3, direction: Vector3): unknown;
-	RemoveTriangle(this: DynamicMesh, triangleId: number): void;
-	RemoveVertex(this: DynamicMesh, vertexId: number): void;
-	SetPosition(this: DynamicMesh, vertexId: number, p: Vector3): void;
-	SetUV(this: DynamicMesh, vertexId: number, uv: Vector2): void;
-	SetVertexColor(this: DynamicMesh, vertexId: number, color: Color3): void;
-	SetVertexColorAlpha(this: DynamicMesh, vertexId: number, alpha: number): void;
-	SetVertexNormal(this: DynamicMesh, vertexId: number, vnormal: Vector3): void;
+	AddTriangle(this: EditableMesh, vertexId0: number, vertexId1: number, vertexId2: number): number;
+	AddVertex(this: EditableMesh, p: Vector3): number;
+	FindClosestPointOnSurface(this: EditableMesh, point: Vector3): unknown;
+	FindClosestVertex(this: EditableMesh, toThisPoint: Vector3): number;
+	FindVerticesWithinSphere(this: EditableMesh, center: Vector3, radius: number): unknown;
+	GetAdjacentTriangles(this: EditableMesh, triangleId: number): unknown;
+	GetAdjacentVertices(this: EditableMesh, vertexId: number): unknown;
+	GetPosition(this: EditableMesh, vertexId: number): Vector3;
+	GetTriangleVertices(this: EditableMesh, triangleId: number): unknown;
+	GetTriangles(this: EditableMesh): unknown;
+	GetUV(this: EditableMesh, vertexId: number): Vector2;
+	GetVertexColor(this: EditableMesh, vertexId: number): Color3;
+	GetVertexColorAlpha(this: EditableMesh, vertexId: number): number;
+	GetVertexNormal(this: EditableMesh, vertexId: number): Vector3;
+	GetVertices(this: EditableMesh): unknown;
+	Raycast(this: EditableMesh, origin: Vector3, direction: Vector3): unknown;
+	RemoveTriangle(this: EditableMesh, triangleId: number): void;
+	RemoveVertex(this: EditableMesh, vertexId: number): void;
+	SetPosition(this: EditableMesh, vertexId: number, p: Vector3): void;
+	SetUV(this: EditableMesh, vertexId: number, uv: Vector2): void;
+	SetVertexColor(this: EditableMesh, vertexId: number, color: Color3): void;
+	SetVertexColorAlpha(this: EditableMesh, vertexId: number, alpha: number): void;
+	SetVertexNormal(this: EditableMesh, vertexId: number, vnormal: Vector3): void;
 	/**
 	 * Tags: Yields
 	 */
-	CreateMeshPartAsync(this: DynamicMesh, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>): MeshPart;
+	CreateMeshPartAsync(this: EditableMesh, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>): MeshPart;
 }
 
 /** The FileMesh object applies a textured mesh to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) when parented to it. Its properties are inherited by the [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh) object.
@@ -14389,9 +14401,6 @@ interface ScreenGui extends LayerCollector {
 	 * @deprecated
 	 */
 	readonly _nominal_ScreenGui: unique symbol;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	ClipToDeviceSafeArea: boolean;
 	/**
 	 * This property controls the order that multiple ScreenGuis are drawn.
@@ -14403,9 +14412,6 @@ interface ScreenGui extends LayerCollector {
 	 * IgnoreGuiInset is a boolean property of ScreenGuis that, when set to true, will force the [GUI Inset](https://developer.roblox.com/en-us/api-reference/function/GuiService/GetGuiInset) imposed by Roblox's CoreGuis to be ignored by this ScreenGui and its descendants. This means that an element with a UDim2 size of `{1,0},{1,0}` will fill up the entire screen, without a 36 pixel gap reserved for Roblox's top bar.
 	 */
 	IgnoreGuiInset: boolean;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	SafeAreaCompatibility: Enum.SafeAreaCompatibility;
 	/**
 	 * Tags: NotBrowsable
@@ -31050,7 +31056,6 @@ interface SocialService extends Instance {
 	 * Before using this function, you should use the [CanSendGameInviteAsync](https://developer.roblox.com/en-us/api-reference/function/SocialService/CanSendGameInviteAsync) function to determine whether a player can send a game invite, as this can vary depending on the platform or player. After determining that invites are possible for this player, allow the player to opt-in to inviting others. For example, the player clicked on an “Invite Friends” button, shown after `CanSendGameInviteAsync` returned true.\`
 	 */
 	PromptGameInvite(this: SocialService, player: Player, experienceInviteOptions?: ExperienceInviteOptions): void;
-	PromptIrisInvite(this: SocialService, player: Player, tag: string): void;
 	PromptPhoneBook(this: SocialService, player: Player, tag: string): void;
 	ShowSelfView(this: SocialService, selfViewPosition?: CastsToEnum<Enum.SelfViewPosition>): void;
 	/**
@@ -31065,10 +31070,6 @@ interface SocialService extends Instance {
 	 * Tags: Yields
 	 */
 	CanSendGameInviteAsync(this: SocialService, player: Player, recipientId?: number): boolean;
-	/**
-	 * Tags: Yields
-	 */
-	CanSendIrisInviteAsync(this: SocialService, player: Player): boolean;
 	readonly CallInviteStateChanged: RBXScriptSignal<(player: Player, inviteState: Enum.InviteState) => void>;
 	/**
 	 * This event is a signal invoked when a player has closed the game invite prompt and batches all users and conversation participants into a single array. This prompt can be prompted by the developer or accessed from the SettingsHub menu.
@@ -31095,10 +31096,8 @@ interface SocialService extends Instance {
 	 * *   [SocialService:CanSendGameInviteAsync](https://developer.roblox.com/en-us/api-reference/function/SocialService/CanSendGameInviteAsync), returns true or false depending on the user
 	 */
 	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
-	readonly IrisInvitePromptClosed: RBXScriptSignal<(player: Player) => void>;
 	readonly PhoneBookPromptClosed: RBXScriptSignal<(player: Player) => void>;
 	OnCallInviteInvoked: (tag: string, callParticipantIds: Array<any>) => Instance;
-	OnIrisInviteInvoked: (tag: string, irisParticipantIds: Array<any>) => Instance;
 }
 
 /** A [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) is an object that emits sound. See [Adding Sounds](https://developer.roblox.com/en-us/articles/adding-sounds) for more info on how to upload a sound file.
