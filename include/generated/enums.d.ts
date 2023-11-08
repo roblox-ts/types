@@ -434,6 +434,38 @@ declare namespace Enum {
 	export type AdornCullingMode = AdornCullingMode.Automatic | AdornCullingMode.Never;
 
 	export namespace AlignType {
+		export interface PrimaryAxisParallel extends globalThis.EnumItem {
+			Name: "PrimaryAxisParallel";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AlignType;
+		}
+
+		export const PrimaryAxisParallel: PrimaryAxisParallel;
+
+		export interface PrimaryAxisPerpendicular extends globalThis.EnumItem {
+			Name: "PrimaryAxisPerpendicular";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.AlignType;
+		}
+
+		export const PrimaryAxisPerpendicular: PrimaryAxisPerpendicular;
+
+		export interface PrimaryAxisLookAt extends globalThis.EnumItem {
+			Name: "PrimaryAxisLookAt";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.AlignType;
+		}
+
+		export const PrimaryAxisLookAt: PrimaryAxisLookAt;
+
+		export interface AllAxes extends globalThis.EnumItem {
+			Name: "AllAxes";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.AlignType;
+		}
+
+		export const AllAxes: AllAxes;
+
 		export interface Parallel extends globalThis.EnumItem {
 			Name: "Parallel";
 			Value: 0;
@@ -452,7 +484,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AlignType>;
 	}
-	export type AlignType = AlignType.Parallel | AlignType.Perpendicular;
+	export type AlignType = AlignType.PrimaryAxisParallel | AlignType.PrimaryAxisPerpendicular | AlignType.PrimaryAxisLookAt | AlignType.AllAxes | AlignType.Parallel | AlignType.Perpendicular;
 
 	export namespace AlphaMode {
 		export interface Overlay extends globalThis.EnumItem {
@@ -4541,6 +4573,14 @@ declare namespace Enum {
 
 		export const NetworkSecurity: NetworkSecurity;
 
+		export interface ReplacementReady extends globalThis.EnumItem {
+			Name: "ReplacementReady";
+			Value: 301;
+			EnumType: typeof globalThis.Enum.ConnectionError;
+		}
+
+		export const ReplacementReady: ReplacementReady;
+
 		export interface PlacelaunchErrors extends globalThis.EnumItem {
 			Name: "PlacelaunchErrors";
 			Value: 512;
@@ -4735,7 +4775,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ConnectionError>;
 	}
-	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 
 	export namespace ConnectionState {
 		export interface Connected extends globalThis.EnumItem {
@@ -13762,6 +13802,91 @@ declare namespace Enum {
 	}
 	export type PromptCreateAssetResult = PromptCreateAssetResult.Success | PromptCreateAssetResult.PermissionDenied | PromptCreateAssetResult.Timeout | PromptCreateAssetResult.UploadFailed | PromptCreateAssetResult.NoUserInput | PromptCreateAssetResult.UnknownFailure;
 
+	export namespace PromptCreateAvatarResult {
+		export interface Success extends globalThis.EnumItem {
+			Name: "Success";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.PromptCreateAvatarResult;
+		}
+
+		export const Success: Success;
+
+		export interface PermissionDenied extends globalThis.EnumItem {
+			Name: "PermissionDenied";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.PromptCreateAvatarResult;
+		}
+
+		export const PermissionDenied: PermissionDenied;
+
+		export interface Timeout extends globalThis.EnumItem {
+			Name: "Timeout";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.PromptCreateAvatarResult;
+		}
+
+		export const Timeout: Timeout;
+
+		export interface UploadFailed extends globalThis.EnumItem {
+			Name: "UploadFailed";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.PromptCreateAvatarResult;
+		}
+
+		export const UploadFailed: UploadFailed;
+
+		export interface NoUserInput extends globalThis.EnumItem {
+			Name: "NoUserInput";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.PromptCreateAvatarResult;
+		}
+
+		export const NoUserInput: NoUserInput;
+
+		export interface InvalidHumanoidDescription extends globalThis.EnumItem {
+			Name: "InvalidHumanoidDescription";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.PromptCreateAvatarResult;
+		}
+
+		export const InvalidHumanoidDescription: InvalidHumanoidDescription;
+
+		export interface UGCValidationFailed extends globalThis.EnumItem {
+			Name: "UGCValidationFailed";
+			Value: 7;
+			EnumType: typeof globalThis.Enum.PromptCreateAvatarResult;
+		}
+
+		export const UGCValidationFailed: UGCValidationFailed;
+
+		export interface ModeratedName extends globalThis.EnumItem {
+			Name: "ModeratedName";
+			Value: 8;
+			EnumType: typeof globalThis.Enum.PromptCreateAvatarResult;
+		}
+
+		export const ModeratedName: ModeratedName;
+
+		export interface MaxOutfits extends globalThis.EnumItem {
+			Name: "MaxOutfits";
+			Value: 9;
+			EnumType: typeof globalThis.Enum.PromptCreateAvatarResult;
+		}
+
+		export const MaxOutfits: MaxOutfits;
+
+		export interface UnknownFailure extends globalThis.EnumItem {
+			Name: "UnknownFailure";
+			Value: 10;
+			EnumType: typeof globalThis.Enum.PromptCreateAvatarResult;
+		}
+
+		export const UnknownFailure: UnknownFailure;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PromptCreateAvatarResult>;
+	}
+	export type PromptCreateAvatarResult = PromptCreateAvatarResult.Success | PromptCreateAvatarResult.PermissionDenied | PromptCreateAvatarResult.Timeout | PromptCreateAvatarResult.UploadFailed | PromptCreateAvatarResult.NoUserInput | PromptCreateAvatarResult.InvalidHumanoidDescription | PromptCreateAvatarResult.UGCValidationFailed | PromptCreateAvatarResult.ModeratedName | PromptCreateAvatarResult.MaxOutfits | PromptCreateAvatarResult.UnknownFailure;
+
 	export namespace PromptPublishAssetResult {
 		export interface Success extends globalThis.EnumItem {
 			Name: "Success";
@@ -16182,6 +16307,27 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioDataModelType>;
 	}
 	export type StudioDataModelType = StudioDataModelType.Edit | StudioDataModelType.PlayClient | StudioDataModelType.PlayServer | StudioDataModelType.Standalone | StudioDataModelType.None;
+
+	export namespace StudioPlaceUpdateFailureReason {
+		export interface Other extends globalThis.EnumItem {
+			Name: "Other";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.StudioPlaceUpdateFailureReason;
+		}
+
+		export const Other: Other;
+
+		export interface TeamCreateConflict extends globalThis.EnumItem {
+			Name: "TeamCreateConflict";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.StudioPlaceUpdateFailureReason;
+		}
+
+		export const TeamCreateConflict: TeamCreateConflict;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioPlaceUpdateFailureReason>;
+	}
+	export type StudioPlaceUpdateFailureReason = StudioPlaceUpdateFailureReason.Other | StudioPlaceUpdateFailureReason.TeamCreateConflict;
 
 	export namespace StudioScriptEditorColorCategories {
 		export interface Default extends globalThis.EnumItem {
