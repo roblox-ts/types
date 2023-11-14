@@ -603,7 +603,7 @@ interface MemoryStoreSortedMap extends Instance {
 		transformFunction: (value: unknown) => T,
 		expiration: number,
 	): T;
-	SetAsync<T>(
+	SetAsync(
 		this: MemoryStoreSortedMap,
 		key: string,
 		value: unknown,
