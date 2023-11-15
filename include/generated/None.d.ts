@@ -152,6 +152,7 @@ interface Services {
 	TextBoxService: TextBoxService;
 	TextChatService: TextChatService;
 	TextService: TextService;
+	TextureGenerationMeshHandler: TextureGenerationMeshHandler;
 	ToastNotificationService: ToastNotificationService;
 	TracerService: TracerService;
 	TutorialService: TutorialService;
@@ -19216,6 +19217,7 @@ interface InsertService extends Instance {
 	 * Returns an array of dictionaries, containing information about various Roblox approved sets.
 	 * 
 	 * Tags: Yields
+	 * @deprecated
 	 */
 	GetBaseSets(this: InsertService): Array<SetInfo>;
 	/**
@@ -24304,6 +24306,7 @@ interface BasePart extends PVInstance {
 	 * @deprecated Use `AssemblyLinearVelocity` instead
 	 */
 	Velocity: Vector3;
+	AngularAccelerationToTorque(this: BasePart, angAcceleration: Vector3, angVelocity?: Vector3): Vector3;
 	/**
 	 * Applies an instant angular force impulse to this [part's](https://developer.roblox.com/en-us/api-reference/class/BasePart) assembly, causing the assembly to spin.
 	 * 
@@ -24468,6 +24471,7 @@ interface BasePart extends PVInstance {
 	 * Lets the game engine dynamically decide who will handle the part's physics (one of the clients or the server).
 	 */
 	SetNetworkOwnershipAuto(this: BasePart): void;
+	TorqueToAngularAcceleration(this: BasePart, torque: Vector3, angVelocity?: Vector3): Vector3;
 	/**
 	 * Tags: Yields
 	 */
@@ -26229,6 +26233,7 @@ interface WorldRoot extends Model {
 		direction: Vector3,
 		raycastParams?: RaycastParams,
 	): RaycastResult | undefined;
+	Shapecast(this: WorldRoot, part: BasePart, direction: Vector3, params?: RaycastParams): RaycastResult;
 	Spherecast(
 		this: WorldRoot,
 		position: Vector3,
@@ -32516,6 +32521,10 @@ interface StarterPlayer extends Instance {
 	 */
 	LoadCharacterAppearance: boolean;
 	/**
+	 * Tags: NotBrowsable
+	 */
+	LuaCharacterController: Enum.CharacterControlMode;
+	/**
 	 * Sets the distance at which this player will see other Humanoid's names. If set to 0, names are hidden.
 	 * 
 	 * The NameDisplayDistance [StarterPlayer](https://developer.roblox.com/en-us/api-reference/class/StarterPlayer) property sets the distance in studs at which this player will see other [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid)'s names. If set to 0, names are hidden. This property is set to 100 studs by default.
@@ -34406,6 +34415,17 @@ interface TextSource extends Instance {
 	 * Tags: NotReplicated
 	 */
 	readonly UserId: number;
+}
+
+interface TextureGenerationMeshHandler extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TextureGenerationMeshHandler: unique symbol;
 }
 
 interface ThreadState extends Instance {
