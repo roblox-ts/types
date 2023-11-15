@@ -3476,6 +3476,43 @@ declare namespace Enum {
 	}
 	export type CenterDialogType = CenterDialogType.UnsolicitedDialog | CenterDialogType.PlayerInitiatedDialog | CenterDialogType.ModalDialog | CenterDialogType.QuitDialog;
 
+	export namespace CharacterControlMode {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.CharacterControlMode;
+		}
+
+		export const Default: Default;
+
+		export interface Legacy extends globalThis.EnumItem {
+			Name: "Legacy";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.CharacterControlMode;
+		}
+
+		export const Legacy: Legacy;
+
+		export interface NoCharacterController extends globalThis.EnumItem {
+			Name: "NoCharacterController";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.CharacterControlMode;
+		}
+
+		export const NoCharacterController: NoCharacterController;
+
+		export interface LuaCharacterController extends globalThis.EnumItem {
+			Name: "LuaCharacterController";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.CharacterControlMode;
+		}
+
+		export const LuaCharacterController: LuaCharacterController;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CharacterControlMode>;
+	}
+	export type CharacterControlMode = CharacterControlMode.Default | CharacterControlMode.Legacy | CharacterControlMode.NoCharacterController | CharacterControlMode.LuaCharacterController;
+
 	export namespace ChatCallbackType {
 		export interface OnCreatingChatWindow extends globalThis.EnumItem {
 			Name: "OnCreatingChatWindow";
@@ -13448,6 +13485,35 @@ declare namespace Enum {
 	}
 	export type PlayerActions = PlayerActions.CharacterForward | PlayerActions.CharacterBackward | PlayerActions.CharacterLeft | PlayerActions.CharacterRight | PlayerActions.CharacterJump;
 
+	export namespace PlayerCharacterDestroyBehavior {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.PlayerCharacterDestroyBehavior;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.PlayerCharacterDestroyBehavior;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled extends globalThis.EnumItem {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.PlayerCharacterDestroyBehavior;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PlayerCharacterDestroyBehavior>;
+	}
+	export type PlayerCharacterDestroyBehavior = PlayerCharacterDestroyBehavior.Default | PlayerCharacterDestroyBehavior.Disabled | PlayerCharacterDestroyBehavior.Enabled;
+
 	export namespace PlayerChatType {
 		export interface All extends globalThis.EnumItem {
 			Name: "All";
@@ -18757,6 +18823,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextYAlignment>;
 	}
 	export type TextYAlignment = TextYAlignment.Top | TextYAlignment.Center | TextYAlignment.Bottom;
+
+	export namespace TextureGenerationMeshHandlerUnwrapMode {
+		export interface Never extends globalThis.EnumItem {
+			Name: "Never";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.TextureGenerationMeshHandlerUnwrapMode;
+		}
+
+		export const Never: Never;
+
+		export interface Always extends globalThis.EnumItem {
+			Name: "Always";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.TextureGenerationMeshHandlerUnwrapMode;
+		}
+
+		export const Always: Always;
+
+		export interface WhenInvalidUVsDetected extends globalThis.EnumItem {
+			Name: "WhenInvalidUVsDetected";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.TextureGenerationMeshHandlerUnwrapMode;
+		}
+
+		export const WhenInvalidUVsDetected: WhenInvalidUVsDetected;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextureGenerationMeshHandlerUnwrapMode>;
+	}
+	export type TextureGenerationMeshHandlerUnwrapMode = TextureGenerationMeshHandlerUnwrapMode.Never | TextureGenerationMeshHandlerUnwrapMode.Always | TextureGenerationMeshHandlerUnwrapMode.WhenInvalidUVsDetected;
 
 	export namespace TextureMode {
 		export interface Stretch extends globalThis.EnumItem {
