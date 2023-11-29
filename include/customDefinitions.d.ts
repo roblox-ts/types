@@ -867,6 +867,10 @@ interface Studio extends Instance {
 	Theme: StudioTheme;
 }
 
+interface StudioService extends Instance {
+	ActiveScript: LuaSourceContainer | undefined;
+}
+
 interface SurfaceGuiBase extends LayerCollector {
 	Adornee: BasePart | undefined;
 }
