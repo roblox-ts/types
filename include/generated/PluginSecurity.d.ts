@@ -3754,7 +3754,7 @@ interface StudioService extends Instance {
 	 *
 	 * Tags: NotReplicated
 	 */
-	ActiveScript: LuaSourceContainer | undefined;
+	readonly ActiveScript: Instance | undefined;
 	/**
 	 * Tags: NotReplicated
 	 */

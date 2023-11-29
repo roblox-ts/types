@@ -868,7 +868,7 @@ interface Studio extends Instance {
 }
 
 interface StudioService extends Instance {
-	ActiveScript: LuaSourceContainer | undefined;
+	readonly ActiveScript: LuaSourceContainer | undefined;
 }
 
 interface SurfaceGuiBase extends LayerCollector {
