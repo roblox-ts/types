@@ -1671,6 +1671,35 @@ declare namespace Enum {
 	}
 	export type AssetTypeVerification = AssetTypeVerification.Default | AssetTypeVerification.ClientOnly | AssetTypeVerification.Always;
 
+	export namespace AudioApiRollout {
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AudioApiRollout;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Automatic extends globalThis.EnumItem {
+			Name: "Automatic";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AudioApiRollout;
+		}
+
+		export const Automatic: Automatic;
+
+		export interface Enabled extends globalThis.EnumItem {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AudioApiRollout;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioApiRollout>;
+	}
+	export type AudioApiRollout = AudioApiRollout.Disabled | AudioApiRollout.Automatic | AudioApiRollout.Enabled;
+
 	export namespace AudioSubType {
 		export interface Music extends globalThis.EnumItem {
 			Name: "Music";

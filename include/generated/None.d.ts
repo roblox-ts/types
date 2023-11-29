@@ -322,7 +322,7 @@ interface CreatableInstances {
 	NumberPose: NumberPose;
 	NumberValue: NumberValue;
 	ObjectValue: ObjectValue;
-	OperationTree: OperationTree;
+	OperationGraph: OperationGraph;
 	Pants: Pants;
 	Part: Part;
 	ParticleEmitter: ParticleEmitter;
@@ -6631,6 +6631,8 @@ interface CaptureService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_CaptureService: unique symbol;
+	PromptShareCapture(this: CaptureService, contentId: string, launchData: object, onAcceptedCallback: Callback, onDeniedCallback: Callback): void;
+	readonly UserCaptureSaved: RBXScriptSignal<(captureContentId: string) => void>;
 }
 
 /** Base class for objects that change a character's appearance. */
@@ -7496,6 +7498,14 @@ interface Constraint extends Instance {
 	 * Toggles the visibility of this Constraint.
 	 */
 	Visible: boolean;
+	/**
+	 * @deprecated
+	 */
+	GetDebugAppliedForce(this: Constraint, bodyId: number): Vector3;
+	/**
+	 * @deprecated
+	 */
+	GetDebugAppliedTorque(this: Constraint, bodyId: number): Vector3;
 }
 
 /** An AlignOrientation attempts to constrain its [Attachment0](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment0)'s orientation to the goal orientation, which is determined by [Attachment1](https://developer.roblox.com/en-us/api-reference/property/Constraint/Attachment1) or [CFrame](https://developer.roblox.com/en-us/api-reference/property/AlignOrientation/CFrame) depending on the [Mode](https://developer.roblox.com/en-us/api-reference/property/AlignOrientation/Mode).
@@ -9575,7 +9585,7 @@ interface EditableMesh extends DataModelMesh {
 	GetVertexColorAlpha(this: EditableMesh, vertexId: number): number;
 	GetVertexNormal(this: EditableMesh, vertexId: number): Vector3;
 	GetVertices(this: EditableMesh): unknown;
-	Raycast(this: EditableMesh, origin: Vector3, direction: Vector3): unknown;
+	RaycastLocal(this: EditableMesh, origin: Vector3, direction: Vector3): unknown;
 	RemoveTriangle(this: EditableMesh, triangleId: number): void;
 	RemoveVertex(this: EditableMesh, vertexId: number): void;
 	SetPosition(this: EditableMesh, vertexId: number, p: Vector3): void;
@@ -23509,7 +23519,7 @@ interface OpenCloudService extends Instance {
 	InvokeAsync(this: OpenCloudService, version: string, methodName: string, arguments: object): object;
 }
 
-interface OperationTree extends Instance {
+interface OperationGraph extends Instance {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -23517,7 +23527,7 @@ interface OperationTree extends Instance {
 	 * @hidden
 	 * @deprecated
 	 */
-	readonly _nominal_OperationTree: unique symbol;
+	readonly _nominal_OperationGraph: unique symbol;
 }
 
 /** A [PVInstance](https://developer.roblox.com/en-us/api-reference/class/PVInstance) (“Position Velocity Instance”) is an abstract class that cannot be created. It is the base for all objects that have a physical location in the world, specifically [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart) and [Models](https://developer.roblox.com/en-us/api-reference/class/Model). */
@@ -25046,6 +25056,7 @@ interface Terrain extends BasePart {
 	 * Applies a chunk of terrain to the Terrain object. Note: [TerrainRegion](https://developer.roblox.com/en-us/api-reference/class/TerrainRegion) data does not replicate between server and client.
 	 */
 	PasteRegion(this: Terrain, region: TerrainRegion, corner: Vector3int16, pasteEmptyCells: boolean): void;
+	ReadVoxelChannels(this: Terrain, region: Region3, resolution: number, channelIds: Array<any>): object;
 	/**
 	 * Returns a certain region of [smooth terrain](https://developer.roblox.com/articles/Intro-To-Terrain) in [table format](https://developer.roblox.com/articles/Scripting-With-Terrain#reading-and-writing-voxels). Both of the returned arrays have an additional `Size` property, a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3).
 	 * 
@@ -25102,6 +25113,7 @@ interface Terrain extends BasePart {
 	 * Returns the grid cell location that contains the point position, preferring non-empty grid cells when position is on a grid edge.
 	 */
 	WorldToCellPreferSolid(this: Terrain, position: Vector3): Vector3;
+	WriteVoxelChannels(this: Terrain, region: Region3, resolution: number, channels: object): void;
 	/**
 	 * Sets a certain region of [smooth terrain](https://developer.roblox.com/articles/Intro-To-Terrain "Smooth terrain") using the [table format](https://developer.roblox.com/articles/Intro-To-Terrain#Reading_and_writing_voxels "Smooth terrain")
 	 * 
