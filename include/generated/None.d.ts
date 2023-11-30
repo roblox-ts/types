@@ -4771,9 +4771,9 @@ interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemot
 	 * @deprecated
 	 */
 	readonly _nominal_UnreliableRemoteEvent: unique symbol;
-	FireAllClients(this: RemoteEvent, ...args: Parameters<T>): void;
-	FireClient(this: RemoteEvent, player: Player, ...args: Parameters<T>): void;
-	FireServer(this: RemoteEvent, ...args: Parameters<T>): void;
+	FireAllClients(this: UnreliableRemoteEvent, ...args: Parameters<T>): void;
+	FireClient(this: UnreliableRemoteEvent, player: Player, ...args: Parameters<T>): void;
+	FireServer(this: UnreliableRemoteEvent, ...args: Parameters<T>): void;
 	readonly OnClientEvent: RBXScriptSignal<T>;
 	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...args: Array<unknown>) => void>;
 }
