@@ -2675,6 +2675,17 @@ declare namespace task {
 	function cancel(thread: thread): void;
 }
 
+interface buffer {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_buffer: unique symbol;
+}
+
 declare namespace buffer {
 	/** Creates a buffer. */
 	function create(size: number): buffer;
@@ -2748,8 +2759,6 @@ declare namespace buffer {
 	/** Sets a region of the buffer memory to some 8-bit unsigned integer value. */
 	function fill(b: buffer, offset: number, value: number, count?: number): void;
 }
-
-type buffer = typeof buffer;
 
 interface GettableCores {
 	AvatarContextMenuEnabled: boolean;
