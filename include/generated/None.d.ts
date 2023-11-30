@@ -4762,7 +4762,7 @@ interface RemoteEvent<T extends Callback = Callback> extends BaseRemoteEvent {
 	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...args: Array<unknown>) => void>;
 }
 
-interface UnreliableRemoteEvent extends BaseRemoteEvent {
+interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemoteEvent {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -4771,11 +4771,11 @@ interface UnreliableRemoteEvent extends BaseRemoteEvent {
 	 * @deprecated
 	 */
 	readonly _nominal_UnreliableRemoteEvent: unique symbol;
-	FireAllClients(this: UnreliableRemoteEvent, arguments: Array<any>): void;
-	FireClient(this: UnreliableRemoteEvent, player: Player, arguments: Array<any>): void;
-	FireServer(this: UnreliableRemoteEvent, arguments: Array<any>): void;
-	readonly OnClientEvent: RBXScriptSignal<(arguments: Array<any>) => void>;
-	readonly OnServerEvent: RBXScriptSignal<(player: Player, arguments: Array<any>) => void>;
+	FireAllClients(this: RemoteEvent, ...args: Parameters<T>): void;
+	FireClient(this: RemoteEvent, player: Player, ...args: Parameters<T>): void;
+	FireServer(this: RemoteEvent, ...args: Parameters<T>): void;
+	readonly OnClientEvent: RBXScriptSignal<T>;
+	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...args: Array<unknown>) => void>;
 }
 
 /** The base class for [WrapTarget](https://developer.roblox.com/en-us/api-reference/class/WrapTarget) and [WrapLayer](https://developer.roblox.com/en-us/api-reference/class/WrapLayer) objects. Note that [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) is the only valid parent type for [BaseWrap](https://developer.roblox.com/en-us/api-reference/class/BaseWrap) and that it behaves more like a component of [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart) than an independent object. */
