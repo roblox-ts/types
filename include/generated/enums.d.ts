@@ -8105,6 +8105,27 @@ declare namespace Enum {
 	}
 	export type HttpCachePolicy = HttpCachePolicy.None | HttpCachePolicy.Full | HttpCachePolicy.DataOnly | HttpCachePolicy.Default | HttpCachePolicy.InternalRedirectRefresh;
 
+	export namespace HttpCompression {
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.HttpCompression;
+		}
+
+		export const None: None;
+
+		export interface Gzip extends globalThis.EnumItem {
+			Name: "Gzip";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.HttpCompression;
+		}
+
+		export const Gzip: Gzip;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HttpCompression>;
+	}
+	export type HttpCompression = HttpCompression.None | HttpCompression.Gzip;
+
 	export namespace HttpContentType {
 		export interface ApplicationJson extends globalThis.EnumItem {
 			Name: "ApplicationJson";

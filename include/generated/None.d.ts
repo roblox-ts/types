@@ -49,6 +49,7 @@ interface Services {
 	ExperienceAuthService: ExperienceAuthService;
 	ExperienceNotificationService: ExperienceNotificationService;
 	ExperienceService: ExperienceService;
+	ExperienceStateCaptureService: ExperienceStateCaptureService;
 	FaceAnimatorService: FaceAnimatorService;
 	FacialAnimationRecordingService: FacialAnimationRecordingService;
 	FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
@@ -92,6 +93,7 @@ interface Services {
 	PhysicsService: PhysicsService;
 	PlacesService: PlacesService;
 	PlaceStatsService: PlaceStatsService;
+	PlatformCloudStorageService: PlatformCloudStorageService;
 	PlatformFriendsService: PlatformFriendsService;
 	Players: Players;
 	PlayerViewService: PlayerViewService;
@@ -547,6 +549,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	MaterialGenerationSession: MaterialGenerationSession;
 	MaterialImportData: MaterialImportData;
 	MemoryStoreHashMap: MemoryStoreHashMap;
+	MemoryStoreHashMapPages: MemoryStoreHashMapPages;
 	MemoryStoreQueue: MemoryStoreQueue;
 	MemoryStoreSortedMap: MemoryStoreSortedMap;
 	MeshImportData: MeshImportData;
@@ -6631,7 +6634,11 @@ interface CaptureService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_CaptureService: unique symbol;
-	PromptShareCapture(this: CaptureService, contentId: string, launchData: object, onAcceptedCallback: Callback, onDeniedCallback: Callback): void;
+	PromptSaveCapturesToGallery(this: CaptureService, contentIds: Array<any>, resultCallback: Callback): void;
+	PromptShareCapture(this: CaptureService, contentId: string, launchData: string, onAcceptedCallback: Callback, onDeniedCallback: Callback): void;
+	readonly CaptureBegan: RBXScriptSignal<() => void>;
+	readonly CaptureEnded: RBXScriptSignal<() => void>;
+	readonly CaptureSaved: RBXScriptSignal<(captureInfo: object) => void>;
 	readonly UserCaptureSaved: RBXScriptSignal<(captureContentId: string) => void>;
 }
 
@@ -10626,6 +10633,17 @@ interface ExperienceService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ExperienceService: unique symbol;
+}
+
+interface ExperienceStateCaptureService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ExperienceStateCaptureService: unique symbol;
 }
 
 /** An Explosion applies force to `BaseParts` within the explosion's [Explosion.BlastRadius](https://developer.roblox.com/en-us/api-reference/property/Explosion/BlastRadius). This force breaks joints between parts and kills [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) characters not protected by a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField).
@@ -22657,6 +22675,10 @@ interface MemoryStoreHashMap extends Instance {
 	/**
 	 * Tags: Yields
 	 */
+	ListItemsAsync(this: MemoryStoreHashMap, count: number): MemoryStoreHashMapPages;
+	/**
+	 * Tags: Yields
+	 */
 	RemoveAsync(this: MemoryStoreHashMap, key: string): void;
 	/**
 	 * Tags: Yields
@@ -26818,6 +26840,17 @@ interface EmotesPages extends InventoryPages {
 	readonly _nominal_EmotesPages: unique symbol;
 }
 
+interface MemoryStoreHashMapPages extends Pages {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_MemoryStoreHashMapPages: unique symbol;
+}
+
 interface OutfitPages
 	extends Pages<
 		ReadonlyArray<{
@@ -27584,6 +27617,17 @@ interface PlacesService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_PlacesService: unique symbol;
+}
+
+interface PlatformCloudStorageService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PlatformCloudStorageService: unique symbol;
 }
 
 interface PlatformFriendsService extends Instance {
@@ -30203,6 +30247,8 @@ interface ScreenshotHud extends Instance {
 	CloseButtonPosition: UDim2;
 	CloseWhenScreenshotTaken: boolean;
 	ExperienceNameOverlayEnabled: boolean;
+	HideCoreGuiForCaptures: boolean;
+	HidePlayerGuiForCaptures: boolean;
 	OverlayFont: Enum.Font;
 	UsernameOverlayEnabled: boolean;
 	Visible: boolean;
@@ -36670,6 +36716,7 @@ interface UserInputService extends Instance {
 	 * *   [VRService](https://developer.roblox.com/en-us/api-reference/class/VRService), a service used to implement VR support
 	 * 
 	 * As this event only fires locally, it can only be used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
+	 * @deprecated
 	 */
 	GetUserCFrame(this: UserInputService, type: CastsToEnum<Enum.UserCFrame>): CFrame;
 	/**
@@ -37427,6 +37474,7 @@ interface UserInputService extends Instance {
 	 * *   [VRService](https://developer.roblox.com/en-us/api-reference/class/VRService), used to implement support, including an identical event `VRService/UserHeadCFrameChanged`
 	 * *   [Camera.HeadLocked](https://developer.roblox.com/en-us/api-reference/property/Camera/HeadLocked), when this property is _true_ the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) will automatically track the head motion of a player using a VR device
 	 * *   [Camera:GetRenderCFrame](https://developer.roblox.com/en-us/api-reference/function/Camera/GetRenderCFrame), a function which retrieves the [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) the [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera) is being orientated at, including the impact of VR devices
+	 * @deprecated
 	 */
 	readonly UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
 	/**
