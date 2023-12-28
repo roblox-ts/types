@@ -1026,6 +1026,12 @@ interface TweenService extends Instance {
 		tweenInfo: TweenInfo,
 		propertyTable: Partial<ExtractMembers<T, Tweenable>>,
 	): Tween;
+	GetValue(
+		this: TweenService,
+		alpha: number,
+		easingStyle: CastsToEnum<Enum.EasingStyle>,
+		easingDirection: CastsToEnum<Enum.EasingDirection>,
+	): number;
 }
 
 interface UIPageLayout extends UIGridStyleLayout {
