@@ -616,7 +616,6 @@ interface MessagingService extends Instance {
 
 interface Model extends PVInstance {
 	PrimaryPart: BasePart | undefined;
-	GetBoundingBox(this: Model): LuaTuple<[CFrame, Vector3]>;
 }
 
 interface NetworkClient extends NetworkPeer {

@@ -1060,7 +1060,14 @@ export class ClassGenerator extends Generator {
 
 	private generateFunction(rbxFunction: ApiFunction, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxFunction.Name;
-		const returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
+
+		let returnType;
+		if (Array.isArray(rbxFunction.ReturnType)) {
+			const typesList = rbxFunction.ReturnType.map(t => safeReturnType(safeValueType(t))).join(", ");
+			returnType = `LuaTuple<[${typesList}]>`;
+		} else {
+			returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
+		}
 		if (returnType !== null) {
 			const args = this.generateArgs(rbxFunction.Parameters, true, [`this: ${className}`]);
 			const { Description: wikiDescription } = rbxFunction;
