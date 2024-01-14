@@ -30,9 +30,11 @@ interface Services {
 	CollectionService: CollectionService;
 	CommandService: CommandService;
 	ConfigureServerService: ConfigureServerService;
+	ConnectivityService: ConnectivityService;
 	ContentProvider: ContentProvider;
 	ContextActionService: ContextActionService;
 	ControllerService: ControllerService;
+	ConversationalAIAcceptanceService: ConversationalAIAcceptanceService;
 	CoreScriptDebuggingManagerHelper: CoreScriptDebuggingManagerHelper;
 	CreationDBService: CreationDBService;
 	CrossDMScriptChangeListener: CrossDMScriptChangeListener;
@@ -135,6 +137,7 @@ interface Services {
 	StarterGui: StarterGui;
 	StarterPack: StarterPack;
 	StarterPlayer: StarterPlayer;
+	StartupMessageService: StartupMessageService;
 	Stats: Stats;
 	StreamingService: StreamingService;
 	StudioAssetService: StudioAssetService;
@@ -345,6 +348,7 @@ interface CreatableInstances {
 	RemoteFunction: RemoteFunction;
 	ReverbSoundEffect: ReverbSoundEffect;
 	RigidConstraint: RigidConstraint;
+	RobloxEditableImage: RobloxEditableImage;
 	RocketPropulsion: RocketPropulsion;
 	RodConstraint: RodConstraint;
 	RopeConstraint: RopeConstraint;
@@ -1903,6 +1907,10 @@ interface AnimationStreamTrack extends Instance {
 	 * Tags: Hidden, NotReplicated
 	 */
 	readonly Animation: TrackerStreamAnimation | undefined;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly FACSDataLod: Enum.FACSDataLod;
 	/**
 	 * Tags: Hidden, NotReplicated
 	 */
@@ -7467,6 +7475,17 @@ interface ConfigureServerService extends Instance {
 	readonly _nominal_ConfigureServerService: unique symbol;
 }
 
+interface ConnectivityService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ConnectivityService: unique symbol;
+}
+
 /** The base class for Constraint-based objects. */
 interface Constraint extends Instance {
 	/**
@@ -9373,6 +9392,17 @@ interface ControllerService extends Instance {
 	readonly _nominal_ControllerService: unique symbol;
 }
 
+interface ConversationalAIAcceptanceService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ConversationalAIAcceptanceService: unique symbol;
+}
+
 interface CoreScriptDebuggingManagerHelper extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -9573,10 +9603,6 @@ interface EditableMesh extends DataModelMesh {
 	 * @deprecated
 	 */
 	readonly _nominal_EditableMesh: unique symbol;
-	/**
-	 * Tags: Hidden
-	 */
-	readonly MeshVersion: number;
 	AddTriangle(this: EditableMesh, vertexId0: number, vertexId1: number, vertexId2: number): number;
 	AddVertex(this: EditableMesh, p: Vector3): number;
 	FindClosestPointOnSurface(this: EditableMesh, point: Vector3): unknown;
@@ -10523,6 +10549,17 @@ interface EditableImage extends Instance {
 	 * Tags: CustomLuaState
 	 */
 	WritePixels(this: EditableImage, position: Vector2, size: Vector2, pixels: Array<any>): void;
+}
+
+interface RobloxEditableImage extends EditableImage {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RobloxEditableImage: unique symbol;
 }
 
 interface EngineAPICloudProcessingService extends Instance {
@@ -32643,6 +32680,17 @@ interface StarterCharacterScripts extends StarterPlayerScripts {
 	readonly _nominal_StarterCharacterScripts: unique symbol;
 }
 
+interface StartupMessageService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StartupMessageService: unique symbol;
+}
+
 /** Stats is a service that provides real-time performance information about the current running game instance. Its primary purpose is to provide developers with an end point to measure where resources are being consumed, as well as how much memory is being consumed overall.  
  *   
  * The service also stores a tree of [StatsItem](https://developer.roblox.com/en-us/api-reference/class/StatsItem), which can have their values read by plugins.
@@ -34419,7 +34467,7 @@ interface TextService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	FilterAndTranslateStringAsync(this: TextService, stringToFilter: string, fromUserId: number, targetLocales: Array<any>, textContext?: CastsToEnum<Enum.TextFilterContext>): Instance | undefined;
+	FilterAndTranslateStringAsync(this: TextService, stringToFilter: string, fromUserId: number, targetLocales: Array<any>, textContext?: CastsToEnum<Enum.TextFilterContext>): TextFilterTranslatedResult;
 	/**
 	 * The FilterStringAsync function filters a string being received from a user, using the [TextService](https://developer.roblox.com/en-us/api-reference/class/TextService), and returns a [TextFilterResult](https://developer.roblox.com/en-us/api-reference/class/TextFilterResult) which can be used to distribute the correctly filtered text accordingly.
 	 * 

@@ -6503,6 +6503,35 @@ declare namespace Enum {
 	}
 	export type ExplosionType = ExplosionType.NoCraters | ExplosionType.Craters;
 
+	export namespace FACSDataLod {
+		export interface LOD0 extends globalThis.EnumItem {
+			Name: "LOD0";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.FACSDataLod;
+		}
+
+		export const LOD0: LOD0;
+
+		export interface LOD1 extends globalThis.EnumItem {
+			Name: "LOD1";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.FACSDataLod;
+		}
+
+		export const LOD1: LOD1;
+
+		export interface LODCount extends globalThis.EnumItem {
+			Name: "LODCount";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.FACSDataLod;
+		}
+
+		export const LODCount: LODCount;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FACSDataLod>;
+	}
+	export type FACSDataLod = FACSDataLod.LOD0 | FACSDataLod.LOD1 | FACSDataLod.LODCount;
+
 	export namespace FacialAnimationStreamingState {
 		export interface None extends globalThis.EnumItem {
 			Name: "None";
@@ -12526,6 +12555,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.NetworkOwnership>;
 	}
 	export type NetworkOwnership = NetworkOwnership.Automatic | NetworkOwnership.Manual | NetworkOwnership.OnContact;
+
+	export namespace NetworkStatus {
+		export interface Unknown extends globalThis.EnumItem {
+			Name: "Unknown";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.NetworkStatus;
+		}
+
+		export const Unknown: Unknown;
+
+		export interface Connected extends globalThis.EnumItem {
+			Name: "Connected";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.NetworkStatus;
+		}
+
+		export const Connected: Connected;
+
+		export interface Disconnected extends globalThis.EnumItem {
+			Name: "Disconnected";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.NetworkStatus;
+		}
+
+		export const Disconnected: Disconnected;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.NetworkStatus>;
+	}
+	export type NetworkStatus = NetworkStatus.Unknown | NetworkStatus.Connected | NetworkStatus.Disconnected;
 
 	export namespace NormalId {
 		export interface Right extends globalThis.EnumItem {

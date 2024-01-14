@@ -157,6 +157,186 @@ interface Animator extends Instance {
 	StepAnimations(this: Animator, deltaTime: number): void;
 }
 
+interface AudioAnalyzer extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioAnalyzer: unique symbol;
+	GetConnectedWires(this: AudioAnalyzer, pin: string): unknown;
+}
+
+interface AudioChorus extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioChorus: unique symbol;
+	GetConnectedWires(this: AudioChorus, pin: string): unknown;
+}
+
+interface AudioCompressor extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioCompressor: unique symbol;
+	GetConnectedWires(this: AudioCompressor, pin: string): unknown;
+}
+
+interface AudioDeviceInput extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioDeviceInput: unique symbol;
+	GetConnectedWires(this: AudioDeviceInput, pin: string): unknown;
+}
+
+interface AudioDeviceOutput extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioDeviceOutput: unique symbol;
+	GetConnectedWires(this: AudioDeviceOutput, pin: string): unknown;
+}
+
+interface AudioDistortion extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioDistortion: unique symbol;
+	GetConnectedWires(this: AudioDistortion, pin: string): unknown;
+}
+
+interface AudioEcho extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioEcho: unique symbol;
+	GetConnectedWires(this: AudioEcho, pin: string): unknown;
+}
+
+interface AudioEmitter extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioEmitter: unique symbol;
+	GetConnectedWires(this: AudioEmitter, pin: string): unknown;
+}
+
+interface AudioEqualizer extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioEqualizer: unique symbol;
+	GetConnectedWires(this: AudioEqualizer, pin: string): unknown;
+}
+
+interface AudioFader extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioFader: unique symbol;
+	GetConnectedWires(this: AudioFader, pin: string): unknown;
+}
+
+interface AudioFlanger extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioFlanger: unique symbol;
+	GetConnectedWires(this: AudioFlanger, pin: string): unknown;
+}
+
+interface AudioListener extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioListener: unique symbol;
+	GetConnectedWires(this: AudioListener, pin: string): unknown;
+}
+
+interface AudioPitchShifter extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioPitchShifter: unique symbol;
+	GetConnectedWires(this: AudioPitchShifter, pin: string): unknown;
+}
+
+interface AudioPlayer extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioPlayer: unique symbol;
+	GetConnectedWires(this: AudioPlayer, pin: string): unknown;
+}
+
+interface AudioReverb extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioReverb: unique symbol;
+	GetConnectedWires(this: AudioReverb, pin: string): unknown;
+}
+
 /** The CoreGui is a service used to store Guis created in-game by Roblox for the core user interface found in every game (such as the game menu, the playerlist, the backpack, etc.). It can also be used by [Plugins](https://developer.roblox.com/en-us/api-reference/class/Plugin) in Roblox Studio.
  * 
  * You can use the [StarterGui:SetCoreGuiEnabled](https://developer.roblox.com/en-us/api-reference/function/StarterGui/SetCoreGuiEnabled) and [StarterGui:GetCoreGuiEnabled](https://developer.roblox.com/en-us/api-reference/function/StarterGui/GetCoreGuiEnabled) methods in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) to enable and disable most elements of the CoreGui. You can also use [PlayerGui:SetTopbarTransparency](https://developer.roblox.com/en-us/api-reference/function/PlayerGui/SetTopbarTransparency) to set the transparency of the top bar.
