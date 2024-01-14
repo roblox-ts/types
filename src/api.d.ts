@@ -95,7 +95,7 @@ export interface ApiProperty extends ApiMemberBase {
 export interface ApiFunction extends ApiMemberBase {
 	MemberType: "Function";
 	Parameters: Array<ApiParameter>;
-	ReturnType: ApiValueType;
+	ReturnType: ApiValueType | Array<ApiValueType>;
 	Security: SecurityType;
 	ThreadSafety: ThreadSafety;
 }
