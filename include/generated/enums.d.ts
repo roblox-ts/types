@@ -735,35 +735,6 @@ declare namespace Enum {
 	}
 	export type AnimationClipFromVideoStatus = AnimationClipFromVideoStatus.Initializing | AnimationClipFromVideoStatus.Pending | AnimationClipFromVideoStatus.Processing | AnimationClipFromVideoStatus.ErrorGeneric | AnimationClipFromVideoStatus.Success | AnimationClipFromVideoStatus.ErrorVideoTooLong | AnimationClipFromVideoStatus.ErrorNoPersonDetected | AnimationClipFromVideoStatus.ErrorVideoUnstable | AnimationClipFromVideoStatus.Timeout | AnimationClipFromVideoStatus.Cancelled | AnimationClipFromVideoStatus.ErrorMultiplePeople | AnimationClipFromVideoStatus.ErrorUploadingVideo;
 
-	export namespace AnimationCompositorMode {
-		export interface Default extends globalThis.EnumItem {
-			Name: "Default";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.AnimationCompositorMode;
-		}
-
-		export const Default: Default;
-
-		export interface Enabled extends globalThis.EnumItem {
-			Name: "Enabled";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.AnimationCompositorMode;
-		}
-
-		export const Enabled: Enabled;
-
-		export interface Disabled extends globalThis.EnumItem {
-			Name: "Disabled";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.AnimationCompositorMode;
-		}
-
-		export const Disabled: Disabled;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationCompositorMode>;
-	}
-	export type AnimationCompositorMode = AnimationCompositorMode.Default | AnimationCompositorMode.Enabled | AnimationCompositorMode.Disabled;
-
 	export namespace AnimationPriority {
 		export interface Core extends globalThis.EnumItem {
 			Name: "Core";
@@ -8469,43 +8440,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HumanoidRigType>;
 	}
 	export type HumanoidRigType = HumanoidRigType.R6 | HumanoidRigType.R15;
-
-	export namespace HumanoidStateMachineMode {
-		export interface Default extends globalThis.EnumItem {
-			Name: "Default";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.HumanoidStateMachineMode;
-		}
-
-		export const Default: Default;
-
-		export interface Legacy extends globalThis.EnumItem {
-			Name: "Legacy";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.HumanoidStateMachineMode;
-		}
-
-		export const Legacy: Legacy;
-
-		export interface NoStateMachine extends globalThis.EnumItem {
-			Name: "NoStateMachine";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.HumanoidStateMachineMode;
-		}
-
-		export const NoStateMachine: NoStateMachine;
-
-		export interface LuaStateMachine extends globalThis.EnumItem {
-			Name: "LuaStateMachine";
-			Value: 3;
-			EnumType: typeof globalThis.Enum.HumanoidStateMachineMode;
-		}
-
-		export const LuaStateMachine: LuaStateMachine;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HumanoidStateMachineMode>;
-	}
-	export type HumanoidStateMachineMode = HumanoidStateMachineMode.Default | HumanoidStateMachineMode.Legacy | HumanoidStateMachineMode.NoStateMachine | HumanoidStateMachineMode.LuaStateMachine;
 
 	export namespace HumanoidStateType {
 		export interface FallingDown extends globalThis.EnumItem {
