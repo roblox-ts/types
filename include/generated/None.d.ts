@@ -6642,6 +6642,7 @@ interface CaptureService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_CaptureService: unique symbol;
+	CaptureScreenshot(this: CaptureService, onCaptureReady: Callback): void;
 	PromptSaveCapturesToGallery(this: CaptureService, contentIds: Array<any>, resultCallback: Callback): void;
 	PromptShareCapture(this: CaptureService, contentId: string, launchData: string, onAcceptedCallback: Callback, onDeniedCallback: Callback): void;
 	readonly CaptureBegan: RBXScriptSignal<() => void>;
@@ -7270,6 +7271,7 @@ interface Collaborator extends Instance {
 	CollaboratorColor: number;
 	CurDocGUID: string;
 	CurScriptLineNumber: number;
+	IsIdle: boolean;
 	UserId: number;
 	Username: string;
 }
@@ -32417,10 +32419,6 @@ interface StarterPlayer extends Instance {
 	 */
 	readonly AllowCustomAnimations: boolean;
 	/**
-	 * Tags: NotBrowsable
-	 */
-	AnimationCompositorMode: Enum.AnimationCompositorMode;
-	/**
 	 * The AutoJumpEnabled property sets whether the character will automatically jump when hitting an obstacle on a mobile device.
 	 * 
 	 * This property is copied from the [StarterPlayer](https://developer.roblox.com/en-us/api-reference/class/StarterPlayer) to a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) when they join the game. Following that. the value of this property is copied to [Humanoid.AutoJumpEnabled](https://developer.roblox.com/en-us/api-reference/property/Humanoid/AutoJumpEnabled) property of the [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character)s [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) on spawn. In other words, it is possible to set the auto-jump behavior on a per-character, per-player and per-game basis using these three properties.
@@ -32601,10 +32599,6 @@ interface StarterPlayer extends Instance {
 	 * If a Humanoid's health bar is visible, you can set the display type using [Humanoid.DisplayDistanceType](https://developer.roblox.com/en-us/api-reference/property/Humanoid/DisplayDistanceType).
 	 */
 	HealthDisplayDistance: number;
-	/**
-	 * Tags: NotBrowsable
-	 */
-	HumanoidStateMachineMode: Enum.HumanoidStateMachineMode;
 	/**
 	 * The LoadCharacterAppearance [StarterPlayer](https://developer.roblox.com/en-us/api-reference/class/StarterPlayer) property sets whether or not the appearance of a player's character should be loaded.
 	 * 
