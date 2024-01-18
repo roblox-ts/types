@@ -469,6 +469,7 @@ interface Instance {
 	 * }
 	 */
 	readonly Changed: unknown;
+	GetActor(this: Instance): Actor | undefined;
 	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
