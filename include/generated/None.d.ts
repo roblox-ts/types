@@ -887,7 +887,7 @@ interface Instance {
 	/**
 	 * Returns the Actor associated with the Instance, usually the first Actor ancestor
 	 */
-	GetActor(this: Instance): Actor | undefined;
+	GetActor(this: Instance): Actor;
 	/**
 	 * This function returns the attribute which has been assigned to the given name. If no attribute has been assigned then nil is returned.
 	 * 
