@@ -694,7 +694,7 @@ namespace ClassInformation {
 										extraPush ? tabChar + " * " : tabChar + " *\n" + tabChar + " * ",
 										trimmed,
 										"\n",
-								  );
+									);
 						} else {
 							return "";
 						}
