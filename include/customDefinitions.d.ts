@@ -469,6 +469,7 @@ interface Instance {
 	 * }
 	 */
 	readonly Changed: unknown;
+	GetActor(this: Instance): Actor | undefined;
 	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
@@ -616,7 +617,6 @@ interface MessagingService extends Instance {
 
 interface Model extends PVInstance {
 	PrimaryPart: BasePart | undefined;
-	GetBoundingBox(this: Model): LuaTuple<[CFrame, Vector3]>;
 }
 
 interface NetworkClient extends NetworkPeer {

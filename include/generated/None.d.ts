@@ -30,9 +30,11 @@ interface Services {
 	CollectionService: CollectionService;
 	CommandService: CommandService;
 	ConfigureServerService: ConfigureServerService;
+	ConnectivityService: ConnectivityService;
 	ContentProvider: ContentProvider;
 	ContextActionService: ContextActionService;
 	ControllerService: ControllerService;
+	ConversationalAIAcceptanceService: ConversationalAIAcceptanceService;
 	CoreScriptDebuggingManagerHelper: CoreScriptDebuggingManagerHelper;
 	CreationDBService: CreationDBService;
 	CrossDMScriptChangeListener: CrossDMScriptChangeListener;
@@ -135,6 +137,7 @@ interface Services {
 	StarterGui: StarterGui;
 	StarterPack: StarterPack;
 	StarterPlayer: StarterPlayer;
+	StartupMessageService: StartupMessageService;
 	Stats: Stats;
 	StreamingService: StreamingService;
 	StudioAssetService: StudioAssetService;
@@ -345,6 +348,7 @@ interface CreatableInstances {
 	RemoteFunction: RemoteFunction;
 	ReverbSoundEffect: ReverbSoundEffect;
 	RigidConstraint: RigidConstraint;
+	RobloxEditableImage: RobloxEditableImage;
 	RocketPropulsion: RocketPropulsion;
 	RodConstraint: RodConstraint;
 	RopeConstraint: RopeConstraint;
@@ -883,7 +887,7 @@ interface Instance {
 	/**
 	 * Returns the Actor associated with the Instance, usually the first Actor ancestor
 	 */
-	GetActor(this: Instance): Actor;
+	GetActor(this: Instance): Actor | undefined;
 	/**
 	 * This function returns the attribute which has been assigned to the given name. If no attribute has been assigned then nil is returned.
 	 * 
@@ -1903,6 +1907,10 @@ interface AnimationStreamTrack extends Instance {
 	 * Tags: Hidden, NotReplicated
 	 */
 	readonly Animation: TrackerStreamAnimation | undefined;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly FACSDataLod: Enum.FACSDataLod;
 	/**
 	 * Tags: Hidden, NotReplicated
 	 */
@@ -6634,6 +6642,7 @@ interface CaptureService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_CaptureService: unique symbol;
+	CaptureScreenshot(this: CaptureService, onCaptureReady: Callback): void;
 	PromptSaveCapturesToGallery(this: CaptureService, contentIds: Array<any>, resultCallback: Callback): void;
 	PromptShareCapture(this: CaptureService, contentId: string, launchData: string, onAcceptedCallback: Callback, onDeniedCallback: Callback): void;
 	readonly CaptureBegan: RBXScriptSignal<() => void>;
@@ -7262,6 +7271,7 @@ interface Collaborator extends Instance {
 	CollaboratorColor: number;
 	CurDocGUID: string;
 	CurScriptLineNumber: number;
+	IsIdle: boolean;
 	UserId: number;
 	Username: string;
 }
@@ -7465,6 +7475,17 @@ interface ConfigureServerService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ConfigureServerService: unique symbol;
+}
+
+interface ConnectivityService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ConnectivityService: unique symbol;
 }
 
 /** The base class for Constraint-based objects. */
@@ -9373,6 +9394,17 @@ interface ControllerService extends Instance {
 	readonly _nominal_ControllerService: unique symbol;
 }
 
+interface ConversationalAIAcceptanceService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ConversationalAIAcceptanceService: unique symbol;
+}
+
 interface CoreScriptDebuggingManagerHelper extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -9573,10 +9605,6 @@ interface EditableMesh extends DataModelMesh {
 	 * @deprecated
 	 */
 	readonly _nominal_EditableMesh: unique symbol;
-	/**
-	 * Tags: Hidden
-	 */
-	readonly MeshVersion: number;
 	AddTriangle(this: EditableMesh, vertexId0: number, vertexId1: number, vertexId2: number): number;
 	AddVertex(this: EditableMesh, p: Vector3): number;
 	FindClosestPointOnSurface(this: EditableMesh, point: Vector3): unknown;
@@ -10523,6 +10551,17 @@ interface EditableImage extends Instance {
 	 * Tags: CustomLuaState
 	 */
 	WritePixels(this: EditableImage, position: Vector2, size: Vector2, pixels: Array<any>): void;
+}
+
+interface RobloxEditableImage extends EditableImage {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RobloxEditableImage: unique symbol;
 }
 
 interface EngineAPICloudProcessingService extends Instance {
@@ -32380,10 +32419,6 @@ interface StarterPlayer extends Instance {
 	 */
 	readonly AllowCustomAnimations: boolean;
 	/**
-	 * Tags: NotBrowsable
-	 */
-	AnimationCompositorMode: Enum.AnimationCompositorMode;
-	/**
 	 * The AutoJumpEnabled property sets whether the character will automatically jump when hitting an obstacle on a mobile device.
 	 * 
 	 * This property is copied from the [StarterPlayer](https://developer.roblox.com/en-us/api-reference/class/StarterPlayer) to a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) when they join the game. Following that. the value of this property is copied to [Humanoid.AutoJumpEnabled](https://developer.roblox.com/en-us/api-reference/property/Humanoid/AutoJumpEnabled) property of the [Player.Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character)s [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) on spawn. In other words, it is possible to set the auto-jump behavior on a per-character, per-player and per-game basis using these three properties.
@@ -32565,10 +32600,6 @@ interface StarterPlayer extends Instance {
 	 */
 	HealthDisplayDistance: number;
 	/**
-	 * Tags: NotBrowsable
-	 */
-	HumanoidStateMachineMode: Enum.HumanoidStateMachineMode;
-	/**
 	 * The LoadCharacterAppearance [StarterPlayer](https://developer.roblox.com/en-us/api-reference/class/StarterPlayer) property sets whether or not the appearance of a player's character should be loaded.
 	 * 
 	 * This property sets the default value of [Player.CanLoadCharacterAppearance](https://developer.roblox.com/en-us/api-reference/property/Player/CanLoadCharacterAppearance) for each player who joins the game.
@@ -32641,6 +32672,17 @@ interface StarterCharacterScripts extends StarterPlayerScripts {
 	 * @deprecated
 	 */
 	readonly _nominal_StarterCharacterScripts: unique symbol;
+}
+
+interface StartupMessageService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StartupMessageService: unique symbol;
 }
 
 /** Stats is a service that provides real-time performance information about the current running game instance. Its primary purpose is to provide developers with an end point to measure where resources are being consumed, as well as how much memory is being consumed overall.  
@@ -34419,7 +34461,7 @@ interface TextService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	FilterAndTranslateStringAsync(this: TextService, stringToFilter: string, fromUserId: number, targetLocales: Array<any>, textContext?: CastsToEnum<Enum.TextFilterContext>): Instance | undefined;
+	FilterAndTranslateStringAsync(this: TextService, stringToFilter: string, fromUserId: number, targetLocales: Array<any>, textContext?: CastsToEnum<Enum.TextFilterContext>): TextFilterTranslatedResult;
 	/**
 	 * The FilterStringAsync function filters a string being received from a user, using the [TextService](https://developer.roblox.com/en-us/api-reference/class/TextService), and returns a [TextFilterResult](https://developer.roblox.com/en-us/api-reference/class/TextFilterResult) which can be used to distribute the correctly filtered text accordingly.
 	 * 

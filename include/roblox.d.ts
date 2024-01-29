@@ -1981,6 +1981,14 @@ interface Random {
 	 */
 	NextNumber(this: Random, min: number, max: number): number;
 	/**
+	 * Uniformly shuffles the array part of `tb` in-place using `NextInteger` to pick indices. If there are any `nil` "holes" in the array part of the table, `Shuffle` throws an error, since shuffling could change the length.
+	 *
+	 * The hash part of `tb` is ignored. No metamethods are of `tb` are invoked.
+	 *
+	 * The shuffle is defined to be a Fisher-Yates shuffle so the number of `NextInteger` calls is guaranteed to be consistent between engine versions for a given size of table.
+	 */
+	Shuffle(this: Random, tb: Array<unknown>): void;
+	/**
 	 * Returns a unit vector with a pseudorandom direction.
 	 *
 	 * Vectors returned from this function are uniformly distributed over the unit sphere.
