@@ -3717,9 +3717,17 @@ declare namespace Enum {
 	export type ClientAnimatorThrottlingMode = ClientAnimatorThrottlingMode.Default | ClientAnimatorThrottlingMode.Disabled | ClientAnimatorThrottlingMode.Enabled;
 
 	export namespace CollaboratorStatus {
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.CollaboratorStatus;
+		}
+
+		export const None: None;
+
 		export interface Editing3D extends globalThis.EnumItem {
 			Name: "Editing3D";
-			Value: 0;
+			Value: 1;
 			EnumType: typeof globalThis.Enum.CollaboratorStatus;
 		}
 
@@ -3727,7 +3735,7 @@ declare namespace Enum {
 
 		export interface Scripting extends globalThis.EnumItem {
 			Name: "Scripting";
-			Value: 1;
+			Value: 2;
 			EnumType: typeof globalThis.Enum.CollaboratorStatus;
 		}
 
@@ -3735,23 +3743,15 @@ declare namespace Enum {
 
 		export interface PrivateScripting extends globalThis.EnumItem {
 			Name: "PrivateScripting";
-			Value: 2;
+			Value: 3;
 			EnumType: typeof globalThis.Enum.CollaboratorStatus;
 		}
 
 		export const PrivateScripting: PrivateScripting;
 
-		export interface None extends globalThis.EnumItem {
-			Name: "None";
-			Value: 3;
-			EnumType: typeof globalThis.Enum.CollaboratorStatus;
-		}
-
-		export const None: None;
-
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CollaboratorStatus>;
 	}
-	export type CollaboratorStatus = CollaboratorStatus.Editing3D | CollaboratorStatus.Scripting | CollaboratorStatus.PrivateScripting | CollaboratorStatus.None;
+	export type CollaboratorStatus = CollaboratorStatus.None | CollaboratorStatus.Editing3D | CollaboratorStatus.Scripting | CollaboratorStatus.PrivateScripting;
 
 	export namespace CollisionFidelity {
 		export interface Default extends globalThis.EnumItem {
@@ -12299,6 +12299,51 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ModelStreamingMode>;
 	}
 	export type ModelStreamingMode = ModelStreamingMode.Default | ModelStreamingMode.Atomic | ModelStreamingMode.Persistent | ModelStreamingMode.PersistentPerPlayer | ModelStreamingMode.Nonatomic;
+
+	export namespace ModerationStatus {
+		export interface ReviewedApproved extends globalThis.EnumItem {
+			Name: "ReviewedApproved";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ModerationStatus;
+		}
+
+		export const ReviewedApproved: ReviewedApproved;
+
+		export interface ReviewedRejected extends globalThis.EnumItem {
+			Name: "ReviewedRejected";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ModerationStatus;
+		}
+
+		export const ReviewedRejected: ReviewedRejected;
+
+		export interface NotReviewed extends globalThis.EnumItem {
+			Name: "NotReviewed";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.ModerationStatus;
+		}
+
+		export const NotReviewed: NotReviewed;
+
+		export interface NotApplicable extends globalThis.EnumItem {
+			Name: "NotApplicable";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.ModerationStatus;
+		}
+
+		export const NotApplicable: NotApplicable;
+
+		export interface Invalid extends globalThis.EnumItem {
+			Name: "Invalid";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.ModerationStatus;
+		}
+
+		export const Invalid: Invalid;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ModerationStatus>;
+	}
+	export type ModerationStatus = ModerationStatus.ReviewedApproved | ModerationStatus.ReviewedRejected | ModerationStatus.NotReviewed | ModerationStatus.NotApplicable | ModerationStatus.Invalid;
 
 	export namespace ModifierKey {
 		export interface Shift extends globalThis.EnumItem {

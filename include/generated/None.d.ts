@@ -158,6 +158,7 @@ interface Services {
 	TextChatService: TextChatService;
 	TextService: TextService;
 	TextureGenerationMeshHandler: TextureGenerationMeshHandler;
+	TextureGenerationService: TextureGenerationService;
 	ToastNotificationService: ToastNotificationService;
 	TracerService: TracerService;
 	TutorialService: TutorialService;
@@ -2357,6 +2358,10 @@ interface AssetService extends Instance {
 	 */
 	GetAssetIdsForPackage(this: AssetService, packageAssetId: number): Array<number>;
 	/**
+	 * Tags: Yields
+	 */
+	GetAudioMetadataAsync(this: AssetService, idList: Array<any>): unknown;
+	/**
 	 * If the bundle Id does not exist, it throws HTTP 400 (HTTP/1.1 400 Bad Request). If bundleId is not convertible to int, throws "Unable to cast string to int64". If param type is string, it implicitly tries to convert to int.
 	 * 
 	 * This function returns details of the contents of the specified bundle.
@@ -3791,6 +3796,7 @@ interface RootImportData extends BaseImportData {
 	 * Tags: NotReplicated
 	 */
 	readonly PolygonCount: number;
+	PreferredUploadId: number;
 	RestPose: Enum.RestPose;
 	RigScale: Enum.RigScale;
 	RigType: Enum.RigType;
@@ -34528,6 +34534,17 @@ interface TextureGenerationMeshHandler extends Instance {
 	readonly _nominal_TextureGenerationMeshHandler: unique symbol;
 }
 
+interface TextureGenerationService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TextureGenerationService: unique symbol;
+}
+
 interface ThreadState extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -37671,6 +37688,9 @@ interface VRService extends Instance {
 	 * Tags: NotReplicated
 	 */
 	AutomaticScaling: Enum.VRScaling;
+	/**
+	 * Tags: NotReplicated
+	 */
 	FadeOutViewOnCollision: boolean;
 	/**
 	 * The GuiInputUserCFrame property describes what [UserCFrame](https://developer.roblox.com/en-us/api-reference/enum/UserCFrame) is responsible for input in VR. For instance, if a VR headset is responsible, the value of this property will be UserCFrame.Head.
@@ -37678,6 +37698,8 @@ interface VRService extends Instance {
 	 * To check if Roblox detects any VR devices, which would be responsible for input in VR, you can check the [VRService.VREnabled](https://developer.roblox.com/en-us/api-reference/property/VRService/VREnabled) property.
 	 * 
 	 * Since [VRService](https://developer.roblox.com/en-us/api-reference/class/VRService) only runs client-side, this property will only work when used in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript).
+	 * 
+	 * Tags: NotReplicated
 	 */
 	GuiInputUserCFrame: Enum.UserCFrame;
 	/**
