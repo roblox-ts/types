@@ -325,7 +325,7 @@ interface String {
 	gsub(
 		this: string,
 		pattern: string,
-		repl: (...value: string[]) => string | number | undefined,
+		repl: (...value: Array<string>) => string | number | undefined,
 		n?: number,
 	): LuaTuple<[string, number]>;
 	gsub(this: string, pattern: string, repl: Map<string, string | number>, n?: number): LuaTuple<[string, number]>;
