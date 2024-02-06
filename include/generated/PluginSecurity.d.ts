@@ -355,7 +355,7 @@ interface CoreGui extends BasePlayerGui {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly Version: number;
+	get Version(): number;
 }
 
 interface StarterGui extends BasePlayerGui {
@@ -393,13 +393,13 @@ interface BaseWrap extends Instance {
 	 * 
 	 * Asset ID for cage mesh.
 	 */
-	CageMeshId: string;
+	set CageMeshId(v: string);
 	/**
 	 * This property is set up automatically by the Avatar Importer plugin.
 	 * 
 	 * Cage mesh offset relative to parent [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart).
 	 */
-	CageOrigin: CFrame;
+	set CageOrigin(v: CFrame);
 	/**
 	 * This property is set up automatically by the Avatar Importer plugin.
 	 * 
@@ -437,7 +437,7 @@ interface BaseWrap extends Instance {
 	 * 	end	
 	 * end
 	 */
-	ImportOrigin: CFrame;
+	set ImportOrigin(v: CFrame);
 }
 
 interface WrapLayer extends BaseWrap {
@@ -454,7 +454,7 @@ interface WrapLayer extends BaseWrap {
 	 * 
 	 * [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) to adjust a binding point for a clothing item mesh. Allows for fine-tuning of clothing items (slight adjustment of position/rotation to get a unique look) in contexts such as community-made avatar editors.
 	 */
-	BindOffset: CFrame;
+	set BindOffset(v: CFrame);
 	/**
 	 * AssetID for reference mesh used to define Inner Cage of a 3D object
 	 * 
@@ -462,13 +462,13 @@ interface WrapLayer extends BaseWrap {
 	 * 
 	 * Note: this property is set up automatically by the FBX importer
 	 */
-	ReferenceMeshId: string;
+	set ReferenceMeshId(v: string);
 	/**
 	 * Reference mesh offset relative to parent MeshPart (in the parent MeshPart space)
 	 * 
 	 * Note: this property is set up automatically by the FBX importer
 	 */
-	ReferenceOrigin: CFrame;
+	set ReferenceOrigin(v: CFrame);
 	/**
 	 * This property is intended for fine-tuning purposes and is highly optional.
 	 * 
@@ -476,7 +476,7 @@ interface WrapLayer extends BaseWrap {
 	 * 
 	 * Valid range is -1 to 1. A value of -1 will maximally expand while a value of 1 will maximally shrink. A value of 0 (default) has no effect.
 	 */
-	ShrinkFactor: number;
+	set ShrinkFactor(v: number);
 }
 
 interface WrapTarget extends BaseWrap {
@@ -493,7 +493,7 @@ interface WrapTarget extends BaseWrap {
 	 * 
 	 * Valid range is 0 to 1. A value of 0 will compress the body mesh as much as necessary to ensure that the intersections are eliminated (visible body parts might look a little bit deformed). A value of 1 will prevent the body mesh from being compressed (may lead to visible intersections or Z-fighting). A value of 0.9 (default) is a reasonable default that solves most of the intersections without introducing any significant body deformation.
 	 */
-	Stiffness: number;
+	set Stiffness(v: number);
 }
 
 /** The ChangeHistoryService provides a way for plugins to undo and redo changes and to create waypoints when changes are made to the place. */
@@ -575,13 +575,13 @@ interface DebugSettings extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly DataModel: number;
+	get DataModel(): number;
 	/**
 	 * The number of instances active in the simulation.
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly InstanceCount: number;
+	get InstanceCount(): number;
 	/**
 	 * Whether or not a stacktrace is displayed in the output for an error.
 	 */
@@ -591,13 +591,13 @@ interface DebugSettings extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly JobCount: number;
+	get JobCount(): number;
 	/**
 	 * The number of players currently in the active game-instance.
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly PlayerCount: number;
+	get PlayerCount(): number;
 	/**
 	 * Whether or not sound warnings should be reported.
 	 */
@@ -607,7 +607,7 @@ interface DebugSettings extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly RobloxVersion: string;
+	get RobloxVersion(): string;
 	/**
 	 * Sets the internal sampling method used to measure elapsed time with consistency across platforms.
 	 */
@@ -644,7 +644,7 @@ interface DebuggerBreakpoint extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly Line: number;
+	get Line(): number;
 	/**
 	 * An expression which is evaluated when the breakpoint is hit with the result being logged into the Output window.  
 	 * Used together with [DebuggerBreakpoint.ContinueExecution](https://developer.roblox.com/en-us/api-reference/property/DebuggerBreakpoint/ContinueExecution) to implement a 'logpoint' instead of a 'breakpoint'.
@@ -674,7 +674,7 @@ interface DebuggerManager extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly DebuggingEnabled: boolean;
+	get DebuggingEnabled(): boolean;
 	/**
 	 * Registers a script to be used in the Lua Debugger. Returns a [ScriptDebugger](https://developer.roblox.com/en-us/api-reference/class/ScriptDebugger) for the script.
 	 */
@@ -1059,7 +1059,7 @@ interface File extends Instance {
 	 * 
 	 * Tags: Hidden, NotReplicated
 	 */
-	readonly Size: number;
+	get Size(): number;
 	/**
 	 * This function is used to read the contents of the [File](https://developer.roblox.com/en-us/api-reference/class/File) as a raw binary string. This allows the file to be uploaded to web endpoints, or to be processed by plugins.
 	 */
@@ -1287,7 +1287,7 @@ interface Humanoid extends Instance {
 	 * 
 	 * Fixed size collision boxes, similar to the classic avatar collision
 	 */
-	CollisionType: Enum.HumanoidCollisionType;
+	set CollisionType(v: Enum.HumanoidCollisionType);
 }
 
 interface InsertService extends Instance {
@@ -1364,7 +1364,7 @@ interface BaseScript extends LuaSourceContainer {
 	 * @deprecated
 	 */
 	readonly _nominal_BaseScript: unique symbol;
-	RunContext: Enum.RunContext;
+	set RunContext(v: Enum.RunContext);
 }
 
 interface Script extends BaseScript {
@@ -1414,7 +1414,7 @@ interface MaterialVariant extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_MaterialVariant: unique symbol;
-	BaseMaterial: Enum.Material;
+	set BaseMaterial(v: Enum.Material);
 	ColorMap: string;
 	MetalnessMap: string;
 	NormalMap: string;
@@ -1571,9 +1571,9 @@ interface NetworkSettings extends Instance {
 	 * 
 	 * Tags: Hidden, NotReplicated
 	 */
-	readonly FreeMemoryMBytes: number;
-	readonly HttpProxyEnabled: boolean;
-	readonly HttpProxyURL: string;
+	get FreeMemoryMBytes(): number;
+	get HttpProxyEnabled(): boolean;
+	get HttpProxyURL(): string;
 	/**
 	 * Instruct the engine to simulate additional lag by delaying all incoming messages. Units are seconds.
 	 */
@@ -1685,11 +1685,11 @@ interface TriangleMeshPart extends BasePart {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	CollisionFidelity: Enum.CollisionFidelity;
+	set CollisionFidelity(v: Enum.CollisionFidelity);
 	/**
 	 * Tags: NotReplicated
 	 */
-	FluidFidelity: Enum.FluidFidelity;
+	set FluidFidelity(v: Enum.FluidFidelity);
 }
 
 interface MeshPart extends TriangleMeshPart {
@@ -1714,7 +1714,7 @@ interface MeshPart extends TriangleMeshPart {
 	 * _With MeshPart.DoubleSided enabled, both faces of the leaves are rendered._  
 	 * ![DoubleSided property enabled](https://developer.roblox.com/assets/blte8ab39d69cf97247/DoubleSidedOn.png)
 	 */
-	DoubleSided: boolean;
+	set DoubleSided(v: boolean);
 	/**
 	 * This property determines the level of detail that solid-modeled and mesh parts will be shown in and can be set to the possible values of the [RenderFidelity](https://developer.roblox.com/en-us/api-reference/enum/RenderFidelity) enum.
 	 * 
@@ -1743,7 +1743,7 @@ interface MeshPart extends TriangleMeshPart {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	RenderFidelity: Enum.RenderFidelity;
+	set RenderFidelity(v: Enum.RenderFidelity);
 }
 
 interface PartOperation extends TriangleMeshPart {
@@ -1755,7 +1755,7 @@ interface PartOperation extends TriangleMeshPart {
 	 * @deprecated
 	 */
 	readonly _nominal_PartOperation: unique symbol;
-	RenderFidelity: Enum.RenderFidelity;
+	set RenderFidelity(v: Enum.RenderFidelity);
 	/**
 	 * This property represents an angle in degrees for a threshold value between face normals on a [solid modeled](https://developer.roblox.com/en-us/articles/3d-modeling-with-parts) part. If the normal difference is less than the value, normals will be adjusted to smooth the difference. Usually a value between 30 and 70 degrees will produce a good result. 0 degrees leads to sharp edges. Values between 90 and 180 degrees are allowed but not encouraged, as it may cause a “shadowing” effect on unions with sharp edges.
 	 * 
@@ -1769,7 +1769,7 @@ interface PartOperation extends TriangleMeshPart {
 	 * 
 	 * SmoothingAngle = 50
 	 */
-	SmoothingAngle: number;
+	set SmoothingAngle(v: number);
 }
 
 interface Model extends PVInstance {
@@ -1836,8 +1836,8 @@ interface Workspace extends WorldRoot {
 	 * *   Developers should also use the [Debris](https://developer.roblox.com/en-us/api-reference/class/Debris) service to clean up parts that are no longer needed, but have not fallen off the map
 	 * *   This property is clamped between -50,000 and 50,000. This is because [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s do not simulate or render properly at a great distance from the origin due to floating point inaccuracies
 	 */
-	FallenPartsDestroyHeight: number;
-	InterpolationThrottling: Enum.InterpolationThrottlingMode;
+	set FallenPartsDestroyHeight(v: number);
+	set InterpolationThrottling(v: Enum.InterpolationThrottlingMode);
 	/**
 	 * The **StreamingEnabled** property determines whether game content streaming is enabled for the place. This property is not scriptable and therefore must be set on the **Workspace** object in Studio.
 	 * 
@@ -1850,7 +1850,7 @@ interface Workspace extends WorldRoot {
 	 * *   [Workspace.StreamingTargetRadius](https://developer.roblox.com/en-us/api-reference/property/Workspace/StreamingTargetRadius)
 	 * *   [Workspace.StreamingPauseMode](https://developer.roblox.com/en-us/api-reference/property/Workspace/StreamingPauseMode)
 	 */
-	StreamingEnabled: boolean;
+	set StreamingEnabled(v: boolean);
 	/**
 	 * Goes through all [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s given, breaking any joints connected to these parts.
 	 * 
@@ -2258,7 +2258,7 @@ interface Plugin extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly CollisionEnabled: boolean;
+	get CollisionEnabled(): boolean;
 	/**
 	 * Returns the grid size the user has set in studio under the Model tab. This can be 1, 0.2 or 0.01, but has rounding errors.
 	 * 
@@ -2275,7 +2275,7 @@ interface Plugin extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly GridSize: number;
+	get GridSize(): number;
 	/**
 	 * This function sets the state of the calling plugin to activated. Activating the plugin allows mouse control through the [Plugin:GetMouse](https://developer.roblox.com/en-us/api-reference/function/Plugin/GetMouse) method.
 	 * 
@@ -2573,7 +2573,7 @@ interface PluginAction extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly ActionId: string;
+	get ActionId(): string;
 	/**
 	 * This property determines whether the [PluginAction](https://developer.roblox.com/en-us/api-reference/class/PluginAction) will be hidden from Studio's shortcuts view. Useful for contextual actions. It defaults to true.
 	 * 
@@ -2584,19 +2584,19 @@ interface PluginAction extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly AllowBinding: boolean;
+	get AllowBinding(): boolean;
 	/**
 	 * The description of the action, when viewing it from the keyboard shortcuts window in Roblox Studio.
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly StatusTip: string;
+	get StatusTip(): string;
 	/**
 	 * The text that is displayed when viewing this action in Roblox Studio.
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly Text: string;
+	get Text(): string;
 	/**
 	 * Fires when the action is triggered. This can be done by either activating the action from the Quick Access Toolbar, or by using the keyboard shortcut that was bound to it.
 	 */
@@ -2626,19 +2626,19 @@ interface PluginDragEvent extends Instance {
 	/**
 	 * Tags: NotReplicated
 	 */
-	readonly Data: string;
+	get Data(): string;
 	/**
 	 * Tags: NotReplicated
 	 */
-	readonly MimeType: string;
+	get MimeType(): string;
 	/**
 	 * Tags: NotReplicated
 	 */
-	readonly Position: Vector2;
+	get Position(): Vector2;
 	/**
 	 * Tags: NotReplicated
 	 */
-	readonly Sender: string;
+	get Sender(): string;
 }
 
 /** PluginGuiService is a service that stores [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui) objects to be displayed in Roblox Studio. It only allows PluginGuis to be direct children of the service, and PluginGuis are not allowed to be parented anywhere besides the service. */
@@ -3172,25 +3172,25 @@ interface ScriptDebugger extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly CurrentLine: number;
+	get CurrentLine(): number;
 	/**
 	 * Describes if this ScriptDebugger is actually debugging the script attached to it.
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly IsDebugging: boolean;
+	get IsDebugging(): boolean;
 	/**
 	 * Describes if this ScriptDebugger is paused.
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly IsPaused: boolean;
+	get IsPaused(): boolean;
 	/**
 	 * The script object this debugger is linked to.
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly Script: Instance | undefined;
+	get Script(): Instance | undefined;
 	/**
 	 * Adds a [DebuggerWatch](https://developer.roblox.com/en-us/api-reference/class/DebuggerWatch) with the given expression.
 	 */
@@ -3361,7 +3361,7 @@ interface Selection extends Instance {
 	/**
 	 * Tags: NotReplicated
 	 */
-	readonly SelectionThickness: number;
+	get SelectionThickness(): number;
 	Add(this: Selection, instancesToAdd: Array<Instance>): void;
 	/**
 	 * Returns an array of currently selected [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s in Roblox Studio.
@@ -3533,7 +3533,7 @@ interface StatsItem extends Instance {
 	/**
 	 * Tags: Hidden, NotReplicated
 	 */
-	readonly DisplayName: string;
+	get DisplayName(): string;
 	/**
 	 * Returns the StatsItem's value.
 	 */
@@ -3731,7 +3731,7 @@ interface Studio extends Instance {
 	 */
 	["Keyword Color"]: Color3;
 	["Line Thickness"]: number;
-	readonly LocalAssetsFolder: QDir;
+	get LocalAssetsFolder(): QDir;
 	/**
 	 * Specifies whether or not the [Lua Debugger](https://developer.roblox.com/articles/Lua-debugger "Lua Debugger") feature is enabled.
 	 */
@@ -3739,7 +3739,7 @@ interface Studio extends Instance {
 	/**
 	 * Tags: Hidden, NotReplicated
 	 */
-	readonly LuaDebuggerEnabledAtStartup: boolean;
+	get LuaDebuggerEnabledAtStartup(): boolean;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -3867,7 +3867,7 @@ interface Studio extends Instance {
 	 * Tags: Hidden, NotReplicated
 	 * @deprecated
 	 */
-	readonly ["UI Theme"]: Enum.UITheme;
+	get ["UI Theme"](): Enum.UITheme;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -3938,12 +3938,12 @@ interface StudioService extends Instance {
 	/**
 	 * Tags: NotReplicated
 	 */
-	readonly DraggerSolveConstraints: boolean;
+	get DraggerSolveConstraints(): boolean;
 	/**
 	 * Tags: NotReplicated
 	 * @deprecated
 	 */
-	readonly DrawConstraintsOnTop: boolean;
+	get DrawConstraintsOnTop(): boolean;
 	/**
 	 * **GridSize** determines the distance in studs by which studio's drag and move tools move objects each tick. This is set by the user Model tab under the “Snap to Grid” section.
 	 * 
@@ -3951,7 +3951,7 @@ interface StudioService extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly GridSize: number;
+	get GridSize(): number;
 	/**
 	 * **RotateIncrement** determines the angle in degrees by which studio's rotation tool will rotate selected objects each tick. This is set by the user Model tab under the “Snap to Grid” section.
 	 * 
@@ -3973,11 +3973,11 @@ interface StudioService extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly RotateIncrement: number;
+	get RotateIncrement(): number;
 	/**
 	 * Tags: NotReplicated
 	 */
-	readonly ShowConstraintDetails: boolean;
+	get ShowConstraintDetails(): boolean;
 	/**
 	 * The **StudioLocaleId** property contains the locale currently in-use by Studio, e.g. `en_US`. It is useful when localizing plugins.
 	 * 
@@ -3996,7 +3996,7 @@ interface StudioService extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly StudioLocaleId: string;
+	get StudioLocaleId(): string;
 	/**
 	 * **UseLocalSpace** determines whether the studio movement/rotation tools will manipulate a part's [CFrame](https://developer.roblox.com/en-us/api-reference/property/BasePart/CFrame) using the local space of an object or global space. By default, this setting is toggled with Ctrl-L. Plugins can read from this property if they implement their own object movement tools.
 	 * 
@@ -4182,13 +4182,13 @@ interface TaskScheduler extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly SchedulerDutyCycle: number;
+	get SchedulerDutyCycle(): number;
 	/**
 	 * The current average rate of the task scheduler.
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly SchedulerRate: number;
+	get SchedulerRate(): number;
 	/**
 	 * The specified thread pooling configuration for the task scheduler.
 	 */
@@ -4198,7 +4198,7 @@ interface TaskScheduler extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly ThreadPoolSize: number;
+	get ThreadPoolSize(): number;
 }
 
 interface TerrainDetail extends Instance {
@@ -4431,7 +4431,7 @@ interface TestService extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly ErrorCount: number;
+	get ErrorCount(): number;
 	/**
 	 * When set to true, the TestService will be executed when using the _Run_ action in Roblox Studio.
 	 * 
@@ -4471,7 +4471,7 @@ interface TestService extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly TestCount: number;
+	get TestCount(): number;
 	/**
 	 * The maximum amount of time that tests are allowed to run for.
 	 */
@@ -4481,7 +4481,7 @@ interface TestService extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly WarnCount: number;
+	get WarnCount(): number;
 	/**
 	 * If condition is true, prints "Check passed: ", followed by description to the output, in blue text. Otherwise, prints "Check failed: ", again, followed by description, but in red text.
 	 */
@@ -4543,8 +4543,8 @@ interface TextChatService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TextChatService: unique symbol;
-	CreateDefaultCommands: boolean;
-	CreateDefaultTextChannels: boolean;
+	set CreateDefaultCommands(v: boolean);
+	set CreateDefaultTextChannels(v: boolean);
 }
 
 interface VersionControlService extends Instance {

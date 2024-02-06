@@ -346,14 +346,18 @@ const ABSTRACT_CLASSES = new Set<string>([
 
 const PROP_TYPE_MAP = new Map<string, string>();
 
-function safePropType(valueType: string | undefined | null) {
-	if (valueType === null) {
+function safePropType(valueType: ApiValueType) {
+	let safeValue = safeValueType(valueType);
+	if (safeValue === null) {
 		return null;
 	}
-	if (valueType === undefined) {
+	if (safeValue === undefined) {
 		throw new Error("Undefined valueType!");
 	}
-	return PROP_TYPE_MAP.get(valueType) ?? valueType;
+	if (valueType.Category === "Class") {
+		safeValue += " | undefined";
+	}
+	return PROP_TYPE_MAP.get(safeValue) ?? safeValue;
 }
 
 const RENAMEABLE_AUTO_TYPES = new Map<string, string>([
@@ -869,13 +873,7 @@ export class ClassGenerator extends Generator {
 
 	private canWrite(className: string, member: ApiMember) {
 		const security = getSecurity(className, member);
-		const readSecurity = security.Read;
 		const writeSecurity = security.Write;
-
-		// dumb hack to fix PluginSecurity writable things being marked as readonly in None.d.ts
-		if (readSecurity === "None" && writeSecurity === "PluginSecurity") {
-			return true;
-		}
 
 		return (
 			writeSecurity === this.security ||
@@ -1083,23 +1081,36 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private generateProperty(rbxProperty: ApiProperty, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
+	private generateProperty(rbxProperty: ApiProperty, rbxClass: ApiClass, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxProperty.Name;
-		const valueType = safePropType(safeValueType(rbxProperty.ValueType));
+		const valueType = safePropType(rbxProperty.ValueType);
 		if (valueType !== null) {
 			const { Description: wikiDescription } = rbxProperty;
 			const description =
 				wikiDescription && wikiDescription.trim() !== ""
 					? wikiDescription
-					: this.metadata.getPropertyDescription(className, name);
-			const surelyDefined = rbxProperty.ValueType.Category !== "Class";
-			const prefix = this.canWrite(className, rbxProperty) && !hasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
+					: this.metadata.getPropertyDescription(rbxClass.Name, name);
+			const isWritable = this.canWrite(rbxClass.Name, rbxProperty) && !hasTag(rbxProperty, "ReadOnly");
 
 			if (!this.writeSignatures(rbxProperty, tsImplInterface, description)) {
-				this.write(`${prefix}${safeName(name)}: ${valueType}${surelyDefined ? "" : " | undefined"};`);
+				if (
+					// if this security is able to write the property
+					isWritable &&
+					// and the lower security could read it
+					getSecurity(rbxClass.Name, rbxProperty).Read === this.lowerSecurity &&
+					// and generated the get accessor for it
+					!this.isPluginOnlyClass(rbxClass)
+				) {
+					// then generate an accompanying set accessor
+					this.write(`set ${safeName(name)}(v: ${valueType});`);
+				} else if (!isWritable) {
+					this.write(`get ${safeName(name)}(): ${valueType};`);
+				} else {
+					this.write(`${safeName(name)}: ${valueType};`);
+				}
 			}
 		} else {
-			console.log(name, "is very bad!!!", className);
+			console.log(name, "is very bad!!!", rbxClass.Name);
 		}
 	}
 
@@ -1257,7 +1268,7 @@ export class ClassGenerator extends Generator {
 						this.generateFunction(rbxMember, className, tsImplInterface);
 						break;
 					case "Property":
-						this.generateProperty(rbxMember, className, tsImplInterface);
+						this.generateProperty(rbxMember, rbxClass, tsImplInterface);
 						break;
 				}
 			}
