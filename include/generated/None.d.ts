@@ -14523,7 +14523,8 @@ interface AdGui extends SurfaceGuiBase {
 	 * Tags: NotReplicated
 	 */
 	get Status(): Enum.AdUnitStatus;
-	OnAdEvent: (eventInfo: object) => boolean;
+	set OnAdEvent(cb: (eventInfo: object) => boolean);
+	get OnAdEvent(): never;
 }
 
 /** **Note:** SurfaceGuis must be descendants of PlayerGui in order to know the player who is interacting with it.Allows for the rendering of GUI elements onto a part's surface in the 3D world, whilst allowing for basic user interaction to occur.
@@ -30899,7 +30900,8 @@ interface DataModel extends ServiceProvider<Services> {
 	/**
 	 * @deprecated Use `BindToClose` instead
 	 */
-	OnClose: () => Array<any>;
+	set OnClose(cb: () => Array<any>);
+	get OnClose(): never;
 }
 
 /** The abstract class for settings database classes. */
@@ -31205,7 +31207,8 @@ interface SocialService extends Instance {
 	 */
 	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
 	readonly PhoneBookPromptClosed: RBXScriptSignal<(player: Player) => void>;
-	OnCallInviteInvoked: (tag: string, callParticipantIds: Array<any>) => Instance;
+	set OnCallInviteInvoked(cb: (tag: string, callParticipantIds: Array<any>) => Instance);
+	get OnCallInviteInvoked(): never;
 }
 
 /** A [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) is an object that emits sound. See [Adding Sounds](https://developer.roblox.com/en-us/articles/adding-sounds) for more info on how to upload a sound file.

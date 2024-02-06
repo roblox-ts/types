@@ -1038,7 +1038,8 @@ export class ClassGenerator extends Generator {
 				? wikiDescription
 				: this.metadata.getCallbackDescription(className, name);
 		if (!this.writeSignatures(rbxCallback, tsImplInterface, description)) {
-			this.write(`${name}: (${args}) => ${returnType};`);
+			this.write(`set ${name}(cb: (${args}) => ${returnType});`);
+			this.write(`get ${name}(): never;`);
 		}
 	}
 
