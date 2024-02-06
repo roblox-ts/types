@@ -472,6 +472,7 @@ interface Instance {
 	GetActor(this: Instance): Actor | undefined;
 	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
+	GetTags(this: Instance): Array<string>;
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
 	WaitForChild(this: Instance, childName: string | number): Instance;
 	WaitForChild(this: Instance, childName: string | number, timeOut: number): Instance | undefined;
