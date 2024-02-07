@@ -6118,6 +6118,35 @@ declare namespace Enum {
 	}
 	export type DragDetectorDragStyle = DragDetectorDragStyle.TranslateLine | DragDetectorDragStyle.TranslatePlane | DragDetectorDragStyle.TranslatePlaneOrLine | DragDetectorDragStyle.TranslateLineOrPlane | DragDetectorDragStyle.TranslateViewPlane | DragDetectorDragStyle.RotateAxis | DragDetectorDragStyle.RotateTrackball | DragDetectorDragStyle.Scriptable | DragDetectorDragStyle.BestForDevice;
 
+	export namespace DragDetectorPermissionPolicy {
+		export interface Nobody extends globalThis.EnumItem {
+			Name: "Nobody";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.DragDetectorPermissionPolicy;
+		}
+
+		export const Nobody: Nobody;
+
+		export interface Everybody extends globalThis.EnumItem {
+			Name: "Everybody";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.DragDetectorPermissionPolicy;
+		}
+
+		export const Everybody: Everybody;
+
+		export interface Scriptable extends globalThis.EnumItem {
+			Name: "Scriptable";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.DragDetectorPermissionPolicy;
+		}
+
+		export const Scriptable: Scriptable;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DragDetectorPermissionPolicy>;
+	}
+	export type DragDetectorPermissionPolicy = DragDetectorPermissionPolicy.Nobody | DragDetectorPermissionPolicy.Everybody | DragDetectorPermissionPolicy.Scriptable;
+
 	export namespace DragDetectorResponseStyle {
 		export interface Geometric extends globalThis.EnumItem {
 			Name: "Geometric";

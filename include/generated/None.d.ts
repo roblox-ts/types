@@ -7199,6 +7199,7 @@ interface DragDetector extends ClickDetector {
 	MinDragAngle: number;
 	MinDragTranslation: Vector3;
 	Orientation: Vector3;
+	PermissionPolicy: Enum.DragDetectorPermissionPolicy;
 	ReferenceInstance: Instance | undefined;
 	ResponseStyle: Enum.DragDetectorResponseStyle;
 	Responsiveness: number;
@@ -7222,6 +7223,7 @@ interface DragDetector extends ClickDetector {
 	GetReferenceFrame(this: DragDetector): CFrame;
 	RestartDrag(this: DragDetector): void;
 	SetDragStyleFunction(this: DragDetector, callback: Callback): void;
+	SetPermissionPolicyFunction(this: DragDetector, callback: Callback): void;
 	readonly DragContinue: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
 	readonly DragEnd: RBXScriptSignal<(playerWhoDragged: Player) => void>;
 	readonly DragStart: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, hitFrame: CFrame, clickedPart: BasePart, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
@@ -7273,12 +7275,37 @@ interface Collaborator extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Collaborator: unique symbol;
+	/**
+	 * Tags: Hidden
+	 */
 	CFrame: CFrame;
+	/**
+	 * Tags: Hidden
+	 */
 	CollaboratorColor: number;
+	/**
+	 * Tags: Hidden
+	 */
 	CurDocGUID: string;
+	/**
+	 * Tags: Hidden
+	 */
 	CurScriptLineNumber: number;
+	/**
+	 * Tags: Hidden
+	 */
 	IsIdle: boolean;
+	/**
+	 * Tags: Hidden
+	 */
+	Status: Enum.CollaboratorStatus;
+	/**
+	 * Tags: Hidden
+	 */
 	UserId: number;
+	/**
+	 * Tags: Hidden
+	 */
 	Username: string;
 }
 
@@ -7987,6 +8014,9 @@ interface HingeConstraint extends Constraint {
 	 * The maximum torque a [HingeConstraint](https://developer.roblox.com/en-us/api-reference/class/HingeConstraint) with [HingeConstraint.ActuatorType](https://developer.roblox.com/en-us/api-reference/property/HingeConstraint/ActuatorType) set to [Servo](https://developer.roblox.com/en-us/api-reference/enum/ActuatorType) can apply when trying to reach its desired [HingeConstraint.AngularSpeed](https://developer.roblox.com/en-us/api-reference/property/HingeConstraint/AngularSpeed).
 	 */
 	ServoMaxTorque: number;
+	/**
+	 * @deprecated
+	 */
 	SoftlockServoUponReachingTarget: boolean;
 	/**
 	 * The target angle a [HingeConstraint](https://developer.roblox.com/en-us/api-reference/class/HingeConstraint) will attempt to rotate to if its [HingeConstraint.ActuatorType](https://developer.roblox.com/en-us/api-reference/property/HingeConstraint/ActuatorType) is set to [Servo](https://developer.roblox.com/en-us/api-reference/enum/ActuatorType). Measured in degrees.
@@ -8378,6 +8408,9 @@ interface SlidingBallConstraint extends Constraint {
 	 * The visualized size of the SlidingBallConstraint.
 	 */
 	Size: number;
+	/**
+	 * @deprecated
+	 */
 	SoftlockServoUponReachingTarget: boolean;
 	/**
 	 * The desired speed a [SlidingBallConstraint](https://developer.roblox.com/en-us/api-reference/class/SlidingBallConstraint) with [SlidingBallConstraint.ActuatorType](https://developer.roblox.com/en-us/api-reference/property/SlidingBallConstraint/ActuatorType) set to [ActuatorType](https://developer.roblox.com/en-us/api-reference/enum/ActuatorType) will attempt to maintain while translating towards its [SlidingBallConstraint.TargetPosition](https://developer.roblox.com/en-us/api-reference/property/SlidingBallConstraint/TargetPosition). Measured in studs/second.
@@ -8466,6 +8499,9 @@ interface CylindricalConstraint extends SlidingBallConstraint {
 	 * Maximum torque the servo motor can apply. The units are mass \* studs^2 / second^2. Value in \[0, inf).
 	 */
 	ServoMaxTorque: number;
+	/**
+	 * @deprecated
+	 */
 	SoftlockAngularServoUponReachingTarget: boolean;
 	/**
 	 * Target angle (in degrees) between the reference axis and the secondary axis of Attachment1 around the rotation axis. Value in \[-180, 180\].
