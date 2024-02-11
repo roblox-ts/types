@@ -3177,7 +3177,15 @@ interface AvatarEditorService extends Instance {
 	 * 
 	 * Tags: Yields
 	 */
-	GetInventory(this: AvatarEditorService, assetTypes: ReadonlyArray<Enum.AvatarAssetType>): InventoryPages;
+	GetInventory(
+		this: AvatarEditorService,
+		assetTypes: ReadonlyArray<Enum.AvatarAssetType>,
+	): InventoryPages<{
+		AssetId: number;
+		AssetType: string;
+		Created: string;
+		Name: string;
+	}>;
 	/**
 	 * This function returns the item details for the given item. It accepts two parameters - the first indicating the ID of the item being retrieved and the second indicating its [ItemType](https://developer.roblox.com/en-us/api-reference/enum/ItemType).
 	 * 
@@ -20122,7 +20130,7 @@ interface KeyframeSequenceProvider extends Instance {
 	 * 
 	 * Tags: Yields
 	 */
-	GetAnimations(this: KeyframeSequenceProvider, userId: number): InventoryPages;
+	GetAnimations(this: KeyframeSequenceProvider, userId: number): InventoryPages<number>;
 	/**
 	 * GetKeyframeSequenceAsync returns a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) based on the specified assetId. The assetId must correspond to an animation. The function will yield until the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) is loaded from the website. Because this is a webcall it should wrapped in a pcall.
 	 * 
@@ -26899,7 +26907,7 @@ interface FriendPages
 }
 
 /** The InventoryPages class is used in the case of iterating over a specific category in a user's inventory. */
-interface InventoryPages extends Pages<number> {
+interface InventoryPages<T = unknown> extends Pages<T> {
 	/**
 	 * **DO NOT USE!**
 	 *
