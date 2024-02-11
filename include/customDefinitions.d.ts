@@ -1,3 +1,7 @@
+interface Actor extends Model {
+	SendMessage(this: Actor, topic: string, ...message: Array<unknown>): void;
+}
+
 interface AnalyticsService extends Instance {
 	FireCustomEvent(
 		this: AnalyticsService,
@@ -72,7 +76,52 @@ interface AvatarEditorService extends Instance {
 		Created: string;
 		Name: string;
 	}>;
+	GetAvatarRules(this: AvatarEditorService): AvatarRules;
+	GetBatchItemDetails(
+		this: AvatarEditorService,
+		itemIds: ReadonlyArray<number>,
+		itemType: CastsToEnum<Enum.AvatarItemType.Asset>,
+	): ReadonlyArray<AssetItemDetails>;
+	GetBatchItemDetails(
+		this: AvatarEditorService,
+		itemIds: ReadonlyArray<number>,
+		itemType: CastsToEnum<Enum.AvatarItemType.Bundle>,
+	): ReadonlyArray<BundleItemDetails>;
+	GetBatchItemDetails(
+		this: AvatarEditorService,
+		itemIds: ReadonlyArray<number>,
+		itemType: CastsToEnum<Enum.AvatarItemType>,
+	): ReadonlyArray<ItemDetails>;
+	GetItemDetails(
+		this: AvatarEditorService,
+		itemId: number,
+		itemType: CastsToEnum<Enum.AvatarItemType.Asset>,
+	): AssetItemDetails;
+	GetItemDetails(
+		this: AvatarEditorService,
+		itemId: number,
+		itemType: CastsToEnum<Enum.AvatarItemType.Bundle>,
+	): BundleItemDetails;
+	GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): ItemDetails;
+	GetRecommendedAssets(
+		this: AvatarEditorService,
+		assetType: CastsToEnum<Enum.AvatarAssetType>,
+		contextAssetId?: number,
+	): ReadonlyArray<RecommendedAsset>;
+	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): ReadonlyArray<RecommendedBundle>;
+	SearchCatalog(this: AvatarEditorService, searchParameters: CatalogSearchParams): CatalogPages;
 }
+
+interface CatalogPages extends Pages<SearchCatalogResult> {}
+
+interface OutfitPages
+	extends Pages<
+		ReadonlyArray<{
+			Id: number;
+			Name: string;
+			IsEditable: boolean;
+		}>
+	> {}
 
 interface BadgeService extends Instance {
 	/** @server */
@@ -202,7 +251,11 @@ interface DataModel extends ServiceProvider<Services> {
 }
 
 interface DataStore extends GlobalDataStore {
-	GetAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
+	GetAsync<T>(
+		this: DataStore,
+		key: string,
+		options?: DataStoreGetOptions,
+	): LuaTuple<[T | undefined, DataStoreKeyInfo]>;
 	GetVersionAsync(
 		this: DataStore,
 		key: string,
@@ -227,11 +280,9 @@ interface DataStore extends GlobalDataStore {
 		key: string,
 		transformFunction: (
 			oldValue: O | undefined,
-			keyInfo: DataStoreKeyInfo,
-		) => LuaTuple<[newValue: R, userIds?: Array<number>, metadata?: object]>,
-	): R extends undefined
-		? LuaTuple<[newValue: O | undefined, keyInfo: DataStoreKeyInfo]>
-		: LuaTuple<[newValue: R, keyInfo: DataStoreKeyInfo]>;
+			keyInfo: DataStoreKeyInfo | undefined,
+		) => LuaTuple<[newValue: R | undefined, userIds?: Array<number>, metadata?: object]>,
+	): LuaTuple<[newValue: R | undefined, keyInfo: DataStoreKeyInfo]>;
 	RemoveAsync<T>(this: DataStore, key: string): LuaTuple<[T | undefined, DataStoreKeyInfo | undefined]>;
 }
 
@@ -240,7 +291,7 @@ interface DataStorePages extends Pages<{ key: string; value: unknown }> {}
 /** @server */
 interface DataStoreService extends Instance {
 	GetDataStore(this: DataStoreService, name: string, scope?: string, options?: DataStoreOptions): DataStore;
-	GetGlobalDataStore(this: DataStoreService): GlobalDataStore;
+	GetGlobalDataStore(this: DataStoreService): DataStore;
 	GetOrderedDataStore(this: DataStoreService, name: string, scope?: string): OrderedDataStore;
 }
 
@@ -428,6 +479,7 @@ interface Instance {
 	 * }
 	 */
 	readonly Changed: unknown;
+	GetActor(this: Instance): Actor | undefined;
 	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
@@ -575,7 +627,6 @@ interface MessagingService extends Instance {
 
 interface Model extends PVInstance {
 	PrimaryPart: BasePart | undefined;
-	GetBoundingBox(this: Model): LuaTuple<[CFrame, Vector3]>;
 }
 
 interface NetworkClient extends NetworkPeer {
@@ -603,11 +654,11 @@ interface OrderedDataStore extends GlobalDataStore {
 	IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
 	RemoveAsync(this: OrderedDataStore, key: string): number | undefined;
 	SetAsync(this: OrderedDataStore, key: string, value?: unknown): void;
-	UpdateAsync<O, R>(
+	UpdateAsync(
 		this: OrderedDataStore,
 		key: string,
-		transformFunction: (oldValue: O | undefined) => R,
-	): R extends undefined ? O | undefined : R;
+		transformFunction: (oldValue: number | undefined) => number | undefined,
+	): number | undefined;
 }
 
 interface Pages<T = unknown> extends Instance {
@@ -624,7 +675,8 @@ interface PathfindingService extends Instance {
 }
 
 interface PhysicsService extends Instance {
-	GetCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo>;
+	GetCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo & { id: number }>;
+	GetRegisteredCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo>;
 }
 
 interface Player extends Instance {
@@ -718,7 +770,7 @@ interface PolicyService extends Instance {
 	GetPolicyInfoForPlayerAsync(this: PolicyService, player: Player): PolicyInfo;
 }
 
-interface RemoteEvent<T extends Callback = Callback> extends Instance {
+interface RemoteEvent<T extends Callback = Callback> extends BaseRemoteEvent {
 	readonly OnClientEvent: RBXScriptSignal<T>;
 	/** The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
 	 * ```ts
@@ -735,6 +787,25 @@ interface RemoteEvent<T extends Callback = Callback> extends Instance {
 	FireAllClients(this: RemoteEvent, ...args: Parameters<T>): void;
 	FireClient(this: RemoteEvent, player: Player, ...args: Parameters<T>): void;
 	FireServer(this: RemoteEvent, ...args: Parameters<T>): void;
+}
+
+interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemoteEvent {
+	readonly OnClientEvent: RBXScriptSignal<T>;
+	/** The reason we DON'T allow you to use `Parameters<T>` here is because you can't trust data from the client. Please type-check and sanity-check all values received from the client. E.g. if you are expecting a number from the client, you should check whether the received value is indeed a number and you might also want to make sure it isn't a `NaN` value. See example code:
+	 * ```ts
+	 * (new Instance("UnreliableRemoteEvent") as UnreliableRemoteEvent<(num: number) => void>).OnServerEvent.Connect((plr, num) => {
+	 *     if (typeIs(num, "number") && num === num) {
+	 *         print(`Yay! Valid number: ${num}`);
+	 *     } else {
+	 *         print(`Bad argument received from ${plr.Name}! Exploit or bug?`);
+	 *     }
+	 * });
+	 * ```
+	 */
+	readonly OnServerEvent: RBXScriptSignal<(player: Player, ...args: Array<unknown>) => void>;
+	FireAllClients(this: UnreliableRemoteEvent, ...args: Parameters<T>): void;
+	FireClient(this: UnreliableRemoteEvent, player: Player, ...args: Parameters<T>): void;
+	FireServer(this: UnreliableRemoteEvent, ...args: Parameters<T>): void;
 }
 
 interface RemoteFunction<T extends Callback = Callback> extends Instance {
@@ -793,11 +864,12 @@ interface SocialService extends Instance {
 interface SoundService extends Instance {
 	GetListener(
 		this: SoundService,
-	):
+	): LuaTuple<
 		| [Enum.ListenerType.Camera, undefined]
 		| [Enum.ListenerType.CFrame, CFrame]
 		| [Enum.ListenerType.ObjectCFrame, BasePart]
-		| [Enum.ListenerType.ObjectPosition, BasePart];
+		| [Enum.ListenerType.ObjectPosition, BasePart]
+	>;
 	SetListener(this: SoundService, listenerType: CastsToEnum<Enum.ListenerType.Camera>): void;
 	SetListener(this: SoundService, listenerType: CastsToEnum<Enum.ListenerType.CFrame>, cframe: CFrame): void;
 	SetListener(
@@ -822,6 +894,10 @@ interface StarterGui extends BasePlayerGui {
 
 interface Studio extends Instance {
 	Theme: StudioTheme;
+}
+
+interface StudioService extends Instance {
+	readonly ActiveScript: LuaSourceContainer | undefined;
 }
 
 interface SurfaceGuiBase extends LayerCollector {
@@ -929,6 +1005,20 @@ interface TextBox extends GuiObject {
 	readonly FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: InputObject) => void>;
 }
 
+interface TextChannel extends Instance {
+	/** @client */
+	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
+	/** @server */
+	ShouldDeliverCallback: (message: TextChatMessage, textSource: TextSource) => boolean;
+}
+
+interface TextChatService extends Instance {
+	/** @client */
+	OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => TextChatMessageProperties | undefined;
+	/** @client */
+	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
+}
+
 interface TextService extends Instance {
 	/** @server */
 	FilterStringAsync(
@@ -966,7 +1056,7 @@ interface UserInputService extends Instance {
 	readonly TouchMoved: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly TouchPan: RBXScriptSignal<
 		(
-			touchPositions: Array<InputObject>,
+			touchPositions: Array<Vector2>,
 			totalTranslation: Vector2,
 			velocity: Vector2,
 			state: Enum.UserInputState,
@@ -975,7 +1065,7 @@ interface UserInputService extends Instance {
 	>;
 	readonly TouchRotate: RBXScriptSignal<
 		(
-			touchPositions: Array<InputObject>,
+			touchPositions: Array<Vector2>,
 			rotation: number,
 			velocity: number,
 			state: Enum.UserInputState,
@@ -984,7 +1074,7 @@ interface UserInputService extends Instance {
 	>;
 	readonly TouchPinch: RBXScriptSignal<
 		(
-			touchPositions: Array<InputObject>,
+			touchPositions: Array<Vector2>,
 			scale: number,
 			velocity: number,
 			state: Enum.UserInputState,
@@ -992,7 +1082,7 @@ interface UserInputService extends Instance {
 		) => void
 	>;
 	readonly TouchLongPress: RBXScriptSignal<
-		(touchPositions: Array<InputObject>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void
+		(touchPositions: Array<Vector2>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void
 	>;
 	readonly TouchStarted: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>, gameProcessedEvent: boolean) => void>;

@@ -12,6 +12,9 @@ export type SecurityType =
 	| "RobloxSecurity"
 	| "NotAccessibleSecurity";
 
+export type ThreadSafety = "Unsafe" | "Safe" | "Unknown";
+export type PropertyThreadSafety = ThreadSafety | "ReadSafe";
+
 export type MemberCategoryType =
 	| "instance/object"
 	| "animation/instance"
@@ -55,18 +58,17 @@ export type MemberTag =
 	| "NotReplicated"
 	| "NotScriptable"
 	| "ReadOnly"
-	| "Yields";
+	| "Yields"
+	// Sometimes appears after a deprecated tag to indicate the preferred alternative
+	// Currently lists "Unknown" safety if referring to a Property that is ReadSafe
+	| { PreferredDescriptorName: string; ThreadSafety: ThreadSafety };
 
-export interface ApiMemberBase {
+interface ApiMemberBase {
 	MemberType: string;
 	Name: string;
-	Security:
-		| SecurityType
-		| {
-				Read: SecurityType;
-				Write: SecurityType;
-		  };
 	Tags?: Array<MemberTag>;
+
+	// Not from API dump, but gets added during loading phase
 	Description?: string;
 }
 
@@ -82,26 +84,38 @@ export interface ApiProperty extends ApiMemberBase {
 		CanLoad: boolean;
 		CanSave: boolean;
 	};
+	Security: {
+		Read: SecurityType;
+		Write: SecurityType;
+	};
+	ThreadSafety: PropertyThreadSafety;
 	ValueType: ApiValueType;
 }
 
 export interface ApiFunction extends ApiMemberBase {
 	MemberType: "Function";
 	Parameters: Array<ApiParameter>;
-	ReturnType: ApiValueType;
+	ReturnType: ApiValueType | Array<ApiValueType>;
+	Security: SecurityType;
+	ThreadSafety: ThreadSafety;
 }
 
 export interface ApiEvent extends ApiMemberBase {
 	MemberType: "Event";
 	Parameters: Array<ApiParameter>;
+	Security: SecurityType;
+	ThreadSafety: ThreadSafety;
 }
 
 export interface ApiCallback extends ApiMemberBase {
 	MemberType: "Callback";
 	Parameters: Array<ApiParameter>;
+	ReturnType: ApiValueType;
+	Security: SecurityType;
+	ThreadSafety: ThreadSafety;
 }
 
-type ApiMember = ApiProperty | ApiFunction | ApiEvent | ApiCallback;
+export type ApiMember = ApiProperty | ApiFunction | ApiEvent | ApiCallback;
 
 export interface ApiClass {
 	Members: Array<ApiMember>;

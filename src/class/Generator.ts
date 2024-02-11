@@ -3,11 +3,14 @@ import path from "path";
 
 import { ReflectionMetadata } from "./ReflectionMetadata";
 
-export class Generator {
+export abstract class Generator {
 	protected stream: fs.WriteStream;
 	protected indent = "";
 
-	constructor(filePath: string, protected metadata?: ReflectionMetadata) {
+	constructor(
+		filePath: string,
+		protected metadata?: ReflectionMetadata,
+	) {
 		fs.ensureFileSync(filePath);
 		this.stream = fs.createWriteStream(path.join(filePath));
 	}
@@ -22,5 +25,11 @@ export class Generator {
 
 	public write(line: string) {
 		this.stream.write((line.length > 0 ? this.indent + line : "") + "\n");
+	}
+
+	protected finish() {
+		return new Promise(resolve => {
+			this.stream.close(resolve);
+		});
 	}
 }

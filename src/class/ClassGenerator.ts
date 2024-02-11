@@ -11,7 +11,6 @@ import {
 	ApiEvent,
 	ApiFunction,
 	ApiMember,
-	ApiMemberBase,
 	ApiParameter,
 	ApiProperty,
 	ApiValueType,
@@ -267,6 +266,7 @@ const MEMBER_BLACKLIST = new Map([
 	["Players", new Set(["playerFromCharacter", "players"])],
 	["ServiceProvider", new Set(["service"])],
 	["DataModel", new Set(["lighting"])],
+	["PackageLink", new Set(["SerializedDefaultAttributes"])],
 ]);
 
 const EXPECTED_EXTRA_MEMBERS = new Map([
@@ -451,18 +451,30 @@ function safeArgName(name: string | undefined | null) {
 	return ARG_NAME_MAP.get(name) ?? name;
 }
 
-const securityOverride = new Map<string, Map<string, ApiMemberBase["Security"]>>([
-	["StarterGui", new Map([["ShowDevelopmentGui", "PluginSecurity"]])],
+const SECURITY_OVERRIDE = new Map<string, Map<string, ApiProperty["Security"]>>([
+	["StarterGui", new Map([["ShowDevelopmentGui", { Read: "PluginSecurity", Write: "PluginSecurity" }]])],
 ]);
 
-function getSecurity(className: string, member: ApiMemberBase) {
-	const security = securityOverride.get(className)?.get(member.Name) || member.Security || "None";
-	return typeof security === "string" ? { Read: security, Write: security } : security;
+function getSecurity(className: string, member: ApiMember) {
+	const securityOverride = SECURITY_OVERRIDE.get(className)?.get(member.Name);
+	if (securityOverride) {
+		return securityOverride;
+	}
+	switch (member.MemberType) {
+		case "Callback":
+			return { Read: "NotAccessibleSecurity", Write: member.Security };
+		case "Function":
+			return { Read: member.Security, Write: "NotAccessibleSecurity" };
+		case "Event":
+			return { Read: member.Security, Write: "NotAccessibleSecurity" };
+		case "Property":
+			return member.Security;
+	}
 }
 
 function hasTag(member: ApiClass, tag: ClassTag): boolean;
-function hasTag(member: ApiMemberBase, tag: MemberTag): boolean;
-function hasTag({ Tags }: ApiClass | ApiMemberBase, tag: string) {
+function hasTag(member: ApiMember, tag: Extract<MemberTag, string>): boolean;
+function hasTag({ Tags }: ApiClass | ApiMember, tag: string) {
 	return Tags ? Tags.includes(tag as ClassTag & MemberTag) : false;
 }
 
@@ -682,7 +694,7 @@ namespace ClassInformation {
 										extraPush ? tabChar + " * " : tabChar + " *\n" + tabChar + " * ",
 										trimmed,
 										"\n",
-								  );
+									);
 						} else {
 							return "";
 						}
@@ -847,7 +859,7 @@ export class ClassGenerator extends Generator {
 		super(filePath, metadata);
 	}
 
-	private canRead(className: string, member: ApiMemberBase) {
+	private canRead(className: string, member: ApiMember) {
 		const readSecurity = getSecurity(className, member).Read;
 		return (
 			readSecurity === this.security ||
@@ -855,8 +867,16 @@ export class ClassGenerator extends Generator {
 		);
 	}
 
-	private canWrite(className: string, member: ApiMemberBase) {
-		const writeSecurity = getSecurity(className, member).Write;
+	private canWrite(className: string, member: ApiMember) {
+		const security = getSecurity(className, member);
+		const readSecurity = security.Read;
+		const writeSecurity = security.Write;
+
+		// dumb hack to fix PluginSecurity writable things being marked as readonly in None.d.ts
+		if (readSecurity === "None" && writeSecurity === "PluginSecurity") {
+			return true;
+		}
+
 		return (
 			writeSecurity === this.security ||
 			(PLUGIN_ONLY_CLASSES.has(className) && writeSecurity === this.lowerSecurity)
@@ -884,7 +904,7 @@ export class ClassGenerator extends Generator {
 		return `/** ${desc} */`;
 	}
 
-	private writeSignatures(rbxMember: ApiMemberBase, tsImplInterface?: ts.InterfaceDeclaration, description?: string) {
+	private writeSignatures(rbxMember: ApiMember, tsImplInterface?: ts.InterfaceDeclaration, description?: string) {
 		if (tsImplInterface) {
 			const name = rbxMember.Name;
 			const signatures = Array<string>();
@@ -919,19 +939,45 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private writeDescription(rbxMember: ApiMemberBase, description?: string) {
+	private writeDescription(rbxMember: ApiMember, description?: string) {
 		const parts = new Array<string>();
 		if (description) {
 			parts.push(description);
 		}
 
-		if (rbxMember.Tags && rbxMember.Tags.length > 0) {
-			parts.push("Tags: " + rbxMember.Tags.join(", "));
+		const tagModifiers = [];
+		const tags = rbxMember.Tags ?? [];
+
+		const readonlyIndex = tags.indexOf("ReadOnly");
+		// Already covered by TS readonly modifier
+		if (readonlyIndex !== -1) tags.splice(readonlyIndex, 1);
+
+		let deprecationMessage = "@deprecated";
+		const deprecatedIndex = tags.indexOf("Deprecated");
+		// Splice removes the tag from array to avoid duplication
+		if (deprecatedIndex !== -1) tags.splice(deprecatedIndex, 1);
+		const replacementInfo = tags[deprecatedIndex];
+		if (typeof replacementInfo === "object") {
+			// API dump does not specify the class of replacement item
+			// So avoid redirecting from "PropertyA" to "PropertyA" [on some other class]
+			if (replacementInfo.PreferredDescriptorName !== rbxMember.Name) {
+				deprecationMessage += ` Use \`${replacementInfo.PreferredDescriptorName}\` instead`;
+			}
+			// Also remove replacement info object from tag list
+			tags.splice(deprecatedIndex, 1);
+		}
+		if (deprecatedIndex !== -1) {
+			tagModifiers.push(deprecationMessage);
 		}
 
-		if (hasTag(rbxMember, "Deprecated")) {
-			parts.push("@deprecated");
+		if (tags.length > 0) {
+			if (parts.length > 0) {
+				// Add empty line to ensure tags are separate paragraph
+				parts.push("");
+			}
+			parts.push("Tags: " + tags.join(", "));
 		}
+		parts.push(...tagModifiers);
 
 		if (parts.length > 0) {
 			this.write(`/**`);
@@ -986,14 +1032,15 @@ export class ClassGenerator extends Generator {
 	private generateCallback(rbxCallback: ApiCallback, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxCallback.Name;
 		const args = this.generateArgs(rbxCallback.Parameters);
+		const returnType = safeValueType(rbxCallback.ReturnType);
+
 		const { Description: wikiDescription } = rbxCallback;
 		const description =
 			wikiDescription && wikiDescription.trim() !== ""
 				? wikiDescription
 				: this.metadata.getCallbackDescription(className, name);
-
 		if (!this.writeSignatures(rbxCallback, tsImplInterface, description)) {
-			this.write(`${name}: (${args}) => void;`);
+			this.write(`${name}: (${args}) => ${returnType};`);
 		}
 	}
 
@@ -1013,7 +1060,14 @@ export class ClassGenerator extends Generator {
 
 	private generateFunction(rbxFunction: ApiFunction, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxFunction.Name;
-		const returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
+
+		let returnType;
+		if (Array.isArray(rbxFunction.ReturnType)) {
+			const typesList = rbxFunction.ReturnType.map(t => safeReturnType(safeValueType(t))).join(", ");
+			returnType = `LuaTuple<[${typesList}]>`;
+		} else {
+			returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
+		}
 		if (returnType !== null) {
 			const args = this.generateArgs(rbxFunction.Parameters, true, [`this: ${className}`]);
 			const { Description: wikiDescription } = rbxFunction;
@@ -1085,7 +1139,7 @@ export class ClassGenerator extends Generator {
 			return false;
 		}
 
-		if (!this.canRead(rbxClass.Name, rbxMember)) {
+		if (!this.canRead(rbxClass.Name, rbxMember) && !this.canWrite(rbxClass.Name, rbxMember)) {
 			return false;
 		}
 
@@ -1353,5 +1407,7 @@ export class ClassGenerator extends Generator {
 		this.generateHeader();
 		this.generateInstancesTables(rbxClasses.filter(rbxClass => !this.definedClassNames.has(rbxClass.Name)));
 		this.generateClasses(rbxClasses, sourceFile);
+
+		await this.finish();
 	}
 }
