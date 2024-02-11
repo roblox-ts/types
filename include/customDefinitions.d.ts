@@ -83,7 +83,15 @@ interface AvatarEditorService extends Instance {
 		itemIds: ReadonlyArray<number>,
 		itemType: CastsToEnum<Enum.AvatarItemType>,
 	): ReadonlyArray<ItemDetails>;
-	GetInventory(this: AvatarEditorService, assetTypes: ReadonlyArray<Enum.AvatarAssetType>): InventoryPages;
+	GetInventory(
+		this: AvatarEditorService,
+		assetTypes: ReadonlyArray<Enum.AvatarAssetType>,
+	): InventoryPages<{
+		AssetId: number;
+		AssetType: string;
+		Created: string;
+		Name: string;
+	}>;
 	GetItemDetails(
 		this: AvatarEditorService,
 		itemId: number,
@@ -298,6 +306,8 @@ interface Dragger extends Instance {
 	MouseDown(this: Dragger, mousePart: BasePart, pointOnMousePart: Vector3, parts: Array<BasePart>): void;
 }
 
+interface EmotesPages extends InventoryPages {}
+
 interface FriendPages
 	extends Pages<{ AvatarFinal: boolean; AvatarUri: string; Id: number; Username: string; IsOnline: boolean }> {}
 
@@ -494,7 +504,7 @@ interface Instance {
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance | undefined) => void>;
 }
 
-interface InventoryPages extends Pages<number> {}
+interface InventoryPages<T = unknown> extends Pages<T> {}
 
 interface JointInstance extends Instance {
 	Part0?: BasePart;
@@ -518,7 +528,7 @@ interface KeyframeSequence extends AnimationClip {
 }
 
 interface KeyframeSequenceProvider extends Instance {
-	GetAnimations(this: KeyframeSequenceProvider, userId: number): InventoryPages;
+	GetAnimations(this: KeyframeSequenceProvider, userId: number): InventoryPages<number>;
 	GetKeyframeSequenceAsync(this: KeyframeSequenceProvider, assetId: string): KeyframeSequence;
 }
 
