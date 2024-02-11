@@ -67,15 +67,6 @@ interface Attachment extends Instance {
 }
 
 interface AvatarEditorService extends Instance {
-	GetInventory(
-		this: AvatarEditorService,
-		assetTypes: Array<Enum.AvatarAssetType>,
-	): InventoryPages<{
-		AssetId: number;
-		AssetType: string;
-		Created: string;
-		Name: string;
-	}>;
 	GetAvatarRules(this: AvatarEditorService): AvatarRules;
 	GetBatchItemDetails(
 		this: AvatarEditorService,
@@ -92,6 +83,15 @@ interface AvatarEditorService extends Instance {
 		itemIds: ReadonlyArray<number>,
 		itemType: CastsToEnum<Enum.AvatarItemType>,
 	): ReadonlyArray<ItemDetails>;
+	GetInventory(
+		this: AvatarEditorService,
+		assetTypes: ReadonlyArray<Enum.AvatarAssetType>,
+	): InventoryPages<{
+		AssetId: number;
+		AssetType: string;
+		Created: string;
+		Name: string;
+	}>;
 	GetItemDetails(
 		this: AvatarEditorService,
 		itemId: number,
