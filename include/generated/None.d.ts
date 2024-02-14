@@ -22886,7 +22886,13 @@ interface MemoryStoreSortedMap extends Instance {
 	 * 
 	 * Tags: Yields
 	 */
-	SetAsync(this: MemoryStoreSortedMap, key: string, value: unknown, expiration: number, sortKey: unknown): boolean;
+	SetAsync(
+		this: MemoryStoreSortedMap,
+		key: string,
+		value: unknown,
+		expiration: number,
+		sortKey?: string | number,
+	): boolean;
 	/**
 	 * Retrieves the value of a key from a sorted map and lets you update it to a new value via a callback function.
 	 * 
