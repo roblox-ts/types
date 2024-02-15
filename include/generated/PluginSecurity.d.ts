@@ -4568,9 +4568,6 @@ interface VoiceChatService extends Instance {
 	 */
 	readonly _nominal_VoiceChatService: unique symbol;
 	EnableDefaultVoice: boolean;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	UseAudioApi: Enum.AudioApiRollout;
 }
 
