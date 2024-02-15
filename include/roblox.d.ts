@@ -2896,3 +2896,9 @@ type AttributeValue =
 	| NumberRange
 	| Rect
 	| Font;
+
+declare const enum RobloxEmoji {
+	Robux = "",
+	Premium = "",
+	Verified = "",
+}
