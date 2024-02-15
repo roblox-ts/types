@@ -2897,7 +2897,7 @@ type AttributeValue =
 	| Rect
 	| Font;
 
-declare const enum RobloxEmojis {
+declare const enum RobloxEmoji {
 	Robux = "",
 	Premium = "",
 	Verified = "",
