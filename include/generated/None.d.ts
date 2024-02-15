@@ -6,6 +6,7 @@
 
 interface Services {
 	AccountService: AccountService;
+	ActivityHistoryService: ActivityHistoryService;
 	AnalyticsService: AnalyticsService;
 	AnimationClipProvider: AnimationClipProvider;
 	AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
@@ -103,6 +104,7 @@ interface Services {
 	PluginPolicyService: PluginPolicyService;
 	PolicyService: PolicyService;
 	ProcessInstancePhysicsService: ProcessInstancePhysicsService;
+	ProjectFolderService: ProjectFolderService;
 	ProximityPromptService: ProximityPromptService;
 	PublishService: PublishService;
 	ReflectionService: ReflectionService;
@@ -170,7 +172,6 @@ interface Services {
 	VideoCaptureService: VideoCaptureService;
 	VideoService: VideoService;
 	VisibilityCheckDispatcher: VisibilityCheckDispatcher;
-	VisibilityService: VisibilityService;
 	VoiceChatInternal: VoiceChatInternal;
 	VoiceChatService: VoiceChatService;
 	VRService: VRService;
@@ -1352,6 +1353,18 @@ interface Hat extends Accoutrement {
 	 * @deprecated
 	 */
 	readonly _nominal_Hat: unique symbol;
+}
+
+interface ActivityHistoryService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ActivityHistoryService: unique symbol;
+	readonly onEventNotificationReceived: RBXScriptSignal<() => void>;
 }
 
 interface AdPortal extends Instance {
@@ -9430,6 +9443,7 @@ interface ControllerManager extends Instance {
 	GroundSensor: ControllerSensor | undefined;
 	MovingDirection: Vector3;
 	RootPart: BasePart | undefined;
+	UpDirection: Vector3;
 }
 
 /** Container class for the [HumanoidController](https://developer.roblox.com/en-us/api-reference/class/HumanoidController) among other classes. */
@@ -29476,6 +29490,17 @@ interface ProcessInstancePhysicsService extends Instance {
 	readonly _nominal_ProcessInstancePhysicsService: unique symbol;
 }
 
+interface ProjectFolderService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ProjectFolderService: unique symbol;
+}
+
 /** The ProximityPrompt is an object that allows developers to prompt users to interact with an object in the 3D world, such as opening a door or picking up an item.
  * 
  * ProximityPrompts work when parented to a [Part](https://developer.roblox.com/en-us/api-reference/class/Part), [Model](https://developer.roblox.com/en-us/api-reference/class/Model), or [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) in the workspace.  
@@ -37739,6 +37764,10 @@ interface VRService extends Instance {
 	 */
 	AutomaticScaling: Enum.VRScaling;
 	/**
+	 * Tags: NotBrowsable
+	 */
+	AvatarGestures: boolean;
+	/**
 	 * Tags: NotReplicated
 	 */
 	FadeOutViewOnCollision: boolean;
@@ -38354,17 +38383,6 @@ interface VisibilityCheckDispatcher extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_VisibilityCheckDispatcher: unique symbol;
-}
-
-interface VisibilityService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_VisibilityService: unique symbol;
 }
 
 interface VoiceChatInternal extends Instance {
