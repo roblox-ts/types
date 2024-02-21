@@ -15045,6 +15045,7 @@ interface WireframeHandleAdornment extends HandleAdornment {
 	AddLine(this: WireframeHandleAdornment, from: Vector3, to: Vector3): void;
 	AddLines(this: WireframeHandleAdornment, points: Array<any>): void;
 	AddPath(this: WireframeHandleAdornment, points: Array<any>, loop: boolean): void;
+	AddText(this: WireframeHandleAdornment, point: Vector3, text: string, size?: number): void;
 	Clear(this: WireframeHandleAdornment): void;
 }
 
@@ -15298,6 +15299,20 @@ interface Path2D extends GuiBase {
 	 * @deprecated
 	 */
 	readonly _nominal_Path2D: unique symbol;
+	Color: Color3;
+	Position: UDim2;
+	Visible: boolean;
+	ZIndex: number;
+	GetControlPoint(this: Path2D, index: number): Path2DControlPoint;
+	GetControlPoints(this: Path2D): unknown;
+	GetPositionOnCurve(this: Path2D, t: number): UDim2;
+	GetPositionOnCurveArcLength(this: Path2D, t: number): UDim2;
+	GetTangentOnCurve(this: Path2D, t: number): Vector2;
+	GetTangentOnCurveArcLength(this: Path2D, t: number): Vector2;
+	InsertControlPoint(this: Path2D, index: number, point: Path2DControlPoint): void;
+	RemoveControlPoint(this: Path2D, index: number): void;
+	SetControlPoints(this: Path2D, controlPoints: Array<any>): void;
+	UpdateControlPoint(this: Path2D, index: number, point: Path2DControlPoint): void;
 }
 
 /** The GuiService is a service which currently allows developers to control what [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) is currently being selected by the gamepad navigator. It also allows clients to check if Roblox's main menu is currently open.
