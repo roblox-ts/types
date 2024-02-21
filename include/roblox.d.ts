@@ -1929,6 +1929,17 @@ interface PathWaypointConstructor {
 
 declare const PathWaypoint: PathWaypointConstructor;
 
+interface Path2DControlPoint {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Path2DControlPoint: unique symbol;
+}
+
 // PhysicalProperties
 interface PhysicalProperties {
 	/**
