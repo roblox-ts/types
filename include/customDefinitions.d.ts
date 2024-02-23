@@ -868,6 +868,14 @@ interface SocialService extends Instance {
 	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
 }
 
+interface AudioAnalyzer extends Instance {
+	/**
+	 * Returns the frequency spectrum of the last audio buffer, as an array of numbers. The elements of the array are root-mean-square volume levels, evenly spaced from 0 hertz to 24,000 hertz.
+	 * @returns number[512]
+	 */
+	GetSpectrum(): Array<number>;
+}
+
 interface SoundService extends Instance {
 	GetListener(
 		this: SoundService,
