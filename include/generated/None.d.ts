@@ -2775,7 +2775,7 @@ interface AudioAnalyzer extends Instance {
 	/**
 	 * Tags: CustomLuaState
 	 */
-	GetSpectrum(this: AudioAnalyzer): unknown;
+	GetSpectrum(this: AudioAnalyzer): Array<number>;
 }
 
 interface AudioChorus extends Instance {
