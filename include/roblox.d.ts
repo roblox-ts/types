@@ -2381,6 +2381,16 @@ interface Vector2 {
 	readonly Unit: Vector2;
 	/** The length of the vector */
 	readonly Magnitude: number;
+	/** Returns a new vector from the absolute values of the original's components. For example, a vector of `(-2, 4)` returns a vector of `(2, 4)`. */
+	Abs(this: Vector2): Vector2;
+	/** Returns a new vector from the ceiling of the original's components. For example, a vector of `(-2.6, 5.1)` returns a vector of `(-2, 6)`. */
+	Ceil(this: Vector2): Vector2;
+	/** Returns a new vector from the floor of the original's components. For example, a vector of `(-2.6, 5.1)` returns a vector of `(-3, 5)`. */
+	Floor(this: Vector2): Vector2;
+	/** Returns a new vector from the sign (-1, 0, or 1) of the original's components. For example, a vector of `(-2.6, 5.1)` returns a vector of `(-1, 1)`. */
+	Sign(this: Vector2): Vector2;
+	/** Returns the angle in radians between the two vectors. Specify `true` for the optional `isSigned` boolean if you want a signed angle. By default, the method returns the absolute value. */
+	Angle(this: Vector2, other: Vector2, isSigned?: boolean): number;
 	/** Returns a scalar dot product of the two vectors */
 	Dot(this: Vector2, other: Vector2): number;
 	/** Returns a Vector2 linearly interpolated between this Vector2 and the goal by the fraction alpha */
@@ -2479,6 +2489,14 @@ interface Vector3 {
 	readonly Unit: Vector3;
 	/** The length of the vector */
 	readonly Magnitude: number;
+	/** Returns a new vector from the absolute values of the original's components. For example, a vector of `(-2, 4, -6)` returns a vector of `(2, 4, 6)`. */
+	Abs(this: Vector3): Vector3;
+	/** Returns a new vector from the ceiling of the original's components. For example, a vector of `(-2.6, 5.1, 8.8)` returns a vector of `(-2, 6, 9)`. */
+	Ceil(this: Vector3): Vector3;
+	/** Returns a new vector from the floor of the original's components. For example, a vector of `(-2.6, 5.1, 8.8)` returns a vector of `(-3, 5, 8)`. */
+	Floor(this: Vector3): Vector3;
+	/** Returns a new vector from the sign (-1, 0, or 1) of the original's components. For example, a vector of `(-2.6, 5.1, 0)` returns a vector of `(-1, 1, 0)`. */
+	Sign(this: Vector3): Vector3;
 	/** Returns a Vector3 linearly interpolated between this Vector3 and the goal by the fraction alpha. */
 	Lerp(this: Vector3, goal: Vector3, alpha: number): Vector3;
 	/** Returns a scalar dot product of the two vectors. */
