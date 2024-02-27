@@ -120,6 +120,23 @@ interface AvatarEditorService extends Instance {
 	SearchCatalog(this: AvatarEditorService, searchParameters: CatalogSearchParams): CatalogPages;
 }
 
+/** @client */
+interface CaptureService extends Instance {
+	readonly CaptureBegan: RBXScriptSignal<() => void>;
+	readonly CaptureEnded: RBXScriptSignal<() => void>;
+	readonly CaptureSaved: RBXScriptSignal<(captureInfo: { [index: string]: any }) => void>;
+	readonly UserCaptureSaved: RBXScriptSignal<(captureContentId: string) => void>;
+	CaptureScreenshot(this: CaptureService, onCaptureReady: (contentId: string) => void): void;
+	PromptSaveCapturesToGallery(this: CaptureService, contentIds: Array<string>, resultCallback: () => void): void;
+	PromptShareCapture(
+		this: CaptureService,
+		contentId: string,
+		launchData: string,
+		onAcceptedCallback: () => void,
+		onDeniedCallback: () => void,
+	): void;
+}
+
 interface CatalogPages extends Pages<SearchCatalogResult> {}
 
 interface OutfitPages
