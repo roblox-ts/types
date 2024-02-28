@@ -159,7 +159,6 @@ interface Services {
 	TextBoxService: TextBoxService;
 	TextChatService: TextChatService;
 	TextService: TextService;
-	TextureGenerationMeshHandler: TextureGenerationMeshHandler;
 	TextureGenerationService: TextureGenerationService;
 	ToastNotificationService: ToastNotificationService;
 	TracerService: TracerService;
@@ -326,6 +325,7 @@ interface CreatableInstances {
 	MotorFeature: MotorFeature;
 	NegateOperation: NegateOperation;
 	NoCollisionConstraint: NoCollisionConstraint;
+	Noise: Noise;
 	NumberPose: NumberPose;
 	NumberValue: NumberValue;
 	ObjectValue: ObjectValue;
@@ -603,6 +603,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	TextFilterResult: TextFilterResult;
 	TextFilterTranslatedResult: TextFilterTranslatedResult;
 	TextSource: TextSource;
+	TextureGenerationPartGroup: TextureGenerationPartGroup;
 	ThreadState: ThreadState;
 	TouchTransmitter: TouchTransmitter;
 	TrackerLodController: TrackerLodController;
@@ -15301,6 +15302,7 @@ interface Path2D extends GuiBase {
 	readonly _nominal_Path2D: unique symbol;
 	Color: Color3;
 	Position: UDim2;
+	Thickness: number;
 	Visible: boolean;
 	ZIndex: number;
 	GetControlPoint(this: Path2D, index: number): Path2DControlPoint;
@@ -22201,6 +22203,7 @@ interface BaseScript extends LuaSourceContainer {
 	 * Developers should remove a linked source via the properties window, rather than setting the property to _'\[Embedded\]'_.
 	 * 
 	 * For the LinkedSource property for [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript)s, please see [ModuleScript.LinkedSource](https://developer.roblox.com/en-us/api-reference/property/ModuleScript/LinkedSource).
+	 * @deprecated
 	 */
 	LinkedSource: string;
 	RunContext: Enum.RunContext;
@@ -22269,6 +22272,7 @@ interface ModuleScript extends LuaSourceContainer {
 	readonly _nominal_ModuleScript: unique symbol;
 	/**
 	 * Used to store a URL that points to an online script source. Binds the online code to the script's [Script.Source](https://developer.roblox.com/en-us/api-reference/property/Script/Source).
+	 * @deprecated
 	 */
 	LinkedSource: string;
 }
@@ -22608,6 +22612,10 @@ interface MarketplaceService extends Instance {
 	 * Tags: Yields
 	 */
 	GetSubscriptionProductInfoAsync(this: MarketplaceService, subscriptionId: string): object;
+	/**
+	 * Tags: Yields
+	 */
+	GetUserSubscriptionDetailsAsync(this: MarketplaceService, user: Player, subscriptionId: string): object;
 	/**
 	 * Tags: Yields
 	 */
@@ -23617,6 +23625,17 @@ interface NoCollisionConstraint extends Instance {
 	 * The first [Part](https://developer.roblox.com/en-us/api-reference/class/BasePart) that the constraint connects.
 	 */
 	Part1: BasePart | undefined;
+}
+
+interface Noise extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Noise: unique symbol;
 }
 
 interface OmniRecommendationsService extends Instance {
@@ -34613,7 +34632,7 @@ interface TextSource extends Instance {
 	readonly UserId: number;
 }
 
-interface TextureGenerationMeshHandler extends Instance {
+interface TextureGenerationPartGroup extends Instance {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -34621,7 +34640,7 @@ interface TextureGenerationMeshHandler extends Instance {
 	 * @hidden
 	 * @deprecated
 	 */
-	readonly _nominal_TextureGenerationMeshHandler: unique symbol;
+	readonly _nominal_TextureGenerationPartGroup: unique symbol;
 }
 
 interface TextureGenerationService extends Instance {
@@ -37774,17 +37793,11 @@ interface VRService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_VRService: unique symbol;
-	/**
-	 * Tags: NotReplicated
-	 */
 	AutomaticScaling: Enum.VRScaling;
 	/**
 	 * Tags: NotBrowsable
 	 */
 	AvatarGestures: boolean;
-	/**
-	 * Tags: NotReplicated
-	 */
 	FadeOutViewOnCollision: boolean;
 	/**
 	 * The GuiInputUserCFrame property describes what [UserCFrame](https://developer.roblox.com/en-us/api-reference/enum/UserCFrame) is responsible for input in VR. For instance, if a VR headset is responsible, the value of this property will be UserCFrame.Head.

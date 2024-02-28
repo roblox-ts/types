@@ -12593,6 +12593,19 @@ declare namespace Enum {
 	}
 	export type NetworkStatus = NetworkStatus.Unknown | NetworkStatus.Connected | NetworkStatus.Disconnected;
 
+	export namespace NoiseType {
+		export interface SimplexGabor extends globalThis.EnumItem {
+			Name: "SimplexGabor";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.NoiseType;
+		}
+
+		export const SimplexGabor: SimplexGabor;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.NoiseType>;
+	}
+	export type NoiseType = NoiseType.SimplexGabor;
+
 	export namespace NormalId {
 		export interface Right extends globalThis.EnumItem {
 			Name: "Right";
@@ -16441,9 +16454,17 @@ declare namespace Enum {
 
 		export const CloseDoc: CloseDoc;
 
+		export interface LogOut extends globalThis.EnumItem {
+			Name: "LogOut";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.StudioCloseMode;
+		}
+
+		export const LogOut: LogOut;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioCloseMode>;
 	}
-	export type StudioCloseMode = StudioCloseMode.None | StudioCloseMode.CloseStudio | StudioCloseMode.CloseDoc;
+	export type StudioCloseMode = StudioCloseMode.None | StudioCloseMode.CloseStudio | StudioCloseMode.CloseDoc | StudioCloseMode.LogOut;
 
 	export namespace StudioDataModelType {
 		export interface Edit extends globalThis.EnumItem {
@@ -17938,9 +17959,17 @@ declare namespace Enum {
 
 		export const OnboardingShadow: OnboardingShadow;
 
+		export interface BreakpointMarker extends globalThis.EnumItem {
+			Name: "BreakpointMarker";
+			Value: 136;
+			EnumType: typeof globalThis.Enum.StudioStyleGuideColor;
+		}
+
+		export const BreakpointMarker: BreakpointMarker;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioStyleGuideColor>;
 	}
-	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.FilterButtonDefault | StudioStyleGuideColor.FilterButtonHover | StudioStyleGuideColor.FilterButtonChecked | StudioStyleGuideColor.FilterButtonAccent | StudioStyleGuideColor.FilterButtonBorder | StudioStyleGuideColor.FilterButtonBorderAlt | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.DropShadow | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptInformation | StudioStyleGuideColor.ScriptHint | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DocViewCodeBackground | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo | StudioStyleGuideColor.ScriptBracket | StudioStyleGuideColor.AttributeCog | StudioStyleGuideColor.AICOOverlayText | StudioStyleGuideColor.AICOOverlayButtonBackground | StudioStyleGuideColor.AICOOverlayButtonBackgroundHover | StudioStyleGuideColor.AICOOverlayButtonBackgroundPressed | StudioStyleGuideColor.OnboardingCover | StudioStyleGuideColor.OnboardingHighlight | StudioStyleGuideColor.OnboardingShadow;
+	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.FilterButtonDefault | StudioStyleGuideColor.FilterButtonHover | StudioStyleGuideColor.FilterButtonChecked | StudioStyleGuideColor.FilterButtonAccent | StudioStyleGuideColor.FilterButtonBorder | StudioStyleGuideColor.FilterButtonBorderAlt | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.DropShadow | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptInformation | StudioStyleGuideColor.ScriptHint | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DocViewCodeBackground | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo | StudioStyleGuideColor.ScriptBracket | StudioStyleGuideColor.AttributeCog | StudioStyleGuideColor.AICOOverlayText | StudioStyleGuideColor.AICOOverlayButtonBackground | StudioStyleGuideColor.AICOOverlayButtonBackgroundHover | StudioStyleGuideColor.AICOOverlayButtonBackgroundPressed | StudioStyleGuideColor.OnboardingCover | StudioStyleGuideColor.OnboardingHighlight | StudioStyleGuideColor.OnboardingShadow | StudioStyleGuideColor.BreakpointMarker;
 
 	export namespace StudioStyleGuideModifier {
 		export interface Default extends globalThis.EnumItem {
@@ -18016,6 +18045,51 @@ declare namespace Enum {
 	}
 	export type Style = Style.AlternatingSupports | Style.BridgeStyleSupports | Style.NoSupports;
 
+	export namespace SubscriptionExpirationReason {
+		export interface ProductInactive extends globalThis.EnumItem {
+			Name: "ProductInactive";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.SubscriptionExpirationReason;
+		}
+
+		export const ProductInactive: ProductInactive;
+
+		export interface ProductDeleted extends globalThis.EnumItem {
+			Name: "ProductDeleted";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.SubscriptionExpirationReason;
+		}
+
+		export const ProductDeleted: ProductDeleted;
+
+		export interface SubscriberCancelled extends globalThis.EnumItem {
+			Name: "SubscriberCancelled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.SubscriptionExpirationReason;
+		}
+
+		export const SubscriberCancelled: SubscriberCancelled;
+
+		export interface SubscriberRefunded extends globalThis.EnumItem {
+			Name: "SubscriberRefunded";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.SubscriptionExpirationReason;
+		}
+
+		export const SubscriberRefunded: SubscriberRefunded;
+
+		export interface Lapsed extends globalThis.EnumItem {
+			Name: "Lapsed";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.SubscriptionExpirationReason;
+		}
+
+		export const Lapsed: Lapsed;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SubscriptionExpirationReason>;
+	}
+	export type SubscriptionExpirationReason = SubscriptionExpirationReason.ProductInactive | SubscriptionExpirationReason.ProductDeleted | SubscriptionExpirationReason.SubscriberCancelled | SubscriptionExpirationReason.SubscriberRefunded | SubscriptionExpirationReason.Lapsed;
+
 	export namespace SubscriptionPaymentStatus {
 		export interface Paid extends globalThis.EnumItem {
 			Name: "Paid";
@@ -18049,6 +18123,51 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SubscriptionPeriod>;
 	}
 	export type SubscriptionPeriod = SubscriptionPeriod.Month;
+
+	export namespace SubscriptionState {
+		export interface NeverSubscribed extends globalThis.EnumItem {
+			Name: "NeverSubscribed";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.SubscriptionState;
+		}
+
+		export const NeverSubscribed: NeverSubscribed;
+
+		export interface SubscribedWillRenew extends globalThis.EnumItem {
+			Name: "SubscribedWillRenew";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.SubscriptionState;
+		}
+
+		export const SubscribedWillRenew: SubscribedWillRenew;
+
+		export interface SubscribedWillNotRenew extends globalThis.EnumItem {
+			Name: "SubscribedWillNotRenew";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.SubscriptionState;
+		}
+
+		export const SubscribedWillNotRenew: SubscribedWillNotRenew;
+
+		export interface SubscribedRenewalPaymentPending extends globalThis.EnumItem {
+			Name: "SubscribedRenewalPaymentPending";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.SubscriptionState;
+		}
+
+		export const SubscribedRenewalPaymentPending: SubscribedRenewalPaymentPending;
+
+		export interface Expired extends globalThis.EnumItem {
+			Name: "Expired";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.SubscriptionState;
+		}
+
+		export const Expired: Expired;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SubscriptionState>;
+	}
+	export type SubscriptionState = SubscriptionState.NeverSubscribed | SubscriptionState.SubscribedWillRenew | SubscriptionState.SubscribedWillNotRenew | SubscriptionState.SubscribedRenewalPaymentPending | SubscriptionState.Expired;
 
 	export namespace SurfaceConstraint {
 		export interface None extends globalThis.EnumItem {
@@ -18939,35 +19058,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextYAlignment>;
 	}
 	export type TextYAlignment = TextYAlignment.Top | TextYAlignment.Center | TextYAlignment.Bottom;
-
-	export namespace TextureGenerationMeshHandlerUnwrapMode {
-		export interface Never extends globalThis.EnumItem {
-			Name: "Never";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.TextureGenerationMeshHandlerUnwrapMode;
-		}
-
-		export const Never: Never;
-
-		export interface Always extends globalThis.EnumItem {
-			Name: "Always";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.TextureGenerationMeshHandlerUnwrapMode;
-		}
-
-		export const Always: Always;
-
-		export interface WhenInvalidUVsDetected extends globalThis.EnumItem {
-			Name: "WhenInvalidUVsDetected";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.TextureGenerationMeshHandlerUnwrapMode;
-		}
-
-		export const WhenInvalidUVsDetected: WhenInvalidUVsDetected;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextureGenerationMeshHandlerUnwrapMode>;
-	}
-	export type TextureGenerationMeshHandlerUnwrapMode = TextureGenerationMeshHandlerUnwrapMode.Never | TextureGenerationMeshHandlerUnwrapMode.Always | TextureGenerationMeshHandlerUnwrapMode.WhenInvalidUVsDetected;
 
 	export namespace TextureMode {
 		export interface Stretch extends globalThis.EnumItem {
