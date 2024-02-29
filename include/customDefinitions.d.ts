@@ -123,7 +123,6 @@ interface AvatarEditorService extends Instance {
 /** @client */
 interface CaptureService extends Instance {
 	readonly CaptureSaved: RBXScriptSignal<(captureInfo: Record<string, unknown>) => void>;
-	readonly UserCaptureSaved: RBXScriptSignal<(contentId: string) => void>;
 	CaptureScreenshot(this: CaptureService, onCaptureReady: (captureContentId: string) => void): void;
 	PromptSaveCapturesToGallery<T extends string>(
 		this: CaptureService,
