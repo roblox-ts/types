@@ -314,6 +314,17 @@ interface Dragger extends Instance {
 	MouseDown(this: Dragger, mousePart: BasePart, pointOnMousePart: Vector3, parts: Array<BasePart>): void;
 }
 
+interface EditableMesh extends DataModelMesh {
+	FindClosestPointOnSurface(this: EditableMesh, point: Vector3): LuaTuple<[number, Vector3, Vector3]>;
+	FindVerticesWithinSphere(this: EditableMesh, center: Vector3, radius: number): Array<number>;
+	GetAdjacentTriangles(this: EditableMesh, triangleId: number): Array<number>;
+	GetAdjacentVertices(this: EditableMesh, vertexId: number): Array<number>;
+	GetTriangleVertices(this: EditableMesh, triangleId: number): LuaTuple<[number, number, number]>;
+	GetTriangles(this: EditableMesh): Array<number>;
+	GetVertices(this: EditableMesh): Array<number>;
+	RaycastLocal(this: EditableMesh, origin: Vector3, direction: Vector3): LuaTuple<[number, Vector3, Vector3]>;
+}
+
 interface EmotesPages extends InventoryPages {}
 
 interface FriendPages
