@@ -6,11 +6,8 @@
 	},
 	"description": "TypeScript typings for the Roblox platform. Partially handwritten and partially automatically generated.",
 	"scripts": {
-		"download-content": "wget -O devhub-scraper.zip https://github.com/roblox-ts/devhub-scraper/archive/master.zip",
-		"unzip-content": "unzip -q -o devhub-scraper.zip",
-		"fetch-content": "npm run download-content && npm run unzip-content",
 		"generate-files": "tsc && node out/index.js",
-		"build": "npm run fetch-content && npm run generate-files",
+		"build": "npm run generate-files",
 		"eslint-src": "npx eslint \"src/**/*.ts\" --max-warnings 0",
 		"eslint-include": "npx eslint \"include/*.ts\" --max-warnings 0",
 		"eslint": "npm run eslint-src && npm run eslint-include"
@@ -30,10 +27,10 @@
 	"devDependencies": {
 		"@rbxts/compiler-types": "^2.2.0-types.0",
 		"@types/fs-extra": "^11.0.4",
-		"@types/jsdom": "^21.1.6",
+		"@types/gunzip-maybe": "^1.4.2",
 		"@types/libxmljs": "^0.18.12",
 		"@types/node": "^20.11.20",
-		"@types/showdown": "^2.0.6",
+		"@types/tar-stream": "^3.1.3",
 		"@typescript-eslint/eslint-plugin": "^7.1.0",
 		"@typescript-eslint/parser": "^7.1.0",
 		"axios": "^1.6.7",
@@ -44,8 +41,10 @@
 		"eslint-plugin-prettier": "^5.1.3",
 		"eslint-plugin-simple-import-sort": "^12.0.0",
 		"fs-extra": "^11.2.0",
+		"gunzip-maybe": "^1.4.2",
 		"libxmljs2": "^0.33.0",
 		"prettier": "^3.2.5",
+		"tar-stream": "^3.1.7",
 		"ts-morph": "^21.0.1",
 		"typescript": "^5.2.2"
 	},

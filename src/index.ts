@@ -1,5 +1,8 @@
 import axios from "axios";
+import gunzip from "gunzip-maybe";
 import * as path from "path";
+import type { Stream } from "stream";
+import * as tar from "tar-stream";
 import { Project } from "ts-morph";
 
 import { ApiDump } from "./api";
@@ -13,6 +16,8 @@ const SECURITY_LEVELS = ["None", "PluginSecurity"] as const;
 const BASE_URL = "https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/roblox/";
 const API_DUMP_URL = BASE_URL + "Mini-API-Dump.json";
 const REFLECTION_METADATA_URL = BASE_URL + "ReflectionMetadata.xml";
+
+const CREATOR_DOCS_URL = "https://github.com/Roblox/creator-docs/archive/refs/heads/main.tar.gz";
 
 void (async () => {
 	const targetDir = path.resolve(__dirname, "..", "include");
@@ -37,6 +42,29 @@ void (async () => {
 		throw new Error("Response status non-200!");
 	}
 	const reflectionMetadata = new ReflectionMetadata(reflectionResponse.data);
+
+	const creatorDocsDownloadTimer = new Timer();
+	console.log("\tRequesting Creator Docs..");
+	const creatorDocsResponse = await axios.get(CREATOR_DOCS_URL, {
+		responseType: "stream",
+	});
+	console.log(`\tDone! (${creatorDocsDownloadTimer.get()}ms)`);
+	if (creatorDocsResponse.status !== 200) {
+		throw new Error("Response status non-200!");
+	}
+	const creatorDocsTarballStream = creatorDocsResponse.data as Stream;
+
+	const creatorDocsExtractTimer = new Timer();
+	console.log("\tExtracting Creator Docs..");
+	const extract = tar.extract();
+	creatorDocsTarballStream.pipe(gunzip()).pipe(extract);
+	for await (const entry of extract) {
+		for await (const chunk of entry) {
+			//console.log(chunk.toString());
+		}
+		entry.resume();
+	}
+	console.log(`\tDone! (${creatorDocsExtractTimer.get()}ms)`);
 
 	const enumTimer = new Timer();
 	console.log("\tGenerating enums..");
