@@ -453,6 +453,7 @@ function safeArgName(name: string | undefined | null) {
 
 const SECURITY_OVERRIDE = new Map<string, Map<string, ApiProperty["Security"]>>([
 	["StarterGui", new Map([["ShowDevelopmentGui", { Read: "PluginSecurity", Write: "PluginSecurity" }]])],
+	["HttpService", new Map([["HttpEnabled", { Read: "PluginSecurity", Write: "PluginSecurity" }]])],
 ]);
 
 function getSecurity(className: string, member: ApiMember) {
