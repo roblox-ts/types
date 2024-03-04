@@ -419,6 +419,12 @@ interface HapticService extends Instance {
 }
 
 interface HttpService extends Instance {
+	/**
+	 * When set to true, you are able to send requests to other websites using [HttpService:GetAsync()](https://create.roblox.com/docs/en-us/reference/engine/classes/HttpService#GetAsync), [HttpService:PostAsync()](https://create.roblox.com/docs/en-us/reference/engine/classes/HttpService#PostAsync), and [HttpService:RequestAsync()](https://create.roblox.com/docs/en-us/reference/engine/classes/HttpService#RequestAsync)
+ 	 *
+     * To enable HTTP Requests, the [HttpService](https://create.roblox.com/docs/en-us/reference/engine/classes/HttpService) must be enabled in Studio's [Game Settings](https://create.roblox.com/docs/en-us/studio/game-settings) through the **Security → Allow HTTP Requests** toggle.
+     */
+	HttpEnabled: boolean;
 	/** @server */
 	GetAsync(this: HttpService, url: string, nocache?: boolean, headers?: HttpHeaders): string;
 	/** @server */
