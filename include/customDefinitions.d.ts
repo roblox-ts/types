@@ -629,6 +629,7 @@ interface MemoryStoreSortedMap extends Instance {
 		expiration: number,
 		sortKey?: string | number,
 	): boolean;
+	GetRangeAsync(this: MemoryStoreSortedMap, direction: CastsToEnum<Enum.SortDirection>, count: number, exclusiveLowerBound?: unknown, exclusiveUpperBound?: unknown): unknown;
 }
 
 /** @server */
