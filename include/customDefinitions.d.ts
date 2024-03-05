@@ -630,11 +630,11 @@ interface MemoryStoreSortedMap extends Instance {
 		sortKey?: string | number,
 	): boolean;
 	GetRangeAsync(
-    	this: MemoryStoreSortedMap,
-    	direction: CastsToEnum<Enum.SortDirection>,
-    	count: number,
-    	exclusiveLowerBound?: unknown,
-    	exclusiveUpperBound?: unknown
+		this: MemoryStoreSortedMap,
+		direction: CastsToEnum<Enum.SortDirection>,
+		count: number,
+		exclusiveLowerBound?: unknown,
+		exclusiveUpperBound?: unknown,
 	): unknown;
 }
 
