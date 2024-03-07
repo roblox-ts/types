@@ -1340,21 +1340,6 @@ interface LuaSettings extends Instance {
 	readonly _nominal_LuaSettings: unique symbol;
 }
 
-interface LuaSourceContainer extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_LuaSourceContainer: unique symbol;
-	/**
-	 * Tags: NotReplicated
-	 */
-	RuntimeSource: string;
-}
-
 interface BaseScript extends LuaSourceContainer {
 	/**
 	 * **DO NOT USE!**
