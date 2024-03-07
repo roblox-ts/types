@@ -2886,6 +2886,35 @@ declare namespace Enum {
 	}
 	export type ButtonStyle = ButtonStyle.Custom | ButtonStyle.RobloxButtonDefault | ButtonStyle.RobloxButton | ButtonStyle.RobloxRoundButton | ButtonStyle.RobloxRoundDefaultButton | ButtonStyle.RobloxRoundDropdownButton;
 
+	export namespace CSGAsyncDynamicCollision {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.CSGAsyncDynamicCollision;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.CSGAsyncDynamicCollision;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Experimental extends globalThis.EnumItem {
+			Name: "Experimental";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.CSGAsyncDynamicCollision;
+		}
+
+		export const Experimental: Experimental;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CSGAsyncDynamicCollision>;
+	}
+	export type CSGAsyncDynamicCollision = CSGAsyncDynamicCollision.Default | CSGAsyncDynamicCollision.Disabled | CSGAsyncDynamicCollision.Experimental;
+
 	export namespace CageType {
 		export interface Inner extends globalThis.EnumItem {
 			Name: "Inner";
@@ -7106,6 +7135,38 @@ declare namespace Enum {
 
 		export const Ubuntu: Ubuntu;
 
+		export interface BuilderSans extends globalThis.EnumItem {
+			Name: "BuilderSans";
+			Value: 46;
+			EnumType: typeof globalThis.Enum.Font;
+		}
+
+		export const BuilderSans: BuilderSans;
+
+		export interface BuilderSansMedium extends globalThis.EnumItem {
+			Name: "BuilderSansMedium";
+			Value: 47;
+			EnumType: typeof globalThis.Enum.Font;
+		}
+
+		export const BuilderSansMedium: BuilderSansMedium;
+
+		export interface BuilderSansBold extends globalThis.EnumItem {
+			Name: "BuilderSansBold";
+			Value: 48;
+			EnumType: typeof globalThis.Enum.Font;
+		}
+
+		export const BuilderSansBold: BuilderSansBold;
+
+		export interface BuilderSansExtraBold extends globalThis.EnumItem {
+			Name: "BuilderSansExtraBold";
+			Value: 49;
+			EnumType: typeof globalThis.Enum.Font;
+		}
+
+		export const BuilderSansExtraBold: BuilderSansExtraBold;
+
 		export interface Unknown extends globalThis.EnumItem {
 			Name: "Unknown";
 			Value: 100;
@@ -7116,7 +7177,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Font>;
 	}
-	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.SourceSansSemibold | Font.Gotham | Font.GothamMedium | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu | Font.Unknown;
+	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.SourceSansSemibold | Font.Gotham | Font.GothamMedium | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu | Font.BuilderSans | Font.BuilderSansMedium | Font.BuilderSansBold | Font.BuilderSansExtraBold | Font.Unknown;
 
 	export namespace FontSize {
 		export interface Size8 extends globalThis.EnumItem {
@@ -15287,6 +15348,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RunContext>;
 	}
 	export type RunContext = RunContext.Legacy | RunContext.Server | RunContext.Client | RunContext.Plugin;
+
+	export namespace RunState {
+		export interface Stopped extends globalThis.EnumItem {
+			Name: "Stopped";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.RunState;
+		}
+
+		export const Stopped: Stopped;
+
+		export interface Running extends globalThis.EnumItem {
+			Name: "Running";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.RunState;
+		}
+
+		export const Running: Running;
+
+		export interface Paused extends globalThis.EnumItem {
+			Name: "Paused";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.RunState;
+		}
+
+		export const Paused: Paused;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RunState>;
+	}
+	export type RunState = RunState.Stopped | RunState.Running | RunState.Paused;
 
 	export namespace RuntimeUndoBehavior {
 		export interface Aggregate extends globalThis.EnumItem {
