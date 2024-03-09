@@ -8828,6 +8828,35 @@ declare namespace Enum {
 	}
 	export type IXPLoadingStatus = IXPLoadingStatus.None | IXPLoadingStatus.Pending | IXPLoadingStatus.Initialized | IXPLoadingStatus.ErrorInvalidUser | IXPLoadingStatus.ErrorConnection | IXPLoadingStatus.ErrorJsonParse | IXPLoadingStatus.ErrorTimedOut;
 
+	export namespace ImageAlphaType {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ImageAlphaType;
+		}
+
+		export const Default: Default;
+
+		export interface LockCanvasAlpha extends globalThis.EnumItem {
+			Name: "LockCanvasAlpha";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ImageAlphaType;
+		}
+
+		export const LockCanvasAlpha: LockCanvasAlpha;
+
+		export interface LockCanvasColor extends globalThis.EnumItem {
+			Name: "LockCanvasColor";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.ImageAlphaType;
+		}
+
+		export const LockCanvasColor: LockCanvasColor;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ImageAlphaType>;
+	}
+	export type ImageAlphaType = ImageAlphaType.Default | ImageAlphaType.LockCanvasAlpha | ImageAlphaType.LockCanvasColor;
+
 	export namespace ImageCombineType {
 		export interface BlendSourceOver extends globalThis.EnumItem {
 			Name: "BlendSourceOver";
@@ -8845,9 +8874,33 @@ declare namespace Enum {
 
 		export const Overwrite: Overwrite;
 
+		export interface Add extends globalThis.EnumItem {
+			Name: "Add";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.ImageCombineType;
+		}
+
+		export const Add: Add;
+
+		export interface Multiply extends globalThis.EnumItem {
+			Name: "Multiply";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.ImageCombineType;
+		}
+
+		export const Multiply: Multiply;
+
+		export interface AlphaBlend extends globalThis.EnumItem {
+			Name: "AlphaBlend";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.ImageCombineType;
+		}
+
+		export const AlphaBlend: AlphaBlend;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ImageCombineType>;
 	}
-	export type ImageCombineType = ImageCombineType.BlendSourceOver | ImageCombineType.Overwrite;
+	export type ImageCombineType = ImageCombineType.BlendSourceOver | ImageCombineType.Overwrite | ImageCombineType.Add | ImageCombineType.Multiply | ImageCombineType.AlphaBlend;
 
 	export namespace InOut {
 		export interface Edge extends globalThis.EnumItem {
@@ -20647,6 +20700,200 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VibrationMotor>;
 	}
 	export type VibrationMotor = VibrationMotor.Large | VibrationMotor.Small | VibrationMotor.LeftTrigger | VibrationMotor.RightTrigger | VibrationMotor.LeftHand | VibrationMotor.RightHand;
+
+	export namespace VideoDeviceCaptureQuality {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.VideoDeviceCaptureQuality;
+		}
+
+		export const Default: Default;
+
+		export interface Low extends globalThis.EnumItem {
+			Name: "Low";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.VideoDeviceCaptureQuality;
+		}
+
+		export const Low: Low;
+
+		export interface Medium extends globalThis.EnumItem {
+			Name: "Medium";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.VideoDeviceCaptureQuality;
+		}
+
+		export const Medium: Medium;
+
+		export interface High extends globalThis.EnumItem {
+			Name: "High";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.VideoDeviceCaptureQuality;
+		}
+
+		export const High: High;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VideoDeviceCaptureQuality>;
+	}
+	export type VideoDeviceCaptureQuality = VideoDeviceCaptureQuality.Default | VideoDeviceCaptureQuality.Low | VideoDeviceCaptureQuality.Medium | VideoDeviceCaptureQuality.High;
+
+	export namespace VideoError {
+		export interface Ok extends globalThis.EnumItem {
+			Name: "Ok";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const Ok: Ok;
+
+		export interface Eof extends globalThis.EnumItem {
+			Name: "Eof";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const Eof: Eof;
+
+		export interface EAgain extends globalThis.EnumItem {
+			Name: "EAgain";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const EAgain: EAgain;
+
+		export interface BadParameter extends globalThis.EnumItem {
+			Name: "BadParameter";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const BadParameter: BadParameter;
+
+		export interface AllocFailed extends globalThis.EnumItem {
+			Name: "AllocFailed";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const AllocFailed: AllocFailed;
+
+		export interface CodecInitFailed extends globalThis.EnumItem {
+			Name: "CodecInitFailed";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const CodecInitFailed: CodecInitFailed;
+
+		export interface CodecCloseFailed extends globalThis.EnumItem {
+			Name: "CodecCloseFailed";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const CodecCloseFailed: CodecCloseFailed;
+
+		export interface DecodeFailed extends globalThis.EnumItem {
+			Name: "DecodeFailed";
+			Value: 7;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const DecodeFailed: DecodeFailed;
+
+		export interface ParsingFailed extends globalThis.EnumItem {
+			Name: "ParsingFailed";
+			Value: 8;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const ParsingFailed: ParsingFailed;
+
+		export interface Unsupported extends globalThis.EnumItem {
+			Name: "Unsupported";
+			Value: 9;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const Unsupported: Unsupported;
+
+		export interface Generic extends globalThis.EnumItem {
+			Name: "Generic";
+			Value: 10;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const Generic: Generic;
+
+		export interface DownloadFailed extends globalThis.EnumItem {
+			Name: "DownloadFailed";
+			Value: 11;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const DownloadFailed: DownloadFailed;
+
+		export interface StreamNotFound extends globalThis.EnumItem {
+			Name: "StreamNotFound";
+			Value: 12;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const StreamNotFound: StreamNotFound;
+
+		export interface EncodeFailed extends globalThis.EnumItem {
+			Name: "EncodeFailed";
+			Value: 13;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const EncodeFailed: EncodeFailed;
+
+		export interface CreateFailed extends globalThis.EnumItem {
+			Name: "CreateFailed";
+			Value: 14;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const CreateFailed: CreateFailed;
+
+		export interface NoPermission extends globalThis.EnumItem {
+			Name: "NoPermission";
+			Value: 15;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const NoPermission: NoPermission;
+
+		export interface NoService extends globalThis.EnumItem {
+			Name: "NoService";
+			Value: 16;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const NoService: NoService;
+
+		export interface ReleaseFailed extends globalThis.EnumItem {
+			Name: "ReleaseFailed";
+			Value: 17;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const ReleaseFailed: ReleaseFailed;
+
+		export interface Unknown extends globalThis.EnumItem {
+			Name: "Unknown";
+			Value: 18;
+			EnumType: typeof globalThis.Enum.VideoError;
+		}
+
+		export const Unknown: Unknown;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VideoError>;
+	}
+	export type VideoError = VideoError.Ok | VideoError.Eof | VideoError.EAgain | VideoError.BadParameter | VideoError.AllocFailed | VideoError.CodecInitFailed | VideoError.CodecCloseFailed | VideoError.DecodeFailed | VideoError.ParsingFailed | VideoError.Unsupported | VideoError.Generic | VideoError.DownloadFailed | VideoError.StreamNotFound | VideoError.EncodeFailed | VideoError.CreateFailed | VideoError.NoPermission | VideoError.NoService | VideoError.ReleaseFailed | VideoError.Unknown;
 
 	export namespace ViewMode {
 		export interface None extends globalThis.EnumItem {
