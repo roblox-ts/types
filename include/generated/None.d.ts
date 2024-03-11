@@ -171,6 +171,7 @@ interface Services {
 	VideoCaptureService: VideoCaptureService;
 	VideoService: VideoService;
 	VisibilityCheckDispatcher: VisibilityCheckDispatcher;
+	VisualizationModeService: VisualizationModeService;
 	VoiceChatInternal: VoiceChatInternal;
 	VoiceChatService: VoiceChatService;
 	VRService: VRService;
@@ -429,19 +430,17 @@ interface CreatableInstances {
 	UnionOperation: UnionOperation;
 	UniversalConstraint: UniversalConstraint;
 	UnreliableRemoteEvent: UnreliableRemoteEvent;
-	UserNotification: UserNotification;
-	UserNotificationPayload: UserNotificationPayload;
-	UserNotificationPayloadAnalyticsData: UserNotificationPayloadAnalyticsData;
-	UserNotificationPayloadJoinExperience: UserNotificationPayloadJoinExperience;
-	UserNotificationPayloadParameterValue: UserNotificationPayloadParameterValue;
 	Vector3Curve: Vector3Curve;
 	Vector3Value: Vector3Value;
 	VectorForce: VectorForce;
 	VehicleController: VehicleController;
 	VehicleSeat: VehicleSeat;
 	VelocityMotor: VelocityMotor;
+	VideoDeviceInput: VideoDeviceInput;
 	VideoFrame: VideoFrame;
 	ViewportFrame: ViewportFrame;
+	VisualizationMode: VisualizationMode;
+	VisualizationModeCategory: VisualizationModeCategory;
 	WedgePart: WedgePart;
 	Weld: Weld;
 	WeldConstraint: WeldConstraint;
@@ -604,6 +603,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	TextFilterTranslatedResult: TextFilterTranslatedResult;
 	TextSource: TextSource;
 	TextureGenerationPartGroup: TextureGenerationPartGroup;
+	TextureGenerationUnwrappingRequest: TextureGenerationUnwrappingRequest;
 	ThreadState: ThreadState;
 	TouchTransmitter: TouchTransmitter;
 	TrackerLodController: TrackerLodController;
@@ -2969,6 +2969,8 @@ interface AudioPlayer extends Instance {
 	TimePosition: number;
 	Play(this: AudioPlayer): void;
 	Stop(this: AudioPlayer): void;
+	readonly Ended: RBXScriptSignal<() => void>;
+	readonly Looped: RBXScriptSignal<() => void>;
 }
 
 interface AudioReverb extends Instance {
@@ -3545,6 +3547,10 @@ interface BadgeService extends Instance {
 	 * Tags: Yields
 	 */
 	AwardBadge(this: BadgeService, userId: number, badgeId: number): boolean;
+	/**
+	 * Tags: Yields
+	 */
+	CheckUserBadgesAsync(this: BadgeService, userId: number, badgeIds: Array<any>): unknown;
 	/**
 	 * This function fteches information about a [badge](https://developer.roblox.com/en-us/articles/badges-special-game-awards) given its ID. It takes a brief moment to load the information from the Roblox website; repeated calls will cache for a short duration. It returns a dictionary with the following fields:
 	 * 
@@ -7247,8 +7253,20 @@ interface DragDetector extends ClickDetector {
 	SetDragStyleFunction(this: DragDetector, callback: Callback): void;
 	SetPermissionPolicyFunction(this: DragDetector, callback: Callback): void;
 	readonly DragContinue: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly DragContinueReplicate: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
 	readonly DragEnd: RBXScriptSignal<(playerWhoDragged: Player) => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly DragEndReplicate: RBXScriptSignal<(playerWhoDragged: Player) => void>;
 	readonly DragStart: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, hitFrame: CFrame, clickedPart: BasePart, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
+	/**
+	 * Tags: Hidden
+	 */
+	readonly DragStartReplicate: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, hitFrame: CFrame, clickedPart: BasePart, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
 }
 
 /** The **Clouds** object renders realistic clouds that drift slowly across the sky. Both cloud cover and density can be adjusted, as well as cloud color to achieve atmospheres like stormy skies, moody sunsets, alien worlds, etc.
@@ -7303,8 +7321,13 @@ interface Collaborator extends Instance {
 	CFrame: CFrame;
 	/**
 	 * Tags: Hidden
+	 * @deprecated Use `CollaboratorColor3` instead
 	 */
 	CollaboratorColor: number;
+	/**
+	 * Tags: Hidden
+	 */
+	CollaboratorColor3: Color3;
 	/**
 	 * Tags: Hidden
 	 */
@@ -10605,6 +10628,7 @@ interface EditableImage extends Instance {
 	DrawCircle(this: EditableImage, center: Vector2, radius: number, color: Color3, transparency: number): void;
 	DrawImage(this: EditableImage, position: Vector2, image: EditableImage, combineType: CastsToEnum<Enum.ImageCombineType>): void;
 	DrawLine(this: EditableImage, p1: Vector2, p2: Vector2, color: Color3, transparency: number): void;
+	DrawProjectionImage(this: EditableImage, mesh: EditableMesh, projection: object, brushConfig: object): void;
 	DrawRectangle(this: EditableImage, position: Vector2, size: Vector2, color: Color3, transparency: number): void;
 	/**
 	 * Tags: CustomLuaState
@@ -10722,10 +10746,12 @@ interface ExperienceNotificationService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ExperienceNotificationService: unique symbol;
+	PromptOptIn(this: ExperienceNotificationService): void;
 	/**
 	 * Tags: Yields
 	 */
-	CreateUserNotificationAsync(this: ExperienceNotificationService, userId: string, userNotification: UserNotification): Instance | undefined;
+	CanPromptOptInAsync(this: ExperienceNotificationService): boolean;
+	readonly OptInPromptClosed: RBXScriptSignal<() => void>;
 }
 
 interface ExperienceService extends Instance {
@@ -15642,6 +15668,16 @@ interface HttpService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_HttpService: unique symbol;
+	/**
+	 * When set to true, you are able to send requests to other websites using [HttpService:GetAsync](https://developer.roblox.com/en-us/api-reference/function/HttpService/GetAsync), [HttpService:PostAsync](https://developer.roblox.com/en-us/api-reference/function/HttpService/PostAsync), and [HttpService:RequestAsync](https://developer.roblox.com/en-us/api-reference/function/HttpService/RequestAsync).
+	 * 
+	 * To enable HTTP requests, the HttpService must be enabled through Studio's Game Settings by opening the game's settings via the **Game Settings** button on the _Home_ tab of the game's studio window (see image below):  
+	 * ![Navigate to the Game Settings button](https://developer.roblox.com/assets/blt29ed4b4004d52e95/HttpRequestsSetting.png)
+	 * 
+	 * Within the Game Settings window, navigate to the **Security** tab and select the _On_ option under **Allow HTTP Requests** (see image below).  
+	 * ![Allow HTTP Requests](https://developer.roblox.com/assets/blt28c151e28c997373/GameSettingsButton.png)
+	 */
+	readonly HttpEnabled: boolean;
 	/**
 	 * The GenerateGUID function randomly creates a [universally unique identifier (UUID)](https://en.wikipedia.org/wiki/Universally_unique_identifier) string.
 	 * 
@@ -22150,18 +22186,6 @@ interface LuaSourceContainer extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_LuaSourceContainer: unique symbol;
-	/**
-	 * Tags: Hidden
-	 */
-	readonly LockGrantedOrNot: RBXScriptSignal<(granted: boolean) => void>;
-	/**
-	 * Tags: Hidden
-	 */
-	readonly LostLock: RBXScriptSignal<() => void>;
-	/**
-	 * Tags: Hidden
-	 */
-	readonly RequestLock: RBXScriptSignal<() => void>;
 }
 
 /** The base class for all script objects which run automatically. */
@@ -25221,6 +25245,9 @@ interface Terrain extends BasePart {
 	 * Applies a chunk of terrain to the Terrain object. Note: [TerrainRegion](https://developer.roblox.com/en-us/api-reference/class/TerrainRegion) data does not replicate between server and client.
 	 */
 	PasteRegion(this: Terrain, region: TerrainRegion, corner: Vector3int16, pasteEmptyCells: boolean): void;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	ReadVoxelChannels(this: Terrain, region: Region3, resolution: number, channelIds: Array<any>): object;
 	/**
 	 * Returns a certain region of [smooth terrain](https://developer.roblox.com/articles/Intro-To-Terrain) in [table format](https://developer.roblox.com/articles/Scripting-With-Terrain#reading-and-writing-voxels). Both of the returned arrays have an additional `Size` property, a [Vector3](https://developer.roblox.com/en-us/api-reference/datatype/Vector3).
@@ -25278,6 +25305,9 @@ interface Terrain extends BasePart {
 	 * Returns the grid cell location that contains the point position, preferring non-empty grid cells when position is on a grid edge.
 	 */
 	WorldToCellPreferSolid(this: Terrain, position: Vector3): Vector3;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	WriteVoxelChannels(this: Terrain, region: Region3, resolution: number, channels: object): void;
 	/**
 	 * Sets a certain region of [smooth terrain](https://developer.roblox.com/articles/Intro-To-Terrain "Smooth terrain") using the [table format](https://developer.roblox.com/articles/Intro-To-Terrain#Reading_and_writing_voxels "Smooth terrain")
@@ -34654,6 +34684,17 @@ interface TextureGenerationService extends Instance {
 	readonly _nominal_TextureGenerationService: unique symbol;
 }
 
+interface TextureGenerationUnwrappingRequest extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_TextureGenerationUnwrappingRequest: unique symbol;
+}
+
 interface ThreadState extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -37679,76 +37720,6 @@ interface UserInputService extends Instance {
 	readonly WindowFocused: RBXScriptSignal<() => void>;
 }
 
-interface UserNotification extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_UserNotification: unique symbol;
-	/**
-	 * Tags: NotReplicated
-	 */
-	readonly Id: string;
-	Payload: UserNotificationPayload | undefined;
-}
-
-interface UserNotificationPayload extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_UserNotificationPayload: unique symbol;
-	AnalyticsData: UserNotificationPayloadAnalyticsData | undefined;
-	JoinExperience: UserNotificationPayloadJoinExperience | undefined;
-	MessageId: string;
-	Type: string;
-	GetParameters(this: UserNotificationPayload): unknown;
-	SetParameters(this: UserNotificationPayload, parameters: unknown): void;
-}
-
-interface UserNotificationPayloadAnalyticsData extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_UserNotificationPayloadAnalyticsData: unique symbol;
-	Category: string;
-}
-
-interface UserNotificationPayloadJoinExperience extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_UserNotificationPayloadJoinExperience: unique symbol;
-	LaunchData: string;
-}
-
-interface UserNotificationPayloadParameterValue extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_UserNotificationPayloadParameterValue: unique symbol;
-	Int64Value: number;
-	StringValue: string;
-}
-
 /** A service that handles queries regarding users on the Roblox platform. */
 interface UserService extends Instance {
 	/**
@@ -38391,6 +38362,24 @@ interface VideoCaptureService extends Instance {
 	readonly _nominal_VideoCaptureService: unique symbol;
 }
 
+interface VideoDeviceInput extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_VideoDeviceInput: unique symbol;
+	Active: boolean;
+	CameraId: string;
+	CaptureQuality: Enum.VideoDeviceCaptureQuality;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly IsReady: boolean;
+}
+
 interface VideoService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -38411,6 +38400,39 @@ interface VisibilityCheckDispatcher extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_VisibilityCheckDispatcher: unique symbol;
+}
+
+interface VisualizationMode extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_VisualizationMode: unique symbol;
+}
+
+interface VisualizationModeCategory extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_VisualizationModeCategory: unique symbol;
+}
+
+interface VisualizationModeService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_VisualizationModeService: unique symbol;
 }
 
 interface VoiceChatInternal extends Instance {

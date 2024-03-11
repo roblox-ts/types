@@ -1340,21 +1340,6 @@ interface LuaSettings extends Instance {
 	readonly _nominal_LuaSettings: unique symbol;
 }
 
-interface LuaSourceContainer extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_LuaSourceContainer: unique symbol;
-	/**
-	 * Tags: NotReplicated
-	 */
-	RuntimeSource: string;
-}
-
 interface BaseScript extends LuaSourceContainer {
 	/**
 	 * **DO NOT USE!**
@@ -1805,6 +1790,7 @@ interface WorldRoot extends Model {
 	 * *   If translate stiffness and rotate stiffness are both equal to 0, then the target CFrame will be ignored and physical constraints will be solved for the object at the position where it was.
 	 */
 	IKMoveTo(this: WorldRoot, part: BasePart, target: CFrame, translateStiffness?: number, rotateStiffness?: number, collisionsMode?: CastsToEnum<Enum.IKCollisionsMode>): void;
+	StepPhysics(this: WorldRoot, dt: number, parts?: Array<Instance>): void;
 }
 
 interface Workspace extends WorldRoot {
@@ -3047,6 +3033,7 @@ interface RenderingTest extends Instance {
 	 */
 	Position: Vector3;
 	QualityLevel: number;
+	RenderingTestFrameCount: number;
 	ShouldSkip: boolean;
 	Ticket: string;
 	Timeout: number;
