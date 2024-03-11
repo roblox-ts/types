@@ -1014,7 +1014,7 @@ interface Instance {
 		this: T,
 		propertyName: InstancePropertyNames<T>,
 	): RBXScriptSignal<() => void>;
-	GetTags(this: Instance): unknown;
+	GetTags(this: Instance): Array<string>;
 	HasTag(this: Instance, tag: string): boolean;
 	/**
 	 * IsA returns true if the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)'s class is **equivalent to** or a **subclass** of a given class. This function is similar to the **instanceof** operators in other languages, and is a form of [type introspection](https://en.wikipedia.org/wiki/Type_introspection). To ignore class inheritance, test the [ClassName](https://developer.roblox.com/en-us/api-reference/property/Instance/ClassName) property directly instead. For checking native Lua data types (number, string, etc) use the functions `type` and `typeof`.
@@ -6676,12 +6676,22 @@ interface CaptureService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_CaptureService: unique symbol;
-	CaptureScreenshot(this: CaptureService, onCaptureReady: Callback): void;
-	PromptSaveCapturesToGallery(this: CaptureService, contentIds: Array<any>, resultCallback: Callback): void;
-	PromptShareCapture(this: CaptureService, contentId: string, launchData: string, onAcceptedCallback: Callback, onDeniedCallback: Callback): void;
+	CaptureScreenshot(this: CaptureService, onCaptureReady: (captureContentId: string) => void): void;
+	PromptSaveCapturesToGallery<T extends string>(
+		this: CaptureService,
+		contentIds: Array<T>,
+		resultCallback: (results: Record<T, boolean>) => void,
+	): void;
+	PromptShareCapture(
+		this: CaptureService,
+		contentId: string,
+		launchData: string,
+		onAcceptedCallback: () => void,
+		onDeniedCallback: () => void,
+	): void;
 	readonly CaptureBegan: RBXScriptSignal<() => void>;
 	readonly CaptureEnded: RBXScriptSignal<() => void>;
-	readonly CaptureSaved: RBXScriptSignal<(captureInfo: object) => void>;
+	readonly CaptureSaved: RBXScriptSignal<(captureInfo: Record<string, unknown>) => void>;
 	readonly UserCaptureSaved: RBXScriptSignal<(captureContentId: string) => void>;
 }
 
@@ -9695,20 +9705,20 @@ interface EditableMesh extends DataModelMesh {
 	readonly _nominal_EditableMesh: unique symbol;
 	AddTriangle(this: EditableMesh, vertexId0: number, vertexId1: number, vertexId2: number): number;
 	AddVertex(this: EditableMesh, p: Vector3): number;
-	FindClosestPointOnSurface(this: EditableMesh, point: Vector3): unknown;
+	FindClosestPointOnSurface(this: EditableMesh, point: Vector3): LuaTuple<[number, Vector3, Vector3]>;
 	FindClosestVertex(this: EditableMesh, toThisPoint: Vector3): number;
-	FindVerticesWithinSphere(this: EditableMesh, center: Vector3, radius: number): unknown;
-	GetAdjacentTriangles(this: EditableMesh, triangleId: number): unknown;
-	GetAdjacentVertices(this: EditableMesh, vertexId: number): unknown;
+	FindVerticesWithinSphere(this: EditableMesh, center: Vector3, radius: number): Array<number>;
+	GetAdjacentTriangles(this: EditableMesh, triangleId: number): Array<number>;
+	GetAdjacentVertices(this: EditableMesh, vertexId: number): Array<number>;
 	GetPosition(this: EditableMesh, vertexId: number): Vector3;
-	GetTriangleVertices(this: EditableMesh, triangleId: number): unknown;
-	GetTriangles(this: EditableMesh): unknown;
+	GetTriangleVertices(this: EditableMesh, triangleId: number): LuaTuple<[number, number, number]>;
+	GetTriangles(this: EditableMesh): Array<number>;
 	GetUV(this: EditableMesh, vertexId: number): Vector2;
 	GetVertexColor(this: EditableMesh, vertexId: number): Color3;
 	GetVertexColorAlpha(this: EditableMesh, vertexId: number): number;
 	GetVertexNormal(this: EditableMesh, vertexId: number): Vector3;
-	GetVertices(this: EditableMesh): unknown;
-	RaycastLocal(this: EditableMesh, origin: Vector3, direction: Vector3): unknown;
+	GetVertices(this: EditableMesh): Array<number>;
+	RaycastLocal(this: EditableMesh, origin: Vector3, direction: Vector3): LuaTuple<[number, Vector3, Vector3]>;
 	RemoveTriangle(this: EditableMesh, triangleId: number): void;
 	RemoveVertex(this: EditableMesh, vertexId: number): void;
 	SetPosition(this: EditableMesh, vertexId: number, p: Vector3): void;
@@ -10633,7 +10643,7 @@ interface EditableImage extends Instance {
 	/**
 	 * Tags: CustomLuaState
 	 */
-	ReadPixels(this: EditableImage, position: Vector2, size: Vector2): unknown;
+	ReadPixels(this: EditableImage, position: Vector2, size: Vector2): Array<number>;
 	Resize(this: EditableImage, size: Vector2): void;
 	Rotate(this: EditableImage, degrees: number, changeSize: boolean): void;
 	/**
@@ -22925,7 +22935,7 @@ interface MemoryStoreSortedMap extends Instance {
 	 * 
 	 * Tags: Yields
 	 */
-	GetAsync(this: MemoryStoreSortedMap, key: string): unknown;
+	GetAsync(this: MemoryStoreSortedMap, key: string): LuaTuple<[key?: string, sortKey?: string | number]>;
 	/**
 	 * Gets items within a sorted range of keys.
 	 * 
@@ -22933,7 +22943,13 @@ interface MemoryStoreSortedMap extends Instance {
 	 * 
 	 * Tags: Yields
 	 */
-	GetRangeAsync(this: MemoryStoreSortedMap, direction: CastsToEnum<Enum.SortDirection>, count: number, exclusiveLowerBound: unknown, exclusiveUpperBound: unknown): unknown;
+	GetRangeAsync(
+		this: MemoryStoreSortedMap,
+		direction: CastsToEnum<Enum.SortDirection>,
+		count: number,
+		exclusiveLowerBound?: { key?: string; sortKey?: string | number },
+		exclusiveUpperBound?: { key?: string; sortKey?: string | number },
+	): Array<{ key: string; value: unknown; sortKey?: string | number }>;
 	/**
 	 * Removes the provided key from the sorted map.
 	 * 
