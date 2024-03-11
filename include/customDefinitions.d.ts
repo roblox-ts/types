@@ -314,6 +314,10 @@ interface Dragger extends Instance {
 	MouseDown(this: Dragger, mousePart: BasePart, pointOnMousePart: Vector3, parts: Array<BasePart>): void;
 }
 
+interface EditableImage extends Instance {
+	ReadPixels(this: EditableImage, position: Vector2, size: Vector2): Array<number>;
+}
+
 interface EmotesPages extends InventoryPages {}
 
 interface FriendPages
