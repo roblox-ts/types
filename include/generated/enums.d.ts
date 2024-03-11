@@ -11,7 +11,7 @@ interface EnumItem {
 	Name: string;
 	Value: number;
 	EnumType: Enum;
-	IsA<T extends keyof typeof Enum>(name: T): this is typeof Enum[T][Exclude<keyof typeof Enum[T], "GetEnumItems">];
+	IsA<T extends Exclude<keyof typeof Enum, "GetEnums">>(name: T): this is typeof Enum[T][Exclude<keyof typeof Enum[T], "GetEnumItems">];
 }
 
 interface Enum {
