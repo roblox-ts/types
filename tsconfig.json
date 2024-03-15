@@ -1,35 +1,21 @@
 {
 	"compilerOptions": {
-		// required
-		"allowSyntheticDefaultImports": true,
-		"downlevelIteration": true,
-		"module": "commonjs",
-		"noLib": false,
+		"lib": ["es2023"],
+		"module": "node16",
+		"target": "es2022",
+
 		"strict": true,
-		"target": "es6",
-		"strictNullChecks": true,
 		"esModuleInterop": true,
-		// required, configurable
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "node16",
 		"rootDir": "src",
 		"outDir": "out",
-		// optional
 		"baseUrl": "src",
 		"declaration": false,
-		// optional, non-configurable
-		"jsx": "react",
-		"jsxFactory": "Roact.createElement",
-		"forceConsistentCasingInFileNames": true,
-		"sourceMap": true,
+		"sourceMap": true
 	},
-	"typeAcquisition": {
-		"enable": true
-	},
-	"include": [
-		"src/**/*.ts",
-		"src/**/*.d.ts"
-	],
-	"exclude": [
-		"node_modules/**/*",
-		"out/**/*"
-	]
+
+	"include": ["src/**/*.ts", "src/**/*.d.ts"],
+	"exclude": ["node_modules/**/*", "out/**/*"]
 }
