@@ -1,13 +1,29 @@
 import fs from "fs-extra";
 import path from "path";
 
+import type { ApiDocs } from "./ApiDocs";
+
 export abstract class Generator {
 	protected stream: fs.WriteStream;
 	protected indent = "";
 
-	constructor(filePath: string) {
+	constructor(
+		filePath: string,
+		protected apiDocs: ApiDocs,
+	) {
 		fs.ensureFileSync(filePath);
 		this.stream = fs.createWriteStream(path.join(filePath));
+	}
+
+	public writeMultilineDescription(description: Array<string>) {
+		if (description.length > 0) {
+			this.write(`/**`);
+
+			for (const part of description) {
+				this.write(` * ${part.trim()}`);
+			}
+			this.write(" */");
+		}
 	}
 
 	public pushIndent() {

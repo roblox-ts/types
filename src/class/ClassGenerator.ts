@@ -16,7 +16,7 @@ import {
 	MemberTag,
 	SecurityType,
 } from "../api";
-import { fatal } from "../util";
+import { fatal, getJSDocLearnMoreLink } from "../util";
 import type { ApiDocs } from "./ApiDocs";
 import { Generator } from "./Generator";
 
@@ -372,10 +372,6 @@ function multifilter<T>(list: Array<T>, numResultArrays: number, condition: (ele
 	return results;
 }
 
-function getJSDocLearnMoreLink(link: string) {
-	return `{@link ${link} Learn More}`;
-}
-
 const cacher = new Map<ts.InterfaceDeclaration, Array<ts.PropertySignature | ts.MethodSignature>>();
 
 export class ClassGenerator extends Generator {
@@ -383,12 +379,12 @@ export class ClassGenerator extends Generator {
 
 	constructor(
 		filePath: string,
-		protected apiDocs: ApiDocs,
+		apiDocs: ApiDocs,
 		private definedClassNames: Set<string>,
 		private security: SecurityType,
 		private lowerSecurity: SecurityType | undefined,
 	) {
-		super(filePath);
+		super(filePath, apiDocs);
 	}
 
 	private canRead(className: string, member: ApiMember) {
@@ -429,17 +425,6 @@ export class ClassGenerator extends Generator {
 			return [signature, documentation];
 		} else {
 			return ["", ""];
-		}
-	}
-
-	private writeMultilineDescription(description: Array<string>) {
-		if (description.length > 0) {
-			this.write(`/**`);
-
-			for (const part of description) {
-				this.write(` * ${part.trim()}`);
-			}
-			this.write(" */");
 		}
 	}
 

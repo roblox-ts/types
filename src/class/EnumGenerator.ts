@@ -1,4 +1,5 @@
 import { ApiEnum } from "../api";
+import { ApiDocs } from "./ApiDocs";
 import { Generator } from "./Generator";
 
 const IDENTIFIER_REGEX = /^[a-zA-Z_$][0-9a-zA-Z_$]*$/;
@@ -39,6 +40,9 @@ export class EnumGenerator extends Generator {
 		for (const { Name: enumTypeName, Items: enumTypeItems } of rbxEnums) {
 			const enumItemNames = new Array<string>();
 
+			const enumApiDocs = this.apiDocs.getEnumDocumentation(enumTypeName);
+			this.writeMultilineDescription(ApiDocs.asDocumentationLineParts(enumApiDocs));
+
 			this.write(`export namespace ${enumTypeName} {`);
 			this.pushIndent();
 			for (const {
@@ -48,6 +52,10 @@ export class EnumGenerator extends Generator {
 			} of enumTypeItems) {
 				if (!IDENTIFIER_REGEX.test(enumItemName)) continue;
 				enumItemNames.push(enumItemName);
+
+				const enumMemberApiDocs = this.apiDocs.getEnumMemberDocumentation(enumTypeName, enumItemName);
+				this.writeMultilineDescription(ApiDocs.asDocumentationLineParts(enumMemberApiDocs));
+
 				this.write(`export interface ${enumItemName} extends globalThis.EnumItem {`);
 				this.pushIndent();
 				this.write(`Name: "${enumItemName}";`);

@@ -54,7 +54,7 @@ void (async () => {
 
 	const enumTimer = new Timer();
 	console.log("\tGenerating enums..");
-	await new EnumGenerator(path.join(targetDir, "generated", "enums.d.ts")).generate(api.Enums);
+	await new EnumGenerator(path.join(targetDir, "generated", "enums.d.ts"), apiDocs).generate(api.Enums);
 	console.log(`\tDone! (${enumTimer.get()}ms)`);
 
 	const definedClassNames = new Set<string>();
