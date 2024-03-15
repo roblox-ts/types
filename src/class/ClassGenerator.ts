@@ -511,6 +511,16 @@ export class ClassGenerator extends Generator {
 			parts.push(getJSDocLearnMoreLink(rbxMember.Link));
 		}
 
+		if (rbxMember.CodeSample) {
+			if (parts.length > 0) {
+				parts.push("");
+			}
+
+			parts.push("```lua");
+			parts.push(rbxMember.CodeSample);
+			parts.push("```");
+		}
+
 		this.writeMultilineDescription(parts);
 	}
 
@@ -714,6 +724,16 @@ export class ClassGenerator extends Generator {
 					description.push(getJSDocLearnMoreLink(rbxClass.Link));
 				}
 
+				if (rbxClass.CodeSample) {
+					if (description.length > 0) {
+						description.push("");
+					}
+
+					description.push("```lua");
+					description.push(rbxClass.CodeSample);
+					description.push("```");
+				}
+
 				this.writeMultilineDescription(description);
 			}
 
@@ -863,12 +883,14 @@ export class ClassGenerator extends Generator {
 
 			rbxClass.Description = classDocs.documentation;
 			rbxClass.Link = classDocs.learn_more_link;
+			rbxClass.CodeSample = classDocs.code_sample;
 
 			for (const rbxMember of rbxClass.Members) {
 				const memberDocs = this.apiDocs.getInstanceMemberDocumentation(rbxClassName, rbxMember.Name);
 
 				rbxMember.Description = memberDocs.documentation;
 				rbxMember.Link = memberDocs.learn_more_link;
+				rbxMember.CodeSample = memberDocs.code_sample;
 			}
 		}
 

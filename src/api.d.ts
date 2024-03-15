@@ -71,6 +71,7 @@ interface ApiMemberBase {
 	// Not from API dump, but gets added during loading phase
 	Description?: string;
 	Link?: string;
+	CodeSample?: string;
 }
 
 export interface ApiValueType {
@@ -127,6 +128,7 @@ export interface ApiClass {
 	Subclasses: Array<string>;
 	Description?: string;
 	Link?: string;
+	CodeSample?: string;
 }
 
 export interface ApiEnumItem {

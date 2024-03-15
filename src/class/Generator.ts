@@ -16,11 +16,17 @@ export abstract class Generator {
 	}
 
 	public writeMultilineDescription(description: Array<string>) {
+		description = description
+			.map(part => {
+				return part.trim().replaceAll("\t", "  ").split("\n");
+			})
+			.flat();
+
 		if (description.length > 0) {
 			this.write(`/**`);
 
 			for (const part of description) {
-				this.write(` * ${part.trim()}`);
+				this.write(` * ${part}`);
 			}
 			this.write(" */");
 		}
