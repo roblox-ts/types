@@ -76,6 +76,7 @@ interface RequestAsyncRequest {
 	Method?: "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "PATCH";
 	Body?: string;
 	Headers?: HttpHeaders;
+	Compress?: Enum.HttpCompression;
 }
 
 interface RequestAsyncResponse {
