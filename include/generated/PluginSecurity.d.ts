@@ -29,14 +29,7 @@ interface CreatableInstances {
 	RenderingTest: RenderingTest;
 }
 
-interface AbstractInstances {
-	NetworkPeer: NetworkPeer;
-	NetworkReplicator: NetworkReplicator;
-	PluginGui: PluginGui;
-	StatsItem: StatsItem;
-}
-
-interface Instances extends Services, CreatableInstances, AbstractInstances {
+interface Instances extends Services, CreatableInstances {
 	ClientReplicator: ClientReplicator;
 	DataModelSession: DataModelSession;
 	DebuggerBreakpoint: DebuggerBreakpoint;
@@ -49,9 +42,12 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	LuaSettings: LuaSettings;
 	MemStorageConnection: MemStorageConnection;
 	MultipleDocumentInterfaceInstance: MultipleDocumentInterfaceInstance;
+	NetworkPeer: NetworkPeer;
+	NetworkReplicator: NetworkReplicator;
 	PhysicsSettings: PhysicsSettings;
 	Plugin: Plugin;
 	PluginDragEvent: PluginDragEvent;
+	PluginGui: PluginGui;
 	PluginMenu: PluginMenu;
 	PluginMouse: PluginMouse;
 	PluginToolbar: PluginToolbar;
@@ -62,6 +58,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	RunningAverageTimeIntervalItem: RunningAverageTimeIntervalItem;
 	ScriptDebugger: ScriptDebugger;
 	ServerReplicator: ServerReplicator;
+	StatsItem: StatsItem;
 	StudioTheme: StudioTheme;
 	TotalCountTimeIntervalItem: TotalCountTimeIntervalItem;
 }
@@ -1340,21 +1337,6 @@ interface LuaSettings extends Instance {
 	readonly _nominal_LuaSettings: unique symbol;
 }
 
-interface LuaSourceContainer extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_LuaSourceContainer: unique symbol;
-	/**
-	 * Tags: NotReplicated
-	 */
-	RuntimeSource: string;
-}
-
 interface BaseScript extends LuaSourceContainer {
 	/**
 	 * **DO NOT USE!**
@@ -1805,6 +1787,7 @@ interface WorldRoot extends Model {
 	 * *   If translate stiffness and rotate stiffness are both equal to 0, then the target CFrame will be ignored and physical constraints will be solved for the object at the position where it was.
 	 */
 	IKMoveTo(this: WorldRoot, part: BasePart, target: CFrame, translateStiffness?: number, rotateStiffness?: number, collisionsMode?: CastsToEnum<Enum.IKCollisionsMode>): void;
+	StepPhysics(this: WorldRoot, dt: number, parts?: Array<Instance>): void;
 }
 
 interface Workspace extends WorldRoot {
@@ -3047,6 +3030,7 @@ interface RenderingTest extends Instance {
 	 */
 	Position: Vector3;
 	QualityLevel: number;
+	RenderingTestFrameCount: number;
 	ShouldSkip: boolean;
 	Ticket: string;
 	Timeout: number;
@@ -4568,9 +4552,6 @@ interface VoiceChatService extends Instance {
 	 */
 	readonly _nominal_VoiceChatService: unique symbol;
 	EnableDefaultVoice: boolean;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	UseAudioApi: Enum.AudioApiRollout;
 }
 

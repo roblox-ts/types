@@ -291,72 +291,6 @@ function safeName(name: string) {
 	return containsBadChar(name) ? `["${name.replace(/"/g, '\\"')}"]` : name;
 }
 
-const ABSTRACT_CLASSES = new Set<string>([
-	"BackpackItem",
-	"BaseImportData",
-	"BasePart",
-	"BasePlayerGui",
-	"BaseRemoteEvent",
-	"BaseScript",
-	"BaseWrap",
-	"BevelMesh",
-	"BodyMover",
-	"CharacterAppearance",
-	"Clothing",
-	"Constraint",
-	"Controller",
-	"ControllerBase",
-	"CustomSoundEffect",
-	"DataModelMesh",
-	"DynamicRotate",
-	"FaceInstance",
-	"Feature",
-	"FormFactorPart",
-	"GenericSettings",
-	"GuiBase",
-	"GuiBase2d",
-	"GuiBase3d",
-	"GuiButton",
-	"GuiLabel",
-	"GuiObject",
-	"HandleAdornment",
-	"HandlesBase",
-	"Instance",
-	"JointInstance",
-	"LayerCollector",
-	"Light",
-	"LuaSourceContainer",
-	"ManualSurfaceJointInstance",
-	"NetworkPeer",
-	"NetworkReplicator",
-	"Pages",
-	"PartAdornment",
-	"PluginGui",
-	"PoseBase",
-	"PostEffect",
-	"PVAdornment",
-	"PVInstance",
-	"ScriptBuilder",
-	"SelectionLasso",
-	"SensorBase",
-	"ServiceProvider",
-	"SlidingBallConstraint",
-	"SoundEffect",
-	"StatsItem",
-	"StudioObjectBase",
-	"StyleBase",
-	"SurfaceGuiBase",
-	"TriangleMeshPart",
-	"TweenBase",
-	"UIBase",
-	"UIComponent",
-	"UIConstraint",
-	"UIGridStyleLayout",
-	"UILayout",
-	"ValueBase",
-	"WorldRoot",
-]);
-
 const PROP_TYPE_MAP = new Map<string, string>();
 
 function safePropType(valueType: string | undefined | null) {
@@ -707,7 +641,7 @@ namespace ClassInformation {
 										extraPush ? tabChar + " * " : tabChar + " *\n" + tabChar + " * ",
 										trimmed,
 										"\n",
-								  );
+									);
 						} else {
 							return "";
 						}
@@ -1320,8 +1254,8 @@ export class ClassGenerator extends Generator {
 	}
 
 	private generateInstancesTables(rbxClasses: Array<ApiClass>) {
-		const [Services, CreatableInstances, AbstractInstances, Instances] = multifilter(rbxClasses, 4, rbxClass =>
-			hasTag(rbxClass, "Service") ? 0 : isCreatable(rbxClass) ? 1 : ABSTRACT_CLASSES.has(rbxClass.Name) ? 2 : 3,
+		const [Services, CreatableInstances, Instances] = multifilter(rbxClasses, 3, rbxClass =>
+			hasTag(rbxClass, "Service") ? 0 : isCreatable(rbxClass) ? 1 : 2,
 		);
 
 		// for sorting
@@ -1331,15 +1265,8 @@ export class ClassGenerator extends Generator {
 		if (0 < CreatableInstances.length) {
 			this.generateInstanceInterface("CreatableInstances", CreatableInstances.sort(byName));
 		}
-		if (0 < CreatableInstances.length) {
-			this.generateInstanceInterface("AbstractInstances", AbstractInstances.sort(byName));
-		}
 		if (0 < Instances.length) {
-			this.generateInstanceInterface(
-				"Instances",
-				Instances.sort(byName),
-				"Services, CreatableInstances, AbstractInstances",
-			);
+			this.generateInstanceInterface("Instances", Instances.sort(byName), "Services, CreatableInstances");
 		}
 	}
 

@@ -214,14 +214,14 @@ declare namespace TS {
 		[K in keyof T]: T[K] extends "s"
 			? string
 			: T[K] extends "l"
-			? number
-			: T[K] extends "n"
-			? string | undefined
-			: T[K] extends "a"
-			? [number, boolean]
-			: T[K] extends "f"
-			? Callback
-			: never;
+				? number
+				: T[K] extends "n"
+					? string | undefined
+					: T[K] extends "a"
+						? [number, boolean]
+						: T[K] extends "f"
+							? Callback
+							: never;
 	}>;
 }
 
@@ -266,28 +266,28 @@ declare namespace debug {
 	): T extends `${infer A}${infer B}${infer C}${infer D}${infer E}${infer _}`
 		? LuaTuple<TS.InfoFlags<[A, B, C, D, E]>>
 		: T extends `${infer A}${infer B}${infer C}${infer D}${infer _}`
-		? LuaTuple<TS.InfoFlags<[A, B, C, D]>>
-		: T extends `${infer A}${infer B}${infer C}${infer _}`
-		? LuaTuple<TS.InfoFlags<[A, B, C]>>
-		: T extends `${infer A}${infer B}${infer _}`
-		? LuaTuple<TS.InfoFlags<[A, B]>>
-		: T extends `${infer A}${infer _}`
-		? LuaTuple<TS.InfoFlags<[A]>>
-		: LuaTuple<[unknown, unknown, unknown, unknown, unknown]>;
+			? LuaTuple<TS.InfoFlags<[A, B, C, D]>>
+			: T extends `${infer A}${infer B}${infer C}${infer _}`
+				? LuaTuple<TS.InfoFlags<[A, B, C]>>
+				: T extends `${infer A}${infer B}${infer _}`
+					? LuaTuple<TS.InfoFlags<[A, B]>>
+					: T extends `${infer A}${infer _}`
+						? LuaTuple<TS.InfoFlags<[A]>>
+						: LuaTuple<[unknown, unknown, unknown, unknown, unknown]>;
 	function info<T extends string>(
 		functionOrLevel: Callback | number,
 		options: T,
 	): T extends `${infer A}${infer B}${infer C}${infer D}${infer E}${infer _}`
 		? LuaTuple<TS.InfoFlags<[A, B, C, D, E]>>
 		: T extends `${infer A}${infer B}${infer C}${infer D}${infer _}`
-		? LuaTuple<TS.InfoFlags<[A, B, C, D]>>
-		: T extends `${infer A}${infer B}${infer C}${infer _}`
-		? LuaTuple<TS.InfoFlags<[A, B, C]>>
-		: T extends `${infer A}${infer B}${infer _}`
-		? LuaTuple<TS.InfoFlags<[A, B]>>
-		: T extends `${infer A}${infer _}`
-		? LuaTuple<TS.InfoFlags<[A]>>
-		: LuaTuple<[unknown, unknown, unknown, unknown, unknown]>;
+			? LuaTuple<TS.InfoFlags<[A, B, C, D]>>
+			: T extends `${infer A}${infer B}${infer C}${infer _}`
+				? LuaTuple<TS.InfoFlags<[A, B, C]>>
+				: T extends `${infer A}${infer B}${infer _}`
+					? LuaTuple<TS.InfoFlags<[A, B]>>
+					: T extends `${infer A}${infer _}`
+						? LuaTuple<TS.InfoFlags<[A]>>
+						: LuaTuple<[unknown, unknown, unknown, unknown, unknown]>;
 
 	/**
 	 * Assigns a custom tag name to the current thread's memory category in the Developer Console. Useful for analyzing memory usage of multiple threads in the same script which would otherwise be grouped together under the same tag/name.
@@ -325,7 +325,7 @@ interface String {
 	gsub(
 		this: string,
 		pattern: string,
-		repl: (value: string) => string | number | undefined,
+		repl: (...value: Array<string>) => string | number | undefined,
 		n?: number,
 	): LuaTuple<[string, number]>;
 	gsub(this: string, pattern: string, repl: Map<string, string | number>, n?: number): LuaTuple<[string, number]>;
@@ -761,36 +761,36 @@ declare function next<T extends ReadonlyArray<any>>(
 ): T extends readonly [infer A]
 	? LuaTuple<[number, A]>
 	: T extends readonly [infer A, infer B]
-	? LuaTuple<[number, A | B]>
-	: T extends readonly [infer A, infer B, infer C]
-	? LuaTuple<[number, A | B | C]>
-	: T extends readonly [infer A, infer B, infer C, infer D]
-	? LuaTuple<[number, A | B | C | D]>
-	: T extends readonly [infer A, infer B, infer C, infer D, infer E]
-	? LuaTuple<[number, A | B | C | D | E]>
-	: T extends readonly [infer A, infer B, infer C, infer D, infer E, infer F]
-	? LuaTuple<[number, A | B | C | D | E | F]>
-	: T extends ReadonlyArray<infer U>
-	? LuaTuple<[number, U]>
-	: LuaTuple<[unknown, unknown]>;
+		? LuaTuple<[number, A | B]>
+		: T extends readonly [infer A, infer B, infer C]
+			? LuaTuple<[number, A | B | C]>
+			: T extends readonly [infer A, infer B, infer C, infer D]
+				? LuaTuple<[number, A | B | C | D]>
+				: T extends readonly [infer A, infer B, infer C, infer D, infer E]
+					? LuaTuple<[number, A | B | C | D | E]>
+					: T extends readonly [infer A, infer B, infer C, infer D, infer E, infer F]
+						? LuaTuple<[number, A | B | C | D | E | F]>
+						: T extends ReadonlyArray<infer U>
+							? LuaTuple<[number, U]>
+							: LuaTuple<[unknown, unknown]>;
 declare function next<T extends ReadonlyArray<any>>(
 	object: T,
 	index?: number,
 ): T extends [infer A]
 	? LuaTuple<[number, A]>
 	: T extends [infer A, infer B]
-	? LuaTuple<[number, A | B]>
-	: T extends [infer A, infer B, infer C]
-	? LuaTuple<[number, A | B | C]>
-	: T extends [infer A, infer B, infer C, infer D]
-	? LuaTuple<[number, A | B | C | D]>
-	: T extends [infer A, infer B, infer C, infer D, infer E]
-	? LuaTuple<[number, A | B | C | D | E]>
-	: T extends [infer A, infer B, infer C, infer D, infer E, infer F]
-	? LuaTuple<[number, A | B | C | D | E | F]>
-	: T extends ReadonlyArray<infer U>
-	? LuaTuple<[number, U]>
-	: LuaTuple<[unknown, unknown]>;
+		? LuaTuple<[number, A | B]>
+		: T extends [infer A, infer B, infer C]
+			? LuaTuple<[number, A | B | C]>
+			: T extends [infer A, infer B, infer C, infer D]
+				? LuaTuple<[number, A | B | C | D]>
+				: T extends [infer A, infer B, infer C, infer D, infer E]
+					? LuaTuple<[number, A | B | C | D | E]>
+					: T extends [infer A, infer B, infer C, infer D, infer E, infer F]
+						? LuaTuple<[number, A | B | C | D | E | F]>
+						: T extends ReadonlyArray<infer U>
+							? LuaTuple<[number, U]>
+							: LuaTuple<[unknown, unknown]>;
 declare function next<T>(object: ReadonlyArray<T>, index?: number): LuaTuple<[number, T]>;
 declare function next<T>(object: ReadonlySet<T>, index?: T): LuaTuple<[T, true]>;
 declare function next<K, V>(object: ReadonlyMap<K, V>, index?: K): LuaTuple<[K, V]>;

@@ -76,6 +76,7 @@ interface RequestAsyncRequest {
 	Method?: "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "PATCH";
 	Body?: string;
 	Headers?: HttpHeaders;
+	Compress?: Enum.HttpCompression;
 }
 
 interface RequestAsyncResponse {
@@ -1393,6 +1394,12 @@ interface CFrameConstructor {
 	 * This function replaces the `CFrame.new(Vector3, Vector3)` constructor which accomplished a similar task. This function allows you to specify the `up` Vector, using the same default as the old constructor.
 	 */
 	lookAt: (at: Vector3, lookAt: Vector3, up?: Vector3) => CFrame;
+	/**
+	 * Returns a new CFrame with the position of `at` and facing along `direction`, optionally specifying the upward direction (`up`) with a default of `(0, 1, 0)`.
+	 *
+	 * This constructor is equivalent to `CFrame.lookAt(at, at + direction)`.
+	 */
+	lookAlong: (at: Vector3, direction: Vector3, up?: Vector3) => CFrame;
 	/** Creates a CFrame from a Vector3 */
 	new (pos: Vector3): CFrame;
 	/** Creates a CFrame from position (x, y, z). */
@@ -1866,8 +1873,8 @@ interface OverlapParams {
 	 */
 	FilterDescendantsInstances: Array<Instance>;
 	/**
-	 * `RaycastFilterType.Whitelist` or `RaycastFilterType.Blacklist`. Determines how the `FilterDescendantInstances` is
-	 * used. `Blacklist` will skip the `FilterDescendantInstances`, and `Whitelist` will exclusively include them.
+	 * `RaycastFilterType.Include` or `RaycastFilterType.Exclude`. Determines how the `FilterDescendantInstances` is
+	 * used. `Exclude` will skip the `FilterDescendantInstances`, and `Include` will exclusively include them.
 	 */
 	FilterType: Enum.RaycastFilterType;
 	/**
@@ -1922,6 +1929,17 @@ interface PathWaypointConstructor {
 }
 
 declare const PathWaypoint: PathWaypointConstructor;
+
+interface Path2DControlPoint {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Path2DControlPoint: unique symbol;
+}
 
 // PhysicalProperties
 interface PhysicalProperties {
@@ -2038,9 +2056,9 @@ interface RaycastParams {
 	 * Determines how the `FilterDescendantsInstances` list will be used, depending on the
 	 * [RaycastFilterType](https://developer.roblox.com/api-reference/enum/RaycastFilterType) provided.
 	 *
-	 * - `Enum.RaycastFilterType.Whitelist` — Only [BaseParts](https://developer.roblox.com/api-reference/class/BasePart)
+	 * - `Enum.RaycastFilterType.Include` — Only [BaseParts](https://developer.roblox.com/api-reference/class/BasePart)
 	 * which are descendants of objects in the filter list will be considered in the raycast operation.
-	 * - `Enum.RaycastFilterType.Blacklist` — Every [BasePart](https://developer.roblox.com/api-reference/class/BasePart)
+	 * - `Enum.RaycastFilterType.Exclude` — Every [BasePart](https://developer.roblox.com/api-reference/class/BasePart)
 	 * in the game will be considered except those that are descendants of objects in the filter list.
 	 */
 	FilterType: Enum.RaycastFilterType;
@@ -2364,6 +2382,16 @@ interface Vector2 {
 	readonly Unit: Vector2;
 	/** The length of the vector */
 	readonly Magnitude: number;
+	/** Returns a new vector from the absolute values of the original's components. For example, a vector of `(-2, 4)` returns a vector of `(2, 4)`. */
+	Abs(this: Vector2): Vector2;
+	/** Returns a new vector from the ceiling of the original's components. For example, a vector of `(-2.6, 5.1)` returns a vector of `(-2, 6)`. */
+	Ceil(this: Vector2): Vector2;
+	/** Returns a new vector from the floor of the original's components. For example, a vector of `(-2.6, 5.1)` returns a vector of `(-3, 5)`. */
+	Floor(this: Vector2): Vector2;
+	/** Returns a new vector from the sign (-1, 0, or 1) of the original's components. For example, a vector of `(-2.6, 5.1)` returns a vector of `(-1, 1)`. */
+	Sign(this: Vector2): Vector2;
+	/** Returns the angle in radians between the two vectors. Specify `true` for the optional `isSigned` boolean if you want a signed angle. By default, the method returns the absolute value. */
+	Angle(this: Vector2, other: Vector2, isSigned?: boolean): number;
 	/** Returns a scalar dot product of the two vectors */
 	Dot(this: Vector2, other: Vector2): number;
 	/** Returns a Vector2 linearly interpolated between this Vector2 and the goal by the fraction alpha */
@@ -2462,6 +2490,14 @@ interface Vector3 {
 	readonly Unit: Vector3;
 	/** The length of the vector */
 	readonly Magnitude: number;
+	/** Returns a new vector from the absolute values of the original's components. For example, a vector of `(-2, 4, -6)` returns a vector of `(2, 4, 6)`. */
+	Abs(this: Vector3): Vector3;
+	/** Returns a new vector from the ceiling of the original's components. For example, a vector of `(-2.6, 5.1, 8.8)` returns a vector of `(-2, 6, 9)`. */
+	Ceil(this: Vector3): Vector3;
+	/** Returns a new vector from the floor of the original's components. For example, a vector of `(-2.6, 5.1, 8.8)` returns a vector of `(-3, 5, 8)`. */
+	Floor(this: Vector3): Vector3;
+	/** Returns a new vector from the sign (-1, 0, or 1) of the original's components. For example, a vector of `(-2.6, 5.1, 0)` returns a vector of `(-1, 1, 0)`. */
+	Sign(this: Vector3): Vector3;
 	/** Returns a Vector3 linearly interpolated between this Vector3 and the goal by the fraction alpha. */
 	Lerp(this: Vector3, goal: Vector3, alpha: number): Vector3;
 	/** Returns a scalar dot product of the two vectors. */
@@ -2890,3 +2926,9 @@ type AttributeValue =
 	| NumberRange
 	| Rect
 	| Font;
+
+declare const enum RobloxEmoji {
+	Robux = "",
+	Premium = "",
+	Verified = "",
+}

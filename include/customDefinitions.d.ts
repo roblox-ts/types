@@ -66,6 +66,14 @@ interface Attachment extends Instance {
 	WorldCFrame: CFrame;
 }
 
+interface AudioAnalyzer extends Instance {
+	/**
+	 * Returns the frequency spectrum of the last audio buffer, as an array of numbers. The elements of the array are root-mean-square volume levels, evenly spaced from 0 hertz to 24,000 hertz.
+	 * @returns number[512]
+	 */
+	GetSpectrum(this: AudioAnalyzer): Array<number>;
+}
+
 interface AvatarEditorService extends Instance {
 	GetAvatarRules(this: AvatarEditorService): AvatarRules;
 	GetBatchItemDetails(
@@ -83,7 +91,15 @@ interface AvatarEditorService extends Instance {
 		itemIds: ReadonlyArray<number>,
 		itemType: CastsToEnum<Enum.AvatarItemType>,
 	): ReadonlyArray<ItemDetails>;
-	GetInventory(this: AvatarEditorService, assetTypes: ReadonlyArray<Enum.AvatarAssetType>): InventoryPages;
+	GetInventory(
+		this: AvatarEditorService,
+		assetTypes: ReadonlyArray<Enum.AvatarAssetType>,
+	): InventoryPages<{
+		AssetId: number;
+		AssetType: string;
+		Created: string;
+		Name: string;
+	}>;
 	GetItemDetails(
 		this: AvatarEditorService,
 		itemId: number,
@@ -102,6 +118,24 @@ interface AvatarEditorService extends Instance {
 	): ReadonlyArray<RecommendedAsset>;
 	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): ReadonlyArray<RecommendedBundle>;
 	SearchCatalog(this: AvatarEditorService, searchParameters: CatalogSearchParams): CatalogPages;
+}
+
+/** @client */
+interface CaptureService extends Instance {
+	readonly CaptureSaved: RBXScriptSignal<(captureInfo: Record<string, unknown>) => void>;
+	CaptureScreenshot(this: CaptureService, onCaptureReady: (captureContentId: string) => void): void;
+	PromptSaveCapturesToGallery<T extends string>(
+		this: CaptureService,
+		contentIds: Array<T>,
+		resultCallback: (results: Record<T, boolean>) => void,
+	): void;
+	PromptShareCapture(
+		this: CaptureService,
+		contentId: string,
+		launchData: string,
+		onAcceptedCallback: () => void,
+		onDeniedCallback: () => void,
+	): void;
 }
 
 interface CatalogPages extends Pages<SearchCatalogResult> {}
@@ -298,6 +332,23 @@ interface Dragger extends Instance {
 	MouseDown(this: Dragger, mousePart: BasePart, pointOnMousePart: Vector3, parts: Array<BasePart>): void;
 }
 
+interface EditableImage extends Instance {
+	ReadPixels(this: EditableImage, position: Vector2, size: Vector2): Array<number>;
+}
+
+interface EditableMesh extends DataModelMesh {
+	FindClosestPointOnSurface(this: EditableMesh, point: Vector3): LuaTuple<[number, Vector3, Vector3]>;
+	FindVerticesWithinSphere(this: EditableMesh, center: Vector3, radius: number): Array<number>;
+	GetAdjacentTriangles(this: EditableMesh, triangleId: number): Array<number>;
+	GetAdjacentVertices(this: EditableMesh, vertexId: number): Array<number>;
+	GetTriangleVertices(this: EditableMesh, triangleId: number): LuaTuple<[number, number, number]>;
+	GetTriangles(this: EditableMesh): Array<number>;
+	GetVertices(this: EditableMesh): Array<number>;
+	RaycastLocal(this: EditableMesh, origin: Vector3, direction: Vector3): LuaTuple<[number, Vector3, Vector3]>;
+}
+
+interface EmotesPages extends InventoryPages {}
+
 interface FriendPages
 	extends Pages<{ AvatarFinal: boolean; AvatarUri: string; Id: number; Username: string; IsOnline: boolean }> {}
 
@@ -472,6 +523,7 @@ interface Instance {
 	GetActor(this: Instance): Actor | undefined;
 	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
+	GetTags(this: Instance): Array<string>;
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
 	WaitForChild(this: Instance, childName: string | number): Instance;
 	WaitForChild(this: Instance, childName: string | number, timeOut: number): Instance | undefined;
@@ -494,7 +546,7 @@ interface Instance {
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance | undefined) => void>;
 }
 
-interface InventoryPages extends Pages<number> {}
+interface InventoryPages<T = unknown> extends Pages<T> {}
 
 interface JointInstance extends Instance {
 	Part0?: BasePart;
@@ -518,7 +570,7 @@ interface KeyframeSequence extends AnimationClip {
 }
 
 interface KeyframeSequenceProvider extends Instance {
-	GetAnimations(this: KeyframeSequenceProvider, userId: number): InventoryPages;
+	GetAnimations(this: KeyframeSequenceProvider, userId: number): InventoryPages<number>;
 	GetKeyframeSequenceAsync(this: KeyframeSequenceProvider, assetId: string): KeyframeSequence;
 }
 
@@ -604,6 +656,21 @@ interface MemoryStoreSortedMap extends Instance {
 		transformFunction: (value: unknown) => T,
 		expiration: number,
 	): T;
+	SetAsync(
+		this: MemoryStoreSortedMap,
+		key: string,
+		value: unknown,
+		expiration: number,
+		sortKey?: string | number,
+	): boolean;
+	GetRangeAsync(
+		this: MemoryStoreSortedMap,
+		direction: CastsToEnum<Enum.SortDirection>,
+		count: number,
+		exclusiveLowerBound?: { key?: string; sortKey?: string | number },
+		exclusiveUpperBound?: { key?: string; sortKey?: string | number },
+	): Array<{ key: string; value: unknown; sortKey?: string | number }>;
+	GetAsync(this: MemoryStoreSortedMap, key: string): LuaTuple<[key?: string, sortKey?: string | number]>;
 }
 
 /** @server */
