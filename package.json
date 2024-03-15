@@ -29,6 +29,7 @@
 		"@types/fs-extra": "^11.0.4",
 		"@types/libxmljs": "^0.18.12",
 		"@types/node": "^20.11.20",
+		"@types/turndown": "^5.0.4",
 		"@typescript-eslint/eslint-plugin": "^7.1.0",
 		"@typescript-eslint/parser": "^7.1.0",
 		"axios": "^1.6.7",
@@ -41,7 +42,9 @@
 		"libxmljs2": "^0.33.0",
 		"prettier": "^3.2.5",
 		"ts-morph": "^21.0.1",
-		"typescript": "^5.2.2"
+		"turndown": "^7.1.2",
+		"typescript": "^5.2.2",
+		"zod": "^3.22.4"
 	},
 	"keywords": [
 		"types",
