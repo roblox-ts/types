@@ -29,14 +29,7 @@ interface CreatableInstances {
 	RenderingTest: RenderingTest;
 }
 
-interface AbstractInstances {
-	NetworkPeer: NetworkPeer;
-	NetworkReplicator: NetworkReplicator;
-	PluginGui: PluginGui;
-	StatsItem: StatsItem;
-}
-
-interface Instances extends Services, CreatableInstances, AbstractInstances {
+interface Instances extends Services, CreatableInstances {
 	ClientReplicator: ClientReplicator;
 	DataModelSession: DataModelSession;
 	DebuggerBreakpoint: DebuggerBreakpoint;
@@ -49,9 +42,12 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	LuaSettings: LuaSettings;
 	MemStorageConnection: MemStorageConnection;
 	MultipleDocumentInterfaceInstance: MultipleDocumentInterfaceInstance;
+	NetworkPeer: NetworkPeer;
+	NetworkReplicator: NetworkReplicator;
 	PhysicsSettings: PhysicsSettings;
 	Plugin: Plugin;
 	PluginDragEvent: PluginDragEvent;
+	PluginGui: PluginGui;
 	PluginMenu: PluginMenu;
 	PluginMouse: PluginMouse;
 	PluginToolbar: PluginToolbar;
@@ -62,6 +58,7 @@ interface Instances extends Services, CreatableInstances, AbstractInstances {
 	RunningAverageTimeIntervalItem: RunningAverageTimeIntervalItem;
 	ScriptDebugger: ScriptDebugger;
 	ServerReplicator: ServerReplicator;
+	StatsItem: StatsItem;
 	StudioTheme: StudioTheme;
 	TotalCountTimeIntervalItem: TotalCountTimeIntervalItem;
 }
