@@ -428,7 +428,7 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private writeSignatures(rbxMember: ApiMember, tsImplInterface?: ts.InterfaceDeclaration, description?: string) {
+	private writeSignatures(rbxMember: ApiMember, tsImplInterface?: ts.InterfaceDeclaration) {
 		if (tsImplInterface) {
 			const name = rbxMember.Name;
 			const signatures = Array<string>();
@@ -451,22 +451,22 @@ export class ClassGenerator extends Generator {
 					// documentations.push(documentation);
 				});
 
-			this.writeMemberDescription(rbxMember, description);
+			this.writeMemberDescription(rbxMember);
 			const written = signatures.length > 0;
 			if (written) {
 				this.write(signatures.join("\n\t"));
 			}
 			return written;
 		} else {
-			this.writeMemberDescription(rbxMember, description);
+			this.writeMemberDescription(rbxMember);
 			return false;
 		}
 	}
 
-	private writeMemberDescription(rbxMember: ApiMember, description?: string) {
+	private writeMemberDescription(rbxMember: ApiMember) {
 		const parts = new Array<string>();
-		if (description) {
-			parts.push(description);
+		if (rbxMember.Description) {
+			parts.push(rbxMember.Description);
 		}
 
 		const tagModifiers = [];
@@ -570,8 +570,7 @@ export class ClassGenerator extends Generator {
 		const args = this.generateArgs(rbxCallback.Parameters);
 		const returnType = safeValueType(rbxCallback.ReturnType);
 
-		const { Description: description } = rbxCallback;
-		if (!this.writeSignatures(rbxCallback, tsImplInterface, description)) {
+		if (!this.writeSignatures(rbxCallback, tsImplInterface)) {
 			this.write(`${name}: (${args}) => ${returnType};`);
 		}
 	}
@@ -579,9 +578,8 @@ export class ClassGenerator extends Generator {
 	private generateEvent(rbxEvent: ApiEvent, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxEvent.Name;
 		const args = this.generateArgs(rbxEvent.Parameters, false);
-		const { Description: description } = rbxEvent;
 
-		if (!this.writeSignatures(rbxEvent, tsImplInterface, description)) {
+		if (!this.writeSignatures(rbxEvent, tsImplInterface)) {
 			this.write(`readonly ${name}: RBXScriptSignal<(${args}) => void>;`);
 		}
 	}
@@ -598,8 +596,7 @@ export class ClassGenerator extends Generator {
 		}
 		if (returnType !== null) {
 			const args = this.generateArgs(rbxFunction.Parameters, true, [`this: ${className}`]);
-			const { Description: description } = rbxFunction;
-			if (!this.writeSignatures(rbxFunction, tsImplInterface, description)) {
+			if (!this.writeSignatures(rbxFunction, tsImplInterface)) {
 				this.write(`${name}(${args}): ${returnType};`);
 			}
 		} else {
@@ -611,11 +608,10 @@ export class ClassGenerator extends Generator {
 		const name = rbxProperty.Name;
 		const valueType = safePropType(safeValueType(rbxProperty.ValueType));
 		if (valueType !== null) {
-			const { Description: description } = rbxProperty;
 			const surelyDefined = rbxProperty.ValueType.Category !== "Class";
 			const prefix = this.canWrite(className, rbxProperty) && !hasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
 
-			if (!this.writeSignatures(rbxProperty, tsImplInterface, description)) {
+			if (!this.writeSignatures(rbxProperty, tsImplInterface)) {
 				this.write(`${prefix}${safeName(name)}: ${valueType}${surelyDefined ? "" : " | undefined"};`);
 			}
 		} else {
@@ -710,31 +706,31 @@ export class ClassGenerator extends Generator {
 		const noSecurity = this.security === "None" || this.isPluginOnlyClass(rbxClass);
 		if (noSecurity || members.length > 0) {
 			if (noSecurity) {
-				const description = new Array<string>();
+				const parts = new Array<string>();
 
 				if (rbxClass.Description) {
-					description.push(rbxClass.Description);
+					parts.push(rbxClass.Description);
 				}
 
 				if (rbxClass.Link) {
-					if (description.length > 0) {
-						description.push("");
+					if (parts.length > 0) {
+						parts.push("");
 					}
 
-					description.push(getJSDocLearnMoreLink(rbxClass.Link));
+					parts.push(getJSDocLearnMoreLink(rbxClass.Link));
 				}
 
 				if (rbxClass.CodeSample) {
-					if (description.length > 0) {
-						description.push("");
+					if (parts.length > 0) {
+						parts.push("");
 					}
 
-					description.push("```lua");
-					description.push(rbxClass.CodeSample);
-					description.push("```");
+					parts.push("```lua");
+					parts.push(rbxClass.CodeSample);
+					parts.push("```");
 				}
 
-				this.writeMultilineDescription(description);
+				this.writeMultilineDescription(parts);
 			}
 
 			let declarationString = "";
