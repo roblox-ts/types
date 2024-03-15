@@ -501,7 +501,6 @@ export class ClassGenerator extends Generator {
 			}
 			parts.push("Tags: " + tags.join(", "));
 		}
-		parts.push(...tagModifiers);
 
 		if (rbxMember.Link) {
 			if (parts.length > 0) {
@@ -520,6 +519,8 @@ export class ClassGenerator extends Generator {
 			parts.push(rbxMember.CodeSample);
 			parts.push("```");
 		}
+
+		parts.push(...tagModifiers);
 
 		this.writeMultilineDescription(parts);
 	}
