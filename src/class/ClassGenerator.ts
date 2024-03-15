@@ -1,5 +1,4 @@
 /* eslint-disable no-inner-declarations */
-import fs from "fs-extra";
 import path from "path";
 import * as ts from "ts-morph";
 import { Project } from "ts-morph";
@@ -18,11 +17,11 @@ import {
 	SecurityType,
 } from "../api";
 import { fatal } from "../util";
+import type { ApiDocs } from "./ApiDocs";
 import { Generator } from "./Generator";
 import { ReflectionMetadata } from "./ReflectionMetadata";
 
 const ROOT_DIR = path.join(__dirname, "..", "..");
-const CONTENT_DIR = path.join(ROOT_DIR, "devhub-scraper-master", "dist");
 
 const ROOT_CLASS_NAME = "<<<ROOT>>>";
 
@@ -429,6 +428,10 @@ function multifilter<T>(list: Array<T>, numResultArrays: number, condition: (ele
 	return results;
 }
 
+function getJSDocLearnMoreLink(link: string) {
+	return `{@link ${link} Learn More}`;
+}
+
 const cacher = new Map<ts.InterfaceDeclaration, Array<ts.PropertySignature | ts.MethodSignature>>();
 
 export class ClassGenerator extends Generator {
@@ -437,6 +440,7 @@ export class ClassGenerator extends Generator {
 	constructor(
 		filePath: string,
 		protected metadata: ReflectionMetadata,
+		protected apiDocs: ApiDocs,
 		private definedClassNames: Set<string>,
 		private security: SecurityType,
 		private lowerSecurity: SecurityType | undefined,
@@ -485,8 +489,15 @@ export class ClassGenerator extends Generator {
 		}
 	}
 
-	private formatDescription(desc: string) {
-		return `/** ${desc} */`;
+	private writeMultilineDescription(description: Array<string>) {
+		if (description.length > 0) {
+			this.write(`/**`);
+
+			for (const part of description) {
+				this.write(` * ${part.trim()}`);
+			}
+			this.write(" */");
+		}
 	}
 
 	private writeSignatures(rbxMember: ApiMember, tsImplInterface?: ts.InterfaceDeclaration, description?: string) {
@@ -512,19 +523,19 @@ export class ClassGenerator extends Generator {
 					// documentations.push(documentation);
 				});
 
-			this.writeDescription(rbxMember, description);
+			this.writeMemberDescription(rbxMember, description);
 			const written = signatures.length > 0;
 			if (written) {
 				this.write(signatures.join("\n\t"));
 			}
 			return written;
 		} else {
-			this.writeDescription(rbxMember, description);
+			this.writeMemberDescription(rbxMember, description);
 			return false;
 		}
 	}
 
-	private writeDescription(rbxMember: ApiMember, description?: string) {
+	private writeMemberDescription(rbxMember: ApiMember, description?: string) {
 		const parts = new Array<string>();
 		if (description) {
 			parts.push(description);
@@ -564,13 +575,15 @@ export class ClassGenerator extends Generator {
 		}
 		parts.push(...tagModifiers);
 
-		if (parts.length > 0) {
-			this.write(`/**`);
-			for (const part of parts) {
-				this.write(` * ${part.trim()}`);
+		if (rbxMember.Link) {
+			if (parts.length > 0) {
+				parts.push("");
 			}
-			this.write(" */");
+
+			parts.push(getJSDocLearnMoreLink(rbxMember.Link));
 		}
+
+		this.writeMultilineDescription(parts);
 	}
 
 	private generateArgs(params: Array<ApiParameter>, canImplicitlyConvertEnum = true, args = new Array<string>()) {
@@ -775,16 +788,21 @@ export class ClassGenerator extends Generator {
 		const noSecurity = this.security === "None" || this.isPluginOnlyClass(rbxClass);
 		if (noSecurity || members.length > 0) {
 			if (noSecurity) {
-				const descriptions = new Array<string>();
-				const desc = rbxClass.Description;
-				if (desc && desc.trim()) {
-					descriptions.push(this.formatDescription(desc));
+				const description = new Array<string>();
+
+				if (rbxClass.Description) {
+					description.push(rbxClass.Description);
 				}
 
-				const description = descriptions.join("\n\t").trim();
-				if (description) {
-					this.write(description);
+				if (rbxClass.Link) {
+					if (description.length > 0) {
+						description.push("");
+					}
+
+					description.push(getJSDocLearnMoreLink(rbxClass.Link));
 				}
+
+				this.writeMultilineDescription(description);
 			}
 
 			let declarationString = "";
@@ -924,7 +942,6 @@ export class ClassGenerator extends Generator {
 	}
 
 	public async generate(rbxClasses: Array<ApiClass>) {
-		const promises = new Array<Promise<void>>();
 		for (const rbxClass of rbxClasses) {
 			const rbxClassName = rbxClass.Name;
 
@@ -937,50 +954,18 @@ export class ClassGenerator extends Generator {
 				superclass.Subclasses.push(rbxClassName);
 			}
 
-			const classPath = path.join(CONTENT_DIR, rbxClassName);
+			const classDocs = this.apiDocs.getInstanceDocumentation(rbxClassName);
 
-			function processDesc(desc: string, tabs: number) {
-				if (desc.indexOf("\n") !== -1) {
-					return (
-						desc
-							.split("\n")
-							.map((v, i) => (i === 0 ? v : `${"\t".repeat(tabs)} * ${v}`))
-							.join("\n") +
-						"\n" +
-						"\t".repeat(tabs)
-					);
-				} else {
-					return desc;
-				}
-			}
-
-			promises.push(
-				(async () => {
-					const classDescPath = path.join(classPath, "index.md");
-					if (await fs.pathExists(classDescPath)) {
-						const classDesc = (await fs.readFile(classDescPath)).toString();
-						if (classDesc.trim().length > 0) {
-							rbxClass.Description = processDesc(classDesc, 0);
-						}
-					}
-				})(),
-			);
+			rbxClass.Description = classDocs.documentation;
+			rbxClass.Link = classDocs.learn_more_link;
 
 			for (const rbxMember of rbxClass.Members) {
-				promises.push(
-					(async () => {
-						const memberDescPath = path.join(classPath, `${rbxMember.Name}.md`);
-						if (await fs.pathExists(memberDescPath)) {
-							const memberDesc = (await fs.readFile(memberDescPath)).toString();
-							if (memberDesc.trim().length > 0) {
-								rbxMember.Description = processDesc(memberDesc, 1);
-							}
-						}
-					})(),
-				);
+				const memberDocs = this.apiDocs.getInstanceMemberDocumentation(rbxClassName, rbxMember.Name);
+
+				rbxMember.Description = memberDocs.documentation;
+				rbxMember.Link = memberDocs.learn_more_link;
 			}
 		}
-		await Promise.all(promises);
 
 		const project = new Project({
 			tsConfigFilePath: path.join(ROOT_DIR, "include", "tsconfig.json"),
