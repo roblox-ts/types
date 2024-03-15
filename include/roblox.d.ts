@@ -76,6 +76,7 @@ interface RequestAsyncRequest {
 	Method?: "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "PATCH";
 	Body?: string;
 	Headers?: HttpHeaders;
+	Compress?: Enum.HttpCompression;
 }
 
 interface RequestAsyncResponse {
@@ -1872,8 +1873,8 @@ interface OverlapParams {
 	 */
 	FilterDescendantsInstances: Array<Instance>;
 	/**
-	 * `RaycastFilterType.Whitelist` or `RaycastFilterType.Blacklist`. Determines how the `FilterDescendantInstances` is
-	 * used. `Blacklist` will skip the `FilterDescendantInstances`, and `Whitelist` will exclusively include them.
+	 * `RaycastFilterType.Include` or `RaycastFilterType.Exclude`. Determines how the `FilterDescendantInstances` is
+	 * used. `Exclude` will skip the `FilterDescendantInstances`, and `Include` will exclusively include them.
 	 */
 	FilterType: Enum.RaycastFilterType;
 	/**
@@ -2055,9 +2056,9 @@ interface RaycastParams {
 	 * Determines how the `FilterDescendantsInstances` list will be used, depending on the
 	 * [RaycastFilterType](https://developer.roblox.com/api-reference/enum/RaycastFilterType) provided.
 	 *
-	 * - `Enum.RaycastFilterType.Whitelist` — Only [BaseParts](https://developer.roblox.com/api-reference/class/BasePart)
+	 * - `Enum.RaycastFilterType.Include` — Only [BaseParts](https://developer.roblox.com/api-reference/class/BasePart)
 	 * which are descendants of objects in the filter list will be considered in the raycast operation.
-	 * - `Enum.RaycastFilterType.Blacklist` — Every [BasePart](https://developer.roblox.com/api-reference/class/BasePart)
+	 * - `Enum.RaycastFilterType.Exclude` — Every [BasePart](https://developer.roblox.com/api-reference/class/BasePart)
 	 * in the game will be considered except those that are descendants of objects in the filter list.
 	 */
 	FilterType: Enum.RaycastFilterType;

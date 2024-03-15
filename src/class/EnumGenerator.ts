@@ -20,7 +20,7 @@ export class EnumGenerator extends Generator {
 		this.write(`Value: number;`);
 		this.write(`EnumType: Enum;`);
 		this.write(
-			`IsA<T extends keyof typeof Enum>(name: T): this is typeof Enum[T][Exclude<keyof typeof Enum[T], "GetEnumItems">];`,
+			`IsA<T extends Exclude<keyof typeof Enum, "GetEnums">>(name: T): this is typeof Enum[T][Exclude<keyof typeof Enum[T], "GetEnumItems">];`,
 		);
 		this.popIndent();
 		this.write(`}`);
