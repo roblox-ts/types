@@ -19,7 +19,6 @@ import {
 import { fatal } from "../util";
 import type { ApiDocs } from "./ApiDocs";
 import { Generator } from "./Generator";
-import { ReflectionMetadata } from "./ReflectionMetadata";
 
 const ROOT_DIR = path.join(__dirname, "..", "..");
 
@@ -384,13 +383,12 @@ export class ClassGenerator extends Generator {
 
 	constructor(
 		filePath: string,
-		protected metadata: ReflectionMetadata,
 		protected apiDocs: ApiDocs,
 		private definedClassNames: Set<string>,
 		private security: SecurityType,
 		private lowerSecurity: SecurityType | undefined,
 	) {
-		super(filePath, metadata);
+		super(filePath);
 	}
 
 	private canRead(className: string, member: ApiMember) {
@@ -577,11 +575,7 @@ export class ClassGenerator extends Generator {
 		const args = this.generateArgs(rbxCallback.Parameters);
 		const returnType = safeValueType(rbxCallback.ReturnType);
 
-		const { Description: wikiDescription } = rbxCallback;
-		const description =
-			wikiDescription && wikiDescription.trim() !== ""
-				? wikiDescription
-				: this.metadata.getCallbackDescription(className, name);
+		const { Description: description } = rbxCallback;
 		if (!this.writeSignatures(rbxCallback, tsImplInterface, description)) {
 			this.write(`${name}: (${args}) => ${returnType};`);
 		}
@@ -590,11 +584,7 @@ export class ClassGenerator extends Generator {
 	private generateEvent(rbxEvent: ApiEvent, className: string, tsImplInterface?: ts.InterfaceDeclaration) {
 		const name = rbxEvent.Name;
 		const args = this.generateArgs(rbxEvent.Parameters, false);
-		const { Description: wikiDescription } = rbxEvent;
-		const description =
-			wikiDescription && wikiDescription.trim() !== ""
-				? wikiDescription
-				: this.metadata.getEventDescription(className, name);
+		const { Description: description } = rbxEvent;
 
 		if (!this.writeSignatures(rbxEvent, tsImplInterface, description)) {
 			this.write(`readonly ${name}: RBXScriptSignal<(${args}) => void>;`);
@@ -613,11 +603,7 @@ export class ClassGenerator extends Generator {
 		}
 		if (returnType !== null) {
 			const args = this.generateArgs(rbxFunction.Parameters, true, [`this: ${className}`]);
-			const { Description: wikiDescription } = rbxFunction;
-			const description =
-				wikiDescription && wikiDescription.trim() !== ""
-					? wikiDescription
-					: this.metadata.getMethodDescription(className, name);
+			const { Description: description } = rbxFunction;
 			if (!this.writeSignatures(rbxFunction, tsImplInterface, description)) {
 				this.write(`${name}(${args}): ${returnType};`);
 			}
@@ -630,11 +616,7 @@ export class ClassGenerator extends Generator {
 		const name = rbxProperty.Name;
 		const valueType = safePropType(safeValueType(rbxProperty.ValueType));
 		if (valueType !== null) {
-			const { Description: wikiDescription } = rbxProperty;
-			const description =
-				wikiDescription && wikiDescription.trim() !== ""
-					? wikiDescription
-					: this.metadata.getPropertyDescription(className, name);
+			const { Description: description } = rbxProperty;
 			const surelyDefined = rbxProperty.ValueType.Category !== "Class";
 			const prefix = this.canWrite(className, rbxProperty) && !hasTag(rbxProperty, "ReadOnly") ? "" : "readonly ";
 

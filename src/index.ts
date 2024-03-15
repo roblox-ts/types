@@ -7,14 +7,12 @@ import { ApiDump } from "./api";
 import { ApiDocs } from "./class/ApiDocs";
 import { ClassGenerator } from "./class/ClassGenerator";
 import { EnumGenerator } from "./class/EnumGenerator";
-import { ReflectionMetadata } from "./class/ReflectionMetadata";
 import { Timer } from "./class/Timer";
 
 const SECURITY_LEVELS = ["None", "PluginSecurity"] as const;
 
 const BASE_URL = "https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/roblox/";
 const API_DUMP_URL = BASE_URL + "Mini-API-Dump.json";
-const REFLECTION_METADATA_URL = BASE_URL + "ReflectionMetadata.xml";
 const API_DOCS_URL = BASE_URL + "api-docs/en-us.json";
 
 void (async () => {
@@ -31,15 +29,6 @@ void (async () => {
 		throw new Error("Response status non-200!");
 	}
 	const api = apiDumpResponse.data as ApiDump;
-
-	const reflectionTimer = new Timer();
-	console.log("\tRequesting Reflection Metadata XML..");
-	const reflectionResponse = await axios.get(REFLECTION_METADATA_URL);
-	console.log(`\tDone! (${reflectionTimer.get()}ms)`);
-	if (reflectionResponse.status !== 200) {
-		throw new Error("Response status non-200!");
-	}
-	const reflectionMetadata = new ReflectionMetadata(reflectionResponse.data);
 
 	const apiDocsDownloadTimer = new Timer();
 	console.log("\tRequesting api-docs/en-us.json..");
@@ -65,7 +54,7 @@ void (async () => {
 
 	const enumTimer = new Timer();
 	console.log("\tGenerating enums..");
-	await new EnumGenerator(path.join(targetDir, "generated", "enums.d.ts"), reflectionMetadata).generate(api.Enums);
+	await new EnumGenerator(path.join(targetDir, "generated", "enums.d.ts")).generate(api.Enums);
 	console.log(`\tDone! (${enumTimer.get()}ms)`);
 
 	const definedClassNames = new Set<string>();
@@ -75,7 +64,6 @@ void (async () => {
 
 		await new ClassGenerator(
 			path.join(targetDir, "generated", SECURITY_LEVELS[i] + ".d.ts"),
-			reflectionMetadata,
 			apiDocs,
 			definedClassNames,
 			SECURITY_LEVELS[i],
