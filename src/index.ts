@@ -46,6 +46,7 @@ void (async () => {
 		console.log(`\tDone! (${apiDocsParseTimer.get()}ms)`);
 	} catch (e) {
 		if (e instanceof ZodError) {
+			// Rethrow ZodError to pretty-print it with the toString() method
 			throw new Error(e.toString());
 		} else {
 			throw e;
