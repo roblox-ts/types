@@ -352,6 +352,7 @@ interface CreatableInstances {
 	ReverbSoundEffect: ReverbSoundEffect;
 	RigidConstraint: RigidConstraint;
 	RobloxEditableImage: RobloxEditableImage;
+	RobloxEditableMesh: RobloxEditableMesh;
 	RocketPropulsion: RocketPropulsion;
 	RodConstraint: RodConstraint;
 	RopeConstraint: RopeConstraint;
@@ -9727,6 +9728,17 @@ interface EditableMesh extends DataModelMesh {
 	 * Tags: Yields
 	 */
 	CreateMeshPartAsync(this: EditableMesh, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>): MeshPart;
+}
+
+interface RobloxEditableMesh extends EditableMesh {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RobloxEditableMesh: unique symbol;
 }
 
 /** The FileMesh object applies a textured mesh to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) when parented to it. Its properties are inherited by the [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh) object.
@@ -26595,6 +26607,10 @@ interface Workspace extends WorldRoot {
 	 * Determines the acceleration due to gravity applied to falling [BaseParts](https://developer.roblox.com/en-us/api-reference/class/BasePart). This value is measured in studs per second squared and by default is set to 196.2 studs/second2. By changing this value, developers can simulate the effects of lower or higher gravity in game.
 	 */
 	Gravity: number;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 * @deprecated
+	 */
 	InterpolationThrottling: Enum.InterpolationThrottlingMode;
 	Retargeting: Enum.AnimatorRetargetingMode;
 	/**

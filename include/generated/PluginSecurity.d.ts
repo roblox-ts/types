@@ -1820,6 +1820,9 @@ interface Workspace extends WorldRoot {
 	 * *   This property is clamped between -50,000 and 50,000. This is because [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s do not simulate or render properly at a great distance from the origin due to floating point inaccuracies
 	 */
 	FallenPartsDestroyHeight: number;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
 	InterpolationThrottling: Enum.InterpolationThrottlingMode;
 	/**
 	 * The **StreamingEnabled** property determines whether game content streaming is enabled for the place. This property is not scriptable and therefore must be set on the **Workspace** object in Studio.
@@ -3029,6 +3032,7 @@ interface RenderingTest extends Instance {
 	 * Tags: Hidden, NotReplicated
 	 */
 	Position: Vector3;
+	QualityAuto: boolean;
 	QualityLevel: number;
 	RenderingTestFrameCount: number;
 	ShouldSkip: boolean;

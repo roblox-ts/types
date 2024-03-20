@@ -313,6 +313,30 @@ declare namespace Enum {
 	export type ActuatorType = ActuatorType.None | ActuatorType.Motor | ActuatorType.Servo;
 
 	export namespace AdEventType {
+		export interface RewardedAdLoaded extends globalThis.EnumItem {
+			Name: "RewardedAdLoaded";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.AdEventType;
+		}
+
+		export const RewardedAdLoaded: RewardedAdLoaded;
+
+		export interface RewardedAdGrant extends globalThis.EnumItem {
+			Name: "RewardedAdGrant";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.AdEventType;
+		}
+
+		export const RewardedAdGrant: RewardedAdGrant;
+
+		export interface RewardedAdUnloaded extends globalThis.EnumItem {
+			Name: "RewardedAdUnloaded";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.AdEventType;
+		}
+
+		export const RewardedAdUnloaded: RewardedAdUnloaded;
+
 		export interface VideoLoaded extends globalThis.EnumItem {
 			Name: "VideoLoaded";
 			Value: 0;
@@ -339,7 +363,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdEventType>;
 	}
-	export type AdEventType = AdEventType.VideoLoaded | AdEventType.VideoRemoved | AdEventType.UserCompletedVideo;
+	export type AdEventType = AdEventType.RewardedAdLoaded | AdEventType.RewardedAdGrant | AdEventType.RewardedAdUnloaded | AdEventType.VideoLoaded | AdEventType.VideoRemoved | AdEventType.UserCompletedVideo;
 
 	export namespace AdShape {
 		export interface HorizontalRectangle extends globalThis.EnumItem {
@@ -2195,9 +2219,17 @@ declare namespace Enum {
 
 		export const UserBanned: UserBanned;
 
+		export interface UserVerifiedForVoice extends globalThis.EnumItem {
+			Name: "UserVerifiedForVoice";
+			Value: 512;
+			EnumType: typeof globalThis.Enum.AvatarChatServiceFeature;
+		}
+
+		export const UserVerifiedForVoice: UserVerifiedForVoice;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarChatServiceFeature>;
 	}
-	export type AvatarChatServiceFeature = AvatarChatServiceFeature.None | AvatarChatServiceFeature.UniverseAudio | AvatarChatServiceFeature.UniverseVideo | AvatarChatServiceFeature.PlaceAudio | AvatarChatServiceFeature.PlaceVideo | AvatarChatServiceFeature.UserAudioEligible | AvatarChatServiceFeature.UserAudio | AvatarChatServiceFeature.UserVideoEligible | AvatarChatServiceFeature.UserVideo | AvatarChatServiceFeature.UserBanned;
+	export type AvatarChatServiceFeature = AvatarChatServiceFeature.None | AvatarChatServiceFeature.UniverseAudio | AvatarChatServiceFeature.UniverseVideo | AvatarChatServiceFeature.PlaceAudio | AvatarChatServiceFeature.PlaceVideo | AvatarChatServiceFeature.UserAudioEligible | AvatarChatServiceFeature.UserAudio | AvatarChatServiceFeature.UserVideoEligible | AvatarChatServiceFeature.UserVideo | AvatarChatServiceFeature.UserBanned | AvatarChatServiceFeature.UserVerifiedForVoice;
 
 	export namespace AvatarContextMenuOption {
 		export interface Friend extends globalThis.EnumItem {
@@ -5505,6 +5537,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DebuggerStatus>;
 	}
 	export type DebuggerStatus = DebuggerStatus.Success | DebuggerStatus.Timeout | DebuggerStatus.ConnectionLost | DebuggerStatus.InvalidResponse | DebuggerStatus.InternalError | DebuggerStatus.InvalidState | DebuggerStatus.RpcError | DebuggerStatus.InvalidArgument | DebuggerStatus.ConnectionClosed;
+
+	export namespace DecreaseMinimumPartDensityMode {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.DecreaseMinimumPartDensityMode;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.DecreaseMinimumPartDensityMode;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled extends globalThis.EnumItem {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.DecreaseMinimumPartDensityMode;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DecreaseMinimumPartDensityMode>;
+	}
+	export type DecreaseMinimumPartDensityMode = DecreaseMinimumPartDensityMode.Default | DecreaseMinimumPartDensityMode.Disabled | DecreaseMinimumPartDensityMode.Enabled;
 
 	export namespace DevCameraOcclusionMode {
 		export interface Zoom extends globalThis.EnumItem {
@@ -18110,9 +18171,25 @@ declare namespace Enum {
 
 		export const BreakpointMarker: BreakpointMarker;
 
+		export interface DiffLineNumHover extends globalThis.EnumItem {
+			Name: "DiffLineNumHover";
+			Value: 137;
+			EnumType: typeof globalThis.Enum.StudioStyleGuideColor;
+		}
+
+		export const DiffLineNumHover: DiffLineNumHover;
+
+		export interface DiffLineNumSeparatorBackgroundHover extends globalThis.EnumItem {
+			Name: "DiffLineNumSeparatorBackgroundHover";
+			Value: 138;
+			EnumType: typeof globalThis.Enum.StudioStyleGuideColor;
+		}
+
+		export const DiffLineNumSeparatorBackgroundHover: DiffLineNumSeparatorBackgroundHover;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioStyleGuideColor>;
 	}
-	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.FilterButtonDefault | StudioStyleGuideColor.FilterButtonHover | StudioStyleGuideColor.FilterButtonChecked | StudioStyleGuideColor.FilterButtonAccent | StudioStyleGuideColor.FilterButtonBorder | StudioStyleGuideColor.FilterButtonBorderAlt | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.DropShadow | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptInformation | StudioStyleGuideColor.ScriptHint | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DocViewCodeBackground | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo | StudioStyleGuideColor.ScriptBracket | StudioStyleGuideColor.AttributeCog | StudioStyleGuideColor.AICOOverlayText | StudioStyleGuideColor.AICOOverlayButtonBackground | StudioStyleGuideColor.AICOOverlayButtonBackgroundHover | StudioStyleGuideColor.AICOOverlayButtonBackgroundPressed | StudioStyleGuideColor.OnboardingCover | StudioStyleGuideColor.OnboardingHighlight | StudioStyleGuideColor.OnboardingShadow | StudioStyleGuideColor.BreakpointMarker;
+	export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.FilterButtonDefault | StudioStyleGuideColor.FilterButtonHover | StudioStyleGuideColor.FilterButtonChecked | StudioStyleGuideColor.FilterButtonAccent | StudioStyleGuideColor.FilterButtonBorder | StudioStyleGuideColor.FilterButtonBorderAlt | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.DropShadow | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptInformation | StudioStyleGuideColor.ScriptHint | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DocViewCodeBackground | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo | StudioStyleGuideColor.ScriptBracket | StudioStyleGuideColor.AttributeCog | StudioStyleGuideColor.AICOOverlayText | StudioStyleGuideColor.AICOOverlayButtonBackground | StudioStyleGuideColor.AICOOverlayButtonBackgroundHover | StudioStyleGuideColor.AICOOverlayButtonBackgroundPressed | StudioStyleGuideColor.OnboardingCover | StudioStyleGuideColor.OnboardingHighlight | StudioStyleGuideColor.OnboardingShadow | StudioStyleGuideColor.BreakpointMarker | StudioStyleGuideColor.DiffLineNumHover | StudioStyleGuideColor.DiffLineNumSeparatorBackgroundHover;
 
 	export namespace StudioStyleGuideModifier {
 		export interface Default extends globalThis.EnumItem {
