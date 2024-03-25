@@ -1894,6 +1894,11 @@ interface OverlapParams {
 	 * This property, if true, finds all parts that inserect the region even if they have CanQuery set to false.
 	 */
 	BruteForceAllSlow: boolean;
+	/**
+	 * For efficiency and simplicity, this method is the preferred way to add instances to the filter.
+	 * It has the additional advantage that it allows FilterDescendantsInstances to be updated from a parallel context.
+	 */
+	AddToFilter(this: OverlapParams, instances: Instance | Array<Instance>): void;
 }
 type OverlapParamsConstructor = new () => OverlapParams;
 declare const OverlapParams: OverlapParamsConstructor;
