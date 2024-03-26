@@ -49,6 +49,7 @@ interface Services {
 	DraggerService: DraggerService;
 	EngineAPICloudProcessingService: EngineAPICloudProcessingService;
 	EventIngestService: EventIngestService;
+	ExampleService: ExampleService;
 	ExperienceAuthService: ExperienceAuthService;
 	ExperienceNotificationService: ExperienceNotificationService;
 	ExperienceService: ExperienceService;
@@ -2771,6 +2772,7 @@ interface AudioAnalyzer extends Instance {
 	 * Tags: NotReplicated
 	 */
 	readonly RmsLevel: number;
+	GetConnectedWires(this: AudioAnalyzer, pin: string): unknown;
 	/**
 	 * Tags: CustomLuaState
 	 */
@@ -2789,6 +2791,7 @@ interface AudioChorus extends Instance {
 	Depth: number;
 	Mix: number;
 	Rate: number;
+	GetConnectedWires(this: AudioChorus, pin: string): unknown;
 }
 
 interface AudioCompressor extends Instance {
@@ -2805,6 +2808,7 @@ interface AudioCompressor extends Instance {
 	Ratio: number;
 	Release: number;
 	Threshold: number;
+	GetConnectedWires(this: AudioCompressor, pin: string): unknown;
 }
 
 interface AudioDeviceInput extends Instance {
@@ -2820,6 +2824,7 @@ interface AudioDeviceInput extends Instance {
 	readonly Active: boolean;
 	Muted: boolean;
 	Player: Player | undefined;
+	GetConnectedWires(this: AudioDeviceInput, pin: string): unknown;
 	GetUserIdAccessList(this: AudioDeviceInput): unknown;
 	SetUserIdAccessList(this: AudioDeviceInput, userIds: Array<any>): void;
 }
@@ -2834,6 +2839,7 @@ interface AudioDeviceOutput extends Instance {
 	 */
 	readonly _nominal_AudioDeviceOutput: unique symbol;
 	Player: Player | undefined;
+	GetConnectedWires(this: AudioDeviceOutput, pin: string): unknown;
 }
 
 interface AudioDistortion extends Instance {
@@ -2846,6 +2852,7 @@ interface AudioDistortion extends Instance {
 	 */
 	readonly _nominal_AudioDistortion: unique symbol;
 	Level: number;
+	GetConnectedWires(this: AudioDistortion, pin: string): unknown;
 }
 
 interface AudioEcho extends Instance {
@@ -2861,6 +2868,7 @@ interface AudioEcho extends Instance {
 	DryLevel: number;
 	Feedback: number;
 	WetLevel: number;
+	GetConnectedWires(this: AudioEcho, pin: string): unknown;
 }
 
 interface AudioEmitter extends Instance {
@@ -2873,6 +2881,7 @@ interface AudioEmitter extends Instance {
 	 */
 	readonly _nominal_AudioEmitter: unique symbol;
 	AudioInteractionGroup: string;
+	GetConnectedWires(this: AudioEmitter, pin: string): unknown;
 }
 
 interface AudioEqualizer extends Instance {
@@ -2888,6 +2897,7 @@ interface AudioEqualizer extends Instance {
 	LowGain: number;
 	MidGain: number;
 	MidRange: NumberRange;
+	GetConnectedWires(this: AudioEqualizer, pin: string): unknown;
 }
 
 interface AudioFader extends Instance {
@@ -2900,6 +2910,7 @@ interface AudioFader extends Instance {
 	 */
 	readonly _nominal_AudioFader: unique symbol;
 	Volume: number;
+	GetConnectedWires(this: AudioFader, pin: string): unknown;
 }
 
 interface AudioFlanger extends Instance {
@@ -2914,6 +2925,7 @@ interface AudioFlanger extends Instance {
 	Depth: number;
 	Mix: number;
 	Rate: number;
+	GetConnectedWires(this: AudioFlanger, pin: string): unknown;
 }
 
 interface AudioListener extends Instance {
@@ -2926,6 +2938,7 @@ interface AudioListener extends Instance {
 	 */
 	readonly _nominal_AudioListener: unique symbol;
 	AudioInteractionGroup: string;
+	GetConnectedWires(this: AudioListener, pin: string): unknown;
 }
 
 interface AudioPitchShifter extends Instance {
@@ -2938,6 +2951,7 @@ interface AudioPitchShifter extends Instance {
 	 */
 	readonly _nominal_AudioPitchShifter: unique symbol;
 	Pitch: number;
+	GetConnectedWires(this: AudioPitchShifter, pin: string): unknown;
 }
 
 interface AudioPlayer extends Instance {
@@ -2965,6 +2979,7 @@ interface AudioPlayer extends Instance {
 	 */
 	readonly TimeLength: number;
 	TimePosition: number;
+	GetConnectedWires(this: AudioPlayer, pin: string): unknown;
 	Play(this: AudioPlayer): void;
 	Stop(this: AudioPlayer): void;
 	readonly Ended: RBXScriptSignal<() => void>;
@@ -2992,6 +3007,7 @@ interface AudioReverb extends Instance {
 	LowShelfGain: number;
 	ReferenceFrequency: number;
 	WetLevel: number;
+	GetConnectedWires(this: AudioReverb, pin: string): unknown;
 }
 
 interface AudioSearchParams extends Instance {
@@ -10728,6 +10744,17 @@ interface EventIngestService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_EventIngestService: unique symbol;
+}
+
+interface ExampleService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ExampleService: unique symbol;
 }
 
 interface ExperienceAuthService extends Instance {
