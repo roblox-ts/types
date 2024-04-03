@@ -1439,6 +1439,7 @@ interface AnalyticsService extends Instance {
 	 * *   [AnalyticsService:FirePlayerProgressionEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FirePlayerProgressionEvent), triggers an event used to track player progression through the game
 	 * *   [AnalyticsService:FireInGameEconomyEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireInGameEconomyEvent), triggers an event used to track player actions pertaining to the in-game economy
 	 * *   [AnalyticsService:FireLogEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireLogEvent), triggers an event used to track errors and warnings experienced by players
+	 * @deprecated
 	 */
 	FireCustomEvent(
 		this: AnalyticsService,
@@ -1498,6 +1499,7 @@ interface AnalyticsService extends Instance {
 	 * *   [AnalyticsService:FirePlayerProgressionEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FirePlayerProgressionEvent), triggers an event used to track player progression through the game
 	 * *   [AnalyticsService:FireLogEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireLogEvent), triggers an event used to track errors and warnings experienced by players
 	 * *   [AnalyticsService:FireCustomEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireCustomEvent), triggers an event used to emit a custom event
+	 * @deprecated
 	 */
 	FireInGameEconomyEvent(
 		this: AnalyticsService,
@@ -1555,6 +1557,7 @@ interface AnalyticsService extends Instance {
 	 * *   [AnalyticsService:FireInGameEconomyEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireInGameEconomyEvent), triggers an event used to track player actions pertaining to the in-game economy
 	 * *   [AnalyticsService:FirePlayerProgressionEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FirePlayerProgressionEvent), triggers an event used to track player progression through the game
 	 * *   [AnalyticsService:FireCustomEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireCustomEvent), triggers an event used to emit a custom event
+	 * @deprecated
 	 */
 	FireLogEvent(
 		this: AnalyticsService,
@@ -1612,6 +1615,7 @@ interface AnalyticsService extends Instance {
 	 * *   [AnalyticsService:FireInGameEconomyEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireInGameEconomyEvent), triggers an event used to track player actions pertaining to the in-game economy
 	 * *   [AnalyticsService:FireLogEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireLogEvent), triggers an event used to track errors and warnings experienced by players
 	 * *   [AnalyticsService:FireCustomEvent](https://developer.roblox.com/en-us/api-reference/function/AnalyticsService/FireCustomEvent), triggers an event used to emit a custom event
+	 * @deprecated
 	 */
 	FirePlayerProgressionEvent(
 		this: AnalyticsService,
@@ -1622,6 +1626,13 @@ interface AnalyticsService extends Instance {
 		statistics?: { [index: string]: number },
 		customData?: unknown,
 	): void;
+	LogEconomyEvent(this: AnalyticsService, player: Player, flowType: CastsToEnum<Enum.AnalyticsEconomyFlowType>, currencyType: string, endingBalance: number, amount: number, transactionType: string, itemSku: string, customFields: Array<any>): void;
+	LogFunnelStepEvent(this: AnalyticsService, player: Player, funnelName: string, step: number, customFields: Array<any>): void;
+	LogOnboardingFunnelStepEvent(this: AnalyticsService, player: Player, step: number, customFields: Array<any>): void;
+	LogProgressionCompleteEvent(this: AnalyticsService, player: Player, level: number, levelName: string, customFields: Array<any>): void;
+	LogProgressionEvent(this: AnalyticsService, player: Player, status: CastsToEnum<Enum.AnalyticsProgressionType>, level: number, levelName: string, customFields: Array<any>): void;
+	LogProgressionFailEvent(this: AnalyticsService, player: Player, level: number, levelName: string, customFields: Array<any>): void;
+	LogProgressionStartEvent(this: AnalyticsService, player: Player, level: number, levelName: string, customFields: Array<any>): void;
 }
 
 /** An object that references an animation asset (AnimationId) which can be loaded by a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) or [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController)
@@ -9743,7 +9754,7 @@ interface EditableMesh extends DataModelMesh {
 	/**
 	 * Tags: Yields
 	 */
-	CreateMeshPartAsync(this: EditableMesh, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>): MeshPart;
+	CreateMeshPartAsync(this: EditableMesh, options?: object): MeshPart;
 }
 
 interface RobloxEditableMesh extends EditableMesh {

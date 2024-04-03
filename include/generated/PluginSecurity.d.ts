@@ -154,6 +154,21 @@ interface Animator extends Instance {
 	StepAnimations(this: Animator, deltaTime: number): void;
 }
 
+interface AssetService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AssetService: unique symbol;
+	/**
+	 * Tags: Yields
+	 */
+	CreateMeshPartAsync(this: AssetService, meshId: string, options?: object): MeshPart;
+}
+
 /** The CoreGui is a service used to store Guis created in-game by Roblox for the core user interface found in every game (such as the game menu, the playerlist, the backpack, etc.). It can also be used by [Plugins](https://developer.roblox.com/en-us/api-reference/class/Plugin) in Roblox Studio.
  * 
  * You can use the [StarterGui:SetCoreGuiEnabled](https://developer.roblox.com/en-us/api-reference/function/StarterGui/SetCoreGuiEnabled) and [StarterGui:GetCoreGuiEnabled](https://developer.roblox.com/en-us/api-reference/function/StarterGui/GetCoreGuiEnabled) methods in a [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) to enable and disable most elements of the CoreGui. You can also use [PlayerGui:SetTopbarTransparency](https://developer.roblox.com/en-us/api-reference/function/PlayerGui/SetTopbarTransparency) to set the transparency of the top bar.
