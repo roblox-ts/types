@@ -560,6 +560,80 @@ declare namespace Enum {
 	}
 	export type AnalyticsEconomyAction = AnalyticsEconomyAction.Default | AnalyticsEconomyAction.Acquire | AnalyticsEconomyAction.Spend;
 
+	export namespace AnalyticsEconomyFlowType {
+		export interface Sink extends globalThis.EnumItem {
+			Name: "Sink";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AnalyticsEconomyFlowType;
+		}
+
+		export const Sink: Sink;
+
+		export interface Source extends globalThis.EnumItem {
+			Name: "Source";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AnalyticsEconomyFlowType;
+		}
+
+		export const Source: Source;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnalyticsEconomyFlowType>;
+	}
+	export type AnalyticsEconomyFlowType = AnalyticsEconomyFlowType.Sink | AnalyticsEconomyFlowType.Source;
+
+	export namespace AnalyticsEconomyTransactionType {
+		export interface IAP extends globalThis.EnumItem {
+			Name: "IAP";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AnalyticsEconomyTransactionType;
+		}
+
+		export const IAP: IAP;
+
+		export interface Shop extends globalThis.EnumItem {
+			Name: "Shop";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AnalyticsEconomyTransactionType;
+		}
+
+		export const Shop: Shop;
+
+		export interface Gameplay extends globalThis.EnumItem {
+			Name: "Gameplay";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AnalyticsEconomyTransactionType;
+		}
+
+		export const Gameplay: Gameplay;
+
+		export interface ContextualPurchase extends globalThis.EnumItem {
+			Name: "ContextualPurchase";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.AnalyticsEconomyTransactionType;
+		}
+
+		export const ContextualPurchase: ContextualPurchase;
+
+		export interface TimedReward extends globalThis.EnumItem {
+			Name: "TimedReward";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.AnalyticsEconomyTransactionType;
+		}
+
+		export const TimedReward: TimedReward;
+
+		export interface Onboarding extends globalThis.EnumItem {
+			Name: "Onboarding";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.AnalyticsEconomyTransactionType;
+		}
+
+		export const Onboarding: Onboarding;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnalyticsEconomyTransactionType>;
+	}
+	export type AnalyticsEconomyTransactionType = AnalyticsEconomyTransactionType.IAP | AnalyticsEconomyTransactionType.Shop | AnalyticsEconomyTransactionType.Gameplay | AnalyticsEconomyTransactionType.ContextualPurchase | AnalyticsEconomyTransactionType.TimedReward | AnalyticsEconomyTransactionType.Onboarding;
+
 	export namespace AnalyticsLogLevel {
 		export interface Trace extends globalThis.EnumItem {
 			Name: "Trace";
@@ -657,6 +731,43 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnalyticsProgressionStatus>;
 	}
 	export type AnalyticsProgressionStatus = AnalyticsProgressionStatus.Default | AnalyticsProgressionStatus.Begin | AnalyticsProgressionStatus.Complete | AnalyticsProgressionStatus.Abandon | AnalyticsProgressionStatus.Fail;
+
+	export namespace AnalyticsProgressionType {
+		export interface Custom extends globalThis.EnumItem {
+			Name: "Custom";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AnalyticsProgressionType;
+		}
+
+		export const Custom: Custom;
+
+		export interface Start extends globalThis.EnumItem {
+			Name: "Start";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AnalyticsProgressionType;
+		}
+
+		export const Start: Start;
+
+		export interface Fail extends globalThis.EnumItem {
+			Name: "Fail";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AnalyticsProgressionType;
+		}
+
+		export const Fail: Fail;
+
+		export interface Complete extends globalThis.EnumItem {
+			Name: "Complete";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.AnalyticsProgressionType;
+		}
+
+		export const Complete: Complete;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnalyticsProgressionType>;
+	}
+	export type AnalyticsProgressionType = AnalyticsProgressionType.Custom | AnalyticsProgressionType.Start | AnalyticsProgressionType.Fail | AnalyticsProgressionType.Complete;
 
 	export namespace AnimationClipFromVideoStatus {
 		export interface Initializing extends globalThis.EnumItem {
@@ -4791,6 +4902,14 @@ declare namespace Enum {
 
 		export const PlacelaunchUserPrivacyUnauthorized: PlacelaunchUserPrivacyUnauthorized;
 
+		export interface PlacelaunchCreatorBan extends globalThis.EnumItem {
+			Name: "PlacelaunchCreatorBan";
+			Value: 600;
+			EnumType: typeof globalThis.Enum.ConnectionError;
+		}
+
+		export const PlacelaunchCreatorBan: PlacelaunchCreatorBan;
+
 		export interface PlacelaunchCustomMessage extends globalThis.EnumItem {
 			Name: "PlacelaunchCustomMessage";
 			Value: 610;
@@ -4873,7 +4992,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ConnectionError>;
 	}
-	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 
 	export namespace ConnectionState {
 		export interface Connected extends globalThis.EnumItem {
@@ -7228,6 +7347,22 @@ declare namespace Enum {
 
 		export const BuilderSansExtraBold: BuilderSansExtraBold;
 
+		export interface Arimo extends globalThis.EnumItem {
+			Name: "Arimo";
+			Value: 50;
+			EnumType: typeof globalThis.Enum.Font;
+		}
+
+		export const Arimo: Arimo;
+
+		export interface ArimoBold extends globalThis.EnumItem {
+			Name: "ArimoBold";
+			Value: 51;
+			EnumType: typeof globalThis.Enum.Font;
+		}
+
+		export const ArimoBold: ArimoBold;
+
 		export interface Unknown extends globalThis.EnumItem {
 			Name: "Unknown";
 			Value: 100;
@@ -7238,7 +7373,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Font>;
 	}
-	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.SourceSansSemibold | Font.Gotham | Font.GothamMedium | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu | Font.BuilderSans | Font.BuilderSansMedium | Font.BuilderSansBold | Font.BuilderSansExtraBold | Font.Unknown;
+	export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.SourceSansSemibold | Font.Gotham | Font.GothamMedium | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu | Font.BuilderSans | Font.BuilderSansMedium | Font.BuilderSansBold | Font.BuilderSansExtraBold | Font.Arimo | Font.ArimoBold | Font.Unknown;
 
 	export namespace FontSize {
 		export interface Size8 extends globalThis.EnumItem {
