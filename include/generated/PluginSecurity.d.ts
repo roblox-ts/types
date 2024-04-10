@@ -3158,6 +3158,28 @@ interface ScriptEditorService extends Instance {
 	readonly TextDocumentDidOpen: RBXScriptSignal<(newDocument: ScriptDocument) => void>;
 }
 
+interface ScriptProfilerService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptProfilerService: unique symbol;
+	ClientRequestData(this: ScriptProfilerService, player: Player): void;
+	ClientStart(this: ScriptProfilerService, player: Player, frequency: number | undefined): void;
+	ClientStop(this: ScriptProfilerService, player: Player): void;
+	/**
+	 * Tags: CustomLuaState
+	 */
+	DeserializeJSON(this: ScriptProfilerService, jsonString: string | undefined): object;
+	ServerRequestData(this: ScriptProfilerService): void;
+	ServerStart(this: ScriptProfilerService, frequency: number | undefined): void;
+	ServerStop(this: ScriptProfilerService): void;
+	readonly OnNewData: RBXScriptSignal<(player: Player, jsonString: string) => void>;
+}
+
 /** The Selection service controls the [Instance](https://developer.roblox.com/en-us/api-reference/class/Instance)s that are selected in Roblox Studio.
  * 
  * This service is particularly useful when developing [Plugin](https://developer.roblox.com/en-us/api-reference/class/Plugin)s, as it allows the developer to access and manipulate the current selection.
