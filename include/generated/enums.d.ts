@@ -2379,6 +2379,88 @@ declare namespace Enum {
 	}
 	export type AvatarContextMenuOption = AvatarContextMenuOption.Friend | AvatarContextMenuOption.Chat | AvatarContextMenuOption.Emote | AvatarContextMenuOption.InspectMenu;
 
+	export namespace AvatarGenerationError {
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AvatarGenerationError;
+		}
+
+		export const None: None;
+
+		export interface Timeout extends globalThis.EnumItem {
+			Name: "Timeout";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AvatarGenerationError;
+		}
+
+		export const Timeout: Timeout;
+
+		export interface DownloadFailed extends globalThis.EnumItem {
+			Name: "DownloadFailed";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AvatarGenerationError;
+		}
+
+		export const DownloadFailed: DownloadFailed;
+
+		export interface Canceled extends globalThis.EnumItem {
+			Name: "Canceled";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.AvatarGenerationError;
+		}
+
+		export const Canceled: Canceled;
+
+		export interface Unknown extends globalThis.EnumItem {
+			Name: "Unknown";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.AvatarGenerationError;
+		}
+
+		export const Unknown: Unknown;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarGenerationError>;
+	}
+	export type AvatarGenerationError = AvatarGenerationError.None | AvatarGenerationError.Timeout | AvatarGenerationError.DownloadFailed | AvatarGenerationError.Canceled | AvatarGenerationError.Unknown;
+
+	export namespace AvatarGenerationJobStatus {
+		export interface NotStarted extends globalThis.EnumItem {
+			Name: "NotStarted";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AvatarGenerationJobStatus;
+		}
+
+		export const NotStarted: NotStarted;
+
+		export interface InProgress extends globalThis.EnumItem {
+			Name: "InProgress";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AvatarGenerationJobStatus;
+		}
+
+		export const InProgress: InProgress;
+
+		export interface Completed extends globalThis.EnumItem {
+			Name: "Completed";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AvatarGenerationJobStatus;
+		}
+
+		export const Completed: Completed;
+
+		export interface Failed extends globalThis.EnumItem {
+			Name: "Failed";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.AvatarGenerationJobStatus;
+		}
+
+		export const Failed: Failed;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarGenerationJobStatus>;
+	}
+	export type AvatarGenerationJobStatus = AvatarGenerationJobStatus.NotStarted | AvatarGenerationJobStatus.InProgress | AvatarGenerationJobStatus.Completed | AvatarGenerationJobStatus.Failed;
+
 	export namespace AvatarItemType {
 		export interface Asset extends globalThis.EnumItem {
 			Name: "Asset";
@@ -5370,43 +5452,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DataStoreRequestType>;
 	}
 	export type DataStoreRequestType = DataStoreRequestType.GetAsync | DataStoreRequestType.SetIncrementAsync | DataStoreRequestType.UpdateAsync | DataStoreRequestType.GetSortedAsync | DataStoreRequestType.SetIncrementSortedAsync | DataStoreRequestType.OnUpdate | DataStoreRequestType.ListAsync | DataStoreRequestType.GetVersionAsync | DataStoreRequestType.RemoveVersionAsync;
-
-	export namespace DeathStyle {
-		export interface Default extends globalThis.EnumItem {
-			Name: "Default";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.DeathStyle;
-		}
-
-		export const Default: Default;
-
-		export interface ClassicBreakApart extends globalThis.EnumItem {
-			Name: "ClassicBreakApart";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.DeathStyle;
-		}
-
-		export const ClassicBreakApart: ClassicBreakApart;
-
-		export interface NonGraphic extends globalThis.EnumItem {
-			Name: "NonGraphic";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.DeathStyle;
-		}
-
-		export const NonGraphic: NonGraphic;
-
-		export interface Scriptable extends globalThis.EnumItem {
-			Name: "Scriptable";
-			Value: 3;
-			EnumType: typeof globalThis.Enum.DeathStyle;
-		}
-
-		export const Scriptable: Scriptable;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeathStyle>;
-	}
-	export type DeathStyle = DeathStyle.Default | DeathStyle.ClassicBreakApart | DeathStyle.NonGraphic | DeathStyle.Scriptable;
 
 	export namespace DebuggerEndReason {
 		export interface ClientRequest extends globalThis.EnumItem {
@@ -19352,9 +19397,17 @@ declare namespace Enum {
 
 		export const AtEnd: AtEnd;
 
+		export interface SplitWord extends globalThis.EnumItem {
+			Name: "SplitWord";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.TextTruncate;
+		}
+
+		export const SplitWord: SplitWord;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextTruncate>;
 	}
-	export type TextTruncate = TextTruncate.None | TextTruncate.AtEnd;
+	export type TextTruncate = TextTruncate.None | TextTruncate.AtEnd | TextTruncate.SplitWord;
 
 	export namespace TextXAlignment {
 		export interface Left extends globalThis.EnumItem {

@@ -30,6 +30,7 @@ interface Services {
 	CollaboratorsService: CollaboratorsService;
 	CollectionService: CollectionService;
 	CommandService: CommandService;
+	CommerceService: CommerceService;
 	ConfigureServerService: ConfigureServerService;
 	ConnectivityService: ConnectivityService;
 	ContentProvider: ContentProvider;
@@ -125,6 +126,7 @@ interface Services {
 	ScriptCommitService: ScriptCommitService;
 	ScriptContext: ScriptContext;
 	ScriptEditorService: ScriptEditorService;
+	ScriptProfilerService: ScriptProfilerService;
 	ScriptRegistrationService: ScriptRegistrationService;
 	SelectionHighlightManager: SelectionHighlightManager;
 	ServerScriptService: ServerScriptService;
@@ -462,6 +464,10 @@ interface Instances extends Services, CreatableInstances {
 	AssetPatchSettings: AssetPatchSettings;
 	AssetSoundEffect: AssetSoundEffect;
 	AudioPages: AudioPages;
+	Avatar2DGenerationJob: Avatar2DGenerationJob;
+	Avatar3DGenerationJob: Avatar3DGenerationJob;
+	AvatarGenerationJob: AvatarGenerationJob;
+	AvatarGenerationSession: AvatarGenerationSession;
 	BackpackItem: BackpackItem;
 	BaseImportData: BaseImportData;
 	BasePart: BasePart;
@@ -1364,7 +1370,7 @@ interface ActivityHistoryService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ActivityHistoryService: unique symbol;
-	readonly onEventNotificationReceived: RBXScriptSignal<() => void>;
+	readonly EventNotificationReceived: RBXScriptSignal<() => void>;
 }
 
 interface AdPortal extends Instance {
@@ -2893,6 +2899,14 @@ interface AudioEmitter extends Instance {
 	readonly _nominal_AudioEmitter: unique symbol;
 	AudioInteractionGroup: string;
 	GetConnectedWires(this: AudioEmitter, pin: string): unknown;
+	/**
+	 * Tags: CustomLuaState
+	 */
+	GetDistanceAttenuation(this: AudioEmitter): object;
+	/**
+	 * Tags: CustomLuaState
+	 */
+	SetDistanceAttenuation(this: AudioEmitter, curve: object): void;
 }
 
 interface AudioEqualizer extends Instance {
@@ -3065,6 +3079,14 @@ interface AvatarCreationService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AvatarCreationService: unique symbol;
+	/**
+	 * Tags: Yields
+	 */
+	LoadAvatarModelAsync(this: AvatarCreationService, id: string): Instance | undefined;
+	/**
+	 * Tags: Yields
+	 */
+	LoadAvatarPreviewImageAsync(this: AvatarCreationService, avatarPreview: string): EditableImage;
 	/**
 	 * Tags: Yields
 	 */
@@ -3498,6 +3520,63 @@ interface AvatarEditorService extends Instance {
 	 * Fires when the [AvatarEditorService:PromptUpdateOutfit](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptUpdateOutfit) operation is completed. It gives a status [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) indicating whether the prompt succeeded, failed or permission was not granted by the user.
 	 */
 	readonly PromptUpdateOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
+}
+
+interface AvatarGenerationJob extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AvatarGenerationJob: unique symbol;
+	Error: Enum.AvatarGenerationError;
+	ErrorMessage: string;
+	Progress: number;
+	Status: Enum.AvatarGenerationJobStatus;
+	Cancel(this: AvatarGenerationJob): void;
+	/**
+	 * Tags: Yields
+	 */
+	Wait(this: AvatarGenerationJob): void;
+}
+
+interface Avatar2DGenerationJob extends AvatarGenerationJob {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Avatar2DGenerationJob: unique symbol;
+	Result: string;
+}
+
+interface Avatar3DGenerationJob extends AvatarGenerationJob {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Avatar3DGenerationJob: unique symbol;
+	Result: Model | undefined;
+}
+
+interface AvatarGenerationSession extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AvatarGenerationSession: unique symbol;
+	GenerateAvatarModel(this: AvatarGenerationSession, previewJob: Avatar2DGenerationJob, options: object): Avatar3DGenerationJob;
+	GenerateAvatarPreview(this: AvatarGenerationSession, textPrompt: string, options: object): Avatar2DGenerationJob;
 }
 
 interface AvatarImportService extends Instance {
@@ -7537,6 +7616,22 @@ interface CommandService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_CommandService: unique symbol;
+}
+
+interface CommerceService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CommerceService: unique symbol;
+	PromptRealWorldCommerceBrowser(this: CommerceService, player: Player, url: string): void;
+	/**
+	 * Tags: Yields
+	 */
+	UserEligibleForRealWorldCommerceAsync(this: CommerceService): boolean;
 }
 
 /** The Configuration object is a container object that is designed to hold value objects to make values used in [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool)s or any model using [Script](https://developer.roblox.com/en-us/api-reference/class/Script)s more accessible.
@@ -26646,6 +26741,10 @@ interface Workspace extends WorldRoot {
 	 */
 	Gravity: number;
 	/**
+	 * Tags: NotReplicated
+	 */
+	InsertPoint: Vector3;
+	/**
 	 * Tags: Hidden, NotReplicated
 	 * @deprecated
 	 */
@@ -30617,6 +30716,17 @@ interface ScriptEditorService extends Instance {
 	readonly _nominal_ScriptEditorService: unique symbol;
 }
 
+interface ScriptProfilerService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ScriptProfilerService: unique symbol;
+}
+
 interface ScriptRegistrationService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -32718,10 +32828,6 @@ interface StarterPlayer extends Instance {
 	 * Since this property is only relevant for characters being spawned in the future, changing it will not change any existing player characters. Changes to this property will only take effect when a player respawns.
 	 */
 	CharacterWalkSpeed: number;
-	/**
-	 * Tags: NotBrowsable
-	 */
-	DeathStyle: Enum.DeathStyle;
 	/**
 	 * The DevCameraOcclusionMode [StarterPlayer](https://developer.roblox.com/en-us/api-reference/class/StarterPlayer) property sets how the default camera handles objects between the camera and the player.
 	 * 
