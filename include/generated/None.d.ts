@@ -15478,11 +15478,11 @@ interface Path2D extends GuiBase {
 	 * @deprecated
 	 */
 	readonly _nominal_Path2D: unique symbol;
-	Color: Color3;
-	Position: UDim2;
+	Color3: Color3;
 	Thickness: number;
 	Visible: boolean;
 	ZIndex: number;
+	GetBoundingRect(this: Path2D): Rect;
 	GetControlPoint(this: Path2D, index: number): Path2DControlPoint;
 	GetControlPoints(this: Path2D): unknown;
 	GetPositionOnCurve(this: Path2D, t: number): UDim2;
