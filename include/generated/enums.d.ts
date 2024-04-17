@@ -7933,6 +7933,43 @@ declare namespace Enum {
 	}
 	export type GameAvatarType = GameAvatarType.R6 | GameAvatarType.R15 | GameAvatarType.PlayerChoice;
 
+	export namespace GamepadType {
+		export interface Unknown extends globalThis.EnumItem {
+			Name: "Unknown";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.GamepadType;
+		}
+
+		export const Unknown: Unknown;
+
+		export interface PS4 extends globalThis.EnumItem {
+			Name: "PS4";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.GamepadType;
+		}
+
+		export const PS4: PS4;
+
+		export interface PS5 extends globalThis.EnumItem {
+			Name: "PS5";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.GamepadType;
+		}
+
+		export const PS5: PS5;
+
+		export interface XboxOne extends globalThis.EnumItem {
+			Name: "XboxOne";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.GamepadType;
+		}
+
+		export const XboxOne: XboxOne;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GamepadType>;
+	}
+	export type GamepadType = GamepadType.Unknown | GamepadType.PS4 | GamepadType.PS5 | GamepadType.XboxOne;
+
 	export namespace GearGenreSetting {
 		export interface AllGenres extends globalThis.EnumItem {
 			Name: "AllGenres";
@@ -8271,9 +8308,17 @@ declare namespace Enum {
 
 		export const CustomBillboards: CustomBillboards;
 
+		export interface CoreBillboards extends globalThis.EnumItem {
+			Name: "CoreBillboards";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.GuiType;
+		}
+
+		export const CoreBillboards: CoreBillboards;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GuiType>;
 	}
-	export type GuiType = GuiType.Core | GuiType.Custom | GuiType.PlayerNameplates | GuiType.CustomBillboards;
+	export type GuiType = GuiType.Core | GuiType.Custom | GuiType.PlayerNameplates | GuiType.CustomBillboards | GuiType.CoreBillboards;
 
 	export namespace HandlesStyle {
 		export interface Resize extends globalThis.EnumItem {
