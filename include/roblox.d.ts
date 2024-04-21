@@ -1944,7 +1944,24 @@ interface Path2DControlPoint {
 	 * @deprecated
 	 */
 	readonly _nominal_Path2DControlPoint: unique symbol;
+	/** The position of the `Path2DControlPoint`. */
+	Position: UDim2;
+	/** The left tangent of the `Path2DControlPoint`. */
+	LeftTangent: UDim2;
+	/** The right tangent of the `Path2DControlPoint`. */
+	RightTangent: UDim2;
 }
+
+interface Path2DControlPointConstructor {
+	/** Returns an empty `Path2DControlPoint`. */
+	new (): Path2DControlPoint;
+	/** Returns a `Path2DControlPoint` with only the position set. */
+	new (position: UDim2): Path2DControlPoint;
+	/** Returns a `Path2DControlPoint` with the position, left tangent, and right tangent set. */
+	new (position: UDim2, leftTangent: UDim2, rightTangent: UDim2): Path2DControlPoint;
+}
+
+declare const Path2DControlPoint: Path2DControlPointConstructor;
 
 // PhysicalProperties
 interface PhysicalProperties {
