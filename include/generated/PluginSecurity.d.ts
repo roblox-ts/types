@@ -2897,6 +2897,10 @@ interface RunService extends Instance {
 	 */
 	readonly _nominal_RunService: unique symbol;
 	/**
+	 * Tags: NotReplicated
+	 */
+	RunState: Enum.RunState;
+	/**
 	 * This function returns whether the current environment is in 'Edit' mode. For example, Roblox Studio is in 'Edit Mode' when the game is not running.
 	 * 
 	 * IsEdit will return the inverse of [RunService:IsRunning](https://developer.roblox.com/en-us/api-reference/function/RunService/IsRunning) with one exception, if the simulation has been 'paused' then both IsEdit and [RunService:IsRunning](https://developer.roblox.com/en-us/api-reference/function/RunService/IsRunning) will return false.
