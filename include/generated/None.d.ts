@@ -60,6 +60,7 @@ interface Services {
 	FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
 	GamepadService: GamepadService;
 	GamePassService: GamePassService;
+	GenericChallengeService: GenericChallengeService;
 	GeometryService: GeometryService;
 	GroupService: GroupService;
 	GuiService: GuiService;
@@ -1632,13 +1633,13 @@ interface AnalyticsService extends Instance {
 		statistics?: { [index: string]: number },
 		customData?: unknown,
 	): void;
-	LogEconomyEvent(this: AnalyticsService, player: Player, flowType: CastsToEnum<Enum.AnalyticsEconomyFlowType>, currencyType: string, endingBalance: number, amount: number, transactionType: string, itemSku: string, customFields: Array<any>): void;
-	LogFunnelStepEvent(this: AnalyticsService, player: Player, funnelName: string, step: number, customFields: Array<any>): void;
-	LogOnboardingFunnelStepEvent(this: AnalyticsService, player: Player, step: number, customFields: Array<any>): void;
-	LogProgressionCompleteEvent(this: AnalyticsService, player: Player, level: number, levelName: string, customFields: Array<any>): void;
-	LogProgressionEvent(this: AnalyticsService, player: Player, status: CastsToEnum<Enum.AnalyticsProgressionType>, level: number, levelName: string, customFields: Array<any>): void;
-	LogProgressionFailEvent(this: AnalyticsService, player: Player, level: number, levelName: string, customFields: Array<any>): void;
-	LogProgressionStartEvent(this: AnalyticsService, player: Player, level: number, levelName: string, customFields: Array<any>): void;
+	LogEconomyEvent(this: AnalyticsService, player: Player, flowType: CastsToEnum<Enum.AnalyticsEconomyFlowType>, currencyType: string, endingBalance: number, amount: number, transactionType: string, itemSku?: string, customFields?: object): void;
+	LogFunnelStepEvent(this: AnalyticsService, player: Player, funnelName: string, funnelSessionId?: string, step?: number, stepName?: string, customFields?: object): void;
+	LogOnboardingFunnelStepEvent(this: AnalyticsService, player: Player, step: number, stepName?: string, customFields?: object): void;
+	LogProgressionCompleteEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName?: string, customFields?: object): void;
+	LogProgressionEvent(this: AnalyticsService, player: Player, progressionPathName: string, status: CastsToEnum<Enum.AnalyticsProgressionType>, level: number, levelName?: string, customFields?: object): void;
+	LogProgressionFailEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName?: string, customFields?: object): void;
+	LogProgressionStartEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName?: string, customFields?: object): void;
 }
 
 /** An object that references an animation asset (AnimationId) which can be loaded by a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) or [AnimationController](https://developer.roblox.com/en-us/api-reference/class/AnimationController)
@@ -3082,6 +3083,10 @@ interface AvatarCreationService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
+	CreateAvatarGenerationSessionAsync(this: AvatarCreationService, player: Player): AvatarGenerationSession;
+	/**
+	 * Tags: Yields
+	 */
 	LoadAvatarModelAsync(this: AvatarCreationService, id: string): Instance | undefined;
 	/**
 	 * Tags: Yields
@@ -3563,7 +3568,7 @@ interface Avatar3DGenerationJob extends AvatarGenerationJob {
 	 * @deprecated
 	 */
 	readonly _nominal_Avatar3DGenerationJob: unique symbol;
-	Result: Model | undefined;
+	Result: string;
 }
 
 interface AvatarGenerationSession extends Instance {
@@ -11701,6 +11706,17 @@ interface GamepadService extends Instance {
 	readonly GamepadCursorEnabled: boolean;
 	DisableGamepadCursor(this: GamepadService): void;
 	EnableGamepadCursor(this: GamepadService, guiObject: GuiObject | undefined): void;
+}
+
+interface GenericChallengeService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_GenericChallengeService: unique symbol;
 }
 
 interface GeometryService extends Instance {
@@ -29049,6 +29065,10 @@ interface Players extends Instance {
 	/**
 	 * Tags: Yields
 	 */
+	BanAsync(this: Players, config: object): void;
+	/**
+	 * Tags: Yields
+	 */
 	CreateHumanoidModelFromDescription(
 		this: Players,
 		description: HumanoidDescription,
@@ -29263,6 +29283,10 @@ interface Players extends Instance {
 		thumbnailType: CastsToEnum<Enum.ThumbnailType>,
 		thumbnailSize: CastsToEnum<Enum.ThumbnailSize>,
 	): LuaTuple<[string, boolean]>;
+	/**
+	 * Tags: Yields
+	 */
+	UnbanAsync(this: Players, config: object): void;
 	/**
 	 * The PlayerAdded event fires when a player enters the game. This is used to fire an event when a player joins a game, such as loading the player's saved [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) data.
 	 * 

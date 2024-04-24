@@ -531,6 +531,35 @@ declare namespace Enum {
 	}
 	export type AlphaMode = AlphaMode.Overlay | AlphaMode.Transparency;
 
+	export namespace AnalyticsCustomFieldKeys {
+		export interface CustomField01 extends globalThis.EnumItem {
+			Name: "CustomField01";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AnalyticsCustomFieldKeys;
+		}
+
+		export const CustomField01: CustomField01;
+
+		export interface CustomField02 extends globalThis.EnumItem {
+			Name: "CustomField02";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AnalyticsCustomFieldKeys;
+		}
+
+		export const CustomField02: CustomField02;
+
+		export interface CustomField03 extends globalThis.EnumItem {
+			Name: "CustomField03";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AnalyticsCustomFieldKeys;
+		}
+
+		export const CustomField03: CustomField03;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnalyticsCustomFieldKeys>;
+	}
+	export type AnalyticsCustomFieldKeys = AnalyticsCustomFieldKeys.CustomField01 | AnalyticsCustomFieldKeys.CustomField02 | AnalyticsCustomFieldKeys.CustomField03;
+
 	export namespace AnalyticsEconomyAction {
 		export interface Default extends globalThis.EnumItem {
 			Name: "Default";
@@ -6120,6 +6149,19 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeveloperMemoryTag>;
 	}
 	export type DeveloperMemoryTag = DeveloperMemoryTag.Internal | DeveloperMemoryTag.HttpCache | DeveloperMemoryTag.Instances | DeveloperMemoryTag.Signals | DeveloperMemoryTag.LuaHeap | DeveloperMemoryTag.Script | DeveloperMemoryTag.PhysicsCollision | DeveloperMemoryTag.PhysicsParts | DeveloperMemoryTag.GraphicsSolidModels | DeveloperMemoryTag.GraphicsMeshParts | DeveloperMemoryTag.GraphicsParticles | DeveloperMemoryTag.GraphicsParts | DeveloperMemoryTag.GraphicsSpatialHash | DeveloperMemoryTag.GraphicsTerrain | DeveloperMemoryTag.GraphicsTexture | DeveloperMemoryTag.GraphicsTextureCharacter | DeveloperMemoryTag.Sounds | DeveloperMemoryTag.StreamingSounds | DeveloperMemoryTag.TerrainVoxels | DeveloperMemoryTag.Gui | DeveloperMemoryTag.Animation | DeveloperMemoryTag.Navigation | DeveloperMemoryTag.GeometryCSG;
+
+	export namespace DeviceFeatureType {
+		export interface DeviceCapture extends globalThis.EnumItem {
+			Name: "DeviceCapture";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.DeviceFeatureType;
+		}
+
+		export const DeviceCapture: DeviceCapture;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeviceFeatureType>;
+	}
+	export type DeviceFeatureType = DeviceFeatureType.DeviceCapture;
 
 	export namespace DeviceType {
 		export interface Unknown extends globalThis.EnumItem {
