@@ -536,10 +536,14 @@ interface SendNotificationConfig {
 }
 
 interface PolicyInfo {
+	/** When true, the player might see immersive ads within an experience. */
+	AreAdsAllowed: boolean;
 	/** When true, the player cannot interact with paid (via in-experience currency or Robux) random item generators. */
 	ArePaidRandomItemsRestricted: boolean;
 	/** A list of external link references (for example, social media links, handles, or iconography) a player is permitted to see. Possible values include: “Discord”, “Facebook”, “Twitch”, and “YouTube”. */
 	AllowedExternalLinkReferences: Array<string>;
+	/** When true, the player is eligible to purchase subscriptions within an experience. */
+	IsEligibleToPurchaseSubscription: boolean;
 	/** When true, the player can trade virtual items that they purchased with in-experience currency or Robux. */
 	IsPaidItemTradingAllowed: boolean;
 	/** When true, an experience should enforce compliance changes. See [here](https://devforum.roblox.com/t/about-our-upcoming-global-compliance-system/461447) for details. */
