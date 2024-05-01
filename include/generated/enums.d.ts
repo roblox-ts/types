@@ -15015,6 +15015,35 @@ declare namespace Enum {
 	}
 	export type RenderPriority = RenderPriority.First | RenderPriority.Input | RenderPriority.Camera | RenderPriority.Character | RenderPriority.Last;
 
+	export namespace RenderingCacheOptimizationMode {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.RenderingCacheOptimizationMode;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.RenderingCacheOptimizationMode;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled extends globalThis.EnumItem {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.RenderingCacheOptimizationMode;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RenderingCacheOptimizationMode>;
+	}
+	export type RenderingCacheOptimizationMode = RenderingCacheOptimizationMode.Default | RenderingCacheOptimizationMode.Disabled | RenderingCacheOptimizationMode.Enabled;
+
 	export namespace RenderingTestComparisonMethod {
 		export interface psnr extends globalThis.EnumItem {
 			Name: "psnr";
