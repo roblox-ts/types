@@ -1633,7 +1633,7 @@ interface AnalyticsService extends Instance {
 		statistics?: { [index: string]: number },
 		customData?: unknown,
 	): void;
-	LogEconomyEvent(this: AnalyticsService, player: Player, flowType: CastsToEnum<Enum.AnalyticsEconomyFlowType>, currencyType: string, endingBalance: number, amount: number, transactionType: string, itemSku?: string, customFields?: object): void;
+	LogEconomyEvent(this: AnalyticsService, player: Player, flowType: CastsToEnum<Enum.AnalyticsEconomyFlowType>, currencyType: string, amount: number, endingBalance: number, transactionType: string, itemSku?: string, customFields?: object): void;
 	LogFunnelStepEvent(this: AnalyticsService, player: Player, funnelName: string, funnelSessionId?: string, step?: number, stepName?: string, customFields?: object): void;
 	LogOnboardingFunnelStepEvent(this: AnalyticsService, player: Player, step: number, stepName?: string, customFields?: object): void;
 	LogProgressionCompleteEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName?: string, customFields?: object): void;
@@ -26765,6 +26765,10 @@ interface Workspace extends WorldRoot {
 	 * @deprecated
 	 */
 	InterpolationThrottling: Enum.InterpolationThrottlingMode;
+	/**
+	 * Tags: Hidden
+	 */
+	RenderingCacheOptimizations: Enum.RenderingCacheOptimizationMode;
 	Retargeting: Enum.AnimatorRetargetingMode;
 	/**
 	 * The **StreamingEnabled** property determines whether game content streaming is enabled for the place. This property is not scriptable and therefore must be set on the **Workspace** object in Studio.
@@ -33365,6 +33369,7 @@ interface SurfaceAppearance extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_SurfaceAppearance: unique symbol;
+	Color: Color3;
 }
 
 /** The [Team](https://developer.roblox.com/en-us/api-reference/class/Team) class represents a faction in a Roblox place. The only valid parent for a Team is in the [Teams](https://developer.roblox.com/en-us/api-reference/class/Teams) service. Teams offer a range of features that are useful to developers that can be divided into two rough groups:
