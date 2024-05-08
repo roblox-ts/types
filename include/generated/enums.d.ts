@@ -9511,6 +9511,19 @@ declare namespace Enum {
 	}
 	export type ItemLineAlignment = ItemLineAlignment.Automatic | ItemLineAlignment.Start | ItemLineAlignment.Center | ItemLineAlignment.End | ItemLineAlignment.Stretch;
 
+	export namespace JoinSource {
+		export interface CreatedItemAttribution extends globalThis.EnumItem {
+			Name: "CreatedItemAttribution";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.JoinSource;
+		}
+
+		export const CreatedItemAttribution: CreatedItemAttribution;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.JoinSource>;
+	}
+	export type JoinSource = JoinSource.CreatedItemAttribution;
+
 	export namespace JointCreationMode {
 		export interface All extends globalThis.EnumItem {
 			Name: "All";
@@ -11940,6 +11953,157 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LoadDynamicHeads>;
 	}
 	export type LoadDynamicHeads = LoadDynamicHeads.Default | LoadDynamicHeads.Disabled | LoadDynamicHeads.Enabled;
+
+	export namespace MarketplaceBulkPurchasePromptStatus {
+		export interface Completed extends globalThis.EnumItem {
+			Name: "Completed";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.MarketplaceBulkPurchasePromptStatus;
+		}
+
+		export const Completed: Completed;
+
+		export interface Aborted extends globalThis.EnumItem {
+			Name: "Aborted";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.MarketplaceBulkPurchasePromptStatus;
+		}
+
+		export const Aborted: Aborted;
+
+		export interface Error extends globalThis.EnumItem {
+			Name: "Error";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.MarketplaceBulkPurchasePromptStatus;
+		}
+
+		export const Error: Error;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MarketplaceBulkPurchasePromptStatus>;
+	}
+	export type MarketplaceBulkPurchasePromptStatus = MarketplaceBulkPurchasePromptStatus.Completed | MarketplaceBulkPurchasePromptStatus.Aborted | MarketplaceBulkPurchasePromptStatus.Error;
+
+	export namespace MarketplaceItemPurchaseStatus {
+		export interface Success extends globalThis.EnumItem {
+			Name: "Success";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.MarketplaceItemPurchaseStatus;
+		}
+
+		export const Success: Success;
+
+		export interface SystemError extends globalThis.EnumItem {
+			Name: "SystemError";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.MarketplaceItemPurchaseStatus;
+		}
+
+		export const SystemError: SystemError;
+
+		export interface AlreadyOwned extends globalThis.EnumItem {
+			Name: "AlreadyOwned";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.MarketplaceItemPurchaseStatus;
+		}
+
+		export const AlreadyOwned: AlreadyOwned;
+
+		export interface InsufficientRobux extends globalThis.EnumItem {
+			Name: "InsufficientRobux";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.MarketplaceItemPurchaseStatus;
+		}
+
+		export const InsufficientRobux: InsufficientRobux;
+
+		export interface QuantityLimitExceeded extends globalThis.EnumItem {
+			Name: "QuantityLimitExceeded";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.MarketplaceItemPurchaseStatus;
+		}
+
+		export const QuantityLimitExceeded: QuantityLimitExceeded;
+
+		export interface QuotaExceeded extends globalThis.EnumItem {
+			Name: "QuotaExceeded";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.MarketplaceItemPurchaseStatus;
+		}
+
+		export const QuotaExceeded: QuotaExceeded;
+
+		export interface NotForSale extends globalThis.EnumItem {
+			Name: "NotForSale";
+			Value: 7;
+			EnumType: typeof globalThis.Enum.MarketplaceItemPurchaseStatus;
+		}
+
+		export const NotForSale: NotForSale;
+
+		export interface NotAvailableForPurchaser extends globalThis.EnumItem {
+			Name: "NotAvailableForPurchaser";
+			Value: 8;
+			EnumType: typeof globalThis.Enum.MarketplaceItemPurchaseStatus;
+		}
+
+		export const NotAvailableForPurchaser: NotAvailableForPurchaser;
+
+		export interface PriceMismatch extends globalThis.EnumItem {
+			Name: "PriceMismatch";
+			Value: 9;
+			EnumType: typeof globalThis.Enum.MarketplaceItemPurchaseStatus;
+		}
+
+		export const PriceMismatch: PriceMismatch;
+
+		export interface SoldOut extends globalThis.EnumItem {
+			Name: "SoldOut";
+			Value: 10;
+			EnumType: typeof globalThis.Enum.MarketplaceItemPurchaseStatus;
+		}
+
+		export const SoldOut: SoldOut;
+
+		export interface PurchaserIsSeller extends globalThis.EnumItem {
+			Name: "PurchaserIsSeller";
+			Value: 11;
+			EnumType: typeof globalThis.Enum.MarketplaceItemPurchaseStatus;
+		}
+
+		export const PurchaserIsSeller: PurchaserIsSeller;
+
+		export interface InsufficientMembership extends globalThis.EnumItem {
+			Name: "InsufficientMembership";
+			Value: 12;
+			EnumType: typeof globalThis.Enum.MarketplaceItemPurchaseStatus;
+		}
+
+		export const InsufficientMembership: InsufficientMembership;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MarketplaceItemPurchaseStatus>;
+	}
+	export type MarketplaceItemPurchaseStatus = MarketplaceItemPurchaseStatus.Success | MarketplaceItemPurchaseStatus.SystemError | MarketplaceItemPurchaseStatus.AlreadyOwned | MarketplaceItemPurchaseStatus.InsufficientRobux | MarketplaceItemPurchaseStatus.QuantityLimitExceeded | MarketplaceItemPurchaseStatus.QuotaExceeded | MarketplaceItemPurchaseStatus.NotForSale | MarketplaceItemPurchaseStatus.NotAvailableForPurchaser | MarketplaceItemPurchaseStatus.PriceMismatch | MarketplaceItemPurchaseStatus.SoldOut | MarketplaceItemPurchaseStatus.PurchaserIsSeller | MarketplaceItemPurchaseStatus.InsufficientMembership;
+
+	export namespace MarketplaceProductType {
+		export interface AvatarAsset extends globalThis.EnumItem {
+			Name: "AvatarAsset";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.MarketplaceProductType;
+		}
+
+		export const AvatarAsset: AvatarAsset;
+
+		export interface AvatarBundle extends globalThis.EnumItem {
+			Name: "AvatarBundle";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.MarketplaceProductType;
+		}
+
+		export const AvatarBundle: AvatarBundle;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MarketplaceProductType>;
+	}
+	export type MarketplaceProductType = MarketplaceProductType.AvatarAsset | MarketplaceProductType.AvatarBundle;
 
 	export namespace MarkupKind {
 		export interface PlainText extends globalThis.EnumItem {

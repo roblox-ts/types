@@ -101,6 +101,7 @@ interface Services {
 	PlaceStatsService: PlaceStatsService;
 	PlatformCloudStorageService: PlatformCloudStorageService;
 	PlatformFriendsService: PlatformFriendsService;
+	PlayerHydrationService: PlayerHydrationService;
 	Players: Players;
 	PlayerViewService: PlayerViewService;
 	PluginManagementService: PluginManagementService;
@@ -3087,6 +3088,10 @@ interface AvatarCreationService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
+	GetAvatarGenerationConfig(this: AvatarCreationService): object;
+	/**
+	 * Tags: Yields
+	 */
 	LoadAvatarModelAsync(this: AvatarCreationService, id: string): Instance | undefined;
 	/**
 	 * Tags: Yields
@@ -5271,6 +5276,10 @@ interface Beam extends Instance {
 	 * ![enter image description here](https://developer.roblox.com/assets/blt1d1d4b30144114c3/BeamLight2.png)
 	 */
 	LightInfluence: number;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	LocalTransparencyModifier: number;
 	/**
 	 * Sets how many straight segments the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam) is made up of.
 	 * 
@@ -9828,6 +9837,7 @@ interface EditableMesh extends DataModelMesh {
 	 * @deprecated
 	 */
 	readonly _nominal_EditableMesh: unique symbol;
+	SkinningEnabled: boolean;
 	AddTriangle(this: EditableMesh, vertexId0: number, vertexId1: number, vertexId2: number): number;
 	AddVertex(this: EditableMesh, p: Vector3): number;
 	FindClosestPointOnSurface(this: EditableMesh, point: Vector3): LuaTuple<[number, Vector3, Vector3]>;
@@ -26765,10 +26775,6 @@ interface Workspace extends WorldRoot {
 	 * @deprecated
 	 */
 	InterpolationThrottling: Enum.InterpolationThrottlingMode;
-	/**
-	 * Tags: Hidden
-	 */
-	RenderingCacheOptimizations: Enum.RenderingCacheOptimizationMode;
 	Retargeting: Enum.AnimatorRetargetingMode;
 	/**
 	 * The **StreamingEnabled** property determines whether game content streaming is enabled for the place. This property is not scriptable and therefore must be set on the **Workspace** object in Studio.
@@ -27343,6 +27349,10 @@ interface ParticleEmitter extends Instance {
 	 * By default, this value is 1 if inserted with Studio tools. If inserted using `Instance.new`, it is 0.
 	 */
 	LightInfluence: number;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	LocalTransparencyModifier: number;
 	/**
 	 * The LockedToPart property determines if particles will “stick” to the emission source (the [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) or [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) to which the [ParticleEmitter](https://developer.roblox.com/en-us/api-reference/class/ParticleEmitter) is parented).
 	 * 
@@ -28423,6 +28433,8 @@ interface Player extends Instance {
 	 * You should not use this function for data that can be changed. For example, the amount of in-game currency the user currently has. This is because GetJoinData cannot guarantee a malicious user is not transmitting data from a previous session. For data like this, you should rely on [GlobalDataStores](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore).
 	 * 
 	 * As with all cases, you should implement proper server validation to ensure your game is secure. For more information see this article on [Game Security](https://developer.roblox.com/en-us/articles/game-security).
+	 * 
+	 * Tags: CustomLuaState
 	 */
 	GetJoinData(this: Player): PlayerJoinInfo;
 	/**
@@ -28820,6 +28832,17 @@ interface Player extends Instance {
 	 * When a teleportation request is made using [TeleportService](https://developer.roblox.com/en-us/api-reference/class/TeleportService), there are a series of stages before the [Player](https://developer.roblox.com/en-us/api-reference/class/Player) is teleported. The current stage is represented by the [TeleportState](https://developer.roblox.com/en-us/api-reference/enum/TeleportState) value which is given by OnTeleport. See below for a practical example of this.
 	 */
 	readonly OnTeleport: RBXScriptSignal<(teleportState: Enum.TeleportState, placeId: number, spawnName: string) => void>;
+}
+
+interface PlayerHydrationService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_PlayerHydrationService: unique symbol;
 }
 
 /** [PlayerScripts](https://developer.roblox.com/en-us/api-reference/class/PlayerScripts) is a container object located inside [Player](https://developer.roblox.com/en-us/api-reference/class/Player) objects within the [Players](https://developer.roblox.com/en-us/api-reference/class/Players) game service. It is created automatically when a player joins the game. Its main purpose is to contain [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript)s copied from the [StarterPlayerScripts](https://developer.roblox.com/en-us/api-reference/class/StarterPlayerScripts) container within the [StarterPlayer](https://developer.roblox.com/en-us/api-reference/class/StarterPlayer) game service, which happens once upon creation. Descendant `LocalScripts` of [PlayerScripts](https://developer.roblox.com/en-us/api-reference/class/PlayerScripts) will run code on the client of the [Player](https://developer.roblox.com/en-us/api-reference/class/Player).
@@ -35106,6 +35129,10 @@ interface Trail extends Instance {
 	 */
 	LightInfluence: number;
 	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	LocalTransparencyModifier: number;
+	/**
 	 * The MinLength of a [Trail](https://developer.roblox.com/en-us/api-reference/class/Trail) determines the maximum length of each of the segments in the trail.
 	 * 
 	 * Note that changing MaxLength will only affect new segments that are drawn – any old segments that have already been drawn will maintain their current length.
@@ -37967,9 +37994,6 @@ interface VRService extends Instance {
 	 */
 	readonly _nominal_VRService: unique symbol;
 	AutomaticScaling: Enum.VRScaling;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	AvatarGestures: boolean;
 	FadeOutViewOnCollision: boolean;
 	/**
