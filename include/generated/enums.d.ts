@@ -20524,6 +20524,80 @@ declare namespace Enum {
 	}
 	export type TweenStatus = TweenStatus.Canceled | TweenStatus.Completed;
 
+	export namespace UIDragDetectorDragStyle {
+		export interface TranslatePlane extends globalThis.EnumItem {
+			Name: "TranslatePlane";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.UIDragDetectorDragStyle;
+		}
+
+		export const TranslatePlane: TranslatePlane;
+
+		export interface TranslateLine extends globalThis.EnumItem {
+			Name: "TranslateLine";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.UIDragDetectorDragStyle;
+		}
+
+		export const TranslateLine: TranslateLine;
+
+		export interface Rotate extends globalThis.EnumItem {
+			Name: "Rotate";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.UIDragDetectorDragStyle;
+		}
+
+		export const Rotate: Rotate;
+
+		export interface Scriptable extends globalThis.EnumItem {
+			Name: "Scriptable";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.UIDragDetectorDragStyle;
+		}
+
+		export const Scriptable: Scriptable;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIDragDetectorDragStyle>;
+	}
+	export type UIDragDetectorDragStyle = UIDragDetectorDragStyle.TranslatePlane | UIDragDetectorDragStyle.TranslateLine | UIDragDetectorDragStyle.Rotate | UIDragDetectorDragStyle.Scriptable;
+
+	export namespace UIDragDetectorResponseStyle {
+		export interface Offset extends globalThis.EnumItem {
+			Name: "Offset";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.UIDragDetectorResponseStyle;
+		}
+
+		export const Offset: Offset;
+
+		export interface Scale extends globalThis.EnumItem {
+			Name: "Scale";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.UIDragDetectorResponseStyle;
+		}
+
+		export const Scale: Scale;
+
+		export interface CustomOffset extends globalThis.EnumItem {
+			Name: "CustomOffset";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.UIDragDetectorResponseStyle;
+		}
+
+		export const CustomOffset: CustomOffset;
+
+		export interface CustomScale extends globalThis.EnumItem {
+			Name: "CustomScale";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.UIDragDetectorResponseStyle;
+		}
+
+		export const CustomScale: CustomScale;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIDragDetectorResponseStyle>;
+	}
+	export type UIDragDetectorResponseStyle = UIDragDetectorResponseStyle.Offset | UIDragDetectorResponseStyle.Scale | UIDragDetectorResponseStyle.CustomOffset | UIDragDetectorResponseStyle.CustomScale;
+
 	export namespace UIFlexAlignment {
 		export interface None extends globalThis.EnumItem {
 			Name: "None";
