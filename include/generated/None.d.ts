@@ -471,6 +471,7 @@ interface Instances extends Services, CreatableInstances {
 	AvatarGenerationJob: AvatarGenerationJob;
 	AvatarGenerationSession: AvatarGenerationSession;
 	BackpackItem: BackpackItem;
+	BanHistoryPages: BanHistoryPages;
 	BaseImportData: BaseImportData;
 	BasePart: BasePart;
 	BasePlayerGui: BasePlayerGui;
@@ -22534,6 +22535,7 @@ interface MarketplaceService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_MarketplaceService: unique symbol;
+	PromptBulkPurchase(this: MarketplaceService, player: Player, lineItems: Array<any>, options: object): void;
 	/**
 	 * Used to prompt a user to purchase a bundle with the given bundleId
 	 */
@@ -22859,6 +22861,7 @@ interface MarketplaceService extends Instance {
 	 * Tags: Yields
 	 */
 	UserOwnsGamePassAsync(this: MarketplaceService, userId: number, gamePassId: number): boolean;
+	readonly PromptBulkPurchaseFinished: RBXScriptSignal<(player: Player, status: Enum.MarketplaceBulkPurchasePromptStatus, results: object) => void>;
 	readonly PromptBundlePurchaseFinished: RBXScriptSignal<(player: Player, bundleId: number, wasPurchased: boolean) => void>;
 	/**
 	 * This event fires when a purchase dialogue of a game pass is closed. This fires right as the dialogue closes when the player presses “Cancel” at the prompt, or “OK” at the success/error message.
@@ -27057,6 +27060,17 @@ interface AudioPages extends Pages {
 	readonly _nominal_AudioPages: unique symbol;
 }
 
+interface BanHistoryPages extends Pages {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_BanHistoryPages: unique symbol;
+}
+
 interface CatalogPages extends Pages<SearchCatalogResult> {
 	/**
 	 * **DO NOT USE!**
@@ -29106,6 +29120,10 @@ interface Players extends Instance {
 	 * Tags: Yields
 	 */
 	CreateHumanoidModelFromUserId(this: Players, userId: number): Model;
+	/**
+	 * Tags: Yields
+	 */
+	GetBanHistoryAsync(this: Players, userId: number): BanHistoryPages;
 	/**
 	 * This function returns a [Model](https://developer.roblox.com/en-us/api-reference/class/Model) containing the assets which the player is wearing, excluding gear.
 	 * 
