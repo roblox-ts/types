@@ -1122,21 +1122,6 @@ interface Humanoid extends Instance {
 	CollisionType: Enum.HumanoidCollisionType;
 }
 
-interface InsertService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_InsertService: unique symbol;
-	/**
-	 * Tags: Yields
-	 */
-	CreateMeshPartAsync(this: InsertService, meshId: string, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>, renderFidelity: CastsToEnum<Enum.RenderFidelity>): MeshPart;
-}
-
 interface KeyframeSequenceProvider extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -3678,7 +3663,6 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["Selection Color"]: Color3;
-	["Server Audio Behavior"]: Enum.ServerAudioBehavior;
 	["Set Pivot of Imported Parts"]: boolean;
 	["Show Core GUI in Explorer while Playing"]: boolean;
 	["Show Diagnostics Bar"]: boolean;
