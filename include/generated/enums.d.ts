@@ -12080,9 +12080,17 @@ declare namespace Enum {
 
 		export const InsufficientMembership: InsufficientMembership;
 
+		export interface PlaceInvalid extends globalThis.EnumItem {
+			Name: "PlaceInvalid";
+			Value: 13;
+			EnumType: typeof globalThis.Enum.MarketplaceItemPurchaseStatus;
+		}
+
+		export const PlaceInvalid: PlaceInvalid;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MarketplaceItemPurchaseStatus>;
 	}
-	export type MarketplaceItemPurchaseStatus = MarketplaceItemPurchaseStatus.Success | MarketplaceItemPurchaseStatus.SystemError | MarketplaceItemPurchaseStatus.AlreadyOwned | MarketplaceItemPurchaseStatus.InsufficientRobux | MarketplaceItemPurchaseStatus.QuantityLimitExceeded | MarketplaceItemPurchaseStatus.QuotaExceeded | MarketplaceItemPurchaseStatus.NotForSale | MarketplaceItemPurchaseStatus.NotAvailableForPurchaser | MarketplaceItemPurchaseStatus.PriceMismatch | MarketplaceItemPurchaseStatus.SoldOut | MarketplaceItemPurchaseStatus.PurchaserIsSeller | MarketplaceItemPurchaseStatus.InsufficientMembership;
+	export type MarketplaceItemPurchaseStatus = MarketplaceItemPurchaseStatus.Success | MarketplaceItemPurchaseStatus.SystemError | MarketplaceItemPurchaseStatus.AlreadyOwned | MarketplaceItemPurchaseStatus.InsufficientRobux | MarketplaceItemPurchaseStatus.QuantityLimitExceeded | MarketplaceItemPurchaseStatus.QuotaExceeded | MarketplaceItemPurchaseStatus.NotForSale | MarketplaceItemPurchaseStatus.NotAvailableForPurchaser | MarketplaceItemPurchaseStatus.PriceMismatch | MarketplaceItemPurchaseStatus.SoldOut | MarketplaceItemPurchaseStatus.PurchaserIsSeller | MarketplaceItemPurchaseStatus.InsufficientMembership | MarketplaceItemPurchaseStatus.PlaceInvalid;
 
 	export namespace MarketplaceProductType {
 		export interface AvatarAsset extends globalThis.EnumItem {
@@ -16596,35 +16604,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SensorUpdateType>;
 	}
 	export type SensorUpdateType = SensorUpdateType.OnRead | SensorUpdateType.Manual;
-
-	export namespace ServerAudioBehavior {
-		export interface Enabled extends globalThis.EnumItem {
-			Name: "Enabled";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.ServerAudioBehavior;
-		}
-
-		export const Enabled: Enabled;
-
-		export interface Muted extends globalThis.EnumItem {
-			Name: "Muted";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.ServerAudioBehavior;
-		}
-
-		export const Muted: Muted;
-
-		export interface OnlineGame extends globalThis.EnumItem {
-			Name: "OnlineGame";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.ServerAudioBehavior;
-		}
-
-		export const OnlineGame: OnlineGame;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ServerAudioBehavior>;
-	}
-	export type ServerAudioBehavior = ServerAudioBehavior.Enabled | ServerAudioBehavior.Muted | ServerAudioBehavior.OnlineGame;
 
 	export namespace ServerLiveEditingMode {
 		export interface Uninitialized extends globalThis.EnumItem {

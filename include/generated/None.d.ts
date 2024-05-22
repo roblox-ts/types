@@ -3082,6 +3082,7 @@ interface AvatarCreationService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AvatarCreationService: unique symbol;
+	SendAnalyticsEvent(this: AvatarCreationService, eventName: string, params: object): void;
 	/**
 	 * Tags: Yields
 	 */
@@ -11008,6 +11009,10 @@ interface Explosion extends Instance {
 	 */
 	ExplosionType: Enum.ExplosionType;
 	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	LocalTransparencyModifier: number;
+	/**
 	 * This property is the position of the center of the [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion). It is defined in world-space and not influenced by the [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion)'s parent.
 	 * 
 	 * [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart)s will be influenced by the [Explosion](https://developer.roblox.com/en-us/api-reference/class/Explosion) if they are within [Explosion.BlastRadius](https://developer.roblox.com/en-us/api-reference/property/Explosion/BlastRadius) studs of the explosion's position.
@@ -11444,6 +11449,10 @@ interface Fire extends Instance {
 	 * Tags: NotReplicated
 	 */
 	Heat: number;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	LocalTransparencyModifier: number;
 	/**
 	 * The SecondaryColor property determines the color of the smaller particles emit by a [Fire](https://developer.roblox.com/en-us/api-reference/class/Fire) object. It is essentially the color of the inner portion of the flame. Below, you can see the SecondaryColor of the flame is set to white to differentiate with the larger, outer particles which have [Fire.Color](https://developer.roblox.com/en-us/api-reference/property/Fire/Color) set to blue. It should be noted that the inner particles use a [ParticleEmitter.LightEmission](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/LightEmission) of 1, so darker colors will instead cause the particles to appear transparent (and therefore black will stop rendering inner particles altogether).
 	 * 
@@ -19571,6 +19580,10 @@ interface InsertService extends Instance {
 	 * @deprecated
 	 */
 	Insert(this: InsertService, instance: Instance): void;
+	/**
+	 * Tags: Yields
+	 */
+	CreateMeshPartAsync(this: InsertService, meshId: string, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>, renderFidelity: CastsToEnum<Enum.RenderFidelity>): MeshPart;
 	/**
 	 * Tags: Yields
 	 * @deprecated Use `GetBaseSets` instead
@@ -31469,6 +31482,10 @@ interface Smoke extends Instance {
 	 */
 	Enabled: boolean;
 	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	LocalTransparencyModifier: number;
+	/**
 	 * Opacity determines the opaqueness of the smoke particles. It must be in the range \[0, 1\]. This property works **inversely** in comparison to a part's [BasePart.Transparency](https://developer.roblox.com/en-us/api-reference/property/BasePart/Transparency) or ParticleEmitter's [ParticleEmitter.Transparency](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Transparency): a value of 0 is completely invisible, 1 is completely visible. Below, the left [Smoke](https://developer.roblox.com/en-us/api-reference/class/Smoke) effect has an Opacity of 0.25 (or, 25%), the center has the default 0.5 (50%), and the right has 1.0 (or 100%).
 	 * 
 	 * ![Smoke with varying opacity levels](https://developer.roblox.com/assets/blt40432eff6f9ab4f2/Smoke_Opacity.png)
@@ -32683,6 +32700,10 @@ interface Sparkles extends Instance {
 	 * stopSparkling(part.Sparkles)
 	 */
 	Enabled: boolean;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	LocalTransparencyModifier: number;
 	/**
 	 * **Note** This property functions identically to [Sparkles.Color](https://developer.roblox.com/en-us/api-reference/property/Sparkles/Color)
 	 * 
