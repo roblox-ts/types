@@ -11,6 +11,7 @@ interface Services {
 	AnimationClipProvider: AnimationClipProvider;
 	AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
 	AnimationFromVideoCreatorStudioService: AnimationFromVideoCreatorStudioService;
+	AnnotationsService: AnnotationsService;
 	AppUpdateService: AppUpdateService;
 	AssetCounterService: AssetCounterService;
 	AssetDeliveryProxy: AssetDeliveryProxy;
@@ -2263,6 +2264,17 @@ interface Animator extends Instance {
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 }
 
+interface AnnotationsService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AnnotationsService: unique symbol;
+}
+
 interface AppUpdateService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -3103,6 +3115,18 @@ interface AvatarCreationService extends Instance {
 	 * Tags: Yields
 	 */
 	PromptCreateAvatarAsync(this: AvatarCreationService, player: Player, humanoidDescription: HumanoidDescription): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	ValidateUGCAccessoryAsync(this: AvatarCreationService, player: Player, accessory: Accessory, accessoryType: CastsToEnum<Enum.AccessoryType>): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	ValidateUGCBodyPartAsync(this: AvatarCreationService, player: Player, instance: Instance, bodyPart: CastsToEnum<Enum.BodyPart>): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	ValidateUGCFullBodyAsync(this: AvatarCreationService, player: Player, humanoidDescription: HumanoidDescription): unknown;
 }
 
 /** AvatarEditorService is a service to support developer Avatar Editors. It provides methods to modify the player's platform avatar, request information about a user's inventory, and request information about the catalog.
@@ -3548,6 +3572,7 @@ interface AvatarGenerationJob extends Instance {
 	Progress: number;
 	Status: Enum.AvatarGenerationJobStatus;
 	Cancel(this: AvatarGenerationJob): void;
+	GetOutput(this: AvatarGenerationJob): object;
 	/**
 	 * Tags: Yields
 	 */
@@ -3935,6 +3960,7 @@ interface RootImportData extends BaseImportData {
 	InsertInWorkspace: boolean;
 	InsertWithScenePosition: boolean;
 	InvertNegativeFaces: boolean;
+	KeepZeroInfluenceBones: boolean;
 	MergeMeshes: boolean;
 	/**
 	 * Tags: NotReplicated

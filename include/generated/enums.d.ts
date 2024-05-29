@@ -415,6 +415,88 @@ declare namespace Enum {
 	}
 	export type AdTeleportMethod = AdTeleportMethod.Undefined | AdTeleportMethod.PortalForward | AdTeleportMethod.InGameMenuBackButton | AdTeleportMethod.UIBackButton;
 
+	export namespace AdUIEventType {
+		export interface AdLabelClicked extends globalThis.EnumItem {
+			Name: "AdLabelClicked";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AdUIEventType;
+		}
+
+		export const AdLabelClicked: AdLabelClicked;
+
+		export interface VolumeButtonClicked extends globalThis.EnumItem {
+			Name: "VolumeButtonClicked";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AdUIEventType;
+		}
+
+		export const VolumeButtonClicked: VolumeButtonClicked;
+
+		export interface FullscreenButtonClicked extends globalThis.EnumItem {
+			Name: "FullscreenButtonClicked";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AdUIEventType;
+		}
+
+		export const FullscreenButtonClicked: FullscreenButtonClicked;
+
+		export interface PlayButtonClicked extends globalThis.EnumItem {
+			Name: "PlayButtonClicked";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.AdUIEventType;
+		}
+
+		export const PlayButtonClicked: PlayButtonClicked;
+
+		export interface PauseButtonClicked extends globalThis.EnumItem {
+			Name: "PauseButtonClicked";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.AdUIEventType;
+		}
+
+		export const PauseButtonClicked: PauseButtonClicked;
+
+		export interface CloseButtonClicked extends globalThis.EnumItem {
+			Name: "CloseButtonClicked";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.AdUIEventType;
+		}
+
+		export const CloseButtonClicked: CloseButtonClicked;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdUIEventType>;
+	}
+	export type AdUIEventType = AdUIEventType.AdLabelClicked | AdUIEventType.VolumeButtonClicked | AdUIEventType.FullscreenButtonClicked | AdUIEventType.PlayButtonClicked | AdUIEventType.PauseButtonClicked | AdUIEventType.CloseButtonClicked;
+
+	export namespace AdUIType {
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AdUIType;
+		}
+
+		export const None: None;
+
+		export interface Image extends globalThis.EnumItem {
+			Name: "Image";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AdUIType;
+		}
+
+		export const Image: Image;
+
+		export interface Video extends globalThis.EnumItem {
+			Name: "Video";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AdUIType;
+		}
+
+		export const Video: Video;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdUIType>;
+	}
+	export type AdUIType = AdUIType.None | AdUIType.Image | AdUIType.Video;
+
 	export namespace AdUnitStatus {
 		export interface Inactive extends globalThis.EnumItem {
 			Name: "Inactive";
@@ -2441,9 +2523,17 @@ declare namespace Enum {
 
 		export const Canceled: Canceled;
 
+		export interface Offensive extends globalThis.EnumItem {
+			Name: "Offensive";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.AvatarGenerationError;
+		}
+
+		export const Offensive: Offensive;
+
 		export interface Unknown extends globalThis.EnumItem {
 			Name: "Unknown";
-			Value: 4;
+			Value: 5;
 			EnumType: typeof globalThis.Enum.AvatarGenerationError;
 		}
 
@@ -2451,7 +2541,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarGenerationError>;
 	}
-	export type AvatarGenerationError = AvatarGenerationError.None | AvatarGenerationError.Timeout | AvatarGenerationError.DownloadFailed | AvatarGenerationError.Canceled | AvatarGenerationError.Unknown;
+	export type AvatarGenerationError = AvatarGenerationError.None | AvatarGenerationError.Timeout | AvatarGenerationError.DownloadFailed | AvatarGenerationError.Canceled | AvatarGenerationError.Offensive | AvatarGenerationError.Unknown;
 
 	export namespace AvatarGenerationJobStatus {
 		export interface NotStarted extends globalThis.EnumItem {
