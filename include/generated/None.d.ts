@@ -78,6 +78,7 @@ interface Services {
 	LanguageService: LanguageService;
 	LegacyStudioBridge: LegacyStudioBridge;
 	Lighting: Lighting;
+	LinkingService: LinkingService;
 	LiveScriptingService: LiveScriptingService;
 	LocalizationService: LocalizationService;
 	LodDataService: LodDataService;
@@ -2820,6 +2821,7 @@ interface AudioChorus extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AudioChorus: unique symbol;
+	Bypass: boolean;
 	Depth: number;
 	Mix: number;
 	Rate: number;
@@ -2836,6 +2838,7 @@ interface AudioCompressor extends Instance {
 	 */
 	readonly _nominal_AudioCompressor: unique symbol;
 	Attack: number;
+	Bypass: boolean;
 	MakeupGain: number;
 	Ratio: number;
 	Release: number;
@@ -2883,6 +2886,7 @@ interface AudioDistortion extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AudioDistortion: unique symbol;
+	Bypass: boolean;
 	Level: number;
 	GetConnectedWires(this: AudioDistortion, pin: string): unknown;
 }
@@ -2896,6 +2900,7 @@ interface AudioEcho extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AudioEcho: unique symbol;
+	Bypass: boolean;
 	DelayTime: number;
 	DryLevel: number;
 	Feedback: number;
@@ -2933,6 +2938,7 @@ interface AudioEqualizer extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AudioEqualizer: unique symbol;
+	Bypass: boolean;
 	HighGain: number;
 	LowGain: number;
 	MidGain: number;
@@ -2949,6 +2955,7 @@ interface AudioFader extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AudioFader: unique symbol;
+	Bypass: boolean;
 	Volume: number;
 	GetConnectedWires(this: AudioFader, pin: string): unknown;
 }
@@ -2962,6 +2969,7 @@ interface AudioFlanger extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AudioFlanger: unique symbol;
+	Bypass: boolean;
 	Depth: number;
 	Mix: number;
 	Rate: number;
@@ -2990,6 +2998,7 @@ interface AudioPitchShifter extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AudioPitchShifter: unique symbol;
+	Bypass: boolean;
 	Pitch: number;
 	GetConnectedWires(this: AudioPitchShifter, pin: string): unknown;
 }
@@ -3035,6 +3044,7 @@ interface AudioReverb extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AudioReverb: unique symbol;
+	Bypass: boolean;
 	DecayRatio: number;
 	DecayTime: number;
 	Density: number;
@@ -21023,6 +21033,17 @@ interface Lighting extends Instance {
 	 * In cases where this behavior is not desired, the [Instance.Changed](https://developer.roblox.com/en-us/api-reference/event/Instance/Changed) event or [Instance:GetPropertyChangedSignal](https://developer.roblox.com/en-us/api-reference/function/Instance/GetPropertyChangedSignal) function can be used.
 	 */
 	readonly LightingChanged: RBXScriptSignal<(skyChanged: boolean) => void>;
+}
+
+interface LinkingService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_LinkingService: unique symbol;
 }
 
 interface LiveScriptingService extends Instance {
