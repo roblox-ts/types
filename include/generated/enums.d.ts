@@ -13189,6 +13189,35 @@ declare namespace Enum {
 	}
 	export type MoveState = MoveState.Stopped | MoveState.Coasting | MoveState.Pushing | MoveState.Stopping | MoveState.AirFree;
 
+	export namespace MoverConstraintRootBehaviorMode {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.MoverConstraintRootBehaviorMode;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.MoverConstraintRootBehaviorMode;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled extends globalThis.EnumItem {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.MoverConstraintRootBehaviorMode;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MoverConstraintRootBehaviorMode>;
+	}
+	export type MoverConstraintRootBehaviorMode = MoverConstraintRootBehaviorMode.Default | MoverConstraintRootBehaviorMode.Disabled | MoverConstraintRootBehaviorMode.Enabled;
+
 	export namespace MuteState {
 		export interface Unmuted extends globalThis.EnumItem {
 			Name: "Unmuted";

@@ -2219,6 +2219,12 @@ interface Secret {
 	 * @deprecated
 	 */
 	readonly _nominal_Secret: unique symbol;
+
+	/** Prepends a string to the secret content. */
+	AddPrefix(this: Secret, prefix: string): Secret;
+
+	/** Appends a string to the secret content. */
+	AddSuffix(this: Secret, suffix: string): Secret;
 }
 
 declare const SharedTableNominal: unique symbol;
