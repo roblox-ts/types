@@ -234,6 +234,7 @@ interface CollectionService extends Instance {
 	HasTag(this: Instance, tag: string): boolean;
 	RemoveTag(this: CollectionService, instance: Instance, tag: string): void;
 	RemoveTag(this: Instance, tag: string): void;
+	GetAllTags(this: CollectionService): Array<string>;
 }
 
 interface CompressorSoundEffect extends SoundEffect {
