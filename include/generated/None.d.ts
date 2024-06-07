@@ -7562,7 +7562,7 @@ interface CollectionService extends Instance {
 	 */
 	AddTag(this: CollectionService, instance: Instance, tag: string): void;
 	AddTag(this: Instance, tag: string): void;
-	GetAllTags(this: CollectionService): unknown;
+	GetAllTags(this: CollectionService): Array<string>;
 	/**
 	 * GetInstanceAdded is given a tag (a string) and returns a signal which fires under two conditions:
 	 * 
