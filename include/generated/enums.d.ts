@@ -6726,35 +6726,6 @@ declare namespace Enum {
 	}
 	export type EasingStyle = EasingStyle.Linear | EasingStyle.Sine | EasingStyle.Back | EasingStyle.Quad | EasingStyle.Quart | EasingStyle.Quint | EasingStyle.Bounce | EasingStyle.Elastic | EasingStyle.Exponential | EasingStyle.Circular | EasingStyle.Cubic;
 
-	export namespace EditorLiveScripting {
-		export interface Default extends globalThis.EnumItem {
-			Name: "Default";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.EditorLiveScripting;
-		}
-
-		export const Default: Default;
-
-		export interface Disabled extends globalThis.EnumItem {
-			Name: "Disabled";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.EditorLiveScripting;
-		}
-
-		export const Disabled: Disabled;
-
-		export interface Enabled extends globalThis.EnumItem {
-			Name: "Enabled";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.EditorLiveScripting;
-		}
-
-		export const Enabled: Enabled;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EditorLiveScripting>;
-	}
-	export type EditorLiveScripting = EditorLiveScripting.Default | EditorLiveScripting.Disabled | EditorLiveScripting.Enabled;
-
 	export namespace ElasticBehavior {
 		export interface WhenScrollable extends globalThis.EnumItem {
 			Name: "WhenScrollable";
@@ -20154,6 +20125,27 @@ declare namespace Enum {
 	}
 	export type TickCountSampleMethod = TickCountSampleMethod.Fast | TickCountSampleMethod.Benchmark | TickCountSampleMethod.Precise;
 
+	export namespace TonemapperPreset {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.TonemapperPreset;
+		}
+
+		export const Default: Default;
+
+		export interface Retro extends globalThis.EnumItem {
+			Name: "Retro";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.TonemapperPreset;
+		}
+
+		export const Retro: Retro;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TonemapperPreset>;
+	}
+	export type TonemapperPreset = TonemapperPreset.Default | TonemapperPreset.Retro;
+
 	export namespace TopBottom {
 		export interface Top extends globalThis.EnumItem {
 			Name: "Top";
@@ -20621,6 +20613,56 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TweenStatus>;
 	}
 	export type TweenStatus = TweenStatus.Canceled | TweenStatus.Completed;
+
+	export namespace UIDragDetectorDragRelativity {
+		export interface Absolute extends globalThis.EnumItem {
+			Name: "Absolute";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.UIDragDetectorDragRelativity;
+		}
+
+		export const Absolute: Absolute;
+
+		export interface Relative extends globalThis.EnumItem {
+			Name: "Relative";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.UIDragDetectorDragRelativity;
+		}
+
+		export const Relative: Relative;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIDragDetectorDragRelativity>;
+	}
+	export type UIDragDetectorDragRelativity = UIDragDetectorDragRelativity.Absolute | UIDragDetectorDragRelativity.Relative;
+
+	export namespace UIDragDetectorDragSpace {
+		export interface Parent extends globalThis.EnumItem {
+			Name: "Parent";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.UIDragDetectorDragSpace;
+		}
+
+		export const Parent: Parent;
+
+		export interface LayerCollector extends globalThis.EnumItem {
+			Name: "LayerCollector";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.UIDragDetectorDragSpace;
+		}
+
+		export const LayerCollector: LayerCollector;
+
+		export interface Reference extends globalThis.EnumItem {
+			Name: "Reference";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.UIDragDetectorDragSpace;
+		}
+
+		export const Reference: Reference;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIDragDetectorDragSpace>;
+	}
+	export type UIDragDetectorDragSpace = UIDragDetectorDragSpace.Parent | UIDragDetectorDragSpace.LayerCollector | UIDragDetectorDragSpace.Reference;
 
 	export namespace UIDragDetectorDragStyle {
 		export interface TranslatePlane extends globalThis.EnumItem {

@@ -424,6 +424,7 @@ interface CreatableInstances {
 	TrussPart: TrussPart;
 	UIAspectRatioConstraint: UIAspectRatioConstraint;
 	UICorner: UICorner;
+	UIDragDetector: UIDragDetector;
 	UIFlexItem: UIFlexItem;
 	UIGradient: UIGradient;
 	UIGridLayout: UIGridLayout;
@@ -2859,6 +2860,7 @@ interface AudioDeviceInput extends Instance {
 	readonly Active: boolean;
 	Muted: boolean;
 	Player: Player | undefined;
+	Volume: number;
 	GetConnectedWires(this: AudioDeviceInput, pin: string): unknown;
 	GetUserIdAccessList(this: AudioDeviceInput): unknown;
 	SetUserIdAccessList(this: AudioDeviceInput, userIds: Array<any>): void;
@@ -3028,6 +3030,7 @@ interface AudioPlayer extends Instance {
 	 */
 	readonly TimeLength: number;
 	TimePosition: number;
+	Volume: number;
 	GetConnectedWires(this: AudioPlayer, pin: string): unknown;
 	Play(this: AudioPlayer): void;
 	Stop(this: AudioPlayer): void;
@@ -13332,6 +13335,11 @@ interface TextButton extends GuiButton {
 	 * Setting the property to -1 disables the limit and shows the entirety of the [TextButton.Text](https://developer.roblox.com/en-us/api-reference/property/TextButton/Text).
 	 */
 	MaxVisibleGraphemes: number;
+	OpenTypeFeatures: string;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly OpenTypeFeaturesError: string;
 	/**
 	 * This property determines whether the [TextButton](https://developer.roblox.com/en-us/api-reference/class/TextButton) renders the [TextButton.Text](https://developer.roblox.com/en-us/api-reference/property/TextButton/Text) string using rich text formatting. Rich text uses simple markup tags to style sections of the string in bold, italics, specific colors, and more.
 	 * 
@@ -13656,6 +13664,11 @@ interface TextLabel extends GuiLabel {
 	 * Setting the property to -1 disables the limit and shows the entirety of the [TextLabel.Text](https://developer.roblox.com/en-us/api-reference/property/TextLabel/Text).
 	 */
 	MaxVisibleGraphemes: number;
+	OpenTypeFeatures: string;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly OpenTypeFeaturesError: string;
 	/**
 	 * This property determines whether the [TextLabel](https://developer.roblox.com/en-us/api-reference/class/TextLabel) renders the [TextLabel.Text](https://developer.roblox.com/en-us/api-reference/property/TextLabel/Text) string using rich text formatting. Rich text uses simple markup tags to style sections of the string in bold, italics, specific colors, and more.
 	 * 
@@ -14049,6 +14062,11 @@ interface TextBox extends GuiObject {
 	 * When set to true, text inside a TextBox is able to move onto multiple lines. This also enables players to use the enter key to move onto a new line.
 	 */
 	MultiLine: boolean;
+	OpenTypeFeatures: string;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly OpenTypeFeaturesError: string;
 	/**
 	 * Sets the text color that gets used when no text has been entered into the TextBox yet.
 	 */
@@ -35818,6 +35836,38 @@ interface UICorner extends UIComponent {
 	 * It is suggested to always use either scale or offset to define CornerRadius instead of mixing them up.
 	 */
 	CornerRadius: UDim;
+}
+
+interface UIDragDetector extends UIComponent {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_UIDragDetector: unique symbol;
+	BoundingUI: GuiBase2d | undefined;
+	DragAxis: Vector2;
+	DragRelativity: Enum.UIDragDetectorDragRelativity;
+	DragRotation: number;
+	DragSpace: Enum.UIDragDetectorDragSpace;
+	DragStyle: Enum.UIDragDetectorDragStyle;
+	DragUDim2: UDim2;
+	Enabled: boolean;
+	MaxDragAngle: number;
+	MaxDragTranslation: UDim2;
+	MinDragAngle: number;
+	MinDragTranslation: UDim2;
+	ReferenceUIInstance: GuiObject | undefined;
+	ResponseStyle: Enum.UIDragDetectorResponseStyle;
+	AddConstraintFunction(this: UIDragDetector, priority: number, callback: Callback): RBXScriptConnection;
+	GetReferencePosition(this: UIDragDetector): UDim2;
+	GetReferenceRotation(this: UIDragDetector): number;
+	SetDragStyleFunction(this: UIDragDetector, callback: Callback): void;
+	readonly DragContinue: RBXScriptSignal<(inputPosition: Vector2) => void>;
+	readonly DragEnd: RBXScriptSignal<(inputPosition: Vector2) => void>;
+	readonly DragStart: RBXScriptSignal<(inputPosition: Vector2) => void>;
 }
 
 interface UIFlexItem extends UIComponent {
