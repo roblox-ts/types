@@ -158,6 +158,12 @@ interface BadgeService extends Instance {
 	UserHasBadgeAsync(this: BadgeService, userId: number, badgeId: number): boolean;
 }
 
+interface FloatCurve extends Instance {
+	GetKeyIndicesAtTime(this: FloatCurve, time: number): [number, number];
+	GetKeys(this: FloatCurve): Array<FloatCurveKey>;
+	InsertKey(this: FloatCurve, key: FloatCurveKey): [boolean, number];
+}
+
 interface BasePart extends PVInstance {
 	CustomPhysicalProperties: PhysicalProperties | undefined;
 	readonly TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
