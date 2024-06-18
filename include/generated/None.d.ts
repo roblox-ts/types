@@ -11537,11 +11537,11 @@ interface FloatCurve extends Instance {
 	/**
 	 * The first returned value is the index of the last key with key.time <= time (or min(1,length) if no key was found). The second returned value is the index of the first key with key.time >= time or the length of the curve if no key was found satisfying the inequality.
 	 */
-	GetKeyIndicesAtTime(this: FloatCurve, time: number): unknown;
+	GetKeyIndicesAtTime(this: FloatCurve, time: number): [before: number, after: number];
 	/**
 	 * Returns a copy of all the keys in the FloatCurve as a Lua array of FloatCurveKey.
 	 */
-	GetKeys(this: FloatCurve): unknown;
+	GetKeys(this: FloatCurve): Array<FloatCurveKey>;
 	/**
 	 * Samples the float curve at a given time passed as argument.
 	 */
@@ -11549,7 +11549,7 @@ interface FloatCurve extends Instance {
 	/**
 	 * Adds the key passed as argument to this curve. If a key exists at the same time it will be replaced. First return value is true if a key was added, false if a previous key was replaced. Second return value is the index at which the marker was added.
 	 */
-	InsertKey(this: FloatCurve, key: FloatCurveKey): unknown;
+	InsertKey(this: FloatCurve, key: FloatCurveKey): [isNew: boolean, index: number];
 	/**
 	 * Removes a given number of Keys starting from a given index. Returns the number of keys that were removed.
 	 */
