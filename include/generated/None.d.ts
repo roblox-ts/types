@@ -12,6 +12,7 @@ interface Services {
 	AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
 	AnimationFromVideoCreatorStudioService: AnimationFromVideoCreatorStudioService;
 	AnnotationsService: AnnotationsService;
+	AppLifecycleObserverService: AppLifecycleObserverService;
 	AppUpdateService: AppUpdateService;
 	AssetCounterService: AssetCounterService;
 	AssetDeliveryProxy: AssetDeliveryProxy;
@@ -1276,7 +1277,10 @@ interface AccessoryDescription extends Instance {
 	Instance: Instance | undefined;
 	IsLayered: boolean;
 	Order: number;
+	Position: Vector3;
 	Puffiness: number;
+	Rotation: Vector3;
+	Scale: Vector3;
 }
 
 interface AccountService extends Instance {
@@ -2275,6 +2279,17 @@ interface AnnotationsService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AnnotationsService: unique symbol;
+}
+
+interface AppLifecycleObserverService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AppLifecycleObserverService: unique symbol;
 }
 
 interface AppUpdateService extends Instance {
@@ -3584,8 +3599,11 @@ interface AvatarGenerationJob extends Instance {
 	ErrorMessage: string;
 	Progress: number;
 	Status: Enum.AvatarGenerationJobStatus;
-	Cancel(this: AvatarGenerationJob): void;
 	GetOutput(this: AvatarGenerationJob): object;
+	/**
+	 * Tags: Yields
+	 */
+	Cancel(this: AvatarGenerationJob): void;
 	/**
 	 * Tags: Yields
 	 */
