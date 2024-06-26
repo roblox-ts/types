@@ -786,53 +786,8 @@ interface Players extends Instance {
 		thumbnailType: CastsToEnum<Enum.ThumbnailType>,
 		thumbnailSize: CastsToEnum<Enum.ThumbnailSize>,
 	): LuaTuple<[string, boolean]>;
-	BanAsync(
-		this: Players,
-		config: {
-			/**
-			 * (Required) UserID of the players to be banned.
-			 *
-			 * Max size is `50`. */
-			UserIds: Array<number>;
-			/**
-			 * (Required) Duration of the ban in seconds. Permanent bans should have a value of `-1`.
-			 *
-			 * Zero and all other negative values are invalid.
-			 */
-			Duration: number;
-			/**
-			 * (Required) The message that will be displayed to users when they attempt to and fail to join an experience. Max size is 400.
-			 */
-			DisplayReason: string;
-			/**
-			 * (Required) Any internal messaging that will be returned when querying the user's ban history. Max size is 1000.
-			 */
-			PrivateReason: string;
-			/**
-			 * (Optional, default is `true`) Propagates the ban to all places within this universe.
-			 */
-			ApplyToUniverse?: boolean;
-			/**
-			 * (Optional, default is `false`) When `true`, Roblox does not attempt to ban alt accounts.
-			 */
-			ExcludeAltAccounts?: boolean;
-		},
-	): void;
-	UnbanAsync(
-		this: Players,
-		config: {
-			/**
-			 * (Required) UserIDs to be force allowed into the experience(s).
-			 *
-			 * Max size is `50`.
-			 */
-			UserIds: Array<number>;
-			/**
-			 * (Optional, default is `true`) Propagates the unban to all places within this universe.
-			 */
-			ApplyToUniverse?: boolean;
-		},
-	): void;
+	BanAsync(this: Players, config: BanAsyncConfig): void;
+	UnbanAsync(this: Players, config: UnbanAsyncConfig): void;
 }
 
 interface Plugin extends Instance {
