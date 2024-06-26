@@ -786,6 +786,8 @@ interface Players extends Instance {
 		thumbnailType: CastsToEnum<Enum.ThumbnailType>,
 		thumbnailSize: CastsToEnum<Enum.ThumbnailSize>,
 	): LuaTuple<[string, boolean]>;
+	BanAsync(this: Players, config: BanAsyncConfig): void;
+	UnbanAsync(this: Players, config: UnbanAsyncConfig): void;
 }
 
 interface Plugin extends Instance {

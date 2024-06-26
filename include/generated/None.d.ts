@@ -14836,9 +14836,6 @@ interface ScreenGui extends LayerCollector {
 	 */
 	IgnoreGuiInset: boolean;
 	SafeAreaCompatibility: Enum.SafeAreaCompatibility;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	ScreenInsets: Enum.ScreenInsets;
 }
 
@@ -29206,7 +29203,7 @@ interface Players extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	BanAsync(this: Players, config: object): void;
+	BanAsync(this: Players, config: BanAsyncConfig): void;
 	/**
 	 * Tags: Yields
 	 */
@@ -29431,7 +29428,7 @@ interface Players extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	UnbanAsync(this: Players, config: object): void;
+	UnbanAsync(this: Players, config: UnbanAsyncConfig): void;
 	/**
 	 * The PlayerAdded event fires when a player enters the game. This is used to fire an event when a player joins a game, such as loading the player's saved [GlobalDataStore](https://developer.roblox.com/en-us/api-reference/class/GlobalDataStore) data.
 	 * 
