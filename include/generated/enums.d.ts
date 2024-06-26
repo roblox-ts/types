@@ -20125,27 +20125,6 @@ declare namespace Enum {
 	}
 	export type TickCountSampleMethod = TickCountSampleMethod.Fast | TickCountSampleMethod.Benchmark | TickCountSampleMethod.Precise;
 
-	export namespace TonemapperPreset {
-		export interface Default extends globalThis.EnumItem {
-			Name: "Default";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.TonemapperPreset;
-		}
-
-		export const Default: Default;
-
-		export interface Retro extends globalThis.EnumItem {
-			Name: "Retro";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.TonemapperPreset;
-		}
-
-		export const Retro: Retro;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TonemapperPreset>;
-	}
-	export type TonemapperPreset = TonemapperPreset.Default | TonemapperPreset.Retro;
-
 	export namespace TopBottom {
 		export interface Top extends globalThis.EnumItem {
 			Name: "Top";

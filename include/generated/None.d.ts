@@ -173,6 +173,7 @@ interface Services {
 	TutorialService: TutorialService;
 	TweenService: TweenService;
 	UGCAvatarService: UGCAvatarService;
+	UIDragDetectorService: UIDragDetectorService;
 	UnvalidatedAssetService: UnvalidatedAssetService;
 	UserInputService: UserInputService;
 	UserService: UserService;
@@ -958,6 +959,8 @@ interface Instance {
 	 * *   [Instance:GetAttribute](https://developer.roblox.com/en-us/api-reference/function/Instance/GetAttribute), returns the attribute which has been assigned to the given name
 	 * *   [Instance.AttributeChanged](https://developer.roblox.com/en-us/api-reference/event/Instance/AttributeChanged), fires whenever an attribute is changed on the instance
 	 * *   [Instance:GetAttributeChangedSignal](https://developer.roblox.com/en-us/api-reference/function/Instance/GetAttributeChangedSignal), returns an event that fires when the given attribute changes
+	 * 
+	 * Tags: CustomLuaState
 	 */
 	GetAttributes(this: Instance): Map<string, AttributeValue>;
 	/**
@@ -11830,6 +11833,7 @@ interface GetTextBoundsParams extends Instance {
 	 */
 	readonly _nominal_GetTextBoundsParams: unique symbol;
 	Font: Font;
+	RichText: boolean;
 	Size: number;
 	Text: string;
 	Width: number;
@@ -35865,7 +35869,9 @@ interface UIDragDetector extends UIComponent {
 	 * @deprecated
 	 */
 	readonly _nominal_UIDragDetector: unique symbol;
+	ActivatedCursorIcon: string;
 	BoundingUI: GuiBase2d | undefined;
+	CursorIcon: string;
 	DragAxis: Vector2;
 	DragRelativity: Enum.UIDragDetectorDragRelativity;
 	DragRotation: number;
@@ -36496,6 +36502,17 @@ interface UIStroke extends UIComponent {
 	 * For a more detailed walkthrough of the UIStroke object, take a look at the [Applying Strokes](../../../articles/applying-strokes) article.
 	 */
 	Transparency: number;
+}
+
+interface UIDragDetectorService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_UIDragDetectorService: unique symbol;
 }
 
 interface UnvalidatedAssetService extends Instance {
