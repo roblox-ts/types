@@ -2946,7 +2946,7 @@ interface AudioEmitter extends Instance {
 	/**
 	 * Tags: CustomLuaState
 	 */
-	SetDistanceAttenuation(this: AudioEmitter, curve: object): void;
+	SetDistanceAttenuation(this: AudioEmitter, curve: DistanceAttenuationCurve): void;
 }
 
 interface AudioEqualizer extends Instance {
@@ -11808,19 +11808,39 @@ interface GeometryService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_GeometryService: unique symbol;
-	CalculateConstraintsToPreserve(this: GeometryService, source: Instance, destination: Array<any>, options?: object): unknown;
+	CalculateConstraintsToPreserve(
+		this: GeometryService,
+		source: Instance,
+		destination: Array<any>,
+		options?: CalculateConstraintsToPreserveConfig,
+	): Array<unknown>;
 	/**
 	 * Tags: Yields
 	 */
-	IntersectAsync(this: GeometryService, part: BasePart, parts: Array<any>, options?: object): unknown;
+	IntersectAsync(
+		this: GeometryService,
+		part: BasePart,
+		parts: Array<any>,
+		options?: GeometryServiceAsyncMethodConfig,
+	): Array<PartOperation>;
 	/**
 	 * Tags: Yields
 	 */
-	SubtractAsync(this: GeometryService, part: BasePart, parts: Array<any>, options?: object): unknown;
+	SubtractAsync(
+		this: GeometryService,
+		part: BasePart,
+		parts: Array<any>,
+		options?: GeometryServiceAsyncMethodConfig,
+	): Array<PartOperation>;
 	/**
 	 * Tags: Yields
 	 */
-	UnionAsync(this: GeometryService, part: BasePart, parts: Array<any>, options?: object): unknown;
+	UnionAsync(
+		this: GeometryService,
+		part: BasePart,
+		parts: Array<any>,
+		options?: GeometryServiceAsyncMethodConfig,
+	): Array<PartOperation>;
 }
 
 interface GetTextBoundsParams extends Instance {
@@ -25592,7 +25612,7 @@ interface Terrain extends BasePart {
 	/**
 	 * Tags: CustomLuaState
 	 */
-	WriteVoxelChannels(this: Terrain, region: Region3, resolution: number, channels: object): void;
+	WriteVoxelChannels(this: Terrain, region: Region3, resolution: number, channels: VoxelChannels): void;
 	/**
 	 * Sets a certain region of [smooth terrain](https://developer.roblox.com/articles/Intro-To-Terrain "Smooth terrain") using the [table format](https://developer.roblox.com/articles/Intro-To-Terrain#Reading_and_writing_voxels "Smooth terrain")
 	 * 
