@@ -3009,3 +3009,55 @@ interface UnbanAsyncConfig {
 	 */
 	ApplyToUniverse?: boolean;
 }
+
+interface DistanceAttenuationCurve {
+	/**
+	 * Keys are expected to be unique numbers greater than or equal to 0, while values are expected to be numbers between 0 and 1 (inclusive). Tables containing up to 400 key-value pairs are supported.
+	 */
+	[key: number]: number;
+}
+
+interface CalculateConstraintsToPreserveConfig {
+	/**
+	 * The distance tolerance, in regards to `Attachment` preservation, between the attachment and the closest point on the original part's surface versus the closest point on the resulting part's surface. If the resulting distance following the solid modeling operation is greater than this value, the `Parent` of attachments and their associated constraints will be `nil` in the returned recommendation table.
+	 */
+	tolerance?: number;
+	/**
+	 * A `Enum.WeldConstraintPreserve` enum value describing how `WeldConstraints` are preserved in the resulting recommendation table.
+	 */
+	weldConstraintPreserve?: Enum.WeldConstraintPreserve;
+}
+
+interface GeometryServiceAsyncMethodConfig {
+	/**
+	 * The value of `CollisionFidelity` in the resulting parts.
+	 */
+	CollisionFidelity?: Enum.CollisionFidelity;
+	/**
+	 * The value of `FluidFidelity` in the resulting parts.
+	 */
+	RenderFidelity?: Enum.RenderFidelity;
+	/**
+	 * The value of FluidFidelity in the resulting parts.
+	 */
+	FluidFidelity?: Enum.FluidFidelity;
+	/**
+	 * Boolean controlling whether the objects should all be kept together or properly split apart. Default is `true` (split).
+	 */
+	SplitApart?: boolean;
+}
+
+interface VoxelChannels {
+	/**
+	 * The `Enum.Material` material of the voxel. Note that `Water` is not supported anymore; instead, a voxel that contains only water should be entered as `SolidMaterial = Enum.Material.Air, LiquidOccupancy = x`, where `x` is a number between 0 (exclusive) and 1 (inclusive).
+	 */
+	SolidMaterial: Enum.Material;
+	/**
+	 * The occupancy of the voxel's material as specified in the `SolidMaterial` channel. This should be a value between 0 (empty) and 1 (full).
+	 */
+	SolidOccupancy: number;
+	/**
+	 * Specifies the occupancy of the `Water` material in a voxel as a value between 0 (no water) and 1 (full of water). If the `SolidOccupancy` is 1 and the `SolidMaterial` is not `Air`, this will be 0.
+	 */
+	LiquidOccupancy: number;
+}
