@@ -74,6 +74,10 @@ interface AudioAnalyzer extends Instance {
 	GetSpectrum(this: AudioAnalyzer): Array<number>;
 }
 
+interface AudioEmitter extends Instance {
+	SetDistanceAttenuation(this: AudioEmitter, curve: DistanceAttenuationCurve): void;
+}
+
 interface AvatarEditorService extends Instance {
 	GetAvatarRules(this: AvatarEditorService): AvatarRules;
 	GetBatchItemDetails(
@@ -369,6 +373,33 @@ interface GamePassService extends Instance {
 }
 
 interface GenericSettings<S = unknown> extends ServiceProvider<S> {}
+
+interface GeometryService extends Instance {
+	CalculateConstraintsToPreserve(
+		this: GeometryService,
+		source: Instance,
+		destination: Array<any>,
+		options?: CalculateConstraintsToPreserveConfig,
+	): Array<unknown>;
+	IntersectAsync(
+		this: GeometryService,
+		part: BasePart,
+		parts: Array<any>,
+		options?: GeometryServiceAsyncMethodConfig,
+	): Array<PartOperation>;
+	SubtractAsync(
+		this: GeometryService,
+		part: BasePart,
+		parts: Array<any>,
+		options?: GeometryServiceAsyncMethodConfig,
+	): Array<PartOperation>;
+	UnionAsync(
+		this: GeometryService,
+		part: BasePart,
+		parts: Array<any>,
+		options?: GeometryServiceAsyncMethodConfig,
+	): Array<PartOperation>;
+}
 
 /** @server */
 interface GlobalDataStore extends Instance {
@@ -1065,6 +1096,7 @@ interface Terrain extends BasePart {
 		materials: Array<Array<Array<CastsToEnum<Enum.Material>>>>,
 		occupancy: Array<Array<Array<number>>>,
 	): void;
+	WriteVoxelChannels(this: Terrain, region: Region3, resolution: number, channels: VoxelChannels): void;
 }
 
 interface TextBox extends GuiObject {
