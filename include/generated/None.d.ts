@@ -11811,7 +11811,7 @@ interface GeometryService extends Instance {
 	CalculateConstraintsToPreserve(
 		this: GeometryService,
 		source: Instance,
-		destination: Array<any>,
+		destination: ReadonlyArray<Instance>,
 		options?: CalculateConstraintsToPreserveConfig,
 	): Array<unknown>;
 	/**
@@ -11819,8 +11819,8 @@ interface GeometryService extends Instance {
 	 */
 	IntersectAsync(
 		this: GeometryService,
-		part: BasePart,
-		parts: Array<any>,
+		part: Part | PartOperation,
+		parts: ReadonlyArray<Part | PartOperation>,
 		options?: GeometryServiceAsyncMethodConfig,
 	): Array<PartOperation>;
 	/**
@@ -11828,8 +11828,8 @@ interface GeometryService extends Instance {
 	 */
 	SubtractAsync(
 		this: GeometryService,
-		part: BasePart,
-		parts: Array<any>,
+		part: Part | PartOperation,
+		parts: ReadonlyArray<Part | PartOperation>,
 		options?: GeometryServiceAsyncMethodConfig,
 	): Array<PartOperation>;
 	/**
@@ -11837,8 +11837,8 @@ interface GeometryService extends Instance {
 	 */
 	UnionAsync(
 		this: GeometryService,
-		part: BasePart,
-		parts: Array<any>,
+		part: Part | PartOperation,
+		parts: ReadonlyArray<Part | PartOperation>,
 		options?: GeometryServiceAsyncMethodConfig,
 	): Array<PartOperation>;
 }
