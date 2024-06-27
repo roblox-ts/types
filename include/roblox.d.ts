@@ -3010,12 +3010,10 @@ interface UnbanAsyncConfig {
 	ApplyToUniverse?: boolean;
 }
 
-interface DistanceAttenuationCurve {
-	/**
-	 * Keys are expected to be unique numbers greater than or equal to 0, while values are expected to be numbers between 0 and 1 (inclusive). Tables containing up to 400 key-value pairs are supported.
-	 */
-	[key: number]: number;
-}
+/**
+ * Keys are expected to be unique numbers greater than or equal to 0, while values are expected to be numbers between 0 and 1 (inclusive). Tables containing up to 400 key-value pairs are supported.
+ */
+type DistanceAttenuationCurve = { [key: number]: number } | Map<number, number>;
 
 interface CalculateConstraintsToPreserveConfig {
 	/**
