@@ -14471,6 +14471,43 @@ declare namespace Enum {
 	}
 	export type PositionAlignmentMode = PositionAlignmentMode.OneAttachment | PositionAlignmentMode.TwoAttachment;
 
+	export namespace PreferredTextSize {
+		export interface Medium extends globalThis.EnumItem {
+			Name: "Medium";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.PreferredTextSize;
+		}
+
+		export const Medium: Medium;
+
+		export interface Large extends globalThis.EnumItem {
+			Name: "Large";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.PreferredTextSize;
+		}
+
+		export const Large: Large;
+
+		export interface Larger extends globalThis.EnumItem {
+			Name: "Larger";
+			Value: 9;
+			EnumType: typeof globalThis.Enum.PreferredTextSize;
+		}
+
+		export const Larger: Larger;
+
+		export interface Largest extends globalThis.EnumItem {
+			Name: "Largest";
+			Value: 14;
+			EnumType: typeof globalThis.Enum.PreferredTextSize;
+		}
+
+		export const Largest: Largest;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PreferredTextSize>;
+	}
+	export type PreferredTextSize = PreferredTextSize.Medium | PreferredTextSize.Large | PreferredTextSize.Larger | PreferredTextSize.Largest;
+
 	export namespace PrimalPhysicsSolver {
 		export interface Default extends globalThis.EnumItem {
 			Name: "Default";
@@ -20542,6 +20579,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerPromptEvent>;
 	}
 	export type TrackerPromptEvent = TrackerPromptEvent.LODCameraRecommendDisable;
+
+	export namespace TrackerType {
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.TrackerType;
+		}
+
+		export const None: None;
+
+		export interface Face extends globalThis.EnumItem {
+			Name: "Face";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.TrackerType;
+		}
+
+		export const Face: Face;
+
+		export interface UpperBody extends globalThis.EnumItem {
+			Name: "UpperBody";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.TrackerType;
+		}
+
+		export const UpperBody: UpperBody;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerType>;
+	}
+	export type TrackerType = TrackerType.None | TrackerType.Face | TrackerType.UpperBody;
 
 	export namespace TriStateBoolean {
 		export interface False extends globalThis.EnumItem {

@@ -206,6 +206,7 @@ interface CreatableInstances {
 	Animator: Animator;
 	ArcHandles: ArcHandles;
 	Atmosphere: Atmosphere;
+	AtmosphereSensor: AtmosphereSensor;
 	Attachment: Attachment;
 	AudioAnalyzer: AudioAnalyzer;
 	AudioChorus: AudioChorus;
@@ -369,6 +370,7 @@ interface CreatableInstances {
 	RotateP: RotateP;
 	RotateV: RotateV;
 	RotationCurve: RotationCurve;
+	RTAnimationTracker: RTAnimationTracker;
 	ScreenGui: ScreenGui;
 	Script: Script;
 	ScrollingFrame: ScrollingFrame;
@@ -1284,6 +1286,7 @@ interface AccessoryDescription extends Instance {
 	Puffiness: number;
 	Rotation: Vector3;
 	Scale: Vector3;
+	GetAppliedInstance(this: AccessoryDescription): Instance | undefined;
 }
 
 interface AccountService extends Instance {
@@ -6871,6 +6874,9 @@ interface CaptureService extends Instance {
 	): void;
 	readonly CaptureBegan: RBXScriptSignal<() => void>;
 	readonly CaptureEnded: RBXScriptSignal<() => void>;
+	/**
+	 * @deprecated Use `UserCaptureSaved` instead
+	 */
 	readonly CaptureSaved: RBXScriptSignal<(captureInfo: Record<string, unknown>) => void>;
 	readonly UserCaptureSaved: RBXScriptSignal<(captureContentId: string) => void>;
 }
@@ -10843,11 +10849,11 @@ interface EditableImage extends Instance {
 	Size: Vector2;
 	Copy(this: EditableImage, min: Vector2, max: Vector2): EditableImage;
 	Crop(this: EditableImage, min: Vector2, max: Vector2): void;
-	DrawCircle(this: EditableImage, center: Vector2, radius: number, color: Color3, transparency: number): void;
+	DrawCircle(this: EditableImage, center: Vector2, radius: number, color: Color3, transparency: number, combineType: CastsToEnum<Enum.ImageCombineType>): void;
 	DrawImage(this: EditableImage, position: Vector2, image: EditableImage, combineType: CastsToEnum<Enum.ImageCombineType>): void;
-	DrawLine(this: EditableImage, p1: Vector2, p2: Vector2, color: Color3, transparency: number): void;
+	DrawLine(this: EditableImage, p1: Vector2, p2: Vector2, color: Color3, transparency: number, combineType: CastsToEnum<Enum.ImageCombineType>): void;
 	DrawProjectionImage(this: EditableImage, mesh: EditableMesh, projection: object, brushConfig: object): void;
-	DrawRectangle(this: EditableImage, position: Vector2, size: Vector2, color: Color3, transparency: number): void;
+	DrawRectangle(this: EditableImage, position: Vector2, size: Vector2, color: Color3, transparency: number, combineType: CastsToEnum<Enum.ImageCombineType>): void;
 	/**
 	 * Tags: CustomLuaState
 	 */
@@ -17047,6 +17053,7 @@ interface Humanoid extends Instance {
 	 * @deprecated
 	 */
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
+	readonly ApplyDescriptionFinished: RBXScriptSignal<(description: HumanoidDescription) => void>;
 	/**
 	 * Fires when the speed at which a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) is climbing changes.
 	 * 
@@ -30132,6 +30139,39 @@ interface PublishService extends Instance {
 	readonly _nominal_PublishService: unique symbol;
 }
 
+interface RTAnimationTracker extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_RTAnimationTracker: unique symbol;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	Active: boolean;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	EnableFallbackAudioInput: boolean;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	SessionName: string;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	readonly TrackerMode: Enum.TrackerMode;
+	/**
+	 * Tags: Hidden, NotReplicated
+	 */
+	TrackerType: Enum.TrackerType;
+	readonly TrackerError: RBXScriptSignal<(errorCode: Enum.TrackerError, msg: string) => void>;
+	readonly TrackerPrompt: RBXScriptSignal<(prompt: Enum.TrackerPromptEvent) => void>;
+}
+
 interface ReflectionService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -30782,10 +30822,22 @@ interface ScreenshotHud extends Instance {
 	CameraButtonPosition: UDim2;
 	CloseButtonPosition: UDim2;
 	CloseWhenScreenshotTaken: boolean;
+	/**
+	 * Tags: Hidden
+	 * @deprecated
+	 */
 	ExperienceNameOverlayEnabled: boolean;
 	HideCoreGuiForCaptures: boolean;
 	HidePlayerGuiForCaptures: boolean;
+	/**
+	 * Tags: Hidden
+	 * @deprecated
+	 */
 	OverlayFont: Enum.Font;
+	/**
+	 * Tags: Hidden
+	 * @deprecated
+	 */
 	UsernameOverlayEnabled: boolean;
 	Visible: boolean;
 }
@@ -30961,6 +31013,25 @@ interface SensorBase extends Instance {
 	 */
 	Sense(this: SensorBase): void;
 	readonly OnSensorOutputChanged: RBXScriptSignal<() => void>;
+}
+
+interface AtmosphereSensor extends SensorBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AtmosphereSensor: unique symbol;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly AirDensity: number;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly RelativeWindVelocity: Vector3;
 }
 
 interface BuoyancySensor extends SensorBase {
