@@ -6,6 +6,7 @@
 
 interface Services {
 	AccountService: AccountService;
+	AchievementService: AchievementService;
 	ActivityHistoryService: ActivityHistoryService;
 	AnalyticsService: AnalyticsService;
 	AnimationClipProvider: AnimationClipProvider;
@@ -218,6 +219,7 @@ interface CreatableInstances {
 	AudioEmitter: AudioEmitter;
 	AudioEqualizer: AudioEqualizer;
 	AudioFader: AudioFader;
+	AudioFilter: AudioFilter;
 	AudioFlanger: AudioFlanger;
 	AudioListener: AudioListener;
 	AudioPitchShifter: AudioPitchShifter;
@@ -1375,6 +1377,17 @@ interface Hat extends Accoutrement {
 	 * @deprecated
 	 */
 	readonly _nominal_Hat: unique symbol;
+}
+
+interface AchievementService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AchievementService: unique symbol;
 }
 
 interface ActivityHistoryService extends Instance {
@@ -2981,6 +2994,24 @@ interface AudioFader extends Instance {
 	Bypass: boolean;
 	Volume: number;
 	GetConnectedWires(this: AudioFader, pin: string): unknown;
+}
+
+interface AudioFilter extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioFilter: unique symbol;
+	Bypass: boolean;
+	FilterType: Enum.AudioFilterType;
+	Frequency: number;
+	Gain: number;
+	Q: number;
+	GetConnectedWires(this: AudioFilter, pin: string): unknown;
+	GetGainAt(this: AudioFilter, frequency: number): number;
 }
 
 interface AudioFlanger extends Instance {

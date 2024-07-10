@@ -1917,6 +1917,99 @@ declare namespace Enum {
 	}
 	export type AudioApiRollout = AudioApiRollout.Disabled | AudioApiRollout.Automatic | AudioApiRollout.Enabled;
 
+	export namespace AudioFilterType {
+		export interface Peak extends globalThis.EnumItem {
+			Name: "Peak";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AudioFilterType;
+		}
+
+		export const Peak: Peak;
+
+		export interface LowShelf extends globalThis.EnumItem {
+			Name: "LowShelf";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AudioFilterType;
+		}
+
+		export const LowShelf: LowShelf;
+
+		export interface HighShelf extends globalThis.EnumItem {
+			Name: "HighShelf";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AudioFilterType;
+		}
+
+		export const HighShelf: HighShelf;
+
+		export interface Lowpass12dB extends globalThis.EnumItem {
+			Name: "Lowpass12dB";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.AudioFilterType;
+		}
+
+		export const Lowpass12dB: Lowpass12dB;
+
+		export interface Lowpass24dB extends globalThis.EnumItem {
+			Name: "Lowpass24dB";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.AudioFilterType;
+		}
+
+		export const Lowpass24dB: Lowpass24dB;
+
+		export interface Lowpass48dB extends globalThis.EnumItem {
+			Name: "Lowpass48dB";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.AudioFilterType;
+		}
+
+		export const Lowpass48dB: Lowpass48dB;
+
+		export interface Highpass12dB extends globalThis.EnumItem {
+			Name: "Highpass12dB";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.AudioFilterType;
+		}
+
+		export const Highpass12dB: Highpass12dB;
+
+		export interface Highpass24dB extends globalThis.EnumItem {
+			Name: "Highpass24dB";
+			Value: 7;
+			EnumType: typeof globalThis.Enum.AudioFilterType;
+		}
+
+		export const Highpass24dB: Highpass24dB;
+
+		export interface Highpass48dB extends globalThis.EnumItem {
+			Name: "Highpass48dB";
+			Value: 8;
+			EnumType: typeof globalThis.Enum.AudioFilterType;
+		}
+
+		export const Highpass48dB: Highpass48dB;
+
+		export interface Bandpass extends globalThis.EnumItem {
+			Name: "Bandpass";
+			Value: 9;
+			EnumType: typeof globalThis.Enum.AudioFilterType;
+		}
+
+		export const Bandpass: Bandpass;
+
+		export interface Notch extends globalThis.EnumItem {
+			Name: "Notch";
+			Value: 10;
+			EnumType: typeof globalThis.Enum.AudioFilterType;
+		}
+
+		export const Notch: Notch;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioFilterType>;
+	}
+	export type AudioFilterType = AudioFilterType.Peak | AudioFilterType.LowShelf | AudioFilterType.HighShelf | AudioFilterType.Lowpass12dB | AudioFilterType.Lowpass24dB | AudioFilterType.Lowpass48dB | AudioFilterType.Highpass12dB | AudioFilterType.Highpass24dB | AudioFilterType.Highpass48dB | AudioFilterType.Bandpass | AudioFilterType.Notch;
+
 	export namespace AudioSubType {
 		export interface Music extends globalThis.EnumItem {
 			Name: "Music";
@@ -14474,7 +14567,7 @@ declare namespace Enum {
 	export namespace PreferredTextSize {
 		export interface Medium extends globalThis.EnumItem {
 			Name: "Medium";
-			Value: 0;
+			Value: 1;
 			EnumType: typeof globalThis.Enum.PreferredTextSize;
 		}
 
@@ -14482,7 +14575,7 @@ declare namespace Enum {
 
 		export interface Large extends globalThis.EnumItem {
 			Name: "Large";
-			Value: 4;
+			Value: 2;
 			EnumType: typeof globalThis.Enum.PreferredTextSize;
 		}
 
@@ -14490,7 +14583,7 @@ declare namespace Enum {
 
 		export interface Larger extends globalThis.EnumItem {
 			Name: "Larger";
-			Value: 9;
+			Value: 3;
 			EnumType: typeof globalThis.Enum.PreferredTextSize;
 		}
 
@@ -14498,7 +14591,7 @@ declare namespace Enum {
 
 		export interface Largest extends globalThis.EnumItem {
 			Name: "Largest";
-			Value: 14;
+			Value: 4;
 			EnumType: typeof globalThis.Enum.PreferredTextSize;
 		}
 
