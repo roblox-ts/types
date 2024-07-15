@@ -816,7 +816,7 @@ interface InstanceConstructor {
 	 * There are two behavioral differences between this constructor and the `Instance:Clone()` method:
 	 * - This constructor will not copy any of the descendant `Instances` parented to the existing object.
 	 * - This constructor will return a new object even if the existing object had `Instance.Archivable` set to `false`.
-	 * */
+	 */
 	fromExisting: <T extends Instance>(existingInstance: T) => T;
 }
 
