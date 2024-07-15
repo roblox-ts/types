@@ -810,6 +810,14 @@ interface InstanceConstructor {
 	 * You can read [this thread on the developer forum](https://devforum.roblox.com/t/psa-dont-use-instance-new-with-parent-argument/30296) for more information.
 	 */
 	new <T extends keyof CreatableInstances>(className: T, parent?: Instance): CreatableInstances[T];
+	/**
+	 * Creates a new object with the same type and property values as an existing object. In most cases using `Instance:Clone()` is more appropriate, but this constructor is useful when implementing low‑level libraries or systems.
+	 *
+	 * There are two behavioral differences between this constructor and the `Instance:Clone()` method:
+	 * - This constructor will not copy any of the descendant `Instances` parented to the existing object.
+	 * - This constructor will return a new object even if the existing object had `Instance.Archivable` set to `false`.
+	 * */
+	fromExisting: <T extends Instance>(existingInstance: T) => T;
 }
 
 declare const Instance: InstanceConstructor;
