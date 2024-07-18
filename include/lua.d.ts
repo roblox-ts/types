@@ -101,7 +101,7 @@ interface LuaMetatable<T> {
 }
 
 /** Sets the metatable for the given table. If `metatable` is nil, the metatable of the given table is removed. If the original metatable has a "__metatable" field, this will raise an error. This function returns the table t, which was passed to the function. */
-declare function setmetatable<T extends object>(object: T, metatable: LuaMetatable<T>): T;
+declare function setmetatable<T extends object>(object: T, metatable: LuaMetatable<T> | undefined): T;
 
 /** An object the represents a date or time. Used with `os.date` and `os.time`. */
 interface DateTable {
