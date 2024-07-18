@@ -272,6 +272,19 @@ interface BaseWrap extends Instance {
 	ImportOrigin: CFrame;
 }
 
+interface WrapDeformer extends BaseWrap {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_WrapDeformer: unique symbol;
+	Amount: number;
+	RenderMeshID: string;
+}
+
 interface WrapLayer extends BaseWrap {
 	/**
 	 * **DO NOT USE!**

@@ -7,7 +7,6 @@
 interface Services {
 	AccountService: AccountService;
 	AchievementService: AchievementService;
-	ActivityHistoryService: ActivityHistoryService;
 	AnalyticsService: AnalyticsService;
 	AnimationClipProvider: AnimationClipProvider;
 	AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
@@ -205,6 +204,7 @@ interface CreatableInstances {
 	AnimationController: AnimationController;
 	AnimationRigData: AnimationRigData;
 	Animator: Animator;
+	Annotation: Annotation;
 	ArcHandles: ArcHandles;
 	Atmosphere: Atmosphere;
 	AtmosphereSensor: AtmosphereSensor;
@@ -260,6 +260,7 @@ interface CreatableInstances {
 	Clouds: Clouds;
 	Color3Value: Color3Value;
 	ColorCorrectionEffect: ColorCorrectionEffect;
+	ColorGradingEffect: ColorGradingEffect;
 	CompressorSoundEffect: CompressorSoundEffect;
 	ConeHandleAdornment: ConeHandleAdornment;
 	Configuration: Configuration;
@@ -461,7 +462,9 @@ interface CreatableInstances {
 	WeldConstraint: WeldConstraint;
 	Wire: Wire;
 	WireframeHandleAdornment: WireframeHandleAdornment;
+	WorkspaceAnnotation: WorkspaceAnnotation;
 	WorldModel: WorldModel;
+	WrapDeformer: WrapDeformer;
 	WrapLayer: WrapLayer;
 	WrapTarget: WrapTarget;
 }
@@ -1390,18 +1393,6 @@ interface AchievementService extends Instance {
 	readonly _nominal_AchievementService: unique symbol;
 }
 
-interface ActivityHistoryService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ActivityHistoryService: unique symbol;
-	readonly EventNotificationReceived: RBXScriptSignal<() => void>;
-}
-
 interface AdPortal extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -2287,6 +2278,28 @@ interface Animator extends Instance {
 	LoadAnimation(this: Animator, animation: Animation): AnimationTrack;
 	RegisterEvaluationParallelCallback(this: Animator, callback: Callback): void;
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
+}
+
+interface Annotation extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Annotation: unique symbol;
+}
+
+interface WorkspaceAnnotation extends Annotation {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_WorkspaceAnnotation: unique symbol;
 }
 
 interface AnnotationsService extends Instance {
@@ -5105,6 +5118,20 @@ interface BaseWrap extends Instance {
 	 * Tags: NotReplicated
 	 */
 	readonly ImportOriginWorld: CFrame;
+}
+
+interface WrapDeformer extends BaseWrap {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_WrapDeformer: unique symbol;
+	Amount: number;
+	Enabled: boolean;
+	RenderMeshID: string;
 }
 
 /** The WrapLayer object defines a 3D accessory's inner and outer surfaces and other properties related to layering accessories. These surfaces, or the Inner Cage and Outer Cage, are similar to collision boxes, and describe the surfaces of which other 3D accessories can be placed without clipping or breaking.
@@ -15644,6 +15671,7 @@ interface Path2D extends GuiBase {
 	 * @deprecated
 	 */
 	readonly _nominal_Path2D: unique symbol;
+	Closed: boolean;
 	Color3: Color3;
 	Thickness: number;
 	Visible: boolean;
@@ -15651,6 +15679,8 @@ interface Path2D extends GuiBase {
 	GetBoundingRect(this: Path2D): Rect;
 	GetControlPoint(this: Path2D, index: number): Path2DControlPoint;
 	GetControlPoints(this: Path2D): unknown;
+	GetLength(this: Path2D): number;
+	GetMaxControlPoints(this: Path2D): number;
 	GetPositionOnCurve(this: Path2D, t: number): UDim2;
 	GetPositionOnCurveArcLength(this: Path2D, t: number): UDim2;
 	GetTangentOnCurve(this: Path2D, t: number): Vector2;
@@ -15659,6 +15689,7 @@ interface Path2D extends GuiBase {
 	RemoveControlPoint(this: Path2D, index: number): void;
 	SetControlPoints(this: Path2D, controlPoints: Array<any>): void;
 	UpdateControlPoint(this: Path2D, index: number, point: Path2DControlPoint): void;
+	readonly ControlPointChanged: RBXScriptSignal<() => void>;
 }
 
 /** The GuiService is a service which currently allows developers to control what [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) is currently being selected by the gamepad navigator. It also allows clients to check if Roblox's main menu is currently open.
@@ -15708,6 +15739,10 @@ interface GuiService extends Instance {
 	 * Tags: NotReplicated
 	 */
 	readonly MenuIsOpen: boolean;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly PreferredTextSize: Enum.PreferredTextSize;
 	/**
 	 * Tags: Hidden, NotReplicated
 	 */
@@ -29863,6 +29898,18 @@ interface ColorCorrectionEffect extends PostEffect {
 	 * Determines by what factors the RGB channels of pixel colors are scaled. The effect is multiplicative, so changing this to **\[255, 0, 0\]** (red) would cause the green and blue channels to be multiplied by 0.
 	 */
 	TintColor: Color3;
+}
+
+interface ColorGradingEffect extends PostEffect {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ColorGradingEffect: unique symbol;
+	TonemapperPreset: Enum.TonemapperPreset;
 }
 
 /** The **DepthOfFieldEffect** simulates a camera lens by blurring parts of a scene not in focus. Distant objects can be blurred or this effect can be used to focus on specific parts of a scene, like an item in an in-game shop.
