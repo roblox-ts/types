@@ -19,6 +19,7 @@ interface Services {
 	AssetImportService: AssetImportService;
 	AssetManagerService: AssetManagerService;
 	AssetService: AssetService;
+	AudioFocusService: AudioFocusService;
 	AvatarChatService: AvatarChatService;
 	AvatarCreationService: AvatarCreationService;
 	AvatarEditorService: AvatarEditorService;
@@ -495,6 +496,7 @@ interface Instances extends Services, CreatableInstances {
 	BubbleChatConfiguration: BubbleChatConfiguration;
 	CatalogPages: CatalogPages;
 	ChannelSelectorSoundEffect: ChannelSelectorSoundEffect;
+	ChannelTabsConfiguration: ChannelTabsConfiguration;
 	CharacterAppearance: CharacterAppearance;
 	ChatInputBarConfiguration: ChatInputBarConfiguration;
 	ChatWindowConfiguration: ChatWindowConfiguration;
@@ -3041,6 +3043,17 @@ interface AudioFlanger extends Instance {
 	Mix: number;
 	Rate: number;
 	GetConnectedWires(this: AudioFlanger, pin: string): unknown;
+}
+
+interface AudioFocusService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AudioFocusService: unique symbol;
 }
 
 interface AudioListener extends Instance {
@@ -16901,9 +16914,6 @@ interface Humanoid extends Instance {
 	 * GetLimb will throw an error if the [Part's](https://developer.roblox.com/en-us/api-reference/class/Part) parent is not set to the [Humanoid's](https://developer.roblox.com/en-us/api-reference/class/Humanoid) parent.
 	 */
 	GetLimb(this: Humanoid, part: BasePart): Enum.Limb;
-	/**
-	 * Tags: NotBrowsable
-	 */
 	GetMoveVelocity(this: Humanoid): Vector3;
 	/**
 	 * This function returns an array of all [AnimationTracks](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) that are currently being played on the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid).
@@ -34892,6 +34902,35 @@ interface BubbleChatConfiguration extends TextChatConfigurations {
 	VerticalStudsOffset: number;
 }
 
+interface ChannelTabsConfiguration extends TextChatConfigurations {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ChannelTabsConfiguration: unique symbol;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly AbsolutePosition: Vector2;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly AbsoluteSize: Vector2;
+	BackgroundColor3: Color3;
+	BackgroundTransparency: number;
+	Enabled: boolean;
+	FontFace: Font;
+	HoverBackgroundColor3: Color3;
+	SelectedTabTextColor3: Color3;
+	TextColor3: Color3;
+	TextSize: number;
+	TextStrokeColor3: Color3;
+	TextStrokeTransparency: number;
+}
+
 interface ChatInputBarConfiguration extends TextChatConfigurations {
 	/**
 	 * **DO NOT USE!**
@@ -36036,6 +36075,7 @@ interface UIDragDetector extends UIComponent {
 	 */
 	readonly _nominal_UIDragDetector: unique symbol;
 	ActivatedCursorIcon: string;
+	BoundingBehavior: Enum.UIDragDetectorBoundingBehavior;
 	BoundingUI: GuiBase2d | undefined;
 	CursorIcon: string;
 	DragAxis: Vector2;

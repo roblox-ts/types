@@ -16744,6 +16744,107 @@ declare namespace Enum {
 	}
 	export type ScrollingDirection = ScrollingDirection.X | ScrollingDirection.Y | ScrollingDirection.XY;
 
+	export namespace SecurityCapability {
+		export interface RunClientScript extends globalThis.EnumItem {
+			Name: "RunClientScript";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const RunClientScript: RunClientScript;
+
+		export interface RunServerScript extends globalThis.EnumItem {
+			Name: "RunServerScript";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const RunServerScript: RunServerScript;
+
+		export interface AccessOutsideWrite extends globalThis.EnumItem {
+			Name: "AccessOutsideWrite";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const AccessOutsideWrite: AccessOutsideWrite;
+
+		export interface AssetRequire extends globalThis.EnumItem {
+			Name: "AssetRequire";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const AssetRequire: AssetRequire;
+
+		export interface LoadString extends globalThis.EnumItem {
+			Name: "LoadString";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const LoadString: LoadString;
+
+		export interface ScriptGlobals extends globalThis.EnumItem {
+			Name: "ScriptGlobals";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const ScriptGlobals: ScriptGlobals;
+
+		export interface CreateInstances extends globalThis.EnumItem {
+			Name: "CreateInstances";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const CreateInstances: CreateInstances;
+
+		export interface Basic extends globalThis.EnumItem {
+			Name: "Basic";
+			Value: 7;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const Basic: Basic;
+
+		export interface Audio extends globalThis.EnumItem {
+			Name: "Audio";
+			Value: 8;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const Audio: Audio;
+
+		export interface DataStore extends globalThis.EnumItem {
+			Name: "DataStore";
+			Value: 9;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const DataStore: DataStore;
+
+		export interface Network extends globalThis.EnumItem {
+			Name: "Network";
+			Value: 10;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const Network: Network;
+
+		export interface Physics extends globalThis.EnumItem {
+			Name: "Physics";
+			Value: 11;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const Physics: Physics;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SecurityCapability>;
+	}
+	export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics;
+
 	export namespace SelectionBehavior {
 		export interface Escape extends globalThis.EnumItem {
 			Name: "Escape";
@@ -20844,6 +20945,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TweenStatus>;
 	}
 	export type TweenStatus = TweenStatus.Canceled | TweenStatus.Completed;
+
+	export namespace UIDragDetectorBoundingBehavior {
+		export interface Automatic extends globalThis.EnumItem {
+			Name: "Automatic";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.UIDragDetectorBoundingBehavior;
+		}
+
+		export const Automatic: Automatic;
+
+		export interface EntireObject extends globalThis.EnumItem {
+			Name: "EntireObject";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.UIDragDetectorBoundingBehavior;
+		}
+
+		export const EntireObject: EntireObject;
+
+		export interface HitPoint extends globalThis.EnumItem {
+			Name: "HitPoint";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.UIDragDetectorBoundingBehavior;
+		}
+
+		export const HitPoint: HitPoint;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIDragDetectorBoundingBehavior>;
+	}
+	export type UIDragDetectorBoundingBehavior = UIDragDetectorBoundingBehavior.Automatic | UIDragDetectorBoundingBehavior.EntireObject | UIDragDetectorBoundingBehavior.HitPoint;
 
 	export namespace UIDragDetectorDragRelativity {
 		export interface Absolute extends globalThis.EnumItem {
