@@ -68,6 +68,7 @@ interface Services {
 	GroupService: GroupService;
 	GuiService: GuiService;
 	HapticService: HapticService;
+	HeatmapService: HeatmapService;
 	HeightmapImporterService: HeightmapImporterService;
 	HttpService: HttpService;
 	ILegacyStudioBridge: ILegacyStudioBridge;
@@ -2974,6 +2975,7 @@ interface AudioEmitter extends Instance {
 	 * Tags: CustomLuaState
 	 */
 	GetDistanceAttenuation(this: AudioEmitter): object;
+	GetInteractingListeners(this: AudioEmitter): unknown;
 	/**
 	 * Tags: CustomLuaState
 	 */
@@ -3067,6 +3069,7 @@ interface AudioListener extends Instance {
 	readonly _nominal_AudioListener: unique symbol;
 	AudioInteractionGroup: string;
 	GetConnectedWires(this: AudioListener, pin: string): unknown;
+	GetInteractingEmitters(this: AudioListener): unknown;
 }
 
 interface AudioPitchShifter extends Instance {
@@ -15952,6 +15955,17 @@ interface HapticService extends Instance {
 	): void;
 }
 
+interface HeatmapService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_HeatmapService: unique symbol;
+}
+
 interface HeightmapImporterService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -22740,6 +22754,7 @@ interface MarketplaceService extends Instance {
 	 * Used to prompt a user to purchase a bundle with the given bundleId
 	 */
 	PromptBundlePurchase(this: MarketplaceService, player: Player, bundleId: number): void;
+	PromptCancelSubscription(this: MarketplaceService, user: Player, subscriptionId: string): void;
 	/**
 	 * Used to prompt a user to purchase a game pass with the given assetId.
 	 */
@@ -35848,6 +35863,7 @@ interface TweenService extends Instance {
 	 * The provided alpha value is clamped between 0 and 1.
 	 */
 	GetValue(this: TweenService, alpha: number, easingStyle: CastsToEnum<Enum.EasingStyle>, easingDirection: CastsToEnum<Enum.EasingDirection>): number;
+	SmoothDamp(this: TweenService, current: unknown, target: unknown, velocity: unknown, smoothTime: number, maxSpeed: number | undefined, dt: number | undefined): LuaTuple<[unknown, unknown]>;
 }
 
 interface UGCAvatarService extends Instance {

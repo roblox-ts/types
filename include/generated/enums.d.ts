@@ -4182,6 +4182,59 @@ declare namespace Enum {
 	}
 	export type ClientAnimatorThrottlingMode = ClientAnimatorThrottlingMode.Default | ClientAnimatorThrottlingMode.Disabled | ClientAnimatorThrottlingMode.Enabled;
 
+	export namespace CloseReason {
+		export interface Unknown extends globalThis.EnumItem {
+			Name: "Unknown";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.CloseReason;
+		}
+
+		export const Unknown: Unknown;
+
+		export interface RobloxMaintenance extends globalThis.EnumItem {
+			Name: "RobloxMaintenance";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.CloseReason;
+		}
+
+		export const RobloxMaintenance: RobloxMaintenance;
+
+		export interface DeveloperShutdown extends globalThis.EnumItem {
+			Name: "DeveloperShutdown";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.CloseReason;
+		}
+
+		export const DeveloperShutdown: DeveloperShutdown;
+
+		export interface DeveloperUpdate extends globalThis.EnumItem {
+			Name: "DeveloperUpdate";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.CloseReason;
+		}
+
+		export const DeveloperUpdate: DeveloperUpdate;
+
+		export interface ServerEmpty extends globalThis.EnumItem {
+			Name: "ServerEmpty";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.CloseReason;
+		}
+
+		export const ServerEmpty: ServerEmpty;
+
+		export interface OutOfMemory extends globalThis.EnumItem {
+			Name: "OutOfMemory";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.CloseReason;
+		}
+
+		export const OutOfMemory: OutOfMemory;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CloseReason>;
+	}
+	export type CloseReason = CloseReason.Unknown | CloseReason.RobloxMaintenance | CloseReason.DeveloperShutdown | CloseReason.DeveloperUpdate | CloseReason.ServerEmpty | CloseReason.OutOfMemory;
+
 	export namespace CollaboratorStatus {
 		export interface None extends globalThis.EnumItem {
 			Name: "None";
@@ -12164,6 +12217,35 @@ declare namespace Enum {
 	}
 	export type LoadDynamicHeads = LoadDynamicHeads.Default | LoadDynamicHeads.Disabled | LoadDynamicHeads.Enabled;
 
+	export namespace LocationType {
+		export interface Character extends globalThis.EnumItem {
+			Name: "Character";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.LocationType;
+		}
+
+		export const Character: Character;
+
+		export interface Camera extends globalThis.EnumItem {
+			Name: "Camera";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.LocationType;
+		}
+
+		export const Camera: Camera;
+
+		export interface ObjectPosition extends globalThis.EnumItem {
+			Name: "ObjectPosition";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.LocationType;
+		}
+
+		export const ObjectPosition: ObjectPosition;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LocationType>;
+	}
+	export type LocationType = LocationType.Character | LocationType.Camera | LocationType.ObjectPosition;
+
 	export namespace MarketplaceBulkPurchasePromptStatus {
 		export interface Completed extends globalThis.EnumItem {
 			Name: "Completed";
@@ -16841,9 +16923,49 @@ declare namespace Enum {
 
 		export const Physics: Physics;
 
+		export interface UI extends globalThis.EnumItem {
+			Name: "UI";
+			Value: 12;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const UI: UI;
+
+		export interface CSG extends globalThis.EnumItem {
+			Name: "CSG";
+			Value: 13;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const CSG: CSG;
+
+		export interface Chat extends globalThis.EnumItem {
+			Name: "Chat";
+			Value: 14;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const Chat: Chat;
+
+		export interface Animation extends globalThis.EnumItem {
+			Name: "Animation";
+			Value: 15;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const Animation: Animation;
+
+		export interface Avatar extends globalThis.EnumItem {
+			Name: "Avatar";
+			Value: 16;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const Avatar: Avatar;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SecurityCapability>;
 	}
-	export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics;
+	export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics | SecurityCapability.UI | SecurityCapability.CSG | SecurityCapability.Chat | SecurityCapability.Animation | SecurityCapability.Avatar;
 
 	export namespace SelectionBehavior {
 		export interface Escape extends globalThis.EnumItem {
