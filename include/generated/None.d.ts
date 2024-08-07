@@ -30,6 +30,7 @@ interface Services {
 	CaptureService: CaptureService;
 	Chat: Chat;
 	ChatbotUIService: ChatbotUIService;
+	CloudCRUDService: CloudCRUDService;
 	CollaboratorsService: CollaboratorsService;
 	CollectionService: CollectionService;
 	CommandService: CommandService;
@@ -51,7 +52,6 @@ interface Services {
 	DebuggerUIService: DebuggerUIService;
 	DeviceIdService: DeviceIdService;
 	DraggerService: DraggerService;
-	EngineAPICloudProcessingService: EngineAPICloudProcessingService;
 	EventIngestService: EventIngestService;
 	ExampleService: ExampleService;
 	ExperienceAuthService: ExperienceAuthService;
@@ -1655,6 +1655,7 @@ interface AnalyticsService extends Instance {
 		statistics?: { [index: string]: number },
 		customData?: unknown,
 	): void;
+	LogCustomEvent(this: AnalyticsService, player: Player, eventName: string, value?: number, customFields?: object): void;
 	LogEconomyEvent(this: AnalyticsService, player: Player, flowType: CastsToEnum<Enum.AnalyticsEconomyFlowType>, currencyType: string, amount: number, endingBalance: number, transactionType: string, itemSku?: string, customFields?: object): void;
 	LogFunnelStepEvent(this: AnalyticsService, player: Player, funnelName: string, funnelSessionId?: string, step?: number, stepName?: string, customFields?: object): void;
 	LogOnboardingFunnelStepEvent(this: AnalyticsService, player: Player, step: number, stepName?: string, customFields?: object): void;
@@ -2856,7 +2857,8 @@ interface AudioAnalyzer extends Instance {
 	 * Tags: NotReplicated
 	 */
 	readonly RmsLevel: number;
-	GetConnectedWires(this: AudioAnalyzer, pin: string): unknown;
+	SpectrumEnabled: boolean;
+	GetConnectedWires(this: AudioAnalyzer, pin: string): Array<Instance>;
 	/**
 	 * Tags: CustomLuaState
 	 */
@@ -2876,7 +2878,7 @@ interface AudioChorus extends Instance {
 	Depth: number;
 	Mix: number;
 	Rate: number;
-	GetConnectedWires(this: AudioChorus, pin: string): unknown;
+	GetConnectedWires(this: AudioChorus, pin: string): Array<Instance>;
 }
 
 interface AudioCompressor extends Instance {
@@ -2894,7 +2896,7 @@ interface AudioCompressor extends Instance {
 	Ratio: number;
 	Release: number;
 	Threshold: number;
-	GetConnectedWires(this: AudioCompressor, pin: string): unknown;
+	GetConnectedWires(this: AudioCompressor, pin: string): Array<Instance>;
 }
 
 interface AudioDeviceInput extends Instance {
@@ -2911,7 +2913,7 @@ interface AudioDeviceInput extends Instance {
 	Muted: boolean;
 	Player: Player | undefined;
 	Volume: number;
-	GetConnectedWires(this: AudioDeviceInput, pin: string): unknown;
+	GetConnectedWires(this: AudioDeviceInput, pin: string): Array<Instance>;
 	GetUserIdAccessList(this: AudioDeviceInput): unknown;
 	SetUserIdAccessList(this: AudioDeviceInput, userIds: Array<any>): void;
 }
@@ -2926,7 +2928,7 @@ interface AudioDeviceOutput extends Instance {
 	 */
 	readonly _nominal_AudioDeviceOutput: unique symbol;
 	Player: Player | undefined;
-	GetConnectedWires(this: AudioDeviceOutput, pin: string): unknown;
+	GetConnectedWires(this: AudioDeviceOutput, pin: string): Array<Instance>;
 }
 
 interface AudioDistortion extends Instance {
@@ -2940,7 +2942,7 @@ interface AudioDistortion extends Instance {
 	readonly _nominal_AudioDistortion: unique symbol;
 	Bypass: boolean;
 	Level: number;
-	GetConnectedWires(this: AudioDistortion, pin: string): unknown;
+	GetConnectedWires(this: AudioDistortion, pin: string): Array<Instance>;
 }
 
 interface AudioEcho extends Instance {
@@ -2957,7 +2959,7 @@ interface AudioEcho extends Instance {
 	DryLevel: number;
 	Feedback: number;
 	WetLevel: number;
-	GetConnectedWires(this: AudioEcho, pin: string): unknown;
+	GetConnectedWires(this: AudioEcho, pin: string): Array<Instance>;
 }
 
 interface AudioEmitter extends Instance {
@@ -2970,12 +2972,12 @@ interface AudioEmitter extends Instance {
 	 */
 	readonly _nominal_AudioEmitter: unique symbol;
 	AudioInteractionGroup: string;
-	GetConnectedWires(this: AudioEmitter, pin: string): unknown;
+	GetConnectedWires(this: AudioEmitter, pin: string): Array<Instance>;
 	/**
 	 * Tags: CustomLuaState
 	 */
 	GetDistanceAttenuation(this: AudioEmitter): object;
-	GetInteractingListeners(this: AudioEmitter): unknown;
+	GetInteractingListeners(this: AudioEmitter): Array<Instance>;
 	/**
 	 * Tags: CustomLuaState
 	 */
@@ -2996,7 +2998,7 @@ interface AudioEqualizer extends Instance {
 	LowGain: number;
 	MidGain: number;
 	MidRange: NumberRange;
-	GetConnectedWires(this: AudioEqualizer, pin: string): unknown;
+	GetConnectedWires(this: AudioEqualizer, pin: string): Array<Instance>;
 }
 
 interface AudioFader extends Instance {
@@ -3010,7 +3012,7 @@ interface AudioFader extends Instance {
 	readonly _nominal_AudioFader: unique symbol;
 	Bypass: boolean;
 	Volume: number;
-	GetConnectedWires(this: AudioFader, pin: string): unknown;
+	GetConnectedWires(this: AudioFader, pin: string): Array<Instance>;
 }
 
 interface AudioFilter extends Instance {
@@ -3027,7 +3029,7 @@ interface AudioFilter extends Instance {
 	Frequency: number;
 	Gain: number;
 	Q: number;
-	GetConnectedWires(this: AudioFilter, pin: string): unknown;
+	GetConnectedWires(this: AudioFilter, pin: string): Array<Instance>;
 	GetGainAt(this: AudioFilter, frequency: number): number;
 }
 
@@ -3044,7 +3046,7 @@ interface AudioFlanger extends Instance {
 	Depth: number;
 	Mix: number;
 	Rate: number;
-	GetConnectedWires(this: AudioFlanger, pin: string): unknown;
+	GetConnectedWires(this: AudioFlanger, pin: string): Array<Instance>;
 }
 
 interface AudioFocusService extends Instance {
@@ -3068,8 +3070,8 @@ interface AudioListener extends Instance {
 	 */
 	readonly _nominal_AudioListener: unique symbol;
 	AudioInteractionGroup: string;
-	GetConnectedWires(this: AudioListener, pin: string): unknown;
-	GetInteractingEmitters(this: AudioListener): unknown;
+	GetConnectedWires(this: AudioListener, pin: string): Array<Instance>;
+	GetInteractingEmitters(this: AudioListener): Array<Instance>;
 }
 
 interface AudioPitchShifter extends Instance {
@@ -3083,7 +3085,7 @@ interface AudioPitchShifter extends Instance {
 	readonly _nominal_AudioPitchShifter: unique symbol;
 	Bypass: boolean;
 	Pitch: number;
-	GetConnectedWires(this: AudioPitchShifter, pin: string): unknown;
+	GetConnectedWires(this: AudioPitchShifter, pin: string): Array<Instance>;
 }
 
 interface AudioPlayer extends Instance {
@@ -3112,7 +3114,7 @@ interface AudioPlayer extends Instance {
 	readonly TimeLength: number;
 	TimePosition: number;
 	Volume: number;
-	GetConnectedWires(this: AudioPlayer, pin: string): unknown;
+	GetConnectedWires(this: AudioPlayer, pin: string): Array<Instance>;
 	Play(this: AudioPlayer): void;
 	Stop(this: AudioPlayer): void;
 	readonly Ended: RBXScriptSignal<() => void>;
@@ -3141,7 +3143,7 @@ interface AudioReverb extends Instance {
 	LowShelfGain: number;
 	ReferenceFrequency: number;
 	WetLevel: number;
-	GetConnectedWires(this: AudioReverb, pin: string): unknown;
+	GetConnectedWires(this: AudioReverb, pin: string): Array<Instance>;
 }
 
 interface AudioSearchParams extends Instance {
@@ -7539,6 +7541,17 @@ interface DragDetector extends ClickDetector {
 	readonly DragStartReplicate: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, hitFrame: CFrame, clickedPart: BasePart, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
 }
 
+interface CloudCRUDService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CloudCRUDService: unique symbol;
+}
+
 /** The **Clouds** object renders realistic clouds that drift slowly across the sky. Both cloud cover and density can be adjusted, as well as cloud color to achieve atmospheres like stormy skies, moody sunsets, alien worlds, etc.
  * 
  * See the [Dynamic Clouds](https://developer.roblox.com/articles/dynamic-clouds) article for a summary of properties and expected results.
@@ -7663,6 +7676,8 @@ interface CollectionService extends Instance {
 	 * AddTag will apply a tag to an object. This method will not throw an error if the object already had the tag. Successfully adding a tag will fire a signal created by [CollectionService:GetInstanceAddedSignal](https://developer.roblox.com/en-us/api-reference/function/CollectionService/GetInstanceAddedSignal) with the given tag.
 	 * 
 	 * **Warning:** When tagging an object, it is common that some resources are used to give the tag its functionality, e.g. event connections or tables. To prevent memory leaks, it is a good idea to clean these up (disconnect, set to nil, etc) when no longer needed for a tag. Do this when calling [CollectionService:RemoveTag](https://developer.roblox.com/en-us/api-reference/function/CollectionService/RemoveTag), calling [Instance:Destroy](https://developer.roblox.com/en-us/api-reference/function/Instance/Destroy) or in a function connected to a signal returned by [CollectionService:GetInstanceRemovedSignal](https://developer.roblox.com/en-us/api-reference/function/CollectionService/GetInstanceRemovedSignal).
+	 * 
+	 * Tags: CustomLuaState
 	 */
 	AddTag(this: CollectionService, instance: Instance, tag: string): void;
 	AddTag(this: Instance, tag: string): void;
@@ -7706,6 +7721,8 @@ interface CollectionService extends Instance {
 	 * print("The object " .. object:GetFullName() .. " has tags: " .. table.concat(tags, ", "))
 	 * 
 	 * This method is useful when you want to do something with multiple tags at once on an object. However, it would be inefficient to use this method to check for the existence of a single tag. For this, use [CollectionService:HasTag](https://developer.roblox.com/en-us/api-reference/function/CollectionService/HasTag) to check for a single tag.
+	 * 
+	 * Tags: CustomLuaState
 	 */
 	GetTags(this: CollectionService, instance: Instance): Array<string>;
 	GetTags(this: Instance): Array<string>;
@@ -7716,6 +7733,8 @@ interface CollectionService extends Instance {
 	 * *   Using [CollectionService:RemoveTag](https://developer.roblox.com/en-us/api-reference/function/CollectionService/RemoveTag) to remove the tag will cause this method to return false.
 	 * 
 	 * By extension, any tags returned by a call to `CollectionServiec/GetTags` on an object will return true when used with this method.
+	 * 
+	 * Tags: CustomLuaState
 	 */
 	HasTag(this: CollectionService, instance: Instance, tag: string): boolean;
 	HasTag(this: Instance, tag: string): boolean;
@@ -7723,6 +7742,8 @@ interface CollectionService extends Instance {
 	 * RemoveTag will remove some tag from some object. This method will not throw an error if the object did not have the tag in the first place. Successfully removing a tag will fire a signal created by [CollectionService:GetInstanceRemovedSignal](https://developer.roblox.com/en-us/api-reference/function/CollectionService/GetInstanceRemovedSignal) with the given tag.
 	 * 
 	 * When removing a tag, it is common that some resources are used to give the tag its functionality, e.g. event connections or tables. To prevent memory leaks, it is a good idea to clean these up (disconnect, set to nil, etc) when no longer needed for a tag.
+	 * 
+	 * Tags: CustomLuaState
 	 */
 	RemoveTag(this: CollectionService, instance: Instance, tag: string): void;
 	RemoveTag(this: Instance, tag: string): void;
@@ -10949,17 +10970,6 @@ interface RobloxEditableImage extends EditableImage {
 	 * @deprecated
 	 */
 	readonly _nominal_RobloxEditableImage: unique symbol;
-}
-
-interface EngineAPICloudProcessingService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_EngineAPICloudProcessingService: unique symbol;
 }
 
 /** A EulerRotation Curve represents a 3D rotation curve, it groups 3 [FloatCurves](https://developer.roblox.com/en-us/api-reference/class/FloatCurve), stored as 3 FloatCurve child instances. The rotation is decomposed in 3 Euler angles channels that can be accessed via [EulerRotationCurve:X](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/X), [EulerRotationCurve:Y](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Y), [EulerRotationCurve:Z](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Z) methods. The 3 axes can be sampled simultaneously via the method [EulerRotationCurve:GetAnglesAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetAnglesAtTime) returning the 3 Euler angles as a Vector3. Similarly, [EulerRotationCurve:GetRotationAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetRotationAtTime) samples all channels simultaneously but returns a CFrame rotated by X, Y, and Z according to the specified rotation order. */

@@ -3498,7 +3498,6 @@ interface Studio extends Instance {
 	["Auto Indent Rule"]: Enum.AutoIndentRule;
 	["Auto-Recovery Enabled"]: boolean;
 	["Auto-Recovery Interval (Minutes)"]: number;
-	["Auto-Recovery Path"]: QDir;
 	/**
 	 * Tags: NotReplicated
 	 */
