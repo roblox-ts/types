@@ -464,9 +464,17 @@ declare namespace Enum {
 
 		export const CloseButtonClicked: CloseButtonClicked;
 
+		export interface WhyThisAdClicked extends globalThis.EnumItem {
+			Name: "WhyThisAdClicked";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.AdUIEventType;
+		}
+
+		export const WhyThisAdClicked: WhyThisAdClicked;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdUIEventType>;
 	}
-	export type AdUIEventType = AdUIEventType.AdLabelClicked | AdUIEventType.VolumeButtonClicked | AdUIEventType.FullscreenButtonClicked | AdUIEventType.PlayButtonClicked | AdUIEventType.PauseButtonClicked | AdUIEventType.CloseButtonClicked;
+	export type AdUIEventType = AdUIEventType.AdLabelClicked | AdUIEventType.VolumeButtonClicked | AdUIEventType.FullscreenButtonClicked | AdUIEventType.PlayButtonClicked | AdUIEventType.PauseButtonClicked | AdUIEventType.CloseButtonClicked | AdUIEventType.WhyThisAdClicked;
 
 	export namespace AdUIType {
 		export interface None extends globalThis.EnumItem {
@@ -1070,6 +1078,43 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimatorRetargetingMode>;
 	}
 	export type AnimatorRetargetingMode = AnimatorRetargetingMode.Default | AnimatorRetargetingMode.Disabled | AnimatorRetargetingMode.Enabled;
+
+	export namespace AppLifecycleManagerState {
+		export interface Detached extends globalThis.EnumItem {
+			Name: "Detached";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AppLifecycleManagerState;
+		}
+
+		export const Detached: Detached;
+
+		export interface Active extends globalThis.EnumItem {
+			Name: "Active";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AppLifecycleManagerState;
+		}
+
+		export const Active: Active;
+
+		export interface Inactive extends globalThis.EnumItem {
+			Name: "Inactive";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AppLifecycleManagerState;
+		}
+
+		export const Inactive: Inactive;
+
+		export interface Hidden extends globalThis.EnumItem {
+			Name: "Hidden";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.AppLifecycleManagerState;
+		}
+
+		export const Hidden: Hidden;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AppLifecycleManagerState>;
+	}
+	export type AppLifecycleManagerState = AppLifecycleManagerState.Detached | AppLifecycleManagerState.Active | AppLifecycleManagerState.Inactive | AppLifecycleManagerState.Hidden;
 
 	export namespace AppShellActionType {
 		export interface None extends globalThis.EnumItem {
