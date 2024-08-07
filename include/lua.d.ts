@@ -602,6 +602,9 @@ declare namespace bit32 {
 	/** Returns the number of consecutive zero bits in the 32-bit representation of the provided number starting from the right-most (least significant) bit. */
 	function countrz(n: number): number;
 
+	/** Returns `n` with the order of the bytes swapped. */
+	function byteswap(n: number): number;
+
 	/**
 	 * Returns the unsigned number formed by the bits `field` to `field + width - 1` from `n`.
 	 * Bits are numbered from 0 (least significant) to 31 (most significant).
