@@ -36117,10 +36117,17 @@ interface UIDragDetector extends UIComponent {
 	MinDragTranslation: UDim2;
 	ReferenceUIInstance: GuiObject | undefined;
 	ResponseStyle: Enum.UIDragDetectorResponseStyle;
-	AddConstraintFunction(this: UIDragDetector, priority: number, callback: Callback): RBXScriptConnection;
+	AddConstraintFunction(
+		this: UIDragDetector,
+		priority: number,
+		callback: (
+			proposedPosition: UDim2,
+			proposedRotation: number,
+		) => LuaTuple<[UDim2, number, Enum.UIDragDetectorDragRelativity?, Enum.UIDragDetectorDragSpace?]>,
+	): RBXScriptConnection;
 	GetReferencePosition(this: UIDragDetector): UDim2;
 	GetReferenceRotation(this: UIDragDetector): number;
-	SetDragStyleFunction(this: UIDragDetector, callback: Callback): void;
+	SetDragStyleFunction(this: UIDragDetector, callback: (inputPosition: UDim2) => UDim2 | void): void;
 	readonly DragContinue: RBXScriptSignal<(inputPosition: Vector2) => void>;
 	readonly DragEnd: RBXScriptSignal<(inputPosition: Vector2) => void>;
 	readonly DragStart: RBXScriptSignal<(inputPosition: Vector2) => void>;
