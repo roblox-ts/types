@@ -1143,6 +1143,18 @@ interface UIPageLayout extends UIGridStyleLayout {
 	JumpTo(this: UIPageLayout, page: GuiObject): void;
 }
 
+interface UIDragDetector extends UIComponent {
+	AddConstraintFunction(
+		this: UIDragDetector,
+		priority: number,
+		callback: (
+			proposedPosition: UDim2,
+			proposedRotation: number,
+		) => LuaTuple<[UDim2, number, Enum.UIDragDetectorDragRelativity?, Enum.UIDragDetectorDragSpace?]>,
+	): RBXScriptConnection;
+	SetDragStyleFunction(this: UIDragDetector, callback: (inputPosition: UDim2) => UDim2 | void): void;
+}
+
 /** @client */
 interface UserInputService extends Instance {
 	readonly InputBegan: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
