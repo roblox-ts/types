@@ -2637,13 +2637,13 @@ declare namespace Enum {
 
 		export const None: None;
 
-		export interface Timeout extends globalThis.EnumItem {
-			Name: "Timeout";
+		export interface Unknown extends globalThis.EnumItem {
+			Name: "Unknown";
 			Value: 1;
 			EnumType: typeof globalThis.Enum.AvatarGenerationError;
 		}
 
-		export const Timeout: Timeout;
+		export const Unknown: Unknown;
 
 		export interface DownloadFailed extends globalThis.EnumItem {
 			Name: "DownloadFailed";
@@ -2669,17 +2669,25 @@ declare namespace Enum {
 
 		export const Offensive: Offensive;
 
-		export interface Unknown extends globalThis.EnumItem {
-			Name: "Unknown";
+		export interface Timeout extends globalThis.EnumItem {
+			Name: "Timeout";
 			Value: 5;
 			EnumType: typeof globalThis.Enum.AvatarGenerationError;
 		}
 
-		export const Unknown: Unknown;
+		export const Timeout: Timeout;
+
+		export interface JobNotFound extends globalThis.EnumItem {
+			Name: "JobNotFound";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.AvatarGenerationError;
+		}
+
+		export const JobNotFound: JobNotFound;
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarGenerationError>;
 	}
-	export type AvatarGenerationError = AvatarGenerationError.None | AvatarGenerationError.Timeout | AvatarGenerationError.DownloadFailed | AvatarGenerationError.Canceled | AvatarGenerationError.Offensive | AvatarGenerationError.Unknown;
+	export type AvatarGenerationError = AvatarGenerationError.None | AvatarGenerationError.Unknown | AvatarGenerationError.DownloadFailed | AvatarGenerationError.Canceled | AvatarGenerationError.Offensive | AvatarGenerationError.Timeout | AvatarGenerationError.JobNotFound;
 
 	export namespace AvatarGenerationJobStatus {
 		export interface NotStarted extends globalThis.EnumItem {
@@ -6444,6 +6452,35 @@ declare namespace Enum {
 	}
 	export type DeviceFeatureType = DeviceFeatureType.DeviceCapture;
 
+	export namespace DeviceLevel {
+		export interface Low extends globalThis.EnumItem {
+			Name: "Low";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.DeviceLevel;
+		}
+
+		export const Low: Low;
+
+		export interface Medium extends globalThis.EnumItem {
+			Name: "Medium";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.DeviceLevel;
+		}
+
+		export const Medium: Medium;
+
+		export interface High extends globalThis.EnumItem {
+			Name: "High";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.DeviceLevel;
+		}
+
+		export const High: High;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeviceLevel>;
+	}
+	export type DeviceLevel = DeviceLevel.Low | DeviceLevel.Medium | DeviceLevel.High;
+
 	export namespace DeviceType {
 		export interface Unknown extends globalThis.EnumItem {
 			Name: "Unknown";
@@ -8634,6 +8671,51 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HandlesStyle>;
 	}
 	export type HandlesStyle = HandlesStyle.Resize | HandlesStyle.Movement;
+
+	export namespace HapticEffectType {
+		export interface UIHover extends globalThis.EnumItem {
+			Name: "UIHover";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.HapticEffectType;
+		}
+
+		export const UIHover: UIHover;
+
+		export interface UIClick extends globalThis.EnumItem {
+			Name: "UIClick";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.HapticEffectType;
+		}
+
+		export const UIClick: UIClick;
+
+		export interface UINotification extends globalThis.EnumItem {
+			Name: "UINotification";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.HapticEffectType;
+		}
+
+		export const UINotification: UINotification;
+
+		export interface GameplayExplosion extends globalThis.EnumItem {
+			Name: "GameplayExplosion";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.HapticEffectType;
+		}
+
+		export const GameplayExplosion: GameplayExplosion;
+
+		export interface GameplayCollision extends globalThis.EnumItem {
+			Name: "GameplayCollision";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.HapticEffectType;
+		}
+
+		export const GameplayCollision: GameplayCollision;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HapticEffectType>;
+	}
+	export type HapticEffectType = HapticEffectType.UIHover | HapticEffectType.UIClick | HapticEffectType.UINotification | HapticEffectType.GameplayExplosion | HapticEffectType.GameplayCollision;
 
 	export namespace HighlightDepthMode {
 		export interface AlwaysOnTop extends globalThis.EnumItem {
@@ -21710,6 +21792,56 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRComfortSetting>;
 	}
 	export type VRComfortSetting = VRComfortSetting.Comfort | VRComfortSetting.Normal | VRComfortSetting.Expert | VRComfortSetting.Custom;
+
+	export namespace VRControllerModelMode {
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.VRControllerModelMode;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Transparent extends globalThis.EnumItem {
+			Name: "Transparent";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.VRControllerModelMode;
+		}
+
+		export const Transparent: Transparent;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRControllerModelMode>;
+	}
+	export type VRControllerModelMode = VRControllerModelMode.Disabled | VRControllerModelMode.Transparent;
+
+	export namespace VRLaserPointerMode {
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.VRLaserPointerMode;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Pointer extends globalThis.EnumItem {
+			Name: "Pointer";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.VRLaserPointerMode;
+		}
+
+		export const Pointer: Pointer;
+
+		export interface DualPointer extends globalThis.EnumItem {
+			Name: "DualPointer";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.VRLaserPointerMode;
+		}
+
+		export const DualPointer: DualPointer;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRLaserPointerMode>;
+	}
+	export type VRLaserPointerMode = VRLaserPointerMode.Disabled | VRLaserPointerMode.Pointer | VRLaserPointerMode.DualPointer;
 
 	export namespace VRSafetyBubbleMode {
 		export interface NoOne extends globalThis.EnumItem {
