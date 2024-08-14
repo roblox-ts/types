@@ -3907,7 +3907,7 @@ interface StudioService extends Instance {
 	 * Returns the studio user's userId if they're logged in, otherwise returns 0.
 	 */
 	GetUserId(this: StudioService): number;
-	GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult;
+	GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult | undefined;
 	/**
 	 * This function prompts the current Studio user to select one file, which will then be loaded as a [File](https://developer.roblox.com/en-us/api-reference/class/File).
 	 * 

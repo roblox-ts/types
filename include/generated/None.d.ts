@@ -113,7 +113,6 @@ interface Services {
 	PluginPolicyService: PluginPolicyService;
 	PolicyService: PolicyService;
 	ProcessInstancePhysicsService: ProcessInstancePhysicsService;
-	ProjectFolderService: ProjectFolderService;
 	ProximityPromptService: ProximityPromptService;
 	PublishService: PublishService;
 	ReflectionService: ReflectionService;
@@ -305,6 +304,7 @@ interface CreatableInstances {
 	Glue: Glue;
 	GroundController: GroundController;
 	Handles: Handles;
+	HapticEffect: HapticEffect;
 	Hat: Hat;
 	HiddenSurfaceRemovalAsset: HiddenSurfaceRemovalAsset;
 	Highlight: Highlight;
@@ -3195,6 +3195,14 @@ interface AvatarCreationService extends Instance {
 	 * Tags: Yields
 	 */
 	CreateAvatarGenerationSessionAsync(this: AvatarCreationService, player: Player): AvatarGenerationSession;
+	/**
+	 * Tags: Yields
+	 */
+	GenerateAvatarModelAsync(this: AvatarCreationService, player: Player, previewJobId: string, options: object, progressCallback: Callback): string;
+	/**
+	 * Tags: Yields
+	 */
+	GenerateAvatarPreviewAsync(this: AvatarCreationService, player: Player, textPrompt: string, options: object, progressCallback: Callback): string;
 	/**
 	 * Tags: Yields
 	 */
@@ -15930,6 +15938,21 @@ interface GuiService extends Instance {
 	readonly MenuOpened: RBXScriptSignal<() => void>;
 }
 
+interface HapticEffect extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_HapticEffect: unique symbol;
+	Looped: boolean;
+	Type: Enum.HapticEffectType;
+	Play(this: HapticEffect): void;
+	Stop(this: HapticEffect): void;
+}
+
 /** The _Xbox One_ controller and some other USB gamepad controllers have motors built in to provide haptic feedback. Adding rumbles and vibrations can greatly enhance a game's experience and provide subtle feedback that is hard to convey through visuals or audio. */
 interface HapticService extends Instance {
 	/**
@@ -26852,7 +26875,7 @@ interface WorldRoot extends Model {
 		direction: Vector3,
 		raycastParams?: RaycastParams,
 	): RaycastResult | undefined;
-	Shapecast(this: WorldRoot, part: BasePart, direction: Vector3, params?: RaycastParams): RaycastResult;
+	Shapecast(this: WorldRoot, part: BasePart, direction: Vector3, params?: RaycastParams): RaycastResult | undefined;
 	Spherecast(
 		this: WorldRoot,
 		position: Vector3,
@@ -30024,17 +30047,6 @@ interface ProcessInstancePhysicsService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ProcessInstancePhysicsService: unique symbol;
-}
-
-interface ProjectFolderService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ProjectFolderService: unique symbol;
 }
 
 /** The ProximityPrompt is an object that allows developers to prompt users to interact with an object in the 3D world, such as opening a door or picking up an item.
@@ -38405,6 +38417,7 @@ interface VRService extends Instance {
 	readonly _nominal_VRService: unique symbol;
 	AutomaticScaling: Enum.VRScaling;
 	AvatarGestures: boolean;
+	ControllerModels: Enum.VRControllerModelMode;
 	FadeOutViewOnCollision: boolean;
 	/**
 	 * The GuiInputUserCFrame property describes what [UserCFrame](https://developer.roblox.com/en-us/api-reference/enum/UserCFrame) is responsible for input in VR. For instance, if a VR headset is responsible, the value of this property will be UserCFrame.Head.
@@ -38416,6 +38429,7 @@ interface VRService extends Instance {
 	 * Tags: NotReplicated
 	 */
 	GuiInputUserCFrame: Enum.UserCFrame;
+	LaserPointer: Enum.VRLaserPointerMode;
 	/**
 	 * Tags: NotReplicated
 	 */
