@@ -160,6 +160,19 @@ interface BadgeService extends Instance {
 	GetBadgeInfoAsync(this: BadgeService, badgeId: number): BadgeInfo;
 	/** @server */
 	UserHasBadgeAsync(this: BadgeService, userId: number, badgeId: number): boolean;
+	/**
+	 * Checks a list of badge IDs against a [`UserId`](https://create.roblox.com/docs/reference/engine/classes/Player#UserId) and returns a list of badge IDs that the player owns.
+	 *
+	 * This method supports batches of up to 10 badges. Use [`BadgeService:UserHasBadgeAsync()`](https://create.roblox.com/docs/reference/engine/classes/BadgeService#UserHasBadgeAsync) for single badge lookups.
+	 *
+	 * Rate limit: **10 + 5 * [number of players] per minute** in each server.
+	 *
+	 * Any set of badges for any experience can be queried, no matter who created the badges or which experiences they are for. Any [`UserId`](https://create.roblox.com/docs/reference/engine/classes/Player#UserId) can be used in a [`Script`](https://create.roblox.com/docs/reference/engine/classes/Script), but in a [`LocalScript`](https://create.roblox.com/docs/reference/engine/classes/LocalScript), only the [`UserId`](https://create.roblox.com/docs/reference/engine/classes/Player#UserId) of the local user whose client is running the script can be used.
+	 *
+	 * @param userId The [`UserId`](https://create.roblox.com/docs/reference/engine/classes/Player#UserId) of the player to check for ownership of the specified badges.
+	 * @param badgeIds The list of IDs of the badges to check ownership of. Maximum length of 10.
+	 */
+	CheckUserBadgesAsync(this: BadgeService, userId: number, badgeIds: Array<number>): Array<unknown>;
 }
 
 interface BasePart extends PVInstance {
