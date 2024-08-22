@@ -3068,7 +3068,7 @@ interface VoxelChannels {
 	LiquidOccupancy: number;
 }
 
-interface SubscriptionProductInfoAsync {
+interface SubscriptionInfo {
 	/**
 	 * The name of the subscription product.
 	 */
@@ -3119,7 +3119,7 @@ interface UserSubscriptionDetails {
 	/**
 	 * Table containing the details of the subscription expiration. This field will be `nil` if the subscription is not in the [Expired](https://create.roblox.com/docs/reference/engine/enums/SubscriptionState#Expired) state. If populated, the table contains a ExpirationReason key of type [Enum.SubscriptionExpirationReason](https://create.roblox.com/docs/reference/engine/enums/SubscriptionExpirationReason) describing why the subscription is expired.
 	 */
-	ExpirationDetails: { ExpirationReason: Enum.SubscriptionExpirationReason } | undefined;
+	ExpirationDetails: ExpirationDetails | undefined;
 }
 
 interface UserSubscriptionPaymentHistory {
@@ -3146,4 +3146,8 @@ interface UserSubscriptionStatus {
 	 * True if the user is set to renew this subscription after the current subscription period ends.
 	 */
 	IsRenewing: boolean;
+}
+
+interface ExpirationDetails {
+	ExpirationReason: Enum.SubscriptionExpirationReason;
 }
