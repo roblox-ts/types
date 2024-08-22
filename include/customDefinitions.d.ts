@@ -676,7 +676,7 @@ interface MarketplaceService extends Instance {
 	}>;
 	GetSubscriptionProductInfoAsync(this: MarketplaceService, subscriptionId: string): SubscriptionProductInfoAsync
 	GetUserSubscriptionDetailsAsync(this: MarketplaceService, user: Player, subscriptionId: string): UserSubscriptionDetails
-	GetUserSubscriptionPaymentHistoryAsync(this: MarketplaceService, user: Player, subscriptionId: string): UserSubscriptionPaymentHistory
+	GetUserSubscriptionPaymentHistoryAsync(this: MarketplaceService, user: Player, subscriptionId: string): Array<UserSubscriptionPaymentHistory>
 	GetUserSubscriptionStatusAsync(this: MarketplaceService, user: Player, subscriptionId: string): UserSubscriptionStatus
 }
 
