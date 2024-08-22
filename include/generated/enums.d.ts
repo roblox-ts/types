@@ -14566,9 +14566,17 @@ declare namespace Enum {
 
 		export const PS5: PS5;
 
+		export interface MetaOS extends globalThis.EnumItem {
+			Name: "MetaOS";
+			Value: 20;
+			EnumType: typeof globalThis.Enum.Platform;
+		}
+
+		export const MetaOS: MetaOS;
+
 		export interface None extends globalThis.EnumItem {
 			Name: "None";
-			Value: 20;
+			Value: 21;
 			EnumType: typeof globalThis.Enum.Platform;
 		}
 
@@ -14576,7 +14584,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Platform>;
 	}
-	export type Platform = Platform.Windows | Platform.OSX | Platform.IOS | Platform.Android | Platform.XBoxOne | Platform.PS4 | Platform.PS3 | Platform.XBox360 | Platform.WiiU | Platform.NX | Platform.Ouya | Platform.AndroidTV | Platform.Chromecast | Platform.Linux | Platform.SteamOS | Platform.WebOS | Platform.DOS | Platform.BeOS | Platform.UWP | Platform.PS5 | Platform.None;
+	export type Platform = Platform.Windows | Platform.OSX | Platform.IOS | Platform.Android | Platform.XBoxOne | Platform.PS4 | Platform.PS3 | Platform.XBox360 | Platform.WiiU | Platform.NX | Platform.Ouya | Platform.AndroidTV | Platform.Chromecast | Platform.Linux | Platform.SteamOS | Platform.WebOS | Platform.DOS | Platform.BeOS | Platform.UWP | Platform.PS5 | Platform.MetaOS | Platform.None;
 
 	export namespace PlaybackState {
 		export interface Begin extends globalThis.EnumItem {
@@ -21813,6 +21821,51 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRControllerModelMode>;
 	}
 	export type VRControllerModelMode = VRControllerModelMode.Disabled | VRControllerModelMode.Transparent;
+
+	export namespace VRDeviceType {
+		export interface Unknown extends globalThis.EnumItem {
+			Name: "Unknown";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.VRDeviceType;
+		}
+
+		export const Unknown: Unknown;
+
+		export interface OculusRift extends globalThis.EnumItem {
+			Name: "OculusRift";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.VRDeviceType;
+		}
+
+		export const OculusRift: OculusRift;
+
+		export interface HTCVive extends globalThis.EnumItem {
+			Name: "HTCVive";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.VRDeviceType;
+		}
+
+		export const HTCVive: HTCVive;
+
+		export interface ValveIndex extends globalThis.EnumItem {
+			Name: "ValveIndex";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.VRDeviceType;
+		}
+
+		export const ValveIndex: ValveIndex;
+
+		export interface OculusQuest extends globalThis.EnumItem {
+			Name: "OculusQuest";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.VRDeviceType;
+		}
+
+		export const OculusQuest: OculusQuest;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRDeviceType>;
+	}
+	export type VRDeviceType = VRDeviceType.Unknown | VRDeviceType.OculusRift | VRDeviceType.HTCVive | VRDeviceType.ValveIndex | VRDeviceType.OculusQuest;
 
 	export namespace VRLaserPointerMode {
 		export interface Disabled extends globalThis.EnumItem {
