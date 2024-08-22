@@ -3115,7 +3115,11 @@ interface UserSubscriptionDetails {
 	/**
 	 * Renewal time for this current subscription. May be in the past if the subscription is in [SubscribedRenewalPaymentPending](https://create.roblox.com/docs/reference/engine/enums/SubscriptionState#SubscribedRenewalPaymentPending) state. This field is will be `nil` if the subscription will not renew, is [Expired](https://create.roblox.com/docs/reference/engine/enums/SubscriptionState#Expired), or the user never subscribed.
 	 */
-	NextRenewTime: DateTime;
+	NextRenewTime: DateTime | undefined;
+	/**
+	 * When this subscription expires. This field will be nil if the subscription is not cancelled or the user never subscribed.
+	 */
+	ExpireTime: DateTime | undefined;
 	/**
 	 * Table containing the details of the subscription expiration. This field will be `nil` if the subscription is not in the [Expired](https://create.roblox.com/docs/reference/engine/enums/SubscriptionState#Expired) state. If populated, the table contains a ExpirationReason key of type [Enum.SubscriptionExpirationReason](https://create.roblox.com/docs/reference/engine/enums/SubscriptionExpirationReason) describing why the subscription is expired.
 	 */
