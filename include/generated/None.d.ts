@@ -23063,19 +23063,31 @@ interface MarketplaceService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	GetSubscriptionProductInfoAsync(this: MarketplaceService, subscriptionId: string): object;
+	GetSubscriptionProductInfoAsync(this: MarketplaceService, subscriptionId: string): SubscriptionInfo;
 	/**
 	 * Tags: Yields
 	 */
-	GetUserSubscriptionDetailsAsync(this: MarketplaceService, user: Player, subscriptionId: string): object;
+	GetUserSubscriptionDetailsAsync(
+		this: MarketplaceService,
+		user: Player,
+		subscriptionId: string,
+	): UserSubscriptionDetails;
 	/**
 	 * Tags: Yields
 	 */
-	GetUserSubscriptionPaymentHistoryAsync(this: MarketplaceService, user: Player, subscriptionId: string): unknown;
+	GetUserSubscriptionPaymentHistoryAsync(
+		this: MarketplaceService,
+		user: Player,
+		subscriptionId: string,
+	): Array<UserSubscriptionPaymentHistory>;
 	/**
 	 * Tags: Yields
 	 */
-	GetUserSubscriptionStatusAsync(this: MarketplaceService, user: Player, subscriptionId: string): object;
+	GetUserSubscriptionStatusAsync(
+		this: MarketplaceService,
+		user: Player,
+		subscriptionId: string,
+	): UserSubscriptionStatus;
 	/**
 	 * Returns whether the inventory of given [Player](https://developer.roblox.com/en-us/api-reference/class/Player) contains an asset, given the ID. This method can query for hats, models, sounds, etc. This function takes a small amount of time to send a request the Roblox website.
 	 * 
