@@ -3122,7 +3122,7 @@ interface UserSubscriptionDetails {
 	ExpirationDetails: { ExpirationReason: Enum.SubscriptionExpirationReason } | undefined;
 }
 
-type UserSubscriptionPaymentHistory = {
+interface UserSubscriptionPaymentHistory {
 	/**
 	 * [DateTime](https://create.roblox.com/docs/reference/engine/datatypes/DateTime) at the start of this particular subscription period.
 	 */
