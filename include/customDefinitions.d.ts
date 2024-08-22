@@ -674,6 +674,22 @@ interface MarketplaceService extends Instance {
 		IconImageAssetId: number;
 		Name: string;
 	}>;
+	GetSubscriptionProductInfoAsync(this: MarketplaceService, subscriptionId: string): SubscriptionInfo;
+	GetUserSubscriptionDetailsAsync(
+		this: MarketplaceService,
+		user: Player,
+		subscriptionId: string,
+	): UserSubscriptionDetails;
+	GetUserSubscriptionPaymentHistoryAsync(
+		this: MarketplaceService,
+		user: Player,
+		subscriptionId: string,
+	): Array<UserSubscriptionPaymentHistory>;
+	GetUserSubscriptionStatusAsync(
+		this: MarketplaceService,
+		user: Player,
+		subscriptionId: string,
+	): UserSubscriptionStatus;
 }
 
 /** @server */
