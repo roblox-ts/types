@@ -328,6 +328,60 @@ interface DataStoreService extends Instance {
 
 interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {}
 
+interface DataStoreKeyInfo extends Instance {
+	/**
+	 * This property indicates the date and time the object was created, formatted as the number of milliseconds since epoch.
+	 *
+	 * See Also
+	 * --------
+	 *
+	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
+	 *
+	 * Tags: NotReplicated
+	 */
+	readonly CreatedTime: number;
+	/**
+	 * This property indicates the date and time the object was last updated, formatted as the number of milliseconds since epoch.
+	 *
+	 * See Also
+	 * --------
+	 *
+	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
+	 *
+	 * Tags: NotReplicated
+	 */
+	readonly UpdatedTime: number;
+	/**
+	 * This property uniquely identifies the version of the object. It can be passed to [DataStore:GetVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/GetVersionAsync) or [DataStore:RemoveVersionAsync](https://developer.roblox.com/en-us/api-reference/function/DataStore/RemoveVersionAsync) to get or remove the version respectively.
+	 *
+	 * See Also
+	 * --------
+	 *
+	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
+	 *
+	 * Tags: NotReplicated
+	 */
+	readonly Version: string;
+	/**
+	 * This function returns the metadata associated with the latest version of the object.
+	 *
+	 * See Also
+	 * --------
+	 *
+	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
+	 */
+	GetMetadata(this: DataStoreKeyInfo): object;
+	/**
+	 * This function returns an array of [UserIds](https://developer.roblox.com/en-us/api-reference/property/Player/UserId) tagged with the object. This information is useful for adhering to [GDPR](https://developer.roblox.com/articles/managing-personal-information) policies.
+	 *
+	 * See Also
+	 * --------
+	 *
+	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
+	 */
+	GetUserIds(this: DataStoreKeyInfo): Array<number>;
+}
+
 interface Dialog extends Instance {
 	readonly DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
 	GetCurrentPlayers(this: Dialog): Array<Player>;
