@@ -4301,14 +4301,10 @@ interface TestService extends Instance {
 	ExecuteWithStudioRun: boolean;
 	/**
 	 * Sets whether or not the physics engine should be throttled to 30 FPS while the test is being ran.
-	 * 
-	 * Tags: Hidden, NotReplicated
 	 */
 	Is30FpsThrottleEnabled: boolean;
 	/**
 	 * Sets whether or not the physics environment should be throttled while running this test.
-	 * 
-	 * Tags: Hidden, NotReplicated
 	 */
 	IsPhysicsEnvironmentalThrottled: boolean;
 	/**
