@@ -28,6 +28,8 @@ export class EnumGenerator extends Generator {
 		this.write(`interface Enum {`);
 		this.pushIndent();
 		this.write(`GetEnumItems(this: Enum): Array<EnumItem>;`);
+		this.write(`FromName(this: Enum, name: string): EnumItem | undefined;`);
+		this.write(`FromValue(this: Enum, value: number): EnumItem | undefined;`);
 		this.popIndent();
 		this.write(`}`);
 		this.write(``);
@@ -71,6 +73,12 @@ export class EnumGenerator extends Generator {
 				this.write(``);
 			}
 			this.write(`export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.${enumTypeName}>;`);
+			this.write(
+				`export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.${enumTypeName} | undefined;`,
+			);
+			this.write(
+				`export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.${enumTypeName} | undefined;`,
+			);
 			this.popIndent();
 			this.write(`}`);
 			const enumUnion =
