@@ -278,7 +278,12 @@ interface ContextActionService extends Instance {
 
 interface DataModel extends ServiceProvider<Services> {
 	readonly Workspace: Workspace;
-	BindToClose(this: DataModel, callback: () => void): void;
+	/**
+	 * Binds a function to be called before the server shuts down. If the bound function accepts a parameter, it passes Enum.CloseReason specifying the reason for the server shutdown.
+	 *
+	 * You can bind multiple functions by calling BindToClose() repeatedly. Bound functions are called in parallel and run at the same time.
+	 */
+	BindToClose(this: DataModel, callback: (reason: Enum.CloseReason) => void): void;
 }
 
 interface DataStore extends GlobalDataStore {
