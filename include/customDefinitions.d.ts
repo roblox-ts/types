@@ -278,7 +278,7 @@ interface ContextActionService extends Instance {
 
 interface DataModel extends ServiceProvider<Services> {
 	readonly Workspace: Workspace;
-	BindToClose(this: DataModel, callback: () => void): void;
+	BindToClose(this: DataModel, callback: (reason: Enum.CloseReason) => void): void;
 }
 
 interface DataStore extends GlobalDataStore {

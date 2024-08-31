@@ -31585,7 +31585,7 @@ interface DataModel extends ServiceProvider<Services> {
 	 * 
 	 * *   [PluginGui:BindToClose](https://developer.roblox.com/en-us/api-reference/function/PluginGui/BindToClose), which is used to bind a function to a [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui) close button and should not be confused with this function
 	 */
-	BindToClose(this: DataModel, callback: () => void): void;
+	BindToClose(this: DataModel, callback: (reason: Enum.CloseReason) => void): void;
 	/**
 	 * This function will always return a blank string. It was originally used to set the message displayed on screen while the game was loading.
 	 * 
