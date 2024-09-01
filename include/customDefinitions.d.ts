@@ -328,6 +328,10 @@ interface DataStoreService extends Instance {
 
 interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {}
 
+interface DataStoreKeyInfo extends Instance {
+	GetUserIds(this: DataStoreKeyInfo): Array<number>;
+}
+
 interface Dialog extends Instance {
 	readonly DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;
 	GetCurrentPlayers(this: Dialog): Array<Player>;
