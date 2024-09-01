@@ -10432,7 +10432,7 @@ interface DataStoreKeyInfo extends Instance {
 	 * 
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 */
-	GetUserIds(this: DataStoreKeyInfo): unknown;
+	GetUserIds(this: DataStoreKeyInfo): Array<number>;
 }
 
 /** An instance describing version information for a key, including the version string, created time, and whether it has been marked as deleted.
