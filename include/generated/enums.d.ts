@@ -3393,17 +3393,17 @@ declare namespace Enum {
 
 		export const Disabled: Disabled;
 
-		export interface Experimental extends globalThis.EnumItem {
-			Name: "Experimental";
+		export interface Enabled extends globalThis.EnumItem {
+			Name: "Enabled";
 			Value: 2;
 			EnumType: typeof globalThis.Enum.CSGAsyncDynamicCollision;
 		}
 
-		export const Experimental: Experimental;
+		export const Enabled: Enabled;
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CSGAsyncDynamicCollision>;
 	}
-	export type CSGAsyncDynamicCollision = CSGAsyncDynamicCollision.Default | CSGAsyncDynamicCollision.Disabled | CSGAsyncDynamicCollision.Experimental;
+	export type CSGAsyncDynamicCollision = CSGAsyncDynamicCollision.Default | CSGAsyncDynamicCollision.Disabled | CSGAsyncDynamicCollision.Enabled;
 
 	export namespace CageType {
 		export interface Inner extends globalThis.EnumItem {
@@ -8569,6 +8569,35 @@ declare namespace Enum {
 	}
 	export type GraphicsMode = GraphicsMode.Automatic | GraphicsMode.Direct3D11 | GraphicsMode.OpenGL | GraphicsMode.Metal | GraphicsMode.Vulkan | GraphicsMode.NoGraphics;
 
+	export namespace GraphicsOptimizationMode {
+		export interface Performance extends globalThis.EnumItem {
+			Name: "Performance";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.GraphicsOptimizationMode;
+		}
+
+		export const Performance: Performance;
+
+		export interface Balanced extends globalThis.EnumItem {
+			Name: "Balanced";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.GraphicsOptimizationMode;
+		}
+
+		export const Balanced: Balanced;
+
+		export interface Quality extends globalThis.EnumItem {
+			Name: "Quality";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.GraphicsOptimizationMode;
+		}
+
+		export const Quality: Quality;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GraphicsOptimizationMode>;
+	}
+	export type GraphicsOptimizationMode = GraphicsOptimizationMode.Performance | GraphicsOptimizationMode.Balanced | GraphicsOptimizationMode.Quality;
+
 	export namespace GuiState {
 		export interface Idle extends globalThis.EnumItem {
 			Name: "Idle";
@@ -13721,6 +13750,27 @@ declare namespace Enum {
 	}
 	export type NormalId = NormalId.Right | NormalId.Top | NormalId.Back | NormalId.Left | NormalId.Bottom | NormalId.Front;
 
+	export namespace NotificationButtonType {
+		export interface Primary extends globalThis.EnumItem {
+			Name: "Primary";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.NotificationButtonType;
+		}
+
+		export const Primary: Primary;
+
+		export interface Secondary extends globalThis.EnumItem {
+			Name: "Secondary";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.NotificationButtonType;
+		}
+
+		export const Secondary: Secondary;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.NotificationButtonType>;
+	}
+	export type NotificationButtonType = NotificationButtonType.Primary | NotificationButtonType.Secondary;
+
 	export namespace OperationType {
 		export interface Null extends globalThis.EnumItem {
 			Name: "Null";
@@ -14301,6 +14351,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PathWaypointAction>;
 	}
 	export type PathWaypointAction = PathWaypointAction.Walk | PathWaypointAction.Jump | PathWaypointAction.Custom;
+
+	export namespace PathfindingUseImprovedSearch {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.PathfindingUseImprovedSearch;
+		}
+
+		export const Default: Default;
+
+		export interface Disabled extends globalThis.EnumItem {
+			Name: "Disabled";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.PathfindingUseImprovedSearch;
+		}
+
+		export const Disabled: Disabled;
+
+		export interface Enabled extends globalThis.EnumItem {
+			Name: "Enabled";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.PathfindingUseImprovedSearch;
+		}
+
+		export const Enabled: Enabled;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PathfindingUseImprovedSearch>;
+	}
+	export type PathfindingUseImprovedSearch = PathfindingUseImprovedSearch.Default | PathfindingUseImprovedSearch.Disabled | PathfindingUseImprovedSearch.Enabled;
 
 	export namespace PermissionLevelShown {
 		export interface Game extends globalThis.EnumItem {

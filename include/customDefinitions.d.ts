@@ -278,7 +278,7 @@ interface ContextActionService extends Instance {
 
 interface DataModel extends ServiceProvider<Services> {
 	readonly Workspace: Workspace;
-	BindToClose(this: DataModel, callback: () => void): void;
+	BindToClose(this: DataModel, callback: (reason: Enum.CloseReason) => void): void;
 }
 
 interface DataStore extends GlobalDataStore {
@@ -327,6 +327,10 @@ interface DataStoreService extends Instance {
 }
 
 interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {}
+
+interface DataStoreKeyInfo extends Instance {
+	GetUserIds(this: DataStoreKeyInfo): Array<number>;
+}
 
 interface Dialog extends Instance {
 	readonly DialogChoiceSelected: RBXScriptSignal<(player: Player, dialogChoice: Dialog) => void>;

@@ -148,6 +148,7 @@ interface Services {
 	StarterGui: StarterGui;
 	StarterPack: StarterPack;
 	StarterPlayer: StarterPlayer;
+	StartPageService: StartPageService;
 	StartupMessageService: StartupMessageService;
 	Stats: Stats;
 	StreamingService: StreamingService;
@@ -3190,6 +3191,10 @@ interface AvatarCreationService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AvatarCreationService: unique symbol;
+	/**
+	 * Tags: CustomLuaState
+	 */
+	GetValidationRules(this: AvatarCreationService): object;
 	SendAnalyticsEvent(this: AvatarCreationService, eventName: string, params: object): void;
 	/**
 	 * Tags: Yields
@@ -7812,11 +7817,13 @@ interface CommerceService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_CommerceService: unique symbol;
+	PromptCommerceProductPurchase(this: CommerceService, user: Player, commerceProductId: number): void;
 	PromptRealWorldCommerceBrowser(this: CommerceService, player: Player, url: string): void;
 	/**
 	 * Tags: Yields
 	 */
 	UserEligibleForRealWorldCommerceAsync(this: CommerceService): boolean;
+	readonly PromptCommerceProductPurchaseFinished: RBXScriptSignal<(user: Player, productId: number) => void>;
 }
 
 /** The Configuration object is a container object that is designed to hold value objects to make values used in [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool)s or any model using [Script](https://developer.roblox.com/en-us/api-reference/class/Script)s more accessible.
@@ -10009,29 +10016,92 @@ interface EditableMesh extends DataModelMesh {
 	 */
 	readonly _nominal_EditableMesh: unique symbol;
 	SkinningEnabled: boolean;
+	AddColor(this: EditableMesh, color: Color3, alpha: number): number;
+	AddNormal(this: EditableMesh, normal: Vector3 | undefined): number;
 	AddTriangle(this: EditableMesh, vertexId0: number, vertexId1: number, vertexId2: number): number;
+	AddUV(this: EditableMesh, uv: Vector2): number;
 	AddVertex(this: EditableMesh, p: Vector3): number;
 	FindClosestPointOnSurface(this: EditableMesh, point: Vector3): LuaTuple<[number, Vector3, Vector3]>;
 	FindClosestVertex(this: EditableMesh, toThisPoint: Vector3): number;
 	FindVerticesWithinSphere(this: EditableMesh, center: Vector3, radius: number): Array<number>;
+	GetAdjacentFaces(this: EditableMesh, faceId: number): unknown;
+	/**
+	 * @deprecated
+	 */
 	GetAdjacentTriangles(this: EditableMesh, triangleId: number): Array<number>;
 	GetAdjacentVertices(this: EditableMesh, vertexId: number): Array<number>;
+	GetColor(this: EditableMesh, colorId: number): Color3 | undefined;
+	GetColorAlpha(this: EditableMesh, colorId: number): number | undefined;
+	GetColors(this: EditableMesh): unknown;
+	GetFaceColors(this: EditableMesh, faceId: number): unknown;
+	GetFaceNormals(this: EditableMesh, faceId: number): unknown;
+	GetFaceUVs(this: EditableMesh, faceId: number): unknown;
+	GetFaceVertices(this: EditableMesh, faceId: number): unknown;
+	GetFaces(this: EditableMesh): unknown;
+	GetFacesWithAttribute(this: EditableMesh, id: number): unknown;
+	GetNormal(this: EditableMesh, normalId: number): Vector3 | undefined;
+	GetNormals(this: EditableMesh): unknown;
 	GetPosition(this: EditableMesh, vertexId: number): Vector3;
+	/**
+	 * @deprecated
+	 */
 	GetTriangleVertices(this: EditableMesh, triangleId: number): LuaTuple<[number, number, number]>;
+	/**
+	 * @deprecated
+	 */
 	GetTriangles(this: EditableMesh): Array<number>;
-	GetUV(this: EditableMesh, vertexId: number): Vector2;
+	GetUV(this: EditableMesh, uvId: number): Vector2 | undefined;
+	GetUVs(this: EditableMesh): unknown;
+	/**
+	 * @deprecated
+	 */
 	GetVertexColor(this: EditableMesh, vertexId: number): Color3;
+	/**
+	 * @deprecated
+	 */
 	GetVertexColorAlpha(this: EditableMesh, vertexId: number): number;
+	/**
+	 * @deprecated
+	 */
 	GetVertexNormal(this: EditableMesh, vertexId: number): Vector3;
 	GetVertices(this: EditableMesh): Array<number>;
+	GetVerticesWithAttribute(this: EditableMesh, id: number): unknown;
+	IdDebugString(this: EditableMesh, id: number): string;
+	MergeVertices(this: EditableMesh, mergeTolerance: number): object;
 	RaycastLocal(this: EditableMesh, origin: Vector3, direction: Vector3): LuaTuple<[number, Vector3, Vector3]>;
+	RemoveFace(this: EditableMesh, faceId: number): void;
+	/**
+	 * @deprecated
+	 */
 	RemoveTriangle(this: EditableMesh, triangleId: number): void;
+	RemoveUnused(this: EditableMesh): unknown;
+	/**
+	 * @deprecated
+	 */
 	RemoveVertex(this: EditableMesh, vertexId: number): void;
+	ResetNormal(this: EditableMesh, normalId: number): void;
+	SetColor(this: EditableMesh, colorId: number, color: Color3): void;
+	SetColorAlpha(this: EditableMesh, colorId: number, alpha: number): void;
+	SetFaceColors(this: EditableMesh, faceId: number, ids: Array<any>): void;
+	SetFaceNormals(this: EditableMesh, faceId: number, ids: Array<any>): void;
+	SetFaceUVs(this: EditableMesh, faceId: number, ids: Array<any>): void;
+	SetFaceVertices(this: EditableMesh, faceId: number, ids: Array<any>): void;
+	SetNormal(this: EditableMesh, normalId: number, normal: Vector3): void;
 	SetPosition(this: EditableMesh, vertexId: number, p: Vector3): void;
-	SetUV(this: EditableMesh, vertexId: number, uv: Vector2): void;
+	SetUV(this: EditableMesh, uvId: number, uv: Vector2): void;
+	/**
+	 * @deprecated
+	 */
 	SetVertexColor(this: EditableMesh, vertexId: number, color: Color3): void;
+	/**
+	 * @deprecated
+	 */
 	SetVertexColorAlpha(this: EditableMesh, vertexId: number, alpha: number): void;
+	/**
+	 * @deprecated
+	 */
 	SetVertexNormal(this: EditableMesh, vertexId: number, vnormal: Vector3): void;
+	Triangulate(this: EditableMesh): void;
 	/**
 	 * Tags: Yields
 	 */
@@ -10362,7 +10432,7 @@ interface DataStoreKeyInfo extends Instance {
 	 * 
 	 * *   [Data Stores](https://developer.roblox.com/en-us/articles/data-store), an in-depth guide on data structure, management, error handling, etc.
 	 */
-	GetUserIds(this: DataStoreKeyInfo): unknown;
+	GetUserIds(this: DataStoreKeyInfo): Array<number>;
 }
 
 /** An instance describing version information for a key, including the version string, created time, and whether it has been marked as deleted.
@@ -10961,12 +11031,20 @@ interface EditableImage extends Instance {
 	 * Tags: CustomLuaState
 	 */
 	ReadPixels(this: EditableImage, position: Vector2, size: Vector2): Array<number>;
+	/**
+	 * Tags: CustomLuaState
+	 */
+	ReadPixelsBuffer(this: EditableImage, position: Vector2, size: Vector2): buffer;
 	Resize(this: EditableImage, size: Vector2): void;
 	Rotate(this: EditableImage, degrees: number, changeSize: boolean): void;
 	/**
 	 * Tags: CustomLuaState
 	 */
 	WritePixels(this: EditableImage, position: Vector2, size: Vector2, pixels: Array<any>): void;
+	/**
+	 * Tags: CustomLuaState
+	 */
+	WritePixelsBuffer(this: EditableImage, position: Vector2, size: Vector2, buffer: buffer): void;
 }
 
 interface RobloxEditableImage extends EditableImage {
@@ -31507,7 +31585,7 @@ interface DataModel extends ServiceProvider<Services> {
 	 * 
 	 * *   [PluginGui:BindToClose](https://developer.roblox.com/en-us/api-reference/function/PluginGui/BindToClose), which is used to bind a function to a [PluginGui](https://developer.roblox.com/en-us/api-reference/class/PluginGui) close button and should not be confused with this function
 	 */
-	BindToClose(this: DataModel, callback: () => void): void;
+	BindToClose(this: DataModel, callback: (reason: Enum.CloseReason) => void): void;
 	/**
 	 * This function will always return a blank string. It was originally used to set the message displayed on screen while the game was loading.
 	 * 
@@ -33038,6 +33116,17 @@ interface StackFrame extends Instance {
 	readonly _nominal_StackFrame: unique symbol;
 }
 
+interface StartPageService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_StartPageService: unique symbol;
+}
+
 /** StarterGear is a container that is automatically inserted into each [Player](https://developer.roblox.com/en-us/api-reference/class/Player) when the player joins the game. When a player spawns, the contents of that player's StarterGear is copied into the player's [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack). Additionally, when a player connects to a game that permits gear, all of the appropriate gear [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool) objects that the player owns are inserted into that player's StarterGear.
  * 
  * Unlike [StarterPack](https://developer.roblox.com/en-us/api-reference/class/StarterPack), StarterGear is not a service but rather a child of each [Player](https://developer.roblox.com/en-us/api-reference/class/Player) object – this means that its contents are player-specific so that each player can have different [Tool](https://developer.roblox.com/en-us/api-reference/class/Tool)s within their [StarterGear](https://developer.roblox.com/en-us/api-reference/class/StarterGear). It is not replicated to any client, including the owning player.
@@ -33652,6 +33741,7 @@ interface StyleRule extends StyleBase {
 	 * @deprecated
 	 */
 	readonly _nominal_StyleRule: unique symbol;
+	Priority: number;
 	Selector: string;
 	/**
 	 * Tags: NotReplicated
