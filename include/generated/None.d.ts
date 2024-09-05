@@ -481,10 +481,6 @@ interface Instances extends Services, CreatableInstances {
 	AssetPatchSettings: AssetPatchSettings;
 	AssetSoundEffect: AssetSoundEffect;
 	AudioPages: AudioPages;
-	Avatar2DGenerationJob: Avatar2DGenerationJob;
-	Avatar3DGenerationJob: Avatar3DGenerationJob;
-	AvatarGenerationJob: AvatarGenerationJob;
-	AvatarGenerationSession: AvatarGenerationSession;
 	BackpackItem: BackpackItem;
 	BanHistoryPages: BanHistoryPages;
 	BaseImportData: BaseImportData;
@@ -1040,6 +1036,7 @@ interface Instance {
 		this: T,
 		propertyName: InstancePropertyNames<T>,
 	): RBXScriptSignal<() => void>;
+	GetStyled(this: Instance, name: string): unknown;
 	GetTags(this: Instance): Array<string>;
 	HasTag(this: Instance, tag: string): boolean;
 	/**
@@ -3072,7 +3069,15 @@ interface AudioListener extends Instance {
 	readonly _nominal_AudioListener: unique symbol;
 	AudioInteractionGroup: string;
 	GetConnectedWires(this: AudioListener, pin: string): Array<Instance>;
+	/**
+	 * Tags: CustomLuaState
+	 */
+	GetDistanceAttenuation(this: AudioListener): object;
 	GetInteractingEmitters(this: AudioListener): Array<Instance>;
+	/**
+	 * Tags: CustomLuaState
+	 */
+	SetDistanceAttenuation(this: AudioListener, curve: object): void;
 }
 
 interface AudioPitchShifter extends Instance {
@@ -3199,7 +3204,7 @@ interface AvatarCreationService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	CreateAvatarGenerationSessionAsync(this: AvatarCreationService, player: Player): AvatarGenerationSession;
+	GenerateAvatarAsync(this: AvatarCreationService, sessionId: string, previewId: string): string;
 	/**
 	 * Tags: Yields
 	 */
@@ -3211,7 +3216,15 @@ interface AvatarCreationService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
+	GenerateAvatarPreviewAsync2(this: AvatarCreationService, sessionId: string, fileId: string, textPrompt: string): string;
+	/**
+	 * Tags: Yields
+	 */
 	GetAvatarGenerationConfig(this: AvatarCreationService): object;
+	/**
+	 * Tags: Yields
+	 */
+	LoadAvatarHumanoidDescriptionAsync(this: AvatarCreationService, id: string): HumanoidDescription;
 	/**
 	 * Tags: Yields
 	 */
@@ -3224,6 +3237,10 @@ interface AvatarCreationService extends Instance {
 	 * Tags: Yields
 	 */
 	PromptCreateAvatarAsync(this: AvatarCreationService, player: Player, humanoidDescription: HumanoidDescription): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	RequestAvatarGenerationSessionAsync(this: AvatarCreationService, player: Player, callback: Callback): unknown;
 	/**
 	 * Tags: Yields
 	 */
@@ -3665,67 +3682,6 @@ interface AvatarEditorService extends Instance {
 	 * Fires when the [AvatarEditorService:PromptUpdateOutfit](https://developer.roblox.com/en-us/api-reference/function/AvatarEditorService/PromptUpdateOutfit) operation is completed. It gives a status [enum](https://developer.roblox.com/en-us/api-reference/enum/AvatarPromptResult) indicating whether the prompt succeeded, failed or permission was not granted by the user.
 	 */
 	readonly PromptUpdateOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
-}
-
-interface AvatarGenerationJob extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_AvatarGenerationJob: unique symbol;
-	Error: Enum.AvatarGenerationError;
-	ErrorMessage: string;
-	Progress: number;
-	Status: Enum.AvatarGenerationJobStatus;
-	GetOutput(this: AvatarGenerationJob): object;
-	/**
-	 * Tags: Yields
-	 */
-	Cancel(this: AvatarGenerationJob): void;
-	/**
-	 * Tags: Yields
-	 */
-	Wait(this: AvatarGenerationJob): void;
-}
-
-interface Avatar2DGenerationJob extends AvatarGenerationJob {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_Avatar2DGenerationJob: unique symbol;
-	Result: string;
-}
-
-interface Avatar3DGenerationJob extends AvatarGenerationJob {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_Avatar3DGenerationJob: unique symbol;
-	Result: string;
-}
-
-interface AvatarGenerationSession extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_AvatarGenerationSession: unique symbol;
-	GenerateAvatarModel(this: AvatarGenerationSession, previewJob: Avatar2DGenerationJob, options: object): Avatar3DGenerationJob;
-	GenerateAvatarPreview(this: AvatarGenerationSession, textPrompt: string, options: object): Avatar2DGenerationJob;
 }
 
 interface AvatarImportService extends Instance {
@@ -15900,6 +15856,7 @@ interface GuiService extends Instance {
 	 * *   [GuiService:InspectPlayerFromUserId](https://developer.roblox.com/en-us/api-reference/function/GuiService/InspectPlayerFromUserId), allows the Inspect Menu to appear showing the user that has the given [UserId](https://developer.roblox.com/en-us/api-reference/property/Player/UserId). This is especially useful when you want to inspect players who aren't in the current game
 	 */
 	CloseInspectMenu(this: GuiService): void;
+	DismissNotification(this: GuiService, notificationId: string): boolean;
 	/**
 	 * Returns a boolean indicating whether or not the player Emotes menu is open.
 	 * 
@@ -15975,6 +15932,7 @@ interface GuiService extends Instance {
 	 */
 	RemoveSelectionGroup(this: GuiService, selectionName: string): void;
 	Select(this: GuiService, selectionParent: Instance): void;
+	SendNotification(this: GuiService, notificationInfo: object): string;
 	/**
 	 * Opens or closes the player Emotes menu.
 	 */
@@ -19901,6 +19859,7 @@ interface InsertService extends Instance {
 	 * Returns the most recently uploaded models in the specified category.
 	 * 
 	 * Tags: Yields
+	 * @deprecated
 	 */
 	GetCollection(this: InsertService, categoryId: number): Array<CollectionInfo>;
 	/**
@@ -20026,6 +19985,7 @@ interface InsertService extends Instance {
 	 * The type of set that this set is.
 	 * 
 	 * Tags: Yields
+	 * @deprecated
 	 */
 	GetUserSets(this: InsertService, userId: number): Array<SetInfo>;
 	/**
