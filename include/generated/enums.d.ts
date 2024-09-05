@@ -2689,43 +2689,6 @@ declare namespace Enum {
 	}
 	export type AvatarGenerationError = AvatarGenerationError.None | AvatarGenerationError.Unknown | AvatarGenerationError.DownloadFailed | AvatarGenerationError.Canceled | AvatarGenerationError.Offensive | AvatarGenerationError.Timeout | AvatarGenerationError.JobNotFound;
 
-	export namespace AvatarGenerationJobStatus {
-		export interface NotStarted extends globalThis.EnumItem {
-			Name: "NotStarted";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.AvatarGenerationJobStatus;
-		}
-
-		export const NotStarted: NotStarted;
-
-		export interface InProgress extends globalThis.EnumItem {
-			Name: "InProgress";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.AvatarGenerationJobStatus;
-		}
-
-		export const InProgress: InProgress;
-
-		export interface Completed extends globalThis.EnumItem {
-			Name: "Completed";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.AvatarGenerationJobStatus;
-		}
-
-		export const Completed: Completed;
-
-		export interface Failed extends globalThis.EnumItem {
-			Name: "Failed";
-			Value: 3;
-			EnumType: typeof globalThis.Enum.AvatarGenerationJobStatus;
-		}
-
-		export const Failed: Failed;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarGenerationJobStatus>;
-	}
-	export type AvatarGenerationJobStatus = AvatarGenerationJobStatus.NotStarted | AvatarGenerationJobStatus.InProgress | AvatarGenerationJobStatus.Completed | AvatarGenerationJobStatus.Failed;
-
 	export namespace AvatarItemType {
 		export interface Asset extends globalThis.EnumItem {
 			Name: "Asset";
@@ -9763,6 +9726,27 @@ declare namespace Enum {
 	}
 	export type InputType = InputType.NoInput | InputType.Constant | InputType.Sin;
 
+	export namespace Intent {
+		export interface Realistic extends globalThis.EnumItem {
+			Name: "Realistic";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.Intent;
+		}
+
+		export const Realistic: Realistic;
+
+		export interface Flat extends globalThis.EnumItem {
+			Name: "Flat";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.Intent;
+		}
+
+		export const Flat: Flat;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Intent>;
+	}
+	export type Intent = Intent.Realistic | Intent.Flat;
+
 	export namespace InterpolationThrottlingMode {
 		export interface Default extends globalThis.EnumItem {
 			Name: "Default";
@@ -15429,6 +15413,27 @@ declare namespace Enum {
 	}
 	export type ProximityPromptStyle = ProximityPromptStyle.Default | ProximityPromptStyle.Custom;
 
+	export namespace Quality {
+		export interface Performance extends globalThis.EnumItem {
+			Name: "Performance";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.Quality;
+		}
+
+		export const Performance: Performance;
+
+		export interface Quality extends globalThis.EnumItem {
+			Name: "Quality";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.Quality;
+		}
+
+		export const Quality: Quality;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Quality>;
+	}
+	export type Quality = Quality.Performance | Quality.Quality;
+
 	export namespace QualityLevel {
 		export interface Automatic extends globalThis.EnumItem {
 			Name: "Automatic";
@@ -19818,9 +19823,17 @@ declare namespace Enum {
 
 		export const Legacy: Legacy;
 
+		export interface Unified extends globalThis.EnumItem {
+			Name: "Unified";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.Technology;
+		}
+
+		export const Unified: Unified;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Technology>;
 	}
-	export type Technology = Technology.Voxel | Technology.Compatibility | Technology.ShadowMap | Technology.Future | Technology.Legacy;
+	export type Technology = Technology.Voxel | Technology.Compatibility | Technology.ShadowMap | Technology.Future | Technology.Legacy | Technology.Unified;
 
 	export namespace TeleportMethod {
 		export interface TeleportToSpawnByName extends globalThis.EnumItem {
