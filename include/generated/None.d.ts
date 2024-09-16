@@ -17347,7 +17347,11 @@ interface Humanoid extends Instance {
 	 * *   [Humanoid.Sit](https://developer.roblox.com/en-us/api-reference/property/Humanoid/Sit), which indicates if a Humanoid is currently sitting
 	 * *   [Humanoid.SeatPart](https://developer.roblox.com/en-us/api-reference/property/Humanoid/SeatPart), which indicates the seat a Humanoid is currently sitting in, if any.
 	 */
-	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat | undefined) => void>;
+	readonly Seated: RBXScriptSignal<
+		(
+			...args: [active: true, currentSeatPart: Seat | VehicleSeat] | [active: false, currentSeatPart: undefined]
+		) => void
+	>;
 	/**
 	 * This event fires when the state of the [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) is changed.
 	 * 
