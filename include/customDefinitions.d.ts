@@ -511,7 +511,11 @@ interface HttpService extends Instance {
 
 interface Humanoid extends Instance {
 	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
-	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat | undefined) => void>;
+	readonly Seated: RBXScriptSignal<
+		(
+			...args: [active: true, currentSeatPart: Seat | VehicleSeat] | [active: false, currentSeatPart: undefined]
+		) => void
+	>;
 	readonly Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
 	GetAppliedDescription(this: Humanoid): HumanoidDescription;
 	GetPlayingAnimationTracks(this: Humanoid): Array<AnimationTrack>;
