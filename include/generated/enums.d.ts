@@ -209,6 +209,35 @@ declare namespace Enum {
 	}
 	export type AccessoryType = AccessoryType.Unknown | AccessoryType.Hat | AccessoryType.Hair | AccessoryType.Face | AccessoryType.Neck | AccessoryType.Shoulder | AccessoryType.Front | AccessoryType.Back | AccessoryType.Waist | AccessoryType.TShirt | AccessoryType.Shirt | AccessoryType.Pants | AccessoryType.Jacket | AccessoryType.Sweater | AccessoryType.Shorts | AccessoryType.LeftShoe | AccessoryType.RightShoe | AccessoryType.DressSkirt | AccessoryType.Eyebrow | AccessoryType.Eyelash;
 
+	export namespace ActionOnStopSync {
+		export interface AlwaysAsk extends globalThis.EnumItem {
+			Name: "AlwaysAsk";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.ActionOnStopSync;
+		}
+
+		export const AlwaysAsk: AlwaysAsk;
+
+		export interface KeepLocalFiles extends globalThis.EnumItem {
+			Name: "KeepLocalFiles";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ActionOnStopSync;
+		}
+
+		export const KeepLocalFiles: KeepLocalFiles;
+
+		export interface DeleteLocalFiles extends globalThis.EnumItem {
+			Name: "DeleteLocalFiles";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ActionOnStopSync;
+		}
+
+		export const DeleteLocalFiles: DeleteLocalFiles;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ActionOnStopSync>;
+	}
+	export type ActionOnStopSync = ActionOnStopSync.AlwaysAsk | ActionOnStopSync.KeepLocalFiles | ActionOnStopSync.DeleteLocalFiles;
+
 	export namespace ActionType {
 		export interface Nothing extends globalThis.EnumItem {
 			Name: "Nothing";
@@ -1311,9 +1340,17 @@ declare namespace Enum {
 
 		export const Available: Available;
 
+		export interface AvailableBoundChannel extends globalThis.EnumItem {
+			Name: "AvailableBoundChannel";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.AppUpdateStatus;
+		}
+
+		export const AvailableBoundChannel: AvailableBoundChannel;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AppUpdateStatus>;
 	}
-	export type AppUpdateStatus = AppUpdateStatus.Unknown | AppUpdateStatus.NotSupported | AppUpdateStatus.Failed | AppUpdateStatus.NotAvailable | AppUpdateStatus.Available;
+	export type AppUpdateStatus = AppUpdateStatus.Unknown | AppUpdateStatus.NotSupported | AppUpdateStatus.Failed | AppUpdateStatus.NotAvailable | AppUpdateStatus.Available | AppUpdateStatus.AvailableBoundChannel;
 
 	export namespace ApplyStrokeMode {
 		export interface Contextual extends globalThis.EnumItem {
@@ -5153,6 +5190,14 @@ declare namespace Enum {
 
 		export const ReplacementReady: ReplacementReady;
 
+		export interface ServerEmpty extends globalThis.EnumItem {
+			Name: "ServerEmpty";
+			Value: 302;
+			EnumType: typeof globalThis.Enum.ConnectionError;
+		}
+
+		export const ServerEmpty: ServerEmpty;
+
 		export interface PlacelaunchErrors extends globalThis.EnumItem {
 			Name: "PlacelaunchErrors";
 			Value: 512;
@@ -5355,7 +5400,7 @@ declare namespace Enum {
 
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ConnectionError>;
 	}
-	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+	export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
 
 	export namespace ConnectionState {
 		export interface Connected extends globalThis.EnumItem {
@@ -6916,6 +6961,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EasingStyle>;
 	}
 	export type EasingStyle = EasingStyle.Linear | EasingStyle.Sine | EasingStyle.Back | EasingStyle.Quad | EasingStyle.Quart | EasingStyle.Quint | EasingStyle.Bounce | EasingStyle.Elastic | EasingStyle.Exponential | EasingStyle.Circular | EasingStyle.Cubic;
+
+	export namespace EditableStatus {
+		export interface Unknown extends globalThis.EnumItem {
+			Name: "Unknown";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.EditableStatus;
+		}
+
+		export const Unknown: Unknown;
+
+		export interface Allowed extends globalThis.EnumItem {
+			Name: "Allowed";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.EditableStatus;
+		}
+
+		export const Allowed: Allowed;
+
+		export interface Disallowed extends globalThis.EnumItem {
+			Name: "Disallowed";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.EditableStatus;
+		}
+
+		export const Disallowed: Disallowed;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EditableStatus>;
+	}
+	export type EditableStatus = EditableStatus.Unknown | EditableStatus.Allowed | EditableStatus.Disallowed;
 
 	export namespace ElasticBehavior {
 		export interface WhenScrollable extends globalThis.EnumItem {
@@ -17182,9 +17256,33 @@ declare namespace Enum {
 
 		export const Avatar: Avatar;
 
+		export interface Input extends globalThis.EnumItem {
+			Name: "Input";
+			Value: 17;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const Input: Input;
+
+		export interface Environment extends globalThis.EnumItem {
+			Name: "Environment";
+			Value: 18;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const Environment: Environment;
+
+		export interface RemoteEvent extends globalThis.EnumItem {
+			Name: "RemoteEvent";
+			Value: 19;
+			EnumType: typeof globalThis.Enum.SecurityCapability;
+		}
+
+		export const RemoteEvent: RemoteEvent;
+
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SecurityCapability>;
 	}
-	export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics | SecurityCapability.UI | SecurityCapability.CSG | SecurityCapability.Chat | SecurityCapability.Animation | SecurityCapability.Avatar;
+	export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics | SecurityCapability.UI | SecurityCapability.CSG | SecurityCapability.Chat | SecurityCapability.Animation | SecurityCapability.Avatar | SecurityCapability.Input | SecurityCapability.Environment | SecurityCapability.RemoteEvent;
 
 	export namespace SelectionBehavior {
 		export interface Escape extends globalThis.EnumItem {

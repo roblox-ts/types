@@ -52,6 +52,7 @@ interface Services {
 	DebuggerUIService: DebuggerUIService;
 	DeviceIdService: DeviceIdService;
 	DraggerService: DraggerService;
+	EditableService: EditableService;
 	EventIngestService: EventIngestService;
 	ExampleService: ExampleService;
 	ExperienceAuthService: ExperienceAuthService;
@@ -298,6 +299,7 @@ interface CreatableInstances {
 	FlangeSoundEffect: FlangeSoundEffect;
 	FloatCurve: FloatCurve;
 	FloorWire: FloorWire;
+	FluidForceSensor: FluidForceSensor;
 	Folder: Folder;
 	ForceField: ForceField;
 	Frame: Frame;
@@ -11014,6 +11016,17 @@ interface RobloxEditableImage extends EditableImage {
 	readonly _nominal_RobloxEditableImage: unique symbol;
 }
 
+interface EditableService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_EditableService: unique symbol;
+}
+
 /** A EulerRotation Curve represents a 3D rotation curve, it groups 3 [FloatCurves](https://developer.roblox.com/en-us/api-reference/class/FloatCurve), stored as 3 FloatCurve child instances. The rotation is decomposed in 3 Euler angles channels that can be accessed via [EulerRotationCurve:X](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/X), [EulerRotationCurve:Y](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Y), [EulerRotationCurve:Z](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/Z) methods. The 3 axes can be sampled simultaneously via the method [EulerRotationCurve:GetAnglesAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetAnglesAtTime) returning the 3 Euler angles as a Vector3. Similarly, [EulerRotationCurve:GetRotationAtTime](https://developer.roblox.com/en-us/api-reference/function/EulerRotationCurve/GetRotationAtTime) samples all channels simultaneously but returns a CFrame rotated by X, Y, and Z according to the specified rotation order. */
 interface EulerRotationCurve extends Instance {
 	/**
@@ -15839,10 +15852,12 @@ interface GuiService extends Instance {
 	 * Creates a gui selection group where gamepad gui navigation will only consider selectable gui objects that are within the group (children of selectionParent).
 	 * 
 	 * A use case is you have a menu pop open, but there are other selectable objects on the screen (maybe from previous menus), but you want to the user to only be able to select gui objects in the new menu.
+	 * @deprecated Use `SelectionGroup` instead
 	 */
 	AddSelectionParent(this: GuiService, selectionName: string, selectionParent: GuiObject): void;
 	/**
 	 * Functions similarly to [GuiService:AddSelectionParent](https://developer.roblox.com/en-us/api-reference/function/GuiService/AddSelectionParent), but you can give it a tuple of [GuiObject](https://developer.roblox.com/en-us/api-reference/class/GuiObject) that you want to be contained in the group.
+	 * @deprecated Use `SelectionGroup` instead
 	 */
 	AddSelectionTuple(this: GuiService, selectionName: string, selections: Array<GuiObject>): void;
 	/**
@@ -15929,6 +15944,7 @@ interface GuiService extends Instance {
 	IsTenFootInterface(this: GuiService): boolean;
 	/**
 	 * Removes a group that was created with [GuiService:AddSelectionParent](https://developer.roblox.com/en-us/api-reference/function/GuiService/AddSelectionParent) or [GuiService:AddSelectionTuple](https://developer.roblox.com/en-us/api-reference/function/GuiService/AddSelectionTuple).
+	 * @deprecated Use `SelectionGroup` instead
 	 */
 	RemoveSelectionGroup(this: GuiService, selectionName: string): void;
 	Select(this: GuiService, selectionParent: Instance): void;
@@ -17467,6 +17483,8 @@ interface HumanoidDescription extends Instance {
 	 * 
 	 * *   [HumanoidDescription System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), for more information on HumanoidDescriptions
 	 * *   [FaceAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FaceAccessory), [FrontAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FrontAccessory), [HairAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HairAccessory), [HatAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HatAccessory), [NeckAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/NeckAccessory), [ShouldersAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/ShouldersAccessory) and [WaistAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/WaistAccessory), which are similar properties that apply accessories like this one
+	 * 
+	 * Tags: NotReplicated
 	 */
 	BackAccessory: string;
 	/**
@@ -17536,6 +17554,8 @@ interface HumanoidDescription extends Instance {
 	 * *   [HumanoidDescription System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), for more information on HumanoidDescriptions
 	 * *   [BackAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/BackAccessory), [FrontAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FrontAccessory), [HairAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HairAccessory), [HatAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HatAccessory), [NeckAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/NeckAccessory), [ShouldersAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/ShouldersAccessory) and [WaistAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/WaistAccessory), which are similar properties that apply accessories like this one
 	 * *   [Face](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Face), a property that determines what Face texture is used on the head
+	 * 
+	 * Tags: NotReplicated
 	 */
 	FaceAccessory: string;
 	/**
@@ -17558,6 +17578,8 @@ interface HumanoidDescription extends Instance {
 	 * 
 	 * *   [HumanoidDescription System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), for more information on HumanoidDescriptions
 	 * *   [BackAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/BackAccessory), [FaceAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FaceAccessory), [HairAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HairAccessory), [HatAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HatAccessory), [NeckAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/NeckAccessory), [ShouldersAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/ShouldersAccessory) and [WaistAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/WaistAccessory), which are similar properties that apply accessories like this one
+	 * 
+	 * Tags: NotReplicated
 	 */
 	FrontAccessory: string;
 	/**
@@ -17583,6 +17605,8 @@ interface HumanoidDescription extends Instance {
 	 * 
 	 * *   [HumanoidDescription System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), for more information on HumanoidDescriptions
 	 * *   [BackAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/BackAccessory), [FaceAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FaceAccessory), [FrontAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FrontAccessory), [HatAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HatAccessory), [NeckAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/NeckAccessory), [ShouldersAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/ShouldersAccessory) and [WaistAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/WaistAccessory), which are similar properties that apply accessories like this one
+	 * 
+	 * Tags: NotReplicated
 	 */
 	HairAccessory: string;
 	/**
@@ -17595,6 +17619,8 @@ interface HumanoidDescription extends Instance {
 	 * 
 	 * *   [HumanoidDescription System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), for more information on HumanoidDescriptions
 	 * *   [BackAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/BackAccessory), [FaceAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FaceAccessory), [FrontAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FrontAccessory), [HairAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HairAccessory), [NeckAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/NeckAccessory), [ShouldersAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/ShouldersAccessory) and [WaistAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/WaistAccessory), which are similar properties that apply accessories like this one
+	 * 
+	 * Tags: NotReplicated
 	 */
 	HatAccessory: string;
 	/**
@@ -17607,6 +17633,8 @@ interface HumanoidDescription extends Instance {
 	 * *   [Torso](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Torso), [RightArm](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightArm), [LeftArm](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftArm), [RightLeg](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightLeg) and [LeftLeg](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftLeg), which are similar properties that also control body part
 	 * *   [HeadColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HeadColor), which controls the color of this limb
 	 * *   [HatAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HatAccessory), [HairAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HairAccessory) and [FaceAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FaceAccessory), which all can apply [Accessory](https://developer.roblox.com/en-us/api-reference/class/Accessory) objects which are joined to to the head
+	 * 
+	 * Tags: NotReplicated
 	 */
 	Head: number;
 	/**
@@ -17619,6 +17647,8 @@ interface HumanoidDescription extends Instance {
 	 * *   [TorsoColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/TorsoColor), [LeftArmColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftArmColor), [RightArmColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightArmColor), [LeftLegColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftLegColor), and [RightLegColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightLegColor), which are similar properties that also control body colors
 	 * *   [Head](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Head), which controls the mesh used for the head
 	 * *   [Face](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Face), which applies a texture to the front of the head
+	 * 
+	 * Tags: NotReplicated
 	 */
 	HeadColor: Color3;
 	/**
@@ -17680,6 +17710,8 @@ interface HumanoidDescription extends Instance {
 	 * *   [HumanoidDescription System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), for more information on HumanoidDescriptions
 	 * *   [Head](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Head), [Torso](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Torso), [RightArm](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightArm), [RightLeg](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightLeg) and [LeftLeg](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftLeg), which are similar properties that also control body part
 	 * *   [LeftArmColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftArmColor), which controls the color of this limb
+	 * 
+	 * Tags: NotReplicated
 	 */
 	LeftArm: number;
 	/**
@@ -17692,6 +17724,8 @@ interface HumanoidDescription extends Instance {
 	 * *   [HeadColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HeadColor), [TorsoColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/TorsoColor), [RightArmColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightArmColor), [LeftLegColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftLegColor), and [RightLegColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightLegColor), which are similar properties that also control body colors
 	 * *   [LeftArm](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftArm), which controls the mesh used for this limb
 	 * *   [Shirt](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Shirt), which can apply a texture to this limb
+	 * 
+	 * Tags: NotReplicated
 	 */
 	LeftArmColor: Color3;
 	/**
@@ -17703,6 +17737,8 @@ interface HumanoidDescription extends Instance {
 	 * *   [HumanoidDescription System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), for more information on HumanoidDescriptions
 	 * *   [Head](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Head), [Torso](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Torso), [RightArm](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightArm), [LeftArm](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftArm), and [RightLeg](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightLeg), which are similar properties that also control body part
 	 * *   [LeftLegColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftLegColor), which controls the color of this limb
+	 * 
+	 * Tags: NotReplicated
 	 */
 	LeftLeg: number;
 	/**
@@ -17715,6 +17751,8 @@ interface HumanoidDescription extends Instance {
 	 * *   [HeadColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HeadColor), [TorsoColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/TorsoColor), [LeftArmColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftArmColor), [RightArmColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightArmColor), and [RightLegColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightLegColor), which are similar properties that also control body colors
 	 * *   [LeftLeg](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftLeg), which controls the mesh used for this limb
 	 * *   [Pants](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Pants), which can apply a texture to this limb
+	 * 
+	 * Tags: NotReplicated
 	 */
 	LeftLegColor: Color3;
 	MoodAnimation: number;
@@ -17728,6 +17766,8 @@ interface HumanoidDescription extends Instance {
 	 * 
 	 * *   [HumanoidDescription System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), for more information on HumanoidDescriptions
 	 * *   [BackAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/BackAccessory), [FaceAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FaceAccessory), [FrontAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FrontAccessory), [HairAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HairAccessory), [HatAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HatAccessory), [ShouldersAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/ShouldersAccessory) and [WaistAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/WaistAccessory), which are similar properties that apply accessories like this one
+	 * 
+	 * Tags: NotReplicated
 	 */
 	NeckAccessory: string;
 	/**
@@ -17800,6 +17840,8 @@ interface HumanoidDescription extends Instance {
 	 * *   [HumanoidDescription System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), for more information on HumanoidDescriptions
 	 * *   [Head](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Head), [Torso](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Torso), [LeftArm](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftArm), [RightLeg](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightLeg) and [LeftLeg](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftLeg), which are similar properties that also control body part
 	 * *   [RightArmColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightArmColor), which controls the color of this limb
+	 * 
+	 * Tags: NotReplicated
 	 */
 	RightArm: number;
 	/**
@@ -17812,6 +17854,8 @@ interface HumanoidDescription extends Instance {
 	 * *   [HeadColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HeadColor), [TorsoColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/TorsoColor), [LeftArmColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftArmColor), [LeftLegColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftLegColor), and [RightLegColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightLegColor), which are similar properties that also control body colors
 	 * *   [RightArm](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightArm), which controls the mesh used for this limb
 	 * *   [Shirt](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Shirt), which can apply a texture to this limb
+	 * 
+	 * Tags: NotReplicated
 	 */
 	RightArmColor: Color3;
 	/**
@@ -17823,6 +17867,8 @@ interface HumanoidDescription extends Instance {
 	 * *   [HumanoidDescription System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), for more information on HumanoidDescriptions
 	 * *   [Head](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Head), [Torso](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Torso), [RightArm](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightArm), [LeftArm](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftArm) and [LeftLeg](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftLeg), which are similar properties that also control body part
 	 * *   [RightLegColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightLegColor), which controls the color of this limb
+	 * 
+	 * Tags: NotReplicated
 	 */
 	RightLeg: number;
 	/**
@@ -17835,6 +17881,8 @@ interface HumanoidDescription extends Instance {
 	 * *   [HeadColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HeadColor), [TorsoColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/TorsoColor), [LeftArmColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftArmColor), [RightArmColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightArmColor), and [LeftLegColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftLegColor), which are similar properties that also control body colors
 	 * *   [RightLeg](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightLeg), which controls the mesh used for this limb
 	 * *   [Pants](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Pants), which can apply a texture to this limb
+	 * 
+	 * Tags: NotReplicated
 	 */
 	RightLegColor: Color3;
 	/**
@@ -17871,6 +17919,8 @@ interface HumanoidDescription extends Instance {
 	 * 
 	 * *   [HumanoidDescription System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), for more information on HumanoidDescriptions
 	 * *   [BackAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/BackAccessory), [FaceAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FaceAccessory), [FrontAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FrontAccessory), [HairAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HairAccessory), [HatAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HatAccessory), [NeckAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/NeckAccessory) and [WaistAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/WaistAccessory), which are similar properties that apply accessories like this one
+	 * 
+	 * Tags: NotReplicated
 	 */
 	ShouldersAccessory: string;
 	/**
@@ -17892,6 +17942,8 @@ interface HumanoidDescription extends Instance {
 	 * *   [HumanoidDescription System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), for more information on HumanoidDescriptions
 	 * *   [Head](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Head), [RightArm](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightArm), [LeftArm](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftArm), [RightLeg](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightLeg) and [LeftLeg](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftLeg), which are similar properties that also control body part
 	 * *   [TorsoColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/TorsoColor), which controls the color of this limb
+	 * 
+	 * Tags: NotReplicated
 	 */
 	Torso: number;
 	/**
@@ -17904,6 +17956,8 @@ interface HumanoidDescription extends Instance {
 	 * *   [HeadColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HeadColor), [TorsoColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/TorsoColor), [LeftArmColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftArmColor), [RightArmColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightArmColor), [LeftLegColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/LeftLegColor), and [RightLegColor](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/RightLegColor), which are similar properties that also control body colors
 	 * *   [Torso](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Torso), which controls the mesh used for this body part
 	 * *   [GraphicTShirt](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/GraphicTShirt) and [Shirt](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/Shirt), which can apply a texture to this body part
+	 * 
+	 * Tags: NotReplicated
 	 */
 	TorsoColor: Color3;
 	/**
@@ -17916,6 +17970,8 @@ interface HumanoidDescription extends Instance {
 	 * 
 	 * *   [HumanoidDescription System](https://developer.roblox.com/en-us/articles/humanoiddescription-system), for more information on HumanoidDescriptions
 	 * *   [BackAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/BackAccessory), [FaceAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FaceAccessory), [FrontAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/FrontAccessory), [HairAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HairAccessory), [HatAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/HatAccessory), [NeckAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/NeckAccessory) and [ShouldersAccessory](https://developer.roblox.com/en-us/api-reference/property/HumanoidDescription/ShouldersAccessory), which are similar properties that apply accessories like this one
+	 * 
+	 * Tags: NotReplicated
 	 */
 	WaistAccessory: string;
 	/**
@@ -28092,14 +28148,14 @@ interface PathfindingService extends Instance {
 	 * Tags: Yields
 	 * @deprecated Use `FindPathAsync` instead
 	 */
-	ComputeRawPathAsync(this: PathfindingService, start: Vector3, finish: Vector3, maxDistance: number): Instance | undefined;
+	ComputeRawPathAsync(this: PathfindingService, start: Vector3, finish: Vector3, maxDistance: number): Path;
 	/**
 	 * This function computes and returns a smooth [Path](https://developer.roblox.com/en-us/api-reference/class/Path) between two [Vector3s](https://developer.roblox.com/en-us/api-reference/datatype/Vector3). This function fulfills the same purpose as [PathfindingService:ComputeRawPathAsync](https://developer.roblox.com/en-us/api-reference/function/PathfindingService/ComputeRawPathAsync), but creates a much smoother path for an NPC to follow in comparison.
 	 * 
 	 * Tags: Yields
 	 * @deprecated Use `FindPathAsync` instead
 	 */
-	ComputeSmoothPathAsync(this: PathfindingService, start: Vector3, finish: Vector3, maxDistance: number): Instance | undefined;
+	ComputeSmoothPathAsync(this: PathfindingService, start: Vector3, finish: Vector3, maxDistance: number): Path;
 	/**
 	 * This function is used to find a [Path](https://developer.roblox.com/en-us/api-reference/class/Path) between two provided points. This path uses the navigation grid created by [PathfindingService](https://developer.roblox.com/en-us/api-reference/class/PathfindingService) and makes sure that the path can be followed by a regular-sized Roblox character.
 	 * 
@@ -31247,6 +31303,33 @@ interface ControllerPartSensor extends ControllerSensor {
 	SearchDistance: number;
 	SensedPart: BasePart | undefined;
 	SensorMode: Enum.SensorMode;
+}
+
+interface FluidForceSensor extends SensorBase {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_FluidForceSensor: unique symbol;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly CenterOfPressure: Vector3;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly Force: Vector3;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly Torque: Vector3;
+	/**
+	 * Tags: Yields
+	 */
+	EvaluateAsync(this: FluidForceSensor, linearVelocity: Vector3, angularVelocity: Vector3, cframe: CFrame): unknown;
 }
 
 /** **ServerScriptService** is a container service for [Script](https://developer.roblox.com/en-us/api-reference/class/Script), [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) and other scripting-related assets that are only meant for server use. The contents are never replicated to player clients at all, which allows for a secure storage of important game logic. Script objects will run if they are within this service and not [Disabled](https://developer.roblox.com/en-us/api-reference/property/BaseScript/Disabled).

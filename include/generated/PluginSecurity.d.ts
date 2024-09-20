@@ -3487,6 +3487,7 @@ interface Studio extends Instance {
 	 * Tags: NotReplicated
 	 */
 	["\"self\" Color"]: Color3;
+	ActionOnStopSync: Enum.ActionOnStopSync;
 	["Active Color"]: Color3;
 	["Active Hover Over Color"]: Color3;
 	["Always Save Script Changes"]: boolean;
