@@ -43,6 +43,7 @@ interface Services {
 	ConversationalAIAcceptanceService: ConversationalAIAcceptanceService;
 	CoreScriptDebuggingManagerHelper: CoreScriptDebuggingManagerHelper;
 	CreationDBService: CreationDBService;
+	CreatorStoreService: CreatorStoreService;
 	CrossDMScriptChangeListener: CrossDMScriptChangeListener;
 	DataModelPatchService: DataModelPatchService;
 	DataStoreService: DataStoreService;
@@ -292,6 +293,7 @@ interface CreatableInstances {
 	EqualizerSoundEffect: EqualizerSoundEffect;
 	EulerRotationCurve: EulerRotationCurve;
 	ExperienceInviteOptions: ExperienceInviteOptions;
+	ExplorerFilterInstance: ExplorerFilterInstance;
 	Explosion: Explosion;
 	FaceControls: FaceControls;
 	FileMesh: FileMesh;
@@ -500,6 +502,7 @@ interface Instances extends Services, CreatableInstances {
 	CharacterAppearance: CharacterAppearance;
 	ChatInputBarConfiguration: ChatInputBarConfiguration;
 	ChatWindowConfiguration: ChatWindowConfiguration;
+	ChatWindowMessageProperties: ChatWindowMessageProperties;
 	Clothing: Clothing;
 	CloudLocalizationTable: CloudLocalizationTable;
 	Collaborator: Collaborator;
@@ -525,6 +528,7 @@ interface Instances extends Services, CreatableInstances {
 	DebuggerVariable: DebuggerVariable;
 	DynamicRotate: DynamicRotate;
 	EmotesPages: EmotesPages;
+	ExplorerFilterAutocompleterInstance: ExplorerFilterAutocompleterInstance;
 	FaceInstance: FaceInstance;
 	FacialAnimationStreamingServiceStats: FacialAnimationStreamingServiceStats;
 	FacialAnimationStreamingSubsessionStats: FacialAnimationStreamingSubsessionStats;
@@ -9795,6 +9799,17 @@ interface CreationDBService extends Instance {
 	readonly _nominal_CreationDBService: unique symbol;
 }
 
+interface CreatorStoreService extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_CreatorStoreService: unique symbol;
+}
+
 interface CrossDMScriptChangeListener extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -9990,14 +10005,35 @@ interface EditableMesh extends DataModelMesh {
 	GetAdjacentVertices(this: EditableMesh, vertexId: number): Array<number>;
 	GetColor(this: EditableMesh, colorId: number): Color3 | undefined;
 	GetColorAlpha(this: EditableMesh, colorId: number): number | undefined;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	GetColors(this: EditableMesh): unknown;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	GetFaceColors(this: EditableMesh, faceId: number): unknown;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	GetFaceNormals(this: EditableMesh, faceId: number): unknown;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	GetFaceUVs(this: EditableMesh, faceId: number): unknown;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	GetFaceVertices(this: EditableMesh, faceId: number): unknown;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	GetFaces(this: EditableMesh): unknown;
 	GetFacesWithAttribute(this: EditableMesh, id: number): unknown;
 	GetNormal(this: EditableMesh, normalId: number): Vector3 | undefined;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	GetNormals(this: EditableMesh): unknown;
 	GetPosition(this: EditableMesh, vertexId: number): Vector3;
 	/**
@@ -10009,6 +10045,9 @@ interface EditableMesh extends DataModelMesh {
 	 */
 	GetTriangles(this: EditableMesh): Array<number>;
 	GetUV(this: EditableMesh, uvId: number): Vector2 | undefined;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	GetUVs(this: EditableMesh): unknown;
 	/**
 	 * @deprecated
@@ -10040,9 +10079,21 @@ interface EditableMesh extends DataModelMesh {
 	ResetNormal(this: EditableMesh, normalId: number): void;
 	SetColor(this: EditableMesh, colorId: number, color: Color3): void;
 	SetColorAlpha(this: EditableMesh, colorId: number, alpha: number): void;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	SetFaceColors(this: EditableMesh, faceId: number, ids: Array<any>): void;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	SetFaceNormals(this: EditableMesh, faceId: number, ids: Array<any>): void;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	SetFaceUVs(this: EditableMesh, faceId: number, ids: Array<any>): void;
+	/**
+	 * Tags: CustomLuaState
+	 */
 	SetFaceVertices(this: EditableMesh, faceId: number, ids: Array<any>): void;
 	SetNormal(this: EditableMesh, normalId: number, normal: Vector3): void;
 	SetPosition(this: EditableMesh, vertexId: number, p: Vector3): void;
@@ -11148,6 +11199,42 @@ interface ExperienceStateCaptureService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ExperienceStateCaptureService: unique symbol;
+}
+
+interface ExplorerFilterAutocompleterInstance extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ExplorerFilterAutocompleterInstance: unique symbol;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly ReplaceRange: Vector2;
+	/**
+	 * Tags: NotReplicated
+	 */
+	readonly RequiresOutsideContext: boolean;
+	GetSuggestions(this: ExplorerFilterAutocompleterInstance): unknown;
+}
+
+interface ExplorerFilterInstance extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ExplorerFilterInstance: unique symbol;
+	GetAutocompleter(this: ExplorerFilterInstance): ExplorerFilterAutocompleterInstance;
+	GetErrors(this: ExplorerFilterInstance): unknown;
+	GetLexemes(this: ExplorerFilterInstance): unknown;
+	InstancePassesFilter(this: ExplorerFilterInstance, instance: Instance): boolean;
+	SetFilter(this: ExplorerFilterInstance, search: string): void;
 }
 
 /** An Explosion applies force to `BaseParts` within the explosion's [Explosion.BlastRadius](https://developer.roblox.com/en-us/api-reference/property/Explosion/BlastRadius). This force breaks joints between parts and kills [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) characters not protected by a [ForceField](https://developer.roblox.com/en-us/api-reference/class/ForceField).
@@ -35190,6 +35277,7 @@ interface TextChatMessage extends Instance {
 	 */
 	readonly _nominal_TextChatMessage: unique symbol;
 	BubbleChatMessageProperties: BubbleChatMessageProperties | undefined;
+	ChatWindowMessageProperties: ChatWindowMessageProperties | undefined;
 	MessageId: string;
 	Metadata: string;
 	PrefixText: string;
@@ -35213,6 +35301,23 @@ interface TextChatMessageProperties extends Instance {
 	PrefixText: string;
 	Text: string;
 	Translation: string;
+}
+
+interface ChatWindowMessageProperties extends TextChatMessageProperties {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ChatWindowMessageProperties: unique symbol;
+	FontFace: Font;
+	PrefixTextProperties: ChatWindowMessageProperties | undefined;
+	TextColor3: Color3;
+	TextSize: number;
+	TextStrokeColor3: Color3;
+	TextStrokeTransparency: number;
 }
 
 interface TextChatService extends Instance {

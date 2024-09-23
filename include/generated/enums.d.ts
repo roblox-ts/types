@@ -1108,6 +1108,35 @@ declare namespace Enum {
 	}
 	export type AnimatorRetargetingMode = AnimatorRetargetingMode.Default | AnimatorRetargetingMode.Disabled | AnimatorRetargetingMode.Enabled;
 
+	export namespace AnnotationEditingMode {
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.AnnotationEditingMode;
+		}
+
+		export const None: None;
+
+		export interface PlacingNew extends globalThis.EnumItem {
+			Name: "PlacingNew";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.AnnotationEditingMode;
+		}
+
+		export const PlacingNew: PlacingNew;
+
+		export interface WritingNew extends globalThis.EnumItem {
+			Name: "WritingNew";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.AnnotationEditingMode;
+		}
+
+		export const WritingNew: WritingNew;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnnotationEditingMode>;
+	}
+	export type AnnotationEditingMode = AnnotationEditingMode.None | AnnotationEditingMode.PlacingNew | AnnotationEditingMode.WritingNew;
+
 	export namespace AppLifecycleManagerState {
 		export interface Detached extends globalThis.EnumItem {
 			Name: "Detached";
@@ -4155,6 +4184,35 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ChatPrivacyMode>;
 	}
 	export type ChatPrivacyMode = ChatPrivacyMode.AllUsers | ChatPrivacyMode.NoOne | ChatPrivacyMode.Friends;
+
+	export namespace ChatRestrictionStatus {
+		export interface Unknown extends globalThis.EnumItem {
+			Name: "Unknown";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.ChatRestrictionStatus;
+		}
+
+		export const Unknown: Unknown;
+
+		export interface NotRestricted extends globalThis.EnumItem {
+			Name: "NotRestricted";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ChatRestrictionStatus;
+		}
+
+		export const NotRestricted: NotRestricted;
+
+		export interface Restricted extends globalThis.EnumItem {
+			Name: "Restricted";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ChatRestrictionStatus;
+		}
+
+		export const Restricted: Restricted;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ChatRestrictionStatus>;
+	}
+	export type ChatRestrictionStatus = ChatRestrictionStatus.Unknown | ChatRestrictionStatus.NotRestricted | ChatRestrictionStatus.Restricted;
 
 	export namespace ChatStyle {
 		export interface Classic extends globalThis.EnumItem {
@@ -7248,6 +7306,163 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FillDirection>;
 	}
 	export type FillDirection = FillDirection.Horizontal | FillDirection.Vertical;
+
+	export namespace FilterErrorType {
+		export interface BackslashNotEscapingAnything extends globalThis.EnumItem {
+			Name: "BackslashNotEscapingAnything";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const BackslashNotEscapingAnything: BackslashNotEscapingAnything;
+
+		export interface BadBespokeFilter extends globalThis.EnumItem {
+			Name: "BadBespokeFilter";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const BadBespokeFilter: BadBespokeFilter;
+
+		export interface BadName extends globalThis.EnumItem {
+			Name: "BadName";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const BadName: BadName;
+
+		export interface IncompleteOr extends globalThis.EnumItem {
+			Name: "IncompleteOr";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const IncompleteOr: IncompleteOr;
+
+		export interface IncompleteParenthesis extends globalThis.EnumItem {
+			Name: "IncompleteParenthesis";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const IncompleteParenthesis: IncompleteParenthesis;
+
+		export interface InvalidDoubleStar extends globalThis.EnumItem {
+			Name: "InvalidDoubleStar";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const InvalidDoubleStar: InvalidDoubleStar;
+
+		export interface InvalidTilde extends globalThis.EnumItem {
+			Name: "InvalidTilde";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const InvalidTilde: InvalidTilde;
+
+		export interface PropertyBadOperator extends globalThis.EnumItem {
+			Name: "PropertyBadOperator";
+			Value: 7;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const PropertyBadOperator: PropertyBadOperator;
+
+		export interface PropertyDoesNotExist extends globalThis.EnumItem {
+			Name: "PropertyDoesNotExist";
+			Value: 8;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const PropertyDoesNotExist: PropertyDoesNotExist;
+
+		export interface PropertyInvalidField extends globalThis.EnumItem {
+			Name: "PropertyInvalidField";
+			Value: 9;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const PropertyInvalidField: PropertyInvalidField;
+
+		export interface PropertyInvalidValue extends globalThis.EnumItem {
+			Name: "PropertyInvalidValue";
+			Value: 10;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const PropertyInvalidValue: PropertyInvalidValue;
+
+		export interface PropertyUnsupportedFields extends globalThis.EnumItem {
+			Name: "PropertyUnsupportedFields";
+			Value: 11;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const PropertyUnsupportedFields: PropertyUnsupportedFields;
+
+		export interface PropertyUnsupportedProperty extends globalThis.EnumItem {
+			Name: "PropertyUnsupportedProperty";
+			Value: 12;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const PropertyUnsupportedProperty: PropertyUnsupportedProperty;
+
+		export interface UnexpectedNameIndex extends globalThis.EnumItem {
+			Name: "UnexpectedNameIndex";
+			Value: 13;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const UnexpectedNameIndex: UnexpectedNameIndex;
+
+		export interface UnexpectedToken extends globalThis.EnumItem {
+			Name: "UnexpectedToken";
+			Value: 14;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const UnexpectedToken: UnexpectedToken;
+
+		export interface UnfinishedBinaryOperator extends globalThis.EnumItem {
+			Name: "UnfinishedBinaryOperator";
+			Value: 15;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const UnfinishedBinaryOperator: UnfinishedBinaryOperator;
+
+		export interface UnfinishedQuote extends globalThis.EnumItem {
+			Name: "UnfinishedQuote";
+			Value: 16;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const UnfinishedQuote: UnfinishedQuote;
+
+		export interface UnknownBespokeFilter extends globalThis.EnumItem {
+			Name: "UnknownBespokeFilter";
+			Value: 17;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const UnknownBespokeFilter: UnknownBespokeFilter;
+
+		export interface WildcardInProperty extends globalThis.EnumItem {
+			Name: "WildcardInProperty";
+			Value: 18;
+			EnumType: typeof globalThis.Enum.FilterErrorType;
+		}
+
+		export const WildcardInProperty: WildcardInProperty;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FilterErrorType>;
+	}
+	export type FilterErrorType = FilterErrorType.BackslashNotEscapingAnything | FilterErrorType.BadBespokeFilter | FilterErrorType.BadName | FilterErrorType.IncompleteOr | FilterErrorType.IncompleteParenthesis | FilterErrorType.InvalidDoubleStar | FilterErrorType.InvalidTilde | FilterErrorType.PropertyBadOperator | FilterErrorType.PropertyDoesNotExist | FilterErrorType.PropertyInvalidField | FilterErrorType.PropertyInvalidValue | FilterErrorType.PropertyUnsupportedFields | FilterErrorType.PropertyUnsupportedProperty | FilterErrorType.UnexpectedNameIndex | FilterErrorType.UnexpectedToken | FilterErrorType.UnfinishedBinaryOperator | FilterErrorType.UnfinishedQuote | FilterErrorType.UnknownBespokeFilter | FilterErrorType.WildcardInProperty;
 
 	export namespace FilterResult {
 		export interface Accepted extends globalThis.EnumItem {
@@ -12158,6 +12373,163 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LeftRight>;
 	}
 	export type LeftRight = LeftRight.Left | LeftRight.Center | LeftRight.Right;
+
+	export namespace LexemeType {
+		export interface Eof extends globalThis.EnumItem {
+			Name: "Eof";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const Eof: Eof;
+
+		export interface Name extends globalThis.EnumItem {
+			Name: "Name";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const Name: Name;
+
+		export interface QuotedString extends globalThis.EnumItem {
+			Name: "QuotedString";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const QuotedString: QuotedString;
+
+		export interface Number extends globalThis.EnumItem {
+			Name: "Number";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const Number: Number;
+
+		export interface And extends globalThis.EnumItem {
+			Name: "And";
+			Value: 4;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const And: And;
+
+		export interface Or extends globalThis.EnumItem {
+			Name: "Or";
+			Value: 5;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const Or: Or;
+
+		export interface Equal extends globalThis.EnumItem {
+			Name: "Equal";
+			Value: 6;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const Equal: Equal;
+
+		export interface TildeEqual extends globalThis.EnumItem {
+			Name: "TildeEqual";
+			Value: 7;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const TildeEqual: TildeEqual;
+
+		export interface GreaterThan extends globalThis.EnumItem {
+			Name: "GreaterThan";
+			Value: 8;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const GreaterThan: GreaterThan;
+
+		export interface GreaterThanEqual extends globalThis.EnumItem {
+			Name: "GreaterThanEqual";
+			Value: 9;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const GreaterThanEqual: GreaterThanEqual;
+
+		export interface LessThan extends globalThis.EnumItem {
+			Name: "LessThan";
+			Value: 10;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const LessThan: LessThan;
+
+		export interface LessThanEqual extends globalThis.EnumItem {
+			Name: "LessThanEqual";
+			Value: 11;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const LessThanEqual: LessThanEqual;
+
+		export interface Colon extends globalThis.EnumItem {
+			Name: "Colon";
+			Value: 12;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const Colon: Colon;
+
+		export interface Dot extends globalThis.EnumItem {
+			Name: "Dot";
+			Value: 13;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const Dot: Dot;
+
+		export interface LeftParenthesis extends globalThis.EnumItem {
+			Name: "LeftParenthesis";
+			Value: 14;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const LeftParenthesis: LeftParenthesis;
+
+		export interface RightParenthesis extends globalThis.EnumItem {
+			Name: "RightParenthesis";
+			Value: 15;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const RightParenthesis: RightParenthesis;
+
+		export interface Star extends globalThis.EnumItem {
+			Name: "Star";
+			Value: 16;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const Star: Star;
+
+		export interface DoubleStar extends globalThis.EnumItem {
+			Name: "DoubleStar";
+			Value: 17;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const DoubleStar: DoubleStar;
+
+		export interface ReservedSpecial extends globalThis.EnumItem {
+			Name: "ReservedSpecial";
+			Value: 18;
+			EnumType: typeof globalThis.Enum.LexemeType;
+		}
+
+		export const ReservedSpecial: ReservedSpecial;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LexemeType>;
+	}
+	export type LexemeType = LexemeType.Eof | LexemeType.Name | LexemeType.QuotedString | LexemeType.Number | LexemeType.And | LexemeType.Or | LexemeType.Equal | LexemeType.TildeEqual | LexemeType.GreaterThan | LexemeType.GreaterThanEqual | LexemeType.LessThan | LexemeType.LessThanEqual | LexemeType.Colon | LexemeType.Dot | LexemeType.LeftParenthesis | LexemeType.RightParenthesis | LexemeType.Star | LexemeType.DoubleStar | LexemeType.ReservedSpecial;
 
 	export namespace Limb {
 		export interface Head extends globalThis.EnumItem {
