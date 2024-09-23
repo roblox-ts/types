@@ -1392,6 +1392,8 @@ interface CFrameConstructor {
 	Angles: (rX: number, rY: number, rZ: number) => CFrame;
 	/** Creates a rotated CFrame from a Unit Vector3 and a rotation in radians */
 	fromAxisAngle: (unit: Vector3, rotation: number) => CFrame;
+	/** Creates a rotated CFrame using angles (rx, ry, rz) in radians. Rotations are applied in the optional Enum.RotationOrder with a default of `XYZ`. */
+	fromEulerAngles: (rX: number, rY: number, rZ: number, order?: Enum.RotationOrder) => CFrame;
 	/** Creates a rotated CFrame using angles (rx, ry, rz) in radians. Rotations are applied in Z, Y, X order. */
 	fromEulerAnglesXYZ: (rX: number, rY: number, rZ: number) => CFrame;
 	/** Creates a rotated CFrame using angles (rx, ry, rz) in radians. Rotations are applied in Z, X, Y order. */
