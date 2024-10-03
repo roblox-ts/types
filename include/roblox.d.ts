@@ -31,6 +31,8 @@ type ChangedSignal = {
 
 type Tweenable = number | boolean | CFrame | Rect | Color3 | UDim | UDim2 | Vector2 | Vector2int16 | Vector3;
 
+type ContentId = string;
+
 interface EmoteDictionary {
 	/** When these arrays have more than one emote id in them, it will randomly select one of the emotes to play from the list. */
 	[emoteName: string]: Array<number>;
