@@ -12642,6 +12642,43 @@ declare namespace Enum {
 	}
 	export type ListDisplayMode = ListDisplayMode.Horizontal | ListDisplayMode.Vertical;
 
+	export namespace ListenerLocation {
+		export interface Default extends globalThis.EnumItem {
+			Name: "Default";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.ListenerLocation;
+		}
+
+		export const Default: Default;
+
+		export interface None extends globalThis.EnumItem {
+			Name: "None";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.ListenerLocation;
+		}
+
+		export const None: None;
+
+		export interface Character extends globalThis.EnumItem {
+			Name: "Character";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.ListenerLocation;
+		}
+
+		export const Character: Character;
+
+		export interface Camera extends globalThis.EnumItem {
+			Name: "Camera";
+			Value: 3;
+			EnumType: typeof globalThis.Enum.ListenerLocation;
+		}
+
+		export const Camera: Camera;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ListenerLocation>;
+	}
+	export type ListenerLocation = ListenerLocation.Default | ListenerLocation.None | ListenerLocation.Character | ListenerLocation.Camera;
+
 	export namespace ListenerType {
 		export interface Camera extends globalThis.EnumItem {
 			Name: "Camera";
@@ -21918,6 +21955,35 @@ declare namespace Enum {
 	}
 	export type UIDragDetectorResponseStyle = UIDragDetectorResponseStyle.Offset | UIDragDetectorResponseStyle.Scale | UIDragDetectorResponseStyle.CustomOffset | UIDragDetectorResponseStyle.CustomScale;
 
+	export namespace UIDragSpeedAxisMapping {
+		export interface XY extends globalThis.EnumItem {
+			Name: "XY";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.UIDragSpeedAxisMapping;
+		}
+
+		export const XY: XY;
+
+		export interface XX extends globalThis.EnumItem {
+			Name: "XX";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.UIDragSpeedAxisMapping;
+		}
+
+		export const XX: XX;
+
+		export interface YY extends globalThis.EnumItem {
+			Name: "YY";
+			Value: 2;
+			EnumType: typeof globalThis.Enum.UIDragSpeedAxisMapping;
+		}
+
+		export const YY: YY;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIDragSpeedAxisMapping>;
+	}
+	export type UIDragSpeedAxisMapping = UIDragSpeedAxisMapping.XY | UIDragSpeedAxisMapping.XX | UIDragSpeedAxisMapping.YY;
+
 	export namespace UIFlexAlignment {
 		export interface None extends globalThis.EnumItem {
 			Name: "None";
@@ -23269,6 +23335,27 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WeldConstraintPreserve>;
 	}
 	export type WeldConstraintPreserve = WeldConstraintPreserve.All | WeldConstraintPreserve.None | WeldConstraintPreserve.Touching;
+
+	export namespace WhisperChatPrivacyMode {
+		export interface AllUsers extends globalThis.EnumItem {
+			Name: "AllUsers";
+			Value: 0;
+			EnumType: typeof globalThis.Enum.WhisperChatPrivacyMode;
+		}
+
+		export const AllUsers: AllUsers;
+
+		export interface NoOne extends globalThis.EnumItem {
+			Name: "NoOne";
+			Value: 1;
+			EnumType: typeof globalThis.Enum.WhisperChatPrivacyMode;
+		}
+
+		export const NoOne: NoOne;
+
+		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WhisperChatPrivacyMode>;
+	}
+	export type WhisperChatPrivacyMode = WhisperChatPrivacyMode.AllUsers | WhisperChatPrivacyMode.NoOne;
 
 	export namespace WrapLayerAutoSkin {
 		export interface Disabled extends globalThis.EnumItem {

@@ -124,7 +124,7 @@ interface AnimationClipProvider extends Instance {
 	/**
 	 * @deprecated Use `GetAnimationClipAsync` instead
 	 */
-	GetAnimationClip(this: AnimationClipProvider, assetId: string): AnimationClip;
+	GetAnimationClip(this: AnimationClipProvider, assetId: ContentId): AnimationClip;
 	/**
 	 * @deprecated Use `GetAnimationClipAsync` instead
 	 */
@@ -166,7 +166,7 @@ interface AssetService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	CreateMeshPartAsync(this: AssetService, meshId: string, options?: object): MeshPart;
+	CreateMeshPartAsync(this: AssetService, meshId: ContentId, options?: object): MeshPart;
 }
 
 /** The CoreGui is a service used to store Guis created in-game by Roblox for the core user interface found in every game (such as the game menu, the playerlist, the backpack, etc.). It can also be used by [Plugins](https://developer.roblox.com/en-us/api-reference/class/Plugin) in Roblox Studio.
@@ -225,7 +225,7 @@ interface BaseWrap extends Instance {
 	 * 
 	 * Asset ID for cage mesh.
 	 */
-	CageMeshId: string;
+	CageMeshId: ContentId;
 	/**
 	 * This property is set up automatically by the Avatar Importer plugin.
 	 * 
@@ -282,7 +282,7 @@ interface WrapDeformer extends BaseWrap {
 	 */
 	readonly _nominal_WrapDeformer: unique symbol;
 	Amount: number;
-	RenderMeshID: string;
+	RenderMeshID: ContentId;
 }
 
 interface WrapLayer extends BaseWrap {
@@ -307,7 +307,7 @@ interface WrapLayer extends BaseWrap {
 	 * 
 	 * Note: this property is set up automatically by the FBX importer
 	 */
-	ReferenceMeshId: string;
+	ReferenceMeshId: ContentId;
 	/**
 	 * Reference mesh offset relative to parent MeshPart (in the parent MeshPart space)
 	 * 
@@ -914,7 +914,7 @@ interface File extends Instance {
 	 * 
 	 * Throws an error if the file does not exist on disk.
 	 */
-	GetTemporaryId(this: File): string;
+	GetTemporaryId(this: File): ContentId;
 }
 
 /** Various miscellaneous options for in-game. Can be accessed from Roblox Studio's settings menu under the _Game_ tab. */
@@ -1148,7 +1148,7 @@ interface KeyframeSequenceProvider extends Instance {
 	 * Returns a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) from a given asset URL.
 	 * @deprecated Use `GetKeyframeSequenceAsync` instead
 	 */
-	GetKeyframeSequence(this: KeyframeSequenceProvider, assetId: string): Instance | undefined;
+	GetKeyframeSequence(this: KeyframeSequenceProvider, assetId: ContentId): Instance | undefined;
 	/**
 	 * Returns a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) from the supplied assetId. Can optionally cache to reduce unnecessary loading freezes.
 	 * @deprecated Use `GetKeyframeSequenceAsync` instead
@@ -1182,29 +1182,6 @@ interface BaseScript extends LuaSourceContainer {
 	RunContext: Enum.RunContext;
 }
 
-interface Script extends BaseScript {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_Script: unique symbol;
-	/**
-	 * A script's Source is the code to be executed. Modifying the code within a script modifies the source code executes when the script runs.
-	 * 
-	 * For instance, given a script containing the line:
-	 * 
-	 * print("Hello world!")
-	 * 
-	 * The script's source is the “print(“Hello world”)” command because it is what will be executed when the script runs, leading to “Hello world” being printed in the command line.
-	 * 
-	 * This item is protected. Attempting to use it in a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) will cause an error.
-	 */
-	Source: string;
-}
-
 interface ModuleScript extends LuaSourceContainer {
 	/**
 	 * **DO NOT USE!**
@@ -1230,10 +1207,10 @@ interface MaterialVariant extends Instance {
 	 */
 	readonly _nominal_MaterialVariant: unique symbol;
 	BaseMaterial: Enum.Material;
-	ColorMap: string;
-	MetalnessMap: string;
-	NormalMap: string;
-	RoughnessMap: string;
+	ColorMap: ContentId;
+	MetalnessMap: ContentId;
+	NormalMap: ContentId;
+	RoughnessMap: ContentId;
 }
 
 interface MemStorageConnection extends Instance {
@@ -2744,7 +2721,7 @@ interface PluginToolbarButton extends Instance {
 	/**
 	 * Tags: NotReplicated
 	 */
-	Icon: string;
+	Icon: ContentId;
 	SetActive(this: PluginToolbarButton, active: boolean): void;
 	/**
 	 * **Click** fires when the PluginToolbarButton is pressed and released by the user.
@@ -3309,7 +3286,7 @@ interface DataModel extends ServiceProvider<Services> {
 	 * 
 	 * Due to this function's security context it can only be used by plugins or the command bar. For an alternative that can be used in [Scripts](https://developer.roblox.com/en-us/api-reference/class/Script) and [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript), see [InsertService:LoadAsset](https://developer.roblox.com/en-us/api-reference/function/InsertService/LoadAsset).
 	 */
-	GetObjects(this: DataModel, url: string): Array<Instance>;
+	GetObjects(this: DataModel, url: ContentId): Array<Instance>;
 	/**
 	 * This function sets the [DataModel.PlaceId](https://developer.roblox.com/en-us/api-reference/property/DataModel/PlaceId) of the game instance to the given _placeId_.
 	 * 
@@ -3374,6 +3351,7 @@ interface SoundService extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_SoundService: unique symbol;
+	DefaultListenerLocation: Enum.ListenerLocation;
 	OpenAttenuationCurveEditor(this: SoundService, selectedCurveObjects: Array<Instance>): void;
 }
 
@@ -3980,7 +3958,7 @@ interface SurfaceAppearance extends Instance {
 	/**
 	 * This property determines the color and opacity of the surface. This texture is sometimes called the albedo texture. The alpha channel of this texture controls its opacity, which behaves differently based on the [SurfaceAppearance.AlphaMode](https://developer.roblox.com/en-us/api-reference/property/SurfaceAppearance/AlphaMode) setting.
 	 */
-	ColorMap: string;
+	ColorMap: ContentId;
 	/**
 	 * This property determines which parts of the surface are metal and are non-metal. A metalness map is a grayscale image where black pixels correspond to non-metals and white pixels correspond to metals.
 	 * 
@@ -3997,7 +3975,7 @@ interface SurfaceAppearance extends Instance {
 	 * 
 	 * *   When [Lighting.EnvironmentSpecularScale](https://developer.roblox.com/en-us/api-reference/property/Lighting/EnvironmentSpecularScale) is 0, metalness has no effect. For the most realistic reflections, setting EnvironmentSpecularScale and [Lighting.EnvironmentDiffuseScale](https://developer.roblox.com/en-us/api-reference/property/Lighting/EnvironmentDiffuseScale) to 1, and [Lighting.Ambient](https://developer.roblox.com/en-us/api-reference/property/Lighting/Ambient) and [Lighting.OutdoorAmbient](https://developer.roblox.com/en-us/api-reference/property/Lighting/OutdoorAmbient) to (0,0,0) is recommended.
 	 */
-	MetalnessMap: string;
+	MetalnessMap: ContentId;
 	/**
 	 * This property modifies the lighting of the surface by adding bumps, dents, cracks, and curves without adding more polygons.
 	 * 
@@ -4014,13 +3992,13 @@ interface SurfaceAppearance extends Instance {
 	 * 
 	 * Roblox expects imported meshes to include tangents. Modeling software may also refer to this as “tangent space” information. If you apply a normal map and it does not seem to make any visual difference, you may need to re-export your mesh along with its tangent information from modeling software.
 	 */
-	NormalMap: string;
+	NormalMap: ContentId;
 	/**
 	 * This property determines the apparent roughness across the surface. A roughness map is a grayscale image where black pixels correspond to a maximally smooth surface, and white pixels correspond to a maximally rough surface.
 	 * 
 	 * Roughness refers to how much variation the surface has on a very small scale. Reflections on smooth surfaces are sharp and concentrated. Reflections on rough surfaces are more blurry and dispersed.
 	 */
-	RoughnessMap: string;
+	RoughnessMap: ContentId;
 }
 
 /** TaskScheduler is a read-only settings class responsible for the Task Scheduler feature.  
@@ -4068,10 +4046,10 @@ interface TerrainDetail extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_TerrainDetail: unique symbol;
-	ColorMap: string;
-	MetalnessMap: string;
-	NormalMap: string;
-	RoughnessMap: string;
+	ColorMap: ContentId;
+	MetalnessMap: ContentId;
+	NormalMap: ContentId;
+	RoughnessMap: ContentId;
 }
 
 interface TerrainRegion extends Instance {

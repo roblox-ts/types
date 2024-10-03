@@ -1712,7 +1712,7 @@ interface Animation extends Instance {
 	 * 
 	 * Note, the animation will need to be loaded onto an [AnimationTrack](https://developer.roblox.com/en-us/api-reference/class/AnimationTrack) in order to play it.
 	 */
-	AnimationId: string;
+	AnimationId: ContentId;
 }
 
 interface AnimationClip extends Instance {
@@ -1816,12 +1816,12 @@ interface AnimationClipProvider extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_AnimationClipProvider: unique symbol;
-	RegisterActiveAnimationClip(this: AnimationClipProvider, animationClip: AnimationClip): string;
-	RegisterAnimationClip(this: AnimationClipProvider, animationClip: AnimationClip): string;
+	RegisterActiveAnimationClip(this: AnimationClipProvider, animationClip: AnimationClip): ContentId;
+	RegisterAnimationClip(this: AnimationClipProvider, animationClip: AnimationClip): ContentId;
 	/**
 	 * Tags: Yields
 	 */
-	GetAnimationClipAsync(this: AnimationClipProvider, assetId: string): AnimationClip;
+	GetAnimationClipAsync(this: AnimationClipProvider, assetId: ContentId): AnimationClip;
 	/**
 	 * Tags: Yields
 	 */
@@ -1829,7 +1829,7 @@ interface AnimationClipProvider extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	GetClipEvaluatorAsync(this: AnimationClipProvider, assetId: string): ClipEvaluator;
+	GetClipEvaluatorAsync(this: AnimationClipProvider, assetId: ContentId): ClipEvaluator;
 }
 
 /** An object which allows animations to be loaded and applied to a character or model in place of a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) when a Humanoid is not needed. Creates an [Animator](https://developer.roblox.com/en-us/api-reference/class/Animator) and loads animations to update [Motor6Ds](https://developer.roblox.com/en-us/api-reference/class/Motor6D) of said character to react in the way that is described within the animation asset referenced by an [Animation](https://developer.roblox.com/en-us/api-reference/class/Animation) object.
@@ -2430,11 +2430,11 @@ interface AssetService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	CreateEditableImageAsync(this: AssetService, textureId: string): EditableImage;
+	CreateEditableImageAsync(this: AssetService, textureId: ContentId): EditableImage;
 	/**
 	 * Tags: Yields
 	 */
-	CreateEditableMeshAsync(this: AssetService, meshId: string): EditableMesh;
+	CreateEditableMeshAsync(this: AssetService, meshId: ContentId): EditableMesh;
 	/**
 	 * Tags: Yields
 	 */
@@ -3243,6 +3243,10 @@ interface AvatarCreationService extends Instance {
 	 * Tags: Yields
 	 */
 	PromptCreateAvatarAsync(this: AvatarCreationService, player: Player, humanoidDescription: HumanoidDescription): unknown;
+	/**
+	 * Tags: Yields
+	 */
+	PromptSelectAvatarGenerationImageAsync(this: AvatarCreationService, player: Player): string;
 	/**
 	 * Tags: Yields
 	 */
@@ -5054,7 +5058,7 @@ interface BaseWrap extends Instance {
 	 * 
 	 * Asset ID for cage mesh.
 	 */
-	CageMeshId: string;
+	CageMeshId: ContentId;
 	/**
 	 * This property is set up automatically by the Avatar Importer plugin.
 	 * 
@@ -5124,7 +5128,7 @@ interface WrapDeformer extends BaseWrap {
 	readonly _nominal_WrapDeformer: unique symbol;
 	Amount: number;
 	Enabled: boolean;
-	RenderMeshID: string;
+	RenderMeshID: ContentId;
 }
 
 /** The WrapLayer object defines a 3D accessory's inner and outer surfaces and other properties related to layering accessories. These surfaces, or the Inner Cage and Outer Cage, are similar to collision boxes, and describe the surfaces of which other 3D accessories can be placed without clipping or breaking.
@@ -5168,7 +5172,7 @@ interface WrapLayer extends BaseWrap {
 	 * 
 	 * Note: this property is set up automatically by the FBX importer
 	 */
-	ReferenceMeshId: string;
+	ReferenceMeshId: ContentId;
 	/**
 	 * Reference mesh offset relative to parent MeshPart (in the parent MeshPart space)
 	 * 
@@ -5425,7 +5429,7 @@ interface Beam extends Instance {
 	 * 
 	 * The scaling of the texture is determined by the [Beam.TextureMode](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureMode), [Beam.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureLength), [Beam.Width0](https://developer.roblox.com/en-us/api-reference/property/Beam/Width0) and [Beam.Width1](https://developer.roblox.com/en-us/api-reference/property/Beam/Width1) properties.
 	 */
-	Texture: string;
+	Texture: ContentId;
 	/**
 	 * Sets the length of the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)s texture if [Beam.TextureMode](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureMode) is 'Wrap' or 'Static'. If [Beam.TextureMode](https://developer.roblox.com/en-us/api-reference/property/Beam/TextureMode) is 'Stretch' then it determines the size of the texture relative to the [Beam](https://developer.roblox.com/en-us/api-reference/class/Beam)'s length.
 	 * 
@@ -6929,7 +6933,7 @@ interface CaptureService extends Instance {
 	 * @deprecated Use `UserCaptureSaved` instead
 	 */
 	readonly CaptureSaved: RBXScriptSignal<(captureInfo: Record<string, unknown>) => void>;
-	readonly UserCaptureSaved: RBXScriptSignal<(captureContentId: string) => void>;
+	readonly UserCaptureSaved: RBXScriptSignal<(captureContentId: ContentId) => void>;
 }
 
 /** Base class for objects that change a character's appearance. */
@@ -7111,7 +7115,7 @@ interface Pants extends Clothing {
 	 * 
 	 * For a [Shirt](https://developer.roblox.com/en-us/api-reference/class/Shirt) object's template, see [Shirt.ShirtTemplate](https://developer.roblox.com/en-us/api-reference/property/Shirt/ShirtTemplate).
 	 */
-	PantsTemplate: string;
+	PantsTemplate: ContentId;
 }
 
 /** ![A default rig wearing a very dapper Shirt (rbxassetid://86896487)](https://developer.roblox.com/assets/bltc8da647cb0295112/Shirt.jpg) The **Shirt** object displays a Shirt texture from the Roblox website on a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) rig. Shirts cover the torso and arms, and will take priority over a [Pants](https://developer.roblox.com/en-us/api-reference/class/Pants) on the torso. To be visible, a Shirt must be a sibling of a Humanoid and have its [ShirtTemplate](https://developer.roblox.com/en-us/api-reference/property/Shirt/ShirtTemplate) property set to an appropriate texture (such as `rbxassetid://86896487`, pictured to the right). The shirt texture may be colorized using the [Clothing.Color3](https://developer.roblox.com/en-us/api-reference/property/Clothing/Color3) property.
@@ -7152,7 +7156,7 @@ interface Shirt extends Clothing {
 	 * 	model.Parent = workspace
 	 * end
 	 */
-	ShirtTemplate: string;
+	ShirtTemplate: ContentId;
 }
 
 /** The **ShirtGraphic** object applies a texture to the front surface of a character's torso. It is used to display t-shirts. */
@@ -7193,7 +7197,7 @@ interface ShirtGraphic extends CharacterAppearance {
 	 * 	model.Parent = workspace
 	 * end
 	 */
-	Graphic: string;
+	Graphic: ContentId;
 }
 
 /** The **Chat** service houses the Lua code responsible for running the [Lua Chat System](https://developer.roblox.com/en-us/articles/lua-chat-system). Similar to [StarterPlayerScripts](https://developer.roblox.com/en-us/api-reference/class/StarterPlayerScripts), default objects like [Scripts](https://developer.roblox.com/en-us/api-reference/class/Script) and [ModuleScripts](https://developer.roblox.com/en-us/api-reference/class/ModuleScript) are inserted into the service.
@@ -7396,7 +7400,7 @@ interface ClickDetector extends Instance {
 	 * 
 	 * ![Custom cursor icon](https://developer.roblox.com/assets/blt59eec7aa0c76851a/InterestCursorIcon.png)
 	 */
-	CursorIcon: string;
+	CursorIcon: ContentId;
 	/**
 	 * The MaxActivationDistance property controls the maximum distance, in studs, between a [Character](https://developer.roblox.com/en-us/api-reference/property/Player/Character) and the [ClickDetector](https://developer.roblox.com/en-us/api-reference/class/ClickDetector) for the character to be able to click it. This is used to limit from how far a player can interact with a ClickDetector.
 	 * 
@@ -7456,7 +7460,7 @@ interface DragDetector extends ClickDetector {
 	 * @deprecated
 	 */
 	readonly _nominal_DragDetector: unique symbol;
-	ActivatedCursorIcon: string;
+	ActivatedCursorIcon: ContentId;
 	ApplyAtCenterOfMass: boolean;
 	/**
 	 * Tags: NotReplicated
@@ -9263,20 +9267,20 @@ interface ContentProvider extends Instance {
 	 * Tags: NotReplicated
 	 */
 	readonly RequestQueueSize: number;
-	GetAssetFetchStatus(this: ContentProvider, contentId: string): Enum.AssetFetchStatus;
-	GetAssetFetchStatusChangedSignal(this: ContentProvider, contentId: string): RBXScriptSignal;
+	GetAssetFetchStatus(this: ContentProvider, contentId: ContentId): Enum.AssetFetchStatus;
+	GetAssetFetchStatusChangedSignal(this: ContentProvider, contentId: ContentId): RBXScriptSignal;
 	ListEncryptedAssets(this: ContentProvider): unknown;
 	/**
 	 * Usually, content is loaded only when it starts being used. That explains why it often takes a moment for an image to appear in a [GUI](https://developer.roblox.com/en-us/api-reference/class/GuiObject), or a [mesh](https://developer.roblox.com/en-us/api-reference/class/Mesh) to appear in a [part](https://developer.roblox.com/en-us/api-reference/class/BasePart), or why a [sound](https://developer.roblox.com/en-us/api-reference/class/Sound) doesn't play for the first time. All because the asset has not yet finished loading. Preload is used to load this content beforehand, so that it works instantly.
 	 * @deprecated Use `PreloadAsync` instead
 	 */
-	Preload(this: ContentProvider, contentId: string): void;
+	Preload(this: ContentProvider, contentId: ContentId): void;
 	RegisterDefaultEncryptionKey(this: ContentProvider, encryptionKey: string): void;
 	RegisterDefaultSessionKey(this: ContentProvider, sessionKey: string): void;
-	RegisterEncryptedAsset(this: ContentProvider, assetId: string, encryptionKey: string): void;
-	RegisterSessionEncryptedAsset(this: ContentProvider, contentId: string, sessionKey: string): void;
+	RegisterEncryptedAsset(this: ContentProvider, assetId: ContentId, encryptionKey: string): void;
+	RegisterSessionEncryptedAsset(this: ContentProvider, contentId: ContentId, sessionKey: string): void;
 	UnregisterDefaultEncryptionKey(this: ContentProvider): void;
-	UnregisterEncryptedAsset(this: ContentProvider, assetId: string): void;
+	UnregisterEncryptedAsset(this: ContentProvider, assetId: ContentId): void;
 	/**
 	 * Yields until all of the assets associated with the given [Instances](https://developer.roblox.com/en-us/api-reference/class/Instance) have loaded and takes an array of [Instances](https://developer.roblox.com/en-us/api-reference/class/Instance) as a parameter.
 	 * 
@@ -9291,7 +9295,7 @@ interface ContentProvider extends Instance {
 		contentIdList: Array<Instance | string>,
 		callback?: (contentId: string, status: Enum.AssetFetchStatus) => void,
 	): void;
-	readonly AssetFetchFailed: RBXScriptSignal<(assetId: string) => void>;
+	readonly AssetFetchFailed: RBXScriptSignal<(assetId: ContentId) => void>;
 }
 
 /** ContextActionService is a game service that allows a game to bind user input to contextual actions, or actions that are only enabled under some condition or period of time. For example, allowing a player to open a door only while close by. In code, an action is simply a string (the name of the action) used by the service to differentiate between unique actions. The action string is provided to [BindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/BindAction) and [UnbindAction](https://developer.roblox.com/en-us/api-reference/function/ContextActionService/UnbindAction), among other member functions. If two actions are bound to the same input, the most recently bound will take priority. When the most recent action is unbound, the one bound before that takes control again. Since ContextActionService deals with user input, you can only use it in [LocalScripts](https://developer.roblox.com/en-us/api-reference/class/LocalScript) which run on the client.
@@ -10158,7 +10162,7 @@ interface FileMesh extends DataModelMesh {
 	 * 
 	 * Meshes can currently only be be uploaded using [MeshPart](https://developer.roblox.com/en-us/api-reference/class/MeshPart)s or the game explorer. Once uploaded however, the content ID for the mesh can be used for the MeshId property. For more information on how to do this please see [this tutorial](https://developer.roblox.com/en-us/articles/mesh-parts).
 	 */
-	MeshId: string;
+	MeshId: ContentId;
 	/**
 	 * The TextureId is the content ID of the image that is to be applied to used for the meshes texture. When the TextureId property is set to an empty string, no texture will be applied to the mesh.
 	 * 
@@ -10174,7 +10178,7 @@ interface FileMesh extends DataModelMesh {
 	 * 
 	 * A mesh can only be textured if the mesh has been UV mapped. UV mapping refers to the practice of projecting a texture map onto a mesh. This cannot be done using Roblox Studio and has to be done using an external 3D modelling application such as [Blender](https://www.blender.org/).
 	 */
-	TextureId: string;
+	TextureId: ContentId;
 }
 
 /** The SpecialMesh is an object that allows developers to provide a standard template or user uploaded mesh to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart).
@@ -11454,7 +11458,7 @@ interface Decal extends FaceInstance {
 	 * *   Paste the URL into the Texture property in Roblox Studio. Roblox will automatically update the property to the correct Content ID. Note this only works in Roblox Studio and cannot be done from Scripts or whilst the game is running.
 	 * *   Insert the Decal into the game, this is generally done through the Toolbox under 'My Decals'. The Content ID can be found in the decal that is inserted. Note, [InsertService:LoadAsset](https://developer.roblox.com/en-us/api-reference/function/InsertService/LoadAsset) can also be used if developers wish to automate this method.
 	 */
-	Texture: string;
+	Texture: ContentId;
 	/**
 	 * Determines the transparency of the [Decal](https://developer.roblox.com/en-us/api-reference/class/Decal) with 0 being completely opaque and 1 completely transparent.
 	 * 
@@ -13451,11 +13455,11 @@ interface ImageButton extends GuiButton {
 	/**
 	 * A textureId that could be set on the [ImageButton's](https://developer.roblox.com/en-us/api-reference/class/ImageButton) properties. When the button is hovered, it will render HoverImage if specified.
 	 */
-	HoverImage: string;
+	HoverImage: ContentId;
 	/**
 	 * The Image property is a content-type property that should hold the asset ID of a Decal or Image on the Roblox website. It functions identically to [Decal.Texture](https://developer.roblox.com/en-us/api-reference/property/Decal/Texture) with regards to loading the image from the Roblox website. The rendered image will be colorized using [ImageButton.ImageColor3](https://developer.roblox.com/en-us/api-reference/property/ImageButton/ImageColor3). It is possible to make the image render as tiled, scaled to fit, or 9-sliced, by adjusting the [ImageButton.ScaleType](https://developer.roblox.com/en-us/api-reference/property/ImageButton/ScaleType) property.
 	 */
-	Image: string;
+	Image: ContentId;
 	/**
 	 * The ImageColor3 property determines how an image is colorized. When set to white, no colorization occurs. This property is very useful for reusing image assets: If the source image is completely white with transparency, you can set the entire color of the image at once with this property.
 	 */
@@ -13485,7 +13489,7 @@ interface ImageButton extends GuiButton {
 	/**
 	 * A texture ID that can be set as an [ImageButton](https://developer.roblox.com/en-us/api-reference/class/ImageButton) property. When the button is pressed, it will render this image.
 	 */
-	PressedImage: string;
+	PressedImage: ContentId;
 	/**
 	 * Determines how the image looks when it is scaled.
 	 * 
@@ -13784,7 +13788,7 @@ interface ImageLabel extends GuiLabel {
 	/**
 	 * The Image property is a content-type property that should hold the asset ID of a Decal or Image on the Roblox website. It functions identically to [Decal.Texture](https://developer.roblox.com/en-us/api-reference/property/Decal/Texture) with regards to loading the image from the Roblox website. The rendered image will be colorized using [ImageLabel.ImageColor3](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/ImageColor3). It is possible to make the image render as tiled, scaled to fit, or 9-sliced, by adjusting the [ImageLabel.ScaleType](https://developer.roblox.com/en-us/api-reference/property/ImageLabel/ScaleType) property.
 	 */
-	Image: string;
+	Image: ContentId;
 	/**
 	 * The ImageColor3 property determines how an image is colorized. When set to white, no colorization occurs. This property is very useful for reusing image assets: If the source image is completely white with transparency, you can set the entire color of the image at once with this property.
 	 */
@@ -14111,7 +14115,7 @@ interface ScrollingFrame extends GuiObject {
 	/**
 	 * The Down image on the vertical scrollbar. Size of this is always ScrollBarThickness by ScrollBarThickness. This is also used as the image on the horizontal scroll bar.
 	 */
-	BottomImage: string;
+	BottomImage: ContentId;
 	/**
 	 * The location within the canvas, in pixels, that should be drawn at the top left of the scroll frame
 	 */
@@ -14170,7 +14174,7 @@ interface ScrollingFrame extends GuiObject {
 	/**
 	 * The middle image on the vertical scrollbar. The size of this can vary in the y direction, but is always set as [ScrollingFrame.ScrollBarThickness](https://developer.roblox.com/en-us/api-reference/property/ScrollingFrame/ScrollBarThickness) in the x direction. This is also used as the middle image on the horizontal scroll bar.
 	 */
-	MidImage: string;
+	MidImage: ContentId;
 	/**
 	 * Determines how a scrolling bar image is colorized. When set to white, no colorization occurs. This property is very useful for reusing image assets: If the source image is completely white with transparency, you can set the entire color of the image at once with this property.
 	 */
@@ -14238,7 +14242,7 @@ interface ScrollingFrame extends GuiObject {
 	/**
 	 * The Up image on the vertical scrollbar. The size of this is always ScrollBarThickness by ScrollBarThickness. This is also used as the left image on the horizontal scroll bar.
 	 */
-	TopImage: string;
+	TopImage: ContentId;
 	/**
 	 * Indicates the inset behavior of the vertical scrolling bar.
 	 */
@@ -14608,7 +14612,7 @@ interface VideoFrame extends GuiObject {
 	/**
 	 * The content ID of the video file a [VideoFrame](https://developer.roblox.com/en-us/api-reference/class/VideoFrame) object is associated with.
 	 */
-	Video: string;
+	Video: ContentId;
 	/**
 	 * This property determines how loud the [VideoFrame.Video](https://developer.roblox.com/en-us/api-reference/property/VideoFrame/Video) plays back. It can be set to a number between 0 and 100.
 	 */
@@ -15116,7 +15120,7 @@ interface AdGui extends SurfaceGuiBase {
 	readonly _nominal_AdGui: unique symbol;
 	AdShape: Enum.AdShape;
 	EnableVideoAds: boolean;
-	FallbackImage: string;
+	FallbackImage: ContentId;
 	/**
 	 * Tags: NotReplicated
 	 */
@@ -15261,7 +15265,7 @@ interface FloorWire extends GuiBase3d {
 	/**
 	 * Sets the texture to be displayed on the FloorWire.
 	 */
-	Texture: string;
+	Texture: ContentId;
 	/**
 	 * Sets the size of the texture used with the FloorWire.
 	 */
@@ -15523,7 +15527,7 @@ interface ImageHandleAdornment extends HandleAdornment {
 	/**
 	 * The image to draw for the adornment.
 	 */
-	Image: string;
+	Image: ContentId;
 	/**
 	 * The size in studs of the image.
 	 */
@@ -19985,7 +19989,7 @@ interface InsertService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	CreateMeshPartAsync(this: InsertService, meshId: string, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>, renderFidelity: CastsToEnum<Enum.RenderFidelity>): MeshPart;
+	CreateMeshPartAsync(this: InsertService, meshId: ContentId, collisionFidelity: CastsToEnum<Enum.CollisionFidelity>, renderFidelity: CastsToEnum<Enum.RenderFidelity>): MeshPart;
 	/**
 	 * Tags: Yields
 	 * @deprecated Use `GetBaseSets` instead
@@ -20775,7 +20779,7 @@ interface KeyframeSequenceProvider extends Instance {
 	 * 
 	 * The asset ID generated by this function is temporary and cannot be used outside of Studio. Developers wishing to generate an asset ID that can be used online should upload the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) to Roblox.
 	 */
-	RegisterActiveKeyframeSequence(this: KeyframeSequenceProvider, keyframeSequence: KeyframeSequence): string;
+	RegisterActiveKeyframeSequence(this: KeyframeSequenceProvider, keyframeSequence: KeyframeSequence): ContentId;
 	/**
 	 * Generates a temporary asset ID from a [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) that can be used for localized testing of an animation.
 	 * 
@@ -20785,7 +20789,7 @@ interface KeyframeSequenceProvider extends Instance {
 	 * 
 	 * The asset ID generated by this function is temporary and cannot be used outside of Studio. Developers wishing to generate an asset ID that can be used online should upload the [KeyframeSequence](https://developer.roblox.com/en-us/api-reference/class/KeyframeSequence) to Roblox.
 	 */
-	RegisterKeyframeSequence(this: KeyframeSequenceProvider, keyframeSequence: KeyframeSequence): string;
+	RegisterKeyframeSequence(this: KeyframeSequenceProvider, keyframeSequence: KeyframeSequence): ContentId;
 	/**
 	 * This function returns an [InventoryPages](https://developer.roblox.com/en-us/api-reference/class/InventoryPages) object which can be used to iterate over animations owned by a specific user.
 	 * 
@@ -22836,7 +22840,7 @@ interface BaseScript extends LuaSourceContainer {
 	 * For the LinkedSource property for [ModuleScript](https://developer.roblox.com/en-us/api-reference/class/ModuleScript)s, please see [ModuleScript.LinkedSource](https://developer.roblox.com/en-us/api-reference/property/ModuleScript/LinkedSource).
 	 * @deprecated
 	 */
-	LinkedSource: string;
+	LinkedSource: ContentId;
 	RunContext: Enum.RunContext;
 }
 
@@ -22859,6 +22863,18 @@ interface Script extends BaseScript {
 	 * @deprecated
 	 */
 	readonly _nominal_Script: unique symbol;
+	/**
+	 * A script's Source is the code to be executed. Modifying the code within a script modifies the source code executes when the script runs.
+	 * 
+	 * For instance, given a script containing the line:
+	 * 
+	 * print("Hello world!")
+	 * 
+	 * The script's source is the “print(“Hello world”)” command because it is what will be executed when the script runs, leading to “Hello world” being printed in the command line.
+	 * 
+	 * This item is protected. Attempting to use it in a [Script](https://developer.roblox.com/en-us/api-reference/class/Script) or [LocalScript](https://developer.roblox.com/en-us/api-reference/class/LocalScript) will cause an error.
+	 */
+	Source: string;
 }
 
 /** A LocalScript is a Lua source container that runs Lua code on a client connected to a Roblox server. They are used to access client-only objects, such as the player's [Camera](https://developer.roblox.com/en-us/api-reference/class/Camera). For code run through LocalScripts, the LocalPlayer property of the [Players](https://developer.roblox.com/en-us/api-reference/class/Players) service will return the player whose client is running the script.
@@ -22905,7 +22921,7 @@ interface ModuleScript extends LuaSourceContainer {
 	 * Used to store a URL that points to an online script source. Binds the online code to the script's [Script.Source](https://developer.roblox.com/en-us/api-reference/property/Script/Source).
 	 * @deprecated
 	 */
-	LinkedSource: string;
+	LinkedSource: ContentId;
 }
 
 interface LuauScriptAnalyzerService extends Instance {
@@ -23939,7 +23955,7 @@ interface Mouse extends Instance {
 	 * 
 	 * \* These appearances are approximations – the actual look is dependent on your operating system.
 	 */
-	Icon: string;
+	Icon: ContentId;
 	/**
 	 * The origin [Mouse](https://developer.roblox.com/en-us/api-reference/class/Mouse) property is a [CFrame](https://developer.roblox.com/en-us/api-reference/datatype/CFrame) indicating where the mouse originated from. It is positioned at the [Workspace.CurrentCamera](https://developer.roblox.com/en-us/api-reference/property/Workspace/CurrentCamera) and oriented toward the [Mouse](https://developer.roblox.com/en-us/api-reference/class/Mouse)'s 3D position.
 	 * 
@@ -26048,7 +26064,7 @@ interface MeshPart extends TriangleMeshPart {
 	 * 
 	 * Note that this property currently cannot be changed by scripts as the collision model of the mesh cannot be recomputed during runtime. Developers should not rely on this behavior as it may change in the future. Those looking for a custom mesh object that can be updated during runtime should use [SpecialMesh](https://developer.roblox.com/en-us/api-reference/class/SpecialMesh).
 	 */
-	readonly MeshId: string;
+	readonly MeshId: ContentId;
 	/**
 	 * This property determines the level of detail that solid-modeled and mesh parts will be shown in and can be set to the possible values of the [RenderFidelity](https://developer.roblox.com/en-us/api-reference/enum/RenderFidelity) enum.
 	 * 
@@ -26097,7 +26113,7 @@ interface MeshPart extends TriangleMeshPart {
 	 * 
 	 * A mesh can only be textured if the mesh has been UV mapped. UV mapping refers to the practice of projecting a texture map onto a mesh. This cannot be done using Roblox Studio and has to be done using an external 3D modelling application such as [Blender](https://www.blender.org/).
 	 */
-	TextureID: string;
+	TextureID: ContentId;
 	ApplyMesh(this: MeshPart, meshPart: MeshPart): void;
 }
 
@@ -26524,7 +26540,7 @@ interface BackpackItem extends Model {
 	 * 
 	 * If this property is left blank, the [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack) GUI will display the name of the tool instead.
 	 */
-	TextureId: string;
+	TextureId: ContentId;
 }
 
 /** Tools are objects that a [Humanoid](https://developer.roblox.com/en-us/api-reference/class/Humanoid) object can equip. For players, they are stored in a [Backpack](https://developer.roblox.com/en-us/api-reference/class/Backpack) object parented to a [Player](https://developer.roblox.com/en-us/api-reference/class/Player) object. In-game, players may have multiple tools which appear as icons at the bottom of the screen. Equipping a tool moves it from the Backpack and into a player's [character](https://developer.roblox.com/en-us/api-reference/class/Character) model in the [Workspace](https://developer.roblox.com/en-us/api-reference/class/Workspace). By default, tools are held in the right hand and have a handle in them, which is a [Part](https://developer.roblox.com/en-us/api-reference/class/BasePart) named “Handle” inside (though one is not required if [Tool.RequiresHandle](https://developer.roblox.com/en-us/api-reference/property/Tool/RequiresHandle) is off). Tools that are to be provided to (re)spawning players ought to be stored in the [StarterPack](https://developer.roblox.com/en-us/api-reference/class/StarterPack).
@@ -27418,7 +27434,7 @@ interface PackageLink extends Instance {
 	 * 
 	 * Tags: NotReplicated
 	 */
-	readonly PackageId: string;
+	readonly PackageId: ContentId;
 	/**
 	 * This property refers to a revision of a specific package
 	 * 
@@ -27909,7 +27925,7 @@ interface ParticleEmitter extends Instance {
 	 * Below is an opaque gray-scale Texture that works nicely for particles with [ParticleEmitter.LightEmission](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/LightEmission) set to 1.  
 	 * ![An example particle texture](https://developer.roblox.com/assets/bltf793b94e42b0b6bf/aura.png)
 	 */
-	Texture: string;
+	Texture: ContentId;
 	TimeScale: number;
 	/**
 	 * The Transparency property determines the transparency of all active particles over their individual lifetimes. It works similar to [ParticleEmitter.Size](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Size) in how it affects particles over time. In terms of rendering, it works like the [BasePart.Transparency](https://developer.roblox.com/en-us/api-reference/property/BasePart/Transparency) of a part on a scale of 0 to 1, where 0 is completely visible (opaque), and a value of 1 is completely invisible (not rendered at all).
@@ -31136,7 +31152,7 @@ interface ScreenshotHud extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_ScreenshotHud: unique symbol;
-	CameraButtonIcon: string;
+	CameraButtonIcon: ContentId;
 	CameraButtonPosition: UDim2;
 	CloseButtonPosition: UDim2;
 	CloseWhenScreenshotTaken: boolean;
@@ -31924,31 +31940,31 @@ interface Sky extends Instance {
 	/**
 	 * The texture of the moon while using this skybox.
 	 */
-	MoonTextureId: string;
+	MoonTextureId: ContentId;
 	/**
 	 * The URL link to a picture for the back surface of the sky.
 	 */
-	SkyboxBk: string;
+	SkyboxBk: ContentId;
 	/**
 	 * The URL asset link to a picture for the Bottom surface of the sky.
 	 */
-	SkyboxDn: string;
+	SkyboxDn: ContentId;
 	/**
 	 * The URL link to a picture for the front surface of the skybox.
 	 */
-	SkyboxFt: string;
+	SkyboxFt: ContentId;
 	/**
 	 * The URL link to a picture for the left surface of the sky.
 	 */
-	SkyboxLf: string;
+	SkyboxLf: ContentId;
 	/**
 	 * The URL link to a picture for the right surface of the sky.
 	 */
-	SkyboxRt: string;
+	SkyboxRt: ContentId;
 	/**
 	 * The URL link to a picture for the top surface of the sky.
 	 */
-	SkyboxUp: string;
+	SkyboxUp: ContentId;
 	/**
 	 * How many stars are shown in the skybox. Note that too many stars may cause severe lag. Only works if [Sky.CelestialBodiesShown](https://developer.roblox.com/en-us/api-reference/property/Sky/CelestialBodiesShown) is true.
 	 */
@@ -31960,7 +31976,7 @@ interface Sky extends Instance {
 	/**
 	 * The texture of the sun while using this skybox.
 	 */
-	SunTextureId: string;
+	SunTextureId: ContentId;
 }
 
 /** Smoke is one of several particle-emitting classes. Like other particle emitters of its kind, Smoke objects emit particles when parented to a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart) (such as a [Part](https://developer.roblox.com/en-us/api-reference/class/Part)) or an [Attachment](https://developer.roblox.com/en-us/api-reference/class/Attachment) within such a [BasePart](https://developer.roblox.com/en-us/api-reference/class/BasePart). Compared to the [ParticleEmitter](https://developer.roblox.com/en-us/api-reference/class/ParticleEmitter) class, Smoke lacks many different customization properties and special methods, such as [ParticleEmitter.Lifetime](https://developer.roblox.com/en-us/api-reference/property/ParticleEmitter/Lifetime) or [ParticleEmitter:Emit](https://developer.roblox.com/en-us/api-reference/function/ParticleEmitter/Emit). It is useful to create a quick special effect in a pinch; for more detailed work it is preferable to use a [ParticleEmitter](https://developer.roblox.com/en-us/api-reference/class/ParticleEmitter) instead.
@@ -32348,7 +32364,7 @@ interface Sound extends Instance {
 	 * "http://www.roblox.com/asset/?id=12222216" -- Content ID (will work)
 	 * "rbxassetid://12222216" -- Content ID (alternative version, will work)
 	 */
-	SoundId: string;
+	SoundId: ContentId;
 	/**
 	 * The length of the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) in seconds. If the [Sound](https://developer.roblox.com/en-us/api-reference/class/Sound) is not loaded, this value will be 0.
 	 * 
@@ -35265,6 +35281,7 @@ interface ChatWindowConfiguration extends TextChatConfigurations {
 	TextStrokeTransparency: number;
 	VerticalAlignment: Enum.VerticalAlignment;
 	WidthScale: number;
+	DeriveNewMessageProperties(this: ChatWindowConfiguration): ChatWindowMessageProperties;
 }
 
 interface TextChatMessage extends Instance {
@@ -35349,6 +35366,7 @@ interface TextChatService extends Instance {
 	readonly MessageReceived: RBXScriptSignal<(textChatMessage: TextChatMessage) => void>;
 	readonly SendingMessage: RBXScriptSignal<(textChatMessage: TextChatMessage) => void>;
 	OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => TextChatMessageProperties | undefined;
+	OnChatWindowAdded: (message: TextChatMessage) => Array<any>;
 	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
 }
 
@@ -35482,7 +35500,7 @@ interface TextService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	GetFamilyInfoAsync(this: TextService, assetId: string): object;
+	GetFamilyInfoAsync(this: TextService, assetId: ContentId): object;
 	/**
 	 * Tags: Yields
 	 */
@@ -35787,7 +35805,7 @@ interface Trail extends Instance {
 	 * 
 	 * Textures can be displayed in a variety of different ways based on the trail's [Trail.TextureMode](https://developer.roblox.com/en-us/api-reference/property/Trail/TextureMode) and [Trail.TextureLength](https://developer.roblox.com/en-us/api-reference/property/Trail/TextureLength) properties.
 	 */
-	Texture: string;
+	Texture: ContentId;
 	/**
 	 * This property determines how [Trail.Texture](https://developer.roblox.com/en-us/api-reference/property/Trail/Texture)s are drawn by [Trail](https://developer.roblox.com/en-us/api-reference/class/Trail). The behavior of TextureLength is determined by the [Trail.TextureMode](https://developer.roblox.com/en-us/api-reference/property/Trail/TextureMode) of its trail.
 	 * 
@@ -36362,10 +36380,10 @@ interface UIDragDetector extends UIComponent {
 	 * @deprecated
 	 */
 	readonly _nominal_UIDragDetector: unique symbol;
-	ActivatedCursorIcon: string;
+	ActivatedCursorIcon: ContentId;
 	BoundingBehavior: Enum.UIDragDetectorBoundingBehavior;
 	BoundingUI: GuiBase2d | undefined;
-	CursorIcon: string;
+	CursorIcon: ContentId;
 	DragAxis: Vector2;
 	DragRelativity: Enum.UIDragDetectorDragRelativity;
 	DragRotation: number;
@@ -36379,6 +36397,9 @@ interface UIDragDetector extends UIComponent {
 	MinDragTranslation: UDim2;
 	ReferenceUIInstance: GuiObject | undefined;
 	ResponseStyle: Enum.UIDragDetectorResponseStyle;
+	SelectionModeDragSpeed: UDim2;
+	SelectionModeRotateSpeed: number;
+	UIDragSpeedAxisMapping: Enum.UIDragSpeedAxisMapping;
 	AddConstraintFunction(
 		this: UIDragDetector,
 		priority: number,
@@ -37329,7 +37350,7 @@ interface UserInputService extends Instance {
 	 * Tags: NotReplicated
 	 */
 	readonly MouseEnabled: boolean;
-	MouseIcon: string;
+	MouseIcon: ContentId;
 	/**
 	 * This property determines whether the [Mouse's](https://developer.roblox.com/en-us/api-reference/class/Mouse) icon is visible When _true_ the mouse's icon is visible, when _false_ it is not.
 	 * 
@@ -37639,7 +37660,7 @@ interface UserInputService extends Instance {
 	 * *   [UserInputService.GamepadEnabled](https://developer.roblox.com/en-us/api-reference/property/UserInputService/GamepadEnabled)
 	 */
 	GetGamepadState(this: UserInputService, gamepadNum: CastsToEnum<Enum.UserInputType>): Array<InputObject>;
-	GetImageForKeyCode(this: UserInputService, keyCode: CastsToEnum<Enum.KeyCode>): string;
+	GetImageForKeyCode(this: UserInputService, keyCode: CastsToEnum<Enum.KeyCode>): ContentId;
 	/**
 	 * This function returns an array of [InputObjects](https://developer.roblox.com/en-us/api-reference/class/InputObject) associated with the keys currently being pressed down.
 	 * 
