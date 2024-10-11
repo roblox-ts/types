@@ -272,19 +272,6 @@ interface BaseWrap extends Instance {
 	ImportOrigin: CFrame;
 }
 
-interface WrapDeformer extends BaseWrap {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_WrapDeformer: unique symbol;
-	Amount: number;
-	RenderMeshID: ContentId;
-}
-
 interface WrapLayer extends BaseWrap {
 	/**
 	 * **DO NOT USE!**
@@ -1180,21 +1167,6 @@ interface BaseScript extends LuaSourceContainer {
 	 */
 	readonly _nominal_BaseScript: unique symbol;
 	RunContext: Enum.RunContext;
-}
-
-interface ModuleScript extends LuaSourceContainer {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_ModuleScript: unique symbol;
-	/**
-	 * The code to be executed.
-	 */
-	Source: string;
 }
 
 interface MaterialVariant extends Instance {
