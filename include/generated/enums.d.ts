@@ -5481,35 +5481,6 @@ declare namespace Enum {
 	}
 	export type ConnectionState = ConnectionState.Connected | ConnectionState.Disconnected;
 
-	export namespace ContentSourceType {
-		export interface None extends globalThis.EnumItem {
-			Name: "None";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.ContentSourceType;
-		}
-
-		export const None: None;
-
-		export interface Uri extends globalThis.EnumItem {
-			Name: "Uri";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.ContentSourceType;
-		}
-
-		export const Uri: Uri;
-
-		export interface Object extends globalThis.EnumItem {
-			Name: "Object";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.ContentSourceType;
-		}
-
-		export const Object: Object;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ContentSourceType>;
-	}
-	export type ContentSourceType = ContentSourceType.None | ContentSourceType.Uri | ContentSourceType.Object;
-
 	export namespace ContextActionPriority {
 		export interface Low extends globalThis.EnumItem {
 			Name: "Low";
@@ -15387,17 +15358,9 @@ declare namespace Enum {
 
 		export const Bounce: Bounce;
 
-		export interface CubicV2 extends globalThis.EnumItem {
-			Name: "CubicV2";
-			Value: 5;
-			EnumType: typeof globalThis.Enum.PoseEasingStyle;
-		}
-
-		export const CubicV2: CubicV2;
-
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PoseEasingStyle>;
 	}
-	export type PoseEasingStyle = PoseEasingStyle.Linear | PoseEasingStyle.Constant | PoseEasingStyle.Elastic | PoseEasingStyle.Cubic | PoseEasingStyle.Bounce | PoseEasingStyle.CubicV2;
+	export type PoseEasingStyle = PoseEasingStyle.Linear | PoseEasingStyle.Constant | PoseEasingStyle.Elastic | PoseEasingStyle.Cubic | PoseEasingStyle.Bounce;
 
 	export namespace PositionAlignmentMode {
 		export interface OneAttachment extends globalThis.EnumItem {
@@ -16887,35 +16850,6 @@ declare namespace Enum {
 		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RollOffMode>;
 	}
 	export type RollOffMode = RollOffMode.Inverse | RollOffMode.Linear | RollOffMode.LinearSquare | RollOffMode.InverseTapered;
-
-	export namespace RolloutState {
-		export interface Default extends globalThis.EnumItem {
-			Name: "Default";
-			Value: 0;
-			EnumType: typeof globalThis.Enum.RolloutState;
-		}
-
-		export const Default: Default;
-
-		export interface Disabled extends globalThis.EnumItem {
-			Name: "Disabled";
-			Value: 1;
-			EnumType: typeof globalThis.Enum.RolloutState;
-		}
-
-		export const Disabled: Disabled;
-
-		export interface Enabled extends globalThis.EnumItem {
-			Name: "Enabled";
-			Value: 2;
-			EnumType: typeof globalThis.Enum.RolloutState;
-		}
-
-		export const Enabled: Enabled;
-
-		export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RolloutState>;
-	}
-	export type RolloutState = RolloutState.Default | RolloutState.Disabled | RolloutState.Enabled;
 
 	export namespace RotationOrder {
 		export interface XYZ extends globalThis.EnumItem {
