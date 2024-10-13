@@ -159,7 +159,6 @@ interface Services {
 	StudioPublishService: StudioPublishService;
 	StudioScriptDebugEventListener: StudioScriptDebugEventListener;
 	StudioSdkService: StudioSdkService;
-	StudioUserService: StudioUserService;
 	StudioWidgetsService: StudioWidgetsService;
 	StylingService: StylingService;
 	TeamCreateData: TeamCreateData;
@@ -226,7 +225,6 @@ interface CreatableInstances {
 	AudioFader: AudioFader;
 	AudioFilter: AudioFilter;
 	AudioFlanger: AudioFlanger;
-	AudioLimiter: AudioLimiter;
 	AudioListener: AudioListener;
 	AudioPitchShifter: AudioPitchShifter;
 	AudioPlayer: AudioPlayer;
@@ -3066,21 +3064,6 @@ interface AudioFocusService extends Instance {
 	readonly _nominal_AudioFocusService: unique symbol;
 }
 
-interface AudioLimiter extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_AudioLimiter: unique symbol;
-	Bypass: boolean;
-	MaxLevel: number;
-	Release: number;
-	GetConnectedWires(this: AudioLimiter, pin: string): Array<Instance>;
-}
-
 interface AudioListener extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -3239,15 +3222,11 @@ interface AvatarCreationService extends Instance {
 	/**
 	 * Tags: Yields
 	 */
-	GenerateAvatarPreviewAsync2(this: AvatarCreationService, sessionId: string, fileId: string, textPrompt: string, options: object): string;
+	GenerateAvatarPreviewAsync2(this: AvatarCreationService, sessionId: string, fileId: string, textPrompt: string): string;
 	/**
 	 * Tags: Yields
 	 */
 	GetAvatarGenerationConfig(this: AvatarCreationService): object;
-	/**
-	 * Tags: Yields
-	 */
-	GetBatchTokenDetailsAsync(this: AvatarCreationService, tokenIds: Array<any>): unknown;
 	/**
 	 * Tags: Yields
 	 */
@@ -5147,11 +5126,9 @@ interface WrapDeformer extends BaseWrap {
 	 * @deprecated
 	 */
 	readonly _nominal_WrapDeformer: unique symbol;
-	GetDeformedCFrame(this: WrapDeformer, originalCFrame: CFrame): CFrame;
-	/**
-	 * Tags: Yields
-	 */
-	CreateEditableMeshAsync(this: WrapDeformer): EditableMesh;
+	Amount: number;
+	Enabled: boolean;
+	RenderMeshID: ContentId;
 }
 
 /** The WrapLayer object defines a 3D accessory's inner and outer surfaces and other properties related to layering accessories. These surfaces, or the Inner Cage and Outer Cage, are similar to collision boxes, and describe the surfaces of which other 3D accessories can be placed without clipping or breaking.
@@ -6322,6 +6299,23 @@ interface Breakpoint extends Instance {
 	 * @deprecated
 	 */
 	readonly _nominal_Breakpoint: unique symbol;
+}
+
+interface BubbleChatMessageProperties extends Instance {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_BubbleChatMessageProperties: unique symbol;
+	BackgroundColor3: Color3;
+	BackgroundTransparency: number;
+	FontFace: Font;
+	TailVisible: boolean;
+	TextColor3: Color3;
+	TextSize: number;
 }
 
 interface BulkImportService extends Instance {
@@ -22928,10 +22922,6 @@ interface ModuleScript extends LuaSourceContainer {
 	 * @deprecated
 	 */
 	LinkedSource: ContentId;
-	/**
-	 * The code to be executed.
-	 */
-	Source: string;
 }
 
 interface LuauScriptAnalyzerService extends Instance {
@@ -33862,17 +33852,6 @@ interface StudioSdkService extends Instance {
 	readonly _nominal_StudioSdkService: unique symbol;
 }
 
-interface StudioUserService extends Instance {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_StudioUserService: unique symbol;
-}
-
 interface StudioWidgetsService extends Instance {
 	/**
 	 * **DO NOT USE!**
@@ -35339,23 +35318,6 @@ interface TextChatMessageProperties extends Instance {
 	PrefixText: string;
 	Text: string;
 	Translation: string;
-}
-
-interface BubbleChatMessageProperties extends TextChatMessageProperties {
-	/**
-	 * **DO NOT USE!**
-	 *
-	 * This field exists to force TypeScript to recognize this as a nominal type
-	 * @hidden
-	 * @deprecated
-	 */
-	readonly _nominal_BubbleChatMessageProperties: unique symbol;
-	BackgroundColor3: Color3;
-	BackgroundTransparency: number;
-	FontFace: Font;
-	TailVisible: boolean;
-	TextColor3: Color3;
-	TextSize: number;
 }
 
 interface ChatWindowMessageProperties extends TextChatMessageProperties {
