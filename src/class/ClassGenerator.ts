@@ -154,7 +154,6 @@ const PLUGIN_ONLY_CLASSES = new Set([
 	"StudioService",
 	"StudioTheme",
 	"TaskScheduler",
-	"TestService",
 	"VersionControlService",
 ]);
 
