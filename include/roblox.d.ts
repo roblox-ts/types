@@ -290,11 +290,11 @@ interface BoundActionInfo {
 	/** The image of the action's touch button set by SetImage */
 	image?: string;
 	/** The input types passed to BindAction for which this action will trigger */
-	inputTypes?: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType | string>;
+	inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType | string>;
 	/** Describes the priority level of the action */
-	priorityLevel?: number;
+	priorityLevel: number;
 	/** Describes the index of the action on the stack (increasing) */
-	stackOrder?: number;
+	stackOrder: number;
 }
 
 declare const enum AssetTypeId {
