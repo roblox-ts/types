@@ -540,7 +540,7 @@ interface InsertService extends Instance {
 	GetUserSets(this: InsertService, userId: number): Array<SetInfo>;
 }
 
-interface Instance {
+interface Instance extends Object {
 	/**
 	 * **Clone** creates a copy of an object and all of its descendants, ignoring all objects that are not [Archivable](https://developer.roblox.com/en-us/api-reference/property/Instance/Archivable). The copy of the root object is returned by this function and its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is set to nil.
 	 *
