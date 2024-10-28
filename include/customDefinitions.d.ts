@@ -341,11 +341,11 @@ interface Dragger extends Instance {
 	MouseDown(this: Dragger, mousePart: BasePart, pointOnMousePart: Vector3, parts: Array<BasePart>): void;
 }
 
-interface EditableImage extends Instance {
+interface EditableImage extends Object {
 	ReadPixels(this: EditableImage, position: Vector2, size: Vector2): Array<number>;
 }
 
-interface EditableMesh extends DataModelMesh {
+interface EditableMesh extends Object {
 	FindClosestPointOnSurface(this: EditableMesh, point: Vector3): LuaTuple<[number, Vector3, Vector3]>;
 	FindVerticesWithinSphere(this: EditableMesh, center: Vector3, radius: number): Array<number>;
 	GetAdjacentTriangles(this: EditableMesh, triangleId: number): Array<number>;
