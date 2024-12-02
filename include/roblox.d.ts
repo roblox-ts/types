@@ -2908,7 +2908,6 @@ declare namespace vector {
 	function min(...vecs: Array<vector>): vector;
 }
 
-
 interface GettableCores {
 	AvatarContextMenuEnabled: boolean;
 	PointsNotificationsActive: boolean;
