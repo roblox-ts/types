@@ -325,11 +325,7 @@ const RENAMEABLE_AUTO_TYPES = new Map<string, string>([
 function safeRenamedInstance(name: string): string;
 function safeRenamedInstance(name: string | undefined): string | undefined;
 function safeRenamedInstance(name: string | undefined) {
-	if (!name) return name;
-
-	const renamedName = renameClassName(name);
-
-	return renamedName && (RENAMEABLE_AUTO_TYPES.get(renamedName) ?? renamedName);
+	return name && renameClassName(RENAMEABLE_AUTO_TYPES.get(name) ?? name);
 }
 
 const VALUE_TYPE_MAP = new Map<string, string | null>([
