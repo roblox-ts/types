@@ -31,8 +31,6 @@ type ChangedSignal = {
 
 type Tweenable = number | boolean | CFrame | Rect | Color3 | UDim | UDim2 | Vector2 | Vector2int16 | Vector3;
 
-type ContentId = string;
-
 interface EmoteDictionary {
 	/** When these arrays have more than one emote id in them, it will randomly select one of the emotes to play from the list. */
 	[emoteName: string]: Array<number>;
@@ -1962,11 +1960,17 @@ interface Path2DControlPoint {
 	 * @deprecated
 	 */
 	readonly _nominal_Path2DControlPoint: unique symbol;
-	/** The position of the `Path2DControlPoint`. */
+	/**
+	 * The position of the `Path2DControlPoint`.
+	 */
 	Position: UDim2;
-	/** The left tangent of the `Path2DControlPoint`. */
+	/**
+	 * The left tangent of the `Path2DControlPoint`.
+	 */
 	LeftTangent: UDim2;
-	/** The right tangent of the `Path2DControlPoint`. */
+	/**
+	 * The right tangent of the `Path2DControlPoint`.
+	 */
 	RightTangent: UDim2;
 }
 
@@ -2409,6 +2413,42 @@ interface UDim2Constructor {
 }
 
 declare const UDim2: UDim2Constructor;
+
+// ContentId
+interface ContentId {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ContentId: unique symbol;
+	/**
+	 * An empty Content value with Content.SourceType of None.
+	 */
+	readonly none: ContentId;
+	/**
+	 * The source type of the contained value.
+	 */
+	readonly SourceType: Enum.ContentSourceType;
+	/**
+	 * A URI `string` if `Content.SourceType` is Uri, otherwise `nil`.
+	 */
+	readonly Uri?: string;
+	/**
+	 * A reference to a non-nil `Object` if `Content.SourceType` is Object, otherwise `nil`.
+	 */
+	readonly Object?: RBXObject;
+}
+
+interface ContentIdConstructor {
+	fromUri: (uri: string) => ContentId;
+	fromObject: (object: RBXObject) => ContentId;
+}
+
+// Changed to `Content` instead of `ContentId`, that's how it's constructed
+declare const Content: ContentIdConstructor;
 
 // Vector2
 interface Vector2 {
