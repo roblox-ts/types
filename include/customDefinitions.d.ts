@@ -341,22 +341,36 @@ interface Dragger extends Instance {
 	MouseDown(this: Dragger, mousePart: BasePart, pointOnMousePart: Vector3, parts: Array<BasePart>): void;
 }
 
-interface EditableImage extends Instance {
-	ReadPixels(this: EditableImage, position: Vector2, size: Vector2): Array<number>;
-}
-
-interface EditableMesh extends DataModelMesh {
-	FindClosestPointOnSurface(this: EditableMesh, point: Vector3): LuaTuple<[number, Vector3, Vector3]>;
-	FindVerticesWithinSphere(this: EditableMesh, center: Vector3, radius: number): Array<number>;
-	GetAdjacentTriangles(this: EditableMesh, triangleId: number): Array<number>;
-	GetAdjacentVertices(this: EditableMesh, vertexId: number): Array<number>;
-	GetTriangleVertices(this: EditableMesh, triangleId: number): LuaTuple<[number, number, number]>;
-	GetTriangles(this: EditableMesh): Array<number>;
-	GetVertices(this: EditableMesh): Array<number>;
-	RaycastLocal(this: EditableMesh, origin: Vector3, direction: Vector3): LuaTuple<[number, Vector3, Vector3]>;
-}
-
 interface EmotesPages extends InventoryPages {}
+
+interface DrawImageTransformedOptions {
+	/**
+	 * Specifies how the pixels of the source image blend with those of the destination.
+	 * Default is `Enum.ImageCombineType.AlphaBlend`.
+	 */
+	CombineType: Enum.ImageCombineType.AlphaBlend;
+	/**
+	 * Specifies the sampling method (e.g. Default for bilinear or `Pixelated` for nearest neighbor)
+	 * Default is `Enum.ResamplerMode.Default`.
+	 */
+	SamplingMode: Enum.ResamplerMode.Default;
+	/**
+	 * Specifies the pivot point within the source image for scaling and rotation.
+	 * Default is the center of the source image (i.e. `Image.Size / 2`).
+	 */
+	PivotPoint: Vector2;
+}
+
+interface EditableImage extends RBXObject {
+	DrawImageTransformed(
+		this: EditableImage,
+		position: Vector2,
+		scale: Vector2,
+		rotation: number,
+		image: EditableImage,
+		options: DrawImageTransformedOptions,
+	): void;
+}
 
 interface FloatCurve extends Instance {
 	GetKeyIndicesAtTime(this: FloatCurve, time: number): [before: number, after: number];
@@ -540,7 +554,23 @@ interface InsertService extends Instance {
 	GetUserSets(this: InsertService, userId: number): Array<SetInfo>;
 }
 
-interface Instance {
+interface RBXObject {
+	/** `Instance.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
+	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Instance.Changed` event.
+	 * @example
+	 * function f(p: Part) {
+	 * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
+	 * }
+	 */
+	readonly Changed: unknown;
+	IsA<T extends keyof Instances>(this: Instance, className: T): this is Instances[T];
+	GetPropertyChangedSignal<T extends Instance>(
+		this: T,
+		propertyName: InstancePropertyNames<T>,
+	): RBXScriptSignal<() => void>;
+}
+
+interface Instance extends RBXObject {
 	/**
 	 * **Clone** creates a copy of an object and all of its descendants, ignoring all objects that are not [Archivable](https://developer.roblox.com/en-us/api-reference/property/Instance/Archivable). The copy of the root object is returned by this function and its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is set to nil.
 	 *
@@ -554,14 +584,6 @@ interface Instance {
 	 * Clone will return nil if the root object has Archivable set to false.
 	 */
 	Clone<T extends Instance>(this: T): T;
-	/** `Instance.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
-	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Instance.Changed` event.
-	 * @example
-	 * function f(p: Part) {
-	 * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
-	 * }
-	 */
-	readonly Changed: unknown;
 	GetActor(this: Instance): Actor | undefined;
 	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
@@ -569,7 +591,6 @@ interface Instance {
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
 	WaitForChild(this: Instance, childName: string | number): Instance;
 	WaitForChild(this: Instance, childName: string | number, timeOut: number): Instance | undefined;
-	IsA<T extends keyof Instances>(this: Instance, className: T): this is Instances[T];
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 	FindFirstChildWhichIsA<T extends keyof Instances>(
 		this: Instance,
@@ -578,10 +599,6 @@ interface Instance {
 	): Instances[T] | undefined;
 	FindFirstAncestorOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 	FindFirstChildOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
-	GetPropertyChangedSignal<T extends Instance>(
-		this: T,
-		propertyName: InstancePropertyNames<T>,
-	): RBXScriptSignal<() => void>;
 	GetAttribute(this: Instance, attribute: string): AttributeValue | undefined;
 	SetAttribute(this: Instance, attribute: string, value: AttributeValue | undefined): void;
 	GetAttributes(this: Instance): Map<string, AttributeValue>;
