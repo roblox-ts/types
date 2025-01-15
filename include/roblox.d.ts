@@ -2439,8 +2439,8 @@ interface UDim2Constructor {
 
 declare const UDim2: UDim2Constructor;
 
-// ContentId
-interface ContentId {
+// Content
+interface Content {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -2448,11 +2448,7 @@ interface ContentId {
 	 * @hidden
 	 * @deprecated
 	 */
-	readonly _nominal_ContentId: unique symbol;
-	/**
-	 * An empty Content value with Content.SourceType of None.
-	 */
-	readonly none: ContentId;
+	readonly _nominal_Content: unique symbol;
 	/**
 	 * The source type of the contained value.
 	 */
@@ -2467,13 +2463,17 @@ interface ContentId {
 	readonly Object?: RBXObject;
 }
 
-interface ContentIdConstructor {
-	fromUri: (uri: string) => ContentId;
-	fromObject: (object: RBXObject) => ContentId;
+interface ContentConstructor {
+	/**
+	 * An empty Content value with Content.SourceType of None.
+	 */
+	readonly none: Content;
+
+	fromUri: (uri: string) => Content;
+	fromObject: (object: RBXObject) => Content;
 }
 
-// Changed to `Content` instead of `ContentId`, that's how it's constructed
-declare const Content: ContentIdConstructor;
+declare const Content: ContentConstructor;
 
 // Vector2
 interface Vector2 {
@@ -2924,6 +2924,13 @@ interface vector {
 	 * @deprecated
 	 */
 	readonly _nominal_vector: unique symbol;
+
+	/** The x-coordinate of the vector */
+	readonly x: number;
+	/** The y-coordinate of the vector */
+	readonly y: number;
+	/** The z-coordinate of the vector */
+	readonly z: number;
 }
 
 declare namespace vector {
