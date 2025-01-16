@@ -2710,6 +2710,8 @@ type Vector3int16Constructor = new (x?: number, y?: number, z?: number) => Vecto
 
 declare const Vector3int16: Vector3int16Constructor;
 
+type ContentId = string;
+
 // unusable internal studio classes
 interface QFont {}
 interface QDir {}
