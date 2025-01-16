@@ -333,7 +333,6 @@ const VALUE_TYPE_MAP = new Map<string, string | null>([
 	["BinaryString", null],
 	["bool", "boolean"],
 	["Connection", "RBXScriptConnection"],
-	["Content", "string"],
 	["ContentId", "string"],
 	["CoordinateFrame", "CFrame"],
 	["Dictionary", "object"],
