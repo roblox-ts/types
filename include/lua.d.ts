@@ -544,6 +544,9 @@ declare namespace math {
 	/** Returns -1 if `x < 0`, 0 if `x == 0`, or 1 if `x > 0`. */
 	function sign(n: number): -1 | 0 | 1;
 
+	/** Maps a number from one range to another. */
+	function map(x: number, inmin: number, inmax: number, outmin: number, outmax: number): number;
+
 	/** Returns the sine of x (assumed to be in radians). */
 	function sin(n: number): number;
 

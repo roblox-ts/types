@@ -31,8 +31,6 @@ type ChangedSignal = {
 
 type Tweenable = number | boolean | CFrame | Rect | Color3 | UDim | UDim2 | Vector2 | Vector2int16 | Vector3;
 
-type ContentId = string;
-
 interface EmoteDictionary {
 	/** When these arrays have more than one emote id in them, it will randomly select one of the emotes to play from the list. */
 	[emoteName: string]: Array<number>;
@@ -267,22 +265,47 @@ interface BundleInfo {
 
 type TeleportData = string | number | boolean | Array<unknown> | Map<unknown, unknown>;
 
+interface GameJoinContext {
+	JoinSource: Enum.JoinSource;
+	ItemType?: Enum.AvatarItemType;
+	AssetId?: string;
+	OutfitId?: string;
+	AssetType?: Enum.AssetType;
+}
+
 interface PlayerJoinInfo {
 	/** The `DataModel.GameId` of the experience the `Player` teleported from. Only present if the player teleports to the current experience and if a server calls the teleport function. */
 	SourceGameId?: number;
 	/** The `DataModel.PlaceId` of the place the `Player` teleported from. Only present if the player teleports to the current place and a server calls the teleport function. */
 	SourcePlaceId?: number;
+	/** The `Player.UserId` of the player who invited the current player to the experience. Use this data to identify the referrer and trigger reward logic. */
+	ReferredByPlayerId?: number;
 	/** An array containing the `UserId` numbers of the users teleported alongside the `Player`. Only present if the player teleported as part of a group. */
 	Members?: Array<number>;
 	/** Reflects the `teleportData` specified in the original teleport. Useful for sharing information between servers the player teleports to. Only present if `teleportData` was specified and a server calls the teleport function. */
 	TeleportData?: TeleportData;
 	/** A string containing launch data specified in the URL the player clicks to join the experience. Only present if the URL contains launch data. */
 	LaunchData?: string;
+	/** A dictionary that includes relevant information based on the context of the game join. */
+	GameJoinContext?: GameJoinContext;
 }
 
 interface BoundActionInfo {
+	/** Describes whether a touch button should be created on TouchEnabled devices */
+	createTouchButton: boolean;
+	/** The description of action set by SetDescription */
+	description?: string;
+	/** The title of the action set by SetTitle */
+	title?: string;
+	/** The image of the action's touch button set by SetImage */
+	image?: string;
+	/** The input types passed to BindAction for which this action will trigger */
 	inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType | string>;
+	/** Describes the priority level of the action.
+	 * Priority level will still be included even if `BindActionAtPriority` wasn't used - by default it will be 2000.
+	 */
 	priorityLevel: number;
+	/** Describes the index of the action on the stack (increasing) */
 	stackOrder: number;
 }
 
@@ -1962,11 +1985,17 @@ interface Path2DControlPoint {
 	 * @deprecated
 	 */
 	readonly _nominal_Path2DControlPoint: unique symbol;
-	/** The position of the `Path2DControlPoint`. */
+	/**
+	 * The position of the `Path2DControlPoint`.
+	 */
 	Position: UDim2;
-	/** The left tangent of the `Path2DControlPoint`. */
+	/**
+	 * The left tangent of the `Path2DControlPoint`.
+	 */
 	LeftTangent: UDim2;
-	/** The right tangent of the `Path2DControlPoint`. */
+	/**
+	 * The right tangent of the `Path2DControlPoint`.
+	 */
 	RightTangent: UDim2;
 }
 
@@ -2410,6 +2439,42 @@ interface UDim2Constructor {
 
 declare const UDim2: UDim2Constructor;
 
+// Content
+interface Content {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Content: unique symbol;
+	/**
+	 * The source type of the contained value.
+	 */
+	readonly SourceType: Enum.ContentSourceType;
+	/**
+	 * A URI `string` if `Content.SourceType` is Uri, otherwise `nil`.
+	 */
+	readonly Uri?: string;
+	/**
+	 * A reference to a non-nil `Object` if `Content.SourceType` is Object, otherwise `nil`.
+	 */
+	readonly Object?: RBXObject;
+}
+
+interface ContentConstructor {
+	/**
+	 * An empty Content value with Content.SourceType of None.
+	 */
+	readonly none: Content;
+
+	fromUri: (uri: string) => Content;
+	fromObject: (object: RBXObject) => Content;
+}
+
+declare const Content: ContentConstructor;
+
 // Vector2
 interface Vector2 {
 	/**
@@ -2645,6 +2710,8 @@ type Vector3int16Constructor = new (x?: number, y?: number, z?: number) => Vecto
 
 declare const Vector3int16: Vector3int16Constructor;
 
+type ContentId = string;
+
 // unusable internal studio classes
 interface QFont {}
 interface QDir {}
@@ -2848,6 +2915,71 @@ declare namespace buffer {
 
 	/** Sets a region of the buffer memory to some 8-bit unsigned integer value. */
 	function fill(b: buffer, offset: number, value: number, count?: number): void;
+}
+
+interface vector {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_vector: unique symbol;
+
+	/** The x-coordinate of the vector */
+	readonly x: number;
+	/** The y-coordinate of the vector */
+	readonly y: number;
+	/** The z-coordinate of the vector */
+	readonly z: number;
+}
+
+declare namespace vector {
+	/** Constant vector with all components set to zero. */
+	const zero: vector;
+
+	/** Constant vector with all components set to one. */
+	const one: vector;
+
+	/** Creates a new vector with the given component values. */
+	function create(x: number, y: number, z: number): vector;
+
+	/** Calculates the magnitude of a given vector. */
+	function magnitude(vec: vector): number;
+
+	/** Computes the normalized version (unit vector) of a given vector. */
+	function normalize(vec: vector): vector;
+
+	/** Computes the cross product of two vectors. */
+	function cross(vec1: vector, vec2: vector): vector;
+
+	/** Computes the dot product of two vectors. */
+	function dot(vec1: vector, vec2: vector): number;
+
+	/** Computes the angle between two vectors in radians. The axis, if specified, is used to determine the sign of the angle. */
+	function angle(vec1: vector, vec2: vector, axis?: vector): number;
+
+	/** Applies `math.floor` to every component of the input vector. */
+	function floor(vec: vector): vector;
+
+	/** Applies `math.ceil` to every component of the input vector. */
+	function ceil(vec: vector): vector;
+
+	/** Applies `math.abs` to every component of the input vector. */
+	function abs(vec: vector): vector;
+
+	/** Applies `math.sign` to every component of the input vector. */
+	function sign(vec: vector): vector;
+
+	/** Applies `math.clamp` to every component of the input vector. */
+	function clamp(vec: vector, min: vector, max: vector): vector;
+
+	/** Applies `math.max` to the corresponding components of the input vectors. Equivalent to `vector.create(math.max((...).x), math.max((...).y), math.max((...).z))`. */
+	function max(...vecs: Array<vector>): vector;
+
+	/** Applies `math.min` to the corresponding components of the input vectors. Equivalent to `vector.create(math.min((...).x), math.min((...).y), math.min((...).z))`. */
+	function min(...vecs: Array<vector>): vector;
 }
 
 interface GettableCores {

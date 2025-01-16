@@ -276,6 +276,8 @@ const EXPECTED_EXTRA_MEMBERS = new Map([
 	["OrderedDataStore", ["GetAsync", "IncrementAsync", "SetAsync", "UpdateAsync", "RemoveAsync"]],
 ]);
 
+const RENAME_CLASSES = new Map<string, string>([["Object", "RBXObject"]]);
+
 function containsBadChar(name: string) {
 	for (const badChar of BAD_NAME_CHARS) {
 		if (name.indexOf(badChar) !== -1) {
@@ -283,6 +285,18 @@ function containsBadChar(name: string) {
 		}
 	}
 	return false;
+}
+
+function renameClassName(className: string) {
+	return RENAME_CLASSES.get(className) || className;
+}
+function getOriginalClassName(renamedClassName: string) {
+	for (const [original, renamed] of RENAME_CLASSES) {
+		if (renamed === renamedClassName) {
+			return original;
+		}
+	}
+	return renamedClassName;
 }
 
 function safeName(name: string) {
@@ -311,7 +325,7 @@ const RENAMEABLE_AUTO_TYPES = new Map<string, string>([
 function safeRenamedInstance(name: string): string;
 function safeRenamedInstance(name: string | undefined): string | undefined;
 function safeRenamedInstance(name: string | undefined) {
-	return name && (RENAMEABLE_AUTO_TYPES.get(name) ?? name);
+	return name && renameClassName(RENAMEABLE_AUTO_TYPES.get(name) ?? name);
 }
 
 const VALUE_TYPE_MAP = new Map<string, string | null>([
@@ -319,7 +333,6 @@ const VALUE_TYPE_MAP = new Map<string, string | null>([
 	["BinaryString", null],
 	["bool", "boolean"],
 	["Connection", "RBXScriptConnection"],
-	["Content", "string"],
 	["CoordinateFrame", "CFrame"],
 	["Dictionary", "object"],
 	["double", "number"],
@@ -353,6 +366,8 @@ function safeValueType(valueType: ApiValueType, canImplicitlyConvertEnum = false
 		const nonOptionalType = valueType.Name.substring(0, valueType.Name.length - 1);
 		const mappedType = VALUE_TYPE_MAP.get(nonOptionalType);
 		return (mappedType ?? nonOptionalType) + " | undefined";
+	} else if (valueType.Category === "Class") {
+		return renameClassName(valueType.Name);
 	} else {
 		const mappedType = VALUE_TYPE_MAP.get(valueType.Name);
 		return mappedType ?? valueType.Name;
@@ -950,13 +965,15 @@ export class ClassGenerator extends Generator {
 			let paramType = safeValueType(param.Type, canImplicitlyConvertEnum);
 			optional = optional || param.Default !== undefined || paramType === "any";
 			const argName = safeArgName(paramNames[i]);
+
+			// tries to match the name of the argument with the name of a class
 			if (argName && paramType === "Instance") {
 				const lowerName = argName.toLowerCase();
 				const findings = [...this.ClassReferences.keys(), "Character", "Input"].filter(k => {
 					const l = k.toLowerCase();
-					return k !== "Instance" && lowerName.includes(l); // || l.includes(lowerName);
+					const isNotBase = k !== "Instance" && k !== "Object";
+					return isNotBase && lowerName.includes(l); // || l.includes(lowerName);
 				});
-
 				if (findings.length > 0) {
 					const partPos = findings.indexOf("Part");
 					if (partPos !== -1 && findings.length > 1 && !lowerName.includes("or")) {
@@ -1014,7 +1031,7 @@ export class ClassGenerator extends Generator {
 			returnType = safeReturnType(safeValueType(rbxFunction.ReturnType));
 		}
 		if (returnType !== null) {
-			const args = this.generateArgs(rbxFunction.Parameters, true, [`this: ${className}`]);
+			const args = this.generateArgs(rbxFunction.Parameters, true, [`this: ${renameClassName(className)}`]);
 			const { Description: wikiDescription } = rbxFunction;
 			const description =
 				wikiDescription && wikiDescription.trim() !== ""
@@ -1117,15 +1134,15 @@ export class ClassGenerator extends Generator {
 	private generateClass(rbxClass: ApiClass, tsFile: ts.SourceFile) {
 		this.definedClassNames.add(rbxClass.Name);
 		const className = this.generateClassName(rbxClass.Name);
-		const tsImplInterface = tsFile.getInterface(className);
+		const tsImplInterface = tsFile.getInterface(renameClassName(className));
 		let extendsStr = "";
 		if (rbxClass.Superclass !== ROOT_CLASS_NAME) {
 			const superClassName = this.generateClassName(rbxClass.Superclass);
-			extendsStr = `extends ${superClassName} `;
+			extendsStr = `extends ${renameClassName(superClassName)} `;
 			if (tsImplInterface) {
 				// getExpression separates a possible <TypeGenerics> part
 				const originalExtends = tsImplInterface.getExtends()[0].getExpression().getText();
-				if (originalExtends !== superClassName) {
+				if (getOriginalClassName(originalExtends) !== superClassName) {
 					fatal(rbxClass.Name, "had its parent class changed from", originalExtends, "to", superClassName);
 				}
 			}
@@ -1241,7 +1258,7 @@ export class ClassGenerator extends Generator {
 			this.pushIndent();
 			if (callback === undefined) {
 				callback = ({ Name: name }: ApiClass) => {
-					this.write(`${name}: ${name};`);
+					this.write(`${name}: ${renameClassName(name)};`);
 				};
 			}
 			rbxClasses.forEach(callback);
