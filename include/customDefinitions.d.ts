@@ -1128,6 +1128,8 @@ interface TextChannel extends Instance {
 	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
 	/** @server */
 	ShouldDeliverCallback: (message: TextChatMessage, textSource: TextSource) => boolean;
+	/** @server */
+	AddUserAsync(this: TextChannel, userId: number): [TextSource | undefined, boolean];
 }
 
 interface TextChatService extends Instance {
