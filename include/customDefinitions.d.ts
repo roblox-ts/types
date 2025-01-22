@@ -1128,11 +1128,16 @@ interface TextChannel extends Instance {
 	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
 	/** @server */
 	ShouldDeliverCallback: (message: TextChatMessage, textSource: TextSource) => boolean;
+	/** @server */
+	AddUserAsync(
+		this: TextChannel,
+		userId: number,
+	): [source: TextSource, isNew: true] | [source: TextSource, isNew: false] | [source: undefined, isNew: false];
 }
 
 interface TextChatService extends Instance {
 	/** @client */
-	OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => TextChatMessageProperties | undefined;
+	OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => BubbleChatMessageProperties | undefined;
 	/** @client */
 	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
 }
