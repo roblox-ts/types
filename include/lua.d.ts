@@ -5,7 +5,7 @@
 // LUA API
 
 /** A table that is shared between all scripts of the same context level. */
-interface _G {}
+type _G = Map<unknown, unknown>;
 declare const _G: _G;
 
 /** A string containing the current interpreter version. */
