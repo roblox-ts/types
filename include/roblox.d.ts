@@ -2859,6 +2859,10 @@ interface vector {
 	 * @deprecated
 	 */
 	readonly _nominal_vector: unique symbol;
+
+	readonly x: number;
+	readonly y: number;
+	readonly z: number;
 }
 
 declare namespace vector {
