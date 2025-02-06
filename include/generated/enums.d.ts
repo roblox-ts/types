@@ -20994,9 +20994,27 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.ProductPurchaseChannel;
         }
         export const ExperienceDetailsPage: ExperienceDetailsPage;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProductPurchaseChannel#AdReward)
+         */
+        export interface AdReward extends globalThis.EnumItem {
+            Name: "AdReward";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.ProductPurchaseChannel;
+        }
+        export const AdReward: AdReward;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProductPurchaseChannel#CommerceProduct)
+         */
+        export interface CommerceProduct extends globalThis.EnumItem {
+            Name: "CommerceProduct";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.ProductPurchaseChannel;
+        }
+        export const CommerceProduct: CommerceProduct;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ProductPurchaseChannel>;
     }
-    export type ProductPurchaseChannel = ProductPurchaseChannel.InExperience | ProductPurchaseChannel.ExperienceDetailsPage;
+    export type ProductPurchaseChannel = ProductPurchaseChannel.InExperience | ProductPurchaseChannel.ExperienceDetailsPage | ProductPurchaseChannel.AdReward | ProductPurchaseChannel.CommerceProduct;
     /**
      * The <code>ProductPurchaseDecisionEnum</code> is used to work with <code>MarketplaceService</code>, and the sale of developer products.
      *

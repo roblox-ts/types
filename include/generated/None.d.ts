@@ -3249,6 +3249,10 @@ interface AudioAnalyzer extends Instance {
      */
     SpectrumEnabled: boolean;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioAnalyzer#WindowSize)
+     */
+    WindowSize: Enum.AudioWindowSize;
+    /**
      * Returns an array of <code>Wires</code> that are connected to the specified pin.
      * @param this Takes measurements from audio streams that are connected to it via one or more <code>Wires</code>.
      * @param pin
@@ -4061,6 +4065,10 @@ interface AudioPitchShifter extends Instance {
      */
     Pitch: number;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPitchShifter#WindowSize)
+     */
+    WindowSize: Enum.AudioWindowSize;
+    /**
      * Returns an array of <code>Wires</code> that are connected to the specified pin.
      * @param this Adjusts the perceived pitch of audio streams.
      * @param pin
@@ -4089,6 +4097,10 @@ interface AudioPlayer extends Instance {
      * @deprecated
      */
     readonly _nominal_AudioPlayer: unique symbol;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#Asset)
+     */
+    Asset: ContentId;
     /**
      * The asset to be loaded into the <code>AudioPlayer</code>.
      *
@@ -7574,7 +7586,7 @@ interface CollaboratorsService extends Instance {
     readonly _nominal_CollaboratorsService: unique symbol;
 }
 /**
- * A service which manages object collections using assigned tags.
+ * A service which manages instance collections using assigned tags.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CollectionService)
  */
@@ -7589,7 +7601,7 @@ interface CollectionService extends Instance {
     readonly _nominal_CollectionService: unique symbol;
     /**
      * Applies a tag to an <code>Instance</code>.
-     * @param this A service which manages object collections using assigned tags.
+     * @param this A service which manages instance collections using assigned tags.
      * @param instance
      * @param tag
      *
@@ -7598,14 +7610,15 @@ interface CollectionService extends Instance {
     AddTag(this: CollectionService, instance: Instance, tag: string): void;
     AddTag(this: Instance, tag: string): void;
     /**
-     * @param this A service which manages object collections using assigned tags.
+     * Returns an array of all tags in the experience.
+     * @param this A service which manages instance collections using assigned tags.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CollectionService#GetAllTags)
      */
     GetAllTags(this: CollectionService): Array<string>;
     /**
-     * Returns a signal that fires when a given tag is added to an object.
-     * @param this A service which manages object collections using assigned tags.
+     * Returns a signal that fires when a given tag is added to an instance.
+     * @param this A service which manages instance collections using assigned tags.
      * @param tag The tag to watch for.
      * @returns An event that fires when you add the tag to an instance.
      *
@@ -7614,7 +7627,7 @@ interface CollectionService extends Instance {
     GetInstanceAddedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
     /**
      * Returns a signal that fires when a given tag is removed from an instance.
-     * @param this A service which manages object collections using assigned tags.
+     * @param this A service which manages instance collections using assigned tags.
      * @param tag The tag to watch for.
      * @returns An event that fires when you remove the tag from an instance.
      *
@@ -7622,8 +7635,8 @@ interface CollectionService extends Instance {
      */
     GetInstanceRemovedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
     /**
-     * Returns an array of objects in the game with a given tag.
-     * @param this A service which manages object collections using assigned tags.
+     * Returns an array of instances in the game with a given tag.
+     * @param this A service which manages instance collections using assigned tags.
      * @param tag The tag to search for.
      * @returns An array of all instances with the tag.
      *
@@ -7631,18 +7644,18 @@ interface CollectionService extends Instance {
      */
     GetTagged(this: CollectionService, tag: string): Array<Instance>;
     /**
-     * Gets an array of all tags applied to a given object.
-     * @param this A service which manages object collections using assigned tags.
-     * @param instance The object whose tags should be returned.
-     * @returns An array of strings which are the tags applied to the given object.
+     * Gets an array of all tags applied to a given instance.
+     * @param this A service which manages instance collections using assigned tags.
+     * @param instance The instance whose tags should be returned.
+     * @returns An array of strings which are the tags applied to the given instance.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CollectionService#GetTags)
      */
     GetTags(this: CollectionService, instance: Instance): Array<string>;
     GetTags(this: Instance): Array<string>;
     /**
-     * Check whether an object has a given tag.
-     * @param this A service which manages object collections using assigned tags.
+     * Check whether an instance has a given tag.
+     * @param this A service which manages instance collections using assigned tags.
      * @param instance The instance to check for the presence of a tag.
      * @param tag The tag to check for.
      * @returns Whether the instance has the tag.
@@ -7653,7 +7666,7 @@ interface CollectionService extends Instance {
     HasTag(this: Instance, tag: string): boolean;
     /**
      * Removes a tag from an instance.
-     * @param this A service which manages object collections using assigned tags.
+     * @param this A service which manages instance collections using assigned tags.
      * @param instance The instance to remove the tag from.
      * @param tag The tag to remove from the instance.
      *
@@ -7674,13 +7687,13 @@ interface CollectionService extends Instance {
      */
     readonly ItemRemoved: RBXScriptSignal<(instance: Instance) => void>;
     /**
-     * Fires when a tag is added to an object and the added tag is the only occurrence of that tag in the place.
+     * Fires when a tag is added to an instance and the added tag is the only occurrence of that tag in the place.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CollectionService#TagAdded)
      */
     readonly TagAdded: RBXScriptSignal<(tag: string) => void>;
     /**
-     * Fires when a tag is removed from an object and the removed tag is no longer used anywhere in the place.
+     * Fires when a tag is removed from an instance and the removed tag is no longer used anywhere in the place.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CollectionService#TagRemoved)
      */
@@ -12066,8 +12079,8 @@ interface GeometryService extends Instance {
      * @param this Service containing geometric operations.
      * @param source An original object that the solid modeling operation was performed on, for example <code>part</code> in <code>UnionAsync()</code>.
      * @param destination
-     * @param options Options table for the method: <ul> <li><code>tolerance</code> – The distance tolerance, in regards to   <code>Attachment</code> preservation, between the attachment and the   closest point on the original part's surface versus the closest   point on the resulting part's surface. If the resulting distance   following the solid modeling operation is greater than this value,   the <code>Parent</code> of attachments and their   associated constraints will be <code>nil</code> in the returned recommendation   table.</li> <li><code>weldConstraintPreserve</code> – A <code>WeldConstraintPreserve</code> enum   value describing how <code>WeldConstraints</code> are   preserved in the resulting recommendation table.</li> </ul>
-     * @returns Table containing information for general case <code>Constraints</code>, <code>NoCollisionConstraints</code>, and <code>WeldConstraints</code>. In cases where an <code>Attachment</code> or <code>Constraint</code> should be dropped, its respective parent will be <code>nil</code>. For general case <code>Constraints</code> such as <code>HingeConstraint</code>: <table size="small"> <thead>   <tr>     <th>Key</th>     <th>Type</th>   </tr> </thead> <tbody>   <tr>     <td>Attachment</td>     <td><code>Class.Attachment</code></td>   </tr>   <tr>     <td>Constraint</td>     <td><code>Class.Constraint</code></td>   </tr>   <tr>     <td>AttachmentParent</td>     <td><code>Class.BasePart</code> or <code>nil</code></td>   </tr>   <tr>     <td>ConstraintParent</td>     <td><code>Class.BasePart</code> or <code>nil</code></td>   </tr> </tbody> </table>  For <code>WeldConstraints</code>: <table size="small"> <thead>   <tr>     <th>Key</th>     <th>Type</th>   </tr> </thead> <tbody>   <tr>     <td>WeldConstraint</td>     <td><code>Class.WeldConstraint</code></td>   </tr>   <tr>     <td>WeldConstraintParent</td>     <td><code>Class.BasePart</code> or <code>nil</code></td>   </tr>   <tr>     <td>WeldConstraintPart0</td>     <td><code>Class.BasePart</code></td>   </tr>   <tr>     <td>WeldConstraintPart1</td>     <td><code>Class.BasePart</code></td>   </tr> </tbody> </table>  For <code>NoCollisionConstraints</code>: <table size="small"> <thead>   <tr>     <th>Key</th>     <th>Type</th>   </tr> </thead> <tbody>   <tr>     <td>NoCollisionConstraint</td>     <td><code>Class.NoCollisionConstraint</code></td>   </tr>   <tr>     <td>NoCollisionConstraintParent</td>     <td><code>Class.BasePart</code> or <code>nil</code></td>   </tr>   <tr>     <td>NoCollisionConstraintPart0</td>     <td><code>Class.BasePart</code></td>   </tr>   <tr>     <td>NoCollisionConstraintPart1</td>     <td><code>Class.BasePart</code></td>   </tr> </tbody> </table>
+     * @param options Options dictionary for the method: <ul> <li><code>tolerance</code> — The distance tolerance, in regards to   <code>Attachment</code> preservation, between the attachment and the   closest point on the original part's surface versus the closest   point on the resulting part's surface. If the resulting distance   following the solid modeling operation is greater than this value,   the <code>Parent</code> of attachments and their   associated constraints will be <code>nil</code> in the returned recommendation   table.</li> <li><code>weldConstraintPreserve</code> — A <code>WeldConstraintPreserve</code> enum   value describing how <code>WeldConstraints</code> are   preserved in the resulting recommendation table.</li> <li><code>dropAttachmentsWithoutConstraints</code> — Boolean with default of   <code>true</code>. If set to <code>false</code>, <code>Attachments</code> that have   no <code>Constraints</code> will be preserved.</li> </ul>
+     * @returns Table containing information for general case <code>Constraints</code>, <code>NoCollisionConstraints</code>, and <code>WeldConstraints</code>. In cases where an <code>Attachment</code> or <code>Constraint</code> should be dropped, its respective parent will be <code>nil</code>. For general case <code>Constraints</code> such as <code>HingeConstraint</code>: <table size="small"> <thead>   <tr>     <th>Key</th>     <th>Type</th>   </tr> </thead> <tbody>   <tr>     <td><code>Attachment</code></td>     <td><code>Class.Attachment</code></td>   </tr>   <tr>     <td><code>Constraint</code></td>     <td><code>Class.Constraint</code> or <code>nil</code></td>   </tr>   <tr>     <td><code>AttachmentParent</code></td>     <td><code>Class.BasePart</code> or <code>nil</code></td>   </tr>   <tr>     <td><code>ConstraintParent</code></td>     <td><code>Class.BasePart</code> or <code>nil</code></td>   </tr> </tbody> </table>  For <code>WeldConstraints</code>: <table size="small"> <thead>   <tr>     <th>Key</th>     <th>Type</th>   </tr> </thead> <tbody>   <tr>     <td><code>WeldConstraint</code></td>     <td><code>Class.WeldConstraint</code></td>   </tr>   <tr>     <td><code>WeldConstraintParent</code></td>     <td><code>Class.BasePart</code> or <code>nil</code></td>   </tr>   <tr>     <td><code>WeldConstraintPart0</code></td>     <td><code>Class.BasePart</code></td>   </tr>   <tr>     <td><code>WeldConstraintPart1</code></td>     <td><code>Class.BasePart</code></td>   </tr> </tbody> </table>  For <code>NoCollisionConstraints</code>: <table size="small"> <thead>   <tr>     <th>Key</th>     <th>Type</th>   </tr> </thead> <tbody>   <tr>     <td><code>NoCollisionConstraint</code></td>     <td><code>Class.NoCollisionConstraint</code></td>   </tr>   <tr>     <td><code>NoCollisionConstraintParent</code></td>     <td><code>Class.BasePart</code> or <code>nil</code></td>   </tr>   <tr>     <td><code>NoCollisionConstraintPart0</code></td>     <td><code>Class.BasePart</code></td>   </tr>   <tr>     <td><code>NoCollisionConstraintPart1</code></td>     <td><code>Class.BasePart</code></td>   </tr> </tbody> </table>
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#CalculateConstraintsToPreserve)
      */
@@ -12077,7 +12090,7 @@ interface GeometryService extends Instance {
      * @param this Service containing geometric operations.
      * @param part Main <code>Part</code> or <code>PartOperation</code> to operate on.
      * @param parts Array of parts to intersect with the main part.
-     * @param options Options table containing all the controls for the method: <ul> <li><code>CollisionFidelity</code> – The value of   <code>CollisionFidelity</code> in the   resulting parts.</li> <li><code>RenderFidelity</code> – The value of   <code>RenderFidelity</code> in the resulting   parts.</li> <li><code>FluidFidelity</code> – The value of   <code>FluidFidelity</code> in the resulting   parts.</li> <li><code>SplitApart</code> – Boolean controlling whether the objects should all be   kept together or properly split apart. Default is <code>true</code> (split).</li> </ul>
+     * @param options Options table containing all the controls for the method: <ul> <li><code>CollisionFidelity</code> — The value of   <code>CollisionFidelity</code> in the   resulting parts.</li> <li><code>RenderFidelity</code> — The value of   <code>RenderFidelity</code> in the resulting   parts.</li> <li><code>FluidFidelity</code> — The value of   <code>FluidFidelity</code> in the resulting   parts.</li> <li><code>SplitApart</code> — Boolean controlling whether the objects should all be   kept together or properly split apart. Default is <code>true</code> (split).</li> </ul>
      * @returns One or more <code>PartOperations</code> from the intersecting geometry of the main part (<code>part</code>) and the other parts.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#IntersectAsync)
@@ -12088,7 +12101,7 @@ interface GeometryService extends Instance {
      * @param this Service containing geometric operations.
      * @param part Main <code>Part</code> or <code>PartOperation</code> to operate on.
      * @param parts Array of parts to subtract from the main part.
-     * @param options Options table containing all the controls for the method: <ul> <li><code>CollisionFidelity</code> – The value of   <code>CollisionFidelity</code> in the   resulting parts.</li> <li><code>RenderFidelity</code> – The value of   <code>RenderFidelity</code> in the resulting   parts.</li> <li><code>FluidFidelity</code> – The value of   <code>FluidFidelity</code> in the resulting   parts.</li> <li><code>SplitApart</code> – Boolean controlling whether the objects should all be   kept together or properly split apart. Default is <code>true</code> (split).</li> </ul>
+     * @param options Options table containing all the controls for the method: <ul> <li><code>CollisionFidelity</code> — The value of   <code>CollisionFidelity</code> in the   resulting parts.</li> <li><code>RenderFidelity</code> — The value of   <code>RenderFidelity</code> in the resulting   parts.</li> <li><code>FluidFidelity</code> — The value of   <code>FluidFidelity</code> in the resulting   parts.</li> <li><code>SplitApart</code> — Boolean controlling whether the objects should all be   kept together or properly split apart. Default is <code>true</code> (split).</li> </ul>
      * @returns One or more <code>PartOperations</code> from the geometry of the main part (<code>part</code>) minus the geometry occupied by the other parts.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#SubtractAsync)
@@ -12099,7 +12112,7 @@ interface GeometryService extends Instance {
      * @param this Service containing geometric operations.
      * @param part Main <code>Part</code> or <code>PartOperation</code> to operate on.
      * @param parts Array of parts to union with the main part.
-     * @param options Options table containing all the controls for the method: <ul> <li><code>CollisionFidelity</code> – The value of   <code>CollisionFidelity</code> in the   resulting parts.</li> <li><code>RenderFidelity</code> – The value of   <code>RenderFidelity</code> in the resulting   parts.</li> <li><code>FluidFidelity</code> – The value of   <code>FluidFidelity</code> in the resulting   parts.</li> <li><code>SplitApart</code> – Boolean controlling whether the objects should all be   kept together or properly split apart. Default is <code>true</code> (split).</li> </ul>
+     * @param options Options table containing all the controls for the method: <ul> <li><code>CollisionFidelity</code> — The value of   <code>CollisionFidelity</code> in the   resulting parts.</li> <li><code>RenderFidelity</code> — The value of   <code>RenderFidelity</code> in the resulting   parts.</li> <li><code>FluidFidelity</code> — The value of   <code>FluidFidelity</code> in the resulting   parts.</li> <li><code>SplitApart</code> — Boolean controlling whether the objects should all be   kept together or properly split apart. Default is <code>true</code> (split).</li> </ul>
      * @returns One or more <code>PartOperations</code> from the geometry of the main part (<code>part</code>) plus the geometry occupied by the other parts.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#UnionAsync)
@@ -15834,7 +15847,7 @@ interface HttpRequest extends Instance {
     readonly _nominal_HttpRequest: unique symbol;
 }
 /**
- * Allows sending HTTP requests and provides various web-related functions, including JSON functions.
+ * Allows sending HTTP requests and provides various web-related and JSON methods.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpService)
  */
@@ -15848,15 +15861,15 @@ interface HttpService extends Instance {
      */
     readonly _nominal_HttpService: unique symbol;
     /**
-     * Indicates whether http request can be sent to external websites.
+     * Indicates whether HTTP requests can be sent to external websites.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpService#HttpEnabled)
      */
     get HttpEnabled(): boolean;
     /**
      * Generates a UUID/GUID random string, optionally with curly braces.
-     * @param this Allows sending HTTP requests and provides various web-related functions, including JSON functions.
-     * @param wrapInCurlyBraces Whether the returned string should be wrapped in <em>{curly braces}</em>.
+     * @param this Allows sending HTTP requests and provides various web-related and JSON methods.
+     * @param wrapInCurlyBraces Whether the returned string should be wrapped in curly braces (<code>{}</code>).
      * @returns The randomly generated UUID.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpService#GenerateGUID)
@@ -15864,7 +15877,7 @@ interface HttpService extends Instance {
     GenerateGUID(this: HttpService, wrapInCurlyBraces: boolean): string;
     /**
      * Returns a <code>Secret</code> from the secrets store.
-     * @param this Allows sending HTTP requests and provides various web-related functions, including JSON functions.
+     * @param this Allows sending HTTP requests and provides various web-related and JSON methods.
      * @param key
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpService#GetSecret)
@@ -15872,7 +15885,7 @@ interface HttpService extends Instance {
     GetSecret(this: HttpService, key: string): Secret;
     /**
      * Decodes a JSON string into a Lua table.
-     * @param this Allows sending HTTP requests and provides various web-related functions, including JSON functions.
+     * @param this Allows sending HTTP requests and provides various web-related and JSON methods.
      * @param input The JSON object being decoded.
      * @returns The decoded JSON object as a Lua table.
      *
@@ -15881,7 +15894,7 @@ interface HttpService extends Instance {
     JSONDecode(this: HttpService, input: string): unknown;
     /**
      * Generate a JSON string from a Lua table.
-     * @param this Allows sending HTTP requests and provides various web-related functions, including JSON functions.
+     * @param this Allows sending HTTP requests and provides various web-related and JSON methods.
      * @param input The input Lua table.
      * @returns The returned JSON string.
      *
@@ -15890,7 +15903,7 @@ interface HttpService extends Instance {
     JSONEncode(this: HttpService, input: unknown): string;
     /**
      * Replaces URL-unsafe characters with '%' and two hexadecimal characters.
-     * @param this Allows sending HTTP requests and provides various web-related functions, including JSON functions.
+     * @param this Allows sending HTTP requests and provides various web-related and JSON methods.
      * @param input The string (URL) to encode.
      * @returns The encoded string.
      *
@@ -15898,8 +15911,8 @@ interface HttpService extends Instance {
      */
     UrlEncode(this: HttpService, input: string): string;
     /**
-     * Send an HTTP GET request.
-     * @param this Allows sending HTTP requests and provides various web-related functions, including JSON functions.
+     * Sends an HTTP <code>GET</code> request.
+     * @param this Allows sending HTTP requests and provides various web-related and JSON methods.
      * @param url The web address you are requesting data from.
      * @param nocache Whether the request stores (caches) the response.
      * @param headers Used to specify some HTTP request headers.
@@ -15909,12 +15922,12 @@ interface HttpService extends Instance {
      */
     GetAsync(this: HttpService, url: string, nocache?: boolean, headers?: HttpHeaders): string;
     /**
-     * Performs a HTTP POST request.
-     * @param this Allows sending HTTP requests and provides various web-related functions, including JSON functions.
+     * Sends an HTTP <code>POST</code> request.
+     * @param this Allows sending HTTP requests and provides various web-related and JSON methods.
      * @param url The destination address for the data.
      * @param data The data being sent.
-     * @param content_type Modifies the value in the <em>Content-Type</em> header sent with the request.
-     * @param compress Determines whether the data is compressed (gzipped) when sent.
+     * @param content_type Modifies the value in the <code>Content-Type</code> header sent with the request.
+     * @param compress Determines whether the data is compressed (<strong>gzipped</strong>) when sent.
      * @param headers Used to specify some HTTP request headers.
      * @returns The HTTP response sent back indicating the request result.
      *
@@ -15923,7 +15936,7 @@ interface HttpService extends Instance {
     PostAsync(this: HttpService, url: string, data: string, content_type?: CastsToEnum<Enum.HttpContentType>, compress?: boolean, headers?: HttpHeaders): string;
     /**
      * Sends an HTTP request using any HTTP method given a dictionary of information.
-     * @param this Allows sending HTTP requests and provides various web-related functions, including JSON functions.
+     * @param this Allows sending HTTP requests and provides various web-related and JSON methods.
      * @param requestOptions A dictionary containing information to be requested from the server specified.
      * @returns A dictionary containing response information from the server specified.
      *
@@ -28398,6 +28411,10 @@ interface SoundService extends Instance {
      */
     AmbientReverb: Enum.ReverbType;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#CharacterSoundsUseNewApi)
+     */
+    get CharacterSoundsUseNewApi(): Enum.RolloutState;
+    /**
      * The number of studs to be considered a meter by <code>SoundService</code> when calculating volume attenuation of <code>Sounds</code> parented to a <code>BasePart</code> or <code>Attachment</code>.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#DistanceFactor)
@@ -32240,12 +32257,13 @@ interface TweenService extends Instance {
     /**
      * Calculates a value simulating a critically damped spring.
      * @param this Used to create <code>Tweens</code> which interpolate, or tween, the properties of instances.
-     * @param current
-     * @param target
-     * @param velocity
-     * @param smoothTime
-     * @param maxSpeed
-     * @param dt
+     * @param current The current position.
+     * @param target The target position.
+     * @param velocity The initial velocity at which the current position should approach the target position.
+     * @param smoothTime The duration in which the total smoothing operation should take place.
+     * @param maxSpeed The maximum speed at which the current position should approach the target position.
+     * @param dt The rate at which the smoothing operation should be applied.
+     * @returns The new position and velocity calculated from the smoothing operation.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TweenService#SmoothDamp)
      */

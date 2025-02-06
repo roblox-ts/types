@@ -2843,7 +2843,7 @@ interface CollaboratorsService extends Instance {
     readonly _nominal_CollaboratorsService: unique symbol;
 }
 /**
- * A service which manages object collections using assigned tags.
+ * A service which manages instance collections using assigned tags.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CollectionService)
  */
@@ -6020,7 +6020,7 @@ interface HttpRequest extends Instance {
     readonly _nominal_HttpRequest: unique symbol;
 }
 /**
- * Allows sending HTTP requests and provides various web-related functions, including JSON functions.
+ * Allows sending HTTP requests and provides various web-related and JSON methods.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpService)
  */
@@ -11208,6 +11208,10 @@ interface SoundService extends Instance {
      * @deprecated
      */
     readonly _nominal_SoundService: unique symbol;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#CharacterSoundsUseNewApi)
+     */
+    set CharacterSoundsUseNewApi(value: Enum.RolloutState);
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#DefaultListenerLocation)
      */
