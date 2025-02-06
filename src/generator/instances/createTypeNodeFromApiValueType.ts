@@ -53,10 +53,8 @@ export function createTypeNodeFromApiValueType(ctx: Context, apiValueType: ApiVa
 	}
 
 	if (apiValueType.Category === "Class") {
-		if (apiValueType.Name === "Instance" && hints.implicitlyNullableInstances === true) {
-			return optional(ts.factory.createTypeReferenceNode("Instance"));
-		}
-		return ts.factory.createTypeReferenceNode(getSafeClassName(apiValueType.Name));
+		const type = ts.factory.createTypeReferenceNode(getSafeClassName(apiValueType.Name));
+		return hints.implicitlyNullableInstances ? optional(type) : type;
 	} else if (apiValueType.Category === "Primitive") {
 		return (
 			PRIMITIVE_TYPE_ALIAS_MAP.get(apiValueType.Name) ??
