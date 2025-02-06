@@ -6,11 +6,7 @@
 	},
 	"description": "TypeScript typings for the Roblox platform. Partially handwritten and partially automatically generated.",
 	"scripts": {
-		"download-content": "wget -O devhub-scraper.zip https://github.com/roblox-ts/devhub-scraper/archive/master.zip",
-		"unzip-content": "unzip -q -o devhub-scraper.zip",
-		"fetch-content": "npm run download-content && npm run unzip-content",
-		"generate-files": "tsc && node out/index.js",
-		"build": "npm run fetch-content && npm run generate-files",
+		"build": "tsc && node out/index.js",
 		"eslint-src": "npx eslint \"src/**/*.ts\" --max-warnings 0",
 		"eslint-include": "npx eslint \"include/*.ts\" --max-warnings 0",
 		"eslint": "npm run eslint-src && npm run eslint-include"
