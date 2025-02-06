@@ -14,7 +14,7 @@ export function createPropertySignature(
 	writeSecurity: SecurityLevel,
 ) {
 	const name = getSafePropertyName(apiProperty.Name);
-	const type = createTypeNodeFromApiValueType(ctx, apiProperty.ValueType);
+	const type = createTypeNodeFromApiValueType(ctx, apiProperty.ValueType, { implicitlyNullableInstances: true });
 
 	if (readSecurity !== writeSecurity) {
 		if (readSecurity === securityLevel) {
