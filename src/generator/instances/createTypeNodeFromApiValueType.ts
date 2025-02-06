@@ -2,6 +2,7 @@ import ts from "typescript";
 
 import { ApiValueType } from "../../types/ApiDump";
 import { Context } from "../../types/Context";
+import { optional } from "../../util/optional";
 import { getSafeClassName } from "./alias";
 
 const PRIMITIVE_TYPE_ALIAS_MAP = new Map<string, ts.TypeNode>([
@@ -14,6 +15,11 @@ const PRIMITIVE_TYPE_ALIAS_MAP = new Map<string, ts.TypeNode>([
 	["null", ts.factory.createKeywordTypeNode(ts.SyntaxKind.VoidKeyword)], // undefined?
 ]);
 
+const CLASS_TYPE_ALIAS_MAP = new Map<string, ts.TypeNode>([
+	// Instance types are _usually_ nullable
+	["Instance", optional(ts.factory.createTypeReferenceNode("Instance"))],
+]);
+
 const DATA_TYPE_ALIAS_MAP = new Map<string, ts.TypeNode>([
 	["Function", ts.factory.createTypeReferenceNode("Callback")],
 	[
@@ -23,26 +29,20 @@ const DATA_TYPE_ALIAS_MAP = new Map<string, ts.TypeNode>([
 		]),
 	],
 	["CoordinateFrame", ts.factory.createTypeReferenceNode("CFrame")],
-	[
-		"OptionalCoordinateFrame",
-		ts.factory.createUnionTypeNode([
-			ts.factory.createTypeReferenceNode("CFrame"),
-			ts.factory.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword),
-		]),
-	],
+	["OptionalCoordinateFrame", optional(ts.factory.createTypeReferenceNode("CFrame"))],
 ]);
 
 export function createTypeNodeFromApiValueType(ctx: Context, apiValueType: ApiValueType): ts.TypeNode {
 	// "T?" -> T | undefined
 	if (apiValueType.Name.endsWith("?")) {
-		return ts.factory.createUnionTypeNode([
-			createTypeNodeFromApiValueType(ctx, { ...apiValueType, Name: apiValueType.Name.slice(0, -1) }),
-			ts.factory.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword),
-		]);
+		return optional(createTypeNodeFromApiValueType(ctx, { ...apiValueType, Name: apiValueType.Name.slice(0, -1) }));
 	}
 
 	if (apiValueType.Category === "Class") {
-		return ts.factory.createTypeReferenceNode(getSafeClassName(apiValueType.Name), undefined);
+		return (
+			CLASS_TYPE_ALIAS_MAP.get(apiValueType.Name) ??
+			ts.factory.createTypeReferenceNode(getSafeClassName(apiValueType.Name), undefined)
+		);
 	} else if (apiValueType.Category === "Primitive") {
 		return (
 			PRIMITIVE_TYPE_ALIAS_MAP.get(apiValueType.Name) ??
