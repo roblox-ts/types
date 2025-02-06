@@ -1,3 +1,4 @@
+import assert from "assert";
 import ts from "typescript";
 
 import { SecurityLevel } from "../../enums";
