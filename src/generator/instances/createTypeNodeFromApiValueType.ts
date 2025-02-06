@@ -32,10 +32,20 @@ const DATA_TYPE_ALIAS_MAP = new Map<string, ts.TypeNode>([
 	["OptionalCoordinateFrame", optional(ts.factory.createTypeReferenceNode("CFrame"))],
 ]);
 
-export function createTypeNodeFromApiValueType(ctx: Context, apiValueType: ApiValueType): ts.TypeNode {
+export function createTypeNodeFromApiValueType(
+	ctx: Context,
+	apiValueType: ApiValueType,
+	canImplicitlyConvertEnum = false,
+): ts.TypeNode {
 	// "T?" -> T | undefined
 	if (apiValueType.Name.endsWith("?")) {
-		return optional(createTypeNodeFromApiValueType(ctx, { ...apiValueType, Name: apiValueType.Name.slice(0, -1) }));
+		return optional(
+			createTypeNodeFromApiValueType(
+				ctx,
+				{ ...apiValueType, Name: apiValueType.Name.slice(0, -1) },
+				canImplicitlyConvertEnum,
+			),
+		);
 	}
 
 	if (apiValueType.Category === "Class") {
@@ -51,9 +61,12 @@ export function createTypeNodeFromApiValueType(ctx: Context, apiValueType: ApiVa
 	} else if (apiValueType.Category === "DataType") {
 		return DATA_TYPE_ALIAS_MAP.get(apiValueType.Name) ?? ts.factory.createTypeReferenceNode(apiValueType.Name);
 	} else if (apiValueType.Category === "Enum") {
-		return ts.factory.createTypeReferenceNode(
+		const enumType = ts.factory.createTypeReferenceNode(
 			ts.factory.createQualifiedName(ts.factory.createIdentifier("Enum"), apiValueType.Name),
 		);
+		return canImplicitlyConvertEnum
+			? ts.factory.createExpressionWithTypeArguments(ts.factory.createIdentifier("CastsToEnum"), [enumType])
+			: enumType;
 	} else if (apiValueType.Category === "Group") {
 		if (apiValueType.Name === "Array") {
 			// Array<unknown>

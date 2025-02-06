@@ -16,7 +16,7 @@ export function createParameters(ctx: Context, apiParameters: Array<ApiParameter
 	let requiredParamSeen = false;
 	for (let i = apiParameters.length - 1; i >= 0; i--) {
 		const apiParameter = apiParameters[i];
-		let type = createTypeNodeFromApiValueType(ctx, apiParameter.Type);
+		let type = createTypeNodeFromApiValueType(ctx, apiParameter.Type, true);
 		let questionToken: ts.QuestionToken | undefined;
 		if (!requiredParamSeen) {
 			if (ts.isUnionTypeNode(type) && type.types.find(isTypeUndefined)) {
