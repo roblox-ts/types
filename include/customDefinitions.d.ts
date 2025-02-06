@@ -540,7 +540,23 @@ interface InsertService extends Instance {
 	GetUserSets(this: InsertService, userId: number): Array<SetInfo>;
 }
 
-interface Instance {
+interface RBXObject {
+	/** `Object.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
+	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Object.Changed` event.
+	 * @example
+	 * function f(p: Part) {
+	 * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
+	 * }
+	 */
+	readonly Changed: unknown;
+	IsA<T extends keyof Objects>(this: Instance, className: T): this is Objects[T];
+	GetPropertyChangedSignal<T extends RBXObject>(
+		this: T,
+		propertyName: InstancePropertyNames<T>,
+	): RBXScriptSignal<() => void>;
+}
+
+interface Instance extends RBXObject {
 	/**
 	 * **Clone** creates a copy of an object and all of its descendants, ignoring all objects that are not [Archivable](https://developer.roblox.com/en-us/api-reference/property/Instance/Archivable). The copy of the root object is returned by this function and its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is set to nil.
 	 *
@@ -554,14 +570,6 @@ interface Instance {
 	 * Clone will return nil if the root object has Archivable set to false.
 	 */
 	Clone<T extends Instance>(this: T): T;
-	/** `Instance.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
-	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Instance.Changed` event.
-	 * @example
-	 * function f(p: Part) {
-	 * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
-	 * }
-	 */
-	readonly Changed: unknown;
 	GetActor(this: Instance): Actor | undefined;
 	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
@@ -569,7 +577,6 @@ interface Instance {
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
 	WaitForChild(this: Instance, childName: string | number): Instance;
 	WaitForChild(this: Instance, childName: string | number, timeOut: number): Instance | undefined;
-	IsA<T extends keyof Instances>(this: Instance, className: T): this is Instances[T];
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 	FindFirstChildWhichIsA<T extends keyof Instances>(
 		this: Instance,
@@ -578,10 +585,6 @@ interface Instance {
 	): Instances[T] | undefined;
 	FindFirstAncestorOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 	FindFirstChildOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
-	GetPropertyChangedSignal<T extends Instance>(
-		this: T,
-		propertyName: InstancePropertyNames<T>,
-	): RBXScriptSignal<() => void>;
 	GetAttribute(this: Instance, attribute: string): AttributeValue | undefined;
 	SetAttribute(this: Instance, attribute: string, value: AttributeValue | undefined): void;
 	GetAttributes(this: Instance): Map<string, AttributeValue>;

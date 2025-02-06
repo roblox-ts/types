@@ -33,6 +33,12 @@ type Tweenable = number | boolean | CFrame | Rect | Color3 | UDim | UDim2 | Vect
 
 type ContentId = string;
 
+type BinaryString = string;
+type SharedString = string;
+type ProtectedString = string;
+
+type Content = string;
+
 interface EmoteDictionary {
 	/** When these arrays have more than one emote id in them, it will randomly select one of the emotes to play from the list. */
 	[emoteName: string]: Array<number>;
@@ -823,6 +829,18 @@ interface InstanceConstructor {
 }
 
 declare const Instance: InstanceConstructor;
+
+// AdReward
+interface AdReward {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AdReward: unique symbol;
+}
 
 /**
  * Axes is a datatype used for the ArcHandles class to control what rotation axes are currently enabled.
@@ -2221,6 +2239,26 @@ type RotationCurveKeyConstructor = new (
 	interpolation: CastsToEnum<Enum.KeyInterpolationMode>,
 ) => RotationCurveKey;
 declare const RotationCurveKey: RotationCurveKeyConstructor;
+
+// SecurityCapabilities
+interface SecurityCapabilities {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SecurityCapabilities: unique symbol;
+	Add(...capabilities: Array<Enum.SecurityCapability>): void;
+	Remove(...capabilities: Array<Enum.SecurityCapability>): void;
+	Contains(...capabilities: Array<Enum.SecurityCapability>): void;
+}
+
+interface SecurityCapabilitiesConstructor {
+	new (...capabilities: Array<Enum.SecurityCapability>): SecurityCapabilities;
+	fromCurrent: () => SecurityCapabilities;
+}
 
 interface Secret {
 	/**
