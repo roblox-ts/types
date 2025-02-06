@@ -1,7 +1,7 @@
 import assert from "assert";
 import ts from "typescript";
 
-import { CUSTOM_DEFITIONS_PATH, TSCONFIG_PATH } from "../../../constants";
+import { CUSTOM_DEFITIONS_PATH, EXPECTED_EXTRA_MEMBERS, MEMBER_BLACKLIST, TSCONFIG_PATH } from "../../../constants";
 import { SecurityLevel } from "../../../enums";
 import { ApiClass } from "../../../types/ApiDump";
 import { Context } from "../../../types/Context";
@@ -27,24 +27,6 @@ for (const statement of customDefinitionsSourceFile.statements) {
 		overrideInterfaceMap.set(statement.name.text, statement);
 	}
 }
-
-const MEMBER_BLACKLIST = new Map([
-	["Workspace", new Set(["FilteringEnabled"])],
-	["CollectionService", new Set(["GetCollection"])],
-	["Instance", new Set(["children", "Remove"])],
-	["BodyGyro", new Set(["cframe"])],
-	["BodyAngularVelocity", new Set(["angularvelocity"])],
-	["BodyPosition", new Set(["lastForce"])],
-	["DataStoreService", new Set(["GetDataFromEmptyScopeDataStoreAsyncTemporary"])],
-	["Debris", new Set(["MaxItems"])],
-	["LayerCollector", new Set(["GetLayoutNodeTree"])],
-	["GuiBase3d", new Set(["Color"])],
-	["Model", new Set(["move"])],
-	["Players", new Set(["playerFromCharacter", "players"])],
-	["ServiceProvider", new Set(["service"])],
-	["DataModel", new Set(["lighting"])],
-	["PackageLink", new Set(["SerializedDefaultAttributes"])],
-]);
 
 function createNominalTag(apiClass: ApiClass) {
 	const nominalTag = ts.factory.createPropertySignature(
@@ -149,6 +131,16 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 		}
 
 		members.push(...typeElements);
+	}
+
+	const expectedExtraMembers = EXPECTED_EXTRA_MEMBERS.get(apiClass.Name) ?? [];
+	for (const [key, overrides] of overrideMembers) {
+		if (memberNames.has(key)) continue;
+		if (expectedExtraMembers.includes(key)) {
+			members.push(...overrides);
+		} else {
+			throw new Error(`Unexpected extra member: ${apiClass.Name}.${key}`);
+		}
 	}
 
 	const interfaceDeclaration = ts.factory.createInterfaceDeclaration(

@@ -1,5 +1,6 @@
 import ts from "typescript";
 
+import { CLASS_BLACKLIST, CREATABLE_BLACKLIST, EXPECTED_EXTRA_MEMBERS } from "../../constants";
 import { SecurityLevel } from "../../enums";
 import { ApiClass } from "../../types/ApiDump";
 import { Context } from "../../types/Context";
@@ -7,10 +8,9 @@ import { createCommentStatement } from "../createCommentStatement";
 import { getSafeClassName } from "./alias";
 import { createInstanceInterface } from "./classes/createInstanceInterface";
 import { createExtendsClause } from "./createExtendsClause";
-import { isA } from "./isA";
+import { isA, isAPluginOnlyClass } from "./isA";
 
 function createInstanceMapMembers(apiClasses: Array<ApiClass>) {
-	apiClasses.sort((a, b) => a.Name.localeCompare(b.Name));
 	const members = new Array<ts.TypeElement>();
 	for (const apiClass of apiClasses) {
 		members.push(
@@ -25,46 +25,18 @@ function createInstanceMapMembers(apiClasses: Array<ApiClass>) {
 	return members;
 }
 
-function createServicesInterface(ctx: Context) {
-	const members = createInstanceMapMembers(
-		ctx.apiDump.Classes.filter(v => isA(ctx, v.Name, "Instance") && v.Tags?.includes("Service")),
-	);
-	return ts.factory.createInterfaceDeclaration(undefined, "Services", undefined, undefined, members);
-}
-
-function createCreatableInstancesInterface(ctx: Context) {
-	const members = createInstanceMapMembers(
-		ctx.apiDump.Classes.filter(
-			v => isA(ctx, v.Name, "Instance") && !v.Tags?.includes("Service") && !v.Tags?.includes("NotCreatable"),
-		),
-	);
-	return ts.factory.createInterfaceDeclaration(undefined, "CreatableInstances", undefined, undefined, members);
-}
-
-function createInstancesInterface(ctx: Context) {
-	const members = createInstanceMapMembers(
-		ctx.apiDump.Classes.filter(
-			v => isA(ctx, v.Name, "Instance") && !v.Tags?.includes("Service") && v.Tags?.includes("NotCreatable"),
-		),
-	);
-
+function createInstanceMapInterface(
+	name: string,
+	apiClasses: Array<ApiClass>,
+	heritageClauses = new Array<ts.HeritageClause>(),
+) {
+	apiClasses.sort((a, b) => a.Name.localeCompare(b.Name));
 	return ts.factory.createInterfaceDeclaration(
 		undefined,
-		"Instances",
+		name,
 		undefined,
-		[createExtendsClause("Services", "CreatableInstances")],
-		members,
-	);
-}
-
-function createObjectsInterface(ctx: Context) {
-	const members = createInstanceMapMembers(ctx.apiDump.Classes.filter(v => !isA(ctx, v.Name, "Instance")));
-	return ts.factory.createInterfaceDeclaration(
-		undefined,
-		"Objects",
-		undefined,
-		[createExtendsClause("Instances")],
-		members,
+		heritageClauses,
+		createInstanceMapMembers(apiClasses),
 	);
 }
 
@@ -76,14 +48,43 @@ export function createApiSourceFile(ctx: Context, securityLevel: SecurityLevel) 
 	statements.push(createCommentStatement(`/ <reference path="../roblox.d.ts" />`));
 	statements.push(createCommentStatement(`/ <reference path="enums.d.ts" />`));
 
-	statements.push(createServicesInterface(ctx));
-	statements.push(createCreatableInstancesInterface(ctx));
-	statements.push(createInstancesInterface(ctx));
-	statements.push(createObjectsInterface(ctx));
+	const services = new Array<ApiClass>();
+	const creatableInstances = new Array<ApiClass>();
+	const instances = new Array<ApiClass>();
+	const objects = new Array<ApiClass>();
+
+	for (const apiClass of ctx.apiDump.Classes) {
+		if (isA(ctx, apiClass.Name, "Instance")) {
+			if (apiClass.Tags?.includes("Service")) {
+				services.push(apiClass);
+			} else if (!apiClass.Tags?.includes("NotCreatable") && !CREATABLE_BLACKLIST.has(apiClass.Name)) {
+				creatableInstances.push(apiClass);
+			} else {
+				instances.push(apiClass);
+			}
+		} else {
+			objects.push(apiClass);
+		}
+	}
+
+	statements.push(createInstanceMapInterface("Services", services));
+	statements.push(createInstanceMapInterface("CreatableInstances", creatableInstances));
+	statements.push(
+		createInstanceMapInterface("Instances", instances, [createExtendsClause("Services", "CreatableInstances")]),
+	);
+	statements.push(createInstanceMapInterface("Objects", objects, [createExtendsClause("Instances")]));
 
 	statements.push(createCommentStatement(` GENERATED ROBLOX INSTANCE CLASSES`));
 
 	for (const apiClass of ctx.apiDump.Classes) {
+		if (CLASS_BLACKLIST.has(apiClass.Name)) {
+			continue;
+		}
+
+		if (securityLevel < SecurityLevel.PluginSecurity && isAPluginOnlyClass(ctx, apiClass.Name)) {
+			continue;
+		}
+
 		const instanceInterface = createInstanceInterface(ctx, apiClass, securityLevel);
 		if (instanceInterface) {
 			statements.push(instanceInterface);

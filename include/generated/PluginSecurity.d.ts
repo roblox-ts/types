@@ -358,7 +358,6 @@ interface CreatableInstances {
     DataStoreIncrementOptions: DataStoreIncrementOptions;
     DataStoreOptions: DataStoreOptions;
     DataStoreSetOptions: DataStoreSetOptions;
-    DebuggerWatch: DebuggerWatch;
     Decal: Decal;
     DepthOfFieldEffect: DepthOfFieldEffect;
     Dialog: Dialog;
@@ -437,7 +436,6 @@ interface CreatableInstances {
     ObjectValue: ObjectValue;
     OperationGraph: OperationGraph;
     Pants: Pants;
-    ParabolaAdornment: ParabolaAdornment;
     Part: Part;
     ParticleEmitter: ParticleEmitter;
     PartOperation: PartOperation;
@@ -448,7 +446,6 @@ interface CreatableInstances {
     PitchShiftSoundEffect: PitchShiftSoundEffect;
     Plane: Plane;
     PlaneConstraint: PlaneConstraint;
-    Player: Player;
     PluginAction: PluginAction;
     PluginCapabilities: PluginCapabilities;
     PointLight: PointLight;
@@ -539,7 +536,6 @@ interface CreatableInstances {
     Trail: Trail;
     TremoloSoundEffect: TremoloSoundEffect;
     TrussPart: TrussPart;
-    Tween: Tween;
     UIAspectRatioConstraint: UIAspectRatioConstraint;
     UICorner: UICorner;
     UIDragDetector: UIDragDetector;
@@ -635,6 +631,7 @@ interface Instances extends Services, CreatableInstances {
     DebuggerConnection: DebuggerConnection;
     DebuggerLuaResponse: DebuggerLuaResponse;
     DebuggerVariable: DebuggerVariable;
+    DebuggerWatch: DebuggerWatch;
     DebugSettings: DebugSettings;
     DockWidgetPluginGui: DockWidgetPluginGui;
     DynamicRotate: DynamicRotate;
@@ -696,6 +693,7 @@ interface Instances extends Services, CreatableInstances {
     OutfitPages: OutfitPages;
     PackageLink: PackageLink;
     Pages: Pages;
+    ParabolaAdornment: ParabolaAdornment;
     PartAdornment: PartAdornment;
     PatchMapping: PatchMapping;
     Path: Path;
@@ -704,6 +702,7 @@ interface Instances extends Services, CreatableInstances {
     PausedStateException: PausedStateException;
     PhysicsSettings: PhysicsSettings;
     Platform: Platform;
+    Player: Player;
     PlayerGui: PlayerGui;
     PlayerMouse: PlayerMouse;
     PlayerScripts: PlayerScripts;
@@ -765,6 +764,7 @@ interface Instances extends Services, CreatableInstances {
     TrackerLodController: TrackerLodController;
     Translator: Translator;
     TriangleMeshPart: TriangleMeshPart;
+    Tween: Tween;
     TweenBase: TweenBase;
     UIBase: UIBase;
     UIComponent: UIComponent;
@@ -802,7 +802,7 @@ interface RBXObject {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableImage)
  */
-interface EditableImage extends Instance {
+interface EditableImage extends RBXObject {
     /**
      * **DO NOT USE!**
      *
@@ -968,36 +968,6 @@ interface AdPortal extends Instance {
      * @deprecated
      */
     readonly _nominal_AdPortal: unique symbol;
-}
-/**
- * A class that allows the display of mobile video ads.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService)
- */
-interface AdService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AdService: unique symbol;
-}
-/**
- * An unfinished advanced variant of the <code>Dragger</code> class.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdvancedDragger)
- */
-interface AdvancedDragger extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AdvancedDragger: unique symbol;
 }
 /**
  * Collection of methods that allows developers to track how users interact with their experiences.
@@ -2340,19 +2310,6 @@ interface Breakpoint extends Instance {
     readonly _nominal_Breakpoint: unique symbol;
 }
 /**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BrowserService)
- */
-interface BrowserService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_BrowserService: unique symbol;
-}
-/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BugReporterService)
  */
 interface BugReporterService extends Instance {
@@ -2377,21 +2334,6 @@ interface BulkImportService extends Instance {
      * @deprecated
      */
     readonly _nominal_BulkImportService: unique symbol;
-}
-/**
- * A variant of the <code>ContentProvider</code> that caches assets that have already been received. This service is not used directly, but it is used by the services that inherit from it.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CacheableContentProvider)
- */
-interface CacheableContentProvider extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CacheableContentProvider: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HSRDataContentProvider)
@@ -2502,7 +2444,7 @@ interface ChangeHistoryService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#FinishRecording)
      */
-    FinishRecording(this: ChangeHistoryService, identifier: string, operation: Enum.FinishRecordingOperation, finalOptions?: Map<unknown, unknown>): void;
+    FinishRecording(this: ChangeHistoryService, identifier: string, operation: CastsToEnum<Enum.FinishRecordingOperation>, finalOptions?: Map<unknown, unknown>): void;
     /**
      * Returns whether there are actions that can be redone, and, if there are, returns the last of them.
      * @param this <strong>Must</strong> be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
@@ -2575,7 +2517,7 @@ interface ChangeHistoryService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#OnRecordingFinished)
      */
-    readonly OnRecordingFinished: RBXScriptSignal<(name: string, displayName: string | undefined, identifier: string | undefined, operation: Enum.FinishRecordingOperation, finalOptions?: Map<unknown, unknown>) => void>;
+    readonly OnRecordingFinished: RBXScriptSignal<(name: string, displayName: string | undefined, identifier: string | undefined, operation: CastsToEnum<Enum.FinishRecordingOperation>, finalOptions?: Map<unknown, unknown>) => void>;
     /**
      * Fired when the user begins an action. Parameters come from <code>TryBeginRecording()</code>.
      *
@@ -2701,21 +2643,6 @@ interface ShirtGraphic extends CharacterAppearance {
     readonly _nominal_ShirtGraphic: unique symbol;
 }
 /**
- * <strong>Deprecated:</strong> This object has been deprecated and superseded by <code>BodyColors</code>. The Skin object does not function on R15 characters and should not be used for new work. <code>BodyColors</code> functions with R15 characters and allows the colors of each limb to be set individually.<br>Historically changed the colors of body parts to match the <code>Skin.SkinColor</code> property. Superseded by the <code>BodyColors</code> class.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Skin)
- */
-interface Skin extends CharacterAppearance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_Skin: unique symbol;
-}
-/**
  * Houses the Lua code responsible for running the legacy chat system.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Chat)
@@ -2800,21 +2727,6 @@ interface Clouds extends Instance {
      * @deprecated
      */
     readonly _nominal_Clouds: unique symbol;
-}
-/**
- * An internal service meant to cache cluster packets.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ClusterPacketCache)
- */
-interface ClusterPacketCache extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ClusterPacketCache: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Collaborator)
@@ -3460,34 +3372,6 @@ interface ConversationalAIAcceptanceService extends Instance {
     readonly _nominal_ConversationalAIAcceptanceService: unique symbol;
 }
 /**
- * A backend service used by Roblox to control HTTP cookies. Its functions are not available to developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CookiesService)
- */
-interface CookiesService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CookiesService: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CorePackages)
- */
-interface CorePackages extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CorePackages: unique symbol;
-}
-/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreScriptDebuggingManagerHelper)
  */
 interface CoreScriptDebuggingManagerHelper extends Instance {
@@ -3499,19 +3383,6 @@ interface CoreScriptDebuggingManagerHelper extends Instance {
      * @deprecated
      */
     readonly _nominal_CoreScriptDebuggingManagerHelper: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreScriptSyncService)
- */
-interface CoreScriptSyncService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CoreScriptSyncService: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CreationDBService)
@@ -3551,36 +3422,6 @@ interface CrossDMScriptChangeListener extends Instance {
      * @deprecated
      */
     readonly _nominal_CrossDMScriptChangeListener: unique symbol;
-}
-/**
- * <strong>Deprecated:</strong> <code>CustomEvents</code> have been superseded by <code>BindableEvents</code> and should not be used in new work.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CustomEvent)
- */
-interface CustomEvent extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CustomEvent: unique symbol;
-}
-/**
- * <strong>Deprecated:</strong> <code>CustomEvents</code> have been superseded by <code>BindableEvents</code> and should not be used in new work.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CustomEventReceiver)
- */
-interface CustomEventReceiver extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CustomEventReceiver: unique symbol;
 }
 /**
  * The DataModelMesh is an abstract class from which mesh classes descend.
@@ -4033,19 +3874,6 @@ interface DialogChoice extends Instance {
      * @deprecated
      */
     readonly _nominal_DialogChoice: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DraftsService)
- */
-interface DraftsService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_DraftsService: unique symbol;
 }
 /**
  * A helper object used to create tools that can drag parts.
@@ -4788,21 +4616,6 @@ interface Fire extends Instance {
     readonly _nominal_Fire: unique symbol;
 }
 /**
- * An internal service responsible for handling the now deprecated <code>FlagStand</code> and <code>Flag</code> objects.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FlagStandService)
- */
-interface FlagStandService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_FlagStandService: unique symbol;
-}
-/**
  * A sorted list of time-value pairs that define a curve. Used to animate a single numerical value.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FloatCurve)
@@ -4816,19 +4629,6 @@ interface FloatCurve extends Instance {
      * @deprecated
      */
     readonly _nominal_FloatCurve: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FlyweightService)
- */
-interface FlyweightService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_FlyweightService: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CSGDictionaryService)
@@ -4885,36 +4685,6 @@ interface ForceField extends Instance {
      * @deprecated
      */
     readonly _nominal_ForceField: unique symbol;
-}
-/**
- * An internal service which is used to send, cancel, accept and decline friend requests in-game.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FriendService)
- */
-interface FriendService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_FriendService: unique symbol;
-}
-/**
- * <strong>Deprecated:</strong> FunctionalTest has been deprecated, developers are advised to use <code>TestService</code> instead.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FunctionalTest)
- */
-interface FunctionalTest extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_FunctionalTest: unique symbol;
 }
 /**
  * A service associated with the legacy game pass system. Use <code>MarketplaceService</code> for all new work.
@@ -4975,21 +4745,6 @@ interface GenericChallengeService extends Instance {
     readonly _nominal_GenericChallengeService: unique symbol;
 }
 /**
- * An internal Roblox service which cannot be used by developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Geometry)
- */
-interface Geometry extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_Geometry: unique symbol;
-}
-/**
  * Service containing geometric operations.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService)
@@ -5046,6 +4801,27 @@ interface DataStore extends GlobalDataStore {
      * @deprecated
      */
     readonly _nominal_DataStore: unique symbol;
+    GetAsync<T>(this: DataStore, key: string, options?: DataStoreGetOptions): LuaTuple<[
+        T | undefined,
+        DataStoreKeyInfo
+    ]>;
+    IncrementAsync(this: DataStore, key: string, delta?: number, userIds?: Array<number>, options?: DataStoreIncrementOptions): LuaTuple<[
+        number,
+        DataStoreKeyInfo
+    ]>;
+    SetAsync(this: DataStore, key: string, value?: unknown, userIds?: Array<number>, options?: DataStoreSetOptions): string;
+    UpdateAsync<O, R>(this: DataStore, key: string, transformFunction: (oldValue: O | undefined, keyInfo: DataStoreKeyInfo | undefined) => LuaTuple<[
+        newValue: R | undefined,
+        userIds?: Array<number>,
+        metadata?: object
+    ]>): LuaTuple<[
+        newValue: R | undefined,
+        keyInfo: DataStoreKeyInfo
+    ]>;
+    RemoveAsync<T>(this: DataStore, key: string): LuaTuple<[
+        T | undefined,
+        DataStoreKeyInfo | undefined
+    ]>;
 }
 /**
  * A GlobalDataStore that also allows for ordered data store entries.
@@ -5061,19 +4837,11 @@ interface OrderedDataStore extends GlobalDataStore {
      * @deprecated
      */
     readonly _nominal_OrderedDataStore: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GoogleAnalyticsConfiguration)
- */
-interface GoogleAnalyticsConfiguration extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_GoogleAnalyticsConfiguration: unique symbol;
+    GetAsync(this: OrderedDataStore, key: string): number | undefined;
+    IncrementAsync(this: OrderedDataStore, key: string, delta?: number): number;
+    RemoveAsync(this: OrderedDataStore, key: string): number | undefined;
+    SetAsync(this: OrderedDataStore, key: string, value?: unknown): void;
+    UpdateAsync(this: OrderedDataStore, key: string, transformFunction: (oldValue: number | undefined) => number | undefined): number | undefined;
 }
 /**
  * GroupService is a service that allows developers to fetch information about a Roblox group from within a game.
@@ -5453,21 +5221,6 @@ interface ScreenGui extends LayerCollector {
      * @deprecated
      */
     readonly _nominal_ScreenGui: unique symbol;
-}
-/**
- * <strong>Deprecated:</strong> This deprecated class is the original name of the <code>ScreenGui</code>. It functions identically to the ScreenGui, and should not be used.<br>The original name of the <code>ScreenGui</code>.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiMain)
- */
-interface GuiMain extends ScreenGui {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_GuiMain: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceGuiBase)
@@ -5880,21 +5633,6 @@ interface GuiService extends Instance {
     readonly _nominal_GuiService: unique symbol;
 }
 /**
- * An internal service, whose functionality is not accessible to developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuidRegistryService)
- */
-interface GuidRegistryService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_GuidRegistryService: unique symbol;
-}
-/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect)
  */
 interface HapticEffect extends Instance {
@@ -5975,49 +5713,6 @@ interface Highlight extends Instance {
      * @deprecated
      */
     readonly _nominal_Highlight: unique symbol;
-}
-/**
- * <strong>Deprecated:</strong> <code>Hopper</code> has been replaced by <code>StarterPack</code> and should not be used in new work.<br>Hopper is the original name of the StarterPack service.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Hopper)
- */
-interface Hopper extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_Hopper: unique symbol;
-}
-/**
- * An internal service whose functionality is not available to developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpRbxApiService)
- */
-interface HttpRbxApiService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_HttpRbxApiService: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpRequest)
- */
-interface HttpRequest extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_HttpRequest: unique symbol;
 }
 /**
  * Allows sending HTTP requests and provides various web-related and JSON methods.
@@ -6415,19 +6110,6 @@ interface JointsService extends Instance {
     readonly _nominal_JointsService: unique symbol;
 }
 /**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/KeyboardService)
- */
-interface KeyboardService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_KeyboardService: unique symbol;
-}
-/**
  * A Keyframe holds the <code>Poses</code> applied to joints in a <code>Model</code> at a given point of time in an animation. <code>Keyframes</code> are interpolated between during animation playback.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Keyframe)
@@ -6632,19 +6314,6 @@ interface LiveSyncService extends Instance {
     readonly _nominal_LiveSyncService: unique symbol;
 }
 /**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LocalStorageService)
- */
-interface LocalStorageService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_LocalStorageService: unique symbol;
-}
-/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppStorageService)
  */
 interface AppStorageService extends LocalStorageService {
@@ -6768,21 +6437,6 @@ interface LogService extends Instance {
     readonly _nominal_LogService: unique symbol;
 }
 /**
- * An internal service whose functionality is not available to developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LoginService)
- */
-interface LoginService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_LoginService: unique symbol;
-}
-/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuaSettings)
  */
 interface LuaSettings extends Instance {
@@ -6832,19 +6486,6 @@ interface BaseScript extends LuaSourceContainer {
     set RunContext(value: Enum.RunContext);
 }
 /**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreScript)
- */
-interface CoreScript extends BaseScript {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CoreScript: unique symbol;
-}
-/**
  * An object that contains and runs Lua code on the server.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Script)
@@ -6888,21 +6529,6 @@ interface ModuleScript extends LuaSourceContainer {
      * @deprecated
      */
     readonly _nominal_ModuleScript: unique symbol;
-}
-/**
- * An internal service, which is responsible for retrieving HTTP data from websites. Used by a range of services, including <code>MarketplaceService</code>, <code>InsertService</code> and <code>HttpService</code>. Its functions cannot be accessed by developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuaWebService)
- */
-interface LuaWebService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_LuaWebService: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuauScriptAnalyzerService)
@@ -7066,19 +6692,6 @@ interface MemStorageConnection extends Instance {
     Disconnect(this: MemStorageConnection): void;
 }
 /**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemStorageService)
- */
-interface MemStorageService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_MemStorageService: unique symbol;
-}
-/**
  * Provides access to a hash map within <code>MemoryStoreService</code>.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreHashMap)
@@ -7137,36 +6750,6 @@ interface MemoryStoreSortedMap extends Instance {
      * @deprecated
      */
     readonly _nominal_MemoryStoreSortedMap: unique symbol;
-}
-/**
- * <strong>Deprecated:</strong> With the introduction of Roblox's GUI features hints have been deprecated and <code>TextLabels</code> should be used instead for new work. The <code>TextLabel</code> object offers a wide range of features for displaying and customizing text that messages do not.<br>Fills the entire screen with a semi-transparent grey background, with centered text in the middle of the screen.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Message)
- */
-interface Message extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_Message: unique symbol;
-}
-/**
- * <strong>Deprecated:</strong> With the introduction of Roblox's GUI features hints have been deprecated and <code>TextLabels</code> should be used instead for new work. The <code>TextLabel</code> object offers a wide range of features for displaying and customizing text that hints do not.<br>A Hint is an object that creates a small black bar at the very top of the screen with text.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Hint)
- */
-interface Hint extends Message {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_Hint: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MessageBusConnection)
@@ -7298,19 +6881,6 @@ interface PluginMouse extends Mouse {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginMouse#DragEnter)
      */
     readonly DragEnter: RBXScriptSignal<(instances: Array<Instance>) => void>;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MouseService)
- */
-interface MouseService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_MouseService: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MultipleDocumentInterfaceInstance)
@@ -7484,21 +7054,6 @@ interface Noise extends Instance {
     readonly _nominal_Noise: unique symbol;
 }
 /**
- * An internal service which cannot be used by developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NotificationService)
- */
-interface NotificationService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_NotificationService: unique symbol;
-}
-/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OmniRecommendationsService)
  */
 interface OmniRecommendationsService extends Instance {
@@ -7622,21 +7177,6 @@ interface Part extends FormFactorPart {
      * @deprecated
      */
     readonly _nominal_Part: unique symbol;
-}
-/**
- * <strong>Deprecated:</strong> The FlagStand and Flag are deprecated objects that were used to make 'capture the flag' style games. Developers are advised to design their own systems which will be more flexible and reliable.<br>The FlagStand object helps you make 'capture the flag' style games.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FlagStand)
- */
-interface FlagStand extends Part {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_FlagStand: unique symbol;
 }
 /**
  * Historically a form of <code>Seat</code> that wouldn't place the player in a sitting pose. This object is no longer create-able and cannot be used by developers.
@@ -7943,21 +7483,6 @@ interface BackpackItem extends Model {
     readonly _nominal_BackpackItem: unique symbol;
 }
 /**
- * <strong>Deprecated:</strong> This deprecated class has been replaced by <code>Tool</code>. Please use Tool for new work instead.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HopperBin)
- */
-interface HopperBin extends BackpackItem {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_HopperBin: unique symbol;
-}
-/**
  * An object, such as a weapon, that can be equipped by a <code>Humanoid</code>.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Tool)
@@ -7971,36 +7496,6 @@ interface Tool extends BackpackItem {
      * @deprecated
      */
     readonly _nominal_Tool: unique symbol;
-}
-/**
- * <strong>Deprecated:</strong> The <code>Flag</code> and <code>FlagStand</code> objects were created to allow developers to make 'capture the flag' style games quickly. However they have been deprecated and developers are advised to design their own systems which will be more flexible and reliable.<br>The Flag object helps you make 'capture the flag' style games.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Flag)
- */
-interface Flag extends Tool {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_Flag: unique symbol;
-}
-/**
- * <strong>Deprecated:</strong> Status is an unfinished object designed to store custom <code>Humanoid</code> statuses. It has been deprecated and should not be used by developers in new work. Developers looking to implement custom <code>Humanoid</code> statuses should use <a href="https://devforum.roblox.com/t/releasing-character-physics-controllers/2623426">Character Physics Controllers</a>, as they are written in Luau and are easily extendable.<br>An unfinished object which offers no functionality to developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Status)
- */
-interface Status extends Model {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_Status: unique symbol;
 }
 /**
  * Base class for handling physics simulation and 3D spatial queries.
@@ -8027,7 +7522,7 @@ interface WorldRoot extends Model {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#IKMoveTo)
      */
-    IKMoveTo(this: WorldRoot, part: BasePart, target: CFrame, translateStiffness: number, rotateStiffness: number, collisionsMode: Enum.IKCollisionsMode): void;
+    IKMoveTo(this: WorldRoot, part: BasePart, target: CFrame, translateStiffness: number, rotateStiffness: number, collisionsMode: CastsToEnum<Enum.IKCollisionsMode>): void;
     /**
      * Advances the simulation for parts in the world forward based on a specified time increment and an optional set of <code>BaseParts</code>.
      * @param this Base class for handling physics simulation and 3D spatial queries.
@@ -8370,21 +7865,6 @@ interface StandardPages<T = unknown> extends Pages<T> {
     readonly _nominal_StandardPages: unique symbol;
 }
 /**
- * An internal service which cannot be used by developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PartOperationAsset)
- */
-interface PartOperationAsset extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_PartOperationAsset: unique symbol;
-}
-/**
  * A special object that emits customizable 2D particles into the world.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter)
@@ -8538,19 +8018,6 @@ interface PerformanceControlService extends Instance {
     readonly _nominal_PerformanceControlService: unique symbol;
 }
 /**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PermissionsService)
- */
-interface PermissionsService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_PermissionsService: unique symbol;
-}
-/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsService)
  */
 interface PhysicsService extends Instance {
@@ -8658,19 +8125,7 @@ interface Player extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#SetSuperSafeChat)
      */
     SetSuperSafeChat(this: Player, value: boolean): void;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerEmulatorService)
- */
-interface PlayerEmulatorService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_PlayerEmulatorService: unique symbol;
+    readonly Name: string;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerHydrationService)
@@ -8744,7 +8199,7 @@ interface Players extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Players#SetChatStyle)
      */
-    SetChatStyle(this: Players, style: Enum.ChatStyle): void;
+    SetChatStyle(this: Players, style: CastsToEnum<Enum.ChatStyle>): void;
     /**
      * Makes the local player chat the given message, which will only be viewable by users on the same team.
      * @param this A service that contains presently connected <code>Player</code> objects.
@@ -8910,7 +8365,7 @@ interface Plugin extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#SelectRibbonTool)
      */
-    SelectRibbonTool(this: Plugin, tool: Enum.RibbonTool, position: UDim2): void;
+    SelectRibbonTool(this: Plugin, tool: CastsToEnum<Enum.RibbonTool>, position: UDim2): void;
     /**
      * Separates the given UnionOperations and returns the resulting parts.
      * @param this
@@ -9086,42 +8541,6 @@ interface PluginManagementService extends Instance {
     readonly _nominal_PluginManagementService: unique symbol;
 }
 /**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginManager)
- */
-interface PluginManager extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_PluginManager: unique symbol;
-    /**
-     * <strong>Deprecated:</strong> The steps to create a plugin have changed. To learn more, see <code>Plugin</code>.
-     * @param this
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginManager#CreatePlugin)
-     */
-    CreatePlugin(this: PluginManager): Plugin;
-    /**
-     * Exports the place to an .OBJ file that is saved to the path chosen by the user in a file save dialogue (the <code>filePath</code> argument is ignored).
-     * @param this
-     * @param filePath
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginManager#ExportPlace)
-     */
-    ExportPlace(this: PluginManager, filePath: string): void;
-    /**
-     * Exports the current <code>Selection</code> to an .OBJ file that is saved to the path chosen by the user in a file save dialogue (the <code>filePath</code> argument is ignored).
-     * @param this
-     * @param filePath
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginManager#ExportSelection)
-     */
-    ExportSelection(this: PluginManager, filePath: string): void;
-}
-/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginManagerInterface)
  */
 interface PluginManagerInterface extends Instance {
@@ -9283,21 +8702,6 @@ interface PluginToolbarButton extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginToolbarButton#Click)
      */
     readonly Click: RBXScriptSignal<() => void>;
-}
-/**
- * <strong>Deprecated:</strong> This class was once used to control an ancient achievement system since removed and deprecated. It and its members should not be used in new work.<br>This service controls the points award system used to showcase a player's achievements and participation throughout Roblox.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PointsService)
- */
-interface PointsService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_PointsService: unique symbol;
 }
 /**
  * Helps you query information regarding policy compliance for players around the world based on age range, location, and platform type.
@@ -9534,124 +8938,6 @@ interface RTAnimationTracker extends Instance {
     readonly _nominal_RTAnimationTracker: unique symbol;
 }
 /**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RbxAnalyticsService)
- */
-interface RbxAnalyticsService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_RbxAnalyticsService: unique symbol;
-}
-/**
- * A currently unused object whose functionality was split into <code>ReflectionMetadataClasses</code> and <code>ReflectionMetadataEnums</code>.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadata)
- */
-interface ReflectionMetadata extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ReflectionMetadata: unique symbol;
-}
-/**
- * Acts as a <code>Folder</code> containing information about callbacks for a <code>ReflectionMetadataClass</code>, and should be parented to it. <code>ReflectionMetadataMembers</code> that are parented to this object will be perceived as callbacks under the class this is parented to.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadataCallbacks)
- */
-interface ReflectionMetadataCallbacks extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ReflectionMetadataCallbacks: unique symbol;
-}
-/**
- * An internal object which cannot be used by developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadataClasses)
- */
-interface ReflectionMetadataClasses extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ReflectionMetadataClasses: unique symbol;
-}
-/**
- * Acts as a <code>Folder</code> for <code>ReflectionMetadataEnum</code> objects.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadataEnums)
- */
-interface ReflectionMetadataEnums extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ReflectionMetadataEnums: unique symbol;
-}
-/**
- * Acts as a <code>Folder</code> containing information about events for a <code>ReflectionMetadataClass</code>, and should be parented to it. <code>ReflectionMetadataMembers</code> that are parented to this object will be perceived as events under the class this is parented to.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadataEvents)
- */
-interface ReflectionMetadataEvents extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ReflectionMetadataEvents: unique symbol;
-}
-/**
- * Acts as a <code>Folder</code> containing information about functions for a <code>ReflectionMetadataClass</code>, and should be parented to it. <code>ReflectionMetadataMembers</code> that are parented to this object will be perceived as functions under the class this is parented to.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadataFunctions)
- */
-interface ReflectionMetadataFunctions extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ReflectionMetadataFunctions: unique symbol;
-}
-/**
- * Acts as abstract properties for generic information about Classes, Members, Enums, and EnumItems.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadataItem)
- */
-interface ReflectionMetadataItem extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ReflectionMetadataItem: unique symbol;
-}
-/**
  * Registers information about a class, and its members. Should be parented to <code>ReflectionMetadataClasses</code>.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadataClass)
@@ -9710,36 +8996,6 @@ interface ReflectionMetadataMember extends ReflectionMetadataItem {
      * @deprecated
      */
     readonly _nominal_ReflectionMetadataMember: unique symbol;
-}
-/**
- * Acts as a <code>Folder</code> containing information about properties for a <code>ReflectionMetadataClass</code>, and should be parented to it. <code>ReflectionMetadataMembers</code> that are parented to this object will be perceived as properties under the class this is parented to.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadataProperties)
- */
-interface ReflectionMetadataProperties extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ReflectionMetadataProperties: unique symbol;
-}
-/**
- * Acts as a <code>Folder</code> containing information about yielding functions for a <code>ReflectionMetadataClass</code>, and should be parented to it. <code>ReflectionMetadataMembers</code> that are parented to this object will be perceived as yielding functions under the class this is parented to.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadataYieldFunctions)
- */
-interface ReflectionMetadataYieldFunctions extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ReflectionMetadataYieldFunctions: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService)
@@ -9880,19 +9136,6 @@ interface RobloxPluginGuiService extends Instance {
     readonly _nominal_RobloxPluginGuiService: unique symbol;
 }
 /**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RobloxReplicatedStorage)
- */
-interface RobloxReplicatedStorage extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_RobloxReplicatedStorage: unique symbol;
-}
-/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RobloxSerializableInstance)
  */
 interface RobloxSerializableInstance extends Instance {
@@ -10026,19 +9269,6 @@ interface RunService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#Stop)
      */
     Stop(this: RunService): void;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RuntimeScriptService)
- */
-interface RuntimeScriptService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_RuntimeScriptService: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SafetyService)
@@ -10537,21 +9767,6 @@ interface ScriptRuntime extends Instance {
     readonly _nominal_ScriptRuntime: unique symbol;
 }
 /**
- * An unimplemented service that has zero functionality, in a similar manner to the <code>LocalWorkspace</code> service.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptService)
- */
-interface ScriptService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ScriptService: unique symbol;
-}
-/**
  * The Selection service controls the <code>Instances</code> that are selected in Roblox Studio.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Selection)
@@ -10804,19 +10019,6 @@ interface GenericSettings<S = unknown> extends ServiceProvider<S> {
      * @deprecated
      */
     readonly _nominal_GenericSettings: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalysticsSettings)
- */
-interface AnalysticsSettings extends GenericSettings {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AnalysticsSettings: unique symbol;
 }
 /**
  * Collection of menu settings for Roblox Studio.
@@ -11247,21 +10449,6 @@ interface Sparkles extends Instance {
     readonly _nominal_Sparkles: unique symbol;
 }
 /**
- * An internal service that is responsible for the behavior of <code>SpawnLocations</code>. Its functionality is not accessible to developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SpawnerService)
- */
-interface SpawnerService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_SpawnerService: unique symbol;
-}
-/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StackFrame)
  */
 interface StackFrame extends Instance {
@@ -11273,19 +10460,6 @@ interface StackFrame extends Instance {
      * @deprecated
      */
     readonly _nominal_StackFrame: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StandalonePluginScripts)
- */
-interface StandalonePluginScripts extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_StandalonePluginScripts: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StartPageService)
@@ -11495,19 +10669,6 @@ interface TotalCountTimeIntervalItem extends StatsItem {
      * @deprecated
      */
     readonly _nominal_TotalCountTimeIntervalItem: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StopWatchReporter)
- */
-interface StopWatchReporter extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_StopWatchReporter: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StreamingService)
@@ -11757,7 +10918,7 @@ interface StudioTheme extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTheme#GetColor)
      */
-    GetColor(this: StudioTheme, styleguideitem: Enum.StudioStyleGuideColor, modifier: Enum.StudioStyleGuideModifier): Color3;
+    GetColor(this: StudioTheme, styleguideitem: CastsToEnum<Enum.StudioStyleGuideColor>, modifier: CastsToEnum<Enum.StudioStyleGuideModifier>): Color3;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioUserService)
@@ -12454,19 +11615,6 @@ interface TextureGenerationUnwrappingRequest extends Instance {
     readonly _nominal_TextureGenerationUnwrappingRequest: unique symbol;
 }
 /**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ThirdPartyUserService)
- */
-interface ThirdPartyUserService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ThirdPartyUserService: unique symbol;
-}
-/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ThreadState)
  */
 interface ThreadState extends Instance {
@@ -12480,21 +11628,6 @@ interface ThreadState extends Instance {
     readonly _nominal_ThreadState: unique symbol;
 }
 /**
- * An internal service responsible for scheduling timed events. It is used by the <code>Debris</code> class. Its functionality can not be accessed by developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TimerService)
- */
-interface TimerService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_TimerService: unique symbol;
-}
-/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ToastNotificationService)
  */
 interface ToastNotificationService extends Instance {
@@ -12506,21 +11639,6 @@ interface ToastNotificationService extends Instance {
      * @deprecated
      */
     readonly _nominal_ToastNotificationService: unique symbol;
-}
-/**
- * An internal service responsible for touch inputs on mobile devices.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TouchInputService)
- */
-interface TouchInputService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_TouchInputService: unique symbol;
 }
 /**
  * An internal object used by networking and replication code to transmit <code>BasePart.Touched</code> and <code>BasePart.TouchEnded</code> events.
@@ -12676,19 +11794,6 @@ interface UGCAvatarService extends Instance {
      * @deprecated
      */
     readonly _nominal_UGCAvatarService: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UGCValidationService)
- */
-interface UGCValidationService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_UGCValidationService: unique symbol;
 }
 /**
  * <code>UIBase</code> is the base class for UI layout and constraint classes.
@@ -13086,21 +12191,8 @@ interface ValueBase extends Instance {
      * @deprecated
      */
     readonly _nominal_ValueBase: unique symbol;
-}
-/**
- * An internal type of <code>StringValue</code> object, that stores a <code>BinaryString</code> value.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BinaryStringValue)
- */
-interface BinaryStringValue extends ValueBase {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_BinaryStringValue: unique symbol;
+    Value: unknown;
+    readonly Changed: RBXScriptSignal<(value?: unknown) => void>;
 }
 /**
  * A container object for a single boolean value.
@@ -13363,36 +12455,6 @@ interface VideoService extends Instance {
     readonly _nominal_VideoService: unique symbol;
 }
 /**
- * An internal service that offers no functionality to developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInputManager)
- */
-interface VirtualInputManager extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_VirtualInputManager: unique symbol;
-}
-/**
- * VirtualUser is a service that allows you to record the inputs of a user, and then play it back to a limited extent.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualUser)
- */
-interface VirtualUser extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_VirtualUser: unique symbol;
-}
-/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VisibilityCheckDispatcher)
  */
 interface VisibilityCheckDispatcher extends Instance {
@@ -13404,21 +12466,6 @@ interface VisibilityCheckDispatcher extends Instance {
      * @deprecated
      */
     readonly _nominal_VisibilityCheckDispatcher: unique symbol;
-}
-/**
- * The Visit service is a backend service used by Roblox. Its functions are not accessible to developers in any form.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Visit)
- */
-interface Visit extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_Visit: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VisualizationMode)

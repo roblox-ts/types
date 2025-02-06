@@ -12,7 +12,8 @@ const PRIMITIVE_TYPE_ALIAS_MAP = new Map<string, ts.TypeNode>([
 	["float", ts.factory.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword)],
 	["double", ts.factory.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword)],
 	["string", ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)],
-	["null", ts.factory.createKeywordTypeNode(ts.SyntaxKind.VoidKeyword)], // undefined?
+	// only used in return types
+	["null", ts.factory.createKeywordTypeNode(ts.SyntaxKind.VoidKeyword)],
 ]);
 
 const DATA_TYPE_ALIAS_MAP = new Map<string, ts.TypeNode>([
