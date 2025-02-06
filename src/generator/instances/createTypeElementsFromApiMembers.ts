@@ -1,11 +1,12 @@
 import ts from "typescript";
+
+import { SecurityLevel } from "../../enums";
+import { ApiClass, ApiMember } from "../../types/ApiDump";
+import { Context } from "../../types/Context";
 import { createCallbackSignature } from "./members/createCallbackSignature";
+import { createEventSignature } from "./members/createEventSignature";
 import { createMethodSignature } from "./members/createMethodSignature";
 import { createPropertySignature } from "./members/createPropertySignature";
-import { createEventSignature } from "./members/createEventSignature";
-import { ApiClass, ApiMember } from "../../types/ApiDump";
-import { SecurityLevel } from "../../enums";
-import { Context } from "../../types/Context";
 
 export function createTypeElementsFromApiMembers(
 	ctx: Context,
@@ -22,8 +23,8 @@ export function createTypeElementsFromApiMembers(
 			? { Read: apiMember.Security, Write: apiMember.Security }
 			: apiMember.Security;
 
-	let readSecurity: SecurityLevel = SecurityLevel[security.Read as never] as never;
-	let writeSecurity: SecurityLevel = SecurityLevel[security.Write as never] as never;
+	const readSecurity = SecurityLevel[security.Read];
+	let writeSecurity = SecurityLevel[security.Write];
 
 	if (apiMember.MemberType !== "Property") {
 		writeSecurity = readSecurity;

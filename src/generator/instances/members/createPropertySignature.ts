@@ -1,9 +1,10 @@
+import ts from "typescript";
+
+import { SecurityLevel } from "../../../enums";
+import { ApiProperty } from "../../../types/ApiDump";
+import { Context } from "../../../types/Context";
 import { getSafePropertyName } from "../alias";
 import { createTypeNodeFromApiValueType } from "../createTypeNodeFromApiValueType";
-import { Context } from "../../../types/Context";
-import { ApiProperty } from "../../../types/ApiDump";
-import ts from "typescript";
-import { SecurityLevel } from "../../../enums";
 
 export function createPropertySignature(
 	ctx: Context,

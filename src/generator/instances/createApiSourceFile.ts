@@ -1,12 +1,13 @@
 import ts from "typescript";
-import { isA } from "./isA";
-import { createExtendsClause } from "./createExtendsClause";
+
+import { SecurityLevel } from "../../enums";
+import { ApiClass } from "../../types/ApiDump";
+import { Context } from "../../types/Context";
+import { createCommentStatement } from "../createCommentStatement";
 import { getSafeClassName } from "./alias";
 import { createInstanceInterface } from "./classes/createInstanceInterface";
-import { Context } from "../../types/Context";
-import { ApiClass } from "../../types/ApiDump";
-import { SecurityLevel } from "../../enums";
-import { createCommentStatement } from "../createCommentStatement";
+import { createExtendsClause } from "./createExtendsClause";
+import { isA } from "./isA";
 
 function createInstanceMapMembers(apiClasses: Array<ApiClass>) {
 	apiClasses.sort((a, b) => a.Name.localeCompare(b.Name));

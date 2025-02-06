@@ -1,4 +1,5 @@
 import ts from "typescript";
+
 import { ApiClass, ApiFunction } from "../../../types/ApiDump";
 import { Context } from "../../../types/Context";
 import { getSafeClassName } from "../alias";

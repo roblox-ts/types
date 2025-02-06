@@ -1,14 +1,15 @@
 import assert from "assert";
-import { GENERATED_FOLDER_PATH } from "./constants";
 import fs from "fs/promises";
-import { createApiSourceFile } from "./generator/instances/createApiSourceFile";
 import path from "path";
+import ts from "typescript";
+
+import { GENERATED_FOLDER_PATH } from "./constants";
 import { SecurityLevel } from "./enums";
+import { createEnumsSourceFile } from "./generator/enums/createEnumsSourceFile";
+import { createApiSourceFile } from "./generator/instances/createApiSourceFile";
 import { ApiDocs, ApiDocsEntry } from "./types/ApiDocs";
 import { ApiDump } from "./types/ApiDump";
-import ts from "typescript";
 import { Context } from "./types/Context";
-import { createEnumsSourceFile } from "./generator/enums/createEnumsSourceFile";
 
 const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
 

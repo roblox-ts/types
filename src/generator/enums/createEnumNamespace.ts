@@ -1,7 +1,8 @@
 import ts from "typescript";
+
 import { ApiEnum, ApiEnumItem } from "../../types/ApiDump";
-import { setJsDocComment } from "../instances/setJsDocComment";
 import { Context } from "../../types/Context";
+import { setJsDocComment } from "../instances/setJsDocComment";
 
 const VARIABLE_REGEX = /^[a-zA-Z_][a-zA-Z_0-9]*$/;
 

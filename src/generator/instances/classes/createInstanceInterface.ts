@@ -1,14 +1,15 @@
-import { createExtendsClause } from "../createExtendsClause";
-import { createTypeElementsFromApiMembers } from "../createTypeElementsFromApiMembers";
+import assert from "assert";
+import ts from "typescript";
+
+import { CUSTOM_DEFITIONS_PATH, TSCONFIG_PATH } from "../../../constants";
 import { SecurityLevel } from "../../../enums";
 import { ApiClass } from "../../../types/ApiDump";
-import ts from "typescript";
+import { Context } from "../../../types/Context";
 import { createParseConfigFileHost } from "../../../util/createParseConfigFileHost";
 import { getOrSetDefault } from "../../../util/getOrSetDefault";
-import { CUSTOM_DEFITIONS_PATH, TSCONFIG_PATH } from "../../../constants";
 import { getSafeClassName } from "../alias";
-import { Context } from "../../../types/Context";
-import assert from "assert";
+import { createExtendsClause } from "../createExtendsClause";
+import { createTypeElementsFromApiMembers } from "../createTypeElementsFromApiMembers";
 import { setJsDocComment } from "../setJsDocComment";
 
 const parsedCommandLine = ts.getParsedCommandLineOfConfigFile(TSCONFIG_PATH, undefined, createParseConfigFileHost());

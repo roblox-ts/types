@@ -1,6 +1,7 @@
 import ts from "typescript";
-import { createCommentStatement } from "../createCommentStatement";
+
 import { Context } from "../../types/Context";
+import { createCommentStatement } from "../createCommentStatement";
 import { createEnumNamespace } from "./createEnumNamespace";
 
 export function createEnumsSourceFile(ctx: Context) {

@@ -1,7 +1,8 @@
 import ts from "typescript";
-import { getSafeClassName } from "./alias";
-import { Context } from "../../types/Context";
+
 import { ApiValueType } from "../../types/ApiDump";
+import { Context } from "../../types/Context";
+import { getSafeClassName } from "./alias";
 
 const PRIMITIVE_TYPE_ALIAS_MAP = new Map<string, ts.TypeNode>([
 	["bool", ts.factory.createKeywordTypeNode(ts.SyntaxKind.BooleanKeyword)],

@@ -1,4 +1,5 @@
 import ts from "typescript";
+
 import { ApiParameter } from "../../types/ApiDump";
 import { Context } from "../../types/Context";
 import { getSafeParameterName } from "./alias";

@@ -2250,9 +2250,9 @@ interface SecurityCapabilities {
 	 * @deprecated
 	 */
 	readonly _nominal_SecurityCapabilities: unique symbol;
-	Add(...capabilities: Array<Enum.SecurityCapability>): void;
-	Remove(...capabilities: Array<Enum.SecurityCapability>): void;
-	Contains(...capabilities: Array<Enum.SecurityCapability>): void;
+	Add(this: SecurityCapabilities, ...capabilities: Array<Enum.SecurityCapability>): void;
+	Remove(this: SecurityCapabilities, ...capabilities: Array<Enum.SecurityCapability>): void;
+	Contains(this: SecurityCapabilities, ...capabilities: Array<Enum.SecurityCapability>): void;
 }
 
 interface SecurityCapabilitiesConstructor {
