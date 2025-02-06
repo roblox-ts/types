@@ -15,11 +15,6 @@ const PRIMITIVE_TYPE_ALIAS_MAP = new Map<string, ts.TypeNode>([
 	["null", ts.factory.createKeywordTypeNode(ts.SyntaxKind.VoidKeyword)], // undefined?
 ]);
 
-const CLASS_TYPE_ALIAS_MAP = new Map<string, ts.TypeNode>([
-	// Instance types are _usually_ nullable
-	["Instance", optional(ts.factory.createTypeReferenceNode("Instance"))],
-]);
-
 const DATA_TYPE_ALIAS_MAP = new Map<string, ts.TypeNode>([
 	["Function", ts.factory.createTypeReferenceNode("Callback")],
 	[
