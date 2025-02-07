@@ -96,36 +96,62 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 			const comments = new Array<string>();
 
 			const apiDocsEntry = ctx.docs.get(`@roblox/globaltype/${apiClass.Name}.${apiMember.Name}`);
-			if (apiDocsEntry) {
-				if (apiDocsEntry.documentation) {
-					comments.push(apiDocsEntry.documentation);
-				}
-				if (apiDocsEntry.params) {
-					for (const param of apiDocsEntry.params) {
-						const paramDocsEntry = ctx.docs.get(param.documentation);
-						if (paramDocsEntry) {
-							const name = param.name === "self" ? "this" : param.name;
-							comments.push(`@param ${name} ${paramDocsEntry.documentation}`);
-						}
-					}
-				}
-				if (apiDocsEntry.returns) {
-					for (const key of apiDocsEntry.returns) {
-						const returnEntry = ctx.docs.get(key);
-						if (returnEntry?.documentation) {
-							comments.push(`@returns ${returnEntry.documentation}`);
-						}
-					}
-				}
+			if (apiDocsEntry?.documentation) {
+				comments.push(apiDocsEntry.documentation);
 			}
 
-			if (comments.length > 0) {
-				comments.push("");
+			if (comments.length > 0) comments.push("");
+
+			comments.push(`- **ThreadSafety**: ${apiMember.ThreadSafety}`);
+			if (apiMember.Tags) {
+				comments.push(`- **Tags**: ${apiMember.Tags.join(", ")}`);
 			}
+
+			if (comments.length > 0) comments.push("");
 
 			comments.push(
 				`[Creator Hub](https://create.roblox.com/docs/reference/engine/classes/${apiClass.Name}#${apiMember.Name})`,
 			);
+
+			if (apiDocsEntry?.params) {
+				for (const param of apiDocsEntry.params) {
+					const paramDocsEntry = ctx.docs.get(param.documentation);
+					if (paramDocsEntry) {
+						const name = param.name === "self" ? "this" : param.name;
+						comments.push(`@param ${name} ${paramDocsEntry.documentation}`);
+					}
+				}
+			}
+
+			if (apiDocsEntry?.returns) {
+				for (const key of apiDocsEntry.returns) {
+					const returnEntry = ctx.docs.get(key);
+					if (returnEntry?.documentation) {
+						comments.push(`@returns ${returnEntry.documentation}`);
+					}
+				}
+			}
+
+			if (comments.length > 0) comments.push("");
+
+			if (apiMember.Tags) {
+				const deprecatedTagIdx = apiMember.Tags.indexOf("Deprecated");
+				if (deprecatedTagIdx !== -1) {
+					const metadata = apiMember.Tags.at(deprecatedTagIdx + 1);
+					if (
+						metadata &&
+						typeof metadata !== "string" &&
+						// several members have a PreferredDescriptorName which is the same as the member name
+						// suspect this is because it's referencing an API on a different class of the same name, but doesn't say so
+						// for now, we'll skip these because it's confusing
+						metadata.PreferredDescriptorName !== apiMember.Name
+					) {
+						comments.push(`@deprecated ${metadata.PreferredDescriptorName}`);
+					} else {
+						comments.push("@deprecated");
+					}
+				}
+			}
 
 			setJsDocComment(first, comments);
 		}

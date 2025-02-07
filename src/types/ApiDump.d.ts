@@ -40,8 +40,11 @@ export type CategoryType =
 	| "Thrust"
 	| "Turn";
 
+export type DeprecatedMetadata = { PreferredDescriptorName: string; ThreadSafety: string };
+
 export type ClassTag =
 	| "Deprecated"
+	| DeprecatedMetadata // why??
 	| "NotBrowsable"
 	| "NotCreatable"
 	| "NotReplicated"
