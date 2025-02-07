@@ -16,11 +16,19 @@ export function createParameters(ctx: Context, apiParameters: Array<ApiParameter
 	let requiredParamSeen = false;
 	for (let i = apiParameters.length - 1; i >= 0; i--) {
 		const apiParameter = apiParameters[i];
-		let type = createTypeNodeFromApiValueType(ctx, apiParameter.Type, { implicitlyConvertEnum: true });
+		let type = createTypeNodeFromApiValueType(ctx, apiParameter.Type);
+
+		// wrap Enum types in CastsToEnum<T>
+		if (apiParameter.Type.Category === "Enum") {
+			type = ts.factory.createExpressionWithTypeArguments(ts.factory.createIdentifier("CastsToEnum"), [type]);
+		}
+
 		let questionToken: ts.QuestionToken | undefined;
 		if (!requiredParamSeen) {
 			if (ts.isUnionTypeNode(type) && type.types.find(isTypeUndefined)) {
 				type = ts.factory.createUnionTypeNode(type.types.filter(v => !isTypeUndefined(v)));
+				questionToken = ts.factory.createToken(ts.SyntaxKind.QuestionToken);
+			} else if (apiParameter.Default) {
 				questionToken = ts.factory.createToken(ts.SyntaxKind.QuestionToken);
 			} else {
 				requiredParamSeen = true;

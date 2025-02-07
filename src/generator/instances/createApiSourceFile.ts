@@ -54,6 +54,14 @@ export function createApiSourceFile(ctx: Context, securityLevel: SecurityLevel) 
 	const objects = new Array<ApiClass>();
 
 	for (const apiClass of ctx.apiDump.Classes) {
+		if (CLASS_BLACKLIST.has(apiClass.Name)) {
+			continue;
+		}
+
+		if (securityLevel < SecurityLevel.PluginSecurity && isAPluginOnlyClass(ctx, apiClass.Name)) {
+			continue;
+		}
+
 		if (isA(ctx, apiClass.Name, "Instance")) {
 			if (apiClass.Tags?.includes("Service")) {
 				services.push(apiClass);

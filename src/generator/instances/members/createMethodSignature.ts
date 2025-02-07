@@ -19,9 +19,21 @@ export function createMethodSignature(ctx: Context, apiClass: ApiClass, apiFunct
 		),
 	);
 
-	const returnType = Array.isArray(apiFunction.ReturnType)
+	let returnType = Array.isArray(apiFunction.ReturnType)
 		? ts.factory.createUnionTypeNode(apiFunction.ReturnType.map(v => createTypeNodeFromApiValueType(ctx, v)))
 		: createTypeNodeFromApiValueType(ctx, apiFunction.ReturnType);
+
+	// for method return types, the API Dump will sometimes list "Instance", but mean "Instance?"
+	if (
+		!Array.isArray(apiFunction.ReturnType) &&
+		apiFunction.ReturnType.Category === "Class" &&
+		apiFunction.ReturnType.Name === "Instance"
+	) {
+		returnType = ts.factory.createUnionTypeNode([
+			returnType,
+			ts.factory.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword),
+		]);
+	}
 
 	return [
 		ts.factory.createMethodSignature(undefined, apiFunction.Name, undefined, undefined, parameters, returnType),

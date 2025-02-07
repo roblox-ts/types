@@ -6,7 +6,6 @@ interface Services {
     AccountService: AccountService;
     AchievementService: AchievementService;
     ActivityHistoryEventService: ActivityHistoryEventService;
-    AdService: AdService;
     AnalyticsService: AnalyticsService;
     AnimationClipProvider: AnimationClipProvider;
     AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
@@ -28,17 +27,13 @@ interface Services {
     AvatarImportService: AvatarImportService;
     AvatarPreloader: AvatarPreloader;
     BadgeService: BadgeService;
-    BrowserService: BrowserService;
     BugReporterService: BugReporterService;
     BulkImportService: BulkImportService;
-    CacheableContentProvider: CacheableContentProvider;
     CalloutService: CalloutService;
     CaptureService: CaptureService;
-    ChangeHistoryService: ChangeHistoryService;
     Chat: Chat;
     ChatbotUIService: ChatbotUIService;
     CloudCRUDService: CloudCRUDService;
-    ClusterPacketCache: ClusterPacketCache;
     CollaboratorsService: CollaboratorsService;
     CollectionService: CollectionService;
     CommandService: CommandService;
@@ -49,11 +44,7 @@ interface Services {
     ContextActionService: ContextActionService;
     ControllerService: ControllerService;
     ConversationalAIAcceptanceService: ConversationalAIAcceptanceService;
-    CookiesService: CookiesService;
-    CoreGui: CoreGui;
-    CorePackages: CorePackages;
     CoreScriptDebuggingManagerHelper: CoreScriptDebuggingManagerHelper;
-    CoreScriptSyncService: CoreScriptSyncService;
     CreationDBService: CreationDBService;
     CreatorStoreService: CreatorStoreService;
     CrossDMScriptChangeListener: CrossDMScriptChangeListener;
@@ -63,10 +54,8 @@ interface Services {
     Debris: Debris;
     DebuggablePluginWatcher: DebuggablePluginWatcher;
     DebuggerConnectionManager: DebuggerConnectionManager;
-    DebuggerManager: DebuggerManager;
     DebuggerUIService: DebuggerUIService;
     DeviceIdService: DeviceIdService;
-    DraftsService: DraftsService;
     DraggerService: DraggerService;
     EditableService: EditableService;
     EventIngestService: EventIngestService;
@@ -80,24 +69,16 @@ interface Services {
     FacialAnimationRecordingService: FacialAnimationRecordingService;
     FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
     FeatureRestrictionManager: FeatureRestrictionManager;
-    FlagStandService: FlagStandService;
-    FlyweightService: FlyweightService;
-    FriendService: FriendService;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
     GenericChallengeService: GenericChallengeService;
-    Geometry: Geometry;
     GeometryService: GeometryService;
-    GoogleAnalyticsConfiguration: GoogleAnalyticsConfiguration;
     GroupService: GroupService;
-    GuidRegistryService: GuidRegistryService;
     GuiService: GuiService;
     HapticService: HapticService;
     HeatmapService: HeatmapService;
     HeightmapImporterService: HeightmapImporterService;
-    Hopper: Hopper;
     HSRDataContentProvider: HSRDataContentProvider;
-    HttpRbxApiService: HttpRbxApiService;
     HttpService: HttpService;
     ILegacyStudioBridge: ILegacyStudioBridge;
     IncrementalPatchBuilder: IncrementalPatchBuilder;
@@ -105,7 +86,6 @@ interface Services {
     InternalSyncService: InternalSyncService;
     IXPService: IXPService;
     JointsService: JointsService;
-    KeyboardService: KeyboardService;
     KeyframeSequenceProvider: KeyframeSequenceProvider;
     LanguageService: LanguageService;
     LegacyStudioBridge: LegacyStudioBridge;
@@ -114,72 +94,52 @@ interface Services {
     LiveScriptingService: LiveScriptingService;
     LiveSyncService: LiveSyncService;
     LocalizationService: LocalizationService;
-    LocalStorageService: LocalStorageService;
     LodDataService: LodDataService;
-    LoginService: LoginService;
     LogReporterService: LogReporterService;
     LogService: LogService;
     LSPFileSyncService: LSPFileSyncService;
     LuauScriptAnalyzerService: LuauScriptAnalyzerService;
-    LuaWebService: LuaWebService;
     MarketplaceService: MarketplaceService;
     MaterialGenerationService: MaterialGenerationService;
     MaterialService: MaterialService;
     MemoryStoreService: MemoryStoreService;
-    MemStorageService: MemStorageService;
     MeshContentProvider: MeshContentProvider;
     MessageBusService: MessageBusService;
     MessagingService: MessagingService;
     MetaBreakpointManager: MetaBreakpointManager;
     MLModelDeliveryService: MLModelDeliveryService;
-    MouseService: MouseService;
-    NetworkClient: NetworkClient;
-    NetworkServer: NetworkServer;
-    NetworkSettings: NetworkSettings;
     NonReplicatedCSGDictionaryService: NonReplicatedCSGDictionaryService;
-    NotificationService: NotificationService;
     OmniRecommendationsService: OmniRecommendationsService;
     OpenCloudService: OpenCloudService;
-    PackageService: PackageService;
     PackageUIService: PackageUIService;
     PatchBundlerFileWatch: PatchBundlerFileWatch;
     PathfindingService: PathfindingService;
     PerformanceControlService: PerformanceControlService;
-    PermissionsService: PermissionsService;
     PhysicsService: PhysicsService;
     PlacesService: PlacesService;
     PlaceStatsService: PlaceStatsService;
     PlatformCloudStorageService: PlatformCloudStorageService;
     PlatformFriendsService: PlatformFriendsService;
-    PlayerEmulatorService: PlayerEmulatorService;
     PlayerHydrationService: PlayerHydrationService;
     Players: Players;
     PlayerViewService: PlayerViewService;
-    PluginDebugService: PluginDebugService;
-    PluginGuiService: PluginGuiService;
     PluginManagementService: PluginManagementService;
     PluginPolicyService: PluginPolicyService;
-    PointsService: PointsService;
     PolicyService: PolicyService;
     ProcessInstancePhysicsService: ProcessInstancePhysicsService;
     ProximityPromptService: ProximityPromptService;
     PublishService: PublishService;
-    RbxAnalyticsService: RbxAnalyticsService;
     ReflectionService: ReflectionService;
     RemoteCursorService: RemoteCursorService;
     RemoteDebuggerServer: RemoteDebuggerServer;
-    RenderSettings: RenderSettings;
     ReplicatedFirst: ReplicatedFirst;
     ReplicatedStorage: ReplicatedStorage;
     RibbonNotificationService: RibbonNotificationService;
-    RobloxPluginGuiService: RobloxPluginGuiService;
-    RobloxReplicatedStorage: RobloxReplicatedStorage;
     RobloxServerStorage: RobloxServerStorage;
     RomarkRbxAnalyticsService: RomarkRbxAnalyticsService;
     RomarkService: RomarkService;
     RtMessagingService: RtMessagingService;
     RunService: RunService;
-    RuntimeScriptService: RuntimeScriptService;
     SafetyService: SafetyService;
     ScriptChangeService: ScriptChangeService;
     ScriptCloneWatcher: ScriptCloneWatcher;
@@ -189,8 +149,6 @@ interface Services {
     ScriptEditorService: ScriptEditorService;
     ScriptProfilerService: ScriptProfilerService;
     ScriptRegistrationService: ScriptRegistrationService;
-    ScriptService: ScriptService;
-    Selection: Selection;
     SelectionHighlightManager: SelectionHighlightManager;
     ServerScriptService: ServerScriptService;
     ServerStorage: ServerStorage;
@@ -203,27 +161,21 @@ interface Services {
     SocialService: SocialService;
     SolidModelContentProvider: SolidModelContentProvider;
     SoundService: SoundService;
-    SpawnerService: SpawnerService;
     StarterGui: StarterGui;
     StarterPack: StarterPack;
     StarterPlayer: StarterPlayer;
     StartPageService: StartPageService;
     StartupMessageService: StartupMessageService;
     Stats: Stats;
-    StopWatchReporter: StopWatchReporter;
     StreamingService: StreamingService;
-    Studio: Studio;
     StudioAssetService: StudioAssetService;
-    StudioData: StudioData;
     StudioDeviceEmulatorService: StudioDeviceEmulatorService;
     StudioPublishService: StudioPublishService;
     StudioScriptDebugEventListener: StudioScriptDebugEventListener;
     StudioSdkService: StudioSdkService;
-    StudioService: StudioService;
     StudioUserService: StudioUserService;
     StudioWidgetsService: StudioWidgetsService;
     StylingService: StylingService;
-    TaskScheduler: TaskScheduler;
     TeamCreateData: TeamCreateData;
     TeamCreatePublishService: TeamCreatePublishService;
     TeamCreateService: TeamCreateService;
@@ -232,32 +184,23 @@ interface Services {
     TeleportService: TeleportService;
     TemporaryCageMeshProvider: TemporaryCageMeshProvider;
     TemporaryScriptService: TemporaryScriptService;
-    TestService: TestService;
     TextBoxService: TextBoxService;
     TextChatService: TextChatService;
     TextService: TextService;
     TextureGenerationService: TextureGenerationService;
-    ThirdPartyUserService: ThirdPartyUserService;
-    TimerService: TimerService;
     ToastNotificationService: ToastNotificationService;
-    TouchInputService: TouchInputService;
     TracerService: TracerService;
     TutorialService: TutorialService;
     TweenService: TweenService;
     UGCAvatarService: UGCAvatarService;
-    UGCValidationService: UGCValidationService;
     UIDragDetectorService: UIDragDetectorService;
     UnvalidatedAssetService: UnvalidatedAssetService;
     UserInputService: UserInputService;
     UserService: UserService;
     UserStorageService: UserStorageService;
-    VersionControlService: VersionControlService;
     VideoCaptureService: VideoCaptureService;
     VideoService: VideoService;
-    VirtualInputManager: VirtualInputManager;
-    VirtualUser: VirtualUser;
     VisibilityCheckDispatcher: VisibilityCheckDispatcher;
-    Visit: Visit;
     VisualizationModeService: VisualizationModeService;
     VoiceChatInternal: VoiceChatInternal;
     VoiceChatService: VoiceChatService;
@@ -273,7 +216,6 @@ interface CreatableInstances {
     Actor: Actor;
     AdGui: AdGui;
     AdPortal: AdPortal;
-    AdvancedDragger: AdvancedDragger;
     AirController: AirController;
     AlignOrientation: AlignOrientation;
     AlignPosition: AlignPosition;
@@ -310,7 +252,6 @@ interface CreatableInstances {
     BallSocketConstraint: BallSocketConstraint;
     Beam: Beam;
     BillboardGui: BillboardGui;
-    BinaryStringValue: BinaryStringValue;
     BindableEvent: BindableEvent;
     BindableFunction: BindableFunction;
     BlockMesh: BlockMesh;
@@ -349,8 +290,6 @@ interface CreatableInstances {
     ControllerPartSensor: ControllerPartSensor;
     CornerWedgePart: CornerWedgePart;
     CurveAnimation: CurveAnimation;
-    CustomEvent: CustomEvent;
-    CustomEventReceiver: CustomEventReceiver;
     CylinderHandleAdornment: CylinderHandleAdornment;
     CylinderMesh: CylinderMesh;
     CylindricalConstraint: CylindricalConstraint;
@@ -375,8 +314,6 @@ interface CreatableInstances {
     FaceControls: FaceControls;
     FileMesh: FileMesh;
     Fire: Fire;
-    Flag: Flag;
-    FlagStand: FlagStand;
     FlangeSoundEffect: FlangeSoundEffect;
     FloatCurve: FloatCurve;
     FloorWire: FloorWire;
@@ -384,20 +321,16 @@ interface CreatableInstances {
     Folder: Folder;
     ForceField: ForceField;
     Frame: Frame;
-    FunctionalTest: FunctionalTest;
     GetTextBoundsParams: GetTextBoundsParams;
     Glue: Glue;
     GroundController: GroundController;
-    GuiMain: GuiMain;
     Handles: Handles;
     HapticEffect: HapticEffect;
     Hat: Hat;
     HiddenSurfaceRemovalAsset: HiddenSurfaceRemovalAsset;
     Highlight: Highlight;
     HingeConstraint: HingeConstraint;
-    Hint: Hint;
     Hole: Hole;
-    HopperBin: HopperBin;
     Humanoid: Humanoid;
     HumanoidController: HumanoidController;
     HumanoidDescription: HumanoidDescription;
@@ -422,7 +355,6 @@ interface CreatableInstances {
     MarkerCurve: MarkerCurve;
     MaterialVariant: MaterialVariant;
     MeshPart: MeshPart;
-    Message: Message;
     Model: Model;
     ModuleScript: ModuleScript;
     Motor: Motor;
@@ -439,36 +371,25 @@ interface CreatableInstances {
     Part: Part;
     ParticleEmitter: ParticleEmitter;
     PartOperation: PartOperation;
-    PartOperationAsset: PartOperationAsset;
     Path2D: Path2D;
     PathfindingLink: PathfindingLink;
     PathfindingModifier: PathfindingModifier;
     PitchShiftSoundEffect: PitchShiftSoundEffect;
     Plane: Plane;
     PlaneConstraint: PlaneConstraint;
-    PluginAction: PluginAction;
     PluginCapabilities: PluginCapabilities;
     PointLight: PointLight;
     Pose: Pose;
     PrismaticConstraint: PrismaticConstraint;
     ProximityPrompt: ProximityPrompt;
     RayValue: RayValue;
-    ReflectionMetadata: ReflectionMetadata;
-    ReflectionMetadataCallbacks: ReflectionMetadataCallbacks;
     ReflectionMetadataClass: ReflectionMetadataClass;
-    ReflectionMetadataClasses: ReflectionMetadataClasses;
     ReflectionMetadataEnum: ReflectionMetadataEnum;
     ReflectionMetadataEnumItem: ReflectionMetadataEnumItem;
-    ReflectionMetadataEnums: ReflectionMetadataEnums;
-    ReflectionMetadataEvents: ReflectionMetadataEvents;
-    ReflectionMetadataFunctions: ReflectionMetadataFunctions;
     ReflectionMetadataMember: ReflectionMetadataMember;
-    ReflectionMetadataProperties: ReflectionMetadataProperties;
-    ReflectionMetadataYieldFunctions: ReflectionMetadataYieldFunctions;
     RelativeGui: RelativeGui;
     RemoteEvent: RemoteEvent;
     RemoteFunction: RemoteFunction;
-    RenderingTest: RenderingTest;
     ReverbSoundEffect: ReverbSoundEffect;
     RigidConstraint: RigidConstraint;
     RocketPropulsion: RocketPropulsion;
@@ -491,7 +412,6 @@ interface CreatableInstances {
     ShirtGraphic: ShirtGraphic;
     SkateboardController: SkateboardController;
     SkateboardPlatform: SkateboardPlatform;
-    Skin: Skin;
     Sky: Sky;
     Smoke: Smoke;
     Snap: Snap;
@@ -503,7 +423,6 @@ interface CreatableInstances {
     SphereHandleAdornment: SphereHandleAdornment;
     SpotLight: SpotLight;
     SpringConstraint: SpringConstraint;
-    StandalonePluginScripts: StandalonePluginScripts;
     StarterGear: StarterGear;
     StringValue: StringValue;
     StudioAttachment: StudioAttachment;
@@ -577,7 +496,6 @@ interface CreatableInstances {
     WrapTarget: WrapTarget;
 }
 interface Instances extends Services, CreatableInstances {
-    AnalysticsSettings: AnalysticsSettings;
     AnimationClip: AnimationClip;
     AnimationImportData: AnimationImportData;
     AnimationStreamTrack: AnimationStreamTrack;
@@ -604,7 +522,6 @@ interface Instances extends Services, CreatableInstances {
     ChatInputBarConfiguration: ChatInputBarConfiguration;
     ChatWindowConfiguration: ChatWindowConfiguration;
     ChatWindowMessageProperties: ChatWindowMessageProperties;
-    ClientReplicator: ClientReplicator;
     Clothing: Clothing;
     CloudLocalizationTable: CloudLocalizationTable;
     Collaborator: Collaborator;
@@ -613,11 +530,9 @@ interface Instances extends Services, CreatableInstances {
     Controller: Controller;
     ControllerBase: ControllerBase;
     ControllerSensor: ControllerSensor;
-    CoreScript: CoreScript;
     CustomSoundEffect: CustomSoundEffect;
     DataModel: DataModel;
     DataModelMesh: DataModelMesh;
-    DataModelSession: DataModelSession;
     DataStore: DataStore;
     DataStoreInfo: DataStoreInfo;
     DataStoreKey: DataStoreKey;
@@ -627,13 +542,9 @@ interface Instances extends Services, CreatableInstances {
     DataStoreObjectVersionInfo: DataStoreObjectVersionInfo;
     DataStorePages: DataStorePages;
     DataStoreVersionPages: DataStoreVersionPages;
-    DebuggerBreakpoint: DebuggerBreakpoint;
     DebuggerConnection: DebuggerConnection;
     DebuggerLuaResponse: DebuggerLuaResponse;
     DebuggerVariable: DebuggerVariable;
-    DebuggerWatch: DebuggerWatch;
-    DebugSettings: DebugSettings;
-    DockWidgetPluginGui: DockWidgetPluginGui;
     DynamicRotate: DynamicRotate;
     EmotesPages: EmotesPages;
     ExplorerFilterAutocompleter: ExplorerFilterAutocompleter;
@@ -642,13 +553,10 @@ interface Instances extends Services, CreatableInstances {
     FacialAnimationStreamingSubsessionStats: FacialAnimationStreamingSubsessionStats;
     FacsImportData: FacsImportData;
     Feature: Feature;
-    File: File;
     FormFactorPart: FormFactorPart;
     FriendPages: FriendPages;
-    GameSettings: GameSettings;
     GenericSettings: GenericSettings;
     GlobalDataStore: GlobalDataStore;
-    GlobalSettings: GlobalSettings;
     GroupImportData: GroupImportData;
     GuiBase: GuiBase;
     GuiBase2d: GuiBase2d;
@@ -658,7 +566,6 @@ interface Instances extends Services, CreatableInstances {
     GuiObject: GuiObject;
     HandleAdornment: HandleAdornment;
     HandlesBase: HandlesBase;
-    HttpRequest: HttpRequest;
     InputObject: InputObject;
     Instance: Instance;
     InstanceAdornment: InstanceAdornment;
@@ -669,7 +576,6 @@ interface Instances extends Services, CreatableInstances {
     Light: Light;
     LocalDebuggerConnection: LocalDebuggerConnection;
     LodDataEntity: LodDataEntity;
-    LuaSettings: LuaSettings;
     LuaSourceContainer: LuaSourceContainer;
     ManualSurfaceJointInstance: ManualSurfaceJointInstance;
     MaterialGenerationSession: MaterialGenerationSession;
@@ -678,16 +584,12 @@ interface Instances extends Services, CreatableInstances {
     MemoryStoreHashMapPages: MemoryStoreHashMapPages;
     MemoryStoreQueue: MemoryStoreQueue;
     MemoryStoreSortedMap: MemoryStoreSortedMap;
-    MemStorageConnection: MemStorageConnection;
     MeshImportData: MeshImportData;
     MessageBusConnection: MessageBusConnection;
     MetaBreakpoint: MetaBreakpoint;
     MetaBreakpointContext: MetaBreakpointContext;
     Mouse: Mouse;
-    MultipleDocumentInterfaceInstance: MultipleDocumentInterfaceInstance;
     NetworkMarker: NetworkMarker;
-    NetworkPeer: NetworkPeer;
-    NetworkReplicator: NetworkReplicator;
     OpenCloudApiV1: OpenCloudApiV1;
     OrderedDataStore: OrderedDataStore;
     OutfitPages: OutfitPages;
@@ -700,40 +602,24 @@ interface Instances extends Services, CreatableInstances {
     PausedState: PausedState;
     PausedStateBreakpoint: PausedStateBreakpoint;
     PausedStateException: PausedStateException;
-    PhysicsSettings: PhysicsSettings;
     Platform: Platform;
     Player: Player;
     PlayerGui: PlayerGui;
     PlayerMouse: PlayerMouse;
     PlayerScripts: PlayerScripts;
-    Plugin: Plugin;
-    PluginDragEvent: PluginDragEvent;
-    PluginGui: PluginGui;
-    PluginManager: PluginManager;
     PluginManagerInterface: PluginManagerInterface;
-    PluginMenu: PluginMenu;
-    PluginMouse: PluginMouse;
-    PluginToolbar: PluginToolbar;
-    PluginToolbarButton: PluginToolbarButton;
     PoseBase: PoseBase;
     PostEffect: PostEffect;
     PVAdornment: PVAdornment;
     PVInstance: PVInstance;
-    QWidgetPluginGui: QWidgetPluginGui;
-    ReflectionMetadataItem: ReflectionMetadataItem;
     RobloxSerializableInstance: RobloxSerializableInstance;
     RootImportData: RootImportData;
-    RunningAverageItemDouble: RunningAverageItemDouble;
-    RunningAverageItemInt: RunningAverageItemInt;
-    RunningAverageTimeIntervalItem: RunningAverageTimeIntervalItem;
     ScreenshotHud: ScreenshotHud;
     ScriptBuilder: ScriptBuilder;
-    ScriptDebugger: ScriptDebugger;
     ScriptDocument: ScriptDocument;
     ScriptRuntime: ScriptRuntime;
     SelectionLasso: SelectionLasso;
     SensorBase: SensorBase;
-    ServerReplicator: ServerReplicator;
     ServiceProvider: ServiceProvider;
     SlidingBallConstraint: SlidingBallConstraint;
     SoundEffect: SoundEffect;
@@ -741,10 +627,7 @@ interface Instances extends Services, CreatableInstances {
     StandardPages: StandardPages;
     StarterCharacterScripts: StarterCharacterScripts;
     StarterPlayerScripts: StarterPlayerScripts;
-    StatsItem: StatsItem;
-    Status: Status;
     StudioObjectBase: StudioObjectBase;
-    StudioTheme: StudioTheme;
     StudioWidget: StudioWidget;
     StyleBase: StyleBase;
     SurfaceGuiBase: SurfaceGuiBase;
@@ -759,7 +642,6 @@ interface Instances extends Services, CreatableInstances {
     TextureGenerationPartGroup: TextureGenerationPartGroup;
     TextureGenerationUnwrappingRequest: TextureGenerationUnwrappingRequest;
     ThreadState: ThreadState;
-    TotalCountTimeIntervalItem: TotalCountTimeIntervalItem;
     TouchTransmitter: TouchTransmitter;
     TrackerLodController: TrackerLodController;
     Translator: Translator;
@@ -1370,7 +1252,7 @@ interface EditableMesh extends DataModelMesh {
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#CreateMeshPartAsync)
      */
-    CreateMeshPartAsync(this: EditableMesh, initialSize: Vector3, options: Map<unknown, unknown>): MeshPart;
+    CreateMeshPartAsync(this: EditableMesh, initialSize: Vector3, options?: Map<unknown, unknown>): MeshPart;
 }
 /**
  * Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
@@ -1441,7 +1323,7 @@ interface Instance extends RBXObject {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#FindFirstAncestor)
      */
-    FindFirstAncestor(this: Instance, name: string): Instance;
+    FindFirstAncestor(this: Instance, name: string): Instance | undefined;
     /**
      * Returns the first ancestor of the <code>Instance</code> whose <code>Object.ClassName</code> is equal to the given className.
      * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
@@ -1497,7 +1379,7 @@ interface Instance extends RBXObject {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#FindFirstDescendant)
      */
-    FindFirstDescendant(this: Instance, name: string): Instance;
+    FindFirstDescendant(this: Instance, name: string): Instance | undefined;
     /**
      * Returns the <code>Actor</code> associated with the Instance, if any.
      * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
@@ -1760,7 +1642,7 @@ interface AccessoryDescription extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AccessoryDescription#GetAppliedInstance)
      */
-    GetAppliedInstance(this: AccessoryDescription): Instance;
+    GetAppliedInstance(this: AccessoryDescription): Instance | undefined;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AccountService)
@@ -1991,7 +1873,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogCustomEvent)
      */
-    LogCustomEvent(this: AnalyticsService, player: Player, eventName: string, value: number, customFields: Map<unknown, unknown>): void;
+    LogCustomEvent(this: AnalyticsService, player: Player, eventName: string, value?: number, customFields?: Map<unknown, unknown>): void;
     /**
      * Logs an event used to track player actions related in experience.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -2006,7 +1888,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogEconomyEvent)
      */
-    LogEconomyEvent(this: AnalyticsService, player: Player, flowType: CastsToEnum<Enum.AnalyticsEconomyFlowType>, currencyType: string, amount: number, endingBalance: number, transactionType: string, itemSku: string, customFields: Map<unknown, unknown>): void;
+    LogEconomyEvent(this: AnalyticsService, player: Player, flowType: CastsToEnum<Enum.AnalyticsEconomyFlowType>, currencyType: string, amount: number, endingBalance: number, transactionType: string, itemSku: string, customFields?: Map<unknown, unknown>): void;
     /**
      * Logs an event used to track user actions stepping through a pre-planned funnel.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -2019,7 +1901,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogFunnelStepEvent)
      */
-    LogFunnelStepEvent(this: AnalyticsService, player: Player, funnelName: string, funnelSessionId: string, step: number, stepName: string, customFields: Map<unknown, unknown>): void;
+    LogFunnelStepEvent(this: AnalyticsService, player: Player, funnelName: string, funnelSessionId: string, step: number, stepName: string, customFields?: Map<unknown, unknown>): void;
     /**
      * Logs an event used to track user actions stepping through an onboarding funnel.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -2030,7 +1912,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogOnboardingFunnelStepEvent)
      */
-    LogOnboardingFunnelStepEvent(this: AnalyticsService, player: Player, step: number, stepName: string, customFields: Map<unknown, unknown>): void;
+    LogOnboardingFunnelStepEvent(this: AnalyticsService, player: Player, step: number, stepName: string, customFields?: Map<unknown, unknown>): void;
     /**
      * Logs an event for when a user has completed a level attempt.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -2042,7 +1924,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionCompleteEvent)
      */
-    LogProgressionCompleteEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields: Map<unknown, unknown>): void;
+    LogProgressionCompleteEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields?: Map<unknown, unknown>): void;
     /**
      * Logs an event for when a user has started, completed, or failed a level attempt.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -2055,7 +1937,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionEvent)
      */
-    LogProgressionEvent(this: AnalyticsService, player: Player, progressionPathName: string, status: CastsToEnum<Enum.AnalyticsProgressionType>, level: number, levelName: string, customFields: Map<unknown, unknown>): void;
+    LogProgressionEvent(this: AnalyticsService, player: Player, progressionPathName: string, status: CastsToEnum<Enum.AnalyticsProgressionType>, level: number, levelName: string, customFields?: Map<unknown, unknown>): void;
     /**
      * Logs an event for when a user has failed a level attempt.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -2067,7 +1949,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionFailEvent)
      */
-    LogProgressionFailEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields: Map<unknown, unknown>): void;
+    LogProgressionFailEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields?: Map<unknown, unknown>): void;
     /**
      * Logs an event for when a user has started a level attempt.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -2079,7 +1961,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionStartEvent)
      */
-    LogProgressionStartEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields: Map<unknown, unknown>): void;
+    LogProgressionStartEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields?: Map<unknown, unknown>): void;
 }
 /**
  * References an animation asset which can be loaded by an <code>AnimationController</code>.
@@ -2232,7 +2114,7 @@ interface AnimationClipProvider extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationClipProvider#GetAnimations)
      */
-    GetAnimations(this: AnimationClipProvider, userId: number): Instance;
+    GetAnimations(this: AnimationClipProvider, userId: number): Instance | undefined;
     /**
      * @param this Provides functions to load and preview <code>AnimationClips</code>.
      * @param assetId
@@ -2431,7 +2313,7 @@ interface AnimationTrack extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#AdjustSpeed)
      */
-    AdjustSpeed(this: AnimationTrack, speed: number): void;
+    AdjustSpeed(this: AnimationTrack, speed?: number): void;
     /**
      * Changes the weight of an animation, with the optional fadeTime parameter determining how long it takes for <code>AnimationTrack.WeightCurrent</code> to reach <code>AnimationTrack.WeightTarget</code>.
      * @param this Controls the playback of an animation on an <code>AnimationController</code>.
@@ -2440,7 +2322,7 @@ interface AnimationTrack extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#AdjustWeight)
      */
-    AdjustWeight(this: AnimationTrack, weight: number, fadeTime: number): void;
+    AdjustWeight(this: AnimationTrack, weight?: number, fadeTime?: number): void;
     /**
      * Returns an <code>event</code> that fires when a specified <code>KeyframeMarker</code> has been hit in an <code>animation</code>.
      * @param this Controls the playback of an animation on an <code>AnimationController</code>.
@@ -2468,7 +2350,7 @@ interface AnimationTrack extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#Play)
      */
-    Play(this: AnimationTrack, fadeTime: number, weight: number, speed: number): void;
+    Play(this: AnimationTrack, fadeTime?: number, weight?: number, speed?: number): void;
     /**
      * Stops the <code>AnimationTrack</code>. Once called playback of the <code>AnimationTrack</code> will stop and the weight of the animation will move towards zero over a length of time specified by the optional fadeTime parameter.
      * @param this Controls the playback of an animation on an <code>AnimationController</code>.
@@ -2476,7 +2358,7 @@ interface AnimationTrack extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#Stop)
      */
-    Stop(this: AnimationTrack, fadeTime: number): void;
+    Stop(this: AnimationTrack, fadeTime?: number): void;
     /**
      * Fires when an <code>AnimationTrack</code> loops on the next update following the end of the previous animation loop.
      *
@@ -2784,7 +2666,7 @@ interface AssetService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateAssetAsync)
      */
-    CreateAssetAsync(this: AssetService, object: RBXObject, assetType: CastsToEnum<Enum.AssetType>, requestParameters: Map<unknown, unknown>): unknown;
+    CreateAssetAsync(this: AssetService, object: RBXObject, assetType: CastsToEnum<Enum.AssetType>, requestParameters?: Map<unknown, unknown>): unknown;
     /**
      * Creates a new version for an existing asset from the given object.
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
@@ -2796,7 +2678,7 @@ interface AssetService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateAssetVersionAsync)
      */
-    CreateAssetVersionAsync(this: AssetService, object: RBXObject, assetType: CastsToEnum<Enum.AssetType>, assetId: number, requestParameters: Map<unknown, unknown>): unknown;
+    CreateAssetVersionAsync(this: AssetService, object: RBXObject, assetType: CastsToEnum<Enum.AssetType>, assetId: number, requestParameters?: Map<unknown, unknown>): unknown;
     /**
      * Creates a new <code>EditableImage</code> object populated with the given image.
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
@@ -2834,7 +2716,7 @@ interface AssetService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateMeshPartAsync)
      */
-    CreateMeshPartAsync(this: AssetService, meshContent: Content, options: Map<unknown, unknown>): MeshPart;
+    CreateMeshPartAsync(this: AssetService, meshContent: Content, options?: Map<unknown, unknown>): MeshPart;
     /**
      * Clones a place through the given <code>templatePlaceID</code>.
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
@@ -4348,7 +4230,7 @@ interface AuroraService extends Instance {
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#GetServerView)
      */
-    GetServerView(this: AuroraService, target: Instance): Instance;
+    GetServerView(this: AuroraService, target: Instance): Instance | undefined;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#GetWorldStepId)
      */
@@ -4372,7 +4254,7 @@ interface AuroraService extends Instance {
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#StepPhysics)
      */
-    StepPhysics(this: AuroraService, worldSteps: number, parts: Array<Instance>): void;
+    StepPhysics(this: AuroraService, worldSteps: number, parts?: Array<Instance>): void;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#UpdateProperties)
      */
@@ -4465,7 +4347,7 @@ interface AvatarCreationService extends Instance {
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#LoadAvatarModelAsync)
      */
-    LoadAvatarModelAsync(this: AvatarCreationService, id: string): Instance;
+    LoadAvatarModelAsync(this: AvatarCreationService, id: string): Instance | undefined;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#LoadAvatarPreviewImageAsync)
      */
@@ -4692,7 +4574,7 @@ interface AvatarEditorService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#GetOutfits)
      */
-    GetOutfits(this: AvatarEditorService, outfitSource: CastsToEnum<Enum.OutfitSource>, outfitType: CastsToEnum<Enum.OutfitType>): OutfitPages;
+    GetOutfits(this: AvatarEditorService, outfitSource?: CastsToEnum<Enum.OutfitSource>, outfitType?: CastsToEnum<Enum.OutfitType>): OutfitPages;
     /**
      * Returns a list of recommended assets based on a given <code>AssetType</code> and asset id.
      * @param this A service to support developer Avatar Editors.
@@ -5802,7 +5684,7 @@ interface Beam extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Beam#SetTextureOffset)
      */
-    SetTextureOffset(this: Beam, offset: number): void;
+    SetTextureOffset(this: Beam, offset?: number): void;
 }
 /**
  * An object which enables custom events through asynchronous one-way communication between scripts on the same side of the client-server boundary. Scripts firing a <code>BindableEvent</code> do not yield.
@@ -6511,7 +6393,7 @@ interface Camera extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#ScreenPointToRay)
      */
-    ScreenPointToRay(this: Camera, x: number, y: number, depth: number): Ray;
+    ScreenPointToRay(this: Camera, x: number, y: number, depth?: number): Ray;
     /**
      * <strong>Deprecated:</strong> This method has been deprecated and should not be used in new work.<br>Sets the <code>CameraPanMode</code> to be used by the <code>Camera</code> on mobile devices.
      * @param this A class which defines a view of the 3D world.
@@ -6519,7 +6401,7 @@ interface Camera extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#SetCameraPanMode)
      */
-    SetCameraPanMode(this: Camera, mode: CastsToEnum<Enum.CameraPanMode>): void;
+    SetCameraPanMode(this: Camera, mode?: CastsToEnum<Enum.CameraPanMode>): void;
     /**
      * Sets the current rotation applied around the camera's Z-axis.
      * @param this A class which defines a view of the 3D world.
@@ -6547,7 +6429,7 @@ interface Camera extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#ViewportPointToRay)
      */
-    ViewportPointToRay(this: Camera, x: number, y: number, depth: number): Ray;
+    ViewportPointToRay(this: Camera, x: number, y: number, depth?: number): Ray;
     /**
      * Returns the screen location and depth of a <code>Vector3</code> <code>worldPoint</code> and whether this point is within the bounds of the screen. Accounts for the GUI inset.
      * @param this A class which defines a view of the 3D world.
@@ -6920,7 +6802,7 @@ interface Chat extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Chat#Chat)
      */
-    Chat(this: Chat, partOrCharacter: Instance, message: string, color: CastsToEnum<Enum.ChatColor>): void;
+    Chat(this: Chat, partOrCharacter: Instance, message: string, color?: CastsToEnum<Enum.ChatColor>): void;
     /**
      * Invoke a chat callback function registered by <code>RegisterChatCallback</code>. Used by the Lua Chat System.
      * @param this Houses the Lua code responsible for running the legacy chat system.
@@ -9205,7 +9087,7 @@ interface ContextActionService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContextActionService#UnbindActivate)
      */
-    UnbindActivate(this: ContextActionService, userInputTypeForActivation: CastsToEnum<Enum.UserInputType>, keyCodeForActivation: CastsToEnum<Enum.KeyCode>): void;
+    UnbindActivate(this: ContextActionService, userInputTypeForActivation: CastsToEnum<Enum.UserInputType>, keyCodeForActivation?: CastsToEnum<Enum.KeyCode>): void;
     /**
      * Removes all functions bound. No actionNames will remain. All touch buttons will be removed.
      * @param this A service used to bind user input to contextual actions.
@@ -10187,7 +10069,7 @@ interface Debris extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Debris#AddItem)
      */
-    AddItem(this: Debris, item: Instance, lifetime: number): void;
+    AddItem(this: Debris, item: Instance, lifetime?: number): void;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebuggablePluginWatcher)
@@ -10441,7 +10323,7 @@ interface Dragger extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Dragger#AxisRotate)
      */
-    AxisRotate(this: Dragger, axis: CastsToEnum<Enum.Axis>): void;
+    AxisRotate(this: Dragger, axis?: CastsToEnum<Enum.Axis>): void;
     /**
      * Initializes a dragging action, specifying which parts to use when dragging.
      * @param this A helper object used to create tools that can drag parts.
@@ -11277,7 +11159,7 @@ interface FloatCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FloatCurve#RemoveKeyAtIndex)
      */
-    RemoveKeyAtIndex(this: FloatCurve, startingIndex: number, count: number): number;
+    RemoveKeyAtIndex(this: FloatCurve, startingIndex: number, count?: number): number;
     /**
      * Resets this curve's keys using the <code>FloatCurveKey</code> array passed as an argument.
      * @param this A sorted list of time-value pairs that define a curve. Used to animate a single numerical value.
@@ -11650,7 +11532,7 @@ interface DataStore extends GlobalDataStore {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStore#ListKeysAsync)
      */
-    ListKeysAsync(this: DataStore, prefix: string, pageSize: number, cursor: string, excludeDeleted: boolean): DataStoreKeyPages;
+    ListKeysAsync(this: DataStore, prefix: string, pageSize: number, cursor: string, excludeDeleted?: boolean): DataStoreKeyPages;
     /**
      * Enumerates all versions of a key.
      * @param this
@@ -11663,7 +11545,7 @@ interface DataStore extends GlobalDataStore {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStore#ListVersionsAsync)
      */
-    ListVersionsAsync(this: DataStore, key: string, sortDirection: CastsToEnum<Enum.SortDirection>, minDate: number, maxDate: number, pageSize: number): DataStoreVersionPages;
+    ListVersionsAsync(this: DataStore, key: string, sortDirection?: CastsToEnum<Enum.SortDirection>, minDate?: number, maxDate?: number, pageSize?: number): DataStoreVersionPages;
     /**
      * Permanently deletes the specified version of a key.
      * @param this
@@ -13235,7 +13117,7 @@ interface TextBox extends GuiObject {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextBox#ReleaseFocus)
      */
-    ReleaseFocus(this: TextBox, submitted: boolean): void;
+    ReleaseFocus(this: TextBox, submitted?: boolean): void;
     /**
      * Fires when the client lets their focus leave the <code>TextBox</code>.
      *
@@ -14210,7 +14092,7 @@ interface WireframeHandleAdornment extends HandleAdornment {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WireframeHandleAdornment#AddText)
      */
-    AddText(this: WireframeHandleAdornment, point: Vector3, text: string, size: number): void;
+    AddText(this: WireframeHandleAdornment, point: Vector3, text: string, size?: number): void;
     /**
      * @param this
      *
@@ -15109,7 +14991,7 @@ interface HttpService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpService#GenerateGUID)
      */
-    GenerateGUID(this: HttpService, wrapInCurlyBraces: boolean): string;
+    GenerateGUID(this: HttpService, wrapInCurlyBraces?: boolean): string;
     /**
      * Returns a <code>Secret</code> from the secrets store.
      * @param this Allows sending HTTP requests and provides various web-related and JSON methods.
@@ -15430,7 +15312,7 @@ interface Humanoid extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#AddStatus)
      */
-    AddStatus(this: Humanoid, status: CastsToEnum<Enum.Status>): boolean;
+    AddStatus(this: Humanoid, status?: CastsToEnum<Enum.Status>): boolean;
     /**
      * Assembles a tree of <code>Motor6D</code> joints by attaching together <code>Attachment</code> objects in a humanoid's character.
      * @param this A special object that gives models the functionality of a character.
@@ -15445,7 +15327,7 @@ interface Humanoid extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#ChangeState)
      */
-    ChangeState(this: Humanoid, state: CastsToEnum<Enum.HumanoidStateType>): void;
+    ChangeState(this: Humanoid, state?: CastsToEnum<Enum.HumanoidStateType>): void;
     /**
      * Makes the <code>Humanoid</code> equip the given <code>Tool</code>.
      * @param this A special object that gives models the functionality of a character.
@@ -15540,7 +15422,7 @@ interface Humanoid extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#HasStatus)
      */
-    HasStatus(this: Humanoid, status: CastsToEnum<Enum.Status>): boolean;
+    HasStatus(this: Humanoid, status?: CastsToEnum<Enum.Status>): boolean;
     /**
      * <strong>Deprecated:</strong> This function is deprecated in favor of using <code>Animator:LoadAnimation()</code> directly (the <code>Animator</code> may be created while editing or at runtime).<br>Loads an <code>Animation</code> onto a <code>Humanoid</code>, returning an <code>AnimationTrack</code> that can be used for playback.
      * @param this A special object that gives models the functionality of a character.
@@ -15557,7 +15439,7 @@ interface Humanoid extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#Move)
      */
-    Move(this: Humanoid, moveDirection: Vector3, relativeToCamera: boolean): void;
+    Move(this: Humanoid, moveDirection: Vector3, relativeToCamera?: boolean): void;
     /**
      * Causes the <code>Humanoid</code> to attempt to walk to the given location by setting the <code>Humanoid.WalkToPoint</code> and <code>Humanoid.WalkToPart</code> properties.
      * @param this A special object that gives models the functionality of a character.
@@ -15566,7 +15448,7 @@ interface Humanoid extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#MoveTo)
      */
-    MoveTo(this: Humanoid, location: Vector3, part: Instance): void;
+    MoveTo(this: Humanoid, location: Vector3, part?: Instance): void;
     /**
      * Removes all <code>Accessory</code> objects worn by the humanoid's parent.
      * @param this A special object that gives models the functionality of a character.
@@ -15589,7 +15471,7 @@ interface Humanoid extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#RemoveStatus)
      */
-    RemoveStatus(this: Humanoid, status: CastsToEnum<Enum.Status>): boolean;
+    RemoveStatus(this: Humanoid, status?: CastsToEnum<Enum.Status>): boolean;
     /**
      * Dynamically replaces a Humanoid body part with a different part.
      * @param this A special object that gives models the functionality of a character.
@@ -15631,7 +15513,7 @@ interface Humanoid extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#ApplyDescription)
      */
-    ApplyDescription(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification: CastsToEnum<Enum.AssetTypeVerification>): void;
+    ApplyDescription(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
     /**
      * Makes the character's look match that of the passed in <code>HumanoidDescription</code>, even after external changes.
      * @param this A special object that gives models the functionality of a character.
@@ -15640,7 +15522,7 @@ interface Humanoid extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#ApplyDescriptionReset)
      */
-    ApplyDescriptionReset(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification: CastsToEnum<Enum.AssetTypeVerification>): void;
+    ApplyDescriptionReset(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
     /**
      * Plays emotes and returns if was successfully ran.
      * @param this A special object that gives models the functionality of a character.
@@ -17486,7 +17368,7 @@ interface LocalizationService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LocalizationService#GetTableEntries)
      */
-    GetTableEntries(this: LocalizationService, instance: Instance): Array<unknown>;
+    GetTableEntries(this: LocalizationService, instance?: Instance): Array<unknown>;
     /**
      * Returns a <code>Translator</code> to be used for translations using the locale data loaded.
      * @param this Handles automated translation.
@@ -17999,7 +17881,7 @@ interface MarkerCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarkerCurve#RemoveMarkerAtIndex)
      */
-    RemoveMarkerAtIndex(this: MarkerCurve, startingIndex: number, count: number): number;
+    RemoveMarkerAtIndex(this: MarkerCurve, startingIndex: number, count?: number): number;
 }
 /**
  * The service responsible for in-experience transactions.
@@ -18424,7 +18306,7 @@ interface MemoryStoreQueue extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreQueue#AddAsync)
      */
-    AddAsync(this: MemoryStoreQueue, value: unknown, expiration: number, priority: number): void;
+    AddAsync(this: MemoryStoreQueue, value: unknown, expiration: number, priority?: number): void;
     /**
      * Reads one or more items from the queue.
      * @param this Provides access to a queue within MemoryStore.
@@ -18480,7 +18362,7 @@ interface MemoryStoreService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreService#GetQueue)
      */
-    GetQueue(this: MemoryStoreService, name: string, invisibilityTimeout: number): MemoryStoreQueue;
+    GetQueue(this: MemoryStoreService, name: string, invisibilityTimeout?: number): MemoryStoreQueue;
     /**
      * Returns a <code>MemoryStoreSortedMap</code> instance for the provided name.
      * @param this Exposes methods to access specific primitives within MemoryStore.
@@ -18963,7 +18845,7 @@ interface OpenCloudService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudService#InvokeAsync)
      */
-    InvokeAsync(this: OpenCloudService, version: string, methodName: string, arguments: Map<unknown, unknown>, headers: Map<unknown, unknown>): Map<unknown, unknown>;
+    InvokeAsync(this: OpenCloudService, version: string, methodName: string, arguments: Map<unknown, unknown>, headers?: Map<unknown, unknown>): Map<unknown, unknown>;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OperationGraph)
@@ -19435,7 +19317,7 @@ interface BasePart extends PVInstance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart#AngularAccelerationToTorque)
      */
-    AngularAccelerationToTorque(this: BasePart, angAcceleration: Vector3, angVelocity: Vector3): Vector3;
+    AngularAccelerationToTorque(this: BasePart, angAcceleration: Vector3, angVelocity?: Vector3): Vector3;
     /**
      * Apply an angular impulse to the assembly.
      * @param this The abstract base class for in-world objects that physically interact.
@@ -19619,7 +19501,7 @@ interface BasePart extends PVInstance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart#TorqueToAngularAcceleration)
      */
-    TorqueToAngularAcceleration(this: BasePart, torque: Vector3, angVelocity: Vector3): Vector3;
+    TorqueToAngularAcceleration(this: BasePart, torque: Vector3, angVelocity?: Vector3): Vector3;
     /**
      * Creates a new <code>IntersectOperation</code> from the overlapping geometry of the part and the other parts in the given array.
      * @param this The abstract base class for in-world objects that physically interact.
@@ -19630,7 +19512,7 @@ interface BasePart extends PVInstance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart#IntersectAsync)
      */
-    IntersectAsync(this: BasePart, parts: Array<Instance>, collisionfidelity: CastsToEnum<Enum.CollisionFidelity>, renderFidelity: CastsToEnum<Enum.RenderFidelity>): Instance;
+    IntersectAsync(this: BasePart, parts: Array<Instance>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>, renderFidelity?: CastsToEnum<Enum.RenderFidelity>): Instance | undefined;
     /**
      * Creates a new <code>UnionOperation</code> from the part, minus the geometry occupied by the parts in the given array.
      * @param this The abstract base class for in-world objects that physically interact.
@@ -20626,7 +20508,7 @@ interface Model extends PVInstance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model#AddPersistentPlayer)
      */
-    AddPersistentPlayer(this: Model, playerInstance: Player): void;
+    AddPersistentPlayer(this: Model, playerInstance?: Player): void;
     /**
      * <strong>Deprecated:</strong> <br>Breaks connections between <code>BaseParts</code>, including surface connections with any adjacent parts, <code>WeldConstraints</code> and all <code>Welds</code> and other <code>JointInstances</code>.
      * @param this Models are container objects, meaning they group objects together. They are best used to hold collections of <code>BaseParts</code> and have a number of functions that extend their functionality.
@@ -20709,7 +20591,7 @@ interface Model extends PVInstance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model#RemovePersistentPlayer)
      */
-    RemovePersistentPlayer(this: Model, playerInstance: Player): void;
+    RemovePersistentPlayer(this: Model, playerInstance?: Player): void;
     /**
      * <strong>Deprecated:</strong> This function has been deprecated; it remains to prevent legacy scripts from throwing errors, but it does nothing when called.<br>Resets the rotation of the model's parts to the previously set identity rotation, which is done through the <code>Model:SetIdentityOrientation()</code> method.
      * @param this Models are container objects, meaning they group objects together. They are best used to hold collections of <code>BaseParts</code> and have a number of functions that extend their functionality.
@@ -20950,7 +20832,7 @@ interface WorldRoot extends Model {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#ArePartsTouchingOthers)
      */
-    ArePartsTouchingOthers(this: WorldRoot, partList: Array<Instance>, overlapIgnored: number): boolean;
+    ArePartsTouchingOthers(this: WorldRoot, partList: Array<Instance>, overlapIgnored?: number): boolean;
     /**
      * Casts a block shape in a given direction and returns a <code>RaycastResult</code> if the shape hits a <code>BasePart</code> or <code>Terrain</code> cell.
      * @param this Base class for handling physics simulation and 3D spatial queries.
@@ -20972,7 +20854,7 @@ interface WorldRoot extends Model {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#BulkMoveTo)
      */
-    BulkMoveTo(this: WorldRoot, partList: Array<Instance>, cframeList: Array<unknown>, eventMode: CastsToEnum<Enum.BulkMoveMode>): void;
+    BulkMoveTo(this: WorldRoot, partList: Array<Instance>, cframeList: Array<unknown>, eventMode?: CastsToEnum<Enum.BulkMoveMode>): void;
     /**
      * <strong>Deprecated:</strong> This function has been deprecated. Use <code>WorldRoot:Raycast()</code> along with <code>RaycastParams</code> for new work.<br>Returns the first <code>BasePart</code> or <code>Terrain</code> cell intersecting with the given <code>Ray</code>.
      * @param this Base class for handling physics simulation and 3D spatial queries.
@@ -21097,7 +20979,7 @@ interface WorldRoot extends Model {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#IsRegion3Empty)
      */
-    IsRegion3Empty(this: WorldRoot, region: Region3, ignoreDescendentsInstance: Instance): boolean;
+    IsRegion3Empty(this: WorldRoot, region: Region3, ignoreDescendentsInstance?: Instance): boolean;
     /**
      * <strong>Deprecated:</strong> This function has been deprecated. Use <code>WorldRoot:GetPartBoundsInBox()</code> along with <code>OverlapParams</code> for new work.<br>Returns a boolean indicating whether there are no <code>BaseParts</code> within the given <code>Region3</code>, ignoring any <code>BaseParts</code> that are descendants of the objects within the given ignore list.
      * @param this Base class for handling physics simulation and 3D spatial queries.
@@ -21127,7 +21009,7 @@ interface WorldRoot extends Model {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#Shapecast)
      */
-    Shapecast(this: WorldRoot, part: BasePart, direction: Vector3, params: RaycastParams): RaycastResult | undefined;
+    Shapecast(this: WorldRoot, part: BasePart, direction: Vector3, params?: RaycastParams): RaycastResult | undefined;
     /**
      * Casts a spherical shape in a given direction and returns a <code>RaycastResult</code> if the shape hits a <code>BasePart</code> or <code>Terrain</code> cell.
      * @param this Base class for handling physics simulation and 3D spatial queries.
@@ -21835,7 +21717,7 @@ interface ParticleEmitter extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter#Emit)
      */
-    Emit(this: ParticleEmitter, particleCount: number): void;
+    Emit(this: ParticleEmitter, particleCount?: number): void;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter#OnClearRequested)
      */
@@ -22602,7 +22484,7 @@ interface Player extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#LoadInstance)
      */
-    LoadInstance(this: Player, key: string): Instance;
+    LoadInstance(this: Player, key: string): Instance | undefined;
     /**
      * <strong>Deprecated:</strong> This item is deprecated, as it may have been used for a now obsolete data persistence method. Please save and load player data using <code>DataStoreService</code> for new work.<br>Returns a number value that was previously saved to the player.
      * @param this An object that represents a presently connected client to the game.
@@ -22627,7 +22509,7 @@ interface Player extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#Move)
      */
-    Move(this: Player, walkDirection: Vector3, relativeToCamera: boolean): void;
+    Move(this: Player, walkDirection: Vector3, relativeToCamera?: boolean): void;
     /**
      * <strong>Deprecated:</strong> This item is deprecated, as it may have been used for a now obsolete data persistence method. Please save and load player data using <code>DataStoreService</code> for new work.<br>Used to save a boolean value that can be loaded again at a later time using <code>Player:LoadBoolean()</code>.
      * @param this An object that represents a presently connected client to the game.
@@ -22740,7 +22622,7 @@ interface Player extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#RequestStreamAroundAsync)
      */
-    RequestStreamAroundAsync(this: Player, position: Vector3, timeOut: number): void;
+    RequestStreamAroundAsync(this: Player, position: Vector3, timeOut?: number): void;
     /**
      * <strong>Deprecated:</strong> This item is deprecated, as it may have been used for a now obsolete data persistence method. Please save and load player data using <code>DataStoreService</code> for new work.<br>Used to pause the script until the player's data is available to manipulate, or until a certain amount of time has elapsed without fetching the player's data.
      * @param this An object that represents a presently connected client to the game.
@@ -22896,7 +22778,7 @@ interface PlayerViewService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerViewService#GetDeviceCameraCFrame)
      */
-    GetDeviceCameraCFrame(this: PlayerViewService, player: Player): CFrame;
+    GetDeviceCameraCFrame(this: PlayerViewService, player?: Player): CFrame;
 }
 /**
  * A service that contains presently connected <code>Player</code> objects.
@@ -24163,7 +24045,7 @@ interface RotationCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RotationCurve#RemoveKeyAtIndex)
      */
-    RemoveKeyAtIndex(this: RotationCurve, startingIndex: number, count: number): number;
+    RemoveKeyAtIndex(this: RotationCurve, startingIndex: number, count?: number): number;
     /**
      * Resets this curve's keys using the <code>RotationCurveKey</code> array passed as an argument.
      * @param this Represents a sequence of rotations and the interpolation curve between them.
@@ -24992,7 +24874,7 @@ interface DataModel extends ServiceProvider<Services> {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#SavePlace)
      */
-    SavePlace(this: DataModel, saveFilter: CastsToEnum<Enum.SaveFilter>): boolean;
+    SavePlace(this: DataModel, saveFilter?: CastsToEnum<Enum.SaveFilter>): boolean;
     /**
      * <strong>Deprecated:</strong> This item is deprecated . Do not use it for new work.<br>Fires when SetGearSettings is called with a different value for <em>allowedGenres</em>.
      *
@@ -25339,7 +25221,7 @@ interface SocialService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#PromptGameInvite)
      */
-    PromptGameInvite(this: SocialService, player: Instance, experienceInviteOptions: Instance): void;
+    PromptGameInvite(this: SocialService, player: Instance, experienceInviteOptions?: Instance): void;
     /**
      * Prompts the given <code>Player</code> with the phone book.
      * @param this Facilitates social functions that impact relationships made on the Roblox platform.
@@ -25356,7 +25238,7 @@ interface SocialService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#ShowSelfView)
      */
-    ShowSelfView(this: SocialService, selfViewPosition: CastsToEnum<Enum.SelfViewPosition>): void;
+    ShowSelfView(this: SocialService, selfViewPosition?: CastsToEnum<Enum.SelfViewPosition>): void;
     /**
      * Indicates whether the given <code>Player</code> can invite other players to a call.
      * @param this Facilitates social functions that impact relationships made on the Roblox platform.
@@ -25375,7 +25257,7 @@ interface SocialService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#CanSendGameInviteAsync)
      */
-    CanSendGameInviteAsync(this: SocialService, player: Instance, recipientId: number): boolean;
+    CanSendGameInviteAsync(this: SocialService, player: Instance, recipientId?: number): boolean;
     /**
      * Fires when a player's call invite state changes.
      *
@@ -28400,7 +28282,7 @@ interface TextService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextService#FilterAndTranslateStringAsync)
      */
-    FilterAndTranslateStringAsync(this: TextService, stringToFilter: string, fromUserId: number, targetLocales: Array<unknown>, textContext: CastsToEnum<Enum.TextFilterContext>): TextFilterTranslatedResult;
+    FilterAndTranslateStringAsync(this: TextService, stringToFilter: string, fromUserId: number, targetLocales: Array<unknown>, textContext?: CastsToEnum<Enum.TextFilterContext>): TextFilterTranslatedResult;
     /**
      * Filters a string being received from a user, and returns a <code>TextFilterResult</code> which can be used to distribute the correctly filtered text accordingly.
      * @param this The TextService is a service internally responsible for handling the display of text in the game.
@@ -29419,7 +29301,7 @@ interface UIGridStyleLayout extends UILayout {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIGridStyleLayout#SetCustomSortFunction)
      */
-    SetCustomSortFunction(this: UIGridStyleLayout, callback: Callback): void;
+    SetCustomSortFunction(this: UIGridStyleLayout, callback?: Callback): void;
 }
 /**
  * Positions sibling UI elements by filling rows using the space of the parent UI element.
@@ -31273,11 +31155,11 @@ interface VoiceChatInternal extends Instance {
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatInternal#JoinByGroupId)
      */
-    JoinByGroupId(this: VoiceChatInternal, groupId: string, isMicMuted: boolean): boolean;
+    JoinByGroupId(this: VoiceChatInternal, groupId: string, isMicMuted?: boolean): boolean;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatInternal#JoinByGroupIdToken)
      */
-    JoinByGroupIdToken(this: VoiceChatInternal, groupId: string, isMicMuted: boolean, isRetry: boolean): boolean;
+    JoinByGroupIdToken(this: VoiceChatInternal, groupId: string, isMicMuted: boolean, isRetry?: boolean): boolean;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatInternal#Leave)
      */

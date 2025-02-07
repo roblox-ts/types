@@ -28,29 +28,14 @@ const DATA_TYPE_ALIAS_MAP = new Map<string, ts.TypeNode>([
 	["OptionalCoordinateFrame", optional(ts.factory.createTypeReferenceNode("CFrame"))],
 ]);
 
-interface Hints {
-	implicitlyConvertEnum?: boolean;
-	implicitlyNullableInstances?: boolean;
-}
-
-const DEFAULT_HINTS = {
-	implicitlyConvertEnum: false,
-	implicitlyNullableInstances: false,
-} satisfies Required<Hints>;
-
-export function createTypeNodeFromApiValueType(ctx: Context, apiValueType: ApiValueType, hints?: Hints): ts.TypeNode {
-	hints = { ...DEFAULT_HINTS, ...hints };
-
+export function createTypeNodeFromApiValueType(ctx: Context, apiValueType: ApiValueType): ts.TypeNode {
 	// "T?" -> T | undefined
 	if (apiValueType.Name.endsWith("?")) {
-		return optional(
-			createTypeNodeFromApiValueType(ctx, { ...apiValueType, Name: apiValueType.Name.slice(0, -1) }, hints),
-		);
+		return optional(createTypeNodeFromApiValueType(ctx, { ...apiValueType, Name: apiValueType.Name.slice(0, -1) }));
 	}
 
 	if (apiValueType.Category === "Class") {
-		const type = ts.factory.createTypeReferenceNode(getSafeClassName(apiValueType.Name));
-		return hints.implicitlyNullableInstances ? optional(type) : type;
+		return ts.factory.createTypeReferenceNode(getSafeClassName(apiValueType.Name));
 	} else if (apiValueType.Category === "Primitive") {
 		return (
 			PRIMITIVE_TYPE_ALIAS_MAP.get(apiValueType.Name) ??
@@ -59,12 +44,9 @@ export function createTypeNodeFromApiValueType(ctx: Context, apiValueType: ApiVa
 	} else if (apiValueType.Category === "DataType") {
 		return DATA_TYPE_ALIAS_MAP.get(apiValueType.Name) ?? ts.factory.createTypeReferenceNode(apiValueType.Name);
 	} else if (apiValueType.Category === "Enum") {
-		const enumType = ts.factory.createTypeReferenceNode(
+		return ts.factory.createTypeReferenceNode(
 			ts.factory.createQualifiedName(ts.factory.createIdentifier("Enum"), apiValueType.Name),
 		);
-		return hints.implicitlyConvertEnum === true
-			? ts.factory.createExpressionWithTypeArguments(ts.factory.createIdentifier("CastsToEnum"), [enumType])
-			: enumType;
 	} else if (apiValueType.Category === "Group") {
 		if (apiValueType.Name === "Array") {
 			// Array<unknown>
