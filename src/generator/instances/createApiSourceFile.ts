@@ -1,6 +1,6 @@
 import ts from "typescript";
 
-import { CLASS_BLACKLIST, CREATABLE_BLACKLIST, EXPECTED_EXTRA_MEMBERS } from "../../constants";
+import { CLASS_BLACKLIST, CREATABLE_BLACKLIST } from "../../constants";
 import { SecurityLevel } from "../../enums";
 import { ApiClass } from "../../types/ApiDump";
 import { Context } from "../../types/Context";
