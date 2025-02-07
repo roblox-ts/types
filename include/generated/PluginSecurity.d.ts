@@ -12,7 +12,6 @@ interface Services {
     AnimationFromVideoCreatorStudioService: AnimationFromVideoCreatorStudioService;
     AnnotationsService: AnnotationsService;
     AppLifecycleObserverService: AppLifecycleObserverService;
-    AppStorageService: AppStorageService;
     AppUpdateService: AppUpdateService;
     AssetCounterService: AssetCounterService;
     AssetDeliveryProxy: AssetDeliveryProxy;
@@ -50,7 +49,6 @@ interface Services {
     CreationDBService: CreationDBService;
     CreatorStoreService: CreatorStoreService;
     CrossDMScriptChangeListener: CrossDMScriptChangeListener;
-    CSGDictionaryService: CSGDictionaryService;
     DataModelPatchService: DataModelPatchService;
     DataStoreService: DataStoreService;
     Debris: Debris;
@@ -81,7 +79,6 @@ interface Services {
     HapticService: HapticService;
     HeatmapService: HeatmapService;
     HeightmapImporterService: HeightmapImporterService;
-    HSRDataContentProvider: HSRDataContentProvider;
     HttpService: HttpService;
     ILegacyStudioBridge: ILegacyStudioBridge;
     IncrementalPatchBuilder: IncrementalPatchBuilder;
@@ -106,7 +103,6 @@ interface Services {
     MaterialGenerationService: MaterialGenerationService;
     MaterialService: MaterialService;
     MemoryStoreService: MemoryStoreService;
-    MeshContentProvider: MeshContentProvider;
     MessageBusService: MessageBusService;
     MessagingService: MessagingService;
     MetaBreakpointManager: MetaBreakpointManager;
@@ -114,7 +110,6 @@ interface Services {
     NetworkClient: NetworkClient;
     NetworkServer: NetworkServer;
     NetworkSettings: NetworkSettings;
-    NonReplicatedCSGDictionaryService: NonReplicatedCSGDictionaryService;
     OmniRecommendationsService: OmniRecommendationsService;
     OpenCloudService: OpenCloudService;
     PackageService: PackageService;
@@ -171,7 +166,6 @@ interface Services {
     SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
     SnippetService: SnippetService;
     SocialService: SocialService;
-    SolidModelContentProvider: SolidModelContentProvider;
     SoundService: SoundService;
     StarterGui: StarterGui;
     StarterPack: StarterPack;
@@ -214,7 +208,6 @@ interface Services {
     UnvalidatedAssetService: UnvalidatedAssetService;
     UserInputService: UserInputService;
     UserService: UserService;
-    UserStorageService: UserStorageService;
     VersionControlService: VersionControlService;
     VideoCaptureService: VideoCaptureService;
     VideoService: VideoService;
@@ -402,10 +395,6 @@ interface CreatableInstances {
     PrismaticConstraint: PrismaticConstraint;
     ProximityPrompt: ProximityPrompt;
     RayValue: RayValue;
-    ReflectionMetadataClass: ReflectionMetadataClass;
-    ReflectionMetadataEnum: ReflectionMetadataEnum;
-    ReflectionMetadataEnumItem: ReflectionMetadataEnumItem;
-    ReflectionMetadataMember: ReflectionMetadataMember;
     RelativeGui: RelativeGui;
     RemoteEvent: RemoteEvent;
     RemoteFunction: RemoteFunction;
@@ -2267,49 +2256,6 @@ interface BulkImportService extends Instance {
      * @deprecated
      */
     readonly _nominal_BulkImportService: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HSRDataContentProvider)
- */
-interface HSRDataContentProvider extends CacheableContentProvider {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_HSRDataContentProvider: unique symbol;
-}
-/**
- * An internal Roblox service that is responsible for fetching, parsing and caching meshes. This service cannot be used by developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshContentProvider)
- */
-interface MeshContentProvider extends CacheableContentProvider {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_MeshContentProvider: unique symbol;
-}
-/**
- * An internal service which serves no functionality to developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SolidModelContentProvider)
- */
-interface SolidModelContentProvider extends CacheableContentProvider {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_SolidModelContentProvider: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CalloutService)
@@ -4564,32 +4510,6 @@ interface FloatCurve extends Instance {
     readonly _nominal_FloatCurve: unique symbol;
 }
 /**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CSGDictionaryService)
- */
-interface CSGDictionaryService extends FlyweightService {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CSGDictionaryService: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NonReplicatedCSGDictionaryService)
- */
-interface NonReplicatedCSGDictionaryService extends FlyweightService {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_NonReplicatedCSGDictionaryService: unique symbol;
-}
-/**
  * A simple container used to hold and organize Roblox instances.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Folder)
@@ -6245,32 +6165,6 @@ interface LiveSyncService extends Instance {
      * @deprecated
      */
     readonly _nominal_LiveSyncService: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppStorageService)
- */
-interface AppStorageService extends LocalStorageService {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AppStorageService: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserStorageService)
- */
-interface UserStorageService extends LocalStorageService {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_UserStorageService: unique symbol;
 }
 /**
  * Handles automated translation.
@@ -8869,66 +8763,6 @@ interface RTAnimationTracker extends Instance {
      * @deprecated
      */
     readonly _nominal_RTAnimationTracker: unique symbol;
-}
-/**
- * Registers information about a class, and its members. Should be parented to <code>ReflectionMetadataClasses</code>.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadataClass)
- */
-interface ReflectionMetadataClass extends ReflectionMetadataItem {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ReflectionMetadataClass: unique symbol;
-}
-/**
- * Registers information about an <code>Enum</code> and its EnumItems.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadataEnum)
- */
-interface ReflectionMetadataEnum extends ReflectionMetadataItem {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ReflectionMetadataEnum: unique symbol;
-}
-/**
- * Contains information about a specific EnumItem embedded within an Enum.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadataEnumItem)
- */
-interface ReflectionMetadataEnumItem extends ReflectionMetadataItem {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ReflectionMetadataEnumItem: unique symbol;
-}
-/**
- * An internal object which cannot be used by developers.
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionMetadataMember)
- */
-interface ReflectionMetadataMember extends ReflectionMetadataItem {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ReflectionMetadataMember: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService)
