@@ -32,12 +32,9 @@ type ChangedSignal = {
 type Tweenable = number | boolean | CFrame | Rect | Color3 | UDim | UDim2 | Vector2 | Vector2int16 | Vector3;
 
 type ContentId = string;
-
 type BinaryString = string;
 type SharedString = string;
 type ProtectedString = string;
-
-type Content = string;
 
 interface EmoteDictionary {
 	/** When these arrays have more than one emote id in them, it will randomly select one of the emotes to play from the list. */
@@ -1328,6 +1325,42 @@ interface CatalogSearchParamsConstructor {
 }
 
 declare const CatalogSearchParams: CatalogSearchParamsConstructor;
+
+// Content
+interface Content {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Content: unique symbol;
+	/**
+	 * The source type of the contained value.
+	 */
+	readonly SourceType: Enum.ContentSourceType;
+	/**
+	 * A URI `string` if `Content.SourceType` is Uri, otherwise `nil`.
+	 */
+	readonly Uri?: string;
+	/**
+	 * A reference to a non-nil `Object` if `Content.SourceType` is Object, otherwise `nil`.
+	 */
+	readonly Object?: RBXObject;
+}
+
+interface ContentConstructor {
+	/**
+	 * An empty Content value with Content.SourceType of None.
+	 */
+	readonly none: Content;
+
+	fromUri: (uri: string) => Content;
+	fromObject: (object: RBXObject) => Content;
+}
+
+declare const Content: ContentConstructor;
 
 // CFrame
 interface CFrame {
