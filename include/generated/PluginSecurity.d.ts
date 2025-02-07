@@ -2323,7 +2323,7 @@ interface ChangeHistoryService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#FinishRecording)
      */
-    FinishRecording(this: ChangeHistoryService, identifier: string, operation: CastsToEnum<Enum.FinishRecordingOperation>, finalOptions?: Map<unknown, unknown>): void;
+    FinishRecording(this: ChangeHistoryService, identifier: string, operation: CastsToEnum<Enum.FinishRecordingOperation>, finalOptions?: object): void;
     /**
      * Returns whether there are actions that can be redone, and, if there are, returns the last of them.
      * @param this <strong>Must</strong> be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
@@ -2396,7 +2396,7 @@ interface ChangeHistoryService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#OnRecordingFinished)
      */
-    readonly OnRecordingFinished: RBXScriptSignal<(name: string, displayName: string | undefined, identifier: string | undefined, operation: CastsToEnum<Enum.FinishRecordingOperation>, finalOptions?: Map<unknown, unknown>) => void>;
+    readonly OnRecordingFinished: RBXScriptSignal<(name: string, displayName: string | undefined, identifier: string | undefined, operation: CastsToEnum<Enum.FinishRecordingOperation>, finalOptions?: object) => void>;
     /**
      * Fired when the user begins an action. Parameters come from <code>TryBeginRecording()</code>.
      *
@@ -5002,25 +5002,25 @@ interface PluginGui extends LayerCollector {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginGui#PluginDragDropped)
      */
-    readonly PluginDragDropped: RBXScriptSignal<(dragData: Map<unknown, unknown>) => void>;
+    readonly PluginDragDropped: RBXScriptSignal<(dragData: object) => void>;
     /**
      * Fires when the user's mouse enters a PluginGui during a drag operation started by <code>Plugin:StartDrag()</code>.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginGui#PluginDragEntered)
      */
-    readonly PluginDragEntered: RBXScriptSignal<(dragData: Map<unknown, unknown>) => void>;
+    readonly PluginDragEntered: RBXScriptSignal<(dragData: object) => void>;
     /**
      * Fires when the user's mouse leaves a PluginGui during a drag operation started by <code>Plugin:StartDrag()</code>.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginGui#PluginDragLeft)
      */
-    readonly PluginDragLeft: RBXScriptSignal<(dragData: Map<unknown, unknown>) => void>;
+    readonly PluginDragLeft: RBXScriptSignal<(dragData: object) => void>;
     /**
      * Fires when the user's mouse moves within a PluginGui during a drag operation started by <code>Plugin:StartDrag()</code>.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginGui#PluginDragMoved)
      */
-    readonly PluginDragMoved: RBXScriptSignal<(dragData: Map<unknown, unknown>) => void>;
+    readonly PluginDragMoved: RBXScriptSignal<(dragData: object) => void>;
     /**
      * Fires when the user stops interacting with the window of the PluginGui.
      *
@@ -8217,7 +8217,7 @@ interface Plugin extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#StartDrag)
      */
-    StartDrag(this: Plugin, dragData: Map<unknown, unknown>): void;
+    StartDrag(this: Plugin, dragData: object): void;
     /**
      * Unions the given parts and returns the resulting UnionOperation.
      * @param this
@@ -9482,7 +9482,7 @@ interface ScriptProfilerService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptProfilerService#DeserializeJSON)
      */
-    DeserializeJSON(this: ScriptProfilerService, jsonString?: string): Map<unknown, unknown>;
+    DeserializeJSON(this: ScriptProfilerService, jsonString?: string): object;
     /**
      * @param this
      *
@@ -10628,7 +10628,7 @@ interface StudioService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioService#GetClassIcon)
      */
-    GetClassIcon(this: StudioService, className: string): Map<unknown, unknown>;
+    GetClassIcon(this: StudioService, className: string): object;
     /**
      * Returns the Studio user's userId if they're logged in, otherwise returns 0.
      * @param this Provides access to configuration of Roblox Studio and allows importing files from the user's file system.

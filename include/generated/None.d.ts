@@ -755,7 +755,7 @@ interface EditableImage extends RBXObject {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableImage#DrawImageProjected)
      */
-    DrawImageProjected(this: EditableImage, mesh: EditableMesh, projection: Map<unknown, unknown>, brushConfig: Map<unknown, unknown>): void;
+    DrawImageProjected(this: EditableImage, mesh: EditableMesh, projection: object, brushConfig: object): void;
     /**
      * Draws an image into this <code>EditableImage</code> with transformations including scaling and rotation, placing it at the specified position.
      * @param this Instance which allows for the runtime creation and manipulation of images.
@@ -767,7 +767,7 @@ interface EditableImage extends RBXObject {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableImage#DrawImageTransformed)
      */
-    DrawImageTransformed(this: EditableImage, position: Vector2, scale: Vector2, rotation: number, image: EditableImage, options?: Map<unknown, unknown>): void;
+    DrawImageTransformed(this: EditableImage, position: Vector2, scale: Vector2, rotation: number, image: EditableImage, options?: object): void;
     /**
      * Draws a line between two provided points.
      * @param this Instance which allows for the runtime creation and manipulation of images.
@@ -1241,7 +1241,7 @@ interface EditableMesh extends DataModelMesh {
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#CreateMeshPartAsync)
      */
-    CreateMeshPartAsync(this: EditableMesh, initialSize: Vector3, options?: Map<unknown, unknown>): MeshPart;
+    CreateMeshPartAsync(this: EditableMesh, initialSize: Vector3, options?: object): MeshPart;
 }
 /**
  * Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
@@ -1862,7 +1862,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogCustomEvent)
      */
-    LogCustomEvent(this: AnalyticsService, player: Player, eventName: string, value?: number, customFields?: Map<unknown, unknown>): void;
+    LogCustomEvent(this: AnalyticsService, player: Player, eventName: string, value?: number, customFields?: object): void;
     /**
      * Logs an event used to track player actions related in experience.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -1877,7 +1877,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogEconomyEvent)
      */
-    LogEconomyEvent(this: AnalyticsService, player: Player, flowType: CastsToEnum<Enum.AnalyticsEconomyFlowType>, currencyType: string, amount: number, endingBalance: number, transactionType: string, itemSku: string, customFields?: Map<unknown, unknown>): void;
+    LogEconomyEvent(this: AnalyticsService, player: Player, flowType: CastsToEnum<Enum.AnalyticsEconomyFlowType>, currencyType: string, amount: number, endingBalance: number, transactionType: string, itemSku: string, customFields?: object): void;
     /**
      * Logs an event used to track user actions stepping through a pre-planned funnel.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -1890,7 +1890,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogFunnelStepEvent)
      */
-    LogFunnelStepEvent(this: AnalyticsService, player: Player, funnelName: string, funnelSessionId: string, step: number, stepName: string, customFields?: Map<unknown, unknown>): void;
+    LogFunnelStepEvent(this: AnalyticsService, player: Player, funnelName: string, funnelSessionId: string, step: number, stepName: string, customFields?: object): void;
     /**
      * Logs an event used to track user actions stepping through an onboarding funnel.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -1901,7 +1901,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogOnboardingFunnelStepEvent)
      */
-    LogOnboardingFunnelStepEvent(this: AnalyticsService, player: Player, step: number, stepName: string, customFields?: Map<unknown, unknown>): void;
+    LogOnboardingFunnelStepEvent(this: AnalyticsService, player: Player, step: number, stepName: string, customFields?: object): void;
     /**
      * Logs an event for when a user has completed a level attempt.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -1913,7 +1913,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionCompleteEvent)
      */
-    LogProgressionCompleteEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields?: Map<unknown, unknown>): void;
+    LogProgressionCompleteEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields?: object): void;
     /**
      * Logs an event for when a user has started, completed, or failed a level attempt.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -1926,7 +1926,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionEvent)
      */
-    LogProgressionEvent(this: AnalyticsService, player: Player, progressionPathName: string, status: CastsToEnum<Enum.AnalyticsProgressionType>, level: number, levelName: string, customFields?: Map<unknown, unknown>): void;
+    LogProgressionEvent(this: AnalyticsService, player: Player, progressionPathName: string, status: CastsToEnum<Enum.AnalyticsProgressionType>, level: number, levelName: string, customFields?: object): void;
     /**
      * Logs an event for when a user has failed a level attempt.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -1938,7 +1938,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionFailEvent)
      */
-    LogProgressionFailEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields?: Map<unknown, unknown>): void;
+    LogProgressionFailEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields?: object): void;
     /**
      * Logs an event for when a user has started a level attempt.
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
@@ -1950,7 +1950,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionStartEvent)
      */
-    LogProgressionStartEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields?: Map<unknown, unknown>): void;
+    LogProgressionStartEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields?: object): void;
 }
 /**
  * References an animation asset which can be loaded by an <code>AnimationController</code>.
@@ -2571,7 +2571,7 @@ interface AssetImportSession extends Instance {
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetImportSession#UploadComplete)
      */
-    readonly UploadComplete: RBXScriptSignal<(results: Map<unknown, unknown>) => void>;
+    readonly UploadComplete: RBXScriptSignal<(results: object) => void>;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetImportSession#UploadProgress)
      */
@@ -2636,7 +2636,7 @@ interface AssetService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateEditableImage)
      */
-    CreateEditableImage(this: AssetService, editableImageOptions?: Map<unknown, unknown>): EditableImage;
+    CreateEditableImage(this: AssetService, editableImageOptions?: object): EditableImage;
     /**
      * Creates a new, empty <code>EditableMesh</code>.
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
@@ -2644,7 +2644,7 @@ interface AssetService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateEditableMesh)
      */
-    CreateEditableMesh(this: AssetService, editableMeshOptions?: Map<unknown, unknown>): EditableMesh;
+    CreateEditableMesh(this: AssetService, editableMeshOptions?: object): EditableMesh;
     /**
      * Creates a new asset from the given object.
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
@@ -2655,7 +2655,7 @@ interface AssetService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateAssetAsync)
      */
-    CreateAssetAsync(this: AssetService, object: RBXObject, assetType: CastsToEnum<Enum.AssetType>, requestParameters?: Map<unknown, unknown>): unknown;
+    CreateAssetAsync(this: AssetService, object: RBXObject, assetType: CastsToEnum<Enum.AssetType>, requestParameters?: object): unknown;
     /**
      * Creates a new version for an existing asset from the given object.
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
@@ -2667,7 +2667,7 @@ interface AssetService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateAssetVersionAsync)
      */
-    CreateAssetVersionAsync(this: AssetService, object: RBXObject, assetType: CastsToEnum<Enum.AssetType>, assetId: number, requestParameters?: Map<unknown, unknown>): unknown;
+    CreateAssetVersionAsync(this: AssetService, object: RBXObject, assetType: CastsToEnum<Enum.AssetType>, assetId: number, requestParameters?: object): unknown;
     /**
      * Creates a new <code>EditableImage</code> object populated with the given image.
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
@@ -2677,7 +2677,7 @@ interface AssetService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateEditableImageAsync)
      */
-    CreateEditableImageAsync(this: AssetService, content: Content, editableImageOptions?: Map<unknown, unknown>): EditableImage;
+    CreateEditableImageAsync(this: AssetService, content: Content, editableImageOptions?: object): EditableImage;
     /**
      * Returns a new <code>EditableMesh</code> object created from an existing mesh content ID.
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
@@ -2687,7 +2687,7 @@ interface AssetService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateEditableMeshAsync)
      */
-    CreateEditableMeshAsync(this: AssetService, content: Content, editableMeshOptions?: Map<unknown, unknown>): EditableMesh;
+    CreateEditableMeshAsync(this: AssetService, content: Content, editableMeshOptions?: object): EditableMesh;
     /**
      * <strong>Deprecated:</strong> This function has been deprecated - use <code>AssetService:CreateEditableMeshAsync()</code>.<br>Returns a new <code>EditableMesh</code> instance created from an existing <code>MeshPart</code>.
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
@@ -2705,7 +2705,7 @@ interface AssetService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateMeshPartAsync)
      */
-    CreateMeshPartAsync(this: AssetService, meshContent: Content, options?: Map<unknown, unknown>): MeshPart;
+    CreateMeshPartAsync(this: AssetService, meshContent: Content, options?: object): MeshPart;
     /**
      * Clones a place through the given <code>templatePlaceID</code>.
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
@@ -3442,7 +3442,7 @@ interface AudioEmitter extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#GetAngleAttenuation)
      */
-    GetAngleAttenuation(this: AudioEmitter): Map<unknown, unknown>;
+    GetAngleAttenuation(this: AudioEmitter): object;
     /**
      * Returns an array of <code>Wires</code> that are connected to the specified pin.
      * @param this Emits audio streams into the world.
@@ -3457,7 +3457,7 @@ interface AudioEmitter extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#GetDistanceAttenuation)
      */
-    GetDistanceAttenuation(this: AudioEmitter): Map<unknown, unknown>;
+    GetDistanceAttenuation(this: AudioEmitter): object;
     /**
      * @param this Emits audio streams into the world.
      *
@@ -3471,7 +3471,7 @@ interface AudioEmitter extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#SetAngleAttenuation)
      */
-    SetAngleAttenuation(this: AudioEmitter, curve: Map<unknown, unknown>): void;
+    SetAngleAttenuation(this: AudioEmitter, curve: object): void;
     /**
      * Sets the distance attenuation curve that the <code>AudioEmitter</code> should use, or uses an inverse rolloff curve if none is provided.
      * @param this Emits audio streams into the world.
@@ -3799,7 +3799,7 @@ interface AudioListener extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#GetAngleAttenuation)
      */
-    GetAngleAttenuation(this: AudioListener): Map<unknown, unknown>;
+    GetAngleAttenuation(this: AudioListener): object;
     /**
      * Returns an array of <code>Wires</code> that are connected to the specified pin.
      * @param this Records an audio stream from its surrounding <code>AudioEmitters</code> in the 3D world.
@@ -3814,7 +3814,7 @@ interface AudioListener extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#GetDistanceAttenuation)
      */
-    GetDistanceAttenuation(this: AudioListener): Map<unknown, unknown>;
+    GetDistanceAttenuation(this: AudioListener): object;
     /**
      * @param this Records an audio stream from its surrounding <code>AudioEmitters</code> in the 3D world.
      *
@@ -3828,7 +3828,7 @@ interface AudioListener extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#SetAngleAttenuation)
      */
-    SetAngleAttenuation(this: AudioListener, curve: Map<unknown, unknown>): void;
+    SetAngleAttenuation(this: AudioListener, curve: object): void;
     /**
      * Sets the distance attenuation curve that the <code>AudioListener</code> should use, or uses an inverse rolloff curve if none is provided.
      * @param this Records an audio stream from its surrounding <code>AudioEmitters</code> in the 3D world.
@@ -3836,7 +3836,7 @@ interface AudioListener extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#SetDistanceAttenuation)
      */
-    SetDistanceAttenuation(this: AudioListener, curve: Map<unknown, unknown>): void;
+    SetDistanceAttenuation(this: AudioListener, curve: object): void;
     /**
      * Fires when another instance is connected to or disconnected from the <code>AudioListener</code> via a <code>Wire</code>.
      *
@@ -4295,11 +4295,11 @@ interface AvatarCreationService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#GetValidationRules)
      */
-    GetValidationRules(this: AvatarCreationService): Map<unknown, unknown>;
+    GetValidationRules(this: AvatarCreationService): object;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#SendAnalyticsEvent)
      */
-    SendAnalyticsEvent(this: AvatarCreationService, eventName: string, params: Map<unknown, unknown>): void;
+    SendAnalyticsEvent(this: AvatarCreationService, eventName: string, params: object): void;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#GenerateAvatarAsync)
      */
@@ -4307,19 +4307,19 @@ interface AvatarCreationService extends Instance {
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#GenerateAvatarModelAsync)
      */
-    GenerateAvatarModelAsync(this: AvatarCreationService, player: Player, previewJobId: string, options: Map<unknown, unknown>, progressCallback: Callback): string;
+    GenerateAvatarModelAsync(this: AvatarCreationService, player: Player, previewJobId: string, options: object, progressCallback: Callback): string;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#GenerateAvatarPreviewAsync)
      */
-    GenerateAvatarPreviewAsync(this: AvatarCreationService, player: Player, textPrompt: string, options: Map<unknown, unknown>, progressCallback: Callback): string;
+    GenerateAvatarPreviewAsync(this: AvatarCreationService, player: Player, textPrompt: string, options: object, progressCallback: Callback): string;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#GenerateAvatarPreviewAsync2)
      */
-    GenerateAvatarPreviewAsync2(this: AvatarCreationService, sessionId: string, fileId: string, textPrompt: string, options: Map<unknown, unknown>): string;
+    GenerateAvatarPreviewAsync2(this: AvatarCreationService, sessionId: string, fileId: string, textPrompt: string, options: object): string;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#GetAvatarGenerationConfig)
      */
-    GetAvatarGenerationConfig(this: AvatarCreationService): Map<unknown, unknown>;
+    GetAvatarGenerationConfig(this: AvatarCreationService): object;
     /**
      * Gets the avatar creation token details for a list of avatar creation tokens at once.
      * @param this A service to support developer avatar creators.
@@ -4554,7 +4554,7 @@ interface AvatarEditorService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#GetOutfitDetails)
      */
-    GetOutfitDetails(this: AvatarEditorService, outfitId: number): Map<unknown, unknown>;
+    GetOutfitDetails(this: AvatarEditorService, outfitId: number): object;
     /**
      * Returns outfit data for the <code>Players.LocalPlayer</code>.
      * @param this A service to support developer Avatar Editors.
@@ -4784,11 +4784,11 @@ interface BaseImportData extends Instance {
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseImportData#StatusRemoved)
      */
-    readonly StatusRemoved: RBXScriptSignal<(status: Map<unknown, unknown>) => void>;
+    readonly StatusRemoved: RBXScriptSignal<(status: object) => void>;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseImportData#StatusReported)
      */
-    readonly StatusReported: RBXScriptSignal<(status: Map<unknown, unknown>) => void>;
+    readonly StatusReported: RBXScriptSignal<(status: object) => void>;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationImportData)
@@ -7436,7 +7436,7 @@ interface CommerceService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#GetCommerceProductInfoAsync)
      */
-    GetCommerceProductInfoAsync(this: CommerceService, commerceProductId: string): Map<unknown, unknown>;
+    GetCommerceProductInfoAsync(this: CommerceService, commerceProductId: string): object;
     /**
      * @param this
      *
@@ -9727,7 +9727,7 @@ interface DataStoreIncrementOptions extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreIncrementOptions#GetMetadata)
      */
-    GetMetadata(this: DataStoreIncrementOptions): Map<unknown, unknown>;
+    GetMetadata(this: DataStoreIncrementOptions): object;
     /**
      * Sets custom metadata to be associated with the key.
      * @param this Specifies additional parameters for a <code>GlobalDataStore:IncrementAsync()</code> call.
@@ -9735,7 +9735,7 @@ interface DataStoreIncrementOptions extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreIncrementOptions#SetMetadata)
      */
-    SetMetadata(this: DataStoreIncrementOptions, attributes: Map<unknown, unknown>): void;
+    SetMetadata(this: DataStoreIncrementOptions, attributes: object): void;
 }
 /**
  * Object describing data store information.
@@ -9830,7 +9830,7 @@ interface DataStoreKeyInfo extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreKeyInfo#GetMetadata)
      */
-    GetMetadata(this: DataStoreKeyInfo): Map<unknown, unknown>;
+    GetMetadata(this: DataStoreKeyInfo): object;
     /**
      * An array of <code>UserIds</code> tagged with a key.
      * @param this An object specifying information about a particular version of the key.
@@ -9899,7 +9899,7 @@ interface DataStoreOptions extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreOptions#SetExperimentalFeatures)
      */
-    SetExperimentalFeatures(this: DataStoreOptions, experimentalFeatures: Map<unknown, unknown>): void;
+    SetExperimentalFeatures(this: DataStoreOptions, experimentalFeatures: object): void;
 }
 /**
  * A game service that gives access to persistent data storage across places in a game.
@@ -9983,7 +9983,7 @@ interface DataStoreSetOptions extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreSetOptions#GetMetadata)
      */
-    GetMetadata(this: DataStoreSetOptions): Map<unknown, unknown>;
+    GetMetadata(this: DataStoreSetOptions): object;
     /**
      * Sets custom metadata to be associated with the key.
      * @param this Specifies additional parameters for a <code>GlobalDataStore:SetAsync()</code> call.
@@ -9991,7 +9991,7 @@ interface DataStoreSetOptions extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreSetOptions#SetMetadata)
      */
-    SetMetadata(this: DataStoreSetOptions, attributes: Map<unknown, unknown>): void;
+    SetMetadata(this: DataStoreSetOptions, attributes: object): void;
 }
 /**
  * Allows scheduling the guaranteed destruction of an object without yielding.<br /> .
@@ -13480,7 +13480,7 @@ interface AdGui extends SurfaceGuiBase {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdGui#OnAdEvent)
      */
-    OnAdEvent: ((eventInfo: Map<unknown, unknown>) => boolean) | undefined;
+    OnAdEvent: ((eventInfo: object) => boolean) | undefined;
 }
 /**
  * Container for GuiObjects that are rendered on the surface of a part.
@@ -14647,7 +14647,7 @@ interface GuiService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#SendNotification)
      */
-    SendNotification(this: GuiService, notificationInfo: Map<unknown, unknown>): string;
+    SendNotification(this: GuiService, notificationInfo: object): string;
     /**
      * Opens or closes the player Emotes menu.
      * @param this Allows developers to control what <code>GuiObject</code> is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
@@ -17747,7 +17747,7 @@ interface MarkerCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarkerCurve#GetMarkerAtIndex)
      */
-    GetMarkerAtIndex(this: MarkerCurve, index: number): Map<unknown, unknown>;
+    GetMarkerAtIndex(this: MarkerCurve, index: number): object;
     /**
      * Returns the time and string value of all markers in the MarkerCurve.
      * @param this Represents a list of strings markers in chronological order.
@@ -17800,7 +17800,7 @@ interface MarketplaceService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptBulkPurchase)
      */
-    PromptBulkPurchase(this: MarketplaceService, player: Player, lineItems: Array<unknown>, options: Map<unknown, unknown>): void;
+    PromptBulkPurchase(this: MarketplaceService, player: Player, lineItems: Array<unknown>, options: object): void;
     /**
      * Prompts a user to purchase a bundle with the given <code>bundleId</code>.
      * @param this The service responsible for in-experience transactions.
@@ -17965,7 +17965,7 @@ interface MarketplaceService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptBulkPurchaseFinished)
      */
-    readonly PromptBulkPurchaseFinished: RBXScriptSignal<(player: Instance, status: CastsToEnum<Enum.MarketplaceBulkPurchasePromptStatus>, results: Map<unknown, unknown>) => void>;
+    readonly PromptBulkPurchaseFinished: RBXScriptSignal<(player: Instance, status: CastsToEnum<Enum.MarketplaceBulkPurchasePromptStatus>, results: object) => void>;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptBundlePurchaseFinished)
      */
@@ -18739,7 +18739,7 @@ interface OpenCloudService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudService#InvokeAsync)
      */
-    InvokeAsync(this: OpenCloudService, version: string, methodName: string, arguments: Map<unknown, unknown>, headers?: Map<unknown, unknown>): Map<unknown, unknown>;
+    InvokeAsync(this: OpenCloudService, version: string, methodName: string, arguments: object, headers?: object): object;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OperationGraph)
@@ -19935,7 +19935,7 @@ interface Terrain extends BasePart {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#ReadVoxelChannels)
      */
-    ReadVoxelChannels(this: Terrain, region: Region3, resolution: number, channelIds: Array<unknown>): Map<unknown, unknown>;
+    ReadVoxelChannels(this: Terrain, region: Region3, resolution: number, channelIds: Array<unknown>): object;
     /**
      * Returns a certain region of smooth terrain in table format.
      * @param this Terrain lets you to create dynamically morphable environments.
@@ -26502,7 +26502,7 @@ interface StyleRule extends StyleBase {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#GetProperties)
      */
-    GetProperties(this: StyleRule): Map<unknown, unknown>;
+    GetProperties(this: StyleRule): object;
     /**
      * @param this
      * @param name
@@ -26516,7 +26516,7 @@ interface StyleRule extends StyleBase {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#SetProperties)
      */
-    SetProperties(this: StyleRule, table: Map<unknown, unknown>): void;
+    SetProperties(this: StyleRule, table: object): void;
     /**
      * @param this
      * @param name
@@ -28054,7 +28054,7 @@ interface TextFilterTranslatedResult extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextFilterTranslatedResult#GetTranslations)
      */
-    GetTranslations(this: TextFilterTranslatedResult): Map<unknown, unknown>;
+    GetTranslations(this: TextFilterTranslatedResult): object;
 }
 /**
  * The TextService is a service internally responsible for handling the display of text in the game.
@@ -28111,7 +28111,7 @@ interface TextService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextService#GetFamilyInfoAsync)
      */
-    GetFamilyInfoAsync(this: TextService, assetId: ContentId): Map<unknown, unknown>;
+    GetFamilyInfoAsync(this: TextService, assetId: ContentId): object;
     /**
      * Calculates the width and height of text given parameters.
      * @param this The TextService is a service internally responsible for handling the display of text in the game.

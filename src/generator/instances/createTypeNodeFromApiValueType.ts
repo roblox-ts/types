@@ -55,10 +55,7 @@ export function createTypeNodeFromApiValueType(ctx: Context, apiValueType: ApiVa
 			]);
 		} else if (apiValueType.Name === "Dictionary") {
 			// Map<unknown, unknown>
-			return ts.factory.createTypeReferenceNode("Map", [
-				ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword),
-				ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword),
-			]);
+			return ts.factory.createKeywordTypeNode(ts.SyntaxKind.ObjectKeyword);
 		}
 	}
 	return ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword);
