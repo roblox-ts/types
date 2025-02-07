@@ -20417,7 +20417,10 @@ interface Model extends PVInstance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model#GetBoundingBox)
      */
-    GetBoundingBox(this: Model): CFrame | Vector3;
+    GetBoundingBox(this: Model): LuaTuple<[
+        CFrame,
+        Vector3
+    ]>;
     /**
      * Returns the size of the smallest bounding box that contains all of the <code>BaseParts</code> in the <code>Model</code>, aligned with the <code>Model.PrimaryPart</code> if it is set.
      * @param this Models are container objects, meaning they group objects together. They are best used to hold collections of <code>BaseParts</code> and have a number of functions that extend their functionality.
@@ -28594,7 +28597,10 @@ interface TweenService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TweenService#SmoothDamp)
      */
-    SmoothDamp(this: TweenService, current: unknown, target: unknown, velocity: unknown, smoothTime: number, maxSpeed?: number, dt?: number): unknown | unknown;
+    SmoothDamp(this: TweenService, current: unknown, target: unknown, velocity: unknown, smoothTime: number, maxSpeed?: number, dt?: number): LuaTuple<[
+        unknown,
+        unknown
+    ]>;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UGCAvatarService)

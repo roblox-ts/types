@@ -20,7 +20,9 @@ export function createMethodSignature(ctx: Context, apiClass: ApiClass, apiFunct
 	);
 
 	let returnType = Array.isArray(apiFunction.ReturnType)
-		? ts.factory.createUnionTypeNode(apiFunction.ReturnType.map(v => createTypeNodeFromApiValueType(ctx, v)))
+		? ts.factory.createExpressionWithTypeArguments(ts.factory.createIdentifier("LuaTuple"), [
+				ts.factory.createTupleTypeNode(apiFunction.ReturnType.map(v => createTypeNodeFromApiValueType(ctx, v))),
+			])
 		: createTypeNodeFromApiValueType(ctx, apiFunction.ReturnType);
 
 	// for method return types, the API Dump will sometimes list "Instance", but mean "Instance?"
