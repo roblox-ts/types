@@ -3,11 +3,11 @@ import ts from "typescript";
 import { ApiClass, ApiFunction } from "../../../types/ApiDump";
 import { Context } from "../../../types/Context";
 import { getSafeClassName } from "../alias";
-import { createParameters } from "../createParameters";
+import { createParameters, EnumMode } from "../createParameters";
 import { createTypeNodeFromApiValueType } from "../createTypeNodeFromApiValueType";
 
 export function createMethodSignature(ctx: Context, apiClass: ApiClass, apiFunction: ApiFunction) {
-	const parameters = createParameters(ctx, apiFunction.Parameters);
+	const parameters = createParameters(ctx, apiFunction.Parameters, EnumMode.CastsToEnum);
 
 	parameters.unshift(
 		ts.factory.createParameterDeclaration(

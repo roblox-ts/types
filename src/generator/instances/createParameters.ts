@@ -9,7 +9,12 @@ function isTypeUndefined(type: ts.TypeNode) {
 	return ts.isToken(type) && type.kind === ts.SyntaxKind.UndefinedKeyword;
 }
 
-export function createParameters(ctx: Context, apiParameters: Array<ApiParameter>) {
+export enum EnumMode {
+	Default,
+	CastsToEnum,
+}
+
+export function createParameters(ctx: Context, apiParameters: Array<ApiParameter>, enumMode = EnumMode.Default) {
 	const parameters = new Array<ts.ParameterDeclaration>();
 
 	// build parameters from back to front, so we can detect optional parameters
@@ -19,7 +24,7 @@ export function createParameters(ctx: Context, apiParameters: Array<ApiParameter
 		let type = createTypeNodeFromApiValueType(ctx, apiParameter.Type);
 
 		// wrap Enum types in CastsToEnum<T>
-		if (apiParameter.Type.Category === "Enum") {
+		if (enumMode === EnumMode.CastsToEnum && apiParameter.Type.Category === "Enum") {
 			type = ts.factory.createExpressionWithTypeArguments(ts.factory.createIdentifier("CastsToEnum"), [type]);
 		}
 

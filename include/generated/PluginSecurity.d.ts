@@ -2396,7 +2396,7 @@ interface ChangeHistoryService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#OnRecordingFinished)
      */
-    readonly OnRecordingFinished: RBXScriptSignal<(name: string, displayName: string | undefined, identifier: string | undefined, operation: CastsToEnum<Enum.FinishRecordingOperation>, finalOptions?: object) => void>;
+    readonly OnRecordingFinished: RBXScriptSignal<(name: string, displayName: string | undefined, identifier: string | undefined, operation: Enum.FinishRecordingOperation, finalOptions?: object) => void>;
     /**
      * Fired when the user begins an action. Parameters come from <code>TryBeginRecording()</code>.
      *

@@ -4596,43 +4596,43 @@ interface AvatarEditorService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#PromptAllowInventoryReadAccessCompleted)
      */
-    readonly PromptAllowInventoryReadAccessCompleted: RBXScriptSignal<(result: CastsToEnum<Enum.AvatarPromptResult>) => void>;
+    readonly PromptAllowInventoryReadAccessCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
     /**
      * Fires when the PromptSaveOutfit operation is completed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#PromptCreateOutfitCompleted)
      */
-    readonly PromptCreateOutfitCompleted: RBXScriptSignal<(result: CastsToEnum<Enum.AvatarPromptResult>, failureType: unknown) => void>;
+    readonly PromptCreateOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult, failureType: unknown) => void>;
     /**
      * Fires when the PromptDeleteOutfit operation is completed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#PromptDeleteOutfitCompleted)
      */
-    readonly PromptDeleteOutfitCompleted: RBXScriptSignal<(result: CastsToEnum<Enum.AvatarPromptResult>) => void>;
+    readonly PromptDeleteOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
     /**
      * Fires when the PromptRenameOutfit operation is completed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#PromptRenameOutfitCompleted)
      */
-    readonly PromptRenameOutfitCompleted: RBXScriptSignal<(result: CastsToEnum<Enum.AvatarPromptResult>) => void>;
+    readonly PromptRenameOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
     /**
      * Fires when the <code>AvatarEditorService:PromptSaveAvatar()</code> operation is completed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#PromptSaveAvatarCompleted)
      */
-    readonly PromptSaveAvatarCompleted: RBXScriptSignal<(result: CastsToEnum<Enum.AvatarPromptResult>, humanoidDescription: HumanoidDescription) => void>;
+    readonly PromptSaveAvatarCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult, humanoidDescription: HumanoidDescription) => void>;
     /**
      * Fires when the <code>AvatarEditorService:PromptSetFavorite()</code> operation is completed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#PromptSetFavoriteCompleted)
      */
-    readonly PromptSetFavoriteCompleted: RBXScriptSignal<(result: CastsToEnum<Enum.AvatarPromptResult>) => void>;
+    readonly PromptSetFavoriteCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
     /**
      * Fires when the <code>AvatarEditorService:PromptUpdateOutfit()</code> operation is completed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#PromptUpdateOutfitCompleted)
      */
-    readonly PromptUpdateOutfitCompleted: RBXScriptSignal<(result: CastsToEnum<Enum.AvatarPromptResult>) => void>;
+    readonly PromptUpdateOutfitCompleted: RBXScriptSignal<(result: Enum.AvatarPromptResult) => void>;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarImportService)
@@ -9107,7 +9107,7 @@ interface Controller extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Controller#ButtonChanged)
      */
-    readonly ButtonChanged: RBXScriptSignal<(button: CastsToEnum<Enum.Button>) => void>;
+    readonly ButtonChanged: RBXScriptSignal<(button: Enum.Button) => void>;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidController)
@@ -12012,7 +12012,7 @@ interface GuiObject extends GuiBase2d {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiObject#TouchSwipe)
      */
-    readonly TouchSwipe: RBXScriptSignal<(swipeDirection: CastsToEnum<Enum.SwipeDirection>, numberOfTouches: number) => void>;
+    readonly TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number) => void>;
     /**
      * Fires when the player performs a tap gesture on the UI element.
      *
@@ -14127,31 +14127,31 @@ interface ArcHandles extends HandlesBase {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ArcHandles#MouseButton1Down)
      */
-    readonly MouseButton1Down: RBXScriptSignal<(axis: CastsToEnum<Enum.Axis>) => void>;
+    readonly MouseButton1Down: RBXScriptSignal<(axis: Enum.Axis) => void>;
     /**
      * Fired when the left mouse button is released on one of the GUI handles.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ArcHandles#MouseButton1Up)
      */
-    readonly MouseButton1Up: RBXScriptSignal<(axis: CastsToEnum<Enum.Axis>) => void>;
+    readonly MouseButton1Up: RBXScriptSignal<(axis: Enum.Axis) => void>;
     /**
      * Fired when the mouse moves while the MouseButton1Down event has fired, but the left mouse button has not been released yet.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ArcHandles#MouseDrag)
      */
-    readonly MouseDrag: RBXScriptSignal<(axis: CastsToEnum<Enum.Axis>, relativeAngle: number, deltaRadius: number) => void>;
+    readonly MouseDrag: RBXScriptSignal<(axis: Enum.Axis, relativeAngle: number, deltaRadius: number) => void>;
     /**
      * Fired when a mouse "enters" the GUI handle.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ArcHandles#MouseEnter)
      */
-    readonly MouseEnter: RBXScriptSignal<(axis: CastsToEnum<Enum.Axis>) => void>;
+    readonly MouseEnter: RBXScriptSignal<(axis: Enum.Axis) => void>;
     /**
      * Fired when the mouse leaves the GUI handle.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ArcHandles#MouseLeave)
      */
-    readonly MouseLeave: RBXScriptSignal<(axis: CastsToEnum<Enum.Axis>) => void>;
+    readonly MouseLeave: RBXScriptSignal<(axis: Enum.Axis) => void>;
 }
 /**
  * The Handles object places 3D handles around any object that its Adornee is set to.
@@ -14184,31 +14184,31 @@ interface Handles extends HandlesBase {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Handles#MouseButton1Down)
      */
-    readonly MouseButton1Down: RBXScriptSignal<(face: CastsToEnum<Enum.NormalId>) => void>;
+    readonly MouseButton1Down: RBXScriptSignal<(face: Enum.NormalId) => void>;
     /**
      * Fired when the left mouse button is released on one of the GUI handles.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Handles#MouseButton1Up)
      */
-    readonly MouseButton1Up: RBXScriptSignal<(face: CastsToEnum<Enum.NormalId>) => void>;
+    readonly MouseButton1Up: RBXScriptSignal<(face: Enum.NormalId) => void>;
     /**
      * Fired when the mouse moves while the MouseButton1Down event has fired, but the left mouse button has not been released yet.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Handles#MouseDrag)
      */
-    readonly MouseDrag: RBXScriptSignal<(face: CastsToEnum<Enum.NormalId>, distance: number) => void>;
+    readonly MouseDrag: RBXScriptSignal<(face: Enum.NormalId, distance: number) => void>;
     /**
      * Fired when a mouse "enters" the GUI handle.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Handles#MouseEnter)
      */
-    readonly MouseEnter: RBXScriptSignal<(face: CastsToEnum<Enum.NormalId>) => void>;
+    readonly MouseEnter: RBXScriptSignal<(face: Enum.NormalId) => void>;
     /**
      * Fired when the mouse leaves the GUI handle.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Handles#MouseLeave)
      */
-    readonly MouseLeave: RBXScriptSignal<(face: CastsToEnum<Enum.NormalId>) => void>;
+    readonly MouseLeave: RBXScriptSignal<(face: Enum.NormalId) => void>;
 }
 /**
  * Highlights a face of a surface in a configurable color.
@@ -15551,25 +15551,25 @@ interface Humanoid extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#StateChanged)
      */
-    readonly StateChanged: RBXScriptSignal<(oldValue: CastsToEnum<Enum.HumanoidStateType>, newValue: CastsToEnum<Enum.HumanoidStateType>) => void>;
+    readonly StateChanged: RBXScriptSignal<(oldValue: Enum.HumanoidStateType, newValue: Enum.HumanoidStateType) => void>;
     /**
      * Fires when <code>Humanoid:SetStateEnabled()</code> is called on the <code>Humanoid</code>.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#StateEnabledChanged)
      */
-    readonly StateEnabledChanged: RBXScriptSignal<(state: CastsToEnum<Enum.HumanoidStateType>, isEnabled: boolean) => void>;
+    readonly StateEnabledChanged: RBXScriptSignal<(state: Enum.HumanoidStateType, isEnabled: boolean) => void>;
     /**
      * <strong>Deprecated:</strong> This item is deprecated, as it was a part of the unfinished RbxStatus library which would have allowed you to add conditions to a Humanoid. Do not use it for new work.<br>Fired when a status is added to the Humanoid.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#StatusAdded)
      */
-    readonly StatusAdded: RBXScriptSignal<(status: CastsToEnum<Enum.Status>) => void>;
+    readonly StatusAdded: RBXScriptSignal<(status: Enum.Status) => void>;
     /**
      * <strong>Deprecated:</strong> This item is deprecated, as it was a part of the unfinished RbxStatus library which would have allowed you to add conditions to a Humanoid. Do not use it for new work.<br>Fired when a status is removed from the Humanoid.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#StatusRemoved)
      */
-    readonly StatusRemoved: RBXScriptSignal<(status: CastsToEnum<Enum.Status>) => void>;
+    readonly StatusRemoved: RBXScriptSignal<(status: Enum.Status) => void>;
     /**
      * Fires when the <code>Humanoid</code> enters or leaves the <code>StrafingNoPhysics</code> <code>HumanoidStateType</code>.
      *
@@ -17574,7 +17574,7 @@ interface LogService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#MessageOut)
      */
-    readonly MessageOut: RBXScriptSignal<(message: string, messageType: CastsToEnum<Enum.MessageType>) => void>;
+    readonly MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType) => void>;
 }
 /**
  * The base class for all objects which contain Lua code.
@@ -17965,7 +17965,7 @@ interface MarketplaceService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptBulkPurchaseFinished)
      */
-    readonly PromptBulkPurchaseFinished: RBXScriptSignal<(player: Instance, status: CastsToEnum<Enum.MarketplaceBulkPurchasePromptStatus>, results: object) => void>;
+    readonly PromptBulkPurchaseFinished: RBXScriptSignal<(player: Instance, status: Enum.MarketplaceBulkPurchasePromptStatus, results: object) => void>;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptBundlePurchaseFinished)
      */
@@ -19644,7 +19644,7 @@ interface SkateboardPlatform extends Part {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SkateboardPlatform#MoveStateChanged)
      */
-    readonly MoveStateChanged: RBXScriptSignal<(newState: CastsToEnum<Enum.MoveState>, oldState: CastsToEnum<Enum.MoveState>) => void>;
+    readonly MoveStateChanged: RBXScriptSignal<(newState: Enum.MoveState, oldState: Enum.MoveState) => void>;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SkateboardPlatform#RemoteCreateMotor6D)
      */
@@ -22562,7 +22562,7 @@ interface Player extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#OnTeleport)
      */
-    readonly OnTeleport: RBXScriptSignal<(teleportState: CastsToEnum<Enum.TeleportState>, placeId: number, spawnName: string) => void>;
+    readonly OnTeleport: RBXScriptSignal<(teleportState: Enum.TeleportState, placeId: number, spawnName: string) => void>;
     readonly Name: string;
 }
 /**
@@ -23444,7 +23444,7 @@ interface ProximityPrompt extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProximityPrompt#PromptShown)
      */
-    readonly PromptShown: RBXScriptSignal<(inputType: CastsToEnum<Enum.ProximityPromptInputType>) => void>;
+    readonly PromptShown: RBXScriptSignal<(inputType: Enum.ProximityPromptInputType) => void>;
     /**
      * Triggers when <code>key</code>/button is released, for longer events where the user is required to hold down the button.
      *
@@ -23507,7 +23507,7 @@ interface ProximityPromptService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProximityPromptService#PromptShown)
      */
-    readonly PromptShown: RBXScriptSignal<(prompt: ProximityPrompt, inputType: CastsToEnum<Enum.ProximityPromptInputType>) => void>;
+    readonly PromptShown: RBXScriptSignal<(prompt: ProximityPrompt, inputType: Enum.ProximityPromptInputType) => void>;
     /**
      * Triggers when the player stops holding down the <code>KeyboardKeyCode</code> key/button while triggering a prompt.
      *
@@ -23569,11 +23569,11 @@ interface RTAnimationTracker extends Instance {
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RTAnimationTracker#TrackerError)
      */
-    readonly TrackerError: RBXScriptSignal<(errorCode: CastsToEnum<Enum.TrackerError>, msg: string) => void>;
+    readonly TrackerError: RBXScriptSignal<(errorCode: Enum.TrackerError, msg: string) => void>;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RTAnimationTracker#TrackerPrompt)
      */
-    readonly TrackerPrompt: RBXScriptSignal<(prompt: CastsToEnum<Enum.TrackerPromptEvent>) => void>;
+    readonly TrackerPrompt: RBXScriptSignal<(prompt: Enum.TrackerPromptEvent) => void>;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService)
@@ -25076,7 +25076,7 @@ interface SocialService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#CallInviteStateChanged)
      */
-    readonly CallInviteStateChanged: RBXScriptSignal<(player: Instance, inviteState: CastsToEnum<Enum.InviteState>) => void>;
+    readonly CallInviteStateChanged: RBXScriptSignal<(player: Instance, inviteState: Enum.InviteState) => void>;
     /**
      * Fires when a player closes an invite prompt.
      *
@@ -28520,7 +28520,7 @@ interface TweenBase extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TweenBase#Completed)
      */
-    readonly Completed: RBXScriptSignal<(playbackState: CastsToEnum<Enum.PlaybackState>) => void>;
+    readonly Completed: RBXScriptSignal<(playbackState: Enum.PlaybackState) => void>;
 }
 /**
  * The <code>Tween</code> object controls the playback of an interpolation.
@@ -29998,13 +29998,13 @@ interface UserInputService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GamepadConnected)
      */
-    readonly GamepadConnected: RBXScriptSignal<(gamepadNum: CastsToEnum<Enum.UserInputType>) => void>;
+    readonly GamepadConnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
     /**
      * Fires when a gamepad is disconnected from the client. Passes the <code>UserInputType</code> of the gamepad that was disconnected.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GamepadDisconnected)
      */
-    readonly GamepadDisconnected: RBXScriptSignal<(gamepadNum: CastsToEnum<Enum.UserInputType>) => void>;
+    readonly GamepadDisconnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
     /**
      * Fired when a user begins interacting via a Human-Computer Interface device - such as a mouse or gamepad.
      *
@@ -30034,7 +30034,7 @@ interface UserInputService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#LastInputTypeChanged)
      */
-    readonly LastInputTypeChanged: RBXScriptSignal<(lastInputType: CastsToEnum<Enum.UserInputType>) => void>;
+    readonly LastInputTypeChanged: RBXScriptSignal<(lastInputType: Enum.UserInputType) => void>;
     /**
      * Fires when the user performs a specific pointer action (wheel, pinch, pan).
      *
@@ -30056,7 +30056,7 @@ interface UserInputService extends Instance {
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#TouchDrag)
      */
-    readonly TouchDrag: RBXScriptSignal<(dragDirection: CastsToEnum<Enum.SwipeDirection>, numberOfTouches: number, gameProcessedEvent: boolean) => void>;
+    readonly TouchDrag: RBXScriptSignal<(dragDirection: Enum.SwipeDirection, numberOfTouches: number, gameProcessedEvent: boolean) => void>;
     /**
      * Fired when a user releases their finger from the screen on a TouchEnabled device - such as the screen of a mobile device.
      *
@@ -30104,7 +30104,7 @@ interface UserInputService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#TouchSwipe)
      */
-    readonly TouchSwipe: RBXScriptSignal<(swipeDirection: CastsToEnum<Enum.SwipeDirection>, numberOfTouches: number, gameProcessedEvent: boolean) => void>;
+    readonly TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number, gameProcessedEvent: boolean) => void>;
     /**
      * Fired when a user taps their finger on a <code>TouchEnabled</code> device - such as the screen of a mobile device.
      *
@@ -30122,7 +30122,7 @@ interface UserInputService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#UserCFrameChanged)
      */
-    readonly UserCFrameChanged: RBXScriptSignal<(type: CastsToEnum<Enum.UserCFrame>, value: CFrame) => void>;
+    readonly UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
     /**
      * Fires when the window of the Roblox client loses focus on the user's screen.
      *
@@ -30272,25 +30272,25 @@ interface VRService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VRService#NavigationRequested)
      */
-    readonly NavigationRequested: RBXScriptSignal<(cframe: CFrame, inputUserCFrame: CastsToEnum<Enum.UserCFrame>) => void>;
+    readonly NavigationRequested: RBXScriptSignal<(cframe: CFrame, inputUserCFrame: Enum.UserCFrame) => void>;
     /**
      * Fires if the <code>VRTouchpadMode</code> of a <code>VRTouchpad</code> is changed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VRService#TouchpadModeChanged)
      */
-    readonly TouchpadModeChanged: RBXScriptSignal<(pad: CastsToEnum<Enum.VRTouchpad>, mode: CastsToEnum<Enum.VRTouchpadMode>) => void>;
+    readonly TouchpadModeChanged: RBXScriptSignal<(pad: Enum.VRTouchpad, mode: Enum.VRTouchpadMode) => void>;
     /**
      * Fires when a <code>UserCFrame</code> is changed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VRService#UserCFrameChanged)
      */
-    readonly UserCFrameChanged: RBXScriptSignal<(type: CastsToEnum<Enum.UserCFrame>, value: CFrame) => void>;
+    readonly UserCFrameChanged: RBXScriptSignal<(type: Enum.UserCFrame, value: CFrame) => void>;
     /**
      * Fires when a <code>UserCFrame</code> is enabled or disabled.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VRService#UserCFrameEnabled)
      */
-    readonly UserCFrameEnabled: RBXScriptSignal<(type: CastsToEnum<Enum.UserCFrame>, enabled: boolean) => void>;
+    readonly UserCFrameEnabled: RBXScriptSignal<(type: Enum.UserCFrame, enabled: boolean) => void>;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VRStatusService)
@@ -31007,7 +31007,7 @@ interface VoiceChatInternal extends Instance {
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatInternal#StateChanged)
      */
-    readonly StateChanged: RBXScriptSignal<(oldValue: CastsToEnum<Enum.VoiceChatState>, newValue: CastsToEnum<Enum.VoiceChatState>) => void>;
+    readonly StateChanged: RBXScriptSignal<(oldValue: Enum.VoiceChatState, newValue: Enum.VoiceChatState) => void>;
 }
 /**
  * <strong>VoiceChatService</strong> is responsible for voice chat's high-level functionality.
