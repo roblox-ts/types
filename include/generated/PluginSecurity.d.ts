@@ -707,6 +707,8 @@ interface Objects extends Instances {
 /**
  * Object is the base class for all classes in the Roblox class hierarchy.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Object)
  */
 interface RBXObject {
@@ -721,6 +723,8 @@ interface RBXObject {
 }
 /**
  * Instance which allows for the runtime creation and manipulation of images.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableImage)
  */
@@ -737,6 +741,8 @@ interface EditableImage extends RBXObject {
 /**
  * Instance which allows for the runtime creation and manipulation of meshes.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh)
  */
 interface EditableMesh extends DataModelMesh {
@@ -751,6 +757,8 @@ interface EditableMesh extends DataModelMesh {
 }
 /**
  * Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+ *
+ * - **Tags**: NotCreatable, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance)
  */
@@ -803,6 +811,8 @@ interface AccessoryDescription extends Instance {
     readonly _nominal_AccessoryDescription: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AccountService)
  */
 interface AccountService extends Instance {
@@ -848,6 +858,8 @@ interface Accessory extends Accoutrement {
 /**
  * <strong>Deprecated:</strong> This class has been superseded by the <code>Accessory</code> class. Do not use it for new work.
  *
+ * - **Tags**: Deprecated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Hat)
  */
 interface Hat extends Accoutrement {
@@ -861,6 +873,8 @@ interface Hat extends Accoutrement {
     readonly _nominal_Hat: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AchievementService)
  */
 interface AchievementService extends Instance {
@@ -874,6 +888,8 @@ interface AchievementService extends Instance {
     readonly _nominal_AchievementService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ActivityHistoryEventService)
  */
 interface ActivityHistoryEventService extends Instance {
@@ -901,6 +917,8 @@ interface AdPortal extends Instance {
 }
 /**
  * Collection of methods that allows developers to track how users interact with their experiences.
+ *
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService)
  */
@@ -931,6 +949,8 @@ interface Animation extends Instance {
 }
 /**
  * Represents all types of animation data that the Roblox animation system can consume.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationClip)
  */
@@ -987,6 +1007,8 @@ interface KeyframeSequence extends AnimationClip {
 /**
  * Provides functions to load and preview <code>AnimationClips</code>.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationClipProvider)
  */
 interface AnimationClipProvider extends Instance {
@@ -1002,7 +1024,7 @@ interface AnimationClipProvider extends Instance {
      * <strong>Deprecated:</strong> This function is deprecated and can lead to the game freezing until the animation is loaded. Developers are recommended to use <code>GetAnimationClipAsync</code> instead.<br>Returns a <code>AnimationClip</code> from a given asset URL.
      *
      * - **ThreadSafety**: Unsafe
-     * - **Tags**: Deprecated, [object Object]
+     * - **Tags**: Deprecated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationClipProvider#GetAnimationClip)
      * @param this Provides functions to load and preview <code>AnimationClips</code>.
@@ -1016,7 +1038,7 @@ interface AnimationClipProvider extends Instance {
      * <strong>Deprecated:</strong> This function is deprecated and can lead to the game freezing until the animation is loaded. Developers are recommended to use <code>GetAnimationClipAsync</code> instead.<br>Returns a <code>AnimationClip</code> from the supplied assetId.
      *
      * - **ThreadSafety**: Unsafe
-     * - **Tags**: Deprecated, [object Object]
+     * - **Tags**: Deprecated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationClipProvider#GetAnimationClipById)
      * @param this Provides functions to load and preview <code>AnimationClips</code>.
@@ -1044,6 +1066,8 @@ interface AnimationController extends Instance {
     readonly _nominal_AnimationController: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationFromVideoCreatorService)
  */
 interface AnimationFromVideoCreatorService extends Instance {
@@ -1057,6 +1081,8 @@ interface AnimationFromVideoCreatorService extends Instance {
     readonly _nominal_AnimationFromVideoCreatorService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationFromVideoCreatorStudioService)
  */
 interface AnimationFromVideoCreatorStudioService extends Instance {
@@ -1085,6 +1111,8 @@ interface AnimationRigData extends Instance {
     readonly _nominal_AnimationRigData: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationStreamTrack)
  */
 interface AnimationStreamTrack extends Instance {
@@ -1099,6 +1127,8 @@ interface AnimationStreamTrack extends Instance {
 }
 /**
  * Controls the playback of an animation on an <code>AnimationController</code>.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack)
  */
@@ -1165,6 +1195,8 @@ interface WorkspaceAnnotation extends Annotation {
     readonly _nominal_WorkspaceAnnotation: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnnotationsService)
  */
 interface AnnotationsService extends Instance {
@@ -1178,6 +1210,8 @@ interface AnnotationsService extends Instance {
     readonly _nominal_AnnotationsService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppLifecycleObserverService)
  */
 interface AppLifecycleObserverService extends Instance {
@@ -1191,6 +1225,8 @@ interface AppLifecycleObserverService extends Instance {
     readonly _nominal_AppLifecycleObserverService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppUpdateService)
  */
 interface AppUpdateService extends Instance {
@@ -1204,6 +1240,8 @@ interface AppUpdateService extends Instance {
     readonly _nominal_AppUpdateService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetCounterService)
  */
 interface AssetCounterService extends Instance {
@@ -1217,6 +1255,8 @@ interface AssetCounterService extends Instance {
     readonly _nominal_AssetCounterService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetDeliveryProxy)
  */
 interface AssetDeliveryProxy extends Instance {
@@ -1230,6 +1270,8 @@ interface AssetDeliveryProxy extends Instance {
     readonly _nominal_AssetDeliveryProxy: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetImportService)
  */
 interface AssetImportService extends Instance {
@@ -1243,6 +1285,8 @@ interface AssetImportService extends Instance {
     readonly _nominal_AssetImportService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetImportSession)
  */
 interface AssetImportSession extends Instance {
@@ -1256,6 +1300,8 @@ interface AssetImportSession extends Instance {
     readonly _nominal_AssetImportSession: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetManagerService)
  */
 interface AssetManagerService extends Instance {
@@ -1269,6 +1315,8 @@ interface AssetManagerService extends Instance {
     readonly _nominal_AssetManagerService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetPatchSettings)
  */
 interface AssetPatchSettings extends Instance {
@@ -1283,6 +1331,8 @@ interface AssetPatchSettings extends Instance {
 }
 /**
  * A non-replicated service that handles asset-related queries to the Roblox web API.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService)
  */
@@ -1522,6 +1572,8 @@ interface AudioFlanger extends Instance {
     readonly _nominal_AudioFlanger: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFocusService)
  */
 interface AudioFocusService extends Instance {
@@ -1612,6 +1664,8 @@ interface AudioReverb extends Instance {
 /**
  * Instance to be passed to <code>AssetService:SearchAudio()</code> to search for audio assets.
  *
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSearchParams)
  */
 interface AudioSearchParams extends Instance {
@@ -1625,6 +1679,8 @@ interface AudioSearchParams extends Instance {
     readonly _nominal_AudioSearchParams: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, Deprecated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService)
  */
 interface AuroraService extends Instance {
@@ -1638,6 +1694,8 @@ interface AuroraService extends Instance {
     readonly _nominal_AuroraService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarChatService)
  */
 interface AvatarChatService extends Instance {
@@ -1652,6 +1710,8 @@ interface AvatarChatService extends Instance {
 }
 /**
  * A service to support developer avatar creators.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService)
  */
@@ -1668,6 +1728,8 @@ interface AvatarCreationService extends Instance {
 /**
  * A service to support developer Avatar Editors.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService)
  */
 interface AvatarEditorService extends Instance {
@@ -1681,6 +1743,8 @@ interface AvatarEditorService extends Instance {
     readonly _nominal_AvatarEditorService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarImportService)
  */
 interface AvatarImportService extends Instance {
@@ -1694,6 +1758,8 @@ interface AvatarImportService extends Instance {
     readonly _nominal_AvatarImportService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarPreloader)
  */
 interface AvatarPreloader extends Instance {
@@ -1724,6 +1790,8 @@ interface Backpack extends Instance {
 /**
  * Provides information on badges and awards them.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BadgeService)
  */
 interface BadgeService extends Instance {
@@ -1737,6 +1805,8 @@ interface BadgeService extends Instance {
     readonly _nominal_BadgeService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseImportData)
  */
 interface BaseImportData extends Instance {
@@ -1750,6 +1820,8 @@ interface BaseImportData extends Instance {
     readonly _nominal_BaseImportData: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationImportData)
  */
 interface AnimationImportData extends BaseImportData {
@@ -1763,6 +1835,8 @@ interface AnimationImportData extends BaseImportData {
     readonly _nominal_AnimationImportData: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FacsImportData)
  */
 interface FacsImportData extends BaseImportData {
@@ -1776,6 +1850,8 @@ interface FacsImportData extends BaseImportData {
     readonly _nominal_FacsImportData: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GroupImportData)
  */
 interface GroupImportData extends BaseImportData {
@@ -1789,6 +1865,8 @@ interface GroupImportData extends BaseImportData {
     readonly _nominal_GroupImportData: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/JointImportData)
  */
 interface JointImportData extends BaseImportData {
@@ -1802,6 +1880,8 @@ interface JointImportData extends BaseImportData {
     readonly _nominal_JointImportData: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialImportData)
  */
 interface MaterialImportData extends BaseImportData {
@@ -1815,6 +1895,8 @@ interface MaterialImportData extends BaseImportData {
     readonly _nominal_MaterialImportData: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshImportData)
  */
 interface MeshImportData extends BaseImportData {
@@ -1828,6 +1910,8 @@ interface MeshImportData extends BaseImportData {
     readonly _nominal_MeshImportData: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RootImportData)
  */
 interface RootImportData extends BaseImportData {
@@ -1842,6 +1926,8 @@ interface RootImportData extends BaseImportData {
 }
 /**
  * The BasePlayerGui is an abstract class which the GUI drawing storage classes inherit from.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePlayerGui)
  */
@@ -1858,6 +1944,8 @@ interface BasePlayerGui extends Instance {
 /**
  * The CoreGui is a service used to store Guis created in-game by Roblox for the core user interface found in every game (such as the game menu, the playerlist, the backpack, etc.). It can also be used by <code>Plugins</code> in Roblox Studio.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGui)
  */
 interface CoreGui extends BasePlayerGui {
@@ -1873,6 +1961,8 @@ interface CoreGui extends BasePlayerGui {
 /**
  * A container for a player's currently rendered <code>ScreenGuis</code>.
  *
+ * - **Tags**: NotCreatable, PlayerReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerGui)
  */
 interface PlayerGui extends BasePlayerGui {
@@ -1887,6 +1977,8 @@ interface PlayerGui extends BasePlayerGui {
 }
 /**
  * A container for <code>LayerCollector</code> objects to be copied into the <code>PlayerGui</code> of <code>Players</code>. Also provides a range of functions for interacting with the <code>CoreGui</code>.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterGui)
  */
@@ -1911,6 +2003,8 @@ interface StarterGui extends BasePlayerGui {
     ProcessUserInput: boolean;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseRemoteEvent)
  */
 interface BaseRemoteEvent extends Instance {
@@ -1954,6 +2048,8 @@ interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemot
     readonly _nominal_UnreliableRemoteEvent: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseWrap)
  */
 interface BaseWrap extends Instance {
@@ -2147,6 +2243,8 @@ interface BindableFunction<T extends Callback = Callback> extends Instance {
 /**
  * <strong>Deprecated:</strong> This class has been deprecated. Use <code>Constraints|Constraint</code> for new work. Find an overview of BodyMover replacements in the <a href="../../../physics/mover-constraints.md">Constraint Movers article</a>.<br>Base class for objects that continually exert forces to parts.
  *
+ * - **Tags**: NotCreatable, Deprecated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyMover)
  */
 interface BodyMover extends Instance {
@@ -2161,6 +2259,8 @@ interface BodyMover extends Instance {
 }
 /**
  * <strong>Deprecated:</strong> This object is deprecated and should not be used for new work. Use <code>AngularVelocity</code> instead.<br>Applies a torque to maintain a constant angular velocity.
+ *
+ * - **Tags**: Deprecated, [object Object]
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyAngularVelocity)
  */
@@ -2177,6 +2277,8 @@ interface BodyAngularVelocity extends BodyMover {
 /**
  * <strong>Deprecated:</strong> This object is deprecated and should not be used for new work. Use <code>VectorForce</code> instead.<br>Applies a constant force to an object.
  *
+ * - **Tags**: Deprecated, [object Object]
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyForce)
  */
 interface BodyForce extends BodyMover {
@@ -2191,6 +2293,8 @@ interface BodyForce extends BodyMover {
 }
 /**
  * <strong>Deprecated:</strong> This object is deprecated and should not be used for new work. Use <code>AlignOrientation</code> instead.<br>Applies a torque to maintain a constant orientation.
+ *
+ * - **Tags**: Deprecated, [object Object]
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyGyro)
  */
@@ -2207,6 +2311,8 @@ interface BodyGyro extends BodyMover {
 /**
  * <strong>Deprecated:</strong> This object is deprecated and should not be used for new work. Use <code>AlignPosition</code> instead.<br>Applies a force to maintain a constant position.
  *
+ * - **Tags**: Deprecated, [object Object]
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyPosition)
  */
 interface BodyPosition extends BodyMover {
@@ -2221,6 +2327,8 @@ interface BodyPosition extends BodyMover {
 }
 /**
  * <strong>Deprecated:</strong> This object is deprecated and should not be used for new work. Use <code>VectorForce</code> instead.<br>Applies a constant force to an object at a specific point.
+ *
+ * - **Tags**: Deprecated, [object Object]
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyThrust)
  */
@@ -2237,6 +2345,8 @@ interface BodyThrust extends BodyMover {
 /**
  * <strong>Deprecated:</strong> This object is deprecated and should not be used for new work. Use <code>LinearVelocity</code> instead.<br>Applies a force to maintain a constant velocity.
  *
+ * - **Tags**: Deprecated, [object Object]
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyVelocity)
  */
 interface BodyVelocity extends BodyMover {
@@ -2251,6 +2361,8 @@ interface BodyVelocity extends BodyMover {
 }
 /**
  * <strong>Deprecated:</strong> This object is deprecated and should not be used for new work. Use <code>LineForce</code> instead.<br>Applies a force so that a part follows and faces another part.
+ *
+ * - **Tags**: Deprecated, [object Object]
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RocketPropulsion)
  */
@@ -2280,6 +2392,8 @@ interface BodyPartDescription extends Instance {
     readonly _nominal_BodyPartDescription: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Breakpoint)
  */
 interface Breakpoint extends Instance {
@@ -2293,6 +2407,8 @@ interface Breakpoint extends Instance {
     readonly _nominal_Breakpoint: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BugReporterService)
  */
 interface BugReporterService extends Instance {
@@ -2306,6 +2422,8 @@ interface BugReporterService extends Instance {
     readonly _nominal_BugReporterService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BulkImportService)
  */
 interface BulkImportService extends Instance {
@@ -2319,6 +2437,8 @@ interface BulkImportService extends Instance {
     readonly _nominal_BulkImportService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CalloutService)
  */
 interface CalloutService extends Instance {
@@ -2333,6 +2453,8 @@ interface CalloutService extends Instance {
 }
 /**
  * A class which defines a view of the 3D world.
+ *
+ * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera)
  */
@@ -2349,6 +2471,8 @@ interface Camera extends Instance {
 /**
  * A service which provides control over screenshot capture features.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService)
  */
 interface CaptureService extends Instance {
@@ -2363,6 +2487,8 @@ interface CaptureService extends Instance {
 }
 /**
  * <strong>Must</strong> be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService)
  */
@@ -2521,6 +2647,8 @@ interface ChangeHistoryService extends Instance {
 /**
  * The base class for objects that change the character's appearance, such as the <code>BodyColors</code>, <code>CharacterMesh</code>, <code>ShirtGraphic</code>, <code>Pants</code> and <code>Shirt</code> objects.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CharacterAppearance)
  */
 interface CharacterAppearance extends Instance {
@@ -2565,6 +2693,8 @@ interface CharacterMesh extends CharacterAppearance {
 }
 /**
  * Clothing is the base class for the <code>Shirt</code> and <code>Pants</code> clothing objects.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Clothing)
  */
@@ -2626,6 +2756,8 @@ interface ShirtGraphic extends CharacterAppearance {
 /**
  * Houses the Lua code responsible for running the legacy chat system.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Chat)
  */
 interface Chat extends Instance {
@@ -2639,6 +2771,8 @@ interface Chat extends Instance {
     readonly _nominal_Chat: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChatbotUIService)
  */
 interface ChatbotUIService extends Instance {
@@ -2682,6 +2816,8 @@ interface DragDetector extends ClickDetector {
     readonly _nominal_DragDetector: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CloudCRUDService)
  */
 interface CloudCRUDService extends Instance {
@@ -2710,6 +2846,8 @@ interface Clouds extends Instance {
     readonly _nominal_Clouds: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Collaborator)
  */
 interface Collaborator extends Instance {
@@ -2723,6 +2861,8 @@ interface Collaborator extends Instance {
     readonly _nominal_Collaborator: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CollaboratorsService)
  */
 interface CollaboratorsService extends Instance {
@@ -2738,6 +2878,8 @@ interface CollaboratorsService extends Instance {
 /**
  * A service which manages instance collections using assigned tags.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CollectionService)
  */
 interface CollectionService extends Instance {
@@ -2751,6 +2893,8 @@ interface CollectionService extends Instance {
     readonly _nominal_CollectionService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommandInstance)
  */
 interface CommandInstance extends Instance {
@@ -2764,6 +2908,8 @@ interface CommandInstance extends Instance {
     readonly _nominal_CommandInstance: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommandService)
  */
 interface CommandService extends Instance {
@@ -2777,6 +2923,8 @@ interface CommandService extends Instance {
     readonly _nominal_CommandService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService)
  */
 interface CommerceService extends Instance {
@@ -2805,6 +2953,8 @@ interface Configuration extends Instance {
     readonly _nominal_Configuration: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigureServerService)
  */
 interface ConfigureServerService extends Instance {
@@ -2818,6 +2968,8 @@ interface ConfigureServerService extends Instance {
     readonly _nominal_ConfigureServerService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConnectivityService)
  */
 interface ConnectivityService extends Instance {
@@ -2832,6 +2984,8 @@ interface ConnectivityService extends Instance {
 }
 /**
  * The base class for constraint-based objects.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Constraint)
  */
@@ -2983,6 +3137,8 @@ interface PlaneConstraint extends Constraint {
 /**
  * <strong>Deprecated:</strong> <br>Constrains Attachment0 and Attachment1 such that both points lie in an plane with origin at Attachment0's position and unit normal vector equal to Attachment0's primary axis.
  *
+ * - **Tags**: Deprecated, [object Object]
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plane)
  */
 interface Plane extends PlaneConstraint {
@@ -3042,6 +3198,8 @@ interface RopeConstraint extends Constraint {
 }
 /**
  * The base class for constraints that allow their attachments to slide along an axis but not rotate.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlidingBallConstraint)
  */
@@ -3163,6 +3321,8 @@ interface VectorForce extends Constraint {
 /**
  * Service that is used to load content, or assets, into a game.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContentProvider)
  */
 interface ContentProvider extends Instance {
@@ -3178,6 +3338,8 @@ interface ContentProvider extends Instance {
 /**
  * A service used to bind user input to contextual actions.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContextActionService)
  */
 interface ContextActionService extends Instance {
@@ -3192,6 +3354,8 @@ interface ContextActionService extends Instance {
 }
 /**
  * The base class for controller objects, such as the <code>HumanoidController</code> object.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Controller)
  */
@@ -3245,6 +3409,8 @@ interface VehicleController extends Controller {
     readonly _nominal_VehicleController: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControllerBase)
  */
 interface ControllerBase extends Instance {
@@ -3327,6 +3493,8 @@ interface ControllerManager extends Instance {
 /**
  * Container class for the <code>HumanoidController</code> among other classes.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControllerService)
  */
 interface ControllerService extends Instance {
@@ -3340,6 +3508,8 @@ interface ControllerService extends Instance {
     readonly _nominal_ControllerService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConversationalAIAcceptanceService)
  */
 interface ConversationalAIAcceptanceService extends Instance {
@@ -3353,6 +3523,8 @@ interface ConversationalAIAcceptanceService extends Instance {
     readonly _nominal_ConversationalAIAcceptanceService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreScriptDebuggingManagerHelper)
  */
 interface CoreScriptDebuggingManagerHelper extends Instance {
@@ -3366,6 +3538,8 @@ interface CoreScriptDebuggingManagerHelper extends Instance {
     readonly _nominal_CoreScriptDebuggingManagerHelper: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CreationDBService)
  */
 interface CreationDBService extends Instance {
@@ -3379,6 +3553,8 @@ interface CreationDBService extends Instance {
     readonly _nominal_CreationDBService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CreatorStoreService)
  */
 interface CreatorStoreService extends Instance {
@@ -3392,6 +3568,8 @@ interface CreatorStoreService extends Instance {
     readonly _nominal_CreatorStoreService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CrossDMScriptChangeListener)
  */
 interface CrossDMScriptChangeListener extends Instance {
@@ -3407,6 +3585,8 @@ interface CrossDMScriptChangeListener extends Instance {
 /**
  * The DataModelMesh is an abstract class from which mesh classes descend.
  *
+ * - **Tags**: NotCreatable, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModelMesh)
  */
 interface DataModelMesh extends Instance {
@@ -3421,6 +3601,8 @@ interface DataModelMesh extends Instance {
 }
 /**
  * <strong>Deprecated:</strong> This object serves no purpose other than being an abstract class that <code>BlockMesh</code> and <code>CylinderMesh</code> inherit from. Note non-character beveled parts were removed in 2013. Developers looking for beveled edges are required to use either <code>UnionOperations</code> or <code>MeshParts</code>.<br>An abstract class that <code>BlockMesh</code> and <code>CylinderMesh</code> inherit from.
+ *
+ * - **Tags**: NotCreatable, NotBrowsable, Deprecated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BevelMesh)
  */
@@ -3451,6 +3633,8 @@ interface BlockMesh extends BevelMesh {
 }
 /**
  * <strong>Deprecated:</strong> This class is deprecated, and <code>CylinderMeshes</code> are no longer supported. Do not use it for new work.<br>The CylinderMesh object applies a 'cylinder' mesh to the <code>BasePart</code> it is parented to.
+ *
+ * - **Tags**: Deprecated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CylinderMesh)
  */
@@ -3495,6 +3679,8 @@ interface SpecialMesh extends FileMesh {
     readonly _nominal_SpecialMesh: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModelPatchService)
  */
 interface DataModelPatchService extends Instance {
@@ -3508,6 +3694,8 @@ interface DataModelPatchService extends Instance {
     readonly _nominal_DataModelPatchService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModelSession)
  */
 interface DataModelSession extends Instance {
@@ -3521,6 +3709,8 @@ interface DataModelSession extends Instance {
     readonly _nominal_DataModelSession: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreGetOptions)
  */
 interface DataStoreGetOptions extends Instance {
@@ -3535,6 +3725,8 @@ interface DataStoreGetOptions extends Instance {
 }
 /**
  * Specifies additional parameters for a <code>GlobalDataStore:IncrementAsync()</code> call.
+ *
+ * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreIncrementOptions)
  */
@@ -3551,6 +3743,8 @@ interface DataStoreIncrementOptions extends Instance {
 /**
  * Object describing data store information.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreInfo)
  */
 interface DataStoreInfo extends Instance {
@@ -3565,6 +3759,8 @@ interface DataStoreInfo extends Instance {
 }
 /**
  * Object representing a key on a <code>DataStoreKeyPages</code> object.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreKey)
  */
@@ -3581,6 +3777,8 @@ interface DataStoreKey extends Instance {
 /**
  * An object specifying information about a particular version of the key.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreKeyInfo)
  */
 interface DataStoreKeyInfo extends Instance {
@@ -3595,6 +3793,8 @@ interface DataStoreKeyInfo extends Instance {
 }
 /**
  * An instance describing version information for a key.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreObjectVersionInfo)
  */
@@ -3611,6 +3811,8 @@ interface DataStoreObjectVersionInfo extends Instance {
 /**
  * Object used to provide additional parameters to <code>DataStoreService:GetDataStore()</code>.
  *
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreOptions)
  */
 interface DataStoreOptions extends Instance {
@@ -3625,6 +3827,8 @@ interface DataStoreOptions extends Instance {
 }
 /**
  * A game service that gives access to persistent data storage across places in a game.
+ *
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreService)
  */
@@ -3641,6 +3845,8 @@ interface DataStoreService extends Instance {
 /**
  * Specifies additional parameters for a <code>GlobalDataStore:SetAsync()</code> call.
  *
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreSetOptions)
  */
 interface DataStoreSetOptions extends Instance {
@@ -3655,6 +3861,8 @@ interface DataStoreSetOptions extends Instance {
 }
 /**
  * Allows scheduling the guaranteed destruction of an object without yielding.<br /> .
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Debris)
  */
@@ -3671,6 +3879,8 @@ interface Debris extends Instance {
 /**
  * Collection of various developer-facing diagnostics information.
  *
+ * - **Tags**: NotCreatable, Settings, NotReplicated, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebugSettings)
  */
 interface DebugSettings extends Instance {
@@ -3684,6 +3894,8 @@ interface DebugSettings extends Instance {
     readonly _nominal_DebugSettings: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebuggablePluginWatcher)
  */
 interface DebuggablePluginWatcher extends Instance {
@@ -3697,6 +3909,8 @@ interface DebuggablePluginWatcher extends Instance {
     readonly _nominal_DebuggablePluginWatcher: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebuggerBreakpoint)
  */
 interface DebuggerBreakpoint extends Instance {
@@ -3710,6 +3924,8 @@ interface DebuggerBreakpoint extends Instance {
     readonly _nominal_DebuggerBreakpoint: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebuggerConnection)
  */
 interface DebuggerConnection extends Instance {
@@ -3723,6 +3939,8 @@ interface DebuggerConnection extends Instance {
     readonly _nominal_DebuggerConnection: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LocalDebuggerConnection)
  */
 interface LocalDebuggerConnection extends DebuggerConnection {
@@ -3736,6 +3954,8 @@ interface LocalDebuggerConnection extends DebuggerConnection {
     readonly _nominal_LocalDebuggerConnection: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebuggerConnectionManager)
  */
 interface DebuggerConnectionManager extends Instance {
@@ -3749,6 +3969,8 @@ interface DebuggerConnectionManager extends Instance {
     readonly _nominal_DebuggerConnectionManager: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebuggerLuaResponse)
  */
 interface DebuggerLuaResponse extends Instance {
@@ -3762,6 +3984,8 @@ interface DebuggerLuaResponse extends Instance {
     readonly _nominal_DebuggerLuaResponse: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebuggerManager)
  */
 interface DebuggerManager extends Instance {
@@ -3775,6 +3999,8 @@ interface DebuggerManager extends Instance {
     readonly _nominal_DebuggerManager: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebuggerUIService)
  */
 interface DebuggerUIService extends Instance {
@@ -3788,6 +4014,8 @@ interface DebuggerUIService extends Instance {
     readonly _nominal_DebuggerUIService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebuggerVariable)
  */
 interface DebuggerVariable extends Instance {
@@ -3814,6 +4042,8 @@ interface DebuggerWatch extends Instance {
     readonly _nominal_DebuggerWatch: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DeviceIdService)
  */
 interface DeviceIdService extends Instance {
@@ -3872,6 +4102,8 @@ interface Dragger extends Instance {
     readonly _nominal_Dragger: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DraggerService)
  */
 interface DraggerService extends Instance {
@@ -3885,6 +4117,8 @@ interface DraggerService extends Instance {
     readonly _nominal_DraggerService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableService)
  */
 interface EditableService extends Instance {
@@ -3913,6 +4147,8 @@ interface EulerRotationCurve extends Instance {
     readonly _nominal_EulerRotationCurve: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EventIngestService)
  */
 interface EventIngestService extends Instance {
@@ -3926,6 +4162,8 @@ interface EventIngestService extends Instance {
     readonly _nominal_EventIngestService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExampleService)
  */
 interface ExampleService extends Instance {
@@ -3939,6 +4177,8 @@ interface ExampleService extends Instance {
     readonly _nominal_ExampleService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExperienceAuthService)
  */
 interface ExperienceAuthService extends Instance {
@@ -3953,6 +4193,8 @@ interface ExperienceAuthService extends Instance {
 }
 /**
  * Used to customize a player invite prompt.
+ *
+ * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExperienceInviteOptions)
  */
@@ -3969,6 +4211,8 @@ interface ExperienceInviteOptions extends Instance {
 /**
  * Service containing methods to validate users and prompt them to enable experience notifications.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExperienceNotificationService)
  */
 interface ExperienceNotificationService extends Instance {
@@ -3982,6 +4226,8 @@ interface ExperienceNotificationService extends Instance {
     readonly _nominal_ExperienceNotificationService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExperienceService)
  */
 interface ExperienceService extends Instance {
@@ -3995,6 +4241,8 @@ interface ExperienceService extends Instance {
     readonly _nominal_ExperienceService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExperienceStateCaptureService)
  */
 interface ExperienceStateCaptureService extends Instance {
@@ -4008,6 +4256,8 @@ interface ExperienceStateCaptureService extends Instance {
     readonly _nominal_ExperienceStateCaptureService: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExplorerFilter)
  */
 interface ExplorerFilter extends Instance {
@@ -4021,6 +4271,8 @@ interface ExplorerFilter extends Instance {
     readonly _nominal_ExplorerFilter: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExplorerFilterAutocompleter)
  */
 interface ExplorerFilterAutocompleter extends Instance {
@@ -4034,6 +4286,8 @@ interface ExplorerFilterAutocompleter extends Instance {
     readonly _nominal_ExplorerFilterAutocompleter: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExplorerServiceVisibilityService)
  */
 interface ExplorerServiceVisibilityService extends Instance {
@@ -4062,6 +4316,8 @@ interface Explosion extends Instance {
     readonly _nominal_Explosion: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceAnimatorService)
  */
 interface FaceAnimatorService extends Instance {
@@ -4592,6 +4848,8 @@ interface FaceControls extends Instance {
 /**
  * The FaceInstance class is an abstract class from which the <code>Decal</code> class inherits.
  *
+ * - **Tags**: NotCreatable, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceInstance)
  */
 interface FaceInstance extends Instance {
@@ -4635,6 +4893,8 @@ interface Texture extends Decal {
     readonly _nominal_Texture: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FacialAnimationRecordingService)
  */
 interface FacialAnimationRecordingService extends Instance {
@@ -4648,6 +4908,8 @@ interface FacialAnimationRecordingService extends Instance {
     readonly _nominal_FacialAnimationRecordingService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FacialAnimationStreamingServiceStats)
  */
 interface FacialAnimationStreamingServiceStats extends Instance {
@@ -4661,6 +4923,8 @@ interface FacialAnimationStreamingServiceStats extends Instance {
     readonly _nominal_FacialAnimationStreamingServiceStats: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FacialAnimationStreamingServiceV2)
  */
 interface FacialAnimationStreamingServiceV2 extends Instance {
@@ -4674,6 +4938,8 @@ interface FacialAnimationStreamingServiceV2 extends Instance {
     readonly _nominal_FacialAnimationStreamingServiceV2: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FacialAnimationStreamingSubsessionStats)
  */
 interface FacialAnimationStreamingSubsessionStats extends Instance {
@@ -4688,6 +4954,8 @@ interface FacialAnimationStreamingSubsessionStats extends Instance {
 }
 /**
  * The base class for the legacy motor system.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Feature)
  */
@@ -4704,6 +4972,8 @@ interface Feature extends Instance {
 /**
  * <strong>Deprecated:</strong> A Hole is an unused type of surface joint. It should not be used in new work.
  *
+ * - **Tags**: Deprecated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Hole)
  */
 interface Hole extends Feature {
@@ -4719,6 +4989,8 @@ interface Hole extends Feature {
 /**
  * <strong>Deprecated:</strong> A MotorFeature is an unused type of surface joint. It should not be used for new work.
  *
+ * - **Tags**: Deprecated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MotorFeature)
  */
 interface MotorFeature extends Feature {
@@ -4732,6 +5004,8 @@ interface MotorFeature extends Feature {
     readonly _nominal_MotorFeature: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeatureRestrictionManager)
  */
 interface FeatureRestrictionManager extends Instance {
@@ -4746,6 +5020,8 @@ interface FeatureRestrictionManager extends Instance {
 }
 /**
  * An asset loaded from a file on disk.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/File)
  */
@@ -4854,6 +5130,8 @@ interface ForceField extends Instance {
 /**
  * A service associated with the legacy game pass system. Use <code>MarketplaceService</code> for all new work.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GamePassService)
  */
 interface GamePassService extends Instance {
@@ -4868,6 +5146,8 @@ interface GamePassService extends Instance {
 }
 /**
  * A container for miscellaneous in-game options.
+ *
+ * - **Tags**: NotCreatable, Settings, NotReplicated, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GameSettings)
  */
@@ -4884,6 +5164,8 @@ interface GameSettings extends Instance {
 /**
  * The GamepadService is internally responsible for handling inputs from various controllers, such as Xbox One or PlayStation DualShock controllers.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GamepadService)
  */
 interface GamepadService extends Instance {
@@ -4897,6 +5179,8 @@ interface GamepadService extends Instance {
     readonly _nominal_GamepadService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenericChallengeService)
  */
 interface GenericChallengeService extends Instance {
@@ -4911,6 +5195,8 @@ interface GenericChallengeService extends Instance {
 }
 /**
  * Service containing geometric operations.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService)
  */
@@ -4927,6 +5213,8 @@ interface GeometryService extends Instance {
 /**
  * Use with <code>TextService:GetTextBoundsAsync()</code> to measure the size of text.
  *
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GetTextBoundsParams)
  */
 interface GetTextBoundsParams extends Instance {
@@ -4942,6 +5230,8 @@ interface GetTextBoundsParams extends Instance {
 /**
  * An object that exposes methods to access a single data store.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GlobalDataStore)
  */
 interface GlobalDataStore extends Instance {
@@ -4955,6 +5245,8 @@ interface GlobalDataStore extends Instance {
     readonly _nominal_GlobalDataStore: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStore)
  */
 interface DataStore extends GlobalDataStore {
@@ -4991,6 +5283,8 @@ interface DataStore extends GlobalDataStore {
 /**
  * A GlobalDataStore that also allows for ordered data store entries.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OrderedDataStore)
  */
 interface OrderedDataStore extends GlobalDataStore {
@@ -5011,6 +5305,8 @@ interface OrderedDataStore extends GlobalDataStore {
 /**
  * GroupService is a service that allows developers to fetch information about a Roblox group from within a game.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GroupService)
  */
 interface GroupService extends Instance {
@@ -5025,6 +5321,8 @@ interface GroupService extends Instance {
 }
 /**
  * GuiBase is an abstract class which most graphical user interface objects inherit from.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiBase)
  */
@@ -5041,6 +5339,8 @@ interface GuiBase extends Instance {
 /**
  * An abstract class inherited by 2D <code>GuiObjects</code>.
  *
+ * - **Tags**: NotCreatable, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiBase2d)
  */
 interface GuiBase2d extends GuiBase {
@@ -5055,6 +5355,8 @@ interface GuiBase2d extends GuiBase {
 }
 /**
  * An abstract class for all 2D user interface objects.
+ *
+ * - **Tags**: NotCreatable, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiObject)
  */
@@ -5101,6 +5403,8 @@ interface Frame extends GuiObject {
 /**
  * An abstract class for interactive 2D user interface elements.
  *
+ * - **Tags**: NotCreatable, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiButton)
  */
 interface GuiButton extends GuiObject {
@@ -5146,6 +5450,8 @@ interface TextButton extends GuiButton {
 /**
  * An abstract class for non-interactive 2D user interface elements.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiLabel)
  */
 interface GuiLabel extends GuiObject {
@@ -5189,6 +5495,8 @@ interface TextLabel extends GuiLabel {
     readonly _nominal_TextLabel: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RelativeGui)
  */
 interface RelativeGui extends GuiObject {
@@ -5262,6 +5570,8 @@ interface ViewportFrame extends GuiObject {
 /**
  * The base class of 2D UI containers which render <code>GuiObjects</code> in layers.
  *
+ * - **Tags**: NotCreatable, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LayerCollector)
  */
 interface LayerCollector extends GuiBase2d {
@@ -5290,6 +5600,8 @@ interface BillboardGui extends LayerCollector {
     readonly _nominal_BillboardGui: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginGui)
  */
 interface PluginGui extends LayerCollector {
@@ -5368,6 +5680,8 @@ interface PluginGui extends LayerCollector {
     readonly WindowFocused: RBXScriptSignal<() => void>;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DockWidgetPluginGui)
  */
 interface DockWidgetPluginGui extends PluginGui {
@@ -5381,6 +5695,8 @@ interface DockWidgetPluginGui extends PluginGui {
     readonly _nominal_DockWidgetPluginGui: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/QWidgetPluginGui)
  */
 interface QWidgetPluginGui extends PluginGui {
@@ -5409,6 +5725,8 @@ interface ScreenGui extends LayerCollector {
     readonly _nominal_ScreenGui: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceGuiBase)
  */
 interface SurfaceGuiBase extends LayerCollector {
@@ -5452,6 +5770,8 @@ interface SurfaceGui extends SurfaceGuiBase {
 /**
  * An abstract class for 3D GUI elements that are rendered in the world.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiBase3d)
  */
 interface GuiBase3d extends GuiBase {
@@ -5467,6 +5787,8 @@ interface GuiBase3d extends GuiBase {
 /**
  * <strong>Deprecated:</strong> The FloorWire object has been deprecated and should not be used in new work.<br>A FloorWire attempts to make a wire from two of its properties: <code>FloorWire.From</code> and <code>FloorWire.From</code>, which both need to be set to a <code>BasePart</code>.
  *
+ * - **Tags**: Deprecated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FloorWire)
  */
 interface FloorWire extends GuiBase3d {
@@ -5481,6 +5803,8 @@ interface FloorWire extends GuiBase3d {
 }
 /**
  * A base class for all objects that adorn <code>Instance</code> classes.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceAdornment)
  */
@@ -5512,6 +5836,8 @@ interface SelectionBox extends InstanceAdornment {
 /**
  * The PVAdornment class is an abstract class of which the inheritors can be adorned to objects of the PVInstance class.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PVAdornment)
  */
 interface PVAdornment extends GuiBase3d {
@@ -5526,6 +5852,8 @@ interface PVAdornment extends GuiBase3d {
 }
 /**
  * HandleAdornment is an abstract class inherited by 3D handle adornments.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandleAdornment)
  */
@@ -5673,6 +6001,8 @@ interface SelectionSphere extends PVAdornment {
 /**
  * An abstract class for GUI elements that are adorned to (displayed as attached to) objects deriving from <code>BasePart</code>.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PartAdornment)
  */
 interface PartAdornment extends GuiBase3d {
@@ -5687,6 +6017,8 @@ interface PartAdornment extends GuiBase3d {
 }
 /**
  * An abstract class for Handle objects, such as <code>ArcHandles</code> and <code>Handles</code>.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandlesBase)
  */
@@ -5748,6 +6080,8 @@ interface SurfaceSelection extends PartAdornment {
 /**
  * Abstract class for <code>SelectionPartLasso</code> and <code>SelectionPartLasso</code>.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SelectionLasso)
  */
 interface SelectionLasso extends GuiBase3d {
@@ -5763,6 +6097,8 @@ interface SelectionLasso extends GuiBase3d {
 /**
  * <strong>Deprecated:</strong> SelectionPartLasso has been deprecated. Developers are advised to use the <code>Beam</code> object instead.<br>An instance used to display a "lasso" between a <code>Humanoid</code> Torso and a <code>BasePart</code>.
  *
+ * - **Tags**: Deprecated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SelectionPartLasso)
  */
 interface SelectionPartLasso extends SelectionLasso {
@@ -5777,6 +6113,8 @@ interface SelectionPartLasso extends SelectionLasso {
 }
 /**
  * <strong>Deprecated:</strong> The SelectionPointLasso class is deprecated. It should not be used for new work.
+ *
+ * - **Tags**: Deprecated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SelectionPointLasso)
  */
@@ -5806,6 +6144,8 @@ interface Path2D extends GuiBase {
 /**
  * Allows developers to control what <code>GuiObject</code> is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService)
  */
 interface GuiService extends Instance {
@@ -5834,6 +6174,8 @@ interface HapticEffect extends Instance {
 /**
  * Provides haptic feedback to some gamepad controllers.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticService)
  */
 interface HapticService extends Instance {
@@ -5847,6 +6189,8 @@ interface HapticService extends Instance {
     readonly _nominal_HapticService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeatmapService)
  */
 interface HeatmapService extends Instance {
@@ -5860,6 +6204,8 @@ interface HeatmapService extends Instance {
     readonly _nominal_HeatmapService: unique symbol;
 }
 /**
+ * - **Tags**: Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeightmapImporterService)
  */
 interface HeightmapImporterService extends Instance {
@@ -5902,6 +6248,8 @@ interface Highlight extends Instance {
 }
 /**
  * Allows sending HTTP requests and provides various web-related and JSON methods.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpService)
  */
@@ -5972,6 +6320,8 @@ interface IKControl extends Instance {
     readonly _nominal_IKControl: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ILegacyStudioBridge)
  */
 interface ILegacyStudioBridge extends Instance {
@@ -5985,6 +6335,8 @@ interface ILegacyStudioBridge extends Instance {
     readonly _nominal_ILegacyStudioBridge: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LegacyStudioBridge)
  */
 interface LegacyStudioBridge extends ILegacyStudioBridge {
@@ -5998,6 +6350,8 @@ interface LegacyStudioBridge extends ILegacyStudioBridge {
     readonly _nominal_LegacyStudioBridge: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IXPService)
  */
 interface IXPService extends Instance {
@@ -6011,6 +6365,8 @@ interface IXPService extends Instance {
     readonly _nominal_IXPService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IncrementalPatchBuilder)
  */
 interface IncrementalPatchBuilder extends Instance {
@@ -6025,6 +6381,8 @@ interface IncrementalPatchBuilder extends Instance {
 }
 /**
  * An object created when an input begins that describes a particular user input.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputObject)
  */
@@ -6041,6 +6399,8 @@ interface InputObject extends Instance {
 /**
  * Used to insert assets from the Roblox website.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InsertService)
  */
 interface InsertService extends Instance {
@@ -6054,6 +6414,8 @@ interface InsertService extends Instance {
     readonly _nominal_InsertService: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalSyncItem)
  */
 interface InternalSyncItem extends Instance {
@@ -6067,6 +6429,8 @@ interface InternalSyncItem extends Instance {
     readonly _nominal_InternalSyncItem: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalSyncService)
  */
 interface InternalSyncService extends Instance {
@@ -6081,6 +6445,8 @@ interface InternalSyncService extends Instance {
 }
 /**
  * The base class for joints.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/JointInstance)
  */
@@ -6097,6 +6463,8 @@ interface JointInstance extends Instance {
 /**
  * The base class for classic motor joints.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DynamicRotate)
  */
 interface DynamicRotate extends JointInstance {
@@ -6111,6 +6479,8 @@ interface DynamicRotate extends JointInstance {
 }
 /**
  * <strong>Deprecated:</strong> This class works alongside the deprecated <code>SurfaceType</code> and should not be used for future work; use <code>HingeConstraint</code> instead.
+ *
+ * - **Tags**: Deprecated, [object Object]
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RotateP)
  */
@@ -6127,6 +6497,8 @@ interface RotateP extends DynamicRotate {
 /**
  * <strong>Deprecated:</strong> This class works alongside the deprecated <code>SurfaceType</code> and should not be used for future work; use <code>HingeConstraint</code> instead.
  *
+ * - **Tags**: Deprecated, [object Object]
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RotateV)
  */
 interface RotateV extends DynamicRotate {
@@ -6141,6 +6513,8 @@ interface RotateV extends DynamicRotate {
 }
 /**
  * <strong>Deprecated:</strong> This joint type has been deprecated and should not be used in new work.<br>Glue is a type of joint that can break when enough force is applied.
+ *
+ * - **Tags**: Deprecated, [object Object]
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Glue)
  */
@@ -6157,6 +6531,8 @@ interface Glue extends JointInstance {
 /**
  * <strong>Deprecated:</strong> <br>ManualSurfaceJointInstance is the base class for <code>ManualGlue</code> and <code>ManualWeld</code>.
  *
+ * - **Tags**: NotCreatable, Deprecated, [object Object]
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ManualSurfaceJointInstance)
  */
 interface ManualSurfaceJointInstance extends JointInstance {
@@ -6172,6 +6548,8 @@ interface ManualSurfaceJointInstance extends JointInstance {
 /**
  * <strong>Deprecated:</strong> <br>ManualGlue is a joint created in a similar manner to the <code>ManualWeld</code> class. It functions identically to the <code>Glue</code> class.
  *
+ * - **Tags**: Deprecated, [object Object]
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ManualGlue)
  */
 interface ManualGlue extends ManualSurfaceJointInstance {
@@ -6186,6 +6564,8 @@ interface ManualGlue extends ManualSurfaceJointInstance {
 }
 /**
  * <strong>Deprecated:</strong> <br>Holds two parts together and functions identically to <code>Weld</code>.
+ *
+ * - **Tags**: Deprecated, [object Object]
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ManualWeld)
  */
@@ -6232,6 +6612,8 @@ interface Motor6D extends Motor {
 /**
  * <strong>Deprecated:</strong> This class works alongside the deprecated <code>SurfaceType</code> and should not be used for future work; use <code>HingeConstraint</code> instead.
  *
+ * - **Tags**: Deprecated, [object Object]
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Rotate)
  */
 interface Rotate extends JointInstance {
@@ -6246,6 +6628,8 @@ interface Rotate extends JointInstance {
 }
 /**
  * <strong>Deprecated:</strong> <br>Holds two parts together and functions identically to <code>Weld</code>.
+ *
+ * - **Tags**: Deprecated, [object Object]
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Snap)
  */
@@ -6287,6 +6671,8 @@ interface Weld extends JointInstance {
 }
 /**
  * <strong>Deprecated:</strong> This service has been deprecated in favor of <a href="../../../physics/mechanical-constraints.md">constraints</a> which should be used for surface connections instead<br>A service that stores joints created by surface connections.
+ *
+ * - **Tags**: NotCreatable, Service, Deprecated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/JointsService)
  */
@@ -6333,6 +6719,8 @@ interface KeyframeMarker extends Instance {
 /**
  * Provides functions to load and preview <code>KeyframeSequence</code>.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/KeyframeSequenceProvider)
  */
 interface KeyframeSequenceProvider extends Instance {
@@ -6348,7 +6736,7 @@ interface KeyframeSequenceProvider extends Instance {
      * <strong>Deprecated:</strong> This function is deprecated and can lead to the game freezing until the animation is loaded. Developers are recommended to use <code>KeyframeSequenceProvider:GetKeyframeSequenceAsync()</code> instead.<br>Returns a <code>KeyframeSequence</code> from a given asset URL.
      *
      * - **ThreadSafety**: Unsafe
-     * - **Tags**: Deprecated, [object Object]
+     * - **Tags**: Deprecated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/KeyframeSequenceProvider#GetKeyframeSequence)
      * @param this Provides functions to load and preview <code>KeyframeSequence</code>.
@@ -6362,7 +6750,7 @@ interface KeyframeSequenceProvider extends Instance {
      * <strong>Deprecated:</strong> This function is deprecated and can lead to the game freezing until the animation is loaded. Developers are recommended to use <code>KeyframeSequenceProvider:GetKeyframeSequenceAsync()</code> instead.<br>Returns a <code>KeyframeSequence</code> from the supplied assetId.
      *
      * - **ThreadSafety**: Unsafe
-     * - **Tags**: Deprecated, [object Object]
+     * - **Tags**: Deprecated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/KeyframeSequenceProvider#GetKeyframeSequenceById)
      * @param this Provides functions to load and preview <code>KeyframeSequence</code>.
@@ -6375,6 +6763,8 @@ interface KeyframeSequenceProvider extends Instance {
     GetKeyframeSequenceById(this: KeyframeSequenceProvider, assetId: number, useCache: boolean): Instance | undefined;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LSPFileSyncService)
  */
 interface LSPFileSyncService extends Instance {
@@ -6388,6 +6778,8 @@ interface LSPFileSyncService extends Instance {
     readonly _nominal_LSPFileSyncService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LanguageService)
  */
 interface LanguageService extends Instance {
@@ -6402,6 +6794,8 @@ interface LanguageService extends Instance {
 }
 /**
  * Light is a root class for dynamic lighting related objects.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Light)
  */
@@ -6463,6 +6857,8 @@ interface SurfaceLight extends Light {
 /**
  * The <code>Lighting</code> service controls global lighting in an experience. It includes a range of adjustable properties that you can use to change how lighting appears and interacts with other objects.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Lighting)
  */
 interface Lighting extends Instance {
@@ -6476,6 +6872,8 @@ interface Lighting extends Instance {
     readonly _nominal_Lighting: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LinkingService)
  */
 interface LinkingService extends Instance {
@@ -6489,6 +6887,8 @@ interface LinkingService extends Instance {
     readonly _nominal_LinkingService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LiveScriptingService)
  */
 interface LiveScriptingService extends Instance {
@@ -6502,6 +6902,8 @@ interface LiveScriptingService extends Instance {
     readonly _nominal_LiveScriptingService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LiveSyncService)
  */
 interface LiveSyncService extends Instance {
@@ -6516,6 +6918,8 @@ interface LiveSyncService extends Instance {
 }
 /**
  * Handles automated translation.
+ *
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LocalizationService)
  */
@@ -6545,6 +6949,8 @@ interface LocalizationTable extends Instance {
     readonly _nominal_LocalizationTable: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CloudLocalizationTable)
  */
 interface CloudLocalizationTable extends LocalizationTable {
@@ -6558,6 +6964,8 @@ interface CloudLocalizationTable extends LocalizationTable {
     readonly _nominal_CloudLocalizationTable: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LodDataEntity)
  */
 interface LodDataEntity extends Instance {
@@ -6571,6 +6979,8 @@ interface LodDataEntity extends Instance {
     readonly _nominal_LodDataEntity: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LodDataService)
  */
 interface LodDataService extends Instance {
@@ -6584,6 +6994,8 @@ interface LodDataService extends Instance {
     readonly _nominal_LodDataService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogReporterService)
  */
 interface LogReporterService extends Instance {
@@ -6599,6 +7011,8 @@ interface LogReporterService extends Instance {
 /**
  * A service that allows you to read outputted text.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService)
  */
 interface LogService extends Instance {
@@ -6612,6 +7026,8 @@ interface LogService extends Instance {
     readonly _nominal_LogService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Settings, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuaSettings)
  */
 interface LuaSettings extends Instance {
@@ -6627,6 +7043,8 @@ interface LuaSettings extends Instance {
 /**
  * The base class for all objects which contain Lua code.
  *
+ * - **Tags**: NotCreatable, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuaSourceContainer)
  */
 interface LuaSourceContainer extends Instance {
@@ -6641,6 +7059,8 @@ interface LuaSourceContainer extends Instance {
 }
 /**
  * The base class for all script objects which run automatically.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseScript)
  */
@@ -6709,6 +7129,8 @@ interface ModuleScript extends LuaSourceContainer {
     readonly _nominal_ModuleScript: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuauScriptAnalyzerService)
  */
 interface LuauScriptAnalyzerService extends Instance {
@@ -6722,6 +7144,8 @@ interface LuauScriptAnalyzerService extends Instance {
     readonly _nominal_LuauScriptAnalyzerService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLModelDeliveryService)
  */
 interface MLModelDeliveryService extends Instance {
@@ -6752,6 +7176,8 @@ interface MarkerCurve extends Instance {
 /**
  * The service responsible for in-experience transactions.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService)
  */
 interface MarketplaceService extends Instance {
@@ -6765,6 +7191,8 @@ interface MarketplaceService extends Instance {
     readonly _nominal_MarketplaceService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialGenerationService)
  */
 interface MaterialGenerationService extends Instance {
@@ -6778,6 +7206,8 @@ interface MaterialGenerationService extends Instance {
     readonly _nominal_MaterialGenerationService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialGenerationSession)
  */
 interface MaterialGenerationSession extends Instance {
@@ -6792,6 +7222,8 @@ interface MaterialGenerationSession extends Instance {
 }
 /**
  * The game service responsible for managing materials.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialService)
  */
@@ -6866,6 +7298,8 @@ interface MaterialVariant extends Instance {
     RoughnessMap: ContentId;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemStorageConnection)
  */
 interface MemStorageConnection extends Instance {
@@ -6889,6 +7323,8 @@ interface MemStorageConnection extends Instance {
 /**
  * Provides access to a hash map within <code>MemoryStoreService</code>.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreHashMap)
  */
 interface MemoryStoreHashMap extends Instance {
@@ -6903,6 +7339,8 @@ interface MemoryStoreHashMap extends Instance {
 }
 /**
  * Provides access to a queue within MemoryStore.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreQueue)
  */
@@ -6919,6 +7357,8 @@ interface MemoryStoreQueue extends Instance {
 /**
  * Exposes methods to access specific primitives within MemoryStore.
  *
+ * - **Tags**: Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreService)
  */
 interface MemoryStoreService extends Instance {
@@ -6934,6 +7374,8 @@ interface MemoryStoreService extends Instance {
 /**
  * Provides access to a sorted map within <code>MemoryStoreService</code>.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreSortedMap)
  */
 interface MemoryStoreSortedMap extends Instance {
@@ -6947,6 +7389,8 @@ interface MemoryStoreSortedMap extends Instance {
     readonly _nominal_MemoryStoreSortedMap: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MessageBusConnection)
  */
 interface MessageBusConnection extends Instance {
@@ -6960,6 +7404,8 @@ interface MessageBusConnection extends Instance {
     readonly _nominal_MessageBusConnection: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MessageBusService)
  */
 interface MessageBusService extends Instance {
@@ -6975,6 +7421,8 @@ interface MessageBusService extends Instance {
 /**
  * Allows servers of the same experience to communicate with each other.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MessagingService)
  */
 interface MessagingService extends Instance {
@@ -6988,6 +7436,8 @@ interface MessagingService extends Instance {
     readonly _nominal_MessagingService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MetaBreakpoint)
  */
 interface MetaBreakpoint extends Instance {
@@ -7001,6 +7451,8 @@ interface MetaBreakpoint extends Instance {
     readonly _nominal_MetaBreakpoint: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MetaBreakpointContext)
  */
 interface MetaBreakpointContext extends Instance {
@@ -7014,6 +7466,8 @@ interface MetaBreakpointContext extends Instance {
     readonly _nominal_MetaBreakpointContext: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MetaBreakpointManager)
  */
 interface MetaBreakpointManager extends Instance {
@@ -7028,6 +7482,8 @@ interface MetaBreakpointManager extends Instance {
 }
 /**
  * Legacy object that contains members useful for pointer input.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Mouse)
  */
@@ -7044,6 +7500,8 @@ interface Mouse extends Instance {
 /**
  * The PlayerMouse behaves identically to the <code>Mouse</code> object that is obtained using <code>Tool.Equipped</code>. Both PlayerMouse and <code>Mouse</code> are legacy APIs, superseded by <code>UserInputService</code>.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerMouse)
  */
 interface PlayerMouse extends Mouse {
@@ -7058,6 +7516,8 @@ interface PlayerMouse extends Mouse {
 }
 /**
  * The PluginMouse object gives <code>Plugins</code> access to the mouse. It works like the <code>Mouse</code> object and can be obtained using the plugin <code>Plugin:GetMouse()</code> method.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginMouse)
  */
@@ -7081,6 +7541,8 @@ interface PluginMouse extends Mouse {
     readonly DragEnter: RBXScriptSignal<(instances: Array<Instance>) => void>;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MultipleDocumentInterfaceInstance)
  */
 interface MultipleDocumentInterfaceInstance extends Instance {
@@ -7096,6 +7558,8 @@ interface MultipleDocumentInterfaceInstance extends Instance {
 /**
  * The NetworkMarker is used to tell the client when the server has finished loading the world for the client.
  *
+ * - **Tags**: NotCreatable, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkMarker)
  */
 interface NetworkMarker extends Instance {
@@ -7110,6 +7574,8 @@ interface NetworkMarker extends Instance {
 }
 /**
  * The NetworkPeer object is the most basic class of the network objects.
+ *
+ * - **Tags**: NotCreatable, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkPeer)
  */
@@ -7135,6 +7601,8 @@ interface NetworkPeer extends Instance {
     SetOutgoingKBPSLimit(this: NetworkPeer, limit: number): void;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkClient)
  */
 interface NetworkClient extends NetworkPeer {
@@ -7148,6 +7616,8 @@ interface NetworkClient extends NetworkPeer {
     readonly _nominal_NetworkClient: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkServer)
  */
 interface NetworkServer extends NetworkPeer {
@@ -7163,6 +7633,8 @@ interface NetworkServer extends NetworkPeer {
 /**
  * An object which handles the replication of other objects either from the server to the client, or from the client to the server.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkReplicator)
  */
 interface NetworkReplicator extends Instance {
@@ -7176,6 +7648,8 @@ interface NetworkReplicator extends Instance {
     readonly _nominal_NetworkReplicator: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ClientReplicator)
  */
 interface ClientReplicator extends NetworkReplicator {
@@ -7189,6 +7663,8 @@ interface ClientReplicator extends NetworkReplicator {
     readonly _nominal_ClientReplicator: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ServerReplicator)
  */
 interface ServerReplicator extends NetworkReplicator {
@@ -7203,6 +7679,8 @@ interface ServerReplicator extends NetworkReplicator {
 }
 /**
  * Settings related to networked engine behaviors.
+ *
+ * - **Tags**: NotCreatable, Service, NotReplicated, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings)
  */
@@ -7250,6 +7728,8 @@ interface NoCollisionConstraint extends Instance {
     readonly _nominal_NoCollisionConstraint: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Noise)
  */
 interface Noise extends Instance {
@@ -7263,6 +7743,8 @@ interface Noise extends Instance {
     readonly _nominal_Noise: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OmniRecommendationsService)
  */
 interface OmniRecommendationsService extends Instance {
@@ -7276,6 +7758,8 @@ interface OmniRecommendationsService extends Instance {
     readonly _nominal_OmniRecommendationsService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudApiV1)
  */
 interface OpenCloudApiV1 extends Instance {
@@ -7289,6 +7773,8 @@ interface OpenCloudApiV1 extends Instance {
     readonly _nominal_OpenCloudApiV1: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudService)
  */
 interface OpenCloudService extends Instance {
@@ -7317,6 +7803,8 @@ interface OperationGraph extends Instance {
 /**
  * Abstract class for all objects that have a physical location in the world, specifically <code>BaseParts</code> and <code>Models</code>.
  *
+ * - **Tags**: NotCreatable, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PVInstance)
  */
 interface PVInstance extends Instance {
@@ -7331,6 +7819,8 @@ interface PVInstance extends Instance {
 }
 /**
  * The abstract base class for in-world objects that physically interact.
+ *
+ * - **Tags**: NotCreatable, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart)
  */
@@ -7359,6 +7849,8 @@ interface CornerWedgePart extends BasePart {
 }
 /**
  * The FormFactorPart class is an abstract class. It inherits from the BasePart class and adds the FormFactor property to classes that inherit from it.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FormFactorPart)
  */
@@ -7390,6 +7882,8 @@ interface Part extends FormFactorPart {
 /**
  * Historically a form of <code>Seat</code> that wouldn't place the player in a sitting pose. This object is no longer create-able and cannot be used by developers.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Platform)
  */
 interface Platform extends Part {
@@ -7419,6 +7913,8 @@ interface Seat extends Part {
 }
 /**
  * <strong>Deprecated:</strong> The SkateboardPlatform object has been deprecated and is no longer supported by Roblox. Developers looking to create skateboards or similar vehicles are advised to program their own systems. Additionally, the <code>VehicleSeat</code> object can be used to quickly create simple vehicles.<br>A SkateboardPlatform can be used to create a skateboard. When characters get on a skateboard, they are stuck to it until they press the escape key. Until then, the character uses skateboard animations and travels faster than a walking character.
+ *
+ * - **Tags**: Deprecated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SkateboardPlatform)
  */
@@ -7465,6 +7961,8 @@ interface WedgePart extends FormFactorPart {
 /**
  * Terrain lets you to create dynamically morphable environments.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain)
  */
 interface Terrain extends BasePart {
@@ -7491,6 +7989,8 @@ interface Terrain extends BasePart {
 }
 /**
  * Abstract intermediate class that manages physical geometry properties for PartOperations and MeshParts.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart)
  */
@@ -7708,6 +8208,8 @@ interface Actor extends Model {
 /**
  * BackpackItem is an abstract class for backpack items such as HopperBins and Tools.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BackpackItem)
  */
 interface BackpackItem extends Model {
@@ -7737,6 +8239,8 @@ interface Tool extends BackpackItem {
 }
 /**
  * Base class for handling physics simulation and 3D spatial queries.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot)
  */
@@ -7779,6 +8283,8 @@ interface WorldRoot extends Model {
 }
 /**
  * <strong>Workspace</strong> houses 3D objects which are rendered to the 3D world. Objects not descending from it will not be rendered or physically interact with the world.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace)
  */
@@ -7882,6 +8388,8 @@ interface WorldModel extends WorldRoot {
 /**
  * Links a <code>DataModel</code> instance to a corresponding asset in the cloud.
  *
+ * - **Tags**: NotCreatable, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PackageLink)
  */
 interface PackageLink extends Instance {
@@ -7895,6 +8403,8 @@ interface PackageLink extends Instance {
     readonly _nominal_PackageLink: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PackageService)
  */
 interface PackageService extends Instance {
@@ -7908,6 +8418,8 @@ interface PackageService extends Instance {
     readonly _nominal_PackageService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PackageUIService)
  */
 interface PackageUIService extends Instance {
@@ -7922,6 +8434,8 @@ interface PackageUIService extends Instance {
 }
 /**
  * An abstract class for pages objects.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Pages)
  */
@@ -7938,6 +8452,8 @@ interface Pages<T = unknown> extends Instance {
 /**
  * A special version of the <code>Pages</code> class returned by <code>AssetService:SearchAudio()</code>.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPages)
  */
 interface AudioPages extends Pages {
@@ -7953,6 +8469,8 @@ interface AudioPages extends Pages {
 /**
  * Returned by <code>Players:GetBanHistoryAsync</code> to view the entire ban and unban history of any UserId.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BanHistoryPages)
  */
 interface BanHistoryPages extends Pages {
@@ -7966,6 +8484,8 @@ interface BanHistoryPages extends Pages {
     readonly _nominal_BanHistoryPages: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CatalogPages)
  */
 interface CatalogPages extends Pages<SearchCatalogResult> {
@@ -7980,6 +8500,8 @@ interface CatalogPages extends Pages<SearchCatalogResult> {
 }
 /**
  * A special type of <code>Pages</code> object whose pages contain <code>DataStoreKey</code> instances.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreKeyPages)
  */
@@ -7996,6 +8518,8 @@ interface DataStoreKeyPages extends Pages {
 /**
  * A special type of <code>Pages</code> object whose pages contain <code>DataStoreInfo</code> instances.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreListingPages)
  */
 interface DataStoreListingPages extends Pages {
@@ -8010,6 +8534,8 @@ interface DataStoreListingPages extends Pages {
 }
 /**
  * A <code>Pages</code> object that allows iteration through <code>OrderedDataStore</code> key/value pairs.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStorePages)
  */
@@ -8029,6 +8555,8 @@ interface DataStorePages extends Pages<{
 /**
  * A special type of <code>Pages</code> object whose pages contain <code>DataStoreObjectVersionInfo</code> instances.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreVersionPages)
  */
 interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {
@@ -8043,6 +8571,8 @@ interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {
 }
 /**
  * A special version of <code>Pages</code> that contains information about a player's friends.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FriendPages)
  */
@@ -8063,6 +8593,8 @@ interface FriendPages extends Pages<{
     readonly _nominal_FriendPages: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InventoryPages)
  */
 interface InventoryPages<T = unknown> extends Pages<T> {
@@ -8076,6 +8608,8 @@ interface InventoryPages<T = unknown> extends Pages<T> {
     readonly _nominal_InventoryPages: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EmotesPages)
  */
 interface EmotesPages extends InventoryPages {
@@ -8091,6 +8625,8 @@ interface EmotesPages extends InventoryPages {
 /**
  * A special type of <code>Pages</code> object whose pages contain key-value pairs from a <code>MemoryStoreHashMap</code>.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreHashMapPages)
  */
 interface MemoryStoreHashMapPages extends Pages {
@@ -8105,6 +8641,8 @@ interface MemoryStoreHashMapPages extends Pages {
 }
 /**
  * The <code>OutfitPages</code> class is used in the case of iterating over a user's outfits.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OutfitPages)
  */
@@ -8123,6 +8661,8 @@ interface OutfitPages extends Pages<ReadonlyArray<{
     readonly _nominal_OutfitPages: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StandardPages)
  */
 interface StandardPages<T = unknown> extends Pages<T> {
@@ -8151,6 +8691,8 @@ interface ParticleEmitter extends Instance {
     readonly _nominal_ParticleEmitter: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PatchBundlerFileWatch)
  */
 interface PatchBundlerFileWatch extends Instance {
@@ -8164,6 +8706,8 @@ interface PatchBundlerFileWatch extends Instance {
     readonly _nominal_PatchBundlerFileWatch: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PatchMapping)
  */
 interface PatchMapping extends Instance {
@@ -8178,6 +8722,8 @@ interface PatchMapping extends Instance {
 }
 /**
  * Stores the result of paths created by <code>PathfindingService:CreatePath()</code>.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path)
  */
@@ -8224,6 +8770,8 @@ interface PathfindingModifier extends Instance {
 /**
  * Used to find logical paths between two points.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PathfindingService)
  */
 interface PathfindingService extends Instance {
@@ -8237,6 +8785,8 @@ interface PathfindingService extends Instance {
     readonly _nominal_PathfindingService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PausedState)
  */
 interface PausedState extends Instance {
@@ -8250,6 +8800,8 @@ interface PausedState extends Instance {
     readonly _nominal_PausedState: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PausedStateBreakpoint)
  */
 interface PausedStateBreakpoint extends PausedState {
@@ -8263,6 +8815,8 @@ interface PausedStateBreakpoint extends PausedState {
     readonly _nominal_PausedStateBreakpoint: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PausedStateException)
  */
 interface PausedStateException extends PausedState {
@@ -8276,6 +8830,8 @@ interface PausedStateException extends PausedState {
     readonly _nominal_PausedStateException: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PerformanceControlService)
  */
 interface PerformanceControlService extends Instance {
@@ -8289,6 +8845,8 @@ interface PerformanceControlService extends Instance {
     readonly _nominal_PerformanceControlService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsService)
  */
 interface PhysicsService extends Instance {
@@ -8302,6 +8860,8 @@ interface PhysicsService extends Instance {
     readonly _nominal_PhysicsService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Settings, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings)
  */
 interface PhysicsSettings extends Instance {
@@ -8315,6 +8875,8 @@ interface PhysicsSettings extends Instance {
     readonly _nominal_PhysicsSettings: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlaceStatsService)
  */
 interface PlaceStatsService extends Instance {
@@ -8328,6 +8890,8 @@ interface PlaceStatsService extends Instance {
     readonly _nominal_PlaceStatsService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlacesService)
  */
 interface PlacesService extends Instance {
@@ -8341,6 +8905,8 @@ interface PlacesService extends Instance {
     readonly _nominal_PlacesService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlatformCloudStorageService)
  */
 interface PlatformCloudStorageService extends Instance {
@@ -8354,6 +8920,8 @@ interface PlatformCloudStorageService extends Instance {
     readonly _nominal_PlatformCloudStorageService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlatformFriendsService)
  */
 interface PlatformFriendsService extends Instance {
@@ -8405,6 +8973,8 @@ interface Player extends Instance {
     readonly Name: string;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerHydrationService)
  */
 interface PlayerHydrationService extends Instance {
@@ -8419,6 +8989,8 @@ interface PlayerHydrationService extends Instance {
 }
 /**
  * A container for LocalScripts to be run on the client.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerScripts)
  */
@@ -8435,6 +9007,8 @@ interface PlayerScripts extends Instance {
 /**
  * Provides a way to get additional information about a player's view.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerViewService)
  */
 interface PlayerViewService extends Instance {
@@ -8449,6 +9023,8 @@ interface PlayerViewService extends Instance {
 }
 /**
  * A service that contains presently connected <code>Player</code> objects.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Players)
  */
@@ -8496,6 +9072,8 @@ interface Players extends Instance {
     TeamChat(this: Players, message: string): void;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin)
  */
 interface Plugin extends Instance {
@@ -8834,6 +9412,8 @@ interface Plugin extends Instance {
     readonly Unloading: RBXScriptSignal<() => void>;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginAction)
  */
 interface PluginAction extends Instance {
@@ -8869,6 +9449,8 @@ interface PluginCapabilities extends Instance {
     readonly _nominal_PluginCapabilities: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginDebugService)
  */
 interface PluginDebugService extends Instance {
@@ -8882,6 +9464,8 @@ interface PluginDebugService extends Instance {
     readonly _nominal_PluginDebugService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginDragEvent)
  */
 interface PluginDragEvent extends Instance {
@@ -8897,6 +9481,8 @@ interface PluginDragEvent extends Instance {
 /**
  * A service that stores <code>PluginGui</code> objects to be displayed in Roblox Studio.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginGuiService)
  */
 interface PluginGuiService extends Instance {
@@ -8910,6 +9496,8 @@ interface PluginGuiService extends Instance {
     readonly _nominal_PluginGuiService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginManagementService)
  */
 interface PluginManagementService extends Instance {
@@ -8923,6 +9511,8 @@ interface PluginManagementService extends Instance {
     readonly _nominal_PluginManagementService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginManagerInterface)
  */
 interface PluginManagerInterface extends Instance {
@@ -8967,6 +9557,8 @@ interface PluginManagerInterface extends Instance {
 }
 /**
  * A context menu that can be shown in Studio. Displays a list of <code>PluginActions</code> and supports submenus.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginMenu)
  */
@@ -9049,6 +9641,8 @@ interface PluginMenu extends Instance {
     ShowAsync(this: PluginMenu): Instance | undefined;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginPolicyService)
  */
 interface PluginPolicyService extends Instance {
@@ -9062,6 +9656,8 @@ interface PluginPolicyService extends Instance {
     readonly _nominal_PluginPolicyService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginToolbar)
  */
 interface PluginToolbar extends Instance {
@@ -9090,6 +9686,8 @@ interface PluginToolbar extends Instance {
     CreateButton(this: PluginToolbar, buttonId: string, tooltip: string, iconname: string, text?: string): PluginToolbarButton;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginToolbarButton)
  */
 interface PluginToolbarButton extends Instance {
@@ -9125,6 +9723,8 @@ interface PluginToolbarButton extends Instance {
 /**
  * Helps you query information regarding policy compliance for players around the world based on age range, location, and platform type.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PolicyService)
  */
 interface PolicyService extends Instance {
@@ -9139,6 +9739,8 @@ interface PolicyService extends Instance {
 }
 /**
  * Base class of all 'Pose Instance' objects.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PoseBase)
  */
@@ -9184,6 +9786,8 @@ interface Pose extends PoseBase {
 }
 /**
  * Abstract base class for post-processing effects.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PostEffect)
  */
@@ -9288,6 +9892,8 @@ interface SunRaysEffect extends PostEffect {
     readonly _nominal_SunRaysEffect: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProcessInstancePhysicsService)
  */
 interface ProcessInstancePhysicsService extends Instance {
@@ -9318,6 +9924,8 @@ interface ProximityPrompt extends Instance {
 /**
  * Allows developers to interact with <code>ProximityPrompt</code> objects in a global way.
  *
+ * - **Tags**: Service, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProximityPromptService)
  */
 interface ProximityPromptService extends Instance {
@@ -9331,6 +9939,8 @@ interface ProximityPromptService extends Instance {
     readonly _nominal_ProximityPromptService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PublishService)
  */
 interface PublishService extends Instance {
@@ -9344,6 +9954,8 @@ interface PublishService extends Instance {
     readonly _nominal_PublishService: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RTAnimationTracker)
  */
 interface RTAnimationTracker extends Instance {
@@ -9357,6 +9969,8 @@ interface RTAnimationTracker extends Instance {
     readonly _nominal_RTAnimationTracker: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService)
  */
 interface ReflectionService extends Instance {
@@ -9370,6 +9984,8 @@ interface ReflectionService extends Instance {
     readonly _nominal_ReflectionService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCursorService)
  */
 interface RemoteCursorService extends Instance {
@@ -9383,6 +9999,8 @@ interface RemoteCursorService extends Instance {
     readonly _nominal_RemoteCursorService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteDebuggerServer)
  */
 interface RemoteDebuggerServer extends Instance {
@@ -9411,6 +10029,8 @@ interface RemoteFunction<T extends Callback = Callback> extends Instance {
     readonly _nominal_RemoteFunction: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings)
  */
 interface RenderSettings extends Instance {
@@ -9441,6 +10061,8 @@ interface RenderingTest extends Instance {
 /**
  * A container whose contents are replicated to all clients (but not back to the server) first before anything else.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReplicatedFirst)
  */
 interface ReplicatedFirst extends Instance {
@@ -9456,6 +10078,8 @@ interface ReplicatedFirst extends Instance {
 /**
  * A container service for objects that are replicated to all clients.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReplicatedStorage)
  */
 interface ReplicatedStorage extends Instance {
@@ -9469,6 +10093,8 @@ interface ReplicatedStorage extends Instance {
     readonly _nominal_ReplicatedStorage: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RibbonNotificationService)
  */
 interface RibbonNotificationService extends Instance {
@@ -9482,6 +10108,8 @@ interface RibbonNotificationService extends Instance {
     readonly _nominal_RibbonNotificationService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RobloxPluginGuiService)
  */
 interface RobloxPluginGuiService extends Instance {
@@ -9495,6 +10123,8 @@ interface RobloxPluginGuiService extends Instance {
     readonly _nominal_RobloxPluginGuiService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RobloxSerializableInstance)
  */
 interface RobloxSerializableInstance extends Instance {
@@ -9508,6 +10138,8 @@ interface RobloxSerializableInstance extends Instance {
     readonly _nominal_RobloxSerializableInstance: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RobloxServerStorage)
  */
 interface RobloxServerStorage extends Instance {
@@ -9521,6 +10153,8 @@ interface RobloxServerStorage extends Instance {
     readonly _nominal_RobloxServerStorage: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RomarkRbxAnalyticsService)
  */
 interface RomarkRbxAnalyticsService extends Instance {
@@ -9534,6 +10168,8 @@ interface RomarkRbxAnalyticsService extends Instance {
     readonly _nominal_RomarkRbxAnalyticsService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RomarkService)
  */
 interface RomarkService extends Instance {
@@ -9562,6 +10198,8 @@ interface RotationCurve extends Instance {
     readonly _nominal_RotationCurve: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RtMessagingService)
  */
 interface RtMessagingService extends Instance {
@@ -9576,6 +10214,8 @@ interface RtMessagingService extends Instance {
 }
 /**
  * Service responsible for all runtime activity and progression of time.
+ *
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService)
  */
@@ -9651,6 +10291,8 @@ interface RunService extends Instance {
     Stop(this: RunService): void;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SafetyService)
  */
 interface SafetyService extends Instance {
@@ -9666,6 +10308,8 @@ interface SafetyService extends Instance {
 /**
  * A 2D user interface that allows users to capture and save screenshots to their local device.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScreenshotHud)
  */
 interface ScreenshotHud extends Instance {
@@ -9679,6 +10323,8 @@ interface ScreenshotHud extends Instance {
     readonly _nominal_ScreenshotHud: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptBuilder)
  */
 interface ScriptBuilder extends Instance {
@@ -9692,6 +10338,8 @@ interface ScriptBuilder extends Instance {
     readonly _nominal_ScriptBuilder: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SyncScriptBuilder)
  */
 interface SyncScriptBuilder extends ScriptBuilder {
@@ -9705,6 +10353,8 @@ interface SyncScriptBuilder extends ScriptBuilder {
     readonly _nominal_SyncScriptBuilder: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptChangeService)
  */
 interface ScriptChangeService extends Instance {
@@ -9718,6 +10368,8 @@ interface ScriptChangeService extends Instance {
     readonly _nominal_ScriptChangeService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptCloneWatcher)
  */
 interface ScriptCloneWatcher extends Instance {
@@ -9731,6 +10383,8 @@ interface ScriptCloneWatcher extends Instance {
     readonly _nominal_ScriptCloneWatcher: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptCloneWatcherHelper)
  */
 interface ScriptCloneWatcherHelper extends Instance {
@@ -9744,6 +10398,8 @@ interface ScriptCloneWatcherHelper extends Instance {
     readonly _nominal_ScriptCloneWatcherHelper: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptCommitService)
  */
 interface ScriptCommitService extends Instance {
@@ -9757,6 +10413,8 @@ interface ScriptCommitService extends Instance {
     readonly _nominal_ScriptCommitService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptContext)
  */
 interface ScriptContext extends Instance {
@@ -9781,6 +10439,8 @@ interface ScriptContext extends Instance {
     SetTimeout(this: ScriptContext, seconds: number): void;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebugger)
  */
 interface ScriptDebugger extends Instance {
@@ -9794,6 +10454,8 @@ interface ScriptDebugger extends Instance {
     readonly _nominal_ScriptDebugger: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument)
  */
 interface ScriptDocument extends Instance {
@@ -10010,6 +10672,8 @@ interface ScriptDocument extends Instance {
 /**
  * This service is used for interacting with <code>ScriptDocument</code> instances.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptEditorService)
  */
 interface ScriptEditorService extends Instance {
@@ -10155,6 +10819,8 @@ interface ScriptEditorService extends Instance {
     readonly TextDocumentDidOpen: RBXScriptSignal<(newDocument: ScriptDocument) => void>;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptProfilerService)
  */
 interface ScriptProfilerService extends Instance {
@@ -10238,6 +10904,8 @@ interface ScriptProfilerService extends Instance {
     readonly OnNewData: RBXScriptSignal<(player: Player, jsonString: string) => void>;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptRegistrationService)
  */
 interface ScriptRegistrationService extends Instance {
@@ -10251,6 +10919,8 @@ interface ScriptRegistrationService extends Instance {
     readonly _nominal_ScriptRegistrationService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptRuntime)
  */
 interface ScriptRuntime extends Instance {
@@ -10265,6 +10935,8 @@ interface ScriptRuntime extends Instance {
 }
 /**
  * The Selection service controls the <code>Instances</code> that are selected in Roblox Studio.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Selection)
  */
@@ -10319,6 +10991,8 @@ interface Selection extends Instance {
     Set(this: Selection, selection: Array<Instance>): void;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SelectionHighlightManager)
  */
 interface SelectionHighlightManager extends Instance {
@@ -10333,6 +11007,8 @@ interface SelectionHighlightManager extends Instance {
 }
 /**
  * An abstract class for various sensor instance types.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SensorBase)
  */
@@ -10377,6 +11053,8 @@ interface BuoyancySensor extends SensorBase {
     readonly _nominal_BuoyancySensor: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControllerSensor)
  */
 interface ControllerSensor extends SensorBase {
@@ -10422,6 +11100,8 @@ interface FluidForceSensor extends SensorBase {
 /**
  * A container service for server-only <code>Script</code> objects.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ServerScriptService)
  */
 interface ServerScriptService extends Instance {
@@ -10436,6 +11116,8 @@ interface ServerScriptService extends Instance {
 }
 /**
  * A container whose contents are only accessible on the server. Objects descending from ServerStorage will not replicate to the client and will not be accessible from <code>LocalScripts</code>.
+ *
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ServerStorage)
  */
@@ -10452,6 +11134,8 @@ interface ServerStorage extends Instance {
 /**
  * A ServiceProvider is an abstract class, which stores, and provides certain singleton classes, depending on what inherited class you are using its members with.
  *
+ * - **Tags**: NotCreatable, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ServiceProvider)
  */
 interface ServiceProvider<S = unknown> extends Instance {
@@ -10466,6 +11150,8 @@ interface ServiceProvider<S = unknown> extends Instance {
 }
 /**
  * The root of Roblox's parent-child hierarchy. Its direct children are services, such as <code>Workspace</code> and <code>Lighting</code>, that act as the fundamental components of a Roblox game.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel)
  */
@@ -10527,6 +11213,8 @@ interface DataModel extends ServiceProvider<Services> {
 /**
  * The abstract class for settings database classes.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenericSettings)
  */
 interface GenericSettings<S = unknown> extends ServiceProvider<S> {
@@ -10541,6 +11229,8 @@ interface GenericSettings<S = unknown> extends ServiceProvider<S> {
 }
 /**
  * Collection of menu settings for Roblox Studio.
+ *
+ * - **Tags**: NotCreatable, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GlobalSettings)
  */
@@ -10557,6 +11247,8 @@ interface GlobalSettings extends GenericSettings {
 /**
  * A singleton object that houses basic user settings, which persist across all games on Roblox.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserSettings)
  */
 interface UserSettings extends GenericSettings<{
@@ -10572,6 +11264,8 @@ interface UserSettings extends GenericSettings<{
     readonly _nominal_UserSettings: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ServiceVisibilityService)
  */
 interface ServiceVisibilityService extends Instance {
@@ -10585,6 +11279,8 @@ interface ServiceVisibilityService extends Instance {
     readonly _nominal_ServiceVisibilityService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SessionService)
  */
 interface SessionService extends Instance {
@@ -10600,6 +11296,8 @@ interface SessionService extends Instance {
 /**
  * Provides a global registry of named <code>SharedTable</code> objects.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SharedTableRegistry)
  */
 interface SharedTableRegistry extends Instance {
@@ -10613,6 +11311,8 @@ interface SharedTableRegistry extends Instance {
     readonly _nominal_SharedTableRegistry: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ShorelineUpgraderService)
  */
 interface ShorelineUpgraderService extends Instance {
@@ -10656,6 +11356,8 @@ interface Smoke extends Instance {
     readonly _nominal_Smoke: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SmoothVoxelsUpgraderService)
  */
 interface SmoothVoxelsUpgraderService extends Instance {
@@ -10669,6 +11371,8 @@ interface SmoothVoxelsUpgraderService extends Instance {
     readonly _nominal_SmoothVoxelsUpgraderService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SnippetService)
  */
 interface SnippetService extends Instance {
@@ -10683,6 +11387,8 @@ interface SnippetService extends Instance {
 }
 /**
  * Facilitates social functions that impact relationships made on the Roblox platform.
+ *
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService)
  */
@@ -10713,6 +11419,8 @@ interface Sound extends Instance {
 }
 /**
  * SoundEffect is the base class that all other sound effects derive from. A SoundEffect can be applied to either a <code>Sound</code> or <code>SoundGroup</code> by being parented to either.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundEffect)
  */
@@ -10757,6 +11465,8 @@ interface CompressorSoundEffect extends SoundEffect {
     readonly _nominal_CompressorSoundEffect: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CustomSoundEffect)
  */
 interface CustomSoundEffect extends SoundEffect {
@@ -10770,6 +11480,8 @@ interface CustomSoundEffect extends SoundEffect {
     readonly _nominal_CustomSoundEffect: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetSoundEffect)
  */
 interface AssetSoundEffect extends CustomSoundEffect {
@@ -10783,6 +11495,8 @@ interface AssetSoundEffect extends CustomSoundEffect {
     readonly _nominal_AssetSoundEffect: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChannelSelectorSoundEffect)
  */
 interface ChannelSelectorSoundEffect extends CustomSoundEffect {
@@ -10918,6 +11632,8 @@ interface SoundGroup extends Instance {
 /**
  * A service that determines various aspects of how <code>Sounds</code> play in the experience.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService)
  */
 interface SoundService extends Instance {
@@ -10978,6 +11694,8 @@ interface Sparkles extends Instance {
     readonly _nominal_Sparkles: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StackFrame)
  */
 interface StackFrame extends Instance {
@@ -10991,6 +11709,8 @@ interface StackFrame extends Instance {
     readonly _nominal_StackFrame: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StartPageService)
  */
 interface StartPageService extends Instance {
@@ -11021,6 +11741,8 @@ interface StarterGear extends Instance {
 /**
  * A service-level container whose contents are copied into each player's <code>Backpack</code> when the player spawns. It is generally used to hold <code>Tools</code>, but is sometimes used to hold <code>LocalScripts</code> to ensure that each player gets a copy.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterPack)
  */
 interface StarterPack extends Instance {
@@ -11035,6 +11757,8 @@ interface StarterPack extends Instance {
 }
 /**
  * A service which allows the defaults of properties in the <code>Player</code> object to be set.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterPlayer)
  */
@@ -11051,6 +11775,8 @@ interface StarterPlayer extends Instance {
 /**
  * A container for objects to be copied to a Player's PlayerScripts when they join a game.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterPlayerScripts)
  */
 interface StarterPlayerScripts extends Instance {
@@ -11066,6 +11792,8 @@ interface StarterPlayerScripts extends Instance {
 /**
  * Stores instances to be parented to a player's character when it spawns.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterCharacterScripts)
  */
 interface StarterCharacterScripts extends StarterPlayerScripts {
@@ -11079,6 +11807,8 @@ interface StarterCharacterScripts extends StarterPlayerScripts {
     readonly _nominal_StarterCharacterScripts: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StartupMessageService)
  */
 interface StartupMessageService extends Instance {
@@ -11094,6 +11824,8 @@ interface StartupMessageService extends Instance {
 /**
  * Performance metrics for a game.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Stats)
  */
 interface Stats extends Instance {
@@ -11108,6 +11840,8 @@ interface Stats extends Instance {
 }
 /**
  * A single performance metric.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StatsItem)
  */
@@ -11152,6 +11886,8 @@ interface StatsItem extends Instance {
 /**
  * Measures the runtime average of a <strong>double</strong> value.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunningAverageItemDouble)
  */
 interface RunningAverageItemDouble extends StatsItem {
@@ -11166,6 +11902,8 @@ interface RunningAverageItemDouble extends StatsItem {
 }
 /**
  * Measures the runtime average of an <strong>integer</strong> value.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunningAverageItemInt)
  */
@@ -11182,6 +11920,8 @@ interface RunningAverageItemInt extends StatsItem {
 /**
  * Measures the runtime average of a time interval value.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunningAverageTimeIntervalItem)
  */
 interface RunningAverageTimeIntervalItem extends StatsItem {
@@ -11197,6 +11937,8 @@ interface RunningAverageTimeIntervalItem extends StatsItem {
 /**
  * Measures a total-count-over-time interval.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TotalCountTimeIntervalItem)
  */
 interface TotalCountTimeIntervalItem extends StatsItem {
@@ -11210,6 +11952,8 @@ interface TotalCountTimeIntervalItem extends StatsItem {
     readonly _nominal_TotalCountTimeIntervalItem: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StreamingService)
  */
 interface StreamingService extends Instance {
@@ -11223,6 +11967,8 @@ interface StreamingService extends Instance {
     readonly _nominal_StreamingService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio)
  */
 interface Studio extends Instance {
@@ -11256,6 +12002,8 @@ interface Studio extends Instance {
     readonly ThemeChanged: RBXScriptSignal<() => void>;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioAssetService)
  */
 interface StudioAssetService extends Instance {
@@ -11269,6 +12017,8 @@ interface StudioAssetService extends Instance {
     readonly _nominal_StudioAssetService: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioAttachment)
  */
 interface StudioAttachment extends Instance {
@@ -11282,6 +12032,8 @@ interface StudioAttachment extends Instance {
     readonly _nominal_StudioAttachment: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCallout)
  */
 interface StudioCallout extends Instance {
@@ -11295,6 +12047,8 @@ interface StudioCallout extends Instance {
     readonly _nominal_StudioCallout: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioData)
  */
 interface StudioData extends Instance {
@@ -11308,6 +12062,8 @@ interface StudioData extends Instance {
     readonly _nominal_StudioData: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceEmulatorService)
  */
 interface StudioDeviceEmulatorService extends Instance {
@@ -11321,6 +12077,8 @@ interface StudioDeviceEmulatorService extends Instance {
     readonly _nominal_StudioDeviceEmulatorService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioObjectBase)
  */
 interface StudioObjectBase extends Instance {
@@ -11334,6 +12092,8 @@ interface StudioObjectBase extends Instance {
     readonly _nominal_StudioObjectBase: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioWidget)
  */
 interface StudioWidget extends StudioObjectBase {
@@ -11347,6 +12107,8 @@ interface StudioWidget extends StudioObjectBase {
     readonly _nominal_StudioWidget: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioPublishService)
  */
 interface StudioPublishService extends Instance {
@@ -11360,6 +12122,8 @@ interface StudioPublishService extends Instance {
     readonly _nominal_StudioPublishService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScriptDebugEventListener)
  */
 interface StudioScriptDebugEventListener extends Instance {
@@ -11373,6 +12137,8 @@ interface StudioScriptDebugEventListener extends Instance {
     readonly _nominal_StudioScriptDebugEventListener: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioSdkService)
  */
 interface StudioSdkService extends Instance {
@@ -11387,6 +12153,8 @@ interface StudioSdkService extends Instance {
 }
 /**
  * Provides access to configuration of Roblox Studio and allows importing files from the user's file system.
+ *
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioService)
  */
@@ -11459,6 +12227,8 @@ interface StudioService extends Instance {
     PromptImportFiles(this: StudioService, fileTypeFilter?: Array<unknown>): Array<Instance>;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTheme)
  */
 interface StudioTheme extends Instance {
@@ -11485,6 +12255,8 @@ interface StudioTheme extends Instance {
     GetColor(this: StudioTheme, styleguideitem: CastsToEnum<Enum.StudioStyleGuideColor>, modifier?: CastsToEnum<Enum.StudioStyleGuideModifier>): Color3;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioUserService)
  */
 interface StudioUserService extends Instance {
@@ -11498,6 +12270,8 @@ interface StudioUserService extends Instance {
     readonly _nominal_StudioUserService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioWidgetsService)
  */
 interface StudioWidgetsService extends Instance {
@@ -11511,6 +12285,8 @@ interface StudioWidgetsService extends Instance {
     readonly _nominal_StudioWidgetsService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleBase)
  */
 interface StyleBase extends Instance {
@@ -11576,6 +12352,8 @@ interface StyleLink extends Instance {
     readonly _nominal_StyleLink: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StylingService)
  */
 interface StylingService extends Instance {
@@ -11651,6 +12429,8 @@ interface SurfaceAppearance extends Instance {
 /**
  * Collection of settings for the <em>Task Scheduler</em> feature.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TaskScheduler)
  */
 interface TaskScheduler extends Instance {
@@ -11679,6 +12459,8 @@ interface Team extends Instance {
     readonly _nominal_Team: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeamCreateData)
  */
 interface TeamCreateData extends Instance {
@@ -11692,6 +12474,8 @@ interface TeamCreateData extends Instance {
     readonly _nominal_TeamCreateData: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeamCreatePublishService)
  */
 interface TeamCreatePublishService extends Instance {
@@ -11705,6 +12489,8 @@ interface TeamCreatePublishService extends Instance {
     readonly _nominal_TeamCreatePublishService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeamCreateService)
  */
 interface TeamCreateService extends Instance {
@@ -11720,6 +12506,8 @@ interface TeamCreateService extends Instance {
 /**
  * The Teams service holds a game's <code>Team</code> objects. <code>Team</code> objects must be parented to the Teams service.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Teams)
  */
 interface Teams extends Instance {
@@ -11733,6 +12521,8 @@ interface Teams extends Instance {
     readonly _nominal_Teams: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TelemetryService)
  */
 interface TelemetryService extends Instance {
@@ -11747,6 +12537,8 @@ interface TelemetryService extends Instance {
 }
 /**
  * The return structure of the <code>TeleportAsync</code> function call.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportAsyncResult)
  */
@@ -11778,6 +12570,8 @@ interface TeleportOptions extends Instance {
 /**
  * Enables transporting <code>Players</code> between places and servers.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService)
  */
 interface TeleportService extends Instance {
@@ -11791,6 +12585,8 @@ interface TeleportService extends Instance {
     readonly _nominal_TeleportService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TemporaryCageMeshProvider)
  */
 interface TemporaryCageMeshProvider extends Instance {
@@ -11804,6 +12600,8 @@ interface TemporaryCageMeshProvider extends Instance {
     readonly _nominal_TemporaryCageMeshProvider: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TemporaryScriptService)
  */
 interface TemporaryScriptService extends Instance {
@@ -11895,6 +12693,8 @@ interface TerrainRegion extends Instance {
 /**
  * A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
  *
+ * - **Tags**: Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService)
  */
 interface TestService extends Instance {
@@ -11919,6 +12719,8 @@ interface TestService extends Instance {
     Run(this: TestService): void;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextBoxService)
  */
 interface TextBoxService extends Instance {
@@ -11964,6 +12766,8 @@ interface TextChatCommand extends Instance {
 /**
  * The parental class of all text chat configurations.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatConfigurations)
  */
 interface TextChatConfigurations extends Instance {
@@ -11978,6 +12782,8 @@ interface TextChatConfigurations extends Instance {
 }
 /**
  * Allows for customization of text chat bubbles through <code>TextChatService</code>.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BubbleChatConfiguration)
  */
@@ -11994,6 +12800,8 @@ interface BubbleChatConfiguration extends TextChatConfigurations {
 /**
  * Configures properties of the optional channel tabs in the default chat window.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChannelTabsConfiguration)
  */
 interface ChannelTabsConfiguration extends TextChatConfigurations {
@@ -12008,6 +12816,8 @@ interface ChannelTabsConfiguration extends TextChatConfigurations {
 }
 /**
  * Configures properties of the default chat input bar.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChatInputBarConfiguration)
  */
@@ -12024,6 +12834,8 @@ interface ChatInputBarConfiguration extends TextChatConfigurations {
 /**
  * Configures properties of the default chat window.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChatWindowConfiguration)
  */
 interface ChatWindowConfiguration extends TextChatConfigurations {
@@ -12038,6 +12850,8 @@ interface ChatWindowConfiguration extends TextChatConfigurations {
 }
 /**
  * Immutable data object representing a text chat message.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatMessage)
  */
@@ -12080,6 +12894,8 @@ interface BubbleChatMessageProperties extends TextChatMessageProperties {
     readonly _nominal_BubbleChatMessageProperties: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChatWindowMessageProperties)
  */
 interface ChatWindowMessageProperties extends TextChatMessageProperties {
@@ -12094,6 +12910,8 @@ interface ChatWindowMessageProperties extends TextChatMessageProperties {
 }
 /**
  * A service handling in-experience text chat.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatService)
  */
@@ -12126,6 +12944,8 @@ interface TextChatService extends Instance {
     set CreateDefaultTextChannels(value: boolean);
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextFilterResult)
  */
 interface TextFilterResult extends Instance {
@@ -12139,6 +12959,8 @@ interface TextFilterResult extends Instance {
     readonly _nominal_TextFilterResult: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextFilterTranslatedResult)
  */
 interface TextFilterTranslatedResult extends Instance {
@@ -12153,6 +12975,8 @@ interface TextFilterTranslatedResult extends Instance {
 }
 /**
  * The TextService is a service internally responsible for handling the display of text in the game.
+ *
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextService)
  */
@@ -12169,6 +12993,8 @@ interface TextService extends Instance {
 /**
  * Represents a speaker in a <code>TextChannel</code>.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextSource)
  */
 interface TextSource extends Instance {
@@ -12182,6 +13008,8 @@ interface TextSource extends Instance {
     readonly _nominal_TextSource: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextureGenerationPartGroup)
  */
 interface TextureGenerationPartGroup extends Instance {
@@ -12195,6 +13023,8 @@ interface TextureGenerationPartGroup extends Instance {
     readonly _nominal_TextureGenerationPartGroup: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextureGenerationService)
  */
 interface TextureGenerationService extends Instance {
@@ -12208,6 +13038,8 @@ interface TextureGenerationService extends Instance {
     readonly _nominal_TextureGenerationService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextureGenerationUnwrappingRequest)
  */
 interface TextureGenerationUnwrappingRequest extends Instance {
@@ -12221,6 +13053,8 @@ interface TextureGenerationUnwrappingRequest extends Instance {
     readonly _nominal_TextureGenerationUnwrappingRequest: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ThreadState)
  */
 interface ThreadState extends Instance {
@@ -12234,6 +13068,8 @@ interface ThreadState extends Instance {
     readonly _nominal_ThreadState: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ToastNotificationService)
  */
 interface ToastNotificationService extends Instance {
@@ -12249,6 +13085,8 @@ interface ToastNotificationService extends Instance {
 /**
  * An internal object used by networking and replication code to transmit <code>BasePart.Touched</code> and <code>BasePart.TouchEnded</code> events.
  *
+ * - **Tags**: NotCreatable, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TouchTransmitter)
  */
 interface TouchTransmitter extends Instance {
@@ -12262,6 +13100,8 @@ interface TouchTransmitter extends Instance {
     readonly _nominal_TouchTransmitter: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TracerService)
  */
 interface TracerService extends Instance {
@@ -12275,6 +13115,8 @@ interface TracerService extends Instance {
     readonly _nominal_TracerService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TrackerLodController)
  */
 interface TrackerLodController extends Instance {
@@ -12288,6 +13130,8 @@ interface TrackerLodController extends Instance {
     readonly _nominal_TrackerLodController: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TrackerStreamAnimation)
  */
 interface TrackerStreamAnimation extends Instance {
@@ -12318,6 +13162,8 @@ interface Trail extends Instance {
 /**
  * The role of a Translator is to manufacture/return strings localized for the viewing player.
  *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Translator)
  */
 interface Translator extends Instance {
@@ -12331,6 +13177,8 @@ interface Translator extends Instance {
     readonly _nominal_Translator: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TutorialService)
  */
 interface TutorialService extends Instance {
@@ -12345,6 +13193,8 @@ interface TutorialService extends Instance {
 }
 /**
  * Abstract base class for in-between interpolation handlers. <code>Tween</code> inherits from <code>TweenBase</code>.
+ *
+ * - **Tags**: NotCreatable, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TweenBase)
  */
@@ -12376,6 +13226,8 @@ interface Tween extends TweenBase {
 /**
  * Used to create <code>Tweens</code> which interpolate, or tween, the properties of instances.
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TweenService)
  */
 interface TweenService extends Instance {
@@ -12389,6 +13241,8 @@ interface TweenService extends Instance {
     readonly _nominal_TweenService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UGCAvatarService)
  */
 interface UGCAvatarService extends Instance {
@@ -12403,6 +13257,8 @@ interface UGCAvatarService extends Instance {
 }
 /**
  * <code>UIBase</code> is the base class for UI layout and constraint classes.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIBase)
  */
@@ -12419,6 +13275,8 @@ interface UIBase extends Instance {
 /**
  * A base class for UI constraint and layout classes.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIComponent)
  */
 interface UIComponent extends UIBase {
@@ -12433,6 +13291,8 @@ interface UIComponent extends UIBase {
 }
 /**
  * The base class for UI constraint classes.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIConstraint)
  */
@@ -12554,6 +13414,8 @@ interface UIGradient extends UIComponent {
 /**
  * The base class for UI layout classes.
  *
+ * - **Tags**: NotCreatable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UILayout)
  */
 interface UILayout extends UIComponent {
@@ -12568,6 +13430,8 @@ interface UILayout extends UIComponent {
 }
 /**
  * The base class for grid style UI layouts.
+ *
+ * - **Tags**: NotCreatable, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIGridStyleLayout)
  */
@@ -12685,6 +13549,8 @@ interface UIStroke extends UIComponent {
     readonly _nominal_UIStroke: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIDragDetectorService)
  */
 interface UIDragDetectorService extends Instance {
@@ -12698,6 +13564,8 @@ interface UIDragDetectorService extends Instance {
     readonly _nominal_UIDragDetectorService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UnvalidatedAssetService)
  */
 interface UnvalidatedAssetService extends Instance {
@@ -12712,6 +13580,8 @@ interface UnvalidatedAssetService extends Instance {
 }
 /**
  * The UserGameSettings is a singleton class found inside of the <code>UserSettings</code> singleton. It holds various persistent settings relating to how the user wants to control their camera, and their character.
+ *
+ * - **Tags**: NotCreatable, UserSettings, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserGameSettings)
  */
@@ -12728,6 +13598,8 @@ interface UserGameSettings extends Instance {
 /**
  * <code>UserInputService</code> is a service used to detect the type of input available on a user's device via the use of a <code>LocalScript</code>. The service is also used to detect input events.
  *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService)
  */
 interface UserInputService extends Instance {
@@ -12742,6 +13614,8 @@ interface UserInputService extends Instance {
 }
 /**
  * A service that handles queries regarding users on the Roblox platform.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserService)
  */
@@ -12758,6 +13632,8 @@ interface UserService extends Instance {
 /**
  * Service responsible for handling interactions between Roblox and Virtual Reality (VR).
  *
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VRService)
  */
 interface VRService extends Instance {
@@ -12771,6 +13647,8 @@ interface VRService extends Instance {
     readonly _nominal_VRService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VRStatusService)
  */
 interface VRStatusService extends Instance {
@@ -12785,6 +13663,8 @@ interface VRStatusService extends Instance {
 }
 /**
  * Base class of all 'Value Instance' objects.
+ *
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueBase)
  */
@@ -12863,6 +13743,8 @@ interface Color3Value extends ValueBase {
 /**
  * <strong>Deprecated:</strong> The DoubleConstrainedValue object has been deprecated as developers can now use the <code>math.clamp()</code> function to constrain values.<br>An instance which is used to create a number value which can never be less than the MinValue or more than the MaxValue.
  *
+ * - **Tags**: Deprecated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DoubleConstrainedValue)
  */
 interface DoubleConstrainedValue extends ValueBase {
@@ -12877,6 +13759,8 @@ interface DoubleConstrainedValue extends ValueBase {
 }
 /**
  * <strong>Deprecated:</strong> The IntConstrainedValue object has been deprecated as developers can now use the <code>math.clamp()</code> function to constrain values.<br>An IntConstrainedValue is used to store a value which can never be less than MinValue and can never be more than MaxValue.
+ *
+ * - **Tags**: Deprecated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IntConstrainedValue)
  */
@@ -12996,6 +13880,8 @@ interface Vector3Curve extends Instance {
     readonly _nominal_Vector3Curve: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VersionControlService)
  */
 interface VersionControlService extends Instance {
@@ -13009,6 +13895,8 @@ interface VersionControlService extends Instance {
     readonly _nominal_VersionControlService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoCaptureService)
  */
 interface VideoCaptureService extends Instance {
@@ -13022,6 +13910,8 @@ interface VideoCaptureService extends Instance {
     readonly _nominal_VideoCaptureService: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDeviceInput)
  */
 interface VideoDeviceInput extends Instance {
@@ -13035,6 +13925,8 @@ interface VideoDeviceInput extends Instance {
     readonly _nominal_VideoDeviceInput: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer)
  */
 interface VideoPlayer extends Instance {
@@ -13048,6 +13940,8 @@ interface VideoPlayer extends Instance {
     readonly _nominal_VideoPlayer: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoService)
  */
 interface VideoService extends Instance {
@@ -13061,6 +13955,8 @@ interface VideoService extends Instance {
     readonly _nominal_VideoService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VisibilityCheckDispatcher)
  */
 interface VisibilityCheckDispatcher extends Instance {
@@ -13100,6 +13996,8 @@ interface VisualizationModeCategory extends Instance {
     readonly _nominal_VisualizationModeCategory: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VisualizationModeService)
  */
 interface VisualizationModeService extends Instance {
@@ -13113,6 +14011,8 @@ interface VisualizationModeService extends Instance {
     readonly _nominal_VisualizationModeService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatInternal)
  */
 interface VoiceChatInternal extends Instance {
@@ -13127,6 +14027,8 @@ interface VoiceChatInternal extends Instance {
 }
 /**
  * <strong>VoiceChatService</strong> is responsible for voice chat's high-level functionality.
+ *
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatService)
  */
@@ -13159,6 +14061,8 @@ interface VoiceChatService extends Instance {
     UseAudioApi: Enum.AudioApiRollout;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebViewService)
  */
 interface WebViewService extends Instance {

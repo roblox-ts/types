@@ -104,7 +104,7 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 
 			comments.push(`- **ThreadSafety**: ${apiMember.ThreadSafety}`);
 			if (apiMember.Tags) {
-				comments.push(`- **Tags**: ${apiMember.Tags.join(", ")}`);
+				comments.push(`- **Tags**: ${apiMember.Tags.filter(v => typeof v === "string").join(", ")}`);
 			}
 
 			if (comments.length > 0) comments.push("");
@@ -181,22 +181,20 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 		ts.copyComments(overrideInterface, interfaceDeclaration);
 	}
 
-	const jsDocComments = new Array<string>();
+	const comments = new Array<string>();
 
 	const apiDocsEntry = ctx.docs.get(`@roblox/globaltype/${apiClass.Name}`);
-	if (apiDocsEntry) {
-		if (apiDocsEntry.documentation) {
-			jsDocComments.push(apiDocsEntry.documentation);
-		}
+	if (apiDocsEntry?.documentation) {
+		comments.push(`${apiDocsEntry.documentation}\n`);
 	}
 
-	if (jsDocComments.length > 0) {
-		jsDocComments.push("");
+	if (apiClass.Tags) {
+		comments.push(`- **Tags**: ${apiClass.Tags.join(", ")}\n`);
 	}
 
-	jsDocComments.push(`[Creator Hub](https://create.roblox.com/docs/reference/engine/classes/${apiClass.Name})`);
+	comments.push(`[Creator Hub](https://create.roblox.com/docs/reference/engine/classes/${apiClass.Name})`);
 
-	setJsDocComment(interfaceDeclaration, jsDocComments);
+	setJsDocComment(interfaceDeclaration, comments);
 
 	return interfaceDeclaration;
 }
