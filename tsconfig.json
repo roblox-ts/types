@@ -13,7 +13,6 @@
 		"rootDir": "src",
 		"outDir": "out",
 		// optional
-		"baseUrl": "src",
 		"declaration": false,
 		// optional, non-configurable
 		"jsx": "react",
