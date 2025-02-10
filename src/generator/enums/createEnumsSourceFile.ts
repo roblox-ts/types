@@ -3,6 +3,7 @@ import ts from "typescript";
 import { Context } from "../../types/Context";
 import { createCommentStatement } from "../createCommentStatement";
 import { createEnumNamespace } from "./createEnumNamespace";
+import { createGlobalEnumInterface } from "./createGlobalEnumInterface";
 
 export function createEnumsSourceFile(ctx: Context) {
 	const statements = new Array<ts.Statement>();
@@ -110,29 +111,31 @@ export function createEnumsSourceFile(ctx: Context) {
 		),
 	);
 
-	statements.push(
-		ts.factory.createInterfaceDeclaration(undefined, ts.factory.createIdentifier("Enum"), undefined, undefined, [
-			ts.factory.createMethodSignature(
-				undefined,
-				ts.factory.createIdentifier("GetEnumItems"),
-				undefined,
-				undefined,
-				[
-					ts.factory.createParameterDeclaration(
-						undefined,
-						undefined,
-						ts.factory.createIdentifier("this"),
-						undefined,
-						ts.factory.createTypeReferenceNode(ts.factory.createIdentifier("Enum"), undefined),
-						undefined,
-					),
-				],
-				ts.factory.createTypeReferenceNode(ts.factory.createIdentifier("Array"), [
-					ts.factory.createTypeReferenceNode(ts.factory.createIdentifier("EnumItem"), undefined),
-				]),
-			),
-		]),
+	const enumInterfaceMethods = new Array<ts.MethodSignature>();
+
+	enumInterfaceMethods.push(
+		ts.factory.createMethodSignature(
+			undefined,
+			ts.factory.createIdentifier("GetEnumItems"),
+			undefined,
+			undefined,
+			[
+				ts.factory.createParameterDeclaration(
+					undefined,
+					undefined,
+					ts.factory.createIdentifier("this"),
+					undefined,
+					ts.factory.createTypeReferenceNode(ts.factory.createIdentifier("Enum"), undefined),
+					undefined,
+				),
+			],
+			ts.factory.createTypeReferenceNode(ts.factory.createIdentifier("Array"), [
+				ts.factory.createTypeReferenceNode(ts.factory.createIdentifier("EnumItem"), undefined),
+			]),
+		),
 	);
+
+	statements.push(createGlobalEnumInterface());
 
 	const namespaceStatements = new Array<ts.Statement>();
 
