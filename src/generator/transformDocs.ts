@@ -1,4 +1,4 @@
-import { transformHtml } from "../transformHtml";
+import { transformHtml } from "../util/transformHtml";
 
 export function transformDocs(content: string) {
 	try {
