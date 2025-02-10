@@ -1427,6 +1427,8 @@ interface CFrame {
 	ToOrientation(this: CFrame): LuaTuple<[number, number, number]>;
 	/** Returns a tuple of a Vector3 and a number which represent the rotation of the CFrame in the axis-angle representation */
 	ToAxisAngle(this: CFrame): LuaTuple<[Vector3, number]>;
+	/** Returns `true` if the other CFrame is sufficiently close to this CFrame in both position and rotation. The `eps` value is used to control the tolerance for this similarity. This value is optional and should be a small positive value if provided. The default value is 0.00001 (1e-5). The similarity for position is component-wise, and for rotation uses a fast approximation of the angle difference. */
+	FuzzyEq(this: CFrame, other: CFrame, epsilon?: number): boolean;
 }
 
 interface CFrameConstructor {
