@@ -11,6 +11,8 @@ interface EnumItem {
 }
 interface Enum {
     GetEnumItems(this: Enum): Array<EnumItem>;
+    FromName(this: Enum, name: string): EnumItem | undefined;
+    FromValue(this: Enum, value: number): EnumItem | undefined;
 }
 declare namespace Enum {
     export function GetEnums(this: Enums): Array<Enum>;
@@ -37,6 +39,8 @@ declare namespace Enum {
         }
         export const Deny: Deny;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AccessModifierType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AccessModifierType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AccessModifierType | undefined;
     }
     export type AccessModifierType = AccessModifierType.Allow | AccessModifierType.Deny;
     /**
@@ -266,6 +270,8 @@ declare namespace Enum {
         }
         export const Eyelash: Eyelash;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AccessoryType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AccessoryType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AccessoryType | undefined;
     }
     export type AccessoryType = AccessoryType.Unknown | AccessoryType.Hat | AccessoryType.Hair | AccessoryType.Face | AccessoryType.Neck | AccessoryType.Shoulder | AccessoryType.Front | AccessoryType.Back | AccessoryType.Waist | AccessoryType.TShirt | AccessoryType.Shirt | AccessoryType.Pants | AccessoryType.Jacket | AccessoryType.Sweater | AccessoryType.Shorts | AccessoryType.LeftShoe | AccessoryType.RightShoe | AccessoryType.DressSkirt | AccessoryType.Eyebrow | AccessoryType.Eyelash;
     /**
@@ -300,6 +306,8 @@ declare namespace Enum {
         }
         export const DeleteLocalFiles: DeleteLocalFiles;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ActionOnStopSync>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ActionOnStopSync | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ActionOnStopSync | undefined;
     }
     export type ActionOnStopSync = ActionOnStopSync.AlwaysAsk | ActionOnStopSync.KeepLocalFiles | ActionOnStopSync.DeleteLocalFiles;
     /**
@@ -352,6 +360,8 @@ declare namespace Enum {
         }
         export const Win: Win;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ActionType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ActionType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ActionType | undefined;
     }
     export type ActionType = ActionType.Nothing | ActionType.Pause | ActionType.Lose | ActionType.Draw | ActionType.Win;
     /**
@@ -394,6 +404,8 @@ declare namespace Enum {
         }
         export const World: World;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ActuatorRelativeTo>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ActuatorRelativeTo | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ActuatorRelativeTo | undefined;
     }
     export type ActuatorRelativeTo = ActuatorRelativeTo.Attachment0 | ActuatorRelativeTo.Attachment1 | ActuatorRelativeTo.World;
     /**
@@ -436,6 +448,8 @@ declare namespace Enum {
         }
         export const Servo: Servo;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ActuatorType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ActuatorType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ActuatorType | undefined;
     }
     export type ActuatorType = ActuatorType.None | ActuatorType.Motor | ActuatorType.Servo;
     /**
@@ -506,6 +520,8 @@ declare namespace Enum {
         }
         export const PublisherIneligible: PublisherIneligible;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdAvailabilityResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AdAvailabilityResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AdAvailabilityResult | undefined;
     }
     export type AdAvailabilityResult = AdAvailabilityResult.IsAvailable | AdAvailabilityResult.DeviceIneligible | AdAvailabilityResult.ExperienceIneligible | AdAvailabilityResult.InternalError | AdAvailabilityResult.NoFill | AdAvailabilityResult.PlayerIneligible | AdAvailabilityResult.PublisherIneligible;
     /**
@@ -579,6 +595,8 @@ declare namespace Enum {
         }
         export const UserCompletedVideo: UserCompletedVideo;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdEventType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AdEventType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AdEventType | undefined;
     }
     export type AdEventType = AdEventType.RewardedAdLoaded | AdEventType.RewardedAdGrant | AdEventType.RewardedAdUnloaded | AdEventType.VideoLoaded | AdEventType.VideoRemoved | AdEventType.UserCompletedVideo;
     /**
@@ -595,6 +613,8 @@ declare namespace Enum {
         }
         export const RewardedVideo: RewardedVideo;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdFormat>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AdFormat | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AdFormat | undefined;
     }
     export type AdFormat = AdFormat.RewardedVideo;
     /**
@@ -615,6 +635,8 @@ declare namespace Enum {
         }
         export const HorizontalRectangle: HorizontalRectangle;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdShape>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AdShape | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AdShape | undefined;
     }
     export type AdShape = AdShape.HorizontalRectangle;
     /**
@@ -658,6 +680,8 @@ declare namespace Enum {
         }
         export const UIBackButton: UIBackButton;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdTeleportMethod>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AdTeleportMethod | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AdTeleportMethod | undefined;
     }
     export type AdTeleportMethod = AdTeleportMethod.Undefined | AdTeleportMethod.PortalForward | AdTeleportMethod.InGameMenuBackButton | AdTeleportMethod.UIBackButton;
     /**
@@ -746,6 +770,8 @@ declare namespace Enum {
         }
         export const PauseEventTriggered: PauseEventTriggered;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdUIEventType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AdUIEventType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AdUIEventType | undefined;
     }
     export type AdUIEventType = AdUIEventType.AdLabelClicked | AdUIEventType.VolumeButtonClicked | AdUIEventType.FullscreenButtonClicked | AdUIEventType.PlayButtonClicked | AdUIEventType.PauseButtonClicked | AdUIEventType.CloseButtonClicked | AdUIEventType.WhyThisAdClicked | AdUIEventType.PlayEventTriggered | AdUIEventType.PauseEventTriggered;
     /**
@@ -780,6 +806,8 @@ declare namespace Enum {
         }
         export const Video: Video;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdUIType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AdUIType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AdUIType | undefined;
     }
     export type AdUIType = AdUIType.None | AdUIType.Image | AdUIType.Video;
     /**
@@ -811,6 +839,8 @@ declare namespace Enum {
         }
         export const Active: Active;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdUnitStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AdUnitStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AdUnitStatus | undefined;
     }
     export type AdUnitStatus = AdUnitStatus.Inactive | AdUnitStatus.Active;
     /**
@@ -842,6 +872,8 @@ declare namespace Enum {
         }
         export const Never: Never;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AdornCullingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AdornCullingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AdornCullingMode | undefined;
     }
     export type AdornCullingMode = AdornCullingMode.Automatic | AdornCullingMode.Never;
     /**
@@ -917,6 +949,8 @@ declare namespace Enum {
         }
         export const Perpendicular: Perpendicular;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AlignType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AlignType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AlignType | undefined;
     }
     export type AlignType = AlignType.PrimaryAxisParallel | AlignType.PrimaryAxisPerpendicular | AlignType.PrimaryAxisLookAt | AlignType.AllAxes | AlignType.Parallel | AlignType.Perpendicular;
     /**
@@ -948,6 +982,8 @@ declare namespace Enum {
         }
         export const Transparency: Transparency;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AlphaMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AlphaMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AlphaMode | undefined;
     }
     export type AlphaMode = AlphaMode.Overlay | AlphaMode.Transparency;
     /**
@@ -984,6 +1020,8 @@ declare namespace Enum {
         }
         export const CustomField03: CustomField03;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnalyticsCustomFieldKeys>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnalyticsCustomFieldKeys | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnalyticsCustomFieldKeys | undefined;
     }
     export type AnalyticsCustomFieldKeys = AnalyticsCustomFieldKeys.CustomField01 | AnalyticsCustomFieldKeys.CustomField02 | AnalyticsCustomFieldKeys.CustomField03;
     /**
@@ -1024,6 +1062,8 @@ declare namespace Enum {
         }
         export const Spend: Spend;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnalyticsEconomyAction>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnalyticsEconomyAction | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnalyticsEconomyAction | undefined;
     }
     export type AnalyticsEconomyAction = AnalyticsEconomyAction.Default | AnalyticsEconomyAction.Acquire | AnalyticsEconomyAction.Spend;
     /**
@@ -1053,6 +1093,8 @@ declare namespace Enum {
         }
         export const Source: Source;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnalyticsEconomyFlowType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnalyticsEconomyFlowType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnalyticsEconomyFlowType | undefined;
     }
     export type AnalyticsEconomyFlowType = AnalyticsEconomyFlowType.Sink | AnalyticsEconomyFlowType.Source;
     /**
@@ -1126,6 +1168,8 @@ declare namespace Enum {
         }
         export const Onboarding: Onboarding;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnalyticsEconomyTransactionType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnalyticsEconomyTransactionType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnalyticsEconomyTransactionType | undefined;
     }
     export type AnalyticsEconomyTransactionType = AnalyticsEconomyTransactionType.IAP | AnalyticsEconomyTransactionType.Shop | AnalyticsEconomyTransactionType.Gameplay | AnalyticsEconomyTransactionType.ContextualPurchase | AnalyticsEconomyTransactionType.TimedReward | AnalyticsEconomyTransactionType.Onboarding;
     /**
@@ -1197,6 +1241,8 @@ declare namespace Enum {
         }
         export const Fatal: Fatal;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnalyticsLogLevel>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnalyticsLogLevel | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnalyticsLogLevel | undefined;
     }
     export type AnalyticsLogLevel = AnalyticsLogLevel.Trace | AnalyticsLogLevel.Debug | AnalyticsLogLevel.Information | AnalyticsLogLevel.Warning | AnalyticsLogLevel.Error | AnalyticsLogLevel.Fatal;
     /**
@@ -1261,6 +1307,8 @@ declare namespace Enum {
         }
         export const Fail: Fail;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnalyticsProgressionStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnalyticsProgressionStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnalyticsProgressionStatus | undefined;
     }
     export type AnalyticsProgressionStatus = AnalyticsProgressionStatus.Default | AnalyticsProgressionStatus.Begin | AnalyticsProgressionStatus.Complete | AnalyticsProgressionStatus.Abandon | AnalyticsProgressionStatus.Fail;
     /**
@@ -1304,6 +1352,8 @@ declare namespace Enum {
         }
         export const Complete: Complete;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnalyticsProgressionType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnalyticsProgressionType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnalyticsProgressionType | undefined;
     }
     export type AnalyticsProgressionType = AnalyticsProgressionType.Custom | AnalyticsProgressionType.Start | AnalyticsProgressionType.Fail | AnalyticsProgressionType.Complete;
     /**
@@ -1419,6 +1469,8 @@ declare namespace Enum {
         }
         export const ErrorUploadingVideo: ErrorUploadingVideo;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationClipFromVideoStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationClipFromVideoStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationClipFromVideoStatus | undefined;
     }
     export type AnimationClipFromVideoStatus = AnimationClipFromVideoStatus.Initializing | AnimationClipFromVideoStatus.Pending | AnimationClipFromVideoStatus.Processing | AnimationClipFromVideoStatus.ErrorGeneric | AnimationClipFromVideoStatus.Success | AnimationClipFromVideoStatus.ErrorVideoTooLong | AnimationClipFromVideoStatus.ErrorNoPersonDetected | AnimationClipFromVideoStatus.ErrorVideoUnstable | AnimationClipFromVideoStatus.Timeout | AnimationClipFromVideoStatus.Cancelled | AnimationClipFromVideoStatus.ErrorMultiplePeople | AnimationClipFromVideoStatus.ErrorUploadingVideo;
     /**
@@ -1505,6 +1557,8 @@ declare namespace Enum {
         }
         export const Action4: Action4;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationPriority>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationPriority | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationPriority | undefined;
     }
     export type AnimationPriority = AnimationPriority.Core | AnimationPriority.Idle | AnimationPriority.Movement | AnimationPriority.Action | AnimationPriority.Action2 | AnimationPriority.Action3 | AnimationPriority.Action4;
     /**
@@ -1547,6 +1601,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimatorRetargetingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimatorRetargetingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimatorRetargetingMode | undefined;
     }
     export type AnimatorRetargetingMode = AnimatorRetargetingMode.Default | AnimatorRetargetingMode.Disabled | AnimatorRetargetingMode.Enabled;
     /**
@@ -1581,6 +1637,8 @@ declare namespace Enum {
         }
         export const WritingNew: WritingNew;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnnotationEditingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnnotationEditingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnnotationEditingMode | undefined;
     }
     export type AnnotationEditingMode = AnnotationEditingMode.None | AnnotationEditingMode.PlacingNew | AnnotationEditingMode.WritingNew;
     /**
@@ -1615,6 +1673,8 @@ declare namespace Enum {
         }
         export const ErrorNotFound: ErrorNotFound;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnnotationRequestResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnnotationRequestResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnnotationRequestResult | undefined;
     }
     export type AnnotationRequestResult = AnnotationRequestResult.Success | AnnotationRequestResult.ErrorInternalFailure | AnnotationRequestResult.ErrorNotFound;
     /**
@@ -1667,6 +1727,8 @@ declare namespace Enum {
         }
         export const Edit: Edit;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnnotationRequestType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnnotationRequestType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnnotationRequestType | undefined;
     }
     export type AnnotationRequestType = AnnotationRequestType.Unknown | AnnotationRequestType.Create | AnnotationRequestType.Resolve | AnnotationRequestType.Delete | AnnotationRequestType.Edit;
     /**
@@ -1710,6 +1772,8 @@ declare namespace Enum {
         }
         export const Hidden: Hidden;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AppLifecycleManagerState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AppLifecycleManagerState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AppLifecycleManagerState | undefined;
     }
     export type AppLifecycleManagerState = AppLifecycleManagerState.Detached | AppLifecycleManagerState.Active | AppLifecycleManagerState.Inactive | AppLifecycleManagerState.Hidden;
     /**
@@ -1816,6 +1880,8 @@ declare namespace Enum {
         }
         export const AvatarEditorPageLoaded: AvatarEditorPageLoaded;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AppShellActionType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AppShellActionType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AppShellActionType | undefined;
     }
     export type AppShellActionType = AppShellActionType.None | AppShellActionType.OpenApp | AppShellActionType.TapChatTab | AppShellActionType.TapConversationEntry | AppShellActionType.TapAvatarTab | AppShellActionType.ReadConversation | AppShellActionType.TapGamePageTab | AppShellActionType.TapHomePageTab | AppShellActionType.GamePageLoaded | AppShellActionType.HomePageLoaded | AppShellActionType.AvatarEditorPageLoaded;
     /**
@@ -1886,6 +1952,8 @@ declare namespace Enum {
         }
         export const Landing: Landing;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AppShellFeature>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AppShellFeature | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AppShellFeature | undefined;
     }
     export type AppShellFeature = AppShellFeature.None | AppShellFeature.Chat | AppShellFeature.AvatarEditor | AppShellFeature.GamePage | AppShellFeature.HomePage | AppShellFeature.More | AppShellFeature.Landing;
     /**
@@ -1947,6 +2015,8 @@ declare namespace Enum {
         }
         export const AvailableBoundChannel: AvailableBoundChannel;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AppUpdateStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AppUpdateStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AppUpdateStatus | undefined;
     }
     export type AppUpdateStatus = AppUpdateStatus.Unknown | AppUpdateStatus.NotSupported | AppUpdateStatus.Failed | AppUpdateStatus.NotAvailable | AppUpdateStatus.Available | AppUpdateStatus.AvailableBoundChannel;
     /**
@@ -1978,6 +2048,8 @@ declare namespace Enum {
         }
         export const Border: Border;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ApplyStrokeMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ApplyStrokeMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ApplyStrokeMode | undefined;
     }
     export type ApplyStrokeMode = ApplyStrokeMode.Contextual | ApplyStrokeMode.Border;
     /**
@@ -2009,6 +2081,8 @@ declare namespace Enum {
         }
         export const ScaleWithParentSize: ScaleWithParentSize;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AspectType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AspectType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AspectType | undefined;
     }
     export type AspectType = AspectType.FitWithinMaxSize | AspectType.ScaleWithParentSize;
     /**
@@ -2034,6 +2108,8 @@ declare namespace Enum {
         }
         export const Group: Group;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AssetCreatorType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AssetCreatorType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AssetCreatorType | undefined;
     }
     export type AssetCreatorType = AssetCreatorType.User | AssetCreatorType.Group;
     /**
@@ -2096,6 +2172,8 @@ declare namespace Enum {
         }
         export const TimedOut: TimedOut;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AssetFetchStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AssetFetchStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AssetFetchStatus | undefined;
     }
     export type AssetFetchStatus = AssetFetchStatus.Success | AssetFetchStatus.Failure | AssetFetchStatus.None | AssetFetchStatus.Loading | AssetFetchStatus.TimedOut;
     /**
@@ -2728,6 +2806,8 @@ declare namespace Enum {
         }
         export const DynamicHead: DynamicHead;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AssetType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AssetType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AssetType | undefined;
     }
     export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.FontFamily | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.MoodAnimation | AssetType.DynamicHead;
     /**
@@ -2770,6 +2850,8 @@ declare namespace Enum {
         }
         export const Always: Always;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AssetTypeVerification>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AssetTypeVerification | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AssetTypeVerification | undefined;
     }
     export type AssetTypeVerification = AssetTypeVerification.Default | AssetTypeVerification.ClientOnly | AssetTypeVerification.Always;
     /**
@@ -2812,6 +2894,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioApiRollout>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AudioApiRollout | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioApiRollout | undefined;
     }
     export type AudioApiRollout = AudioApiRollout.Disabled | AudioApiRollout.Automatic | AudioApiRollout.Enabled;
     /**
@@ -2942,6 +3026,8 @@ declare namespace Enum {
         }
         export const Notch: Notch;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioFilterType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AudioFilterType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioFilterType | undefined;
     }
     export type AudioFilterType = AudioFilterType.Peak | AudioFilterType.LowShelf | AudioFilterType.HighShelf | AudioFilterType.Lowpass12dB | AudioFilterType.Lowpass24dB | AudioFilterType.Lowpass48dB | AudioFilterType.Highpass12dB | AudioFilterType.Highpass24dB | AudioFilterType.Highpass48dB | AudioFilterType.Bandpass | AudioFilterType.Notch;
     /**
@@ -2967,6 +3053,8 @@ declare namespace Enum {
         }
         export const Automatic: Automatic;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioSimulationFidelity>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AudioSimulationFidelity | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioSimulationFidelity | undefined;
     }
     export type AudioSimulationFidelity = AudioSimulationFidelity.None | AudioSimulationFidelity.Automatic;
     /**
@@ -2992,6 +3080,8 @@ declare namespace Enum {
         }
         export const SoundEffect: SoundEffect;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioSubType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AudioSubType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioSubType | undefined;
     }
     export type AudioSubType = AudioSubType.Music | AudioSubType.SoundEffect;
     /**
@@ -3026,6 +3116,8 @@ declare namespace Enum {
         }
         export const Large: Large;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioWindowSize>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AudioWindowSize | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioWindowSize | undefined;
     }
     export type AudioWindowSize = AudioWindowSize.Small | AudioWindowSize.Medium | AudioWindowSize.Large;
     /**
@@ -3060,6 +3152,8 @@ declare namespace Enum {
         }
         export const Relative: Relative;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AutoIndentRule>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AutoIndentRule | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AutoIndentRule | undefined;
     }
     export type AutoIndentRule = AutoIndentRule.Off | AutoIndentRule.Absolute | AutoIndentRule.Relative;
     /**
@@ -3113,6 +3207,8 @@ declare namespace Enum {
         }
         export const XY: XY;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AutomaticSize>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AutomaticSize | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AutomaticSize | undefined;
     }
     export type AutomaticSize = AutomaticSize.None | AutomaticSize.X | AutomaticSize.Y | AutomaticSize.XY;
     /**
@@ -3558,6 +3654,8 @@ declare namespace Enum {
         }
         export const DynamicHead: DynamicHead;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarAssetType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AvatarAssetType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AvatarAssetType | undefined;
     }
     export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Gear | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.MoodAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory | AvatarAssetType.DynamicHead;
     /**
@@ -3664,6 +3762,8 @@ declare namespace Enum {
         }
         export const UserVerifiedForVoice: UserVerifiedForVoice;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarChatServiceFeature>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AvatarChatServiceFeature | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AvatarChatServiceFeature | undefined;
     }
     export type AvatarChatServiceFeature = AvatarChatServiceFeature.None | AvatarChatServiceFeature.UniverseAudio | AvatarChatServiceFeature.UniverseVideo | AvatarChatServiceFeature.PlaceAudio | AvatarChatServiceFeature.PlaceVideo | AvatarChatServiceFeature.UserAudioEligible | AvatarChatServiceFeature.UserAudio | AvatarChatServiceFeature.UserVideoEligible | AvatarChatServiceFeature.UserVideo | AvatarChatServiceFeature.UserBanned | AvatarChatServiceFeature.UserVerifiedForVoice;
     /**
@@ -3707,6 +3807,8 @@ declare namespace Enum {
         }
         export const InspectMenu: InspectMenu;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarContextMenuOption>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AvatarContextMenuOption | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AvatarContextMenuOption | undefined;
     }
     export type AvatarContextMenuOption = AvatarContextMenuOption.Friend | AvatarContextMenuOption.Chat | AvatarContextMenuOption.Emote | AvatarContextMenuOption.InspectMenu;
     /**
@@ -3777,6 +3879,8 @@ declare namespace Enum {
         }
         export const JobNotFound: JobNotFound;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarGenerationError>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AvatarGenerationError | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AvatarGenerationError | undefined;
     }
     export type AvatarGenerationError = AvatarGenerationError.None | AvatarGenerationError.Unknown | AvatarGenerationError.DownloadFailed | AvatarGenerationError.Canceled | AvatarGenerationError.Offensive | AvatarGenerationError.Timeout | AvatarGenerationError.JobNotFound;
     /**
@@ -3808,6 +3912,8 @@ declare namespace Enum {
         }
         export const Bundle: Bundle;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarItemType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AvatarItemType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AvatarItemType | undefined;
     }
     export type AvatarItemType = AvatarItemType.Asset | AvatarItemType.Bundle;
     /**
@@ -3850,6 +3956,8 @@ declare namespace Enum {
         }
         export const Failed: Failed;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarPromptResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AvatarPromptResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AvatarPromptResult | undefined;
     }
     export type AvatarPromptResult = AvatarPromptResult.Success | AvatarPromptResult.PermissionDenied | AvatarPromptResult.Failed;
     /**
@@ -3875,6 +3983,8 @@ declare namespace Enum {
         }
         export const FullBody: FullBody;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarThumbnailCustomizationType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AvatarThumbnailCustomizationType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AvatarThumbnailCustomizationType | undefined;
     }
     export type AvatarThumbnailCustomizationType = AvatarThumbnailCustomizationType.Closeup | AvatarThumbnailCustomizationType.FullBody;
     /**
@@ -3909,6 +4019,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarUnificationMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AvatarUnificationMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AvatarUnificationMode | undefined;
     }
     export type AvatarUnificationMode = AvatarUnificationMode.Default | AvatarUnificationMode.Disabled | AvatarUnificationMode.Enabled;
     /**
@@ -3975,6 +4087,8 @@ declare namespace Enum {
          */
         export const Front: Z;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Axis>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Axis | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Axis | undefined;
     }
     export type Axis = Axis.X | Axis.Y | Axis.Z;
     /**
@@ -4009,6 +4123,8 @@ declare namespace Enum {
         }
         export const AvatarBundle: AvatarBundle;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.BenefitType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.BenefitType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.BenefitType | undefined;
     }
     export type BenefitType = BenefitType.DeveloperProduct | BenefitType.AvatarAsset | BenefitType.AvatarBundle;
     /**
@@ -4073,6 +4189,8 @@ declare namespace Enum {
         }
         export const Hammer: Hammer;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.BinType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.BinType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.BinType | undefined;
     }
     export type BinType = BinType.Script | BinType.GameTool | BinType.Grab | BinType.Clone | BinType.Hammer;
     /**
@@ -4148,6 +4266,8 @@ declare namespace Enum {
         }
         export const RightLeg: RightLeg;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.BodyPart>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.BodyPart | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.BodyPart | undefined;
     }
     export type BodyPart = BodyPart.Head | BodyPart.Torso | BodyPart.LeftArm | BodyPart.RightArm | BodyPart.LeftLeg | BodyPart.RightLeg;
     /**
@@ -4344,6 +4464,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.BodyPartR15>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.BodyPartR15 | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.BodyPartR15 | undefined;
     }
     export type BodyPartR15 = BodyPartR15.Head | BodyPartR15.UpperTorso | BodyPartR15.LowerTorso | BodyPartR15.LeftFoot | BodyPartR15.LeftLowerLeg | BodyPartR15.LeftUpperLeg | BodyPartR15.RightFoot | BodyPartR15.RightLowerLeg | BodyPartR15.RightUpperLeg | BodyPartR15.LeftHand | BodyPartR15.LeftLowerArm | BodyPartR15.LeftUpperArm | BodyPartR15.RightHand | BodyPartR15.RightLowerArm | BodyPartR15.RightUpperArm | BodyPartR15.RootPart | BodyPartR15.Unknown;
     /**
@@ -4386,6 +4508,8 @@ declare namespace Enum {
         }
         export const Inset: Inset;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.BorderMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.BorderMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.BorderMode | undefined;
     }
     export type BorderMode = BorderMode.Outline | BorderMode.Middle | BorderMode.Inset;
     /**
@@ -4439,6 +4563,8 @@ declare namespace Enum {
         }
         export const UserBreakpoint: UserBreakpoint;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.BreakReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.BreakReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.BreakReason | undefined;
     }
     export type BreakReason = BreakReason.Other | BreakReason.Error | BreakReason.SpecialBreakpoint | BreakReason.UserBreakpoint;
     /**
@@ -4481,6 +4607,8 @@ declare namespace Enum {
         }
         export const ScriptRemoved: ScriptRemoved;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.BreakpointRemoveReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.BreakpointRemoveReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.BreakpointRemoveReason | undefined;
     }
     export type BreakpointRemoveReason = BreakpointRemoveReason.Requested | BreakpointRemoveReason.ScriptChanged | BreakpointRemoveReason.ScriptRemoved;
     /**
@@ -4506,6 +4634,8 @@ declare namespace Enum {
         }
         export const FireCFrameChanged: FireCFrameChanged;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.BulkMoveMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.BulkMoveMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.BulkMoveMode | undefined;
     }
     export type BulkMoveMode = BulkMoveMode.FireAllEvents | BulkMoveMode.FireCFrameChanged;
     /**
@@ -4568,6 +4698,8 @@ declare namespace Enum {
         }
         export const DynamicHeadAvatar: DynamicHeadAvatar;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.BundleType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.BundleType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.BundleType | undefined;
     }
     export type BundleType = BundleType.BodyParts | BundleType.Animations | BundleType.Shoes | BundleType.DynamicHead | BundleType.DynamicHeadAvatar;
     /**
@@ -4599,6 +4731,8 @@ declare namespace Enum {
         }
         export const Dismount: Dismount;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Button>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Button | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Button | undefined;
     }
     export type Button = Button.Jump | Button.Dismount;
     /**
@@ -4674,6 +4808,8 @@ declare namespace Enum {
         }
         export const RobloxRoundDropdownButton: RobloxRoundDropdownButton;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ButtonStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ButtonStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ButtonStyle | undefined;
     }
     export type ButtonStyle = ButtonStyle.Custom | ButtonStyle.RobloxButtonDefault | ButtonStyle.RobloxButton | ButtonStyle.RobloxRoundButton | ButtonStyle.RobloxRoundDefaultButton | ButtonStyle.RobloxRoundDropdownButton;
     /**
@@ -4699,6 +4835,8 @@ declare namespace Enum {
         }
         export const Outer: Outer;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CageType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CageType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CageType | undefined;
     }
     export type CageType = CageType.Inner | CageType.Outer;
     /**
@@ -4730,6 +4868,8 @@ declare namespace Enum {
         }
         export const LockFirstPerson: LockFirstPerson;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CameraMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CameraMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CameraMode | undefined;
     }
     export type CameraMode = CameraMode.Classic | CameraMode.LockFirstPerson;
     /**
@@ -4761,6 +4901,8 @@ declare namespace Enum {
         }
         export const EdgeBump: EdgeBump;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CameraPanMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CameraPanMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CameraPanMode | undefined;
     }
     export type CameraPanMode = CameraPanMode.Classic | CameraPanMode.EdgeBump;
     /**
@@ -4795,6 +4937,8 @@ declare namespace Enum {
         }
         export const AltScroll: AltScroll;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CameraSpeedAdjustBinding>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CameraSpeedAdjustBinding | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CameraSpeedAdjustBinding | undefined;
     }
     export type CameraSpeedAdjustBinding = CameraSpeedAdjustBinding.None | CameraSpeedAdjustBinding.RmbScroll | CameraSpeedAdjustBinding.AltScroll;
     /**
@@ -4892,6 +5036,8 @@ declare namespace Enum {
         }
         export const Orbital: Orbital;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CameraType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CameraType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CameraType | undefined;
     }
     export type CameraType = CameraType.Fixed | CameraType.Attach | CameraType.Watch | CameraType.Track | CameraType.Follow | CameraType.Custom | CameraType.Scriptable | CameraType.Orbital;
     /**
@@ -4953,6 +5099,8 @@ declare namespace Enum {
         }
         export const Recommended: Recommended;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CatalogCategoryFilter>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CatalogCategoryFilter | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CatalogCategoryFilter | undefined;
     }
     export type CatalogCategoryFilter = CatalogCategoryFilter.None | CatalogCategoryFilter.Featured | CatalogCategoryFilter.Collectibles | CatalogCategoryFilter.CommunityCreations | CatalogCategoryFilter.Premium | CatalogCategoryFilter.Recommended;
     /**
@@ -5014,6 +5162,8 @@ declare namespace Enum {
         }
         export const AllTime: AllTime;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CatalogSortAggregation>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CatalogSortAggregation | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CatalogSortAggregation | undefined;
     }
     export type CatalogSortAggregation = CatalogSortAggregation.Past12Hours | CatalogSortAggregation.PastDay | CatalogSortAggregation.Past3Days | CatalogSortAggregation.PastWeek | CatalogSortAggregation.PastMonth | CatalogSortAggregation.AllTime;
     /**
@@ -5079,6 +5229,8 @@ declare namespace Enum {
         }
         export const Bestselling: Bestselling;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CatalogSortType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CatalogSortType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CatalogSortType | undefined;
     }
     export type CatalogSortType = CatalogSortType.Relevance | CatalogSortType.PriceHighToLow | CatalogSortType.PriceLowToHigh | CatalogSortType.MostFavorited | CatalogSortType.RecentlyCreated | CatalogSortType.Bestselling;
     /**
@@ -5131,6 +5283,8 @@ declare namespace Enum {
         }
         export const HorizontalWedge: HorizontalWedge;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CellBlock>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CellBlock | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CellBlock | undefined;
     }
     export type CellBlock = CellBlock.Solid | CellBlock.VerticalWedge | CellBlock.CornerWedge | CellBlock.InverseCornerWedge | CellBlock.HorizontalWedge;
     /**
@@ -5300,6 +5454,8 @@ declare namespace Enum {
         }
         export const Water: Water;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CellMaterial>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CellMaterial | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CellMaterial | undefined;
     }
     export type CellMaterial = CellMaterial.Empty | CellMaterial.Grass | CellMaterial.Sand | CellMaterial.Brick | CellMaterial.Granite | CellMaterial.Asphalt | CellMaterial.Iron | CellMaterial.Aluminum | CellMaterial.Gold | CellMaterial.WoodPlank | CellMaterial.WoodLog | CellMaterial.Gravel | CellMaterial.CinderBlock | CellMaterial.MossyStone | CellMaterial.Cement | CellMaterial.RedPlastic | CellMaterial.BluePlastic | CellMaterial.Water;
     /**
@@ -5343,6 +5499,8 @@ declare namespace Enum {
         }
         export const NegX: NegX;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CellOrientation>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CellOrientation | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CellOrientation | undefined;
     }
     export type CellOrientation = CellOrientation.NegZ | CellOrientation.X | CellOrientation.Z | CellOrientation.NegX;
     /**
@@ -5386,6 +5544,8 @@ declare namespace Enum {
         }
         export const QuitDialog: QuitDialog;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CenterDialogType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CenterDialogType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CenterDialogType | undefined;
     }
     export type CenterDialogType = CenterDialogType.UnsolicitedDialog | CenterDialogType.PlayerInitiatedDialog | CenterDialogType.ModalDialog | CenterDialogType.QuitDialog;
     /**
@@ -5429,6 +5589,8 @@ declare namespace Enum {
         }
         export const LuaCharacterController: LuaCharacterController;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CharacterControlMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CharacterControlMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CharacterControlMode | undefined;
     }
     export type CharacterControlMode = CharacterControlMode.Default | CharacterControlMode.Legacy | CharacterControlMode.NoCharacterController | CharacterControlMode.LuaCharacterController;
     /**
@@ -5472,6 +5634,8 @@ declare namespace Enum {
         }
         export const OnServerReceivingMessage: OnServerReceivingMessage;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ChatCallbackType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ChatCallbackType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ChatCallbackType | undefined;
     }
     export type ChatCallbackType = ChatCallbackType.OnCreatingChatWindow | ChatCallbackType.OnClientSendingMessage | ChatCallbackType.OnClientFormattingMessage | ChatCallbackType.OnServerReceivingMessage;
     /**
@@ -5525,6 +5689,8 @@ declare namespace Enum {
         }
         export const White: White;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ChatColor>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ChatColor | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ChatColor | undefined;
     }
     export type ChatColor = ChatColor.Blue | ChatColor.Green | ChatColor.Red | ChatColor.White;
     /**
@@ -5554,6 +5720,8 @@ declare namespace Enum {
         }
         export const TextAndMenu: TextAndMenu;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ChatMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ChatMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ChatMode | undefined;
     }
     export type ChatMode = ChatMode.Menu | ChatMode.TextAndMenu;
     /**
@@ -5594,6 +5762,8 @@ declare namespace Enum {
         }
         export const Friends: Friends;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ChatPrivacyMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ChatPrivacyMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ChatPrivacyMode | undefined;
     }
     export type ChatPrivacyMode = ChatPrivacyMode.AllUsers | ChatPrivacyMode.NoOne | ChatPrivacyMode.Friends;
     /**
@@ -5628,6 +5798,8 @@ declare namespace Enum {
         }
         export const Restricted: Restricted;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ChatRestrictionStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ChatRestrictionStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ChatRestrictionStatus | undefined;
     }
     export type ChatRestrictionStatus = ChatRestrictionStatus.Unknown | ChatRestrictionStatus.NotRestricted | ChatRestrictionStatus.Restricted;
     /**
@@ -5670,6 +5842,8 @@ declare namespace Enum {
         }
         export const ClassicAndBubble: ClassicAndBubble;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ChatStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ChatStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ChatStyle | undefined;
     }
     export type ChatStyle = ChatStyle.Classic | ChatStyle.Bubble | ChatStyle.ClassicAndBubble;
     /**
@@ -5701,6 +5875,8 @@ declare namespace Enum {
         }
         export const TextChatService: TextChatService;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ChatVersion>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ChatVersion | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ChatVersion | undefined;
     }
     export type ChatVersion = ChatVersion.LegacyChatService | ChatVersion.TextChatService;
     /**
@@ -5743,6 +5919,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ClientAnimatorThrottlingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ClientAnimatorThrottlingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ClientAnimatorThrottlingMode | undefined;
     }
     export type ClientAnimatorThrottlingMode = ClientAnimatorThrottlingMode.Default | ClientAnimatorThrottlingMode.Disabled | ClientAnimatorThrottlingMode.Enabled;
     /**
@@ -5818,6 +5996,8 @@ declare namespace Enum {
         }
         export const OutOfMemory: OutOfMemory;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CloseReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CloseReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CloseReason | undefined;
     }
     export type CloseReason = CloseReason.Unknown | CloseReason.RobloxMaintenance | CloseReason.DeveloperShutdown | CloseReason.DeveloperUpdate | CloseReason.ServerEmpty | CloseReason.OutOfMemory;
     /**
@@ -5861,6 +6041,8 @@ declare namespace Enum {
         }
         export const PrivateScripting: PrivateScripting;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CollaboratorStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CollaboratorStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CollaboratorStatus | undefined;
     }
     export type CollaboratorStatus = CollaboratorStatus.None | CollaboratorStatus.Editing3D | CollaboratorStatus.Scripting | CollaboratorStatus.PrivateScripting;
     /**
@@ -5914,6 +6096,8 @@ declare namespace Enum {
         }
         export const PreciseConvexDecomposition: PreciseConvexDecomposition;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CollisionFidelity>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CollisionFidelity | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CollisionFidelity | undefined;
     }
     export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition;
     /**
@@ -5939,6 +6123,8 @@ declare namespace Enum {
         }
         export const LocalUser: LocalUser;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CommandPermission>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CommandPermission | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CommandPermission | undefined;
     }
     export type CommandPermission = CommandPermission.Plugin | CommandPermission.LocalUser;
     /**
@@ -5982,6 +6168,8 @@ declare namespace Enum {
         }
         export const CoreScriptRaw: CoreScriptRaw;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CompileTarget>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CompileTarget | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CompileTarget | undefined;
     }
     export type CompileTarget = CompileTarget.Client | CompileTarget.CoreScript | CompileTarget.Studio | CompileTarget.CoreScriptRaw;
     /**
@@ -6025,6 +6213,8 @@ declare namespace Enum {
         }
         export const InsertOnEnterReplaceOnTab: InsertOnEnterReplaceOnTab;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CompletionAcceptanceBehavior>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CompletionAcceptanceBehavior | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CompletionAcceptanceBehavior | undefined;
     }
     export type CompletionAcceptanceBehavior = CompletionAcceptanceBehavior.Insert | CompletionAcceptanceBehavior.Replace | CompletionAcceptanceBehavior.ReplaceOnEnterInsertOnTab | CompletionAcceptanceBehavior.InsertOnEnterReplaceOnTab;
     /**
@@ -6257,6 +6447,8 @@ declare namespace Enum {
         }
         export const TypeParameter: TypeParameter;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CompletionItemKind>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CompletionItemKind | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CompletionItemKind | undefined;
     }
     export type CompletionItemKind = CompletionItemKind.Text | CompletionItemKind.Method | CompletionItemKind.Function | CompletionItemKind.Constructor | CompletionItemKind.Field | CompletionItemKind.Variable | CompletionItemKind.Class | CompletionItemKind.Interface | CompletionItemKind.Module | CompletionItemKind.Property | CompletionItemKind.Unit | CompletionItemKind.Value | CompletionItemKind.Enum | CompletionItemKind.Keyword | CompletionItemKind.Snippet | CompletionItemKind.Color | CompletionItemKind.File | CompletionItemKind.Reference | CompletionItemKind.Folder | CompletionItemKind.EnumMember | CompletionItemKind.Constant | CompletionItemKind.Struct | CompletionItemKind.Event | CompletionItemKind.Operator | CompletionItemKind.TypeParameter;
     /**
@@ -6383,6 +6575,8 @@ declare namespace Enum {
         }
         export const PutCursorBeforeEnd: PutCursorBeforeEnd;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CompletionItemTag>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CompletionItemTag | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CompletionItemTag | undefined;
     }
     export type CompletionItemTag = CompletionItemTag.Deprecated | CompletionItemTag.IncorrectIndexType | CompletionItemTag.PluginPermissions | CompletionItemTag.CommandLinePermissions | CompletionItemTag.RobloxPermissions | CompletionItemTag.AddParens | CompletionItemTag.PutCursorInParens | CompletionItemTag.TypeCorrect | CompletionItemTag.ClientServerBoundaryViolation | CompletionItemTag.Invalidated | CompletionItemTag.PutCursorBeforeEnd;
     /**
@@ -6417,6 +6611,8 @@ declare namespace Enum {
         }
         export const TriggerForIncompleteCompletions: TriggerForIncompleteCompletions;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CompletionTriggerKind>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CompletionTriggerKind | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CompletionTriggerKind | undefined;
     }
     export type CompletionTriggerKind = CompletionTriggerKind.Invoked | CompletionTriggerKind.TriggerCharacter | CompletionTriggerKind.TriggerForIncompleteCompletions;
     /**
@@ -6481,6 +6677,8 @@ declare namespace Enum {
         }
         export const CameraToggle: CameraToggle;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ComputerCameraMovementMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ComputerCameraMovementMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ComputerCameraMovementMode | undefined;
     }
     export type ComputerCameraMovementMode = ComputerCameraMovementMode.Default | ComputerCameraMovementMode.Classic | ComputerCameraMovementMode.Follow | ComputerCameraMovementMode.Orbital | ComputerCameraMovementMode.CameraToggle;
     /**
@@ -6523,6 +6721,8 @@ declare namespace Enum {
         }
         export const ClickToMove: ClickToMove;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ComputerMovementMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ComputerMovementMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ComputerMovementMode | undefined;
     }
     export type ComputerMovementMode = ComputerMovementMode.Default | ComputerMovementMode.KeyboardMouse | ComputerMovementMode.ClickToMove;
     /**
@@ -7178,6 +7378,8 @@ declare namespace Enum {
         }
         export const TeleportIsTeleporting: TeleportIsTeleporting;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ConnectionError>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConnectionError | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConnectionError | undefined;
     }
     export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
     /**
@@ -7209,6 +7411,8 @@ declare namespace Enum {
         }
         export const Disconnected: Disconnected;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ConnectionState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConnectionState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConnectionState | undefined;
     }
     export type ConnectionState = ConnectionState.Connected | ConnectionState.Disconnected;
     /**
@@ -7251,6 +7455,8 @@ declare namespace Enum {
         }
         export const Object: Object;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ContentSourceType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ContentSourceType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ContentSourceType | undefined;
     }
     export type ContentSourceType = ContentSourceType.None | ContentSourceType.Uri | ContentSourceType.Object;
     /**
@@ -7297,6 +7503,8 @@ declare namespace Enum {
         }
         export const High: High;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ContextActionPriority>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ContextActionPriority | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ContextActionPriority | undefined;
     }
     export type ContextActionPriority = ContextActionPriority.Low | ContextActionPriority.Medium | ContextActionPriority.High;
     /**
@@ -7328,6 +7536,8 @@ declare namespace Enum {
         }
         export const Pass: Pass;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ContextActionResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ContextActionResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ContextActionResult | undefined;
     }
     export type ContextActionResult = ContextActionResult.Sink | ContextActionResult.Pass;
     /**
@@ -7359,6 +7569,8 @@ declare namespace Enum {
         }
         export const MouseLockSwitch: MouseLockSwitch;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ControlMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ControlMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ControlMode | undefined;
     }
     export type ControlMode = ControlMode.Classic | ControlMode.MouseLockSwitch;
     /**
@@ -7454,6 +7666,8 @@ declare namespace Enum {
         }
         export const Captures: Captures;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CoreGuiType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CoreGuiType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CoreGuiType | undefined;
     }
     export type CoreGuiType = CoreGuiType.PlayerList | CoreGuiType.Health | CoreGuiType.Backpack | CoreGuiType.Chat | CoreGuiType.All | CoreGuiType.EmotesMenu | CoreGuiType.SelfView | CoreGuiType.Captures;
     /**
@@ -7497,6 +7711,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CreateAssetResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CreateAssetResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CreateAssetResult | undefined;
     }
     export type CreateAssetResult = CreateAssetResult.Success | CreateAssetResult.PermissionDenied | CreateAssetResult.UploadFailed | CreateAssetResult.Unknown;
     /**
@@ -7531,6 +7747,8 @@ declare namespace Enum {
         }
         export const Other: Other;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CreateOutfitFailure>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CreateOutfitFailure | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CreateOutfitFailure | undefined;
     }
     export type CreateOutfitFailure = CreateOutfitFailure.InvalidName | CreateOutfitFailure.OutfitLimitReached | CreateOutfitFailure.Other;
     /**
@@ -7560,6 +7778,8 @@ declare namespace Enum {
         }
         export const Group: Group;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CreatorType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CreatorType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CreatorType | undefined;
     }
     export type CreatorType = CreatorType.User | CreatorType.Group;
     /**
@@ -7594,6 +7814,8 @@ declare namespace Enum {
         }
         export const All: All;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CreatorTypeFilter>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CreatorTypeFilter | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CreatorTypeFilter | undefined;
     }
     export type CreatorTypeFilter = CreatorTypeFilter.User | CreatorTypeFilter.Group | CreatorTypeFilter.All;
     /**
@@ -7634,6 +7856,8 @@ declare namespace Enum {
         }
         export const Tix: Tix;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CurrencyType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CurrencyType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CurrencyType | undefined;
     }
     export type CurrencyType = CurrencyType.Default | CurrencyType.Robux | CurrencyType.Tix;
     /**
@@ -7676,6 +7900,8 @@ declare namespace Enum {
         }
         export const Follow: Follow;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CustomCameraMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CustomCameraMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CustomCameraMode | undefined;
     }
     export type CustomCameraMode = CustomCameraMode.Default | CustomCameraMode.Classic | CustomCameraMode.Follow;
     /**
@@ -7784,6 +8010,8 @@ declare namespace Enum {
         }
         export const RemoveVersionAsync: RemoveVersionAsync;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DataStoreRequestType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DataStoreRequestType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DataStoreRequestType | undefined;
     }
     export type DataStoreRequestType = DataStoreRequestType.GetAsync | DataStoreRequestType.SetIncrementAsync | DataStoreRequestType.UpdateAsync | DataStoreRequestType.GetSortedAsync | DataStoreRequestType.SetIncrementSortedAsync | DataStoreRequestType.OnUpdate | DataStoreRequestType.ListAsync | DataStoreRequestType.GetVersionAsync | DataStoreRequestType.RemoveVersionAsync;
     /**
@@ -7881,6 +8109,8 @@ declare namespace Enum {
         }
         export const RpcError: RpcError;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DebuggerEndReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DebuggerEndReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DebuggerEndReason | undefined;
     }
     export type DebuggerEndReason = DebuggerEndReason.ClientRequest | DebuggerEndReason.Timeout | DebuggerEndReason.InvalidHost | DebuggerEndReason.Disconnected | DebuggerEndReason.ServerShutdown | DebuggerEndReason.ServerProtocolMismatch | DebuggerEndReason.ConfigurationFailed | DebuggerEndReason.RpcError;
     /**
@@ -7915,6 +8145,8 @@ declare namespace Enum {
         }
         export const Unhandled: Unhandled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DebuggerExceptionBreakMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DebuggerExceptionBreakMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DebuggerExceptionBreakMode | undefined;
     }
     export type DebuggerExceptionBreakMode = DebuggerExceptionBreakMode.Never | DebuggerExceptionBreakMode.Always | DebuggerExceptionBreakMode.Unhandled;
     /**
@@ -7946,6 +8178,8 @@ declare namespace Enum {
         }
         export const Lua: Lua;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DebuggerFrameType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DebuggerFrameType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DebuggerFrameType | undefined;
     }
     export type DebuggerFrameType = DebuggerFrameType.C | DebuggerFrameType.Lua;
     /**
@@ -8021,6 +8255,8 @@ declare namespace Enum {
         }
         export const Entrypoint: Entrypoint;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DebuggerPauseReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DebuggerPauseReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DebuggerPauseReason | undefined;
     }
     export type DebuggerPauseReason = DebuggerPauseReason.Unknown | DebuggerPauseReason.Requested | DebuggerPauseReason.Breakpoint | DebuggerPauseReason.Exception | DebuggerPauseReason.SingleStep | DebuggerPauseReason.Entrypoint;
     /**
@@ -8129,6 +8365,8 @@ declare namespace Enum {
         }
         export const ConnectionClosed: ConnectionClosed;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DebuggerStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DebuggerStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DebuggerStatus | undefined;
     }
     export type DebuggerStatus = DebuggerStatus.Success | DebuggerStatus.Timeout | DebuggerStatus.ConnectionLost | DebuggerStatus.InvalidResponse | DebuggerStatus.InternalError | DebuggerStatus.InvalidState | DebuggerStatus.RpcError | DebuggerStatus.InvalidArgument | DebuggerStatus.ConnectionClosed;
     /**
@@ -8160,6 +8398,8 @@ declare namespace Enum {
         }
         export const Invisicam: Invisicam;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DevCameraOcclusionMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DevCameraOcclusionMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DevCameraOcclusionMode | undefined;
     }
     export type DevCameraOcclusionMode = DevCameraOcclusionMode.Zoom | DevCameraOcclusionMode.Invisicam;
     /**
@@ -8224,6 +8464,8 @@ declare namespace Enum {
         }
         export const CameraToggle: CameraToggle;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DevComputerCameraMovementMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DevComputerCameraMovementMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DevComputerCameraMovementMode | undefined;
     }
     export type DevComputerCameraMovementMode = DevComputerCameraMovementMode.UserChoice | DevComputerCameraMovementMode.Classic | DevComputerCameraMovementMode.Follow | DevComputerCameraMovementMode.Orbital | DevComputerCameraMovementMode.CameraToggle;
     /**
@@ -8277,6 +8519,8 @@ declare namespace Enum {
         }
         export const Scriptable: Scriptable;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DevComputerMovementMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DevComputerMovementMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DevComputerMovementMode | undefined;
     }
     export type DevComputerMovementMode = DevComputerMovementMode.UserChoice | DevComputerMovementMode.KeyboardMouse | DevComputerMovementMode.ClickToMove | DevComputerMovementMode.Scriptable;
     /**
@@ -8330,6 +8574,8 @@ declare namespace Enum {
         }
         export const Orbital: Orbital;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DevTouchCameraMovementMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DevTouchCameraMovementMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DevTouchCameraMovementMode | undefined;
     }
     export type DevTouchCameraMovementMode = DevTouchCameraMovementMode.UserChoice | DevTouchCameraMovementMode.Classic | DevTouchCameraMovementMode.Follow | DevTouchCameraMovementMode.Orbital;
     /**
@@ -8410,6 +8656,8 @@ declare namespace Enum {
         }
         export const DynamicThumbstick: DynamicThumbstick;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DevTouchMovementMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DevTouchMovementMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DevTouchMovementMode | undefined;
     }
     export type DevTouchMovementMode = DevTouchMovementMode.UserChoice | DevTouchMovementMode.Thumbstick | DevTouchMovementMode.DPad | DevTouchMovementMode.Thumbpad | DevTouchMovementMode.ClickToMove | DevTouchMovementMode.Scriptable | DevTouchMovementMode.DynamicThumbstick;
     /**
@@ -8670,6 +8918,8 @@ declare namespace Enum {
         }
         export const GeometryCSG: GeometryCSG;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeveloperMemoryTag>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DeveloperMemoryTag | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DeveloperMemoryTag | undefined;
     }
     export type DeveloperMemoryTag = DeveloperMemoryTag.Internal | DeveloperMemoryTag.HttpCache | DeveloperMemoryTag.Instances | DeveloperMemoryTag.Signals | DeveloperMemoryTag.LuaHeap | DeveloperMemoryTag.Script | DeveloperMemoryTag.PhysicsCollision | DeveloperMemoryTag.PhysicsParts | DeveloperMemoryTag.GraphicsSolidModels | DeveloperMemoryTag.GraphicsMeshParts | DeveloperMemoryTag.GraphicsParticles | DeveloperMemoryTag.GraphicsParts | DeveloperMemoryTag.GraphicsSpatialHash | DeveloperMemoryTag.GraphicsTerrain | DeveloperMemoryTag.GraphicsTexture | DeveloperMemoryTag.GraphicsTextureCharacter | DeveloperMemoryTag.Sounds | DeveloperMemoryTag.StreamingSounds | DeveloperMemoryTag.TerrainVoxels | DeveloperMemoryTag.Gui | DeveloperMemoryTag.Animation | DeveloperMemoryTag.Navigation | DeveloperMemoryTag.GeometryCSG;
     /**
@@ -8686,6 +8936,8 @@ declare namespace Enum {
         }
         export const DeviceCapture: DeviceCapture;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeviceFeatureType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DeviceFeatureType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DeviceFeatureType | undefined;
     }
     export type DeviceFeatureType = DeviceFeatureType.DeviceCapture;
     /**
@@ -8738,6 +8990,8 @@ declare namespace Enum {
         }
         export const VR: VR;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeviceForm>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DeviceForm | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DeviceForm | undefined;
     }
     export type DeviceForm = DeviceForm.Console | DeviceForm.Phone | DeviceForm.Tablet | DeviceForm.Desktop | DeviceForm.VR;
     /**
@@ -8772,6 +9026,8 @@ declare namespace Enum {
         }
         export const High: High;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeviceLevel>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DeviceLevel | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DeviceLevel | undefined;
     }
     export type DeviceLevel = DeviceLevel.Low | DeviceLevel.Medium | DeviceLevel.High;
     /**
@@ -8825,6 +9081,8 @@ declare namespace Enum {
         }
         export const Phone: Phone;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeviceType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DeviceType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DeviceType | undefined;
     }
     export type DeviceType = DeviceType.Unknown | DeviceType.Desktop | DeviceType.Tablet | DeviceType.Phone;
     /**
@@ -8856,6 +9114,8 @@ declare namespace Enum {
         }
         export const MultiplePlayers: MultiplePlayers;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DialogBehaviorType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DialogBehaviorType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DialogBehaviorType | undefined;
     }
     export type DialogBehaviorType = DialogBehaviorType.SinglePlayer | DialogBehaviorType.MultiplePlayers;
     /**
@@ -8898,6 +9158,8 @@ declare namespace Enum {
         }
         export const Shop: Shop;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DialogPurpose>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DialogPurpose | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DialogPurpose | undefined;
     }
     export type DialogPurpose = DialogPurpose.Quest | DialogPurpose.Help | DialogPurpose.Shop;
     /**
@@ -8940,6 +9202,8 @@ declare namespace Enum {
         }
         export const Enemy: Enemy;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DialogTone>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DialogTone | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DialogTone | undefined;
     }
     export type DialogTone = DialogTone.Neutral | DialogTone.Friendly | DialogTone.Enemy;
     /**
@@ -8971,6 +9235,8 @@ declare namespace Enum {
         }
         export const Height: Height;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DominantAxis>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DominantAxis | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DominantAxis | undefined;
     }
     export type DominantAxis = DominantAxis.Width | DominantAxis.Height;
     /**
@@ -9014,6 +9280,8 @@ declare namespace Enum {
         }
         export const DraftCommitted: DraftCommitted;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DraftStatusCode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DraftStatusCode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DraftStatusCode | undefined;
     }
     export type DraftStatusCode = DraftStatusCode.OK | DraftStatusCode.DraftOutdated | DraftStatusCode.ScriptRemoved | DraftStatusCode.DraftCommitted;
     /**
@@ -9122,6 +9390,8 @@ declare namespace Enum {
         }
         export const BestForDevice: BestForDevice;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DragDetectorDragStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DragDetectorDragStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DragDetectorDragStyle | undefined;
     }
     export type DragDetectorDragStyle = DragDetectorDragStyle.TranslateLine | DragDetectorDragStyle.TranslatePlane | DragDetectorDragStyle.TranslatePlaneOrLine | DragDetectorDragStyle.TranslateLineOrPlane | DragDetectorDragStyle.TranslateViewPlane | DragDetectorDragStyle.RotateAxis | DragDetectorDragStyle.RotateTrackball | DragDetectorDragStyle.Scriptable | DragDetectorDragStyle.BestForDevice;
     /**
@@ -9164,6 +9434,8 @@ declare namespace Enum {
         }
         export const Scriptable: Scriptable;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DragDetectorPermissionPolicy>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DragDetectorPermissionPolicy | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DragDetectorPermissionPolicy | undefined;
     }
     export type DragDetectorPermissionPolicy = DragDetectorPermissionPolicy.Nobody | DragDetectorPermissionPolicy.Everybody | DragDetectorPermissionPolicy.Scriptable;
     /**
@@ -9206,6 +9478,8 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DragDetectorResponseStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DragDetectorResponseStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DragDetectorResponseStyle | undefined;
     }
     export type DragDetectorResponseStyle = DragDetectorResponseStyle.Geometric | DragDetectorResponseStyle.Physical | DragDetectorResponseStyle.Custom;
     /**
@@ -9231,6 +9505,8 @@ declare namespace Enum {
         }
         export const World: World;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DraggerCoordinateSpace>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DraggerCoordinateSpace | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DraggerCoordinateSpace | undefined;
     }
     export type DraggerCoordinateSpace = DraggerCoordinateSpace.Object | DraggerCoordinateSpace.World;
     /**
@@ -9256,6 +9532,8 @@ declare namespace Enum {
         }
         export const Physical: Physical;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DraggerMovementMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DraggerMovementMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DraggerMovementMode | undefined;
     }
     export type DraggerMovementMode = DraggerMovementMode.Geometric | DraggerMovementMode.Physical;
     /**
@@ -9290,6 +9568,8 @@ declare namespace Enum {
         }
         export const Vertical: Vertical;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DraggingScrollBar>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DraggingScrollBar | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DraggingScrollBar | undefined;
     }
     export type DraggingScrollBar = DraggingScrollBar.None | DraggingScrollBar.Horizontal | DraggingScrollBar.Vertical;
     /**
@@ -9332,6 +9612,8 @@ declare namespace Enum {
         }
         export const InOut: InOut;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EasingDirection>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.EasingDirection | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.EasingDirection | undefined;
     }
     export type EasingDirection = EasingDirection.In | EasingDirection.Out | EasingDirection.InOut;
     /**
@@ -9462,6 +9744,8 @@ declare namespace Enum {
         }
         export const Cubic: Cubic;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EasingStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.EasingStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.EasingStyle | undefined;
     }
     export type EasingStyle = EasingStyle.Linear | EasingStyle.Sine | EasingStyle.Back | EasingStyle.Quad | EasingStyle.Quart | EasingStyle.Quint | EasingStyle.Bounce | EasingStyle.Elastic | EasingStyle.Exponential | EasingStyle.Circular | EasingStyle.Cubic;
     /**
@@ -9496,6 +9780,8 @@ declare namespace Enum {
         }
         export const Disallowed: Disallowed;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EditableStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.EditableStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.EditableStatus | undefined;
     }
     export type EditableStatus = EditableStatus.Unknown | EditableStatus.Allowed | EditableStatus.Disallowed;
     /**
@@ -9538,6 +9824,8 @@ declare namespace Enum {
         }
         export const Never: Never;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ElasticBehavior>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ElasticBehavior | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ElasticBehavior | undefined;
     }
     export type ElasticBehavior = ElasticBehavior.WhenScrollable | ElasticBehavior.Always | ElasticBehavior.Never;
     /**
@@ -9608,6 +9896,8 @@ declare namespace Enum {
         }
         export const Skip16: Skip16;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EnviromentalPhysicsThrottle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.EnviromentalPhysicsThrottle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.EnviromentalPhysicsThrottle | undefined;
     }
     export type EnviromentalPhysicsThrottle = EnviromentalPhysicsThrottle.DefaultAuto | EnviromentalPhysicsThrottle.Disabled | EnviromentalPhysicsThrottle.Always | EnviromentalPhysicsThrottle.Skip2 | EnviromentalPhysicsThrottle.Skip4 | EnviromentalPhysicsThrottle.Skip8 | EnviromentalPhysicsThrottle.Skip16;
     /**
@@ -9633,6 +9923,8 @@ declare namespace Enum {
         }
         export const CreatorAssetsCreate: CreatorAssetsCreate;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ExperienceAuthScope>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ExperienceAuthScope | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ExperienceAuthScope | undefined;
     }
     export type ExperienceAuthScope = ExperienceAuthScope.DefaultScope | ExperienceAuthScope.CreatorAssetsCreate;
     /**
@@ -9666,6 +9958,8 @@ declare namespace Enum {
          */
         export const CratersAndDebris: Craters;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ExplosionType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ExplosionType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ExplosionType | undefined;
     }
     export type ExplosionType = ExplosionType.NoCraters | ExplosionType.Craters;
     /**
@@ -9700,6 +9994,8 @@ declare namespace Enum {
         }
         export const LODCount: LODCount;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FACSDataLod>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FACSDataLod | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FACSDataLod | undefined;
     }
     export type FACSDataLod = FACSDataLod.LOD0 | FACSDataLod.LOD1 | FACSDataLod.LODCount;
     /**
@@ -9752,6 +10048,8 @@ declare namespace Enum {
         }
         export const Server: Server;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FacialAnimationStreamingState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FacialAnimationStreamingState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FacialAnimationStreamingState | undefined;
     }
     export type FacialAnimationStreamingState = FacialAnimationStreamingState.None | FacialAnimationStreamingState.Audio | FacialAnimationStreamingState.Video | FacialAnimationStreamingState.Place | FacialAnimationStreamingState.Server;
     /**
@@ -9786,6 +10084,8 @@ declare namespace Enum {
         }
         export const MaxAxis: MaxAxis;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FieldOfViewMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FieldOfViewMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FieldOfViewMode | undefined;
     }
     export type FieldOfViewMode = FieldOfViewMode.Vertical | FieldOfViewMode.Diagonal | FieldOfViewMode.MaxAxis;
     /**
@@ -9817,6 +10117,8 @@ declare namespace Enum {
         }
         export const Vertical: Vertical;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FillDirection>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FillDirection | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FillDirection | undefined;
     }
     export type FillDirection = FillDirection.Horizontal | FillDirection.Vertical;
     /**
@@ -9995,6 +10297,8 @@ declare namespace Enum {
         }
         export const WildcardInProperty: WildcardInProperty;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FilterErrorType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FilterErrorType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FilterErrorType | undefined;
     }
     export type FilterErrorType = FilterErrorType.BackslashNotEscapingAnything | FilterErrorType.BadBespokeFilter | FilterErrorType.BadName | FilterErrorType.IncompleteOr | FilterErrorType.IncompleteParenthesis | FilterErrorType.InvalidDoubleStar | FilterErrorType.InvalidTilde | FilterErrorType.PropertyBadOperator | FilterErrorType.PropertyDoesNotExist | FilterErrorType.PropertyInvalidField | FilterErrorType.PropertyInvalidValue | FilterErrorType.PropertyUnsupportedFields | FilterErrorType.PropertyUnsupportedProperty | FilterErrorType.UnexpectedNameIndex | FilterErrorType.UnexpectedToken | FilterErrorType.UnfinishedBinaryOperator | FilterErrorType.UnfinishedQuote | FilterErrorType.UnknownBespokeFilter | FilterErrorType.WildcardInProperty;
     /**
@@ -10026,6 +10330,8 @@ declare namespace Enum {
         }
         export const Rejected: Rejected;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FilterResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FilterResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FilterResult | undefined;
     }
     export type FilterResult = FilterResult.Accepted | FilterResult.Rejected;
     /**
@@ -10066,6 +10372,8 @@ declare namespace Enum {
         }
         export const Append: Append;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FinishRecordingOperation>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FinishRecordingOperation | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FinishRecordingOperation | undefined;
     }
     export type FinishRecordingOperation = FinishRecordingOperation.Cancel | FinishRecordingOperation.Commit | FinishRecordingOperation.Append;
     /**
@@ -10108,6 +10416,8 @@ declare namespace Enum {
         }
         export const UsePreciseGeometry: UsePreciseGeometry;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FluidFidelity>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FluidFidelity | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FluidFidelity | undefined;
     }
     export type FluidFidelity = FluidFidelity.Automatic | FluidFidelity.UseCollisionGeometry | FluidFidelity.UsePreciseGeometry;
     /**
@@ -10139,6 +10449,8 @@ declare namespace Enum {
         }
         export const Experimental: Experimental;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FluidForces>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FluidForces | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FluidForces | undefined;
     }
     export type FluidForces = FluidForces.Default | FluidForces.Experimental;
     /**
@@ -10749,6 +11061,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Font>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Font | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Font | undefined;
     }
     export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.SourceSansSemibold | Font.Gotham | Font.GothamMedium | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu | Font.BuilderSans | Font.BuilderSansMedium | Font.BuilderSansBold | Font.BuilderSansExtraBold | Font.Arimo | Font.ArimoBold | Font.Unknown;
     /**
@@ -10921,6 +11235,8 @@ declare namespace Enum {
         }
         export const Size96: Size96;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FontSize>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FontSize | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FontSize | undefined;
     }
     export type FontSize = FontSize.Size8 | FontSize.Size9 | FontSize.Size10 | FontSize.Size11 | FontSize.Size12 | FontSize.Size14 | FontSize.Size18 | FontSize.Size24 | FontSize.Size36 | FontSize.Size48 | FontSize.Size28 | FontSize.Size32 | FontSize.Size42 | FontSize.Size60 | FontSize.Size96;
     /**
@@ -10952,6 +11268,8 @@ declare namespace Enum {
         }
         export const Italic: Italic;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FontStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FontStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FontStyle | undefined;
     }
     export type FontStyle = FontStyle.Normal | FontStyle.Italic;
     /**
@@ -11044,6 +11362,8 @@ declare namespace Enum {
         }
         export const Heavy: Heavy;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FontWeight>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FontWeight | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FontWeight | undefined;
     }
     export type FontWeight = FontWeight.Thin | FontWeight.ExtraLight | FontWeight.Light | FontWeight.Regular | FontWeight.Medium | FontWeight.SemiBold | FontWeight.Bold | FontWeight.ExtraBold | FontWeight.Heavy;
     /**
@@ -11075,6 +11395,8 @@ declare namespace Enum {
         }
         export const PerAxis: PerAxis;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ForceLimitMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ForceLimitMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ForceLimitMode | undefined;
     }
     export type ForceLimitMode = ForceLimitMode.Magnitude | ForceLimitMode.PerAxis;
     /**
@@ -11130,6 +11452,8 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FormFactor>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FormFactor | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FormFactor | undefined;
     }
     export type FormFactor = FormFactor.Symmetric | FormFactor.Brick | FormFactor.Plate | FormFactor.Custom;
     /**
@@ -11216,6 +11540,8 @@ declare namespace Enum {
         }
         export const DropShadow: DropShadow;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FrameStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FrameStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FrameStyle | undefined;
     }
     export type FrameStyle = FrameStyle.Custom | FrameStyle.ChatBlue | FrameStyle.RobloxSquare | FrameStyle.RobloxRound | FrameStyle.ChatGreen | FrameStyle.ChatRed | FrameStyle.DropShadow;
     /**
@@ -11250,6 +11576,8 @@ declare namespace Enum {
         }
         export const Off: Off;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FramerateManagerMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FramerateManagerMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FramerateManagerMode | undefined;
     }
     export type FramerateManagerMode = FramerateManagerMode.Automatic | FramerateManagerMode.On | FramerateManagerMode.Off;
     /**
@@ -11301,6 +11629,8 @@ declare namespace Enum {
         }
         export const Deny: Deny;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FriendRequestEvent>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FriendRequestEvent | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendRequestEvent | undefined;
     }
     export type FriendRequestEvent = FriendRequestEvent.Issue | FriendRequestEvent.Revoke | FriendRequestEvent.Accept | FriendRequestEvent.Deny;
     /**
@@ -11363,6 +11693,8 @@ declare namespace Enum {
         }
         export const FriendRequestReceived: FriendRequestReceived;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FriendStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FriendStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendStatus | undefined;
     }
     export type FriendStatus = FriendStatus.Unknown | FriendStatus.NotFriend | FriendStatus.Friend | FriendStatus.FriendRequestSent | FriendStatus.FriendRequestReceived;
     /**
@@ -11405,6 +11737,8 @@ declare namespace Enum {
         }
         export const Error: Error;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FunctionalTestResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FunctionalTestResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FunctionalTestResult | undefined;
     }
     export type FunctionalTestResult = FunctionalTestResult.Passed | FunctionalTestResult.Warning | FunctionalTestResult.Error;
     /**
@@ -11447,6 +11781,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GameAvatarType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.GameAvatarType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GameAvatarType | undefined;
     }
     export type GameAvatarType = GameAvatarType.R6 | GameAvatarType.R15 | GameAvatarType.PlayerChoice;
     /**
@@ -11490,6 +11826,8 @@ declare namespace Enum {
         }
         export const XboxOne: XboxOne;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GamepadType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.GamepadType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GamepadType | undefined;
     }
     export type GamepadType = GamepadType.Unknown | GamepadType.PS4 | GamepadType.PS5 | GamepadType.XboxOne;
     /**
@@ -11525,6 +11863,8 @@ declare namespace Enum {
         }
         export const MatchingGenreOnly: MatchingGenreOnly;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GearGenreSetting>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.GearGenreSetting | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GearGenreSetting | undefined;
     }
     export type GearGenreSetting = GearGenreSetting.AllGenres | GearGenreSetting.MatchingGenreOnly;
     /**
@@ -11651,6 +11991,8 @@ declare namespace Enum {
         }
         export const Transport: Transport;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GearType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.GearType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GearType | undefined;
     }
     export type GearType = GearType.MeleeWeapons | GearType.RangedWeapons | GearType.Explosives | GearType.PowerUps | GearType.NavigationEnhancers | GearType.MusicalInstruments | GearType.SocialItems | GearType.BuildingTools | GearType.Transport;
     /**
@@ -11816,6 +12158,8 @@ declare namespace Enum {
         }
         export const Tutorial: Tutorial;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Genre>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Genre | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Genre | undefined;
     }
     export type Genre = Genre.All | Genre.TownAndCity | Genre.Fantasy | Genre.SciFi | Genre.Ninja | Genre.Scary | Genre.Pirate | Genre.Adventure | Genre.Sports | Genre.Funny | Genre.WildWest | Genre.War | Genre.SkatePark | Genre.Tutorial;
     /**
@@ -11891,6 +12235,8 @@ declare namespace Enum {
         }
         export const NoGraphics: NoGraphics;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GraphicsMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.GraphicsMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GraphicsMode | undefined;
     }
     export type GraphicsMode = GraphicsMode.Automatic | GraphicsMode.Direct3D11 | GraphicsMode.OpenGL | GraphicsMode.Metal | GraphicsMode.Vulkan | GraphicsMode.NoGraphics;
     /**
@@ -11925,6 +12271,8 @@ declare namespace Enum {
         }
         export const Quality: Quality;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GraphicsOptimizationMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.GraphicsOptimizationMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GraphicsOptimizationMode | undefined;
     }
     export type GraphicsOptimizationMode = GraphicsOptimizationMode.Performance | GraphicsOptimizationMode.Balanced | GraphicsOptimizationMode.Quality;
     /**
@@ -11976,6 +12324,8 @@ declare namespace Enum {
         }
         export const NonInteractable: NonInteractable;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GuiState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.GuiState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GuiState | undefined;
     }
     export type GuiState = GuiState.Idle | GuiState.Hover | GuiState.Press | GuiState.NonInteractable;
     /**
@@ -12028,6 +12378,8 @@ declare namespace Enum {
         }
         export const CoreBillboards: CoreBillboards;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GuiType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.GuiType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GuiType | undefined;
     }
     export type GuiType = GuiType.Core | GuiType.Custom | GuiType.PlayerNameplates | GuiType.CustomBillboards | GuiType.CoreBillboards;
     /**
@@ -12053,6 +12405,8 @@ declare namespace Enum {
         }
         export const Movement: Movement;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HandlesStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HandlesStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HandlesStyle | undefined;
     }
     export type HandlesStyle = HandlesStyle.Resize | HandlesStyle.Movement;
     /**
@@ -12114,6 +12468,8 @@ declare namespace Enum {
         }
         export const GameplayCollision: GameplayCollision;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HapticEffectType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HapticEffectType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HapticEffectType | undefined;
     }
     export type HapticEffectType = HapticEffectType.Custom | HapticEffectType.UIHover | HapticEffectType.UIClick | HapticEffectType.UINotification | HapticEffectType.GameplayExplosion | HapticEffectType.GameplayCollision;
     /**
@@ -12145,6 +12501,8 @@ declare namespace Enum {
         }
         export const Occluded: Occluded;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HighlightDepthMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HighlightDepthMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HighlightDepthMode | undefined;
     }
     export type HighlightDepthMode = HighlightDepthMode.AlwaysOnTop | HighlightDepthMode.Occluded;
     /**
@@ -12187,6 +12545,8 @@ declare namespace Enum {
         }
         export const Right: Right;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HorizontalAlignment>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HorizontalAlignment | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HorizontalAlignment | undefined;
     }
     export type HorizontalAlignment = HorizontalAlignment.Center | HorizontalAlignment.Left | HorizontalAlignment.Right;
     /**
@@ -12249,6 +12609,8 @@ declare namespace Enum {
         }
         export const VeryFast: VeryFast;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HoverAnimateSpeed>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HoverAnimateSpeed | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HoverAnimateSpeed | undefined;
     }
     export type HoverAnimateSpeed = HoverAnimateSpeed.VerySlow | HoverAnimateSpeed.Slow | HoverAnimateSpeed.Medium | HoverAnimateSpeed.Fast | HoverAnimateSpeed.VeryFast;
     /**
@@ -12301,6 +12663,8 @@ declare namespace Enum {
         }
         export const InternalRedirectRefresh: InternalRedirectRefresh;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HttpCachePolicy>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HttpCachePolicy | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HttpCachePolicy | undefined;
     }
     export type HttpCachePolicy = HttpCachePolicy.None | HttpCachePolicy.Full | HttpCachePolicy.DataOnly | HttpCachePolicy.Default | HttpCachePolicy.InternalRedirectRefresh;
     /**
@@ -12326,6 +12690,8 @@ declare namespace Enum {
         }
         export const Gzip: Gzip;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HttpCompression>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HttpCompression | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HttpCompression | undefined;
     }
     export type HttpCompression = HttpCompression.None | HttpCompression.Gzip;
     /**
@@ -12390,6 +12756,8 @@ declare namespace Enum {
         }
         export const TextXml: TextXml;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HttpContentType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HttpContentType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HttpContentType | undefined;
     }
     export type HttpContentType = HttpContentType.ApplicationJson | HttpContentType.ApplicationXml | HttpContentType.ApplicationUrlEncoded | HttpContentType.TextPlain | HttpContentType.TextXml;
     /**
@@ -12514,6 +12882,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HttpError>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HttpError | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HttpError | undefined;
     }
     export type HttpError = HttpError.OK | HttpError.InvalidUrl | HttpError.DnsResolve | HttpError.ConnectFail | HttpError.OutOfMemory | HttpError.TimedOut | HttpError.TooManyRedirects | HttpError.InvalidRedirect | HttpError.NetFail | HttpError.Aborted | HttpError.SslConnectFail | HttpError.SslVerificationFail | HttpError.Unknown;
     /**
@@ -12584,6 +12954,8 @@ declare namespace Enum {
         }
         export const Localization: Localization;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HttpRequestType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HttpRequestType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HttpRequestType | undefined;
     }
     export type HttpRequestType = HttpRequestType.Default | HttpRequestType.MarketplaceService | HttpRequestType.Players | HttpRequestType.Chat | HttpRequestType.Avatar | HttpRequestType.Analytics | HttpRequestType.Localization;
     /**
@@ -12615,6 +12987,8 @@ declare namespace Enum {
         }
         export const InnerBox: InnerBox;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HumanoidCollisionType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HumanoidCollisionType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HumanoidCollisionType | undefined;
     }
     export type HumanoidCollisionType = HumanoidCollisionType.OuterBox | HumanoidCollisionType.InnerBox;
     /**
@@ -12657,6 +13031,8 @@ declare namespace Enum {
         }
         export const None: None;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HumanoidDisplayDistanceType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HumanoidDisplayDistanceType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HumanoidDisplayDistanceType | undefined;
     }
     export type HumanoidDisplayDistanceType = HumanoidDisplayDistanceType.Viewer | HumanoidDisplayDistanceType.Subject | HumanoidDisplayDistanceType.None;
     /**
@@ -12699,6 +13075,8 @@ declare namespace Enum {
         }
         export const AlwaysOff: AlwaysOff;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HumanoidHealthDisplayType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HumanoidHealthDisplayType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HumanoidHealthDisplayType | undefined;
     }
     export type HumanoidHealthDisplayType = HumanoidHealthDisplayType.DisplayWhenDamaged | HumanoidHealthDisplayType.AlwaysOn | HumanoidHealthDisplayType.AlwaysOff;
     /**
@@ -12730,6 +13108,8 @@ declare namespace Enum {
         }
         export const R15: R15;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HumanoidRigType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HumanoidRigType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HumanoidRigType | undefined;
     }
     export type HumanoidRigType = HumanoidRigType.R6 | HumanoidRigType.R15;
     /**
@@ -12926,6 +13306,8 @@ declare namespace Enum {
         }
         export const None: None;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HumanoidStateType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HumanoidStateType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HumanoidStateType | undefined;
     }
     export type HumanoidStateType = HumanoidStateType.FallingDown | HumanoidStateType.Ragdoll | HumanoidStateType.GettingUp | HumanoidStateType.Jumping | HumanoidStateType.Swimming | HumanoidStateType.Freefall | HumanoidStateType.Flying | HumanoidStateType.Landed | HumanoidStateType.Running | HumanoidStateType.RunningNoPhysics | HumanoidStateType.StrafingNoPhysics | HumanoidStateType.Climbing | HumanoidStateType.Seated | HumanoidStateType.PlatformStanding | HumanoidStateType.Dead | HumanoidStateType.Physics | HumanoidStateType.None;
     /**
@@ -12966,6 +13348,8 @@ declare namespace Enum {
         }
         export const IncludeContactedMechanisms: IncludeContactedMechanisms;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.IKCollisionsMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.IKCollisionsMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.IKCollisionsMode | undefined;
     }
     export type IKCollisionsMode = IKCollisionsMode.NoCollisions | IKCollisionsMode.OtherMechanismsAnchored | IKCollisionsMode.IncludeContactedMechanisms;
     /**
@@ -13008,6 +13392,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.IKControlConstraintSupport>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.IKControlConstraintSupport | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.IKControlConstraintSupport | undefined;
     }
     export type IKControlConstraintSupport = IKControlConstraintSupport.Default | IKControlConstraintSupport.Disabled | IKControlConstraintSupport.Enabled;
     /**
@@ -13061,6 +13447,8 @@ declare namespace Enum {
         }
         export const LookAt: LookAt;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.IKControlType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.IKControlType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.IKControlType | undefined;
     }
     export type IKControlType = IKControlType.Transform | IKControlType.Position | IKControlType.Rotation | IKControlType.LookAt;
     /**
@@ -13131,6 +13519,8 @@ declare namespace Enum {
         }
         export const ErrorTimedOut: ErrorTimedOut;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.IXPLoadingStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.IXPLoadingStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.IXPLoadingStatus | undefined;
     }
     export type IXPLoadingStatus = IXPLoadingStatus.None | IXPLoadingStatus.Pending | IXPLoadingStatus.Initialized | IXPLoadingStatus.ErrorInvalidUser | IXPLoadingStatus.ErrorConnection | IXPLoadingStatus.ErrorJsonParse | IXPLoadingStatus.ErrorTimedOut;
     /**
@@ -13173,6 +13563,8 @@ declare namespace Enum {
         }
         export const LockCanvasColor: LockCanvasColor;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ImageAlphaType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ImageAlphaType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ImageAlphaType | undefined;
     }
     export type ImageAlphaType = ImageAlphaType.Default | ImageAlphaType.LockCanvasAlpha | ImageAlphaType.LockCanvasColor;
     /**
@@ -13237,6 +13629,8 @@ declare namespace Enum {
         }
         export const AlphaBlend: AlphaBlend;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ImageCombineType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ImageCombineType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ImageCombineType | undefined;
     }
     export type ImageCombineType = ImageCombineType.BlendSourceOver | ImageCombineType.Overwrite | ImageCombineType.Add | ImageCombineType.Multiply | ImageCombineType.AlphaBlend;
     /**
@@ -13279,6 +13673,8 @@ declare namespace Enum {
         }
         export const Center: Center;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InOut>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.InOut | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InOut | undefined;
     }
     export type InOut = InOut.Edge | InOut.Inset | InOut.Center;
     /**
@@ -13337,6 +13733,8 @@ declare namespace Enum {
         }
         export const Bundle: Bundle;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InfoType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.InfoType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InfoType | undefined;
     }
     export type InfoType = InfoType.Asset | InfoType.Product | InfoType.GamePass | InfoType.Subscription | InfoType.Bundle;
     /**
@@ -13401,6 +13799,8 @@ declare namespace Enum {
         }
         export const Float: Float;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InitialDockState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.InitialDockState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InitialDockState | undefined;
     }
     export type InitialDockState = InitialDockState.Top | InitialDockState.Bottom | InitialDockState.Left | InitialDockState.Right | InitialDockState.Float;
     /**
@@ -13487,6 +13887,8 @@ declare namespace Enum {
         }
         export const Sin: Sin;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InputType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.InputType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InputType | undefined;
     }
     export type InputType = InputType.NoInput | InputType.Constant | InputType.Sin;
     /**
@@ -13521,6 +13923,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InterpolationThrottlingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.InterpolationThrottlingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InterpolationThrottlingMode | undefined;
     }
     export type InterpolationThrottlingMode = InterpolationThrottlingMode.Default | InterpolationThrottlingMode.Disabled | InterpolationThrottlingMode.Enabled;
     /**
@@ -13574,6 +13978,8 @@ declare namespace Enum {
         }
         export const Missed: Missed;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InviteState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.InviteState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InviteState | undefined;
     }
     export type InviteState = InviteState.Placed | InviteState.Accepted | InviteState.Declined | InviteState.Missed;
     /**
@@ -13638,6 +14044,8 @@ declare namespace Enum {
         }
         export const Stretch: Stretch;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ItemLineAlignment>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ItemLineAlignment | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ItemLineAlignment | undefined;
     }
     export type ItemLineAlignment = ItemLineAlignment.Automatic | ItemLineAlignment.Start | ItemLineAlignment.Center | ItemLineAlignment.End | ItemLineAlignment.Stretch;
     /**
@@ -13654,6 +14062,8 @@ declare namespace Enum {
         }
         export const CreatedItemAttribution: CreatedItemAttribution;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.JoinSource>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.JoinSource | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.JoinSource | undefined;
     }
     export type JoinSource = JoinSource.CreatedItemAttribution;
     /**
@@ -13696,6 +14106,8 @@ declare namespace Enum {
         }
         export const None: None;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.JointCreationMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.JointCreationMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.JointCreationMode | undefined;
     }
     export type JointCreationMode = JointCreationMode.All | JointCreationMode.Surface | JointCreationMode.None;
     /**
@@ -16562,6 +16974,8 @@ declare namespace Enum {
         }
         export const MouseY: MouseY;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.KeyCode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.KeyCode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.KeyCode | undefined;
     }
     export type KeyCode = KeyCode.Unknown | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95 | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.NumLock | KeyCode.CapsLock | KeyCode.ScrollLock | KeyCode.RightShift | KeyCode.LeftShift | KeyCode.RightControl | KeyCode.LeftControl | KeyCode.RightAlt | KeyCode.LeftAlt | KeyCode.RightMeta | KeyCode.LeftMeta | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2 | KeyCode.MouseLeftButton | KeyCode.MouseRightButton | KeyCode.MouseMiddleButton | KeyCode.MouseBackButton | KeyCode.MouseNoButton | KeyCode.MouseX | KeyCode.MouseY;
     /**
@@ -16604,6 +17018,8 @@ declare namespace Enum {
         }
         export const Cubic: Cubic;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.KeyInterpolationMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.KeyInterpolationMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.KeyInterpolationMode | undefined;
     }
     export type KeyInterpolationMode = KeyInterpolationMode.Constant | KeyInterpolationMode.Linear | KeyInterpolationMode.Cubic;
     /**
@@ -16635,6 +17051,8 @@ declare namespace Enum {
         }
         export const Exclude: Exclude;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.KeywordFilterType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.KeywordFilterType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.KeywordFilterType | undefined;
     }
     export type KeywordFilterType = KeywordFilterType.Include | KeywordFilterType.Exclude;
     /**
@@ -16651,6 +17069,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Language>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Language | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Language | undefined;
     }
     export type Language = Language.Default;
     /**
@@ -16693,6 +17113,8 @@ declare namespace Enum {
         }
         export const Right: Right;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LeftRight>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.LeftRight | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.LeftRight | undefined;
     }
     export type LeftRight = LeftRight.Left | LeftRight.Center | LeftRight.Right;
     /**
@@ -16871,6 +17293,8 @@ declare namespace Enum {
         }
         export const ReservedSpecial: ReservedSpecial;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LexemeType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.LexemeType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.LexemeType | undefined;
     }
     export type LexemeType = LexemeType.Eof | LexemeType.Name | LexemeType.QuotedString | LexemeType.Number | LexemeType.And | LexemeType.Or | LexemeType.Equal | LexemeType.TildeEqual | LexemeType.GreaterThan | LexemeType.GreaterThanEqual | LexemeType.LessThan | LexemeType.LessThanEqual | LexemeType.Colon | LexemeType.Dot | LexemeType.LeftParenthesis | LexemeType.RightParenthesis | LexemeType.Star | LexemeType.DoubleStar | LexemeType.ReservedSpecial;
     /**
@@ -16896,6 +17320,8 @@ declare namespace Enum {
         }
         export const Soft: Soft;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LightingStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.LightingStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.LightingStyle | undefined;
     }
     export type LightingStyle = LightingStyle.Realistic | LightingStyle.Soft;
     /**
@@ -16982,6 +17408,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Limb>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Limb | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Limb | undefined;
     }
     export type Limb = Limb.Head | Limb.Torso | Limb.LeftArm | Limb.RightArm | Limb.LeftLeg | Limb.RightLeg | Limb.Unknown;
     /**
@@ -17024,6 +17452,8 @@ declare namespace Enum {
         }
         export const Miter: Miter;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LineJoinMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.LineJoinMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.LineJoinMode | undefined;
     }
     export type LineJoinMode = LineJoinMode.Round | LineJoinMode.Bevel | LineJoinMode.Miter;
     /**
@@ -17055,6 +17485,8 @@ declare namespace Enum {
         }
         export const Vertical: Vertical;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ListDisplayMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ListDisplayMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ListDisplayMode | undefined;
     }
     export type ListDisplayMode = ListDisplayMode.Horizontal | ListDisplayMode.Vertical;
     /**
@@ -17106,6 +17538,8 @@ declare namespace Enum {
         }
         export const Camera: Camera;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ListenerLocation>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ListenerLocation | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ListenerLocation | undefined;
     }
     export type ListenerLocation = ListenerLocation.Default | ListenerLocation.None | ListenerLocation.Character | ListenerLocation.Camera;
     /**
@@ -17159,6 +17593,8 @@ declare namespace Enum {
         }
         export const ObjectCFrame: ObjectCFrame;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ListenerType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ListenerType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ListenerType | undefined;
     }
     export type ListenerType = ListenerType.Camera | ListenerType.CFrame | ListenerType.ObjectPosition | ListenerType.ObjectCFrame;
     /**
@@ -17202,6 +17638,8 @@ declare namespace Enum {
         }
         export const FailureOperationIllegal: FailureOperationIllegal;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LiveEditingAtomicUpdateResponse>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.LiveEditingAtomicUpdateResponse | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.LiveEditingAtomicUpdateResponse | undefined;
     }
     export type LiveEditingAtomicUpdateResponse = LiveEditingAtomicUpdateResponse.Success | LiveEditingAtomicUpdateResponse.FailureGuidNotFound | LiveEditingAtomicUpdateResponse.FailureHashMismatch | LiveEditingAtomicUpdateResponse.FailureOperationIllegal;
     /**
@@ -17236,6 +17674,8 @@ declare namespace Enum {
         }
         export const Error: Error;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LiveEditingBroadcastMessageType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.LiveEditingBroadcastMessageType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.LiveEditingBroadcastMessageType | undefined;
     }
     export type LiveEditingBroadcastMessageType = LiveEditingBroadcastMessageType.Normal | LiveEditingBroadcastMessageType.Warning | LiveEditingBroadcastMessageType.Error;
     /**
@@ -17278,6 +17718,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LoadCharacterLayeredClothing>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.LoadCharacterLayeredClothing | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.LoadCharacterLayeredClothing | undefined;
     }
     export type LoadCharacterLayeredClothing = LoadCharacterLayeredClothing.Default | LoadCharacterLayeredClothing.Disabled | LoadCharacterLayeredClothing.Enabled;
     /**
@@ -17312,6 +17754,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LoadDynamicHeads>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.LoadDynamicHeads | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.LoadDynamicHeads | undefined;
     }
     export type LoadDynamicHeads = LoadDynamicHeads.Default | LoadDynamicHeads.Disabled | LoadDynamicHeads.Enabled;
     /**
@@ -17346,6 +17790,8 @@ declare namespace Enum {
         }
         export const ObjectPosition: ObjectPosition;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LocationType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.LocationType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.LocationType | undefined;
     }
     export type LocationType = LocationType.Character | LocationType.Camera | LocationType.ObjectPosition;
     /**
@@ -17388,6 +17834,8 @@ declare namespace Enum {
         }
         export const Error: Error;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MarketplaceBulkPurchasePromptStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MarketplaceBulkPurchasePromptStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MarketplaceBulkPurchasePromptStatus | undefined;
     }
     export type MarketplaceBulkPurchasePromptStatus = MarketplaceBulkPurchasePromptStatus.Completed | MarketplaceBulkPurchasePromptStatus.Aborted | MarketplaceBulkPurchasePromptStatus.Error;
     /**
@@ -17540,6 +17988,8 @@ declare namespace Enum {
         }
         export const PlaceInvalid: PlaceInvalid;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MarketplaceItemPurchaseStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MarketplaceItemPurchaseStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MarketplaceItemPurchaseStatus | undefined;
     }
     export type MarketplaceItemPurchaseStatus = MarketplaceItemPurchaseStatus.Success | MarketplaceItemPurchaseStatus.SystemError | MarketplaceItemPurchaseStatus.AlreadyOwned | MarketplaceItemPurchaseStatus.InsufficientRobux | MarketplaceItemPurchaseStatus.QuantityLimitExceeded | MarketplaceItemPurchaseStatus.QuotaExceeded | MarketplaceItemPurchaseStatus.NotForSale | MarketplaceItemPurchaseStatus.NotAvailableForPurchaser | MarketplaceItemPurchaseStatus.PriceMismatch | MarketplaceItemPurchaseStatus.SoldOut | MarketplaceItemPurchaseStatus.PurchaserIsSeller | MarketplaceItemPurchaseStatus.InsufficientMembership | MarketplaceItemPurchaseStatus.PlaceInvalid;
     /**
@@ -17571,6 +18021,8 @@ declare namespace Enum {
         }
         export const AvatarBundle: AvatarBundle;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MarketplaceProductType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MarketplaceProductType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MarketplaceProductType | undefined;
     }
     export type MarketplaceProductType = MarketplaceProductType.AvatarAsset | MarketplaceProductType.AvatarBundle;
     /**
@@ -17596,6 +18048,8 @@ declare namespace Enum {
         }
         export const Markdown: Markdown;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MarkupKind>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MarkupKind | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MarkupKind | undefined;
     }
     export type MarkupKind = MarkupKind.PlainText | MarkupKind.Markdown;
     /**
@@ -18104,6 +18558,8 @@ declare namespace Enum {
         }
         export const Rubber: Rubber;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Material>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Material | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Material | undefined;
     }
     export type Material = Material.Plastic | Material.SmoothPlastic | Material.Neon | Material.Wood | Material.WoodPlanks | Material.Marble | Material.Slate | Material.Concrete | Material.Granite | Material.Brick | Material.Pebble | Material.Cobblestone | Material.Rock | Material.Sandstone | Material.Basalt | Material.CrackedLava | Material.Limestone | Material.Pavement | Material.CorrodedMetal | Material.DiamondPlate | Material.Foil | Material.Metal | Material.Grass | Material.LeafyGrass | Material.Sand | Material.Fabric | Material.Snow | Material.Mud | Material.Ground | Material.Asphalt | Material.Salt | Material.Ice | Material.Glacier | Material.Glass | Material.ForceField | Material.Air | Material.Water | Material.Cardboard | Material.Carpet | Material.CeramicTiles | Material.ClayRoofTiles | Material.RoofShingles | Material.Leather | Material.Plaster | Material.Rubber;
     /**
@@ -18135,6 +18591,8 @@ declare namespace Enum {
         }
         export const Organic: Organic;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MaterialPattern>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MaterialPattern | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MaterialPattern | undefined;
     }
     export type MaterialPattern = MaterialPattern.Regular | MaterialPattern.Organic;
     /**
@@ -18199,6 +18657,8 @@ declare namespace Enum {
         }
         export const Premium: Premium;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MembershipType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MembershipType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MembershipType | undefined;
     }
     export type MembershipType = MembershipType.None | MembershipType.BuildersClub | MembershipType.TurboBuildersClub | MembershipType.OutrageousBuildersClub | MembershipType.Premium;
     /**
@@ -18272,6 +18732,8 @@ declare namespace Enum {
         }
         export const Level04: Level04;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MeshPartDetailLevel>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MeshPartDetailLevel | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MeshPartDetailLevel | undefined;
     }
     export type MeshPartDetailLevel = MeshPartDetailLevel.DistanceBased | MeshPartDetailLevel.Level00 | MeshPartDetailLevel.Level01 | MeshPartDetailLevel.Level02 | MeshPartDetailLevel.Level03 | MeshPartDetailLevel.Level04;
     /**
@@ -18314,6 +18776,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MeshPartHeadsAndAccessories>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MeshPartHeadsAndAccessories | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MeshPartHeadsAndAccessories | undefined;
     }
     export type MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default | MeshPartHeadsAndAccessories.Disabled | MeshPartHeadsAndAccessories.Enabled;
     /**
@@ -18375,6 +18839,8 @@ declare namespace Enum {
         }
         export const Inch: Inch;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MeshScaleUnit>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MeshScaleUnit | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MeshScaleUnit | undefined;
     }
     export type MeshScaleUnit = MeshScaleUnit.Stud | MeshScaleUnit.Meter | MeshScaleUnit.CM | MeshScaleUnit.MM | MeshScaleUnit.Foot | MeshScaleUnit.Inch;
     /**
@@ -18526,6 +18992,8 @@ declare namespace Enum {
         }
         export const CornerWedge: CornerWedge;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MeshType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MeshType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MeshType | undefined;
     }
     export type MeshType = MeshType.Head | MeshType.Torso | MeshType.Wedge | MeshType.Sphere | MeshType.Cylinder | MeshType.FileMesh | MeshType.Brick | MeshType.Prism | MeshType.Pyramid | MeshType.ParallelRamp | MeshType.RightAngleRamp | MeshType.CornerWedge;
     /**
@@ -18579,6 +19047,8 @@ declare namespace Enum {
         }
         export const MessageError: MessageError;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MessageType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MessageType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MessageType | undefined;
     }
     export type MessageType = MessageType.MessageOutput | MessageType.MessageInfo | MessageType.MessageWarning | MessageType.MessageError;
     /**
@@ -18621,6 +19091,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ModelLevelOfDetail>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ModelLevelOfDetail | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ModelLevelOfDetail | undefined;
     }
     export type ModelLevelOfDetail = ModelLevelOfDetail.Automatic | ModelLevelOfDetail.StreamingMesh | ModelLevelOfDetail.Disabled;
     /**
@@ -18663,6 +19135,8 @@ declare namespace Enum {
         }
         export const Improved: Improved;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ModelStreamingBehavior>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ModelStreamingBehavior | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ModelStreamingBehavior | undefined;
     }
     export type ModelStreamingBehavior = ModelStreamingBehavior.Default | ModelStreamingBehavior.Legacy | ModelStreamingBehavior.Improved;
     /**
@@ -18727,6 +19201,8 @@ declare namespace Enum {
         }
         export const Nonatomic: Nonatomic;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ModelStreamingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ModelStreamingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ModelStreamingMode | undefined;
     }
     export type ModelStreamingMode = ModelStreamingMode.Default | ModelStreamingMode.Atomic | ModelStreamingMode.Persistent | ModelStreamingMode.PersistentPerPlayer | ModelStreamingMode.Nonatomic;
     /**
@@ -18779,6 +19255,8 @@ declare namespace Enum {
         }
         export const Invalid: Invalid;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ModerationStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ModerationStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ModerationStatus | undefined;
     }
     export type ModerationStatus = ModerationStatus.ReviewedApproved | ModerationStatus.ReviewedRejected | ModerationStatus.NotReviewed | ModerationStatus.NotApplicable | ModerationStatus.Invalid;
     /**
@@ -18822,6 +19300,8 @@ declare namespace Enum {
         }
         export const Meta: Meta;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ModifierKey>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ModifierKey | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ModifierKey | undefined;
     }
     export type ModifierKey = ModifierKey.Shift | ModifierKey.Ctrl | ModifierKey.Alt | ModifierKey.Meta;
     /**
@@ -18864,6 +19344,8 @@ declare namespace Enum {
         }
         export const LockCurrentPosition: LockCurrentPosition;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MouseBehavior>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MouseBehavior | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MouseBehavior | undefined;
     }
     export type MouseBehavior = MouseBehavior.Default | MouseBehavior.LockCenter | MouseBehavior.LockCurrentPosition;
     /**
@@ -18928,6 +19410,8 @@ declare namespace Enum {
         }
         export const AirFree: AirFree;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MoveState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MoveState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MoveState | undefined;
     }
     export type MoveState = MoveState.Stopped | MoveState.Coasting | MoveState.Pushing | MoveState.Stopping | MoveState.AirFree;
     /**
@@ -18970,6 +19454,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MoverConstraintRootBehaviorMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MoverConstraintRootBehaviorMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MoverConstraintRootBehaviorMode | undefined;
     }
     export type MoverConstraintRootBehaviorMode = MoverConstraintRootBehaviorMode.Default | MoverConstraintRootBehaviorMode.Disabled | MoverConstraintRootBehaviorMode.Enabled;
     /**
@@ -18995,6 +19481,8 @@ declare namespace Enum {
         }
         export const Muted: Muted;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MuteState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MuteState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MuteState | undefined;
     }
     export type MuteState = MuteState.Unmuted | MuteState.Muted;
     /**
@@ -19037,6 +19525,8 @@ declare namespace Enum {
         }
         export const OccludeAll: OccludeAll;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.NameOcclusion>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.NameOcclusion | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.NameOcclusion | undefined;
     }
     export type NameOcclusion = NameOcclusion.NoOcclusion | NameOcclusion.EnemyOcclusion | NameOcclusion.OccludeAll;
     /**
@@ -19079,6 +19569,8 @@ declare namespace Enum {
         }
         export const OnContact: OnContact;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.NetworkOwnership>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.NetworkOwnership | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.NetworkOwnership | undefined;
     }
     export type NetworkOwnership = NetworkOwnership.Automatic | NetworkOwnership.Manual | NetworkOwnership.OnContact;
     /**
@@ -19113,6 +19605,8 @@ declare namespace Enum {
         }
         export const Disconnected: Disconnected;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.NetworkStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.NetworkStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.NetworkStatus | undefined;
     }
     export type NetworkStatus = NetworkStatus.Unknown | NetworkStatus.Connected | NetworkStatus.Disconnected;
     /**
@@ -19129,6 +19623,8 @@ declare namespace Enum {
         }
         export const SimplexGabor: SimplexGabor;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.NoiseType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.NoiseType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.NoiseType | undefined;
     }
     export type NoiseType = NoiseType.SimplexGabor;
     /**
@@ -19204,6 +19700,8 @@ declare namespace Enum {
         }
         export const Front: Front;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.NormalId>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.NormalId | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.NormalId | undefined;
     }
     export type NormalId = NormalId.Right | NormalId.Top | NormalId.Back | NormalId.Left | NormalId.Bottom | NormalId.Front;
     /**
@@ -19229,6 +19727,8 @@ declare namespace Enum {
         }
         export const Secondary: Secondary;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.NotificationButtonType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.NotificationButtonType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.NotificationButtonType | undefined;
     }
     export type NotificationButtonType = NotificationButtonType.Primary | NotificationButtonType.Secondary;
     /**
@@ -19281,6 +19781,8 @@ declare namespace Enum {
         }
         export const Primitive: Primitive;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.OperationType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.OperationType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.OperationType | undefined;
     }
     export type OperationType = OperationType.Null | OperationType.Union | OperationType.Subtraction | OperationType.Intersection | OperationType.Primitive;
     /**
@@ -19312,6 +19814,8 @@ declare namespace Enum {
         }
         export const TwoAttachment: TwoAttachment;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.OrientationAlignmentMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.OrientationAlignmentMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.OrientationAlignmentMode | undefined;
     }
     export type OrientationAlignmentMode = OrientationAlignmentMode.OneAttachment | OrientationAlignmentMode.TwoAttachment;
     /**
@@ -19346,6 +19850,8 @@ declare namespace Enum {
         }
         export const Purchased: Purchased;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.OutfitSource>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.OutfitSource | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.OutfitSource | undefined;
     }
     export type OutfitSource = OutfitSource.All | OutfitSource.Created | OutfitSource.Purchased;
     /**
@@ -19380,6 +19886,8 @@ declare namespace Enum {
         }
         export const DynamicHead: DynamicHead;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.OutfitType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.OutfitType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.OutfitType | undefined;
     }
     export type OutfitType = OutfitType.All | OutfitType.Avatar | OutfitType.DynamicHead;
     /**
@@ -19411,6 +19919,8 @@ declare namespace Enum {
         }
         export const Vertical: Vertical;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.OutputLayoutMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.OutputLayoutMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.OutputLayoutMode | undefined;
     }
     export type OutputLayoutMode = OutputLayoutMode.Horizontal | OutputLayoutMode.Vertical;
     /**
@@ -19453,6 +19963,8 @@ declare namespace Enum {
         }
         export const ForceHide: ForceHide;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.OverrideMouseIconBehavior>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.OverrideMouseIconBehavior | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.OverrideMouseIconBehavior | undefined;
     }
     export type OverrideMouseIconBehavior = OverrideMouseIconBehavior.None | OverrideMouseIconBehavior.ForceShow | OverrideMouseIconBehavior.ForceHide;
     /**
@@ -19528,6 +20040,8 @@ declare namespace Enum {
         }
         export const Own: Own;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PackagePermission>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PackagePermission | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PackagePermission | undefined;
     }
     export type PackagePermission = PackagePermission.None | PackagePermission.NoAccess | PackagePermission.Revoked | PackagePermission.UseView | PackagePermission.Edit | PackagePermission.Own;
     /**
@@ -19592,6 +20106,8 @@ declare namespace Enum {
         }
         export const CornerWedge: CornerWedge;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PartType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PartType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PartType | undefined;
     }
     export type PartType = PartType.Ball | PartType.Block | PartType.Cylinder | PartType.Wedge | PartType.CornerWedge;
     /**
@@ -19635,6 +20151,8 @@ declare namespace Enum {
         }
         export const Disc: Disc;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ParticleEmitterShape>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ParticleEmitterShape | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ParticleEmitterShape | undefined;
     }
     export type ParticleEmitterShape = ParticleEmitterShape.Box | ParticleEmitterShape.Sphere | ParticleEmitterShape.Cylinder | ParticleEmitterShape.Disc;
     /**
@@ -19669,6 +20187,8 @@ declare namespace Enum {
         }
         export const InAndOut: InAndOut;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ParticleEmitterShapeInOut>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ParticleEmitterShapeInOut | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ParticleEmitterShapeInOut | undefined;
     }
     export type ParticleEmitterShapeInOut = ParticleEmitterShapeInOut.Outward | ParticleEmitterShapeInOut.Inward | ParticleEmitterShapeInOut.InAndOut;
     /**
@@ -19694,6 +20214,8 @@ declare namespace Enum {
         }
         export const Surface: Surface;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ParticleEmitterShapeStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ParticleEmitterShapeStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ParticleEmitterShapeStyle | undefined;
     }
     export type ParticleEmitterShapeStyle = ParticleEmitterShapeStyle.Volume | ParticleEmitterShapeStyle.Surface;
     /**
@@ -19747,6 +20269,8 @@ declare namespace Enum {
         }
         export const Grid8x8: Grid8x8;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ParticleFlipbookLayout>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ParticleFlipbookLayout | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ParticleFlipbookLayout | undefined;
     }
     export type ParticleFlipbookLayout = ParticleFlipbookLayout.None | ParticleFlipbookLayout.Grid2x2 | ParticleFlipbookLayout.Grid4x4 | ParticleFlipbookLayout.Grid8x8;
     /**
@@ -19800,6 +20324,8 @@ declare namespace Enum {
         }
         export const Random: Random;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ParticleFlipbookMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ParticleFlipbookMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ParticleFlipbookMode | undefined;
     }
     export type ParticleFlipbookMode = ParticleFlipbookMode.Loop | ParticleFlipbookMode.OneShot | ParticleFlipbookMode.PingPong | ParticleFlipbookMode.Random;
     /**
@@ -19834,6 +20360,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ParticleFlipbookTextureCompatible>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ParticleFlipbookTextureCompatible | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ParticleFlipbookTextureCompatible | undefined;
     }
     export type ParticleFlipbookTextureCompatible = ParticleFlipbookTextureCompatible.NotCompatible | ParticleFlipbookTextureCompatible.Compatible | ParticleFlipbookTextureCompatible.Unknown;
     /**
@@ -19877,6 +20405,8 @@ declare namespace Enum {
         }
         export const VelocityPerpendicular: VelocityPerpendicular;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ParticleOrientation>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ParticleOrientation | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ParticleOrientation | undefined;
     }
     export type ParticleOrientation = ParticleOrientation.FacingCamera | ParticleOrientation.FacingCameraWorldUp | ParticleOrientation.VelocityParallel | ParticleOrientation.VelocityPerpendicular;
     /**
@@ -19960,6 +20490,8 @@ declare namespace Enum {
         }
         export const FailFinishNotEmpty: FailFinishNotEmpty;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PathStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PathStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PathStatus | undefined;
     }
     export type PathStatus = PathStatus.Success | PathStatus.NoPath | PathStatus.ClosestNoPath | PathStatus.ClosestOutOfRange | PathStatus.FailStartNotEmpty | PathStatus.FailFinishNotEmpty;
     /**
@@ -20000,6 +20532,8 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PathWaypointAction>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PathWaypointAction | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PathWaypointAction | undefined;
     }
     export type PathWaypointAction = PathWaypointAction.Walk | PathWaypointAction.Jump | PathWaypointAction.Custom;
     /**
@@ -20034,6 +20568,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PathfindingUseImprovedSearch>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PathfindingUseImprovedSearch | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PathfindingUseImprovedSearch | undefined;
     }
     export type PathfindingUseImprovedSearch = PathfindingUseImprovedSearch.Default | PathfindingUseImprovedSearch.Disabled | PathfindingUseImprovedSearch.Enabled;
     /**
@@ -20098,6 +20634,8 @@ declare namespace Enum {
         }
         export const Roblox: Roblox;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PermissionLevelShown>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PermissionLevelShown | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PermissionLevelShown | undefined;
     }
     export type PermissionLevelShown = PermissionLevelShown.Game | PermissionLevelShown.RobloxGame | PermissionLevelShown.RobloxScript | PermissionLevelShown.Studio | PermissionLevelShown.Roblox;
     /**
@@ -20132,6 +20670,8 @@ declare namespace Enum {
         }
         export const Fixed60Hz: Fixed60Hz;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PhysicsSimulationRate>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PhysicsSimulationRate | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PhysicsSimulationRate | undefined;
     }
     export type PhysicsSimulationRate = PhysicsSimulationRate.Fixed240Hz | PhysicsSimulationRate.Fixed120Hz | PhysicsSimulationRate.Fixed60Hz;
     /**
@@ -20172,6 +20712,8 @@ declare namespace Enum {
         }
         export const Adaptive: Adaptive;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PhysicsSteppingMethod>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PhysicsSteppingMethod | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PhysicsSteppingMethod | undefined;
     }
     export type PhysicsSteppingMethod = PhysicsSteppingMethod.Default | PhysicsSteppingMethod.Fixed | PhysicsSteppingMethod.Adaptive;
     /**
@@ -20419,6 +20961,8 @@ declare namespace Enum {
         }
         export const None: None;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Platform>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Platform | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Platform | undefined;
     }
     export type Platform = Platform.Windows | Platform.OSX | Platform.IOS | Platform.Android | Platform.XBoxOne | Platform.PS4 | Platform.PS3 | Platform.XBox360 | Platform.WiiU | Platform.NX | Platform.Ouya | Platform.AndroidTV | Platform.Chromecast | Platform.Linux | Platform.SteamOS | Platform.WebOS | Platform.DOS | Platform.BeOS | Platform.UWP | Platform.PS5 | Platform.MetaOS | Platform.None;
     /**
@@ -20494,6 +21038,8 @@ declare namespace Enum {
         }
         export const Cancelled: Cancelled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PlaybackState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PlaybackState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlaybackState | undefined;
     }
     export type PlaybackState = PlaybackState.Begin | PlaybackState.Delayed | PlaybackState.Playing | PlaybackState.Paused | PlaybackState.Completed | PlaybackState.Cancelled;
     /**
@@ -20558,6 +21104,8 @@ declare namespace Enum {
         }
         export const CharacterJump: CharacterJump;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PlayerActions>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PlayerActions | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlayerActions | undefined;
     }
     export type PlayerActions = PlayerActions.CharacterForward | PlayerActions.CharacterBackward | PlayerActions.CharacterLeft | PlayerActions.CharacterRight | PlayerActions.CharacterJump;
     /**
@@ -20592,6 +21140,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PlayerCharacterDestroyBehavior>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PlayerCharacterDestroyBehavior | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlayerCharacterDestroyBehavior | undefined;
     }
     export type PlayerCharacterDestroyBehavior = PlayerCharacterDestroyBehavior.Default | PlayerCharacterDestroyBehavior.Disabled | PlayerCharacterDestroyBehavior.Enabled;
     /**
@@ -20634,6 +21184,8 @@ declare namespace Enum {
         }
         export const Whisper: Whisper;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PlayerChatType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PlayerChatType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlayerChatType | undefined;
     }
     export type PlayerChatType = PlayerChatType.All | PlayerChatType.Team | PlayerChatType.Whisper;
     /**
@@ -20676,6 +21228,8 @@ declare namespace Enum {
         }
         export const InOut: InOut;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PoseEasingDirection>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PoseEasingDirection | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PoseEasingDirection | undefined;
     }
     export type PoseEasingDirection = PoseEasingDirection.In | PoseEasingDirection.Out | PoseEasingDirection.InOut;
     /**
@@ -20749,6 +21303,8 @@ declare namespace Enum {
         }
         export const CubicV2: CubicV2;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PoseEasingStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PoseEasingStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PoseEasingStyle | undefined;
     }
     export type PoseEasingStyle = PoseEasingStyle.Linear | PoseEasingStyle.Constant | PoseEasingStyle.Elastic | PoseEasingStyle.Cubic | PoseEasingStyle.Bounce | PoseEasingStyle.CubicV2;
     /**
@@ -20780,6 +21336,8 @@ declare namespace Enum {
         }
         export const TwoAttachment: TwoAttachment;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PositionAlignmentMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PositionAlignmentMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PositionAlignmentMode | undefined;
     }
     export type PositionAlignmentMode = PositionAlignmentMode.OneAttachment | PositionAlignmentMode.TwoAttachment;
     /**
@@ -20823,6 +21381,8 @@ declare namespace Enum {
         }
         export const Largest: Largest;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PreferredTextSize>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PreferredTextSize | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PreferredTextSize | undefined;
     }
     export type PreferredTextSize = PreferredTextSize.Medium | PreferredTextSize.Large | PreferredTextSize.Larger | PreferredTextSize.Largest;
     /**
@@ -20857,6 +21417,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PrimalPhysicsSolver>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PrimalPhysicsSolver | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PrimalPhysicsSolver | undefined;
     }
     export type PrimalPhysicsSolver = PrimalPhysicsSolver.Default | PrimalPhysicsSolver.Experimental | PrimalPhysicsSolver.Disabled;
     /**
@@ -20918,6 +21480,8 @@ declare namespace Enum {
         }
         export const CornerWedge: CornerWedge;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PrimitiveType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PrimitiveType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PrimitiveType | undefined;
     }
     export type PrimitiveType = PrimitiveType.Null | PrimitiveType.Ball | PrimitiveType.Cylinder | PrimitiveType.Block | PrimitiveType.Wedge | PrimitiveType.CornerWedge;
     /**
@@ -20972,6 +21536,8 @@ declare namespace Enum {
         }
         export const Banned: Banned;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PrivilegeType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PrivilegeType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PrivilegeType | undefined;
     }
     export type PrivilegeType = PrivilegeType.Owner | PrivilegeType.Admin | PrivilegeType.Member | PrivilegeType.Visitor | PrivilegeType.Banned;
     /**
@@ -21012,6 +21578,8 @@ declare namespace Enum {
         }
         export const AllGames: AllGames;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ProductLocationRestriction>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ProductLocationRestriction | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ProductLocationRestriction | undefined;
     }
     export type ProductLocationRestriction = ProductLocationRestriction.AvatarShop | ProductLocationRestriction.AllowedGames | ProductLocationRestriction.AllGames;
     /**
@@ -21055,6 +21623,8 @@ declare namespace Enum {
         }
         export const CommerceProduct: CommerceProduct;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ProductPurchaseChannel>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ProductPurchaseChannel | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ProductPurchaseChannel | undefined;
     }
     export type ProductPurchaseChannel = ProductPurchaseChannel.InExperience | ProductPurchaseChannel.ExperienceDetailsPage | ProductPurchaseChannel.AdReward | ProductPurchaseChannel.CommerceProduct;
     /**
@@ -21086,6 +21656,8 @@ declare namespace Enum {
         }
         export const PurchaseGranted: PurchaseGranted;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ProductPurchaseDecision>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ProductPurchaseDecision | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ProductPurchaseDecision | undefined;
     }
     export type ProductPurchaseDecision = ProductPurchaseDecision.NotProcessedYet | ProductPurchaseDecision.PurchaseGranted;
     /**
@@ -21147,6 +21719,8 @@ declare namespace Enum {
         }
         export const UnknownFailure: UnknownFailure;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PromptCreateAssetResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PromptCreateAssetResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PromptCreateAssetResult | undefined;
     }
     export type PromptCreateAssetResult = PromptCreateAssetResult.Success | PromptCreateAssetResult.PermissionDenied | PromptCreateAssetResult.Timeout | PromptCreateAssetResult.UploadFailed | PromptCreateAssetResult.NoUserInput | PromptCreateAssetResult.UnknownFailure;
     /**
@@ -21262,6 +21836,8 @@ declare namespace Enum {
         }
         export const TokenInvalid: TokenInvalid;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PromptCreateAvatarResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PromptCreateAvatarResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PromptCreateAvatarResult | undefined;
     }
     export type PromptCreateAvatarResult = PromptCreateAvatarResult.Success | PromptCreateAvatarResult.PermissionDenied | PromptCreateAvatarResult.Timeout | PromptCreateAvatarResult.UploadFailed | PromptCreateAvatarResult.NoUserInput | PromptCreateAvatarResult.InvalidHumanoidDescription | PromptCreateAvatarResult.UGCValidationFailed | PromptCreateAvatarResult.ModeratedName | PromptCreateAvatarResult.MaxOutfits | PromptCreateAvatarResult.PurchaseFailure | PromptCreateAvatarResult.UnknownFailure | PromptCreateAvatarResult.TokenInvalid;
     /**
@@ -21323,6 +21899,8 @@ declare namespace Enum {
         }
         export const UnknownFailure: UnknownFailure;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PromptPublishAssetResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PromptPublishAssetResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PromptPublishAssetResult | undefined;
     }
     export type PromptPublishAssetResult = PromptPublishAssetResult.Success | PromptPublishAssetResult.PermissionDenied | PromptPublishAssetResult.Timeout | PromptPublishAssetResult.UploadFailed | PromptPublishAssetResult.NoUserInput | PromptPublishAssetResult.UnknownFailure;
     /**
@@ -21357,6 +21935,8 @@ declare namespace Enum {
         }
         export const Error: Error;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PropertyStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PropertyStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PropertyStatus | undefined;
     }
     export type PropertyStatus = PropertyStatus.Ok | PropertyStatus.Warning | PropertyStatus.Error;
     /**
@@ -21397,6 +21977,8 @@ declare namespace Enum {
         }
         export const AlwaysShow: AlwaysShow;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ProximityPromptExclusivity>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ProximityPromptExclusivity | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ProximityPromptExclusivity | undefined;
     }
     export type ProximityPromptExclusivity = ProximityPromptExclusivity.OnePerButton | ProximityPromptExclusivity.OneGlobally | ProximityPromptExclusivity.AlwaysShow;
     /**
@@ -21431,6 +22013,8 @@ declare namespace Enum {
         }
         export const Touch: Touch;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ProximityPromptInputType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ProximityPromptInputType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ProximityPromptInputType | undefined;
     }
     export type ProximityPromptInputType = ProximityPromptInputType.Keyboard | ProximityPromptInputType.Gamepad | ProximityPromptInputType.Touch;
     /**
@@ -21460,6 +22044,8 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ProximityPromptStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ProximityPromptStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ProximityPromptStyle | undefined;
     }
     export type ProximityPromptStyle = ProximityPromptStyle.Default | ProximityPromptStyle.Custom;
     /**
@@ -21711,6 +22297,8 @@ declare namespace Enum {
         }
         export const Level21: Level21;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.QualityLevel>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.QualityLevel | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.QualityLevel | undefined;
     }
     export type QualityLevel = QualityLevel.Automatic | QualityLevel.Level01 | QualityLevel.Level02 | QualityLevel.Level03 | QualityLevel.Level04 | QualityLevel.Level05 | QualityLevel.Level06 | QualityLevel.Level07 | QualityLevel.Level08 | QualityLevel.Level09 | QualityLevel.Level10 | QualityLevel.Level11 | QualityLevel.Level12 | QualityLevel.Level13 | QualityLevel.Level14 | QualityLevel.Level15 | QualityLevel.Level16 | QualityLevel.Level17 | QualityLevel.Level18 | QualityLevel.Level19 | QualityLevel.Level20 | QualityLevel.Level21;
     /**
@@ -21742,6 +22330,8 @@ declare namespace Enum {
         }
         export const InnerBox: InnerBox;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.R15CollisionType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.R15CollisionType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.R15CollisionType | undefined;
     }
     export type R15CollisionType = R15CollisionType.OuterBox | R15CollisionType.InnerBox;
     /**
@@ -21781,6 +22371,8 @@ declare namespace Enum {
          */
         export const Whitelist: Include;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RaycastFilterType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RaycastFilterType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RaycastFilterType | undefined;
     }
     export type RaycastFilterType = RaycastFilterType.Exclude | RaycastFilterType.Include;
     /**
@@ -21815,6 +22407,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RejectCharacterDeletions>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RejectCharacterDeletions | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RejectCharacterDeletions | undefined;
     }
     export type RejectCharacterDeletions = RejectCharacterDeletions.Default | RejectCharacterDeletions.Disabled | RejectCharacterDeletions.Enabled;
     /**
@@ -21857,6 +22451,8 @@ declare namespace Enum {
         }
         export const Performance: Performance;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RenderFidelity>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RenderFidelity | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RenderFidelity | undefined;
     }
     export type RenderFidelity = RenderFidelity.Automatic | RenderFidelity.Precise | RenderFidelity.Performance;
     /**
@@ -21921,6 +22517,8 @@ declare namespace Enum {
         }
         export const Last: Last;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RenderPriority>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RenderPriority | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RenderPriority | undefined;
     }
     export type RenderPriority = RenderPriority.First | RenderPriority.Input | RenderPriority.Camera | RenderPriority.Character | RenderPriority.Last;
     /**
@@ -21955,6 +22553,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RenderingCacheOptimizationMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RenderingCacheOptimizationMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RenderingCacheOptimizationMode | undefined;
     }
     export type RenderingCacheOptimizationMode = RenderingCacheOptimizationMode.Default | RenderingCacheOptimizationMode.Disabled | RenderingCacheOptimizationMode.Enabled;
     /**
@@ -21980,6 +22580,8 @@ declare namespace Enum {
         }
         export const diff: diff;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RenderingTestComparisonMethod>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RenderingTestComparisonMethod | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RenderingTestComparisonMethod | undefined;
     }
     export type RenderingTestComparisonMethod = RenderingTestComparisonMethod.psnr | RenderingTestComparisonMethod.diff;
     /**
@@ -22014,6 +22616,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ReplicateInstanceDestroySetting>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ReplicateInstanceDestroySetting | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ReplicateInstanceDestroySetting | undefined;
     }
     export type ReplicateInstanceDestroySetting = ReplicateInstanceDestroySetting.Default | ReplicateInstanceDestroySetting.Disabled | ReplicateInstanceDestroySetting.Enabled;
     /**
@@ -22045,6 +22649,8 @@ declare namespace Enum {
         }
         export const Pixelated: Pixelated;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ResamplerMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ResamplerMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ResamplerMode | undefined;
     }
     export type ResamplerMode = ResamplerMode.Default | ResamplerMode.Pixelated;
     /**
@@ -22088,6 +22694,8 @@ declare namespace Enum {
         }
         export const Active: Active;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ReservedHighlightId>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ReservedHighlightId | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ReservedHighlightId | undefined;
     }
     export type ReservedHighlightId = ReservedHighlightId.Standard | ReservedHighlightId.Selection | ReservedHighlightId.Hover | ReservedHighlightId.Active;
     /**
@@ -22122,6 +22730,8 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RestPose>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RestPose | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RestPose | undefined;
     }
     export type RestPose = RestPose.Default | RestPose.RotationsReset | RestPose.Custom;
     /**
@@ -22183,6 +22793,8 @@ declare namespace Enum {
         }
         export const Send: Send;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ReturnKeyType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ReturnKeyType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ReturnKeyType | undefined;
     }
     export type ReturnKeyType = ReturnKeyType.Default | ReturnKeyType.Done | ReturnKeyType.Go | ReturnKeyType.Next | ReturnKeyType.Search | ReturnKeyType.Send;
     /**
@@ -22456,6 +23068,8 @@ declare namespace Enum {
         }
         export const UnderWater: UnderWater;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ReverbType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ReverbType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ReverbType | undefined;
     }
     export type ReverbType = ReverbType.NoReverb | ReverbType.GenericReverb | ReverbType.PaddedCell | ReverbType.Room | ReverbType.Bathroom | ReverbType.LivingRoom | ReverbType.StoneRoom | ReverbType.Auditorium | ReverbType.ConcertHall | ReverbType.Cave | ReverbType.Arena | ReverbType.Hangar | ReverbType.CarpettedHallway | ReverbType.Hallway | ReverbType.StoneCorridor | ReverbType.Alley | ReverbType.Forest | ReverbType.City | ReverbType.Mountains | ReverbType.Quarry | ReverbType.Plain | ReverbType.ParkingLot | ReverbType.SewerPipe | ReverbType.UnderWater;
     /**
@@ -22564,6 +23178,8 @@ declare namespace Enum {
         }
         export const PivotEditor: PivotEditor;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RibbonTool>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RibbonTool | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RibbonTool | undefined;
     }
     export type RibbonTool = RibbonTool.Select | RibbonTool.Scale | RibbonTool.Rotate | RibbonTool.Move | RibbonTool.Transform | RibbonTool.ColorPicker | RibbonTool.MaterialPicker | RibbonTool.Group | RibbonTool.Ungroup | RibbonTool.None | RibbonTool.PivotEditor;
     /**
@@ -22598,6 +23214,8 @@ declare namespace Enum {
         }
         export const RthroNarrow: RthroNarrow;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RigScale>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RigScale | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RigScale | undefined;
     }
     export type RigScale = RigScale.Default | RigScale.Rthro | RigScale.RthroNarrow;
     /**
@@ -22640,6 +23258,8 @@ declare namespace Enum {
         }
         export const None: None;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RigType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RigType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RigType | undefined;
     }
     export type RigType = RigType.R15 | RigType.Custom | RigType.None;
     /**
@@ -22693,6 +23313,8 @@ declare namespace Enum {
         }
         export const InverseTapered: InverseTapered;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RollOffMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RollOffMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RollOffMode | undefined;
     }
     export type RollOffMode = RollOffMode.Inverse | RollOffMode.Linear | RollOffMode.LinearSquare | RollOffMode.InverseTapered;
     /**
@@ -22727,6 +23349,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RolloutState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RolloutState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RolloutState | undefined;
     }
     export type RolloutState = RolloutState.Default | RolloutState.Disabled | RolloutState.Enabled;
     /**
@@ -22802,6 +23426,8 @@ declare namespace Enum {
         }
         export const ZYX: ZYX;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RotationOrder>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RotationOrder | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RotationOrder | undefined;
     }
     export type RotationOrder = RotationOrder.XYZ | RotationOrder.XZY | RotationOrder.YZX | RotationOrder.YXZ | RotationOrder.ZXY | RotationOrder.ZYX;
     /**
@@ -22827,6 +23453,8 @@ declare namespace Enum {
         }
         export const CameraRelative: CameraRelative;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RotationType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RotationType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RotationType | undefined;
     }
     export type RotationType = RotationType.MovementRelative | RotationType.CameraRelative;
     /**
@@ -22861,6 +23489,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RtlTextSupport>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RtlTextSupport | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RtlTextSupport | undefined;
     }
     export type RtlTextSupport = RtlTextSupport.Default | RtlTextSupport.Disabled | RtlTextSupport.Enabled;
     /**
@@ -22912,6 +23542,8 @@ declare namespace Enum {
         }
         export const Plugin: Plugin;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RunContext>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RunContext | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RunContext | undefined;
     }
     export type RunContext = RunContext.Legacy | RunContext.Server | RunContext.Client | RunContext.Plugin;
     /**
@@ -22946,6 +23578,8 @@ declare namespace Enum {
         }
         export const Paused: Paused;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RunState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RunState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RunState | undefined;
     }
     export type RunState = RunState.Stopped | RunState.Running | RunState.Paused;
     /**
@@ -22980,6 +23614,8 @@ declare namespace Enum {
         }
         export const Hybrid: Hybrid;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RuntimeUndoBehavior>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RuntimeUndoBehavior | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RuntimeUndoBehavior | undefined;
     }
     export type RuntimeUndoBehavior = RuntimeUndoBehavior.Aggregate | RuntimeUndoBehavior.Snapshot | RuntimeUndoBehavior.Hybrid;
     /**
@@ -23011,6 +23647,8 @@ declare namespace Enum {
         }
         export const FullscreenExtension: FullscreenExtension;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SafeAreaCompatibility>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SafeAreaCompatibility | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SafeAreaCompatibility | undefined;
     }
     export type SafeAreaCompatibility = SafeAreaCompatibility.None | SafeAreaCompatibility.FullscreenExtension;
     /**
@@ -23045,6 +23683,8 @@ declare namespace Enum {
         }
         export const Premium: Premium;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SalesTypeFilter>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SalesTypeFilter | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SalesTypeFilter | undefined;
     }
     export type SalesTypeFilter = SalesTypeFilter.All | SalesTypeFilter.Collectibles | SalesTypeFilter.Premium;
     /**
@@ -23070,6 +23710,8 @@ declare namespace Enum {
         }
         export const Experimental: Experimental;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SandboxedInstanceMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SandboxedInstanceMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SandboxedInstanceMode | undefined;
     }
     export type SandboxedInstanceMode = SandboxedInstanceMode.Default | SandboxedInstanceMode.Experimental;
     /**
@@ -23131,6 +23773,8 @@ declare namespace Enum {
         }
         export const Throttled: Throttled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SaveAvatarThumbnailCustomizationFailure>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SaveAvatarThumbnailCustomizationFailure | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SaveAvatarThumbnailCustomizationFailure | undefined;
     }
     export type SaveAvatarThumbnailCustomizationFailure = SaveAvatarThumbnailCustomizationFailure.BadThumbnailType | SaveAvatarThumbnailCustomizationFailure.BadYRotDeg | SaveAvatarThumbnailCustomizationFailure.BadFieldOfViewDeg | SaveAvatarThumbnailCustomizationFailure.BadDistanceScale | SaveAvatarThumbnailCustomizationFailure.Other | SaveAvatarThumbnailCustomizationFailure.Throttled;
     /**
@@ -23175,6 +23819,8 @@ declare namespace Enum {
         }
         export const SaveAll: SaveAll;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SaveFilter>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SaveFilter | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SaveFilter | undefined;
     }
     export type SaveFilter = SaveFilter.SaveWorld | SaveFilter.SaveGame | SaveFilter.SaveAll;
     /**
@@ -23281,6 +23927,8 @@ declare namespace Enum {
         }
         export const QualityLevel10: QualityLevel10;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SavedQualitySetting>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SavedQualitySetting | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SavedQualitySetting | undefined;
     }
     export type SavedQualitySetting = SavedQualitySetting.Automatic | SavedQualitySetting.QualityLevel1 | SavedQualitySetting.QualityLevel2 | SavedQualitySetting.QualityLevel3 | SavedQualitySetting.QualityLevel4 | SavedQualitySetting.QualityLevel5 | SavedQualitySetting.QualityLevel6 | SavedQualitySetting.QualityLevel7 | SavedQualitySetting.QualityLevel8 | SavedQualitySetting.QualityLevel9 | SavedQualitySetting.QualityLevel10;
     /**
@@ -23345,6 +23993,8 @@ declare namespace Enum {
         }
         export const Crop: Crop;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScaleType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ScaleType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScaleType | undefined;
     }
     export type ScaleType = ScaleType.Stretch | ScaleType.Slice | ScaleType.Tile | ScaleType.Fit | ScaleType.Crop;
     /**
@@ -23424,6 +24074,8 @@ declare namespace Enum {
         }
         export const ConsentDenied: ConsentDenied;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScopeCheckResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ScopeCheckResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScopeCheckResult | undefined;
     }
     export type ScopeCheckResult = ScopeCheckResult.ConsentAccepted | ScopeCheckResult.InvalidScopes | ScopeCheckResult.Timeout | ScopeCheckResult.NoUserInput | ScopeCheckResult.BackendError | ScopeCheckResult.UnexpectedError | ScopeCheckResult.InvalidArgument | ScopeCheckResult.ConsentDenied;
     /**
@@ -23477,6 +24129,8 @@ declare namespace Enum {
         }
         export const TopbarSafeInsets: TopbarSafeInsets;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScreenInsets>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ScreenInsets | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScreenInsets | undefined;
     }
     export type ScreenInsets = ScreenInsets.None | ScreenInsets.DeviceSafeInsets | ScreenInsets.CoreUISafeInsets | ScreenInsets.TopbarSafeInsets;
     /**
@@ -23541,6 +24195,8 @@ declare namespace Enum {
         }
         export const Sensor: Sensor;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScreenOrientation>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ScreenOrientation | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScreenOrientation | undefined;
     }
     export type ScreenOrientation = ScreenOrientation.LandscapeLeft | ScreenOrientation.LandscapeRight | ScreenOrientation.LandscapeSensor | ScreenOrientation.Portrait | ScreenOrientation.Sensor;
     /**
@@ -23583,6 +24239,8 @@ declare namespace Enum {
         }
         export const Always: Always;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScrollBarInset>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ScrollBarInset | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScrollBarInset | undefined;
     }
     export type ScrollBarInset = ScrollBarInset.None | ScrollBarInset.ScrollBar | ScrollBarInset.Always;
     /**
@@ -23625,6 +24283,8 @@ declare namespace Enum {
         }
         export const XY: XY;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScrollingDirection>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ScrollingDirection | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScrollingDirection | undefined;
     }
     export type ScrollingDirection = ScrollingDirection.X | ScrollingDirection.Y | ScrollingDirection.XY;
     /**
@@ -23821,6 +24481,8 @@ declare namespace Enum {
         }
         export const LegacySound: LegacySound;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SecurityCapability>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SecurityCapability | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SecurityCapability | undefined;
     }
     export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics | SecurityCapability.UI | SecurityCapability.CSG | SecurityCapability.Chat | SecurityCapability.Animation | SecurityCapability.Avatar | SecurityCapability.Input | SecurityCapability.Environment | SecurityCapability.RemoteEvent | SecurityCapability.LegacySound;
     /**
@@ -23852,6 +24514,8 @@ declare namespace Enum {
         }
         export const Stop: Stop;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SelectionBehavior>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SelectionBehavior | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SelectionBehavior | undefined;
     }
     export type SelectionBehavior = SelectionBehavior.Escape | SelectionBehavior.Stop;
     /**
@@ -23886,6 +24550,8 @@ declare namespace Enum {
         }
         export const Both: Both;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SelectionRenderMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SelectionRenderMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SelectionRenderMode | undefined;
     }
     export type SelectionRenderMode = SelectionRenderMode.Outlines | SelectionRenderMode.BoundingBoxes | SelectionRenderMode.Both;
     /**
@@ -23950,6 +24616,8 @@ declare namespace Enum {
         }
         export const BottomRight: BottomRight;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SelfViewPosition>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SelfViewPosition | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SelfViewPosition | undefined;
     }
     export type SelfViewPosition = SelfViewPosition.LastPosition | SelfViewPosition.TopLeft | SelfViewPosition.TopRight | SelfViewPosition.BottomLeft | SelfViewPosition.BottomRight;
     /**
@@ -23975,6 +24643,8 @@ declare namespace Enum {
         }
         export const Ladder: Ladder;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SensorMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SensorMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SensorMode | undefined;
     }
     export type SensorMode = SensorMode.Floor | SensorMode.Ladder;
     /**
@@ -24000,6 +24670,8 @@ declare namespace Enum {
         }
         export const Manual: Manual;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SensorUpdateType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SensorUpdateType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SensorUpdateType | undefined;
     }
     export type SensorUpdateType = SensorUpdateType.OnRead | SensorUpdateType.Manual;
     /**
@@ -24034,6 +24706,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ServerLiveEditingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ServerLiveEditingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ServerLiveEditingMode | undefined;
     }
     export type ServerLiveEditingMode = ServerLiveEditingMode.Uninitialized | ServerLiveEditingMode.Enabled | ServerLiveEditingMode.Disabled;
     /**
@@ -24068,6 +24742,8 @@ declare namespace Enum {
         }
         export const WithChildren: WithChildren;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ServiceVisibility>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ServiceVisibility | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ServiceVisibility | undefined;
     }
     export type ServiceVisibility = ServiceVisibility.Always | ServiceVisibility.Off | ServiceVisibility.WithChildren;
     /**
@@ -24111,6 +24787,8 @@ declare namespace Enum {
         }
         export const Hint: Hint;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Severity>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Severity | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Severity | undefined;
     }
     export type Severity = Severity.Error | Severity.Warning | Severity.Information | Severity.Hint;
     /**
@@ -24163,6 +24841,8 @@ declare namespace Enum {
         }
         export const ShowInterrupted: ShowInterrupted;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ShowAdResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ShowAdResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ShowAdResult | undefined;
     }
     export type ShowAdResult = ShowAdResult.ShowCompleted | ShowAdResult.AdNotReady | ShowAdResult.AdAlreadyShowing | ShowAdResult.InternalError | ShowAdResult.ShowInterrupted;
     /**
@@ -24216,6 +24896,8 @@ declare namespace Enum {
         }
         export const AncestryDeferred: AncestryDeferred;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SignalBehavior>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SignalBehavior | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SignalBehavior | undefined;
     }
     export type SignalBehavior = SignalBehavior.Default | SignalBehavior.Immediate | SignalBehavior.Deferred | SignalBehavior.AncestryDeferred;
     /**
@@ -24258,6 +24940,8 @@ declare namespace Enum {
         }
         export const RelativeYY: RelativeYY;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SizeConstraint>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SizeConstraint | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SizeConstraint | undefined;
     }
     export type SizeConstraint = SizeConstraint.RelativeXY | SizeConstraint.RelativeXX | SizeConstraint.RelativeYY;
     /**
@@ -24283,6 +24967,8 @@ declare namespace Enum {
         }
         export const AlgorithmAgnostic: AlgorithmAgnostic;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SolverConvergenceMetricType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SolverConvergenceMetricType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SolverConvergenceMetricType | undefined;
     }
     export type SolverConvergenceMetricType = SolverConvergenceMetricType.IterationBased | SolverConvergenceMetricType.AlgorithmAgnostic;
     /**
@@ -24317,6 +25003,8 @@ declare namespace Enum {
         }
         export const PerEdge: PerEdge;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SolverConvergenceVisualizationMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SolverConvergenceVisualizationMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SolverConvergenceVisualizationMode | undefined;
     }
     export type SolverConvergenceVisualizationMode = SolverConvergenceVisualizationMode.Disabled | SolverConvergenceVisualizationMode.PerIsland | SolverConvergenceVisualizationMode.PerEdge;
     /**
@@ -24342,6 +25030,8 @@ declare namespace Enum {
         }
         export const Descending: Descending;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SortDirection>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SortDirection | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SortDirection | undefined;
     }
     export type SortDirection = SortDirection.Ascending | SortDirection.Descending;
     /**
@@ -24386,6 +25076,8 @@ declare namespace Enum {
         }
         export const LayoutOrder: LayoutOrder;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SortOrder>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SortOrder | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SortOrder | undefined;
     }
     export type SortOrder = SortOrder.Name | SortOrder.Custom | SortOrder.LayoutOrder;
     /**
@@ -24447,6 +25139,8 @@ declare namespace Enum {
         }
         export const ChatHotkey: ChatHotkey;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SpecialKey>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SpecialKey | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SpecialKey | undefined;
     }
     export type SpecialKey = SpecialKey.Insert | SpecialKey.Home | SpecialKey.End | SpecialKey.PageUp | SpecialKey.PageDown | SpecialKey.ChatHotkey;
     /**
@@ -24500,6 +25194,8 @@ declare namespace Enum {
         }
         export const BottomRight: BottomRight;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StartCorner>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StartCorner | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StartCorner | undefined;
     }
     export type StartCorner = StartCorner.TopLeft | StartCorner.TopRight | StartCorner.BottomLeft | StartCorner.BottomRight;
     /**
@@ -24533,6 +25229,8 @@ declare namespace Enum {
         }
         export const Confusion: Confusion;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Status>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Status | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Status | undefined;
     }
     export type Status = Status.Poison | Status.Confusion;
     /**
@@ -24575,6 +25273,8 @@ declare namespace Enum {
         }
         export const Opportunistic: Opportunistic;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StreamOutBehavior>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StreamOutBehavior | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StreamOutBehavior | undefined;
     }
     export type StreamOutBehavior = StreamOutBehavior.Default | StreamOutBehavior.LowMemory | StreamOutBehavior.Opportunistic;
     /**
@@ -24628,6 +25328,8 @@ declare namespace Enum {
         }
         export const PauseOutsideLoadedArea: PauseOutsideLoadedArea;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StreamingIntegrityMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StreamingIntegrityMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StreamingIntegrityMode | undefined;
     }
     export type StreamingIntegrityMode = StreamingIntegrityMode.Default | StreamingIntegrityMode.Disabled | StreamingIntegrityMode.MinimumRadiusPause | StreamingIntegrityMode.PauseOutsideLoadedArea;
     /**
@@ -24676,6 +25378,8 @@ declare namespace Enum {
         }
         export const ClientPhysicsPause: ClientPhysicsPause;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StreamingPauseMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StreamingPauseMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StreamingPauseMode | undefined;
     }
     export type StreamingPauseMode = StreamingPauseMode.Default | StreamingPauseMode.Disabled | StreamingPauseMode.ClientPhysicsPause;
     /**
@@ -24719,6 +25423,8 @@ declare namespace Enum {
         }
         export const LogOut: LogOut;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioCloseMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StudioCloseMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StudioCloseMode | undefined;
     }
     export type StudioCloseMode = StudioCloseMode.None | StudioCloseMode.CloseStudio | StudioCloseMode.CloseDoc | StudioCloseMode.LogOut;
     /**
@@ -24771,6 +25477,8 @@ declare namespace Enum {
         }
         export const None: None;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioDataModelType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StudioDataModelType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StudioDataModelType | undefined;
     }
     export type StudioDataModelType = StudioDataModelType.Edit | StudioDataModelType.PlayClient | StudioDataModelType.PlayServer | StudioDataModelType.Standalone | StudioDataModelType.None;
     /**
@@ -24796,6 +25504,8 @@ declare namespace Enum {
         }
         export const TeamCreateConflict: TeamCreateConflict;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioPlaceUpdateFailureReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StudioPlaceUpdateFailureReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StudioPlaceUpdateFailureReason | undefined;
     }
     export type StudioPlaceUpdateFailureReason = StudioPlaceUpdateFailureReason.Other | StudioPlaceUpdateFailureReason.TeamCreateConflict;
     /**
@@ -25226,6 +25936,8 @@ declare namespace Enum {
         }
         export const IndentationRuler: IndentationRuler;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioScriptEditorColorCategories>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StudioScriptEditorColorCategories | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StudioScriptEditorColorCategories | undefined;
     }
     export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin | StudioScriptEditorColorCategories.Method | StudioScriptEditorColorCategories.Property | StudioScriptEditorColorCategories.Nil | StudioScriptEditorColorCategories.Bool | StudioScriptEditorColorCategories.Function | StudioScriptEditorColorCategories.Local | StudioScriptEditorColorCategories.Self | StudioScriptEditorColorCategories.LuauKeyword | StudioScriptEditorColorCategories.FunctionName | StudioScriptEditorColorCategories.TODO | StudioScriptEditorColorCategories.Background | StudioScriptEditorColorCategories.SelectionText | StudioScriptEditorColorCategories.SelectionBackground | StudioScriptEditorColorCategories.FindSelectionBackground | StudioScriptEditorColorCategories.MatchingWordBackground | StudioScriptEditorColorCategories.Warning | StudioScriptEditorColorCategories.Error | StudioScriptEditorColorCategories.Info | StudioScriptEditorColorCategories.Hint | StudioScriptEditorColorCategories.Whitespace | StudioScriptEditorColorCategories.ActiveLine | StudioScriptEditorColorCategories.DebuggerCurrentLine | StudioScriptEditorColorCategories.DebuggerErrorLine | StudioScriptEditorColorCategories.Ruler | StudioScriptEditorColorCategories.Bracket | StudioScriptEditorColorCategories.Type | StudioScriptEditorColorCategories.MenuPrimaryText | StudioScriptEditorColorCategories.MenuSecondaryText | StudioScriptEditorColorCategories.MenuSelectedText | StudioScriptEditorColorCategories.MenuBackground | StudioScriptEditorColorCategories.MenuSelectedBackground | StudioScriptEditorColorCategories.MenuScrollbarBackground | StudioScriptEditorColorCategories.MenuScrollbarHandle | StudioScriptEditorColorCategories.MenuBorder | StudioScriptEditorColorCategories.DocViewCodeBackground | StudioScriptEditorColorCategories.AICOOverlayText | StudioScriptEditorColorCategories.AICOOverlayButtonBackground | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundHover | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundPressed | StudioScriptEditorColorCategories.IndentationRuler;
     /**
@@ -25269,6 +25981,8 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioScriptEditorColorPresets>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StudioScriptEditorColorPresets | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StudioScriptEditorColorPresets | undefined;
     }
     export type StudioScriptEditorColorPresets = StudioScriptEditorColorPresets.RobloxDefault | StudioScriptEditorColorPresets.Extra1 | StudioScriptEditorColorPresets.Extra2 | StudioScriptEditorColorPresets.Custom;
     /**
@@ -26492,6 +27206,8 @@ declare namespace Enum {
         }
         export const DiffLineNumSeparatorBackgroundHover: DiffLineNumSeparatorBackgroundHover;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioStyleGuideColor>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StudioStyleGuideColor | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StudioStyleGuideColor | undefined;
     }
     export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.FilterButtonDefault | StudioStyleGuideColor.FilterButtonHover | StudioStyleGuideColor.FilterButtonChecked | StudioStyleGuideColor.FilterButtonAccent | StudioStyleGuideColor.FilterButtonBorder | StudioStyleGuideColor.FilterButtonBorderAlt | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.DropShadow | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptInformation | StudioStyleGuideColor.ScriptHint | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DocViewCodeBackground | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo | StudioStyleGuideColor.ScriptBracket | StudioStyleGuideColor.AttributeCog | StudioStyleGuideColor.AICOOverlayText | StudioStyleGuideColor.AICOOverlayButtonBackground | StudioStyleGuideColor.AICOOverlayButtonBackgroundHover | StudioStyleGuideColor.AICOOverlayButtonBackgroundPressed | StudioStyleGuideColor.OnboardingCover | StudioStyleGuideColor.OnboardingHighlight | StudioStyleGuideColor.OnboardingShadow | StudioStyleGuideColor.BreakpointMarker | StudioStyleGuideColor.DiffLineNumHover | StudioStyleGuideColor.DiffLineNumSeparatorBackgroundHover;
     /**
@@ -26544,6 +27260,8 @@ declare namespace Enum {
         }
         export const Hover: Hover;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioStyleGuideModifier>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StudioStyleGuideModifier | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StudioStyleGuideModifier | undefined;
     }
     export type StudioStyleGuideModifier = StudioStyleGuideModifier.Default | StudioStyleGuideModifier.Selected | StudioStyleGuideModifier.Pressed | StudioStyleGuideModifier.Disabled | StudioStyleGuideModifier.Hover;
     /**
@@ -26586,6 +27304,8 @@ declare namespace Enum {
         }
         export const NoSupports: NoSupports;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Style>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Style | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Style | undefined;
     }
     export type Style = Style.AlternatingSupports | Style.BridgeStyleSupports | Style.NoSupports;
     /**
@@ -26648,6 +27368,8 @@ declare namespace Enum {
         }
         export const Lapsed: Lapsed;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SubscriptionExpirationReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SubscriptionExpirationReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SubscriptionExpirationReason | undefined;
     }
     export type SubscriptionExpirationReason = SubscriptionExpirationReason.ProductInactive | SubscriptionExpirationReason.ProductDeleted | SubscriptionExpirationReason.SubscriberCancelled | SubscriptionExpirationReason.SubscriberRefunded | SubscriptionExpirationReason.Lapsed;
     /**
@@ -26677,6 +27399,8 @@ declare namespace Enum {
         }
         export const Refunded: Refunded;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SubscriptionPaymentStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SubscriptionPaymentStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SubscriptionPaymentStatus | undefined;
     }
     export type SubscriptionPaymentStatus = SubscriptionPaymentStatus.Paid | SubscriptionPaymentStatus.Refunded;
     /**
@@ -26693,6 +27417,8 @@ declare namespace Enum {
         }
         export const Month: Month;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SubscriptionPeriod>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SubscriptionPeriod | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SubscriptionPeriod | undefined;
     }
     export type SubscriptionPeriod = SubscriptionPeriod.Month;
     /**
@@ -26755,6 +27481,8 @@ declare namespace Enum {
         }
         export const Expired: Expired;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SubscriptionState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SubscriptionState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SubscriptionState | undefined;
     }
     export type SubscriptionState = SubscriptionState.NeverSubscribed | SubscriptionState.SubscribedWillRenew | SubscriptionState.SubscribedWillNotRenew | SubscriptionState.SubscribedRenewalPaymentPending | SubscriptionState.Expired;
     /**
@@ -26808,6 +27536,8 @@ declare namespace Enum {
         }
         export const Motor: Motor;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SurfaceConstraint>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SurfaceConstraint | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SurfaceConstraint | undefined;
     }
     export type SurfaceConstraint = SurfaceConstraint.None | SurfaceConstraint.Hinge | SurfaceConstraint.SteppingMotor | SurfaceConstraint.Motor;
     /**
@@ -26833,6 +27563,8 @@ declare namespace Enum {
         }
         export const CurvedHorizontally: CurvedHorizontally;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SurfaceGuiShape>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SurfaceGuiShape | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SurfaceGuiShape | undefined;
     }
     export type SurfaceGuiShape = SurfaceGuiShape.Flat | SurfaceGuiShape.CurvedHorizontally;
     /**
@@ -26864,6 +27596,8 @@ declare namespace Enum {
         }
         export const PixelsPerStud: PixelsPerStud;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SurfaceGuiSizingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SurfaceGuiSizingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SurfaceGuiSizingMode | undefined;
     }
     export type SurfaceGuiSizingMode = SurfaceGuiSizingMode.FixedSize | SurfaceGuiSizingMode.PixelsPerStud;
     /**
@@ -26995,6 +27729,8 @@ declare namespace Enum {
         }
         export const SmoothNoOutlines: SmoothNoOutlines;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SurfaceType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SurfaceType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SurfaceType | undefined;
     }
     export type SurfaceType = SurfaceType.Smooth | SurfaceType.Glue | SurfaceType.Weld | SurfaceType.Studs | SurfaceType.Inlet | SurfaceType.Universal | SurfaceType.Hinge | SurfaceType.Motor | SurfaceType.SteppingMotor | SurfaceType.SmoothNoOutlines;
     /**
@@ -27059,6 +27795,8 @@ declare namespace Enum {
         }
         export const None: None;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SwipeDirection>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SwipeDirection | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SwipeDirection | undefined;
     }
     export type SwipeDirection = SwipeDirection.Right | SwipeDirection.Left | SwipeDirection.Up | SwipeDirection.Down | SwipeDirection.None;
     /**
@@ -27090,6 +27828,8 @@ declare namespace Enum {
         }
         export const ColumnMajor: ColumnMajor;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TableMajorAxis>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TableMajorAxis | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TableMajorAxis | undefined;
     }
     export type TableMajorAxis = TableMajorAxis.RowMajor | TableMajorAxis.ColumnMajor;
     /**
@@ -27124,6 +27864,8 @@ declare namespace Enum {
         }
         export const NoError: NoError;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TeamCreateErrorState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TeamCreateErrorState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TeamCreateErrorState | undefined;
     }
     export type TeamCreateErrorState = TeamCreateErrorState.PlaceSizeTooLarge | TeamCreateErrorState.PlaceSizeApproachingLimit | TeamCreateErrorState.NoError;
     /**
@@ -27199,6 +27941,8 @@ declare namespace Enum {
         }
         export const Unified: Unified;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Technology>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Technology | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Technology | undefined;
     }
     export type Technology = Technology.Voxel | Technology.Compatibility | Technology.ShadowMap | Technology.Future | Technology.Legacy | Technology.Unified;
     /**
@@ -27269,6 +28013,8 @@ declare namespace Enum {
         }
         export const TeleportUnknown: TeleportUnknown;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TeleportMethod>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TeleportMethod | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TeleportMethod | undefined;
     }
     export type TeleportMethod = TeleportMethod.TeleportToSpawnByName | TeleportMethod.TeleportToPlaceInstance | TeleportMethod.TeleportToPrivateServer | TeleportMethod.TeleportPartyAsync | TeleportMethod.TeleportToVIPServer | TeleportMethod.TeleportToInstanceBack | TeleportMethod.TeleportUnknown;
     /**
@@ -27366,6 +28112,8 @@ declare namespace Enum {
         }
         export const IsTeleporting: IsTeleporting;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TeleportResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TeleportResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TeleportResult | undefined;
     }
     export type TeleportResult = TeleportResult.Success | TeleportResult.Failure | TeleportResult.GameNotFound | TeleportResult.GameEnded | TeleportResult.GameFull | TeleportResult.Unauthorized | TeleportResult.Flooded | TeleportResult.IsTeleporting;
     /**
@@ -27430,6 +28178,8 @@ declare namespace Enum {
         }
         export const InProgress: InProgress;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TeleportState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TeleportState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TeleportState | undefined;
     }
     export type TeleportState = TeleportState.RequestedFromServer | TeleportState.Started | TeleportState.WaitingForServer | TeleportState.Failed | TeleportState.InProgress;
     /**
@@ -27490,6 +28240,8 @@ declare namespace Enum {
         }
         export const ToInstanceBack: ToInstanceBack;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TeleportType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TeleportType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TeleportType | undefined;
     }
     export type TeleportType = TeleportType.ToPlace | TeleportType.ToInstance | TeleportType.ToReservedServer | TeleportType.ToVIPServer | TeleportType.ToInstanceBack;
     /**
@@ -27605,6 +28357,8 @@ declare namespace Enum {
         }
         export const Other: Other;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TerrainAcquisitionMethod>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TerrainAcquisitionMethod | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TerrainAcquisitionMethod | undefined;
     }
     export type TerrainAcquisitionMethod = TerrainAcquisitionMethod.None | TerrainAcquisitionMethod.Legacy | TerrainAcquisitionMethod.Template | TerrainAcquisitionMethod.Generate | TerrainAcquisitionMethod.Import | TerrainAcquisitionMethod.Convert | TerrainAcquisitionMethod.EditAddTool | TerrainAcquisitionMethod.EditSeaLevelTool | TerrainAcquisitionMethod.EditReplaceTool | TerrainAcquisitionMethod.RegionFillTool | TerrainAcquisitionMethod.RegionPasteTool | TerrainAcquisitionMethod.Other;
     /**
@@ -27639,6 +28393,8 @@ declare namespace Enum {
         }
         export const Bottom: Bottom;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TerrainFace>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TerrainFace | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TerrainFace | undefined;
     }
     export type TerrainFace = TerrainFace.Top | TerrainFace.Side | TerrainFace.Bottom;
     /**
@@ -27745,6 +28501,8 @@ declare namespace Enum {
         }
         export const ModerationTimeout: ModerationTimeout;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextChatMessageStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TextChatMessageStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TextChatMessageStatus | undefined;
     }
     export type TextChatMessageStatus = TextChatMessageStatus.Unknown | TextChatMessageStatus.Success | TextChatMessageStatus.Sending | TextChatMessageStatus.TextFilterFailed | TextChatMessageStatus.Floodchecked | TextChatMessageStatus.InvalidPrivacySettings | TextChatMessageStatus.InvalidTextChannelPermissions | TextChatMessageStatus.MessageTooLong | TextChatMessageStatus.ModerationTimeout;
     /**
@@ -27779,6 +28537,8 @@ declare namespace Enum {
         }
         export const RightToLeft: RightToLeft;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextDirection>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TextDirection | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TextDirection | undefined;
     }
     export type TextDirection = TextDirection.Auto | TextDirection.LeftToRight | TextDirection.RightToLeft;
     /**
@@ -27804,6 +28564,8 @@ declare namespace Enum {
         }
         export const PrivateChat: PrivateChat;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextFilterContext>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TextFilterContext | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TextFilterContext | undefined;
     }
     export type TextFilterContext = TextFilterContext.PublicChat | TextFilterContext.PrivateChat;
     /**
@@ -27892,6 +28654,8 @@ declare namespace Enum {
         }
         export const OneTimePassword: OneTimePassword;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextInputType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TextInputType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TextInputType | undefined;
     }
     export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone | TextInputType.Password | TextInputType.PasswordShown | TextInputType.Username | TextInputType.OneTimePassword;
     /**
@@ -27934,6 +28698,8 @@ declare namespace Enum {
         }
         export const SplitWord: SplitWord;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextTruncate>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TextTruncate | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TextTruncate | undefined;
     }
     export type TextTruncate = TextTruncate.None | TextTruncate.AtEnd | TextTruncate.SplitWord;
     /**
@@ -27976,6 +28742,8 @@ declare namespace Enum {
         }
         export const Center: Center;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextXAlignment>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TextXAlignment | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TextXAlignment | undefined;
     }
     export type TextXAlignment = TextXAlignment.Left | TextXAlignment.Right | TextXAlignment.Center;
     /**
@@ -28018,6 +28786,8 @@ declare namespace Enum {
         }
         export const Bottom: Bottom;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextYAlignment>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TextYAlignment | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TextYAlignment | undefined;
     }
     export type TextYAlignment = TextYAlignment.Top | TextYAlignment.Center | TextYAlignment.Bottom;
     /**
@@ -28060,6 +28830,8 @@ declare namespace Enum {
         }
         export const Static: Static;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextureMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TextureMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TextureMode | undefined;
     }
     export type TextureMode = TextureMode.Stretch | TextureMode.Wrap | TextureMode.Static;
     /**
@@ -28113,6 +28885,8 @@ declare namespace Enum {
         }
         export const HumanoidOrphaned: HumanoidOrphaned;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextureQueryType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TextureQueryType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TextureQueryType | undefined;
     }
     export type TextureQueryType = TextureQueryType.NonHumanoid | TextureQueryType.NonHumanoidOrphaned | TextureQueryType.Humanoid | TextureQueryType.HumanoidOrphaned;
     /**
@@ -28247,6 +29021,8 @@ declare namespace Enum {
         }
         export const Threads16: Threads16;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ThreadPoolConfig>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ThreadPoolConfig | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ThreadPoolConfig | undefined;
     }
     export type ThreadPoolConfig = ThreadPoolConfig.PerCore4 | ThreadPoolConfig.PerCore3 | ThreadPoolConfig.PerCore2 | ThreadPoolConfig.PerCore1 | ThreadPoolConfig.Auto | ThreadPoolConfig.Threads1 | ThreadPoolConfig.Threads2 | ThreadPoolConfig.Threads3 | ThreadPoolConfig.Threads4 | ThreadPoolConfig.Threads8 | ThreadPoolConfig.Threads16;
     /**
@@ -28289,6 +29065,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ThrottlingPriority>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ThrottlingPriority | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ThrottlingPriority | undefined;
     }
     export type ThrottlingPriority = ThrottlingPriority.Extreme | ThrottlingPriority.ElevatedOnServer | ThrottlingPriority.Default;
     /**
@@ -28373,6 +29151,8 @@ declare namespace Enum {
         }
         export const Size352x352: Size352x352;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ThumbnailSize>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ThumbnailSize | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ThumbnailSize | undefined;
     }
     export type ThumbnailSize = ThumbnailSize.Size48x48 | ThumbnailSize.Size180x180 | ThumbnailSize.Size420x420 | ThumbnailSize.Size60x60 | ThumbnailSize.Size100x100 | ThumbnailSize.Size150x150 | ThumbnailSize.Size352x352;
     /**
@@ -28413,6 +29193,8 @@ declare namespace Enum {
         }
         export const AvatarThumbnail: AvatarThumbnail;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ThumbnailType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ThumbnailType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ThumbnailType | undefined;
     }
     export type ThumbnailType = ThumbnailType.HeadShot | ThumbnailType.AvatarBust | ThumbnailType.AvatarThumbnail;
     /**
@@ -28455,6 +29237,8 @@ declare namespace Enum {
         }
         export const Precise: Precise;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TickCountSampleMethod>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TickCountSampleMethod | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TickCountSampleMethod | undefined;
     }
     export type TickCountSampleMethod = TickCountSampleMethod.Fast | TickCountSampleMethod.Benchmark | TickCountSampleMethod.Precise;
     /**
@@ -28484,6 +29268,8 @@ declare namespace Enum {
         }
         export const Retro: Retro;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TonemapperPreset>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TonemapperPreset | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TonemapperPreset | undefined;
     }
     export type TonemapperPreset = TonemapperPreset.Default | TonemapperPreset.Retro;
     /**
@@ -28526,6 +29312,8 @@ declare namespace Enum {
         }
         export const Bottom: Bottom;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TopBottom>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TopBottom | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TopBottom | undefined;
     }
     export type TopBottom = TopBottom.Top | TopBottom.Center | TopBottom.Bottom;
     /**
@@ -28579,6 +29367,8 @@ declare namespace Enum {
         }
         export const Orbital: Orbital;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TouchCameraMovementMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TouchCameraMovementMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TouchCameraMovementMode | undefined;
     }
     export type TouchCameraMovementMode = TouchCameraMovementMode.Default | TouchCameraMovementMode.Classic | TouchCameraMovementMode.Follow | TouchCameraMovementMode.Orbital;
     /**
@@ -28654,6 +29444,8 @@ declare namespace Enum {
         }
         export const DynamicThumbstick: DynamicThumbstick;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TouchMovementMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TouchMovementMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TouchMovementMode | undefined;
     }
     export type TouchMovementMode = TouchMovementMode.Default | TouchMovementMode.Thumbstick | TouchMovementMode.DPad | TouchMovementMode.Thumbpad | TouchMovementMode.ClickToMove | TouchMovementMode.DynamicThumbstick;
     /**
@@ -28760,6 +29552,8 @@ declare namespace Enum {
         }
         export const UnsupportedDevice: UnsupportedDevice;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerError>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TrackerError | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TrackerError | undefined;
     }
     export type TrackerError = TrackerError.Ok | TrackerError.NoService | TrackerError.InitFailed | TrackerError.NoVideo | TrackerError.VideoError | TrackerError.VideoNoPermission | TrackerError.VideoUnsupported | TrackerError.NoAudio | TrackerError.AudioError | TrackerError.AudioNoPermission | TrackerError.UnsupportedDevice;
     /**
@@ -28803,6 +29597,8 @@ declare namespace Enum {
         }
         export const ExtrapolateFacsOnly: ExtrapolateFacsOnly;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerExtrapolationFlagMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TrackerExtrapolationFlagMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TrackerExtrapolationFlagMode | undefined;
     }
     export type TrackerExtrapolationFlagMode = TrackerExtrapolationFlagMode.Auto | TrackerExtrapolationFlagMode.ForceDisabled | TrackerExtrapolationFlagMode.ExtrapolateFacsAndPose | TrackerExtrapolationFlagMode.ExtrapolateFacsOnly;
     /**
@@ -28873,6 +29669,8 @@ declare namespace Enum {
         }
         export const FaceTrackingUninitialized: FaceTrackingUninitialized;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerFaceTrackingStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TrackerFaceTrackingStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TrackerFaceTrackingStatus | undefined;
     }
     export type TrackerFaceTrackingStatus = TrackerFaceTrackingStatus.FaceTrackingSuccess | TrackerFaceTrackingStatus.FaceTrackingNoFaceFound | TrackerFaceTrackingStatus.FaceTrackingUnknown | TrackerFaceTrackingStatus.FaceTrackingLost | TrackerFaceTrackingStatus.FaceTrackingHasTrackingError | TrackerFaceTrackingStatus.FaceTrackingIsOccluded | TrackerFaceTrackingStatus.FaceTrackingUninitialized;
     /**
@@ -28907,6 +29705,8 @@ declare namespace Enum {
         }
         export const ForceTrue: ForceTrue;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerLodFlagMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TrackerLodFlagMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TrackerLodFlagMode | undefined;
     }
     export type TrackerLodFlagMode = TrackerLodFlagMode.Auto | TrackerLodFlagMode.ForceFalse | TrackerLodFlagMode.ForceTrue;
     /**
@@ -28941,6 +29741,8 @@ declare namespace Enum {
         }
         export const Force1: Force1;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerLodValueMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TrackerLodValueMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TrackerLodValueMode | undefined;
     }
     export type TrackerLodValueMode = TrackerLodValueMode.Auto | TrackerLodValueMode.Force0 | TrackerLodValueMode.Force1;
     /**
@@ -28984,6 +29786,8 @@ declare namespace Enum {
         }
         export const AudioVideo: AudioVideo;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TrackerMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TrackerMode | undefined;
     }
     export type TrackerMode = TrackerMode.None | TrackerMode.Audio | TrackerMode.Video | TrackerMode.AudioVideo;
     /**
@@ -29000,6 +29804,8 @@ declare namespace Enum {
         }
         export const LODCameraRecommendDisable: LODCameraRecommendDisable;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerPromptEvent>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TrackerPromptEvent | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TrackerPromptEvent | undefined;
     }
     export type TrackerPromptEvent = TrackerPromptEvent.LODCameraRecommendDisable;
     /**
@@ -29034,6 +29840,8 @@ declare namespace Enum {
         }
         export const UpperBody: UpperBody;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TrackerType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TrackerType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TrackerType | undefined;
     }
     export type TrackerType = TrackerType.None | TrackerType.Face | TrackerType.UpperBody;
     /**
@@ -29068,6 +29876,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TriStateBoolean>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TriStateBoolean | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TriStateBoolean | undefined;
     }
     export type TriStateBoolean = TriStateBoolean.False | TriStateBoolean.True | TriStateBoolean.Unknown;
     /**
@@ -29099,6 +29909,8 @@ declare namespace Enum {
         }
         export const Completed: Completed;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TweenStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TweenStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TweenStatus | undefined;
     }
     export type TweenStatus = TweenStatus.Canceled | TweenStatus.Completed;
     /**
@@ -29141,6 +29953,8 @@ declare namespace Enum {
         }
         export const HitPoint: HitPoint;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIDragDetectorBoundingBehavior>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UIDragDetectorBoundingBehavior | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UIDragDetectorBoundingBehavior | undefined;
     }
     export type UIDragDetectorBoundingBehavior = UIDragDetectorBoundingBehavior.Automatic | UIDragDetectorBoundingBehavior.EntireObject | UIDragDetectorBoundingBehavior.HitPoint;
     /**
@@ -29172,6 +29986,8 @@ declare namespace Enum {
         }
         export const Relative: Relative;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIDragDetectorDragRelativity>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UIDragDetectorDragRelativity | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UIDragDetectorDragRelativity | undefined;
     }
     export type UIDragDetectorDragRelativity = UIDragDetectorDragRelativity.Absolute | UIDragDetectorDragRelativity.Relative;
     /**
@@ -29214,6 +30030,8 @@ declare namespace Enum {
         }
         export const Reference: Reference;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIDragDetectorDragSpace>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UIDragDetectorDragSpace | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UIDragDetectorDragSpace | undefined;
     }
     export type UIDragDetectorDragSpace = UIDragDetectorDragSpace.Parent | UIDragDetectorDragSpace.LayerCollector | UIDragDetectorDragSpace.Reference;
     /**
@@ -29267,6 +30085,8 @@ declare namespace Enum {
         }
         export const Scriptable: Scriptable;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIDragDetectorDragStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UIDragDetectorDragStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UIDragDetectorDragStyle | undefined;
     }
     export type UIDragDetectorDragStyle = UIDragDetectorDragStyle.TranslatePlane | UIDragDetectorDragStyle.TranslateLine | UIDragDetectorDragStyle.Rotate | UIDragDetectorDragStyle.Scriptable;
     /**
@@ -29320,6 +30140,8 @@ declare namespace Enum {
         }
         export const CustomScale: CustomScale;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIDragDetectorResponseStyle>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UIDragDetectorResponseStyle | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UIDragDetectorResponseStyle | undefined;
     }
     export type UIDragDetectorResponseStyle = UIDragDetectorResponseStyle.Offset | UIDragDetectorResponseStyle.Scale | UIDragDetectorResponseStyle.CustomOffset | UIDragDetectorResponseStyle.CustomScale;
     /**
@@ -29362,6 +30184,8 @@ declare namespace Enum {
         }
         export const YY: YY;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIDragSpeedAxisMapping>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UIDragSpeedAxisMapping | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UIDragSpeedAxisMapping | undefined;
     }
     export type UIDragSpeedAxisMapping = UIDragSpeedAxisMapping.XY | UIDragSpeedAxisMapping.XX | UIDragSpeedAxisMapping.YY;
     /**
@@ -29426,6 +30250,8 @@ declare namespace Enum {
         }
         export const SpaceEvenly: SpaceEvenly;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIFlexAlignment>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UIFlexAlignment | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UIFlexAlignment | undefined;
     }
     export type UIFlexAlignment = UIFlexAlignment.None | UIFlexAlignment.Fill | UIFlexAlignment.SpaceAround | UIFlexAlignment.SpaceBetween | UIFlexAlignment.SpaceEvenly;
     /**
@@ -29490,6 +30316,8 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIFlexMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UIFlexMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UIFlexMode | undefined;
     }
     export type UIFlexMode = UIFlexMode.None | UIFlexMode.Grow | UIFlexMode.Shrink | UIFlexMode.Fill | UIFlexMode.Custom;
     /**
@@ -29519,6 +30347,8 @@ declare namespace Enum {
         }
         export const Dark: Dark;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UITheme>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UITheme | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UITheme | undefined;
     }
     export type UITheme = UITheme.Light | UITheme.Dark;
     /**
@@ -29550,6 +30380,8 @@ declare namespace Enum {
         }
         export const UiMessageInfo: UiMessageInfo;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UiMessageType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UiMessageType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UiMessageType | undefined;
     }
     export type UiMessageType = UiMessageType.UiMessageError | UiMessageType.UiMessageInfo;
     /**
@@ -29575,6 +30407,8 @@ declare namespace Enum {
         }
         export const Preview: Preview;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UsageContext>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UsageContext | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UsageContext | undefined;
     }
     export type UsageContext = UsageContext.Default | UsageContext.Preview;
     /**
@@ -29626,6 +30460,8 @@ declare namespace Enum {
         }
         export const Floor: Floor;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UserCFrame>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UserCFrame | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserCFrame | undefined;
     }
     export type UserCFrame = UserCFrame.Head | UserCFrame.LeftHand | UserCFrame.RightHand | UserCFrame.Floor;
     /**
@@ -29690,6 +30526,8 @@ declare namespace Enum {
         }
         export const None: None;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UserInputState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UserInputState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserInputState | undefined;
     }
     export type UserInputState = UserInputState.Begin | UserInputState.Change | UserInputState.End | UserInputState.Cancel | UserInputState.None;
     /**
@@ -29930,6 +30768,8 @@ declare namespace Enum {
         }
         export const None: None;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UserInputType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UserInputType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserInputType | undefined;
     }
     export type UserInputType = UserInputType.MouseButton1 | UserInputType.MouseButton2 | UserInputType.MouseButton3 | UserInputType.MouseWheel | UserInputType.MouseMovement | UserInputType.Touch | UserInputType.Keyboard | UserInputType.Focus | UserInputType.Accelerometer | UserInputType.Gyro | UserInputType.Gamepad1 | UserInputType.Gamepad2 | UserInputType.Gamepad3 | UserInputType.Gamepad4 | UserInputType.Gamepad5 | UserInputType.Gamepad6 | UserInputType.Gamepad7 | UserInputType.Gamepad8 | UserInputType.TextInput | UserInputType.InputMethod | UserInputType.None;
     /**
@@ -29973,6 +30813,8 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRComfortSetting>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VRComfortSetting | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VRComfortSetting | undefined;
     }
     export type VRComfortSetting = VRComfortSetting.Comfort | VRComfortSetting.Normal | VRComfortSetting.Expert | VRComfortSetting.Custom;
     /**
@@ -29998,6 +30840,8 @@ declare namespace Enum {
         }
         export const Transparent: Transparent;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRControllerModelMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VRControllerModelMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VRControllerModelMode | undefined;
     }
     export type VRControllerModelMode = VRControllerModelMode.Disabled | VRControllerModelMode.Transparent;
     /**
@@ -30050,6 +30894,8 @@ declare namespace Enum {
         }
         export const OculusQuest: OculusQuest;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRDeviceType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VRDeviceType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VRDeviceType | undefined;
     }
     export type VRDeviceType = VRDeviceType.Unknown | VRDeviceType.OculusRift | VRDeviceType.HTCVive | VRDeviceType.ValveIndex | VRDeviceType.OculusQuest;
     /**
@@ -30084,6 +30930,8 @@ declare namespace Enum {
         }
         export const DualPointer: DualPointer;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRLaserPointerMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VRLaserPointerMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VRLaserPointerMode | undefined;
     }
     export type VRLaserPointerMode = VRLaserPointerMode.Disabled | VRLaserPointerMode.Pointer | VRLaserPointerMode.DualPointer;
     /**
@@ -30118,6 +30966,8 @@ declare namespace Enum {
         }
         export const Anyone: Anyone;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRSafetyBubbleMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VRSafetyBubbleMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VRSafetyBubbleMode | undefined;
     }
     export type VRSafetyBubbleMode = VRSafetyBubbleMode.NoOne | VRSafetyBubbleMode.OnlyFriends | VRSafetyBubbleMode.Anyone;
     /**
@@ -30147,6 +30997,8 @@ declare namespace Enum {
         }
         export const Off: Off;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRScaling>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VRScaling | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VRScaling | undefined;
     }
     export type VRScaling = VRScaling.World | VRScaling.Off;
     /**
@@ -30199,6 +31051,8 @@ declare namespace Enum {
         }
         export const Stopping: Stopping;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRSessionState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VRSessionState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VRSessionState | undefined;
     }
     export type VRSessionState = VRSessionState.Undefined | VRSessionState.Idle | VRSessionState.Visible | VRSessionState.Focused | VRSessionState.Stopping;
     /**
@@ -30230,6 +31084,8 @@ declare namespace Enum {
         }
         export const Right: Right;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRTouchpad>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VRTouchpad | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VRTouchpad | undefined;
     }
     export type VRTouchpad = VRTouchpad.Left | VRTouchpad.Right;
     /**
@@ -30272,6 +31128,8 @@ declare namespace Enum {
         }
         export const ABXY: ABXY;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRTouchpadMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VRTouchpadMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VRTouchpadMode | undefined;
     }
     export type VRTouchpadMode = VRTouchpadMode.Touch | VRTouchpadMode.VirtualThumbstick | VRTouchpadMode.ABXY;
     /**
@@ -30326,6 +31184,8 @@ declare namespace Enum {
         }
         export const Vector: Vector;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VelocityConstraintMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VelocityConstraintMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VelocityConstraintMode | undefined;
     }
     export type VelocityConstraintMode = VelocityConstraintMode.Line | VelocityConstraintMode.Plane | VelocityConstraintMode.Vector;
     /**
@@ -30368,6 +31228,8 @@ declare namespace Enum {
         }
         export const Bottom: Bottom;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VerticalAlignment>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VerticalAlignment | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VerticalAlignment | undefined;
     }
     export type VerticalAlignment = VerticalAlignment.Center | VerticalAlignment.Top | VerticalAlignment.Bottom;
     /**
@@ -30399,6 +31261,8 @@ declare namespace Enum {
         }
         export const Left: Left;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VerticalScrollBarPosition>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VerticalScrollBarPosition | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VerticalScrollBarPosition | undefined;
     }
     export type VerticalScrollBarPosition = VerticalScrollBarPosition.Right | VerticalScrollBarPosition.Left;
     /**
@@ -30474,6 +31338,8 @@ declare namespace Enum {
         }
         export const RightHand: RightHand;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VibrationMotor>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VibrationMotor | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VibrationMotor | undefined;
     }
     export type VibrationMotor = VibrationMotor.Large | VibrationMotor.Small | VibrationMotor.LeftTrigger | VibrationMotor.RightTrigger | VibrationMotor.LeftHand | VibrationMotor.RightHand;
     /**
@@ -30517,6 +31383,8 @@ declare namespace Enum {
         }
         export const High: High;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VideoDeviceCaptureQuality>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VideoDeviceCaptureQuality | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VideoDeviceCaptureQuality | undefined;
     }
     export type VideoDeviceCaptureQuality = VideoDeviceCaptureQuality.Default | VideoDeviceCaptureQuality.Low | VideoDeviceCaptureQuality.Medium | VideoDeviceCaptureQuality.High;
     /**
@@ -30695,6 +31563,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VideoError>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VideoError | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VideoError | undefined;
     }
     export type VideoError = VideoError.Ok | VideoError.Eof | VideoError.EAgain | VideoError.BadParameter | VideoError.AllocFailed | VideoError.CodecInitFailed | VideoError.CodecCloseFailed | VideoError.DecodeFailed | VideoError.ParsingFailed | VideoError.Unsupported | VideoError.Generic | VideoError.DownloadFailed | VideoError.StreamNotFound | VideoError.EncodeFailed | VideoError.CreateFailed | VideoError.NoPermission | VideoError.NoService | VideoError.ReleaseFailed | VideoError.Unknown;
     /**
@@ -30738,6 +31608,8 @@ declare namespace Enum {
         }
         export const Decal: Decal;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ViewMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ViewMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ViewMode | undefined;
     }
     export type ViewMode = ViewMode.None | ViewMode.GeometryComplexity | ViewMode.Transparent | ViewMode.Decal;
     /**
@@ -30780,6 +31652,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VirtualCursorMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VirtualCursorMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VirtualCursorMode | undefined;
     }
     export type VirtualCursorMode = VirtualCursorMode.Default | VirtualCursorMode.Disabled | VirtualCursorMode.Enabled;
     /**
@@ -30814,6 +31688,8 @@ declare namespace Enum {
         }
         export const Playing: Playing;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VirtualInputMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VirtualInputMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VirtualInputMode | undefined;
     }
     export type VirtualInputMode = VirtualInputMode.None | VirtualInputMode.Recording | VirtualInputMode.Playing;
     /**
@@ -30884,6 +31760,8 @@ declare namespace Enum {
         }
         export const Failed: Failed;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VoiceChatState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VoiceChatState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VoiceChatState | undefined;
     }
     export type VoiceChatState = VoiceChatState.Idle | VoiceChatState.Joining | VoiceChatState.JoiningRetry | VoiceChatState.Joined | VoiceChatState.Leaving | VoiceChatState.Ended | VoiceChatState.Failed;
     /**
@@ -30918,6 +31796,8 @@ declare namespace Enum {
         }
         export const Join: Join;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VoiceControlPath>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VoiceControlPath | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VoiceControlPath | undefined;
     }
     export type VoiceControlPath = VoiceControlPath.Publish | VoiceControlPath.Subscribe | VoiceControlPath.Join;
     /**
@@ -30952,6 +31832,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VolumetricAudio>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VolumetricAudio | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VolumetricAudio | undefined;
     }
     export type VolumetricAudio = VolumetricAudio.Disabled | VolumetricAudio.Automatic | VolumetricAudio.Enabled;
     /**
@@ -31015,6 +31897,8 @@ declare namespace Enum {
         }
         export const Z: Z;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WaterDirection>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WaterDirection | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WaterDirection | undefined;
     }
     export type WaterDirection = WaterDirection.NegX | WaterDirection.X | WaterDirection.NegY | WaterDirection.Y | WaterDirection.NegZ | WaterDirection.Z;
     /**
@@ -31069,6 +31953,8 @@ declare namespace Enum {
         }
         export const Max: Max;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WaterForce>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WaterForce | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WaterForce | undefined;
     }
     export type WaterForce = WaterForce.None | WaterForce.Small | WaterForce.Medium | WaterForce.Strong | WaterForce.Max;
     /**
@@ -31109,6 +31995,8 @@ declare namespace Enum {
         }
         export const Touching: Touching;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WeldConstraintPreserve>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WeldConstraintPreserve | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WeldConstraintPreserve | undefined;
     }
     export type WeldConstraintPreserve = WeldConstraintPreserve.All | WeldConstraintPreserve.None | WeldConstraintPreserve.Touching;
     /**
@@ -31134,6 +32022,8 @@ declare namespace Enum {
         }
         export const NoOne: NoOne;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WhisperChatPrivacyMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WhisperChatPrivacyMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WhisperChatPrivacyMode | undefined;
     }
     export type WhisperChatPrivacyMode = WhisperChatPrivacyMode.AllUsers | WhisperChatPrivacyMode.NoOne;
     /**
@@ -31168,6 +32058,8 @@ declare namespace Enum {
         }
         export const EnabledOverride: EnabledOverride;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WrapLayerAutoSkin>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WrapLayerAutoSkin | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WrapLayerAutoSkin | undefined;
     }
     export type WrapLayerAutoSkin = WrapLayerAutoSkin.Disabled | WrapLayerAutoSkin.EnabledPreserve | WrapLayerAutoSkin.EnabledOverride;
     /**
@@ -31317,6 +32209,8 @@ declare namespace Enum {
         }
         export const LayerCageFittedToPrev: LayerCageFittedToPrev;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WrapLayerDebugMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WrapLayerDebugMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WrapLayerDebugMode | undefined;
     }
     export type WrapLayerDebugMode = WrapLayerDebugMode.None | WrapLayerDebugMode.BoundCage | WrapLayerDebugMode.LayerCage | WrapLayerDebugMode.BoundCageAndLinks | WrapLayerDebugMode.Reference | WrapLayerDebugMode.Rbf | WrapLayerDebugMode.OuterCage | WrapLayerDebugMode.ReferenceMeshAfterMorph | WrapLayerDebugMode.HSROuterDetail | WrapLayerDebugMode.HSROuter | WrapLayerDebugMode.HSRInner | WrapLayerDebugMode.HSRInnerReverse | WrapLayerDebugMode.LayerCageFittedToBase | WrapLayerDebugMode.LayerCageFittedToPrev;
     /**
@@ -31423,6 +32317,8 @@ declare namespace Enum {
         }
         export const OuterCageDetail: OuterCageDetail;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WrapTargetDebugMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WrapTargetDebugMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WrapTargetDebugMode | undefined;
     }
     export type WrapTargetDebugMode = WrapTargetDebugMode.None | WrapTargetDebugMode.TargetCageOriginal | WrapTargetDebugMode.TargetCageCompressed | WrapTargetDebugMode.TargetCageInterface | WrapTargetDebugMode.TargetLayerCageOriginal | WrapTargetDebugMode.TargetLayerCageCompressed | WrapTargetDebugMode.TargetLayerInterface | WrapTargetDebugMode.Rbf | WrapTargetDebugMode.OuterCageDetail;
     /**
@@ -31454,6 +32350,8 @@ declare namespace Enum {
         }
         export const Sibling: Sibling;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ZIndexBehavior>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ZIndexBehavior | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ZIndexBehavior | undefined;
     }
     export type ZIndexBehavior = ZIndexBehavior.Global | ZIndexBehavior.Sibling;
 }
