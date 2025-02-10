@@ -4,8 +4,11 @@ export function setJsDocComment(node: ts.Node, lines: Array<string>) {
 	lines = lines
 		// join + split allows for better ergonomics, some inputs might have \n in them already
 		.join("\n")
-		.split("\n")
-		.map(v => ` * ${v}`);
+		.split("\n");
+
+	while (lines.at(-1)?.trim() === "") lines.pop();
+
+	lines = lines.map(v => ` * ${v}`);
 
 	lines.unshift("*");
 	lines.push(" ");
