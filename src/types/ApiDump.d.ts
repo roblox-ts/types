@@ -40,8 +40,15 @@ export type CategoryType =
 	| "Thrust"
 	| "Turn";
 
+/**
+ * Sometimes appears after a deprecated tag to indicate the preferred alternative
+ * Currently lists "Unknown" safety if referring to a Property that is ReadSafe
+ */
+export type DeprecatedTagMetadata = { PreferredDescriptorName: string; ThreadSafety: ThreadSafety };
+
 export type ClassTag =
 	| "Deprecated"
+	| DeprecatedTagMetadata
 	| "NotBrowsable"
 	| "NotCreatable"
 	| "NotReplicated"
@@ -53,15 +60,13 @@ export type MemberTag =
 	| "CanYield"
 	| "CustomLuaState"
 	| "Deprecated"
+	| DeprecatedTagMetadata
 	| "Hidden"
 	| "NotBrowsable"
 	| "NotReplicated"
 	| "NotScriptable"
 	| "ReadOnly"
-	| "Yields"
-	// Sometimes appears after a deprecated tag to indicate the preferred alternative
-	// Currently lists "Unknown" safety if referring to a Property that is ReadSafe
-	| { PreferredDescriptorName: string; ThreadSafety: ThreadSafety };
+	| "Yields";
 
 interface ApiMemberBase {
 	MemberType: string;
