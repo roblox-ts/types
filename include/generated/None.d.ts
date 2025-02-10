@@ -141,7 +141,6 @@ interface Services {
     ScriptCloneWatcherHelper: ScriptCloneWatcherHelper;
     ScriptCommitService: ScriptCommitService;
     ScriptContext: ScriptContext;
-    ScriptEditorService: ScriptEditorService;
     ScriptProfilerService: ScriptProfilerService;
     ScriptRegistrationService: ScriptRegistrationService;
     SelectionHighlightManager: SelectionHighlightManager;
@@ -605,7 +604,6 @@ interface Instances extends Services, CreatableInstances {
     RootImportData: RootImportData;
     ScreenshotHud: ScreenshotHud;
     ScriptBuilder: ScriptBuilder;
-    ScriptDocument: ScriptDocument;
     ScriptRuntime: ScriptRuntime;
     SelectionLasso: SelectionLasso;
     SensorBase: SensorBase;
@@ -31519,38 +31517,6 @@ interface ScriptContext extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptContext#Error)
      */
     readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script?: LuaSourceContainer) => void>;
-}
-/**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument)
- */
-interface ScriptDocument extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ScriptDocument: unique symbol;
-}
-/**
- * This service is used for interacting with `ScriptDocument` instances.
- *
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptEditorService)
- */
-interface ScriptEditorService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ScriptEditorService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
