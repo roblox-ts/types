@@ -19,12 +19,6 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: Install NodeJS
-        uses: actions/setup-node@master
-        with:
-          node-version: '16.x'
-          registry-url: 'https://registry.npmjs.org'
-
       - uses: bahmutov/npm-install@v1
 
       - name: Configure Git
