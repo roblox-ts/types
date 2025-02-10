@@ -127,7 +127,7 @@ export function createEnumNamespace(ctx: Context, apiEnum: ApiEnum) {
 		namespaceStatements.push(...createEnumItemVariable(apiEnumItem));
 	}
 
-	// export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AccessoryType>;
+	// export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.{EnumItem}>;
 	namespaceStatements.push(
 		ts.factory.createFunctionDeclaration(
 			[ts.factory.createToken(ts.SyntaxKind.ExportKeyword)],
@@ -161,6 +161,102 @@ export function createEnumNamespace(ctx: Context, apiEnum: ApiEnum) {
 					),
 					undefined,
 				),
+			]),
+			undefined,
+		),
+	);
+
+	// export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.{EnumItem} | undefined;
+	namespaceStatements.push(
+		ts.factory.createFunctionDeclaration(
+			[ts.factory.createToken(ts.SyntaxKind.ExportKeyword)],
+			undefined,
+			ts.factory.createIdentifier("FromName"),
+			undefined,
+			[
+				ts.factory.createParameterDeclaration(
+					undefined,
+					undefined,
+					ts.factory.createIdentifier("this"),
+					undefined,
+					ts.factory.createTypeReferenceNode(
+						ts.factory.createQualifiedName(
+							ts.factory.createIdentifier("globalThis"),
+							ts.factory.createIdentifier("Enum"),
+						),
+						undefined,
+					),
+					undefined,
+				),
+				ts.factory.createParameterDeclaration(
+					undefined,
+					undefined,
+					ts.factory.createIdentifier("name"),
+					undefined,
+					ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword),
+					undefined,
+				),
+			],
+			ts.factory.createUnionTypeNode([
+				ts.factory.createTypeReferenceNode(
+					ts.factory.createQualifiedName(
+						ts.factory.createQualifiedName(
+							ts.factory.createIdentifier("globalThis"),
+							ts.factory.createIdentifier("Enum"),
+						),
+						ts.factory.createIdentifier(apiEnum.Name),
+					),
+					undefined,
+				),
+				ts.factory.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword),
+			]),
+			undefined,
+		),
+	);
+
+	// export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.{EnumItem} | undefined;
+	namespaceStatements.push(
+		ts.factory.createFunctionDeclaration(
+			[ts.factory.createToken(ts.SyntaxKind.ExportKeyword)],
+			undefined,
+			ts.factory.createIdentifier("FromValue"),
+			undefined,
+			[
+				ts.factory.createParameterDeclaration(
+					undefined,
+					undefined,
+					ts.factory.createIdentifier("this"),
+					undefined,
+					ts.factory.createTypeReferenceNode(
+						ts.factory.createQualifiedName(
+							ts.factory.createIdentifier("globalThis"),
+							ts.factory.createIdentifier("Enum"),
+						),
+						undefined,
+					),
+					undefined,
+				),
+				ts.factory.createParameterDeclaration(
+					undefined,
+					undefined,
+					ts.factory.createIdentifier("value"),
+					undefined,
+					ts.factory.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword),
+					undefined,
+				),
+			],
+			ts.factory.createUnionTypeNode([
+				ts.factory.createTypeReferenceNode(
+					ts.factory.createQualifiedName(
+						ts.factory.createQualifiedName(
+							ts.factory.createIdentifier("globalThis"),
+							ts.factory.createIdentifier("Enum"),
+						),
+						ts.factory.createIdentifier(apiEnum.Name),
+					),
+					undefined,
+				),
+				ts.factory.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword),
 			]),
 			undefined,
 		),
