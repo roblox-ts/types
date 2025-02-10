@@ -177,6 +177,7 @@ interface Services {
     TeleportService: TeleportService;
     TemporaryCageMeshProvider: TemporaryCageMeshProvider;
     TemporaryScriptService: TemporaryScriptService;
+    TestService: TestService;
     TextBoxService: TextBoxService;
     TextChatService: TextChatService;
     TextService: TextService;
@@ -35186,6 +35187,249 @@ interface TerrainRegion extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainRegion#SizeInCells)
      */
     readonly SizeInCells: Vector3;
+}
+/**
+ * A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
+ *
+ * - **Tags**: Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService)
+ */
+interface TestService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestService: unique symbol;
+    /**
+     * If set to true, the game will start running when the TestService's `TestService:Run()` method is called.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#AutoRuns)
+     */
+    AutoRuns: boolean;
+    /**
+     * A description of the test being executed.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Description)
+     */
+    Description: string;
+    /**
+     * Measures how many errors have been recorded in the test session.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#ErrorCount)
+     */
+    readonly ErrorCount: number;
+    /**
+     * When set to true, the TestService will be executed when using the *Run* action in Roblox Studio.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#ExecuteWithStudioRun)
+     */
+    ExecuteWithStudioRun: boolean;
+    /**
+     * Sets whether or not the physics engine should be throttled to 30 FPS while the test is being ran.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Is30FpsThrottleEnabled)
+     */
+    Is30FpsThrottleEnabled: boolean;
+    /**
+     * Sets whether or not the physics environment should be throttled while running this test.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#IsPhysicsEnvironmentalThrottled)
+     */
+    IsPhysicsEnvironmentalThrottled: boolean;
+    /**
+     * Sets whether or not physics objects will be allowed to fall asleep while the test simulation is running.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#IsSleepAllowed)
+     */
+    IsSleepAllowed: boolean;
+    /**
+     * The number of players expected in this test, if any.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#NumberOfPlayers)
+     */
+    NumberOfPlayers: number;
+    /**
+     * Sets a specific amount of additional latency experienced by players during the test session.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#SimulateSecondsLag)
+     */
+    SimulateSecondsLag: number;
+    /**
+     * Measures how many test calls have been recorded in the test session.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#TestCount)
+     */
+    readonly TestCount: number;
+    /**
+     * The maximum amount of time that tests are allowed to run for.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Timeout)
+     */
+    Timeout: number;
+    /**
+     * Measures how many warning calls have been recorded in the test session.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#WarnCount)
+     */
+    readonly WarnCount: number;
+    /**
+     * Prints result of condition to output.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Check)
+     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
+     * @param condition
+     * @param description
+     * @param source
+     * @param line
+     */
+    Check(this: TestService, condition: boolean, description: string, source?: Instance, line?: number): void;
+    /**
+     * Prints "Test checkpoint: ", followed by text, to the output, in blue text.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Checkpoint)
+     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
+     * @param text
+     * @param source
+     * @param line
+     */
+    Checkpoint(this: TestService, text: string, source?: Instance, line?: number): void;
+    /**
+     * Prints Testing Done to the output, in blue text.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Done)
+     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
+     */
+    Done(this: TestService): void;
+    /**
+     * Prints a red message to the output, prefixed by `TestService:`.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Error)
+     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
+     * @param description
+     * @param source
+     * @param line
+     */
+    Error(this: TestService, description: string, source?: Instance, line?: number): void;
+    /**
+     * Indicates a fatal error in a TestService run. If this is called inside of a script running inside of the TestService, this will initiate a breakpoint on the line that invoked the error.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Fail)
+     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
+     * @param description
+     * @param source
+     * @param line
+     */
+    Fail(this: TestService, description: string, source?: Instance, line?: number): void;
+    /**
+     * Prints Test message, followed by text to the output, in blue text.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Message)
+     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
+     * @param text
+     * @param source
+     * @param line
+     */
+    Message(this: TestService, text: string, source?: Instance, line?: number): void;
+    /**
+     * Prints whether a condition is true along with description text.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Require)
+     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
+     * @param condition
+     * @param description
+     * @param source
+     * @param line
+     */
+    Require(this: TestService, condition: boolean, description: string, source?: Instance, line?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#ScopeTime)
+     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
+     */
+    ScopeTime(this: TestService): object;
+    /**
+     * Prints if a condition is true, otherwise prints a warning.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Warn)
+     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
+     * @param condition
+     * @param description
+     * @param source
+     * @param line
+     */
+    Warn(this: TestService, condition: boolean, description: string, source?: Instance, line?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#isFeatureEnabled)
+     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
+     * @param name
+     */
+    isFeatureEnabled(this: TestService, name: string): boolean;
+    /**
+     * Fired when the server should collect a conditional test result.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#ServerCollectConditionalResult)
+     */
+    readonly ServerCollectConditionalResult: RBXScriptSignal<(condition: boolean, text: string, script: Instance, line: number) => void>;
+    /**
+     * Fired when the server should collect a test result.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#ServerCollectResult)
+     */
+    readonly ServerCollectResult: RBXScriptSignal<(text: string, script: Instance, line: number) => void>;
 }
 /**
  * - **Tags**: NotCreatable, Service
