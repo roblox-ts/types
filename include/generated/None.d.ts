@@ -11514,7 +11514,7 @@ interface ContextActionService extends Instance {
      * @param this A service used to bind user input to contextual actions.
      * @param actionName
      */
-    GetBoundActionInfo(this: ContextActionService, actionName: string): BoundActionInfo;
+    GetBoundActionInfo(this: ContextActionService, actionName: string): BoundActionInfo | {};
     /**
      * Return the `BackpackItem.TextureId` of a `Tool` currently `equipped` by the `Player`.
      *
