@@ -4,6 +4,4 @@ cache
 include/test.ts
 node_modules
 out
-/devhub-scraper-master
-/devhub-scraper.zip
 .vscode/settings.json
