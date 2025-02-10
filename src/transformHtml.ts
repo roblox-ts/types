@@ -77,10 +77,7 @@ const TAG_TRANSFORMERS: { [K in string]?: (node: Element) => string } = {
 		return `\n\`\`\`${language}\n${transformNodeList(codeNode.children)}\n\`\`\``;
 	},
 	a: node => `[${transformNodeList(node.children)}](${node.attribs.href})`,
-	img: node => {
-		assertNode(node.children.length === 0, node, "Unexpected img children!");
-		return `![${node.attribs.alt}](${url(node.attribs.src)})`;
-	},
+	img: node => `![${node.attribs.alt ?? ""}](${url(node.attribs.src)})`,
 	table: node => {
 		const rowNodes = new Array<ChildNode>();
 		for (const child of getChildren(node)) {

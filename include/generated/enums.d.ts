@@ -926,7 +926,7 @@ declare namespace Enum {
      */
     export namespace AlphaMode {
         /**
-         * Overlays the `ColorMap` on top of the underlying part color based on the map's alpha channel. ![undefined](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AlphaMode/Fern-Overlay.png)
+         * Overlays the `ColorMap` on top of the underlying part color based on the map's alpha channel. ![](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AlphaMode/Fern-Overlay.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlphaMode#Overlay)
          */
@@ -937,7 +937,7 @@ declare namespace Enum {
         }
         export const Overlay: Overlay;
         /**
-         * Uses the `ColorMap` alpha channel to control the transparency of the surface. ![undefined](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AlphaMode/Fern-Cutout.png)
+         * Uses the `ColorMap` alpha channel to control the transparency of the surface. ![](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AlphaMode/Fern-Cutout.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlphaMode#Transparency)
          */
@@ -10146,7 +10146,7 @@ declare namespace Enum {
      */
     export namespace Font {
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Legacy.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Legacy.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Legacy)
          */
@@ -10179,7 +10179,7 @@ declare namespace Enum {
         }
         export const ArialBold: ArialBold;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSans.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSans.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SourceSans)
          */
@@ -10190,7 +10190,7 @@ declare namespace Enum {
         }
         export const SourceSans: SourceSans;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSansBold.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSansBold.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SourceSansBold)
          */
@@ -10201,7 +10201,7 @@ declare namespace Enum {
         }
         export const SourceSansBold: SourceSansBold;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSansLight.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSansLight.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SourceSansLight)
          */
@@ -10212,7 +10212,7 @@ declare namespace Enum {
         }
         export const SourceSansLight: SourceSansLight;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSansItalic.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSansItalic.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SourceSansItalic)
          */
@@ -10223,7 +10223,7 @@ declare namespace Enum {
         }
         export const SourceSansItalic: SourceSansItalic;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Bodoni.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Bodoni.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Bodoni)
          */
@@ -10234,7 +10234,7 @@ declare namespace Enum {
         }
         export const Bodoni: Bodoni;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Garamond.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Garamond.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Garamond)
          */
@@ -10245,7 +10245,7 @@ declare namespace Enum {
         }
         export const Garamond: Garamond;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Cartoon.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Cartoon.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Cartoon)
          */
@@ -10256,7 +10256,7 @@ declare namespace Enum {
         }
         export const Cartoon: Cartoon;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Code.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Code.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Code)
          */
@@ -10267,7 +10267,7 @@ declare namespace Enum {
         }
         export const Code: Code;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Highway.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Highway.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Highway)
          */
@@ -10278,7 +10278,7 @@ declare namespace Enum {
         }
         export const Highway: Highway;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SciFi.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SciFi.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SciFi)
          */
@@ -10289,7 +10289,7 @@ declare namespace Enum {
         }
         export const SciFi: SciFi;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Arcade.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Arcade.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Arcade)
          */
@@ -10300,7 +10300,7 @@ declare namespace Enum {
         }
         export const Arcade: Arcade;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Fantasy.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Fantasy.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Fantasy)
          */
@@ -10311,7 +10311,7 @@ declare namespace Enum {
         }
         export const Fantasy: Fantasy;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Antique.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Antique.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Antique)
          */
@@ -10322,7 +10322,7 @@ declare namespace Enum {
         }
         export const Antique: Antique;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSansSemibold.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSansSemibold.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SourceSansSemibold)
          */
@@ -10397,7 +10397,7 @@ declare namespace Enum {
          */
         export const MontserratBlack: GothamBlack;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/AmaticSC.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/AmaticSC.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#AmaticSC)
          */
@@ -10408,7 +10408,7 @@ declare namespace Enum {
         }
         export const AmaticSC: AmaticSC;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Bangers.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Bangers.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Bangers)
          */
@@ -10419,7 +10419,7 @@ declare namespace Enum {
         }
         export const Bangers: Bangers;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Creepster.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Creepster.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Creepster)
          */
@@ -10430,7 +10430,7 @@ declare namespace Enum {
         }
         export const Creepster: Creepster;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/DenkOne.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/DenkOne.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#DenkOne)
          */
@@ -10441,7 +10441,7 @@ declare namespace Enum {
         }
         export const DenkOne: DenkOne;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Fondamento.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Fondamento.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Fondamento)
          */
@@ -10452,7 +10452,7 @@ declare namespace Enum {
         }
         export const Fondamento: Fondamento;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/FredokaOne.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/FredokaOne.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#FredokaOne)
          */
@@ -10463,7 +10463,7 @@ declare namespace Enum {
         }
         export const FredokaOne: FredokaOne;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/GrenzeGotisch.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/GrenzeGotisch.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#GrenzeGotisch)
          */
@@ -10474,7 +10474,7 @@ declare namespace Enum {
         }
         export const GrenzeGotisch: GrenzeGotisch;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/IndieFlower.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/IndieFlower.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#IndieFlower)
          */
@@ -10485,7 +10485,7 @@ declare namespace Enum {
         }
         export const IndieFlower: IndieFlower;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/JosefinSans.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/JosefinSans.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#JosefinSans)
          */
@@ -10496,7 +10496,7 @@ declare namespace Enum {
         }
         export const JosefinSans: JosefinSans;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Jura.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Jura.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Jura)
          */
@@ -10507,7 +10507,7 @@ declare namespace Enum {
         }
         export const Jura: Jura;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Kalam.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Kalam.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Kalam)
          */
@@ -10518,7 +10518,7 @@ declare namespace Enum {
         }
         export const Kalam: Kalam;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/LuckiestGuy.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/LuckiestGuy.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#LuckiestGuy)
          */
@@ -10529,7 +10529,7 @@ declare namespace Enum {
         }
         export const LuckiestGuy: LuckiestGuy;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Merriweather.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Merriweather.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Merriweather)
          */
@@ -10540,7 +10540,7 @@ declare namespace Enum {
         }
         export const Merriweather: Merriweather;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Michroma.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Michroma.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Michroma)
          */
@@ -10551,7 +10551,7 @@ declare namespace Enum {
         }
         export const Michroma: Michroma;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Nunito.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Nunito.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Nunito)
          */
@@ -10562,7 +10562,7 @@ declare namespace Enum {
         }
         export const Nunito: Nunito;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Oswald.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Oswald.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Oswald)
          */
@@ -10573,7 +10573,7 @@ declare namespace Enum {
         }
         export const Oswald: Oswald;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/PatrickHand.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/PatrickHand.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#PatrickHand)
          */
@@ -10584,7 +10584,7 @@ declare namespace Enum {
         }
         export const PatrickHand: PatrickHand;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/PermanentMarker.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/PermanentMarker.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#PermanentMarker)
          */
@@ -10595,7 +10595,7 @@ declare namespace Enum {
         }
         export const PermanentMarker: PermanentMarker;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Roboto.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Roboto.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Roboto)
          */
@@ -10606,7 +10606,7 @@ declare namespace Enum {
         }
         export const Roboto: Roboto;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/RobotoCondensed.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/RobotoCondensed.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#RobotoCondensed)
          */
@@ -10617,7 +10617,7 @@ declare namespace Enum {
         }
         export const RobotoCondensed: RobotoCondensed;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/RobotoMono.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/RobotoMono.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#RobotoMono)
          */
@@ -10628,7 +10628,7 @@ declare namespace Enum {
         }
         export const RobotoMono: RobotoMono;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Sarpanch.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Sarpanch.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Sarpanch)
          */
@@ -10639,7 +10639,7 @@ declare namespace Enum {
         }
         export const Sarpanch: Sarpanch;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SpecialElite.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SpecialElite.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SpecialElite)
          */
@@ -10650,7 +10650,7 @@ declare namespace Enum {
         }
         export const SpecialElite: SpecialElite;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/TitilliumWeb.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/TitilliumWeb.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#TitilliumWeb)
          */
@@ -10661,7 +10661,7 @@ declare namespace Enum {
         }
         export const TitilliumWeb: TitilliumWeb;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Ubuntu.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Ubuntu.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Ubuntu)
          */
@@ -10672,7 +10672,7 @@ declare namespace Enum {
         }
         export const Ubuntu: Ubuntu;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/BuilderSans.png) See [Builder Font License](../../../resources/builder-font-license.md).
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/BuilderSans.png) See [Builder Font License](../../../resources/builder-font-license.md).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#BuilderSans)
          */
@@ -10683,7 +10683,7 @@ declare namespace Enum {
         }
         export const BuilderSans: BuilderSans;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/BuilderSansMedium.png) See [Builder Font License](../../../resources/builder-font-license.md).
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/BuilderSansMedium.png) See [Builder Font License](../../../resources/builder-font-license.md).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#BuilderSansMedium)
          */
@@ -10694,7 +10694,7 @@ declare namespace Enum {
         }
         export const BuilderSansMedium: BuilderSansMedium;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/BuilderSansBold.png) See [Builder Font License](../../../resources/builder-font-license.md).
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/BuilderSansBold.png) See [Builder Font License](../../../resources/builder-font-license.md).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#BuilderSansBold)
          */
@@ -10705,7 +10705,7 @@ declare namespace Enum {
         }
         export const BuilderSansBold: BuilderSansBold;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/BuilderSansExtraBold.png) See [Builder Font License](../../../resources/builder-font-license.md).
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/BuilderSansExtraBold.png) See [Builder Font License](../../../resources/builder-font-license.md).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#BuilderSansExtraBold)
          */
@@ -10716,7 +10716,7 @@ declare namespace Enum {
         }
         export const BuilderSansExtraBold: BuilderSansExtraBold;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Arimo.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Arimo.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Arimo)
          */
@@ -10727,7 +10727,7 @@ declare namespace Enum {
         }
         export const Arimo: Arimo;
         /**
-         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/ArimoBold.png)
+         * ![](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/ArimoBold.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#ArimoBold)
          */
@@ -12123,7 +12123,7 @@ declare namespace Enum {
      */
     export namespace HighlightDepthMode {
         /**
-         * Allows the `Highlight` to display regardless if there are objects between the camera and the highlighted object. This means the viewer is always able to see the highlight regardless of what is between the highlighted object and the camera. ![undefined](https://prod.docsiteassets.roblox.com/assets/ui/highlighting-objects/DepthMode-AlwaysOnTop.jpg)
+         * Allows the `Highlight` to display regardless if there are objects between the camera and the highlighted object. This means the viewer is always able to see the highlight regardless of what is between the highlighted object and the camera. ![](https://prod.docsiteassets.roblox.com/assets/ui/highlighting-objects/DepthMode-AlwaysOnTop.jpg)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HighlightDepthMode#AlwaysOnTop)
          */
@@ -12134,7 +12134,7 @@ declare namespace Enum {
         }
         export const AlwaysOnTop: AlwaysOnTop;
         /**
-         * Hides the `Highlight` if there are objects between the camera and the highlighted object. This means the viewer is only able to see the object if there are no obstructing objects between the highlighted object and the camera's view. ![undefined](https://prod.docsiteassets.roblox.com/assets/ui/highlighting-objects/DepthMode-Occluded.jpg)
+         * Hides the `Highlight` if there are objects between the camera and the highlighted object. This means the viewer is only able to see the object if there are no obstructing objects between the highlighted object and the camera's view. ![](https://prod.docsiteassets.roblox.com/assets/ui/highlighting-objects/DepthMode-Occluded.jpg)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HighlightDepthMode#Occluded)
          */
