@@ -3,10 +3,11 @@ import ts from "typescript";
 
 import { CUSTOM_DEFITIONS_PATH, EXPECTED_EXTRA_MEMBERS, MEMBER_BLACKLIST, TSCONFIG_PATH } from "../../../constants";
 import { SecurityLevel } from "../../../enums";
-import { ApiClass } from "../../../types/ApiDump";
+import { ApiClass, ApiMember } from "../../../types/ApiDump";
 import { Context } from "../../../types/Context";
 import { createParseConfigFileHost } from "../../../util/createParseConfigFileHost";
 import { getOrSetDefault } from "../../../util/getOrSetDefault";
+import { filterTags } from "../../filterTags";
 import { transformDocs } from "../../transformDocs";
 import { getSafeClassName } from "../alias";
 import { createExtendsClause } from "../createExtendsClause";
@@ -47,6 +48,27 @@ function createNominalTag(apiClass: ApiClass) {
 		"@deprecated",
 	]);
 	return nominalTag;
+}
+
+function insertDeprecatedTag(comments: Array<string>, apiEntry: ApiClass | ApiMember) {
+	if (apiEntry.Tags) {
+		const deprecatedTagIdx = apiEntry.Tags.indexOf("Deprecated");
+		if (deprecatedTagIdx !== -1) {
+			const metadata = apiEntry.Tags.at(deprecatedTagIdx + 1);
+			if (
+				metadata &&
+				typeof metadata !== "string" &&
+				// several members have a PreferredDescriptorName which is the same as the member name
+				// suspect this is because it's referencing an API on a different class of the same name, but doesn't say so
+				// for now, we'll skip these because it's confusing
+				metadata.PreferredDescriptorName !== apiEntry.Name
+			) {
+				comments.push(`@deprecated ${metadata.PreferredDescriptorName}`);
+			} else {
+				comments.push("@deprecated");
+			}
+		}
+	}
 }
 
 export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securityLevel: SecurityLevel) {
@@ -105,7 +127,7 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 
 			comments.push(`- **ThreadSafety**: ${apiMember.ThreadSafety}`);
 			if (apiMember.Tags) {
-				comments.push(`- **Tags**: ${apiMember.Tags.filter(v => typeof v === "string").join(", ")}`);
+				comments.push(`- **Tags**: ${apiMember.Tags.filter(filterTags).join(", ")}`);
 			}
 
 			if (comments.length > 0) comments.push("");
@@ -135,24 +157,7 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 
 			if (comments.length > 0) comments.push("");
 
-			if (apiMember.Tags) {
-				const deprecatedTagIdx = apiMember.Tags.indexOf("Deprecated");
-				if (deprecatedTagIdx !== -1) {
-					const metadata = apiMember.Tags.at(deprecatedTagIdx + 1);
-					if (
-						metadata &&
-						typeof metadata !== "string" &&
-						// several members have a PreferredDescriptorName which is the same as the member name
-						// suspect this is because it's referencing an API on a different class of the same name, but doesn't say so
-						// for now, we'll skip these because it's confusing
-						metadata.PreferredDescriptorName !== apiMember.Name
-					) {
-						comments.push(`@deprecated ${metadata.PreferredDescriptorName}`);
-					} else {
-						comments.push("@deprecated");
-					}
-				}
-			}
+			insertDeprecatedTag(comments, apiMember);
 
 			setJsDocComment(first, comments);
 		}
@@ -190,10 +195,14 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 	}
 
 	if (apiClass.Tags) {
-		comments.push(`- **Tags**: ${apiClass.Tags.join(", ")}\n`);
+		comments.push(`- **Tags**: ${apiClass.Tags.filter(filterTags).join(", ")}\n`);
 	}
 
 	comments.push(`[Creator Hub](https://create.roblox.com/docs/reference/engine/classes/${apiClass.Name})`);
+
+	if (comments.length > 0) comments.push("");
+
+	insertDeprecatedTag(comments, apiClass);
 
 	setJsDocComment(interfaceDeclaration, comments);
 
