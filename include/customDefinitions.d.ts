@@ -263,7 +263,7 @@ interface ContextActionService extends Instance {
 	): void;
 	GetButton(this: ContextActionService, actionName: string): ImageButton | undefined;
 	GetAllBoundActionInfo(this: ContextActionService): Map<string, BoundActionInfo>;
-	GetBoundActionInfo(this: ContextActionService, actionName: string): BoundActionInfo;
+	GetBoundActionInfo(this: ContextActionService, actionName: string): BoundActionInfo | {};
 }
 
 interface DataModel extends ServiceProvider<Services> {
