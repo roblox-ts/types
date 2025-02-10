@@ -546,7 +546,7 @@ declare namespace Enum {
         }
         export const RewardedAdUnloaded: RewardedAdUnloaded;
         /**
-         * <strong>Deprecated:</strong> This option should not be used for new work.
+         * **Deprecated:** This option should not be used for new work.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#VideoLoaded)
          */
@@ -557,7 +557,7 @@ declare namespace Enum {
         }
         export const VideoLoaded: VideoLoaded;
         /**
-         * <strong>Deprecated:</strong> This option should not be used for new work.
+         * **Deprecated:** This option should not be used for new work.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#VideoRemoved)
          */
@@ -568,7 +568,7 @@ declare namespace Enum {
         }
         export const VideoRemoved: VideoRemoved;
         /**
-         * <strong>Deprecated:</strong> This option should not be used for new work.
+         * **Deprecated:** This option should not be used for new work.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#UserCompletedVideo)
          */
@@ -598,7 +598,7 @@ declare namespace Enum {
     }
     export type AdFormat = AdFormat.RewardedVideo;
     /**
-     * Describes the form factor of an ad in an <code>AdGui</code>. There is currently only one available size.
+     * Describes the form factor of an ad in an `AdGui`. There is currently only one available size.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdShape)
      */
@@ -789,7 +789,7 @@ declare namespace Enum {
      */
     export namespace AdUnitStatus {
         /**
-         * The ad unit isn't currently serving an ad and it may be configured incorrectly. An <code>AdGui</code> with this status will display its fallback image.
+         * The ad unit isn't currently serving an ad and it may be configured incorrectly. An `AdGui` with this status will display its fallback image.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUnitStatus#Inactive)
          */
@@ -800,7 +800,7 @@ declare namespace Enum {
         }
         export const Inactive: Inactive;
         /**
-         * The ad unit is currently serving an ad. Players will observe sponsored content in an <code>AdGui</code> and an <code>AdPortal</code> will teleport users that walk through.
+         * The ad unit is currently serving an ad. Players will observe sponsored content in an `AdGui` and an `AdPortal` will teleport users that walk through.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUnitStatus#Active)
          */
@@ -851,7 +851,7 @@ declare namespace Enum {
      */
     export namespace AlignType {
         /**
-         * Aligns the primary axis to be parallel to the axis given by <code>Constraint.Attachment1</code>.
+         * Aligns the primary axis to be parallel to the axis given by `Constraint.Attachment1`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlignType#PrimaryAxisParallel)
          */
@@ -862,7 +862,7 @@ declare namespace Enum {
         }
         export const PrimaryAxisParallel: PrimaryAxisParallel;
         /**
-         * Aligns the primary axis to be perpendicular to the axis given by <code>Constraint.Attachment1</code>.
+         * Aligns the primary axis to be perpendicular to the axis given by `Constraint.Attachment1`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlignType#PrimaryAxisPerpendicular)
          */
@@ -873,7 +873,7 @@ declare namespace Enum {
         }
         export const PrimaryAxisPerpendicular: PrimaryAxisPerpendicular;
         /**
-         * Aligns the primary axis to look at the point given by <code>Constraint.Attachment1</code> or the <code>AlignOrientation.LookAtPosition</code>.
+         * Aligns the primary axis to look at the point given by `Constraint.Attachment1` or the `AlignOrientation.LookAtPosition`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlignType#PrimaryAxisLookAt)
          */
@@ -884,7 +884,7 @@ declare namespace Enum {
         }
         export const PrimaryAxisLookAt: PrimaryAxisLookAt;
         /**
-         * Aligns all of the axes of <code>Constraint.Attachment0</code> to the axes given by <code>Constraint.Attachment1</code> or to the target orientation provided by <code>AlignOrientation.PrimaryAxis</code> and <code>AlignOrientation.SecondaryAxis</code>.
+         * Aligns all of the axes of `Constraint.Attachment0` to the axes given by `Constraint.Attachment1` or to the target orientation provided by `AlignOrientation.PrimaryAxis` and `AlignOrientation.SecondaryAxis`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlignType#AllAxes)
          */
@@ -895,7 +895,7 @@ declare namespace Enum {
         }
         export const AllAxes: AllAxes;
         /**
-         * <strong>Deprecated:</strong> Use <strong>PrimaryAxisParallel</strong> instead.
+         * **Deprecated:** Use **PrimaryAxisParallel** instead.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlignType#Parallel)
          */
@@ -906,7 +906,7 @@ declare namespace Enum {
         }
         export const Parallel: Parallel;
         /**
-         * <strong>Deprecated:</strong> Use <strong>PrimaryAxisPerpendicular</strong> instead.
+         * **Deprecated:** Use **PrimaryAxisPerpendicular** instead.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlignType#Perpendicular)
          */
@@ -920,13 +920,13 @@ declare namespace Enum {
     }
     export type AlignType = AlignType.PrimaryAxisParallel | AlignType.PrimaryAxisPerpendicular | AlignType.PrimaryAxisLookAt | AlignType.AllAxes | AlignType.Parallel | AlignType.Perpendicular;
     /**
-     * Used by <code>SurfaceAppearance.AlphaMode</code> to determine how the alpha channel of the <code>SurfaceAppearance.ColorMap</code> of a <code>SurfaceAppearance</code> is used.
+     * Used by `SurfaceAppearance.AlphaMode` to determine how the alpha channel of the `SurfaceAppearance.ColorMap` of a `SurfaceAppearance` is used.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlphaMode)
      */
     export namespace AlphaMode {
         /**
-         * Overlays the <code>ColorMap</code> on top of the underlying part color based on the map's alpha channel. <img src="/assets/engine-api/enums/AlphaMode/Fern-Overlay.png" width="512" />
+         * Overlays the `ColorMap` on top of the underlying part color based on the map's alpha channel. ![undefined](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AlphaMode/Fern-Overlay.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlphaMode#Overlay)
          */
@@ -937,7 +937,7 @@ declare namespace Enum {
         }
         export const Overlay: Overlay;
         /**
-         * Uses the <code>ColorMap</code> alpha channel to control the transparency of the surface. <img src="/assets/engine-api/enums/AlphaMode/Fern-Cutout.png" width="512" />
+         * Uses the `ColorMap` alpha channel to control the transparency of the surface. ![undefined](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AlphaMode/Fern-Cutout.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlphaMode#Transparency)
          */
@@ -1200,7 +1200,7 @@ declare namespace Enum {
     }
     export type AnalyticsLogLevel = AnalyticsLogLevel.Trace | AnalyticsLogLevel.Debug | AnalyticsLogLevel.Information | AnalyticsLogLevel.Warning | AnalyticsLogLevel.Error | AnalyticsLogLevel.Fatal;
     /**
-     * This enum is used as an argument in <code>AnalyticsService:FirePlayerProgressionEvent()</code> to describe the status of progression.
+     * This enum is used as an argument in `AnalyticsService:FirePlayerProgressionEvent()` to describe the status of progression.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsProgressionStatus)
      */
@@ -1950,7 +1950,7 @@ declare namespace Enum {
     }
     export type AppUpdateStatus = AppUpdateStatus.Unknown | AppUpdateStatus.NotSupported | AppUpdateStatus.Failed | AppUpdateStatus.NotAvailable | AppUpdateStatus.Available | AppUpdateStatus.AvailableBoundChannel;
     /**
-     * Used by <code>UIStroke.ApplyStrokeMode</code> to determine where to apply the stroke.
+     * Used by `UIStroke.ApplyStrokeMode` to determine where to apply the stroke.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ApplyStrokeMode)
      */
@@ -1981,13 +1981,13 @@ declare namespace Enum {
     }
     export type ApplyStrokeMode = ApplyStrokeMode.Contextual | ApplyStrokeMode.Border;
     /**
-     * Used by <code>UIAspectRatioConstraint.AspectType</code> to control sizing behavior.
+     * Used by `UIAspectRatioConstraint.AspectType` to control sizing behavior.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AspectType)
      */
     export namespace AspectType {
         /**
-         * The object will be the maximum size possible within its own <code>AbsoluteSize</code>.
+         * The object will be the maximum size possible within its own `AbsoluteSize`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AspectType#FitWithinMaxSize)
          */
@@ -2052,7 +2052,7 @@ declare namespace Enum {
         }
         export const Success: Success;
         /**
-         * The asset failed to load successfully. Subsequent attempts are likely to fail; there may be something wrong with the <code>Content</code> string.
+         * The asset failed to load successfully. Subsequent attempts are likely to fail; there may be something wrong with the `Content` string.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetFetchStatus#Failure)
          */
@@ -2099,7 +2099,7 @@ declare namespace Enum {
     }
     export type AssetFetchStatus = AssetFetchStatus.Success | AssetFetchStatus.Failure | AssetFetchStatus.None | AssetFetchStatus.Loading | AssetFetchStatus.TimedOut;
     /**
-     * This Enum can be used to match the AssetTypeId from <code>MarketplaceService:GetProductInfo()</code> to an asset type.
+     * This Enum can be used to match the AssetTypeId from `MarketplaceService:GetProductInfo()` to an asset type.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType)
      */
@@ -2151,7 +2151,7 @@ declare namespace Enum {
         }
         export const Mesh: Mesh;
         /**
-         * The asset is Lua code, for example a <code>ModuleScript</code>.
+         * The asset is Lua code, for example a `ModuleScript`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#Lua)
          */
@@ -2773,7 +2773,7 @@ declare namespace Enum {
     }
     export type AssetTypeVerification = AssetTypeVerification.Default | AssetTypeVerification.ClientOnly | AssetTypeVerification.Always;
     /**
-     * Used to determine whether voice chat is represented and controlled by <code>AudioDeviceInput</code> objects.
+     * Used to determine whether voice chat is represented and controlled by `AudioDeviceInput` objects.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioApiRollout)
      */
@@ -2790,7 +2790,7 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
-         * Currently means the same thing as <code>Disabled</code>, but will be updated to mean <code>Enabled</code> in the future.
+         * Currently means the same thing as `Disabled`, but will be updated to mean `Enabled` in the future.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioApiRollout#Automatic)
          */
@@ -2801,7 +2801,7 @@ declare namespace Enum {
         }
         export const Automatic: Automatic;
         /**
-         * Voice chat can be customized or controlled via <code>AudioDeviceInputs</code>.
+         * Voice chat can be customized or controlled via `AudioDeviceInputs`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioApiRollout#Enabled)
          */
@@ -2815,13 +2815,13 @@ declare namespace Enum {
     }
     export type AudioApiRollout = AudioApiRollout.Disabled | AudioApiRollout.Automatic | AudioApiRollout.Enabled;
     /**
-     * Filter types used for <code>AudioFilter</code> instances.
+     * Filter types used for `AudioFilter` instances.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType)
      */
     export namespace AudioFilterType {
         /**
-         * Filter that boosts or reduces sound near a specified <code>Frequency</code>.
+         * Filter that boosts or reduces sound near a specified `Frequency`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType#Peak)
          */
@@ -2832,7 +2832,7 @@ declare namespace Enum {
         }
         export const Peak: Peak;
         /**
-         * Filter that boosts or reduces sound below a specified <code>Frequency</code>.
+         * Filter that boosts or reduces sound below a specified `Frequency`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType#LowShelf)
          */
@@ -2843,7 +2843,7 @@ declare namespace Enum {
         }
         export const LowShelf: LowShelf;
         /**
-         * Filter that boosts or reduces sound above a specified <code>Frequency</code>.
+         * Filter that boosts or reduces sound above a specified `Frequency`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType#HighShelf)
          */
@@ -2854,7 +2854,7 @@ declare namespace Enum {
         }
         export const HighShelf: HighShelf;
         /**
-         * Filter that cuts sound above a specified <code>Frequency</code>, at a slope of -12dB/octave.
+         * Filter that cuts sound above a specified `Frequency`, at a slope of -12dB/octave.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType#Lowpass12dB)
          */
@@ -2865,7 +2865,7 @@ declare namespace Enum {
         }
         export const Lowpass12dB: Lowpass12dB;
         /**
-         * Filter that cuts sound above a specified <code>Frequency</code>, at a slope of -24dB/octave.
+         * Filter that cuts sound above a specified `Frequency`, at a slope of -24dB/octave.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType#Lowpass24dB)
          */
@@ -2876,7 +2876,7 @@ declare namespace Enum {
         }
         export const Lowpass24dB: Lowpass24dB;
         /**
-         * Filter that cuts sound above a specified <code>Frequency</code>, at a slope of -48dB/octave.
+         * Filter that cuts sound above a specified `Frequency`, at a slope of -48dB/octave.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType#Lowpass48dB)
          */
@@ -2887,7 +2887,7 @@ declare namespace Enum {
         }
         export const Lowpass48dB: Lowpass48dB;
         /**
-         * Filter that cuts sound below a specified <code>Frequency</code>, at a slope of -12dB/octave.
+         * Filter that cuts sound below a specified `Frequency`, at a slope of -12dB/octave.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType#Highpass12dB)
          */
@@ -2898,7 +2898,7 @@ declare namespace Enum {
         }
         export const Highpass12dB: Highpass12dB;
         /**
-         * Filter that cuts sound below a specified <code>Frequency</code>, at a slope of -24dB/octave.
+         * Filter that cuts sound below a specified `Frequency`, at a slope of -24dB/octave.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType#Highpass24dB)
          */
@@ -2909,7 +2909,7 @@ declare namespace Enum {
         }
         export const Highpass24dB: Highpass24dB;
         /**
-         * Filter that cuts sound below a specified <code>Frequency</code>, at a slope of -48dB/octave.
+         * Filter that cuts sound below a specified `Frequency`, at a slope of -48dB/octave.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType#Highpass48dB)
          */
@@ -2920,7 +2920,7 @@ declare namespace Enum {
         }
         export const Highpass48dB: Highpass48dB;
         /**
-         * Filter that only allows sound near a specified <code>Frequency</code> to be heard.
+         * Filter that only allows sound near a specified `Frequency` to be heard.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType#Bandpass)
          */
@@ -2931,7 +2931,7 @@ declare namespace Enum {
         }
         export const Bandpass: Bandpass;
         /**
-         * Filter that cuts sound near a specified <code>Frequency</code>.
+         * Filter that cuts sound near a specified `Frequency`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType#Notch)
          */
@@ -3063,7 +3063,7 @@ declare namespace Enum {
     }
     export type AutoIndentRule = AutoIndentRule.Off | AutoIndentRule.Absolute | AutoIndentRule.Relative;
     /**
-     * UI objects with <code>AutomaticSize</code> enabled will increase in size up to maximum size allowed by the parent (if there is one) and no smaller than the <code>Size</code> property bounds.
+     * UI objects with `AutomaticSize` enabled will increase in size up to maximum size allowed by the parent (if there is one) and no smaller than the `Size` property bounds.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AutomaticSize)
      */
@@ -3811,7 +3811,7 @@ declare namespace Enum {
     }
     export type AvatarItemType = AvatarItemType.Asset | AvatarItemType.Bundle;
     /**
-     * The result of prompt operations of <code>AvatarEditorService</code>.
+     * The result of prompt operations of `AvatarEditorService`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarPromptResult)
      */
@@ -4076,7 +4076,7 @@ declare namespace Enum {
     }
     export type BinType = BinType.Script | BinType.GameTool | BinType.Grab | BinType.Clone | BinType.Hammer;
     /**
-     * The BodyPart Enum determines which BodyPart a <code>CharacterMesh</code> affects.
+     * The BodyPart Enum determines which BodyPart a `CharacterMesh` affects.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BodyPart)
      */
@@ -4347,13 +4347,13 @@ declare namespace Enum {
     }
     export type BodyPartR15 = BodyPartR15.Head | BodyPartR15.UpperTorso | BodyPartR15.LowerTorso | BodyPartR15.LeftFoot | BodyPartR15.LeftLowerLeg | BodyPartR15.LeftUpperLeg | BodyPartR15.RightFoot | BodyPartR15.RightLowerLeg | BodyPartR15.RightUpperLeg | BodyPartR15.LeftHand | BodyPartR15.LeftLowerArm | BodyPartR15.LeftUpperArm | BodyPartR15.RightHand | BodyPartR15.RightLowerArm | BodyPartR15.RightUpperArm | BodyPartR15.RootPart | BodyPartR15.Unknown;
     /**
-     * Used by <code>GuiObject.BorderMode</code> to determine where borders are placed.
+     * Used by `GuiObject.BorderMode` to determine where borders are placed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BorderMode)
      */
     export namespace BorderMode {
         /**
-         * As <code>GuiObject.BorderSizePixel</code> increases, the border grows outward. The dimensions of the GuiObject's contents do not change.
+         * As `GuiObject.BorderSizePixel` increases, the border grows outward. The dimensions of the GuiObject's contents do not change.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BorderMode#Outline)
          */
@@ -4364,7 +4364,7 @@ declare namespace Enum {
         }
         export const Outline: Outline;
         /**
-         * As <code>GuiObject.BorderSizePixel</code> increases, the border grows evenly inward and outward. The dimensions of the GuiObject's contents are reduced at a 1:1 ratio.
+         * As `GuiObject.BorderSizePixel` increases, the border grows evenly inward and outward. The dimensions of the GuiObject's contents are reduced at a 1:1 ratio.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BorderMode#Middle)
          */
@@ -4375,7 +4375,7 @@ declare namespace Enum {
         }
         export const Middle: Middle;
         /**
-         * As <code>GuiObject.BorderSizePixel</code> increases, the border grows evenly inward only. The dimensions of the GuiObject's contents are reduced at a 1:2 ratio.
+         * As `GuiObject.BorderSizePixel` increases, the border grows evenly inward only. The dimensions of the GuiObject's contents are reduced at a 1:2 ratio.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BorderMode#Inset)
          */
@@ -4571,7 +4571,7 @@ declare namespace Enum {
     }
     export type BundleType = BundleType.BodyParts | BundleType.Animations | BundleType.Shoes | BundleType.DynamicHead | BundleType.DynamicHeadAvatar;
     /**
-     * One of the buttons used by <code>Controller</code>.
+     * One of the buttons used by `Controller`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Button)
      */
@@ -4602,13 +4602,13 @@ declare namespace Enum {
     }
     export type Button = Button.Jump | Button.Dismount;
     /**
-     * Used by <code>GuiButton.Style</code> to set a special hardcoded appearance.
+     * Used by `GuiButton.Style` to set a special hardcoded appearance.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ButtonStyle)
      */
     export namespace ButtonStyle {
         /**
-         * The button will respect the <code>GuiObject.BorderColor3</code> and <code>GuiObject.BackgroundColor3</code> properties.
+         * The button will respect the `GuiObject.BorderColor3` and `GuiObject.BackgroundColor3` properties.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ButtonStyle#Custom)
          */
@@ -4702,7 +4702,7 @@ declare namespace Enum {
     }
     export type CageType = CageType.Inner | CageType.Outer;
     /**
-     * Used to set <code>Player.CameraMode</code> to determine when first person and third person cameras should be used.
+     * Used to set `Player.CameraMode` to determine when first person and third person cameras should be used.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraMode)
      */
@@ -4733,7 +4733,7 @@ declare namespace Enum {
     }
     export type CameraMode = CameraMode.Classic | CameraMode.LockFirstPerson;
     /**
-     * The CameraPanMode Enum represents the available pan modes for <code>Camera:SetCameraPanMode()</code>.
+     * The CameraPanMode Enum represents the available pan modes for `Camera:SetCameraPanMode()`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraPanMode)
      */
@@ -5631,7 +5631,7 @@ declare namespace Enum {
     }
     export type ChatRestrictionStatus = ChatRestrictionStatus.Unknown | ChatRestrictionStatus.NotRestricted | ChatRestrictionStatus.Restricted;
     /**
-     * The ChatStyle Enum is used to set the style of <code>Chat</code> used in a game via the <code>Players:SetChatStyle()</code> method.
+     * The ChatStyle Enum is used to set the style of `Chat` used in a game via the `Players:SetChatStyle()` method.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatStyle)
      */
@@ -5673,7 +5673,7 @@ declare namespace Enum {
     }
     export type ChatStyle = ChatStyle.Classic | ChatStyle.Bubble | ChatStyle.ClassicAndBubble;
     /**
-     * Determines whether <code>TextChatService</code> should be fully enabled or to allow the legacy system.
+     * Determines whether `TextChatService` should be fully enabled or to allow the legacy system.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatVersion)
      */
@@ -5690,7 +5690,7 @@ declare namespace Enum {
         }
         export const LegacyChatService: LegacyChatService;
         /**
-         * Enables <code>TextChatService</code> chat and prevents legacy chat system behavior.
+         * Enables `TextChatService` chat and prevents legacy chat system behavior.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatVersion#TextChatService)
          */
@@ -5774,7 +5774,7 @@ declare namespace Enum {
         }
         export const RobloxMaintenance: RobloxMaintenance;
         /**
-         * The experience developer has shut down the server, or functions bound by <code>BindToClose()</code> have been called inside Studio.
+         * The experience developer has shut down the server, or functions bound by `BindToClose()` have been called inside Studio.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CloseReason#DeveloperShutdown)
          */
@@ -5864,7 +5864,7 @@ declare namespace Enum {
     }
     export type CollaboratorStatus = CollaboratorStatus.None | CollaboratorStatus.Editing3D | CollaboratorStatus.Scripting | CollaboratorStatus.PrivateScripting;
     /**
-     * Determines behavior of the collision hitbox for <code>MeshPart</code> and <code>PartOperation</code> instances.
+     * Determines behavior of the collision hitbox for `MeshPart` and `PartOperation` instances.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CollisionFidelity)
      */
@@ -6260,7 +6260,7 @@ declare namespace Enum {
     }
     export type CompletionItemKind = CompletionItemKind.Text | CompletionItemKind.Method | CompletionItemKind.Function | CompletionItemKind.Constructor | CompletionItemKind.Field | CompletionItemKind.Variable | CompletionItemKind.Class | CompletionItemKind.Interface | CompletionItemKind.Module | CompletionItemKind.Property | CompletionItemKind.Unit | CompletionItemKind.Value | CompletionItemKind.Enum | CompletionItemKind.Keyword | CompletionItemKind.Snippet | CompletionItemKind.Color | CompletionItemKind.File | CompletionItemKind.Reference | CompletionItemKind.Folder | CompletionItemKind.EnumMember | CompletionItemKind.Constant | CompletionItemKind.Struct | CompletionItemKind.Event | CompletionItemKind.Operator | CompletionItemKind.TypeParameter;
     /**
-     * Determines the tags for completion items in <code>ScriptEditorService:RegisterAutocompleteCallback()</code>.
+     * Determines the tags for completion items in `ScriptEditorService:RegisterAutocompleteCallback()`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemTag)
      */
@@ -6277,7 +6277,7 @@ declare namespace Enum {
         }
         export const Deprecated: Deprecated;
         /**
-         * Indicates that the completion is a member and being accessed with the wrong index type (e.g. using <code>:</code> to access a property), hiding it from the completion list.
+         * Indicates that the completion is a member and being accessed with the wrong index type (e.g. using `:` to access a property), hiding it from the completion list.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemTag#IncorrectIndexType)
          */
@@ -7212,13 +7212,13 @@ declare namespace Enum {
     }
     export type ConnectionState = ConnectionState.Connected | ConnectionState.Disconnected;
     /**
-     * The source type of a <code>Content</code> value.
+     * The source type of a `Content` value.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContentSourceType)
      */
     export namespace ContentSourceType {
         /**
-         * Empty value with no source type. Does not reference any content or hold any non‑<code>nil</code> value.
+         * Empty value with no source type. Does not reference any content or hold any non‑`nil` value.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContentSourceType#None)
          */
@@ -7229,7 +7229,7 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * An <a href="../../../projects/assets/index.md#asset-uris">asset URI</a> <code>string</code> value contained in <code>Content.Uri</code>.
+         * An [asset URI](../../../projects/assets/index.md#asset-uris) `string` value contained in `Content.Uri`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContentSourceType#Uri)
          */
@@ -7240,7 +7240,7 @@ declare namespace Enum {
         }
         export const Uri: Uri;
         /**
-         * A non-<code>nil</code> <code>Object</code> reference contained in <code>Content.Object</code>.
+         * A non-`nil` `Object` reference contained in `Content.Object`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContentSourceType#Object)
          */
@@ -7306,7 +7306,7 @@ declare namespace Enum {
      */
     export namespace ContextActionResult {
         /**
-         * If <em>functionToBind</em> from <code>ContextActionService:BindAction()</code> returns Enum.ContextActionResult.Sink, the input event will stop at that function and no other bound actions under it will be processed. This is the default behavior if <em>functionToBind</em> does not return anything or yields in any way.
+         * If *functionToBind* from `ContextActionService:BindAction()` returns Enum.ContextActionResult.Sink, the input event will stop at that function and no other bound actions under it will be processed. This is the default behavior if *functionToBind* does not return anything or yields in any way.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContextActionResult#Sink)
          */
@@ -7317,7 +7317,7 @@ declare namespace Enum {
         }
         export const Sink: Sink;
         /**
-         * If <em>functionToBind</em> from <code>ContextActionService:BindAction()</code> returns Enum.ContextActionResult.Pass, the input event is considered to have not been handled by <em>functionToBind</em> and will continue being passed to actions bound to the same input type.
+         * If *functionToBind* from `ContextActionService:BindAction()` returns Enum.ContextActionResult.Pass, the input event is considered to have not been handled by *functionToBind* and will continue being passed to actions bound to the same input type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContextActionResult#Pass)
          */
@@ -7362,13 +7362,13 @@ declare namespace Enum {
     }
     export type ControlMode = ControlMode.Classic | ControlMode.MouseLockSwitch;
     /**
-     * Represents all available <code>CoreGui</code> "types" such as the <code>Backpack</code> and text chat window.
+     * Represents all available `CoreGui` "types" such as the `Backpack` and text chat window.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CoreGuiType)
      */
     export namespace CoreGuiType {
         /**
-         * Dynamically updated <code>Players</code> list, commonly used as a <a href="../../../players/leaderboards.md">leaderboard</a>.
+         * Dynamically updated `Players` list, commonly used as a [leaderboard](../../../players/leaderboards.md).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CoreGuiType#PlayerList)
          */
@@ -7379,7 +7379,7 @@ declare namespace Enum {
         }
         export const PlayerList: PlayerList;
         /**
-         * The character's <code>Health</code> bar.
+         * The character's `Health` bar.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CoreGuiType#Health)
          */
@@ -7390,7 +7390,7 @@ declare namespace Enum {
         }
         export const Health: Health;
         /**
-         * The character's <code>Backpack</code> which contains <a href="../../../players/tools.md">in‑experience tools</a>.
+         * The character's `Backpack` which contains [in‑experience tools](../../../players/tools.md).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CoreGuiType#Backpack)
          */
@@ -7401,7 +7401,7 @@ declare namespace Enum {
         }
         export const Backpack: Backpack;
         /**
-         * The <a href="../../../chat/in-experience-text-chat.md">text chat</a> window.
+         * The [text chat](../../../chat/in-experience-text-chat.md) window.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CoreGuiType#Chat)
          */
@@ -7423,7 +7423,7 @@ declare namespace Enum {
         }
         export const All: All;
         /**
-         * Popup menu of character <a href="../../../characters/emotes.md">emotes</a>.
+         * Popup menu of character [emotes](../../../characters/emotes.md).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CoreGuiType#EmotesMenu)
          */
@@ -7597,7 +7597,7 @@ declare namespace Enum {
     }
     export type CreatorTypeFilter = CreatorTypeFilter.User | CreatorTypeFilter.Group | CreatorTypeFilter.All;
     /**
-     * The CurrencyType Enum is used with <code>MarketplaceService</code> to set the currency used.
+     * The CurrencyType Enum is used with `MarketplaceService` to set the currency used.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CurrencyType)
      */
@@ -7685,7 +7685,7 @@ declare namespace Enum {
      */
     export namespace DataStoreRequestType {
         /**
-         * Refers to <code>GetAsync()</code> and the read of <code>UpdateAsync()</code>.
+         * Refers to `GetAsync()` and the read of `UpdateAsync()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#GetAsync)
          */
@@ -7696,7 +7696,7 @@ declare namespace Enum {
         }
         export const GetAsync: GetAsync;
         /**
-         * Refers to <code>SetAsync()</code>, <code>IncrementAsync()</code>, <code>RemoveAsync()</code>, and the write of <code>UpdateAsync()</code> when it returns a non-<code>nil</code> value.
+         * Refers to `SetAsync()`, `IncrementAsync()`, `RemoveAsync()`, and the write of `UpdateAsync()` when it returns a non-`nil` value.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#SetIncrementAsync)
          */
@@ -7707,7 +7707,7 @@ declare namespace Enum {
         }
         export const SetIncrementAsync: SetIncrementAsync;
         /**
-         * Refers to <code>UpdateAsync()</code>.
+         * Refers to `UpdateAsync()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#UpdateAsync)
          */
@@ -7718,7 +7718,7 @@ declare namespace Enum {
         }
         export const UpdateAsync: UpdateAsync;
         /**
-         * Refers to <code>GetSortedAsync()</code>.
+         * Refers to `GetSortedAsync()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#GetSortedAsync)
          */
@@ -7729,7 +7729,7 @@ declare namespace Enum {
         }
         export const GetSortedAsync: GetSortedAsync;
         /**
-         * Refers to <code>SetAsync()</code> and <code>IncrementAsync()</code> while using an <code>OrderedDataStore</code>.
+         * Refers to `SetAsync()` and `IncrementAsync()` while using an `OrderedDataStore`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#SetIncrementSortedAsync)
          */
@@ -7740,7 +7740,7 @@ declare namespace Enum {
         }
         export const SetIncrementSortedAsync: SetIncrementSortedAsync;
         /**
-         * Refers to <code>OnUpdate()</code>.
+         * Refers to `OnUpdate()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#OnUpdate)
          */
@@ -7751,7 +7751,7 @@ declare namespace Enum {
         }
         export const OnUpdate: OnUpdate;
         /**
-         * Refers to <code>ListKeysAsync()</code> and <code>ListVersionsAsync()</code>.
+         * Refers to `ListKeysAsync()` and `ListVersionsAsync()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#ListAsync)
          */
@@ -7762,7 +7762,7 @@ declare namespace Enum {
         }
         export const ListAsync: ListAsync;
         /**
-         * Refers to <code>GetVersionAsync()</code>.
+         * Refers to `GetVersionAsync()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#GetVersionAsync)
          */
@@ -7773,7 +7773,7 @@ declare namespace Enum {
         }
         export const GetVersionAsync: GetVersionAsync;
         /**
-         * Refers to <code>RemoveVersionAsync()</code>.
+         * Refers to `RemoveVersionAsync()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#RemoveVersionAsync)
          */
@@ -8485,7 +8485,7 @@ declare namespace Enum {
         }
         export const Script: Script;
         /**
-         * Collision detection in the <code>Workspace</code>.
+         * Collision detection in the `Workspace`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeveloperMemoryTag#PhysicsCollision)
          */
@@ -8859,7 +8859,7 @@ declare namespace Enum {
     }
     export type DialogBehaviorType = DialogBehaviorType.SinglePlayer | DialogBehaviorType.MultiplePlayers;
     /**
-     * The DialogPurpose enum is used to set the icon of a <code>Dialog</code>.
+     * The DialogPurpose enum is used to set the icon of a `Dialog`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DialogPurpose)
      */
@@ -8901,7 +8901,7 @@ declare namespace Enum {
     }
     export type DialogPurpose = DialogPurpose.Quest | DialogPurpose.Help | DialogPurpose.Shop;
     /**
-     * Sets the <code>Dialog.Tone</code> of a <code>Dialog</code> object, which influences how the dialog appears.
+     * Sets the `Dialog.Tone` of a `Dialog` object, which influences how the dialog appears.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DialogTone)
      */
@@ -8943,7 +8943,7 @@ declare namespace Enum {
     }
     export type DialogTone = DialogTone.Neutral | DialogTone.Friendly | DialogTone.Enemy;
     /**
-     * Used by <code>UIAspectRatioConstraint.DominantAxis</code> for resizing the object to maintain the aspect ratio.
+     * Used by `UIAspectRatioConstraint.DominantAxis` for resizing the object to maintain the aspect ratio.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DominantAxis)
      */
@@ -9017,13 +9017,13 @@ declare namespace Enum {
     }
     export type DraftStatusCode = DraftStatusCode.OK | DraftStatusCode.DraftOutdated | DraftStatusCode.ScriptRemoved | DraftStatusCode.DraftCommitted;
     /**
-     * Used with <code>DragDetector</code> as the paradigm to generate proposed motion, given a stream of cursor rays.
+     * Used with `DragDetector` as the paradigm to generate proposed motion, given a stream of cursor rays.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorDragStyle)
      */
     export namespace DragDetectorDragStyle {
         /**
-         * 1D motion along the detector's <code>Axis</code>, by default the world <strong>Y</strong> axis.
+         * 1D motion along the detector's `Axis`, by default the world **Y** axis.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorDragStyle#TranslateLine)
          */
@@ -9034,7 +9034,7 @@ declare namespace Enum {
         }
         export const TranslateLine: TranslateLine;
         /**
-         * 2D motion in the plane <strong>perpendicular</strong> to the detector's <code>Axis</code>, by default the world <strong>XZ</strong> plane.
+         * 2D motion in the plane **perpendicular** to the detector's `Axis`, by default the world **XZ** plane.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorDragStyle#TranslatePlane)
          */
@@ -9045,7 +9045,7 @@ declare namespace Enum {
         }
         export const TranslatePlane: TranslatePlane;
         /**
-         * 2D motion in the plane <strong>perpendicular</strong> to the detector's <code>Axis</code> and, when the modifier is active, 1D motion along the detector's <code>Axis</code>.
+         * 2D motion in the plane **perpendicular** to the detector's `Axis` and, when the modifier is active, 1D motion along the detector's `Axis`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorDragStyle#TranslatePlaneOrLine)
          */
@@ -9056,7 +9056,7 @@ declare namespace Enum {
         }
         export const TranslatePlaneOrLine: TranslatePlaneOrLine;
         /**
-         * 1D motion along the detector's <code>Axis</code> and, when the modifier is active, 2D motion in the plane <strong>perpendicular</strong> to the detector's <code>Axis</code>.
+         * 1D motion along the detector's `Axis` and, when the modifier is active, 2D motion in the plane **perpendicular** to the detector's `Axis`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorDragStyle#TranslateLineOrPlane)
          */
@@ -9078,7 +9078,7 @@ declare namespace Enum {
         }
         export const TranslateViewPlane: TranslateViewPlane;
         /**
-         * Rotation about the detector's <code>Axis</code>, by default the world <strong>Y</strong> axis.
+         * Rotation about the detector's `Axis`, by default the world **Y** axis.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorDragStyle#RotateAxis)
          */
@@ -9089,7 +9089,7 @@ declare namespace Enum {
         }
         export const RotateAxis: RotateAxis;
         /**
-         * Trackball rotation, further customized through the <code>TrackballRadialPullFactor</code> and <code>TrackballRollFactor</code> properties.
+         * Trackball rotation, further customized through the `TrackballRadialPullFactor` and `TrackballRollFactor` properties.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorDragStyle#RotateTrackball)
          */
@@ -9100,7 +9100,7 @@ declare namespace Enum {
         }
         export const RotateTrackball: RotateTrackball;
         /**
-         * Calculates desired motion via a custom function provided through <code>SetDragStyleFunction()</code>.
+         * Calculates desired motion via a custom function provided through `SetDragStyleFunction()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorDragStyle#Scriptable)
          */
@@ -9111,7 +9111,7 @@ declare namespace Enum {
         }
         export const Scriptable: Scriptable;
         /**
-         * <strong>TranslatePlaneOrLine</strong> for mouse and gamepad; <strong>TranslatePlane</strong> for touch; <strong>6DOF</strong> for VR.
+         * **TranslatePlaneOrLine** for mouse and gamepad; **TranslatePlane** for touch; **6DOF** for VR.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorDragStyle#BestForDevice)
          */
@@ -9125,13 +9125,13 @@ declare namespace Enum {
     }
     export type DragDetectorDragStyle = DragDetectorDragStyle.TranslateLine | DragDetectorDragStyle.TranslatePlane | DragDetectorDragStyle.TranslatePlaneOrLine | DragDetectorDragStyle.TranslateLineOrPlane | DragDetectorDragStyle.TranslateViewPlane | DragDetectorDragStyle.RotateAxis | DragDetectorDragStyle.RotateTrackball | DragDetectorDragStyle.Scriptable | DragDetectorDragStyle.BestForDevice;
     /**
-     * Used to control the permission level for which players can interact with a <code>DragDetector</code>.
+     * Used to control the permission level for which players can interact with a `DragDetector`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorPermissionPolicy)
      */
     export namespace DragDetectorPermissionPolicy {
         /**
-         * No players can interact with the <code>DragDetector</code>.
+         * No players can interact with the `DragDetector`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorPermissionPolicy#Nobody)
          */
@@ -9142,7 +9142,7 @@ declare namespace Enum {
         }
         export const Nobody: Nobody;
         /**
-         * All players can interact with the <code>DragDetector</code>.
+         * All players can interact with the `DragDetector`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorPermissionPolicy#Everybody)
          */
@@ -9153,7 +9153,7 @@ declare namespace Enum {
         }
         export const Everybody: Everybody;
         /**
-         * Invokes the function registered via <code>DragDetector:SetPermissionPolicyFunction()</code>, enabling/disabling the detector based on whether the function returns <code>true</code> or <code>false</code>.
+         * Invokes the function registered via `DragDetector:SetPermissionPolicyFunction()`, enabling/disabling the detector based on whether the function returns `true` or `false`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorPermissionPolicy#Scriptable)
          */
@@ -9173,7 +9173,7 @@ declare namespace Enum {
      */
     export namespace DragDetectorResponseStyle {
         /**
-         * For an <code>Anchored</code> object both inside the running experience and in Studio edit mode, the position/orientation of the object will be updated to exactly reflect the proposed motion. For an unanchored object, behavior is the same as for an anchored object; however, in a running experience, the object will be anchored at the start of the drag and restored to unanchored upon drag release.
+         * For an `Anchored` object both inside the running experience and in Studio edit mode, the position/orientation of the object will be updated to exactly reflect the proposed motion. For an unanchored object, behavior is the same as for an anchored object; however, in a running experience, the object will be anchored at the start of the drag and restored to unanchored upon drag release.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorResponseStyle#Geometric)
          */
@@ -9184,7 +9184,7 @@ declare namespace Enum {
         }
         export const Geometric: Geometric;
         /**
-         * An <code>Anchored</code> object will default to <strong>Geometric</strong> behavior as it is not affected by forces. An unanchored object will be moved by constraint forces that attempt to bring it to the desired position and/or orientation given by the proposed motion.
+         * An `Anchored` object will default to **Geometric** behavior as it is not affected by forces. An unanchored object will be moved by constraint forces that attempt to bring it to the desired position and/or orientation given by the proposed motion.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorResponseStyle#Physical)
          */
@@ -9195,7 +9195,7 @@ declare namespace Enum {
         }
         export const Physical: Physical;
         /**
-         * The object will not move at all, but <code>DragFrame</code> will still be updated and you can respond to drag manipulation however you'd like.
+         * The object will not move at all, but `DragFrame` will still be updated and you can respond to drag manipulation however you'd like.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DragDetectorResponseStyle#Custom)
          */
@@ -9293,7 +9293,7 @@ declare namespace Enum {
     }
     export type DraggingScrollBar = DraggingScrollBar.None | DraggingScrollBar.Horizontal | DraggingScrollBar.Vertical;
     /**
-     * Enum used with <code>TweenInfo.new()</code> to control the direction <code>Tweens</code> play in.
+     * Enum used with `TweenInfo.new()` to control the direction `Tweens` play in.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EasingDirection)
      */
@@ -9335,7 +9335,7 @@ declare namespace Enum {
     }
     export type EasingDirection = EasingDirection.In | EasingDirection.Out | EasingDirection.InOut;
     /**
-     * Enum used with <code>TweenInfo.new</code> to control the motion of a <code>Tween</code>.
+     * Enum used with `TweenInfo.new` to control the motion of a `Tween`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EasingStyle)
      */
@@ -9374,7 +9374,7 @@ declare namespace Enum {
         }
         export const Back: Back;
         /**
-         * Similar to <code>Sine</code> but with a slightly sharper curve based on quadratic interpolation.
+         * Similar to `Sine` but with a slightly sharper curve based on quadratic interpolation.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EasingStyle#Quad)
          */
@@ -9385,7 +9385,7 @@ declare namespace Enum {
         }
         export const Quad: Quad;
         /**
-         * Similar to <code>Cubic</code> but with an even sharper curve based on quartic interpolation.
+         * Similar to `Cubic` but with an even sharper curve based on quartic interpolation.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EasingStyle#Quart)
          */
@@ -9396,7 +9396,7 @@ declare namespace Enum {
         }
         export const Quart: Quart;
         /**
-         * Similar to <code>Quart</code> but with an even sharper curve based on quintic interpolation.
+         * Similar to `Quart` but with an even sharper curve based on quintic interpolation.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EasingStyle#Quint)
          */
@@ -9440,7 +9440,7 @@ declare namespace Enum {
         }
         export const Exponential: Exponential;
         /**
-         * Follows a circular arc, such that acceleration is more sudden and deceleration more gradual versus <code>Quint</code> or <code>Exponential</code>.
+         * Follows a circular arc, such that acceleration is more sudden and deceleration more gradual versus `Quint` or `Exponential`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EasingStyle#Circular)
          */
@@ -9451,7 +9451,7 @@ declare namespace Enum {
         }
         export const Circular: Circular;
         /**
-         * Similar to <code>Quad</code> but with a slightly sharper curve based on cubic interpolation.
+         * Similar to `Quad` but with a slightly sharper curve based on cubic interpolation.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EasingStyle#Cubic)
          */
@@ -9499,7 +9499,7 @@ declare namespace Enum {
     }
     export type EditableStatus = EditableStatus.Unknown | EditableStatus.Allowed | EditableStatus.Disallowed;
     /**
-     * This enum is used by <code>ScrollingFrame.ElasticBehavior</code> to specifies how elastic scrolling behaves for a <code>ScrollingFrame</code>.
+     * This enum is used by `ScrollingFrame.ElasticBehavior` to specifies how elastic scrolling behaves for a `ScrollingFrame`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ElasticBehavior)
      */
@@ -9789,7 +9789,7 @@ declare namespace Enum {
     }
     export type FieldOfViewMode = FieldOfViewMode.Vertical | FieldOfViewMode.Diagonal | FieldOfViewMode.MaxAxis;
     /**
-     * Used by <code>UIGridStyleLayout.FillDirection</code> to control which direction elements are placed.
+     * Used by `UIGridStyleLayout.FillDirection` to control which direction elements are placed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FillDirection)
      */
@@ -10086,7 +10086,7 @@ declare namespace Enum {
         }
         export const Automatic: Automatic;
         /**
-         * Use the current collision geometry specified by <code>TriangleMeshPart.CollisionFidelity</code> for aerodynamic force and torque calculations .
+         * Use the current collision geometry specified by `TriangleMeshPart.CollisionFidelity` for aerodynamic force and torque calculations .
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FluidFidelity#UseCollisionGeometry)
          */
@@ -10117,7 +10117,7 @@ declare namespace Enum {
      */
     export namespace FluidForces {
         /**
-         * Aerodynamic forces will not be calculated on any <code>BaseParts</code>.
+         * Aerodynamic forces will not be calculated on any `BaseParts`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FluidForces#Default)
          */
@@ -10128,7 +10128,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * Aerodynamic forces will be calculated on <code>BaseParts</code> with <code>EnableFluidForces</code> set to true. During the beta phase, the behavior of the aerodynamic force model may change as the model improves.
+         * Aerodynamic forces will be calculated on `BaseParts` with `EnableFluidForces` set to true. During the beta phase, the behavior of the aerodynamic force model may change as the model improves.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FluidForces#Experimental)
          */
@@ -10146,7 +10146,7 @@ declare namespace Enum {
      */
     export namespace Font {
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Legacy.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Legacy.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Legacy)
          */
@@ -10179,7 +10179,7 @@ declare namespace Enum {
         }
         export const ArialBold: ArialBold;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/SourceSans.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSans.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SourceSans)
          */
@@ -10190,7 +10190,7 @@ declare namespace Enum {
         }
         export const SourceSans: SourceSans;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/SourceSansBold.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSansBold.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SourceSansBold)
          */
@@ -10201,7 +10201,7 @@ declare namespace Enum {
         }
         export const SourceSansBold: SourceSansBold;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/SourceSansLight.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSansLight.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SourceSansLight)
          */
@@ -10212,7 +10212,7 @@ declare namespace Enum {
         }
         export const SourceSansLight: SourceSansLight;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/SourceSansItalic.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSansItalic.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SourceSansItalic)
          */
@@ -10223,7 +10223,7 @@ declare namespace Enum {
         }
         export const SourceSansItalic: SourceSansItalic;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Bodoni.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Bodoni.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Bodoni)
          */
@@ -10234,7 +10234,7 @@ declare namespace Enum {
         }
         export const Bodoni: Bodoni;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Garamond.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Garamond.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Garamond)
          */
@@ -10245,7 +10245,7 @@ declare namespace Enum {
         }
         export const Garamond: Garamond;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Cartoon.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Cartoon.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Cartoon)
          */
@@ -10256,7 +10256,7 @@ declare namespace Enum {
         }
         export const Cartoon: Cartoon;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Code.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Code.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Code)
          */
@@ -10267,7 +10267,7 @@ declare namespace Enum {
         }
         export const Code: Code;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Highway.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Highway.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Highway)
          */
@@ -10278,7 +10278,7 @@ declare namespace Enum {
         }
         export const Highway: Highway;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/SciFi.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SciFi.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SciFi)
          */
@@ -10289,7 +10289,7 @@ declare namespace Enum {
         }
         export const SciFi: SciFi;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Arcade.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Arcade.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Arcade)
          */
@@ -10300,7 +10300,7 @@ declare namespace Enum {
         }
         export const Arcade: Arcade;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Fantasy.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Fantasy.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Fantasy)
          */
@@ -10311,7 +10311,7 @@ declare namespace Enum {
         }
         export const Fantasy: Fantasy;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Antique.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Antique.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Antique)
          */
@@ -10322,7 +10322,7 @@ declare namespace Enum {
         }
         export const Antique: Antique;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/SourceSansSemibold.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SourceSansSemibold.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SourceSansSemibold)
          */
@@ -10397,7 +10397,7 @@ declare namespace Enum {
          */
         export const MontserratBlack: GothamBlack;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/AmaticSC.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/AmaticSC.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#AmaticSC)
          */
@@ -10408,7 +10408,7 @@ declare namespace Enum {
         }
         export const AmaticSC: AmaticSC;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Bangers.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Bangers.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Bangers)
          */
@@ -10419,7 +10419,7 @@ declare namespace Enum {
         }
         export const Bangers: Bangers;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Creepster.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Creepster.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Creepster)
          */
@@ -10430,7 +10430,7 @@ declare namespace Enum {
         }
         export const Creepster: Creepster;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/DenkOne.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/DenkOne.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#DenkOne)
          */
@@ -10441,7 +10441,7 @@ declare namespace Enum {
         }
         export const DenkOne: DenkOne;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Fondamento.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Fondamento.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Fondamento)
          */
@@ -10452,7 +10452,7 @@ declare namespace Enum {
         }
         export const Fondamento: Fondamento;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/FredokaOne.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/FredokaOne.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#FredokaOne)
          */
@@ -10463,7 +10463,7 @@ declare namespace Enum {
         }
         export const FredokaOne: FredokaOne;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/GrenzeGotisch.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/GrenzeGotisch.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#GrenzeGotisch)
          */
@@ -10474,7 +10474,7 @@ declare namespace Enum {
         }
         export const GrenzeGotisch: GrenzeGotisch;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/IndieFlower.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/IndieFlower.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#IndieFlower)
          */
@@ -10485,7 +10485,7 @@ declare namespace Enum {
         }
         export const IndieFlower: IndieFlower;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/JosefinSans.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/JosefinSans.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#JosefinSans)
          */
@@ -10496,7 +10496,7 @@ declare namespace Enum {
         }
         export const JosefinSans: JosefinSans;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Jura.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Jura.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Jura)
          */
@@ -10507,7 +10507,7 @@ declare namespace Enum {
         }
         export const Jura: Jura;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Kalam.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Kalam.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Kalam)
          */
@@ -10518,7 +10518,7 @@ declare namespace Enum {
         }
         export const Kalam: Kalam;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/LuckiestGuy.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/LuckiestGuy.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#LuckiestGuy)
          */
@@ -10529,7 +10529,7 @@ declare namespace Enum {
         }
         export const LuckiestGuy: LuckiestGuy;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Merriweather.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Merriweather.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Merriweather)
          */
@@ -10540,7 +10540,7 @@ declare namespace Enum {
         }
         export const Merriweather: Merriweather;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Michroma.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Michroma.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Michroma)
          */
@@ -10551,7 +10551,7 @@ declare namespace Enum {
         }
         export const Michroma: Michroma;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Nunito.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Nunito.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Nunito)
          */
@@ -10562,7 +10562,7 @@ declare namespace Enum {
         }
         export const Nunito: Nunito;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Oswald.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Oswald.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Oswald)
          */
@@ -10573,7 +10573,7 @@ declare namespace Enum {
         }
         export const Oswald: Oswald;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/PatrickHand.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/PatrickHand.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#PatrickHand)
          */
@@ -10584,7 +10584,7 @@ declare namespace Enum {
         }
         export const PatrickHand: PatrickHand;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/PermanentMarker.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/PermanentMarker.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#PermanentMarker)
          */
@@ -10595,7 +10595,7 @@ declare namespace Enum {
         }
         export const PermanentMarker: PermanentMarker;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Roboto.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Roboto.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Roboto)
          */
@@ -10606,7 +10606,7 @@ declare namespace Enum {
         }
         export const Roboto: Roboto;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/RobotoCondensed.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/RobotoCondensed.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#RobotoCondensed)
          */
@@ -10617,7 +10617,7 @@ declare namespace Enum {
         }
         export const RobotoCondensed: RobotoCondensed;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/RobotoMono.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/RobotoMono.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#RobotoMono)
          */
@@ -10628,7 +10628,7 @@ declare namespace Enum {
         }
         export const RobotoMono: RobotoMono;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Sarpanch.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Sarpanch.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Sarpanch)
          */
@@ -10639,7 +10639,7 @@ declare namespace Enum {
         }
         export const Sarpanch: Sarpanch;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/SpecialElite.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/SpecialElite.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#SpecialElite)
          */
@@ -10650,7 +10650,7 @@ declare namespace Enum {
         }
         export const SpecialElite: SpecialElite;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/TitilliumWeb.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/TitilliumWeb.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#TitilliumWeb)
          */
@@ -10661,7 +10661,7 @@ declare namespace Enum {
         }
         export const TitilliumWeb: TitilliumWeb;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Ubuntu.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Ubuntu.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Ubuntu)
          */
@@ -10672,7 +10672,7 @@ declare namespace Enum {
         }
         export const Ubuntu: Ubuntu;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/BuilderSans.png" /> See <a href="../../../resources/builder-font-license.md">Builder Font License</a>.
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/BuilderSans.png) See [Builder Font License](../../../resources/builder-font-license.md).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#BuilderSans)
          */
@@ -10683,7 +10683,7 @@ declare namespace Enum {
         }
         export const BuilderSans: BuilderSans;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/BuilderSansMedium.png" /> See <a href="../../../resources/builder-font-license.md">Builder Font License</a>.
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/BuilderSansMedium.png) See [Builder Font License](../../../resources/builder-font-license.md).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#BuilderSansMedium)
          */
@@ -10694,7 +10694,7 @@ declare namespace Enum {
         }
         export const BuilderSansMedium: BuilderSansMedium;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/BuilderSansBold.png" /> See <a href="../../../resources/builder-font-license.md">Builder Font License</a>.
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/BuilderSansBold.png) See [Builder Font License](../../../resources/builder-font-license.md).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#BuilderSansBold)
          */
@@ -10705,7 +10705,7 @@ declare namespace Enum {
         }
         export const BuilderSansBold: BuilderSansBold;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/BuilderSansExtraBold.png" /> See <a href="../../../resources/builder-font-license.md">Builder Font License</a>.
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/BuilderSansExtraBold.png) See [Builder Font License](../../../resources/builder-font-license.md).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#BuilderSansExtraBold)
          */
@@ -10716,7 +10716,7 @@ declare namespace Enum {
         }
         export const BuilderSansExtraBold: BuilderSansExtraBold;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/Arimo.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/Arimo.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Arimo)
          */
@@ -10727,7 +10727,7 @@ declare namespace Enum {
         }
         export const Arimo: Arimo;
         /**
-         * <img width="80%" src="../../../assets/engine-api/enums/Font/ArimoBold.png" />
+         * ![undefined](https://prod.docsiteassets.roblox.com/../../../assets/engine-api/enums/Font/ArimoBold.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#ArimoBold)
          */
@@ -10738,7 +10738,7 @@ declare namespace Enum {
         }
         export const ArimoBold: ArimoBold;
         /**
-         * Set when the <code>TextLabel.FontFace</code> property is set to a <code>Font</code> that has no corresponding enum value.
+         * Set when the `TextLabel.FontFace` property is set to a `Font` that has no corresponding enum value.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Unknown)
          */
@@ -10924,7 +10924,7 @@ declare namespace Enum {
     }
     export type FontSize = FontSize.Size8 | FontSize.Size9 | FontSize.Size10 | FontSize.Size11 | FontSize.Size12 | FontSize.Size14 | FontSize.Size18 | FontSize.Size24 | FontSize.Size36 | FontSize.Size48 | FontSize.Size28 | FontSize.Size32 | FontSize.Size42 | FontSize.Size60 | FontSize.Size96;
     /**
-     * Describes whether a <code>Font</code> is italic or not.
+     * Describes whether a `Font` is italic or not.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontStyle)
      */
@@ -10955,7 +10955,7 @@ declare namespace Enum {
     }
     export type FontStyle = FontStyle.Normal | FontStyle.Italic;
     /**
-     * Describes how thick a <code>Font</code> is.
+     * Describes how thick a `Font` is.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontWeight)
      */
@@ -11047,7 +11047,7 @@ declare namespace Enum {
     }
     export type FontWeight = FontWeight.Thin | FontWeight.ExtraLight | FontWeight.Light | FontWeight.Regular | FontWeight.Medium | FontWeight.SemiBold | FontWeight.Bold | FontWeight.ExtraBold | FontWeight.Heavy;
     /**
-     * The <strong>ForceLimitMode</strong> enum determines how the maximum force for a constraint is specified and how that limit is enforced by the constraint.
+     * The **ForceLimitMode** enum determines how the maximum force for a constraint is specified and how that limit is enforced by the constraint.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ForceLimitMode)
      */
@@ -11133,13 +11133,13 @@ declare namespace Enum {
     }
     export type FormFactor = FormFactor.Symmetric | FormFactor.Brick | FormFactor.Plate | FormFactor.Custom;
     /**
-     * Used to set the style of a <code>Frame</code>.
+     * Used to set the style of a `Frame`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrameStyle)
      */
     export namespace FrameStyle {
         /**
-         * Uses the frame's <code>GuiObject.BackgroundColor3</code>, <code>GuiObject.BorderColor3</code>, and <code>GuiObject.BackgroundTransparency</code> properties to determine the frame's appearance. It has no padding; elements with the position <code>UDim2.new(0, 0, 0, 0)</code> will appear at the frame's top-left corner.
+         * Uses the frame's `GuiObject.BackgroundColor3`, `GuiObject.BorderColor3`, and `GuiObject.BackgroundTransparency` properties to determine the frame's appearance. It has no padding; elements with the position `UDim2.new(0, 0, 0, 0)` will appear at the frame's top-left corner.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrameStyle#Custom)
          */
@@ -11150,7 +11150,7 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         /**
-         * Causes the frame to appear similar to a <code>Dialog</code> with its <code>Tone</code> property set to <code>DialogTone.Neutral</code>. Like <strong>ChatGreen</strong> and <strong>ChatRed</strong>, this has a padding of fifteen pixels on all sides.
+         * Causes the frame to appear similar to a `Dialog` with its `Tone` property set to `DialogTone.Neutral`. Like **ChatGreen** and **ChatRed**, this has a padding of fifteen pixels on all sides.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrameStyle#ChatBlue)
          */
@@ -11172,7 +11172,7 @@ declare namespace Enum {
         }
         export const RobloxSquare: RobloxSquare;
         /**
-         * Causes the frame to appear as a translucent dark gray rectangle with rounded edges. Like <strong>RobloxSquare</strong>, this has a padding of five pixels on all sides.
+         * Causes the frame to appear as a translucent dark gray rectangle with rounded edges. Like **RobloxSquare**, this has a padding of five pixels on all sides.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrameStyle#RobloxRound)
          */
@@ -11183,7 +11183,7 @@ declare namespace Enum {
         }
         export const RobloxRound: RobloxRound;
         /**
-         * Causes the frame to appear similar to a <code>Dialog</code> with its <code>Tone</code> property set to <code>DialogTone.Friendly</code>. Like <strong>ChatBlue</strong> and <strong>ChatRed</strong>, this has a padding of fifteen pixels on all sides.
+         * Causes the frame to appear similar to a `Dialog` with its `Tone` property set to `DialogTone.Friendly`. Like **ChatBlue** and **ChatRed**, this has a padding of fifteen pixels on all sides.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrameStyle#ChatGreen)
          */
@@ -11194,7 +11194,7 @@ declare namespace Enum {
         }
         export const ChatGreen: ChatGreen;
         /**
-         * Causes the frame to appear similar to a <code>Dialog</code> with its <code>Tone</code> property set to <code>DialogTone.Enemy</code>. Like <strong>ChatBlue</strong> and <strong>ChatGreen</strong>, this has a padding of fifteen pixels on all sides.
+         * Causes the frame to appear similar to a `Dialog` with its `Tone` property set to `DialogTone.Enemy`. Like **ChatBlue** and **ChatGreen**, this has a padding of fifteen pixels on all sides.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrameStyle#ChatRed)
          */
@@ -11493,13 +11493,15 @@ declare namespace Enum {
     }
     export type GamepadType = GamepadType.Unknown | GamepadType.PS4 | GamepadType.PS5 | GamepadType.XboxOne;
     /**
-     * <strong>Deprecated:</strong> This enum is deprecated as it is used by deprecated properties that are no longer functional. It should not be used.
+     * **Deprecated:** This enum is deprecated as it is used by deprecated properties that are no longer functional. It should not be used.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearGenreSetting)
      */
     export namespace GearGenreSetting {
         /**
-         * <strong>Deprecated:</strong> <br>All gear genres are allowed.
+         * **Deprecated:**
+         *
+         * All gear genres are allowed.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearGenreSetting#AllGenres)
          */
@@ -11510,7 +11512,9 @@ declare namespace Enum {
         }
         export const AllGenres: AllGenres;
         /**
-         * <strong>Deprecated:</strong> <br>Only gear genres matching the allowed genres specified in a place's configuration settings.
+         * **Deprecated:**
+         *
+         * Only gear genres matching the allowed genres specified in a place's configuration settings.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearGenreSetting#MatchingGenreOnly)
          */
@@ -11524,13 +11528,15 @@ declare namespace Enum {
     }
     export type GearGenreSetting = GearGenreSetting.AllGenres | GearGenreSetting.MatchingGenreOnly;
     /**
-     * <strong>Deprecated:</strong> This enum is deprecated because it's used by deprecated properties. Don't use it.
+     * **Deprecated:** This enum is deprecated because it's used by deprecated properties. Don't use it.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearType)
      */
     export namespace GearType {
         /**
-         * <strong>Deprecated:</strong> <br>Gear with the 'Melee' attribute.
+         * **Deprecated:**
+         *
+         * Gear with the 'Melee' attribute.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearType#MeleeWeapons)
          */
@@ -11541,7 +11547,9 @@ declare namespace Enum {
         }
         export const MeleeWeapons: MeleeWeapons;
         /**
-         * <strong>Deprecated:</strong> <br>Gear with the 'Ranged' attribute.
+         * **Deprecated:**
+         *
+         * Gear with the 'Ranged' attribute.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearType#RangedWeapons)
          */
@@ -11552,7 +11560,9 @@ declare namespace Enum {
         }
         export const RangedWeapons: RangedWeapons;
         /**
-         * <strong>Deprecated:</strong> <br>Gear with the 'Explosive' attribute.
+         * **Deprecated:**
+         *
+         * Gear with the 'Explosive' attribute.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearType#Explosives)
          */
@@ -11563,7 +11573,9 @@ declare namespace Enum {
         }
         export const Explosives: Explosives;
         /**
-         * <strong>Deprecated:</strong> <br>Gear with the 'Power Up' attribute.
+         * **Deprecated:**
+         *
+         * Gear with the 'Power Up' attribute.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearType#PowerUps)
          */
@@ -11574,7 +11586,9 @@ declare namespace Enum {
         }
         export const PowerUps: PowerUps;
         /**
-         * <strong>Deprecated:</strong> <br>Gear with the 'Navigation' attribute.
+         * **Deprecated:**
+         *
+         * Gear with the 'Navigation' attribute.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearType#NavigationEnhancers)
          */
@@ -11585,7 +11599,9 @@ declare namespace Enum {
         }
         export const NavigationEnhancers: NavigationEnhancers;
         /**
-         * <strong>Deprecated:</strong> <br>Gear with the 'Musical' attribute.
+         * **Deprecated:**
+         *
+         * Gear with the 'Musical' attribute.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearType#MusicalInstruments)
          */
@@ -11596,7 +11612,9 @@ declare namespace Enum {
         }
         export const MusicalInstruments: MusicalInstruments;
         /**
-         * <strong>Deprecated:</strong> <br>Gear with the 'Social' attribute.
+         * **Deprecated:**
+         *
+         * Gear with the 'Social' attribute.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearType#SocialItems)
          */
@@ -11607,7 +11625,9 @@ declare namespace Enum {
         }
         export const SocialItems: SocialItems;
         /**
-         * <strong>Deprecated:</strong> <br>Gear with the 'Building' attribute.
+         * **Deprecated:**
+         *
+         * Gear with the 'Building' attribute.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearType#BuildingTools)
          */
@@ -11618,7 +11638,9 @@ declare namespace Enum {
         }
         export const BuildingTools: BuildingTools;
         /**
-         * <strong>Deprecated:</strong> <br>Gear with the 'Transport' attribute.
+         * **Deprecated:**
+         *
+         * Gear with the 'Transport' attribute.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearType#Transport)
          */
@@ -11632,7 +11654,9 @@ declare namespace Enum {
     }
     export type GearType = GearType.MeleeWeapons | GearType.RangedWeapons | GearType.Explosives | GearType.PowerUps | GearType.NavigationEnhancers | GearType.MusicalInstruments | GearType.SocialItems | GearType.BuildingTools | GearType.Transport;
     /**
-     * <strong>Deprecated:</strong> <br>Used to represent the type of game.
+     * **Deprecated:**
+     *
+     * Used to represent the type of game.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Genre)
      */
@@ -11856,7 +11880,7 @@ declare namespace Enum {
         }
         export const Vulkan: Vulkan;
         /**
-         * Game will not be rendered, and instead a <em>Diagnostics</em> window is rendered on screen.
+         * Game will not be rendered, and instead a *Diagnostics* window is rendered on screen.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GraphicsMode#NoGraphics)
          */
@@ -12093,13 +12117,13 @@ declare namespace Enum {
     }
     export type HapticEffectType = HapticEffectType.Custom | HapticEffectType.UIHover | HapticEffectType.UIClick | HapticEffectType.UINotification | HapticEffectType.GameplayExplosion | HapticEffectType.GameplayCollision;
     /**
-     * Controls how the <code>Highlight</code> effect displays with respect to other objects in the world.
+     * Controls how the `Highlight` effect displays with respect to other objects in the world.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HighlightDepthMode)
      */
     export namespace HighlightDepthMode {
         /**
-         * Allows the <code>Highlight</code> to display regardless if there are objects between the camera and the highlighted object. This means the viewer is always able to see the highlight regardless of what is between the highlighted object and the camera. <img src="/assets/ui/highlighting-objects/DepthMode-AlwaysOnTop.jpg" />
+         * Allows the `Highlight` to display regardless if there are objects between the camera and the highlighted object. This means the viewer is always able to see the highlight regardless of what is between the highlighted object and the camera. ![undefined](https://prod.docsiteassets.roblox.com/assets/ui/highlighting-objects/DepthMode-AlwaysOnTop.jpg)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HighlightDepthMode#AlwaysOnTop)
          */
@@ -12110,7 +12134,7 @@ declare namespace Enum {
         }
         export const AlwaysOnTop: AlwaysOnTop;
         /**
-         * Hides the <code>Highlight</code> if there are objects between the camera and the highlighted object. This means the viewer is only able to see the object if there are no obstructing objects between the highlighted object and the camera's view. <img src="/assets/ui/highlighting-objects/DepthMode-Occluded.jpg" />
+         * Hides the `Highlight` if there are objects between the camera and the highlighted object. This means the viewer is only able to see the object if there are no obstructing objects between the highlighted object and the camera's view. ![undefined](https://prod.docsiteassets.roblox.com/assets/ui/highlighting-objects/DepthMode-Occluded.jpg)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HighlightDepthMode#Occluded)
          */
@@ -12124,13 +12148,13 @@ declare namespace Enum {
     }
     export type HighlightDepthMode = HighlightDepthMode.AlwaysOnTop | HighlightDepthMode.Occluded;
     /**
-     * Used by <code>UIGridStyleLayout.HorizontalAlignment</code> to align the layout horizontally within its parent.
+     * Used by `UIGridStyleLayout.HorizontalAlignment` to align the layout horizontally within its parent.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HorizontalAlignment)
      */
     export namespace HorizontalAlignment {
         /**
-         * Grid is aligned to the center of its parent along the <strong>X</strong> axis.
+         * Grid is aligned to the center of its parent along the **X** axis.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HorizontalAlignment#Center)
          */
@@ -12563,7 +12587,7 @@ declare namespace Enum {
     }
     export type HttpRequestType = HttpRequestType.Default | HttpRequestType.MarketplaceService | HttpRequestType.Players | HttpRequestType.Chat | HttpRequestType.Avatar | HttpRequestType.Analytics | HttpRequestType.Localization;
     /**
-     * The collision <code>Humanoid</code> uses. A large bounding box, or more fitted collision geometry.
+     * The collision `Humanoid` uses. A large bounding box, or more fitted collision geometry.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidCollisionType)
      */
@@ -12594,13 +12618,13 @@ declare namespace Enum {
     }
     export type HumanoidCollisionType = HumanoidCollisionType.OuterBox | HumanoidCollisionType.InnerBox;
     /**
-     * HumanoidDisplayDistanceType determines how <code>Humanoid.HealthDisplayDistance</code>, and <code>Humanoid.NameDisplayDistance</code> are used in determining whether a players's name and health are visible to other players.
+     * HumanoidDisplayDistanceType determines how `Humanoid.HealthDisplayDistance`, and `Humanoid.NameDisplayDistance` are used in determining whether a players's name and health are visible to other players.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidDisplayDistanceType)
      */
     export namespace HumanoidDisplayDistanceType {
         /**
-         * A player selecting <code>Viewer</code> on their <code>Humanoid</code> will see the Name and healthbar of other players if those other players are within the distance settings set in the <code>Humanoid</code> selecting <code>Viewer</code> (this can be thought of as the lowest priority, and will not be taken into account if other players are selecting 'Subject' or 'None').
+         * A player selecting `Viewer` on their `Humanoid` will see the Name and healthbar of other players if those other players are within the distance settings set in the `Humanoid` selecting `Viewer` (this can be thought of as the lowest priority, and will not be taken into account if other players are selecting 'Subject' or 'None').
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidDisplayDistanceType#Viewer)
          */
@@ -12611,7 +12635,7 @@ declare namespace Enum {
         }
         export const Viewer: Viewer;
         /**
-         * A player selecting <code>Subject</code> on their <code>Humanoid</code> will allow other players to see their Name and healthbar if those other players are within the distance settings set in the <code>Humanoid</code> selecting <code>Subject</code> (this can be thought of as the second highest priority).
+         * A player selecting `Subject` on their `Humanoid` will allow other players to see their Name and healthbar if those other players are within the distance settings set in the `Humanoid` selecting `Subject` (this can be thought of as the second highest priority).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidDisplayDistanceType#Subject)
          */
@@ -12622,7 +12646,7 @@ declare namespace Enum {
         }
         export const Subject: Subject;
         /**
-         * A player selecting <code>None</code> on their <code>Humanoid</code> will not have their Name and healthbar displayed to other players under any circumstance (this can be thought of as the highest priority).
+         * A player selecting `None` on their `Humanoid` will not have their Name and healthbar displayed to other players under any circumstance (this can be thought of as the highest priority).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidDisplayDistanceType#None)
          */
@@ -12636,13 +12660,13 @@ declare namespace Enum {
     }
     export type HumanoidDisplayDistanceType = HumanoidDisplayDistanceType.Viewer | HumanoidDisplayDistanceType.Subject | HumanoidDisplayDistanceType.None;
     /**
-     * Controls under what circumstances the <code>Humanoid</code> health bar is displayed.
+     * Controls under what circumstances the `Humanoid` health bar is displayed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidHealthDisplayType)
      */
     export namespace HumanoidHealthDisplayType {
         /**
-         * The humanoid's health bar is only visible when the humanoid is not at full health (assuming <code>MaxHealth</code> is greater than zero).
+         * The humanoid's health bar is only visible when the humanoid is not at full health (assuming `MaxHealth` is greater than zero).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidHealthDisplayType#DisplayWhenDamaged)
          */
@@ -12653,7 +12677,7 @@ declare namespace Enum {
         }
         export const DisplayWhenDamaged: DisplayWhenDamaged;
         /**
-         * The humanoid's health bar is always visible (assuming <code>MaxHealth</code> is greater than zero).
+         * The humanoid's health bar is always visible (assuming `MaxHealth` is greater than zero).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidHealthDisplayType#AlwaysOn)
          */
@@ -12726,7 +12750,7 @@ declare namespace Enum {
         }
         export const FallingDown: FallingDown;
         /**
-         * (Deprecated) The Humanoid has been hit by a fast moving object (uncontrolled falling). <em>The Humanoid can recover from this.</em> This state has to be set and unset manually using <code>Humanoid:ChangeState()</code>.
+         * (Deprecated) The Humanoid has been hit by a fast moving object (uncontrolled falling). *The Humanoid can recover from this.* This state has to be set and unset manually using `Humanoid:ChangeState()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidStateType#Ragdoll)
          */
@@ -12748,7 +12772,7 @@ declare namespace Enum {
         }
         export const GettingUp: GettingUp;
         /**
-         * The Humanoid just jumped. (Check <code>Humanoid.Jump</code>). This state lasts only briefly. This state normally transitions into either Landed, if on the ground, or Freefall, if still in the air.
+         * The Humanoid just jumped. (Check `Humanoid.Jump`). This state lasts only briefly. This state normally transitions into either Landed, if on the ground, or Freefall, if still in the air.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidStateType#Jumping)
          */
@@ -12759,7 +12783,7 @@ declare namespace Enum {
         }
         export const Jumping: Jumping;
         /**
-         * The Humanoid is currently swimming in <code>Terrain</code> water.
+         * The Humanoid is currently swimming in `Terrain` water.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidStateType#Swimming)
          */
@@ -12781,7 +12805,7 @@ declare namespace Enum {
         }
         export const Freefall: Freefall;
         /**
-         * When set, the Humanoid won't be animated, as with the <code>Humanoid.PlatformStand</code> property. This state lasts as long as the player flies.
+         * When set, the Humanoid won't be animated, as with the `Humanoid.PlatformStand` property. This state lasts as long as the player flies.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidStateType#Flying)
          */
@@ -12825,7 +12849,7 @@ declare namespace Enum {
         }
         export const RunningNoPhysics: RunningNoPhysics;
         /**
-         * Not currently used with default Humanoid. Cannot be set with <code>Humanoid:ChangeState()</code>.
+         * Not currently used with default Humanoid. Cannot be set with `Humanoid:ChangeState()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidStateType#StrafingNoPhysics)
          */
@@ -12836,7 +12860,7 @@ declare namespace Enum {
         }
         export const StrafingNoPhysics: StrafingNoPhysics;
         /**
-         * The Humanoid is climbing (e.g. up a <code>TrussPart</code> or ladder).
+         * The Humanoid is climbing (e.g. up a `TrussPart` or ladder).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidStateType#Climbing)
          */
@@ -12847,7 +12871,7 @@ declare namespace Enum {
         }
         export const Climbing: Climbing;
         /**
-         * The Humanoid is currently sitting in a Seat or VehicleSeat. Check the <code>Humanoid.Sit</code> property.
+         * The Humanoid is currently sitting in a Seat or VehicleSeat. Check the `Humanoid.Sit` property.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidStateType#Seated)
          */
@@ -12858,7 +12882,7 @@ declare namespace Enum {
         }
         export const Seated: Seated;
         /**
-         * The Humanoid is platformstanding. Check the <code>Humanoid.PlatformStand</code> property.
+         * The Humanoid is platformstanding. Check the `Humanoid.PlatformStand` property.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidStateType#PlatformStanding)
          */
@@ -12880,7 +12904,7 @@ declare namespace Enum {
         }
         export const Dead: Dead;
         /**
-         * The Humanoid doesn't apply any force on its own and will not automatically transition to any other state. This state has to be set and unset manually using <code>Humanoid:ChangeState()</code>.
+         * The Humanoid doesn't apply any force on its own and will not automatically transition to any other state. This state has to be set and unset manually using `Humanoid:ChangeState()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidStateType#Physics)
          */
@@ -12909,7 +12933,7 @@ declare namespace Enum {
      */
     export namespace IKCollisionsMode {
         /**
-         * Only the part and any parts directly joined to it via joints/<code>constraints</code> be involved in the resolution, everything else in the workspace will be treated as though it doesn't exist.
+         * Only the part and any parts directly joined to it via joints/`constraints` be involved in the resolution, everything else in the workspace will be treated as though it doesn't exist.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKCollisionsMode#NoCollisions)
          */
@@ -12920,7 +12944,7 @@ declare namespace Enum {
         }
         export const NoCollisions: NoCollisions;
         /**
-         * Only the part and any parts directly jointed to it via joints/<code>constraints</code> will be moved during resolution, but they will collide with other objects in the workspace.
+         * Only the part and any parts directly jointed to it via joints/`constraints` will be moved during resolution, but they will collide with other objects in the workspace.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKCollisionsMode#OtherMechanismsAnchored)
          */
@@ -12931,7 +12955,7 @@ declare namespace Enum {
         }
         export const OtherMechanismsAnchored: OtherMechanismsAnchored;
         /**
-         * The part, any parts directly joined to it via joints/<code>constraints</code>, and any parts which it comes into contact with during the solve will be moved during the resolution. That is, the moved parts will be allowed to "push" other unanchored parts in the workspace out of the way in order to get to the target position.
+         * The part, any parts directly joined to it via joints/`constraints`, and any parts which it comes into contact with during the solve will be moved during the resolution. That is, the moved parts will be allowed to "push" other unanchored parts in the workspace out of the way in order to get to the target position.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKCollisionsMode#IncludeContactedMechanisms)
          */
@@ -12945,13 +12969,13 @@ declare namespace Enum {
     }
     export type IKCollisionsMode = IKCollisionsMode.NoCollisions | IKCollisionsMode.OtherMechanismsAnchored | IKCollisionsMode.IncludeContactedMechanisms;
     /**
-     * Values for <code>Workspace.IKControlConstraintSupport</code>. Sets the support for constraints for <code>IKControls</code> in your experience.
+     * Values for `Workspace.IKControlConstraintSupport`. Sets the support for constraints for `IKControls` in your experience.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKControlConstraintSupport)
      */
     export namespace IKControlConstraintSupport {
         /**
-         * The default option for <code>IKControls</code>. The default is currently set to <code>Enabled</code>.
+         * The default option for `IKControls`. The default is currently set to `Enabled`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKControlConstraintSupport#Default)
          */
@@ -12962,7 +12986,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * Disables support for constraints for <code>IKControls</code>. When disabled, <code>IKControls</code> still work, but ignore physics constraints.
+         * Disables support for constraints for `IKControls`. When disabled, `IKControls` still work, but ignore physics constraints.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKControlConstraintSupport#Disabled)
          */
@@ -12973,7 +12997,7 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
-         * Enables support for constraints for <code>IKControls</code>.
+         * Enables support for constraints for `IKControls`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKControlConstraintSupport#Enabled)
          */
@@ -12987,13 +13011,13 @@ declare namespace Enum {
     }
     export type IKControlConstraintSupport = IKControlConstraintSupport.Default | IKControlConstraintSupport.Disabled | IKControlConstraintSupport.Enabled;
     /**
-     * Used on <code>IKControl</code> to specify their <code>Type</code>, to change their behavior.
+     * Used on `IKControl` to specify their `Type`, to change their behavior.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKControlType)
      */
     export namespace IKControlType {
         /**
-         * It is a full 6-DoF constraint. Aligns the <code>EndEffector</code> <code>CFrame</code> to that of the <code>Target</code>. It is the default value.
+         * It is a full 6-DoF constraint. Aligns the `EndEffector` `CFrame` to that of the `Target`. It is the default value.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKControlType#Transform)
          */
@@ -13004,7 +13028,7 @@ declare namespace Enum {
         }
         export const Transform: Transform;
         /**
-         * Aligns the <code>EndEffector</code> position to that of the <code>Target</code> .
+         * Aligns the `EndEffector` position to that of the `Target` .
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKControlType#Position)
          */
@@ -13015,7 +13039,7 @@ declare namespace Enum {
         }
         export const Position: Position;
         /**
-         * Aligns the <code>EndEffector</code> rotation to that of the <code>Target</code>.
+         * Aligns the `EndEffector` rotation to that of the `Target`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKControlType#Rotation)
          */
@@ -13026,7 +13050,7 @@ declare namespace Enum {
         }
         export const Rotation: Rotation;
         /**
-         * Moves and orients the whole chain to make the forward axis on the <code>EndEffector</code> point at a position in the world specified by <code>Target</code>.
+         * Moves and orients the whole chain to make the forward axis on the `EndEffector` point at a position in the world specified by `Target`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKControlType#LookAt)
          */
@@ -13191,7 +13215,7 @@ declare namespace Enum {
         }
         export const Add: Add;
         /**
-         * Multiplies pixels from the source and pixels from the destination together. RGBA values are multiplied as values between <code>0</code> and <code>1</code>. Values lower than <code>1</code> have a darkening effect on the image.
+         * Multiplies pixels from the source and pixels from the destination together. RGBA values are multiplied as values between `0` and `1`. Values lower than `1` have a darkening effect on the image.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ImageCombineType#Multiply)
          */
@@ -13202,7 +13226,7 @@ declare namespace Enum {
         }
         export const Multiply: Multiply;
         /**
-         * Blends pixels from the source with pixels from the destination based on the alpha of the source pixels. Unlike <strong>BlendSourceOver</strong>, the destination color in <strong>AlphaBlend</strong> affects the resulting color of the image, regardless of the destination color's alpha.
+         * Blends pixels from the source with pixels from the destination based on the alpha of the source pixels. Unlike **BlendSourceOver**, the destination color in **AlphaBlend** affects the resulting color of the image, regardless of the destination color's alpha.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ImageCombineType#AlphaBlend)
          */
@@ -13273,7 +13297,7 @@ declare namespace Enum {
         }
         export const Asset: Asset;
         /**
-         * Product such as a <a href="../../../production/monetization/developer-products.md">Developer Product</a>.
+         * Product such as a [Developer Product](../../../production/monetization/developer-products.md).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InfoType#Product)
          */
@@ -13316,7 +13340,7 @@ declare namespace Enum {
     }
     export type InfoType = InfoType.Asset | InfoType.Product | InfoType.GamePass | InfoType.Subscription | InfoType.Bundle;
     /**
-     * Describes the initial docking state of a <code>DockWidgetPluginGui</code>.
+     * Describes the initial docking state of a `DockWidgetPluginGui`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InitialDockState)
      */
@@ -13380,7 +13404,7 @@ declare namespace Enum {
     }
     export type InitialDockState = InitialDockState.Top | InitialDockState.Bottom | InitialDockState.Left | InitialDockState.Right | InitialDockState.Float;
     /**
-     * The InputType Enum controls the SurfaceInputs of <code>Part</code>.
+     * The InputType Enum controls the SurfaceInputs of `Part`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputType)
      */
@@ -13441,7 +13465,7 @@ declare namespace Enum {
          */
         export const UpDown: NoInput;
         /**
-         * Rotate at a constant velocity of <code>BasePart</code> <code>ParamB</code>.
+         * Rotate at a constant velocity of `BasePart` `ParamB`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputType#Constant)
          */
@@ -13452,7 +13476,7 @@ declare namespace Enum {
         }
         export const Constant: Constant;
         /**
-         * Rotate at a velocity of: <code>ParamA * math.sin(workspace.DistributedGameTime * ParamB)</code>, where <code>BasePart</code> <code>ParamA</code> determines the maximum speed at which the part spins, and <code>BasePart</code> <code>ParamB</code> determines how frequently it changes direction.
+         * Rotate at a velocity of: `ParamA * math.sin(workspace.DistributedGameTime * ParamB)`, where `BasePart` `ParamA` determines the maximum speed at which the part spins, and `BasePart` `ParamB` determines how frequently it changes direction.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputType#Sin)
          */
@@ -13553,13 +13577,13 @@ declare namespace Enum {
     }
     export type InviteState = InviteState.Placed | InviteState.Accepted | InviteState.Declined | InviteState.Missed;
     /**
-     * Used for <code>UIListLayout.ItemLineAlignment</code> and <code>UIFlexItem.ItemLineAlignment</code> in a flex layout to define the cross-directional alignment of siblings or the parent within a line.
+     * Used for `UIListLayout.ItemLineAlignment` and `UIFlexItem.ItemLineAlignment` in a flex layout to define the cross-directional alignment of siblings or the parent within a line.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ItemLineAlignment)
      */
     export namespace ItemLineAlignment {
         /**
-         * Aligns the siblings of the <code>UIListLayout</code> or the specific <code>UIFlexItem</code> parent to the layout's <code>HorizontalAlignment</code> or <code>VerticalAlignment</code>, depending on its <code>FillDirection</code>. If <code>HorizontalFlex</code> or <code>VerticalFlex</code> is enabled for the <code>UIListLayout</code> cross‑direction, <code>Stretch</code> will be used for that direction.
+         * Aligns the siblings of the `UIListLayout` or the specific `UIFlexItem` parent to the layout's `HorizontalAlignment` or `VerticalAlignment`, depending on its `FillDirection`. If `HorizontalFlex` or `VerticalFlex` is enabled for the `UIListLayout` cross‑direction, `Stretch` will be used for that direction.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ItemLineAlignment#Automatic)
          */
@@ -13570,7 +13594,7 @@ declare namespace Enum {
         }
         export const Automatic: Automatic;
         /**
-         * Aligns the siblings of the <code>UIListLayout</code> or the specific <code>UIFlexItem</code> parent to the line's <strong>top</strong> in a horizontal fill or the line's <strong>left</strong> in a vertical fill.
+         * Aligns the siblings of the `UIListLayout` or the specific `UIFlexItem` parent to the line's **top** in a horizontal fill or the line's **left** in a vertical fill.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ItemLineAlignment#Start)
          */
@@ -13581,7 +13605,7 @@ declare namespace Enum {
         }
         export const Start: Start;
         /**
-         * Aligns the siblings of the <code>UIListLayout</code> or the specific <code>UIFlexItem</code> parent to the line's <strong>center</strong> in either a horizontal or vertical fill.
+         * Aligns the siblings of the `UIListLayout` or the specific `UIFlexItem` parent to the line's **center** in either a horizontal or vertical fill.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ItemLineAlignment#Center)
          */
@@ -13592,7 +13616,7 @@ declare namespace Enum {
         }
         export const Center: Center;
         /**
-         * Aligns the siblings of the <code>UIListLayout</code> or the specific <code>UIFlexItem</code> parent to the line's <strong>bottom</strong> in a horizontal fill or the line's <strong>right</strong> in a vertical fill.
+         * Aligns the siblings of the `UIListLayout` or the specific `UIFlexItem` parent to the line's **bottom** in a horizontal fill or the line's **right** in a vertical fill.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ItemLineAlignment#End)
          */
@@ -13603,7 +13627,7 @@ declare namespace Enum {
         }
         export const End: End;
         /**
-         * Stretches the siblings of the <code>UIListLayout</code> or the specific <code>UIFlexItem</code> parent to fill the entire cross‑direction of the line in either a horizontal or vertical fill.
+         * Stretches the siblings of the `UIListLayout` or the specific `UIFlexItem` parent to fill the entire cross‑direction of the line in either a horizontal or vertical fill.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ItemLineAlignment#Stretch)
          */
@@ -13692,7 +13716,7 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
-         * The <code>Backspace</code> key.
+         * The `Backspace` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Backspace)
          */
@@ -13703,7 +13727,7 @@ declare namespace Enum {
         }
         export const Backspace: Backspace;
         /**
-         * The <code>Tab</code> key.
+         * The `Tab` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Tab)
          */
@@ -13747,7 +13771,7 @@ declare namespace Enum {
         }
         export const Pause: Pause;
         /**
-         * The <code>Escape</code> key.
+         * The `Escape` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Escape)
          */
@@ -13758,7 +13782,7 @@ declare namespace Enum {
         }
         export const Escape: Escape;
         /**
-         * The <code>Space</code> key.
+         * The `Space` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Space)
          */
@@ -13769,7 +13793,7 @@ declare namespace Enum {
         }
         export const Space: Space;
         /**
-         * The <code>"</code> key.
+         * The `"` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#QuotedDouble)
          */
@@ -13780,7 +13804,7 @@ declare namespace Enum {
         }
         export const QuotedDouble: QuotedDouble;
         /**
-         * The <code>#</code> key.
+         * The `#` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Hash)
          */
@@ -13791,7 +13815,7 @@ declare namespace Enum {
         }
         export const Hash: Hash;
         /**
-         * The <code>$</code> key.
+         * The `$` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Dollar)
          */
@@ -13802,7 +13826,7 @@ declare namespace Enum {
         }
         export const Dollar: Dollar;
         /**
-         * The <code>%</code> key.
+         * The `%` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Percent)
          */
@@ -13813,7 +13837,7 @@ declare namespace Enum {
         }
         export const Percent: Percent;
         /**
-         * The <code>&amp;</code> key.
+         * The `&` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Ampersand)
          */
@@ -13824,7 +13848,7 @@ declare namespace Enum {
         }
         export const Ampersand: Ampersand;
         /**
-         * The <code>'</code> key.
+         * The `'` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Quote)
          */
@@ -13835,7 +13859,7 @@ declare namespace Enum {
         }
         export const Quote: Quote;
         /**
-         * The <code>(</code> key.
+         * The `(` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#LeftParenthesis)
          */
@@ -13846,7 +13870,7 @@ declare namespace Enum {
         }
         export const LeftParenthesis: LeftParenthesis;
         /**
-         * The <code>)</code> key.
+         * The `)` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#RightParenthesis)
          */
@@ -13857,7 +13881,7 @@ declare namespace Enum {
         }
         export const RightParenthesis: RightParenthesis;
         /**
-         * The <code>*</code> key.
+         * The `*` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Asterisk)
          */
@@ -13868,7 +13892,7 @@ declare namespace Enum {
         }
         export const Asterisk: Asterisk;
         /**
-         * The <code>+</code> key.
+         * The `+` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Plus)
          */
@@ -13879,7 +13903,7 @@ declare namespace Enum {
         }
         export const Plus: Plus;
         /**
-         * The <code>,</code> key.
+         * The `,` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Comma)
          */
@@ -13890,7 +13914,7 @@ declare namespace Enum {
         }
         export const Comma: Comma;
         /**
-         * The <code>-</code> key.
+         * The `-` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Minus)
          */
@@ -13901,7 +13925,7 @@ declare namespace Enum {
         }
         export const Minus: Minus;
         /**
-         * The <code>.</code> key.
+         * The `.` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Period)
          */
@@ -13912,7 +13936,7 @@ declare namespace Enum {
         }
         export const Period: Period;
         /**
-         * The <code>/</code> key.
+         * The `/` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Slash)
          */
@@ -13923,7 +13947,7 @@ declare namespace Enum {
         }
         export const Slash: Slash;
         /**
-         * The <code>0</code> key.
+         * The `0` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Zero)
          */
@@ -13934,7 +13958,7 @@ declare namespace Enum {
         }
         export const Zero: Zero;
         /**
-         * The <code>1</code> key.
+         * The `1` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#One)
          */
@@ -13945,7 +13969,7 @@ declare namespace Enum {
         }
         export const One: One;
         /**
-         * The <code>2</code> key.
+         * The `2` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Two)
          */
@@ -13956,7 +13980,7 @@ declare namespace Enum {
         }
         export const Two: Two;
         /**
-         * The <code>3</code> key.
+         * The `3` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Three)
          */
@@ -13967,7 +13991,7 @@ declare namespace Enum {
         }
         export const Three: Three;
         /**
-         * The <code>4</code> key.
+         * The `4` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Four)
          */
@@ -13978,7 +14002,7 @@ declare namespace Enum {
         }
         export const Four: Four;
         /**
-         * The <code>5</code> key.
+         * The `5` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Five)
          */
@@ -13989,7 +14013,7 @@ declare namespace Enum {
         }
         export const Five: Five;
         /**
-         * The <code>6</code> key.
+         * The `6` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Six)
          */
@@ -14000,7 +14024,7 @@ declare namespace Enum {
         }
         export const Six: Six;
         /**
-         * The <code>7</code> key.
+         * The `7` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Seven)
          */
@@ -14011,7 +14035,7 @@ declare namespace Enum {
         }
         export const Seven: Seven;
         /**
-         * The <code>8</code> key.
+         * The `8` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Eight)
          */
@@ -14022,7 +14046,7 @@ declare namespace Enum {
         }
         export const Eight: Eight;
         /**
-         * The <code>9</code> key.
+         * The `9` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Nine)
          */
@@ -14033,7 +14057,7 @@ declare namespace Enum {
         }
         export const Nine: Nine;
         /**
-         * The <code>:</code> key.
+         * The `:` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Colon)
          */
@@ -14044,7 +14068,7 @@ declare namespace Enum {
         }
         export const Colon: Colon;
         /**
-         * The <code>;</code> key.
+         * The `;` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Semicolon)
          */
@@ -14055,7 +14079,7 @@ declare namespace Enum {
         }
         export const Semicolon: Semicolon;
         /**
-         * The <code>&lt;</code> key.
+         * The `<` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#LessThan)
          */
@@ -14066,7 +14090,7 @@ declare namespace Enum {
         }
         export const LessThan: LessThan;
         /**
-         * The <code>=</code> key.
+         * The `=` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Equals)
          */
@@ -14077,7 +14101,7 @@ declare namespace Enum {
         }
         export const Equals: Equals;
         /**
-         * The <code>&gt;</code> key.
+         * The `>` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#GreaterThan)
          */
@@ -14088,7 +14112,7 @@ declare namespace Enum {
         }
         export const GreaterThan: GreaterThan;
         /**
-         * The <code>?</code> key.
+         * The `?` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Question)
          */
@@ -14099,7 +14123,7 @@ declare namespace Enum {
         }
         export const Question: Question;
         /**
-         * The <code>@</code> key.
+         * The `@` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#At)
          */
@@ -14110,7 +14134,7 @@ declare namespace Enum {
         }
         export const At: At;
         /**
-         * The <code>[</code> key.
+         * The `[` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#LeftBracket)
          */
@@ -14121,7 +14145,7 @@ declare namespace Enum {
         }
         export const LeftBracket: LeftBracket;
         /**
-         * The <code>\</code> key.
+         * The `\` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#BackSlash)
          */
@@ -14132,7 +14156,7 @@ declare namespace Enum {
         }
         export const BackSlash: BackSlash;
         /**
-         * The <code>]</code> key.
+         * The `]` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#RightBracket)
          */
@@ -14143,7 +14167,7 @@ declare namespace Enum {
         }
         export const RightBracket: RightBracket;
         /**
-         * The <code>^</code> key.
+         * The `^` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Caret)
          */
@@ -14154,7 +14178,7 @@ declare namespace Enum {
         }
         export const Caret: Caret;
         /**
-         * The <code>_</code> key.
+         * The `_` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Underscore)
          */
@@ -14165,7 +14189,7 @@ declare namespace Enum {
         }
         export const Underscore: Underscore;
         /**
-         * The <code>`</code> key.
+         * The ``` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Backquote)
          */
@@ -14176,7 +14200,7 @@ declare namespace Enum {
         }
         export const Backquote: Backquote;
         /**
-         * The <code>A</code> key.
+         * The `A` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#A)
          */
@@ -14187,7 +14211,7 @@ declare namespace Enum {
         }
         export const A: A;
         /**
-         * The <code>B</code> key.
+         * The `B` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#B)
          */
@@ -14198,7 +14222,7 @@ declare namespace Enum {
         }
         export const B: B;
         /**
-         * The <code>C</code> key.
+         * The `C` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#C)
          */
@@ -14209,7 +14233,7 @@ declare namespace Enum {
         }
         export const C: C;
         /**
-         * The <code>D</code> key.
+         * The `D` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#D)
          */
@@ -14220,7 +14244,7 @@ declare namespace Enum {
         }
         export const D: D;
         /**
-         * The <code>E</code> key.
+         * The `E` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#E)
          */
@@ -14231,7 +14255,7 @@ declare namespace Enum {
         }
         export const E: E;
         /**
-         * The <code>F</code> key.
+         * The `F` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F)
          */
@@ -14242,7 +14266,7 @@ declare namespace Enum {
         }
         export const F: F;
         /**
-         * The <code>G</code> key.
+         * The `G` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#G)
          */
@@ -14253,7 +14277,7 @@ declare namespace Enum {
         }
         export const G: G;
         /**
-         * The <code>H</code> key.
+         * The `H` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#H)
          */
@@ -14264,7 +14288,7 @@ declare namespace Enum {
         }
         export const H: H;
         /**
-         * The <code>I</code> key.
+         * The `I` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#I)
          */
@@ -14275,7 +14299,7 @@ declare namespace Enum {
         }
         export const I: I;
         /**
-         * The <code>J</code> key.
+         * The `J` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#J)
          */
@@ -14286,7 +14310,7 @@ declare namespace Enum {
         }
         export const J: J;
         /**
-         * The <code>K</code> key.
+         * The `K` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#K)
          */
@@ -14297,7 +14321,7 @@ declare namespace Enum {
         }
         export const K: K;
         /**
-         * The <code>L</code> key.
+         * The `L` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#L)
          */
@@ -14308,7 +14332,7 @@ declare namespace Enum {
         }
         export const L: L;
         /**
-         * The <code>M</code> key.
+         * The `M` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#M)
          */
@@ -14319,7 +14343,7 @@ declare namespace Enum {
         }
         export const M: M;
         /**
-         * The <code>N</code> key.
+         * The `N` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#N)
          */
@@ -14330,7 +14354,7 @@ declare namespace Enum {
         }
         export const N: N;
         /**
-         * The <code>O</code> key.
+         * The `O` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#O)
          */
@@ -14341,7 +14365,7 @@ declare namespace Enum {
         }
         export const O: O;
         /**
-         * The <code>P</code> key.
+         * The `P` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#P)
          */
@@ -14352,7 +14376,7 @@ declare namespace Enum {
         }
         export const P: P;
         /**
-         * The <code>Q</code> key.
+         * The `Q` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Q)
          */
@@ -14363,7 +14387,7 @@ declare namespace Enum {
         }
         export const Q: Q;
         /**
-         * The <code>R</code> key.
+         * The `R` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#R)
          */
@@ -14374,7 +14398,7 @@ declare namespace Enum {
         }
         export const R: R;
         /**
-         * The <code>S</code> key.
+         * The `S` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#S)
          */
@@ -14385,7 +14409,7 @@ declare namespace Enum {
         }
         export const S: S;
         /**
-         * The <code>T</code> key.
+         * The `T` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#T)
          */
@@ -14396,7 +14420,7 @@ declare namespace Enum {
         }
         export const T: T;
         /**
-         * The <code>U</code> key.
+         * The `U` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#U)
          */
@@ -14407,7 +14431,7 @@ declare namespace Enum {
         }
         export const U: U;
         /**
-         * The <code>V</code> key.
+         * The `V` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#V)
          */
@@ -14418,7 +14442,7 @@ declare namespace Enum {
         }
         export const V: V;
         /**
-         * The <code>W</code> key.
+         * The `W` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#W)
          */
@@ -14429,7 +14453,7 @@ declare namespace Enum {
         }
         export const W: W;
         /**
-         * The <code>X</code> key.
+         * The `X` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#X)
          */
@@ -14440,7 +14464,7 @@ declare namespace Enum {
         }
         export const X: X;
         /**
-         * The <code>Y</code> key.
+         * The `Y` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Y)
          */
@@ -14451,7 +14475,7 @@ declare namespace Enum {
         }
         export const Y: Y;
         /**
-         * The <code>Z</code> key.
+         * The `Z` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Z)
          */
@@ -14462,7 +14486,7 @@ declare namespace Enum {
         }
         export const Z: Z;
         /**
-         * The <code>{</code> key.
+         * The `{` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#LeftCurly)
          */
@@ -14473,7 +14497,7 @@ declare namespace Enum {
         }
         export const LeftCurly: LeftCurly;
         /**
-         * The <code>|</code> key.
+         * The `|` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Pipe)
          */
@@ -14484,7 +14508,7 @@ declare namespace Enum {
         }
         export const Pipe: Pipe;
         /**
-         * The <code>}</code> key.
+         * The `}` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#RightCurly)
          */
@@ -14495,7 +14519,7 @@ declare namespace Enum {
         }
         export const RightCurly: RightCurly;
         /**
-         * The <code>~</code> key.
+         * The `~` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Tilde)
          */
@@ -14506,7 +14530,7 @@ declare namespace Enum {
         }
         export const Tilde: Tilde;
         /**
-         * The <code>Del</code> key.
+         * The `Del` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Delete)
          */
@@ -15573,7 +15597,7 @@ declare namespace Enum {
         }
         export const World95: World95;
         /**
-         * The <code>0</code> key on the keypad cluster.
+         * The `0` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadZero)
          */
@@ -15584,7 +15608,7 @@ declare namespace Enum {
         }
         export const KeypadZero: KeypadZero;
         /**
-         * The <code>1</code> key on the keypad cluster.
+         * The `1` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadOne)
          */
@@ -15595,7 +15619,7 @@ declare namespace Enum {
         }
         export const KeypadOne: KeypadOne;
         /**
-         * The <code>2</code> key on the keypad cluster.
+         * The `2` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadTwo)
          */
@@ -15606,7 +15630,7 @@ declare namespace Enum {
         }
         export const KeypadTwo: KeypadTwo;
         /**
-         * The <code>3</code> key on the keypad cluster.
+         * The `3` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadThree)
          */
@@ -15617,7 +15641,7 @@ declare namespace Enum {
         }
         export const KeypadThree: KeypadThree;
         /**
-         * The <code>4</code> key on the keypad cluster.
+         * The `4` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadFour)
          */
@@ -15628,7 +15652,7 @@ declare namespace Enum {
         }
         export const KeypadFour: KeypadFour;
         /**
-         * The <code>5</code> key on the keypad cluster.
+         * The `5` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadFive)
          */
@@ -15639,7 +15663,7 @@ declare namespace Enum {
         }
         export const KeypadFive: KeypadFive;
         /**
-         * The <code>6</code> key on the keypad cluster.
+         * The `6` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadSix)
          */
@@ -15650,7 +15674,7 @@ declare namespace Enum {
         }
         export const KeypadSix: KeypadSix;
         /**
-         * The <code>7</code> key on the keypad cluster.
+         * The `7` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadSeven)
          */
@@ -15661,7 +15685,7 @@ declare namespace Enum {
         }
         export const KeypadSeven: KeypadSeven;
         /**
-         * The <code>8</code> key on the keypad cluster.
+         * The `8` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadEight)
          */
@@ -15672,7 +15696,7 @@ declare namespace Enum {
         }
         export const KeypadEight: KeypadEight;
         /**
-         * The <code>9</code> key on the keypad cluster.
+         * The `9` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadNine)
          */
@@ -15683,7 +15707,7 @@ declare namespace Enum {
         }
         export const KeypadNine: KeypadNine;
         /**
-         * The <code>.</code> key on the keypad cluster.
+         * The `.` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadPeriod)
          */
@@ -15694,7 +15718,7 @@ declare namespace Enum {
         }
         export const KeypadPeriod: KeypadPeriod;
         /**
-         * The <code>/</code> key on the keypad cluster.
+         * The `/` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadDivide)
          */
@@ -15705,7 +15729,7 @@ declare namespace Enum {
         }
         export const KeypadDivide: KeypadDivide;
         /**
-         * The <code>*</code> key on the keypad cluster.
+         * The `*` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadMultiply)
          */
@@ -15716,7 +15740,7 @@ declare namespace Enum {
         }
         export const KeypadMultiply: KeypadMultiply;
         /**
-         * The <code>-</code> key on the keypad cluster.
+         * The `-` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadMinus)
          */
@@ -15727,7 +15751,7 @@ declare namespace Enum {
         }
         export const KeypadMinus: KeypadMinus;
         /**
-         * The <code>+</code> key on the keypad cluster.
+         * The `+` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadPlus)
          */
@@ -15738,7 +15762,7 @@ declare namespace Enum {
         }
         export const KeypadPlus: KeypadPlus;
         /**
-         * The <code>Enter</code> key on the keypad cluster.
+         * The `Enter` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadEnter)
          */
@@ -15749,7 +15773,7 @@ declare namespace Enum {
         }
         export const KeypadEnter: KeypadEnter;
         /**
-         * The <code>=</code> key on the keypad cluster.
+         * The `=` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadEquals)
          */
@@ -15760,7 +15784,7 @@ declare namespace Enum {
         }
         export const KeypadEquals: KeypadEquals;
         /**
-         * The <code>↑</code> arrow key.
+         * The `↑` arrow key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Up)
          */
@@ -15771,7 +15795,7 @@ declare namespace Enum {
         }
         export const Up: Up;
         /**
-         * The <code>↓</code> arrow key.
+         * The `↓` arrow key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Down)
          */
@@ -15782,7 +15806,7 @@ declare namespace Enum {
         }
         export const Down: Down;
         /**
-         * The <code>→</code> arrow key.
+         * The `→` arrow key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Right)
          */
@@ -15793,7 +15817,7 @@ declare namespace Enum {
         }
         export const Right: Right;
         /**
-         * The <code>←</code> arrow key.
+         * The `←` arrow key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Left)
          */
@@ -15804,7 +15828,7 @@ declare namespace Enum {
         }
         export const Left: Left;
         /**
-         * The <code>Insert</code> key.
+         * The `Insert` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Insert)
          */
@@ -15815,7 +15839,7 @@ declare namespace Enum {
         }
         export const Insert: Insert;
         /**
-         * The <code>Home</code> key.
+         * The `Home` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Home)
          */
@@ -15826,7 +15850,7 @@ declare namespace Enum {
         }
         export const Home: Home;
         /**
-         * The <code>End</code> key.
+         * The `End` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#End)
          */
@@ -15837,7 +15861,7 @@ declare namespace Enum {
         }
         export const End: End;
         /**
-         * The <code>PgUp</code> key.
+         * The `PgUp` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#PageUp)
          */
@@ -15848,7 +15872,7 @@ declare namespace Enum {
         }
         export const PageUp: PageUp;
         /**
-         * The <code>PgDown</code> key.
+         * The `PgDown` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#PageDown)
          */
@@ -15859,7 +15883,7 @@ declare namespace Enum {
         }
         export const PageDown: PageDown;
         /**
-         * The <code>F1</code> key.
+         * The `F1` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F1)
          */
@@ -15870,7 +15894,7 @@ declare namespace Enum {
         }
         export const F1: F1;
         /**
-         * The <code>F2</code> key.
+         * The `F2` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F2)
          */
@@ -15881,7 +15905,7 @@ declare namespace Enum {
         }
         export const F2: F2;
         /**
-         * The <code>F3</code> key.
+         * The `F3` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F3)
          */
@@ -15892,7 +15916,7 @@ declare namespace Enum {
         }
         export const F3: F3;
         /**
-         * The <code>F4</code> key.
+         * The `F4` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F4)
          */
@@ -15903,7 +15927,7 @@ declare namespace Enum {
         }
         export const F4: F4;
         /**
-         * The <code>F5</code> key.
+         * The `F5` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F5)
          */
@@ -15914,7 +15938,7 @@ declare namespace Enum {
         }
         export const F5: F5;
         /**
-         * The <code>F6</code> key.
+         * The `F6` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F6)
          */
@@ -15925,7 +15949,7 @@ declare namespace Enum {
         }
         export const F6: F6;
         /**
-         * The <code>F7</code> key.
+         * The `F7` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F7)
          */
@@ -15936,7 +15960,7 @@ declare namespace Enum {
         }
         export const F7: F7;
         /**
-         * The <code>F8</code> key.
+         * The `F8` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F8)
          */
@@ -15947,7 +15971,7 @@ declare namespace Enum {
         }
         export const F8: F8;
         /**
-         * The <code>F9</code> key.
+         * The `F9` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F9)
          */
@@ -15958,7 +15982,7 @@ declare namespace Enum {
         }
         export const F9: F9;
         /**
-         * The <code>F10</code> key.
+         * The `F10` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F10)
          */
@@ -15969,7 +15993,7 @@ declare namespace Enum {
         }
         export const F10: F10;
         /**
-         * The <code>F11</code> key.
+         * The `F11` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F11)
          */
@@ -15980,7 +16004,7 @@ declare namespace Enum {
         }
         export const F11: F11;
         /**
-         * The <code>F12</code> key.
+         * The `F12` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F12)
          */
@@ -15991,7 +16015,7 @@ declare namespace Enum {
         }
         export const F12: F12;
         /**
-         * The <code>F13</code> key. Only present on certain keyboards.
+         * The `F13` key. Only present on certain keyboards.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F13)
          */
@@ -16002,7 +16026,7 @@ declare namespace Enum {
         }
         export const F13: F13;
         /**
-         * The <code>F14</code> key. Only present on certain keyboards.
+         * The `F14` key. Only present on certain keyboards.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F14)
          */
@@ -16013,7 +16037,7 @@ declare namespace Enum {
         }
         export const F14: F14;
         /**
-         * The <code>F15</code> key. Only present on certain keyboards.
+         * The `F15` key. Only present on certain keyboards.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#F15)
          */
@@ -16024,7 +16048,7 @@ declare namespace Enum {
         }
         export const F15: F15;
         /**
-         * The <code>Num Lock</code> key on the keypad cluster.
+         * The `Num Lock` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#NumLock)
          */
@@ -16035,7 +16059,7 @@ declare namespace Enum {
         }
         export const NumLock: NumLock;
         /**
-         * The <code>Caps Lock</code> key.
+         * The `Caps Lock` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#CapsLock)
          */
@@ -16046,7 +16070,7 @@ declare namespace Enum {
         }
         export const CapsLock: CapsLock;
         /**
-         * The <code>Scr Lock</code> key.
+         * The `Scr Lock` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ScrollLock)
          */
@@ -16057,7 +16081,7 @@ declare namespace Enum {
         }
         export const ScrollLock: ScrollLock;
         /**
-         * The right side <code>Shift</code> key.
+         * The right side `Shift` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#RightShift)
          */
@@ -16068,7 +16092,7 @@ declare namespace Enum {
         }
         export const RightShift: RightShift;
         /**
-         * The left side <code>Shift</code> key.
+         * The left side `Shift` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#LeftShift)
          */
@@ -16079,7 +16103,7 @@ declare namespace Enum {
         }
         export const LeftShift: LeftShift;
         /**
-         * The right side <code>Ctrl</code> key.
+         * The right side `Ctrl` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#RightControl)
          */
@@ -16090,7 +16114,7 @@ declare namespace Enum {
         }
         export const RightControl: RightControl;
         /**
-         * The left side <code>Ctrl</code> key.
+         * The left side `Ctrl` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#LeftControl)
          */
@@ -16101,7 +16125,7 @@ declare namespace Enum {
         }
         export const LeftControl: LeftControl;
         /**
-         * The right side <code>Alt</code> key.
+         * The right side `Alt` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#RightAlt)
          */
@@ -16112,7 +16136,7 @@ declare namespace Enum {
         }
         export const RightAlt: RightAlt;
         /**
-         * The left side <code>Alt</code> key.
+         * The left side `Alt` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#LeftAlt)
          */
@@ -16123,7 +16147,7 @@ declare namespace Enum {
         }
         export const LeftAlt: LeftAlt;
         /**
-         * The right side <code>Meta</code> key.
+         * The right side `Meta` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#RightMeta)
          */
@@ -16134,7 +16158,7 @@ declare namespace Enum {
         }
         export const RightMeta: RightMeta;
         /**
-         * The left side <code>Meta</code> key.
+         * The left side `Meta` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#LeftMeta)
          */
@@ -16145,7 +16169,7 @@ declare namespace Enum {
         }
         export const LeftMeta: LeftMeta;
         /**
-         * The left side <code>Super</code> key. Better known as the Windows key or Cmd key.
+         * The left side `Super` key. Better known as the Windows key or Cmd key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#LeftSuper)
          */
@@ -16156,7 +16180,7 @@ declare namespace Enum {
         }
         export const LeftSuper: LeftSuper;
         /**
-         * The right side <code>Super</code> key. Better known as the Windows key or Cmd key.
+         * The right side `Super` key. Better known as the Windows key or Cmd key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#RightSuper)
          */
@@ -16233,7 +16257,7 @@ declare namespace Enum {
         }
         export const Break: Break;
         /**
-         * The <code>Menu</code> key.
+         * The `Menu` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Menu)
          */
@@ -16255,7 +16279,7 @@ declare namespace Enum {
         }
         export const Power: Power;
         /**
-         * The <code>€</code> key. Only present on certain keyboards.
+         * The `€` key. Only present on certain keyboards.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Euro)
          */
@@ -16636,7 +16660,7 @@ declare namespace Enum {
      */
     export namespace LeftRight {
         /**
-         * The object is on the left side of its parent (<strong>X</strong> axis).
+         * The object is on the left side of its parent (**X** axis).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LeftRight#Left)
          */
@@ -16647,7 +16671,7 @@ declare namespace Enum {
         }
         export const Left: Left;
         /**
-         * The object is centered on the center of its parent (<strong>X</strong> axis), expanding equally to the left and right of the parent's center.
+         * The object is centered on the center of its parent (**X** axis), expanding equally to the left and right of the parent's center.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LeftRight#Center)
          */
@@ -16658,7 +16682,7 @@ declare namespace Enum {
         }
         export const Center: Center;
         /**
-         * The object is on the right side of its parent (<strong>X</strong> axis).
+         * The object is on the right side of its parent (**X** axis).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LeftRight#Right)
          */
@@ -16947,7 +16971,7 @@ declare namespace Enum {
         }
         export const RightLeg: RightLeg;
         /**
-         * If a part is not a limb (e.g. running the <code>Humanoid:GetLimb()</code> function and passing it an accessory which is a sibling of the Humanoid will return this value).
+         * If a part is not a limb (e.g. running the `Humanoid:GetLimb()` function and passing it an accessory which is a sibling of the Humanoid will return this value).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Limb#Unknown)
          */
@@ -16961,7 +16985,7 @@ declare namespace Enum {
     }
     export type Limb = Limb.Head | Limb.Torso | Limb.LeftArm | Limb.RightArm | Limb.LeftLeg | Limb.RightLeg | Limb.Unknown;
     /**
-     * This enum is used by <code>UIStroke.LineJoinMode</code> to determine how corners are interpreted.
+     * This enum is used by `UIStroke.LineJoinMode` to determine how corners are interpreted.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LineJoinMode)
      */
@@ -17038,7 +17062,7 @@ declare namespace Enum {
      */
     export namespace ListenerLocation {
         /**
-         * An <code>AudioListener</code> will be created and parented to <code>Workspace.CurrentCamera</code> in experiences that enable voice chat.
+         * An `AudioListener` will be created and parented to `Workspace.CurrentCamera` in experiences that enable voice chat.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ListenerLocation#Default)
          */
@@ -17049,7 +17073,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * No <code>AudioListeners</code> will be spawned by default.
+         * No `AudioListeners` will be spawned by default.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ListenerLocation#None)
          */
@@ -17060,7 +17084,7 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * An <code>AudioListener</code> will be created and attached to the local player's <code>Player.Character</code>.
+         * An `AudioListener` will be created and attached to the local player's `Player.Character`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ListenerLocation#Character)
          */
@@ -17071,7 +17095,7 @@ declare namespace Enum {
         }
         export const Character: Character;
         /**
-         * An <code>AudioListener</code> will be created and parented to <code>Workspace.CurrentCamera</code>.
+         * An `AudioListener` will be created and parented to `Workspace.CurrentCamera`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ListenerLocation#Camera)
          */
@@ -17091,7 +17115,7 @@ declare namespace Enum {
      */
     export namespace ListenerType {
         /**
-         * Uses the world CFrame of <code>CurrentCamera</code>.
+         * Uses the world CFrame of `CurrentCamera`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ListenerType#Camera)
          */
@@ -17113,7 +17137,7 @@ declare namespace Enum {
         }
         export const CFrame: CFrame;
         /**
-         * Uses the world position of an instance and the rotation of <code>CurrentCamera</code>.
+         * Uses the world position of an instance and the rotation of `CurrentCamera`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ListenerType#ObjectPosition)
          */
@@ -17243,7 +17267,7 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
-         * This means layered clothing will be equipped on characters in the experience (Although <code>MeshPartHeadsAndAccessories</code> also need to be enabled for the experience).
+         * This means layered clothing will be equipped on characters in the experience (Although `MeshPartHeadsAndAccessories` also need to be enabled for the experience).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LoadCharacterLayeredClothing#Enabled)
          */
@@ -17428,7 +17452,7 @@ declare namespace Enum {
         }
         export const QuantityLimitExceeded: QuantityLimitExceeded;
         /**
-         * The user has exceeded our <a href="../../../marketplace/marketplace-fees-and-commissions.md#rate-limits">purchase request limit</a>.
+         * The user has exceeded our [purchase request limit](../../../marketplace/marketplace-fees-and-commissions.md#rate-limits).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MarketplaceItemPurchaseStatus#QuotaExceeded)
          */
@@ -17581,7 +17605,7 @@ declare namespace Enum {
      */
     export namespace Material {
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Plastic)
          */
@@ -17592,7 +17616,7 @@ declare namespace Enum {
         }
         export const Plastic: Plastic;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#SmoothPlastic)
          */
@@ -17603,7 +17627,7 @@ declare namespace Enum {
         }
         export const SmoothPlastic: SmoothPlastic;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Neon)
          */
@@ -17614,7 +17638,7 @@ declare namespace Enum {
         }
         export const Neon: Neon;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Wood)
          */
@@ -17625,7 +17649,7 @@ declare namespace Enum {
         }
         export const Wood: Wood;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#WoodPlanks)
          */
@@ -17636,7 +17660,7 @@ declare namespace Enum {
         }
         export const WoodPlanks: WoodPlanks;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Marble)
          */
@@ -17647,7 +17671,7 @@ declare namespace Enum {
         }
         export const Marble: Marble;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Slate)
          */
@@ -17658,7 +17682,7 @@ declare namespace Enum {
         }
         export const Slate: Slate;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Concrete)
          */
@@ -17669,7 +17693,7 @@ declare namespace Enum {
         }
         export const Concrete: Concrete;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Granite)
          */
@@ -17680,7 +17704,7 @@ declare namespace Enum {
         }
         export const Granite: Granite;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Brick)
          */
@@ -17691,7 +17715,7 @@ declare namespace Enum {
         }
         export const Brick: Brick;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Pebble)
          */
@@ -17702,7 +17726,7 @@ declare namespace Enum {
         }
         export const Pebble: Pebble;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Cobblestone)
          */
@@ -17713,7 +17737,7 @@ declare namespace Enum {
         }
         export const Cobblestone: Cobblestone;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Rock)
          */
@@ -17724,7 +17748,7 @@ declare namespace Enum {
         }
         export const Rock: Rock;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Sandstone)
          */
@@ -17735,7 +17759,7 @@ declare namespace Enum {
         }
         export const Sandstone: Sandstone;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Basalt)
          */
@@ -17746,7 +17770,7 @@ declare namespace Enum {
         }
         export const Basalt: Basalt;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#CrackedLava)
          */
@@ -17757,7 +17781,7 @@ declare namespace Enum {
         }
         export const CrackedLava: CrackedLava;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Limestone)
          */
@@ -17768,7 +17792,7 @@ declare namespace Enum {
         }
         export const Limestone: Limestone;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Pavement)
          */
@@ -17779,7 +17803,7 @@ declare namespace Enum {
         }
         export const Pavement: Pavement;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#CorrodedMetal)
          */
@@ -17790,7 +17814,7 @@ declare namespace Enum {
         }
         export const CorrodedMetal: CorrodedMetal;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#DiamondPlate)
          */
@@ -17801,7 +17825,7 @@ declare namespace Enum {
         }
         export const DiamondPlate: DiamondPlate;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Foil)
          */
@@ -17816,7 +17840,7 @@ declare namespace Enum {
          */
         export const Aluminum: Foil;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Metal)
          */
@@ -17827,7 +17851,7 @@ declare namespace Enum {
         }
         export const Metal: Metal;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Grass)
          */
@@ -17838,7 +17862,7 @@ declare namespace Enum {
         }
         export const Grass: Grass;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#LeafyGrass)
          */
@@ -17849,7 +17873,7 @@ declare namespace Enum {
         }
         export const LeafyGrass: LeafyGrass;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Sand)
          */
@@ -17860,7 +17884,7 @@ declare namespace Enum {
         }
         export const Sand: Sand;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Fabric)
          */
@@ -17871,7 +17895,7 @@ declare namespace Enum {
         }
         export const Fabric: Fabric;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Snow)
          */
@@ -17882,7 +17906,7 @@ declare namespace Enum {
         }
         export const Snow: Snow;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Mud)
          */
@@ -17893,7 +17917,7 @@ declare namespace Enum {
         }
         export const Mud: Mud;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Ground)
          */
@@ -17904,7 +17928,7 @@ declare namespace Enum {
         }
         export const Ground: Ground;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Asphalt)
          */
@@ -17915,7 +17939,7 @@ declare namespace Enum {
         }
         export const Asphalt: Asphalt;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Salt)
          */
@@ -17926,7 +17950,7 @@ declare namespace Enum {
         }
         export const Salt: Salt;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Ice)
          */
@@ -17937,7 +17961,7 @@ declare namespace Enum {
         }
         export const Ice: Ice;
         /**
-         * Applies to <code>BasePart</code> and <code>Terrain</code>.
+         * Applies to `BasePart` and `Terrain`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Glacier)
          */
@@ -17948,7 +17972,7 @@ declare namespace Enum {
         }
         export const Glacier: Glacier;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Glass)
          */
@@ -17959,7 +17983,7 @@ declare namespace Enum {
         }
         export const Glass: Glass;
         /**
-         * Must be used on a <code>MeshPart</code> with UVs laid out to cover much of the 0:1 UV space or more (larger is better). The <code>MeshPart</code> must also have a texture applied to its <code>TextureID</code>, and that texture image must have a wide value range since the material displays the range from dark/black to light/white values. Obtain <a href="https://create.roblox.com/store/asset/15507769146/ForceFieldMesh">this model</a> for a functional example of the <strong>ForceField</strong> material.
+         * Must be used on a `MeshPart` with UVs laid out to cover much of the 0:1 UV space or more (larger is better). The `MeshPart` must also have a texture applied to its `TextureID`, and that texture image must have a wide value range since the material displays the range from dark/black to light/white values. Obtain [this model](https://create.roblox.com/store/asset/15507769146/ForceFieldMesh) for a functional example of the **ForceField** material.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#ForceField)
          */
@@ -17970,7 +17994,7 @@ declare namespace Enum {
         }
         export const ForceField: ForceField;
         /**
-         * Applies to <code>Terrain</code> only.
+         * Applies to `Terrain` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Air)
          */
@@ -17981,7 +18005,7 @@ declare namespace Enum {
         }
         export const Air: Air;
         /**
-         * Applies to <code>Terrain</code> only.
+         * Applies to `Terrain` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Water)
          */
@@ -17992,7 +18016,7 @@ declare namespace Enum {
         }
         export const Water: Water;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Cardboard)
          */
@@ -18003,7 +18027,7 @@ declare namespace Enum {
         }
         export const Cardboard: Cardboard;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Carpet)
          */
@@ -18014,7 +18038,7 @@ declare namespace Enum {
         }
         export const Carpet: Carpet;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#CeramicTiles)
          */
@@ -18025,7 +18049,7 @@ declare namespace Enum {
         }
         export const CeramicTiles: CeramicTiles;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#ClayRoofTiles)
          */
@@ -18036,7 +18060,7 @@ declare namespace Enum {
         }
         export const ClayRoofTiles: ClayRoofTiles;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#RoofShingles)
          */
@@ -18047,7 +18071,7 @@ declare namespace Enum {
         }
         export const RoofShingles: RoofShingles;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Leather)
          */
@@ -18058,7 +18082,7 @@ declare namespace Enum {
         }
         export const Leather: Leather;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Plaster)
          */
@@ -18069,7 +18093,7 @@ declare namespace Enum {
         }
         export const Plaster: Plaster;
         /**
-         * Applies to <code>BasePart</code> only.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Rubber)
          */
@@ -18178,7 +18202,7 @@ declare namespace Enum {
     }
     export type MembershipType = MembershipType.None | MembershipType.BuildersClub | MembershipType.TurboBuildersClub | MembershipType.OutrageousBuildersClub | MembershipType.Premium;
     /**
-     * The level of detail of <code>MeshParts</code> displayed in Studio.
+     * The level of detail of `MeshParts` displayed in Studio.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshPartDetailLevel)
      */
@@ -18251,13 +18275,13 @@ declare namespace Enum {
     }
     export type MeshPartDetailLevel = MeshPartDetailLevel.DistanceBased | MeshPartDetailLevel.Level00 | MeshPartDetailLevel.Level01 | MeshPartDetailLevel.Level02 | MeshPartDetailLevel.Level03 | MeshPartDetailLevel.Level04;
     /**
-     * Controls the <code>Workspace.MeshPartHeadsAndAccessories</code> feature.
+     * Controls the `Workspace.MeshPartHeadsAndAccessories` feature.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshPartHeadsAndAccessories)
      */
     export namespace MeshPartHeadsAndAccessories {
         /**
-         * The default option to control the <code>Workspace.MeshPartHeadsAndAccessories</code> feature. This currently has the same meaning as "Enabled".
+         * The default option to control the `Workspace.MeshPartHeadsAndAccessories` feature. This currently has the same meaning as "Enabled".
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshPartHeadsAndAccessories#Default)
          */
@@ -18268,7 +18292,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * Disables the <code>Workspace.MeshPartHeadsAndAccessories</code> feature.
+         * Disables the `Workspace.MeshPartHeadsAndAccessories` feature.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshPartHeadsAndAccessories#Disabled)
          */
@@ -18279,7 +18303,7 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
-         * Enables the <code>Workspace.MeshPartHeadsAndAccessories</code> feature.
+         * Enables the `Workspace.MeshPartHeadsAndAccessories` feature.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshPartHeadsAndAccessories#Enabled)
          */
@@ -18354,13 +18378,13 @@ declare namespace Enum {
     }
     export type MeshScaleUnit = MeshScaleUnit.Stud | MeshScaleUnit.Meter | MeshScaleUnit.CM | MeshScaleUnit.MM | MeshScaleUnit.Foot | MeshScaleUnit.Inch;
     /**
-     * The MeshType Enum is used to set what type of mesh the <code>SpecialMesh</code> is.
+     * The MeshType Enum is used to set what type of mesh the `SpecialMesh` is.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshType)
      */
     export namespace MeshType {
         /**
-         * The mesh is the default <code>Humanoid</code> head mesh.
+         * The mesh is the default `Humanoid` head mesh.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshType#Head)
          */
@@ -18426,7 +18450,7 @@ declare namespace Enum {
         }
         export const FileMesh: FileMesh;
         /**
-         * The mesh is a brick (just like the shape of a default <code>BasePart</code>).
+         * The mesh is a brick (just like the shape of a default `BasePart`).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshType#Brick)
          */
@@ -18437,7 +18461,9 @@ declare namespace Enum {
         }
         export const Brick: Brick;
         /**
-         * <strong>Deprecated:</strong> <br>The mesh is a prism.
+         * **Deprecated:**
+         *
+         * The mesh is a prism.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshType#Prism)
          */
@@ -18448,7 +18474,9 @@ declare namespace Enum {
         }
         export const Prism: Prism;
         /**
-         * <strong>Deprecated:</strong> <br>The mesh is a pyramid.
+         * **Deprecated:**
+         *
+         * The mesh is a pyramid.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshType#Pyramid)
          */
@@ -18459,7 +18487,9 @@ declare namespace Enum {
         }
         export const Pyramid: Pyramid;
         /**
-         * <strong>Deprecated:</strong> <br>The mesh is a parallel ramp.
+         * **Deprecated:**
+         *
+         * The mesh is a parallel ramp.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshType#ParallelRamp)
          */
@@ -18470,7 +18500,9 @@ declare namespace Enum {
         }
         export const ParallelRamp: ParallelRamp;
         /**
-         * <strong>Deprecated:</strong> <br>The mesh is a right angle ramp.
+         * **Deprecated:**
+         *
+         * The mesh is a right angle ramp.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshType#RightAngleRamp)
          */
@@ -18481,7 +18513,9 @@ declare namespace Enum {
         }
         export const RightAngleRamp: RightAngleRamp;
         /**
-         * <strong>Deprecated:</strong> <br>The mesh is a corner wedge.
+         * **Deprecated:**
+         *
+         * The mesh is a corner wedge.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshType#CornerWedge)
          */
@@ -18548,13 +18582,13 @@ declare namespace Enum {
     }
     export type MessageType = MessageType.MessageOutput | MessageType.MessageInfo | MessageType.MessageWarning | MessageType.MessageError;
     /**
-     * Controls the level of detail for <code>Models</code> in experiences with instance streaming enabled.
+     * Controls the level of detail for `Models` in experiences with instance streaming enabled.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelLevelOfDetail)
      */
     export namespace ModelLevelOfDetail {
         /**
-         * Default behavior, currently equivalent to <strong>Disabled</strong>.
+         * Default behavior, currently equivalent to **Disabled**.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelLevelOfDetail#Automatic)
          */
@@ -18590,13 +18624,13 @@ declare namespace Enum {
     }
     export type ModelLevelOfDetail = ModelLevelOfDetail.Automatic | ModelLevelOfDetail.StreamingMesh | ModelLevelOfDetail.Disabled;
     /**
-     * Controls how <code>Models</code> are sent to clients in experiences with instance streaming enabled.
+     * Controls how `Models` are sent to clients in experiences with instance streaming enabled.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelStreamingBehavior)
      */
     export namespace ModelStreamingBehavior {
         /**
-         * Engine determines best behavior. Currently equivalent to <strong>Legacy</strong>.
+         * Engine determines best behavior. Currently equivalent to **Legacy**.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelStreamingBehavior#Default)
          */
@@ -18618,7 +18652,7 @@ declare namespace Enum {
         }
         export const Legacy: Legacy;
         /**
-         * Models are never sent during player join. Models that are "non-spatial" (containing no <code>BasePart</code> descendants) are sent soon after join, but before the <code>Workspace.PersistentLoaded</code> event fires. Models that are "spatial" (containing <code>BasePart</code> descendants) are sent when any <code>BasePart</code> descendant needs to be streamed to a client, and may stream out when all <code>BasePart</code> descendants are eligible to stream out.
+         * Models are never sent during player join. Models that are "non-spatial" (containing no `BasePart` descendants) are sent soon after join, but before the `Workspace.PersistentLoaded` event fires. Models that are "spatial" (containing `BasePart` descendants) are sent when any `BasePart` descendant needs to be streamed to a client, and may stream out when all `BasePart` descendants are eligible to stream out.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelStreamingBehavior#Improved)
          */
@@ -18638,7 +18672,7 @@ declare namespace Enum {
      */
     export namespace ModelStreamingMode {
         /**
-         * Engine determines best behavior. Currently equivalent to <strong>Nonatomic</strong>.
+         * Engine determines best behavior. Currently equivalent to **Nonatomic**.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelStreamingMode#Default)
          */
@@ -18649,7 +18683,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * The <code>Model</code> and all of its descendants are streamed in/out together. For streaming in, this applies when <strong>any</strong> descendant <code>BasePart</code> is eligible for streaming in. For streaming out, this applies when <strong>all</strong> descendant <code>BaseParts</code> are eligible for streaming out.
+         * The `Model` and all of its descendants are streamed in/out together. For streaming in, this applies when **any** descendant `BasePart` is eligible for streaming in. For streaming out, this applies when **all** descendant `BaseParts` are eligible for streaming out.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelStreamingMode#Atomic)
          */
@@ -18660,7 +18694,7 @@ declare namespace Enum {
         }
         export const Atomic: Atomic;
         /**
-         * Persistent models are sent as a complete atomic unit soon after the player joins and before the <code>Workspace.PersistentLoaded</code> event fires. Persistent models and their descendants are never streamed out.
+         * Persistent models are sent as a complete atomic unit soon after the player joins and before the `Workspace.PersistentLoaded` event fires. Persistent models and their descendants are never streamed out.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelStreamingMode#Persistent)
          */
@@ -18671,7 +18705,7 @@ declare namespace Enum {
         }
         export const Persistent: Persistent;
         /**
-         * Behaves as a persistent model for players that have been added using <code>Model:AddPersistentPlayer()</code>. For other players, behavior is the same as <strong>Atomic</strong>. You can revert a model from player persistence via <code>Model:RemovePersistentPlayer()</code>.
+         * Behaves as a persistent model for players that have been added using `Model:AddPersistentPlayer()`. For other players, behavior is the same as **Atomic**. You can revert a model from player persistence via `Model:RemovePersistentPlayer()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelStreamingMode#PersistentPerPlayer)
          */
@@ -18833,7 +18867,7 @@ declare namespace Enum {
     }
     export type MouseBehavior = MouseBehavior.Default | MouseBehavior.LockCenter | MouseBehavior.LockCurrentPosition;
     /**
-     * Represents the state of a <code>SkateboardPlatform</code>.
+     * Represents the state of a `SkateboardPlatform`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MoveState)
      */
@@ -18897,13 +18931,13 @@ declare namespace Enum {
     }
     export type MoveState = MoveState.Stopped | MoveState.Coasting | MoveState.Pushing | MoveState.Stopping | MoveState.AirFree;
     /**
-     * Values for <code>Workspace.MoverConstraintRootBehavior</code>. Controls the logic for selecting the assembly root part when using various mover constraints.
+     * Values for `Workspace.MoverConstraintRootBehavior`. Controls the logic for selecting the assembly root part when using various mover constraints.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MoverConstraintRootBehaviorMode)
      */
     export namespace MoverConstraintRootBehaviorMode {
         /**
-         * The default option for <code>Workspace.MoverConstraintRootBehavior</code>. Currently set to <strong>Disabled</strong>.
+         * The default option for `Workspace.MoverConstraintRootBehavior`. Currently set to **Disabled**.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MoverConstraintRootBehaviorMode#Default)
          */
@@ -18925,7 +18959,7 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
-         * Improved logic will be used for assembly root part selection when a mechanism contains a mover constraint. This improved logic gives more consistent behavior when compared with other constraints or the deprecated <code>BodyMover</code> classes.
+         * Improved logic will be used for assembly root part selection when a mechanism contains a mover constraint. This improved logic gives more consistent behavior when compared with other constraints or the deprecated `BodyMover` classes.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MoverConstraintRootBehaviorMode#Enabled)
          */
@@ -18964,7 +18998,7 @@ declare namespace Enum {
     }
     export type MuteState = MuteState.Unmuted | MuteState.Muted;
     /**
-     * The NameOcclusion Enum is used to set the <code>Humanoid.NameOcclusion</code> property.
+     * The NameOcclusion Enum is used to set the `Humanoid.NameOcclusion` property.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NameOcclusion)
      */
@@ -19250,7 +19284,7 @@ declare namespace Enum {
     }
     export type OperationType = OperationType.Null | OperationType.Union | OperationType.Subtraction | OperationType.Intersection | OperationType.Primitive;
     /**
-     * The OrientationAlignmentMode Enum is used to select the number of <code>Attachments</code> used in an alignment.
+     * The OrientationAlignmentMode Enum is used to select the number of `Attachments` used in an alignment.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OrientationAlignmentMode)
      */
@@ -19497,7 +19531,7 @@ declare namespace Enum {
     }
     export type PackagePermission = PackagePermission.None | PackagePermission.NoAccess | PackagePermission.Revoked | PackagePermission.UseView | PackagePermission.Edit | PackagePermission.Own;
     /**
-     * Controls the <code>Part.Shape</code> of an object.
+     * Controls the `Part.Shape` of an object.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PartType)
      */
@@ -19525,7 +19559,7 @@ declare namespace Enum {
         }
         export const Block: Block;
         /**
-         * A cylinder shape oriented along the <strong>X</strong> axis.
+         * A cylinder shape oriented along the **X** axis.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PartType#Cylinder)
          */
@@ -19680,7 +19714,7 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * 2&times;2 frames for a 4-frame animation.
+         * 2×2 frames for a 4-frame animation.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookLayout#Grid2x2)
          */
@@ -19691,7 +19725,7 @@ declare namespace Enum {
         }
         export const Grid2x2: Grid2x2;
         /**
-         * 4&times;4 frames for a 16-frame animation.
+         * 4×4 frames for a 16-frame animation.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookLayout#Grid4x4)
          */
@@ -19702,7 +19736,7 @@ declare namespace Enum {
         }
         export const Grid4x4: Grid4x4;
         /**
-         * 8&times;8 frames for a 64-frame animation.
+         * 8×8 frames for a 64-frame animation.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookLayout#Grid8x8)
          */
@@ -19733,7 +19767,7 @@ declare namespace Enum {
         }
         export const Loop: Loop;
         /**
-         * Play through the animation only once across the particle's lifetime. With this setting, the <code>ParticleEmitter.FlipbookFramerate</code> property doesn't apply; instead, the framerate is determined by the particle's <code>ParticleEmitter.Lifetime</code> divided evenly by the number of frames in the animation. <strong>OneShot</strong> animations are useful for clear non-repeating animations, such as an explosion that creates a puff of smoke and then fades out.
+         * Play through the animation only once across the particle's lifetime. With this setting, the `ParticleEmitter.FlipbookFramerate` property doesn't apply; instead, the framerate is determined by the particle's `ParticleEmitter.Lifetime` divided evenly by the number of frames in the animation. **OneShot** animations are useful for clear non-repeating animations, such as an explosion that creates a puff of smoke and then fades out.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookMode#OneShot)
          */
@@ -19744,7 +19778,7 @@ declare namespace Enum {
         }
         export const OneShot: OneShot;
         /**
-         * Play from the first to the last frame, then in reverse from the last to the first, repeating throughout the <code>ParticleEmitter.Lifetime</code> of the particle.
+         * Play from the first to the last frame, then in reverse from the last to the first, repeating throughout the `ParticleEmitter.Lifetime` of the particle.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookMode#PingPong)
          */
@@ -19846,7 +19880,7 @@ declare namespace Enum {
     }
     export type ParticleOrientation = ParticleOrientation.FacingCamera | ParticleOrientation.FacingCameraWorldUp | ParticleOrientation.VelocityParallel | ParticleOrientation.VelocityPerpendicular;
     /**
-     * The success of a <code>Path</code> generated by <code>PathfindingService</code>.
+     * The success of a `Path` generated by `PathfindingService`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PathStatus)
      */
@@ -19874,7 +19908,9 @@ declare namespace Enum {
         }
         export const NoPath: NoPath;
         /**
-         * <strong>Deprecated:</strong> <br>Path doesn't exist, returns path to closest point.
+         * **Deprecated:**
+         *
+         * Path doesn't exist, returns path to closest point.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PathStatus#ClosestNoPath)
          */
@@ -19885,7 +19921,9 @@ declare namespace Enum {
         }
         export const ClosestNoPath: ClosestNoPath;
         /**
-         * <strong>Deprecated:</strong> <br>Goal is out of MaxDistance range, returns path to closest point you can reach within MaxDistance.
+         * **Deprecated:**
+         *
+         * Goal is out of MaxDistance range, returns path to closest point you can reach within MaxDistance.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PathStatus#ClosestOutOfRange)
          */
@@ -19896,7 +19934,9 @@ declare namespace Enum {
         }
         export const ClosestOutOfRange: ClosestOutOfRange;
         /**
-         * <strong>Deprecated:</strong> <br>Failed to compute path; the starting point is not empty.
+         * **Deprecated:**
+         *
+         * Failed to compute path; the starting point is not empty.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PathStatus#FailStartNotEmpty)
          */
@@ -19907,7 +19947,9 @@ declare namespace Enum {
         }
         export const FailStartNotEmpty: FailStartNotEmpty;
         /**
-         * <strong>Deprecated:</strong> <br>Failed to compute path; the finish point is not empty.
+         * **Deprecated:**
+         *
+         * Failed to compute path; the finish point is not empty.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PathStatus#FailFinishNotEmpty)
          */
@@ -19921,7 +19963,7 @@ declare namespace Enum {
     }
     export type PathStatus = PathStatus.Success | PathStatus.NoPath | PathStatus.ClosestNoPath | PathStatus.ClosestOutOfRange | PathStatus.FailStartNotEmpty | PathStatus.FailFinishNotEmpty;
     /**
-     * Describes the action to take when a <code>PathWaypoint</code> is reached.
+     * Describes the action to take when a `PathWaypoint` is reached.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PathWaypointAction)
      */
@@ -20012,7 +20054,7 @@ declare namespace Enum {
         }
         export const Game: Game;
         /**
-         * Member must have security permissions less than or equal to <strong>RobloxPlaceSecurity</strong> to be shown.
+         * Member must have security permissions less than or equal to **RobloxPlaceSecurity** to be shown.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PermissionLevelShown#RobloxGame)
          */
@@ -20023,7 +20065,7 @@ declare namespace Enum {
         }
         export const RobloxGame: RobloxGame;
         /**
-         * Member must have security permissions less than or equal to <strong>RobloxScriptSecurity</strong> to be shown.
+         * Member must have security permissions less than or equal to **RobloxScriptSecurity** to be shown.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PermissionLevelShown#RobloxScript)
          */
@@ -20034,7 +20076,7 @@ declare namespace Enum {
         }
         export const RobloxScript: RobloxScript;
         /**
-         * Member must have security permissions less than or equal to <strong>LocalUserSecurity</strong> to be shown.
+         * Member must have security permissions less than or equal to **LocalUserSecurity** to be shown.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PermissionLevelShown#Studio)
          */
@@ -20380,7 +20422,7 @@ declare namespace Enum {
     }
     export type Platform = Platform.Windows | Platform.OSX | Platform.IOS | Platform.Android | Platform.XBoxOne | Platform.PS4 | Platform.PS3 | Platform.XBox360 | Platform.WiiU | Platform.NX | Platform.Ouya | Platform.AndroidTV | Platform.Chromecast | Platform.Linux | Platform.SteamOS | Platform.WebOS | Platform.DOS | Platform.BeOS | Platform.UWP | Platform.PS5 | Platform.MetaOS | Platform.None;
     /**
-     * Describes the current state of a <code>Tween</code> in its <code>Tween.PlaybackState</code> property.
+     * Describes the current state of a `Tween` in its `Tween.PlaybackState` property.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlaybackState)
      */
@@ -20397,7 +20439,7 @@ declare namespace Enum {
         }
         export const Begin: Begin;
         /**
-         * The tween is waiting for the duration specified in its <code>TweenInfo.DelayTime</code>. After the delay elapses, the tween plays.
+         * The tween is waiting for the duration specified in its `TweenInfo.DelayTime`. After the delay elapses, the tween plays.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlaybackState#Delayed)
          */
@@ -20652,7 +20694,7 @@ declare namespace Enum {
         }
         export const Linear: Linear;
         /**
-         * Poses do not interpolate but snap to the key frame indicated by the <code>PoseEasingDirection</code>.
+         * Poses do not interpolate but snap to the key frame indicated by the `PoseEasingDirection`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PoseEasingStyle#Constant)
          */
@@ -20674,7 +20716,7 @@ declare namespace Enum {
         }
         export const Elastic: Elastic;
         /**
-         * Deprecated - Use <code>PoseEasingStyle.CubicV2</code>. Pose interpolation is a cubic curve between keyframes based on the <code>PoseEasingDirection</code>.
+         * Deprecated - Use `PoseEasingStyle.CubicV2`. Pose interpolation is a cubic curve between keyframes based on the `PoseEasingDirection`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PoseEasingStyle#Cubic)
          */
@@ -20696,7 +20738,7 @@ declare namespace Enum {
         }
         export const Bounce: Bounce;
         /**
-         * Pose interpolation is a cubic curve between keyframes based on <code>PoseEasingDirection</code>.
+         * Pose interpolation is a cubic curve between keyframes based on `PoseEasingDirection`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PoseEasingStyle#CubicV2)
          */
@@ -20710,7 +20752,7 @@ declare namespace Enum {
     }
     export type PoseEasingStyle = PoseEasingStyle.Linear | PoseEasingStyle.Constant | PoseEasingStyle.Elastic | PoseEasingStyle.Cubic | PoseEasingStyle.Bounce | PoseEasingStyle.CubicV2;
     /**
-     * The PositionAlignmentMode Enum is used to select the number of <code>Attachments</code> used in an alignment.
+     * The PositionAlignmentMode Enum is used to select the number of `Attachments` used in an alignment.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PositionAlignmentMode)
      */
@@ -20879,7 +20921,7 @@ declare namespace Enum {
     }
     export type PrimitiveType = PrimitiveType.Null | PrimitiveType.Ball | PrimitiveType.Cylinder | PrimitiveType.Block | PrimitiveType.Wedge | PrimitiveType.CornerWedge;
     /**
-     * <strong>Deprecated:</strong> This enum should not be used for new work.
+     * **Deprecated:** This enum should not be used for new work.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrivilegeType)
      */
@@ -21016,7 +21058,7 @@ declare namespace Enum {
     }
     export type ProductPurchaseChannel = ProductPurchaseChannel.InExperience | ProductPurchaseChannel.ExperienceDetailsPage | ProductPurchaseChannel.AdReward | ProductPurchaseChannel.CommerceProduct;
     /**
-     * The <code>ProductPurchaseDecisionEnum</code> is used to work with <code>MarketplaceService</code>, and the sale of developer products.
+     * The `ProductPurchaseDecisionEnum` is used to work with `MarketplaceService`, and the sale of developer products.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProductPurchaseDecision)
      */
@@ -21322,7 +21364,7 @@ declare namespace Enum {
      */
     export namespace ProximityPromptExclusivity {
         /**
-         * One prompt will be shown per input <code>KeyCode</code>.
+         * One prompt will be shown per input `KeyCode`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProximityPromptExclusivity#OnePerButton)
          */
@@ -21407,7 +21449,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * Custom prompt UI style as set by the developer. For more information, see <code>ProximityPrompt.Style</code>.
+         * Custom prompt UI style as set by the developer. For more information, see `ProximityPrompt.Style`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProximityPromptStyle#Custom)
          */
@@ -21703,13 +21745,13 @@ declare namespace Enum {
     }
     export type R15CollisionType = R15CollisionType.OuterBox | R15CollisionType.InnerBox;
     /**
-     * Used in a <code>RaycastParams</code> object to determine how its <code>FilterDescendantsInstances</code> list will be used.
+     * Used in a `RaycastParams` object to determine how its `FilterDescendantsInstances` list will be used.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RaycastFilterType)
      */
     export namespace RaycastFilterType {
         /**
-         * Every <code>BasePart</code> in the raycast operation will be considered <strong>except</strong> those that are descendants of objects in the filter list.
+         * Every `BasePart` in the raycast operation will be considered **except** those that are descendants of objects in the filter list.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RaycastFilterType#Exclude)
          */
@@ -21724,7 +21766,7 @@ declare namespace Enum {
          */
         export const Blacklist: Exclude;
         /**
-         * Only <code>BaseParts</code> which are descendants of objects in the filter list will be considered in the raycast operation.
+         * Only `BaseParts` which are descendants of objects in the filter list will be considered in the raycast operation.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RaycastFilterType#Include)
          */
@@ -22601,13 +22643,13 @@ declare namespace Enum {
     }
     export type RigType = RigType.R15 | RigType.Custom | RigType.None;
     /**
-     * How <code>Sounds</code> parented to a <code>BasePart</code> or <code>Attachment</code> attenuate (fade out) as the distance between the listener and the parent increases.
+     * How `Sounds` parented to a `BasePart` or `Attachment` attenuate (fade out) as the distance between the listener and the parent increases.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RollOffMode)
      */
     export namespace RollOffMode {
         /**
-         * Volume attenuates from <code>Sound.RollOffMinDistance</code> in an inverse manner, mirroring how sounds attenuate in the real world. This is done through <code>Sound.RollOffMinDistance</code>/<code>distance</code>, where <code>distance</code> is the <code>Vector3.Magnitude</code> between the audio source and the audio listener.
+         * Volume attenuates from `Sound.RollOffMinDistance` in an inverse manner, mirroring how sounds attenuate in the real world. This is done through `Sound.RollOffMinDistance`/`distance`, where `distance` is the `Vector3.Magnitude` between the audio source and the audio listener.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RollOffMode#Inverse)
          */
@@ -22618,7 +22660,7 @@ declare namespace Enum {
         }
         export const Inverse: Inverse;
         /**
-         * Volume attenuates between <code>Sound.RollOffMinDistance</code> and <code>Sound.RollOffMaxDistance</code> with a linear relationship. This is done through (<code>Sound.RollOffMaxDistance</code>/<code>distance</code>)/(<code>Sound.RollOffMaxDistance</code>-<code>Sound.RollOffMinDistance</code>), where <code>distance</code> is the <code>Vector3.Magnitude</code> between the audio source and the audio listener.
+         * Volume attenuates between `Sound.RollOffMinDistance` and `Sound.RollOffMaxDistance` with a linear relationship. This is done through (`Sound.RollOffMaxDistance`/`distance`)/(`Sound.RollOffMaxDistance`-`Sound.RollOffMinDistance`), where `distance` is the `Vector3.Magnitude` between the audio source and the audio listener.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RollOffMode#Linear)
          */
@@ -22629,7 +22671,7 @@ declare namespace Enum {
         }
         export const Linear: Linear;
         /**
-         * Volume attenuates between <code>Sound.RollOffMinDistance</code> and <code>Sound.RollOffMaxDistance</code> with a linear squared relationship. This is done through squaring <code>Linear</code>.
+         * Volume attenuates between `Sound.RollOffMinDistance` and `Sound.RollOffMaxDistance` with a linear squared relationship. This is done through squaring `Linear`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RollOffMode#LinearSquare)
          */
@@ -22640,7 +22682,7 @@ declare namespace Enum {
         }
         export const LinearSquare: LinearSquare;
         /**
-         * A hybrid model which follows the <code>Inverse</code> model when close to <code>Sound.RollOffMinDistance</code> and the <code>LinearSquare</code> model when close to <code>Sound.RollOffMaxDistance</code>. This is done by taking the lesser of <code>Inverse</code> and <code>LinearSquare</code>.
+         * A hybrid model which follows the `Inverse` model when close to `Sound.RollOffMinDistance` and the `LinearSquare` model when close to `Sound.RollOffMaxDistance`. This is done by taking the lesser of `Inverse` and `LinearSquare`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RollOffMode#InverseTapered)
          */
@@ -22826,7 +22868,7 @@ declare namespace Enum {
      */
     export namespace RunContext {
         /**
-         * Runs in legacy script containers dependent on the type of script uses such as <code>LocalScript</code> or <code>Script</code>.
+         * Runs in legacy script containers dependent on the type of script uses such as `LocalScript` or `Script`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RunContext#Legacy)
          */
@@ -22859,7 +22901,7 @@ declare namespace Enum {
         }
         export const Client: Client;
         /**
-         * Runs as a descendant of <code>Plugin</code> instances.
+         * Runs as a descendant of `Plugin` instances.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RunContext#Plugin)
          */
@@ -22941,13 +22983,13 @@ declare namespace Enum {
     }
     export type RuntimeUndoBehavior = RuntimeUndoBehavior.Aggregate | RuntimeUndoBehavior.Snapshot | RuntimeUndoBehavior.Hybrid;
     /**
-     * Describes how descendants of a <code>ScreenGui</code> adapt to screens with cutouts.
+     * Describes how descendants of a `ScreenGui` adapt to screens with cutouts.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SafeAreaCompatibility)
      */
     export namespace SafeAreaCompatibility {
         /**
-         * Do not apply compatibility transformations to any descendants of the <code>ScreenGui</code>.
+         * Do not apply compatibility transformations to any descendants of the `ScreenGui`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SafeAreaCompatibility#None)
          */
@@ -22958,7 +23000,7 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * If the total area of any descendant <code>GuiObject</code> within the <code>ScreenGui</code> (including any applied border or <code>UIStroke</code>) covers the device's safe area both horizontally and vertically, its background area will be expanded to cover the fullscreen area. This expansion does <strong>not</strong> affect the size or position of the descendant's <strong>content</strong>, except in the case of <code>ImageLabel</code>, <code>ImageButton</code>, or <code>VideoFrame</code> where the image/video is considered part of the background and will be expanded to fullscreen. Note that this option is intended to automatically improve the appearance of UI that was authored for screens without any cutouts. However, it's recommended that you avoid fullscreen extensions for new work; instead, use the <code>ScreenInsets</code> property to specify which insets should be respected for different <code>ScreenGuis</code>.
+         * If the total area of any descendant `GuiObject` within the `ScreenGui` (including any applied border or `UIStroke`) covers the device's safe area both horizontally and vertically, its background area will be expanded to cover the fullscreen area. This expansion does **not** affect the size or position of the descendant's **content**, except in the case of `ImageLabel`, `ImageButton`, or `VideoFrame` where the image/video is considered part of the background and will be expanded to fullscreen. Note that this option is intended to automatically improve the appearance of UI that was authored for screens without any cutouts. However, it's recommended that you avoid fullscreen extensions for new work; instead, use the `ScreenInsets` property to specify which insets should be respected for different `ScreenGuis`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SafeAreaCompatibility#FullscreenExtension)
          */
@@ -23092,7 +23134,9 @@ declare namespace Enum {
     }
     export type SaveAvatarThumbnailCustomizationFailure = SaveAvatarThumbnailCustomizationFailure.BadThumbnailType | SaveAvatarThumbnailCustomizationFailure.BadYRotDeg | SaveAvatarThumbnailCustomizationFailure.BadFieldOfViewDeg | SaveAvatarThumbnailCustomizationFailure.BadDistanceScale | SaveAvatarThumbnailCustomizationFailure.Other | SaveAvatarThumbnailCustomizationFailure.Throttled;
     /**
-     * <strong>Deprecated:</strong> This deprecated enum is used by <code>DataModel.SavePlace</code> which has also been deprecated. Neither should be used in new work.<br>Used by <code>DataModel.SavePlace</code> to determine the type of save operation This enum determines which aspects of the current place are saved, based on the following options.
+     * **Deprecated:** This deprecated enum is used by `DataModel.SavePlace` which has also been deprecated. Neither should be used in new work.
+     *
+     * Used by `DataModel.SavePlace` to determine the type of save operation This enum determines which aspects of the current place are saved, based on the following options.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SaveFilter)
      */
@@ -23240,7 +23284,7 @@ declare namespace Enum {
     }
     export type SavedQualitySetting = SavedQualitySetting.Automatic | SavedQualitySetting.QualityLevel1 | SavedQualitySetting.QualityLevel2 | SavedQualitySetting.QualityLevel3 | SavedQualitySetting.QualityLevel4 | SavedQualitySetting.QualityLevel5 | SavedQualitySetting.QualityLevel6 | SavedQualitySetting.QualityLevel7 | SavedQualitySetting.QualityLevel8 | SavedQualitySetting.QualityLevel9 | SavedQualitySetting.QualityLevel10;
     /**
-     * Determines how an image (of a <code>ImageLabel</code> or <code>ImageButton</code>) is scaled.
+     * Determines how an image (of a `ImageLabel` or `ImageButton`) is scaled.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScaleType)
      */
@@ -23257,7 +23301,7 @@ declare namespace Enum {
         }
         export const Stretch: Stretch;
         /**
-         * 9-Slice scaling: slice the image into 9 regions and apply different scaling rules to each region. The slice boundaries are determined by <code>ImageLabel.SliceCenter</code> or <code>ImageButton.SliceCenter</code>. See <a href="../../../ui/9-slice.md">UI 9-Slice Design</a> for more information. .
+         * 9-Slice scaling: slice the image into 9 regions and apply different scaling rules to each region. The slice boundaries are determined by `ImageLabel.SliceCenter` or `ImageButton.SliceCenter`. See [UI 9-Slice Design](../../../ui/9-slice.md) for more information. .
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScaleType#Slice)
          */
@@ -23389,7 +23433,7 @@ declare namespace Enum {
      */
     export namespace ScreenInsets {
         /**
-         * No insets are added to the fullscreen area. This mode may result in UI that is obscured or completely hidden by device notches and cutouts, so you should only use it for a <code>ScreenGui</code> that contains non‑interactive content like background images.
+         * No insets are added to the fullscreen area. This mode may result in UI that is obscured or completely hidden by device notches and cutouts, so you should only use it for a `ScreenGui` that contains non‑interactive content like background images.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenInsets#None)
          */
@@ -23400,7 +23444,7 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * Device safe area insets are added to the fullscreen area. The resulting area is guaranteed to not be occluded by any <strong>device</strong> screen cutouts such as the camera notch, although no inset is added for Roblox core UI elements like the top bar buttons. As a result, it's recommended that you use <code>CoreUISafeInsets</code> for a <code>ScreenGui</code> whose contents should remain unobscured by both device cutouts <strong>and</strong> core screen elements.
+         * Device safe area insets are added to the fullscreen area. The resulting area is guaranteed to not be occluded by any **device** screen cutouts such as the camera notch, although no inset is added for Roblox core UI elements like the top bar buttons. As a result, it's recommended that you use `CoreUISafeInsets` for a `ScreenGui` whose contents should remain unobscured by both device cutouts **and** core screen elements.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenInsets#DeviceSafeInsets)
          */
@@ -23411,7 +23455,7 @@ declare namespace Enum {
         }
         export const DeviceSafeInsets: DeviceSafeInsets;
         /**
-         * Core UI insets are added to the <code>DeviceSafeInsets</code> area, resulting in an area guaranteed to be unobscured by both device screen cutouts and Roblox core UI elements like the top bar buttons. This mode is recommended for any <code>ScreenGui</code> that contains interactive and/or important UI elements such as buttons and status messages.
+         * Core UI insets are added to the `DeviceSafeInsets` area, resulting in an area guaranteed to be unobscured by both device screen cutouts and Roblox core UI elements like the top bar buttons. This mode is recommended for any `ScreenGui` that contains interactive and/or important UI elements such as buttons and status messages.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenInsets#CoreUISafeInsets)
          */
@@ -23422,7 +23466,7 @@ declare namespace Enum {
         }
         export const CoreUISafeInsets: CoreUISafeInsets;
         /**
-         * Top bar safe area insets are added to the <code>DeviceSafeInsets</code> area, resulting in an area guaranteed to be unobscured by both device screen cutouts and Roblox core UI elements like the experience controls. Unlike <code>CoreUISafeInsets</code>, this area's position and size is dynamic and is limited to the space available within the top bar area itself, outside of <code>CoreUISafeInsets</code>.
+         * Top bar safe area insets are added to the `DeviceSafeInsets` area, resulting in an area guaranteed to be unobscured by both device screen cutouts and Roblox core UI elements like the experience controls. Unlike `CoreUISafeInsets`, this area's position and size is dynamic and is limited to the space available within the top bar area itself, outside of `CoreUISafeInsets`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenInsets#TopbarSafeInsets)
          */
@@ -23500,7 +23544,7 @@ declare namespace Enum {
     }
     export type ScreenOrientation = ScreenOrientation.LandscapeLeft | ScreenOrientation.LandscapeRight | ScreenOrientation.LandscapeSensor | ScreenOrientation.Portrait | ScreenOrientation.Sensor;
     /**
-     * Indicates when the <code>ScrollingFrame</code> should be insetted by the space needed to show the scroll bar.
+     * Indicates when the `ScrollingFrame` should be insetted by the space needed to show the scroll bar.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollBarInset)
      */
@@ -23542,7 +23586,7 @@ declare namespace Enum {
     }
     export type ScrollBarInset = ScrollBarInset.None | ScrollBarInset.ScrollBar | ScrollBarInset.Always;
     /**
-     * This enum is used by <code>ScrollingFrame.ScrollingDirection</code> to specify the direction scrolling is allowed.
+     * This enum is used by `ScrollingFrame.ScrollingDirection` to specify the direction scrolling is allowed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollingDirection)
      */
@@ -23780,7 +23824,7 @@ declare namespace Enum {
     }
     export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics | SecurityCapability.UI | SecurityCapability.CSG | SecurityCapability.Chat | SecurityCapability.Animation | SecurityCapability.Avatar | SecurityCapability.Input | SecurityCapability.Environment | SecurityCapability.RemoteEvent | SecurityCapability.LegacySound;
     /**
-     * Customization options for gamepad selection when <code>GuiBase2d.SelectionGroup</code> is true.
+     * Customization options for gamepad selection when `GuiBase2d.SelectionGroup` is true.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SelectionBehavior)
      */
@@ -24128,7 +24172,7 @@ declare namespace Enum {
      */
     export namespace SignalBehavior {
         /**
-         * The default behavior; currently equivalent to <code>Immediate</code> but this will eventually change to <code>Deferred</code>.
+         * The default behavior; currently equivalent to `Immediate` but this will eventually change to `Deferred`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SignalBehavior#Default)
          */
@@ -24161,7 +24205,7 @@ declare namespace Enum {
         }
         export const Deferred: Deferred;
         /**
-         * Equivalent to <code>Deferred</code> but only for events triggered by changes in ancestry.
+         * Equivalent to `Deferred` but only for events triggered by changes in ancestry.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SignalBehavior#AncestryDeferred)
          */
@@ -24301,13 +24345,13 @@ declare namespace Enum {
     }
     export type SortDirection = SortDirection.Ascending | SortDirection.Descending;
     /**
-     * Used by <code>UIGridStyleLayout.SortOrder</code> to order the elements in the layout.
+     * Used by `UIGridStyleLayout.SortOrder` to order the elements in the layout.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SortOrder)
      */
     export namespace SortOrder {
         /**
-         * Elements are ordered by their <code>Instance.Name</code> in alphanumeric order.
+         * Elements are ordered by their `Instance.Name` in alphanumeric order.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SortOrder#Name)
          */
@@ -24318,7 +24362,9 @@ declare namespace Enum {
         }
         export const Name: Name;
         /**
-         * <strong>Deprecated:</strong> <br>Elements are ordered by the function passed to <code>UIGridStyleLayout:SetCustomSortFunction()</code>.
+         * **Deprecated:**
+         *
+         * Elements are ordered by the function passed to `UIGridStyleLayout:SetCustomSortFunction()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SortOrder#Custom)
          */
@@ -24329,7 +24375,7 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         /**
-         * Elements are ordered by <code>GuiObject.LayoutOrder</code> in ascending order; for example <code>0</code> will be placed before <code>1</code>.
+         * Elements are ordered by `GuiObject.LayoutOrder` in ascending order; for example `0` will be placed before `1`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SortOrder#LayoutOrder)
          */
@@ -24404,7 +24450,7 @@ declare namespace Enum {
     }
     export type SpecialKey = SpecialKey.Insert | SpecialKey.Home | SpecialKey.End | SpecialKey.PageUp | SpecialKey.PageDown | SpecialKey.ChatHotkey;
     /**
-     * Used by <code>UIGridLayout.StartCorner</code> to decide where the first element is placed.
+     * Used by `UIGridLayout.StartCorner` to decide where the first element is placed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StartCorner)
      */
@@ -24457,13 +24503,15 @@ declare namespace Enum {
     }
     export type StartCorner = StartCorner.TopLeft | StartCorner.TopRight | StartCorner.BottomLeft | StartCorner.BottomRight;
     /**
-     * <strong>Deprecated:</strong> This enum is deprecated as it was only used by deprecated methods and events. It should not be used in new work.<br>This enum was used with the unfinished <code>Status</code> library.
+     * **Deprecated:** This enum is deprecated as it was only used by deprecated methods and events. It should not be used in new work.
+     *
+     * This enum was used with the unfinished `Status` library.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Status)
      */
     export namespace Status {
         /**
-         * <strong>Deprecated:</strong> This option is deprecated.
+         * **Deprecated:** This option is deprecated.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Status#Poison)
          */
@@ -24474,7 +24522,7 @@ declare namespace Enum {
         }
         export const Poison: Poison;
         /**
-         * <strong>Deprecated:</strong> This option is deprecated.
+         * **Deprecated:** This option is deprecated.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Status#Confusion)
          */
@@ -24536,7 +24584,7 @@ declare namespace Enum {
      */
     export namespace StreamingIntegrityMode {
         /**
-         * Default behavior (currently equivalent to <strong>Disabled</strong>).
+         * Default behavior (currently equivalent to **Disabled**).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StreamingIntegrityMode#Default)
          */
@@ -24589,7 +24637,9 @@ declare namespace Enum {
      */
     export namespace StreamingPauseMode {
         /**
-         * <strong>Deprecated:</strong> <br>Default behavior (currently no change to gameplay).
+         * **Deprecated:**
+         *
+         * Default behavior (currently no change to gameplay).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StreamingPauseMode#Default)
          */
@@ -24600,7 +24650,9 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * <strong>Deprecated:</strong> <br>No change to gameplay due to streaming region availability.
+         * **Deprecated:**
+         *
+         * No change to gameplay due to streaming region availability.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StreamingPauseMode#Disabled)
          */
@@ -24611,7 +24663,9 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
-         * <strong>Deprecated:</strong> <br>Client owned physics is paused.
+         * **Deprecated:**
+         *
+         * Client owned physics is paused.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StreamingPauseMode#ClientPhysicsPause)
          */
@@ -26493,7 +26547,7 @@ declare namespace Enum {
     }
     export type StudioStyleGuideModifier = StudioStyleGuideModifier.Default | StudioStyleGuideModifier.Selected | StudioStyleGuideModifier.Pressed | StudioStyleGuideModifier.Disabled | StudioStyleGuideModifier.Hover;
     /**
-     * The Style Enum is used to set what style of supports the <code>TrussPart</code> has.
+     * The Style Enum is used to set what style of supports the `TrussPart` has.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Style)
      */
@@ -26704,7 +26758,7 @@ declare namespace Enum {
     }
     export type SubscriptionState = SubscriptionState.NeverSubscribed | SubscriptionState.SubscribedWillRenew | SubscriptionState.SubscribedWillNotRenew | SubscriptionState.SubscribedRenewalPaymentPending | SubscriptionState.Expired;
     /**
-     * This item is deprecated and is replaced by the <code>SurfaceType</code> enum.
+     * This item is deprecated and is replaced by the `SurfaceType` enum.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SurfaceConstraint)
      */
@@ -26782,13 +26836,13 @@ declare namespace Enum {
     }
     export type SurfaceGuiShape = SurfaceGuiShape.Flat | SurfaceGuiShape.CurvedHorizontally;
     /**
-     * Used by <code>SurfaceGui.SizingMode</code> to control the sizing behavior of a <code>SurfaceGui</code>.
+     * Used by `SurfaceGui.SizingMode` to control the sizing behavior of a `SurfaceGui`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SurfaceGuiSizingMode)
      */
     export namespace SurfaceGuiSizingMode {
         /**
-         * Renders with a fixed size set using <code>SurfaceGui.CanvasSize</code>.
+         * Renders with a fixed size set using `SurfaceGui.CanvasSize`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SurfaceGuiSizingMode#FixedSize)
          */
@@ -26799,7 +26853,7 @@ declare namespace Enum {
         }
         export const FixedSize: FixedSize;
         /**
-         * Renders with a variable size based on <code>SurfaceGui.PixelsPerStud</code> and the SurfaceGui's size in studs.
+         * Renders with a variable size based on `SurfaceGui.PixelsPerStud` and the SurfaceGui's size in studs.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SurfaceGuiSizingMode#PixelsPerStud)
          */
@@ -26897,7 +26951,7 @@ declare namespace Enum {
         }
         export const Universal: Universal;
         /**
-         * Adds a yellow hinge to the surface. Parts touching it stick to the surface, allowing for rotations using physics. This should not be used for future work and existing instances should be replaced with a <code>HingeConstraint</code>.
+         * Adds a yellow hinge to the surface. Parts touching it stick to the surface, allowing for rotations using physics. This should not be used for future work and existing instances should be replaced with a `HingeConstraint`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SurfaceType#Hinge)
          */
@@ -26930,7 +26984,7 @@ declare namespace Enum {
         }
         export const SteppingMotor: SteppingMotor;
         /**
-         * Previously similar to <strong>Smooth</strong> with outlines but no longer relevant since outlines have been removed.
+         * Previously similar to **Smooth** with outlines but no longer relevant since outlines have been removed.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SurfaceType#SmoothNoOutlines)
          */
@@ -27008,7 +27062,7 @@ declare namespace Enum {
     }
     export type SwipeDirection = SwipeDirection.Right | SwipeDirection.Left | SwipeDirection.Up | SwipeDirection.Down | SwipeDirection.None;
     /**
-     * Used by <code>UITableLayout.MajorAxis</code> to decide whether direct siblings are rows or columns.
+     * Used by `UITableLayout.MajorAxis` to decide whether direct siblings are rows or columns.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TableMajorAxis)
      */
@@ -27073,13 +27127,13 @@ declare namespace Enum {
     }
     export type TeamCreateErrorState = TeamCreateErrorState.PlaceSizeTooLarge | TeamCreateErrorState.PlaceSizeApproachingLimit | TeamCreateErrorState.NoError;
     /**
-     * Represents the different lighting systems available for rendering the 3D world. It is used by the <code>Lighting.Technology</code> property.
+     * Represents the different lighting systems available for rendering the 3D world. It is used by the `Lighting.Technology` property.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Technology)
      */
     export namespace Technology {
         /**
-         * Uses a 4&times;4&times;4 voxel map for light and shadow calculation.
+         * Uses a 4×4×4 voxel map for light and shadow calculation.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Technology#Voxel)
          */
@@ -27090,7 +27144,7 @@ declare namespace Enum {
         }
         export const Voxel: Voxel;
         /**
-         * Simulates the removed legacy technology and is now deprecated. To achieve a similar look, use <code>Voxel</code> Lighting and add a <code>ColorGradingEffect</code> post‑processing effect set to the <code>Retro</code> preset.
+         * Simulates the removed legacy technology and is now deprecated. To achieve a similar look, use `Voxel` Lighting and add a `ColorGradingEffect` post‑processing effect set to the `Retro` preset.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Technology#Compatibility)
          */
@@ -27123,7 +27177,7 @@ declare namespace Enum {
         }
         export const Future: Future;
         /**
-         * <strong>Deprecated:</strong> This option is deprecated and cannot be selected in Studio.
+         * **Deprecated:** This option is deprecated and cannot be selected in Studio.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Technology#Legacy)
          */
@@ -27134,7 +27188,7 @@ declare namespace Enum {
         }
         export const Legacy: Legacy;
         /**
-         * <strong>Deprecated:</strong> This option is deprecated and cannot be selected in Studio.
+         * **Deprecated:** This option is deprecated and cannot be selected in Studio.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Technology#Unified)
          */
@@ -27379,7 +27433,7 @@ declare namespace Enum {
     }
     export type TeleportState = TeleportState.RequestedFromServer | TeleportState.Started | TeleportState.WaitingForServer | TeleportState.Failed | TeleportState.InProgress;
     /**
-     * Determines the type of teleport destination for a <code>TeleportService</code> teleport call.
+     * Determines the type of teleport destination for a `TeleportService` teleport call.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportType)
      */
@@ -27588,13 +27642,13 @@ declare namespace Enum {
     }
     export type TerrainFace = TerrainFace.Top | TerrainFace.Side | TerrainFace.Bottom;
     /**
-     * Indicates the status of a <code>TextChatMessage</code>.
+     * Indicates the status of a `TextChatMessage`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextChatMessageStatus)
      */
     export namespace TextChatMessageStatus {
         /**
-         * Generic failed status for any other <code>TextChannel:SendAsync()</code> failures.
+         * Generic failed status for any other `TextChannel:SendAsync()` failures.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextChatMessageStatus#Unknown)
          */
@@ -27660,7 +27714,7 @@ declare namespace Enum {
         }
         export const InvalidPrivacySettings: InvalidPrivacySettings;
         /**
-         * Message's <code>TextSource</code> is either not in the intended <code>TextChannel</code> or <code>TextSource.CanSend</code> is <code>false</code>.
+         * Message's `TextSource` is either not in the intended `TextChannel` or `TextSource.CanSend` is `false`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextChatMessageStatus#InvalidTextChannelPermissions)
          */
@@ -27841,7 +27895,7 @@ declare namespace Enum {
     }
     export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone | TextInputType.Password | TextInputType.PasswordShown | TextInputType.Username | TextInputType.OneTimePassword;
     /**
-     * Controls the truncation of text when using the <code>TextTruncate</code> property.
+     * Controls the truncation of text when using the `TextTruncate` property.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextTruncate)
      */
@@ -27858,7 +27912,7 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * Text is truncated at the end of the text; extra graphemes that cannot fit into the space are replaced with <code>...</code>. Word boundaries are respected if possible. For example, if the control is between -&gt; and &lt;- like so: <code>-&gt;Long text is truncated at the en&lt;-d of the last complete word</code> The text will be: <code>Long text is truncated at the...</code>
+         * Text is truncated at the end of the text; extra graphemes that cannot fit into the space are replaced with `...`. Word boundaries are respected if possible. For example, if the control is between -> and <- like so: `->Long text is truncated at the en<-d of the last complete word` The text will be: `Long text is truncated at the...`
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextTruncate#AtEnd)
          */
@@ -27869,7 +27923,7 @@ declare namespace Enum {
         }
         export const AtEnd: AtEnd;
         /**
-         * If the end of the line occurs in the middle of a word, the text is truncated inside of that word. Extra graphemes that cannot fit into the space are replaced with <code>...</code>. For example, if the control is between -&gt; and &lt;- like so: <code>-&gt;Long text is truncated at the en&lt;-d of the last complete word</code> The text will be: <code>Long text is truncated at the en...</code>
+         * If the end of the line occurs in the middle of a word, the text is truncated inside of that word. Extra graphemes that cannot fit into the space are replaced with `...`. For example, if the control is between -> and <- like so: `->Long text is truncated at the en<-d of the last complete word` The text will be: `Long text is truncated at the en...`
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextTruncate#SplitWord)
          */
@@ -27967,13 +28021,13 @@ declare namespace Enum {
     }
     export type TextYAlignment = TextYAlignment.Top | TextYAlignment.Center | TextYAlignment.Bottom;
     /**
-     * Describes how the texture of a <code>Trail</code> or <code>Beam</code> behaves.
+     * Describes how the texture of a `Trail` or `Beam` behaves.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextureMode)
      */
     export namespace TextureMode {
         /**
-         * For a <code>Trail</code>, the texture will stretch out based on the lifetime of the trail, and shrink inwards if the trail's attachments stop moving. For a <code>Beam</code>, the texture will repeat <code>TextureLength</code> times across the beam's overall length. See <a href="../../../effects/beams.md#texture-lengthmode">here</a> for details.
+         * For a `Trail`, the texture will stretch out based on the lifetime of the trail, and shrink inwards if the trail's attachments stop moving. For a `Beam`, the texture will repeat `TextureLength` times across the beam's overall length. See [here](../../../effects/beams.md#texture-lengthmode) for details.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextureMode#Stretch)
          */
@@ -27984,7 +28038,7 @@ declare namespace Enum {
         }
         export const Stretch: Stretch;
         /**
-         * For a <code>Trail</code>, the texture will be tiled as the length of the trail changes, but the textures will remain stationary relative to their attachments. For a <code>Beam</code>, the texture repetitions will equal the beam's overall length (in&nbsp;studs) divided by its <code>TextureLength</code>. See <a href="../../../effects/beams.md#texture-lengthmode">here</a> for details.
+         * For a `Trail`, the texture will be tiled as the length of the trail changes, but the textures will remain stationary relative to their attachments. For a `Beam`, the texture repetitions will equal the beam's overall length (in studs) divided by its `TextureLength`. See [here](../../../effects/beams.md#texture-lengthmode) for details.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextureMode#Wrap)
          */
@@ -27995,7 +28049,7 @@ declare namespace Enum {
         }
         export const Wrap: Wrap;
         /**
-         * For a <code>Trail</code>, the texture will be rolled out as the attachments move, and they will remain in place until their lifetime is met. This setting is ideal for trail textures that should appear "stamped" where rendered, such as paw prints or tire tracks. This value is not supported for <code>Beam</code> and therefore behaves identically to <strong>Wrap</strong>.
+         * For a `Trail`, the texture will be rolled out as the attachments move, and they will remain in place until their lifetime is met. This setting is ideal for trail textures that should appear "stamped" where rendered, such as paw prints or tire tracks. This value is not supported for `Beam` and therefore behaves identically to **Wrap**.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextureMode#Static)
          */
@@ -28015,7 +28069,7 @@ declare namespace Enum {
      */
     export namespace TextureQueryType {
         /**
-         * Texture memory for objects other than <code>Humanoid</code>.
+         * Texture memory for objects other than `Humanoid`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextureQueryType#NonHumanoid)
          */
@@ -28026,7 +28080,7 @@ declare namespace Enum {
         }
         export const NonHumanoid: NonHumanoid;
         /**
-         * Unreferenced texture memory for objects other than <code>Humanoid</code>.
+         * Unreferenced texture memory for objects other than `Humanoid`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextureQueryType#NonHumanoidOrphaned)
          */
@@ -28037,7 +28091,7 @@ declare namespace Enum {
         }
         export const NonHumanoidOrphaned: NonHumanoidOrphaned;
         /**
-         * Texture memory for <code>Humanoid</code>.
+         * Texture memory for `Humanoid`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextureQueryType#Humanoid)
          */
@@ -28048,7 +28102,7 @@ declare namespace Enum {
         }
         export const Humanoid: Humanoid;
         /**
-         * Unreferenced texture memory for <code>Humanoid</code>.
+         * Unreferenced texture memory for `Humanoid`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextureQueryType#HumanoidOrphaned)
          */
@@ -29017,7 +29071,7 @@ declare namespace Enum {
     }
     export type TriStateBoolean = TriStateBoolean.False | TriStateBoolean.True | TriStateBoolean.Unknown;
     /**
-     * The completion status of a <code>GuiObject</code> tween function.
+     * The completion status of a `GuiObject` tween function.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TweenStatus)
      */
@@ -29048,13 +29102,13 @@ declare namespace Enum {
     }
     export type TweenStatus = TweenStatus.Canceled | TweenStatus.Completed;
     /**
-     * Used with <code>UIDragDetector</code> to determine bounding behavior of the dragged UI object when <code>UIDragDetector.BoundingUI</code> is set.
+     * Used with `UIDragDetector` to determine bounding behavior of the dragged UI object when `UIDragDetector.BoundingUI` is set.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorBoundingBehavior)
      */
     export namespace UIDragDetectorBoundingBehavior {
         /**
-         * Mimics <strong>EntireObject</strong> behavior for a UI object that's entirely contained by the <code>BoundingUI</code>, or else <strong>HitPoint</strong> for a UI object that's partially outside the <code>BoundingUI</code>.
+         * Mimics **EntireObject** behavior for a UI object that's entirely contained by the `BoundingUI`, or else **HitPoint** for a UI object that's partially outside the `BoundingUI`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorBoundingBehavior#Automatic)
          */
@@ -29065,7 +29119,7 @@ declare namespace Enum {
         }
         export const Automatic: Automatic;
         /**
-         * Bounds the entire dragged UI object within the <code>BoundingUI</code>.
+         * Bounds the entire dragged UI object within the `BoundingUI`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorBoundingBehavior#EntireObject)
          */
@@ -29090,13 +29144,13 @@ declare namespace Enum {
     }
     export type UIDragDetectorBoundingBehavior = UIDragDetectorBoundingBehavior.Automatic | UIDragDetectorBoundingBehavior.EntireObject | UIDragDetectorBoundingBehavior.HitPoint;
     /**
-     * Used with <code>DragDetector</code> to set the paradigm which defines the relativity of inputs/outputs from a custom drag function.
+     * Used with `DragDetector` to set the paradigm which defines the relativity of inputs/outputs from a custom drag function.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorDragRelativity)
      */
     export namespace UIDragDetectorDragRelativity {
         /**
-         * Designates the input and return values as the absolute target position/rotation in the space defined by <code>DragSpace</code>.
+         * Designates the input and return values as the absolute target position/rotation in the space defined by `DragSpace`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorDragRelativity#Absolute)
          */
@@ -29107,7 +29161,7 @@ declare namespace Enum {
         }
         export const Absolute: Absolute;
         /**
-         * Designates the input and return values as the change from the current position/rotation in the space defined by <code>DragSpace</code>.
+         * Designates the input and return values as the change from the current position/rotation in the space defined by `DragSpace`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorDragRelativity#Relative)
          */
@@ -29121,13 +29175,13 @@ declare namespace Enum {
     }
     export type UIDragDetectorDragRelativity = UIDragDetectorDragRelativity.Absolute | UIDragDetectorDragRelativity.Relative;
     /**
-     * Used with <code>DragDetector</code> to set the paradigm which defines the space of inputs/outputs from a custom drag function.
+     * Used with `DragDetector` to set the paradigm which defines the space of inputs/outputs from a custom drag function.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorDragSpace)
      */
     export namespace UIDragDetectorDragSpace {
         /**
-         * Designates the input and return values' space as the local space of the detector's parent <code>GuiObject</code>.
+         * Designates the input and return values' space as the local space of the detector's parent `GuiObject`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorDragSpace#Parent)
          */
@@ -29138,7 +29192,7 @@ declare namespace Enum {
         }
         export const Parent: Parent;
         /**
-         * Designates the input and return values' space as that of the <code>LayerCollector</code>.
+         * Designates the input and return values' space as that of the `LayerCollector`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorDragSpace#LayerCollector)
          */
@@ -29149,7 +29203,7 @@ declare namespace Enum {
         }
         export const LayerCollector: LayerCollector;
         /**
-         * Designates the input and return values' space as that of the <code>ReferenceUIInstance</code>. For <code>DragRelativity</code> and <code>DragUDim2</code> purposes, the <code>(0, 0)</code> origin is the absolute center position of the <code>ReferenceUIInstance</code>. If <code>ReferenceUIInstance</code> is not <code>nil</code>, this will behave the same as <strong>Parent</strong>.
+         * Designates the input and return values' space as that of the `ReferenceUIInstance`. For `DragRelativity` and `DragUDim2` purposes, the `(0, 0)` origin is the absolute center position of the `ReferenceUIInstance`. If `ReferenceUIInstance` is not `nil`, this will behave the same as **Parent**.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorDragSpace#Reference)
          */
@@ -29163,13 +29217,13 @@ declare namespace Enum {
     }
     export type UIDragDetectorDragSpace = UIDragDetectorDragSpace.Parent | UIDragDetectorDragSpace.LayerCollector | UIDragDetectorDragSpace.Reference;
     /**
-     * Used with <code>UIDragDetector</code> as the paradigm to generate proposed motion, given a stream of input position vectors.
+     * Used with `UIDragDetector` as the paradigm to generate proposed motion, given a stream of input position vectors.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorDragStyle)
      */
     export namespace UIDragDetectorDragStyle {
         /**
-         * 2D motion in the plane of the <code>LayerCollector</code>.
+         * 2D motion in the plane of the `LayerCollector`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorDragStyle#TranslatePlane)
          */
@@ -29180,7 +29234,7 @@ declare namespace Enum {
         }
         export const TranslatePlane: TranslatePlane;
         /**
-         * 1D motion along the detector's <code>DragAxis</code>.
+         * 1D motion along the detector's `DragAxis`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorDragStyle#TranslateLine)
          */
@@ -29191,7 +29245,7 @@ declare namespace Enum {
         }
         export const TranslateLine: TranslateLine;
         /**
-         * By default, rotation about the absolute center position of the detector's parent <code>GuiObject</code>. If <code>ReferenceUIInstance</code> is set, rotation happens about that instance's absolute center position.
+         * By default, rotation about the absolute center position of the detector's parent `GuiObject`. If `ReferenceUIInstance` is set, rotation happens about that instance's absolute center position.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorDragStyle#Rotate)
          */
@@ -29202,7 +29256,7 @@ declare namespace Enum {
         }
         export const Rotate: Rotate;
         /**
-         * Calculates desired motion via a custom function provided through <code>SetDragStyleFunction()</code>.
+         * Calculates desired motion via a custom function provided through `SetDragStyleFunction()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorDragStyle#Scriptable)
          */
@@ -29216,13 +29270,13 @@ declare namespace Enum {
     }
     export type UIDragDetectorDragStyle = UIDragDetectorDragStyle.TranslatePlane | UIDragDetectorDragStyle.TranslateLine | UIDragDetectorDragStyle.Rotate | UIDragDetectorDragStyle.Scriptable;
     /**
-     * Describes how the clicked <code>GuiObject</code> will be treated once the desired motion has been calculated.
+     * Describes how the clicked `GuiObject` will be treated once the desired motion has been calculated.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorResponseStyle)
      */
     export namespace UIDragDetectorResponseStyle {
         /**
-         * Move by the <code>Offset</code> values of the detector's parent's <code>GuiObject.Position</code> value.
+         * Move by the `Offset` values of the detector's parent's `GuiObject.Position` value.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorResponseStyle#Offset)
          */
@@ -29233,7 +29287,7 @@ declare namespace Enum {
         }
         export const Offset: Offset;
         /**
-         * Move by the <code>Scale</code> values of the detector's parent's <code>GuiObject.Position</code> value.
+         * Move by the `Scale` values of the detector's parent's `GuiObject.Position` value.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorResponseStyle#Scale)
          */
@@ -29244,7 +29298,7 @@ declare namespace Enum {
         }
         export const Scale: Scale;
         /**
-         * The UI element will not move at all, but the <code>Offset</code> values of the detector's <code>DragUDim2</code> will still be updated and the detector's events will still fire, allowing you to respond to drag manipulation however you'd like.
+         * The UI element will not move at all, but the `Offset` values of the detector's `DragUDim2` will still be updated and the detector's events will still fire, allowing you to respond to drag manipulation however you'd like.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorResponseStyle#CustomOffset)
          */
@@ -29255,7 +29309,7 @@ declare namespace Enum {
         }
         export const CustomOffset: CustomOffset;
         /**
-         * The UI element will not move at all, but the <code>Scale</code> values of the detector's <code>DragUDim2</code> will still be updated and the detector's events will still fire, allowing you to respond to drag manipulation however you'd like.
+         * The UI element will not move at all, but the `Scale` values of the detector's `DragUDim2` will still be updated and the detector's events will still fire, allowing you to respond to drag manipulation however you'd like.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorResponseStyle#CustomScale)
          */
@@ -29269,13 +29323,13 @@ declare namespace Enum {
     }
     export type UIDragDetectorResponseStyle = UIDragDetectorResponseStyle.Offset | UIDragDetectorResponseStyle.Scale | UIDragDetectorResponseStyle.CustomOffset | UIDragDetectorResponseStyle.CustomScale;
     /**
-     * Used with <code>UIDragDetector.UIDragSpeedAxisMapping</code> to determine the <strong>X</strong>/<strong>Y</strong> dimension dragging speeds.
+     * Used with `UIDragDetector.UIDragSpeedAxisMapping` to determine the **X**\/**Y** dimension dragging speeds.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragSpeedAxisMapping)
      */
     export namespace UIDragSpeedAxisMapping {
         /**
-         * Default setting for a detector's <code>UIDragSpeedAxisMapping</code> where the <strong>X</strong> and <strong>Y</strong> axis speeds are based off the <strong>X</strong> and <strong>Y</strong> <code>Scale</code>/<code>Offset</code> values respectively.
+         * Default setting for a detector's `UIDragSpeedAxisMapping` where the **X** and **Y** axis speeds are based off the **X** and **Y** `Scale`/`Offset` values respectively.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragSpeedAxisMapping#XY)
          */
@@ -29286,7 +29340,7 @@ declare namespace Enum {
         }
         export const XY: XY;
         /**
-         * Both the <strong>X</strong> and <strong>Y</strong> axis speeds are based off the <strong>X</strong> axis for <code>Scale</code>, while the <code>Offset</code> values still apply to their respective axis.
+         * Both the **X** and **Y** axis speeds are based off the **X** axis for `Scale`, while the `Offset` values still apply to their respective axis.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragSpeedAxisMapping#XX)
          */
@@ -29297,7 +29351,7 @@ declare namespace Enum {
         }
         export const XX: XX;
         /**
-         * Both the <strong>X</strong> and <strong>Y</strong> axis speeds are based off the <strong>Y</strong> axis for <code>Scale</code>, while the <code>Offset</code> values still apply to their respective axis.
+         * Both the **X** and **Y** axis speeds are based off the **Y** axis for `Scale`, while the `Offset` values still apply to their respective axis.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragSpeedAxisMapping#YY)
          */
@@ -29311,7 +29365,7 @@ declare namespace Enum {
     }
     export type UIDragSpeedAxisMapping = UIDragSpeedAxisMapping.XY | UIDragSpeedAxisMapping.XX | UIDragSpeedAxisMapping.YY;
     /**
-     * In a <code>UIListLayout</code> flex layout, specifies how to distribute extra space in the parent container.
+     * In a `UIListLayout` flex layout, specifies how to distribute extra space in the parent container.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIFlexAlignment)
      */
@@ -29350,7 +29404,7 @@ declare namespace Enum {
         }
         export const SpaceAround: SpaceAround;
         /**
-         * Siblings maintain their defined width or height. Equal spacing is added <strong>between</strong> siblings, but no additional space is added <strong>around</strong> siblings.
+         * Siblings maintain their defined width or height. Equal spacing is added **between** siblings, but no additional space is added **around** siblings.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIFlexAlignment#SpaceBetween)
          */
@@ -29361,7 +29415,7 @@ declare namespace Enum {
         }
         export const SpaceBetween: SpaceBetween;
         /**
-         * Siblings maintain their defined width or height. Equal spacing is added both <strong>between</strong> and <strong>around</strong> siblings.
+         * Siblings maintain their defined width or height. Equal spacing is added both **between** and **around** siblings.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIFlexAlignment#SpaceEvenly)
          */
@@ -29375,13 +29429,13 @@ declare namespace Enum {
     }
     export type UIFlexAlignment = UIFlexAlignment.None | UIFlexAlignment.Fill | UIFlexAlignment.SpaceAround | UIFlexAlignment.SpaceBetween | UIFlexAlignment.SpaceEvenly;
     /**
-     * Used with <code>UIFlexItem.FlexMode</code> to define how the parent <code>GuiObject</code> grows or shrinks.
+     * Used with `UIFlexItem.FlexMode` to define how the parent `GuiObject` grows or shrinks.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIFlexMode)
      */
     export namespace UIFlexMode {
         /**
-         * The parent <code>GuiObject</code> is unaffected and neither shrinks nor grows.
+         * The parent `GuiObject` is unaffected and neither shrinks nor grows.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIFlexMode#None)
          */
@@ -29392,7 +29446,7 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * Sets an effective <code>1:0</code> grow‑shrink ratio on the parent <code>GuiObject</code>. Objects set to <code>Grow</code> never shrink below their basis size, so overflow may occur if the container becomes smaller than the flex line's combined basis size.
+         * Sets an effective `1:0` grow‑shrink ratio on the parent `GuiObject`. Objects set to `Grow` never shrink below their basis size, so overflow may occur if the container becomes smaller than the flex line's combined basis size.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIFlexMode#Grow)
          */
@@ -29403,7 +29457,7 @@ declare namespace Enum {
         }
         export const Grow: Grow;
         /**
-         * Sets an effective <code>0:1</code> grow‑shrink ratio on the parent <code>GuiObject</code>. Objects set to <code>Shrink</code> never grow above their basis size, so underflow may occur if the container becomes larger than the flex line's combined basis size.
+         * Sets an effective `0:1` grow‑shrink ratio on the parent `GuiObject`. Objects set to `Shrink` never grow above their basis size, so underflow may occur if the container becomes larger than the flex line's combined basis size.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIFlexMode#Shrink)
          */
@@ -29414,7 +29468,7 @@ declare namespace Enum {
         }
         export const Shrink: Shrink;
         /**
-         * Sets an effective <code>1:1</code> grow‑shrink ratio on the parent <code>GuiObject</code>. This setting ensures the flex line always fills the container, even if the container size changes.
+         * Sets an effective `1:1` grow‑shrink ratio on the parent `GuiObject`. This setting ensures the flex line always fills the container, even if the container size changes.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIFlexMode#Fill)
          */
@@ -29425,7 +29479,7 @@ declare namespace Enum {
         }
         export const Fill: Fill;
         /**
-         * Enables the <code>GrowRatio</code> and <code>ShrinkRatio</code> properties for the <code>UIFlexItem</code>, allowing for relative growth or shrinking of the parent <code>GuiObject</code> in a ratio compared to other flex objects also under control of a <code>UIFlexItem</code>.
+         * Enables the `GrowRatio` and `ShrinkRatio` properties for the `UIFlexItem`, allowing for relative growth or shrinking of the parent `GuiObject` in a ratio compared to other flex objects also under control of a `UIFlexItem`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIFlexMode#Custom)
          */
@@ -29443,7 +29497,7 @@ declare namespace Enum {
      */
     export namespace UITheme {
         /**
-         * <strong>Deprecated:</strong> This option is deprecated.
+         * **Deprecated:** This option is deprecated.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UITheme#Light)
          */
@@ -29454,7 +29508,7 @@ declare namespace Enum {
         }
         export const Light: Light;
         /**
-         * <strong>Deprecated:</strong> This option is deprecated.
+         * **Deprecated:** This option is deprecated.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UITheme#Dark)
          */
@@ -29468,7 +29522,7 @@ declare namespace Enum {
     }
     export type UITheme = UITheme.Light | UITheme.Dark;
     /**
-     * Controls the UI message under the <code>GuiService</code>.
+     * Controls the UI message under the `GuiService`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UiMessageType)
      */
@@ -29575,13 +29629,13 @@ declare namespace Enum {
     }
     export type UserCFrame = UserCFrame.Head | UserCFrame.LeftHand | UserCFrame.RightHand | UserCFrame.Floor;
     /**
-     * The <strong>UserInputState</strong> enum describes the state of an input that is currently or was recently performed.
+     * The **UserInputState** enum describes the state of an input that is currently or was recently performed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserInputState)
      */
     export namespace UserInputState {
         /**
-         * Occurs when an <code>InputObject</code> starts to interact with the game. For example, a mouse button down, or a key down, or when a touch begins touching the screen.
+         * Occurs when an `InputObject` starts to interact with the game. For example, a mouse button down, or a key down, or when a touch begins touching the screen.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserInputState#Begin)
          */
@@ -29592,7 +29646,7 @@ declare namespace Enum {
         }
         export const Begin: Begin;
         /**
-         * Occurs each frame an <code>InputObject</code> has already begun interacting with the game and part of its state is changing. For example, a movement of the mouse position, a gamepad thumbstick, gamepad trigger button, or screen touch point.
+         * Occurs each frame an `InputObject` has already begun interacting with the game and part of its state is changing. For example, a movement of the mouse position, a gamepad thumbstick, gamepad trigger button, or screen touch point.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserInputState#Change)
          */
@@ -29603,7 +29657,7 @@ declare namespace Enum {
         }
         export const Change: Change;
         /**
-         * When an <code>InputObject</code> finishes interacting with the game. For example, a mouse button up, or a key up, or when a touch stops touching the screen.
+         * When an `InputObject` finishes interacting with the game. For example, a mouse button up, or a key up, or when a touch stops touching the screen.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserInputState#End)
          */
@@ -29614,7 +29668,7 @@ declare namespace Enum {
         }
         export const End: End;
         /**
-         * A special circumstance state that indicates this input is no longer relevant, particularly with <code>ContextActionService</code>. For example, binding two action-handling functions will cause the first to Cancel if an input was already in-progress when the second was bound.
+         * A special circumstance state that indicates this input is no longer relevant, particularly with `ContextActionService`. For example, binding two action-handling functions will cause the first to Cancel if an input was already in-progress when the second was bound.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserInputState#Cancel)
          */
@@ -29843,7 +29897,7 @@ declare namespace Enum {
         }
         export const Gamepad8: Gamepad8;
         /**
-         * Input of Text into a text-based <code>GuiObject</code>. Normally this is only a <code>TextBox</code>.
+         * Input of Text into a text-based `GuiObject`. Normally this is only a `TextBox`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserInputType#TextInput)
          */
@@ -29854,7 +29908,7 @@ declare namespace Enum {
         }
         export const TextInput: TextInput;
         /**
-         * Text input from an input method editor (IME). <code>InputObjects</code> with this type aren't currently fired.
+         * Text input from an input method editor (IME). `InputObjects` with this type aren't currently fired.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserInputType#InputMethod)
          */
@@ -30227,7 +30281,11 @@ declare namespace Enum {
      */
     export namespace VelocityConstraintMode {
         /**
-         * The velocity component in the direction of the line is constrained to the specified value. The line direction is based on the <code>RelativeTo</code> property: <ul> <li><code>Attachment0</code> - The line direction is the   primary axis of <code>Attachment0</code>.</li> <li><code>Attachment1</code> - The line direction is the   primary axis of <code>Attachment1</code>.</li> <li><code>World</code> - The line direction must be specified.</li> </ul>
+         * The velocity component in the direction of the line is constrained to the specified value. The line direction is based on the `RelativeTo` property: - `Attachment0` - The line direction is the   primary axis of `Attachment0`.
+         * - `Attachment1` - The line direction is the   primary axis of `Attachment1`.
+         * - `World` - The line direction must be specified.
+         *
+         *
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VelocityConstraintMode#Line)
          */
@@ -30238,7 +30296,11 @@ declare namespace Enum {
         }
         export const Line: Line;
         /**
-         * The velocity components in the plane are constrained to the specified values. The plane tangents are based on the <code>RelativeTo</code> property: <ul> <li><code>Attachment0</code> - The plane tangents are the two   axes of <code>Attachment0</code>.</li> <li><code>Attachment1</code> - The plane tangents are the two   axes of <code>Attachment1</code>.</li> <li><code>World</code> - The two plane tangents must be   specified</li> </ul>
+         * The velocity components in the plane are constrained to the specified values. The plane tangents are based on the `RelativeTo` property: - `Attachment0` - The plane tangents are the two   axes of `Attachment0`.
+         * - `Attachment1` - The plane tangents are the two   axes of `Attachment1`.
+         * - `World` - The two plane tangents must be   specified
+         *
+         *
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VelocityConstraintMode#Plane)
          */
@@ -30249,7 +30311,11 @@ declare namespace Enum {
         }
         export const Plane: Plane;
         /**
-         * The velocity components must be equal to the vector components specified. The coordinate system of the vector is based on the <code>RelativeTo</code> property: <ul> <li><code>Attachment0</code> - The vector components are in the   coordinate system defined by the axes of   <code>Attachment0</code>.</li> <li><code>Attachment1</code> - The vector components are in the   coordinate system defined by the axes of   <code>Attachment1</code>.</li> <li><code>World</code> - The coordinate system is in the world   and the vector components must be specified.</li> </ul>
+         * The velocity components must be equal to the vector components specified. The coordinate system of the vector is based on the `RelativeTo` property: - `Attachment0` - The vector components are in the   coordinate system defined by the axes of   `Attachment0`.
+         * - `Attachment1` - The vector components are in the   coordinate system defined by the axes of   `Attachment1`.
+         * - `World` - The coordinate system is in the world   and the vector components must be specified.
+         *
+         *
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VelocityConstraintMode#Vector)
          */
@@ -30263,13 +30329,13 @@ declare namespace Enum {
     }
     export type VelocityConstraintMode = VelocityConstraintMode.Line | VelocityConstraintMode.Plane | VelocityConstraintMode.Vector;
     /**
-     * Used by <code>UIGridStyleLayout.VerticalAlignment</code> to align the layout vertically within its parent.
+     * Used by `UIGridStyleLayout.VerticalAlignment` to align the layout vertically within its parent.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerticalAlignment)
      */
     export namespace VerticalAlignment {
         /**
-         * Grid is aligned to the center of its parent along the <strong>Y</strong> axis.
+         * Grid is aligned to the center of its parent along the **Y** axis.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerticalAlignment#Center)
          */
@@ -30311,7 +30377,7 @@ declare namespace Enum {
      */
     export namespace VerticalScrollBarPosition {
         /**
-         * Right side of the <code>ScrollingFrame</code>.
+         * Right side of the `ScrollingFrame`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerticalScrollBarPosition#Right)
          */
@@ -30322,7 +30388,7 @@ declare namespace Enum {
         }
         export const Right: Right;
         /**
-         * Left side of the <code>ScrollingFrame</code>.
+         * Left side of the `ScrollingFrame`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerticalScrollBarPosition#Left)
          */
@@ -30889,7 +30955,7 @@ declare namespace Enum {
     }
     export type VolumetricAudio = VolumetricAudio.Disabled | VolumetricAudio.Automatic | VolumetricAudio.Enabled;
     /**
-     * This Enum was once used to set the direction of <code>Terrain</code> water.
+     * This Enum was once used to set the direction of `Terrain` water.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WaterDirection)
      */
@@ -30952,7 +31018,7 @@ declare namespace Enum {
     }
     export type WaterDirection = WaterDirection.NegX | WaterDirection.X | WaterDirection.NegY | WaterDirection.Y | WaterDirection.NegZ | WaterDirection.Z;
     /**
-     * The WaterForce Enum is used to work with <code>Terrain</code> water cells.
+     * The WaterForce Enum is used to work with `Terrain` water cells.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WaterForce)
      */
@@ -31010,7 +31076,7 @@ declare namespace Enum {
      */
     export namespace WeldConstraintPreserve {
         /**
-         * All <code>WeldConstraints</code> will be returned in the recommended table.
+         * All `WeldConstraints` will be returned in the recommended table.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WeldConstraintPreserve#All)
          */
@@ -31021,7 +31087,7 @@ declare namespace Enum {
         }
         export const All: All;
         /**
-         * <code>WeldConstraints</code> will be ignored and not returned in the recommended table.
+         * `WeldConstraints` will be ignored and not returned in the recommended table.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WeldConstraintPreserve#None)
          */
@@ -31032,7 +31098,7 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * Only <code>WeldConstraints</code> that connect touching parts in the performed operation will be returned in the recommended table.
+         * Only `WeldConstraints` that connect touching parts in the performed operation will be returned in the recommended table.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WeldConstraintPreserve#Touching)
          */
@@ -31122,7 +31188,7 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * This debug mode visualizes corresponding cage mesh vertices bound to an underlying <code>WrapTarget</code>. In order to find corresponding vertices between different cages, the Wrap Deformer algorithm uses UV matching. As long as your <code>WrapLayer</code> cage mesh share the same UV layout as <code>WrapTarget</code>, its vertices will be marked as "bound".
+         * This debug mode visualizes corresponding cage mesh vertices bound to an underlying `WrapTarget`. In order to find corresponding vertices between different cages, the Wrap Deformer algorithm uses UV matching. As long as your `WrapLayer` cage mesh share the same UV layout as `WrapTarget`, its vertices will be marked as "bound".
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerDebugMode#BoundCage)
          */
@@ -31360,7 +31426,7 @@ declare namespace Enum {
     }
     export type WrapTargetDebugMode = WrapTargetDebugMode.None | WrapTargetDebugMode.TargetCageOriginal | WrapTargetDebugMode.TargetCageCompressed | WrapTargetDebugMode.TargetCageInterface | WrapTargetDebugMode.TargetLayerCageOriginal | WrapTargetDebugMode.TargetLayerCageCompressed | WrapTargetDebugMode.TargetLayerInterface | WrapTargetDebugMode.Rbf | WrapTargetDebugMode.OuterCageDetail;
     /**
-     * Used by <code>LayerCollector.ZIndexBehavior</code> to control how the <code>GuiObject.ZIndex</code> property behaves for descendants.
+     * Used by `LayerCollector.ZIndexBehavior` to control how the `GuiObject.ZIndex` property behaves for descendants.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ZIndexBehavior)
      */

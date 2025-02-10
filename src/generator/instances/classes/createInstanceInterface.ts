@@ -7,6 +7,7 @@ import { ApiClass } from "../../../types/ApiDump";
 import { Context } from "../../../types/Context";
 import { createParseConfigFileHost } from "../../../util/createParseConfigFileHost";
 import { getOrSetDefault } from "../../../util/getOrSetDefault";
+import { transformDocs } from "../../transformDocs";
 import { getSafeClassName } from "../alias";
 import { createExtendsClause } from "../createExtendsClause";
 import { createTypeElementsFromApiMembers } from "../createTypeElementsFromApiMembers";
@@ -97,7 +98,7 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 
 			const apiDocsEntry = ctx.docs.get(`@roblox/globaltype/${apiClass.Name}.${apiMember.Name}`);
 			if (apiDocsEntry?.documentation) {
-				comments.push(apiDocsEntry.documentation);
+				comments.push(transformDocs(apiDocsEntry.documentation));
 			}
 
 			if (comments.length > 0) comments.push("");
@@ -118,7 +119,7 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 					const paramDocsEntry = ctx.docs.get(param.documentation);
 					if (paramDocsEntry) {
 						const name = param.name === "self" ? "this" : param.name;
-						comments.push(`@param ${name} ${paramDocsEntry.documentation}`);
+						comments.push(`@param ${name} ${transformDocs(paramDocsEntry.documentation)}`);
 					}
 				}
 			}
@@ -127,7 +128,7 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 				for (const key of apiDocsEntry.returns) {
 					const returnEntry = ctx.docs.get(key);
 					if (returnEntry?.documentation) {
-						comments.push(`@returns ${returnEntry.documentation}`);
+						comments.push(`@returns ${transformDocs(returnEntry.documentation)}`);
 					}
 				}
 			}
@@ -185,7 +186,7 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 
 	const apiDocsEntry = ctx.docs.get(`@roblox/globaltype/${apiClass.Name}`);
 	if (apiDocsEntry?.documentation) {
-		comments.push(`${apiDocsEntry.documentation}\n`);
+		comments.push(`${transformDocs(apiDocsEntry.documentation)}\n`);
 	}
 
 	if (apiClass.Tags) {

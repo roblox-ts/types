@@ -3,6 +3,7 @@ import ts from "typescript";
 import { ApiEnum, ApiEnumItem } from "../../types/ApiDump";
 import { Context } from "../../types/Context";
 import { setJsDocComment } from "../instances/setJsDocComment";
+import { transformDocs } from "../transformDocs";
 
 const VARIABLE_REGEX = /^[a-zA-Z_][a-zA-Z_0-9]*$/;
 
@@ -57,7 +58,7 @@ function createEnumItemInterface(ctx: Context, apiEnum: ApiEnum, apiEnumItem: Ap
 
 	const documentation = ctx.docs.get(`@roblox/enum/${apiEnum.Name}.${apiEnumItem.Name}`)?.documentation;
 	if (documentation) {
-		comments.push(documentation);
+		comments.push(transformDocs(documentation));
 		comments.push("");
 	}
 
@@ -176,7 +177,7 @@ export function createEnumNamespace(ctx: Context, apiEnum: ApiEnum) {
 
 	const documentation = ctx.docs.get(`@roblox/global/Enum.${apiEnum.Name}`)?.documentation;
 	if (documentation) {
-		comments.push(documentation);
+		comments.push(transformDocs(documentation));
 		comments.push("");
 	}
 
