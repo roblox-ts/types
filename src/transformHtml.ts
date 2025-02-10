@@ -74,7 +74,7 @@ const TAG_TRANSFORMERS: { [K in string]?: (node: Element) => string } = {
 		// <pre><code class=\"language-lua\">
 		const className = codeNode.attribs.class;
 		const language = className.startsWith("language-") ? className.slice("language-".length) : "";
-		return `\`\`\`${language}\n${transformNodeList(codeNode.children)}\n\`\`\``;
+		return `\n\`\`\`${language}\n${transformNodeList(codeNode.children)}\n\`\`\``;
 	},
 	a: node => `[${transformNodeList(node.children)}](${node.attribs.href})`,
 	img: node => {

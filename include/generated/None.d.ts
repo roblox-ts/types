@@ -2251,7 +2251,8 @@ interface AnalyticsService extends Instance {
      * @param itemCategory A user defined category for items such as "Vehicle," "Weapon.".
      * @param amount The amount of the currency.
      * @param currency The currency used. Examples: 'gold', 'gems', 'life.'.
-     * @param location The event location. A dictionary that each key-value represents an entry of location data. The key-value is a string-string pair. With this you can query which are the most popular "stores" then maybe you want to increase/lower the price for the stores. See the example below: ```lua
+     * @param location The event location. A dictionary that each key-value represents an entry of location data. The key-value is a string-string pair. With this you can query which are the most popular "stores" then maybe you want to increase/lower the price for the stores. See the example below:
+     * ```lua
      * local location = {     ["placeDesc"] = "Dungeon1",     ["levelDesc"] = "level2",     ["mapDesc"] = "LeftChamberMap",     ["storeName"] = "DarkSmith",     ["userDefindKey"] = "0005" }
      * ```
      * @param customData Optional. User defined data, could be a string, a number or a table.
@@ -2274,7 +2275,8 @@ interface AnalyticsService extends Instance {
      * @param player The player who triggered the error event, nil if not player related.
      * @param logLevel The specified log level (e.g. Debug, Error).
      * @param message User defined message.
-     * @param debugInfo Optional. A dictionary which contains predefined keys including "errorCode" and "stackTrace". Both keys values are strings. stackTrace is a traceback of the current function call stack. ```lua
+     * @param debugInfo Optional. A dictionary which contains predefined keys including "errorCode" and "stackTrace". Both keys values are strings. stackTrace is a traceback of the current function call stack.
+     * ```lua
      * local debugInfo = {             errorCode = '123',             stackTrace = debug.traceback()       }
      * ```
      * @param customData Optional. User defined data, could be a string, a number or a table.
@@ -2298,10 +2300,12 @@ interface AnalyticsService extends Instance {
      * @param player The player who triggered the event.
      * @param category A user defined category for progression.
      * @param progressionStatus Indicates the status of the progression.
-     * @param location The event location. A dictionary that each key-value represents an entry of location data. The key-value is a string-string pair. With this developers can query where is the most frequent location for a specific progression event category. For example, the category could be "LevelUp". ```lua
+     * @param location The event location. A dictionary that each key-value represents an entry of location data. The key-value is a string-string pair. With this developers can query where is the most frequent location for a specific progression event category. For example, the category could be "LevelUp".
+     * ```lua
      * local location = {     ["placeDesc"] = "Dungeon1",     ["levelDesc"] = "level2",     ["mapDesc"] = "LeftChamberMap",     ["ProgresionType"] = "LevelUp",     ["userDefindKey5"] = "0005" }
      * ```
-     * @param statistics Optional. A dictionary that each key-value represents an entry of statistics data that allows developers to track any specific data that they want to collect as players progress through their game. Key-Value is a string-number pair. ```lua
+     * @param statistics Optional. A dictionary that each key-value represents an entry of statistics data that allows developers to track any specific data that they want to collect as players progress through their game. Key-Value is a string-number pair.
+     * ```lua
      * local statistics = {     ["numberOfKills"] = 111,     ["numberOfExp"] = 222,     ["userDefindKey3"] = number,     ["userDefindKey4"] = number,     ["userDefindKey5"] = number }
      * ```
      * @param customData Optional. User defined data, could be a string, a number or a table.
@@ -6073,7 +6077,8 @@ interface AvatarEditorService extends Instance {
      * @param this A service to support developer Avatar Editors.
      * @param itemIds The list of item ids to get details of.
      * @param itemType The type of the item ids provided.
-     * @returns Returns an array of item details with the following fields: ```lua
+     * @returns Returns an array of item details with the following fields:
+     * ```lua
      *   {     "AssetType" = "string",     "CreatorName" = "string",     "CreatorTargetId" = 0,     "CreatorType" = "string",     "Description" = "string",     "FavoriteCount" = 0,     "Genres" = [       "All"     ],     "Id" = 0,     "ItemRestrictions" = [       "Limited"     ],     "ItemStatus": [       "New"     ],     "ItemType" = "string",     "LowestPrice" = 0,     "Name" = "string",     "Price" = 0,     "ProductId" = 0   }
      * ``` .
      *
@@ -20104,7 +20109,8 @@ interface GuiService extends Instance {
     /**
      * **Deprecated:**
      *
-     * **AddSelectionTuple** works similarly to `GuiService:AddSelectionParent()`, but you can give it a tuple of `GuiObject` that you want to be contained in the group. Beware that the second argument is *not* a table, but rather the first of several `GuiObject` in the tuple. To pass the contents of a table, use `unpack`/`unpack`: ```lua
+     * **AddSelectionTuple** works similarly to `GuiService:AddSelectionParent()`, but you can give it a tuple of `GuiObject` that you want to be contained in the group. Beware that the second argument is *not* a table, but rather the first of several `GuiObject` in the tuple. To pass the contents of a table, use `unpack`/`unpack`:
+     * ```lua
      * local frame = script.Parent -- Passing various GuiObject individually GuiService:AddSelectionTuple("InventoryButtons", frame.Sort, frame.Trash, frame.Drop) -- Unpacking a table of GuiObject (unpack/table.unpack are equivalent) local inventoryButtons = { frame.Sort, frame.Trash, frame.Drop } GuiService:AddSelectionTuple("InventoryButtons", unpack(inventoryButtons))
      * ```
      *
@@ -22053,7 +22059,8 @@ interface HumanoidDescription extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidDescription#GetEmotes)
      * @param this Describes the appearance of a Humanoid character including body parts, accessories, colors, scales, animations, and emotes.
-     * @returns A dictionary of emotes where the key is the emote name and the value is an array of emote asset IDs. Example: ```lua
+     * @returns A dictionary of emotes where the key is the emote name and the value is an array of emote asset IDs. Example:
+     * ```lua
      * {     Salute = {3360689775},     Agree = {4849487550},     Disagree = {4849495710} }
      * ``` .
      *
@@ -22066,7 +22073,8 @@ interface HumanoidDescription extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidDescription#GetEquippedEmotes)
      * @param this Describes the appearance of a Humanoid character including body parts, accessories, colors, scales, animations, and emotes.
-     * @returns An array of tables describing the name and slot which each emote is equipped. Example: ```lua
+     * @returns An array of tables describing the name and slot which each emote is equipped. Example:
+     * ```lua
      * {     {Slot = 3, Name = "Salute"},     {Slot = 2, Name = "Agree"},     {Slot = 1, Name = "Disagree"}, }
      * ``` .
      *
@@ -22102,7 +22110,8 @@ interface HumanoidDescription extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidDescription#SetEmotes)
      * @param this Describes the appearance of a Humanoid character including body parts, accessories, colors, scales, animations, and emotes.
-     * @param emotes A dictionary of emotes where the key is the emote name and the value is an array of emote asset IDs. Example: ```lua
+     * @param emotes A dictionary of emotes where the key is the emote name and the value is an array of emote asset IDs. Example:
+     * ```lua
      * {     Salute = {3360689775},     Agree = {4849487550},     Disagree = {4849495710} }
      * ``` .
      *
@@ -22115,9 +22124,11 @@ interface HumanoidDescription extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidDescription#SetEquippedEmotes)
      * @param this Describes the appearance of a Humanoid character including body parts, accessories, colors, scales, animations, and emotes.
-     * @param equippedEmotes An array of emote names. Example: ```lua
+     * @param equippedEmotes An array of emote names. Example:
+     * ```lua
      * { "Disagree", "Agree", "Salute" }
-     * ``` – OR – An array of tables describing the name and slot which each emote is equipped. Example: ```lua
+     * ``` – OR – An array of tables describing the name and slot which each emote is equipped. Example:
+     * ```lua
      * {     {Slot = 3, Name = "Salute"},     {Slot = 2, Name = "Agree"},     {Slot = 1, Name = "Disagree"}, }
      * ``` .
      *
@@ -24697,7 +24708,8 @@ interface MarketplaceService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptBulkPurchase)
      * @param this The service responsible for in-experience transactions.
      * @param player The user to prompt to purchase items.
-     * @param lineItems An array of avatar items to be included in the bulk purchase. Each line item contains the following structure: ```lua
+     * @param lineItems An array of avatar items to be included in the bulk purchase. Each line item contains the following structure:
+     * ```lua
      * {   Type: MarketplaceProductType,   Id: string }
      * ``` Each line item contains the following pairs: - `Type`: The corresponding `MarketplaceProductType` (Enum).
      * - `Id`: The ID of the asset or bundle.
