@@ -57,6 +57,8 @@ export const PLUGIN_ONLY_CLASSES = new Set([
 	"RenderSettings",
 	"RobloxPluginGuiService",
 	"ScriptDebugger",
+	"ScriptDocument",
+	"ScriptEditorService",
 	"Selection",
 	"StatsItem",
 	"Studio",
