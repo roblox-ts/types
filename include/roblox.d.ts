@@ -296,8 +296,21 @@ interface PlayerJoinInfo {
 }
 
 interface BoundActionInfo {
+	/** Describes whether a touch button should be created on TouchEnabled devices */
+	createTouchButton: boolean;
+	/** The description of action set by SetDescription */
+	description?: string;
+	/** The title of the action set by SetTitle */
+	title?: string;
+	/** The image of the action's touch button set by SetImage */
+	image?: string;
+	/** The input types passed to BindAction for which this action will trigger */
 	inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType | string>;
+	/** Describes the priority level of the action.
+	 * Priority level will still be included even if `BindActionAtPriority` wasn't used - by default it will be 2000.
+	 */
 	priorityLevel: number;
+	/** Describes the index of the action on the stack (increasing) */
 	stackOrder: number;
 }
 
