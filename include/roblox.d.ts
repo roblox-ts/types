@@ -270,17 +270,29 @@ interface BundleInfo {
 
 type TeleportData = string | number | boolean | Array<unknown> | Map<unknown, unknown>;
 
+interface GameJoinContext {
+	JoinSource: Enum.JoinSource;
+	ItemType?: Enum.AvatarItemType;
+	AssetId?: string;
+	OutfitId?: string;
+	AssetType?: Enum.AssetType;
+}
+
 interface PlayerJoinInfo {
 	/** The `DataModel.GameId` of the experience the `Player` teleported from. Only present if the player teleports to the current experience and if a server calls the teleport function. */
 	SourceGameId?: number;
 	/** The `DataModel.PlaceId` of the place the `Player` teleported from. Only present if the player teleports to the current place and a server calls the teleport function. */
 	SourcePlaceId?: number;
+	/** The `Player.UserId` of the player who invited the current player to the experience. Use this data to identify the referrer and trigger reward logic. */
+	ReferredByPlayerId?: number;
 	/** An array containing the `UserId` numbers of the users teleported alongside the `Player`. Only present if the player teleported as part of a group. */
 	Members?: Array<number>;
 	/** Reflects the `teleportData` specified in the original teleport. Useful for sharing information between servers the player teleports to. Only present if `teleportData` was specified and a server calls the teleport function. */
 	TeleportData?: TeleportData;
 	/** A string containing launch data specified in the URL the player clicks to join the experience. Only present if the URL contains launch data. */
 	LaunchData?: string;
+	/** A dictionary that includes relevant information based on the context of the game join. */
+	GameJoinContext?: GameJoinContext;
 }
 
 interface BoundActionInfo {
