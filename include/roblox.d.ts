@@ -2921,6 +2921,68 @@ declare namespace buffer {
 	function fill(b: buffer, offset: number, value: number, count?: number): void;
 }
 
+interface vector {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_vector: unique symbol;
+
+	readonly x: number;
+	readonly y: number;
+	readonly z: number;
+}
+
+declare namespace vector {
+	/** Constant vector with all components set to zero. */
+	const zero: vector;
+
+	/** Constant vector with all components set to one. */
+	const one: vector;
+
+	/** Creates a new vector with the given component values. */
+	function create(x: number, y: number, z: number): vector;
+
+	/** Calculates the magnitude of a given vector. */
+	function magnitude(vec: vector): number;
+
+	/** Computes the normalized version (unit vector) of a given vector. */
+	function normalize(vec: vector): vector;
+
+	/** Computes the cross product of two vectors. */
+	function cross(vec1: vector, vec2: vector): vector;
+
+	/** Computes the dot product of two vectors. */
+	function dot(vec1: vector, vec2: vector): number;
+
+	/** Computes the angle between two vectors in radians. The axis, if specified, is used to determine the sign of the angle. */
+	function angle(vec1: vector, vec2: vector, axis?: vector): number;
+
+	/** Applies `math.floor` to every component of the input vector. */
+	function floor(vec: vector): vector;
+
+	/** Applies `math.ceil` to every component of the input vector. */
+	function ceil(vec: vector): vector;
+
+	/** Applies `math.abs` to every component of the input vector. */
+	function abs(vec: vector): vector;
+
+	/** Applies `math.sign` to every component of the input vector. */
+	function sign(vec: vector): vector;
+
+	/** Applies `math.clamp` to every component of the input vector. */
+	function clamp(vec: vector, min: vector, max: vector): vector;
+
+	/** Applies `math.max` to the corresponding components of the input vectors. Equivalent to `vector.create(math.max((...).x), math.max((...).y), math.max((...).z))`. */
+	function max(...vecs: Array<vector>): vector;
+
+	/** Applies `math.min` to the corresponding components of the input vectors. Equivalent to `vector.create(math.min((...).x), math.min((...).y), math.min((...).z))`. */
+	function min(...vecs: Array<vector>): vector;
+}
+
 interface GettableCores {
 	AvatarContextMenuEnabled: boolean;
 	PointsNotificationsActive: boolean;
