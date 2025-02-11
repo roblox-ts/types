@@ -23004,7 +23004,7 @@ interface MarketplaceService extends Instance {
      *
      * @param options Not available at this time.
      */
-    PromptBulkPurchase(this: MarketplaceService, player: Player, lineItems: Array<unknown>, options: object): void;
+    PromptBulkPurchase(this: MarketplaceService, player: Player, lineItems: Array<PromptBulkPurchaseItem>, options: object): void;
     /**
      * Prompts a user to purchase a bundle with the given `bundleId`.
      *
