@@ -672,6 +672,12 @@ interface MarketplaceService extends Instance {
 		user: Player,
 		subscriptionId: string,
 	): UserSubscriptionStatus;
+	PromptBulkPurchase(
+		this: MarketplaceService,
+		player: Player,
+		lineItems: Array<PromptBulkPurchaseItem>,
+		options: object,
+	): void;
 	PromptBundlePurchase(this: MarketplaceService, player: Player, bundleId: number): void;
 	PromptGamePassPurchase(this: MarketplaceService, player: Player, gamePassId: number): void;
 	PromptPremiumPurchase(this: MarketplaceService, player: Player): void;
