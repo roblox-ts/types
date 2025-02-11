@@ -67,6 +67,7 @@ interface AssetService extends Instance {
 		templatePlaceID: number,
 		description: string,
 	): number;
+	CreateMeshPartAsync(this: AssetService, meshContent: Content, options?: CreateMeshPartAsyncOptions): MeshPart;
 }
 
 interface AudioAnalyzer extends Instance {
@@ -336,12 +337,30 @@ interface Dragger extends Instance {
 	MouseDown(this: Dragger, mousePart: BasePart, pointOnMousePart: Vector3, parts: Array<BasePart>): void;
 }
 
-interface EditableMesh extends DataModelMesh {
+interface EditableImage extends RBXObject {
+	DrawImageTransformed(
+		this: EditableImage,
+		position: Vector2,
+		scale: Vector2,
+		rotation: number,
+		image: EditableImage,
+		options: DrawImageTransformedOptions,
+	): void;
+	DrawImageProjected(
+		this: EditableImage,
+		mesh: EditableMesh,
+		projection: DrawImageProjectedProjection,
+		brushConfig: DrawImageProjectedBrushConfig,
+	): void;
+}
+
+interface EditableMesh extends RBXObject {
 	FindClosestPointOnSurface(this: EditableMesh, point: Vector3): LuaTuple<[number, Vector3, Vector3]>;
 	FindVerticesWithinSphere(this: EditableMesh, center: Vector3, radius: number): Array<number>;
 	GetAdjacentVertices(this: EditableMesh, vertexId: number): Array<number>;
 	GetVertices(this: EditableMesh): Array<number>;
 	RaycastLocal(this: EditableMesh, origin: Vector3, direction: Vector3): LuaTuple<[number, Vector3, Vector3]>;
+	CreateMeshPartAsync(this: EditableMesh, initialSize: Vector3, options?: CreateMeshPartAsyncOptions): MeshPart;
 }
 
 interface EmotesPages extends InventoryPages {}

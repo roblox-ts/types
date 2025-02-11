@@ -3333,3 +3333,54 @@ interface PromptBulkPurchaseFinishedResults {
 		status: Enum.MarketplaceItemPurchaseStatus;
 	}>;
 }
+
+interface DrawImageTransformedOptions {
+	/**
+	 * Specifies how the pixels of the source image blend with those of the destination.
+	 * Default is `Enum.ImageCombineType.AlphaBlend`.
+	 */
+	CombineType: Enum.ImageCombineType.AlphaBlend;
+	/**
+	 * Specifies the sampling method (e.g. Default for bilinear or `Pixelated` for nearest neighbor)
+	 * Default is `Enum.ResamplerMode.Default`.
+	 */
+	SamplingMode: Enum.ResamplerMode.Default;
+	/**
+	 * Specifies the pivot point within the source image for scaling and rotation.
+	 * Default is the center of the source image (i.e. `Image.Size / 2`).
+	 */
+	PivotPoint: Vector2;
+}
+
+interface DrawImageProjectedProjection {
+	/** Direction (`Vector3`) where the projector is facing. */
+	Direction: Vector3;
+	/** Position (`Vector3`) as the position in local space with respect to the mesh. */
+	Position: Vector3;
+	/** Size (`Vector3`) as the size of the projector. */
+	Size: Vector3;
+	/** Up (`Vector3`) as the up vector of the projector in local space with respect to the mesh. */
+	Up: Vector3;
+}
+
+interface DrawImageProjectedBrushConfig {
+	/** AlphaBlendType (`Enum.ImageAlphaType`) which determines how this projection will blend alpha values. */
+	AlphaBlendType: Enum.ImageAlphaType;
+	/** ColorBlendType (`Enum.ImageCombineType`) which determines how this projection will blend color values. */
+	ColorBlendType: Enum.ImageCombineType;
+	/** Decal (`EditableImage`) as the image used for projection. */
+	Decal: EditableImage;
+	/** FadeAngle (`number`) as the angle in degrees for the projection edges to fall off. */
+	FadeAngle: number;
+	/** BlendIntensity (`number`) as the value between 0 and 1 which controls how much of the projection is blended into the resulting image. */
+	BlendIntensity: number;
+}
+
+interface CreateMeshPartAsyncOptions {
+	/** The value of `CollisionFidelity` in the resulting part. Defaults to `Enum.CollisionFidelity.Default` if the option is absent or the `options` table is `nil`. */
+	CollisionFidelity?: Enum.CollisionFidelity;
+	/** The value of `RenderFidelity` in the resulting part. Defaults to `Enum.RenderFidelity.Automatic` if the option is absent or the `options` table is `nil`. */
+	RenderFidelity?: Enum.RenderFidelity;
+	/** The value of `FluidFidelity` in the resulting part. Defaults to `Enum.FluidFidelity.Automatic` if the option is absent or the `options` table is `nil`. */
+	FluidFidelity?: Enum.FluidFidelity;
+}
