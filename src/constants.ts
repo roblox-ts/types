@@ -26,6 +26,7 @@ export const CREATABLE_BLACKLIST = new Set([
 export const PLUGIN_ONLY_CLASSES = new Set([
 	"ABTestService",
 	"ChangeHistoryService",
+	"CoreGui",
 	"DataModelSession",
 	"DebuggerBreakpoint",
 	"DebuggerManager",
