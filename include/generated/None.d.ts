@@ -43,7 +43,6 @@ interface Services {
     ContextActionService: ContextActionService;
     ControllerService: ControllerService;
     ConversationalAIAcceptanceService: ConversationalAIAcceptanceService;
-    CoreGui: CoreGui;
     CoreScriptDebuggingManagerHelper: CoreScriptDebuggingManagerHelper;
     CreationDBService: CreationDBService;
     CreatorStoreService: CreatorStoreService;
@@ -6506,32 +6505,6 @@ interface BasePlayerGui extends Instance {
      * @returns A table of the `GuiObject` instances that occupy the given screen space.
      */
     GetGuiObjectsAtPosition(this: BasePlayerGui, x: number, y: number): Array<GuiObject>;
-}
-/**
- * The CoreGui is a service used to store Guis created in-game by Roblox for the core user interface found in every game (such as the game menu, the playerlist, the backpack, etc.). It can also be used by `Plugins` in Roblox Studio.
- *
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGui)
- */
-interface CoreGui extends BasePlayerGui {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CoreGui: unique symbol;
-    /**
-     * The current version of the CoreGui. Everytime the CoreGui is majorly changed, this number is increased.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGui#Version)
-     */
-    readonly Version: number;
 }
 /**
  * A container for a player's currently rendered `ScreenGuis`.
