@@ -3325,7 +3325,7 @@ interface AssetService extends Instance {
      * @param templatePlaceID
      * @param description
      */
-    CreatePlaceInPlayerInventoryAsync(this: AssetService, player: Player, placeName: string, templatePlaceID: number, description: string): number;
+    CreatePlaceInPlayerInventoryAsync(this: AssetService, player: Instance, placeName: string, templatePlaceID: number, description: string): number;
     /**
      * Returns an array of asset IDs that are contained in a specified package.
      *
@@ -22336,7 +22336,7 @@ interface LocalizationService extends Instance {
      * @param player The player that you are getting country/region information for.
      * @returns A string indicating the country/region code of a player.
      */
-    GetCountryRegionForPlayerAsync(this: LocalizationService, player: Player): string;
+    GetCountryRegionForPlayerAsync(this: LocalizationService, player: Instance): string;
     /**
      * Yields until the cloud `LocalizationTable` for the argument locale has been loaded - if available. Returns a `Translator` instance to be used for translations for the provided locale.
      *
@@ -23015,7 +23015,7 @@ interface MarketplaceService extends Instance {
      * @param player
      * @param bundleId
      */
-    PromptBundlePurchase(this: MarketplaceService, player: Player, bundleId: number): void;
+    PromptBundlePurchase(this: MarketplaceService, player: Instance, bundleId: number): void;
     /**
      * Prompts a user to cancel a subscription for the given `subscriptionId`.
      *
@@ -23037,7 +23037,7 @@ interface MarketplaceService extends Instance {
      * @param player
      * @param gamePassId
      */
-    PromptGamePassPurchase(this: MarketplaceService, player: Player, gamePassId: number): void;
+    PromptGamePassPurchase(this: MarketplaceService, player: Instance, gamePassId: number): void;
     /**
      * Prompts a user to purchase Roblox Premium.
      *
@@ -23047,7 +23047,7 @@ interface MarketplaceService extends Instance {
      * @param this The service responsible for in-experience transactions.
      * @param player The user being prompted to purchase Premium.
      */
-    PromptPremiumPurchase(this: MarketplaceService, player: Player): void;
+    PromptPremiumPurchase(this: MarketplaceService, player: Instance): void;
     /**
      * Prompts a user to purchase a developer product with the given `productId`.
      *
@@ -23179,7 +23179,7 @@ interface MarketplaceService extends Instance {
      * @param assetId The asset ID for which the given player's inventory is tested.
      * @returns Indicates whether the given player's inventory contains the given asset.
      */
-    PlayerOwnsAsset(this: MarketplaceService, player: Player, assetId: number): boolean;
+    PlayerOwnsAsset(this: MarketplaceService, player: Instance, assetId: number): boolean;
     /**
      * Returns whether the given player owns the given bundle.
      *
@@ -23212,13 +23212,13 @@ interface MarketplaceService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptBulkPurchaseFinished)
      */
-    readonly PromptBulkPurchaseFinished: RBXScriptSignal<(player: Player, status: Enum.MarketplaceBulkPurchasePromptStatus, results: object) => void>;
+    readonly PromptBulkPurchaseFinished: RBXScriptSignal<(player: Instance, status: Enum.MarketplaceBulkPurchasePromptStatus, results: object) => void>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptBundlePurchaseFinished)
      */
-    readonly PromptBundlePurchaseFinished: RBXScriptSignal<(player: Player, bundleId: number, wasPurchased: boolean) => void>;
+    readonly PromptBundlePurchaseFinished: RBXScriptSignal<(player: Instance, bundleId: number, wasPurchased: boolean) => void>;
     /**
      * Fires when a purchase prompt for a pass is closed.
      *
@@ -23226,7 +23226,7 @@ interface MarketplaceService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptGamePassPurchaseFinished)
      */
-    readonly PromptGamePassPurchaseFinished: RBXScriptSignal<(player: Player, gamePassId: number, wasPurchased: boolean) => void>;
+    readonly PromptGamePassPurchaseFinished: RBXScriptSignal<(player: Instance, gamePassId: number, wasPurchased: boolean) => void>;
     /**
      * Fires when a purchase prompt for Roblox Premium is closed.
      *
@@ -23250,7 +23250,7 @@ interface MarketplaceService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptPurchaseFinished)
      */
-    readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
+    readonly PromptPurchaseFinished: RBXScriptSignal<(player: Instance, assetId: number, isPurchased: boolean) => void>;
     /**
      * Fires when a purchase prompt for a subscription is closed.
      *
@@ -32576,7 +32576,7 @@ interface SocialService extends Instance {
      * @param player The `Player` to prompt with the invite popup.
      * @param experienceInviteOptions Optional `ExperienceInviteOptions` object for customizing the prompt.
      */
-    PromptGameInvite(this: SocialService, player: Player, experienceInviteOptions?: Instance): void;
+    PromptGameInvite(this: SocialService, player: Instance, experienceInviteOptions?: Instance): void;
     /**
      * Prompts the given `Player` with the phone book.
      *
@@ -32587,7 +32587,7 @@ interface SocialService extends Instance {
      * @param player The player to prompt with the phone book.
      * @param tag String to help differentiate between various phone book "entry points" or similar. For example, you can pass a string defining what region of an experience the calling player's character is currently in.
      */
-    PromptPhoneBook(this: SocialService, player: Player, tag: string): void;
+    PromptPhoneBook(this: SocialService, player: Instance, tag: string): void;
     /**
      * Shows the calling player's self view.
      *
@@ -32609,7 +32609,7 @@ interface SocialService extends Instance {
      * @param player The `Player` instance of the player potentially sending a call invite.
      * @returns Whether the specified player can send a call invite.
      */
-    CanSendCallInviteAsync(this: SocialService, player: Player): boolean;
+    CanSendCallInviteAsync(this: SocialService, player: Instance): boolean;
     /**
      * Indicates whether the given `Player` can invite other players.
      *
@@ -32622,7 +32622,7 @@ interface SocialService extends Instance {
      * @param recipientId Optional `Player.UserId` of the potential **recipient**, used to check whether the sender can invite that specific recipient.
      * @returns Whether the specified player can send an invite.
      */
-    CanSendGameInviteAsync(this: SocialService, player: Player, recipientId?: number): boolean;
+    CanSendGameInviteAsync(this: SocialService, player: Instance, recipientId?: number): boolean;
     /**
      * Fires when a player's call invite state changes.
      *
@@ -32630,7 +32630,7 @@ interface SocialService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#CallInviteStateChanged)
      */
-    readonly CallInviteStateChanged: RBXScriptSignal<(player: Player, inviteState: Enum.InviteState) => void>;
+    readonly CallInviteStateChanged: RBXScriptSignal<(player: Instance, inviteState: Enum.InviteState) => void>;
     /**
      * Fires when a player closes an invite prompt.
      *
@@ -32646,7 +32646,7 @@ interface SocialService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#PhoneBookPromptClosed)
      */
-    readonly PhoneBookPromptClosed: RBXScriptSignal<(player: Player) => void>;
+    readonly PhoneBookPromptClosed: RBXScriptSignal<(player: Instance) => void>;
     /**
      * Callback for when a call is placed from the phone book.
      *
