@@ -1109,6 +1109,8 @@ interface TextChatService extends Instance {
 	/** @client */
 	OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => TextChatMessageProperties | undefined;
 	/** @client */
+	OnChatWindowAdded: (message: TextChatMessage) => ChatWindowMessageProperties | undefined;
+	/** @client */
 	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
 }
 

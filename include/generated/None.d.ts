@@ -36566,7 +36566,7 @@ interface TextChatService extends Instance {
      * @param message The incoming `TextChatMessage`.
      * @returns If a `ChatWindowMessageProperties` is returned, its properties override the `ChatWindowConfiguration` properties.
      */
-    OnChatWindowAdded: ((message: TextChatMessage) => unknown) | undefined;
+    OnChatWindowAdded: (message: TextChatMessage) => ChatWindowMessageProperties | undefined;
     /**
      * Called when `TextChatService` is receiving an incoming message.
      *
