@@ -60,10 +60,13 @@ interface AssetService extends Instance {
 	GetGamePlacesAsync(this: AssetService): StandardPages<{ Name: string; PlaceId: number }>;
 	GetAssetIdsForPackage(this: AssetService, packageAssetId: number): Array<number>;
 	GetBundleDetailsAsync(this: AssetService, bundleId: number): BundleInfo;
-}
-
-interface Attachment extends Instance {
-	WorldCFrame: CFrame;
+	CreatePlaceInPlayerInventoryAsync(
+		this: AssetService,
+		player: Player,
+		placeName: string,
+		templatePlaceID: number,
+		description: string,
+	): number;
 }
 
 interface AudioAnalyzer extends Instance {
@@ -121,7 +124,6 @@ interface AvatarEditorService extends Instance {
 		contextAssetId?: number,
 	): ReadonlyArray<RecommendedAsset>;
 	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): ReadonlyArray<RecommendedBundle>;
-	SearchCatalog(this: AvatarEditorService, searchParameters: CatalogSearchParams): CatalogPages;
 }
 
 /** @client */
@@ -164,8 +166,6 @@ interface BadgeService extends Instance {
 
 interface BasePart extends PVInstance {
 	CustomPhysicalProperties: PhysicalProperties | undefined;
-	readonly TouchEnded: RBXScriptSignal<(otherPart: BasePart) => void>;
-	readonly Touched: RBXScriptSignal<(otherPart: BasePart) => void>;
 	GetConnectedParts(this: BasePart, recursive?: boolean): Array<BasePart>;
 	GetRootPart(this: BasePart): BasePart;
 	GetJoints(this: BasePart): Array<Constraint | JointInstance>;
@@ -222,8 +222,6 @@ interface Camera extends Instance {
 
 interface Chat extends Instance {
 	readonly Chatted: RBXScriptSignal<(part: BasePart, message: string, color: Enum.ChatColor) => void>;
-	FilterStringAsync(this: Chat, stringToFilter: string, playerFrom: Player, playerTo: Player): string;
-	FilterStringForBroadcast(this: Chat, stringToFilter: string, playerFrom: Player): string;
 }
 
 interface CollectionService extends Instance {
@@ -231,7 +229,6 @@ interface CollectionService extends Instance {
 	AddTag(this: Instance, tag: string): void;
 	GetInstanceAddedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
 	GetInstanceRemovedSignal(this: CollectionService, tag: string): RBXScriptSignal<(instance: Instance) => void>;
-	GetTagged(this: CollectionService, tag: string): Array<Instance>;
 	GetTags(this: CollectionService, instance: Instance): Array<string>;
 	GetTags(this: Instance): Array<string>;
 	HasTag(this: CollectionService, instance: Instance, tag: string): boolean;
@@ -273,7 +270,7 @@ interface ContextActionService extends Instance {
 	): void;
 	GetButton(this: ContextActionService, actionName: string): ImageButton | undefined;
 	GetAllBoundActionInfo(this: ContextActionService): Map<string, BoundActionInfo>;
-	GetBoundActionInfo(this: ContextActionService, actionName: string): BoundActionInfo;
+	GetBoundActionInfo(this: ContextActionService, actionName: string): BoundActionInfo | {};
 }
 
 interface DataModel extends ServiceProvider<Services> {
@@ -322,8 +319,6 @@ interface DataStorePages extends Pages<{ key: string; value: unknown }> {}
 /** @server */
 interface DataStoreService extends Instance {
 	GetDataStore(this: DataStoreService, name: string, scope?: string, options?: DataStoreOptions): DataStore;
-	GetGlobalDataStore(this: DataStoreService): DataStore;
-	GetOrderedDataStore(this: DataStoreService, name: string, scope?: string): OrderedDataStore;
 }
 
 interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {}
@@ -341,17 +336,10 @@ interface Dragger extends Instance {
 	MouseDown(this: Dragger, mousePart: BasePart, pointOnMousePart: Vector3, parts: Array<BasePart>): void;
 }
 
-interface EditableImage extends Instance {
-	ReadPixels(this: EditableImage, position: Vector2, size: Vector2): Array<number>;
-}
-
 interface EditableMesh extends DataModelMesh {
 	FindClosestPointOnSurface(this: EditableMesh, point: Vector3): LuaTuple<[number, Vector3, Vector3]>;
 	FindVerticesWithinSphere(this: EditableMesh, center: Vector3, radius: number): Array<number>;
-	GetAdjacentTriangles(this: EditableMesh, triangleId: number): Array<number>;
 	GetAdjacentVertices(this: EditableMesh, vertexId: number): Array<number>;
-	GetTriangleVertices(this: EditableMesh, triangleId: number): LuaTuple<[number, number, number]>;
-	GetTriangles(this: EditableMesh): Array<number>;
 	GetVertices(this: EditableMesh): Array<number>;
 	RaycastLocal(this: EditableMesh, origin: Vector3, direction: Vector3): LuaTuple<[number, Vector3, Vector3]>;
 }
@@ -369,11 +357,6 @@ interface FriendPages
 
 interface GamepadService extends Instance {
 	EnableGamepadCursor(this: GamepadService, guiObject: GuiObject | undefined): void;
-}
-
-interface GamePassService extends Instance {
-	/** This item is deprecated. Do not use it for new work. */
-	PlayerHasPass(this: GamePassService, player: Player, gamePassId: number): boolean;
 }
 
 interface GenericSettings<S = unknown> extends ServiceProvider<S> {}
@@ -422,9 +405,6 @@ interface GroupService extends Instance {
 }
 
 interface GuiObject extends GuiBase2d {
-	readonly InputBegan: RBXScriptSignal<(input: InputObject) => void>;
-	readonly InputChanged: RBXScriptSignal<(input: InputObject) => void>;
-	readonly InputEnded: RBXScriptSignal<(input: InputObject) => void>;
 	readonly TouchLongPress: RBXScriptSignal<(touchPositions: Array<Vector2>, state: Enum.UserInputState) => void>;
 	readonly TouchPan: RBXScriptSignal<
 		(
@@ -481,7 +461,6 @@ interface GuiService extends Instance {
 		name: string,
 	): void;
 	GetGuiInset(this: GuiService): LuaTuple<[Vector2, Vector2]>;
-	Select(this: GuiService, selectionParent: Instance): void;
 }
 
 interface HapticService extends Instance {
@@ -510,12 +489,8 @@ interface HttpService extends Instance {
 }
 
 interface Humanoid extends Instance {
-	readonly AnimationPlayed: RBXScriptSignal<(animationTrack: AnimationTrack) => void>;
 	readonly Seated: RBXScriptSignal<(active: boolean, currentSeatPart: Seat | VehicleSeat | undefined) => void>;
-	readonly Touched: RBXScriptSignal<(touchingPart: BasePart, humanoidPart: BasePart) => void>;
-	GetAppliedDescription(this: Humanoid): HumanoidDescription;
 	GetPlayingAnimationTracks(this: Humanoid): Array<AnimationTrack>;
-	LoadAnimation(this: Humanoid, animation: Animation): AnimationTrack;
 	GetAccessories(this: Humanoid): Array<Accessory>;
 }
 
@@ -540,7 +515,23 @@ interface InsertService extends Instance {
 	GetUserSets(this: InsertService, userId: number): Array<SetInfo>;
 }
 
-interface Instance {
+interface RBXObject {
+	/** `Object.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
+	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Object.Changed` event.
+	 * @example
+	 * function f(p: Part) {
+	 * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
+	 * }
+	 */
+	readonly Changed: unknown;
+	IsA<T extends keyof Objects>(this: Instance, className: T): this is Objects[T];
+	GetPropertyChangedSignal<T extends RBXObject>(
+		this: T,
+		propertyName: InstancePropertyNames<T>,
+	): RBXScriptSignal<() => void>;
+}
+
+interface Instance extends RBXObject {
 	/**
 	 * **Clone** creates a copy of an object and all of its descendants, ignoring all objects that are not [Archivable](https://developer.roblox.com/en-us/api-reference/property/Instance/Archivable). The copy of the root object is returned by this function and its [Parent](https://developer.roblox.com/en-us/api-reference/property/Instance/Parent) is set to nil.
 	 *
@@ -554,22 +545,12 @@ interface Instance {
 	 * Clone will return nil if the root object has Archivable set to false.
 	 */
 	Clone<T extends Instance>(this: T): T;
-	/** `Instance.Changed` has been intentionally excluded from the roblox-ts type system to maintain soundness with the ValueBase objects.
-	 * Please intersect your type with the `ChangedSignal` global type to unsafely access the `Instance.Changed` event.
-	 * @example
-	 * function f(p: Part) {
-	 * 	(p as Part & ChangedSignal).Changed.Connect(changedPropertyName => {})
-	 * }
-	 */
-	readonly Changed: unknown;
 	GetActor(this: Instance): Actor | undefined;
-	GetChildren(this: Instance): Array<Instance>;
 	GetDescendants(this: Instance): Array<Instance>;
 	GetTags(this: Instance): Array<string>;
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
 	WaitForChild(this: Instance, childName: string | number): Instance;
 	WaitForChild(this: Instance, childName: string | number, timeOut: number): Instance | undefined;
-	IsA<T extends keyof Instances>(this: Instance, className: T): this is Instances[T];
 	FindFirstAncestorWhichIsA<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 	FindFirstChildWhichIsA<T extends keyof Instances>(
 		this: Instance,
@@ -578,10 +559,6 @@ interface Instance {
 	): Instances[T] | undefined;
 	FindFirstAncestorOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 	FindFirstChildOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
-	GetPropertyChangedSignal<T extends Instance>(
-		this: T,
-		propertyName: InstancePropertyNames<T>,
-	): RBXScriptSignal<() => void>;
 	GetAttribute(this: Instance, attribute: string): AttributeValue | undefined;
 	SetAttribute(this: Instance, attribute: string, value: AttributeValue | undefined): void;
 	GetAttributes(this: Instance): Map<string, AttributeValue>;
@@ -620,6 +597,7 @@ interface LocalizationService extends Instance {
 	GetTranslatorForPlayer(this: LocalizationService, player: Player): Translator;
 	GetTranslatorForLocaleAsync(this: LocalizationService, locale: string): Translator;
 	GetTranslatorForPlayerAsync(this: LocalizationService, player: Player): Translator;
+	GetCountryRegionForPlayerAsync(this: LocalizationService, player: Player): string;
 }
 
 interface LocalizationTable extends Instance {
@@ -694,6 +672,24 @@ interface MarketplaceService extends Instance {
 		user: Player,
 		subscriptionId: string,
 	): UserSubscriptionStatus;
+	PromptBundlePurchase(this: MarketplaceService, player: Player, bundleId: number): void;
+	PromptGamePassPurchase(this: MarketplaceService, player: Player, gamePassId: number): void;
+	PromptPremiumPurchase(this: MarketplaceService, player: Player): void;
+	PlayerOwnsAsset(this: MarketplaceService, player: Player, assetId: number): boolean;
+	readonly PromptBulkPurchaseFinished: RBXScriptSignal<
+		(
+			player: Player,
+			status: Enum.MarketplaceBulkPurchasePromptStatus,
+			results: PromptBulkPurchaseFinishedResults,
+		) => void
+	>;
+	readonly PromptBundlePurchaseFinished: RBXScriptSignal<
+		(player: Player, bundleId: number, wasPurchased: boolean) => void
+	>;
+	readonly PromptGamePassPurchaseFinished: RBXScriptSignal<
+		(player: Player, gamePassId: number, wasPurchased: boolean) => void
+	>;
+	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
 }
 
 /** @server */
@@ -740,10 +736,6 @@ interface MessagingService extends Instance {
 	): RBXScriptConnection;
 }
 
-interface Model extends PVInstance {
-	PrimaryPart: BasePart | undefined;
-}
-
 interface NetworkClient extends NetworkPeer {
 	readonly ConnectionAccepted: RBXScriptSignal<(peer: string, replicator: ClientReplicator) => void>;
 }
@@ -786,7 +778,6 @@ interface Path extends Instance {
 
 interface PathfindingService extends Instance {
 	CreatePath(this: PathfindingService, agentParameters?: AgentParameters): Path;
-	FindPathAsync(this: PathfindingService, start: Vector3, finish: Vector3): Path;
 }
 
 interface PhysicsService extends Instance {
@@ -819,18 +810,7 @@ interface Players extends Instance {
 	GetPlayerByUserId(this: Players, userId: number): Player | undefined;
 	GetPlayerFromCharacter(this: Players, character: Instance | undefined): Player | undefined;
 	GetPlayers(this: Players): Array<Player>;
-	GetHumanoidDescriptionFromOutfitId(this: Players, outfitId: number): HumanoidDescription;
-	GetHumanoidDescriptionFromUserId(this: Players, userId: number): HumanoidDescription;
-	CreateHumanoidModelFromDescription(
-		this: Players,
-		description: HumanoidDescription,
-		rigType: CastsToEnum<Enum.HumanoidRigType>,
-		assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>,
-	): Model;
-	CreateHumanoidModelFromUserId(this: Players, userId: number): Model;
-	GetCharacterAppearanceAsync(this: Players, userId: number): Model;
 	GetCharacterAppearanceInfoAsync(this: Players, userId: number): CharacterAppearanceInfo;
-	GetFriendsAsync(this: Players, userId: number): FriendPages;
 	GetUserThumbnailAsync(
 		this: Players,
 		userId: number,
@@ -842,12 +822,6 @@ interface Players extends Instance {
 }
 
 interface Plugin extends Instance {
-	GetMouse(this: Plugin): PluginMouse;
-	CreateDockWidgetPluginGui(
-		this: Plugin,
-		pluginGuiId: string,
-		dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo,
-	): DockWidgetPluginGui;
 	CreatePluginAction(
 		this: Plugin,
 		actionId: string,
@@ -857,7 +831,6 @@ interface Plugin extends Instance {
 		allowBinding?: boolean,
 	): PluginAction;
 	CreatePluginMenu(this: Plugin, id: string, title?: string, icon?: string): PluginMenu;
-	CreateToolbar(this: Plugin, name: string): PluginToolbar;
 	ImportFbxRig(this: Plugin, isR15?: boolean): Model;
 	Union(this: Plugin, objects: Array<BasePart>): UnionOperation;
 }
@@ -975,6 +948,12 @@ interface ServiceProvider<S = unknown> extends Instance {
 }
 
 interface SocialService extends Instance {
+	PromptGameInvite(this: SocialService, player: Player, experienceInviteOptions?: Instance): void;
+	PromptPhoneBook(this: SocialService, player: Player, tag: string): void;
+	CanSendCallInviteAsync(this: SocialService, player: Player): boolean;
+	CanSendGameInviteAsync(this: SocialService, player: Player, recipientId?: number): boolean;
+	readonly CallInviteStateChanged: RBXScriptSignal<(player: Player, inviteState: Enum.InviteState) => void>;
+	readonly PhoneBookPromptClosed: RBXScriptSignal<(player: Player) => void>;
 	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
 }
 
@@ -1119,10 +1098,6 @@ interface Terrain extends BasePart {
 	WriteVoxelChannels(this: Terrain, region: Region3, resolution: number, channels: VoxelChannels): void;
 }
 
-interface TextBox extends GuiObject {
-	readonly FocusLost: RBXScriptSignal<(enterPressed: boolean, inputThatCausedFocusLoss: InputObject) => void>;
-}
-
 interface TextChannel extends Instance {
 	/** @client */
 	OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
@@ -1182,13 +1157,6 @@ interface UIDragDetector extends UIComponent {
 
 /** @client */
 interface UserInputService extends Instance {
-	readonly InputBegan: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
-	readonly InputChanged: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
-	readonly InputEnded: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
-	readonly TextBoxFocusReleased: RBXScriptSignal<(textboxReleased: TextBox) => void>;
-	readonly TextBoxFocused: RBXScriptSignal<(textboxFocused: TextBox) => void>;
-	readonly TouchEnded: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
-	readonly TouchMoved: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly TouchPan: RBXScriptSignal<
 		(
 			touchPositions: Array<Vector2>,
@@ -1219,11 +1187,7 @@ interface UserInputService extends Instance {
 	readonly TouchLongPress: RBXScriptSignal<
 		(touchPositions: Array<Vector2>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void
 	>;
-	readonly TouchStarted: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
 	readonly TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>, gameProcessedEvent: boolean) => void>;
-	readonly DeviceAccelerationChanged: RBXScriptSignal<(acceleration: InputObject) => void>;
-	readonly DeviceGravityChanged: RBXScriptSignal<(gravity: InputObject) => void>;
-	readonly DeviceRotationChanged: RBXScriptSignal<(rotation: InputObject, cframe: CFrame) => void>;
 	GetConnectedGamepads(this: UserInputService): Array<Enum.UserInputType>;
 	GetDeviceRotation(this: UserInputService): LuaTuple<[InputObject, CFrame]>;
 	GetGamepadState(this: UserInputService, gamepadNum: CastsToEnum<Enum.UserInputType>): Array<InputObject>;
@@ -1278,12 +1242,6 @@ interface WorldRoot extends Model {
 		this: WorldRoot,
 		cframe: CFrame,
 		size: Vector3,
-		direction: Vector3,
-		raycastParams?: RaycastParams,
-	): RaycastResult | undefined;
-	Raycast(
-		this: WorldRoot,
-		origin: Vector3,
 		direction: Vector3,
 		raycastParams?: RaycastParams,
 	): RaycastResult | undefined;

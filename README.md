@@ -6,7 +6,7 @@ TypeScript typings for the Roblox platform. Partially handwritten and partially 
 
 To install @rbxts/types into your project, run the following command:
 
-`npm i -D @rbxts/types`
+`npm install -D @rbxts/types`
 
 Then, make sure `node_modules/@rbxts` is listed in your `compilerOptions.typeRoots` field in your project's `tsconfig.json` like so:
 
