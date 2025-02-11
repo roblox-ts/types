@@ -3319,3 +3319,12 @@ interface UserSubscriptionStatus {
 interface ExpirationDetails {
 	ExpirationReason: Enum.SubscriptionExpirationReason;
 }
+
+interface PromptBulkPurchaseFinishedResults {
+	RobuxSpent: number;
+	Items: Array<{
+		type: Enum.MarketplaceProductType;
+		id: string;
+		status: Enum.MarketplaceItemPurchaseStatus;
+	}>;
+}

@@ -60,6 +60,13 @@ interface AssetService extends Instance {
 	GetGamePlacesAsync(this: AssetService): StandardPages<{ Name: string; PlaceId: number }>;
 	GetAssetIdsForPackage(this: AssetService, packageAssetId: number): Array<number>;
 	GetBundleDetailsAsync(this: AssetService, bundleId: number): BundleInfo;
+	CreatePlaceInPlayerInventoryAsync(
+		this: AssetService,
+		player: Player,
+		placeName: string,
+		templatePlaceID: number,
+		description: string,
+	): number;
 }
 
 interface AudioAnalyzer extends Instance {
@@ -590,6 +597,7 @@ interface LocalizationService extends Instance {
 	GetTranslatorForPlayer(this: LocalizationService, player: Player): Translator;
 	GetTranslatorForLocaleAsync(this: LocalizationService, locale: string): Translator;
 	GetTranslatorForPlayerAsync(this: LocalizationService, player: Player): Translator;
+	GetCountryRegionForPlayerAsync(this: LocalizationService, player: Player): string;
 }
 
 interface LocalizationTable extends Instance {
@@ -664,6 +672,24 @@ interface MarketplaceService extends Instance {
 		user: Player,
 		subscriptionId: string,
 	): UserSubscriptionStatus;
+	PromptBundlePurchase(this: MarketplaceService, player: Player, bundleId: number): void;
+	PromptGamePassPurchase(this: MarketplaceService, player: Player, gamePassId: number): void;
+	PromptPremiumPurchase(this: MarketplaceService, player: Player): void;
+	PlayerOwnsAsset(this: MarketplaceService, player: Player, assetId: number): boolean;
+	readonly PromptBulkPurchaseFinished: RBXScriptSignal<
+		(
+			player: Player,
+			status: Enum.MarketplaceBulkPurchasePromptStatus,
+			results: PromptBulkPurchaseFinishedResults,
+		) => void
+	>;
+	readonly PromptBundlePurchaseFinished: RBXScriptSignal<
+		(player: Player, bundleId: number, wasPurchased: boolean) => void
+	>;
+	readonly PromptGamePassPurchaseFinished: RBXScriptSignal<
+		(player: Player, gamePassId: number, wasPurchased: boolean) => void
+	>;
+	readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
 }
 
 /** @server */
@@ -922,6 +948,12 @@ interface ServiceProvider<S = unknown> extends Instance {
 }
 
 interface SocialService extends Instance {
+	PromptGameInvite(this: SocialService, player: Player, experienceInviteOptions?: Instance): void;
+	PromptPhoneBook(this: SocialService, player: Player, tag: string): void;
+	CanSendCallInviteAsync(this: SocialService, player: Player): boolean;
+	CanSendGameInviteAsync(this: SocialService, player: Player, recipientId?: number): boolean;
+	readonly CallInviteStateChanged: RBXScriptSignal<(player: Player, inviteState: Enum.InviteState) => void>;
+	readonly PhoneBookPromptClosed: RBXScriptSignal<(player: Player) => void>;
 	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
 }
 
