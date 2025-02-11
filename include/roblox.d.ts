@@ -32,6 +32,9 @@ type ChangedSignal = {
 type Tweenable = number | boolean | CFrame | Rect | Color3 | UDim | UDim2 | Vector2 | Vector2int16 | Vector3;
 
 type ContentId = string;
+type BinaryString = string;
+type SharedString = string;
+type ProtectedString = string;
 
 interface EmoteDictionary {
 	/** When these arrays have more than one emote id in them, it will randomly select one of the emotes to play from the list. */
@@ -267,22 +270,47 @@ interface BundleInfo {
 
 type TeleportData = string | number | boolean | Array<unknown> | Map<unknown, unknown>;
 
+interface GameJoinContext {
+	JoinSource: Enum.JoinSource;
+	ItemType?: Enum.AvatarItemType;
+	AssetId?: string;
+	OutfitId?: string;
+	AssetType?: Enum.AssetType;
+}
+
 interface PlayerJoinInfo {
 	/** The `DataModel.GameId` of the experience the `Player` teleported from. Only present if the player teleports to the current experience and if a server calls the teleport function. */
 	SourceGameId?: number;
 	/** The `DataModel.PlaceId` of the place the `Player` teleported from. Only present if the player teleports to the current place and a server calls the teleport function. */
 	SourcePlaceId?: number;
+	/** The `Player.UserId` of the player who invited the current player to the experience. Use this data to identify the referrer and trigger reward logic. */
+	ReferredByPlayerId?: number;
 	/** An array containing the `UserId` numbers of the users teleported alongside the `Player`. Only present if the player teleported as part of a group. */
 	Members?: Array<number>;
 	/** Reflects the `teleportData` specified in the original teleport. Useful for sharing information between servers the player teleports to. Only present if `teleportData` was specified and a server calls the teleport function. */
 	TeleportData?: TeleportData;
 	/** A string containing launch data specified in the URL the player clicks to join the experience. Only present if the URL contains launch data. */
 	LaunchData?: string;
+	/** A dictionary that includes relevant information based on the context of the game join. */
+	GameJoinContext?: GameJoinContext;
 }
 
 interface BoundActionInfo {
+	/** Describes whether a touch button should be created on TouchEnabled devices */
+	createTouchButton: boolean;
+	/** The description of action set by SetDescription */
+	description?: string;
+	/** The title of the action set by SetTitle */
+	title?: string;
+	/** The image of the action's touch button set by SetImage */
+	image?: string;
+	/** The input types passed to BindAction for which this action will trigger */
 	inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType | string>;
+	/** Describes the priority level of the action.
+	 * Priority level will still be included even if `BindActionAtPriority` wasn't used - by default it will be 2000.
+	 */
 	priorityLevel: number;
+	/** Describes the index of the action on the stack (increasing) */
 	stackOrder: number;
 }
 
@@ -824,6 +852,18 @@ interface InstanceConstructor {
 
 declare const Instance: InstanceConstructor;
 
+// AdReward
+interface AdReward {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_AdReward: unique symbol;
+}
+
 /**
  * Axes is a datatype used for the ArcHandles class to control what rotation axes are currently enabled.
  */
@@ -1311,6 +1351,42 @@ interface CatalogSearchParamsConstructor {
 
 declare const CatalogSearchParams: CatalogSearchParamsConstructor;
 
+// Content
+interface Content {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_Content: unique symbol;
+	/**
+	 * The source type of the contained value.
+	 */
+	readonly SourceType: Enum.ContentSourceType;
+	/**
+	 * A URI `string` if `Content.SourceType` is Uri, otherwise `nil`.
+	 */
+	readonly Uri?: string;
+	/**
+	 * A reference to a non-nil `Object` if `Content.SourceType` is Object, otherwise `nil`.
+	 */
+	readonly Object?: RBXObject;
+}
+
+interface ContentConstructor {
+	/**
+	 * An empty Content value with Content.SourceType of None.
+	 */
+	readonly none: Content;
+
+	fromUri: (uri: string) => Content;
+	fromObject: (object: RBXObject) => Content;
+}
+
+declare const Content: ContentConstructor;
+
 // CFrame
 interface CFrame {
 	/**
@@ -1376,6 +1452,8 @@ interface CFrame {
 	ToOrientation(this: CFrame): LuaTuple<[number, number, number]>;
 	/** Returns a tuple of a Vector3 and a number which represent the rotation of the CFrame in the axis-angle representation */
 	ToAxisAngle(this: CFrame): LuaTuple<[Vector3, number]>;
+	/** Returns `true` if the other CFrame is sufficiently close to this CFrame in both position and rotation. The `eps` value is used to control the tolerance for this similarity. This value is optional and should be a small positive value if provided. The default value is 0.00001 (1e-5). The similarity for position is component-wise, and for rotation uses a fast approximation of the angle difference. */
+	FuzzyEq(this: CFrame, other: CFrame, epsilon?: number): boolean;
 }
 
 interface CFrameConstructor {
@@ -2222,6 +2300,26 @@ type RotationCurveKeyConstructor = new (
 ) => RotationCurveKey;
 declare const RotationCurveKey: RotationCurveKeyConstructor;
 
+// SecurityCapabilities
+interface SecurityCapabilities {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_SecurityCapabilities: unique symbol;
+	Add(this: SecurityCapabilities, ...capabilities: Array<Enum.SecurityCapability>): void;
+	Remove(this: SecurityCapabilities, ...capabilities: Array<Enum.SecurityCapability>): void;
+	Contains(this: SecurityCapabilities, ...capabilities: Array<Enum.SecurityCapability>): void;
+}
+
+interface SecurityCapabilitiesConstructor {
+	new (...capabilities: Array<Enum.SecurityCapability>): SecurityCapabilities;
+	fromCurrent: () => SecurityCapabilities;
+}
+
 interface Secret {
 	/**
 	 * **DO NOT USE!**
@@ -2850,6 +2948,68 @@ declare namespace buffer {
 	function fill(b: buffer, offset: number, value: number, count?: number): void;
 }
 
+interface vector {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_vector: unique symbol;
+
+	readonly x: number;
+	readonly y: number;
+	readonly z: number;
+}
+
+declare namespace vector {
+	/** Constant vector with all components set to zero. */
+	const zero: vector;
+
+	/** Constant vector with all components set to one. */
+	const one: vector;
+
+	/** Creates a new vector with the given component values. */
+	function create(x: number, y: number, z: number): vector;
+
+	/** Calculates the magnitude of a given vector. */
+	function magnitude(vec: vector): number;
+
+	/** Computes the normalized version (unit vector) of a given vector. */
+	function normalize(vec: vector): vector;
+
+	/** Computes the cross product of two vectors. */
+	function cross(vec1: vector, vec2: vector): vector;
+
+	/** Computes the dot product of two vectors. */
+	function dot(vec1: vector, vec2: vector): number;
+
+	/** Computes the angle between two vectors in radians. The axis, if specified, is used to determine the sign of the angle. */
+	function angle(vec1: vector, vec2: vector, axis?: vector): number;
+
+	/** Applies `math.floor` to every component of the input vector. */
+	function floor(vec: vector): vector;
+
+	/** Applies `math.ceil` to every component of the input vector. */
+	function ceil(vec: vector): vector;
+
+	/** Applies `math.abs` to every component of the input vector. */
+	function abs(vec: vector): vector;
+
+	/** Applies `math.sign` to every component of the input vector. */
+	function sign(vec: vector): vector;
+
+	/** Applies `math.clamp` to every component of the input vector. */
+	function clamp(vec: vector, min: vector, max: vector): vector;
+
+	/** Applies `math.max` to the corresponding components of the input vectors. Equivalent to `vector.create(math.max((...).x), math.max((...).y), math.max((...).z))`. */
+	function max(...vecs: Array<vector>): vector;
+
+	/** Applies `math.min` to the corresponding components of the input vectors. Equivalent to `vector.create(math.min((...).x), math.min((...).y), math.min((...).z))`. */
+	function min(...vecs: Array<vector>): vector;
+}
+
 interface GettableCores {
 	AvatarContextMenuEnabled: boolean;
 	PointsNotificationsActive: boolean;
@@ -3158,4 +3318,13 @@ interface UserSubscriptionStatus {
 
 interface ExpirationDetails {
 	ExpirationReason: Enum.SubscriptionExpirationReason;
+}
+
+interface PromptBulkPurchaseFinishedResults {
+	RobuxSpent: number;
+	Items: Array<{
+		type: Enum.MarketplaceProductType;
+		id: string;
+		status: Enum.MarketplaceItemPurchaseStatus;
+	}>;
 }
