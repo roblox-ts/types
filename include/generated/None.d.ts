@@ -35502,7 +35502,16 @@ interface TextChannel extends Instance {
      * @param userId The userId of the `Player`.
      * @returns Returns `TextSource` and `true` if a new `TextSource` is created for the user, `TextSource` and `false` if there is an existing `TextSource`, or `nil` and `false` if the user has chat off or is not in this server.
      */
-    AddUserAsync(this: TextChannel, userId: number): unknown;
+    AddUserAsync(this: TextChannel, userId: number): [
+        source: TextSource,
+        isNew: true
+    ] | [
+        source: TextSource,
+        isNew: false
+    ] | [
+        source: undefined,
+        isNew: false
+    ];
     /**
      * Sends a `TextChatMessage` to the server.
      *
@@ -36556,7 +36565,7 @@ interface TextChatService extends Instance {
      * @param adornee The part or character the bubble chat message is attached to.
      * @returns If a `BubbleChatMessageProperties` is returned, its properties override the `BubbleChatConfiguration` properties.
      */
-    OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => TextChatMessageProperties | undefined;
+    OnBubbleAdded: (message: TextChatMessage, adornee: Instance) => BubbleChatMessageProperties | undefined;
     /**
      * Called when a new message is about to be displayed in the chat window. This can only be implemented on the client.
      *
