@@ -699,7 +699,7 @@ interface RBXObject {
      * @param className The class against which the Object's class will be checked. Case-sensitive.
      * @returns Describes whether the Object's class matched or is a subclass of the given class.
      */
-    IsA<T extends keyof Objects>(this: Instance, className: T): this is Objects[T];
+    IsA<T extends keyof Objects>(this: RBXObject, className: T): this is Objects[T];
     /**
      * Fired immediately after a property of the object changes, with some limitations.
      *
