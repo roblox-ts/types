@@ -524,7 +524,7 @@ interface RBXObject {
 	 * }
 	 */
 	readonly Changed: unknown;
-	IsA<T extends keyof Objects>(this: Instance, className: T): this is Objects[T];
+	IsA<T extends keyof Objects>(this: RBXObject, className: T): this is Objects[T];
 	GetPropertyChangedSignal<T extends RBXObject>(
 		this: T,
 		propertyName: InstancePropertyNames<T>,
