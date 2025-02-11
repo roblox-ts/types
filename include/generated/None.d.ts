@@ -787,7 +787,7 @@ interface EditableImage extends RBXObject {
      * - `FadeAngle` (number) as the angle in degrees for the projection   edges to fall off.
      * - `BlendIntensity` (number) as the value between `0` and `1` which   controls how much of the projection is blended into the resulting   image.
      */
-    DrawImageProjected(this: EditableImage, mesh: EditableMesh, projection: object, brushConfig: object): void;
+    DrawImageProjected(this: EditableImage, mesh: EditableMesh, projection: DrawImageProjectedProjection, brushConfig: DrawImageProjectedBrushConfig): void;
     /**
      * Draws an image into this `EditableImage` with transformations including scaling and rotation, placing it at the specified position.
      *
@@ -803,7 +803,7 @@ interface EditableImage extends RBXObject {
      * - `SamplingMode`: Specifies the sampling method (e.g. `Default` for   bilinear or `Pixelated` for nearest neighbor). Default is   `ResamplerMode.Default`.
      * - `PivotPoint`: Specifies the pivot point within the source image for   scaling and rotation. Default is the center of the source image   (i.e. `Size / 2`).
      */
-    DrawImageTransformed(this: EditableImage, position: Vector2, scale: Vector2, rotation: number, image: EditableImage, options?: object): void;
+    DrawImageTransformed(this: EditableImage, position: Vector2, scale: Vector2, rotation: number, image: EditableImage, options: DrawImageTransformedOptions): void;
     /**
      * Draws a line between two provided points.
      *
@@ -866,7 +866,7 @@ interface EditableImage extends RBXObject {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh)
  */
-interface EditableMesh extends DataModelMesh {
+interface EditableMesh extends RBXObject {
     /**
      * **DO NOT USE!**
      *
@@ -1398,7 +1398,7 @@ interface EditableMesh extends DataModelMesh {
      *
      * @deprecated
      */
-    CreateMeshPartAsync(this: EditableMesh, initialSize: Vector3, options?: object): MeshPart;
+    CreateMeshPartAsync(this: EditableMesh, initialSize: Vector3, options?: CreateMeshPartAsyncOptions): MeshPart;
 }
 /**
  * Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
@@ -3297,7 +3297,7 @@ interface AssetService extends Instance {
      * - `RenderFidelity` – The value of   `RenderFidelity` in the resulting   part. Defaults to `RenderFidelity.Automatic` if the option is   absent or the `options` table is `nil`.
      * - `FluidFidelity` – The value of   `FluidFidelity` in the resulting part.   Defaults to `FluidFidelity.Automatic` if the option is absent   or the `options` table is `nil`.
      */
-    CreateMeshPartAsync(this: AssetService, meshContent: Content, options?: object): MeshPart;
+    CreateMeshPartAsync(this: AssetService, meshContent: Content, options?: CreateMeshPartAsyncOptions): MeshPart;
     /**
      * Clones a place through the given `templatePlaceID`.
      *

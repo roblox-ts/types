@@ -745,7 +745,7 @@ interface EditableImage extends RBXObject {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh)
  */
-interface EditableMesh extends DataModelMesh {
+interface EditableMesh extends RBXObject {
     /**
      * **DO NOT USE!**
      *

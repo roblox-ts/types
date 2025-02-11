@@ -508,6 +508,9 @@ declare namespace math {
 	/** Returns the base-10 logarithm of x. */
 	function log10(n: number): number;
 
+	/** Maps a number from one range to another. */
+	function map(x: number, inmin: number, inmax: number, outmin: number, outmax: number): number;
+
 	/** Returns the maximum value among the numbers passed to the function. */
 	function max(...n: Array<number>): number;
 
