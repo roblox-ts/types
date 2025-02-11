@@ -677,7 +677,11 @@ interface MarketplaceService extends Instance {
 	PromptPremiumPurchase(this: MarketplaceService, player: Player): void;
 	PlayerOwnsAsset(this: MarketplaceService, player: Player, assetId: number): boolean;
 	readonly PromptBulkPurchaseFinished: RBXScriptSignal<
-		(player: Player, status: Enum.MarketplaceBulkPurchasePromptStatus, results: object) => void
+		(
+			player: Player,
+			status: Enum.MarketplaceBulkPurchasePromptStatus,
+			results: PromptBulkPurchaseFinishedResults,
+		) => void
 	>;
 	readonly PromptBundlePurchaseFinished: RBXScriptSignal<
 		(player: Player, bundleId: number, wasPurchased: boolean) => void
