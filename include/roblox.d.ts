@@ -3320,6 +3320,11 @@ interface ExpirationDetails {
 	ExpirationReason: Enum.SubscriptionExpirationReason;
 }
 
+interface PromptBulkPurchaseItem {
+	Id: number;
+	Type: Enum.MarketplaceProductType;
+}
+
 interface PromptBulkPurchaseFinishedResults {
 	RobuxSpent: number;
 	Items: Array<{
