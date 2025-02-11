@@ -3321,7 +3321,7 @@ interface ExpirationDetails {
 }
 
 interface PromptBulkPurchaseItem {
-	Id: number;
+	Id: string;
 	Type: Enum.MarketplaceProductType;
 }
 
