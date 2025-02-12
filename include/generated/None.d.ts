@@ -21468,7 +21468,7 @@ interface JointInstance extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/JointInstance#Part0)
      */
-    Part0?: BasePart;
+    Part0: BasePart | undefined;
     /**
      * The second `BasePart` that the joint connects.
      *
@@ -21476,7 +21476,7 @@ interface JointInstance extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/JointInstance#Part1)
      */
-    Part1?: BasePart;
+    Part1: BasePart | undefined;
 }
 /**
  * The base class for classic motor joints.
@@ -33407,7 +33407,7 @@ interface CompressorSoundEffect extends SoundEffect {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CompressorSoundEffect#SideChain)
      */
-    SideChain?: Sound | SoundGroup;
+    SideChain: Sound | SoundGroup | undefined;
     /**
      * Volume level at which point the compressor applies its effect.
      *

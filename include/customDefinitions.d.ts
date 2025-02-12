@@ -240,7 +240,7 @@ interface CollectionService extends Instance {
 }
 
 interface CompressorSoundEffect extends SoundEffect {
-	SideChain?: Sound | SoundGroup;
+	SideChain: Sound | SoundGroup | undefined;
 }
 
 interface ContentProvider extends Instance {
@@ -584,11 +584,6 @@ interface Instance extends RBXObject {
 }
 
 interface InventoryPages<T = unknown> extends Pages<T> {}
-
-interface JointInstance extends Instance {
-	Part0?: BasePart;
-	Part1?: BasePart;
-}
 
 interface JointsService extends Instance {
 	SetJoinAfterMoveInstance(this: JointsService, joinInstance: PVInstance): void;
