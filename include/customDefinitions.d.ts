@@ -749,7 +749,7 @@ interface MemoryStoreSortedMap extends Instance {
 		exclusiveLowerBound?: { key?: string; sortKey?: string | number },
 		exclusiveUpperBound?: { key?: string; sortKey?: string | number },
 	): Array<{ key: string; value: unknown; sortKey?: string | number }>;
-	GetAsync(this: MemoryStoreSortedMap, key: string): LuaTuple<[key?: string, sortKey?: string | number]>;
+	GetAsync(this: MemoryStoreSortedMap, key: string): LuaTuple<[value?: unknown, sortKey?: string | number]>;
 }
 
 /** @server */
