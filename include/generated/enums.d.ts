@@ -2899,6 +2899,78 @@ declare namespace Enum {
     }
     export type AudioApiRollout = AudioApiRollout.Disabled | AudioApiRollout.Automatic | AudioApiRollout.Enabled;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout)
+     */
+    export namespace AudioChannelLayout {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Mono)
+         */
+        export interface Mono extends globalThis.EnumItem {
+            Name: "Mono";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AudioChannelLayout;
+        }
+        export const Mono: Mono;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Stereo)
+         */
+        export interface Stereo extends globalThis.EnumItem {
+            Name: "Stereo";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AudioChannelLayout;
+        }
+        export const Stereo: Stereo;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Quad)
+         */
+        export interface Quad extends globalThis.EnumItem {
+            Name: "Quad";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AudioChannelLayout;
+        }
+        export const Quad: Quad;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Surround_5)
+         */
+        export interface Surround_5 extends globalThis.EnumItem {
+            Name: "Surround_5";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.AudioChannelLayout;
+        }
+        export const Surround_5: Surround_5;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Surround_5_1)
+         */
+        export interface Surround_5_1 extends globalThis.EnumItem {
+            Name: "Surround_5_1";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.AudioChannelLayout;
+        }
+        export const Surround_5_1: Surround_5_1;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Surround_7_1)
+         */
+        export interface Surround_7_1 extends globalThis.EnumItem {
+            Name: "Surround_7_1";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.AudioChannelLayout;
+        }
+        export const Surround_7_1: Surround_7_1;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Surround_7_1_4)
+         */
+        export interface Surround_7_1_4 extends globalThis.EnumItem {
+            Name: "Surround_7_1_4";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.AudioChannelLayout;
+        }
+        export const Surround_7_1_4: Surround_7_1_4;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioChannelLayout>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AudioChannelLayout | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioChannelLayout | undefined;
+    }
+    export type AudioChannelLayout = AudioChannelLayout.Mono | AudioChannelLayout.Stereo | AudioChannelLayout.Quad | AudioChannelLayout.Surround_5 | AudioChannelLayout.Surround_5_1 | AudioChannelLayout.Surround_7_1 | AudioChannelLayout.Surround_7_1_4;
+    /**
      * Filter types used for `AudioFilter` instances.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType)
@@ -7153,6 +7225,15 @@ declare namespace Enum {
         }
         export const ServerEmpty: ServerEmpty;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PhantomFreeze)
+         */
+        export interface PhantomFreeze extends globalThis.EnumItem {
+            Name: "PhantomFreeze";
+            Value: 303;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const PhantomFreeze: PhantomFreeze;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PlacelaunchErrors)
          */
         export interface PlacelaunchErrors extends globalThis.EnumItem {
@@ -7381,7 +7462,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConnectionError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConnectionError | undefined;
     }
-    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
     /**
      * Used to determine the connection state of the client to the game server.
      *
@@ -9785,13 +9866,13 @@ declare namespace Enum {
     }
     export type EditableStatus = EditableStatus.Unknown | EditableStatus.Allowed | EditableStatus.Disallowed;
     /**
-     * This enum is used by `ScrollingFrame.ElasticBehavior` to specifies how elastic scrolling behaves for a `ScrollingFrame`.
+     * This enum is used by `ScrollingFrame.ElasticBehavior` to control when elastic scrolling is active on touch‑enabled devices.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ElasticBehavior)
      */
     export namespace ElasticBehavior {
         /**
-         * The scrollbar will be elastic when there is content to be scrolled to.
+         * Scrolling is elastic when there is content to be scrolled to.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ElasticBehavior#WhenScrollable)
          */
@@ -9802,7 +9883,7 @@ declare namespace Enum {
         }
         export const WhenScrollable: WhenScrollable;
         /**
-         * The scrollbar will always have elastic scrolling available, even when there isn't content available to scroll to.
+         * Scrolling is always elastic, even when there isn't content available to scroll to.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ElasticBehavior#Always)
          */
@@ -9813,7 +9894,7 @@ declare namespace Enum {
         }
         export const Always: Always;
         /**
-         * The scrollbar will never have elastic scrolling available.
+         * Scrolling is never elastic and the canvas will never scroll beyond its bounds.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ElasticBehavior#Never)
          */
@@ -24200,13 +24281,13 @@ declare namespace Enum {
     }
     export type ScreenOrientation = ScreenOrientation.LandscapeLeft | ScreenOrientation.LandscapeRight | ScreenOrientation.LandscapeSensor | ScreenOrientation.Portrait | ScreenOrientation.Sensor;
     /**
-     * Indicates when the `ScrollingFrame` should be insetted by the space needed to show the scroll bar.
+     * This enum is used with `ScrollingFrame.HorizontalScrollBarInset` and `ScrollingFrame.VerticalScrollBarInset` to indicate whether the canvas should be inset by `ScrollBarThickness` for the respective scroll bar.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollBarInset)
      */
     export namespace ScrollBarInset {
         /**
-         * The ScrollingFrame will never be insetted for this scrolling bar.
+         * The canvas will never be inset for the respective scroll bar.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollBarInset#None)
          */
@@ -24217,7 +24298,7 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * The ScrollingFrame will only be insetted if this scrollbar is being shown.
+         * The canvas will only be inset if the respective scroll bar is showing.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollBarInset#ScrollBar)
          */
@@ -24228,7 +24309,7 @@ declare namespace Enum {
         }
         export const ScrollBar: ScrollBar;
         /**
-         * The ScrollingFrame will always be insetted regardless if the scrollbar is being shown or not.
+         * The canvas will always be inset for the respective scroll bar, regardless of whether that scroll bar is showing.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollBarInset#Always)
          */
@@ -24244,13 +24325,13 @@ declare namespace Enum {
     }
     export type ScrollBarInset = ScrollBarInset.None | ScrollBarInset.ScrollBar | ScrollBarInset.Always;
     /**
-     * This enum is used by `ScrollingFrame.ScrollingDirection` to specify the direction scrolling is allowed.
+     * This enum is used by `ScrollingFrame.ScrollingDirection` to specify the direction(s) in which scrolling is allowed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollingDirection)
      */
     export namespace ScrollingDirection {
         /**
-         * Canvas can only be scrolled along the X axis.
+         * The canvas can only be scrolled along the **X** axis.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollingDirection#X)
          */
@@ -24261,7 +24342,7 @@ declare namespace Enum {
         }
         export const X: X;
         /**
-         * Canvas can only be scrolled along the Y axis.
+         * The canvas can only be scrolled along the **Y** axis.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollingDirection#Y)
          */
@@ -24272,7 +24353,7 @@ declare namespace Enum {
         }
         export const Y: Y;
         /**
-         * Canvas can be scrolled along both X and Y axes.
+         * The canvas can be scrolled along both the **X** and **Y** axes.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollingDirection#XY)
          */
@@ -31233,7 +31314,7 @@ declare namespace Enum {
     }
     export type VerticalAlignment = VerticalAlignment.Center | VerticalAlignment.Top | VerticalAlignment.Bottom;
     /**
-     * Indicates the side that the vertical scrollbar will be located at.
+     * This enum is used for `ScrollingFrame.VerticalScrollBarPosition` to indicate vertical scroll bar positioning.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerticalScrollBarPosition)
      */

@@ -360,7 +360,6 @@ interface EditableMesh extends RBXObject {
 	GetAdjacentVertices(this: EditableMesh, vertexId: number): Array<number>;
 	GetVertices(this: EditableMesh): Array<number>;
 	RaycastLocal(this: EditableMesh, origin: Vector3, direction: Vector3): LuaTuple<[number, Vector3, Vector3]>;
-	CreateMeshPartAsync(this: EditableMesh, initialSize: Vector3, options?: CreateMeshPartAsyncOptions): MeshPart;
 }
 
 interface EmotesPages extends InventoryPages {}
@@ -749,7 +748,7 @@ interface MemoryStoreSortedMap extends Instance {
 		exclusiveLowerBound?: { key?: string; sortKey?: string | number },
 		exclusiveUpperBound?: { key?: string; sortKey?: string | number },
 	): Array<{ key: string; value: unknown; sortKey?: string | number }>;
-	GetAsync(this: MemoryStoreSortedMap, key: string): LuaTuple<[key?: string, sortKey?: string | number]>;
+	GetAsync(this: MemoryStoreSortedMap, key: string): LuaTuple<[value?: unknown, sortKey?: string | number]>;
 }
 
 /** @server */
