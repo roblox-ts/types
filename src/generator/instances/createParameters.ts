@@ -33,7 +33,7 @@ export function createParameters(ctx: Context, apiParameters: Array<ApiParameter
 			if (ts.isUnionTypeNode(type) && type.types.find(isTypeUndefined)) {
 				type = ts.factory.createUnionTypeNode(type.types.filter(v => !isTypeUndefined(v)));
 				questionToken = ts.factory.createToken(ts.SyntaxKind.QuestionToken);
-			} else if (apiParameter.Default) {
+			} else if (apiParameter.Default !== undefined) {
 				questionToken = ts.factory.createToken(ts.SyntaxKind.QuestionToken);
 			} else {
 				requiredParamSeen = true;
