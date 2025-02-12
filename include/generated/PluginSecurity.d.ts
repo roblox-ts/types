@@ -9399,7 +9399,7 @@ interface Plugin extends Instance {
      * @param this
      * @param suggestedFileName
      */
-    PromptSaveSelection(this: Plugin, suggestedFileName: string): boolean;
+    PromptSaveSelection(this: Plugin, suggestedFileName?: string): boolean;
     /**
      * Fired when the plugin is deactivated.
      *
@@ -9548,7 +9548,7 @@ interface PluginManagerInterface extends Instance {
      * @param this
      * @param filePath
      */
-    ExportPlace(this: PluginManagerInterface, filePath: string): void;
+    ExportPlace(this: PluginManagerInterface, filePath?: string): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -9556,7 +9556,7 @@ interface PluginManagerInterface extends Instance {
      * @param this
      * @param filePath
      */
-    ExportSelection(this: PluginManagerInterface, filePath: string): void;
+    ExportSelection(this: PluginManagerInterface, filePath?: string): void;
 }
 /**
  * A context menu that can be shown in Studio. Displays a list of `PluginActions` and supports submenus.

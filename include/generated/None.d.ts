@@ -2220,7 +2220,7 @@ interface AnalyticsService extends Instance {
      * @param itemSku Optional SKU of the item or bundle being purchased. This is a unique identifier for the item being purchased. Limited to 100 unique SKUs per experience.
      * @param customFields Optional dictionary of custom fields that will provide breakdowns in Roblox-provided charts. Only specific keys, provided by `AnalyticsCustomFieldKeys`, will be used for these breakdowns. Limited to 8,000 unique combinations of values across the three custom fields per experience.
      */
-    LogEconomyEvent(this: AnalyticsService, player: Player, flowType: CastsToEnum<Enum.AnalyticsEconomyFlowType>, currencyType: string, amount: number, endingBalance: number, transactionType: string, itemSku: string, customFields?: object): void;
+    LogEconomyEvent(this: AnalyticsService, player: Player, flowType: CastsToEnum<Enum.AnalyticsEconomyFlowType>, currencyType: string, amount: number, endingBalance: number, transactionType: string, itemSku?: string, customFields?: object): void;
     /**
      * Logs an event used to track user actions stepping through a pre-planned funnel.
      *
@@ -2235,7 +2235,7 @@ interface AnalyticsService extends Instance {
      * @param stepName Optional name of the step in the funnel. This field is only used for display purposes in Roblox-provided charts.
      * @param customFields Optional dictionary of custom fields that will provide breakdowns in Roblox-provided charts. Only specific keys, provided by `AnalyticsCustomFieldKeys`, will be used for these breakdowns. Limited to 8,000 unique combinations of values across the three custom fields per experience.
      */
-    LogFunnelStepEvent(this: AnalyticsService, player: Player, funnelName: string, funnelSessionId: string, step: number, stepName: string, customFields?: object): void;
+    LogFunnelStepEvent(this: AnalyticsService, player: Player, funnelName: string, funnelSessionId?: string, step?: number, stepName?: string, customFields?: object): void;
     /**
      * Logs an event used to track user actions stepping through an onboarding funnel.
      *
@@ -2248,7 +2248,7 @@ interface AnalyticsService extends Instance {
      * @param stepName Optional name of the step in the funnel. This field is only used for display purposes in Roblox-provided charts.
      * @param customFields Optional dictionary of custom fields that will provide breakdowns in Roblox-provided charts. Only specific keys, provided by `AnalyticsCustomFieldKeys`, will be used for these breakdowns. Limited to 8,000 unique combinations of values across the three custom fields per experience.
      */
-    LogOnboardingFunnelStepEvent(this: AnalyticsService, player: Player, step: number, stepName: string, customFields?: object): void;
+    LogOnboardingFunnelStepEvent(this: AnalyticsService, player: Player, step: number, stepName?: string, customFields?: object): void;
     /**
      * Logs an event for when a user has completed a level attempt.
      *
@@ -2262,7 +2262,7 @@ interface AnalyticsService extends Instance {
      * @param levelName
      * @param customFields
      */
-    LogProgressionCompleteEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields?: object): void;
+    LogProgressionCompleteEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName?: string, customFields?: object): void;
     /**
      * Logs an event for when a user has started, completed, or failed a level attempt.
      *
@@ -2277,7 +2277,7 @@ interface AnalyticsService extends Instance {
      * @param levelName
      * @param customFields
      */
-    LogProgressionEvent(this: AnalyticsService, player: Player, progressionPathName: string, status: CastsToEnum<Enum.AnalyticsProgressionType>, level: number, levelName: string, customFields?: object): void;
+    LogProgressionEvent(this: AnalyticsService, player: Player, progressionPathName: string, status: CastsToEnum<Enum.AnalyticsProgressionType>, level: number, levelName?: string, customFields?: object): void;
     /**
      * Logs an event for when a user has failed a level attempt.
      *
@@ -2291,7 +2291,7 @@ interface AnalyticsService extends Instance {
      * @param levelName
      * @param customFields
      */
-    LogProgressionFailEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields?: object): void;
+    LogProgressionFailEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName?: string, customFields?: object): void;
     /**
      * Logs an event for when a user has started a level attempt.
      *
@@ -2305,7 +2305,7 @@ interface AnalyticsService extends Instance {
      * @param levelName
      * @param customFields
      */
-    LogProgressionStartEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName: string, customFields?: object): void;
+    LogProgressionStartEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName?: string, customFields?: object): void;
 }
 /**
  * References an animation asset which can be loaded by an `AnimationController`.
@@ -3290,7 +3290,7 @@ interface AssetService extends Instance {
      * @param description Description of the new place.
      * @returns `PlaceId` of the new place.
      */
-    CreatePlaceAsync(this: AssetService, placeName: string, templatePlaceID: number, description: string): number;
+    CreatePlaceAsync(this: AssetService, placeName: string, templatePlaceID: number, description?: string): number;
     /**
      * Clones a place through the given `templatePlaceID` and puts it into the inventory of the given player.
      *
@@ -13031,7 +13031,7 @@ interface DataStoreService extends Instance {
      * @param cursor **(Optional)** Cursor to continue iteration.
      * @returns `DataStoreListingPages` instance containing `DataStoreInfo` instances that provide details such as name, creation time, and time last updated.
      */
-    ListDataStoresAsync(this: DataStoreService, prefix: string, pageSize: number, cursor: string): DataStoreListingPages;
+    ListDataStoresAsync(this: DataStoreService, prefix?: string, pageSize?: number, cursor?: string): DataStoreListingPages;
 }
 /**
  * Specifies additional parameters for a `GlobalDataStore:SetAsync()` call.
@@ -14927,7 +14927,7 @@ interface DataStore extends GlobalDataStore {
      * @param excludeDeleted **(Optional)** Exclude deleted keys from being returned. When enabled ListKeys will check up to 512 keys. If all checked keys are deleted then it will return an empty list with a cursor to continue iteration.
      * @returns A `DataStoreKeyPages` instance that enumerates the keys as `DataStoreKey` instances.
      */
-    ListKeysAsync(this: DataStore, prefix: string, pageSize: number, cursor: string, excludeDeleted?: boolean): DataStoreKeyPages;
+    ListKeysAsync(this: DataStore, prefix?: string, pageSize?: number, cursor?: string, excludeDeleted?: boolean): DataStoreKeyPages;
     /**
      * Enumerates all versions of a key.
      *
@@ -29414,7 +29414,7 @@ interface Player extends Instance {
      * @param this An object that represents a presently connected client to the game.
      * @param message The message to show the user upon kicking.
      */
-    Kick(this: Player, message: string): void;
+    Kick(this: Player, message?: string): void;
     /**
      * **Deprecated:** This item is deprecated, as it may have been used for a now obsolete data persistence method. Please save and load player data using `DataStoreService` for new work.
      *
@@ -35808,7 +35808,7 @@ interface TextChannel extends Instance {
      * @param metadata Use to identify system message types, such as the default system messages.
      * @returns A `TextChatMessage` with `TextChatMessage.Status` property that indicates the condition of the message.
      */
-    DisplaySystemMessage(this: TextChannel, systemMessage: string, metadata: string): TextChatMessage;
+    DisplaySystemMessage(this: TextChannel, systemMessage: string, metadata?: string): TextChatMessage;
     /**
      * Sets the `DirectChatRequester` for the `TextChannel`. The `TextChannel` will only deliver messages to users that can send direct messages to the `DirectChatRequester`.
      *
@@ -35852,7 +35852,7 @@ interface TextChannel extends Instance {
      * @param metadata Custom metadata to attach to the message.
      * @returns A `TextChatMessage` with `TextChatMessage.Status` property that indicates the condition of the message.
      */
-    SendAsync(this: TextChannel, message: string, metadata: string): TextChatMessage;
+    SendAsync(this: TextChannel, message: string, metadata?: string): TextChatMessage;
     /**
      * Fires when `TextChannel:DisplaySystemMessage()` is invoked on the client, or when the client receives a valid `TextChannel:SendAsync()` response from the server.
      *
