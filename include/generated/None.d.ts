@@ -162,6 +162,7 @@ interface Services {
     Stats: Stats;
     StreamingService: StreamingService;
     StudioAssetService: StudioAssetService;
+    StudioCameraService: StudioCameraService;
     StudioDeviceEmulatorService: StudioDeviceEmulatorService;
     StudioPublishService: StudioPublishService;
     StudioScriptDebugEventListener: StudioScriptDebugEventListener;
@@ -188,6 +189,7 @@ interface Services {
     TweenService: TweenService;
     UGCAvatarService: UGCAvatarService;
     UIDragDetectorService: UIDragDetectorService;
+    UniqueIdLookupService: UniqueIdLookupService;
     UnvalidatedAssetService: UnvalidatedAssetService;
     UserInputService: UserInputService;
     UserService: UserService;
@@ -224,6 +226,8 @@ interface CreatableInstances {
     AtmosphereSensor: AtmosphereSensor;
     Attachment: Attachment;
     AudioAnalyzer: AudioAnalyzer;
+    AudioChannelMixer: AudioChannelMixer;
+    AudioChannelSplitter: AudioChannelSplitter;
     AudioChorus: AudioChorus;
     AudioCompressor: AudioCompressor;
     AudioDeviceInput: AudioDeviceInput;
@@ -1390,15 +1394,6 @@ interface EditableMesh extends RBXObject {
      * @param this Instance which allows for the runtime creation and manipulation of meshes.
      */
     Triangulate(this: EditableMesh): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**: Yields
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#CreateMeshPartAsync)
-     *
-     * @deprecated
-     */
-    CreateMeshPartAsync(this: EditableMesh, initialSize: Vector3, options?: CreateMeshPartAsyncOptions): MeshPart;
 }
 /**
  * Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
@@ -3269,22 +3264,6 @@ interface AssetService extends Instance {
      */
     CreateEditableMeshAsync(this: AssetService, content: Content, editableMeshOptions?: object): EditableMesh;
     /**
-     * **Deprecated:** This function has been deprecated - use `AssetService:CreateEditableMeshAsync()`.
-     *
-     * Returns a new `EditableMesh` instance created from an existing `MeshPart`.
-     *
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**: Yields
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateEditableMeshFromPartAsync)
-     * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
-     * @param meshPart The `MeshPart` from which to create an `EditableMesh` instance. The part must have a valid `MeshId` for this method to operate.
-     * @returns The new `EditableMesh` instance.
-     *
-     * @deprecated CreateEditableMeshAsync
-     */
-    CreateEditableMeshFromPartAsync(this: AssetService, meshPart: Instance): EditableMesh;
-    /**
      * Creates a new `MeshPart` with a specified mesh ID and an optional table of fidelity values.
      *
      * - **ThreadSafety**: Unsafe
@@ -3816,6 +3795,18 @@ interface AudioAnalyzer extends Instance {
      */
     GetConnectedWires(this: AudioAnalyzer, pin: string): Array<Instance>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioAnalyzer#GetInputPins)
+     */
+    GetInputPins(this: AudioAnalyzer): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioAnalyzer#GetOutputPins)
+     */
+    GetOutputPins(this: AudioAnalyzer): Array<unknown>;
+    /**
      * Returns the frequency spectrum of the last audio buffer.
      *
      * - **ThreadSafety**: Unsafe
@@ -3831,6 +3822,72 @@ interface AudioAnalyzer extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioAnalyzer#WiringChanged)
+     */
+    readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer)
+ */
+interface AudioChannelMixer extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioChannelMixer: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#Layout)
+     */
+    Layout: Enum.AudioChannelLayout;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#GetConnectedWires)
+     */
+    GetConnectedWires(this: AudioChannelMixer, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#WiringChanged)
+     */
+    readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter)
+ */
+interface AudioChannelSplitter extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioChannelSplitter: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#Layout)
+     */
+    Layout: Enum.AudioChannelLayout;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#GetConnectedWires)
+     */
+    GetConnectedWires(this: AudioChannelSplitter, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#WiringChanged)
      */
     readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
 }
@@ -3890,6 +3947,18 @@ interface AudioChorus extends Instance {
      * @param pin
      */
     GetConnectedWires(this: AudioChorus, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChorus#GetInputPins)
+     */
+    GetInputPins(this: AudioChorus): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChorus#GetOutputPins)
+     */
+    GetOutputPins(this: AudioChorus): Array<unknown>;
     /**
      * Fires when another instance is connected to or disconnected from the `AudioChorus` via a `Wire`.
      *
@@ -3972,6 +4041,18 @@ interface AudioCompressor extends Instance {
      */
     GetConnectedWires(this: AudioCompressor, pin: string): Array<Instance>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioCompressor#GetInputPins)
+     */
+    GetInputPins(this: AudioCompressor): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioCompressor#GetOutputPins)
+     */
+    GetOutputPins(this: AudioCompressor): Array<unknown>;
+    /**
      * Fires when another instance is connected to or disconnected from the `AudioCompressor` via a `Wire`.
      *
      * - **ThreadSafety**: Unsafe
@@ -4045,6 +4126,18 @@ interface AudioDeviceInput extends Instance {
      */
     GetConnectedWires(this: AudioDeviceInput, pin: string): Array<Instance>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceInput#GetInputPins)
+     */
+    GetInputPins(this: AudioDeviceInput): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceInput#GetOutputPins)
+     */
+    GetOutputPins(this: AudioDeviceInput): Array<unknown>;
+    /**
      * Returns a list of user IDs that are either permitted to hear or blocked from hearing this `AudioDeviceInput`.
      *
      * - **ThreadSafety**: Unsafe
@@ -4105,6 +4198,18 @@ interface AudioDeviceOutput extends Instance {
      */
     GetConnectedWires(this: AudioDeviceOutput, pin: string): Array<Instance>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceOutput#GetInputPins)
+     */
+    GetInputPins(this: AudioDeviceOutput): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceOutput#GetOutputPins)
+     */
+    GetOutputPins(this: AudioDeviceOutput): Array<unknown>;
+    /**
      * Fires when another instance is connected to or disconnected from the `AudioDeviceOutput` via a `Wire`.
      *
      * - **ThreadSafety**: Unsafe
@@ -4153,6 +4258,18 @@ interface AudioDistortion extends Instance {
      * @param pin
      */
     GetConnectedWires(this: AudioDistortion, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDistortion#GetInputPins)
+     */
+    GetInputPins(this: AudioDistortion): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDistortion#GetOutputPins)
+     */
+    GetOutputPins(this: AudioDistortion): Array<unknown>;
     /**
      * Fires when another instance is connected to or disconnected from the `AudioDistortion` via a `Wire`.
      *
@@ -4233,6 +4350,18 @@ interface AudioEcho extends Instance {
      */
     GetConnectedWires(this: AudioEcho, pin: string): Array<Instance>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEcho#GetInputPins)
+     */
+    GetInputPins(this: AudioEcho): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEcho#GetOutputPins)
+     */
+    GetOutputPins(this: AudioEcho): Array<unknown>;
+    /**
      * Fires when another instance is connected to or disconnected from the `AudioEcho` via a `Wire`.
      *
      * - **ThreadSafety**: Unsafe
@@ -4281,6 +4410,12 @@ interface AudioEmitter extends Instance {
      */
     GetAngleAttenuation(this: AudioEmitter): object;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#GetAudibilityFor)
+     */
+    GetAudibilityFor(this: AudioEmitter, listener: AudioListener): number;
+    /**
      * Returns an array of `Wires` that are connected to the specified pin.
      *
      * - **ThreadSafety**: Unsafe
@@ -4303,10 +4438,22 @@ interface AudioEmitter extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#GetInputPins)
+     */
+    GetInputPins(this: AudioEmitter): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#GetInteractingListeners)
      * @param this Emits audio streams into the world.
      */
     GetInteractingListeners(this: AudioEmitter): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#GetOutputPins)
+     */
+    GetOutputPins(this: AudioEmitter): Array<unknown>;
     /**
      * Sets the angle attenuation curve that the `AudioEmitter` should use, or uses a constant curve of volume `1` if none is provided.
      *
@@ -4403,6 +4550,18 @@ interface AudioEqualizer extends Instance {
      */
     GetConnectedWires(this: AudioEqualizer, pin: string): Array<Instance>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEqualizer#GetInputPins)
+     */
+    GetInputPins(this: AudioEqualizer): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEqualizer#GetOutputPins)
+     */
+    GetOutputPins(this: AudioEqualizer): Array<unknown>;
+    /**
      * Fires when another instance is connected to or disconnected from the `AudioEqualizer` via a `Wire`.
      *
      * - **ThreadSafety**: Unsafe
@@ -4451,6 +4610,18 @@ interface AudioFader extends Instance {
      * @param pin
      */
     GetConnectedWires(this: AudioFader, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFader#GetInputPins)
+     */
+    GetInputPins(this: AudioFader): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFader#GetOutputPins)
+     */
+    GetOutputPins(this: AudioFader): Array<unknown>;
     /**
      * Fires when another instance is connected to or disconnected from the `AudioFader` via a `Wire`.
      *
@@ -4536,6 +4707,18 @@ interface AudioFilter extends Instance {
      */
     GetGainAt(this: AudioFilter, frequency: number): number;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFilter#GetInputPins)
+     */
+    GetInputPins(this: AudioFilter): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFilter#GetOutputPins)
+     */
+    GetOutputPins(this: AudioFilter): Array<unknown>;
+    /**
      * Fires when another instance is connected to or disconnected from the `AudioFilter` via a `Wire`.
      *
      * - **ThreadSafety**: Unsafe
@@ -4600,6 +4783,18 @@ interface AudioFlanger extends Instance {
      * @param pin
      */
     GetConnectedWires(this: AudioFlanger, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFlanger#GetInputPins)
+     */
+    GetInputPins(this: AudioFlanger): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFlanger#GetOutputPins)
+     */
+    GetOutputPins(this: AudioFlanger): Array<unknown>;
     /**
      * Fires when another instance is connected to or disconnected from the `AudioFlanger` via a `Wire`.
      *
@@ -4673,6 +4868,18 @@ interface AudioLimiter extends Instance {
      */
     GetConnectedWires(this: AudioLimiter, pin: string): Array<Instance>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioLimiter#GetInputPins)
+     */
+    GetInputPins(this: AudioLimiter): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioLimiter#GetOutputPins)
+     */
+    GetOutputPins(this: AudioLimiter): Array<unknown>;
+    /**
      * Fires when another instance is connected to or disconnected from the `AudioLimiter` via a `Wire`.
      *
      * - **ThreadSafety**: Unsafe
@@ -4721,6 +4928,12 @@ interface AudioListener extends Instance {
      */
     GetAngleAttenuation(this: AudioListener): object;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#GetAudibilityFor)
+     */
+    GetAudibilityFor(this: AudioListener, emitter: AudioEmitter): number;
+    /**
      * Returns an array of `Wires` that are connected to the specified pin.
      *
      * - **ThreadSafety**: Unsafe
@@ -4743,10 +4956,22 @@ interface AudioListener extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#GetInputPins)
+     */
+    GetInputPins(this: AudioListener): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#GetInteractingEmitters)
      * @param this Records an audio stream from its surrounding `AudioEmitters` in the 3D world.
      */
     GetInteractingEmitters(this: AudioListener): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#GetOutputPins)
+     */
+    GetOutputPins(this: AudioListener): Array<unknown>;
     /**
      * Sets the angle attenuation curve that the `AudioListener` should use, or uses a constant curve of volume `1` if none is provided.
      *
@@ -4825,6 +5050,18 @@ interface AudioPitchShifter extends Instance {
      */
     GetConnectedWires(this: AudioPitchShifter, pin: string): Array<Instance>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPitchShifter#GetInputPins)
+     */
+    GetInputPins(this: AudioPitchShifter): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPitchShifter#GetOutputPins)
+     */
+    GetOutputPins(this: AudioPitchShifter): Array<unknown>;
+    /**
      * Fires when another instance is connected to or disconnected from the `AudioPitchShifter` via a `Wire`.
      *
      * - **ThreadSafety**: Unsafe
@@ -4854,6 +5091,8 @@ interface AudioPlayer extends Instance {
      */
     Asset: ContentId;
     /**
+     * **Deprecated:**
+     *
      * The asset to be loaded into the `AudioPlayer`.
      *
      * - **ThreadSafety**: ReadSafe
@@ -4956,6 +5195,18 @@ interface AudioPlayer extends Instance {
      * @param pin
      */
     GetConnectedWires(this: AudioPlayer, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#GetInputPins)
+     */
+    GetInputPins(this: AudioPlayer): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#GetOutputPins)
+     */
+    GetOutputPins(this: AudioPlayer): Array<unknown>;
     /**
      * Plays the `AudioPlayer` from wherever its `TimePosition` is.
      *
@@ -5138,6 +5389,18 @@ interface AudioReverb extends Instance {
      */
     GetConnectedWires(this: AudioReverb, pin: string): Array<Instance>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioReverb#GetInputPins)
+     */
+    GetInputPins(this: AudioReverb): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioReverb#GetOutputPins)
+     */
+    GetOutputPins(this: AudioReverb): Array<unknown>;
+    /**
      * Fires when another instance is connected to or disconnected from the `AudioReverb` via a `Wire`.
      *
      * - **ThreadSafety**: Unsafe
@@ -5255,6 +5518,12 @@ interface AuroraService extends Instance {
      */
     readonly _nominal_AuroraService: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#RollbackEnabled)
+     */
+    RollbackEnabled: boolean;
+    /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#GetDesyncedInstances)
@@ -5305,9 +5574,21 @@ interface AuroraService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#StartPrediction)
+     */
+    StartPrediction(this: AuroraService, target: Instance): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#StepPhysics)
      */
     StepPhysics(this: AuroraService, worldSteps: number, parts?: Array<Instance>): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#StopPrediction)
+     */
+    StopPrediction(this: AuroraService, target: Instance): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -5326,6 +5607,18 @@ interface AuroraService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#FixedRateTick)
      */
     readonly FixedRateTick: RBXScriptSignal<(deltaTime: number, worldStepId: number) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#Rollback)
+     */
+    readonly Rollback: RBXScriptSignal<() => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#Step)
+     */
+    readonly Step: RBXScriptSignal<() => void>;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -6906,7 +7199,7 @@ interface WrapDeformer extends BaseWrap {
      * @param this Allows for the real-time deformation of a `MeshPart`.
      * @param content
      */
-    SetCageMeshContent(this: WrapDeformer, content: Content): void;
+    SetCageMeshContent(this: WrapDeformer, content: Content, cageOrigin?: CFrame): void;
     /**
      * Returns an `EditableMesh` (currently unskinned) equivalent to the deformed parent mesh.
      *
@@ -12734,7 +13027,7 @@ interface DataStoreService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreService#ListDataStoresAsync)
      * @param this A game service that gives access to persistent data storage across places in a game.
      * @param prefix **(Optional)** Prefix to enumerate data stores that start with the given prefix.
-     * @param pageSize **(Optional)** Number of items to be returned in each page. By default is 32.
+     * @param pageSize **(Optional)** Number of items to be returned in each page. If no value is given, the engine sends a default value of 0 to the data store web service, which in turn defaults to 32 items per page.
      * @param cursor **(Optional)** Cursor to continue iteration.
      * @returns `DataStoreListingPages` instance containing `DataStoreInfo` instances that provide details such as name, creation time, and time last updated.
      */
@@ -14629,7 +14922,7 @@ interface DataStore extends GlobalDataStore {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStore#ListKeysAsync)
      * @param this
      * @param prefix **(Optional)** Prefix to use for locating keys.
-     * @param pageSize **(Optional)** Maximum possible number of items that can be returned.
+     * @param pageSize **(Optional)** Number of items to be returned in each page. If no value is given, the engine sends a default value of 0 to the data store web service, which in turn defaults to 50 items per page.
      * @param cursor **(Optional)** Cursor to continue iteration.
      * @param excludeDeleted **(Optional)** Exclude deleted keys from being returned. When enabled ListKeys will check up to 512 keys. If all checked keys are deleted then it will return an empty list with a cursor to continue iteration.
      * @returns A `DataStoreKeyPages` instance that enumerates the keys as `DataStoreKey` instances.
@@ -14644,10 +14937,10 @@ interface DataStore extends GlobalDataStore {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStore#ListVersionsAsync)
      * @param this
      * @param key Key name for the versions to list. If `DataStoreOptions.AllScopes` was set to true when accessing the data store through `DataStoreService:GetDataStore()`, this key name must be prepended with the original scope as in "scope/key".
-     * @param sortDirection Enum specifying ascending or descending sort order.
-     * @param minDate Unix timestamp in milliseconds after which the versions should be listed.
-     * @param maxDate Unix timestamp in milliseconds up to which the versions should be listed.
-     * @param pageSize Number of items to be returned in each page.
+     * @param sortDirection **(Optional)** Enum specifying ascending or descending sort order.
+     * @param minDate **(Optional)** Unix timestamp in milliseconds after which the versions should be listed.
+     * @param maxDate **(Optional)** Unix timestamp in milliseconds up to which the versions should be listed.
+     * @param pageSize **(Optional)** Number of items to be returned in each page. If no value is given, the engine sends a default value of 0 to the data store web service, which in turn defaults to 1024 items per page.
      * @returns A `DataStoreVersionPages` instance that enumerates all the versions of the key as `DataStoreObjectVersionInfo` instances.
      */
     ListVersionsAsync(this: DataStore, key: string, sortDirection?: CastsToEnum<Enum.SortDirection>, minDate?: number, maxDate?: number, pageSize?: number): DataStoreVersionPages;
@@ -16306,6 +16599,8 @@ interface RelativeGui extends GuiObject {
     readonly _nominal_RelativeGui: unique symbol;
 }
 /**
+ * `ScrollingFrame` is a special `Frame` type with built-in scrolling interactivity and different ways to customize how the scrolling works.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScrollingFrame)
  */
 interface ScrollingFrame extends GuiObject {
@@ -16318,7 +16613,7 @@ interface ScrollingFrame extends GuiObject {
      */
     readonly _nominal_ScrollingFrame: unique symbol;
     /**
-     * The size in offsets of the area that is scrollable.
+     * The size of the area that is scrollable, in offsets.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: NotReplicated
@@ -16327,7 +16622,7 @@ interface ScrollingFrame extends GuiObject {
      */
     readonly AbsoluteCanvasSize: Vector2;
     /**
-     * The size in offsets of the frame, without the scrollbars.
+     * The size of the frame, in offsets, without the scroll bars.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: NotReplicated
@@ -16344,7 +16639,7 @@ interface ScrollingFrame extends GuiObject {
      */
     AutomaticCanvasSize: Enum.AutomaticSize;
     /**
-     * The Down image on the vertical scrollbar. Size of this is always ScrollBarThickness by ScrollBarThickness. This is also used as the image on the horizontal scroll bar.
+     * Image that displays on the bottom of a vertical scroll bar, or the right of a horizontal scroll bar (rotated 90° counterclockwise for a horizontal scroll bar).
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16352,7 +16647,7 @@ interface ScrollingFrame extends GuiObject {
      */
     BottomImage: ContentId;
     /**
-     * The location within the canvas, in offsets, that should be drawn at the top left of the scroll frame.
+     * Reflects the **current** positional offset of the canvas within the frame, in pixels, and sets the position of scroll bars accordingly.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16360,7 +16655,7 @@ interface ScrollingFrame extends GuiObject {
      */
     CanvasPosition: Vector2;
     /**
-     * Determines the size of the area that is scrollable. The UDim2 is calculated using the parent gui's size, similar to the regular Size property on gui objects.
+     * Determines the size of the scrollable area.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16368,7 +16663,7 @@ interface ScrollingFrame extends GuiObject {
      */
     CanvasSize: UDim2;
     /**
-     * Determines when elastic scrolling is allowed.
+     * Determines if and when elastic scrolling is allowed on touch‑enabled devices.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16376,7 +16671,7 @@ interface ScrollingFrame extends GuiObject {
      */
     ElasticBehavior: Enum.ElasticBehavior;
     /**
-     * Indicates the inset behavior of the horizontal scrolling bar.
+     * Indicates whether `CanvasSize` is inset by `ScrollBarThickness` on the horizontal axis.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16384,7 +16679,7 @@ interface ScrollingFrame extends GuiObject {
      */
     HorizontalScrollBarInset: Enum.ScrollBarInset;
     /**
-     * The middle image on the vertical scrollbar. The size of this can vary in the y direction, but is always set as `ScrollingFrame.ScrollBarThickness` in the x direction. This is also used as the middle image on the horizontal scroll bar.
+     * Image which spans the area between `TopImage` and `BottomImage` (rotated 90° counterclockwise for a horizontal scroll bar).
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16392,7 +16687,7 @@ interface ScrollingFrame extends GuiObject {
      */
     MidImage: ContentId;
     /**
-     * Determines how a rendered scroll bar image will be colorized.
+     * Determines how the rendered scroll bar images are colorized.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16400,7 +16695,7 @@ interface ScrollingFrame extends GuiObject {
      */
     ScrollBarImageColor3: Color3;
     /**
-     * Determines the transparency of the rendered scroll bar image.
+     * Determines the opacity of the scroll bar images.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16408,7 +16703,7 @@ interface ScrollingFrame extends GuiObject {
      */
     ScrollBarImageTransparency: number;
     /**
-     * How thick the scroll bar appears. This applies to both the horizontal and vertical scroll bars. If set to 0, no scroll bars are rendered.
+     * Thickness of the scroll bar in pixels; applies to both horizontal and vertical scroll bars.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16416,7 +16711,7 @@ interface ScrollingFrame extends GuiObject {
      */
     ScrollBarThickness: number;
     /**
-     * Determines the direction scrolling is allowed in this scrolling frame.
+     * Determines the direction(s) in which scrolling is allowed.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16424,7 +16719,7 @@ interface ScrollingFrame extends GuiObject {
      */
     ScrollingDirection: Enum.ScrollingDirection;
     /**
-     * Determines whether or not scrolling is allowed on the frame. If false, no scroll bars will be rendered.
+     * Determines whether scrolling is allowed on the frame.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16432,7 +16727,7 @@ interface ScrollingFrame extends GuiObject {
      */
     ScrollingEnabled: boolean;
     /**
-     * The Up image on the vertical scrollbar. The size of this is always ScrollBarThickness by ScrollBarThickness. This is also used as the left image on the horizontal scroll bar.
+     * Image which displays on the top of a vertical scroll bar, or the left of a horizontal scroll bar (rotated 90° counterclockwise for a horizontal scroll bar).
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16440,7 +16735,7 @@ interface ScrollingFrame extends GuiObject {
      */
     TopImage: ContentId;
     /**
-     * Indicates the inset behavior of the vertical scrolling bar.
+     * Indicates whether `CanvasSize` is inset by `ScrollBarThickness` on the vertical axis.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16448,7 +16743,7 @@ interface ScrollingFrame extends GuiObject {
      */
     VerticalScrollBarInset: Enum.ScrollBarInset;
     /**
-     * Indicates the side that the vertical scrollbar will be located at.
+     * Indicates whether the vertical scroll bar is positioned to the left or right of the canvas.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16936,7 +17231,7 @@ interface VideoFrame extends GuiObject {
     readonly Played: RBXScriptSignal<(video: string) => void>;
 }
 /**
- * `GuiObject` that can display children 3D objects.
+ * `GuiObject` that renders 3D objects inside its bounds.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ViewportFrame)
  */
@@ -16967,7 +17262,7 @@ interface ViewportFrame extends GuiObject {
      */
     CurrentCamera: Camera | undefined;
     /**
-     * Determines how a rendered image will be colorized.
+     * Determines how the rendered viewport image will be colorized.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16975,7 +17270,7 @@ interface ViewportFrame extends GuiObject {
      */
     ImageColor3: Color3;
     /**
-     * Determines the transparency of the rendered image.
+     * Determines the transparency of the rendered viewport image.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -18908,27 +19203,23 @@ interface HapticEffect extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect#Play)
-     * @param this
      */
     Play(this: HapticEffect): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect#SetWaveformKeys)
-     * @param this
-     * @param keys
      */
     SetWaveformKeys(this: HapticEffect, keys: Array<unknown>): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect#Stop)
-     * @param this
      */
     Stop(this: HapticEffect): void;
 }
 /**
- * Provides haptic feedback to some gamepad controllers.
+ * Provides haptic feedback to controllers and devices.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -18944,38 +19235,38 @@ interface HapticService extends Instance {
      */
     readonly _nominal_HapticService: unique symbol;
     /**
-     * Returns the current vibration value set to the specified `UserInputType` and `VibrationMotor`. This will not return anything if `SetMotor` has not been called prior.
+     * Returns the current vibration value set to the specified `UserInputType` and `VibrationMotor`.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticService#GetMotor)
-     * @param this Provides haptic feedback to some gamepad controllers.
+     * @param this Provides haptic feedback to controllers and devices.
      * @param inputType The specified `UserInputType`.
      * @param vibrationMotor The specified `VibrationMotor`.
-     * @returns The current vibration value set to the specified `UserInputType` and `VibrationMotor` or nil if `SetMotor` has not been called prior.
+     * @returns The current vibration value set to the specified `UserInputType` and `VibrationMotor` or `nil` if `SetMotor()` has not been called prior.
      */
     GetMotor(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>, vibrationMotor: CastsToEnum<Enum.VibrationMotor>): unknown;
     /**
-     * Returns true if the specified motor is available to be used with the specified `UserInputType`.
+     * Returns `true` if the specified motor is available to be used with the specified `UserInputType`.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticService#IsMotorSupported)
-     * @param this Provides haptic feedback to some gamepad controllers.
+     * @param this Provides haptic feedback to controllers and devices.
      * @param inputType The specific `UserInputType` being checked for `VibrationMotor` support.
      * @param vibrationMotor The specified `VibrationMotor` checked to see if it supports the specified `UserInputType`.
-     * @returns True if the specified motor is available to be used with the specified `UserInputType`, false if not.
+     * @returns Boolean of `true` if the specified motor is available to be used with the specified `UserInputType`, `false` if not.
      */
     IsMotorSupported(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>, vibrationMotor: CastsToEnum<Enum.VibrationMotor>): boolean;
     /**
-     * Returns true if the specified `UserInputType` supports haptic feedback.
+     * Returns `true` if the specified `UserInputType` supports haptic feedback.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticService#IsVibrationSupported)
-     * @param this Provides haptic feedback to some gamepad controllers.
+     * @param this Provides haptic feedback to controllers and devices.
      * @param inputType The specified `UserInputType` checked to see if it supports haptic feedback.
-     * @returns True if the specified `UserInputType` supports haptic feedback.
+     * @returns Boolean of `true` if the specified `UserInputType` supports haptic feedback.
      */
     IsVibrationSupported(this: HapticService, inputType: CastsToEnum<Enum.UserInputType>): boolean;
     /**
@@ -18984,7 +19275,7 @@ interface HapticService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticService#SetMotor)
-     * @param this Provides haptic feedback to some gamepad controllers.
+     * @param this Provides haptic feedback to controllers and devices.
      * @param inputType The specified `UserInputType`.
      * @param vibrationMotor The specified `VibrationMotor`.
      * @param vibrationValues How intensely the motor should vibrate. Only uses the first value in the tuple, which should be a number.
@@ -19643,7 +19934,7 @@ interface Humanoid extends Instance {
      */
     GetAppliedDescription(this: Humanoid): HumanoidDescription;
     /**
-     * Pass a body part to this function (the body part should be a sibling of Humanoid, and a child of a Model) to get the `BodyPartR15` of the `Part`.
+     * Pass a body part to this method (the body part should be a sibling of Humanoid, and a child of a Model) to get the `BodyPartR15` of the `Part`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -22249,8 +22540,6 @@ interface LiveSyncService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LiveSyncService#GetSyncState)
-     * @param this
-     * @param instance
      */
     GetSyncState(this: LiveSyncService, instance: Instance): unknown;
     /**
@@ -23624,7 +23913,7 @@ interface MemoryStoreSortedMap extends Instance {
      * - Sort key, or nil -- if there's no sort key associated with the   specified key.
      */
     GetAsync(this: MemoryStoreSortedMap, key: string): LuaTuple<[
-        key?: string,
+        value?: unknown,
         sortKey?: string | number
     ]>;
     /**
@@ -29042,6 +29331,12 @@ interface Player extends Instance {
      */
     readonly UserId: number;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#AddReplicationFocus)
+     */
+    AddReplicationFocus(this: Player, part: BasePart): void;
+    /**
      * Removes all accessories and other character appearance objects from a player's Character.
      *
      * - **ThreadSafety**: Unsafe
@@ -29206,6 +29501,12 @@ interface Player extends Instance {
      * @param relativeToCamera A boolean indicating whether the player should move relative to the player's camera.
      */
     Move(this: Player, walkDirection: Vector3, relativeToCamera?: boolean): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#RemoveReplicationFocus)
+     */
+    RemoveReplicationFocus(this: Player, part: BasePart): void;
     /**
      * **Deprecated:** This item is deprecated, as it may have been used for a now obsolete data persistence method. Please save and load player data using `DataStoreService` for new work.
      *
@@ -29982,17 +30283,20 @@ interface PolicyService extends Instance {
      */
     readonly _nominal_PolicyService: unique symbol;
     /**
+     * Determines if a user can see brand project assets inside your experience.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PolicyService#CanViewBrandProjectAsync)
      * @param this Helps you query information regarding policy compliance for players around the world based on age range, location, and platform type.
-     * @param player
-     * @param brandProjectId
+     * @param player The `Player` object you're trying to show the brand project to.
+     * @param brandProjectId The brand project ID provided by Roblox. Represents all assets associated with a brand project.
+     * @returns Whether or not the brand project can be shown to the specific user.
      */
     CanViewBrandProjectAsync(this: PolicyService, player: Player, brandProjectId: string): boolean;
     /**
-     * Returns policy information about a player which is based on geolocation, age group, and platform.
+     * Returns policy information about a player based on geolocation, age group, and platform.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -34261,6 +34565,21 @@ interface StudioCallout extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCameraService)
+ */
+interface StudioCameraService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StudioCameraService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceEmulatorService)
  */
 interface StudioDeviceEmulatorService extends Instance {
@@ -35241,8 +35560,11 @@ interface TestService extends Instance {
      * Sets whether or not the physics engine should be throttled to 30 FPS while the test is being ran.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Is30FpsThrottleEnabled)
+     *
+     * @deprecated ThrottlePhysicsToRealtime
      */
     Is30FpsThrottleEnabled: boolean;
     /**
@@ -35286,6 +35608,12 @@ interface TestService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#TestCount)
      */
     readonly TestCount: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#ThrottlePhysicsToRealtime)
+     */
+    ThrottlePhysicsToRealtime: boolean;
     /**
      * The maximum amount of time that tests are allowed to run for.
      *
@@ -38465,6 +38793,21 @@ interface UIDragDetectorService extends Instance {
      * @deprecated
      */
     readonly _nominal_UIDragDetectorService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UniqueIdLookupService)
+ */
+interface UniqueIdLookupService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_UniqueIdLookupService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service

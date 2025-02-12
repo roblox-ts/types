@@ -176,6 +176,7 @@ interface Services {
     StreamingService: StreamingService;
     Studio: Studio;
     StudioAssetService: StudioAssetService;
+    StudioCameraService: StudioCameraService;
     StudioData: StudioData;
     StudioDeviceEmulatorService: StudioDeviceEmulatorService;
     StudioPublishService: StudioPublishService;
@@ -205,6 +206,7 @@ interface Services {
     TweenService: TweenService;
     UGCAvatarService: UGCAvatarService;
     UIDragDetectorService: UIDragDetectorService;
+    UniqueIdLookupService: UniqueIdLookupService;
     UnvalidatedAssetService: UnvalidatedAssetService;
     UserInputService: UserInputService;
     UserService: UserService;
@@ -242,6 +244,8 @@ interface CreatableInstances {
     AtmosphereSensor: AtmosphereSensor;
     Attachment: Attachment;
     AudioAnalyzer: AudioAnalyzer;
+    AudioChannelMixer: AudioChannelMixer;
+    AudioChannelSplitter: AudioChannelSplitter;
     AudioChorus: AudioChorus;
     AudioCompressor: AudioCompressor;
     AudioDeviceInput: AudioDeviceInput;
@@ -1407,6 +1411,36 @@ interface AudioAnalyzer extends Instance {
      * @deprecated
      */
     readonly _nominal_AudioAnalyzer: unique symbol;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer)
+ */
+interface AudioChannelMixer extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioChannelMixer: unique symbol;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter)
+ */
+interface AudioChannelSplitter extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioChannelSplitter: unique symbol;
 }
 /**
  * Makes an audio stream sound more voluminous. If applied to a single voice, it may sound like multiple voices.
@@ -5486,6 +5520,8 @@ interface RelativeGui extends GuiObject {
     readonly _nominal_RelativeGui: unique symbol;
 }
 /**
+ * `ScrollingFrame` is a special `Frame` type with built-in scrolling interactivity and different ways to customize how the scrolling works.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScrollingFrame)
  */
 interface ScrollingFrame extends GuiObject {
@@ -5529,7 +5565,7 @@ interface VideoFrame extends GuiObject {
     readonly _nominal_VideoFrame: unique symbol;
 }
 /**
- * `GuiObject` that can display children 3D objects.
+ * `GuiObject` that renders 3D objects inside its bounds.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ViewportFrame)
  */
@@ -6151,7 +6187,7 @@ interface HapticEffect extends Instance {
     readonly _nominal_HapticEffect: unique symbol;
 }
 /**
- * Provides haptic feedback to some gamepad controllers.
+ * Provides haptic feedback to controllers and devices.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -11946,6 +11982,21 @@ interface StudioCallout extends Instance {
     readonly _nominal_StudioCallout: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCameraService)
+ */
+interface StudioCameraService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StudioCameraService: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioData)
@@ -13445,6 +13496,21 @@ interface UIDragDetectorService extends Instance {
      * @deprecated
      */
     readonly _nominal_UIDragDetectorService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UniqueIdLookupService)
+ */
+interface UniqueIdLookupService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_UniqueIdLookupService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
