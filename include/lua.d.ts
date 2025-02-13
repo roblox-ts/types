@@ -511,6 +511,12 @@ declare namespace math {
 	/** Maps a number from one range to another. */
 	function map(x: number, inmin: number, inmax: number, outmin: number, outmax: number): number;
 
+	/**
+	 * Returns the linear interpolation between a and b based on the factor t.
+	 * This function uses the formula a+(b-a)*t. t is typically between 0 and 1 but values outside this range are acceptable.
+	 */
+	function lerp(a: number, b: number, t: number): number;
+
 	/** Returns the maximum value among the numbers passed to the function. */
 	function max(...n: Array<number>): number;
 
