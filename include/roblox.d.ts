@@ -195,15 +195,15 @@ interface ProductInfo {
 
 interface AssetProductInfo extends ProductInfo {
 	/** Describes whether the asset is a User Product, Developer Product, or Game Pass */
-	ProductType?: "Collectible Item" | "User Product";
+	ProductType: "Collectible Item" | "User Product" | undefined;
 	/** If InfoType was Asset, this is the ID of the given asset. */
 	AssetId: number;
 	/** The [type of asset](https://developer.roblox.com/articles/Asset-types) (e.g. place, model, shirt). In TypeScript, you should compare this value to a member of the `AssetTypeId` const enum. */
 	AssetTypeId: AssetTypeId;
 	/** Describes whether the asset is purchasable in the current experience. */
-	CanBeSoldInThisGame?: boolean;
-	CollectibleItemId?: string;
-	CollectibleProductId?: string;
+	CanBeSoldInThisGame: boolean | undefined;
+	CollectibleItemId: string | undefined;
+	CollectibleProductId: string | undefined;
 	/** A table of information describing the item collectible details. */
 	CollectiblesItemDetails?: {
 		/** Describes whether the asset is purchasable */
