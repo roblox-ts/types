@@ -10550,7 +10550,7 @@ declare namespace Enum {
         }
         export const Legacy: Legacy;
         /**
-         * Arial has been removed from Roblox. Use Arimo instead.
+         * Arial has been removed from Roblox. Using Arial will map to Arimo.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Arial)
          */
@@ -10561,7 +10561,7 @@ declare namespace Enum {
         }
         export const Arial: Arial;
         /**
-         * Arial has been removed from Roblox. Use Arimo instead.
+         * Arial has been removed from Roblox. Using Arial will map to Arimo.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#ArialBold)
          */
@@ -10726,7 +10726,7 @@ declare namespace Enum {
         }
         export const SourceSansSemibold: SourceSansSemibold;
         /**
-         * Gotham has been removed from Roblox. Use Montserrat instead.
+         * Gotham has been removed from Roblox. Using Gotham will map to Montserrat.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Gotham)
          */
@@ -10741,7 +10741,7 @@ declare namespace Enum {
          */
         export const Montserrat: Gotham;
         /**
-         * Gotham has been removed from Roblox. Use Montserrat instead.
+         * Gotham has been removed from Roblox. Using Gotham will map to Montserrat.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#GothamMedium)
          */
@@ -10760,7 +10760,7 @@ declare namespace Enum {
          */
         export const MontserratMedium: GothamMedium;
         /**
-         * Gotham has been removed from Roblox. Use Montserrat instead.
+         * Gotham has been removed from Roblox. Using Gotham will map to Montserrat.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#GothamBold)
          */
@@ -10775,7 +10775,7 @@ declare namespace Enum {
          */
         export const MontserratBold: GothamBold;
         /**
-         * Gotham has been removed from Roblox. Use Montserrat instead.
+         * Gotham has been removed from Roblox. Using Gotham will map to Montserrat.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#GothamBlack)
          */
@@ -13885,6 +13885,42 @@ declare namespace Enum {
     }
     export type InitialDockState = InitialDockState.Top | InitialDockState.Bottom | InitialDockState.Left | InitialDockState.Right | InitialDockState.Float;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType)
+     */
+    export namespace InputActionType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Bool)
+         */
+        export interface Bool extends globalThis.EnumItem {
+            Name: "Bool";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.InputActionType;
+        }
+        export const Bool: Bool;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Float)
+         */
+        export interface Float extends globalThis.EnumItem {
+            Name: "Float";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.InputActionType;
+        }
+        export const Float: Float;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Direction2D)
+         */
+        export interface Direction2D extends globalThis.EnumItem {
+            Name: "Direction2D";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.InputActionType;
+        }
+        export const Direction2D: Direction2D;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InputActionType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.InputActionType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InputActionType | undefined;
+    }
+    export type InputActionType = InputActionType.Bool | InputActionType.Float | InputActionType.Direction2D;
+    /**
      * The InputType Enum controls the SurfaceInputs of `Part`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputType)
@@ -13972,6 +14008,24 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InputType | undefined;
     }
     export type InputType = InputType.NoInput | InputType.Constant | InputType.Sin;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IntermediateMeshGenerationResult)
+     */
+    export namespace IntermediateMeshGenerationResult {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IntermediateMeshGenerationResult#HighQualityMesh)
+         */
+        export interface HighQualityMesh extends globalThis.EnumItem {
+            Name: "HighQualityMesh";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.IntermediateMeshGenerationResult;
+        }
+        export const HighQualityMesh: HighQualityMesh;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.IntermediateMeshGenerationResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.IntermediateMeshGenerationResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.IntermediateMeshGenerationResult | undefined;
+    }
+    export type IntermediateMeshGenerationResult = IntermediateMeshGenerationResult.HighQualityMesh;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InterpolationThrottlingMode)
      */
@@ -21270,6 +21324,78 @@ declare namespace Enum {
     }
     export type PlayerChatType = PlayerChatType.All | PlayerChatType.Team | PlayerChatType.Whisper;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDataErrorState)
+     */
+    export namespace PlayerDataErrorState {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDataErrorState#LoadFailed)
+         */
+        export interface LoadFailed extends globalThis.EnumItem {
+            Name: "LoadFailed";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PlayerDataErrorState;
+        }
+        export const LoadFailed: LoadFailed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDataErrorState#FlushFailed)
+         */
+        export interface FlushFailed extends globalThis.EnumItem {
+            Name: "FlushFailed";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PlayerDataErrorState;
+        }
+        export const FlushFailed: FlushFailed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDataErrorState#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PlayerDataErrorState;
+        }
+        export const None: None;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PlayerDataErrorState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PlayerDataErrorState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlayerDataErrorState | undefined;
+    }
+    export type PlayerDataErrorState = PlayerDataErrorState.LoadFailed | PlayerDataErrorState.FlushFailed | PlayerDataErrorState.None;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDataLoadFailureBehavior)
+     */
+    export namespace PlayerDataLoadFailureBehavior {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDataLoadFailureBehavior#Failure)
+         */
+        export interface Failure extends globalThis.EnumItem {
+            Name: "Failure";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PlayerDataLoadFailureBehavior;
+        }
+        export const Failure: Failure;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDataLoadFailureBehavior#FallbackToDefault)
+         */
+        export interface FallbackToDefault extends globalThis.EnumItem {
+            Name: "FallbackToDefault";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PlayerDataLoadFailureBehavior;
+        }
+        export const FallbackToDefault: FallbackToDefault;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDataLoadFailureBehavior#Kick)
+         */
+        export interface Kick extends globalThis.EnumItem {
+            Name: "Kick";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PlayerDataLoadFailureBehavior;
+        }
+        export const Kick: Kick;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PlayerDataLoadFailureBehavior>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PlayerDataLoadFailureBehavior | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlayerDataLoadFailureBehavior | undefined;
+    }
+    export type PlayerDataLoadFailureBehavior = PlayerDataLoadFailureBehavior.Failure | PlayerDataLoadFailureBehavior.FallbackToDefault | PlayerDataLoadFailureBehavior.Kick;
+    /**
      * Used exclusively by Pose.EasingDirection to specify direction of the EasingStyle curve.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PoseEasingDirection)
@@ -24921,11 +25047,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.ShowAdResult;
         }
         export const ShowInterrupted: ShowInterrupted;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ShowAdResult#InsufficientMemory)
+         */
+        export interface InsufficientMemory extends globalThis.EnumItem {
+            Name: "InsufficientMemory";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.ShowAdResult;
+        }
+        export const InsufficientMemory: InsufficientMemory;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ShowAdResult>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ShowAdResult | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ShowAdResult | undefined;
     }
-    export type ShowAdResult = ShowAdResult.ShowCompleted | ShowAdResult.AdNotReady | ShowAdResult.AdAlreadyShowing | ShowAdResult.InternalError | ShowAdResult.ShowInterrupted;
+    export type ShowAdResult = ShowAdResult.ShowCompleted | ShowAdResult.AdNotReady | ShowAdResult.AdAlreadyShowing | ShowAdResult.InternalError | ShowAdResult.ShowInterrupted | ShowAdResult.InsufficientMemory;
     /**
      * Determines when the engine resumes event handlers.
      *
