@@ -19,6 +19,7 @@ interface Services {
     AssetManagerService: AssetManagerService;
     AssetService: AssetService;
     AudioFocusService: AudioFocusService;
+    AuroraScriptService: AuroraScriptService;
     AuroraService: AuroraService;
     AvatarChatService: AvatarChatService;
     AvatarCreationService: AvatarCreationService;
@@ -72,11 +73,13 @@ interface Services {
     FeatureRestrictionManager: FeatureRestrictionManager;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
+    GenerationService: GenerationService;
     GenericChallengeService: GenericChallengeService;
     GeometryService: GeometryService;
     GroupService: GroupService;
     GuiService: GuiService;
     HapticService: HapticService;
+    HeapProfilerService: HeapProfilerService;
     HeatmapService: HeatmapService;
     HeightmapImporterService: HeightmapImporterService;
     HttpService: HttpService;
@@ -122,6 +125,7 @@ interface Services {
     PlaceStatsService: PlaceStatsService;
     PlatformCloudStorageService: PlatformCloudStorageService;
     PlatformFriendsService: PlatformFriendsService;
+    PlayerDataService: PlayerDataService;
     PlayerHydrationService: PlayerHydrationService;
     Players: Players;
     PlayerViewService: PlayerViewService;
@@ -263,6 +267,7 @@ interface CreatableInstances {
     AudioPlayer: AudioPlayer;
     AudioReverb: AudioReverb;
     AudioSearchParams: AudioSearchParams;
+    AuroraScript: AuroraScript;
     Backpack: Backpack;
     BallSocketConstraint: BallSocketConstraint;
     Beam: Beam;
@@ -305,6 +310,7 @@ interface CreatableInstances {
     ControllerPartSensor: ControllerPartSensor;
     CornerWedgePart: CornerWedgePart;
     CurveAnimation: CurveAnimation;
+    CustomLog: CustomLog;
     CylinderHandleAdornment: CylinderHandleAdornment;
     CylinderMesh: CylinderMesh;
     CylindricalConstraint: CylindricalConstraint;
@@ -353,6 +359,9 @@ interface CreatableInstances {
     ImageButton: ImageButton;
     ImageHandleAdornment: ImageHandleAdornment;
     ImageLabel: ImageLabel;
+    InputAction: InputAction;
+    InputBinding: InputBinding;
+    InputContext: InputContext;
     IntConstrainedValue: IntConstrainedValue;
     InternalSyncItem: InternalSyncItem;
     IntersectOperation: IntersectOperation;
@@ -492,6 +501,7 @@ interface CreatableInstances {
     VehicleSeat: VehicleSeat;
     VelocityMotor: VelocityMotor;
     VideoDeviceInput: VideoDeviceInput;
+    VideoDisplay: VideoDisplay;
     VideoFrame: VideoFrame;
     VideoPlayer: VideoPlayer;
     ViewportFrame: ViewportFrame;
@@ -632,6 +642,9 @@ interface Instances extends Services, CreatableInstances {
     PhysicsSettings: PhysicsSettings;
     Platform: Platform;
     Player: Player;
+    PlayerData: PlayerData;
+    PlayerDataRecord: PlayerDataRecord;
+    PlayerDataRecordConfig: PlayerDataRecordConfig;
     PlayerGui: PlayerGui;
     PlayerMouse: PlayerMouse;
     PlayerScripts: PlayerScripts;
@@ -1713,6 +1726,29 @@ interface AudioSearchParams extends Instance {
      * @deprecated
      */
     readonly _nominal_AudioSearchParams: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService)
+ *
+ * @deprecated
+ */
+interface AuroraScriptService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AuroraScriptService: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#BufferSize)
+     */
+    set BufferSize(value: number);
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -3632,6 +3668,21 @@ interface CrossDMScriptChangeListener extends Instance {
     readonly _nominal_CrossDMScriptChangeListener: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CustomLog)
+ */
+interface CustomLog extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CustomLog: unique symbol;
+}
+/**
  * The DataModelMesh is an abstract class from which mesh classes descend.
  *
  * - **Tags**: NotCreatable, NotBrowsable
@@ -5191,6 +5242,21 @@ interface GamepadService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService)
+ */
+interface GenerationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_GenerationService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenericChallengeService)
  */
 interface GenericChallengeService extends Instance {
@@ -5548,6 +5614,21 @@ interface TextBox extends GuiObject {
      * @deprecated
      */
     readonly _nominal_TextBox: unique symbol;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay)
+ */
+interface VideoDisplay extends GuiObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_VideoDisplay: unique symbol;
 }
 /**
  * A GUI object that renders a rectangle, like a `Frame` does, with a moving video image.
@@ -6206,6 +6287,41 @@ interface HapticService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService)
+ */
+interface HeapProfilerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_HeapProfilerService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService#ClientRequestDataAsync)
+     */
+    ClientRequestDataAsync(this: HeapProfilerService, player: Player): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService#ServerRequestDataAsync)
+     */
+    ServerRequestDataAsync(this: HeapProfilerService): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService#OnNewData)
+     */
+    readonly OnNewData: RBXScriptSignal<(player: Player, jsonString: buffer, id: number, compressedLength: number, uncompressedLength: number) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeatmapService)
  */
 interface HeatmapService extends Instance {
@@ -6395,6 +6511,51 @@ interface IncrementalPatchBuilder extends Instance {
      * @deprecated
      */
     readonly _nominal_IncrementalPatchBuilder: unique symbol;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction)
+ */
+interface InputAction extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InputAction: unique symbol;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding)
+ */
+interface InputBinding extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InputBinding: unique symbol;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputContext)
+ */
+interface InputContext extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InputContext: unique symbol;
 }
 /**
  * An object created when an input begins that describes a particular user input.
@@ -7107,6 +7268,71 @@ interface LuaSourceContainer extends Instance {
      * @deprecated
      */
     readonly _nominal_LuaSourceContainer: unique symbol;
+}
+/**
+ * - **Tags**:
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript)
+ *
+ * @deprecated
+ */
+interface AuroraScript extends LuaSourceContainer {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AuroraScript: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#DumpMispredictions)
+     */
+    DumpMispredictions: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#EnableLOD)
+     */
+    EnableLOD: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#LODDistanceFactor)
+     */
+    LODDistanceFactor: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#LODFrequencyFactor)
+     */
+    LODFrequencyFactor: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#Priority)
+     */
+    Priority: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#RunInParallel)
+     */
+    RunInParallel: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#Source)
+     */
+    Source: ProtectedString;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#Tag)
+     */
+    set Tag(value: string);
 }
 /**
  * The base class for all script objects which run automatically.
@@ -9006,6 +9232,66 @@ interface Player extends Instance {
      */
     SetSuperSafeChat(this: Player, value: boolean): void;
     readonly Name: string;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerData)
+ */
+interface PlayerData extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PlayerData: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord)
+ */
+interface PlayerDataRecord extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PlayerDataRecord: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecordConfig)
+ */
+interface PlayerDataRecordConfig extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PlayerDataRecordConfig: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataService)
+ */
+interface PlayerDataService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PlayerDataService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
