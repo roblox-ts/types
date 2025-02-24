@@ -1126,7 +1126,7 @@ interface TextChannel extends Instance {
 	AddUserAsync(
 		this: TextChannel,
 		userId: number,
-	): [source: TextSource, isNew: true] | [source: TextSource, isNew: false] | [source: undefined, isNew: false];
+	): LuaTuple<[source: TextSource, isNew: true] | [source: TextSource, isNew: false] | [source: undefined, isNew: false]>;
 }
 
 interface TextChatService extends Instance {
