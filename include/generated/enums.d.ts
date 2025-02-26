@@ -5113,6 +5113,42 @@ declare namespace Enum {
     }
     export type CameraType = CameraType.Fixed | CameraType.Attach | CameraType.Watch | CameraType.Track | CameraType.Follow | CameraType.Custom | CameraType.Scriptable | CameraType.Orbital;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureUIHideMode)
+     */
+    export namespace CaptureUIHideMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureUIHideMode#All)
+         */
+        export interface All extends globalThis.EnumItem {
+            Name: "All";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.CaptureUIHideMode;
+        }
+        export const All: All;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureUIHideMode#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.CaptureUIHideMode;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureUIHideMode#Core)
+         */
+        export interface Core extends globalThis.EnumItem {
+            Name: "Core";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.CaptureUIHideMode;
+        }
+        export const Core: Core;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CaptureUIHideMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CaptureUIHideMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CaptureUIHideMode | undefined;
+    }
+    export type CaptureUIHideMode = CaptureUIHideMode.All | CaptureUIHideMode.None | CaptureUIHideMode.Core;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogCategoryFilter)
      */
     export namespace CatalogCategoryFilter {
@@ -7234,6 +7270,24 @@ declare namespace Enum {
         }
         export const PhantomFreeze: PhantomFreeze;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#AndroidAnticheatKick)
+         */
+        export interface AndroidAnticheatKick extends globalThis.EnumItem {
+            Name: "AndroidAnticheatKick";
+            Value: 304;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const AndroidAnticheatKick: AndroidAnticheatKick;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#AndroidEmulatorKick)
+         */
+        export interface AndroidEmulatorKick extends globalThis.EnumItem {
+            Name: "AndroidEmulatorKick";
+            Value: 305;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const AndroidEmulatorKick: AndroidEmulatorKick;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PlacelaunchErrors)
          */
         export interface PlacelaunchErrors extends globalThis.EnumItem {
@@ -7462,7 +7516,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConnectionError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConnectionError | undefined;
     }
-    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
     /**
      * Used to determine the connection state of the client to the game server.
      *
@@ -18188,6 +18242,42 @@ declare namespace Enum {
     }
     export type MarkupKind = MarkupKind.PlainText | MarkupKind.Markdown;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MatchmakingType)
+     */
+    export namespace MatchmakingType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MatchmakingType#Default)
+         */
+        export interface Default extends globalThis.EnumItem {
+            Name: "Default";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.MatchmakingType;
+        }
+        export const Default: Default;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MatchmakingType#XboxOnly)
+         */
+        export interface XboxOnly extends globalThis.EnumItem {
+            Name: "XboxOnly";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.MatchmakingType;
+        }
+        export const XboxOnly: XboxOnly;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MatchmakingType#PlayStationOnly)
+         */
+        export interface PlayStationOnly extends globalThis.EnumItem {
+            Name: "PlayStationOnly";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.MatchmakingType;
+        }
+        export const PlayStationOnly: PlayStationOnly;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MatchmakingType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MatchmakingType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MatchmakingType | undefined;
+    }
+    export type MatchmakingType = MatchmakingType.Default | MatchmakingType.XboxOnly | MatchmakingType.PlayStationOnly;
+    /**
      * Materials used for parts and/or terrain.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material)
@@ -21790,10 +21880,16 @@ declare namespace Enum {
     }
     export type ProductLocationRestriction = ProductLocationRestriction.AvatarShop | ProductLocationRestriction.AllowedGames | ProductLocationRestriction.AllGames;
     /**
+     * Enum which works with `MarketplaceService` to represent how the
+     *
+     *  user acquired the developer product.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProductPurchaseChannel)
      */
     export namespace ProductPurchaseChannel {
         /**
+         * The purchase was made inside of an experience.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProductPurchaseChannel#InExperience)
          */
         export interface InExperience extends globalThis.EnumItem {
@@ -21803,6 +21899,8 @@ declare namespace Enum {
         }
         export const InExperience: InExperience;
         /**
+         * The purchase was made outside of an experience, on the **Store** tab of the experience details page.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProductPurchaseChannel#ExperienceDetailsPage)
          */
         export interface ExperienceDetailsPage extends globalThis.EnumItem {
@@ -21812,6 +21910,8 @@ declare namespace Enum {
         }
         export const ExperienceDetailsPage: ExperienceDetailsPage;
         /**
+         * The product was rewarded to the user when they watched a video ad to completion.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProductPurchaseChannel#AdReward)
          */
         export interface AdReward extends globalThis.EnumItem {
@@ -21821,6 +21921,8 @@ declare namespace Enum {
         }
         export const AdReward: AdReward;
         /**
+         * The user acquired the product as a benefit of purchasing commerce merchandise from the developer of the experience.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProductPurchaseChannel#CommerceProduct)
          */
         export interface CommerceProduct extends globalThis.EnumItem {
@@ -21835,7 +21937,7 @@ declare namespace Enum {
     }
     export type ProductPurchaseChannel = ProductPurchaseChannel.InExperience | ProductPurchaseChannel.ExperienceDetailsPage | ProductPurchaseChannel.AdReward | ProductPurchaseChannel.CommerceProduct;
     /**
-     * The `ProductPurchaseDecisionEnum` is used to work with `MarketplaceService`, and the sale of developer products.
+     * The `ProductPurchaseDecisionEnum` works with `MarketplaceService` to indicate the status of the sale of developer products.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProductPurchaseDecision)
      */

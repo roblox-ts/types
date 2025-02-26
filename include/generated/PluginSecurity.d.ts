@@ -267,6 +267,7 @@ interface CreatableInstances {
     AudioPlayer: AudioPlayer;
     AudioReverb: AudioReverb;
     AudioSearchParams: AudioSearchParams;
+    AudioTextToSpeech: AudioTextToSpeech;
     AuroraScript: AuroraScript;
     Backpack: Backpack;
     BallSocketConstraint: BallSocketConstraint;
@@ -355,6 +356,7 @@ interface CreatableInstances {
     Humanoid: Humanoid;
     HumanoidController: HumanoidController;
     HumanoidDescription: HumanoidDescription;
+    HumanoidRigDescription: HumanoidRigDescription;
     IKControl: IKControl;
     ImageButton: ImageButton;
     ImageHandleAdornment: ImageHandleAdornment;
@@ -716,9 +718,11 @@ interface Instances extends Services, CreatableInstances {
     WorldRoot: WorldRoot;
 }
 interface Objects extends Instances {
+    Capture: Capture;
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
     Object: RBXObject;
+    ScreenshotCapture: ScreenshotCapture;
 }
 // GENERATED ROBLOX INSTANCE CLASSES
 /**
@@ -737,6 +741,36 @@ interface RBXObject {
      * @deprecated
      */
     readonly _nominal_Object: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Capture)
+ */
+interface Capture extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Capture: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScreenshotCapture)
+ */
+interface ScreenshotCapture extends Capture {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ScreenshotCapture: unique symbol;
 }
 /**
  * Instance which allows for the runtime creation and manipulation of images.
@@ -1146,7 +1180,7 @@ interface AnimationStreamTrack extends Instance {
     readonly _nominal_AnimationStreamTrack: unique symbol;
 }
 /**
- * Controls the playback of an animation on an `AnimationController`.
+ * Controls the playback of an animation on an `Animator`.
  *
  * - **Tags**: NotCreatable
  *
@@ -1726,6 +1760,19 @@ interface AudioSearchParams extends Instance {
      * @deprecated
      */
     readonly _nominal_AudioSearchParams: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech)
+ */
+interface AudioTextToSpeech extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioTextToSpeech: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -6303,6 +6350,8 @@ interface HeapProfilerService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService#ClientRequestDataAsync)
+     * @param this
+     * @param player
      */
     ClientRequestDataAsync(this: HeapProfilerService, player: Player): string;
     /**
@@ -6310,6 +6359,7 @@ interface HeapProfilerService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService#ServerRequestDataAsync)
+     * @param this
      */
     ServerRequestDataAsync(this: HeapProfilerService): string;
     /**
@@ -6436,6 +6486,19 @@ interface HumanoidDescription extends Instance {
      * @deprecated
      */
     readonly _nominal_HumanoidDescription: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription)
+ */
+interface HumanoidRigDescription extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_HumanoidRigDescription: unique symbol;
 }
 /**
  * Specifies a control to generate a procedural animation pose using Inverse Kinematics.

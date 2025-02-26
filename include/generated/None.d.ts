@@ -249,6 +249,7 @@ interface CreatableInstances {
     AudioPlayer: AudioPlayer;
     AudioReverb: AudioReverb;
     AudioSearchParams: AudioSearchParams;
+    AudioTextToSpeech: AudioTextToSpeech;
     AuroraScript: AuroraScript;
     Backpack: Backpack;
     BallSocketConstraint: BallSocketConstraint;
@@ -337,6 +338,7 @@ interface CreatableInstances {
     Humanoid: Humanoid;
     HumanoidController: HumanoidController;
     HumanoidDescription: HumanoidDescription;
+    HumanoidRigDescription: HumanoidRigDescription;
     IKControl: IKControl;
     ImageButton: ImageButton;
     ImageHandleAdornment: ImageHandleAdornment;
@@ -664,9 +666,11 @@ interface Instances extends Services, CreatableInstances {
     WorldRoot: WorldRoot;
 }
 interface Objects extends Instances {
+    Capture: Capture;
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
     Object: RBXObject;
+    ScreenshotCapture: ScreenshotCapture;
 }
 // GENERATED ROBLOX INSTANCE CLASSES
 /**
@@ -725,6 +729,36 @@ interface RBXObject {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Object#Changed)
      */
     readonly Changed: unknown;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Capture)
+ */
+interface Capture extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Capture: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScreenshotCapture)
+ */
+interface ScreenshotCapture extends Capture {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ScreenshotCapture: unique symbol;
 }
 /**
  * Instance which allows for the runtime creation and manipulation of images.
@@ -2669,7 +2703,7 @@ interface AnimationStreamTrack extends Instance {
     readonly WeightTarget: number;
 }
 /**
- * Controls the playback of an animation on an `AnimationController`.
+ * Controls the playback of an animation on an `Animator`.
  *
  * - **Tags**: NotCreatable
  *
@@ -2770,7 +2804,7 @@ interface AnimationTrack extends Instance {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#AdjustSpeed)
-     * @param this Controls the playback of an animation on an `AnimationController`.
+     * @param this Controls the playback of an animation on an `Animator`.
      * @param speed The playback speed the animation is to be changed to.
      */
     AdjustSpeed(this: AnimationTrack, speed?: number): void;
@@ -2781,7 +2815,7 @@ interface AnimationTrack extends Instance {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#AdjustWeight)
-     * @param this Controls the playback of an animation on an `AnimationController`.
+     * @param this Controls the playback of an animation on an `Animator`.
      * @param weight The weight the animation is to be changed to.
      * @param fadeTime The duration of time that the animation will fade between the old weight and the new weight for.
      */
@@ -2792,7 +2826,7 @@ interface AnimationTrack extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#GetMarkerReachedSignal)
-     * @param this Controls the playback of an animation on an `AnimationController`.
+     * @param this Controls the playback of an animation on an `Animator`.
      * @param name The name of the `KeyFrameMarker` the signal is being created for.
      * @returns The signal created and fired when the animation reaches the created `KeyFrameMarker`.
      */
@@ -2803,7 +2837,7 @@ interface AnimationTrack extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#GetTimeOfKeyframe)
-     * @param this Controls the playback of an animation on an `AnimationController`.
+     * @param this Controls the playback of an animation on an `Animator`.
      * @param keyframeName The name associated with the `Keyframe` to be found.
      * @returns The time, in seconds, the `Keyframe` occurs at normal playback speed.
      */
@@ -2815,7 +2849,7 @@ interface AnimationTrack extends Instance {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#Play)
-     * @param this Controls the playback of an animation on an `AnimationController`.
+     * @param this Controls the playback of an animation on an `Animator`.
      * @param fadeTime The duration of time that the animation's weight should be faded in for.
      * @param weight The weight the animation is to be played at.
      * @param speed The playback speed of the animation.
@@ -2828,7 +2862,7 @@ interface AnimationTrack extends Instance {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#Stop)
-     * @param this Controls the playback of an animation on an `AnimationController`.
+     * @param this Controls the playback of an animation on an `Animator`.
      * @param fadeTime The time, in seconds, for which animation weight is to be faded out over.
      */
     Stop(this: AnimationTrack, fadeTime?: number): void;
@@ -3817,12 +3851,14 @@ interface AudioAnalyzer extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioAnalyzer#GetInputPins)
+     * @param this Takes measurements from audio streams that are connected to it via one or more `Wires`.
      */
     GetInputPins(this: AudioAnalyzer): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioAnalyzer#GetOutputPins)
+     * @param this Takes measurements from audio streams that are connected to it via one or more `Wires`.
      */
     GetOutputPins(this: AudioAnalyzer): Array<unknown>;
     /**
@@ -3868,8 +3904,22 @@ interface AudioChannelMixer extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#GetConnectedWires)
+     * @param this
+     * @param pin
      */
     GetConnectedWires(this: AudioChannelMixer, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#GetInputPins)
+     */
+    GetInputPins(this: AudioChannelMixer): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#GetOutputPins)
+     */
+    GetOutputPins(this: AudioChannelMixer): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -3901,8 +3951,22 @@ interface AudioChannelSplitter extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#GetConnectedWires)
+     * @param this
+     * @param pin
      */
     GetConnectedWires(this: AudioChannelSplitter, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#GetInputPins)
+     */
+    GetInputPins(this: AudioChannelSplitter): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#GetOutputPins)
+     */
+    GetOutputPins(this: AudioChannelSplitter): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -3970,12 +4034,14 @@ interface AudioChorus extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChorus#GetInputPins)
+     * @param this Makes an audio stream sound more voluminous. If applied to a single voice, it may sound like multiple voices.
      */
     GetInputPins(this: AudioChorus): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChorus#GetOutputPins)
+     * @param this Makes an audio stream sound more voluminous. If applied to a single voice, it may sound like multiple voices.
      */
     GetOutputPins(this: AudioChorus): Array<unknown>;
     /**
@@ -4063,12 +4129,14 @@ interface AudioCompressor extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioCompressor#GetInputPins)
+     * @param this Adjusts the dynamic range of input streams.
      */
     GetInputPins(this: AudioCompressor): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioCompressor#GetOutputPins)
+     * @param this Adjusts the dynamic range of input streams.
      */
     GetOutputPins(this: AudioCompressor): Array<unknown>;
     /**
@@ -4148,12 +4216,14 @@ interface AudioDeviceInput extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceInput#GetInputPins)
+     * @param this Produces audio streams from physical devices, such as microphones.
      */
     GetInputPins(this: AudioDeviceInput): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceInput#GetOutputPins)
+     * @param this Produces audio streams from physical devices, such as microphones.
      */
     GetOutputPins(this: AudioDeviceInput): Array<unknown>;
     /**
@@ -4220,12 +4290,14 @@ interface AudioDeviceOutput extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceOutput#GetInputPins)
+     * @param this Accepts audio streams to be rendered out to physical hardware devices such as speakers or headphones.
      */
     GetInputPins(this: AudioDeviceOutput): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceOutput#GetOutputPins)
+     * @param this Accepts audio streams to be rendered out to physical hardware devices such as speakers or headphones.
      */
     GetOutputPins(this: AudioDeviceOutput): Array<unknown>;
     /**
@@ -4281,12 +4353,14 @@ interface AudioDistortion extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDistortion#GetInputPins)
+     * @param this Distorts audio streams, making them sound fuzzier, grittier, and louder.
      */
     GetInputPins(this: AudioDistortion): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDistortion#GetOutputPins)
+     * @param this Distorts audio streams, making them sound fuzzier, grittier, and louder.
      */
     GetOutputPins(this: AudioDistortion): Array<unknown>;
     /**
@@ -4372,12 +4446,14 @@ interface AudioEcho extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEcho#GetInputPins)
+     * @param this Overlays delayed copies of audio streams.
      */
     GetInputPins(this: AudioEcho): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEcho#GetOutputPins)
+     * @param this Overlays delayed copies of audio streams.
      */
     GetOutputPins(this: AudioEcho): Array<unknown>;
     /**
@@ -4432,6 +4508,8 @@ interface AudioEmitter extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#GetAudibilityFor)
+     * @param this Emits audio streams into the world.
+     * @param listener
      */
     GetAudibilityFor(this: AudioEmitter, listener: AudioListener): number;
     /**
@@ -4458,6 +4536,7 @@ interface AudioEmitter extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#GetInputPins)
+     * @param this Emits audio streams into the world.
      */
     GetInputPins(this: AudioEmitter): Array<unknown>;
     /**
@@ -4471,6 +4550,7 @@ interface AudioEmitter extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#GetOutputPins)
+     * @param this Emits audio streams into the world.
      */
     GetOutputPins(this: AudioEmitter): Array<unknown>;
     /**
@@ -4572,12 +4652,14 @@ interface AudioEqualizer extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEqualizer#GetInputPins)
+     * @param this Adjusts the frequency content of audio streams.
      */
     GetInputPins(this: AudioEqualizer): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEqualizer#GetOutputPins)
+     * @param this Adjusts the frequency content of audio streams.
      */
     GetOutputPins(this: AudioEqualizer): Array<unknown>;
     /**
@@ -4633,12 +4715,14 @@ interface AudioFader extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFader#GetInputPins)
+     * @param this Adjusts the volume of audio streams.
      */
     GetInputPins(this: AudioFader): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFader#GetOutputPins)
+     * @param this Adjusts the volume of audio streams.
      */
     GetOutputPins(this: AudioFader): Array<unknown>;
     /**
@@ -4729,12 +4813,14 @@ interface AudioFilter extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFilter#GetInputPins)
+     * @param this Adjusts the frequency content of audio streams.
      */
     GetInputPins(this: AudioFilter): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFilter#GetOutputPins)
+     * @param this Adjusts the frequency content of audio streams.
      */
     GetOutputPins(this: AudioFilter): Array<unknown>;
     /**
@@ -4806,12 +4892,14 @@ interface AudioFlanger extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFlanger#GetInputPins)
+     * @param this Imparts a whooshing or sweeping sound on audio streams.
      */
     GetInputPins(this: AudioFlanger): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFlanger#GetOutputPins)
+     * @param this Imparts a whooshing or sweeping sound on audio streams.
      */
     GetOutputPins(this: AudioFlanger): Array<unknown>;
     /**
@@ -4890,12 +4978,14 @@ interface AudioLimiter extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioLimiter#GetInputPins)
+     * @param this Limits how loud audio streams are allowed to be.
      */
     GetInputPins(this: AudioLimiter): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioLimiter#GetOutputPins)
+     * @param this Limits how loud audio streams are allowed to be.
      */
     GetOutputPins(this: AudioLimiter): Array<unknown>;
     /**
@@ -4950,6 +5040,8 @@ interface AudioListener extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#GetAudibilityFor)
+     * @param this Records an audio stream from its surrounding `AudioEmitters` in the 3D world.
+     * @param emitter
      */
     GetAudibilityFor(this: AudioListener, emitter: AudioEmitter): number;
     /**
@@ -4976,6 +5068,7 @@ interface AudioListener extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#GetInputPins)
+     * @param this Records an audio stream from its surrounding `AudioEmitters` in the 3D world.
      */
     GetInputPins(this: AudioListener): Array<unknown>;
     /**
@@ -4989,6 +5082,7 @@ interface AudioListener extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#GetOutputPins)
+     * @param this Records an audio stream from its surrounding `AudioEmitters` in the 3D world.
      */
     GetOutputPins(this: AudioListener): Array<unknown>;
     /**
@@ -5072,12 +5166,14 @@ interface AudioPitchShifter extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPitchShifter#GetInputPins)
+     * @param this Adjusts the perceived pitch of audio streams.
      */
     GetInputPins(this: AudioPitchShifter): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPitchShifter#GetOutputPins)
+     * @param this Adjusts the perceived pitch of audio streams.
      */
     GetOutputPins(this: AudioPitchShifter): Array<unknown>;
     /**
@@ -5220,12 +5316,14 @@ interface AudioPlayer extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#GetInputPins)
+     * @param this Used to play audio assets.
      */
     GetInputPins(this: AudioPlayer): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#GetOutputPins)
+     * @param this Used to play audio assets.
      */
     GetOutputPins(this: AudioPlayer): Array<unknown>;
     /**
@@ -5413,12 +5511,14 @@ interface AudioReverb extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioReverb#GetInputPins)
+     * @param this Reverberates audio streams.
      */
     GetInputPins(this: AudioReverb): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioReverb#GetOutputPins)
+     * @param this Reverberates audio streams.
      */
     GetOutputPins(this: AudioReverb): Array<unknown>;
     /**
@@ -5521,6 +5621,19 @@ interface AudioSearchParams extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSearchParams#Title)
      */
     Title: string;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech)
+ */
+interface AudioTextToSpeech extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioTextToSpeech: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -5693,7 +5806,7 @@ interface AuroraService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#Rollback)
      */
-    readonly Rollback: RBXScriptSignal<() => void>;
+    readonly Rollback: RBXScriptSignal<(worldStepId: number) => void>;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -5760,6 +5873,8 @@ interface AvatarCreationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#GenerateAvatar2DPreviewAsync)
+     * @param this A service to support developer avatar creators.
+     * @param avatarGeneration2dPreviewParams
      */
     GenerateAvatar2DPreviewAsync(this: AvatarCreationService, avatarGeneration2dPreviewParams: object): string;
     /**
@@ -5793,6 +5908,8 @@ interface AvatarCreationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#LoadAvatar2DPreviewAsync)
+     * @param this A service to support developer avatar creators.
+     * @param previewId
      */
     LoadAvatar2DPreviewAsync(this: AvatarCreationService, previewId: string): EditableImage;
     /**
@@ -5800,6 +5917,8 @@ interface AvatarCreationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#LoadGeneratedAvatarAsync)
+     * @param this A service to support developer avatar creators.
+     * @param generationId
      */
     LoadGeneratedAvatarAsync(this: AvatarCreationService, generationId: string): HumanoidDescription;
     /**
@@ -7258,6 +7377,7 @@ interface WrapDeformer extends BaseWrap {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapDeformer#SetCageMeshContent)
      * @param this Allows for the real-time deformation of a `MeshPart`.
      * @param content
+     * @param cageOrigin
      */
     SetCageMeshContent(this: WrapDeformer, content: Content, cageOrigin?: CFrame): void;
     /**
@@ -8632,6 +8752,12 @@ interface CaptureService extends Instance {
      * @param onDeniedCallback An optional callback function invoked if the user denies sharing.
      */
     PromptShareCapture(this: CaptureService, contentId: string, launchData: string, onAcceptedCallback: () => void, onDeniedCallback: () => void): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#TakeCapture)
+     */
+    TakeCapture(this: CaptureService, onCaptureReady: Callback, captureParams?: object): void;
     /**
      * Fires immediately before a capture begins.
      *
@@ -14708,6 +14834,11 @@ interface GenerationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#GenerateMeshAsync)
+     * @param this
+     * @param inputs
+     * @param player
+     * @param options
+     * @param intermediateResultCallback
      */
     GenerateMeshAsync(this: GenerationService, inputs: object, player: Player, options: object, intermediateResultCallback?: Callback): unknown;
     /**
@@ -14715,6 +14846,8 @@ interface GenerationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#LoadGeneratedMeshAsync)
+     * @param this
+     * @param generationId
      */
     LoadGeneratedMeshAsync(this: GenerationService, generationId: string): MeshPart;
 }
@@ -17276,6 +17409,8 @@ interface VideoDisplay extends GuiObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#GetConnectedWires)
+     * @param this
+     * @param pin
      */
     GetConnectedWires(this: VideoDisplay, pin: string): Array<Instance>;
     /**
@@ -21068,6 +21203,703 @@ interface HumanoidDescription extends Instance {
     readonly EquippedEmotesChanged: RBXScriptSignal<(newEquippedEmotes: EquippedEmotes) => void>;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription)
+ */
+interface HumanoidRigDescription extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_HumanoidRigDescription: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Chest)
+     */
+    Chest: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#ChestRangeMax)
+     */
+    ChestRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#ChestRangeMin)
+     */
+    ChestRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#ChestSize)
+     */
+    ChestSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#ChestTposeAdjustment)
+     */
+    ChestTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Head)
+     */
+    Head: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadRangeMax)
+     */
+    HeadRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadRangeMin)
+     */
+    HeadRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadSize)
+     */
+    HeadSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadTposeAdjustment)
+     */
+    HeadTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftAnkle)
+     */
+    LeftAnkle: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftAnkleRangeMax)
+     */
+    LeftAnkleRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftAnkleRangeMin)
+     */
+    LeftAnkleRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftAnkleSize)
+     */
+    LeftAnkleSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftAnkleTposeAdjustment)
+     */
+    LeftAnkleTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftClavicle)
+     */
+    LeftClavicle: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftClavicleRangeMax)
+     */
+    LeftClavicleRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftClavicleRangeMin)
+     */
+    LeftClavicleRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftClavicleSize)
+     */
+    LeftClavicleSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftClavicleTposeAdjustment)
+     */
+    LeftClavicleTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftElbow)
+     */
+    LeftElbow: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftElbowRangeMax)
+     */
+    LeftElbowRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftElbowRangeMin)
+     */
+    LeftElbowRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftElbowSize)
+     */
+    LeftElbowSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftElbowTposeAdjustment)
+     */
+    LeftElbowTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftHip)
+     */
+    LeftHip: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftHipRangeMax)
+     */
+    LeftHipRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftHipRangeMin)
+     */
+    LeftHipRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftHipSize)
+     */
+    LeftHipSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftHipTposeAdjustment)
+     */
+    LeftHipTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftKnee)
+     */
+    LeftKnee: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftKneeRangeMax)
+     */
+    LeftKneeRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftKneeRangeMin)
+     */
+    LeftKneeRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftKneeSize)
+     */
+    LeftKneeSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftKneeTposeAdjustment)
+     */
+    LeftKneeTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftShoulder)
+     */
+    LeftShoulder: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftShoulderRangeMax)
+     */
+    LeftShoulderRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftShoulderRangeMin)
+     */
+    LeftShoulderRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftShoulderSize)
+     */
+    LeftShoulderSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftShoulderTposeAdjustment)
+     */
+    LeftShoulderTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToes)
+     */
+    LeftToes: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToesRangeMax)
+     */
+    LeftToesRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToesRangeMin)
+     */
+    LeftToesRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToesSize)
+     */
+    LeftToesSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToesTposeAdjustment)
+     */
+    LeftToesTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftWrist)
+     */
+    LeftWrist: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftWristRangeMax)
+     */
+    LeftWristRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftWristRangeMin)
+     */
+    LeftWristRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftWristSize)
+     */
+    LeftWristSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftWristTposeAdjustment)
+     */
+    LeftWristTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Neck)
+     */
+    Neck: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#NeckRangeMax)
+     */
+    NeckRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#NeckRangeMin)
+     */
+    NeckRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#NeckSize)
+     */
+    NeckSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#NeckTposeAdjustment)
+     */
+    NeckTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Pelvis)
+     */
+    Pelvis: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#PelvisRangeMax)
+     */
+    PelvisRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#PelvisRangeMin)
+     */
+    PelvisRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#PelvisSize)
+     */
+    PelvisSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#PelvisTposeAdjustment)
+     */
+    PelvisTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightAnkle)
+     */
+    RightAnkle: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightAnkleRangeMax)
+     */
+    RightAnkleRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightAnkleRangeMin)
+     */
+    RightAnkleRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightAnkleSize)
+     */
+    RightAnkleSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightAnkleTposeAdjustment)
+     */
+    RightAnkleTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightClavicle)
+     */
+    RightClavicle: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightClavicleRangeMax)
+     */
+    RightClavicleRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightClavicleRangeMin)
+     */
+    RightClavicleRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightClavicleSize)
+     */
+    RightClavicleSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightClavicleTposeAdjustment)
+     */
+    RightClavicleTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightElbow)
+     */
+    RightElbow: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightElbowRangeMax)
+     */
+    RightElbowRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightElbowRangeMin)
+     */
+    RightElbowRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightElbowSize)
+     */
+    RightElbowSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightElbowTposeAdjustment)
+     */
+    RightElbowTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightHip)
+     */
+    RightHip: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightHipRangeMax)
+     */
+    RightHipRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightHipRangeMin)
+     */
+    RightHipRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightHipSize)
+     */
+    RightHipSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightHipTposeAdjustment)
+     */
+    RightHipTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightKnee)
+     */
+    RightKnee: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightKneeRangeMax)
+     */
+    RightKneeRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightKneeRangeMin)
+     */
+    RightKneeRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightKneeSize)
+     */
+    RightKneeSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightKneeTposeAdjustment)
+     */
+    RightKneeTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightShoulder)
+     */
+    RightShoulder: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightShoulderRangeMax)
+     */
+    RightShoulderRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightShoulderRangeMin)
+     */
+    RightShoulderRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightShoulderSize)
+     */
+    RightShoulderSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightShoulderTposeAdjustment)
+     */
+    RightShoulderTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToes)
+     */
+    RightToes: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToesRangeMax)
+     */
+    RightToesRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToesRangeMin)
+     */
+    RightToesRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToesSize)
+     */
+    RightToesSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToesTposeAdjustment)
+     */
+    RightToesTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightWrist)
+     */
+    RightWrist: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightWristRangeMax)
+     */
+    RightWristRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightWristRangeMin)
+     */
+    RightWristRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightWristSize)
+     */
+    RightWristSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightWristTposeAdjustment)
+     */
+    RightWristTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Root)
+     */
+    Root: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RootRangeMax)
+     */
+    RootRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RootRangeMin)
+     */
+    RootRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RootSize)
+     */
+    RootSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RootTposeAdjustment)
+     */
+    RootTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Waist)
+     */
+    Waist: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#WaistRangeMax)
+     */
+    WaistRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#WaistRangeMin)
+     */
+    WaistRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#WaistSize)
+     */
+    WaistSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#WaistTposeAdjustment)
+     */
+    WaistTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Automap)
+     */
+    Automap(this: HumanoidRigDescription, character: Instance): void;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetJointNames)
+     */
+    GetJointNames(this: HumanoidRigDescription): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetR15JointNames)
+     */
+    GetR15JointNames(this: HumanoidRigDescription): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetR6JointNames)
+     */
+    GetR6JointNames(this: HumanoidRigDescription): Array<unknown>;
+}
+/**
  * Specifies a control to generate a procedural animation pose using Inverse Kinematics.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IKControl)
@@ -21334,12 +22166,15 @@ interface InputAction extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#Fire)
+     * @param this
+     * @param value
      */
     Fire(this: InputAction, value: unknown): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#GetState)
+     * @param this
      */
     GetState(this: InputAction): unknown;
     /**
@@ -23912,6 +24747,7 @@ interface MarketplaceService extends Instance {
      * - `PlaceIdWherePurchased` — The place ID in which the purchase   was made. Depending on where the user is during gameplay, the   purchase place's ID can be the same as or different from the current   place's ID.
      * - `CurrencySpent` — The amount of currency spent in the   transaction.
      * - `CurrencyType` — The type of currency spent in the purchase;   always `CurrencyType.Robux`.
+     * - `ProductPurchaseChannel` — An enum that represents   how the user acquired the developer product.
      *
      *
      * @returns An enum that represents how the developer product receipt was processed. - `PurchaseGranted`:
@@ -29686,6 +30522,8 @@ interface Player extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#AddReplicationFocus)
+     * @param this An object that represents a presently connected client to the game.
+     * @param part
      */
     AddReplicationFocus(this: Player, part: BasePart): void;
     /**
@@ -29857,6 +30695,8 @@ interface Player extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#RemoveReplicationFocus)
+     * @param this An object that represents a presently connected client to the game.
+     * @param part
      */
     RemoveReplicationFocus(this: Player, part: BasePart): void;
     /**
@@ -30113,12 +30953,15 @@ interface PlayerData extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerData#GetPlayer)
+     * @param this
      */
     GetPlayer(this: PlayerData): Player;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerData#GetRecord)
+     * @param this
+     * @param recordName
      */
     GetRecord(this: PlayerData, recordName?: string): PlayerDataRecord;
 }
@@ -30217,36 +31060,47 @@ interface PlayerDataRecord extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#GetPlayer)
+     * @param this
      */
     GetPlayer(this: PlayerDataRecord): Player;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#GetValue)
+     * @param this
+     * @param key
      */
     GetValue(this: PlayerDataRecord, key: string): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#GetValueChangedSignal)
+     * @param this
+     * @param key
      */
     GetValueChangedSignal(this: PlayerDataRecord, key: string): RBXScriptSignal;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#Release)
+     * @param this
      */
     Release(this: PlayerDataRecord): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#RemoveValue)
+     * @param this
+     * @param key
      */
     RemoveValue(this: PlayerDataRecord, key: string): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#SetValue)
+     * @param this
+     * @param key
+     * @param value
      */
     SetValue(this: PlayerDataRecord, key: string, value: unknown): void;
     /**
@@ -30254,6 +31108,7 @@ interface PlayerDataRecord extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#RequestFlushAsync)
+     * @param this
      */
     RequestFlushAsync(this: PlayerDataRecord): void;
     /**
@@ -30261,6 +31116,7 @@ interface PlayerDataRecord extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#WaitForLoadAsync)
+     * @param this
      */
     WaitForLoadAsync(this: PlayerDataRecord): void;
     /**
@@ -30307,12 +31163,17 @@ interface PlayerDataRecordConfig extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecordConfig#GetDefaultValue)
+     * @param this
+     * @param key
      */
     GetDefaultValue(this: PlayerDataRecordConfig, key: string): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecordConfig#SetDefaultValue)
+     * @param this
+     * @param key
+     * @param value
      */
     SetDefaultValue(this: PlayerDataRecordConfig, key: string, value: unknown): void;
 }
@@ -30340,6 +31201,8 @@ interface PlayerDataService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataService#GetRecordConfig)
+     * @param this
+     * @param recordName
      */
     GetRecordConfig(this: PlayerDataService, recordName?: string): PlayerDataRecordConfig;
 }
@@ -32887,6 +33750,13 @@ interface DataModel extends ServiceProvider<Services> {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#JobId)
      */
     readonly JobId: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#MatchmakingType)
+     */
+    readonly MatchmakingType: Enum.MatchmakingType;
     /**
      * Describes the ID of the place running on the server.
      *
@@ -36157,6 +37027,8 @@ interface TestService extends Instance {
      */
     ExecuteWithStudioRun: boolean;
     /**
+     * **Deprecated:**
+     *
      * Sets whether or not the physics engine should be throttled to 30 FPS while the test is being ran.
      *
      * - **ThreadSafety**: ReadSafe
