@@ -26997,7 +26997,7 @@ interface SkateboardPlatform extends Part {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SkateboardPlatform#Equipped)
      */
-    readonly Equipped: RBXScriptSignal<(humanoid: Instance, skateboardController: Instance) => void>;
+    readonly Equipped: RBXScriptSignal<(humanoid: Humanoid, skateboardController: SkateboardController) => void>;
     /**
      * Fired when the SkateboardPlatform's `SkateboardPlatform.ControllingHumanoid` changes the force being used on the SkateboardPlatform.
      *
