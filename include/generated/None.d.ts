@@ -27935,14 +27935,14 @@ interface VehicleSeat extends BasePart {
      * @param this A seat object that can be used to control a vehicle.
      * @param humanoid The humanoid being forced to sit in the VehicleSeat.
      */
-    Sit(this: VehicleSeat, humanoid: Humanoid | undefined): void;
+    Sit(this: VehicleSeat, humanoid: Instance): void;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VehicleSeat#RemoteCreateSeatWeld)
      */
-    readonly RemoteCreateSeatWeld: RBXScriptSignal<(humanoid: Humanoid) => void>;
+    readonly RemoteCreateSeatWeld: RBXScriptSignal<(humanoid: Instance) => void>;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Hidden
