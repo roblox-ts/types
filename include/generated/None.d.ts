@@ -26851,7 +26851,7 @@ interface Platform extends Part {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Platform#RemoteCreateMotor6D)
      */
-    readonly RemoteCreateMotor6D: RBXScriptSignal<(humanoid: Instance) => void>;
+    readonly RemoteCreateMotor6D: RBXScriptSignal<(humanoid: Humanoid) => void>;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Hidden
@@ -26900,14 +26900,14 @@ interface Seat extends Part {
      * @param this A type of `BasePart` that characters can 'sit' in. When a character touches an enabled Seat object, it will be attached to the part by a `Weld` and the default character scripts will play a sitting animation.
      * @param humanoid
      */
-    Sit(this: Seat, humanoid: Instance): void;
+    Sit(this: Seat, humanoid: Humanoid | undefined): void;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Seat#RemoteCreateSeatWeld)
      */
-    readonly RemoteCreateSeatWeld: RBXScriptSignal<(humanoid: Instance) => void>;
+    readonly RemoteCreateSeatWeld: RBXScriptSignal<(humanoid: Humanoid) => void>;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Hidden
@@ -26997,7 +26997,7 @@ interface SkateboardPlatform extends Part {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SkateboardPlatform#Equipped)
      */
-    readonly Equipped: RBXScriptSignal<(humanoid: Instance, skateboardController: Instance) => void>;
+    readonly Equipped: RBXScriptSignal<(humanoid: Humanoid, skateboardController: SkateboardController) => void>;
     /**
      * Fired when the SkateboardPlatform's `SkateboardPlatform.ControllingHumanoid` changes the force being used on the SkateboardPlatform.
      *
@@ -27012,7 +27012,7 @@ interface SkateboardPlatform extends Part {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SkateboardPlatform#RemoteCreateMotor6D)
      */
-    readonly RemoteCreateMotor6D: RBXScriptSignal<(humanoid: Instance) => void>;
+    readonly RemoteCreateMotor6D: RBXScriptSignal<(humanoid: Humanoid) => void>;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Hidden
@@ -27027,7 +27027,7 @@ interface SkateboardPlatform extends Part {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SkateboardPlatform#Unequipped)
      */
-    readonly Unequipped: RBXScriptSignal<(humanoid: Instance) => void>;
+    readonly Unequipped: RBXScriptSignal<(humanoid: Humanoid) => void>;
 }
 /**
  * `SpawnLocations`, or "spawns" determine where a `Player` respawns when they die. They can be configured to allow only certain players to use each spawn, using `Teams`. They also control how `ForceFields` are set up for newly-spawned players.
