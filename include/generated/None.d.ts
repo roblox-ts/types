@@ -29060,7 +29060,14 @@ interface AudioPages extends Pages {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BanHistoryPages)
  */
-interface BanHistoryPages extends Pages {
+interface BanHistoryPages extends Pages<{
+		DisplayReason: string;
+		PrivateReason: string;
+		StartTime: string;
+		Duration: number;
+		Ban: boolean;
+		PlaceId: number;
+	}> {
     /**
      * **DO NOT USE!**
      *
