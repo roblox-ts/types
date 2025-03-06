@@ -267,7 +267,6 @@ interface CreatableInstances {
     AudioPlayer: AudioPlayer;
     AudioReverb: AudioReverb;
     AudioSearchParams: AudioSearchParams;
-    AudioTextToSpeech: AudioTextToSpeech;
     AuroraScript: AuroraScript;
     Backpack: Backpack;
     BallSocketConstraint: BallSocketConstraint;
@@ -1760,19 +1759,6 @@ interface AudioSearchParams extends Instance {
      * @deprecated
      */
     readonly _nominal_AudioSearchParams: unique symbol;
-}
-/**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech)
- */
-interface AudioTextToSpeech extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AudioTextToSpeech: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
