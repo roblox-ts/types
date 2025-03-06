@@ -249,7 +249,6 @@ interface CreatableInstances {
     AudioPlayer: AudioPlayer;
     AudioReverb: AudioReverb;
     AudioSearchParams: AudioSearchParams;
-    AudioTextToSpeech: AudioTextToSpeech;
     AuroraScript: AuroraScript;
     Backpack: Backpack;
     BallSocketConstraint: BallSocketConstraint;
@@ -2856,7 +2855,7 @@ interface AnimationTrack extends Instance {
      */
     Play(this: AnimationTrack, fadeTime?: number, weight?: number, speed?: number): void;
     /**
-     * Stops the `AnimationTrack`. Once called playback of the `AnimationTrack` will stop and the weight of the animation will move towards zero over a length of time specified by the optional fadeTime parameter.
+     * Stops the `AnimationTrack`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
@@ -3026,12 +3025,6 @@ interface AnnotationsService extends Instance {
      * @deprecated
      */
     readonly _nominal_AnnotationsService: unique symbol;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnnotationsService#DEPRECATED_EditAnnotation)
-     */
-    DEPRECATED_EditAnnotation(this: AnnotationsService, uniqueId: string, contents: string): void;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -5623,19 +5616,6 @@ interface AudioSearchParams extends Instance {
     Title: string;
 }
 /**
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech)
- */
-interface AudioTextToSpeech extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AudioTextToSpeech: unique symbol;
-}
-/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService)
@@ -5765,6 +5745,12 @@ interface AuroraService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#SetIncomingReplicationLag)
      */
     SetIncomingReplicationLag(this: AuroraService, seconds: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#SetPropertyIsInput)
+     */
+    SetPropertyIsInput(this: AuroraService, target: Instance, propertyName: string, isInput: boolean): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -5922,6 +5908,13 @@ interface AvatarCreationService extends Instance {
      */
     LoadGeneratedAvatarAsync(this: AvatarCreationService, generationId: string): HumanoidDescription;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#PrepareAvatarForPreviewAsync)
+     */
+    PrepareAvatarForPreviewAsync(this: AvatarCreationService, humanoidModel: Model): void;
+    /**
      * Prompts a `Player` to purchase and create an avatar from a `HumanoidDescription`.
      *
      * - **ThreadSafety**: Unsafe
@@ -5995,6 +5988,12 @@ interface AvatarCreationService extends Instance {
      * - An optional table of strings. This includes failure reasons if   validation was unsuccessful; otherwise `nil` if validation was   successful.
      */
     ValidateUGCFullBodyAsync(this: AvatarCreationService, player: Player, humanoidDescription: HumanoidDescription): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#AvatarModerationCompleted)
+     */
+    readonly AvatarModerationCompleted: RBXScriptSignal<(outfitId: number, moderationStatus: Enum.ModerationStatus) => void>;
 }
 /**
  * A service to support developer Avatar Editors.
@@ -9623,6 +9622,13 @@ interface DragDetector extends ClickDetector {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DragDetector#DragStartReplicate)
      */
     readonly DragStartReplicate: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, hitFrame: CFrame, clickedPart: BasePart, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DragDetector#RestartPhysicalDragReplicate)
+     */
+    readonly RestartPhysicalDragReplicate: RBXScriptSignal<(hitPoint: Vector3) => void>;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -24747,7 +24753,7 @@ interface MarketplaceService extends Instance {
      * - `PlaceIdWherePurchased` — The place ID in which the purchase   was made. Depending on where the user is during gameplay, the   purchase place's ID can be the same as or different from the current   place's ID.
      * - `CurrencySpent` — The amount of currency spent in the   transaction.
      * - `CurrencyType` — The type of currency spent in the purchase;   always `CurrencyType.Robux`.
-     * - `ProductPurchaseChannel` — An enum that represents   how the user acquired the developer product.
+     * - `ProductPurchaseChannel` — How the user acquired the developer product. One of `ProductPurchaseChannel`.
      *
      *
      * @returns An enum that represents how the developer product receipt was processed. - `PurchaseGranted`:
@@ -30953,15 +30959,12 @@ interface PlayerData extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerData#GetPlayer)
-     * @param this
      */
     GetPlayer(this: PlayerData): Player;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerData#GetRecord)
-     * @param this
-     * @param recordName
      */
     GetRecord(this: PlayerData, recordName?: string): PlayerDataRecord;
 }
@@ -31060,47 +31063,36 @@ interface PlayerDataRecord extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#GetPlayer)
-     * @param this
      */
     GetPlayer(this: PlayerDataRecord): Player;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#GetValue)
-     * @param this
-     * @param key
      */
     GetValue(this: PlayerDataRecord, key: string): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#GetValueChangedSignal)
-     * @param this
-     * @param key
      */
     GetValueChangedSignal(this: PlayerDataRecord, key: string): RBXScriptSignal;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#Release)
-     * @param this
      */
     Release(this: PlayerDataRecord): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#RemoveValue)
-     * @param this
-     * @param key
      */
     RemoveValue(this: PlayerDataRecord, key: string): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#SetValue)
-     * @param this
-     * @param key
-     * @param value
      */
     SetValue(this: PlayerDataRecord, key: string, value: unknown): void;
     /**
@@ -31108,7 +31100,6 @@ interface PlayerDataRecord extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#RequestFlushAsync)
-     * @param this
      */
     RequestFlushAsync(this: PlayerDataRecord): void;
     /**
@@ -31116,7 +31107,6 @@ interface PlayerDataRecord extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#WaitForLoadAsync)
-     * @param this
      */
     WaitForLoadAsync(this: PlayerDataRecord): void;
     /**
@@ -31163,17 +31153,12 @@ interface PlayerDataRecordConfig extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecordConfig#GetDefaultValue)
-     * @param this
-     * @param key
      */
     GetDefaultValue(this: PlayerDataRecordConfig, key: string): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecordConfig#SetDefaultValue)
-     * @param this
-     * @param key
-     * @param value
      */
     SetDefaultValue(this: PlayerDataRecordConfig, key: string, value: unknown): void;
 }
@@ -31201,8 +31186,6 @@ interface PlayerDataService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataService#GetRecordConfig)
-     * @param this
-     * @param recordName
      */
     GetRecordConfig(this: PlayerDataService, recordName?: string): PlayerDataRecordConfig;
 }

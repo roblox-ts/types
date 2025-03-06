@@ -7781,6 +7781,8 @@ declare namespace Enum {
         }
         export const EmotesMenu: EmotesMenu;
         /**
+         * A player's perspective or view of their own character.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CoreGuiType#SelfView)
          */
         export interface SelfView extends globalThis.EnumItem {
@@ -14300,7 +14302,7 @@ declare namespace Enum {
     }
     export type JointCreationMode = JointCreationMode.All | JointCreationMode.Surface | JointCreationMode.None;
     /**
-     * A physical button that a user is pressing.
+     * Byte keycodes that represent the key or button involved in user input.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode)
      */
@@ -14350,7 +14352,7 @@ declare namespace Enum {
         }
         export const Clear: Clear;
         /**
-         * Better known as enter.
+         * Frequently known as **Enter**.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Return)
          */
@@ -16902,7 +16904,7 @@ declare namespace Enum {
         }
         export const Undo: Undo;
         /**
-         * Gamepad X button.
+         * Gamepad `X` button.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonX)
          */
@@ -16913,7 +16915,7 @@ declare namespace Enum {
         }
         export const ButtonX: ButtonX;
         /**
-         * Gamepad Y button.
+         * Gamepad `Y` button.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonY)
          */
@@ -16924,7 +16926,7 @@ declare namespace Enum {
         }
         export const ButtonY: ButtonY;
         /**
-         * Gamepad A button.
+         * Gamepad `A` button.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonA)
          */
@@ -16935,7 +16937,7 @@ declare namespace Enum {
         }
         export const ButtonA: ButtonA;
         /**
-         * Gamepad B button.
+         * Gamepad `B` button.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonB)
          */
@@ -16946,7 +16948,7 @@ declare namespace Enum {
         }
         export const ButtonB: ButtonB;
         /**
-         * Gamepad R1 button.
+         * Gamepad `R1` button.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonR1)
          */
@@ -16957,7 +16959,7 @@ declare namespace Enum {
         }
         export const ButtonR1: ButtonR1;
         /**
-         * Gamepad L1 button.
+         * Gamepad `L1` button.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonL1)
          */
@@ -16968,7 +16970,7 @@ declare namespace Enum {
         }
         export const ButtonL1: ButtonL1;
         /**
-         * Gamepad R2 button.
+         * Gamepad `R2` button.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonR2)
          */
@@ -16979,7 +16981,7 @@ declare namespace Enum {
         }
         export const ButtonR2: ButtonR2;
         /**
-         * Gamepad L2 button.
+         * Gamepad `L2` button.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonL2)
          */
@@ -16990,7 +16992,7 @@ declare namespace Enum {
         }
         export const ButtonL2: ButtonL2;
         /**
-         * Gamepad R3 button.
+         * Gamepad `R3` button.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonR3)
          */
@@ -17001,7 +17003,7 @@ declare namespace Enum {
         }
         export const ButtonR3: ButtonR3;
         /**
-         * Gamepad L3 button.
+         * Gamepad `L3` button.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonL3)
          */
@@ -17012,7 +17014,7 @@ declare namespace Enum {
         }
         export const ButtonL3: ButtonL3;
         /**
-         * Gamepad Start button.
+         * Gamepad `Start` button.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonStart)
          */
@@ -17023,7 +17025,7 @@ declare namespace Enum {
         }
         export const ButtonStart: ButtonStart;
         /**
-         * Gamepad Select button.
+         * Gamepad `Select` button.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonSelect)
          */
