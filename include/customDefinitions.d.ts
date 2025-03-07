@@ -125,6 +125,10 @@ interface AvatarEditorService extends Instance {
 		contextAssetId?: number,
 	): ReadonlyArray<RecommendedAsset>;
 	GetRecommendedBundles(this: AvatarEditorService, bundleId: number): ReadonlyArray<RecommendedBundle>;
+	CheckApplyDefaultClothing(
+		this: AvatarEditorService,
+		humanoidDescription: HumanoidDescription,
+	): HumanoidDescription | undefined;
 }
 
 /** @client */
