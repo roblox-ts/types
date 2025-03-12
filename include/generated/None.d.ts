@@ -100,6 +100,7 @@ interface Services {
     LSPFileSyncService: LSPFileSyncService;
     LuauScriptAnalyzerService: LuauScriptAnalyzerService;
     MarketplaceService: MarketplaceService;
+    MatchmakingService: MatchmakingService;
     MaterialGenerationService: MaterialGenerationService;
     MaterialService: MaterialService;
     MemoryStoreService: MemoryStoreService;
@@ -249,6 +250,7 @@ interface CreatableInstances {
     AudioPlayer: AudioPlayer;
     AudioReverb: AudioReverb;
     AudioSearchParams: AudioSearchParams;
+    AudioTextToSpeech: AudioTextToSpeech;
     AuroraScript: AuroraScript;
     Backpack: Backpack;
     BallSocketConstraint: BallSocketConstraint;
@@ -1442,7 +1444,7 @@ interface EditableMesh extends RBXObject {
     Triangulate(this: EditableMesh): void;
 }
 /**
- * Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+ * `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
  *
  * - **Tags**: NotCreatable, NotBrowsable
  *
@@ -1488,7 +1490,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#AddTag)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param tag
      */
     AddTag(this: Instance, tag: string): void;
@@ -1498,7 +1500,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#ClearAllChildren)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      */
     ClearAllChildren(this: Instance): void;
     /**
@@ -1507,7 +1509,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#Clone)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      */
     Clone<T extends Instance>(this: T): T;
     /**
@@ -1516,7 +1518,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#Destroy)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      */
     Destroy(this: Instance): void;
     /**
@@ -1525,7 +1527,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#FindFirstAncestor)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param name The `Instance.Name` to be looked for.
      * @returns The `Instance` found.
      */
@@ -1536,7 +1538,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#FindFirstAncestorOfClass)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param className The `Object.ClassName` to be looked for.
      * @returns The `Instance` found.
      */
@@ -1547,7 +1549,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#FindFirstAncestorWhichIsA)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param className The `Object.ClassName` to be looked for.
      * @returns The `Instance` found.
      */
@@ -1558,19 +1560,19 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#FindFirstChild)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param name The `Instance.Name` to be searched for.
      * @param recursive Whether or not the search should be conducted recursively.
      * @returns The `Instance` found.
      */
     FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
     /**
-     * Returns the first child of the `Instance` whose `ClassName` is equal to the given className.
+     * Returns the first child of the `Instance` whose `ClassName` is equal to the given class name.
      *
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#FindFirstChildOfClass)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param className The `Object.ClassName` to be looked for.
      * @returns The `Instance` found.
      */
@@ -1581,7 +1583,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#FindFirstChildWhichIsA)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param className The `Object.ClassName` to be searched for.
      * @param recursive Whether or not the search should be conducted recursively.
      * @returns The `Instance` found.
@@ -1593,7 +1595,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#FindFirstDescendant)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param name The `Instance.Name` to search for.
      * @returns The `Instance` found.
      */
@@ -1604,7 +1606,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetActor)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @returns The `Actor` found.
      */
     GetActor(this: Instance): Actor | undefined;
@@ -1614,7 +1616,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetAttribute)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param attribute The name of the attribute being retrieved.
      * @returns The value which has been assigned to the given attribute name. If no attribute has been assigned, `nil` is returned.
      */
@@ -1625,7 +1627,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetAttributeChangedSignal)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param attribute The name of the specified attribute for which the change signal is being returned.
      * @returns An event that fires when the given attribute changes.
      */
@@ -1637,7 +1639,7 @@ interface Instance extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetAttributes)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @returns A dictionary of string → variant pairs for each attribute where the string is the name of the attribute and the variant is a non-nil value.
      */
     GetAttributes(this: Instance): Map<string, AttributeValue>;
@@ -1647,7 +1649,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetChildren)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @returns An array containing the instance's children.
      */
     GetChildren(this: Instance): Array<Instance>;
@@ -1658,7 +1660,7 @@ interface Instance extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetDescendants)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @returns An array containing the instance's descendants.
      */
     GetDescendants(this: Instance): Array<Instance>;
@@ -1668,7 +1670,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetFullName)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @returns The full name of the `Instance`.
      */
     GetFullName(this: Instance): string;
@@ -1676,7 +1678,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetStyled)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param name
      */
     GetStyled(this: Instance, name: string): unknown;
@@ -1684,7 +1686,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetStyledPropertyChangedSignal)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param property
      */
     GetStyledPropertyChangedSignal(this: Instance, property: string): RBXScriptSignal;
@@ -1694,7 +1696,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetTags)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      */
     GetTags(this: Instance): Array<string>;
     /**
@@ -1703,7 +1705,7 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#HasTag)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param tag
      */
     HasTag(this: Instance, tag: string): boolean;
@@ -1713,35 +1715,40 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#IsAncestorOf)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param descendant The descendant `Instance`.
      * @returns True if the `Instance` is an ancestor of the given descendant.
      */
     IsAncestorOf(this: Instance, descendant: Instance): boolean;
     /**
-     * Returns true if an `Instance` is a descendant of the given ancestor.
+     * Returns `true` if an `Instance` is a descendant of the given ancestor.
      *
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#IsDescendantOf)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param ancestor The ancestor `Instance`.
      * @returns True if the `Instance` is a descendant of the given ancestor.
      */
     IsDescendantOf(this: Instance, ancestor: Instance): boolean;
     /**
+     * Returns `true` if the value stored in the specified property is non-default.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#IsPropertyModified)
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
+     * @param name Name of the property to query.
+     * @returns Boolean indicating whether the property is modified.
      */
-    IsPropertyModified(this: Instance, name: string): boolean;
+    IsPropertyModified(this: Instance, property: string): boolean;
     /**
      * Removes a tag from the instance.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#RemoveTag)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param tag
      */
     RemoveTag(this: Instance, tag: string): void;
@@ -1749,15 +1756,17 @@ interface Instance extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#ResetPropertyToDefault)
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
+     * @param name Name of the property to reset.
      */
-    ResetPropertyToDefault(this: Instance, name: string): void;
+    ResetPropertyToDefault(this: Instance, property: string): void;
     /**
      * Sets the attribute with the given name to the given value.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#SetAttribute)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param attribute The name of the attribute being set.
      * @param value The value to set the specified attribute to.
      */
@@ -1769,7 +1778,7 @@ interface Instance extends RBXObject {
      * - **Tags**: CustomLuaState, CanYield
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#WaitForChild)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param childName The `Instance.Name` to be looked for.
      * @param timeOut An optional time out parameter.
      * @returns The `Instance` found.
@@ -3905,12 +3914,14 @@ interface AudioChannelMixer extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#GetInputPins)
+     * @param this
      */
     GetInputPins(this: AudioChannelMixer): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#GetOutputPins)
+     * @param this
      */
     GetOutputPins(this: AudioChannelMixer): Array<unknown>;
     /**
@@ -3952,12 +3963,14 @@ interface AudioChannelSplitter extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#GetInputPins)
+     * @param this
      */
     GetInputPins(this: AudioChannelSplitter): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#GetOutputPins)
+     * @param this
      */
     GetOutputPins(this: AudioChannelSplitter): Array<unknown>;
     /**
@@ -5616,6 +5629,143 @@ interface AudioSearchParams extends Instance {
     Title: string;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech)
+ */
+interface AudioTextToSpeech extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioTextToSpeech: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#IsLoaded)
+     */
+    readonly IsLoaded: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#IsPlaying)
+     */
+    get IsPlaying(): boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Looping)
+     */
+    Looping: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Pitch)
+     */
+    Pitch: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#PlaybackSpeed)
+     */
+    PlaybackSpeed: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Speed)
+     */
+    Speed: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Text)
+     */
+    Text: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#TimeLength)
+     */
+    readonly TimeLength: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#TimePosition)
+     */
+    TimePosition: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#VoiceId)
+     */
+    VoiceId: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Volume)
+     */
+    Volume: number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#GetConnectedWires)
+     */
+    GetConnectedWires(this: AudioTextToSpeech, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Pause)
+     */
+    Pause(this: AudioTextToSpeech): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Play)
+     */
+    Play(this: AudioTextToSpeech): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Unload)
+     */
+    Unload(this: AudioTextToSpeech): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#GetWaveformAsync)
+     */
+    GetWaveformAsync(this: AudioTextToSpeech, timeRange: NumberRange, samples: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#LoadAsync)
+     */
+    LoadAsync(this: AudioTextToSpeech): Enum.AssetFetchStatus;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Ended)
+     */
+    readonly Ended: RBXScriptSignal<() => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Looped)
+     */
+    readonly Looped: RBXScriptSignal<() => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#WiringChanged)
+     */
+    readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
+}
+/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService)
@@ -5912,6 +6062,8 @@ interface AvatarCreationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#PrepareAvatarForPreviewAsync)
+     * @param this A service to support developer avatar creators.
+     * @param humanoidModel
      */
     PrepareAvatarForPreviewAsync(this: AvatarCreationService, humanoidModel: Model): void;
     /**
@@ -7306,7 +7458,6 @@ interface BaseWrap extends Instance {
     readonly _nominal_BaseWrap: unique symbol;
     /**
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseWrap#CageMeshContent)
      */
@@ -7455,7 +7606,6 @@ interface WrapLayer extends BaseWrap {
     Puffiness: number;
     /**
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#ReferenceMeshContent)
      */
@@ -8734,7 +8884,7 @@ interface CaptureService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#PromptSaveCapturesToGallery)
      * @param this A service which provides control over screenshot capture features.
-     * @param contentIds An array of `contentId` strings identifying the screenshots to save.
+     * @param captures
      * @param resultCallback A callback function that will be invoked with a dictionary mapping each `contentId` to a boolean indicating if the user accepted saving that capture.
      */
     PromptSaveCapturesToGallery<T extends string>(this: CaptureService, contentIds: Array<T>, resultCallback: (results: Record<T, boolean>) => void): void;
@@ -8745,7 +8895,7 @@ interface CaptureService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#PromptShareCapture)
      * @param this A service which provides control over screenshot capture features.
-     * @param contentId The `contentId` identifying the screenshot to share.
+     * @param captureContent
      * @param launchData An optional string to include as launch data in the invite link.
      * @param onAcceptedCallback An optional callback function invoked if the user accepts sharing.
      * @param onDeniedCallback An optional callback function invoked if the user denies sharing.
@@ -8755,6 +8905,9 @@ interface CaptureService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#TakeCapture)
+     * @param this A service which provides control over screenshot capture features.
+     * @param onCaptureReady
+     * @param captureParams
      */
     TakeCapture(this: CaptureService, onCaptureReady: Callback, captureParams?: object): void;
     /**
@@ -14297,7 +14450,6 @@ interface Decal extends FaceInstance {
     Texture: ContentId;
     /**
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#TextureContent)
      */
@@ -16153,7 +16305,6 @@ interface ImageButton extends GuiButton {
      * The image content displayed by the UI element. Supports asset URIs and `EditableImage` objects.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ImageButton#ImageContent)
      */
@@ -16531,7 +16682,6 @@ interface ImageLabel extends GuiLabel {
      * The image content displayed by the UI element. Supports [asset URIs](../../../projects/assets/index.md#asset-uris) and `EditableImage` objects.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ImageLabel#ImageContent)
      */
@@ -21884,24 +22034,29 @@ interface HumanoidRigDescription extends Instance {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Automap)
+     * @param this
+     * @param character
      */
     Automap(this: HumanoidRigDescription, character: Instance): void;
     /**
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetJointNames)
+     * @param this
      */
     GetJointNames(this: HumanoidRigDescription): Array<unknown>;
     /**
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetR15JointNames)
+     * @param this
      */
     GetR15JointNames(this: HumanoidRigDescription): Array<unknown>;
     /**
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetR6JointNames)
+     * @param this
      */
     GetR6JointNames(this: HumanoidRigDescription): Array<unknown>;
 }
@@ -24753,7 +24908,7 @@ interface MarketplaceService extends Instance {
      * - `PlaceIdWherePurchased` — The place ID in which the purchase   was made. Depending on where the user is during gameplay, the   purchase place's ID can be the same as or different from the current   place's ID.
      * - `CurrencySpent` — The amount of currency spent in the   transaction.
      * - `CurrencyType` — The type of currency spent in the purchase;   always `CurrencyType.Robux`.
-     * - `ProductPurchaseChannel` — How the user acquired the developer product. One of `ProductPurchaseChannel`.
+     * - `ProductPurchaseChannel` — How the user acquired the developer   product. One of `ProductPurchaseChannel`.
      *
      *
      * @returns An enum that represents how the developer product receipt was processed. - `PurchaseGranted`:
@@ -24763,6 +24918,39 @@ interface MarketplaceService extends Instance {
      * - Indicates that the experience failed to grant the player the     developer product.
      */
     ProcessReceipt: ((receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision) | undefined;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MatchmakingService)
+ */
+interface MatchmakingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_MatchmakingService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MatchmakingService#GetServerAttribute)
+     */
+    GetServerAttribute(this: MatchmakingService, name: string): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MatchmakingService#InitializeServerAttributesForStudio)
+     */
+    InitializeServerAttributesForStudio(this: MatchmakingService, serverAttributes: object): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MatchmakingService#SetServerAttribute)
+     */
+    SetServerAttribute(this: MatchmakingService, name: string, value: unknown): unknown;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -27649,7 +27837,6 @@ interface MeshPart extends TriangleMeshPart {
      * The mesh that is displayed on the `MeshPart`. Supports [asset URIs](../../../projects/assets/index.md#asset-uris) and `EditableMesh` objects.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshPart#MeshContent)
      */
@@ -27675,7 +27862,6 @@ interface MeshPart extends TriangleMeshPart {
      * The texture applied to the `MeshPart`. Supports [asset URIs](../../../projects/assets/index.md#asset-uris) and `EditableImage` objects.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshPart#TextureContent)
      */
@@ -30484,6 +30670,13 @@ interface Player extends Instance {
      */
     Neutral: boolean;
     /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden, NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#PartyId)
+     */
+    get PartyId(): string;
+    /**
      * Sets the part to focus replication around.
      *
      * - **ThreadSafety**: ReadSafe
@@ -30552,6 +30745,12 @@ interface Player extends Instance {
      * @returns The distance in studs between the player and the location.
      */
     DistanceFromCharacter(this: Player, point: Vector3): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#GetData)
+     */
+    GetData(this: Player): PlayerData;
     /**
      * Returns a dictionary containing information describing how the `Player` joins the experience.
      *
@@ -30963,10 +31162,11 @@ interface PlayerData extends Instance {
     GetPlayer(this: PlayerData): Player;
     /**
      * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerData#GetRecord)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerData#GetRecordAsync)
      */
-    GetRecord(this: PlayerData, recordName?: string): PlayerDataRecord;
+    GetRecordAsync(this: PlayerData, recordName?: string): PlayerDataRecord;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -31102,13 +31302,6 @@ interface PlayerDataRecord extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#RequestFlushAsync)
      */
     RequestFlushAsync(this: PlayerDataRecord): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**: Yields
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#WaitForLoadAsync)
-     */
-    WaitForLoadAsync(this: PlayerDataRecord): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -36179,7 +36372,7 @@ interface StyleBase extends Instance {
      * @param rule
      * @param index
      */
-    InsertStyleRule(this: StyleBase, rule: StyleRule, index?: number): void;
+    InsertStyleRule(this: StyleBase, rule: StyleRule, priority?: number): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -36248,7 +36441,7 @@ interface StyleRule extends StyleBase {
      * @param this
      * @param table
      */
-    SetProperties(this: StyleRule, table: object): void;
+    SetProperties(this: StyleRule, styleProperties: object): void;
     /**
      * - **ThreadSafety**: Unsafe
      *

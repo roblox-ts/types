@@ -103,6 +103,7 @@ interface Services {
     LSPFileSyncService: LSPFileSyncService;
     LuauScriptAnalyzerService: LuauScriptAnalyzerService;
     MarketplaceService: MarketplaceService;
+    MatchmakingService: MatchmakingService;
     MaterialGenerationService: MaterialGenerationService;
     MaterialService: MaterialService;
     MemoryStoreService: MemoryStoreService;
@@ -267,6 +268,7 @@ interface CreatableInstances {
     AudioPlayer: AudioPlayer;
     AudioReverb: AudioReverb;
     AudioSearchParams: AudioSearchParams;
+    AudioTextToSpeech: AudioTextToSpeech;
     AuroraScript: AuroraScript;
     Backpack: Backpack;
     BallSocketConstraint: BallSocketConstraint;
@@ -806,7 +808,7 @@ interface EditableMesh extends RBXObject {
     readonly _nominal_EditableMesh: unique symbol;
 }
 /**
- * Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+ * `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
  *
  * - **Tags**: NotCreatable, NotBrowsable
  *
@@ -837,7 +839,7 @@ interface Instance extends RBXObject {
      * - **Tags**: NotBrowsable
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetDebugId)
-     * @param this Instance is the base class for all classes in the Roblox class hierarchy which can be part of the DataModel tree.
+     * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param scopeLength The scope length.
      * @returns The Debug ID string.
      */
@@ -1761,6 +1763,19 @@ interface AudioSearchParams extends Instance {
     readonly _nominal_AudioSearchParams: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech)
+ */
+interface AudioTextToSpeech extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioTextToSpeech: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService)
@@ -2169,7 +2184,6 @@ interface BaseWrap extends Instance {
     readonly _nominal_BaseWrap: unique symbol;
     /**
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseWrap#CageMeshContent)
      */
@@ -2238,7 +2252,6 @@ interface WrapLayer extends BaseWrap {
     set BindOffset(value: CFrame);
     /**
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#ReferenceMeshContent)
      */
@@ -7514,6 +7527,21 @@ interface MarketplaceService extends Instance {
      * @deprecated
      */
     readonly _nominal_MarketplaceService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MatchmakingService)
+ */
+interface MatchmakingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_MatchmakingService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated

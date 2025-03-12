@@ -1672,11 +1672,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.AnnotationRequestResult;
         }
         export const ErrorNotFound: ErrorNotFound;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestResult#ErrorModerated)
+         */
+        export interface ErrorModerated extends globalThis.EnumItem {
+            Name: "ErrorModerated";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.AnnotationRequestResult;
+        }
+        export const ErrorModerated: ErrorModerated;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnnotationRequestResult>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnnotationRequestResult | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnnotationRequestResult | undefined;
     }
-    export type AnnotationRequestResult = AnnotationRequestResult.Success | AnnotationRequestResult.ErrorInternalFailure | AnnotationRequestResult.ErrorNotFound;
+    export type AnnotationRequestResult = AnnotationRequestResult.Success | AnnotationRequestResult.ErrorInternalFailure | AnnotationRequestResult.ErrorNotFound | AnnotationRequestResult.ErrorModerated;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestType)
      */
@@ -17102,6 +17111,8 @@ declare namespace Enum {
         }
         export const Thumbstick2: Thumbstick2;
         /**
+         * **Deprecated:** This enum is deprecated and flagged for removal.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseLeftButton)
          */
         export interface MouseLeftButton extends globalThis.EnumItem {
@@ -17111,6 +17122,8 @@ declare namespace Enum {
         }
         export const MouseLeftButton: MouseLeftButton;
         /**
+         * **Deprecated:** This enum is deprecated and flagged for removal.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseRightButton)
          */
         export interface MouseRightButton extends globalThis.EnumItem {
@@ -17120,6 +17133,8 @@ declare namespace Enum {
         }
         export const MouseRightButton: MouseRightButton;
         /**
+         * **Deprecated:** This enum is deprecated and flagged for removal.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseMiddleButton)
          */
         export interface MouseMiddleButton extends globalThis.EnumItem {
@@ -17129,6 +17144,8 @@ declare namespace Enum {
         }
         export const MouseMiddleButton: MouseMiddleButton;
         /**
+         * **Deprecated:** This enum is deprecated and flagged for removal.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseBackButton)
          */
         export interface MouseBackButton extends globalThis.EnumItem {
@@ -17138,6 +17155,8 @@ declare namespace Enum {
         }
         export const MouseBackButton: MouseBackButton;
         /**
+         * **Deprecated:** This enum is deprecated and flagged for removal.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseNoButton)
          */
         export interface MouseNoButton extends globalThis.EnumItem {
@@ -17147,6 +17166,8 @@ declare namespace Enum {
         }
         export const MouseNoButton: MouseNoButton;
         /**
+         * **Deprecated:** This enum is deprecated and flagged for removal.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseX)
          */
         export interface MouseX extends globalThis.EnumItem {
@@ -17156,6 +17177,8 @@ declare namespace Enum {
         }
         export const MouseX: MouseX;
         /**
+         * **Deprecated:** This enum is deprecated and flagged for removal.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseY)
          */
         export interface MouseY extends globalThis.EnumItem {
@@ -24791,11 +24814,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.SecurityCapability;
         }
         export const LegacySound: LegacySound;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Players)
+         */
+        export interface Players extends globalThis.EnumItem {
+            Name: "Players";
+            Value: 21;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const Players: Players;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SecurityCapability>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SecurityCapability | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SecurityCapability | undefined;
     }
-    export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics | SecurityCapability.UI | SecurityCapability.CSG | SecurityCapability.Chat | SecurityCapability.Animation | SecurityCapability.Avatar | SecurityCapability.Input | SecurityCapability.Environment | SecurityCapability.RemoteEvent | SecurityCapability.LegacySound;
+    export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics | SecurityCapability.UI | SecurityCapability.CSG | SecurityCapability.Chat | SecurityCapability.Animation | SecurityCapability.Avatar | SecurityCapability.Input | SecurityCapability.Environment | SecurityCapability.RemoteEvent | SecurityCapability.LegacySound | SecurityCapability.Players;
     /**
      * Customization options for gamepad selection when `GuiBase2d.SelectionGroup` is true.
      *
