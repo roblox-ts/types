@@ -823,6 +823,16 @@ interface Player extends Instance {
 
 interface PlayerGui extends BasePlayerGui {}
 
+interface BanHistoryPages
+	extends Pages<{
+		DisplayReason: string;
+		PrivateReason: string;
+		StartTime: string;
+		Duration: number;
+		Ban: boolean;
+		PlaceId: number;
+	}> {}
+
 interface Players extends Instance {
 	/** @client */
 	readonly LocalPlayer: Player;
