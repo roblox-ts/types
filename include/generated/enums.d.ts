@@ -981,11 +981,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.AlphaMode;
         }
         export const Transparency: Transparency;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlphaMode#TintMask)
+         */
+        export interface TintMask extends globalThis.EnumItem {
+            Name: "TintMask";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AlphaMode;
+        }
+        export const TintMask: TintMask;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AlphaMode>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AlphaMode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AlphaMode | undefined;
     }
-    export type AlphaMode = AlphaMode.Overlay | AlphaMode.Transparency;
+    export type AlphaMode = AlphaMode.Overlay | AlphaMode.Transparency | AlphaMode.TintMask;
     /**
      * Used to form a dictionary of custom fields to provide breakdowns in Roblox-provided charts.
      *
@@ -5121,42 +5130,6 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CameraType | undefined;
     }
     export type CameraType = CameraType.Fixed | CameraType.Attach | CameraType.Watch | CameraType.Track | CameraType.Follow | CameraType.Custom | CameraType.Scriptable | CameraType.Orbital;
-    /**
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureUIHideMode)
-     */
-    export namespace CaptureUIHideMode {
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureUIHideMode#All)
-         */
-        export interface All extends globalThis.EnumItem {
-            Name: "All";
-            Value: 0;
-            EnumType: typeof globalThis.Enum.CaptureUIHideMode;
-        }
-        export const All: All;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureUIHideMode#None)
-         */
-        export interface None extends globalThis.EnumItem {
-            Name: "None";
-            Value: 1;
-            EnumType: typeof globalThis.Enum.CaptureUIHideMode;
-        }
-        export const None: None;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureUIHideMode#Core)
-         */
-        export interface Core extends globalThis.EnumItem {
-            Name: "Core";
-            Value: 2;
-            EnumType: typeof globalThis.Enum.CaptureUIHideMode;
-        }
-        export const Core: Core;
-        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CaptureUIHideMode>;
-        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CaptureUIHideMode | undefined;
-        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CaptureUIHideMode | undefined;
-    }
-    export type CaptureUIHideMode = CaptureUIHideMode.All | CaptureUIHideMode.None | CaptureUIHideMode.Core;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogCategoryFilter)
      */
@@ -17704,11 +17677,13 @@ declare namespace Enum {
     }
     export type ListDisplayMode = ListDisplayMode.Horizontal | ListDisplayMode.Vertical;
     /**
+     * Enum used with `SoundService.DefaultListenerLocation` to determine where an `AudioListener` is placed by default.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ListenerLocation)
      */
     export namespace ListenerLocation {
         /**
-         * An `AudioListener` will be created and parented to `Workspace.CurrentCamera` in experiences that enable voice chat.
+         * Behavior depends on the value of `VoiceChatService.EnableDefaultVoice` and `VoiceChatService.UseAudioApi`. When using the default voice setup with the audio API, this behaves similarly to `Camera`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ListenerLocation#Default)
          */
@@ -17719,7 +17694,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * No `AudioListeners` will be spawned by default.
+         * No `AudioListener` will be created by default, but they can be created separately by scripts.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ListenerLocation#None)
          */
@@ -17730,7 +17705,13 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * An `AudioListener` will be created and attached to the local player's `Player.Character`.
+         * All of the following, resulting in the world being heard from the position of your character while matching the orientation of your camera. -  An `Attachment` will be created and parented to the   `PrimaryPart` of the local player's   `Character` model.
+         * -  An `AudioListener` will be created and parented to the   `Attachment`.
+         * -  An `AudioDeviceOutput` will be created and parented to   `SoundService`.
+         * -  A `Wire` will be created and parented to the previously-created   `AudioListener`. The wire's   `SourceInstance` will be set to the   previously-created `AudioListener` and its   `TargetInstance` will be set to the   previously-created `AudioDeviceOutput`.
+         * -  The previously-created `Attachment` will be updated once per frame   to face the same direction as `Workspace.CurrentCamera`.
+         *
+         *
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ListenerLocation#Character)
          */
@@ -17741,7 +17722,11 @@ declare namespace Enum {
         }
         export const Character: Character;
         /**
-         * An `AudioListener` will be created and parented to `Workspace.CurrentCamera`.
+         * All of the following, resulting in the world being heard from the perspective (postition and orientation) of the camera. - An `AudioListener` will be created and parented to   `Workspace.CurrentCamera`.
+         * - An `AudioDeviceOutput` will be created and parented to   `SoundService`.
+         * - A `Wire` will be created and parented to the previously-created   `AudioListener`. The wire's   `SourceInstance` will be set to the   previously-created `AudioListener` and its   `TargetInstance` will be set to the   previously-created `AudioDeviceOutput`.
+         *
+         *
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ListenerLocation#Camera)
          */
@@ -18267,10 +18252,14 @@ declare namespace Enum {
     }
     export type MarkupKind = MarkupKind.PlainText | MarkupKind.Markdown;
     /**
+     * Used with `DataModel.MatchmakingType` to represent how players in the server are handled by matchmaking.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MatchmakingType)
      */
     export namespace MatchmakingType {
         /**
+         * Includes desktop, mobile, cross-play enabled players, etc.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MatchmakingType#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -18280,6 +18269,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Xbox players with cross-play disabled.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MatchmakingType#XboxOnly)
          */
         export interface XboxOnly extends globalThis.EnumItem {
@@ -18289,6 +18280,8 @@ declare namespace Enum {
         }
         export const XboxOnly: XboxOnly;
         /**
+         * PlayStation players with cross-play disabled.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MatchmakingType#PlayStationOnly)
          */
         export interface PlayStationOnly extends globalThis.EnumItem {
@@ -21461,11 +21454,20 @@ declare namespace Enum {
         }
         export const FlushFailed: FlushFailed;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDataErrorState#ReleaseFailed)
+         */
+        export interface ReleaseFailed extends globalThis.EnumItem {
+            Name: "ReleaseFailed";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PlayerDataErrorState;
+        }
+        export const ReleaseFailed: ReleaseFailed;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDataErrorState#None)
          */
         export interface None extends globalThis.EnumItem {
             Name: "None";
-            Value: 2;
+            Value: 3;
             EnumType: typeof globalThis.Enum.PlayerDataErrorState;
         }
         export const None: None;
@@ -21473,7 +21475,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PlayerDataErrorState | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlayerDataErrorState | undefined;
     }
-    export type PlayerDataErrorState = PlayerDataErrorState.LoadFailed | PlayerDataErrorState.FlushFailed | PlayerDataErrorState.None;
+    export type PlayerDataErrorState = PlayerDataErrorState.LoadFailed | PlayerDataErrorState.FlushFailed | PlayerDataErrorState.ReleaseFailed | PlayerDataErrorState.None;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDataLoadFailureBehavior)
      */
@@ -25550,6 +25552,87 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StartCorner | undefined;
     }
     export type StartCorner = StartCorner.TopLeft | StartCorner.TopRight | StartCorner.BottomLeft | StartCorner.BottomRight;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType)
+     */
+    export namespace StateObjectFieldType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Boolean)
+         */
+        export interface Boolean extends globalThis.EnumItem {
+            Name: "Boolean";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.StateObjectFieldType;
+        }
+        export const Boolean: Boolean;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#CFrame)
+         */
+        export interface CFrame extends globalThis.EnumItem {
+            Name: "CFrame";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.StateObjectFieldType;
+        }
+        export const CFrame: CFrame;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Float)
+         */
+        export interface Float extends globalThis.EnumItem {
+            Name: "Float";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.StateObjectFieldType;
+        }
+        export const Float: Float;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Instance)
+         */
+        export interface Instance extends globalThis.EnumItem {
+            Name: "Instance";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.StateObjectFieldType;
+        }
+        export const Instance: Instance;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Random)
+         */
+        export interface Random extends globalThis.EnumItem {
+            Name: "Random";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.StateObjectFieldType;
+        }
+        export const Random: Random;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Vector2)
+         */
+        export interface Vector2 extends globalThis.EnumItem {
+            Name: "Vector2";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.StateObjectFieldType;
+        }
+        export const Vector2: Vector2;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Vector3)
+         */
+        export interface Vector3 extends globalThis.EnumItem {
+            Name: "Vector3";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.StateObjectFieldType;
+        }
+        export const Vector3: Vector3;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#INVALID)
+         */
+        export interface INVALID extends globalThis.EnumItem {
+            Name: "INVALID";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.StateObjectFieldType;
+        }
+        export const INVALID: INVALID;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StateObjectFieldType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StateObjectFieldType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StateObjectFieldType | undefined;
+    }
+    export type StateObjectFieldType = StateObjectFieldType.Boolean | StateObjectFieldType.CFrame | StateObjectFieldType.Float | StateObjectFieldType.Instance | StateObjectFieldType.Random | StateObjectFieldType.Vector2 | StateObjectFieldType.Vector3 | StateObjectFieldType.INVALID;
     /**
      * **Deprecated:** This enum is deprecated as it was only used by deprecated methods and events. It should not be used in new work.
      *
@@ -30266,6 +30349,42 @@ declare namespace Enum {
     }
     export type TweenStatus = TweenStatus.Canceled | TweenStatus.Completed;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UICaptureMode)
+     */
+    export namespace UICaptureMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UICaptureMode#All)
+         */
+        export interface All extends globalThis.EnumItem {
+            Name: "All";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.UICaptureMode;
+        }
+        export const All: All;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UICaptureMode#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.UICaptureMode;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UICaptureMode#PlayerGui)
+         */
+        export interface PlayerGui extends globalThis.EnumItem {
+            Name: "PlayerGui";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.UICaptureMode;
+        }
+        export const PlayerGui: PlayerGui;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UICaptureMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UICaptureMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UICaptureMode | undefined;
+    }
+    export type UICaptureMode = UICaptureMode.All | UICaptureMode.None | UICaptureMode.PlayerGui;
+    /**
      * Used with `UIDragDetector` to determine bounding behavior of the dragged UI object when `UIDragDetector.BoundingUI` is set.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIDragDetectorBoundingBehavior)
@@ -32309,6 +32428,51 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WaterForce | undefined;
     }
     export type WaterForce = WaterForce.None | WaterForce.Small | WaterForce.Medium | WaterForce.Strong | WaterForce.Max;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebSocketState)
+     */
+    export namespace WebSocketState {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebSocketState#Connecting)
+         */
+        export interface Connecting extends globalThis.EnumItem {
+            Name: "Connecting";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.WebSocketState;
+        }
+        export const Connecting: Connecting;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebSocketState#Open)
+         */
+        export interface Open extends globalThis.EnumItem {
+            Name: "Open";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.WebSocketState;
+        }
+        export const Open: Open;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebSocketState#Closing)
+         */
+        export interface Closing extends globalThis.EnumItem {
+            Name: "Closing";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.WebSocketState;
+        }
+        export const Closing: Closing;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebSocketState#Closed)
+         */
+        export interface Closed extends globalThis.EnumItem {
+            Name: "Closed";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.WebSocketState;
+        }
+        export const Closed: Closed;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WebSocketState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WebSocketState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WebSocketState | undefined;
+    }
+    export type WebSocketState = WebSocketState.Connecting | WebSocketState.Open | WebSocketState.Closing | WebSocketState.Closed;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WeldConstraintPreserve)
      */

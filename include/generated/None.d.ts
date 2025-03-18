@@ -206,6 +206,7 @@ interface Services {
     VoiceChatService: VoiceChatService;
     VRService: VRService;
     VRStatusService: VRStatusService;
+    WebSocketService: WebSocketService;
     WebViewService: WebViewService;
     Workspace: Workspace;
 }
@@ -664,6 +665,7 @@ interface Instances extends Services, CreatableInstances {
     UserGameSettings: UserGameSettings;
     UserSettings: UserSettings;
     ValueBase: ValueBase;
+    WebSocketClient: WebSocketClient;
     WorldRoot: WorldRoot;
 }
 interface Objects extends Instances {
@@ -1738,7 +1740,7 @@ interface Instance extends RBXObject {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#IsPropertyModified)
      * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
-     * @param name Name of the property to query.
+     * @param property
      * @returns Boolean indicating whether the property is modified.
      */
     IsPropertyModified(this: Instance, property: string): boolean;
@@ -1757,7 +1759,7 @@ interface Instance extends RBXObject {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#ResetPropertyToDefault)
      * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
-     * @param name Name of the property to reset.
+     * @param property
      */
     ResetPropertyToDefault(this: Instance, property: string): void;
     /**
@@ -2840,6 +2842,18 @@ interface AnimationTrack extends Instance {
      */
     GetMarkerReachedSignal(this: AnimationTrack, name: string): RBXScriptSignal<(param?: string) => void>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#GetTargetInstance)
+     */
+    GetTargetInstance(this: AnimationTrack, name: string): Instance | undefined;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#GetTargetNames)
+     */
+    GetTargetNames(this: AnimationTrack): Array<unknown>;
+    /**
      * Returns the time position of the first `Keyframe` of the given name in an `AnimationTrack`.
      *
      * - **ThreadSafety**: Unsafe
@@ -2863,6 +2877,12 @@ interface AnimationTrack extends Instance {
      * @param speed The playback speed of the animation.
      */
     Play(this: AnimationTrack, fadeTime?: number, weight?: number, speed?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#SetTargetInstance)
+     */
+    SetTargetInstance(this: AnimationTrack, name: string, target: Instance): void;
     /**
      * Stops the `AnimationTrack`.
      *
@@ -5629,6 +5649,8 @@ interface AudioSearchParams extends Instance {
     Title: string;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech)
  */
 interface AudioTextToSpeech extends Instance {
@@ -5712,24 +5734,29 @@ interface AudioTextToSpeech extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#GetConnectedWires)
+     * @param this
+     * @param pin
      */
     GetConnectedWires(this: AudioTextToSpeech, pin: string): Array<Instance>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Pause)
+     * @param this
      */
     Pause(this: AudioTextToSpeech): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Play)
+     * @param this
      */
     Play(this: AudioTextToSpeech): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Unload)
+     * @param this
      */
     Unload(this: AudioTextToSpeech): void;
     /**
@@ -5737,6 +5764,9 @@ interface AudioTextToSpeech extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#GetWaveformAsync)
+     * @param this
+     * @param timeRange
+     * @param samples
      */
     GetWaveformAsync(this: AudioTextToSpeech, timeRange: NumberRange, samples: number): Array<unknown>;
     /**
@@ -5744,6 +5774,7 @@ interface AudioTextToSpeech extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#LoadAsync)
+     * @param this
      */
     LoadAsync(this: AudioTextToSpeech): Enum.AssetFetchStatus;
     /**
@@ -5788,18 +5819,11 @@ interface AuroraScriptService extends Instance {
      */
     get BufferSize(): number;
     /**
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
+     * - **ThreadSafety**: Safe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#LocalFrameId)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#GetLocalFrameId)
      */
-    get LocalFrameId(): number;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#RemoteFrameId)
-     */
-    get RemoteFrameId(): number;
+    GetLocalFrameId(this: AuroraScriptService): number;
     /**
      * - **ThreadSafety**: Safe
      *
@@ -5842,12 +5866,6 @@ interface AuroraService extends Instance {
      */
     readonly _nominal_AuroraService: unique symbol;
     /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#RollbackEnabled)
-     */
-    RollbackEnabled: boolean;
-    /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#GetDesyncedInstances)
@@ -5877,18 +5895,6 @@ interface AuroraService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#IsDesynced)
      */
     IsDesynced(this: AuroraService, target: Instance): boolean;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#NetDesync)
-     */
-    NetDesync(this: AuroraService, target: Instance): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#NetSync)
-     */
-    NetSync(this: AuroraService, target: Instance): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -16183,6 +16189,12 @@ interface GuiButton extends GuiObject {
      */
     AutoButtonColor: boolean;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiButton#HoverHapticEffect)
+     */
+    HoverHapticEffect: HapticEffect | undefined;
+    /**
      * If `true` while the GUI element is visible, the mouse will not be locked unless the right mouse button is down.
      *
      * - **ThreadSafety**: ReadSafe
@@ -16190,6 +16202,12 @@ interface GuiButton extends GuiObject {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiButton#Modal)
      */
     Modal: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiButton#PressHapticEffect)
+     */
+    PressHapticEffect: HapticEffect | undefined;
     /**
      * A boolean property which indicates whether the object has been selected.
      *
@@ -19652,6 +19670,8 @@ interface GuiService extends Instance {
     readonly MenuOpened: RBXScriptSignal<() => void>;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect)
  */
 interface HapticEffect extends Instance {
@@ -22380,6 +22400,24 @@ interface InputBinding extends Instance {
     /**
      * - **ThreadSafety**: ReadSafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#PressedThreshold)
+     */
+    PressedThreshold: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#ReleasedThreshold)
+     */
+    ReleasedThreshold: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Scale)
+     */
+    Scale: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#UIButton)
      */
     UIButton: GuiButton | undefined;
@@ -24937,18 +24975,25 @@ interface MatchmakingService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MatchmakingService#GetServerAttribute)
+     * @param this
+     * @param name
      */
     GetServerAttribute(this: MatchmakingService, name: string): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MatchmakingService#InitializeServerAttributesForStudio)
+     * @param this
+     * @param serverAttributes
      */
     InitializeServerAttributesForStudio(this: MatchmakingService, serverAttributes: object): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MatchmakingService#SetServerAttribute)
+     * @param this
+     * @param name
+     * @param value
      */
     SetServerAttribute(this: MatchmakingService, name: string, value: unknown): unknown;
 }
@@ -31280,12 +31325,6 @@ interface PlayerDataRecord extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#Release)
-     */
-    Release(this: PlayerDataRecord): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#RemoveValue)
      */
     RemoveValue(this: PlayerDataRecord, key: string): void;
@@ -31295,6 +31334,13 @@ interface PlayerDataRecord extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#SetValue)
      */
     SetValue(this: PlayerDataRecord, key: string, value: unknown): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord#ReleaseAsync)
+     */
+    ReleaseAsync(this: PlayerDataRecord): void;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -33927,6 +33973,8 @@ interface DataModel extends ServiceProvider<Services> {
      */
     readonly JobId: string;
     /**
+     * Represents how players in the server are handled by matchmaking.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -34507,6 +34555,12 @@ interface SocialService extends Instance {
      * @deprecated
      */
     readonly _nominal_SocialService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#GetPlayersByPartyId)
+     */
+    GetPlayersByPartyId(this: SocialService, partyId: string): Array<Instance>;
     /**
      * Hides the calling player's self view.
      *
@@ -36370,7 +36424,7 @@ interface StyleBase extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleBase#InsertStyleRule)
      * @param this
      * @param rule
-     * @param index
+     * @param priority
      */
     InsertStyleRule(this: StyleBase, rule: StyleRule, priority?: number): void;
     /**
@@ -36439,7 +36493,7 @@ interface StyleRule extends StyleBase {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#SetProperties)
      * @param this
-     * @param table
+     * @param styleProperties
      */
     SetProperties(this: StyleRule, styleProperties: object): void;
     /**
@@ -42493,6 +42547,79 @@ interface VoiceChatService extends Instance {
      * @returns If that user has voice enabled.
      */
     IsVoiceEnabledForUserIdAsync(this: VoiceChatService, userId: number): boolean;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient)
+ */
+interface WebSocketClient extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WebSocketClient: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient#ConnectionState)
+     */
+    readonly ConnectionState: Enum.WebSocketState;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient#Close)
+     */
+    Close(this: WebSocketClient): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient#Send)
+     */
+    Send(this: WebSocketClient, data: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient#Closed)
+     */
+    readonly Closed: RBXScriptSignal<() => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient#MessageReceived)
+     */
+    readonly MessageReceived: RBXScriptSignal<(data: string) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient#Opened)
+     */
+    readonly Opened: RBXScriptSignal<() => void>;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketService)
+ */
+interface WebSocketService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WebSocketService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketService#CreateClient)
+     */
+    CreateClient(this: WebSocketService, uri: string): WebSocketClient;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
