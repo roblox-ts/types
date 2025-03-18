@@ -224,6 +224,7 @@ interface Services {
     VoiceChatService: VoiceChatService;
     VRService: VRService;
     VRStatusService: VRStatusService;
+    WebSocketService: WebSocketService;
     WebViewService: WebViewService;
     Workspace: Workspace;
 }
@@ -716,6 +717,7 @@ interface Instances extends Services, CreatableInstances {
     UserGameSettings: UserGameSettings;
     UserSettings: UserSettings;
     ValueBase: ValueBase;
+    WebSocketClient: WebSocketClient;
     WorldRoot: WorldRoot;
 }
 interface Objects extends Instances {
@@ -1763,6 +1765,8 @@ interface AudioSearchParams extends Instance {
     readonly _nominal_AudioSearchParams: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech)
  */
 interface AudioTextToSpeech extends Instance {
@@ -6301,6 +6305,8 @@ interface GuiService extends Instance {
     readonly _nominal_GuiService: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect)
  */
 interface HapticEffect extends Instance {
@@ -11959,6 +11965,8 @@ interface SoundService extends Instance {
      */
     set CharacterSoundsUseNewApi(value: Enum.RolloutState);
     /**
+     * Determines where (if anywhere) to place an `AudioListener` by default.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#DefaultListenerLocation)
@@ -14377,6 +14385,36 @@ interface VoiceChatService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatService#UseAudioApi)
      */
     UseAudioApi: Enum.AudioApiRollout;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient)
+ */
+interface WebSocketClient extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WebSocketClient: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketService)
+ */
+interface WebSocketService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WebSocketService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
