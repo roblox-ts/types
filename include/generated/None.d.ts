@@ -38,6 +38,7 @@ interface Services {
     CollectionService: CollectionService;
     CommandService: CommandService;
     CommerceService: CommerceService;
+    ConfigService: ConfigService;
     ConfigureServerService: ConfigureServerService;
     ConnectivityService: ConnectivityService;
     ContentProvider: ContentProvider;
@@ -670,6 +671,7 @@ interface Instances extends Services, CreatableInstances {
 }
 interface Objects extends Instances {
     Capture: Capture;
+    ConfigSnapshot: ConfigSnapshot;
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
     Object: RBXObject;
@@ -762,6 +764,59 @@ interface ScreenshotCapture extends Capture {
      * @deprecated
      */
     readonly _nominal_ScreenshotCapture: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot)
+ */
+interface ConfigSnapshot extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ConfigSnapshot: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#Error)
+     */
+    readonly Error: Enum.ConfigSnapshotErrorState;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#Outdated)
+     */
+    readonly Outdated: boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#GetValue)
+     */
+    GetValue(this: ConfigSnapshot, key: string, defaultValue: unknown): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#GetValueChangedSignal)
+     */
+    GetValueChangedSignal(this: ConfigSnapshot, key: string): RBXScriptSignal;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#Refresh)
+     */
+    Refresh(this: ConfigSnapshot): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#UpdateAvailable)
+     */
+    readonly UpdateAvailable: RBXScriptSignal<() => void>;
 }
 /**
  * Instance which allows for the runtime creation and manipulation of images.
@@ -2845,12 +2900,15 @@ interface AnimationTrack extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#GetTargetInstance)
+     * @param this Controls the playback of an animation on an `Animator`.
+     * @param name
      */
     GetTargetInstance(this: AnimationTrack, name: string): Instance | undefined;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#GetTargetNames)
+     * @param this Controls the playback of an animation on an `Animator`.
      */
     GetTargetNames(this: AnimationTrack): Array<unknown>;
     /**
@@ -2881,6 +2939,9 @@ interface AnimationTrack extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#SetTargetInstance)
+     * @param this Controls the playback of an animation on an `Animator`.
+     * @param name
+     * @param target
      */
     SetTargetInstance(this: AnimationTrack, name: string, target: Instance): void;
     /**
@@ -5868,9 +5929,9 @@ interface AuroraService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#GetDesyncedInstances)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#GetPredictedInstances)
      */
-    GetDesyncedInstances(this: AuroraService): Array<unknown>;
+    GetPredictedInstances(this: AuroraService): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -5892,9 +5953,9 @@ interface AuroraService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#IsDesynced)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#IsPredicted)
      */
-    IsDesynced(this: AuroraService, target: Instance): boolean;
+    IsPredicted(this: AuroraService, target: Instance): boolean;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -5934,12 +5995,6 @@ interface AuroraService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#Desynced)
-     */
-    readonly Desynced: RBXScriptSignal<(target: Instance) => void>;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#FixedRateTick)
      */
     readonly FixedRateTick: RBXScriptSignal<(deltaTime: number, worldStepId: number) => void>;
@@ -5955,12 +6010,6 @@ interface AuroraService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#Step)
      */
     readonly Step: RBXScriptSignal<() => void>;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#Synced)
-     */
-    readonly Synced: RBXScriptSignal<(target: Instance) => void>;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -10206,6 +10255,35 @@ interface CommerceService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#PromptCommerceProductPurchaseFinished)
      */
     readonly PromptCommerceProductPurchaseFinished: RBXScriptSignal<(user: Player, productId: string) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigService)
+ */
+interface ConfigService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ConfigService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigService#GetConfigAsync)
+     */
+    GetConfigAsync(this: ConfigService): ConfigSnapshot;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigService#GetConfigForPlayerAsync)
+     */
+    GetConfigForPlayerAsync(this: ConfigService, player: Player): ConfigSnapshot;
 }
 /**
  * The Configuration object is a container object that is designed to hold value objects to make values used in `Tools` or any model using `Scripts` more accessible.
@@ -14980,6 +15058,8 @@ interface GamepadService extends Instance {
     EnableGamepadCursor(this: GamepadService, guiObject: GuiObject | undefined): void;
 }
 /**
+ * `GenerationService` is a service that allows developers to generate 3D objects from text prompts utilizing Roblox's [Cube 3D foundation model](https://corp.roblox.com/newsroom/2025/03/introducing-roblox-cube).
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService)
@@ -14994,24 +15074,31 @@ interface GenerationService extends Instance {
      */
     readonly _nominal_GenerationService: unique symbol;
     /**
+     * Starts the generation of a new 3D mesh from a text prompt and returns unique IDs used to track and retrieve the result. After the generation is complete, use `LoadGeneratedMeshAsync()` to load and display the generated mesh.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#GenerateMeshAsync)
-     * @param this
-     * @param inputs
-     * @param player
-     * @param options
-     * @param intermediateResultCallback
+     * @param this `GenerationService` is a service that allows developers to generate 3D objects from text prompts utilizing Roblox's [Cube 3D foundation model](https://corp.roblox.com/newsroom/2025/03/introducing-roblox-cube).
+     * @param inputs A dictionary containing the mesh generation prompts. Currently, the only supported key is the `Prompt` (string) that describes the mesh to generate.
+     * @param player The `Player` requesting the generation.
+     * @param options Additional generation options. Currently, no options are supported.
+     * @param intermediateResultCallback A callback function triggered with intermediate generation results. Useful for retrieving early mesh versions (e.g. before textures are applied).
+     * @returns A tuple of generation ID and context ID. - Generation ID: A unique ID returned for each invocation of `GenerateMeshAsync()`.
+     * - Context ID: Not currently used.
      */
     GenerateMeshAsync(this: GenerationService, inputs: object, player: Player, options: object, intermediateResultCallback?: Callback): unknown;
     /**
+     * Retrieves and loads a mesh generated by `GenerationService:GenerateMeshAsync()` using the provided `generationId`. The mesh is returned as a `MeshPart` with `EditableMesh` content.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#LoadGeneratedMeshAsync)
-     * @param this
-     * @param generationId
+     * @param this `GenerationService` is a service that allows developers to generate 3D objects from text prompts utilizing Roblox's [Cube 3D foundation model](https://corp.roblox.com/newsroom/2025/03/introducing-roblox-cube).
+     * @param generationId The unique ID returned by `GenerateMeshAsync()`. Identifies the mesh to load.
+     * @returns The generated mesh, returned as a `MeshPart` containing an `EditableMesh`.
      */
     LoadGeneratedMeshAsync(this: GenerationService, generationId: string): MeshPart;
 }
@@ -34559,6 +34646,8 @@ interface SocialService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#GetPlayersByPartyId)
+     * @param this Facilitates social functions that impact relationships made on the Roblox platform.
+     * @param partyId
      */
     GetPlayersByPartyId(this: SocialService, partyId: string): Array<Instance>;
     /**
@@ -37579,8 +37668,8 @@ interface TextChannel extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChannel#ShouldDeliverCallback)
-     * @param message
-     * @param textSource
+     * @param message The message being sent, which also contains the sender of the message.
+     * @param textSource The `TextSource` of the user who will be receiving the message.
      */
     ShouldDeliverCallback: (message: TextChatMessage, textSource: TextSource) => boolean;
 }
@@ -42573,12 +42662,15 @@ interface WebSocketClient extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient#Close)
+     * @param this
      */
     Close(this: WebSocketClient): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient#Send)
+     * @param this
+     * @param data
      */
     Send(this: WebSocketClient, data: string): void;
     /**
@@ -42618,6 +42710,8 @@ interface WebSocketService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketService#CreateClient)
+     * @param this
+     * @param uri
      */
     CreateClient(this: WebSocketService, uri: string): WebSocketClient;
 }
