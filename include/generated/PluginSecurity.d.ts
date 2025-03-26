@@ -39,6 +39,7 @@ interface Services {
     CollectionService: CollectionService;
     CommandService: CommandService;
     CommerceService: CommerceService;
+    ConfigService: ConfigService;
     ConfigureServerService: ConfigureServerService;
     ConnectivityService: ConnectivityService;
     ContentProvider: ContentProvider;
@@ -722,6 +723,7 @@ interface Instances extends Services, CreatableInstances {
 }
 interface Objects extends Instances {
     Capture: Capture;
+    ConfigSnapshot: ConfigSnapshot;
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
     Object: RBXObject;
@@ -774,6 +776,21 @@ interface ScreenshotCapture extends Capture {
      * @deprecated
      */
     readonly _nominal_ScreenshotCapture: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot)
+ */
+interface ConfigSnapshot extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ConfigSnapshot: unique symbol;
 }
 /**
  * Instance which allows for the runtime creation and manipulation of images.
@@ -3069,6 +3086,21 @@ interface CommerceService extends Instance {
     readonly _nominal_CommerceService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigService)
+ */
+interface ConfigService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ConfigService: unique symbol;
+}
+/**
  * The Configuration object is a container object that is designed to hold value objects to make values used in `Tools` or any model using `Scripts` more accessible.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Configuration)
@@ -5290,6 +5322,8 @@ interface GamepadService extends Instance {
     readonly _nominal_GamepadService: unique symbol;
 }
 /**
+ * `GenerationService` is a service that allows developers to generate 3D objects from text prompts utilizing Roblox's [Cube 3D foundation model](https://corp.roblox.com/newsroom/2025/03/introducing-roblox-cube).
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService)
