@@ -1480,7 +1480,7 @@ interface AudioAnalyzer extends Instance {
     readonly _nominal_AudioAnalyzer: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
+ * Combines multiple audio streams into a single, multichannel audio stream.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer)
  */
@@ -1495,7 +1495,7 @@ interface AudioChannelMixer extends Instance {
     readonly _nominal_AudioChannelMixer: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
+ * Splits an audio stream into component channels so that each can be processed independently.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter)
  */
@@ -2614,23 +2614,6 @@ interface CalloutService extends Instance {
     readonly _nominal_CalloutService: unique symbol;
 }
 /**
- * A class which defines a view of the 3D world.
- *
- * - **Tags**: NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera)
- */
-interface Camera extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_Camera: unique symbol;
-}
-/**
  * A service which provides control over screenshot capture features.
  *
  * - **Tags**: NotCreatable, Service
@@ -2902,7 +2885,7 @@ interface ShirtGraphic extends CharacterAppearance {
     readonly _nominal_ShirtGraphic: unique symbol;
 }
 /**
- * Houses the Lua code responsible for running the legacy chat system.
+ * Houses the Luau code responsible for running the legacy chat system.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -7355,7 +7338,7 @@ interface LuaSettings extends Instance {
     readonly _nominal_LuaSettings: unique symbol;
 }
 /**
- * The base class for all objects which contain Lua code.
+ * The base class for all objects which contain Luau code.
  *
  * - **Tags**: NotCreatable, NotBrowsable
  *
@@ -7462,7 +7445,7 @@ interface BaseScript extends LuaSourceContainer {
     set RunContext(value: Enum.RunContext);
 }
 /**
- * An object that contains and runs Lua code on the server.
+ * An object that contains and runs Luau code on the server.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Script)
  */
@@ -7477,7 +7460,7 @@ interface Script extends BaseScript {
     readonly _nominal_Script: unique symbol;
 }
 /**
- * An object that contains and runs Lua code on the client (player's device) instead of the server.
+ * An object that contains and runs Luau code on the client (player's device) instead of the server.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LocalScript)
  */
@@ -8548,6 +8531,23 @@ interface VehicleSeat extends BasePart {
      * @deprecated
      */
     readonly _nominal_VehicleSeat: unique symbol;
+}
+/**
+ * A class which defines a view of the 3D world.
+ *
+ * - **Tags**: NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera)
+ */
+interface Camera extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Camera: unique symbol;
 }
 /**
  * Models are container objects, meaning they group objects together. They are best used to hold collections of `BaseParts` and have a number of functions that extend their functionality.
@@ -14302,6 +14302,8 @@ interface VideoPlayer extends Instance {
     readonly _nominal_VideoPlayer: unique symbol;
 }
 /**
+ * An internal service that offers no functionality to developers.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoService)
@@ -14403,6 +14405,12 @@ interface VoiceChatService extends Instance {
      * @deprecated
      */
     readonly _nominal_VoiceChatService: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatService#DefaultDistanceAttenuation)
+     */
+    DefaultDistanceAttenuation: Enum.VoiceChatDistanceAttenuationType;
     /**
      * Controls whether each voice-eligible player can be heard as though they were speaking through their character.
      *
