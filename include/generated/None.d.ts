@@ -797,18 +797,24 @@ interface ConfigSnapshot extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#GetValue)
+     * @param this
+     * @param key
+     * @param defaultValue
      */
     GetValue(this: ConfigSnapshot, key: string, defaultValue: unknown): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#GetValueChangedSignal)
+     * @param this
+     * @param key
      */
     GetValueChangedSignal(this: ConfigSnapshot, key: string): RBXScriptSignal;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#Refresh)
+     * @param this
      */
     Refresh(this: ConfigSnapshot): void;
     /**
@@ -1230,13 +1236,37 @@ interface EditableMesh extends RBXObject {
      * Returns a list of faces that use a given attribute ID.
      *
      * - **ThreadSafety**: Unsafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacesWithAttribute)
      * @param this Instance which allows for the runtime creation and manipulation of meshes.
      * @param id Attribute ID for which to find faces that use it.
      * @returns List of face IDs which use the given attribute ID.
+     *
+     * @deprecated
      */
     GetFacesWithAttribute(this: EditableMesh, id: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacesWithColor)
+     */
+    GetFacesWithColor(this: EditableMesh, colorId: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacesWithNormal)
+     */
+    GetFacesWithNormal(this: EditableMesh, normalId: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacesWithUV)
+     */
+    GetFacesWithUV(this: EditableMesh, uvId: number): Array<unknown>;
     /**
      * Returns the normal vector for the given normal ID.
      *
@@ -1301,6 +1331,52 @@ interface EditableMesh extends RBXObject {
      */
     GetUVs(this: EditableMesh): Array<unknown>;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexColors)
+     */
+    GetVertexColors(this: EditableMesh, vertexId: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaceColor)
+     */
+    GetVertexFaceColor(this: EditableMesh, vertexId: number, faceId: number): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaceNormal)
+     */
+    GetVertexFaceNormal(this: EditableMesh, vertexId: number, faceId: number): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaceUV)
+     */
+    GetVertexFaceUV(this: EditableMesh, vertexId: number, faceId: number): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaces)
+     */
+    GetVertexFaces(this: EditableMesh, vertexId: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexNormals)
+     */
+    GetVertexNormals(this: EditableMesh, vertexId: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexUVs)
+     */
+    GetVertexUVs(this: EditableMesh, vertexId: number): Array<unknown>;
+    /**
      * Returns all vertices as a list of stable vertex IDs.
      *
      * - **ThreadSafety**: Unsafe
@@ -1314,13 +1390,37 @@ interface EditableMesh extends RBXObject {
      * Returns a list of vertices that use a given attribute ID.
      *
      * - **ThreadSafety**: Unsafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVerticesWithAttribute)
      * @param this Instance which allows for the runtime creation and manipulation of meshes.
      * @param id Attribute ID for which to find vertices that use it.
      * @returns List of vertex IDs which use the given attribute ID.
+     *
+     * @deprecated
      */
     GetVerticesWithAttribute(this: EditableMesh, id: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVerticesWithColor)
+     */
+    GetVerticesWithColor(this: EditableMesh, colorId: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVerticesWithNormal)
+     */
+    GetVerticesWithNormal(this: EditableMesh, normalId: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVerticesWithUV)
+     */
+    GetVerticesWithUV(this: EditableMesh, uvId: number): Array<unknown>;
     /**
      * Returns a string describing a stable ID, useful for debugging purposes.
      *
@@ -1490,6 +1590,24 @@ interface EditableMesh extends RBXObject {
      * @param uv UV coordinates.
      */
     SetUV(this: EditableMesh, uvId: number, uv: Vector2): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexFaceColor)
+     */
+    SetVertexFaceColor(this: EditableMesh, vertexId: number, faceId: number, colorId: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexFaceNormal)
+     */
+    SetVertexFaceNormal(this: EditableMesh, vertexId: number, faceId: number, normalId: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexFaceUV)
+     */
+    SetVertexFaceUV(this: EditableMesh, vertexId: number, faceId: number, uvId: number): void;
     /**
      * Splits all faces on the mesh to be triangles.
      *
@@ -3321,7 +3439,7 @@ interface AssetService extends Instance {
      */
     CreateEditableMesh(this: AssetService, editableMeshOptions?: object): EditableMesh;
     /**
-     * Creates a new asset from the given object.
+     * Uploads a new asset to Roblox from the given object.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -3346,7 +3464,7 @@ interface AssetService extends Instance {
      */
     CreateAssetAsync(this: AssetService, object: RBXObject, assetType: CastsToEnum<Enum.AssetType>, requestParameters?: object): unknown;
     /**
-     * Creates a new version for an existing asset from the given object.
+     * Uploads a new version for an existing asset from the given object.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -3964,7 +4082,7 @@ interface AudioAnalyzer extends Instance {
     readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
 }
 /**
- * - **Tags**: NotBrowsable
+ * Combines multiple audio streams into a single, multichannel audio stream.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer)
  */
@@ -3978,34 +4096,44 @@ interface AudioChannelMixer extends Instance {
      */
     readonly _nominal_AudioChannelMixer: unique symbol;
     /**
+     * Controls the output channel layout to be mixed to.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#Layout)
      */
     Layout: Enum.AudioChannelLayout;
     /**
+     * Returns an array of `Wires` that are connected to the specified pin.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#GetConnectedWires)
-     * @param this
+     * @param this Combines multiple audio streams into a single, multichannel audio stream.
      * @param pin
      */
     GetConnectedWires(this: AudioChannelMixer, pin: string): Array<Instance>;
     /**
+     * Returns the input pins that can be selected by `Wire.TargetName`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#GetInputPins)
-     * @param this
+     * @param this Combines multiple audio streams into a single, multichannel audio stream.
      */
     GetInputPins(this: AudioChannelMixer): Array<unknown>;
     /**
+     * Returns the output pin available for `Wire.SourceName`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#GetOutputPins)
-     * @param this
+     * @param this Combines multiple audio streams into a single, multichannel audio stream.
      */
     GetOutputPins(this: AudioChannelMixer): Array<unknown>;
     /**
+     * Fires when another instance is connected to or disconnected from the `AudioChannelMixer` via a `Wire`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#WiringChanged)
@@ -4013,7 +4141,7 @@ interface AudioChannelMixer extends Instance {
     readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
 }
 /**
- * - **Tags**: NotBrowsable
+ * Splits an audio stream into component channels so that each can be processed independently.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter)
  */
@@ -4027,34 +4155,44 @@ interface AudioChannelSplitter extends Instance {
      */
     readonly _nominal_AudioChannelSplitter: unique symbol;
     /**
+     * Controls the input channel layout to be split from.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#Layout)
      */
     Layout: Enum.AudioChannelLayout;
     /**
+     * Returns an array of `Wires` that are connected to the specified pin.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#GetConnectedWires)
-     * @param this
+     * @param this Splits an audio stream into component channels so that each can be processed independently.
      * @param pin
      */
     GetConnectedWires(this: AudioChannelSplitter, pin: string): Array<Instance>;
     /**
+     * Returns the input pin available for `Wire.TargetName`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#GetInputPins)
-     * @param this
+     * @param this Splits an audio stream into component channels so that each can be processed independently.
      */
     GetInputPins(this: AudioChannelSplitter): Array<unknown>;
     /**
+     * Returns the output pins that can be selected by `Wire.SourceName`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#GetOutputPins)
-     * @param this
+     * @param this Splits an audio stream into component channels so that each can be processed independently.
      */
     GetOutputPins(this: AudioChannelSplitter): Array<unknown>;
     /**
+     * Fires when another instance is connected to or disconnected from the `AudioChannelSplitter` via a `Wire`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#WiringChanged)
@@ -6129,7 +6267,7 @@ interface AvatarCreationService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#PromptCreateAvatarAsync)
      * @param this A service to support developer avatar creators.
-     * @param tokenId The ID of an avatar creation token. The token must be valid in that the universe the method is called from is the same universe the token was created for. Furthermore, the token creator must maintain ID verification and [Roblox Premium](https://www.roblox.com/premium/membership).
+     * @param tokenId The ID of an avatar creation token. The token must be valid in that the universe the method is called from is the same universe the token was created for. Furthermore, the token creator must maintain ID verification and [Roblox Premium](https://www.roblox.com/premium/membership). To create a token for utilization in this API, follow the [token creation](../../../production/monetization/avatar-creation-token.md) process.
      * @param player The `Player` intended to be presented with the creation prompt.
      * @param humanoidDescription The `HumanoidDescription` of the avatar intended for creation.
      * @returns A tuple containing, in order: -  An `PromptCreateAvatarResult` indicating the result of the   creation prompt.
@@ -8547,366 +8685,6 @@ interface CalloutService extends Instance {
     readonly _nominal_CalloutService: unique symbol;
 }
 /**
- * A class which defines a view of the 3D world.
- *
- * - **Tags**: NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera)
- */
-interface Camera extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_Camera: unique symbol;
-    /**
-     * The `CFrame` of the `Camera`, defining its position and orientation in the 3D world.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#CFrame)
-     */
-    CFrame: CFrame;
-    /**
-     * The `Humanoid` or `BasePart` that is the `Camera` subject.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#CameraSubject)
-     */
-    CameraSubject: Humanoid | BasePart | undefined;
-    /**
-     * Specifies the `CameraType` to be read by the camera scripts.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#CameraType)
-     */
-    CameraType: Enum.CameraType;
-    /**
-     * **Deprecated:** This item has been superseded by `Camera.CFrame` which should be used in all new work.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden, NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#CoordinateFrame)
-     *
-     * @deprecated CFrame
-     */
-    CoordinateFrame: CFrame;
-    /**
-     * Sets the angle of the camera's diagonal field of view.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#DiagonalFieldOfView)
-     */
-    DiagonalFieldOfView: number;
-    /**
-     * Sets the angle of the camera's vertical field of view.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#FieldOfView)
-     */
-    FieldOfView: number;
-    /**
-     * Determines the FOV value of the `Camera` that's invariant under viewport size changes.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#FieldOfViewMode)
-     */
-    FieldOfViewMode: Enum.FieldOfViewMode;
-    /**
-     * Sets the area in 3D space that is prioritized by Roblox's graphical systems.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#Focus)
-     */
-    Focus: CFrame;
-    /**
-     * Toggles whether the camera will automatically track the head motion of a player using a VR device.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#HeadLocked)
-     */
-    HeadLocked: boolean;
-    /**
-     * Sets the scale of the user's perspective of the world when using VR.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#HeadScale)
-     */
-    HeadScale: number;
-    /**
-     * Sets the angle of the camera's field of view along the longest viewport axis.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#MaxAxisFieldOfView)
-     */
-    MaxAxisFieldOfView: number;
-    /**
-     * Describes the negative **Z** offset, in studs, of the camera's near clipping plane.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#NearPlaneZ)
-     */
-    readonly NearPlaneZ: number;
-    /**
-     * Toggles whether to apply tilt and roll from the `CFrame` property while the player is using a VR device.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#VRTiltAndRollEnabled)
-     */
-    VRTiltAndRollEnabled: boolean;
-    /**
-     * The dimensions of the device safe area on a Roblox client.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#ViewportSize)
-     */
-    readonly ViewportSize: Vector2;
-    /**
-     * **Deprecated:**
-     *
-     * Returns how much the `Camera` needs to be pushed towards its `Focus` in order to make sure there is no obstructions between the `Focus` and `CFrame`.
-     *
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**:
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#GetLargestCutoffDistance)
-     * @param this A class which defines a view of the 3D world.
-     * @param ignoreList An array of `Instances` to ignore. Descendants of these instances will also be ignored.
-     * @returns The distance, in studs, that the `Camera` needs to be pushed towards its `Focus` to ensure there are no obstructions between the `Focus` and `CFrame` of the `Camera`.
-     *
-     * @deprecated
-     */
-    GetLargestCutoffDistance(this: Camera, ignoreList: Array<Instance>): number;
-    /**
-     * **Deprecated:** This method has been deprecated and no longer works. It should not be used in new work.
-     *
-     * Returns the current 'pan' speed of the `Camera`.
-     *
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**:
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#GetPanSpeed)
-     * @param this A class which defines a view of the 3D world.
-     * @returns The speed at which the `Camera` is rotating around its `Focus` on the **Y** axis.
-     *
-     * @deprecated
-     */
-    GetPanSpeed(this: Camera): number;
-    /**
-     * Returns an array of `BaseParts` that are obscuring the lines of sight between the camera's `CFrame` and the cast points.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#GetPartsObscuringTarget)
-     * @param this A class which defines a view of the 3D world.
-     * @param castPoints An array of `Vector3` positions of cast points.
-     * @param ignoreList An array of `Instances` that should be ignored, along with their descendants.
-     * @returns An array of `BaseParts` that obscure the lines of sight between the camera's `CFrame` and the `castPoints`.
-     */
-    GetPartsObscuringTarget(this: Camera, castPoints: Array<Vector3>, ignoreList: Array<Instance>): Array<Instance>;
-    /**
-     * Returns the actual `CFrame`where the `Camera` is being rendered, accounting for any roll applied and the impact of VR devices.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#GetRenderCFrame)
-     * @param this A class which defines a view of the 3D world.
-     * @returns The `CFrame` the `Camera` is being rendered at.
-     */
-    GetRenderCFrame(this: Camera): CFrame;
-    /**
-     * Returns in radians the current roll, or rotation around the camera's Z-axis, applied to the `Camera` using `SetRoll()`.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#GetRoll)
-     * @param this A class which defines a view of the 3D world.
-     * @returns The current roll applied by `SetRoll()`, in radians.
-     */
-    GetRoll(this: Camera): number;
-    /**
-     * **Deprecated:** This method has been deprecated and no longer works.
-     *
-     * Returns the current tilt speed of the `Camera`.
-     *
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**:
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#GetTiltSpeed)
-     * @param this A class which defines a view of the 3D world.
-     * @returns The speed at which the `Camera` is rotating around its `Focus` around the camera's **X** axis.
-     *
-     * @deprecated
-     */
-    GetTiltSpeed(this: Camera): number;
-    /**
-     * **Deprecated:** This method has been deprecated. Instead use `TweenService` to smoothly animate the `Camera`, see the code snippets below for an example.
-     *
-     * Tweens the `Camera` in a linear fashion towards a new `CFrame` and `Focus` over a given duration.
-     *
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**:
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#Interpolate)
-     * @param this A class which defines a view of the 3D world.
-     * @param endPos The `CFrame` for the `Camera` to tween to.
-     * @param endFocus The `CFrame` for the camera's `Focus` to tween to.
-     * @param duration The duration, in seconds, of the tween.
-     *
-     * @deprecated
-     */
-    Interpolate(this: Camera, endPos: CFrame, endFocus: CFrame, duration: number): void;
-    /**
-     * **Deprecated:** This method was used for legacy camera controls and has since been deprecated. Do not use in new work.
-     *
-     * Pans the `Camera` around the `Focus` in 45 degree increments around the **Y** axis.
-     *
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**:
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#PanUnits)
-     * @param this A class which defines a view of the 3D world.
-     * @param units The number of 45 degree increments by which to pan the `Camera`.
-     *
-     * @deprecated
-     */
-    PanUnits(this: Camera, units: number): void;
-    /**
-     * Creates a unit `Ray` from a position on the screen (in pixels), at a set depth from the `Camera` orientated in the camera's direction. Accounts for the GUI inset.
-     *
-     * - **ThreadSafety**: Safe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#ScreenPointToRay)
-     * @param this A class which defines a view of the 3D world.
-     * @param x The position on the **X** axis, in pixels, of the screen point at which to originate the `Ray`. This position accounts for the GUI inset.
-     * @param y The position on the **Y** axis, in pixels, of the screen point at which to originate the `Ray`. This position accounts for the GUI inset.
-     * @param depth The depth from the `Camera`, in studs, from which to offset the origin of the `Ray`.
-     * @returns A unit `Ray`, originating from the equivalent `Vector3` world position of the given screen coordinates at the given depth away from the `Camera`. This ray is orientated in the direction of the `Camera`.
-     */
-    ScreenPointToRay(this: Camera, x: number, y: number, depth?: number): Ray;
-    /**
-     * **Deprecated:** This method has been deprecated and should not be used in new work.
-     *
-     * Sets the `CameraPanMode` to be used by the `Camera` on mobile devices.
-     *
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**:
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#SetCameraPanMode)
-     * @param this A class which defines a view of the 3D world.
-     * @param mode The `CameraPanMode` to set the `Camera` to.
-     *
-     * @deprecated
-     */
-    SetCameraPanMode(this: Camera, mode?: CastsToEnum<Enum.CameraPanMode>): void;
-    /**
-     * Sets the current rotation applied around the camera's Z-axis.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#SetRoll)
-     * @param this A class which defines a view of the 3D world.
-     * @param rollAngle The roll angle, in radians, to be applied to the `Camera`.
-     */
-    SetRoll(this: Camera, rollAngle: number): void;
-    /**
-     * **Deprecated:** This method was used for legacy camera controls and has been deprecated. Do not use in new work.
-     *
-     * Tilts the `Camera` around its `Focus` in 10 degree increments around the camera's **X** axis.
-     *
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**:
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#TiltUnits)
-     * @param this A class which defines a view of the 3D world.
-     * @param units The number of 10 degree units by which to tilt the `Camera`.
-     * @returns Whether the `Camera` tilt applied was constrained.
-     *
-     * @deprecated
-     */
-    TiltUnits(this: Camera, units: number): boolean;
-    /**
-     * Creates a unit `Ray` from a position on the viewport (in pixels), at a given depth from the `Camera`, orientated in the camera's direction. Does not account for the `CoreUISafeInsets` inset.
-     *
-     * - **ThreadSafety**: Safe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#ViewportPointToRay)
-     * @param this A class which defines a view of the 3D world.
-     * @param x The position on the **X** axis, in pixels, of the viewport point at which to originate the `Ray`, in device safe area coordinates.
-     * @param y The position on the **Y** axis, in pixels, of the viewport point at which to originate the `Ray`, in device safe area coordinates.
-     * @param depth The depth from the `Camera`, in studs, from which to offset the origin of the `Ray`.
-     * @returns A unit `Ray`, originating from the equivalent `Vector3` world position of the given viewport coordinates at the given depth away from the `Camera`. This ray is orientated in the direction of the `Camera`.
-     */
-    ViewportPointToRay(this: Camera, x: number, y: number, depth?: number): Ray;
-    /**
-     * Returns the screen location and depth of a `Vector3` `worldPoint` and whether this point is within the bounds of the screen. Accounts for the GUI inset.
-     *
-     * - **ThreadSafety**: Safe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#WorldToScreenPoint)
-     * @param this A class which defines a view of the 3D world.
-     * @param worldPoint The `Vector3` world position.
-     * @returns A tuple containing, in order: -  A `Vector3` whose **X** and **Y** components represent the   offset of the `worldPoint` from the top left corner of the screen,   in pixels. The `Vector3` **Z** component represents the   depth of the `worldPoint` from the screen (in studs).
-     * -  A boolean indicating if the `worldPoint` is within the bounds of the   screen.
-     */
-    WorldToScreenPoint(this: Camera, worldPoint: Vector3): LuaTuple<[
-        Vector3,
-        boolean
-    ]>;
-    /**
-     * Returns the screen location and depth of a `Vector3` `worldPoint` and whether this point is within the bounds of the screen. Does not account for the GUI inset.
-     *
-     * - **ThreadSafety**: Safe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#WorldToViewportPoint)
-     * @param this A class which defines a view of the 3D world.
-     * @param worldPoint The `Vector3` world position.
-     * @returns A tuple containing, in order: -  A `Vector3` whose **X** and **Y** components represent the   offset of the `worldPoint` from the top left corner of the viewport,   in pixels. The `Vector3` **Z** component represents the   depth of the `worldPoint` from the screen (in studs).
-     * -  A boolean indicating if the `worldPoint` is within the bounds of the   screen.
-     */
-    WorldToViewportPoint(this: Camera, worldPoint: Vector3): LuaTuple<[
-        Vector3,
-        boolean
-    ]>;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#ZoomToExtents)
-     * @param this A class which defines a view of the 3D world.
-     * @param boundingBoxCFrame
-     * @param boundingBoxSize
-     */
-    ZoomToExtents(this: Camera, boundingBoxCFrame: CFrame, boundingBoxSize: Vector3): void;
-    /**
-     * Fired when the `Camera` has finished interpolating using`Interpolate()`.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#InterpolationFinished)
-     */
-    readonly InterpolationFinished: RBXScriptSignal<() => void>;
-}
-/**
  * A service which provides control over screenshot capture features.
  *
  * - **Tags**: NotCreatable, Service
@@ -9279,7 +9057,7 @@ interface ShirtGraphic extends CharacterAppearance {
     Graphic: ContentId;
 }
 /**
- * Houses the Lua code responsible for running the legacy chat system.
+ * Houses the Luau code responsible for running the legacy chat system.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -9316,19 +9094,19 @@ interface Chat extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Chat#Chat)
-     * @param this Houses the Lua code responsible for running the legacy chat system.
+     * @param this Houses the Luau code responsible for running the legacy chat system.
      * @param partOrCharacter An instance that is the part or character which the *BubbleChat* dialog should appear above.
      * @param message The message string being chatted.
      * @param color An `ChatColor` specifying the color of the chatted message.
      */
     Chat(this: Chat, partOrCharacter: Instance, message: string, color?: CastsToEnum<Enum.ChatColor>): void;
     /**
-     * Invoke a chat callback function registered by `RegisterChatCallback`. Used by the Lua Chat System.
+     * Invoke a chat callback function registered by `RegisterChatCallback`. Used by the Luau Chat System.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Chat#InvokeChatCallback)
-     * @param this Houses the Lua code responsible for running the legacy chat system.
+     * @param this Houses the Luau code responsible for running the legacy chat system.
      * @param callbackType The type of callback to invoke.
      * @param callbackArguments The arguments that will be sent to the registered callback function.
      * @returns The values returned by the function registered to the given ChatCallbackType.
@@ -9340,7 +9118,7 @@ interface Chat extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Chat#RegisterChatCallback)
-     * @param this Houses the Lua code responsible for running the legacy chat system.
+     * @param this Houses the Luau code responsible for running the legacy chat system.
      * @param callbackType The callback to which the function shall be registered (this determines in what way the function is called).
      * @param callbackFunction The function to call when the callback is invoked using Chat:InvokeChatCallback.
      */
@@ -9351,7 +9129,7 @@ interface Chat extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Chat#SetBubbleChatSettings)
-     * @param this Houses the Lua code responsible for running the legacy chat system.
+     * @param this Houses the Luau code responsible for running the legacy chat system.
      * @param settings A settings table.
      */
     SetBubbleChatSettings(this: Chat, settings: unknown): void;
@@ -9362,7 +9140,7 @@ interface Chat extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Chat#CanUserChatAsync)
-     * @param this Houses the Lua code responsible for running the legacy chat system.
+     * @param this Houses the Luau code responsible for running the legacy chat system.
      * @param userId
      */
     CanUserChatAsync(this: Chat, userId: number): boolean;
@@ -9373,7 +9151,7 @@ interface Chat extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Chat#CanUsersChatAsync)
-     * @param this Houses the Lua code responsible for running the legacy chat system.
+     * @param this Houses the Luau code responsible for running the legacy chat system.
      * @param userIdFrom
      * @param userIdTo
      */
@@ -9385,7 +9163,7 @@ interface Chat extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Chat#FilterStringAsync)
-     * @param this Houses the Lua code responsible for running the legacy chat system.
+     * @param this Houses the Luau code responsible for running the legacy chat system.
      * @param stringToFilter The raw string to be filtered, exactly as entered by the player.
      * @param playerFrom The author of the text.
      * @param playerTo The intended recipient of the provided text; use the author if the text is persistent (see description).
@@ -9398,7 +9176,7 @@ interface Chat extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Chat#FilterStringForBroadcast)
-     * @param this Houses the Lua code responsible for running the legacy chat system.
+     * @param this Houses the Luau code responsible for running the legacy chat system.
      * @param stringToFilter Message string being filtered.
      * @param playerFrom Instance of the player sending the message.
      * @returns Filtered message string.
@@ -9413,7 +9191,7 @@ interface Chat extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Chat#FilterStringForPlayerAsync)
-     * @param this Houses the Lua code responsible for running the legacy chat system.
+     * @param this Houses the Luau code responsible for running the legacy chat system.
      * @param stringToFilter String being filtered.
      * @param playerToFilterFor Player that the string is being filtered for.
      * @returns Filtered string result.
@@ -10275,6 +10053,7 @@ interface ConfigService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigService#GetConfigAsync)
+     * @param this
      */
     GetConfigAsync(this: ConfigService): ConfigSnapshot;
     /**
@@ -10282,6 +10061,8 @@ interface ConfigService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigService#GetConfigForPlayerAsync)
+     * @param this
+     * @param player
      */
     GetConfigForPlayerAsync(this: ConfigService, player: Player): ConfigSnapshot;
 }
@@ -13423,7 +13204,7 @@ interface DataStoreOptions extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreOptions#SetExperimentalFeatures)
      * @param this Object used to provide additional parameters to `DataStoreService:GetDataStore()`.
-     * @param experimentalFeatures Lua table in `key = value` format where the key is the experimental feature name and the value is a boolean which specifies whether to enable.
+     * @param experimentalFeatures Luau table in `key = value` format where the key is the experimental feature name and the value is a boolean which specifies whether to enable.
      */
     SetExperimentalFeatures(this: DataStoreOptions, experimentalFeatures: object): void;
 }
@@ -14883,7 +14664,7 @@ interface FloatCurve extends Instance {
         after: number
     ];
     /**
-     * Returns a copy of all the keys in the FloatCurve as a Lua array of `FloatCurveKeys`.
+     * Returns a copy of all the keys in the FloatCurve as a Luau array of `FloatCurveKeys`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -15085,7 +14866,7 @@ interface GenerationService extends Instance {
      * @param player The `Player` requesting the generation.
      * @param options Additional generation options. Currently, no options are supported.
      * @param intermediateResultCallback A callback function triggered with intermediate generation results. Useful for retrieving early mesh versions (e.g. before textures are applied).
-     * @returns A tuple of generation ID and context ID. - Generation ID: A unique ID returned for each invocation of `GenerateMeshAsync()`.
+     * @returns A tuple of generation ID and context ID. - Generation ID: A unique ID returned for each invocation of   `GenerateMeshAsync()`.
      * - Context ID: Not currently used.
      */
     GenerateMeshAsync(this: GenerationService, inputs: object, player: Player, options: object, intermediateResultCallback?: Callback): unknown;
@@ -20052,7 +19833,7 @@ interface HttpService extends Instance {
      */
     GetSecret(this: HttpService, key: string): Secret;
     /**
-     * Decodes a JSON string into a Lua table.
+     * Decodes a JSON string into a Luau table.
      *
      * - **ThreadSafety**: Safe
      * - **Tags**: CustomLuaState
@@ -20060,18 +19841,18 @@ interface HttpService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpService#JSONDecode)
      * @param this Allows sending HTTP requests and provides various web-related and JSON methods.
      * @param input The JSON object being decoded.
-     * @returns The decoded JSON object as a Lua table.
+     * @returns The decoded JSON object as a Luau table.
      */
     JSONDecode(this: HttpService, input: string): unknown;
     /**
-     * Generate a JSON string from a Lua table.
+     * Generate a JSON string from a Luau table.
      *
      * - **ThreadSafety**: Safe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpService#JSONEncode)
      * @param this Allows sending HTTP requests and provides various web-related and JSON methods.
-     * @param input The input Lua table.
+     * @param input The input Luau table.
      * @returns The returned JSON string.
      */
     JSONEncode(this: HttpService, input: unknown): string;
@@ -22481,9 +22262,21 @@ interface InputBinding extends Instance {
     /**
      * - **ThreadSafety**: ReadSafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Down)
+     */
+    Down: Enum.KeyCode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#KeyCode)
      */
     KeyCode: Enum.KeyCode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Left)
+     */
+    Left: Enum.KeyCode;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -22499,6 +22292,12 @@ interface InputBinding extends Instance {
     /**
      * - **ThreadSafety**: ReadSafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Right)
+     */
+    Right: Enum.KeyCode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Scale)
      */
     Scale: number;
@@ -22508,6 +22307,18 @@ interface InputBinding extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#UIButton)
      */
     UIButton: GuiButton | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Up)
+     */
+    Up: Enum.KeyCode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Vector2Scale)
+     */
+    Vector2Scale: Vector2;
 }
 /**
  * - **Tags**: NotBrowsable
@@ -24466,7 +24277,7 @@ interface LogService extends Instance {
     readonly MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType) => void>;
 }
 /**
- * The base class for all objects which contain Lua code.
+ * The base class for all objects which contain Luau code.
  *
  * - **Tags**: NotCreatable, NotBrowsable
  *
@@ -24504,6 +24315,24 @@ interface AuroraScript extends LuaSourceContainer {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#Tag)
      */
     get Tag(): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#AddTo)
+     */
+    AddTo(this: AuroraScript, instance: Instance): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#IsOnInstance)
+     */
+    IsOnInstance(this: AuroraScript, instance: Instance): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#RemoveFrom)
+     */
+    RemoveFrom(this: AuroraScript, instance: Instance): void;
 }
 /**
  * The base class for all script objects which run automatically.
@@ -24561,7 +24390,7 @@ interface BaseScript extends LuaSourceContainer {
     get RunContext(): Enum.RunContext;
 }
 /**
- * An object that contains and runs Lua code on the server.
+ * An object that contains and runs Luau code on the server.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Script)
  */
@@ -24584,7 +24413,7 @@ interface Script extends BaseScript {
     Source: ProtectedString;
 }
 /**
- * An object that contains and runs Lua code on the client (player's device) instead of the server.
+ * An object that contains and runs Luau code on the client (player's device) instead of the server.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LocalScript)
  */
@@ -28276,6 +28105,366 @@ interface VehicleSeat extends BasePart {
     readonly RemoteDestroySeatWeld: RBXScriptSignal<() => void>;
 }
 /**
+ * A class which defines a view of the 3D world.
+ *
+ * - **Tags**: NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera)
+ */
+interface Camera extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Camera: unique symbol;
+    /**
+     * The `CFrame` of the `Camera`, defining its position and orientation in the 3D world.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#CFrame)
+     */
+    CFrame: CFrame;
+    /**
+     * The `Humanoid` or `BasePart` that is the `Camera` subject.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#CameraSubject)
+     */
+    CameraSubject: Humanoid | BasePart | undefined;
+    /**
+     * Specifies the `CameraType` to be read by the camera scripts.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#CameraType)
+     */
+    CameraType: Enum.CameraType;
+    /**
+     * **Deprecated:** This item has been superseded by `Camera.CFrame` which should be used in all new work.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden, NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#CoordinateFrame)
+     *
+     * @deprecated CFrame
+     */
+    CoordinateFrame: CFrame;
+    /**
+     * Sets the angle of the camera's diagonal field of view.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#DiagonalFieldOfView)
+     */
+    DiagonalFieldOfView: number;
+    /**
+     * Sets the angle of the camera's vertical field of view.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#FieldOfView)
+     */
+    FieldOfView: number;
+    /**
+     * Determines the FOV value of the `Camera` that's invariant under viewport size changes.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#FieldOfViewMode)
+     */
+    FieldOfViewMode: Enum.FieldOfViewMode;
+    /**
+     * Sets the area in 3D space that is prioritized by Roblox's graphical systems.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#Focus)
+     */
+    Focus: CFrame;
+    /**
+     * Toggles whether the camera will automatically track the head motion of a player using a VR device.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#HeadLocked)
+     */
+    HeadLocked: boolean;
+    /**
+     * Sets the scale of the user's perspective of the world when using VR.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#HeadScale)
+     */
+    HeadScale: number;
+    /**
+     * Sets the angle of the camera's field of view along the longest viewport axis.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#MaxAxisFieldOfView)
+     */
+    MaxAxisFieldOfView: number;
+    /**
+     * Describes the negative **Z** offset, in studs, of the camera's near clipping plane.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#NearPlaneZ)
+     */
+    readonly NearPlaneZ: number;
+    /**
+     * Toggles whether to apply tilt and roll from the `CFrame` property while the player is using a VR device.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#VRTiltAndRollEnabled)
+     */
+    VRTiltAndRollEnabled: boolean;
+    /**
+     * The dimensions of the device safe area on a Roblox client.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#ViewportSize)
+     */
+    readonly ViewportSize: Vector2;
+    /**
+     * **Deprecated:**
+     *
+     * Returns how much the `Camera` needs to be pushed towards its `Focus` in order to make sure there is no obstructions between the `Focus` and `CFrame`.
+     *
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**:
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#GetLargestCutoffDistance)
+     * @param this A class which defines a view of the 3D world.
+     * @param ignoreList An array of `Instances` to ignore. Descendants of these instances will also be ignored.
+     * @returns The distance, in studs, that the `Camera` needs to be pushed towards its `Focus` to ensure there are no obstructions between the `Focus` and `CFrame` of the `Camera`.
+     *
+     * @deprecated
+     */
+    GetLargestCutoffDistance(this: Camera, ignoreList: Array<Instance>): number;
+    /**
+     * **Deprecated:** This method has been deprecated and no longer works. It should not be used in new work.
+     *
+     * Returns the current 'pan' speed of the `Camera`.
+     *
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**:
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#GetPanSpeed)
+     * @param this A class which defines a view of the 3D world.
+     * @returns The speed at which the `Camera` is rotating around its `Focus` on the **Y** axis.
+     *
+     * @deprecated
+     */
+    GetPanSpeed(this: Camera): number;
+    /**
+     * Returns an array of `BaseParts` that are obscuring the lines of sight between the camera's `CFrame` and the cast points.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#GetPartsObscuringTarget)
+     * @param this A class which defines a view of the 3D world.
+     * @param castPoints An array of `Vector3` positions of cast points.
+     * @param ignoreList An array of `Instances` that should be ignored, along with their descendants.
+     * @returns An array of `BaseParts` that obscure the lines of sight between the camera's `CFrame` and the `castPoints`.
+     */
+    GetPartsObscuringTarget(this: Camera, castPoints: Array<Vector3>, ignoreList: Array<Instance>): Array<Instance>;
+    /**
+     * Returns the actual `CFrame`where the `Camera` is being rendered, accounting for any roll applied and the impact of VR devices.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#GetRenderCFrame)
+     * @param this A class which defines a view of the 3D world.
+     * @returns The `CFrame` the `Camera` is being rendered at.
+     */
+    GetRenderCFrame(this: Camera): CFrame;
+    /**
+     * Returns in radians the current roll, or rotation around the camera's Z-axis, applied to the `Camera` using `SetRoll()`.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#GetRoll)
+     * @param this A class which defines a view of the 3D world.
+     * @returns The current roll applied by `SetRoll()`, in radians.
+     */
+    GetRoll(this: Camera): number;
+    /**
+     * **Deprecated:** This method has been deprecated and no longer works.
+     *
+     * Returns the current tilt speed of the `Camera`.
+     *
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**:
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#GetTiltSpeed)
+     * @param this A class which defines a view of the 3D world.
+     * @returns The speed at which the `Camera` is rotating around its `Focus` around the camera's **X** axis.
+     *
+     * @deprecated
+     */
+    GetTiltSpeed(this: Camera): number;
+    /**
+     * **Deprecated:** This method has been deprecated. Instead use `TweenService` to smoothly animate the `Camera`, see the code snippets below for an example.
+     *
+     * Tweens the `Camera` in a linear fashion towards a new `CFrame` and `Focus` over a given duration.
+     *
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**:
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#Interpolate)
+     * @param this A class which defines a view of the 3D world.
+     * @param endPos The `CFrame` for the `Camera` to tween to.
+     * @param endFocus The `CFrame` for the camera's `Focus` to tween to.
+     * @param duration The duration, in seconds, of the tween.
+     *
+     * @deprecated
+     */
+    Interpolate(this: Camera, endPos: CFrame, endFocus: CFrame, duration: number): void;
+    /**
+     * **Deprecated:** This method was used for legacy camera controls and has since been deprecated. Do not use in new work.
+     *
+     * Pans the `Camera` around the `Focus` in 45 degree increments around the **Y** axis.
+     *
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**:
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#PanUnits)
+     * @param this A class which defines a view of the 3D world.
+     * @param units The number of 45 degree increments by which to pan the `Camera`.
+     *
+     * @deprecated
+     */
+    PanUnits(this: Camera, units: number): void;
+    /**
+     * Creates a unit `Ray` from a position on the screen (in pixels), at a set depth from the `Camera` orientated in the camera's direction. Accounts for the GUI inset.
+     *
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#ScreenPointToRay)
+     * @param this A class which defines a view of the 3D world.
+     * @param x The position on the **X** axis, in pixels, of the screen point at which to originate the `Ray`. This position accounts for the GUI inset.
+     * @param y The position on the **Y** axis, in pixels, of the screen point at which to originate the `Ray`. This position accounts for the GUI inset.
+     * @param depth The depth from the `Camera`, in studs, from which to offset the origin of the `Ray`.
+     * @returns A unit `Ray`, originating from the equivalent `Vector3` world position of the given screen coordinates at the given depth away from the `Camera`. This ray is orientated in the direction of the `Camera`.
+     */
+    ScreenPointToRay(this: Camera, x: number, y: number, depth?: number): Ray;
+    /**
+     * **Deprecated:** This method has been deprecated and should not be used in new work.
+     *
+     * Sets the `CameraPanMode` to be used by the `Camera` on mobile devices.
+     *
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**:
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#SetCameraPanMode)
+     * @param this A class which defines a view of the 3D world.
+     * @param mode The `CameraPanMode` to set the `Camera` to.
+     *
+     * @deprecated
+     */
+    SetCameraPanMode(this: Camera, mode?: CastsToEnum<Enum.CameraPanMode>): void;
+    /**
+     * Sets the current rotation applied around the camera's Z-axis.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#SetRoll)
+     * @param this A class which defines a view of the 3D world.
+     * @param rollAngle The roll angle, in radians, to be applied to the `Camera`.
+     */
+    SetRoll(this: Camera, rollAngle: number): void;
+    /**
+     * **Deprecated:** This method was used for legacy camera controls and has been deprecated. Do not use in new work.
+     *
+     * Tilts the `Camera` around its `Focus` in 10 degree increments around the camera's **X** axis.
+     *
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**:
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#TiltUnits)
+     * @param this A class which defines a view of the 3D world.
+     * @param units The number of 10 degree units by which to tilt the `Camera`.
+     * @returns Whether the `Camera` tilt applied was constrained.
+     *
+     * @deprecated
+     */
+    TiltUnits(this: Camera, units: number): boolean;
+    /**
+     * Creates a unit `Ray` from a position on the viewport (in pixels), at a given depth from the `Camera`, orientated in the camera's direction. Does not account for the `CoreUISafeInsets` inset.
+     *
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#ViewportPointToRay)
+     * @param this A class which defines a view of the 3D world.
+     * @param x The position on the **X** axis, in pixels, of the viewport point at which to originate the `Ray`, in device safe area coordinates.
+     * @param y The position on the **Y** axis, in pixels, of the viewport point at which to originate the `Ray`, in device safe area coordinates.
+     * @param depth The depth from the `Camera`, in studs, from which to offset the origin of the `Ray`.
+     * @returns A unit `Ray`, originating from the equivalent `Vector3` world position of the given viewport coordinates at the given depth away from the `Camera`. This ray is orientated in the direction of the `Camera`.
+     */
+    ViewportPointToRay(this: Camera, x: number, y: number, depth?: number): Ray;
+    /**
+     * Returns the screen location and depth of a `Vector3` `worldPoint` and whether this point is within the bounds of the screen. Accounts for the GUI inset.
+     *
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#WorldToScreenPoint)
+     * @param this A class which defines a view of the 3D world.
+     * @param worldPoint The `Vector3` world position.
+     * @returns A tuple containing, in order: -  A `Vector3` whose **X** and **Y** components represent the   offset of the `worldPoint` from the top left corner of the screen,   in pixels. The `Vector3` **Z** component represents the   depth of the `worldPoint` from the screen (in studs).
+     * -  A boolean indicating if the `worldPoint` is within the bounds of the   screen.
+     */
+    WorldToScreenPoint(this: Camera, worldPoint: Vector3): LuaTuple<[
+        Vector3,
+        boolean
+    ]>;
+    /**
+     * Returns the screen location and depth of a `Vector3` `worldPoint` and whether this point is within the bounds of the screen. Does not account for the GUI inset.
+     *
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#WorldToViewportPoint)
+     * @param this A class which defines a view of the 3D world.
+     * @param worldPoint The `Vector3` world position.
+     * @returns A tuple containing, in order: -  A `Vector3` whose **X** and **Y** components represent the   offset of the `worldPoint` from the top left corner of the viewport,   in pixels. The `Vector3` **Z** component represents the   depth of the `worldPoint` from the screen (in studs).
+     * -  A boolean indicating if the `worldPoint` is within the bounds of the   screen.
+     */
+    WorldToViewportPoint(this: Camera, worldPoint: Vector3): LuaTuple<[
+        Vector3,
+        boolean
+    ]>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#ZoomToExtents)
+     * @param this A class which defines a view of the 3D world.
+     * @param boundingBoxCFrame
+     * @param boundingBoxSize
+     */
+    ZoomToExtents(this: Camera, boundingBoxCFrame: CFrame, boundingBoxSize: Vector3): void;
+    /**
+     * Fired when the `Camera` has finished interpolating using`Interpolate()`.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#InterpolationFinished)
+     */
+    readonly InterpolationFinished: RBXScriptSignal<() => void>;
+}
+/**
  * Models are container objects, meaning they group objects together. They are best used to hold collections of `BaseParts` and have a number of functions that extend their functionality.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model)
@@ -30181,7 +30370,7 @@ interface PathfindingService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PathfindingService#CreatePath)
      * @param this Used to find logical paths between two points.
-     * @param agentParameters Lua table which lets you fine-tune the path for the size of the agent (the humanoid that will move along the path). See above for valid keys, types, and descriptions.
+     * @param agentParameters Luau table which lets you fine-tune the path for the size of the agent (the humanoid that will move along the path). See above for valid keys, types, and descriptions.
      * @returns A `Path` object.
      */
     CreatePath(this: PathfindingService, agentParameters?: AgentParameters): Path;
@@ -33109,7 +33298,7 @@ interface RotationCurve extends Instance {
      */
     GetKeyIndicesAtTime(this: RotationCurve, time: number): Array<unknown>;
     /**
-     * Returns a copy of all the keys in the rotation curve as a Lua array of `RotationCurveKeys`.
+     * Returns a copy of all the keys in the rotation curve as a Luau array of `RotationCurveKeys`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -39286,7 +39475,7 @@ interface Translator extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Translator#FormatByKey)
      * @param this The role of a Translator is to manufacture/return strings localized for the viewing player.
      * @param key The **Key** value to look up and translate.
-     * @param args To be provided if the **Source** text and translations contain format strings. Will be a Lua table of values **or** key-value pairs, depending on whether the format strings are numbered or named.
+     * @param args To be provided if the **Source** text and translations contain format strings. Will be a Luau table of values **or** key-value pairs, depending on whether the format strings are numbered or named.
      */
     FormatByKey(this: Translator, key: string, args: unknown): string;
     /**
@@ -42354,6 +42543,8 @@ interface VideoPlayer extends Instance {
     readonly DidLoop: RBXScriptSignal<() => void>;
 }
 /**
+ * An internal service that offers no functionality to developers.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoService)
