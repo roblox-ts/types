@@ -163,12 +163,12 @@ interface Services {
     ScriptRegistrationService: ScriptRegistrationService;
     Selection: Selection;
     SelectionHighlightManager: SelectionHighlightManager;
+    SerializationService: SerializationService;
     ServerScriptService: ServerScriptService;
     ServerStorage: ServerStorage;
     ServiceVisibilityService: ServiceVisibilityService;
     SessionService: SessionService;
     SharedTableRegistry: SharedTableRegistry;
-    ShorelineUpgraderService: ShorelineUpgraderService;
     SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
     SnippetService: SnippetService;
     SocialService: SocialService;
@@ -603,6 +603,7 @@ interface Instances extends Services, CreatableInstances {
     GuiObject: GuiObject;
     HandleAdornment: HandleAdornment;
     HandlesBase: HandlesBase;
+    ImportSession: ImportSession;
     InputObject: InputObject;
     Instance: Instance;
     InstanceAdornment: InstanceAdornment;
@@ -1356,21 +1357,6 @@ interface AssetImportService extends Instance {
      * @deprecated
      */
     readonly _nominal_AssetImportService: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetImportSession)
- */
-interface AssetImportSession extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AssetImportSession: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -6583,6 +6569,36 @@ interface IXPService extends Instance {
     readonly _nominal_IXPService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ImportSession)
+ */
+interface ImportSession extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ImportSession: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetImportSession)
+ */
+interface AssetImportSession extends ImportSession {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AssetImportSession: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IncrementalPatchBuilder)
@@ -11449,6 +11465,21 @@ interface FluidForceSensor extends SensorBase {
     readonly _nominal_FluidForceSensor: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SerializationService)
+ */
+interface SerializationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SerializationService: unique symbol;
+}
+/**
  * A container service for server-only `Script` objects.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -11656,21 +11687,6 @@ interface SharedTableRegistry extends Instance {
      * @deprecated
      */
     readonly _nominal_SharedTableRegistry: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ShorelineUpgraderService)
- */
-interface ShorelineUpgraderService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ShorelineUpgraderService: unique symbol;
 }
 /**
  * Changes the default appearance of the experience's sky.
@@ -12746,6 +12762,13 @@ interface SurfaceAppearance extends Instance {
      */
     ColorMap: ContentId;
     /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#ColorMapContent)
+     */
+    set ColorMapContent(value: Content);
+    /**
      * Determines which parts of the surface are metal or non-metal.
      *
      * - **ThreadSafety**: ReadSafe
@@ -12753,6 +12776,13 @@ interface SurfaceAppearance extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#MetalnessMap)
      */
     MetalnessMap: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#MetalnessMapContent)
+     */
+    set MetalnessMapContent(value: Content);
     /**
      * Modifies the lighting of the surface by adding bumps, dents, cracks, and curves.
      *
@@ -12762,6 +12792,13 @@ interface SurfaceAppearance extends Instance {
      */
     NormalMap: ContentId;
     /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#NormalMapContent)
+     */
+    set NormalMapContent(value: Content);
+    /**
      * Determines the apparent roughness across the surface.
      *
      * - **ThreadSafety**: ReadSafe
@@ -12769,6 +12806,13 @@ interface SurfaceAppearance extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#RoughnessMap)
      */
     RoughnessMap: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#RoughnessMapContent)
+     */
+    set RoughnessMapContent(value: Content);
 }
 /**
  * Collection of settings for the *Task Scheduler* feature.
