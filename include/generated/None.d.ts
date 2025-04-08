@@ -150,12 +150,12 @@ interface Services {
     ScriptProfilerService: ScriptProfilerService;
     ScriptRegistrationService: ScriptRegistrationService;
     SelectionHighlightManager: SelectionHighlightManager;
+    SerializationService: SerializationService;
     ServerScriptService: ServerScriptService;
     ServerStorage: ServerStorage;
     ServiceVisibilityService: ServiceVisibilityService;
     SessionService: SessionService;
     SharedTableRegistry: SharedTableRegistry;
-    ShorelineUpgraderService: ShorelineUpgraderService;
     SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
     SnippetService: SnippetService;
     SocialService: SocialService;
@@ -574,6 +574,7 @@ interface Instances extends Services, CreatableInstances {
     GuiObject: GuiObject;
     HandleAdornment: HandleAdornment;
     HandlesBase: HandlesBase;
+    ImportSession: ImportSession;
     InputObject: InputObject;
     Instance: Instance;
     InstanceAdornment: InstanceAdornment;
@@ -3326,33 +3327,6 @@ interface AssetImportService extends Instance {
      * @deprecated
      */
     readonly _nominal_AssetImportService: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetImportSession)
- */
-interface AssetImportSession extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AssetImportSession: unique symbol;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetImportSession#UploadComplete)
-     */
-    readonly UploadComplete: RBXScriptSignal<(results: object) => void>;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetImportSession#UploadProgress)
-     */
-    readonly UploadProgress: RBXScriptSignal<(progressRatio: number) => void>;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -17458,6 +17432,18 @@ interface VideoDisplay extends GuiObject {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#GetInputPins)
+     */
+    GetInputPins(this: VideoDisplay): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#GetOutputPins)
+     */
+    GetOutputPins(this: VideoDisplay): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#WiringChanged)
      */
     readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
@@ -22139,6 +22125,48 @@ interface IXPService extends Instance {
      * @deprecated
      */
     readonly _nominal_IXPService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ImportSession)
+ */
+interface ImportSession extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ImportSession: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ImportSession#UploadComplete)
+     */
+    readonly UploadComplete: RBXScriptSignal<(results: object) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ImportSession#UploadProgress)
+     */
+    readonly UploadProgress: RBXScriptSignal<(progressRatio: number) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetImportSession)
+ */
+interface AssetImportSession extends ImportSession {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AssetImportSession: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -34078,6 +34106,35 @@ interface FluidForceSensor extends SensorBase {
     EvaluateAsync(this: FluidForceSensor, linearVelocity: Vector3, angularVelocity: Vector3, cframe: CFrame): unknown;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SerializationService)
+ */
+interface SerializationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SerializationService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SerializationService#DeserializeInstancesAsync)
+     */
+    DeserializeInstancesAsync(this: SerializationService, buffer: buffer): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SerializationService#SerializeInstancesAsync)
+     */
+    SerializeInstancesAsync(this: SerializationService, inputInstances: Array<Instance>): buffer;
+}
+/**
  * A container service for server-only `Script` objects.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -34585,21 +34642,6 @@ interface SharedTableRegistry extends Instance {
      * @param st The `SharedTable` object to register, or `nil` to unregister any previously registered `SharedTable` object.
      */
     SetSharedTable(this: SharedTableRegistry, name: string, st?: SharedTable): void;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ShorelineUpgraderService)
- */
-interface ShorelineUpgraderService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ShorelineUpgraderService: unique symbol;
 }
 /**
  * Changes the default appearance of the experience's sky.
@@ -36887,6 +36929,34 @@ interface SurfaceAppearance extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#Color)
      */
     Color: Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#ColorMapContent)
+     */
+    get ColorMapContent(): Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#MetalnessMapContent)
+     */
+    get MetalnessMapContent(): Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#NormalMapContent)
+     */
+    get NormalMapContent(): Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#RoughnessMapContent)
+     */
+    get RoughnessMapContent(): Content;
 }
 /**
  * The `Team` class represents a faction in a Roblox place. The only valid parent for a Team is in the `Teams` service.
@@ -42446,23 +42516,18 @@ interface VideoPlayer extends Instance {
     Asset: ContentId;
     /**
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#AutoLoad)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#IsLoaded)
      */
-    AutoLoad: boolean;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#IsPlaying)
-     */
-    get IsPlaying(): boolean;
+    readonly IsLoaded: boolean;
     /**
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#IsReady)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#IsPlaying)
      */
-    readonly IsReady: boolean;
+    readonly IsPlaying: boolean;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -42482,12 +42547,6 @@ interface VideoPlayer extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Resolution)
      */
     readonly Resolution: Vector2;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Thumbnail)
-     */
-    Thumbnail: ContentId;
     /**
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -42518,6 +42577,24 @@ interface VideoPlayer extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#GetInputPins)
+     */
+    GetInputPins(this: VideoPlayer): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#GetOutputPins)
+     */
+    GetOutputPins(this: VideoPlayer): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Pause)
+     */
+    Pause(this: VideoPlayer): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Play)
      * @param this
      */
@@ -42525,10 +42602,16 @@ interface VideoPlayer extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Stop)
-     * @param this
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Unload)
      */
-    Stop(this: VideoPlayer): void;
+    Unload(this: VideoPlayer): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#LoadAsync)
+     */
+    LoadAsync(this: VideoPlayer): Enum.AssetFetchStatus;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -42541,6 +42624,18 @@ interface VideoPlayer extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#DidLoop)
      */
     readonly DidLoop: RBXScriptSignal<() => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#PlayFailed)
+     */
+    readonly PlayFailed: RBXScriptSignal<(error: Enum.AssetFetchStatus) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#WiringChanged)
+     */
+    readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
 }
 /**
  * An internal service that offers no functionality to developers.

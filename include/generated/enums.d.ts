@@ -275,6 +275,42 @@ declare namespace Enum {
     }
     export type AccessoryType = AccessoryType.Unknown | AccessoryType.Hat | AccessoryType.Hair | AccessoryType.Face | AccessoryType.Neck | AccessoryType.Shoulder | AccessoryType.Front | AccessoryType.Back | AccessoryType.Waist | AccessoryType.TShirt | AccessoryType.Shirt | AccessoryType.Pants | AccessoryType.Jacket | AccessoryType.Sweater | AccessoryType.Shorts | AccessoryType.LeftShoe | AccessoryType.RightShoe | AccessoryType.DressSkirt | AccessoryType.Eyebrow | AccessoryType.Eyelash;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnAutoResumeSync)
+     */
+    export namespace ActionOnAutoResumeSync {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnAutoResumeSync#DontResume)
+         */
+        export interface DontResume extends globalThis.EnumItem {
+            Name: "DontResume";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ActionOnAutoResumeSync;
+        }
+        export const DontResume: DontResume;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnAutoResumeSync#KeepStudio)
+         */
+        export interface KeepStudio extends globalThis.EnumItem {
+            Name: "KeepStudio";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ActionOnAutoResumeSync;
+        }
+        export const KeepStudio: KeepStudio;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnAutoResumeSync#KeepLocal)
+         */
+        export interface KeepLocal extends globalThis.EnumItem {
+            Name: "KeepLocal";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.ActionOnAutoResumeSync;
+        }
+        export const KeepLocal: KeepLocal;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ActionOnAutoResumeSync>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ActionOnAutoResumeSync | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ActionOnAutoResumeSync | undefined;
+    }
+    export type ActionOnAutoResumeSync = ActionOnAutoResumeSync.DontResume | ActionOnAutoResumeSync.KeepStudio | ActionOnAutoResumeSync.KeepLocal;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnStopSync)
      */
     export namespace ActionOnStopSync {
@@ -982,6 +1018,8 @@ declare namespace Enum {
         }
         export const Transparency: Transparency;
         /**
+         * Uses the `ColorMap` alpha channel to control the amount of `SurfaceAppearance.Color` tinting.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlphaMode#TintMask)
          */
         export interface TintMask extends globalThis.EnumItem {
@@ -16073,8 +16111,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World0)
          */
         export interface World0 extends globalThis.EnumItem {
@@ -16085,8 +16121,6 @@ declare namespace Enum {
         export const World0: World0;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World1)
          */
@@ -16099,8 +16133,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World2)
          */
         export interface World2 extends globalThis.EnumItem {
@@ -16111,8 +16143,6 @@ declare namespace Enum {
         export const World2: World2;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World3)
          */
@@ -16125,8 +16155,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World4)
          */
         export interface World4 extends globalThis.EnumItem {
@@ -16137,8 +16165,6 @@ declare namespace Enum {
         export const World4: World4;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World5)
          */
@@ -16151,8 +16177,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World6)
          */
         export interface World6 extends globalThis.EnumItem {
@@ -16163,8 +16187,6 @@ declare namespace Enum {
         export const World6: World6;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World7)
          */
@@ -16177,8 +16199,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World8)
          */
         export interface World8 extends globalThis.EnumItem {
@@ -16189,8 +16209,6 @@ declare namespace Enum {
         export const World8: World8;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World9)
          */
@@ -16203,8 +16221,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World10)
          */
         export interface World10 extends globalThis.EnumItem {
@@ -16215,8 +16231,6 @@ declare namespace Enum {
         export const World10: World10;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World11)
          */
@@ -16229,8 +16243,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World12)
          */
         export interface World12 extends globalThis.EnumItem {
@@ -16241,8 +16253,6 @@ declare namespace Enum {
         export const World12: World12;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World13)
          */
@@ -16255,8 +16265,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World14)
          */
         export interface World14 extends globalThis.EnumItem {
@@ -16267,8 +16275,6 @@ declare namespace Enum {
         export const World14: World14;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World15)
          */
@@ -16281,8 +16287,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World16)
          */
         export interface World16 extends globalThis.EnumItem {
@@ -16293,8 +16297,6 @@ declare namespace Enum {
         export const World16: World16;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World17)
          */
@@ -16307,8 +16309,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World18)
          */
         export interface World18 extends globalThis.EnumItem {
@@ -16319,8 +16319,6 @@ declare namespace Enum {
         export const World18: World18;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World19)
          */
@@ -16333,8 +16331,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World20)
          */
         export interface World20 extends globalThis.EnumItem {
@@ -16345,8 +16341,6 @@ declare namespace Enum {
         export const World20: World20;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World21)
          */
@@ -16359,8 +16353,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World22)
          */
         export interface World22 extends globalThis.EnumItem {
@@ -16371,8 +16363,6 @@ declare namespace Enum {
         export const World22: World22;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World23)
          */
@@ -16385,8 +16375,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World24)
          */
         export interface World24 extends globalThis.EnumItem {
@@ -16397,8 +16385,6 @@ declare namespace Enum {
         export const World24: World24;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World25)
          */
@@ -16411,8 +16397,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World26)
          */
         export interface World26 extends globalThis.EnumItem {
@@ -16423,8 +16407,6 @@ declare namespace Enum {
         export const World26: World26;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World27)
          */
@@ -16437,8 +16419,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World28)
          */
         export interface World28 extends globalThis.EnumItem {
@@ -16449,8 +16429,6 @@ declare namespace Enum {
         export const World28: World28;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World29)
          */
@@ -16463,8 +16441,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World30)
          */
         export interface World30 extends globalThis.EnumItem {
@@ -16475,8 +16451,6 @@ declare namespace Enum {
         export const World30: World30;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World31)
          */
@@ -16489,8 +16463,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World32)
          */
         export interface World32 extends globalThis.EnumItem {
@@ -16501,8 +16473,6 @@ declare namespace Enum {
         export const World32: World32;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World33)
          */
@@ -16515,8 +16485,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World34)
          */
         export interface World34 extends globalThis.EnumItem {
@@ -16527,8 +16495,6 @@ declare namespace Enum {
         export const World34: World34;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World35)
          */
@@ -16541,8 +16507,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World36)
          */
         export interface World36 extends globalThis.EnumItem {
@@ -16553,8 +16517,6 @@ declare namespace Enum {
         export const World36: World36;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World37)
          */
@@ -16567,8 +16529,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World38)
          */
         export interface World38 extends globalThis.EnumItem {
@@ -16579,8 +16539,6 @@ declare namespace Enum {
         export const World38: World38;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World39)
          */
@@ -16593,8 +16551,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World40)
          */
         export interface World40 extends globalThis.EnumItem {
@@ -16605,8 +16561,6 @@ declare namespace Enum {
         export const World40: World40;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World41)
          */
@@ -16619,8 +16573,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World42)
          */
         export interface World42 extends globalThis.EnumItem {
@@ -16631,8 +16583,6 @@ declare namespace Enum {
         export const World42: World42;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World43)
          */
@@ -16645,8 +16595,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World44)
          */
         export interface World44 extends globalThis.EnumItem {
@@ -16657,8 +16605,6 @@ declare namespace Enum {
         export const World44: World44;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World45)
          */
@@ -16671,8 +16617,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World46)
          */
         export interface World46 extends globalThis.EnumItem {
@@ -16683,8 +16627,6 @@ declare namespace Enum {
         export const World46: World46;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World47)
          */
@@ -16697,8 +16639,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World48)
          */
         export interface World48 extends globalThis.EnumItem {
@@ -16709,8 +16649,6 @@ declare namespace Enum {
         export const World48: World48;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World49)
          */
@@ -16723,8 +16661,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World50)
          */
         export interface World50 extends globalThis.EnumItem {
@@ -16735,8 +16671,6 @@ declare namespace Enum {
         export const World50: World50;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World51)
          */
@@ -16749,8 +16683,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World52)
          */
         export interface World52 extends globalThis.EnumItem {
@@ -16761,8 +16693,6 @@ declare namespace Enum {
         export const World52: World52;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World53)
          */
@@ -16775,8 +16705,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World54)
          */
         export interface World54 extends globalThis.EnumItem {
@@ -16787,8 +16715,6 @@ declare namespace Enum {
         export const World54: World54;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World55)
          */
@@ -16801,8 +16727,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World56)
          */
         export interface World56 extends globalThis.EnumItem {
@@ -16813,8 +16737,6 @@ declare namespace Enum {
         export const World56: World56;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World57)
          */
@@ -16827,8 +16749,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World58)
          */
         export interface World58 extends globalThis.EnumItem {
@@ -16839,8 +16759,6 @@ declare namespace Enum {
         export const World58: World58;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World59)
          */
@@ -16853,8 +16771,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World60)
          */
         export interface World60 extends globalThis.EnumItem {
@@ -16865,8 +16781,6 @@ declare namespace Enum {
         export const World60: World60;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World61)
          */
@@ -16879,8 +16793,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World62)
          */
         export interface World62 extends globalThis.EnumItem {
@@ -16891,8 +16803,6 @@ declare namespace Enum {
         export const World62: World62;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World63)
          */
@@ -16905,8 +16815,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World64)
          */
         export interface World64 extends globalThis.EnumItem {
@@ -16917,8 +16825,6 @@ declare namespace Enum {
         export const World64: World64;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World65)
          */
@@ -16931,8 +16837,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World66)
          */
         export interface World66 extends globalThis.EnumItem {
@@ -16943,8 +16847,6 @@ declare namespace Enum {
         export const World66: World66;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World67)
          */
@@ -16957,8 +16859,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World68)
          */
         export interface World68 extends globalThis.EnumItem {
@@ -16969,8 +16869,6 @@ declare namespace Enum {
         export const World68: World68;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World69)
          */
@@ -16983,8 +16881,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World70)
          */
         export interface World70 extends globalThis.EnumItem {
@@ -16995,8 +16891,6 @@ declare namespace Enum {
         export const World70: World70;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World71)
          */
@@ -17009,8 +16903,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World72)
          */
         export interface World72 extends globalThis.EnumItem {
@@ -17021,8 +16913,6 @@ declare namespace Enum {
         export const World72: World72;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World73)
          */
@@ -17035,8 +16925,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World74)
          */
         export interface World74 extends globalThis.EnumItem {
@@ -17047,8 +16935,6 @@ declare namespace Enum {
         export const World74: World74;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World75)
          */
@@ -17061,8 +16947,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World76)
          */
         export interface World76 extends globalThis.EnumItem {
@@ -17073,8 +16957,6 @@ declare namespace Enum {
         export const World76: World76;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World77)
          */
@@ -17087,8 +16969,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World78)
          */
         export interface World78 extends globalThis.EnumItem {
@@ -17099,8 +16979,6 @@ declare namespace Enum {
         export const World78: World78;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World79)
          */
@@ -17113,8 +16991,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World80)
          */
         export interface World80 extends globalThis.EnumItem {
@@ -17125,8 +17001,6 @@ declare namespace Enum {
         export const World80: World80;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World81)
          */
@@ -17139,8 +17013,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World82)
          */
         export interface World82 extends globalThis.EnumItem {
@@ -17151,8 +17023,6 @@ declare namespace Enum {
         export const World82: World82;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World83)
          */
@@ -17165,8 +17035,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World84)
          */
         export interface World84 extends globalThis.EnumItem {
@@ -17177,8 +17045,6 @@ declare namespace Enum {
         export const World84: World84;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World85)
          */
@@ -17191,8 +17057,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World86)
          */
         export interface World86 extends globalThis.EnumItem {
@@ -17203,8 +17067,6 @@ declare namespace Enum {
         export const World86: World86;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World87)
          */
@@ -17217,8 +17079,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World88)
          */
         export interface World88 extends globalThis.EnumItem {
@@ -17229,8 +17089,6 @@ declare namespace Enum {
         export const World88: World88;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World89)
          */
@@ -17243,8 +17101,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World90)
          */
         export interface World90 extends globalThis.EnumItem {
@@ -17255,8 +17111,6 @@ declare namespace Enum {
         export const World90: World90;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World91)
          */
@@ -17269,8 +17123,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World92)
          */
         export interface World92 extends globalThis.EnumItem {
@@ -17281,8 +17133,6 @@ declare namespace Enum {
         export const World92: World92;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World93)
          */
@@ -17295,8 +17145,6 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Generally not used.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World94)
          */
         export interface World94 extends globalThis.EnumItem {
@@ -17307,8 +17155,6 @@ declare namespace Enum {
         export const World94: World94;
         /**
          * **Deprecated:**
-         *
-         * Generally not used.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World95)
          */
@@ -30605,20 +30451,11 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.UICaptureMode;
         }
         export const None: None;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UICaptureMode#PlayerGui)
-         */
-        export interface PlayerGui extends globalThis.EnumItem {
-            Name: "PlayerGui";
-            Value: 2;
-            EnumType: typeof globalThis.Enum.UICaptureMode;
-        }
-        export const PlayerGui: PlayerGui;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UICaptureMode>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UICaptureMode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UICaptureMode | undefined;
     }
-    export type UICaptureMode = UICaptureMode.All | UICaptureMode.None | UICaptureMode.PlayerGui;
+    export type UICaptureMode = UICaptureMode.All | UICaptureMode.None;
     /**
      * Used with `UIDragDetector` to determine bounding behavior of the dragged UI object when `UIDragDetector.BoundingUI` is set.
      *
