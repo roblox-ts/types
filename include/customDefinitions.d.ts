@@ -1173,7 +1173,7 @@ interface UIDragDetector extends UIComponent {
 			proposedRotation: number,
 		) => LuaTuple<[UDim2, number, Enum.UIDragDetectorDragRelativity?, Enum.UIDragDetectorDragSpace?]>,
 	): RBXScriptConnection;
-	SetDragStyleFunction(this: UIDragDetector, callback: (inputPosition: UDim2) => UDim2 | void): void;
+	SetDragStyleFunction(this: UIDragDetector, callback: (inputPosition: Vector2) => LuaTuple<UDim2, number>): void;
 }
 
 /** @client */
