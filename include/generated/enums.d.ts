@@ -275,6 +275,42 @@ declare namespace Enum {
     }
     export type AccessoryType = AccessoryType.Unknown | AccessoryType.Hat | AccessoryType.Hair | AccessoryType.Face | AccessoryType.Neck | AccessoryType.Shoulder | AccessoryType.Front | AccessoryType.Back | AccessoryType.Waist | AccessoryType.TShirt | AccessoryType.Shirt | AccessoryType.Pants | AccessoryType.Jacket | AccessoryType.Sweater | AccessoryType.Shorts | AccessoryType.LeftShoe | AccessoryType.RightShoe | AccessoryType.DressSkirt | AccessoryType.Eyebrow | AccessoryType.Eyelash;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnAutoResumeSync)
+     */
+    export namespace ActionOnAutoResumeSync {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnAutoResumeSync#DontResume)
+         */
+        export interface DontResume extends globalThis.EnumItem {
+            Name: "DontResume";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ActionOnAutoResumeSync;
+        }
+        export const DontResume: DontResume;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnAutoResumeSync#KeepStudio)
+         */
+        export interface KeepStudio extends globalThis.EnumItem {
+            Name: "KeepStudio";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ActionOnAutoResumeSync;
+        }
+        export const KeepStudio: KeepStudio;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnAutoResumeSync#KeepLocal)
+         */
+        export interface KeepLocal extends globalThis.EnumItem {
+            Name: "KeepLocal";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.ActionOnAutoResumeSync;
+        }
+        export const KeepLocal: KeepLocal;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ActionOnAutoResumeSync>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ActionOnAutoResumeSync | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ActionOnAutoResumeSync | undefined;
+    }
+    export type ActionOnAutoResumeSync = ActionOnAutoResumeSync.DontResume | ActionOnAutoResumeSync.KeepStudio | ActionOnAutoResumeSync.KeepLocal;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnStopSync)
      */
     export namespace ActionOnStopSync {
@@ -982,6 +1018,8 @@ declare namespace Enum {
         }
         export const Transparency: Transparency;
         /**
+         * Uses the `ColorMap` alpha channel to control the amount of `SurfaceAppearance.Color` tinting.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlphaMode#TintMask)
          */
         export interface TintMask extends globalThis.EnumItem {
@@ -2247,7 +2285,7 @@ declare namespace Enum {
         }
         export const Mesh: Mesh;
         /**
-         * The asset is Lua code, for example a `ModuleScript`.
+         * The asset is Luau code, for example a `ModuleScript`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#Lua)
          */
@@ -2917,10 +2955,14 @@ declare namespace Enum {
     }
     export type AudioApiRollout = AudioApiRollout.Disabled | AudioApiRollout.Automatic | AudioApiRollout.Enabled;
     /**
+     * Describes the channel layout of an audio stream.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout)
      */
     export namespace AudioChannelLayout {
         /**
+         * Monaural audio streams contain only one **Center** channel. ![Diagram showing position of channels for Mono layout.](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AudioChannelLayout/Mono.jpg)
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Mono)
          */
         export interface Mono extends globalThis.EnumItem {
@@ -2930,6 +2972,8 @@ declare namespace Enum {
         }
         export const Mono: Mono;
         /**
+         * Stereophonic audio streams consist of two channels: **Left** and **Right**. ![Diagram showing position of channels for Stereo layout.](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AudioChannelLayout/Stereo.jpg)
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Stereo)
          */
         export interface Stereo extends globalThis.EnumItem {
@@ -2939,6 +2983,8 @@ declare namespace Enum {
         }
         export const Stereo: Stereo;
         /**
+         * Quadrophonic audio streams consist of four channels: **Left**, **Right**, **BackLeft**, and **BackRight**. Quadrophonic streams can encode forward/backward spatial information that stereo streams might struggle with. ![Diagram showing position of channels for Quad layout.](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AudioChannelLayout/Quad.jpg)
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Quad)
          */
         export interface Quad extends globalThis.EnumItem {
@@ -2948,6 +2994,8 @@ declare namespace Enum {
         }
         export const Quad: Quad;
         /**
+         * Surround sound audio streams consist of five channels: **Left**, **Right**, **Center**, **BackLeft**, and **BackRight**. Surround sound streams encode spatial information with better resolution front and center. ![Diagram showing position of channels for Surround 5 layout.](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AudioChannelLayout/Surround_5.jpg)
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Surround_5)
          */
         export interface Surround_5 extends globalThis.EnumItem {
@@ -2957,6 +3005,8 @@ declare namespace Enum {
         }
         export const Surround_5: Surround_5;
         /**
+         * 5.1 surround sound consists of six channels: **Left**, **Right**, **Center**, **BackLeft**, **BackRight**, and a **Sub** (subsonic) low‑frequency channel. 5.1 surround sound benefits from low frequencies being less directional in order to encode higher resolution spatial information versus simple 5‑channel surround sound. ![Diagram showing position of channels for Surround 5.1 layout.](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AudioChannelLayout/Surround_5_1.jpg)
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Surround_5_1)
          */
         export interface Surround_5_1 extends globalThis.EnumItem {
@@ -2966,6 +3016,8 @@ declare namespace Enum {
         }
         export const Surround_5_1: Surround_5_1;
         /**
+         * 7.1 surround sound consists of eight channels: **Left**, **Right**, **Center**, **SurroundLeft**, **SurroundRight**, **BackLeft**, **BackRight**, and a **Sub** (subsonic) low‑frequency channel. 7.1 surround sound is an improvement over 5.1 surround sound, offering better spatial resolution directly to the left and right as well. ![Diagram showing position of channels for Surround 7.1 layout.](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AudioChannelLayout/Surround_7_1.jpg)
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Surround_7_1)
          */
         export interface Surround_7_1 extends globalThis.EnumItem {
@@ -2975,6 +3027,8 @@ declare namespace Enum {
         }
         export const Surround_7_1: Surround_7_1;
         /**
+         * 7.1.4 surround sound consists of twelve channels: **Left**, **Right**, **Center**, **SurroundLeft**, **SurroundRight**, **BackLeft**, **BackRight**, **Sub**, **TopLeft**, **TopRight**, **TopBackLeft**, and **TopBackRight**. 7.1.4 is the only currently supported channel layout that encodes height information. ![Diagram showing position of channels for Surround 7.1.4 layout.](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AudioChannelLayout/Surround_7_1_4.jpg)
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout#Surround_7_1_4)
          */
         export interface Surround_7_1_4 extends globalThis.EnumItem {
@@ -6816,6 +6870,33 @@ declare namespace Enum {
     }
     export type ComputerMovementMode = ComputerMovementMode.Default | ComputerMovementMode.KeyboardMouse | ComputerMovementMode.ClickToMove;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConfigSnapshotErrorState)
+     */
+    export namespace ConfigSnapshotErrorState {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConfigSnapshotErrorState#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ConfigSnapshotErrorState;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConfigSnapshotErrorState#LoadFailed)
+         */
+        export interface LoadFailed extends globalThis.EnumItem {
+            Name: "LoadFailed";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ConfigSnapshotErrorState;
+        }
+        export const LoadFailed: LoadFailed;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ConfigSnapshotErrorState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConfigSnapshotErrorState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConfigSnapshotErrorState | undefined;
+    }
+    export type ConfigSnapshotErrorState = ConfigSnapshotErrorState.None | ConfigSnapshotErrorState.LoadFailed;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError)
      */
     export namespace ConnectionError {
@@ -8286,7 +8367,7 @@ declare namespace Enum {
         }
         export const C: C;
         /**
-         * Call stack frame belongs to a Lua function.
+         * Call stack frame belongs to a Luau function.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebuggerFrameType#Lua)
          */
@@ -8830,7 +8911,7 @@ declare namespace Enum {
         }
         export const Signals: Signals;
         /**
-         * All of the data in Lua, including everything happening in core scripts, built-in data types, etc.
+         * All of the data in Luau, including everything happening in core scripts, built-in data types, etc.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeveloperMemoryTag#LuaHeap)
          */
@@ -15126,1062 +15207,6 @@ declare namespace Enum {
         }
         export const Delete: Delete;
         /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World0)
-         */
-        export interface World0 extends globalThis.EnumItem {
-            Name: "World0";
-            Value: 160;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World0: World0;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World1)
-         */
-        export interface World1 extends globalThis.EnumItem {
-            Name: "World1";
-            Value: 161;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World1: World1;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World2)
-         */
-        export interface World2 extends globalThis.EnumItem {
-            Name: "World2";
-            Value: 162;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World2: World2;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World3)
-         */
-        export interface World3 extends globalThis.EnumItem {
-            Name: "World3";
-            Value: 163;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World3: World3;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World4)
-         */
-        export interface World4 extends globalThis.EnumItem {
-            Name: "World4";
-            Value: 164;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World4: World4;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World5)
-         */
-        export interface World5 extends globalThis.EnumItem {
-            Name: "World5";
-            Value: 165;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World5: World5;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World6)
-         */
-        export interface World6 extends globalThis.EnumItem {
-            Name: "World6";
-            Value: 166;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World6: World6;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World7)
-         */
-        export interface World7 extends globalThis.EnumItem {
-            Name: "World7";
-            Value: 167;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World7: World7;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World8)
-         */
-        export interface World8 extends globalThis.EnumItem {
-            Name: "World8";
-            Value: 168;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World8: World8;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World9)
-         */
-        export interface World9 extends globalThis.EnumItem {
-            Name: "World9";
-            Value: 169;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World9: World9;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World10)
-         */
-        export interface World10 extends globalThis.EnumItem {
-            Name: "World10";
-            Value: 170;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World10: World10;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World11)
-         */
-        export interface World11 extends globalThis.EnumItem {
-            Name: "World11";
-            Value: 171;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World11: World11;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World12)
-         */
-        export interface World12 extends globalThis.EnumItem {
-            Name: "World12";
-            Value: 172;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World12: World12;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World13)
-         */
-        export interface World13 extends globalThis.EnumItem {
-            Name: "World13";
-            Value: 173;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World13: World13;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World14)
-         */
-        export interface World14 extends globalThis.EnumItem {
-            Name: "World14";
-            Value: 174;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World14: World14;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World15)
-         */
-        export interface World15 extends globalThis.EnumItem {
-            Name: "World15";
-            Value: 175;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World15: World15;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World16)
-         */
-        export interface World16 extends globalThis.EnumItem {
-            Name: "World16";
-            Value: 176;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World16: World16;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World17)
-         */
-        export interface World17 extends globalThis.EnumItem {
-            Name: "World17";
-            Value: 177;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World17: World17;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World18)
-         */
-        export interface World18 extends globalThis.EnumItem {
-            Name: "World18";
-            Value: 178;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World18: World18;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World19)
-         */
-        export interface World19 extends globalThis.EnumItem {
-            Name: "World19";
-            Value: 179;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World19: World19;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World20)
-         */
-        export interface World20 extends globalThis.EnumItem {
-            Name: "World20";
-            Value: 180;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World20: World20;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World21)
-         */
-        export interface World21 extends globalThis.EnumItem {
-            Name: "World21";
-            Value: 181;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World21: World21;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World22)
-         */
-        export interface World22 extends globalThis.EnumItem {
-            Name: "World22";
-            Value: 182;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World22: World22;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World23)
-         */
-        export interface World23 extends globalThis.EnumItem {
-            Name: "World23";
-            Value: 183;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World23: World23;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World24)
-         */
-        export interface World24 extends globalThis.EnumItem {
-            Name: "World24";
-            Value: 184;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World24: World24;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World25)
-         */
-        export interface World25 extends globalThis.EnumItem {
-            Name: "World25";
-            Value: 185;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World25: World25;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World26)
-         */
-        export interface World26 extends globalThis.EnumItem {
-            Name: "World26";
-            Value: 186;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World26: World26;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World27)
-         */
-        export interface World27 extends globalThis.EnumItem {
-            Name: "World27";
-            Value: 187;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World27: World27;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World28)
-         */
-        export interface World28 extends globalThis.EnumItem {
-            Name: "World28";
-            Value: 188;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World28: World28;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World29)
-         */
-        export interface World29 extends globalThis.EnumItem {
-            Name: "World29";
-            Value: 189;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World29: World29;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World30)
-         */
-        export interface World30 extends globalThis.EnumItem {
-            Name: "World30";
-            Value: 190;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World30: World30;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World31)
-         */
-        export interface World31 extends globalThis.EnumItem {
-            Name: "World31";
-            Value: 191;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World31: World31;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World32)
-         */
-        export interface World32 extends globalThis.EnumItem {
-            Name: "World32";
-            Value: 192;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World32: World32;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World33)
-         */
-        export interface World33 extends globalThis.EnumItem {
-            Name: "World33";
-            Value: 193;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World33: World33;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World34)
-         */
-        export interface World34 extends globalThis.EnumItem {
-            Name: "World34";
-            Value: 194;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World34: World34;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World35)
-         */
-        export interface World35 extends globalThis.EnumItem {
-            Name: "World35";
-            Value: 195;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World35: World35;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World36)
-         */
-        export interface World36 extends globalThis.EnumItem {
-            Name: "World36";
-            Value: 196;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World36: World36;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World37)
-         */
-        export interface World37 extends globalThis.EnumItem {
-            Name: "World37";
-            Value: 197;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World37: World37;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World38)
-         */
-        export interface World38 extends globalThis.EnumItem {
-            Name: "World38";
-            Value: 198;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World38: World38;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World39)
-         */
-        export interface World39 extends globalThis.EnumItem {
-            Name: "World39";
-            Value: 199;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World39: World39;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World40)
-         */
-        export interface World40 extends globalThis.EnumItem {
-            Name: "World40";
-            Value: 200;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World40: World40;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World41)
-         */
-        export interface World41 extends globalThis.EnumItem {
-            Name: "World41";
-            Value: 201;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World41: World41;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World42)
-         */
-        export interface World42 extends globalThis.EnumItem {
-            Name: "World42";
-            Value: 202;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World42: World42;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World43)
-         */
-        export interface World43 extends globalThis.EnumItem {
-            Name: "World43";
-            Value: 203;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World43: World43;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World44)
-         */
-        export interface World44 extends globalThis.EnumItem {
-            Name: "World44";
-            Value: 204;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World44: World44;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World45)
-         */
-        export interface World45 extends globalThis.EnumItem {
-            Name: "World45";
-            Value: 205;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World45: World45;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World46)
-         */
-        export interface World46 extends globalThis.EnumItem {
-            Name: "World46";
-            Value: 206;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World46: World46;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World47)
-         */
-        export interface World47 extends globalThis.EnumItem {
-            Name: "World47";
-            Value: 207;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World47: World47;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World48)
-         */
-        export interface World48 extends globalThis.EnumItem {
-            Name: "World48";
-            Value: 208;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World48: World48;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World49)
-         */
-        export interface World49 extends globalThis.EnumItem {
-            Name: "World49";
-            Value: 209;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World49: World49;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World50)
-         */
-        export interface World50 extends globalThis.EnumItem {
-            Name: "World50";
-            Value: 210;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World50: World50;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World51)
-         */
-        export interface World51 extends globalThis.EnumItem {
-            Name: "World51";
-            Value: 211;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World51: World51;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World52)
-         */
-        export interface World52 extends globalThis.EnumItem {
-            Name: "World52";
-            Value: 212;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World52: World52;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World53)
-         */
-        export interface World53 extends globalThis.EnumItem {
-            Name: "World53";
-            Value: 213;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World53: World53;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World54)
-         */
-        export interface World54 extends globalThis.EnumItem {
-            Name: "World54";
-            Value: 214;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World54: World54;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World55)
-         */
-        export interface World55 extends globalThis.EnumItem {
-            Name: "World55";
-            Value: 215;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World55: World55;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World56)
-         */
-        export interface World56 extends globalThis.EnumItem {
-            Name: "World56";
-            Value: 216;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World56: World56;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World57)
-         */
-        export interface World57 extends globalThis.EnumItem {
-            Name: "World57";
-            Value: 217;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World57: World57;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World58)
-         */
-        export interface World58 extends globalThis.EnumItem {
-            Name: "World58";
-            Value: 218;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World58: World58;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World59)
-         */
-        export interface World59 extends globalThis.EnumItem {
-            Name: "World59";
-            Value: 219;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World59: World59;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World60)
-         */
-        export interface World60 extends globalThis.EnumItem {
-            Name: "World60";
-            Value: 220;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World60: World60;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World61)
-         */
-        export interface World61 extends globalThis.EnumItem {
-            Name: "World61";
-            Value: 221;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World61: World61;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World62)
-         */
-        export interface World62 extends globalThis.EnumItem {
-            Name: "World62";
-            Value: 222;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World62: World62;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World63)
-         */
-        export interface World63 extends globalThis.EnumItem {
-            Name: "World63";
-            Value: 223;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World63: World63;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World64)
-         */
-        export interface World64 extends globalThis.EnumItem {
-            Name: "World64";
-            Value: 224;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World64: World64;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World65)
-         */
-        export interface World65 extends globalThis.EnumItem {
-            Name: "World65";
-            Value: 225;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World65: World65;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World66)
-         */
-        export interface World66 extends globalThis.EnumItem {
-            Name: "World66";
-            Value: 226;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World66: World66;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World67)
-         */
-        export interface World67 extends globalThis.EnumItem {
-            Name: "World67";
-            Value: 227;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World67: World67;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World68)
-         */
-        export interface World68 extends globalThis.EnumItem {
-            Name: "World68";
-            Value: 228;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World68: World68;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World69)
-         */
-        export interface World69 extends globalThis.EnumItem {
-            Name: "World69";
-            Value: 229;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World69: World69;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World70)
-         */
-        export interface World70 extends globalThis.EnumItem {
-            Name: "World70";
-            Value: 230;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World70: World70;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World71)
-         */
-        export interface World71 extends globalThis.EnumItem {
-            Name: "World71";
-            Value: 231;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World71: World71;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World72)
-         */
-        export interface World72 extends globalThis.EnumItem {
-            Name: "World72";
-            Value: 232;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World72: World72;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World73)
-         */
-        export interface World73 extends globalThis.EnumItem {
-            Name: "World73";
-            Value: 233;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World73: World73;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World74)
-         */
-        export interface World74 extends globalThis.EnumItem {
-            Name: "World74";
-            Value: 234;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World74: World74;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World75)
-         */
-        export interface World75 extends globalThis.EnumItem {
-            Name: "World75";
-            Value: 235;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World75: World75;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World76)
-         */
-        export interface World76 extends globalThis.EnumItem {
-            Name: "World76";
-            Value: 236;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World76: World76;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World77)
-         */
-        export interface World77 extends globalThis.EnumItem {
-            Name: "World77";
-            Value: 237;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World77: World77;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World78)
-         */
-        export interface World78 extends globalThis.EnumItem {
-            Name: "World78";
-            Value: 238;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World78: World78;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World79)
-         */
-        export interface World79 extends globalThis.EnumItem {
-            Name: "World79";
-            Value: 239;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World79: World79;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World80)
-         */
-        export interface World80 extends globalThis.EnumItem {
-            Name: "World80";
-            Value: 240;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World80: World80;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World81)
-         */
-        export interface World81 extends globalThis.EnumItem {
-            Name: "World81";
-            Value: 241;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World81: World81;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World82)
-         */
-        export interface World82 extends globalThis.EnumItem {
-            Name: "World82";
-            Value: 242;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World82: World82;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World83)
-         */
-        export interface World83 extends globalThis.EnumItem {
-            Name: "World83";
-            Value: 243;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World83: World83;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World84)
-         */
-        export interface World84 extends globalThis.EnumItem {
-            Name: "World84";
-            Value: 244;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World84: World84;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World85)
-         */
-        export interface World85 extends globalThis.EnumItem {
-            Name: "World85";
-            Value: 245;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World85: World85;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World86)
-         */
-        export interface World86 extends globalThis.EnumItem {
-            Name: "World86";
-            Value: 246;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World86: World86;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World87)
-         */
-        export interface World87 extends globalThis.EnumItem {
-            Name: "World87";
-            Value: 247;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World87: World87;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World88)
-         */
-        export interface World88 extends globalThis.EnumItem {
-            Name: "World88";
-            Value: 248;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World88: World88;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World89)
-         */
-        export interface World89 extends globalThis.EnumItem {
-            Name: "World89";
-            Value: 249;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World89: World89;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World90)
-         */
-        export interface World90 extends globalThis.EnumItem {
-            Name: "World90";
-            Value: 250;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World90: World90;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World91)
-         */
-        export interface World91 extends globalThis.EnumItem {
-            Name: "World91";
-            Value: 251;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World91: World91;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World92)
-         */
-        export interface World92 extends globalThis.EnumItem {
-            Name: "World92";
-            Value: 252;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World92: World92;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World93)
-         */
-        export interface World93 extends globalThis.EnumItem {
-            Name: "World93";
-            Value: 253;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World93: World93;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World94)
-         */
-        export interface World94 extends globalThis.EnumItem {
-            Name: "World94";
-            Value: 254;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World94: World94;
-        /**
-         * Generally not used.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World95)
-         */
-        export interface World95 extends globalThis.EnumItem {
-            Name: "World95";
-            Value: 255;
-            EnumType: typeof globalThis.Enum.KeyCode;
-        }
-        export const World95: World95;
-        /**
          * The `0` key on the keypad cluster.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#KeypadZero)
@@ -17084,6 +16109,1062 @@ declare namespace Enum {
         }
         export const Thumbstick2: Thumbstick2;
         /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World0)
+         */
+        export interface World0 extends globalThis.EnumItem {
+            Name: "World0";
+            Value: 160;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World0: World0;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World1)
+         */
+        export interface World1 extends globalThis.EnumItem {
+            Name: "World1";
+            Value: 161;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World1: World1;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World2)
+         */
+        export interface World2 extends globalThis.EnumItem {
+            Name: "World2";
+            Value: 162;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World2: World2;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World3)
+         */
+        export interface World3 extends globalThis.EnumItem {
+            Name: "World3";
+            Value: 163;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World3: World3;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World4)
+         */
+        export interface World4 extends globalThis.EnumItem {
+            Name: "World4";
+            Value: 164;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World4: World4;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World5)
+         */
+        export interface World5 extends globalThis.EnumItem {
+            Name: "World5";
+            Value: 165;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World5: World5;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World6)
+         */
+        export interface World6 extends globalThis.EnumItem {
+            Name: "World6";
+            Value: 166;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World6: World6;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World7)
+         */
+        export interface World7 extends globalThis.EnumItem {
+            Name: "World7";
+            Value: 167;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World7: World7;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World8)
+         */
+        export interface World8 extends globalThis.EnumItem {
+            Name: "World8";
+            Value: 168;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World8: World8;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World9)
+         */
+        export interface World9 extends globalThis.EnumItem {
+            Name: "World9";
+            Value: 169;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World9: World9;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World10)
+         */
+        export interface World10 extends globalThis.EnumItem {
+            Name: "World10";
+            Value: 170;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World10: World10;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World11)
+         */
+        export interface World11 extends globalThis.EnumItem {
+            Name: "World11";
+            Value: 171;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World11: World11;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World12)
+         */
+        export interface World12 extends globalThis.EnumItem {
+            Name: "World12";
+            Value: 172;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World12: World12;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World13)
+         */
+        export interface World13 extends globalThis.EnumItem {
+            Name: "World13";
+            Value: 173;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World13: World13;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World14)
+         */
+        export interface World14 extends globalThis.EnumItem {
+            Name: "World14";
+            Value: 174;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World14: World14;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World15)
+         */
+        export interface World15 extends globalThis.EnumItem {
+            Name: "World15";
+            Value: 175;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World15: World15;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World16)
+         */
+        export interface World16 extends globalThis.EnumItem {
+            Name: "World16";
+            Value: 176;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World16: World16;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World17)
+         */
+        export interface World17 extends globalThis.EnumItem {
+            Name: "World17";
+            Value: 177;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World17: World17;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World18)
+         */
+        export interface World18 extends globalThis.EnumItem {
+            Name: "World18";
+            Value: 178;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World18: World18;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World19)
+         */
+        export interface World19 extends globalThis.EnumItem {
+            Name: "World19";
+            Value: 179;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World19: World19;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World20)
+         */
+        export interface World20 extends globalThis.EnumItem {
+            Name: "World20";
+            Value: 180;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World20: World20;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World21)
+         */
+        export interface World21 extends globalThis.EnumItem {
+            Name: "World21";
+            Value: 181;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World21: World21;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World22)
+         */
+        export interface World22 extends globalThis.EnumItem {
+            Name: "World22";
+            Value: 182;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World22: World22;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World23)
+         */
+        export interface World23 extends globalThis.EnumItem {
+            Name: "World23";
+            Value: 183;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World23: World23;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World24)
+         */
+        export interface World24 extends globalThis.EnumItem {
+            Name: "World24";
+            Value: 184;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World24: World24;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World25)
+         */
+        export interface World25 extends globalThis.EnumItem {
+            Name: "World25";
+            Value: 185;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World25: World25;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World26)
+         */
+        export interface World26 extends globalThis.EnumItem {
+            Name: "World26";
+            Value: 186;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World26: World26;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World27)
+         */
+        export interface World27 extends globalThis.EnumItem {
+            Name: "World27";
+            Value: 187;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World27: World27;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World28)
+         */
+        export interface World28 extends globalThis.EnumItem {
+            Name: "World28";
+            Value: 188;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World28: World28;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World29)
+         */
+        export interface World29 extends globalThis.EnumItem {
+            Name: "World29";
+            Value: 189;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World29: World29;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World30)
+         */
+        export interface World30 extends globalThis.EnumItem {
+            Name: "World30";
+            Value: 190;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World30: World30;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World31)
+         */
+        export interface World31 extends globalThis.EnumItem {
+            Name: "World31";
+            Value: 191;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World31: World31;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World32)
+         */
+        export interface World32 extends globalThis.EnumItem {
+            Name: "World32";
+            Value: 192;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World32: World32;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World33)
+         */
+        export interface World33 extends globalThis.EnumItem {
+            Name: "World33";
+            Value: 193;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World33: World33;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World34)
+         */
+        export interface World34 extends globalThis.EnumItem {
+            Name: "World34";
+            Value: 194;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World34: World34;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World35)
+         */
+        export interface World35 extends globalThis.EnumItem {
+            Name: "World35";
+            Value: 195;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World35: World35;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World36)
+         */
+        export interface World36 extends globalThis.EnumItem {
+            Name: "World36";
+            Value: 196;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World36: World36;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World37)
+         */
+        export interface World37 extends globalThis.EnumItem {
+            Name: "World37";
+            Value: 197;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World37: World37;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World38)
+         */
+        export interface World38 extends globalThis.EnumItem {
+            Name: "World38";
+            Value: 198;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World38: World38;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World39)
+         */
+        export interface World39 extends globalThis.EnumItem {
+            Name: "World39";
+            Value: 199;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World39: World39;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World40)
+         */
+        export interface World40 extends globalThis.EnumItem {
+            Name: "World40";
+            Value: 200;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World40: World40;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World41)
+         */
+        export interface World41 extends globalThis.EnumItem {
+            Name: "World41";
+            Value: 201;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World41: World41;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World42)
+         */
+        export interface World42 extends globalThis.EnumItem {
+            Name: "World42";
+            Value: 202;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World42: World42;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World43)
+         */
+        export interface World43 extends globalThis.EnumItem {
+            Name: "World43";
+            Value: 203;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World43: World43;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World44)
+         */
+        export interface World44 extends globalThis.EnumItem {
+            Name: "World44";
+            Value: 204;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World44: World44;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World45)
+         */
+        export interface World45 extends globalThis.EnumItem {
+            Name: "World45";
+            Value: 205;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World45: World45;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World46)
+         */
+        export interface World46 extends globalThis.EnumItem {
+            Name: "World46";
+            Value: 206;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World46: World46;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World47)
+         */
+        export interface World47 extends globalThis.EnumItem {
+            Name: "World47";
+            Value: 207;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World47: World47;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World48)
+         */
+        export interface World48 extends globalThis.EnumItem {
+            Name: "World48";
+            Value: 208;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World48: World48;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World49)
+         */
+        export interface World49 extends globalThis.EnumItem {
+            Name: "World49";
+            Value: 209;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World49: World49;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World50)
+         */
+        export interface World50 extends globalThis.EnumItem {
+            Name: "World50";
+            Value: 210;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World50: World50;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World51)
+         */
+        export interface World51 extends globalThis.EnumItem {
+            Name: "World51";
+            Value: 211;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World51: World51;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World52)
+         */
+        export interface World52 extends globalThis.EnumItem {
+            Name: "World52";
+            Value: 212;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World52: World52;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World53)
+         */
+        export interface World53 extends globalThis.EnumItem {
+            Name: "World53";
+            Value: 213;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World53: World53;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World54)
+         */
+        export interface World54 extends globalThis.EnumItem {
+            Name: "World54";
+            Value: 214;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World54: World54;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World55)
+         */
+        export interface World55 extends globalThis.EnumItem {
+            Name: "World55";
+            Value: 215;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World55: World55;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World56)
+         */
+        export interface World56 extends globalThis.EnumItem {
+            Name: "World56";
+            Value: 216;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World56: World56;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World57)
+         */
+        export interface World57 extends globalThis.EnumItem {
+            Name: "World57";
+            Value: 217;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World57: World57;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World58)
+         */
+        export interface World58 extends globalThis.EnumItem {
+            Name: "World58";
+            Value: 218;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World58: World58;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World59)
+         */
+        export interface World59 extends globalThis.EnumItem {
+            Name: "World59";
+            Value: 219;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World59: World59;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World60)
+         */
+        export interface World60 extends globalThis.EnumItem {
+            Name: "World60";
+            Value: 220;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World60: World60;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World61)
+         */
+        export interface World61 extends globalThis.EnumItem {
+            Name: "World61";
+            Value: 221;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World61: World61;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World62)
+         */
+        export interface World62 extends globalThis.EnumItem {
+            Name: "World62";
+            Value: 222;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World62: World62;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World63)
+         */
+        export interface World63 extends globalThis.EnumItem {
+            Name: "World63";
+            Value: 223;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World63: World63;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World64)
+         */
+        export interface World64 extends globalThis.EnumItem {
+            Name: "World64";
+            Value: 224;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World64: World64;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World65)
+         */
+        export interface World65 extends globalThis.EnumItem {
+            Name: "World65";
+            Value: 225;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World65: World65;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World66)
+         */
+        export interface World66 extends globalThis.EnumItem {
+            Name: "World66";
+            Value: 226;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World66: World66;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World67)
+         */
+        export interface World67 extends globalThis.EnumItem {
+            Name: "World67";
+            Value: 227;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World67: World67;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World68)
+         */
+        export interface World68 extends globalThis.EnumItem {
+            Name: "World68";
+            Value: 228;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World68: World68;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World69)
+         */
+        export interface World69 extends globalThis.EnumItem {
+            Name: "World69";
+            Value: 229;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World69: World69;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World70)
+         */
+        export interface World70 extends globalThis.EnumItem {
+            Name: "World70";
+            Value: 230;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World70: World70;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World71)
+         */
+        export interface World71 extends globalThis.EnumItem {
+            Name: "World71";
+            Value: 231;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World71: World71;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World72)
+         */
+        export interface World72 extends globalThis.EnumItem {
+            Name: "World72";
+            Value: 232;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World72: World72;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World73)
+         */
+        export interface World73 extends globalThis.EnumItem {
+            Name: "World73";
+            Value: 233;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World73: World73;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World74)
+         */
+        export interface World74 extends globalThis.EnumItem {
+            Name: "World74";
+            Value: 234;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World74: World74;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World75)
+         */
+        export interface World75 extends globalThis.EnumItem {
+            Name: "World75";
+            Value: 235;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World75: World75;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World76)
+         */
+        export interface World76 extends globalThis.EnumItem {
+            Name: "World76";
+            Value: 236;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World76: World76;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World77)
+         */
+        export interface World77 extends globalThis.EnumItem {
+            Name: "World77";
+            Value: 237;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World77: World77;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World78)
+         */
+        export interface World78 extends globalThis.EnumItem {
+            Name: "World78";
+            Value: 238;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World78: World78;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World79)
+         */
+        export interface World79 extends globalThis.EnumItem {
+            Name: "World79";
+            Value: 239;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World79: World79;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World80)
+         */
+        export interface World80 extends globalThis.EnumItem {
+            Name: "World80";
+            Value: 240;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World80: World80;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World81)
+         */
+        export interface World81 extends globalThis.EnumItem {
+            Name: "World81";
+            Value: 241;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World81: World81;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World82)
+         */
+        export interface World82 extends globalThis.EnumItem {
+            Name: "World82";
+            Value: 242;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World82: World82;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World83)
+         */
+        export interface World83 extends globalThis.EnumItem {
+            Name: "World83";
+            Value: 243;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World83: World83;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World84)
+         */
+        export interface World84 extends globalThis.EnumItem {
+            Name: "World84";
+            Value: 244;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World84: World84;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World85)
+         */
+        export interface World85 extends globalThis.EnumItem {
+            Name: "World85";
+            Value: 245;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World85: World85;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World86)
+         */
+        export interface World86 extends globalThis.EnumItem {
+            Name: "World86";
+            Value: 246;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World86: World86;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World87)
+         */
+        export interface World87 extends globalThis.EnumItem {
+            Name: "World87";
+            Value: 247;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World87: World87;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World88)
+         */
+        export interface World88 extends globalThis.EnumItem {
+            Name: "World88";
+            Value: 248;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World88: World88;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World89)
+         */
+        export interface World89 extends globalThis.EnumItem {
+            Name: "World89";
+            Value: 249;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World89: World89;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World90)
+         */
+        export interface World90 extends globalThis.EnumItem {
+            Name: "World90";
+            Value: 250;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World90: World90;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World91)
+         */
+        export interface World91 extends globalThis.EnumItem {
+            Name: "World91";
+            Value: 251;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World91: World91;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World92)
+         */
+        export interface World92 extends globalThis.EnumItem {
+            Name: "World92";
+            Value: 252;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World92: World92;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World93)
+         */
+        export interface World93 extends globalThis.EnumItem {
+            Name: "World93";
+            Value: 253;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World93: World93;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World94)
+         */
+        export interface World94 extends globalThis.EnumItem {
+            Name: "World94";
+            Value: 254;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World94: World94;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World95)
+         */
+        export interface World95 extends globalThis.EnumItem {
+            Name: "World95";
+            Value: 255;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const World95: World95;
+        /**
          * **Deprecated:** This enum is deprecated and flagged for removal.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseLeftButton)
@@ -17164,7 +17245,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.KeyCode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.KeyCode | undefined;
     }
-    export type KeyCode = KeyCode.Unknown | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95 | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.NumLock | KeyCode.CapsLock | KeyCode.ScrollLock | KeyCode.RightShift | KeyCode.LeftShift | KeyCode.RightControl | KeyCode.LeftControl | KeyCode.RightAlt | KeyCode.LeftAlt | KeyCode.RightMeta | KeyCode.LeftMeta | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2 | KeyCode.MouseLeftButton | KeyCode.MouseRightButton | KeyCode.MouseMiddleButton | KeyCode.MouseBackButton | KeyCode.MouseNoButton | KeyCode.MouseX | KeyCode.MouseY;
+    export type KeyCode = KeyCode.Unknown | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.NumLock | KeyCode.CapsLock | KeyCode.ScrollLock | KeyCode.RightShift | KeyCode.LeftShift | KeyCode.RightControl | KeyCode.LeftControl | KeyCode.RightAlt | KeyCode.LeftAlt | KeyCode.RightMeta | KeyCode.LeftMeta | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2 | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95 | KeyCode.MouseLeftButton | KeyCode.MouseRightButton | KeyCode.MouseMiddleButton | KeyCode.MouseBackButton | KeyCode.MouseNoButton | KeyCode.MouseX | KeyCode.MouseY;
     /**
      * Describes the interpolation method between two keys.
      *
@@ -30370,20 +30451,11 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.UICaptureMode;
         }
         export const None: None;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UICaptureMode#PlayerGui)
-         */
-        export interface PlayerGui extends globalThis.EnumItem {
-            Name: "PlayerGui";
-            Value: 2;
-            EnumType: typeof globalThis.Enum.UICaptureMode;
-        }
-        export const PlayerGui: PlayerGui;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UICaptureMode>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UICaptureMode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UICaptureMode | undefined;
     }
-    export type UICaptureMode = UICaptureMode.All | UICaptureMode.None | UICaptureMode.PlayerGui;
+    export type UICaptureMode = UICaptureMode.All | UICaptureMode.None;
     /**
      * Used with `UIDragDetector` to determine bounding behavior of the dragged UI object when `UIDragDetector.BoundingUI` is set.
      *
@@ -32163,6 +32235,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VirtualInputMode | undefined;
     }
     export type VirtualInputMode = VirtualInputMode.None | VirtualInputMode.Recording | VirtualInputMode.Playing;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceChatDistanceAttenuationType)
+     */
+    export namespace VoiceChatDistanceAttenuationType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceChatDistanceAttenuationType#Inverse)
+         */
+        export interface Inverse extends globalThis.EnumItem {
+            Name: "Inverse";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.VoiceChatDistanceAttenuationType;
+        }
+        export const Inverse: Inverse;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceChatDistanceAttenuationType#Legacy)
+         */
+        export interface Legacy extends globalThis.EnumItem {
+            Name: "Legacy";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.VoiceChatDistanceAttenuationType;
+        }
+        export const Legacy: Legacy;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VoiceChatDistanceAttenuationType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VoiceChatDistanceAttenuationType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VoiceChatDistanceAttenuationType | undefined;
+    }
+    export type VoiceChatDistanceAttenuationType = VoiceChatDistanceAttenuationType.Inverse | VoiceChatDistanceAttenuationType.Legacy;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceChatState)
      */

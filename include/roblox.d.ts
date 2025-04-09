@@ -47,6 +47,7 @@ interface UserInfo {
 	Id: number;
 	Username: string;
 	DisplayName: string;
+	HasVerifiedBadge: boolean;
 }
 
 interface GroupInfo {
