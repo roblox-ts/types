@@ -40141,7 +40141,10 @@ interface UIDragDetector extends UIComponent {
      * @param this Instance which facilitates and encourages interaction with UI elements in an experience.
      * @param function Function for monitoring `DragContinue` signals. This function receives the singal's screen space input position and returns a `UDim2` and float containing the desired motion of the drag in the desired space and relativity. If this function returns `nil`, the object will not be moved.
      */
-    SetDragStyleFunction(this: UIDragDetector, callback: (inputPosition: UDim2) => UDim2 | void): void;
+    SetDragStyleFunction(this: UIDragDetector, callback: (inputPosition: Vector2) => LuaTuple<[
+        UDim2,
+        number
+    ]> | UDim2 | void): void;
     /**
      * Fires when a user continues dragging the UI element after `DragStart` has been initiated.
      *
