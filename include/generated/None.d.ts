@@ -66,6 +66,7 @@ interface Services {
     ExperienceStateCaptureService: ExperienceStateCaptureService;
     ExplorerServiceVisibilityService: ExplorerServiceVisibilityService;
     FaceAnimatorService: FaceAnimatorService;
+    FacialAgeEstimationService: FacialAgeEstimationService;
     FacialAnimationRecordingService: FacialAnimationRecordingService;
     FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
     FeatureRestrictionManager: FeatureRestrictionManager;
@@ -176,6 +177,7 @@ interface Services {
     StudioUserService: StudioUserService;
     StudioWidgetsService: StudioWidgetsService;
     StylingService: StylingService;
+    SystemThemeService: SystemThemeService;
     TeamCreateData: TeamCreateData;
     TeamCreatePublishService: TeamCreatePublishService;
     TeamCreateService: TeamCreateService;
@@ -1234,6 +1236,8 @@ interface EditableMesh extends RBXObject {
      */
     GetFaces(this: EditableMesh): Array<unknown>;
     /**
+     * **Deprecated:**
+     *
      * Returns a list of faces that use a given attribute ID.
      *
      * - **ThreadSafety**: Unsafe
@@ -1252,6 +1256,8 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacesWithColor)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param colorId
      */
     GetFacesWithColor(this: EditableMesh, colorId: number): Array<unknown>;
     /**
@@ -1259,6 +1265,8 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacesWithNormal)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param normalId
      */
     GetFacesWithNormal(this: EditableMesh, normalId: number): Array<unknown>;
     /**
@@ -1266,6 +1274,8 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacesWithUV)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param uvId
      */
     GetFacesWithUV(this: EditableMesh, uvId: number): Array<unknown>;
     /**
@@ -1336,24 +1346,35 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexColors)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
      */
     GetVertexColors(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaceColor)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
+     * @param faceId
      */
     GetVertexFaceColor(this: EditableMesh, vertexId: number, faceId: number): number;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaceNormal)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
+     * @param faceId
      */
     GetVertexFaceNormal(this: EditableMesh, vertexId: number, faceId: number): number;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaceUV)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
+     * @param faceId
      */
     GetVertexFaceUV(this: EditableMesh, vertexId: number, faceId: number): number;
     /**
@@ -1361,6 +1382,8 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaces)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
      */
     GetVertexFaces(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
@@ -1368,6 +1391,8 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexNormals)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
      */
     GetVertexNormals(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
@@ -1375,6 +1400,8 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexUVs)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
      */
     GetVertexUVs(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
@@ -1388,6 +1415,8 @@ interface EditableMesh extends RBXObject {
      */
     GetVertices(this: EditableMesh): Array<number>;
     /**
+     * **Deprecated:**
+     *
      * Returns a list of vertices that use a given attribute ID.
      *
      * - **ThreadSafety**: Unsafe
@@ -1406,6 +1435,8 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVerticesWithColor)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param colorId
      */
     GetVerticesWithColor(this: EditableMesh, colorId: number): Array<unknown>;
     /**
@@ -1413,6 +1444,8 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVerticesWithNormal)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param normalId
      */
     GetVerticesWithNormal(this: EditableMesh, normalId: number): Array<unknown>;
     /**
@@ -1420,6 +1453,8 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVerticesWithUV)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param uvId
      */
     GetVerticesWithUV(this: EditableMesh, uvId: number): Array<unknown>;
     /**
@@ -1595,18 +1630,30 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexFaceColor)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
+     * @param faceId
+     * @param colorId
      */
     SetVertexFaceColor(this: EditableMesh, vertexId: number, faceId: number, colorId: number): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexFaceNormal)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
+     * @param faceId
+     * @param normalId
      */
     SetVertexFaceNormal(this: EditableMesh, vertexId: number, faceId: number, normalId: number): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexFaceUV)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
+     * @param faceId
+     * @param uvId
      */
     SetVertexFaceUV(this: EditableMesh, vertexId: number, faceId: number, uvId: number): void;
     /**
@@ -2312,7 +2359,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#FireCustomEvent)
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
-     * @param player The player who triggered the custom event. nil if not player related.
+     * @param player The player who triggered the custom event. `nil` if not player related.
      * @param eventCategory User defined category. This should be the name of the event.
      * @param customData Optional. User defined data, could be a string, a number or a table.
      *
@@ -2377,7 +2424,7 @@ interface AnalyticsService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#FireLogEvent)
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
-     * @param player The player who triggered the error event, nil if not player related.
+     * @param player The player who triggered the error event, `nil` if not player related.
      * @param logLevel The specified log level (e.g. Debug, Error).
      * @param message User defined message.
      * @param debugInfo Optional. A dictionary which contains predefined keys including "errorCode" and "stackTrace". Both keys values are strings. stackTrace is a traceback of the current function call stack.
@@ -2644,7 +2691,7 @@ interface KeyframeSequence extends AnimationClip {
      */
     GetKeyframes(this: KeyframeSequence): Array<Keyframe>;
     /**
-     * This function removes a `Keyframe` from the `KeyframeSequence` by setting its parent to nil.
+     * This function removes a `Keyframe` from the `KeyframeSequence` by setting its parent to `nil`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -3412,6 +3459,12 @@ interface AssetService extends Instance {
      * @param editableMeshOptions Table containing options for the created `EditableMesh`. Currently no options are available since `FixedSize` will always be `false` for empty editable meshes.
      */
     CreateEditableMesh(this: AssetService, editableMeshOptions?: object): EditableMesh;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateSurfaceAppearance)
+     */
+    CreateSurfaceAppearance(this: AssetService, content: object): SurfaceAppearance;
     /**
      * Uploads a new asset to Roblox from the given object.
      *
@@ -6422,7 +6475,7 @@ interface AvatarEditorService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#CheckApplyDefaultClothing)
      * @param this A service to support developer Avatar Editors.
      * @param humanoidDescription The HumanoidDescription to check if default clothing is required.
-     * @returns Returns a HumanoidDescription if default clothing was necessary. Otherwise returns nil.
+     * @returns Returns a HumanoidDescription if default clothing was necessary. Otherwise returns `nil`.
      */
     CheckApplyDefaultClothing(this: AvatarEditorService, humanoidDescription: HumanoidDescription): HumanoidDescription;
     /**
@@ -7230,12 +7283,6 @@ interface RootImportData extends BaseImportData {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RootImportData#ScaleUnit)
      */
     ScaleUnit: Enum.MeshScaleUnit;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RootImportData#UseSceneOriginAsCFrame)
-     */
-    UseSceneOriginAsCFrame: boolean;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -12000,7 +12047,7 @@ interface ContextActionService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContextActionService#GetCurrentLocalToolIcon)
      * @param this A service used to bind user input to contextual actions.
-     * @returns A content string from the Tool's TextureId, or nil if one could not be found.
+     * @returns A content string from the Tool's TextureId, or `nil` if one could not be found.
      */
     GetCurrentLocalToolIcon(this: ContextActionService): string;
     /**
@@ -14356,6 +14403,21 @@ interface Texture extends Decal {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Texture#StudsPerTileV)
      */
     StudsPerTileV: number;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FacialAgeEstimationService)
+ */
+interface FacialAgeEstimationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FacialAgeEstimationService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -17433,12 +17495,14 @@ interface VideoDisplay extends GuiObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#GetInputPins)
+     * @param this
      */
     GetInputPins(this: VideoDisplay): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#GetOutputPins)
+     * @param this
      */
     GetOutputPins(this: VideoDisplay): Array<unknown>;
     /**
@@ -23259,7 +23323,7 @@ interface Keyframe extends Instance {
      */
     GetPoses(this: Keyframe): Array<Pose>;
     /**
-     * Removes a `KeyframeMarker` from the `Keyframe` by settings its `Instance.Parent` to nil.
+     * Removes a `KeyframeMarker` from the `Keyframe` by settings its `Instance.Parent` to `nil`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -23269,7 +23333,7 @@ interface Keyframe extends Instance {
      */
     RemoveMarker(this: Keyframe, marker: KeyframeMarker): void;
     /**
-     * Removes a `Pose` from the `Keyframe` by setting its `Instance.Parent` to nil.
+     * Removes a `Pose` from the `Keyframe` by setting its `Instance.Parent` to `nil`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -24902,6 +24966,8 @@ interface MarketplaceService extends Instance {
     ProcessReceipt: ((receiptInfo: ReceiptInfo) => Enum.ProductPurchaseDecision) | undefined;
 }
 /**
+ * The service responsible for managing custom matchmaking data.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MatchmakingService)
@@ -24916,28 +24982,37 @@ interface MatchmakingService extends Instance {
      */
     readonly _nominal_MatchmakingService: unique symbol;
     /**
+     * Retrieves the value of a specific server attribute.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MatchmakingService#GetServerAttribute)
-     * @param this
-     * @param name
+     * @param this The service responsible for managing custom matchmaking data.
+     * @param name The name of the server attribute. Limited to a maximum of 50 characters.
+     * @returns Returns the server attribute value if the attribute is found and if the error is `nil`. Otherwise, returns `nil` for the attribute value and an error message.
      */
     GetServerAttribute(this: MatchmakingService, name: string): unknown;
     /**
+     * Initiates the server attribute schema and its values to test in Studio.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MatchmakingService#InitializeServerAttributesForStudio)
-     * @param this
-     * @param serverAttributes
+     * @param this The service responsible for managing custom matchmaking data.
+     * @param serverAttributes An array of attribute name-value pairs.
+     * @returns Returns `true` if the call succeeded. Otherwise, returns `false` and an error message.
      */
     InitializeServerAttributesForStudio(this: MatchmakingService, serverAttributes: object): unknown;
     /**
+     * Assigns a value to a specific server attribute.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MatchmakingService#SetServerAttribute)
-     * @param this
-     * @param name
-     * @param value
+     * @param this The service responsible for managing custom matchmaking data.
+     * @param name The name of the server attribute. Limited to a maximum of 50 characters.
+     * @param value The value of the server attribute. Limited to a maximum of 50 characters.
+     * @returns Returns `true` if the call succeeded. Otherwise, returns `false` and an error message.
      */
     SetServerAttribute(this: MatchmakingService, name: string, value: unknown): unknown;
 }
@@ -25092,7 +25167,7 @@ interface MemoryStoreHashMap extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreHashMap#GetAsync)
      * @param this Provides access to a hash map within `MemoryStoreService`.
      * @param key The key whose value you want to retrieve.
-     * @returns The value, or nil if the key doesn't exist.
+     * @returns The value, or `nil` if the key doesn't exist.
      */
     GetAsync(this: MemoryStoreHashMap, key: string): unknown;
     /**
@@ -25280,8 +25355,8 @@ interface MemoryStoreSortedMap extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreSortedMap#GetAsync)
      * @param this Provides access to a sorted map within `MemoryStoreService`.
      * @param key Key whose value and sort key to retrieve.
-     * @returns A tuple of two values: - Key value, or nil -- if there's no item with the specified key.
-     * - Sort key, or nil -- if there's no sort key associated with the   specified key.
+     * @returns A tuple of two values: - Key value, or `nil` if there's no item with the specified key.
+     * - Sort key, or `nil` if there's no sort key associated with the   specified key.
      */
     GetAsync(this: MemoryStoreSortedMap, key: string): LuaTuple<[
         value?: unknown,
@@ -26721,13 +26796,13 @@ interface BasePart extends PVInstance {
      */
     GetMass(this: BasePart): number;
     /**
-     * Returns the current player who is the network owner of this part, or nil in case of the server.
+     * Returns the current player who is the network owner of this part, or `nil` in case of the server.
      *
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart#GetNetworkOwner)
      * @param this The abstract base class for in-world objects that physically interact.
-     * @returns The current player who is the network owner of this part, or nil in case of the server.
+     * @returns The current player who is the network owner of this part, or `nil` in case of the server.
      */
     GetNetworkOwner(this: BasePart): Player | undefined;
     /**
@@ -32413,7 +32488,7 @@ interface Pose extends PoseBase {
      */
     GetSubPoses(this: Pose): Array<Instance>;
     /**
-     * Removes a sub `Pose` from the `Pose` by parenting it to nil.
+     * Removes a sub `Pose` from the `Pose` by parenting it to `nil`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -34124,6 +34199,8 @@ interface SerializationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SerializationService#DeserializeInstancesAsync)
+     * @param this
+     * @param buffer
      */
     DeserializeInstancesAsync(this: SerializationService, buffer: buffer): Array<Instance>;
     /**
@@ -34131,6 +34208,8 @@ interface SerializationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SerializationService#SerializeInstancesAsync)
+     * @param this
+     * @param inputInstances
      */
     SerializeInstancesAsync(this: SerializationService, inputInstances: Array<Instance>): buffer;
 }
@@ -34947,6 +35026,13 @@ interface SocialService extends Instance {
      * @returns Whether the specified player can send an invite.
      */
     CanSendGameInviteAsync(this: SocialService, player: Player, recipientId?: number): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#GetPartyAsync)
+     */
+    GetPartyAsync(this: SocialService, partyId: string): Array<unknown>;
     /**
      * Fires when a player's call invite state changes.
      *
@@ -36957,6 +37043,21 @@ interface SurfaceAppearance extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#RoughnessMapContent)
      */
     get RoughnessMapContent(): Content;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SystemThemeService)
+ */
+interface SystemThemeService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SystemThemeService: unique symbol;
 }
 /**
  * The `Team` class represents a faction in a Roblox place. The only valid parent for a Team is in the `Teams` service.
@@ -42578,18 +42679,21 @@ interface VideoPlayer extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#GetInputPins)
+     * @param this
      */
     GetInputPins(this: VideoPlayer): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#GetOutputPins)
+     * @param this
      */
     GetOutputPins(this: VideoPlayer): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Pause)
+     * @param this
      */
     Pause(this: VideoPlayer): void;
     /**
@@ -42603,6 +42707,7 @@ interface VideoPlayer extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Unload)
+     * @param this
      */
     Unload(this: VideoPlayer): void;
     /**
@@ -42610,6 +42715,7 @@ interface VideoPlayer extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#LoadAsync)
+     * @param this
      */
     LoadAsync(this: VideoPlayer): Enum.AssetFetchStatus;
     /**
