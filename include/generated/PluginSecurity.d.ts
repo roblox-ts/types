@@ -69,6 +69,7 @@ interface Services {
     ExperienceStateCaptureService: ExperienceStateCaptureService;
     ExplorerServiceVisibilityService: ExplorerServiceVisibilityService;
     FaceAnimatorService: FaceAnimatorService;
+    FacialAgeEstimationService: FacialAgeEstimationService;
     FacialAnimationRecordingService: FacialAnimationRecordingService;
     FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
     FeatureRestrictionManager: FeatureRestrictionManager;
@@ -192,6 +193,7 @@ interface Services {
     StudioUserService: StudioUserService;
     StudioWidgetsService: StudioWidgetsService;
     StylingService: StylingService;
+    SystemThemeService: SystemThemeService;
     TaskScheduler: TaskScheduler;
     TeamCreateData: TeamCreateData;
     TeamCreatePublishService: TeamCreatePublishService;
@@ -5006,6 +5008,21 @@ interface Texture extends Decal {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FacialAgeEstimationService)
+ */
+interface FacialAgeEstimationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FacialAgeEstimationService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FacialAnimationRecordingService)
  */
 interface FacialAnimationRecordingService extends Instance {
@@ -7389,9 +7406,9 @@ interface AuroraScript extends LuaSourceContainer {
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#DumpMispredictions)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#EnableCulling)
      */
-    DumpMispredictions: boolean;
+    EnableCulling: boolean;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -7401,15 +7418,9 @@ interface AuroraScript extends LuaSourceContainer {
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#LODDistanceFactor)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#LODCriticality)
      */
-    LODDistanceFactor: number;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#LODFrequencyFactor)
-     */
-    LODFrequencyFactor: number;
+    LODCriticality: number;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -7568,6 +7579,8 @@ interface MarketplaceService extends Instance {
     readonly _nominal_MarketplaceService: unique symbol;
 }
 /**
+ * The service responsible for managing custom matchmaking data.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MatchmakingService)
@@ -9619,7 +9632,7 @@ interface Plugin extends Instance {
      */
     GetSelectedRibbonTool(this: Plugin): Enum.RibbonTool;
     /**
-     * Retrieves a previously stored value with the given key, or nil if the given key doesn't exist.
+     * Retrieves a previously stored value with the given key, or `nil` if the given key doesn't exist.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -10052,7 +10065,7 @@ interface PluginMenu extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginMenu#ShowAsync)
      * @param this A context menu that can be shown in Studio. Displays a list of `PluginActions` and supports submenus.
-     * @returns The `PluginAction` item that was selected or nil.
+     * @returns The `PluginAction` item that was selected or `nil`.
      */
     ShowAsync(this: PluginMenu): Instance | undefined;
 }
@@ -11097,7 +11110,7 @@ interface ScriptEditorService extends Instance {
      */
     DeregisterScriptAnalysisCallback(this: ScriptEditorService, name: string): void;
     /**
-     * Returns the open `ScriptDocument` corresponding to the given `LuaSourceContainer`, or nil if the given script is not open.
+     * Returns the open `ScriptDocument` corresponding to the given `LuaSourceContainer`, or `nil` if the given script is not open.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -12575,8 +12588,8 @@ interface StudioService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioService#PromptImportFile)
      * @param this Provides access to configuration of Roblox Studio and allows importing files from the user's file system.
-     * @param fileTypeFilter A list of file types that the user is allowed to select. File types are formatted without a period. For example, {"jpg", "png"} would allow only a JPG or PNG file to be selected. If no filter is provided, the filter is nil and allows the user to select any file type.
-     * @returns The imported `File`. Returns nil if no files were selected, or if the selected file was too large (FileSize greater than 100 megabytes).
+     * @param fileTypeFilter A list of file types that the user is allowed to select. File types are formatted without a period. For example, {"jpg", "png"} would allow only a JPG or PNG file to be selected. If no filter is provided, the filter is `nil` and allows the user to select any file type.
+     * @returns The imported `File`. Returns `nil` if no files were selected, or if the selected file was too large (FileSize greater than 100 megabytes).
      */
     PromptImportFile(this: StudioService, fileTypeFilter?: Array<unknown>): Instance | undefined;
     /**
@@ -12587,8 +12600,8 @@ interface StudioService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioService#PromptImportFiles)
      * @param this Provides access to configuration of Roblox Studio and allows importing files from the user's file system.
-     * @param fileTypeFilter A list of file types that the user is allowed to select. File types are formatted without a period. For example, {"jpg", "png"} would allow only JPG and PNG files to be selected. If no filter is provided, the filter is nil and allows the user to select any file type.
-     * @returns The imported `Files`. Returns an empty list if no files were selected. Returns nil if the user selected one or more files that were too large (FileSize greater than 100 megabytes).
+     * @param fileTypeFilter A list of file types that the user is allowed to select. File types are formatted without a period. For example, {"jpg", "png"} would allow only JPG and PNG files to be selected. If no filter is provided, the filter is `nil` and allows the user to select any file type.
+     * @returns The imported `Files`. Returns an empty list if no files were selected. Returns `nil` if the user selected one or more files that were too large (FileSize greater than 100 megabytes).
      */
     PromptImportFiles(this: StudioService, fileTypeFilter?: Array<unknown>): Array<Instance>;
 }
@@ -12813,6 +12826,21 @@ interface SurfaceAppearance extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#RoughnessMapContent)
      */
     set RoughnessMapContent(value: Content);
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SystemThemeService)
+ */
+interface SystemThemeService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SystemThemeService: unique symbol;
 }
 /**
  * Collection of settings for the *Task Scheduler* feature.

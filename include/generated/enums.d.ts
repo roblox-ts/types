@@ -1689,50 +1689,59 @@ declare namespace Enum {
     }
     export type AnnotationEditingMode = AnnotationEditingMode.None | AnnotationEditingMode.PlacingNew | AnnotationEditingMode.WritingNew;
     /**
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestResult)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestStatus)
      */
-    export namespace AnnotationRequestResult {
+    export namespace AnnotationRequestStatus {
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestResult#Success)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestStatus#Success)
          */
         export interface Success extends globalThis.EnumItem {
             Name: "Success";
             Value: 0;
-            EnumType: typeof globalThis.Enum.AnnotationRequestResult;
+            EnumType: typeof globalThis.Enum.AnnotationRequestStatus;
         }
         export const Success: Success;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestResult#ErrorInternalFailure)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestStatus#Loading)
+         */
+        export interface Loading extends globalThis.EnumItem {
+            Name: "Loading";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AnnotationRequestStatus;
+        }
+        export const Loading: Loading;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestStatus#ErrorInternalFailure)
          */
         export interface ErrorInternalFailure extends globalThis.EnumItem {
             Name: "ErrorInternalFailure";
-            Value: 1;
-            EnumType: typeof globalThis.Enum.AnnotationRequestResult;
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AnnotationRequestStatus;
         }
         export const ErrorInternalFailure: ErrorInternalFailure;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestResult#ErrorNotFound)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestStatus#ErrorNotFound)
          */
         export interface ErrorNotFound extends globalThis.EnumItem {
             Name: "ErrorNotFound";
-            Value: 2;
-            EnumType: typeof globalThis.Enum.AnnotationRequestResult;
+            Value: 3;
+            EnumType: typeof globalThis.Enum.AnnotationRequestStatus;
         }
         export const ErrorNotFound: ErrorNotFound;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestResult#ErrorModerated)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestStatus#ErrorModerated)
          */
         export interface ErrorModerated extends globalThis.EnumItem {
             Name: "ErrorModerated";
-            Value: 3;
-            EnumType: typeof globalThis.Enum.AnnotationRequestResult;
+            Value: 4;
+            EnumType: typeof globalThis.Enum.AnnotationRequestStatus;
         }
         export const ErrorModerated: ErrorModerated;
-        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnnotationRequestResult>;
-        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnnotationRequestResult | undefined;
-        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnnotationRequestResult | undefined;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnnotationRequestStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnnotationRequestStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnnotationRequestStatus | undefined;
     }
-    export type AnnotationRequestResult = AnnotationRequestResult.Success | AnnotationRequestResult.ErrorInternalFailure | AnnotationRequestResult.ErrorNotFound | AnnotationRequestResult.ErrorModerated;
+    export type AnnotationRequestStatus = AnnotationRequestStatus.Success | AnnotationRequestStatus.Loading | AnnotationRequestStatus.ErrorInternalFailure | AnnotationRequestStatus.ErrorNotFound | AnnotationRequestStatus.ErrorModerated;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnnotationRequestType)
      */
@@ -10198,6 +10207,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FACSDataLod | undefined;
     }
     export type FACSDataLod = FACSDataLod.LOD0 | FACSDataLod.LOD1 | FACSDataLod.LODCount;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAgeEstimationResultType)
+     */
+    export namespace FacialAgeEstimationResultType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAgeEstimationResultType#Complete)
+         */
+        export interface Complete extends globalThis.EnumItem {
+            Name: "Complete";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FacialAgeEstimationResultType;
+        }
+        export const Complete: Complete;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAgeEstimationResultType#Cancel)
+         */
+        export interface Cancel extends globalThis.EnumItem {
+            Name: "Cancel";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FacialAgeEstimationResultType;
+        }
+        export const Cancel: Cancel;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAgeEstimationResultType#Error)
+         */
+        export interface Error extends globalThis.EnumItem {
+            Name: "Error";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FacialAgeEstimationResultType;
+        }
+        export const Error: Error;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FacialAgeEstimationResultType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FacialAgeEstimationResultType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FacialAgeEstimationResultType | undefined;
+    }
+    export type FacialAgeEstimationResultType = FacialAgeEstimationResultType.Complete | FacialAgeEstimationResultType.Cancel | FacialAgeEstimationResultType.Error;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAnimationStreamingState)
      */
@@ -26506,7 +26551,7 @@ declare namespace Enum {
      */
     export namespace StudioStyleGuideColor {
         /**
-         * The primary background color used by the ribbon bar and windows.
+         * The primary background color used by the toolbar and windows.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#MainBackground)
          */
@@ -26539,7 +26584,7 @@ declare namespace Enum {
         }
         export const Dropdown: Dropdown;
         /**
-         * The background color of tooltips, like those seen when hovering over buttons on the ribbon bar or properties in the Properties window.
+         * The background color of tooltips, like those seen when hovering over buttons on the toolbar or properties in the Properties window.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Tooltip)
          */
@@ -26657,7 +26702,7 @@ declare namespace Enum {
         }
         export const FilterButtonBorderAlt: FilterButtonBorderAlt;
         /**
-         * The color of a tab on the ribbon menu (e.g. Home, Model, Test).
+         * The color of a tab on the toolbar menu.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#RibbonTab)
          */
@@ -26668,7 +26713,7 @@ declare namespace Enum {
         }
         export const RibbonTab: RibbonTab;
         /**
-         * The background color of the ribbon menu.
+         * The background color of the toolbar.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#RibbonTabTopBar)
          */
@@ -26701,7 +26746,7 @@ declare namespace Enum {
         }
         export const MainButton: MainButton;
         /**
-         * The background color of buttons on the ribbon menu.
+         * The background color of buttons on the toolbar.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#RibbonButton)
          */
@@ -28315,6 +28360,60 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SwipeDirection | undefined;
     }
     export type SwipeDirection = SwipeDirection.Right | SwipeDirection.Left | SwipeDirection.Up | SwipeDirection.Down | SwipeDirection.None;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SystemThemeValue)
+     */
+    export namespace SystemThemeValue {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SystemThemeValue#error)
+         */
+        export interface error extends globalThis.EnumItem {
+            Name: "error";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.SystemThemeValue;
+        }
+        export const error: error;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SystemThemeValue#light)
+         */
+        export interface light extends globalThis.EnumItem {
+            Name: "light";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.SystemThemeValue;
+        }
+        export const light: light;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SystemThemeValue#dark)
+         */
+        export interface dark extends globalThis.EnumItem {
+            Name: "dark";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.SystemThemeValue;
+        }
+        export const dark: dark;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SystemThemeValue#systemLight)
+         */
+        export interface systemLight extends globalThis.EnumItem {
+            Name: "systemLight";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.SystemThemeValue;
+        }
+        export const systemLight: systemLight;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SystemThemeValue#systemDark)
+         */
+        export interface systemDark extends globalThis.EnumItem {
+            Name: "systemDark";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.SystemThemeValue;
+        }
+        export const systemDark: systemDark;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SystemThemeValue>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SystemThemeValue | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SystemThemeValue | undefined;
+    }
+    export type SystemThemeValue = SystemThemeValue.error | SystemThemeValue.light | SystemThemeValue.dark | SystemThemeValue.systemLight | SystemThemeValue.systemDark;
     /**
      * Used by `UITableLayout.MajorAxis` to decide whether direct siblings are rows or columns.
      *
