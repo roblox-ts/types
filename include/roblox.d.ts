@@ -2888,6 +2888,9 @@ declare namespace buffer {
 	/** Returns the size of the buffer in bytes. */
 	function len(b: buffer): number;
 
+	/** Reads a range of bits into an unsigned integer from the buffer based on a specific bitCount integer from 0 to 32, inclusive. */
+	function readbits(b: buffer, bitOffset: number, bitCount: number): number;
+
 	/** Reads an 8-bit signed integer from the buffer. */
 	function readi8(b: buffer, offset: number): number;
 
@@ -2915,6 +2918,9 @@ declare namespace buffer {
 	/** Writes an 8-bit signed integer to the buffer. */
 	function writei8(b: buffer, offset: number, value: number): void;
 
+	/** Writes data to the buffer based on a specific bitCount integer from 0 to 32, inclusive. `value` is treated as an unsigned 32‑bit number and only bitCount least significant bits are written. */
+	function writebits(b: buffer, bitOffset: number, bitCount: number, value: number): void;
+	
 	/** Writes an 8-bit unsigned integer to the buffer. */
 	function writeu8(b: buffer, offset: number, value: number): void;
 
