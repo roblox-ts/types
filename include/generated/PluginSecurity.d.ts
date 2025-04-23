@@ -73,6 +73,7 @@ interface Services {
     FacialAnimationRecordingService: FacialAnimationRecordingService;
     FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
     FeatureRestrictionManager: FeatureRestrictionManager;
+    FeedService: FeedService;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
     GenerationService: GenerationService;
@@ -124,6 +125,7 @@ interface Services {
     PathfindingService: PathfindingService;
     PerformanceControlService: PerformanceControlService;
     PhysicsService: PhysicsService;
+    PlaceAssetIdsService: PlaceAssetIdsService;
     PlacesService: PlacesService;
     PlaceStatsService: PlaceStatsService;
     PlatformCloudStorageService: PlatformCloudStorageService;
@@ -589,6 +591,7 @@ interface Instances extends Services, CreatableInstances {
     FacialAnimationStreamingSubsessionStats: FacialAnimationStreamingSubsessionStats;
     FacsImportData: FacsImportData;
     Feature: Feature;
+    FeedPages: FeedPages;
     File: File;
     FormFactorPart: FormFactorPart;
     FriendPages: FriendPages;
@@ -5151,6 +5154,21 @@ interface FeatureRestrictionManager extends Instance {
     readonly _nominal_FeatureRestrictionManager: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedService)
+ */
+interface FeedService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FeedService: unique symbol;
+}
+/**
  * An asset loaded from a file on disk.
  *
  * - **Tags**: NotCreatable, NotReplicated
@@ -6208,7 +6226,7 @@ interface ArcHandles extends HandlesBase {
     readonly _nominal_ArcHandles: unique symbol;
 }
 /**
- * The Handles object places 3D handles around any object that its Adornee is set to.
+ * Places 3D handles around any object that its `Adornee` is set to.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Handles)
  */
@@ -7427,12 +7445,6 @@ interface AuroraScript extends LuaSourceContainer {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#Priority)
      */
     Priority: number;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#RunInParallel)
-     */
-    RunInParallel: boolean;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -8979,6 +8991,21 @@ interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {
     readonly _nominal_DataStoreVersionPages: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedPages)
+ */
+interface FeedPages extends Pages {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FeedPages: unique symbol;
+}
+/**
  * A special version of `Pages` that contains information about a player's friends.
  *
  * - **Tags**: NotCreatable, NotReplicated
@@ -9282,6 +9309,21 @@ interface PhysicsSettings extends Instance {
      * @deprecated
      */
     readonly _nominal_PhysicsSettings: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlaceAssetIdsService)
+ */
+interface PlaceAssetIdsService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PlaceAssetIdsService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
