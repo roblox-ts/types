@@ -3178,11 +3178,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.AudioFilterType;
         }
         export const Notch: Notch;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType#Lowpass6dB)
+         */
+        export interface Lowpass6dB extends globalThis.EnumItem {
+            Name: "Lowpass6dB";
+            Value: 11;
+            EnumType: typeof globalThis.Enum.AudioFilterType;
+        }
+        export const Lowpass6dB: Lowpass6dB;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioFilterType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AudioFilterType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioFilterType | undefined;
     }
-    export type AudioFilterType = AudioFilterType.Peak | AudioFilterType.LowShelf | AudioFilterType.HighShelf | AudioFilterType.Lowpass12dB | AudioFilterType.Lowpass24dB | AudioFilterType.Lowpass48dB | AudioFilterType.Highpass12dB | AudioFilterType.Highpass24dB | AudioFilterType.Highpass48dB | AudioFilterType.Bandpass | AudioFilterType.Notch;
+    export type AudioFilterType = AudioFilterType.Peak | AudioFilterType.LowShelf | AudioFilterType.HighShelf | AudioFilterType.Lowpass12dB | AudioFilterType.Lowpass24dB | AudioFilterType.Lowpass48dB | AudioFilterType.Highpass12dB | AudioFilterType.Highpass24dB | AudioFilterType.Highpass48dB | AudioFilterType.Bandpass | AudioFilterType.Notch | AudioFilterType.Lowpass6dB;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSimulationFidelity)
      */
@@ -10298,6 +10307,528 @@ declare namespace Enum {
     }
     export type FacialAnimationStreamingState = FacialAnimationStreamingState.None | FacialAnimationStreamingState.Audio | FacialAnimationStreamingState.Video | FacialAnimationStreamingState.Place | FacialAnimationStreamingState.Server;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit)
+     */
+    export namespace FacsActionUnit {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#ChinRaiserUpperLip)
+         */
+        export interface ChinRaiserUpperLip extends globalThis.EnumItem {
+            Name: "ChinRaiserUpperLip";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const ChinRaiserUpperLip: ChinRaiserUpperLip;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#ChinRaiser)
+         */
+        export interface ChinRaiser extends globalThis.EnumItem {
+            Name: "ChinRaiser";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const ChinRaiser: ChinRaiser;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#FlatPucker)
+         */
+        export interface FlatPucker extends globalThis.EnumItem {
+            Name: "FlatPucker";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const FlatPucker: FlatPucker;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#Funneler)
+         */
+        export interface Funneler extends globalThis.EnumItem {
+            Name: "Funneler";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const Funneler: Funneler;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LowerLipSuck)
+         */
+        export interface LowerLipSuck extends globalThis.EnumItem {
+            Name: "LowerLipSuck";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LowerLipSuck: LowerLipSuck;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LipPresser)
+         */
+        export interface LipPresser extends globalThis.EnumItem {
+            Name: "LipPresser";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LipPresser: LipPresser;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LipsTogether)
+         */
+        export interface LipsTogether extends globalThis.EnumItem {
+            Name: "LipsTogether";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LipsTogether: LipsTogether;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#MouthLeft)
+         */
+        export interface MouthLeft extends globalThis.EnumItem {
+            Name: "MouthLeft";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const MouthLeft: MouthLeft;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#MouthRight)
+         */
+        export interface MouthRight extends globalThis.EnumItem {
+            Name: "MouthRight";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const MouthRight: MouthRight;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#Pucker)
+         */
+        export interface Pucker extends globalThis.EnumItem {
+            Name: "Pucker";
+            Value: 9;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const Pucker: Pucker;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#UpperLipSuck)
+         */
+        export interface UpperLipSuck extends globalThis.EnumItem {
+            Name: "UpperLipSuck";
+            Value: 10;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const UpperLipSuck: UpperLipSuck;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftCheekPuff)
+         */
+        export interface LeftCheekPuff extends globalThis.EnumItem {
+            Name: "LeftCheekPuff";
+            Value: 11;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftCheekPuff: LeftCheekPuff;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftDimpler)
+         */
+        export interface LeftDimpler extends globalThis.EnumItem {
+            Name: "LeftDimpler";
+            Value: 12;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftDimpler: LeftDimpler;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftLipCornerDown)
+         */
+        export interface LeftLipCornerDown extends globalThis.EnumItem {
+            Name: "LeftLipCornerDown";
+            Value: 13;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftLipCornerDown: LeftLipCornerDown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftLowerLipDepressor)
+         */
+        export interface LeftLowerLipDepressor extends globalThis.EnumItem {
+            Name: "LeftLowerLipDepressor";
+            Value: 14;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftLowerLipDepressor: LeftLowerLipDepressor;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftLipCornerPuller)
+         */
+        export interface LeftLipCornerPuller extends globalThis.EnumItem {
+            Name: "LeftLipCornerPuller";
+            Value: 15;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftLipCornerPuller: LeftLipCornerPuller;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftLipStretcher)
+         */
+        export interface LeftLipStretcher extends globalThis.EnumItem {
+            Name: "LeftLipStretcher";
+            Value: 16;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftLipStretcher: LeftLipStretcher;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftUpperLipRaiser)
+         */
+        export interface LeftUpperLipRaiser extends globalThis.EnumItem {
+            Name: "LeftUpperLipRaiser";
+            Value: 17;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftUpperLipRaiser: LeftUpperLipRaiser;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightCheekPuff)
+         */
+        export interface RightCheekPuff extends globalThis.EnumItem {
+            Name: "RightCheekPuff";
+            Value: 18;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightCheekPuff: RightCheekPuff;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightDimpler)
+         */
+        export interface RightDimpler extends globalThis.EnumItem {
+            Name: "RightDimpler";
+            Value: 19;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightDimpler: RightDimpler;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightLipCornerDown)
+         */
+        export interface RightLipCornerDown extends globalThis.EnumItem {
+            Name: "RightLipCornerDown";
+            Value: 20;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightLipCornerDown: RightLipCornerDown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightLowerLipDepressor)
+         */
+        export interface RightLowerLipDepressor extends globalThis.EnumItem {
+            Name: "RightLowerLipDepressor";
+            Value: 21;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightLowerLipDepressor: RightLowerLipDepressor;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightLipCornerPuller)
+         */
+        export interface RightLipCornerPuller extends globalThis.EnumItem {
+            Name: "RightLipCornerPuller";
+            Value: 22;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightLipCornerPuller: RightLipCornerPuller;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightLipStretcher)
+         */
+        export interface RightLipStretcher extends globalThis.EnumItem {
+            Name: "RightLipStretcher";
+            Value: 23;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightLipStretcher: RightLipStretcher;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightUpperLipRaiser)
+         */
+        export interface RightUpperLipRaiser extends globalThis.EnumItem {
+            Name: "RightUpperLipRaiser";
+            Value: 24;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightUpperLipRaiser: RightUpperLipRaiser;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#JawDrop)
+         */
+        export interface JawDrop extends globalThis.EnumItem {
+            Name: "JawDrop";
+            Value: 25;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const JawDrop: JawDrop;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#JawLeft)
+         */
+        export interface JawLeft extends globalThis.EnumItem {
+            Name: "JawLeft";
+            Value: 26;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const JawLeft: JawLeft;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#JawRight)
+         */
+        export interface JawRight extends globalThis.EnumItem {
+            Name: "JawRight";
+            Value: 27;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const JawRight: JawRight;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#Corrugator)
+         */
+        export interface Corrugator extends globalThis.EnumItem {
+            Name: "Corrugator";
+            Value: 28;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const Corrugator: Corrugator;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftBrowLowerer)
+         */
+        export interface LeftBrowLowerer extends globalThis.EnumItem {
+            Name: "LeftBrowLowerer";
+            Value: 29;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftBrowLowerer: LeftBrowLowerer;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftOuterBrowRaiser)
+         */
+        export interface LeftOuterBrowRaiser extends globalThis.EnumItem {
+            Name: "LeftOuterBrowRaiser";
+            Value: 30;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftOuterBrowRaiser: LeftOuterBrowRaiser;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftNoseWrinkler)
+         */
+        export interface LeftNoseWrinkler extends globalThis.EnumItem {
+            Name: "LeftNoseWrinkler";
+            Value: 31;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftNoseWrinkler: LeftNoseWrinkler;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftInnerBrowRaiser)
+         */
+        export interface LeftInnerBrowRaiser extends globalThis.EnumItem {
+            Name: "LeftInnerBrowRaiser";
+            Value: 32;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftInnerBrowRaiser: LeftInnerBrowRaiser;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightBrowLowerer)
+         */
+        export interface RightBrowLowerer extends globalThis.EnumItem {
+            Name: "RightBrowLowerer";
+            Value: 33;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightBrowLowerer: RightBrowLowerer;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightOuterBrowRaiser)
+         */
+        export interface RightOuterBrowRaiser extends globalThis.EnumItem {
+            Name: "RightOuterBrowRaiser";
+            Value: 34;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightOuterBrowRaiser: RightOuterBrowRaiser;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightInnerBrowRaiser)
+         */
+        export interface RightInnerBrowRaiser extends globalThis.EnumItem {
+            Name: "RightInnerBrowRaiser";
+            Value: 35;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightInnerBrowRaiser: RightInnerBrowRaiser;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightNoseWrinkler)
+         */
+        export interface RightNoseWrinkler extends globalThis.EnumItem {
+            Name: "RightNoseWrinkler";
+            Value: 36;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightNoseWrinkler: RightNoseWrinkler;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#EyesLookDown)
+         */
+        export interface EyesLookDown extends globalThis.EnumItem {
+            Name: "EyesLookDown";
+            Value: 37;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const EyesLookDown: EyesLookDown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#EyesLookLeft)
+         */
+        export interface EyesLookLeft extends globalThis.EnumItem {
+            Name: "EyesLookLeft";
+            Value: 38;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const EyesLookLeft: EyesLookLeft;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#EyesLookUp)
+         */
+        export interface EyesLookUp extends globalThis.EnumItem {
+            Name: "EyesLookUp";
+            Value: 39;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const EyesLookUp: EyesLookUp;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#EyesLookRight)
+         */
+        export interface EyesLookRight extends globalThis.EnumItem {
+            Name: "EyesLookRight";
+            Value: 40;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const EyesLookRight: EyesLookRight;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftCheekRaiser)
+         */
+        export interface LeftCheekRaiser extends globalThis.EnumItem {
+            Name: "LeftCheekRaiser";
+            Value: 41;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftCheekRaiser: LeftCheekRaiser;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftEyeUpperLidRaiser)
+         */
+        export interface LeftEyeUpperLidRaiser extends globalThis.EnumItem {
+            Name: "LeftEyeUpperLidRaiser";
+            Value: 42;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftEyeUpperLidRaiser: LeftEyeUpperLidRaiser;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftEyeClosed)
+         */
+        export interface LeftEyeClosed extends globalThis.EnumItem {
+            Name: "LeftEyeClosed";
+            Value: 43;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const LeftEyeClosed: LeftEyeClosed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightCheekRaiser)
+         */
+        export interface RightCheekRaiser extends globalThis.EnumItem {
+            Name: "RightCheekRaiser";
+            Value: 44;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightCheekRaiser: RightCheekRaiser;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightEyeUpperLidRaiser)
+         */
+        export interface RightEyeUpperLidRaiser extends globalThis.EnumItem {
+            Name: "RightEyeUpperLidRaiser";
+            Value: 45;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightEyeUpperLidRaiser: RightEyeUpperLidRaiser;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightEyeClosed)
+         */
+        export interface RightEyeClosed extends globalThis.EnumItem {
+            Name: "RightEyeClosed";
+            Value: 46;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const RightEyeClosed: RightEyeClosed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#TongueDown)
+         */
+        export interface TongueDown extends globalThis.EnumItem {
+            Name: "TongueDown";
+            Value: 47;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const TongueDown: TongueDown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#TongueOut)
+         */
+        export interface TongueOut extends globalThis.EnumItem {
+            Name: "TongueOut";
+            Value: 48;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const TongueOut: TongueOut;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#TongueUp)
+         */
+        export interface TongueUp extends globalThis.EnumItem {
+            Name: "TongueUp";
+            Value: 49;
+            EnumType: typeof globalThis.Enum.FacsActionUnit;
+        }
+        export const TongueUp: TongueUp;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FacsActionUnit>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FacsActionUnit | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FacsActionUnit | undefined;
+    }
+    export type FacsActionUnit = FacsActionUnit.ChinRaiserUpperLip | FacsActionUnit.ChinRaiser | FacsActionUnit.FlatPucker | FacsActionUnit.Funneler | FacsActionUnit.LowerLipSuck | FacsActionUnit.LipPresser | FacsActionUnit.LipsTogether | FacsActionUnit.MouthLeft | FacsActionUnit.MouthRight | FacsActionUnit.Pucker | FacsActionUnit.UpperLipSuck | FacsActionUnit.LeftCheekPuff | FacsActionUnit.LeftDimpler | FacsActionUnit.LeftLipCornerDown | FacsActionUnit.LeftLowerLipDepressor | FacsActionUnit.LeftLipCornerPuller | FacsActionUnit.LeftLipStretcher | FacsActionUnit.LeftUpperLipRaiser | FacsActionUnit.RightCheekPuff | FacsActionUnit.RightDimpler | FacsActionUnit.RightLipCornerDown | FacsActionUnit.RightLowerLipDepressor | FacsActionUnit.RightLipCornerPuller | FacsActionUnit.RightLipStretcher | FacsActionUnit.RightUpperLipRaiser | FacsActionUnit.JawDrop | FacsActionUnit.JawLeft | FacsActionUnit.JawRight | FacsActionUnit.Corrugator | FacsActionUnit.LeftBrowLowerer | FacsActionUnit.LeftOuterBrowRaiser | FacsActionUnit.LeftNoseWrinkler | FacsActionUnit.LeftInnerBrowRaiser | FacsActionUnit.RightBrowLowerer | FacsActionUnit.RightOuterBrowRaiser | FacsActionUnit.RightInnerBrowRaiser | FacsActionUnit.RightNoseWrinkler | FacsActionUnit.EyesLookDown | FacsActionUnit.EyesLookLeft | FacsActionUnit.EyesLookUp | FacsActionUnit.EyesLookRight | FacsActionUnit.LeftCheekRaiser | FacsActionUnit.LeftEyeUpperLidRaiser | FacsActionUnit.LeftEyeClosed | FacsActionUnit.RightCheekRaiser | FacsActionUnit.RightEyeUpperLidRaiser | FacsActionUnit.RightEyeClosed | FacsActionUnit.TongueDown | FacsActionUnit.TongueOut | FacsActionUnit.TongueUp;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType)
+     */
+    export namespace FeedRankingScoreType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType#Content)
+         */
+        export interface Content extends globalThis.EnumItem {
+            Name: "Content";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FeedRankingScoreType;
+        }
+        export const Content: Content;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType#Final)
+         */
+        export interface Final extends globalThis.EnumItem {
+            Name: "Final";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FeedRankingScoreType;
+        }
+        export const Final: Final;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType#GameJoin)
+         */
+        export interface GameJoin extends globalThis.EnumItem {
+            Name: "GameJoin";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FeedRankingScoreType;
+        }
+        export const GameJoin: GameJoin;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType#Interaction)
+         */
+        export interface Interaction extends globalThis.EnumItem {
+            Name: "Interaction";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FeedRankingScoreType;
+        }
+        export const Interaction: Interaction;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType#Invalid)
+         */
+        export interface Invalid extends globalThis.EnumItem {
+            Name: "Invalid";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.FeedRankingScoreType;
+        }
+        export const Invalid: Invalid;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType#Sharing)
+         */
+        export interface Sharing extends globalThis.EnumItem {
+            Name: "Sharing";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.FeedRankingScoreType;
+        }
+        export const Sharing: Sharing;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FeedRankingScoreType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FeedRankingScoreType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FeedRankingScoreType | undefined;
+    }
+    export type FeedRankingScoreType = FeedRankingScoreType.Content | FeedRankingScoreType.Final | FeedRankingScoreType.GameJoin | FeedRankingScoreType.Interaction | FeedRankingScoreType.Invalid | FeedRankingScoreType.Sharing;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FieldOfViewMode)
      */
     export namespace FieldOfViewMode {
@@ -12655,10 +13186,14 @@ declare namespace Enum {
     }
     export type HandlesStyle = HandlesStyle.Resize | HandlesStyle.Movement;
     /**
+     * Enum used alongside `HapticEffect.Type`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HapticEffectType)
      */
     export namespace HapticEffectType {
         /**
+         * Allows for application of a custom haptic waveform through the `HapticEffect:SetWaveformKeys()` method.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HapticEffectType#Custom)
          */
         export interface Custom extends globalThis.EnumItem {
@@ -12668,6 +13203,8 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         /**
+         * Useful for when a player browses over an object (often a UI object) without the intention of triggering its action; it can also alert the player that they have browsed over an interactable object. This effect type is subtle and does not disrupt the gameplay experience.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HapticEffectType#UIHover)
          */
         export interface UIHover extends globalThis.EnumItem {
@@ -12677,6 +13214,8 @@ declare namespace Enum {
         }
         export const UIHover: UIHover;
         /**
+         * Useful for when a player has selected an object (often a UI object) with the intention of triggering its action. This effect type is crisp and it provides immediate feedback without being overwhelming.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HapticEffectType#UIClick)
          */
         export interface UIClick extends globalThis.EnumItem {
@@ -12686,6 +13225,8 @@ declare namespace Enum {
         }
         export const UIClick: UIClick;
         /**
+         * Useful for when there is an inbound message that should draw the player's attention away from their current gameplay and prompt them that the notification requires immediate attention or action.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HapticEffectType#UINotification)
          */
         export interface UINotification extends globalThis.EnumItem {
@@ -12695,6 +13236,8 @@ declare namespace Enum {
         }
         export const UINotification: UINotification;
         /**
+         * Useful to signify a large-scale physics event that triggers impact across a large portion of a given scene. This effect is high intensity in order to represent the magnitude of the impact and it lingers for a longer period of time than `GameplayCollision`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HapticEffectType#GameplayExplosion)
          */
         export interface GameplayExplosion extends globalThis.EnumItem {
@@ -12704,6 +13247,8 @@ declare namespace Enum {
         }
         export const GameplayExplosion: GameplayExplosion;
         /**
+         * This effect is a large immediate rumble that dies down quickly, useful to signify a clear and purposeful impact between objects.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HapticEffectType#GameplayCollision)
          */
         export interface GameplayCollision extends globalThis.EnumItem {
@@ -17732,7 +18277,7 @@ declare namespace Enum {
      */
     export namespace LineJoinMode {
         /**
-         * The corners are rounded (see image above).
+         * The corners are rounded. ![](https://prod.docsiteassets.roblox.com/assets/ui/ui-objects/UIStroke-LineJoinMode-Round.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LineJoinMode#Round)
          */
@@ -17743,7 +18288,7 @@ declare namespace Enum {
         }
         export const Round: Round;
         /**
-         * The corners are beveled (see image above).
+         * The corners are beveled. ![](https://prod.docsiteassets.roblox.com/assets/ui/ui-objects/UIStroke-LineJoinMode-Bevel.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LineJoinMode#Bevel)
          */
@@ -17754,7 +18299,7 @@ declare namespace Enum {
         }
         export const Bevel: Bevel;
         /**
-         * The corners are mitered (see image above).
+         * The corners are mitered. ![](https://prod.docsiteassets.roblox.com/assets/ui/ui-objects/UIStroke-LineJoinMode-Miter.png)
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LineJoinMode#Miter)
          */
@@ -24951,11 +25496,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.SecurityCapability;
         }
         export const Players: Players;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#CapabilityControl)
+         */
+        export interface CapabilityControl extends globalThis.EnumItem {
+            Name: "CapabilityControl";
+            Value: 22;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const CapabilityControl: CapabilityControl;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SecurityCapability>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SecurityCapability | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SecurityCapability | undefined;
     }
-    export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics | SecurityCapability.UI | SecurityCapability.CSG | SecurityCapability.Chat | SecurityCapability.Animation | SecurityCapability.Avatar | SecurityCapability.Input | SecurityCapability.Environment | SecurityCapability.RemoteEvent | SecurityCapability.LegacySound | SecurityCapability.Players;
+    export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics | SecurityCapability.UI | SecurityCapability.CSG | SecurityCapability.Chat | SecurityCapability.Animation | SecurityCapability.Avatar | SecurityCapability.Input | SecurityCapability.Environment | SecurityCapability.RemoteEvent | SecurityCapability.LegacySound | SecurityCapability.Players | SecurityCapability.CapabilityControl;
     /**
      * Customization options for gamepad selection when `GuiBase2d.SelectionGroup` is true.
      *
@@ -25701,11 +26255,20 @@ declare namespace Enum {
         }
         export const CFrame: CFrame;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Color3)
+         */
+        export interface Color3 extends globalThis.EnumItem {
+            Name: "Color3";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.StateObjectFieldType;
+        }
+        export const Color3: Color3;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Float)
          */
         export interface Float extends globalThis.EnumItem {
             Name: "Float";
-            Value: 2;
+            Value: 3;
             EnumType: typeof globalThis.Enum.StateObjectFieldType;
         }
         export const Float: Float;
@@ -25714,7 +26277,7 @@ declare namespace Enum {
          */
         export interface Instance extends globalThis.EnumItem {
             Name: "Instance";
-            Value: 3;
+            Value: 4;
             EnumType: typeof globalThis.Enum.StateObjectFieldType;
         }
         export const Instance: Instance;
@@ -25723,7 +26286,7 @@ declare namespace Enum {
          */
         export interface Random extends globalThis.EnumItem {
             Name: "Random";
-            Value: 4;
+            Value: 5;
             EnumType: typeof globalThis.Enum.StateObjectFieldType;
         }
         export const Random: Random;
@@ -25732,7 +26295,7 @@ declare namespace Enum {
          */
         export interface Vector2 extends globalThis.EnumItem {
             Name: "Vector2";
-            Value: 5;
+            Value: 6;
             EnumType: typeof globalThis.Enum.StateObjectFieldType;
         }
         export const Vector2: Vector2;
@@ -25741,7 +26304,7 @@ declare namespace Enum {
          */
         export interface Vector3 extends globalThis.EnumItem {
             Name: "Vector3";
-            Value: 6;
+            Value: 7;
             EnumType: typeof globalThis.Enum.StateObjectFieldType;
         }
         export const Vector3: Vector3;
@@ -25750,7 +26313,7 @@ declare namespace Enum {
          */
         export interface INVALID extends globalThis.EnumItem {
             Name: "INVALID";
-            Value: 7;
+            Value: 8;
             EnumType: typeof globalThis.Enum.StateObjectFieldType;
         }
         export const INVALID: INVALID;
@@ -25758,7 +26321,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StateObjectFieldType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StateObjectFieldType | undefined;
     }
-    export type StateObjectFieldType = StateObjectFieldType.Boolean | StateObjectFieldType.CFrame | StateObjectFieldType.Float | StateObjectFieldType.Instance | StateObjectFieldType.Random | StateObjectFieldType.Vector2 | StateObjectFieldType.Vector3 | StateObjectFieldType.INVALID;
+    export type StateObjectFieldType = StateObjectFieldType.Boolean | StateObjectFieldType.CFrame | StateObjectFieldType.Color3 | StateObjectFieldType.Float | StateObjectFieldType.Instance | StateObjectFieldType.Random | StateObjectFieldType.Vector2 | StateObjectFieldType.Vector3 | StateObjectFieldType.INVALID;
     /**
      * **Deprecated:** This enum is deprecated as it was only used by deprecated methods and events. It should not be used in new work.
      *
