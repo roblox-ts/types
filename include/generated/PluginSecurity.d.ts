@@ -272,6 +272,7 @@ interface CreatableInstances {
     AudioListener: AudioListener;
     AudioPitchShifter: AudioPitchShifter;
     AudioPlayer: AudioPlayer;
+    AudioRecorder: AudioRecorder;
     AudioReverb: AudioReverb;
     AudioSearchParams: AudioSearchParams;
     AudioTextToSpeech: AudioTextToSpeech;
@@ -536,6 +537,7 @@ interface Instances extends Services, CreatableInstances {
     AssetPatchSettings: AssetPatchSettings;
     AssetSoundEffect: AssetSoundEffect;
     AudioPages: AudioPages;
+    AuroraScriptObject: AuroraScriptObject;
     BackpackItem: BackpackItem;
     BanHistoryPages: BanHistoryPages;
     BaseImportData: BaseImportData;
@@ -1741,6 +1743,21 @@ interface AudioPlayer extends Instance {
     readonly _nominal_AudioPlayer: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder)
+ */
+interface AudioRecorder extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioRecorder: unique symbol;
+}
+/**
  * Reverberates audio streams.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioReverb)
@@ -1773,6 +1790,8 @@ interface AudioSearchParams extends Instance {
     readonly _nominal_AudioSearchParams: unique symbol;
 }
 /**
+ * Plays text as speech audio.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech)
@@ -1786,6 +1805,23 @@ interface AudioTextToSpeech extends Instance {
      * @deprecated
      */
     readonly _nominal_AudioTextToSpeech: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptObject)
+ *
+ * @deprecated
+ */
+interface AuroraScriptObject extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AuroraScriptObject: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -1803,12 +1839,6 @@ interface AuroraScriptService extends Instance {
      * @deprecated
      */
     readonly _nominal_AuroraScriptService: unique symbol;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#BufferSize)
-     */
-    set BufferSize(value: number);
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -7451,12 +7481,6 @@ interface AuroraScript extends LuaSourceContainer {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#Source)
      */
     Source: ProtectedString;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#Tag)
-     */
-    set Tag(value: string);
 }
 /**
  * The base class for all script objects which run automatically.

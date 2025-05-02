@@ -254,6 +254,7 @@ interface CreatableInstances {
     AudioListener: AudioListener;
     AudioPitchShifter: AudioPitchShifter;
     AudioPlayer: AudioPlayer;
+    AudioRecorder: AudioRecorder;
     AudioReverb: AudioReverb;
     AudioSearchParams: AudioSearchParams;
     AudioTextToSpeech: AudioTextToSpeech;
@@ -516,6 +517,7 @@ interface Instances extends Services, CreatableInstances {
     AssetPatchSettings: AssetPatchSettings;
     AssetSoundEffect: AssetSoundEffect;
     AudioPages: AudioPages;
+    AuroraScriptObject: AuroraScriptObject;
     BackpackItem: BackpackItem;
     BanHistoryPages: BanHistoryPages;
     BaseImportData: BaseImportData;
@@ -1015,6 +1017,8 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#AddBone)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneProperties
      */
     AddBone(this: EditableMesh, boneProperties: object): number;
     /**
@@ -1148,36 +1152,47 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneByName)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneName
      */
     GetBoneByName(this: EditableMesh, boneName: string): number;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneCFrame)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId
      */
     GetBoneCFrame(this: EditableMesh, boneId: number): CFrame;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneIsVirtual)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId
      */
     GetBoneIsVirtual(this: EditableMesh, boneId: number): boolean;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneName)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId
      */
     GetBoneName(this: EditableMesh, boneId: number): string;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneParent)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId
      */
     GetBoneParent(this: EditableMesh, boneId: number): number;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBones)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
      */
     GetBones(this: EditableMesh): Array<unknown>;
     /**
@@ -1327,24 +1342,30 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacsCorrectivePose)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param actions
      */
     GetFacsCorrectivePose(this: EditableMesh, actions: Array<unknown>): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacsCorrectivePoses)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
      */
     GetFacsCorrectivePoses(this: EditableMesh): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacsPose)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param action
      */
     GetFacsPose(this: EditableMesh, action: CastsToEnum<Enum.FacsActionUnit>): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacsPoses)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
      */
     GetFacsPoses(this: EditableMesh): Array<unknown>;
     /**
@@ -1414,12 +1435,16 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexBoneWeights)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
      */
     GetVertexBoneWeights(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexBones)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
      */
     GetVertexBones(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
@@ -1578,6 +1603,8 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#RemoveBone)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId
      */
     RemoveBone(this: EditableMesh, boneId: number): void;
     /**
@@ -1614,24 +1641,36 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetBoneCFrame)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId
+     * @param cframe
      */
     SetBoneCFrame(this: EditableMesh, boneId: number, cframe: CFrame): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetBoneIsVirtual)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId
+     * @param virtual
      */
     SetBoneIsVirtual(this: EditableMesh, boneId: number, virtual: boolean): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetBoneName)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId
+     * @param name
      */
     SetBoneName(this: EditableMesh, boneId: number, name: string): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetBoneParent)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId
+     * @param parentBoneId
      */
     SetBoneParent(this: EditableMesh, boneId: number, parentBoneId: number): void;
     /**
@@ -1708,18 +1747,30 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetFacsBonePose)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param action
+     * @param boneId
+     * @param cframe
      */
     SetFacsBonePose(this: EditableMesh, action: CastsToEnum<Enum.FacsActionUnit>, boneId: number, cframe: CFrame): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetFacsCorrectivePose)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param actions
+     * @param boneIds
+     * @param cframes
      */
     SetFacsCorrectivePose(this: EditableMesh, actions: Array<unknown>, boneIds: Array<unknown>, cframes: Array<unknown>): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetFacsPose)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param action
+     * @param boneIds
+     * @param cframes
      */
     SetFacsPose(this: EditableMesh, action: CastsToEnum<Enum.FacsActionUnit>, boneIds: Array<unknown>, cframes: Array<unknown>): void;
     /**
@@ -1759,12 +1810,18 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexBoneWeights)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
+     * @param boneWeights
      */
     SetVertexBoneWeights(this: EditableMesh, vertexId: number, boneWeights: Array<unknown>): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexBones)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId
+     * @param boneIDs
      */
     SetVertexBones(this: EditableMesh, vertexId: number, boneIDs: Array<unknown>): void;
     /**
@@ -5792,6 +5849,97 @@ interface AudioPlayer extends Instance {
     readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder)
+ */
+interface AudioRecorder extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioRecorder: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#IsRecording)
+     */
+    get IsRecording(): boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#TimeLength)
+     */
+    readonly TimeLength: number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#Clear)
+     */
+    Clear(this: AudioRecorder): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetConnectedWires)
+     */
+    GetConnectedWires(this: AudioRecorder, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetInputPins)
+     */
+    GetInputPins(this: AudioRecorder): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetOutputPins)
+     */
+    GetOutputPins(this: AudioRecorder): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetTemporaryContent)
+     */
+    GetTemporaryContent(this: AudioRecorder): Content;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#Stop)
+     */
+    Stop(this: AudioRecorder): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#CanRecordAsync)
+     */
+    CanRecordAsync(this: AudioRecorder): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetUnrecordableInstancesAsync)
+     */
+    GetUnrecordableInstancesAsync(this: AudioRecorder): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#RecordAsync)
+     */
+    RecordAsync(this: AudioRecorder): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#WiringChanged)
+     */
+    readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
+}
+/**
  * Reverberates audio streams.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioReverb)
@@ -6035,6 +6183,8 @@ interface AudioSearchParams extends Instance {
     Title: string;
 }
 /**
+ * Plays text as speech audio.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech)
@@ -6049,6 +6199,8 @@ interface AudioTextToSpeech extends Instance {
      */
     readonly _nominal_AudioTextToSpeech: unique symbol;
     /**
+     * Denotes whether the `AudioTextToSpeech` object is loaded, buffered, and ready to play.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -6056,42 +6208,56 @@ interface AudioTextToSpeech extends Instance {
      */
     readonly IsLoaded: boolean;
     /**
+     * Denotes whether the `AudioTextToSpeech` object is currently playing.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#IsPlaying)
      */
     get IsPlaying(): boolean;
     /**
+     * Controls whether the `AudioTextToSpeech` object loops.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Looping)
      */
     Looping: boolean;
     /**
+     * Controls the pitch of the generated speech audio, which will be independent of its speed.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Pitch)
      */
     Pitch: number;
     /**
+     * Controls how quickly the speech audio will be played, which controls its pitch.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#PlaybackSpeed)
      */
     PlaybackSpeed: number;
     /**
+     * Controls the speed of the generated speech audio, which will be independent of its pitch.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Speed)
      */
     Speed: number;
     /**
+     * The text to be converted into speech audio by `AudioTextToSpeech`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Text)
      */
     Text: string;
     /**
+     * Denotes the length of the generated speech audio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -6099,50 +6265,64 @@ interface AudioTextToSpeech extends Instance {
      */
     readonly TimeLength: number;
     /**
+     * Tracks the current position of the playhead within the generated speech audio.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#TimePosition)
      */
     TimePosition: number;
     /**
+     * The voice style to be used by `AudioTextToSpeech`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#VoiceId)
      */
     VoiceId: string;
     /**
+     * Controls how loudly the generated speech audio will be played.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Volume)
      */
     Volume: number;
     /**
+     * Returns an array of `Wires` that are connected to the specified pin.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#GetConnectedWires)
-     * @param this
+     * @param this Plays text as speech audio.
      * @param pin
      */
     GetConnectedWires(this: AudioTextToSpeech, pin: string): Array<Instance>;
     /**
+     * Pauses the `AudioTextToSpeech` object wherever its `TimePosition` is.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Pause)
-     * @param this
+     * @param this Plays text as speech audio.
      */
     Pause(this: AudioTextToSpeech): void;
     /**
+     * Plays the `AudioTextToSpeech` from wherever its `TimePosition` is.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Play)
-     * @param this
+     * @param this Plays text as speech audio.
      */
     Play(this: AudioTextToSpeech): void;
     /**
+     * Unload the generated speech audio.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Unload)
-     * @param this
+     * @param this Plays text as speech audio.
      */
     Unload(this: AudioTextToSpeech): void;
     /**
@@ -6150,37 +6330,62 @@ interface AudioTextToSpeech extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#GetWaveformAsync)
-     * @param this
+     * @param this Plays text as speech audio.
      * @param timeRange
      * @param samples
      */
     GetWaveformAsync(this: AudioTextToSpeech, timeRange: NumberRange, samples: number): Array<unknown>;
     /**
+     * Generates speech audio.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#LoadAsync)
-     * @param this
+     * @param this Plays text as speech audio.
      */
     LoadAsync(this: AudioTextToSpeech): Enum.AssetFetchStatus;
     /**
+     * Fires when the `AudioTextToSpeech` object has completed playback and paused.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Ended)
      */
     readonly Ended: RBXScriptSignal<() => void>;
     /**
+     * Fires when the `AudioTextToSpeech` object loops.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#Looped)
      */
     readonly Looped: RBXScriptSignal<() => void>;
     /**
+     * Fires when another instance is connected to or disconnected from the `AudioTextToSpeech` via a `Wire`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#WiringChanged)
      */
     readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptObject)
+ *
+ * @deprecated
+ */
+interface AuroraScriptObject extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AuroraScriptObject: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -6199,12 +6404,6 @@ interface AuroraScriptService extends Instance {
      */
     readonly _nominal_AuroraScriptService: unique symbol;
     /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#BufferSize)
-     */
-    get BufferSize(): number;
-    /**
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#GetLocalFrameId)
@@ -6213,27 +6412,9 @@ interface AuroraScriptService extends Instance {
     /**
      * - **ThreadSafety**: Safe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#GetProperty)
-     */
-    GetProperty(this: AuroraScriptService, instance: Instance, name: string): unknown;
-    /**
-     * - **ThreadSafety**: Safe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#GetTime)
-     */
-    GetTime(this: AuroraScriptService): number;
-    /**
-     * - **ThreadSafety**: Safe
-     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#SendMessage)
      */
     SendMessage(this: AuroraScriptService, instance: Instance, behaviorName: string, functionName: string, args: unknown): void;
-    /**
-     * - **ThreadSafety**: Safe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#SetProperty)
-     */
-    SetProperty(this: AuroraScriptService, instance: Instance, name: string, value: unknown): void;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -6323,6 +6504,12 @@ interface AuroraService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#FixedRateTick)
      */
     readonly FixedRateTick: RBXScriptSignal<(deltaTime: number, worldStepId: number) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#Misprediction)
+     */
+    readonly Misprediction: RBXScriptSignal<(worldStepId: number, mispredictedInstances: Array<unknown>) => void>;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -10220,12 +10407,17 @@ interface ConfigService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigService#ClearTestingValue)
+     * @param this
+     * @param key
      */
     ClearTestingValue(this: ConfigService, key: string): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigService#SetTestingValue)
+     * @param this
+     * @param key
+     * @param value
      */
     SetTestingValue(this: ConfigService, key: string, value: unknown): void;
     /**
@@ -11095,6 +11287,12 @@ interface LinearVelocity extends Constraint {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LinearVelocity#PrimaryTangentAxis)
      */
     PrimaryTangentAxis: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LinearVelocity#ReactionForceEnabled)
+     */
+    ReactionForceEnabled: boolean;
     /**
      * Sets the `ActuatorRelativeTo` property for the `LinearVelocity` constraint.
      *
@@ -14759,6 +14957,8 @@ interface FeedService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedService#BatchRemoveFeedItemsAsync)
+     * @param this
+     * @param feedItemIds
      */
     BatchRemoveFeedItemsAsync(this: FeedService, feedItemIds: Array<unknown>): void;
     /**
@@ -14766,6 +14966,8 @@ interface FeedService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedService#GetFeedItemsAsync)
+     * @param this
+     * @param getFeedRequest
      */
     GetFeedItemsAsync(this: FeedService, getFeedRequest: object): FeedPages;
     /**
@@ -14773,6 +14975,8 @@ interface FeedService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedService#RegisterFeedItemsAsync)
+     * @param this
+     * @param registerFeedItemsRequest
      */
     RegisterFeedItemsAsync(this: FeedService, registerFeedItemsRequest: object): object;
 }
@@ -23698,6 +23902,8 @@ interface LanguageService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LanguageService#GetCapabilitiesUsedInPackageAsync)
+     * @param this
+     * @param instances
      */
     GetCapabilitiesUsedInPackageAsync(this: LanguageService, instances: Array<Instance>): object;
 }
@@ -24643,12 +24849,6 @@ interface AuroraScript extends LuaSourceContainer {
      * @deprecated
      */
     readonly _nominal_AuroraScript: unique symbol;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#Tag)
-     */
-    get Tag(): string;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -33385,6 +33585,24 @@ interface ReflectionService extends Instance {
      * @deprecated
      */
     readonly _nominal_ReflectionService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService#GetClass)
+     */
+    GetClass(this: ReflectionService, className: string, filter?: object): object | undefined;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService#GetClasses)
+     */
+    GetClasses(this: ReflectionService, filter?: object): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService#GetPropertiesOfClass)
+     */
+    GetPropertiesOfClass(this: ReflectionService, className: string, filter?: object): Array<unknown>;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -35069,6 +35287,12 @@ interface Sky extends Instance {
      */
     SkyboxLf: ContentId;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sky#SkyboxOrientation)
+     */
+    SkyboxOrientation: Vector3;
+    /**
      * Asset ID for the right surface of the skybox.
      *
      * - **ThreadSafety**: ReadSafe
@@ -36461,6 +36685,12 @@ interface StarterPlayer extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterPlayer#CharacterWalkSpeed)
      */
     CharacterWalkSpeed: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterPlayer#ClassicDeath)
+     */
+    ClassicDeath: boolean;
     /**
      * Sets how the default camera handles objects between the camera and the player.
      *
