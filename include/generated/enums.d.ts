@@ -10806,20 +10806,11 @@ declare namespace Enum {
         }
         export const Interaction: Interaction;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType#Invalid)
-         */
-        export interface Invalid extends globalThis.EnumItem {
-            Name: "Invalid";
-            Value: 4;
-            EnumType: typeof globalThis.Enum.FeedRankingScoreType;
-        }
-        export const Invalid: Invalid;
-        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType#Sharing)
          */
         export interface Sharing extends globalThis.EnumItem {
             Name: "Sharing";
-            Value: 5;
+            Value: 4;
             EnumType: typeof globalThis.Enum.FeedRankingScoreType;
         }
         export const Sharing: Sharing;
@@ -10827,7 +10818,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FeedRankingScoreType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FeedRankingScoreType | undefined;
     }
-    export type FeedRankingScoreType = FeedRankingScoreType.Content | FeedRankingScoreType.Final | FeedRankingScoreType.GameJoin | FeedRankingScoreType.Interaction | FeedRankingScoreType.Invalid | FeedRankingScoreType.Sharing;
+    export type FeedRankingScoreType = FeedRankingScoreType.Content | FeedRankingScoreType.Final | FeedRankingScoreType.GameJoin | FeedRankingScoreType.Interaction | FeedRankingScoreType.Sharing;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FieldOfViewMode)
      */
@@ -14607,14 +14598,14 @@ declare namespace Enum {
         }
         export const Bool: Bool;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Float)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Direction1D)
          */
-        export interface Float extends globalThis.EnumItem {
-            Name: "Float";
+        export interface Direction1D extends globalThis.EnumItem {
+            Name: "Direction1D";
             Value: 1;
             EnumType: typeof globalThis.Enum.InputActionType;
         }
-        export const Float: Float;
+        export const Direction1D: Direction1D;
         /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Direction2D)
          */
@@ -14628,7 +14619,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.InputActionType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InputActionType | undefined;
     }
-    export type InputActionType = InputActionType.Bool | InputActionType.Float | InputActionType.Direction2D;
+    export type InputActionType = InputActionType.Bool | InputActionType.Direction1D | InputActionType.Direction2D;
     /**
      * The InputType Enum controls the SurfaceInputs of `Part`.
      *
