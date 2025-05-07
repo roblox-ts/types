@@ -26,6 +26,7 @@ interface Services {
     AvatarEditorService: AvatarEditorService;
     AvatarImportService: AvatarImportService;
     AvatarPreloader: AvatarPreloader;
+    AvatarSettings: AvatarSettings;
     BadgeService: BadgeService;
     BugReporterService: BugReporterService;
     BulkImportService: BulkImportService;
@@ -259,6 +260,12 @@ interface CreatableInstances {
     AudioSearchParams: AudioSearchParams;
     AudioTextToSpeech: AudioTextToSpeech;
     AuroraScript: AuroraScript;
+    AvatarAccessoryRules: AvatarAccessoryRules;
+    AvatarAnimationRules: AvatarAnimationRules;
+    AvatarBodyRules: AvatarBodyRules;
+    AvatarClothingRules: AvatarClothingRules;
+    AvatarCollisionRules: AvatarCollisionRules;
+    AvatarRules: AvatarRules;
     Backpack: Backpack;
     BallSocketConstraint: BallSocketConstraint;
     Beam: Beam;
@@ -1009,8 +1016,11 @@ interface EditableMesh extends RBXObject {
     get FixedSize(): boolean;
     /**
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SkinningEnabled)
+     *
+     * @deprecated
      */
     SkinningEnabled: boolean;
     /**
@@ -3273,8 +3283,8 @@ interface AnimationTrack extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#GetMarkerReachedSignal)
      * @param this Controls the playback of an animation on an `Animator`.
-     * @param name The name of the `KeyFrameMarker` the signal is being created for.
-     * @returns The signal created and fired when the animation reaches the created `KeyFrameMarker`.
+     * @param name The name of the `KeyframeMarker` the signal is being created for. Not to be confused with the name of the `Keyframe`.
+     * @returns The signal created and fired when the animation reaches the created `KeyframeMarker`. Not to be confused with the name of the `Keyframe`.
      */
     GetMarkerReachedSignal(this: AnimationTrack, name: string): RBXScriptSignal<(param?: string) => void>;
     /**
@@ -6386,6 +6396,12 @@ interface AuroraScriptObject extends Instance {
      * @deprecated
      */
     readonly _nominal_AuroraScriptObject: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptObject#FrameId)
+     */
+    FrameId: number;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -6524,6 +6540,45 @@ interface AuroraService extends Instance {
     readonly Step: RBXScriptSignal<() => void>;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules)
+ */
+interface AvatarAccessoryRules extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AvatarAccessoryRules: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAnimationRules)
+ */
+interface AvatarAnimationRules extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AvatarAnimationRules: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules)
+ */
+interface AvatarBodyRules extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AvatarBodyRules: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarChatService)
@@ -6537,6 +6592,32 @@ interface AvatarChatService extends Instance {
      * @deprecated
      */
     readonly _nominal_AvatarChatService: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules)
+ */
+interface AvatarClothingRules extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AvatarClothingRules: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCollisionRules)
+ */
+interface AvatarCollisionRules extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AvatarCollisionRules: unique symbol;
 }
 /**
  * A service to support developer avatar creators.
@@ -7040,6 +7121,34 @@ interface AvatarPreloader extends Instance {
      * @deprecated
      */
     readonly _nominal_AvatarPreloader: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarRules)
+ */
+interface AvatarRules extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AvatarRules: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarSettings)
+ */
+interface AvatarSettings extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AvatarSettings: unique symbol;
 }
 /**
  * A container object that holds a player's inventory. Any `Tool` in a player's Backpack will be displayed in their inventory at the bottom of their screen.
@@ -13129,24 +13238,29 @@ interface CustomLog extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CustomLog#Close)
+     * @param this
      */
     Close(this: CustomLog): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CustomLog#GetLogPath)
+     * @param this
      */
     GetLogPath(this: CustomLog): string;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CustomLog#Open)
+     * @param this
      */
     Open(this: CustomLog): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CustomLog#WriteAppend)
+     * @param this
+     * @param append
      */
     WriteAppend(this: CustomLog, append: string): void;
 }
@@ -14957,8 +15071,6 @@ interface FeedService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedService#BatchRemoveFeedItemsAsync)
-     * @param this
-     * @param feedItemIds
      */
     BatchRemoveFeedItemsAsync(this: FeedService, feedItemIds: Array<unknown>): void;
     /**
@@ -14966,8 +15078,6 @@ interface FeedService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedService#GetFeedItemsAsync)
-     * @param this
-     * @param getFeedRequest
      */
     GetFeedItemsAsync(this: FeedService, getFeedRequest: object): FeedPages;
     /**
@@ -14975,8 +15085,6 @@ interface FeedService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedService#RegisterFeedItemsAsync)
-     * @param this
-     * @param registerFeedItemsRequest
      */
     RegisterFeedItemsAsync(this: FeedService, registerFeedItemsRequest: object): object;
 }
@@ -23902,8 +24010,6 @@ interface LanguageService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LanguageService#GetCapabilitiesUsedInPackageAsync)
-     * @param this
-     * @param instances
      */
     GetCapabilitiesUsedInPackageAsync(this: LanguageService, instances: Array<Instance>): object;
 }
@@ -26499,7 +26605,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the first parameter for the SurfaceType on the Back face of a part (+Z direction).
+     * Determines the first parameter for the SurfaceType on the Back face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -26512,7 +26618,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the second parameter for the SurfaceType on the Back face of a part (+Z direction).
+     * Determines the second parameter for the SurfaceType on the Back face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -26523,7 +26629,7 @@ interface BasePart extends PVInstance {
      */
     BackParamB: number;
     /**
-     * Determines the type of surface for the Back face of a part (+Z direction).
+     * Determines the type of surface for the back face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -26533,7 +26639,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the kind of input for the Back face of a part (+Z direction).
+     * Determines the kind of input for the Back face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -26546,7 +26652,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the first parameter for the SurfaceType on the Bottom face of a part (-Y direction).
+     * Determines the first parameter for the SurfaceType on the Bottom face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -26559,7 +26665,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the second parameter for the SurfaceType on the Bottom face of a part (-Y direction).
+     * Determines the second parameter for the SurfaceType on the Bottom face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -26570,7 +26676,7 @@ interface BasePart extends PVInstance {
      */
     BottomParamB: number;
     /**
-     * Determines the type of surface for the Bottom face of a part (-Y direction).
+     * Determines the type of surface for the bottom face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -26580,7 +26686,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the kind of input for the Bottom face of a part (-Y direction).
+     * Determines the kind of input for the Bottom face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -26751,7 +26857,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the first parameter for the SurfaceType on the Front face of a part (-Z direction).
+     * Determines the first parameter for the SurfaceType on the Front face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -26764,7 +26870,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the second parameter for the SurfaceType on the Front face of a part (-Z direction).
+     * Determines the second parameter for the SurfaceType on the Front face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -26775,7 +26881,7 @@ interface BasePart extends PVInstance {
      */
     FrontParamB: number;
     /**
-     * Determines the type of surface for the Front face of a part (-Z direction).
+     * Determines the type of surface for the front face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -26798,7 +26904,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the first parameter for the SurfaceType on the Left face of a part (-Z direction).
+     * Determines the first parameter for the SurfaceType on the Left face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -26811,7 +26917,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the second parameter for the SurfaceType on the Left face of a part (-Z direction).
+     * Determines the second parameter for the SurfaceType on the Left face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -26822,7 +26928,7 @@ interface BasePart extends PVInstance {
      */
     LeftParamB: number;
     /**
-     * Determines the type of surface for the Left face of a part (-X direction).
+     * Determines the type of surface for the left face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -26832,7 +26938,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the kind of input for the Left face of a part (+X direction).
+     * Determines the kind of input for the Left face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -26937,7 +27043,7 @@ interface BasePart extends PVInstance {
      */
     Reflectance: number;
     /**
-     * Describes the smallest change in size allowable by the Resize method.
+     * Describes the smallest change in size allowable by the `Resize()` method.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -26957,7 +27063,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the first parameter for the SurfaceType on the Right face of a part (-X direction).
+     * Determines the first parameter for the SurfaceType on the Right face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -26970,7 +27076,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the second parameter for the SurfaceType on the Right face of a part (-X direction).
+     * Determines the second parameter for the SurfaceType on the Right face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -26981,7 +27087,7 @@ interface BasePart extends PVInstance {
      */
     RightParamB: number;
     /**
-     * Determines the type of surface for the Right face of a part (+X direction).
+     * Determines the type of surface for the right face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -27056,7 +27162,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the first parameter for the SurfaceType on the Top face of a part (+Y direction).
+     * Determines the first parameter for the SurfaceType on the Top face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -27069,7 +27175,7 @@ interface BasePart extends PVInstance {
     /**
      * **Deprecated:**
      *
-     * Determines the second parameter for the SurfaceType on the Top face of a part (+Y direction).
+     * Determines the second parameter for the SurfaceType on the Top face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -27080,7 +27186,7 @@ interface BasePart extends PVInstance {
      */
     TopParamB: number;
     /**
-     * Determines the type of surface for the Top face of a part (+Y direction).
+     * Determines the type of surface for the top face of a part.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -31969,7 +32075,7 @@ interface Player extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#RequestStreamAroundAsync)
      * @param this An object that represents a presently connected client to the game.
      * @param position World location where streaming is requested.
-     * @param timeOut Optional timeout for the request.
+     * @param timeOut Optional timeout for the request, the maximum duration that the engine attempts to stream regions around the `position` parameter before abandoning the request. If you don't specify a value, the timeout is effectively infinite. However, if the client is low on memory, the engine abandons all streaming requests, even those that are still within the timeout duration.
      */
     RequestStreamAroundAsync(this: Player, position: Vector3, timeOut?: number): void;
     /**
@@ -37069,18 +37175,21 @@ interface Stats extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Stats#GetHarmonyQualityLevel)
+     * @param this Performance metrics for a game.
      */
     GetHarmonyQualityLevel(this: Stats): number;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Stats#GetMemoryCategoryNames)
+     * @param this Performance metrics for a game.
      */
     GetMemoryCategoryNames(this: Stats): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Stats#GetMemoryUsageMbAllCategories)
+     * @param this Performance metrics for a game.
      */
     GetMemoryUsageMbAllCategories(this: Stats): Array<unknown>;
     /**
@@ -37106,12 +37215,15 @@ interface Stats extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Stats#ResetHarmonyMemoryTarget)
+     * @param this Performance metrics for a game.
      */
     ResetHarmonyMemoryTarget(this: Stats): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Stats#SetHarmonyMemoryTarget)
+     * @param this Performance metrics for a game.
+     * @param targetMB
      */
     SetHarmonyMemoryTarget(this: Stats, targetMB: number): void;
 }
@@ -37508,6 +37620,12 @@ interface StyleDerive extends Instance {
      * @deprecated
      */
     readonly _nominal_StyleDerive: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleDerive#Priority)
+     */
+    Priority: number;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -38262,7 +38380,7 @@ interface TestService extends Instance {
      */
     ExecuteWithStudioRun: boolean;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This has been deprecated and directly renamed to `ThrottlePhysicsToRealtime` to better reflect its practical use.
      *
      * Sets whether or not the physics engine should be throttled to 30 FPS while the test is being ran.
      *
@@ -38316,6 +38434,8 @@ interface TestService extends Instance {
      */
     readonly TestCount: number;
     /**
+     * Sets whether the test should be throttled to simulate time according to real world time or as fast as possible.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#ThrottlePhysicsToRealtime)
