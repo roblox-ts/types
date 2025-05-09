@@ -2964,15 +2964,6 @@ declare namespace Enum {
     }
     export type AudioApiRollout = AudioApiRollout.Disabled | AudioApiRollout.Automatic | AudioApiRollout.Enabled;
     /**
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioCaptureMode)
-     */
-    export namespace AudioCaptureMode {
-        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioCaptureMode>;
-        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AudioCaptureMode | undefined;
-        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioCaptureMode | undefined;
-    }
-    export type AudioCaptureMode = ;
-    /**
      * Describes the channel layout of an audio stream.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioChannelLayout)
