@@ -9,7 +9,8 @@
 		"build": "tsc && node out/index.js",
 		"eslint-src": "npx eslint \"src/**/*.ts\" --max-warnings 0",
 		"eslint-include": "npx eslint \"include/*.ts\" --max-warnings 0",
-		"eslint": "npm run eslint-src && npm run eslint-include"
+		"eslint": "npm run eslint-src && npm run eslint-include",
+		"check": "tsc include/**/*.d.ts --noEmit --skipLibCheck"
 	},
 	"main": "include/roblox.d.ts",
 	"types": "include/roblox.d.ts",
