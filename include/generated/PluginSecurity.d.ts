@@ -362,6 +362,7 @@ interface CreatableInstances {
     Glue: Glue;
     GroundController: GroundController;
     Handles: Handles;
+    HandRigDescription: HandRigDescription;
     HapticEffect: HapticEffect;
     Hat: Hat;
     HiddenSurfaceRemovalAsset: HiddenSurfaceRemovalAsset;
@@ -743,6 +744,7 @@ interface Objects extends Instances {
     EditableMesh: EditableMesh;
     Object: RBXObject;
     ScreenshotCapture: ScreenshotCapture;
+    VideoCapture: VideoCapture;
 }
 // GENERATED ROBLOX INSTANCE CLASSES
 /**
@@ -791,6 +793,21 @@ interface ScreenshotCapture extends Capture {
      * @deprecated
      */
     readonly _nominal_ScreenshotCapture: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoCapture)
+ */
+interface VideoCapture extends Capture {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_VideoCapture: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -6473,6 +6490,19 @@ interface GuiService extends Instance {
     readonly _nominal_GuiService: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription)
+ */
+interface HandRigDescription extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_HandRigDescription: unique symbol;
+}
+/**
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect)
@@ -6661,6 +6691,8 @@ interface HumanoidDescription extends Instance {
     readonly _nominal_HumanoidDescription: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription)
  */
 interface HumanoidRigDescription extends Instance {
@@ -7809,6 +7841,12 @@ interface MaterialVariant extends Instance {
      */
     ColorMap: ContentId;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#ColorMapContent)
+     */
+    ColorMapContent: Content;
+    /**
      * Determines which parts of the surface are metal and are non-metal.
      *
      * - **ThreadSafety**: ReadSafe
@@ -7816,6 +7854,12 @@ interface MaterialVariant extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#MetalnessMap)
      */
     MetalnessMap: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#MetalnessMapContent)
+     */
+    MetalnessMapContent: Content;
     /**
      * Modifies the lighting of the surface by adding bumps, dents, cracks, and curves without adding more polygons.
      *
@@ -7825,6 +7869,12 @@ interface MaterialVariant extends Instance {
      */
     NormalMap: ContentId;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#NormalMapContent)
+     */
+    NormalMapContent: Content;
+    /**
      * Determines the apparent roughness across the surface.
      *
      * - **ThreadSafety**: ReadSafe
@@ -7832,6 +7882,12 @@ interface MaterialVariant extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#RoughnessMap)
      */
     RoughnessMap: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#RoughnessMapContent)
+     */
+    RoughnessMapContent: Content;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated

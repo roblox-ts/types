@@ -344,6 +344,7 @@ interface CreatableInstances {
     Glue: Glue;
     GroundController: GroundController;
     Handles: Handles;
+    HandRigDescription: HandRigDescription;
     HapticEffect: HapticEffect;
     Hat: Hat;
     HiddenSurfaceRemovalAsset: HiddenSurfaceRemovalAsset;
@@ -691,6 +692,7 @@ interface Objects extends Instances {
     EditableMesh: EditableMesh;
     Object: RBXObject;
     ScreenshotCapture: ScreenshotCapture;
+    VideoCapture: VideoCapture;
 }
 // GENERATED ROBLOX INSTANCE CLASSES
 /**
@@ -779,6 +781,21 @@ interface ScreenshotCapture extends Capture {
      * @deprecated
      */
     readonly _nominal_ScreenshotCapture: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoCapture)
+ */
+interface VideoCapture extends Capture {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_VideoCapture: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -1015,6 +1032,8 @@ interface EditableMesh extends RBXObject {
      */
     get FixedSize(): boolean;
     /**
+     * **Deprecated:**
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**:
      *
@@ -1027,8 +1046,6 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#AddBone)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param boneProperties
      */
     AddBone(this: EditableMesh, boneProperties: object): number;
     /**
@@ -1162,47 +1179,36 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneByName)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param boneName
      */
     GetBoneByName(this: EditableMesh, boneName: string): number;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneCFrame)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param boneId
      */
     GetBoneCFrame(this: EditableMesh, boneId: number): CFrame;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneIsVirtual)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param boneId
      */
     GetBoneIsVirtual(this: EditableMesh, boneId: number): boolean;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneName)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param boneId
      */
     GetBoneName(this: EditableMesh, boneId: number): string;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneParent)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param boneId
      */
     GetBoneParent(this: EditableMesh, boneId: number): number;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBones)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
      */
     GetBones(this: EditableMesh): Array<unknown>;
     /**
@@ -1326,8 +1332,6 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacesWithColor)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param colorId
      */
     GetFacesWithColor(this: EditableMesh, colorId: number): Array<unknown>;
     /**
@@ -1335,8 +1339,6 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacesWithNormal)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param normalId
      */
     GetFacesWithNormal(this: EditableMesh, normalId: number): Array<unknown>;
     /**
@@ -1344,38 +1346,30 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacesWithUV)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param uvId
      */
     GetFacesWithUV(this: EditableMesh, uvId: number): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacsCorrectivePose)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param actions
      */
     GetFacsCorrectivePose(this: EditableMesh, actions: Array<unknown>): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacsCorrectivePoses)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
      */
     GetFacsCorrectivePoses(this: EditableMesh): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacsPose)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param action
      */
     GetFacsPose(this: EditableMesh, action: CastsToEnum<Enum.FacsActionUnit>): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacsPoses)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
      */
     GetFacsPoses(this: EditableMesh): Array<unknown>;
     /**
@@ -1445,16 +1439,12 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexBoneWeights)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
      */
     GetVertexBoneWeights(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexBones)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
      */
     GetVertexBones(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
@@ -1462,35 +1452,24 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexColors)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
      */
     GetVertexColors(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaceColor)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
-     * @param faceId
      */
     GetVertexFaceColor(this: EditableMesh, vertexId: number, faceId: number): number;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaceNormal)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
-     * @param faceId
      */
     GetVertexFaceNormal(this: EditableMesh, vertexId: number, faceId: number): number;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaceUV)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
-     * @param faceId
      */
     GetVertexFaceUV(this: EditableMesh, vertexId: number, faceId: number): number;
     /**
@@ -1498,8 +1477,6 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaces)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
      */
     GetVertexFaces(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
@@ -1507,8 +1484,6 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexNormals)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
      */
     GetVertexNormals(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
@@ -1516,8 +1491,6 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexUVs)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
      */
     GetVertexUVs(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
@@ -1551,8 +1524,6 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVerticesWithColor)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param colorId
      */
     GetVerticesWithColor(this: EditableMesh, colorId: number): Array<unknown>;
     /**
@@ -1560,8 +1531,6 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVerticesWithNormal)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param normalId
      */
     GetVerticesWithNormal(this: EditableMesh, normalId: number): Array<unknown>;
     /**
@@ -1569,8 +1538,6 @@ interface EditableMesh extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVerticesWithUV)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param uvId
      */
     GetVerticesWithUV(this: EditableMesh, uvId: number): Array<unknown>;
     /**
@@ -1613,8 +1580,6 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#RemoveBone)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param boneId
      */
     RemoveBone(this: EditableMesh, boneId: number): void;
     /**
@@ -1651,36 +1616,24 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetBoneCFrame)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param boneId
-     * @param cframe
      */
     SetBoneCFrame(this: EditableMesh, boneId: number, cframe: CFrame): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetBoneIsVirtual)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param boneId
-     * @param virtual
      */
     SetBoneIsVirtual(this: EditableMesh, boneId: number, virtual: boolean): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetBoneName)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param boneId
-     * @param name
      */
     SetBoneName(this: EditableMesh, boneId: number, name: string): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetBoneParent)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param boneId
-     * @param parentBoneId
      */
     SetBoneParent(this: EditableMesh, boneId: number, parentBoneId: number): void;
     /**
@@ -1757,30 +1710,18 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetFacsBonePose)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param action
-     * @param boneId
-     * @param cframe
      */
     SetFacsBonePose(this: EditableMesh, action: CastsToEnum<Enum.FacsActionUnit>, boneId: number, cframe: CFrame): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetFacsCorrectivePose)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param actions
-     * @param boneIds
-     * @param cframes
      */
     SetFacsCorrectivePose(this: EditableMesh, actions: Array<unknown>, boneIds: Array<unknown>, cframes: Array<unknown>): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetFacsPose)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param action
-     * @param boneIds
-     * @param cframes
      */
     SetFacsPose(this: EditableMesh, action: CastsToEnum<Enum.FacsActionUnit>, boneIds: Array<unknown>, cframes: Array<unknown>): void;
     /**
@@ -1820,48 +1761,30 @@ interface EditableMesh extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexBoneWeights)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
-     * @param boneWeights
      */
     SetVertexBoneWeights(this: EditableMesh, vertexId: number, boneWeights: Array<unknown>): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexBones)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
-     * @param boneIDs
      */
     SetVertexBones(this: EditableMesh, vertexId: number, boneIDs: Array<unknown>): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexFaceColor)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
-     * @param faceId
-     * @param colorId
      */
     SetVertexFaceColor(this: EditableMesh, vertexId: number, faceId: number, colorId: number): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexFaceNormal)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
-     * @param faceId
-     * @param normalId
      */
     SetVertexFaceNormal(this: EditableMesh, vertexId: number, faceId: number, normalId: number): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexFaceUV)
-     * @param this Instance which allows for the runtime creation and manipulation of meshes.
-     * @param vertexId
-     * @param faceId
-     * @param uvId
      */
     SetVertexFaceUV(this: EditableMesh, vertexId: number, faceId: number, uvId: number): void;
     /**
@@ -4967,6 +4890,8 @@ interface AudioEmitter extends Instance {
      */
     AudioInteractionGroup: string;
     /**
+     * Controls how detailed the audio simulation should be for this `AudioEmitter`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#SimulationFidelity)
@@ -5499,6 +5424,8 @@ interface AudioListener extends Instance {
      */
     AudioInteractionGroup: string;
     /**
+     * Controls how detailed the audio simulation should be for this `AudioListener`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#SimulationFidelity)
@@ -5889,36 +5816,43 @@ interface AudioRecorder extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#Clear)
+     * @param this
      */
     Clear(this: AudioRecorder): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetConnectedWires)
+     * @param this
+     * @param pin
      */
     GetConnectedWires(this: AudioRecorder, pin: string): Array<Instance>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetInputPins)
+     * @param this
      */
     GetInputPins(this: AudioRecorder): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetOutputPins)
+     * @param this
      */
     GetOutputPins(this: AudioRecorder): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetTemporaryContent)
+     * @param this
      */
     GetTemporaryContent(this: AudioRecorder): Content;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#Stop)
+     * @param this
      */
     Stop(this: AudioRecorder): void;
     /**
@@ -5926,6 +5860,7 @@ interface AudioRecorder extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#CanRecordAsync)
+     * @param this
      */
     CanRecordAsync(this: AudioRecorder): boolean;
     /**
@@ -5933,6 +5868,7 @@ interface AudioRecorder extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetUnrecordableInstancesAsync)
+     * @param this
      */
     GetUnrecordableInstancesAsync(this: AudioRecorder): Array<Instance>;
     /**
@@ -5940,6 +5876,7 @@ interface AudioRecorder extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#RecordAsync)
+     * @param this
      */
     RecordAsync(this: AudioRecorder): void;
     /**
@@ -6448,6 +6385,24 @@ interface AuroraService extends Instance {
      * @deprecated
      */
     readonly _nominal_AuroraService: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#HashRoundingPoint)
+     */
+    HashRoundingPoint: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#IgnoreRotation)
+     */
+    IgnoreRotation: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#RollbackOffset)
+     */
+    RollbackOffset: number;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -9201,12 +9156,25 @@ interface CaptureService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StopVideoCapture)
+     */
+    StopVideoCapture(this: CaptureService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#TakeCapture)
      * @param this A service which provides control over screenshot capture features.
      * @param onCaptureReady
      * @param captureParams
      */
     TakeCapture(this: CaptureService, onCaptureReady: Callback, captureParams?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StartVideoCaptureAsync)
+     */
+    StartVideoCaptureAsync(this: CaptureService, onCaptureReady: Callback, captureParams?: object): Enum.VideoCaptureResult;
     /**
      * Fires immediately before a capture begins.
      *
@@ -20117,6 +20085,265 @@ interface GuiService extends Instance {
     readonly MenuOpened: RBXScriptSignal<() => void>;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription)
+ */
+interface HandRigDescription extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_HandRigDescription: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Index1)
+     */
+    Index1: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Index1TposeAdjustment)
+     */
+    Index1TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Index2)
+     */
+    Index2: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Index2TposeAdjustment)
+     */
+    Index2TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Index3)
+     */
+    Index3: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Index3TposeAdjustment)
+     */
+    Index3TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#IndexRange)
+     */
+    IndexRange: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#IndexSize)
+     */
+    IndexSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Middle1)
+     */
+    Middle1: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Middle1TposeAdjustment)
+     */
+    Middle1TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Middle2)
+     */
+    Middle2: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Middle2TposeAdjustment)
+     */
+    Middle2TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Middle3)
+     */
+    Middle3: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Middle3TposeAdjustment)
+     */
+    Middle3TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#MiddleRange)
+     */
+    MiddleRange: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#MiddleSize)
+     */
+    MiddleSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Pinky1)
+     */
+    Pinky1: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Pinky1TposeAdjustment)
+     */
+    Pinky1TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Pinky2)
+     */
+    Pinky2: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Pinky2TposeAdjustment)
+     */
+    Pinky2TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Pinky3)
+     */
+    Pinky3: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Pinky3TposeAdjustment)
+     */
+    Pinky3TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#PinkyRange)
+     */
+    PinkyRange: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#PinkySize)
+     */
+    PinkySize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Ring1)
+     */
+    Ring1: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Ring1TposeAdjustment)
+     */
+    Ring1TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Ring2)
+     */
+    Ring2: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Ring2TposeAdjustment)
+     */
+    Ring2TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Ring3)
+     */
+    Ring3: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Ring3TposeAdjustment)
+     */
+    Ring3TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#RingRange)
+     */
+    RingRange: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#RingSize)
+     */
+    RingSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Side)
+     */
+    Side: Enum.HandRigDescriptionSide;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Thumb1)
+     */
+    Thumb1: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Thumb1TposeAdjustment)
+     */
+    Thumb1TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Thumb2)
+     */
+    Thumb2: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Thumb2TposeAdjustment)
+     */
+    Thumb2TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Thumb3)
+     */
+    Thumb3: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Thumb3TposeAdjustment)
+     */
+    Thumb3TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#ThumbRange)
+     */
+    ThumbRange: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#ThumbSize)
+     */
+    ThumbSize: number;
+}
+/**
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect)
@@ -21844,6 +22071,8 @@ interface HumanoidDescription extends Instance {
     readonly EquippedEmotesChanged: RBXScriptSignal<(newEquippedEmotes: EquippedEmotes) => void>;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription)
  */
 interface HumanoidRigDescription extends Instance {
@@ -26597,6 +26826,8 @@ interface BasePart extends PVInstance {
      */
     readonly AssemblyRootPart: BasePart | undefined;
     /**
+     * Determines whether the part will physically interact with audio simulation, similar to `CastShadow` for lighting.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart#AudioCanCollide)
@@ -33695,18 +33926,26 @@ interface ReflectionService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService#GetClass)
+     * @param this
+     * @param className
+     * @param filter
      */
     GetClass(this: ReflectionService, className: string, filter?: object): object | undefined;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService#GetClasses)
+     * @param this
+     * @param filter
      */
     GetClasses(this: ReflectionService, filter?: object): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService#GetPropertiesOfClass)
+     * @param this
+     * @param className
+     * @param filter
      */
     GetPropertiesOfClass(this: ReflectionService, className: string, filter?: object): Array<unknown>;
 }
@@ -39607,7 +39846,7 @@ interface TextChatService extends Instance {
      */
     readonly _nominal_TextChatService: unique symbol;
     /**
-     * Determines if chat translation is enabled.
+     * Determines whether a user has chat translation enabled.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
