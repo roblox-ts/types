@@ -3193,10 +3193,14 @@ declare namespace Enum {
     }
     export type AudioFilterType = AudioFilterType.Peak | AudioFilterType.LowShelf | AudioFilterType.HighShelf | AudioFilterType.Lowpass12dB | AudioFilterType.Lowpass24dB | AudioFilterType.Lowpass48dB | AudioFilterType.Highpass12dB | AudioFilterType.Highpass24dB | AudioFilterType.Highpass48dB | AudioFilterType.Bandpass | AudioFilterType.Notch | AudioFilterType.Lowpass6dB;
     /**
+     * Enum which determines how detailed audio simulation should be for `AudioEmitters` and `AudioListeners`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSimulationFidelity)
      */
     export namespace AudioSimulationFidelity {
         /**
+         * No acoustic simulation occurs; only direction and distance are taken into account.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSimulationFidelity#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -3206,6 +3210,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * The audio engine simulates transmission, diffraction, and reflections at a level of detail suitable to most devices.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSimulationFidelity#Automatic)
          */
         export interface Automatic extends globalThis.EnumItem {
@@ -13582,6 +13588,42 @@ declare namespace Enum {
     }
     export type GuiType = GuiType.Core | GuiType.Custom | GuiType.PlayerNameplates | GuiType.CustomBillboards | GuiType.CoreBillboards;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HandRigDescriptionSide)
+     */
+    export namespace HandRigDescriptionSide {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HandRigDescriptionSide#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.HandRigDescriptionSide;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HandRigDescriptionSide#Left)
+         */
+        export interface Left extends globalThis.EnumItem {
+            Name: "Left";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.HandRigDescriptionSide;
+        }
+        export const Left: Left;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HandRigDescriptionSide#Right)
+         */
+        export interface Right extends globalThis.EnumItem {
+            Name: "Right";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.HandRigDescriptionSide;
+        }
+        export const Right: Right;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HandRigDescriptionSide>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HandRigDescriptionSide | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HandRigDescriptionSide | undefined;
+    }
+    export type HandRigDescriptionSide = HandRigDescriptionSide.None | HandRigDescriptionSide.Left | HandRigDescriptionSide.Right;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HandlesStyle)
      */
     export namespace HandlesStyle {
@@ -20885,6 +20927,42 @@ declare namespace Enum {
     }
     export type NameOcclusion = NameOcclusion.NoOcclusion | NameOcclusion.EnemyOcclusion | NameOcclusion.OccludeAll;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NegateOperationHiddenHistory)
+     */
+    export namespace NegateOperationHiddenHistory {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NegateOperationHiddenHistory#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.NegateOperationHiddenHistory;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NegateOperationHiddenHistory#NegatedUnion)
+         */
+        export interface NegatedUnion extends globalThis.EnumItem {
+            Name: "NegatedUnion";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.NegateOperationHiddenHistory;
+        }
+        export const NegatedUnion: NegatedUnion;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NegateOperationHiddenHistory#NegatedIntersection)
+         */
+        export interface NegatedIntersection extends globalThis.EnumItem {
+            Name: "NegatedIntersection";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.NegateOperationHiddenHistory;
+        }
+        export const NegatedIntersection: NegatedIntersection;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.NegateOperationHiddenHistory>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.NegateOperationHiddenHistory | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.NegateOperationHiddenHistory | undefined;
+    }
+    export type NegateOperationHiddenHistory = NegateOperationHiddenHistory.None | NegateOperationHiddenHistory.NegatedUnion | NegateOperationHiddenHistory.NegatedIntersection;
+    /**
      * Defines how simulation authority is determined for the Network Ownership Unit/Mechanism this part is attached to.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NetworkOwnership)
@@ -26678,6 +26756,8 @@ declare namespace Enum {
      */
     export namespace StateObjectFieldType {
         /**
+         * **Deprecated:**
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Boolean)
          */
         export interface Boolean extends globalThis.EnumItem {
@@ -26687,6 +26767,8 @@ declare namespace Enum {
         }
         export const Boolean: Boolean;
         /**
+         * **Deprecated:**
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#CFrame)
          */
         export interface CFrame extends globalThis.EnumItem {
@@ -26696,6 +26778,8 @@ declare namespace Enum {
         }
         export const CFrame: CFrame;
         /**
+         * **Deprecated:**
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Color3)
          */
         export interface Color3 extends globalThis.EnumItem {
@@ -26705,6 +26789,8 @@ declare namespace Enum {
         }
         export const Color3: Color3;
         /**
+         * **Deprecated:**
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Float)
          */
         export interface Float extends globalThis.EnumItem {
@@ -26714,6 +26800,8 @@ declare namespace Enum {
         }
         export const Float: Float;
         /**
+         * **Deprecated:**
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Instance)
          */
         export interface Instance extends globalThis.EnumItem {
@@ -26723,6 +26811,8 @@ declare namespace Enum {
         }
         export const Instance: Instance;
         /**
+         * **Deprecated:**
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Random)
          */
         export interface Random extends globalThis.EnumItem {
@@ -26732,6 +26822,8 @@ declare namespace Enum {
         }
         export const Random: Random;
         /**
+         * **Deprecated:**
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Vector2)
          */
         export interface Vector2 extends globalThis.EnumItem {
@@ -26741,6 +26833,8 @@ declare namespace Enum {
         }
         export const Vector2: Vector2;
         /**
+         * **Deprecated:**
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Vector3)
          */
         export interface Vector3 extends globalThis.EnumItem {
@@ -26750,6 +26844,8 @@ declare namespace Enum {
         }
         export const Vector3: Vector3;
         /**
+         * **Deprecated:**
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#INVALID)
          */
         export interface INVALID extends globalThis.EnumItem {
@@ -33986,11 +34082,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.WrapLayerDebugMode;
         }
         export const LayerCageFittedToPrev: LayerCageFittedToPrev;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerDebugMode#PreWrapDeformerOuterCage)
+         */
+        export interface PreWrapDeformerOuterCage extends globalThis.EnumItem {
+            Name: "PreWrapDeformerOuterCage";
+            Value: 14;
+            EnumType: typeof globalThis.Enum.WrapLayerDebugMode;
+        }
+        export const PreWrapDeformerOuterCage: PreWrapDeformerOuterCage;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WrapLayerDebugMode>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WrapLayerDebugMode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WrapLayerDebugMode | undefined;
     }
-    export type WrapLayerDebugMode = WrapLayerDebugMode.None | WrapLayerDebugMode.BoundCage | WrapLayerDebugMode.LayerCage | WrapLayerDebugMode.BoundCageAndLinks | WrapLayerDebugMode.Reference | WrapLayerDebugMode.Rbf | WrapLayerDebugMode.OuterCage | WrapLayerDebugMode.ReferenceMeshAfterMorph | WrapLayerDebugMode.HSROuterDetail | WrapLayerDebugMode.HSROuter | WrapLayerDebugMode.HSRInner | WrapLayerDebugMode.HSRInnerReverse | WrapLayerDebugMode.LayerCageFittedToBase | WrapLayerDebugMode.LayerCageFittedToPrev;
+    export type WrapLayerDebugMode = WrapLayerDebugMode.None | WrapLayerDebugMode.BoundCage | WrapLayerDebugMode.LayerCage | WrapLayerDebugMode.BoundCageAndLinks | WrapLayerDebugMode.Reference | WrapLayerDebugMode.Rbf | WrapLayerDebugMode.OuterCage | WrapLayerDebugMode.ReferenceMeshAfterMorph | WrapLayerDebugMode.HSROuterDetail | WrapLayerDebugMode.HSROuter | WrapLayerDebugMode.HSRInner | WrapLayerDebugMode.HSRInnerReverse | WrapLayerDebugMode.LayerCageFittedToBase | WrapLayerDebugMode.LayerCageFittedToPrev | WrapLayerDebugMode.PreWrapDeformerOuterCage;
     /**
      * The Studio-only property for quickly visualizing and debugging meshes with only outer cages.
      *
@@ -34094,11 +34199,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.WrapTargetDebugMode;
         }
         export const OuterCageDetail: OuterCageDetail;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapTargetDebugMode#PreWrapDeformerCage)
+         */
+        export interface PreWrapDeformerCage extends globalThis.EnumItem {
+            Name: "PreWrapDeformerCage";
+            Value: 9;
+            EnumType: typeof globalThis.Enum.WrapTargetDebugMode;
+        }
+        export const PreWrapDeformerCage: PreWrapDeformerCage;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WrapTargetDebugMode>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WrapTargetDebugMode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WrapTargetDebugMode | undefined;
     }
-    export type WrapTargetDebugMode = WrapTargetDebugMode.None | WrapTargetDebugMode.TargetCageOriginal | WrapTargetDebugMode.TargetCageCompressed | WrapTargetDebugMode.TargetCageInterface | WrapTargetDebugMode.TargetLayerCageOriginal | WrapTargetDebugMode.TargetLayerCageCompressed | WrapTargetDebugMode.TargetLayerInterface | WrapTargetDebugMode.Rbf | WrapTargetDebugMode.OuterCageDetail;
+    export type WrapTargetDebugMode = WrapTargetDebugMode.None | WrapTargetDebugMode.TargetCageOriginal | WrapTargetDebugMode.TargetCageCompressed | WrapTargetDebugMode.TargetCageInterface | WrapTargetDebugMode.TargetLayerCageOriginal | WrapTargetDebugMode.TargetLayerCageCompressed | WrapTargetDebugMode.TargetLayerInterface | WrapTargetDebugMode.Rbf | WrapTargetDebugMode.OuterCageDetail | WrapTargetDebugMode.PreWrapDeformerCage;
     /**
      * Used by `LayerCollector.ZIndexBehavior` to control how the `GuiObject.ZIndex` property behaves for descendants.
      *
