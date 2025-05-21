@@ -2509,9 +2509,9 @@ interface BindableFunction<T extends Callback = Callback> extends Instance {
     readonly _nominal_BindableFunction: unique symbol;
 }
 /**
- * **Deprecated:** This class has been deprecated. Use `Constraints|Constraint` for new work. Find an overview of BodyMover replacements in the [Constraint Movers article](../../../physics/mover-constraints.md).
+ * **Deprecated:** This class has been deprecated. See the [mover constraints](../../../physics/mover-constraints.md) article for an overview of `BodyMover` replacements, as well as the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
- * Base class for objects that continually exert forces to parts.
+ * Base class for objects that continually exert forces to assemblies.
  *
  * - **Tags**: NotCreatable
  *
@@ -2530,7 +2530,7 @@ interface BodyMover extends Instance {
     readonly _nominal_BodyMover: unique symbol;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `AngularVelocity` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `AngularVelocity` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
  * Applies a torque to maintain a constant angular velocity.
  *
@@ -2551,7 +2551,7 @@ interface BodyAngularVelocity extends BodyMover {
     readonly _nominal_BodyAngularVelocity: unique symbol;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `VectorForce` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `VectorForce` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
  * Applies a constant force to an object.
  *
@@ -2572,7 +2572,7 @@ interface BodyForce extends BodyMover {
     readonly _nominal_BodyForce: unique symbol;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `AlignOrientation` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `AlignOrientation` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
  * Applies a torque to maintain a constant orientation.
  *
@@ -2593,7 +2593,7 @@ interface BodyGyro extends BodyMover {
     readonly _nominal_BodyGyro: unique symbol;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `AlignPosition` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `AlignPosition` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
  * Applies a force to maintain a constant position.
  *
@@ -2614,7 +2614,7 @@ interface BodyPosition extends BodyMover {
     readonly _nominal_BodyPosition: unique symbol;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `VectorForce` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `VectorForce` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
  * Applies a constant force to an object at a specific point.
  *
@@ -2635,7 +2635,7 @@ interface BodyThrust extends BodyMover {
     readonly _nominal_BodyThrust: unique symbol;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `LinearVelocity` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `LinearVelocity` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
  * Applies a force to maintain a constant velocity.
  *
@@ -2656,9 +2656,9 @@ interface BodyVelocity extends BodyMover {
     readonly _nominal_BodyVelocity: unique symbol;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `LineForce` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `LineForce` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
- * Applies a force so that a part follows and faces another part.
+ * Applies a force so that an assembly follows and faces a target part.
  *
  * - **Tags**:
  *
@@ -3192,6 +3192,8 @@ interface CommandService extends Instance {
     readonly _nominal_CommandService: unique symbol;
 }
 /**
+ * Supports real-world purchases that you can bundle with digital benefits.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService)
@@ -3314,7 +3316,7 @@ interface AlignPosition extends Constraint {
     readonly _nominal_AlignPosition: unique symbol;
 }
 /**
- * Applies torque on an assembly to maintain a **constant** angular velocity.
+ * Applies torque on an assembly to maintain a constant angular velocity.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AngularVelocity)
  */
@@ -3389,7 +3391,7 @@ interface LineForce extends Constraint {
     readonly _nominal_LineForce: unique symbol;
 }
 /**
- * Applies force on an assembly to maintain a **constant** linear velocity.
+ * Applies force on an assembly to maintain a constant linear velocity.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LinearVelocity)
  */
@@ -6490,6 +6492,8 @@ interface GuiService extends Instance {
     readonly _nominal_GuiService: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription)
  */
 interface HandRigDescription extends Instance {
@@ -11803,7 +11807,7 @@ interface DataModel extends ServiceProvider<Services> {
      */
     GetObjects(this: DataModel, url: ContentId): Array<Instance>;
     /**
-     * Sets the `DataModel.PlaceId` of the current game instance to the given *placeId*.
+     * Sets the `DataModel.PlaceId` of the current game instance.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -11813,7 +11817,7 @@ interface DataModel extends ServiceProvider<Services> {
      */
     SetPlaceId(this: DataModel, placeId: number): void;
     /**
-     * Sets the `DataModel.GameId` of the current game instance to the given *universeId*.
+     * Sets the `DataModel.GameId` of the current game instance to the given `universeId`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -13275,6 +13279,12 @@ interface TerrainDetail extends Instance {
      */
     ColorMap: ContentId;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#ColorMapContent)
+     */
+    ColorMapContent: Content;
+    /**
      * Determines which parts of the surface are metal and are non-metal.
      *
      * - **ThreadSafety**: ReadSafe
@@ -13282,6 +13292,12 @@ interface TerrainDetail extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#MetalnessMap)
      */
     MetalnessMap: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#MetalnessMapContent)
+     */
+    MetalnessMapContent: Content;
     /**
      * Modifies the lighting of the surface by adding bumps, dents, cracks, and curves without adding more polygons.
      *
@@ -13291,6 +13307,12 @@ interface TerrainDetail extends Instance {
      */
     NormalMap: ContentId;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#NormalMapContent)
+     */
+    NormalMapContent: Content;
+    /**
      * Determines the apparent roughness across the surface.
      *
      * - **ThreadSafety**: ReadSafe
@@ -13298,6 +13320,12 @@ interface TerrainDetail extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#RoughnessMap)
      */
     RoughnessMap: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#RoughnessMapContent)
+     */
+    RoughnessMapContent: Content;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainRegion)

@@ -2553,7 +2553,7 @@ interface AnalyticsService extends Instance {
      * @param currency The currency used. Examples: 'gold', 'gems', 'life.'.
      * @param location The event location. A dictionary that each key-value represents an entry of location data. The key-value is a string-string pair. With this you can query which are the most popular "stores" then maybe you want to increase/lower the price for the stores. See the example below:
      * ```lua
-     * local location = {     ["placeDesc"] = "Dungeon1",     ["levelDesc"] = "level2",     ["mapDesc"] = "LeftChamberMap",     ["storeName"] = "DarkSmith",     ["userDefindKey"] = "0005" }
+     * local location = {     ["placeDesc"] = "Dungeon1",     ["levelDesc"] = "level2",     ["mapDesc"] = "LeftChamberMap",     ["storeName"] = "DarkSmith",     ["userDefinedKey"] = "0005" }
      * ```
      * @param customData Optional. User defined data, could be a string, a number or a table.
      *
@@ -2602,11 +2602,11 @@ interface AnalyticsService extends Instance {
      * @param progressionStatus Indicates the status of the progression.
      * @param location The event location. A dictionary that each key-value represents an entry of location data. The key-value is a string-string pair. With this developers can query where is the most frequent location for a specific progression event category. For example, the category could be "LevelUp".
      * ```lua
-     * local location = {     ["placeDesc"] = "Dungeon1",     ["levelDesc"] = "level2",     ["mapDesc"] = "LeftChamberMap",     ["ProgresionType"] = "LevelUp",     ["userDefindKey5"] = "0005" }
+     * local location = {     ["placeDesc"] = "Dungeon1",     ["levelDesc"] = "level2",     ["mapDesc"] = "LeftChamberMap",     ["ProgresionType"] = "LevelUp",     ["userDefinedKey5"] = "0005" }
      * ```
      * @param statistics Optional. A dictionary that each key-value represents an entry of statistics data that allows developers to track any specific data that they want to collect as players progress through their game. Key-Value is a string-number pair.
      * ```lua
-     * local statistics = {     ["numberOfKills"] = 111,     ["numberOfExp"] = 222,     ["userDefindKey3"] = number,     ["userDefindKey4"] = number,     ["userDefindKey5"] = number }
+     * local statistics = {     ["numberOfKills"] = 111,     ["numberOfExp"] = 222,     ["userDefinedKey3"] = number,     ["userDefinedKey4"] = number,     ["userDefinedKey5"] = number }
      * ```
      * @param customData Optional. User defined data, could be a string, a number or a table.
      *
@@ -3607,14 +3607,6 @@ interface AssetService extends Instance {
      * @param editableMeshOptions Table containing options for the created `EditableMesh`. Currently no options are available since `FixedSize` will always be `false` for empty editable meshes.
      */
     CreateEditableMesh(this: AssetService, editableMeshOptions?: object): EditableMesh;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateSurfaceAppearance)
-     * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
-     * @param content
-     */
-    CreateSurfaceAppearance(this: AssetService, content: object): SurfaceAppearance;
     /**
      * Uploads a new asset to Roblox from the given object.
      *
@@ -8534,9 +8526,9 @@ interface BindableFunction<T extends Callback = Callback> extends Instance {
     OnInvoke: T | undefined;
 }
 /**
- * **Deprecated:** This class has been deprecated. Use `Constraints|Constraint` for new work. Find an overview of BodyMover replacements in the [Constraint Movers article](../../../physics/mover-constraints.md).
+ * **Deprecated:** This class has been deprecated. See the [mover constraints](../../../physics/mover-constraints.md) article for an overview of `BodyMover` replacements, as well as the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
- * Base class for objects that continually exert forces to parts.
+ * Base class for objects that continually exert forces to assemblies.
  *
  * - **Tags**: NotCreatable
  *
@@ -8555,7 +8547,7 @@ interface BodyMover extends Instance {
     readonly _nominal_BodyMover: unique symbol;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `AngularVelocity` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `AngularVelocity` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
  * Applies a torque to maintain a constant angular velocity.
  *
@@ -8600,7 +8592,7 @@ interface BodyAngularVelocity extends BodyMover {
     P: number;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `VectorForce` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `VectorForce` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
  * Applies a constant force to an object.
  *
@@ -8629,7 +8621,7 @@ interface BodyForce extends BodyMover {
     Force: Vector3;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `AlignOrientation` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `AlignOrientation` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
  * Applies a torque to maintain a constant orientation.
  *
@@ -8682,7 +8674,7 @@ interface BodyGyro extends BodyMover {
     P: number;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `AlignPosition` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `AlignPosition` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
  * Applies a force to maintain a constant position.
  *
@@ -8739,7 +8731,7 @@ interface BodyPosition extends BodyMover {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyPosition#GetLastForce)
-     * @param this **Deprecated:** This object is deprecated and should not be used for new work. Use `AlignPosition` instead.
+     * @param this **Deprecated:** This object is deprecated and should not be used for new work. Use `AlignPosition` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
      *
      * Applies a force to maintain a constant position.
      */
@@ -8754,7 +8746,7 @@ interface BodyPosition extends BodyMover {
     readonly ReachedTarget: RBXScriptSignal<() => void>;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `VectorForce` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `VectorForce` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
  * Applies a constant force to an object at a specific point.
  *
@@ -8774,7 +8766,7 @@ interface BodyThrust extends BodyMover {
      */
     readonly _nominal_BodyThrust: unique symbol;
     /**
-     * Determines the amount of force exerted on each axis relative to the part.
+     * Determines the amount of force exerted on each axis relative to the assembly.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -8791,7 +8783,7 @@ interface BodyThrust extends BodyMover {
     Location: Vector3;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `LinearVelocity` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `LinearVelocity` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
  * Applies a force to maintain a constant velocity.
  *
@@ -8835,12 +8827,12 @@ interface BodyVelocity extends BodyMover {
      */
     Velocity: Vector3;
     /**
-     * Not implemented and will always return the 0 vector.
+     * Not implemented and will always return the `0` vector.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyVelocity#GetLastForce)
-     * @param this **Deprecated:** This object is deprecated and should not be used for new work. Use `LinearVelocity` instead.
+     * @param this **Deprecated:** This object is deprecated and should not be used for new work. Use `LinearVelocity` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
      *
      * Applies a force to maintain a constant velocity.
      */
@@ -8851,16 +8843,16 @@ interface BodyVelocity extends BodyMover {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyVelocity#lastForce)
-     * @param this **Deprecated:** This object is deprecated and should not be used for new work. Use `LinearVelocity` instead.
+     * @param this **Deprecated:** This object is deprecated and should not be used for new work. Use `LinearVelocity` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
      *
      * Applies a force to maintain a constant velocity.
      */
     lastForce(this: BodyVelocity): Vector3;
 }
 /**
- * **Deprecated:** This object is deprecated and should not be used for new work. Use `LineForce` instead.
+ * **Deprecated:** This object is deprecated and should not be used for new work. Use `LineForce` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
  *
- * Applies a force so that a part follows and faces another part.
+ * Applies a force so that an assembly follows and faces a target part.
  *
  * - **Tags**:
  *
@@ -8878,7 +8870,7 @@ interface RocketPropulsion extends BodyMover {
      */
     readonly _nominal_RocketPropulsion: unique symbol;
     /**
-     * Determines the tendency of the part to face the `Target`.
+     * Determines the tendency of the assembly to face the `Target`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -8886,7 +8878,7 @@ interface RocketPropulsion extends BodyMover {
      */
     CartoonFactor: number;
     /**
-     * Determines the maximum speed at which the part will move toward the `Target`.
+     * Determines the maximum speed at which the assembly will move toward the `Target`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -8894,7 +8886,7 @@ interface RocketPropulsion extends BodyMover {
      */
     MaxSpeed: number;
     /**
-     * Determines the maximum amount of thrust that will be exerted to move the part.
+     * Determines the maximum amount of thrust that will be exerted to move the assembly.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -8902,7 +8894,7 @@ interface RocketPropulsion extends BodyMover {
      */
     MaxThrust: number;
     /**
-     * Determines the maximum amount of torque that may be exerted to rotate the part towards the `Target`.
+     * Determines the maximum amount of torque that may be exerted to rotate the assembly towards the `Target`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -8910,7 +8902,7 @@ interface RocketPropulsion extends BodyMover {
      */
     MaxTorque: Vector3;
     /**
-     * Determines the object towards which the part should follow/face.
+     * Determines the object towards which the assembly should follow/face.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -8926,7 +8918,7 @@ interface RocketPropulsion extends BodyMover {
      */
     TargetOffset: Vector3;
     /**
-     * Determines the maximum distance from the `Target` the part must be in order for `ReachedTarget` to be fired.
+     * Determines the maximum distance from the `Target` at which the assembly must be in order for `ReachedTarget` to be fired.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -8934,7 +8926,7 @@ interface RocketPropulsion extends BodyMover {
      */
     TargetRadius: number;
     /**
-     * Determines the dampening applied to the part in order to prevent it from overshooting the `Target`.
+     * Determines the dampening applied to the assembly in order to prevent it from overshooting the `Target`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -8966,29 +8958,29 @@ interface RocketPropulsion extends BodyMover {
      */
     TurnP: number;
     /**
-     * Causes the Rocket to stop moving towards its target, making it fall.
+     * Causes the assembly to stop moving toward its `Target`.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RocketPropulsion#Abort)
-     * @param this **Deprecated:** This object is deprecated and should not be used for new work. Use `LineForce` instead.
+     * @param this **Deprecated:** This object is deprecated and should not be used for new work. Use `LineForce` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
      *
-     * Applies a force so that a part follows and faces another part.
+     * Applies a force so that an assembly follows and faces a target part.
      */
     Abort(this: RocketPropulsion): void;
     /**
-     * Causes the rocket to fly towards Target.
+     * Causes the assembly to start moving toward its `Target`.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RocketPropulsion#Fire)
-     * @param this **Deprecated:** This object is deprecated and should not be used for new work. Use `LineForce` instead.
+     * @param this **Deprecated:** This object is deprecated and should not be used for new work. Use `LineForce` instead, and see the [legacy conversion notes](../../../physics/mover-constraints.md#legacy-mover-conversion).
      *
-     * Applies a force so that a part follows and faces another part.
+     * Applies a force so that an assembly follows and faces a target part.
      */
     Fire(this: RocketPropulsion): void;
     /**
-     * Fired when the Rocket comes within TargetRadius of the Target. This is used to make the rocket work, such as make an explosion when it flies near the Target.
+     * Fires when the assembly comes within `TargetRadius` of the `Target`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -9157,6 +9149,7 @@ interface CaptureService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StopVideoCapture)
+     * @param this A service which provides control over screenshot capture features.
      */
     StopVideoCapture(this: CaptureService): void;
     /**
@@ -9173,6 +9166,9 @@ interface CaptureService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StartVideoCaptureAsync)
+     * @param this A service which provides control over screenshot capture features.
+     * @param onCaptureReady
+     * @param captureParams
      */
     StartVideoCaptureAsync(this: CaptureService, onCaptureReady: Callback, captureParams?: object): Enum.VideoCaptureResult;
     /**
@@ -9182,7 +9178,7 @@ interface CaptureService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#CaptureBegan)
      */
-    readonly CaptureBegan: RBXScriptSignal<() => void>;
+    readonly CaptureBegan: RBXScriptSignal<(captureType: Enum.CaptureType) => void>;
     /**
      * Fires after a capture finishes.
      *
@@ -9190,7 +9186,7 @@ interface CaptureService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#CaptureEnded)
      */
-    readonly CaptureEnded: RBXScriptSignal<() => void>;
+    readonly CaptureEnded: RBXScriptSignal<(captureType: Enum.CaptureType) => void>;
     /**
      * **Deprecated:** This event has been superseded by the `UserCaptureSaved` event.
      *
@@ -10411,6 +10407,8 @@ interface CommandService extends Instance {
     readonly _nominal_CommandService: unique symbol;
 }
 /**
+ * Supports real-world purchases that you can bundle with digital benefits.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService)
@@ -10425,10 +10423,12 @@ interface CommerceService extends Instance {
      */
     readonly _nominal_CommerceService: unique symbol;
     /**
+     * Prompts a user to purchase a commerce product using the provided `commerceProductId`. Opens a webview that guides the user through the purchasing flow.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#PromptCommerceProductPurchase)
-     * @param this
+     * @param this Supports real-world purchases that you can bundle with digital benefits.
      * @param user
      * @param commerceProductId
      */
@@ -10437,17 +10437,19 @@ interface CommerceService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#PromptRealWorldCommerceBrowser)
-     * @param this
+     * @param this Supports real-world purchases that you can bundle with digital benefits.
      * @param player
      * @param url
      */
     PromptRealWorldCommerceBrowser(this: CommerceService, player: Player, url: string): void;
     /**
+     * Retrieves information about the commerce products you are selling in experience.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#GetCommerceProductInfoAsync)
-     * @param this
+     * @param this Supports real-world purchases that you can bundle with digital benefits.
      * @param commerceProductId
      */
     GetCommerceProductInfoAsync(this: CommerceService, commerceProductId: string): object;
@@ -10456,10 +10458,12 @@ interface CommerceService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#UserEligibleForRealWorldCommerceAsync)
-     * @param this
+     * @param this Supports real-world purchases that you can bundle with digital benefits.
      */
     UserEligibleForRealWorldCommerceAsync(this: CommerceService): boolean;
     /**
+     * Fires when commerce purchase webview has closed - not an indicator that a purchase was successful.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#PromptCommerceProductPurchaseFinished)
@@ -10789,7 +10793,7 @@ interface AlignPosition extends Constraint {
      */
     ApplyAtCenterOfMass: boolean;
     /**
-     * Determines how the constraint force will be limited. Only used if `RigidityEnabled` is false.
+     * Determines how the constraint force will be limited. Only used if `RigidityEnabled` is `false`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -10797,7 +10801,7 @@ interface AlignPosition extends Constraint {
      */
     ForceLimitMode: Enum.ForceLimitMode;
     /**
-     * Determines the axes that the constraint uses to limit the force. Only applies when `RigidityEnabled` is false and `AlignPosition.ForceLimitMode` is `PerAxis`. .
+     * Determines the axes that the constraint uses to limit the force. Only applies when `RigidityEnabled` is `false` and `AlignPosition.ForceLimitMode` is `PerAxis`. .
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -10870,7 +10874,7 @@ interface AlignPosition extends Constraint {
     RigidityEnabled: boolean;
 }
 /**
- * Applies torque on an assembly to maintain a **constant** angular velocity.
+ * Applies torque on an assembly to maintain a constant angular velocity.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AngularVelocity)
  */
@@ -11044,7 +11048,7 @@ interface BallSocketConstraint extends Constraint {
      */
     Radius: number;
     /**
-     * How elastic `Attachments` connected by a `BallSocketConstraint` will be when they reach the end of the range specified by `UpperAngle` when `LimitsEnabled` is true.
+     * How elastic `Attachments` connected by a `BallSocketConstraint` will be when they reach the end of the range specified by `UpperAngle` when `LimitsEnabled` is `true`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -11060,7 +11064,7 @@ interface BallSocketConstraint extends Constraint {
      */
     TwistLimitsEnabled: boolean;
     /**
-     * Sets the lower twist rotation limit of the `BallSocketConstraint`, as long as `TwistLimitsEnabled` is true.
+     * Sets the lower twist rotation limit of the `BallSocketConstraint`, as long as `TwistLimitsEnabled` is `true`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -11068,7 +11072,7 @@ interface BallSocketConstraint extends Constraint {
      */
     TwistLowerAngle: number;
     /**
-     * Sets the upper twist rotation limit of the `BallSocketConstraint`, as long as `TwistLimitsEnabled` is true.
+     * Sets the upper twist rotation limit of the `BallSocketConstraint`, as long as `TwistLimitsEnabled` is `true`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -11076,7 +11080,7 @@ interface BallSocketConstraint extends Constraint {
      */
     TwistUpperAngle: number;
     /**
-     * Sets the upper rotation limit of the `BallSocketConstraint`, as long as `LimitsEnabled` is true.
+     * Sets the upper rotation limit of the `BallSocketConstraint`, as long as `LimitsEnabled` is `true`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -11246,7 +11250,7 @@ interface LineForce extends Constraint {
      */
     ApplyAtCenterOfMass: boolean;
     /**
-     * When true, the force magnitude is multiplied by the inverse square of the distance.
+     * When `true`, the force magnitude is multiplied by the inverse square of the distance.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -11279,7 +11283,7 @@ interface LineForce extends Constraint {
     ReactionForceEnabled: boolean;
 }
 /**
- * Applies force on an assembly to maintain a **constant** linear velocity.
+ * Applies force on an assembly to maintain a constant linear velocity.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LinearVelocity)
  */
@@ -11325,7 +11329,7 @@ interface LinearVelocity extends Constraint {
      */
     LineVelocity: number;
     /**
-     * Maximum force along each axis that the constraint can apply to achieve the vector velocity. Only used if `ForceLimitsEnabled` is true, `ForceLimitMode` is `PerAxis`, and `VelocityConstraintMode` is `Vector`.
+     * Maximum force along each axis that the constraint can apply to achieve the vector velocity. Only used if `ForceLimitsEnabled` is `true`, `ForceLimitMode` is `PerAxis`, and `VelocityConstraintMode` is `Vector`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -11341,7 +11345,7 @@ interface LinearVelocity extends Constraint {
      */
     MaxForce: number;
     /**
-     * Maximum force along each axis that the constraint can apply to achieve the plane velocity. Only used if `ForceLimitsEnabled` is true, `ForceLimitMode` is `PerAxis`, and `VelocityConstraintMode` is `Plane`.
+     * Maximum force along each axis that the constraint can apply to achieve the plane velocity. Only used if `ForceLimitsEnabled` is `true`, `ForceLimitMode` is `PerAxis`, and `VelocityConstraintMode` is `Plane`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -11371,7 +11375,7 @@ interface LinearVelocity extends Constraint {
      */
     ReactionForceEnabled: boolean;
     /**
-     * Sets the `ActuatorRelativeTo` property for the `LinearVelocity` constraint.
+     * Sets the `ActuatorRelativeTo` property for the constraint.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -11395,7 +11399,7 @@ interface LinearVelocity extends Constraint {
      */
     VectorVelocity: Vector3;
     /**
-     * The mode of the `LinearVelocity` constraint.
+     * The mode of the constraint.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20085,6 +20089,8 @@ interface GuiService extends Instance {
     readonly MenuOpened: RBXScriptSignal<() => void>;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription)
  */
 interface HandRigDescription extends Instance {
@@ -20342,6 +20348,30 @@ interface HandRigDescription extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#ThumbSize)
      */
     ThumbSize: number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#GetFingerControl)
+     */
+    GetFingerControl(this: HandRigDescription, fingerIndex: number): Vector3;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#GetFingerTip)
+     */
+    GetFingerTip(this: HandRigDescription, fingerIndex: number): Vector3;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#SetFingerControl)
+     */
+    SetFingerControl(this: HandRigDescription, fingerIndex: number, control: Vector3): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#SetFingerTip)
+     */
+    SetFingerTip(this: HandRigDescription, fingerIndex: number, point: Vector3): void;
 }
 /**
  * - **Tags**: NotBrowsable
@@ -22117,33 +22147,33 @@ interface HumanoidRigDescription extends Instance {
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Head)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadBase)
      */
-    Head: Instance | undefined;
+    HeadBase: Instance | undefined;
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadRangeMax)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadBaseRangeMax)
      */
-    HeadRangeMax: Vector3;
+    HeadBaseRangeMax: Vector3;
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadRangeMin)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadBaseRangeMin)
      */
-    HeadRangeMin: Vector3;
+    HeadBaseRangeMin: Vector3;
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadSize)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadBaseSize)
      */
-    HeadSize: number;
+    HeadBaseSize: number;
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadTposeAdjustment)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadBaseTposeAdjustment)
      */
-    HeadTposeAdjustment: CFrame;
+    HeadBaseTposeAdjustment: CFrame;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -22755,6 +22785,12 @@ interface HumanoidRigDescription extends Instance {
     /**
      * - **ThreadSafety**: Safe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetJointFromName)
+     */
+    GetJointFromName(this: HumanoidRigDescription, name: string): Instance | undefined;
+    /**
+     * - **ThreadSafety**: Safe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetJointNames)
      * @param this
      */
@@ -23086,7 +23122,7 @@ interface InputAction extends Instance {
      * @param this
      * @param value
      */
-    Fire(this: InputAction, value: unknown): void;
+    Fire(this: InputAction, state: unknown): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -26028,6 +26064,13 @@ interface MemoryStoreQueue extends Instance {
      */
     AddAsync(this: MemoryStoreQueue, value: unknown, expiration: number, priority?: number): void;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreQueue#GetSizeAsync)
+     */
+    GetSizeAsync(this: MemoryStoreQueue, excludeInvisible?: boolean): number;
+    /**
      * Reads one or more items from the queue.
      *
      * - **ThreadSafety**: Unsafe
@@ -26164,6 +26207,13 @@ interface MemoryStoreSortedMap extends Instance {
         value: unknown;
         sortKey?: string | number;
     }>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreSortedMap#GetSizeAsync)
+     */
+    GetSizeAsync(this: MemoryStoreSortedMap): number;
     /**
      * Removes the provided key from the sorted map.
      *
@@ -32648,7 +32698,7 @@ interface PlayerScripts extends Instance {
      */
     readonly _nominal_PlayerScripts: unique symbol;
     /**
-     * Unregisters all ComputerCameraMovementMode enums from the game settings menu.
+     * Unregisters all ComputerCameraMovementMode enums from the experience's settings menu.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -32657,7 +32707,7 @@ interface PlayerScripts extends Instance {
      */
     ClearComputerCameraMovementModes(this: PlayerScripts): void;
     /**
-     * Unregisters all ComputerMovementMode enums from the game settings menu.
+     * Unregisters all ComputerMovementMode enums from the experience's settings menu.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -32666,7 +32716,7 @@ interface PlayerScripts extends Instance {
      */
     ClearComputerMovementModes(this: PlayerScripts): void;
     /**
-     * Unregisters all TouchCameraMovementMode enums from the game settings menu.
+     * Unregisters all TouchCameraMovementMode enums from the experience's settings menu.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -32675,7 +32725,7 @@ interface PlayerScripts extends Instance {
      */
     ClearTouchCameraMovementModes(this: PlayerScripts): void;
     /**
-     * Unregisters all TouchMovementMode enums from the game settings menu.
+     * Unregisters all TouchMovementMode enums from the experience's settings menu.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -35385,7 +35435,7 @@ interface DataModel extends ServiceProvider<Services> {
     /**
      * **Deprecated:** This item is deprecated . Do not use it for new work.
      *
-     * Fires when SetGearSettings is called with a different value for *allowedGenres*.
+     * Fires when SetGearSettings is called with a different value for `allowedGenres`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
@@ -36330,7 +36380,7 @@ interface CompressorSoundEffect extends SoundEffect {
      */
     Attack: number;
     /**
-     * The overall amplification applied to the effectâ€™s Sound or SoundGroup after attenuation of sounds above the threshold.
+     * The overall amplification applied to the effect's Sound or SoundGroup after attenuation of sounds above the threshold.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -41155,7 +41205,7 @@ interface UIDragDetector extends UIComponent {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIDragDetector#SetDragStyleFunction)
      * @param this Instance which facilitates and encourages interaction with UI elements in an experience.
-     * @param function Function for monitoring `DragContinue` signals. This function receives the singal's screen space input position and returns a `UDim2` and float containing the desired motion of the drag in the desired space and relativity. If this function returns `nil`, the object will not be moved.
+     * @param function Function for monitoring `DragContinue` signals. This function receives the signal's screen space input position and returns a `UDim2` and float containing the desired motion of the drag in the desired space and relativity. If this function returns `nil`, the object will not be moved.
      */
     SetDragStyleFunction(this: UIDragDetector, callback: (inputPosition: UDim2) => UDim2 | void): void;
     /**
