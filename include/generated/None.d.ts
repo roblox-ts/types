@@ -160,6 +160,7 @@ interface Services {
     ServiceVisibilityService: ServiceVisibilityService;
     SessionService: SessionService;
     SharedTableRegistry: SharedTableRegistry;
+    SlimContentProvider: SlimContentProvider;
     SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
     SnippetService: SnippetService;
     SocialService: SocialService;
@@ -692,6 +693,10 @@ interface Objects extends Instances {
     EditableMesh: EditableMesh;
     Object: RBXObject;
     ScreenshotCapture: ScreenshotCapture;
+    TerrainIterateOperation: TerrainIterateOperation;
+    TerrainModifyOperation: TerrainModifyOperation;
+    TerrainReadOperation: TerrainReadOperation;
+    TerrainWriteOperation: TerrainWriteOperation;
     VideoCapture: VideoCapture;
 }
 // GENERATED ROBLOX INSTANCE CLASSES
@@ -3838,7 +3843,7 @@ interface AssetService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#SavePlaceAsync)
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
      */
-    SavePlaceAsync(this: AssetService): void;
+    SavePlaceAsync(this: AssetService, requestParameters?: object): void;
     /**
      * Finds audio assets matching a variety of search criteria.
      *
@@ -5778,6 +5783,8 @@ interface AudioPlayer extends Instance {
     readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
 }
 /**
+ * Records audio streams in-experience.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder)
@@ -5808,14 +5815,14 @@ interface AudioRecorder extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#Clear)
-     * @param this
+     * @param this Records audio streams in-experience.
      */
     Clear(this: AudioRecorder): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetConnectedWires)
-     * @param this
+     * @param this Records audio streams in-experience.
      * @param pin
      */
     GetConnectedWires(this: AudioRecorder, pin: string): Array<Instance>;
@@ -5823,28 +5830,28 @@ interface AudioRecorder extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetInputPins)
-     * @param this
+     * @param this Records audio streams in-experience.
      */
     GetInputPins(this: AudioRecorder): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetOutputPins)
-     * @param this
+     * @param this Records audio streams in-experience.
      */
     GetOutputPins(this: AudioRecorder): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetTemporaryContent)
-     * @param this
+     * @param this Records audio streams in-experience.
      */
     GetTemporaryContent(this: AudioRecorder): Content;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#Stop)
-     * @param this
+     * @param this Records audio streams in-experience.
      */
     Stop(this: AudioRecorder): void;
     /**
@@ -5852,7 +5859,7 @@ interface AudioRecorder extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#CanRecordAsync)
-     * @param this
+     * @param this Records audio streams in-experience.
      */
     CanRecordAsync(this: AudioRecorder): boolean;
     /**
@@ -5860,7 +5867,7 @@ interface AudioRecorder extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetUnrecordableInstancesAsync)
-     * @param this
+     * @param this Records audio streams in-experience.
      */
     GetUnrecordableInstancesAsync(this: AudioRecorder): Array<Instance>;
     /**
@@ -5868,7 +5875,7 @@ interface AudioRecorder extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#RecordAsync)
-     * @param this
+     * @param this Records audio streams in-experience.
      */
     RecordAsync(this: AudioRecorder): void;
     /**
@@ -6597,9 +6604,14 @@ interface AvatarCreationService extends Instance {
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#AutoSetupAvatarAsync)
+     */
+    AutoSetupAvatarAsync(this: AvatarCreationService, player: Player, model: Model): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#GenerateAvatar2DPreviewAsync)
-     * @param this A service to support developer avatar creators.
-     * @param avatarGeneration2dPreviewParams
      */
     GenerateAvatar2DPreviewAsync(this: AvatarCreationService, avatarGeneration2dPreviewParams: object): string;
     /**
@@ -6626,8 +6638,6 @@ interface AvatarCreationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#LoadAvatar2DPreviewAsync)
-     * @param this A service to support developer avatar creators.
-     * @param previewId
      */
     LoadAvatar2DPreviewAsync(this: AvatarCreationService, previewId: string): EditableImage;
     /**
@@ -6635,8 +6645,6 @@ interface AvatarCreationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#LoadGeneratedAvatarAsync)
-     * @param this A service to support developer avatar creators.
-     * @param generationId
      */
     LoadGeneratedAvatarAsync(this: AvatarCreationService, generationId: string): HumanoidDescription;
     /**
@@ -9081,6 +9089,21 @@ interface BulkImportService extends Instance {
     readonly _nominal_BulkImportService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlimContentProvider)
+ */
+interface SlimContentProvider extends CacheableContentProvider {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SlimContentProvider: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CalloutService)
@@ -9096,7 +9119,7 @@ interface CalloutService extends Instance {
     readonly _nominal_CalloutService: unique symbol;
 }
 /**
- * A service which provides control over screenshot capture features.
+ * A service which provides control over screenshot and video capture features.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -9117,7 +9140,7 @@ interface CaptureService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#CaptureScreenshot)
-     * @param this A service which provides control over screenshot capture features.
+     * @param this A service which provides control over screenshot and video capture features.
      * @param onCaptureReady A callback function that is called with the `contentId` of the new capture once it is ready.
      */
     CaptureScreenshot(this: CaptureService, onCaptureReady: (captureContentId: string) => void): void;
@@ -9127,18 +9150,18 @@ interface CaptureService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#PromptSaveCapturesToGallery)
-     * @param this A service which provides control over screenshot capture features.
+     * @param this A service which provides control over screenshot and video capture features.
      * @param captures
      * @param resultCallback A callback function that will be invoked with a dictionary mapping each `contentId` to a boolean indicating if the user accepted saving that capture.
      */
     PromptSaveCapturesToGallery<T extends string>(this: CaptureService, contentIds: Array<T>, resultCallback: (results: Record<T, boolean>) => void): void;
     /**
-     * Prompts the user to share a specified screenshot capture.
+     * Prompts the user to share a specified capture.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#PromptShareCapture)
-     * @param this A service which provides control over screenshot capture features.
+     * @param this A service which provides control over screenshot and video capture features.
      * @param captureContent
      * @param launchData An optional string to include as launch data in the invite link.
      * @param onAcceptedCallback An optional callback function invoked if the user accepts sharing.
@@ -9146,28 +9169,32 @@ interface CaptureService extends Instance {
      */
     PromptShareCapture(this: CaptureService, contentId: string, launchData: string, onAcceptedCallback: () => void, onDeniedCallback: () => void): void;
     /**
+     * Ends a video capture initiated by `StartVideoCaptureAsync()`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StopVideoCapture)
-     * @param this A service which provides control over screenshot capture features.
+     * @param this A service which provides control over screenshot and video capture features.
      */
     StopVideoCapture(this: CaptureService): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#TakeCapture)
-     * @param this A service which provides control over screenshot capture features.
+     * @param this A service which provides control over screenshot and video capture features.
      * @param onCaptureReady
      * @param captureParams
      */
     TakeCapture(this: CaptureService, onCaptureReady: Callback, captureParams?: object): void;
     /**
+     * Initiates a video capture recording.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StartVideoCaptureAsync)
-     * @param this A service which provides control over screenshot capture features.
-     * @param onCaptureReady
+     * @param this A service which provides control over screenshot and video capture features.
+     * @param onCaptureReady A callback function that is called with the `VideoCapture` object and the result of type `VideoCaptureResult` of the video capture once it is ready.
      * @param captureParams
      */
     StartVideoCaptureAsync(this: CaptureService, onCaptureReady: Callback, captureParams?: object): Enum.VideoCaptureResult;
@@ -20352,30 +20379,38 @@ interface HandRigDescription extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#GetFingerControl)
+     * @param this
+     * @param fingerIndex
      */
     GetFingerControl(this: HandRigDescription, fingerIndex: number): Vector3;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#GetFingerTip)
+     * @param this
+     * @param fingerIndex
      */
     GetFingerTip(this: HandRigDescription, fingerIndex: number): Vector3;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#SetFingerControl)
+     * @param this
+     * @param fingerIndex
+     * @param control
      */
     SetFingerControl(this: HandRigDescription, fingerIndex: number, control: Vector3): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#SetFingerTip)
+     * @param this
+     * @param fingerIndex
+     * @param point
      */
     SetFingerTip(this: HandRigDescription, fingerIndex: number, point: Vector3): void;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect)
  */
 interface HapticEffect extends Instance {
@@ -22786,6 +22821,8 @@ interface HumanoidRigDescription extends Instance {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetJointFromName)
+     * @param this
+     * @param name
      */
     GetJointFromName(this: HumanoidRigDescription, name: string): Instance | undefined;
     /**
@@ -23090,6 +23127,8 @@ interface IncrementalPatchBuilder extends Instance {
     ZstdCompression: boolean;
 }
 /**
+ * Defines a gameplay action mechanic. These actions are then mapped to hardware inputs using `InputBinding`.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction)
@@ -23104,45 +23143,60 @@ interface InputAction extends Instance {
      */
     readonly _nominal_InputAction: unique symbol;
     /**
+     * Determines if the `InputAction` is enabled or not.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#Enabled)
      */
     Enabled: boolean;
     /**
+     * Specifies what type of input value the action is expecting.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#Type)
      */
     Type: Enum.InputActionType;
     /**
+     * Updates the `InputAction` to the given state and fires the appropriate signals.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#Fire)
-     * @param this
-     * @param value
+     * @param this Defines a gameplay action mechanic. These actions are then mapped to hardware inputs using `InputBinding`.
+     * @param state
      */
     Fire(this: InputAction, state: unknown): void;
     /**
+     * Returns the current state of the `InputAction`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#GetState)
-     * @param this
+     * @param this Defines a gameplay action mechanic. These actions are then mapped to hardware inputs using `InputBinding`.
+     * @returns The current state of `InputAction`.
      */
     GetState(this: InputAction): unknown;
     /**
+     * Fires only when the `InputAction.Type` is set to `Bool` on a state transition from `false` to `true`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#Pressed)
      */
     readonly Pressed: RBXScriptSignal<() => void>;
     /**
+     * Fires only when the `InputAction.Type` is set to `Bool` on a state transition from `true` to `false`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#Released)
      */
     readonly Released: RBXScriptSignal<() => void>;
     /**
+     * Fires for all `InputActionType` types whenever the state changes, except if the state attempts to transition to the same state.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#StateChanged)
@@ -23150,6 +23204,8 @@ interface InputAction extends Instance {
     readonly StateChanged: RBXScriptSignal<(value: unknown) => void>;
 }
 /**
+ * Defines which hardware binding should trigger the parent `InputAction`.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding)
@@ -23164,60 +23220,80 @@ interface InputBinding extends Instance {
      */
     readonly _nominal_InputBinding: unique symbol;
     /**
+     * Specifies an alternate `KeyCode` for dispatching directionally "down" inputs to the parent `InputAction`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Down)
      */
     Down: Enum.KeyCode;
     /**
+     * Specifies the `KeyCode` which triggers the parent `InputAction`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#KeyCode)
      */
     KeyCode: Enum.KeyCode;
     /**
+     * Specifies an alternate `KeyCode` for dispatching directionally "left" inputs to the parent `InputAction`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Left)
      */
     Left: Enum.KeyCode;
     /**
+     * Numerical value above which to fire an `InputAction` with a `Type` of `Bool`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#PressedThreshold)
      */
     PressedThreshold: number;
     /**
+     * Numerical value below which to fire an `InputAction` with a `Type` of `Bool`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#ReleasedThreshold)
      */
     ReleasedThreshold: number;
     /**
+     * Specifies an alternate `KeyCode` for dispatching directionally "right" inputs to the parent `InputAction`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Right)
      */
     Right: Enum.KeyCode;
     /**
+     * Amount by which to linearly scale the values of a directional `InputAction`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Scale)
      */
     Scale: number;
     /**
+     * Connects a `GuiButton` to a boolean action.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#UIButton)
      */
     UIButton: GuiButton | undefined;
     /**
+     * Specifies an alternate `KeyCode` for dispatching directionally "up" inputs to the parent `InputAction`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Up)
      */
     Up: Enum.KeyCode;
     /**
+     * Amount by which to linearly scale the values of a two-directional `InputAction`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Vector2Scale)
@@ -23225,6 +23301,8 @@ interface InputBinding extends Instance {
     Vector2Scale: Vector2;
 }
 /**
+ * Collection of actions which holds related actions and defines how they interact with other contexts/actions.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputContext)
@@ -23239,18 +23317,24 @@ interface InputContext extends Instance {
      */
     readonly _nominal_InputContext: unique symbol;
     /**
+     * Determines if this `InputContext` is enabled or not.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputContext#Enabled)
      */
     Enabled: boolean;
     /**
+     * The priority level at which the context should be run.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputContext#Priority)
      */
     Priority: number;
     /**
+     * Determines whether input bindings of lower priority will be processed.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputContext#Sink)
@@ -26068,6 +26152,8 @@ interface MemoryStoreQueue extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreQueue#GetSizeAsync)
+     * @param this Provides access to a queue within MemoryStore.
+     * @param excludeInvisible
      */
     GetSizeAsync(this: MemoryStoreQueue, excludeInvisible?: boolean): number;
     /**
@@ -26212,6 +26298,7 @@ interface MemoryStoreSortedMap extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreSortedMap#GetSizeAsync)
+     * @param this Provides access to a sorted map within `MemoryStoreService`.
      */
     GetSizeAsync(this: MemoryStoreSortedMap): number;
     /**
@@ -28330,6 +28417,13 @@ interface Terrain extends BasePart {
      */
     Clear(this: Terrain): void;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#ClearVoxelsAsync_beta)
+     */
+    ClearVoxelsAsync_beta(this: Terrain, region: Region3, channelIds: Array<unknown>): void;
+    /**
      * Stores a chunk of terrain into a `TerrainRegion` object so it can be loaded back later. Note: `TerrainRegion` data does not replicate between server and client.
      *
      * - **ThreadSafety**: Unsafe
@@ -28454,6 +28548,20 @@ interface Terrain extends BasePart {
      */
     GetWaterCell(this: Terrain, x: number, y: number, z: number): unknown;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#IterateVoxelsAsync_beta)
+     */
+    IterateVoxelsAsync_beta(this: Terrain, region: Region3, resolution: number, channelIds: Array<unknown>): TerrainIterateOperation;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#ModifyVoxelsAsync_beta)
+     */
+    ModifyVoxelsAsync_beta(this: Terrain, region: Region3, resolution: number, channelIds: Array<unknown>): TerrainModifyOperation;
+    /**
      * Applies a chunk of terrain to the Terrain object. Note: `TerrainRegion` data does not replicate between server and client.
      *
      * - **ThreadSafety**: Unsafe
@@ -28500,6 +28608,13 @@ interface Terrain extends BasePart {
         ReadVoxelsArray<Enum.Material>,
         ReadVoxelsArray<number>
     ]>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#ReadVoxelsAsync_beta)
+     */
+    ReadVoxelsAsync_beta(this: Terrain, region: Region3, resolution: number, channelIds: Array<unknown>): TerrainReadOperation;
     /**
      * Replaces the terrain of a material within a region with another material.
      *
@@ -28640,6 +28755,13 @@ interface Terrain extends BasePart {
      * @param occupancy 3D array of voxel occupancies (number between 0 and 1). Dimensions must exactly match the size of the target region in voxels.
      */
     WriteVoxels(this: Terrain, region: Region3, resolution: number, materials: Array<Array<Array<CastsToEnum<Enum.Material>>>>, occupancy: Array<Array<Array<number>>>): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#WriteVoxelsAsync_beta)
+     */
+    WriteVoxelsAsync_beta(this: Terrain, region: Region3, resolution: number, channelIds: Array<unknown>): TerrainWriteOperation;
 }
 /**
  * Abstract intermediate class that manages physical geometry properties for PartOperations and MeshParts.
@@ -40055,6 +40177,8 @@ interface TextFilterResult extends Instance {
      * @param this
      * @param toUserId `Player.UserId` of the user being chatted.
      * @returns Filtered text string.
+     *
+     * @deprecated
      */
     GetChatForUserAsync(this: TextFilterResult, toUserId: number): string;
     /**
@@ -42270,6 +42394,13 @@ interface UserInputService extends Instance {
      */
     readonly OnScreenKeyboardVisible: boolean;
     /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#PreferredInput)
+     */
+    readonly PreferredInput: Enum.PreferredInput;
+    /**
      * Describes whether the user's current device has a touch-screen available.
      *
      * - **ThreadSafety**: ReadSafe
@@ -44188,4 +44319,107 @@ interface Wire extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Wire#TargetName)
      */
     TargetName: string;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainIterateOperation)
+ */
+interface TerrainIterateOperation extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TerrainIterateOperation: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainIterateOperation#CommitBlock)
+     */
+    CommitBlock(this: TerrainIterateOperation, block: object): RBXScriptSignal;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainIterateOperation#Ready)
+     */
+    readonly Ready: RBXScriptSignal<(block: object) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainModifyOperation)
+ */
+interface TerrainModifyOperation extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TerrainModifyOperation: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainModifyOperation#CommitBlock)
+     */
+    CommitBlock(this: TerrainModifyOperation, block: object): RBXScriptSignal;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainModifyOperation#Ready)
+     */
+    readonly Ready: RBXScriptSignal<(block: object) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainReadOperation)
+ */
+interface TerrainReadOperation extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TerrainReadOperation: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainReadOperation#Ready)
+     */
+    readonly Ready: RBXScriptSignal<(block: object) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainWriteOperation)
+ */
+interface TerrainWriteOperation extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TerrainWriteOperation: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainWriteOperation#CommitBlock)
+     */
+    CommitBlock(this: TerrainWriteOperation, block: object): RBXScriptSignal;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainWriteOperation#GetBlock)
+     */
+    GetBlock(this: TerrainWriteOperation): object;
 }
