@@ -9600,11 +9600,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.DeveloperMemoryTag;
         }
         export const GeometryCSG: GeometryCSG;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeveloperMemoryTag#GraphicsSlimModels)
+         */
+        export interface GraphicsSlimModels extends globalThis.EnumItem {
+            Name: "GraphicsSlimModels";
+            Value: 25;
+            EnumType: typeof globalThis.Enum.DeveloperMemoryTag;
+        }
+        export const GraphicsSlimModels: GraphicsSlimModels;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeveloperMemoryTag>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DeveloperMemoryTag | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DeveloperMemoryTag | undefined;
     }
-    export type DeveloperMemoryTag = DeveloperMemoryTag.Internal | DeveloperMemoryTag.HttpCache | DeveloperMemoryTag.Instances | DeveloperMemoryTag.Signals | DeveloperMemoryTag.LuaHeap | DeveloperMemoryTag.Script | DeveloperMemoryTag.PhysicsCollision | DeveloperMemoryTag.PhysicsParts | DeveloperMemoryTag.GraphicsSolidModels | DeveloperMemoryTag.GraphicsMeshParts | DeveloperMemoryTag.GraphicsParticles | DeveloperMemoryTag.GraphicsParts | DeveloperMemoryTag.GraphicsSpatialHash | DeveloperMemoryTag.GraphicsTerrain | DeveloperMemoryTag.GraphicsTexture | DeveloperMemoryTag.GraphicsTextureCharacter | DeveloperMemoryTag.Sounds | DeveloperMemoryTag.StreamingSounds | DeveloperMemoryTag.TerrainVoxels | DeveloperMemoryTag.Gui | DeveloperMemoryTag.Animation | DeveloperMemoryTag.Navigation | DeveloperMemoryTag.GeometryCSG;
+    export type DeveloperMemoryTag = DeveloperMemoryTag.Internal | DeveloperMemoryTag.HttpCache | DeveloperMemoryTag.Instances | DeveloperMemoryTag.Signals | DeveloperMemoryTag.LuaHeap | DeveloperMemoryTag.Script | DeveloperMemoryTag.PhysicsCollision | DeveloperMemoryTag.PhysicsParts | DeveloperMemoryTag.GraphicsSolidModels | DeveloperMemoryTag.GraphicsMeshParts | DeveloperMemoryTag.GraphicsParticles | DeveloperMemoryTag.GraphicsParts | DeveloperMemoryTag.GraphicsSpatialHash | DeveloperMemoryTag.GraphicsTerrain | DeveloperMemoryTag.GraphicsTexture | DeveloperMemoryTag.GraphicsTextureCharacter | DeveloperMemoryTag.Sounds | DeveloperMemoryTag.StreamingSounds | DeveloperMemoryTag.TerrainVoxels | DeveloperMemoryTag.Gui | DeveloperMemoryTag.Animation | DeveloperMemoryTag.Navigation | DeveloperMemoryTag.GeometryCSG | DeveloperMemoryTag.GraphicsSlimModels;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceFeatureType)
      */
@@ -15104,10 +15113,14 @@ declare namespace Enum {
     }
     export type InitialDockState = InitialDockState.Top | InitialDockState.Bottom | InitialDockState.Left | InitialDockState.Right | InitialDockState.Float;
     /**
+     * This enum is used by `InputAction.Type` to determine which input data type the `InputAction` will receive.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType)
      */
     export namespace InputActionType {
         /**
+         * The `InputAction` will receive boolean values from button inputs, for example `true`/`false` on press/release from inputs such as `KeyCode.ButtonA` or `KeyCode.E`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Bool)
          */
         export interface Bool extends globalThis.EnumItem {
@@ -15117,6 +15130,8 @@ declare namespace Enum {
         }
         export const Bool: Bool;
         /**
+         * The `InputAction` will receive numerical values, generally from analog gamepad triggers such as `KeyCode.ButtonL2` or `KeyCode.ButtonR2`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Direction1D)
          */
         export interface Direction1D extends globalThis.EnumItem {
@@ -15126,6 +15141,8 @@ declare namespace Enum {
         }
         export const Direction1D: Direction1D;
         /**
+         * The `InputAction` will receive `Vector2` values, generally from thumbstick inputs such as `KeyCode.Thumbstick1` and `KeyCode.Thumbstick2`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Direction2D)
          */
         export interface Direction2D extends globalThis.EnumItem {
@@ -17209,8 +17226,6 @@ declare namespace Enum {
         }
         export const Thumbstick2: Thumbstick2;
         /**
-         * **Deprecated:**
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseLeftButton)
          */
         export interface MouseLeftButton extends globalThis.EnumItem {
@@ -17220,8 +17235,6 @@ declare namespace Enum {
         }
         export const MouseLeftButton: MouseLeftButton;
         /**
-         * **Deprecated:**
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseRightButton)
          */
         export interface MouseRightButton extends globalThis.EnumItem {
@@ -17231,8 +17244,6 @@ declare namespace Enum {
         }
         export const MouseRightButton: MouseRightButton;
         /**
-         * **Deprecated:**
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseMiddleButton)
          */
         export interface MouseMiddleButton extends globalThis.EnumItem {
@@ -22881,6 +22892,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PositionAlignmentMode | undefined;
     }
     export type PositionAlignmentMode = PositionAlignmentMode.OneAttachment | PositionAlignmentMode.TwoAttachment;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput)
+     */
+    export namespace PreferredInput {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#KeyboardAndMouse)
+         */
+        export interface KeyboardAndMouse extends globalThis.EnumItem {
+            Name: "KeyboardAndMouse";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PreferredInput;
+        }
+        export const KeyboardAndMouse: KeyboardAndMouse;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#Gamepad)
+         */
+        export interface Gamepad extends globalThis.EnumItem {
+            Name: "Gamepad";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PreferredInput;
+        }
+        export const Gamepad: Gamepad;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#Touch)
+         */
+        export interface Touch extends globalThis.EnumItem {
+            Name: "Touch";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PreferredInput;
+        }
+        export const Touch: Touch;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PreferredInput>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PreferredInput | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PreferredInput | undefined;
+    }
+    export type PreferredInput = PreferredInput.KeyboardAndMouse | PreferredInput.Gamepad | PreferredInput.Touch;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredTextSize)
      */

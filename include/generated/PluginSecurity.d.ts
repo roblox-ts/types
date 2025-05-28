@@ -173,6 +173,7 @@ interface Services {
     ServiceVisibilityService: ServiceVisibilityService;
     SessionService: SessionService;
     SharedTableRegistry: SharedTableRegistry;
+    SlimContentProvider: SlimContentProvider;
     SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
     SnippetService: SnippetService;
     SocialService: SocialService;
@@ -744,6 +745,10 @@ interface Objects extends Instances {
     EditableMesh: EditableMesh;
     Object: RBXObject;
     ScreenshotCapture: ScreenshotCapture;
+    TerrainIterateOperation: TerrainIterateOperation;
+    TerrainModifyOperation: TerrainModifyOperation;
+    TerrainReadOperation: TerrainReadOperation;
+    TerrainWriteOperation: TerrainWriteOperation;
     VideoCapture: VideoCapture;
 }
 // GENERATED ROBLOX INSTANCE CLASSES
@@ -1767,6 +1772,8 @@ interface AudioPlayer extends Instance {
     readonly _nominal_AudioPlayer: unique symbol;
 }
 /**
+ * Records audio streams in-experience.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder)
@@ -2737,6 +2744,21 @@ interface BulkImportService extends Instance {
     readonly _nominal_BulkImportService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlimContentProvider)
+ */
+interface SlimContentProvider extends CacheableContentProvider {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SlimContentProvider: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CalloutService)
@@ -2752,7 +2774,7 @@ interface CalloutService extends Instance {
     readonly _nominal_CalloutService: unique symbol;
 }
 /**
- * A service which provides control over screenshot capture features.
+ * A service which provides control over screenshot and video capture features.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -6507,8 +6529,6 @@ interface HandRigDescription extends Instance {
     readonly _nominal_HandRigDescription: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect)
  */
 interface HapticEffect extends Instance {
@@ -6815,6 +6835,8 @@ interface IncrementalPatchBuilder extends Instance {
     readonly _nominal_IncrementalPatchBuilder: unique symbol;
 }
 /**
+ * Defines a gameplay action mechanic. These actions are then mapped to hardware inputs using `InputBinding`.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction)
@@ -6830,6 +6852,8 @@ interface InputAction extends Instance {
     readonly _nominal_InputAction: unique symbol;
 }
 /**
+ * Defines which hardware binding should trigger the parent `InputAction`.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding)
@@ -6845,6 +6869,8 @@ interface InputBinding extends Instance {
     readonly _nominal_InputBinding: unique symbol;
 }
 /**
+ * Collection of actions which holds related actions and defines how they interact with other contexts/actions.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputContext)
@@ -14826,4 +14852,64 @@ interface Wire extends Instance {
      * @deprecated
      */
     readonly _nominal_Wire: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainIterateOperation)
+ */
+interface TerrainIterateOperation extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TerrainIterateOperation: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainModifyOperation)
+ */
+interface TerrainModifyOperation extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TerrainModifyOperation: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainReadOperation)
+ */
+interface TerrainReadOperation extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TerrainReadOperation: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainWriteOperation)
+ */
+interface TerrainWriteOperation extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TerrainWriteOperation: unique symbol;
 }
