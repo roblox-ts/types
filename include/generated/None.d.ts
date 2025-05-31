@@ -3843,7 +3843,7 @@ interface AssetService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#SavePlaceAsync)
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
      */
-    SavePlaceAsync(this: AssetService, requestParameters?: object): void;
+    SavePlaceAsync(this: AssetService): void;
     /**
      * Finds audio assets matching a variety of search criteria.
      *
