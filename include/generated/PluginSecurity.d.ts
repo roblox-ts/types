@@ -115,6 +115,7 @@ interface Services {
     MessagingService: MessagingService;
     MetaBreakpointManager: MetaBreakpointManager;
     MLModelDeliveryService: MLModelDeliveryService;
+    MLService: MLService;
     NetworkClient: NetworkClient;
     NetworkServer: NetworkServer;
     NetworkSettings: NetworkSettings;
@@ -743,6 +744,7 @@ interface Objects extends Instances {
     ConfigSnapshot: ConfigSnapshot;
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
+    MLSession: MLSession;
     Object: RBXObject;
     ScreenshotCapture: ScreenshotCapture;
     TerrainIterateOperation: TerrainIterateOperation;
@@ -2774,7 +2776,7 @@ interface CalloutService extends Instance {
     readonly _nominal_CalloutService: unique symbol;
 }
 /**
- * A service which provides control over screenshot and video capture features.
+ * A service which provides control over screenshot capture features.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -7743,6 +7745,21 @@ interface MLModelDeliveryService extends Instance {
      * @deprecated
      */
     readonly _nominal_MLModelDeliveryService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLService)
+ */
+interface MLService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_MLService: unique symbol;
 }
 /**
  * Represents a list of strings markers in chronological order.
@@ -12915,6 +12932,8 @@ interface StudioWidgetsService extends Instance {
     readonly _nominal_StudioWidgetsService: unique symbol;
 }
 /**
+ * The base class for `StyleSheet` and `StyleRule`.
+ *
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleBase)
@@ -12930,6 +12949,8 @@ interface StyleBase extends Instance {
     readonly _nominal_StyleBase: unique symbol;
 }
 /**
+ * Defines style properties which override properties on the instances affected by the `Selector` property.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule)
  */
 interface StyleRule extends StyleBase {
@@ -12943,6 +12964,8 @@ interface StyleRule extends StyleBase {
     readonly _nominal_StyleRule: unique symbol;
 }
 /**
+ * Aggregates `StyleRules` and can be linked to `DataModel` trees to apply style properties to instances.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleSheet)
  */
 interface StyleSheet extends StyleBase {
@@ -12956,6 +12979,8 @@ interface StyleSheet extends StyleBase {
     readonly _nominal_StyleSheet: unique symbol;
 }
 /**
+ * When parented to a `StyleSheet`, references another `StyleSheet` from which the parent inherits `StyleRules` and token definitions.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleDerive)
  */
 interface StyleDerive extends Instance {
@@ -12969,6 +12994,8 @@ interface StyleDerive extends Instance {
     readonly _nominal_StyleDerive: unique symbol;
 }
 /**
+ * Links a `StyleSheet` to the instance tree whose root is the parent of the `StyleLink`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleLink)
  */
 interface StyleLink extends Instance {
@@ -14852,6 +14879,21 @@ interface Wire extends Instance {
      * @deprecated
      */
     readonly _nominal_Wire: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLSession)
+ */
+interface MLSession extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_MLSession: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated

@@ -33181,37 +33181,82 @@ declare namespace Enum {
         }
         export const OtherError: OtherError;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureResult#CapturingAlready)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureResult#ScreenSizeChanged)
          */
-        export interface CapturingAlready extends globalThis.EnumItem {
-            Name: "CapturingAlready";
+        export interface ScreenSizeChanged extends globalThis.EnumItem {
+            Name: "ScreenSizeChanged";
             Value: 2;
             EnumType: typeof globalThis.Enum.VideoCaptureResult;
         }
-        export const CapturingAlready: CapturingAlready;
+        export const ScreenSizeChanged: ScreenSizeChanged;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureResult#NoDeviceSupport)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureResult#TimeLimitReached)
          */
-        export interface NoDeviceSupport extends globalThis.EnumItem {
-            Name: "NoDeviceSupport";
+        export interface TimeLimitReached extends globalThis.EnumItem {
+            Name: "TimeLimitReached";
             Value: 3;
             EnumType: typeof globalThis.Enum.VideoCaptureResult;
         }
-        export const NoDeviceSupport: NoDeviceSupport;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureResult#NoSpaceOnDevice)
-         */
-        export interface NoSpaceOnDevice extends globalThis.EnumItem {
-            Name: "NoSpaceOnDevice";
-            Value: 4;
-            EnumType: typeof globalThis.Enum.VideoCaptureResult;
-        }
-        export const NoSpaceOnDevice: NoSpaceOnDevice;
+        export const TimeLimitReached: TimeLimitReached;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VideoCaptureResult>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VideoCaptureResult | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VideoCaptureResult | undefined;
     }
-    export type VideoCaptureResult = VideoCaptureResult.Success | VideoCaptureResult.OtherError | VideoCaptureResult.CapturingAlready | VideoCaptureResult.NoDeviceSupport | VideoCaptureResult.NoSpaceOnDevice;
+    export type VideoCaptureResult = VideoCaptureResult.Success | VideoCaptureResult.OtherError | VideoCaptureResult.ScreenSizeChanged | VideoCaptureResult.TimeLimitReached;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureStartedResult)
+     */
+    export namespace VideoCaptureStartedResult {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureStartedResult#Success)
+         */
+        export interface Success extends globalThis.EnumItem {
+            Name: "Success";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.VideoCaptureStartedResult;
+        }
+        export const Success: Success;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureStartedResult#OtherError)
+         */
+        export interface OtherError extends globalThis.EnumItem {
+            Name: "OtherError";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.VideoCaptureStartedResult;
+        }
+        export const OtherError: OtherError;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureStartedResult#CapturingAlready)
+         */
+        export interface CapturingAlready extends globalThis.EnumItem {
+            Name: "CapturingAlready";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.VideoCaptureStartedResult;
+        }
+        export const CapturingAlready: CapturingAlready;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureStartedResult#NoDeviceSupport)
+         */
+        export interface NoDeviceSupport extends globalThis.EnumItem {
+            Name: "NoDeviceSupport";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.VideoCaptureStartedResult;
+        }
+        export const NoDeviceSupport: NoDeviceSupport;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureStartedResult#NoSpaceOnDevice)
+         */
+        export interface NoSpaceOnDevice extends globalThis.EnumItem {
+            Name: "NoSpaceOnDevice";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.VideoCaptureStartedResult;
+        }
+        export const NoSpaceOnDevice: NoSpaceOnDevice;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VideoCaptureStartedResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VideoCaptureStartedResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VideoCaptureStartedResult | undefined;
+    }
+    export type VideoCaptureStartedResult = VideoCaptureStartedResult.Success | VideoCaptureStartedResult.OtherError | VideoCaptureStartedResult.CapturingAlready | VideoCaptureStartedResult.NoDeviceSupport | VideoCaptureStartedResult.NoSpaceOnDevice;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoDeviceCaptureQuality)
      */

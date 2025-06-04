@@ -112,6 +112,7 @@ interface Services {
     MessagingService: MessagingService;
     MetaBreakpointManager: MetaBreakpointManager;
     MLModelDeliveryService: MLModelDeliveryService;
+    MLService: MLService;
     OmniRecommendationsService: OmniRecommendationsService;
     OpenCloudService: OpenCloudService;
     PackageUIService: PackageUIService;
@@ -691,6 +692,7 @@ interface Objects extends Instances {
     ConfigSnapshot: ConfigSnapshot;
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
+    MLSession: MLSession;
     Object: RBXObject;
     ScreenshotCapture: ScreenshotCapture;
     TerrainIterateOperation: TerrainIterateOperation;
@@ -2051,11 +2053,14 @@ interface Instance extends RBXObject {
      */
     GetFullName(this: Instance): string;
     /**
+     * Returns the styled or explicitly modified value of the specified property, or else the default property value if it hasn't been styled/modified.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetStyled)
      * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
-     * @param name
+     * @param name Name of the property to query.
+     * @returns The styled or explicitly modified value of the specified property, or else the default property value if it hasn't been styled/modified.
      */
     GetStyled(this: Instance, name: string): unknown;
     /**
@@ -2063,7 +2068,8 @@ interface Instance extends RBXObject {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetStyledPropertyChangedSignal)
      * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
-     * @param property
+     * @param property Name of the style property for which to listen for changes.
+     * @returns Event that fires when the given style property changes.
      */
     GetStyledPropertyChangedSignal(this: Instance, property: string): RBXScriptSignal;
     /**
@@ -2108,13 +2114,13 @@ interface Instance extends RBXObject {
      */
     IsDescendantOf(this: Instance, ancestor: Instance): boolean;
     /**
-     * Returns `true` if the value stored in the specified property is non-default.
+     * Returns `true` if the value stored in the specified property is equal to the code-instantiated default.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#IsPropertyModified)
      * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
-     * @param property
+     * @param property Name of the property to query.
      * @returns Boolean indicating whether the property is modified.
      */
     IsPropertyModified(this: Instance, property: string): boolean;
@@ -2129,11 +2135,13 @@ interface Instance extends RBXObject {
      */
     RemoveTag(this: Instance, tag: string): void;
     /**
+     * Resets a property to its default value.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#ResetPropertyToDefault)
      * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
-     * @param property
+     * @param property Name of the property to reset.
      */
     ResetPropertyToDefault(this: Instance, property: string): void;
     /**
@@ -2218,6 +2226,8 @@ interface Instance extends RBXObject {
      */
     readonly Destroying: RBXScriptSignal<() => void>;
     /**
+     * Fires whenever any style property is changed on the instance, including when a property is set to `nil`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#StyledPropertiesChanged)
@@ -9119,7 +9129,7 @@ interface CalloutService extends Instance {
     readonly _nominal_CalloutService: unique symbol;
 }
 /**
- * A service which provides control over screenshot and video capture features.
+ * A service which provides control over screenshot capture features.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -9140,7 +9150,7 @@ interface CaptureService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#CaptureScreenshot)
-     * @param this A service which provides control over screenshot and video capture features.
+     * @param this A service which provides control over screenshot capture features.
      * @param onCaptureReady A callback function that is called with the `contentId` of the new capture once it is ready.
      */
     CaptureScreenshot(this: CaptureService, onCaptureReady: (captureContentId: string) => void): void;
@@ -9150,18 +9160,18 @@ interface CaptureService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#PromptSaveCapturesToGallery)
-     * @param this A service which provides control over screenshot and video capture features.
+     * @param this A service which provides control over screenshot capture features.
      * @param captures
      * @param resultCallback A callback function that will be invoked with a dictionary mapping each `contentId` to a boolean indicating if the user accepted saving that capture.
      */
     PromptSaveCapturesToGallery<T extends string>(this: CaptureService, contentIds: Array<T>, resultCallback: (results: Record<T, boolean>) => void): void;
     /**
-     * Prompts the user to share a specified capture.
+     * Prompts the user to share a specified screenshot capture.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#PromptShareCapture)
-     * @param this A service which provides control over screenshot and video capture features.
+     * @param this A service which provides control over screenshot capture features.
      * @param captureContent
      * @param launchData An optional string to include as launch data in the invite link.
      * @param onAcceptedCallback An optional callback function invoked if the user accepts sharing.
@@ -9169,35 +9179,31 @@ interface CaptureService extends Instance {
      */
     PromptShareCapture(this: CaptureService, contentId: string, launchData: string, onAcceptedCallback: () => void, onDeniedCallback: () => void): void;
     /**
-     * Ends a video capture initiated by `StartVideoCaptureAsync()`.
-     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StopVideoCapture)
-     * @param this A service which provides control over screenshot and video capture features.
+     * @param this A service which provides control over screenshot capture features.
      */
     StopVideoCapture(this: CaptureService): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#TakeCapture)
-     * @param this A service which provides control over screenshot and video capture features.
+     * @param this A service which provides control over screenshot capture features.
      * @param onCaptureReady
      * @param captureParams
      */
     TakeCapture(this: CaptureService, onCaptureReady: Callback, captureParams?: object): void;
     /**
-     * Initiates a video capture recording.
-     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StartVideoCaptureAsync)
-     * @param this A service which provides control over screenshot and video capture features.
-     * @param onCaptureReady A callback function that is called with the `VideoCapture` object and the result of type `VideoCaptureResult` of the video capture once it is ready.
+     * @param this A service which provides control over screenshot capture features.
+     * @param onCaptureReady
      * @param captureParams
      */
-    StartVideoCaptureAsync(this: CaptureService, onCaptureReady: Callback, captureParams?: object): Enum.VideoCaptureResult;
+    StartVideoCaptureAsync(this: CaptureService, onCaptureReady: Callback, captureParams?: object): Enum.VideoCaptureStartedResult;
     /**
      * Fires immediately before a capture begins.
      *
@@ -25483,6 +25489,28 @@ interface MLModelDeliveryService extends Instance {
     readonly _nominal_MLModelDeliveryService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLService)
+ */
+interface MLService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_MLService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLService#CreateSessionAsync)
+     */
+    CreateSessionAsync(this: MLService, assetId: string): MLSession;
+}
+/**
  * Represents a list of strings markers in chronological order.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarkerCurve)
@@ -37883,6 +37911,8 @@ interface StudioWidgetsService extends Instance {
     readonly _nominal_StudioWidgetsService: unique symbol;
 }
 /**
+ * The base class for `StyleSheet` and `StyleRule`.
+ *
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleBase)
@@ -37897,30 +37927,39 @@ interface StyleBase extends Instance {
      */
     readonly _nominal_StyleBase: unique symbol;
     /**
+     * Returns an array of associated `StyleRules`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleBase#GetStyleRules)
-     * @param this
+     * @param this The base class for `StyleSheet` and `StyleRule`.
+     * @returns Array of `StyleRules`.
      */
     GetStyleRules(this: StyleBase): Array<Instance>;
     /**
+     * Inserts a new `StyleRule` into the array of rules.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleBase#InsertStyleRule)
-     * @param this
-     * @param rule
-     * @param priority
+     * @param this The base class for `StyleSheet` and `StyleRule`.
+     * @param rule The `StyleRule` to insert.
+     * @param priority The number to set the rule's `Priority` to.
      */
     InsertStyleRule(this: StyleBase, rule: StyleRule, priority?: number): void;
     /**
+     * Similar to `InsertStyleRule()` but lets you declare and set multiple `StyleRules` at once.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleBase#SetStyleRules)
-     * @param this
-     * @param rules
+     * @param this The base class for `StyleSheet` and `StyleRule`.
+     * @param rules Array of `StyleRules` to set.
      */
     SetStyleRules(this: StyleBase, rules: Array<Instance>): void;
     /**
+     * Fires when one or more `StyleRules` is explicitly changed on the connected `StyleSheet` or `StyleRule`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleBase#StyleRulesChanged)
@@ -37928,6 +37967,8 @@ interface StyleBase extends Instance {
     readonly StyleRulesChanged: RBXScriptSignal<() => void>;
 }
 /**
+ * Defines style properties which override properties on the instances affected by the `Selector` property.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule)
  */
 interface StyleRule extends StyleBase {
@@ -37940,18 +37981,24 @@ interface StyleRule extends StyleBase {
      */
     readonly _nominal_StyleRule: unique symbol;
     /**
+     * A number that determines how properties of the `StyleRule` apply relative to the same properties in other `StyleRules`. Higher priority values take precedence over lower.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#Priority)
      */
     Priority: number;
     /**
+     * A string specifying which instances the `StyleRule` should affect.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#Selector)
      */
     Selector: string;
     /**
+     * A read-only string that displays errors from the `Selector` property.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -37959,39 +38006,49 @@ interface StyleRule extends StyleBase {
      */
     readonly SelectorError: string;
     /**
+     * Returns a dictionary of key-value pairs describing the properties of the `StyleRule`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#GetProperties)
-     * @param this
+     * @param this Defines style properties which override properties on the instances affected by the `Selector` property.
+     * @returns Dictionary of key-value pairs describing the properties of the `StyleRule`.
      */
     GetProperties(this: StyleRule): object;
     /**
+     * Returns the value of a specific property in the `StyleRule`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#GetProperty)
-     * @param this
-     * @param name
+     * @param this Defines style properties which override properties on the instances affected by the `Selector` property.
+     * @param name String name of the property, for example `"AnchorPoint"` or `"BackgroundColor3"`.
+     * @returns Value of the property.
      */
     GetProperty(this: StyleRule, name: string): unknown;
     /**
+     * Lets you declare and set multiple properties of the `StyleRule` at once.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#SetProperties)
-     * @param this
-     * @param styleProperties
+     * @param this Defines style properties which override properties on the instances affected by the `Selector` property.
+     * @param styleProperties Dictionary of key-value pairs defining the properties to set.
      */
     SetProperties(this: StyleRule, styleProperties: object): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#SetProperty)
-     * @param this
-     * @param name
-     * @param value
+     * @param this Defines style properties which override properties on the instances affected by the `Selector` property.
+     * @param name Property name to set, for example `"BackgroundColor3"`.
+     * @param value Property value to set, for example `Color3.new(1, 0, 0.25)`.
      */
     SetProperty(this: StyleRule, name: string, value: unknown): void;
 }
 /**
+ * Aggregates `StyleRules` and can be linked to `DataModel` trees to apply style properties to instances.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleSheet)
  */
 interface StyleSheet extends StyleBase {
@@ -38004,22 +38061,29 @@ interface StyleSheet extends StyleBase {
      */
     readonly _nominal_StyleSheet: unique symbol;
     /**
+     * Returns an array of other `StyleSheets` from which the `StyleSheet` is deriving `StyleRules` and token definitions.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleSheet#GetDerives)
-     * @param this
+     * @param this Aggregates `StyleRules` and can be linked to `DataModel` trees to apply style properties to instances.
+     * @returns Array of other `StyleSheets`.
      */
     GetDerives(this: StyleSheet): Array<Instance>;
     /**
+     * Sets the `StyleSheet` to derive `StyleRules` and token definitions from one or more other `StyleSheets`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleSheet#SetDerives)
-     * @param this
-     * @param derives
+     * @param this Aggregates `StyleRules` and can be linked to `DataModel` trees to apply style properties to instances.
+     * @param derives Array of other `StyleSheets` to derive `StyleRules` and token definitions from.
      */
     SetDerives(this: StyleSheet, derives: Array<Instance>): void;
 }
 /**
+ * When parented to a `StyleSheet`, references another `StyleSheet` from which the parent inherits `StyleRules` and token definitions.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleDerive)
  */
 interface StyleDerive extends Instance {
@@ -38032,12 +38096,16 @@ interface StyleDerive extends Instance {
      */
     readonly _nominal_StyleDerive: unique symbol;
     /**
+     * A number that determines how style properties inherited through this `StyleDerive` apply relative to the same properties inherited through other `StyleDerives`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleDerive#Priority)
      */
     Priority: number;
     /**
+     * The `StyleSheet` from which the parent `StyleSheet` inherits `StyleRules` and token definitions.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleDerive#StyleSheet)
@@ -38045,6 +38113,8 @@ interface StyleDerive extends Instance {
     StyleSheet: StyleSheet | undefined;
 }
 /**
+ * Links a `StyleSheet` to the instance tree whose root is the parent of the `StyleLink`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleLink)
  */
 interface StyleLink extends Instance {
@@ -38057,6 +38127,8 @@ interface StyleLink extends Instance {
      */
     readonly _nominal_StyleLink: unique symbol;
     /**
+     * The `StyleSheet` to link to the parent such that the parent's descendants are styled accordingly.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleLink#StyleSheet)
@@ -44319,6 +44391,28 @@ interface Wire extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Wire#TargetName)
      */
     TargetName: string;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLSession)
+ */
+interface MLSession extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_MLSession: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLSession#ForwardAsync)
+     */
+    ForwardAsync(this: MLSession, data: object): object;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
