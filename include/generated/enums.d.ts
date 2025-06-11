@@ -15151,11 +15151,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.InputActionType;
         }
         export const Direction2D: Direction2D;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Direction3D)
+         */
+        export interface Direction3D extends globalThis.EnumItem {
+            Name: "Direction3D";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.InputActionType;
+        }
+        export const Direction3D: Direction3D;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InputActionType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.InputActionType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InputActionType | undefined;
     }
-    export type InputActionType = InputActionType.Bool | InputActionType.Direction1D | InputActionType.Direction2D;
+    export type InputActionType = InputActionType.Bool | InputActionType.Direction1D | InputActionType.Direction2D | InputActionType.Direction3D;
     /**
      * The InputType Enum controls the SurfaceInputs of `Part`.
      *
@@ -25057,6 +25066,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RotationType | undefined;
     }
     export type RotationType = RotationType.MovementRelative | RotationType.CameraRelative;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RsvpStatus)
+     */
+    export namespace RsvpStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RsvpStatus#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.RsvpStatus;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RsvpStatus#Going)
+         */
+        export interface Going extends globalThis.EnumItem {
+            Name: "Going";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.RsvpStatus;
+        }
+        export const Going: Going;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RsvpStatus#NotGoing)
+         */
+        export interface NotGoing extends globalThis.EnumItem {
+            Name: "NotGoing";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.RsvpStatus;
+        }
+        export const NotGoing: NotGoing;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RsvpStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RsvpStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RsvpStatus | undefined;
+    }
+    export type RsvpStatus = RsvpStatus.None | RsvpStatus.Going | RsvpStatus.NotGoing;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RtlTextSupport)
      */
