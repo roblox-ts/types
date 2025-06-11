@@ -116,6 +116,7 @@ interface Services {
     MetaBreakpointManager: MetaBreakpointManager;
     MLModelDeliveryService: MLModelDeliveryService;
     MLService: MLService;
+    Moderation: Moderation;
     NetworkClient: NetworkClient;
     NetworkServer: NetworkServer;
     NetworkSettings: NetworkSettings;
@@ -278,6 +279,7 @@ interface CreatableInstances {
     AudioRecorder: AudioRecorder;
     AudioReverb: AudioReverb;
     AudioSearchParams: AudioSearchParams;
+    AudioSpeechToText: AudioSpeechToText;
     AudioTextToSpeech: AudioTextToSpeech;
     AuroraScript: AuroraScript;
     AvatarAccessoryRules: AvatarAccessoryRules;
@@ -1821,6 +1823,21 @@ interface AudioSearchParams extends Instance {
      * @deprecated
      */
     readonly _nominal_AudioSearchParams: unique symbol;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSpeechToText)
+ */
+interface AudioSpeechToText extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioSpeechToText: unique symbol;
 }
 /**
  * Plays text as speech audio.
@@ -8117,6 +8134,21 @@ interface MetaBreakpointManager extends Instance {
      * @deprecated
      */
     readonly _nominal_MetaBreakpointManager: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Moderation)
+ */
+interface Moderation extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Moderation: unique symbol;
 }
 /**
  * Legacy object that contains members useful for pointer input.
