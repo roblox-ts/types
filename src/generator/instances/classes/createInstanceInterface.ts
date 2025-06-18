@@ -78,6 +78,44 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 		apiClass.Superclass === "<<<ROOT>>>" ? undefined : [createExtendsClause(getSafeClassName(apiClass.Superclass))];
 
 	const overrideMembers = new Map<string, Array<ts.TypeElement>>();
+	
+	if (apiClass.Name === "SharedTable") {
+		const keyType = ts.factory.createTypeParameterDeclaration(
+			undefined,
+			"K",
+			ts.factory.createUnionTypeNode([
+				ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword),
+				ts.factory.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword),
+			]),
+		);
+		const valueType = ts.factory.createTypeParameterDeclaration(undefined, "V");
+		typeParameters = [keyType, valueType];
+
+		const iter = ts.factory.createMethodSignature(
+			undefined,
+			ts.factory.createComputedPropertyName(
+				ts.factory.createPropertyAccessExpression(ts.factory.createIdentifier("Symbol"), "iterator"),
+			),
+			undefined,
+			[],
+			[],
+			ts.factory.createTypeReferenceNode("IterableFunction", [
+				ts.factory.createTypeReferenceNode("LuaTuple", [
+					ts.factory.createTupleTypeNode([
+						ts.factory.createTypeReferenceNode("K"),
+						ts.factory.createTypeReferenceNode("V"),
+					]),
+				]),
+			]),
+		);
+
+		getOrSetDefault(
+			overrideMembers,
+			"[Symbol.iterator]",
+			() => new Array<ts.TypeElement>(),
+		).push(iter);
+	}
+	
 	const overrideInterface = overrideInterfaceMap.get(getSafeClassName(apiClass.Name));
 	if (overrideInterface) {
 		for (const member of overrideInterface.members) {
