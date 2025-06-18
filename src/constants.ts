@@ -196,4 +196,5 @@ export const EXPECTED_EXTRA_MEMBERS = new Map([
 	["ValueBase", ["Value", "Changed"]],
 	["DataStore", ["GetAsync", "IncrementAsync", "SetAsync", "UpdateAsync", "RemoveAsync"]],
 	["OrderedDataStore", ["GetAsync", "IncrementAsync", "SetAsync", "UpdateAsync", "RemoveAsync"]],
+	["SharedTable", ["[Symbol.iterator]"]],
 ]);
