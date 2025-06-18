@@ -3289,6 +3289,33 @@ declare namespace Enum {
     }
     export type AudioWindowSize = AudioWindowSize.Small | AudioWindowSize.Medium | AudioWindowSize.Large;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AuthorityMode)
+     */
+    export namespace AuthorityMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AuthorityMode#Server)
+         */
+        export interface Server extends globalThis.EnumItem {
+            Name: "Server";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AuthorityMode;
+        }
+        export const Server: Server;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AuthorityMode#Automatic)
+         */
+        export interface Automatic extends globalThis.EnumItem {
+            Name: "Automatic";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AuthorityMode;
+        }
+        export const Automatic: Automatic;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AuthorityMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AuthorityMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AuthorityMode | undefined;
+    }
+    export type AuthorityMode = AuthorityMode.Server | AuthorityMode.Automatic;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AutoIndentRule)
      */
     export namespace AutoIndentRule {
@@ -11240,60 +11267,6 @@ declare namespace Enum {
     }
     export type FacsActionUnit = FacsActionUnit.ChinRaiserUpperLip | FacsActionUnit.ChinRaiser | FacsActionUnit.FlatPucker | FacsActionUnit.Funneler | FacsActionUnit.LowerLipSuck | FacsActionUnit.LipPresser | FacsActionUnit.LipsTogether | FacsActionUnit.MouthLeft | FacsActionUnit.MouthRight | FacsActionUnit.Pucker | FacsActionUnit.UpperLipSuck | FacsActionUnit.LeftCheekPuff | FacsActionUnit.LeftDimpler | FacsActionUnit.LeftLipCornerDown | FacsActionUnit.LeftLowerLipDepressor | FacsActionUnit.LeftLipCornerPuller | FacsActionUnit.LeftLipStretcher | FacsActionUnit.LeftUpperLipRaiser | FacsActionUnit.RightCheekPuff | FacsActionUnit.RightDimpler | FacsActionUnit.RightLipCornerDown | FacsActionUnit.RightLowerLipDepressor | FacsActionUnit.RightLipCornerPuller | FacsActionUnit.RightLipStretcher | FacsActionUnit.RightUpperLipRaiser | FacsActionUnit.JawDrop | FacsActionUnit.JawLeft | FacsActionUnit.JawRight | FacsActionUnit.Corrugator | FacsActionUnit.LeftBrowLowerer | FacsActionUnit.LeftOuterBrowRaiser | FacsActionUnit.LeftNoseWrinkler | FacsActionUnit.LeftInnerBrowRaiser | FacsActionUnit.RightBrowLowerer | FacsActionUnit.RightOuterBrowRaiser | FacsActionUnit.RightInnerBrowRaiser | FacsActionUnit.RightNoseWrinkler | FacsActionUnit.EyesLookDown | FacsActionUnit.EyesLookLeft | FacsActionUnit.EyesLookUp | FacsActionUnit.EyesLookRight | FacsActionUnit.LeftCheekRaiser | FacsActionUnit.LeftEyeUpperLidRaiser | FacsActionUnit.LeftEyeClosed | FacsActionUnit.RightCheekRaiser | FacsActionUnit.RightEyeUpperLidRaiser | FacsActionUnit.RightEyeClosed | FacsActionUnit.TongueDown | FacsActionUnit.TongueOut | FacsActionUnit.TongueUp;
     /**
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType)
-     */
-    export namespace FeedRankingScoreType {
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType#Content)
-         */
-        export interface Content extends globalThis.EnumItem {
-            Name: "Content";
-            Value: 0;
-            EnumType: typeof globalThis.Enum.FeedRankingScoreType;
-        }
-        export const Content: Content;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType#Final)
-         */
-        export interface Final extends globalThis.EnumItem {
-            Name: "Final";
-            Value: 1;
-            EnumType: typeof globalThis.Enum.FeedRankingScoreType;
-        }
-        export const Final: Final;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType#GameJoin)
-         */
-        export interface GameJoin extends globalThis.EnumItem {
-            Name: "GameJoin";
-            Value: 2;
-            EnumType: typeof globalThis.Enum.FeedRankingScoreType;
-        }
-        export const GameJoin: GameJoin;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType#Interaction)
-         */
-        export interface Interaction extends globalThis.EnumItem {
-            Name: "Interaction";
-            Value: 3;
-            EnumType: typeof globalThis.Enum.FeedRankingScoreType;
-        }
-        export const Interaction: Interaction;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedRankingScoreType#Sharing)
-         */
-        export interface Sharing extends globalThis.EnumItem {
-            Name: "Sharing";
-            Value: 4;
-            EnumType: typeof globalThis.Enum.FeedRankingScoreType;
-        }
-        export const Sharing: Sharing;
-        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FeedRankingScoreType>;
-        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FeedRankingScoreType | undefined;
-        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FeedRankingScoreType | undefined;
-    }
-    export type FeedRankingScoreType = FeedRankingScoreType.Content | FeedRankingScoreType.Final | FeedRankingScoreType.GameJoin | FeedRankingScoreType.Interaction | FeedRankingScoreType.Sharing;
-    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FieldOfViewMode)
      */
     export namespace FieldOfViewMode {
@@ -19195,6 +19168,42 @@ declare namespace Enum {
     }
     export type LocationType = LocationType.Character | LocationType.Camera | LocationType.ObjectPosition;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LuauTypeCheckMode)
+     */
+    export namespace LuauTypeCheckMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LuauTypeCheckMode#NoCheck)
+         */
+        export interface NoCheck extends globalThis.EnumItem {
+            Name: "NoCheck";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.LuauTypeCheckMode;
+        }
+        export const NoCheck: NoCheck;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LuauTypeCheckMode#Nonstrict)
+         */
+        export interface Nonstrict extends globalThis.EnumItem {
+            Name: "Nonstrict";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.LuauTypeCheckMode;
+        }
+        export const Nonstrict: Nonstrict;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LuauTypeCheckMode#Strict)
+         */
+        export interface Strict extends globalThis.EnumItem {
+            Name: "Strict";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.LuauTypeCheckMode;
+        }
+        export const Strict: Strict;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LuauTypeCheckMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.LuauTypeCheckMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.LuauTypeCheckMode | undefined;
+    }
+    export type LuauTypeCheckMode = LuauTypeCheckMode.NoCheck | LuauTypeCheckMode.Nonstrict | LuauTypeCheckMode.Strict;
+    /**
      * The status of the BulkPurchasePrompt after player interaction.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MarketplaceBulkPurchasePromptStatus)
@@ -20523,6 +20532,10 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.ModelLevelOfDetail;
         }
         export const StreamingMesh: StreamingMesh;
+        /**
+         * @deprecated renamed to StreamingMesh
+         */
+        export const Enabled: StreamingMesh;
         /**
          * A lower resolution mesh will not be displayed.
          *
@@ -23984,6 +23997,123 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RaycastFilterType | undefined;
     }
     export type RaycastFilterType = RaycastFilterType.Exclude | RaycastFilterType.Include;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationActionType)
+     */
+    export namespace RecommendationActionType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationActionType#AddReaction)
+         */
+        export interface AddReaction extends globalThis.EnumItem {
+            Name: "AddReaction";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.RecommendationActionType;
+        }
+        export const AddReaction: AddReaction;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationActionType#RemoveReaction)
+         */
+        export interface RemoveReaction extends globalThis.EnumItem {
+            Name: "RemoveReaction";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.RecommendationActionType;
+        }
+        export const RemoveReaction: RemoveReaction;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationActionType#Share)
+         */
+        export interface Share extends globalThis.EnumItem {
+            Name: "Share";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.RecommendationActionType;
+        }
+        export const Share: Share;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationActionType#Report)
+         */
+        export interface Report extends globalThis.EnumItem {
+            Name: "Report";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.RecommendationActionType;
+        }
+        export const Report: Report;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationActionType#Comment)
+         */
+        export interface Comment extends globalThis.EnumItem {
+            Name: "Comment";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.RecommendationActionType;
+        }
+        export const Comment: Comment;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationActionType#Play)
+         */
+        export interface Play extends globalThis.EnumItem {
+            Name: "Play";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.RecommendationActionType;
+        }
+        export const Play: Play;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationActionType#Purchase)
+         */
+        export interface Purchase extends globalThis.EnumItem {
+            Name: "Purchase";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.RecommendationActionType;
+        }
+        export const Purchase: Purchase;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RecommendationActionType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RecommendationActionType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RecommendationActionType | undefined;
+    }
+    export type RecommendationActionType = RecommendationActionType.AddReaction | RecommendationActionType.RemoveReaction | RecommendationActionType.Share | RecommendationActionType.Report | RecommendationActionType.Comment | RecommendationActionType.Play | RecommendationActionType.Purchase;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationImpressionType)
+     */
+    export namespace RecommendationImpressionType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationImpressionType#View)
+         */
+        export interface View extends globalThis.EnumItem {
+            Name: "View";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.RecommendationImpressionType;
+        }
+        export const View: View;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RecommendationImpressionType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RecommendationImpressionType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RecommendationImpressionType | undefined;
+    }
+    export type RecommendationImpressionType = RecommendationImpressionType.View;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationItemVisibility)
+     */
+    export namespace RecommendationItemVisibility {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationItemVisibility#Private)
+         */
+        export interface Private extends globalThis.EnumItem {
+            Name: "Private";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.RecommendationItemVisibility;
+        }
+        export const Private: Private;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationItemVisibility#Public)
+         */
+        export interface Public extends globalThis.EnumItem {
+            Name: "Public";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.RecommendationItemVisibility;
+        }
+        export const Public: Public;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RecommendationItemVisibility>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RecommendationItemVisibility | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RecommendationItemVisibility | undefined;
+    }
+    export type RecommendationItemVisibility = RecommendationItemVisibility.Private | RecommendationItemVisibility.Public;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RejectCharacterDeletions)
      */

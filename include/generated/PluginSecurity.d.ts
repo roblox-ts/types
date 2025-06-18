@@ -68,13 +68,13 @@ interface Services {
     ExperienceNotificationService: ExperienceNotificationService;
     ExperienceService: ExperienceService;
     ExperienceStateCaptureService: ExperienceStateCaptureService;
+    ExperienceStateRecordingService: ExperienceStateRecordingService;
     ExplorerServiceVisibilityService: ExplorerServiceVisibilityService;
     FaceAnimatorService: FaceAnimatorService;
     FacialAgeEstimationService: FacialAgeEstimationService;
     FacialAnimationRecordingService: FacialAnimationRecordingService;
     FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
     FeatureRestrictionManager: FeatureRestrictionManager;
-    FeedService: FeedService;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
     GenerationService: GenerationService;
@@ -145,6 +145,7 @@ interface Services {
     ProcessInstancePhysicsService: ProcessInstancePhysicsService;
     ProximityPromptService: ProximityPromptService;
     PublishService: PublishService;
+    RecommendationService: RecommendationService;
     ReflectionService: ReflectionService;
     RemoteCursorService: RemoteCursorService;
     RemoteDebuggerServer: RemoteDebuggerServer;
@@ -176,6 +177,7 @@ interface Services {
     SessionService: SessionService;
     SharedTableRegistry: SharedTableRegistry;
     SlimContentProvider: SlimContentProvider;
+    SlimService: SlimService;
     SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
     SnippetService: SnippetService;
     SocialService: SocialService;
@@ -605,7 +607,6 @@ interface Instances extends Services, CreatableInstances {
     FacialAnimationStreamingSubsessionStats: FacialAnimationStreamingSubsessionStats;
     FacsImportData: FacsImportData;
     Feature: Feature;
-    FeedPages: FeedPages;
     File: File;
     FormFactorPart: FormFactorPart;
     FriendPages: FriendPages;
@@ -686,6 +687,7 @@ interface Instances extends Services, CreatableInstances {
     PVAdornment: PVAdornment;
     PVInstance: PVInstance;
     QWidgetPluginGui: QWidgetPluginGui;
+    RecommendationPages: RecommendationPages;
     RobloxSerializableInstance: RobloxSerializableInstance;
     RootImportData: RootImportData;
     RunningAverageItemDouble: RunningAverageItemDouble;
@@ -4612,6 +4614,21 @@ interface ExperienceStateCaptureService extends Instance {
     readonly _nominal_ExperienceStateCaptureService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExperienceStateRecordingService)
+ */
+interface ExperienceStateRecordingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ExperienceStateRecordingService: unique symbol;
+}
+/**
  * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExplorerFilter)
@@ -5342,21 +5359,6 @@ interface FeatureRestrictionManager extends Instance {
      * @deprecated
      */
     readonly _nominal_FeatureRestrictionManager: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedService)
- */
-interface FeedService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_FeedService: unique symbol;
 }
 /**
  * An asset loaded from a file on disk.
@@ -9003,6 +9005,12 @@ interface Workspace extends WorldRoot {
      */
     set InterpolationThrottling(value: Enum.InterpolationThrottlingMode);
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#LuauTypeCheckMode)
+     */
+    LuauTypeCheckMode: Enum.LuauTypeCheckMode;
+    /**
      * Whether content streaming is enabled for the place.
      *
      * - **ThreadSafety**: ReadSafe
@@ -9250,21 +9258,6 @@ interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {
     readonly _nominal_DataStoreVersionPages: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedPages)
- */
-interface FeedPages extends Pages {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_FeedPages: unique symbol;
-}
-/**
  * A special version of `Pages` that contains information about a player's friends.
  *
  * - **Tags**: NotCreatable, NotReplicated
@@ -9354,6 +9347,21 @@ interface OutfitPages extends Pages<ReadonlyArray<{
      * @deprecated
      */
     readonly _nominal_OutfitPages: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationPages)
+ */
+interface RecommendationPages extends Pages {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RecommendationPages: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -10696,6 +10704,21 @@ interface RTAnimationTracker extends Instance {
     readonly _nominal_RTAnimationTracker: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService)
+ */
+interface RecommendationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RecommendationService: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService)
@@ -11473,7 +11496,7 @@ interface ScriptEditorService extends Instance {
      * @param this This service is used for interacting with `ScriptDocument` instances.
      * @param script
      */
-    OpenScriptDocumentAsync(this: ScriptEditorService, script: LuaSourceContainer): unknown;
+    OpenScriptDocumentAsync(this: ScriptEditorService, script: LuaSourceContainer, options?: object): unknown;
     /**
      * Generates new content from the old script and updates the script editor if it's open, or the `Script` instance if the script editor is closed.
      *
@@ -12016,6 +12039,21 @@ interface Sky extends Instance {
      * @deprecated
      */
     readonly _nominal_Sky: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlimService)
+ */
+interface SlimService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SlimService: unique symbol;
 }
 /**
  * A particle emitter with the visual aesthetic of smoke.
