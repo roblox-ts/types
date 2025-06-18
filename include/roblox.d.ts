@@ -2341,7 +2341,7 @@ interface Secret {
 declare const SharedTableNominal: unique symbol;
 type SharedTableValue = boolean | number | Vector3 | string | SharedTable | Instance | typeof SharedTableNominal;
 // SharedTable
-interface SharedTable {
+interface SharedTable extends Iterable<[string | number, SharedTableValue]> {
 	/**
 	 * **DO NOT USE!**
 	 *
