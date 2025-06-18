@@ -65,13 +65,13 @@ interface Services {
     ExperienceNotificationService: ExperienceNotificationService;
     ExperienceService: ExperienceService;
     ExperienceStateCaptureService: ExperienceStateCaptureService;
+    ExperienceStateRecordingService: ExperienceStateRecordingService;
     ExplorerServiceVisibilityService: ExplorerServiceVisibilityService;
     FaceAnimatorService: FaceAnimatorService;
     FacialAgeEstimationService: FacialAgeEstimationService;
     FacialAnimationRecordingService: FacialAnimationRecordingService;
     FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
     FeatureRestrictionManager: FeatureRestrictionManager;
-    FeedService: FeedService;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
     GenerationService: GenerationService;
@@ -136,6 +136,7 @@ interface Services {
     ProcessInstancePhysicsService: ProcessInstancePhysicsService;
     ProximityPromptService: ProximityPromptService;
     PublishService: PublishService;
+    RecommendationService: RecommendationService;
     ReflectionService: ReflectionService;
     RemoteCursorService: RemoteCursorService;
     RemoteDebuggerServer: RemoteDebuggerServer;
@@ -163,6 +164,7 @@ interface Services {
     SessionService: SessionService;
     SharedTableRegistry: SharedTableRegistry;
     SlimContentProvider: SlimContentProvider;
+    SlimService: SlimService;
     SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
     SnippetService: SnippetService;
     SocialService: SocialService;
@@ -579,7 +581,6 @@ interface Instances extends Services, CreatableInstances {
     FacialAnimationStreamingSubsessionStats: FacialAnimationStreamingSubsessionStats;
     FacsImportData: FacsImportData;
     Feature: Feature;
-    FeedPages: FeedPages;
     FormFactorPart: FormFactorPart;
     FriendPages: FriendPages;
     GenericSettings: GenericSettings;
@@ -643,6 +644,7 @@ interface Instances extends Services, CreatableInstances {
     PostEffect: PostEffect;
     PVAdornment: PVAdornment;
     PVInstance: PVInstance;
+    RecommendationPages: RecommendationPages;
     RobloxSerializableInstance: RobloxSerializableInstance;
     RootImportData: RootImportData;
     ScreenshotHud: ScreenshotHud;
@@ -3625,6 +3627,12 @@ interface AssetService extends Instance {
      */
     CreateEditableMesh(this: AssetService, editableMeshOptions?: object): EditableMesh;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateSurfaceAppearance)
+     */
+    CreateSurfaceAppearance(this: AssetService, content: object): SurfaceAppearance;
+    /**
      * Uploads a new asset to Roblox from the given object.
      *
      * - **ThreadSafety**: Unsafe
@@ -6185,6 +6193,8 @@ interface AudioSpeechToText extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSpeechToText#GetConnectedWires)
+     * @param this
+     * @param pin
      */
     GetConnectedWires(this: AudioSpeechToText, pin: string): Array<Instance>;
     /**
@@ -6726,12 +6736,14 @@ interface AvatarCreationService extends Instance {
      */
     LoadGeneratedAvatarAsync(this: AvatarCreationService, generationId: string): HumanoidDescription;
     /**
+     * Prepares in-experience avatar for preview.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#PrepareAvatarForPreviewAsync)
      * @param this A service to support developer avatar creators.
-     * @param humanoidModel
+     * @param humanoidModel The `Model` containing `MeshPart` children with `WrapDeformer` instances that require HSR data updating for preview.
      */
     PrepareAvatarForPreviewAsync(this: AvatarCreationService, humanoidModel: Model): void;
     /**
@@ -6809,6 +6821,8 @@ interface AvatarCreationService extends Instance {
      */
     ValidateUGCFullBodyAsync(this: AvatarCreationService, player: Player, humanoidDescription: HumanoidDescription): unknown;
     /**
+     * Fires when an in-experience-created avatar's moderation status has been updated from pending.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#AvatarModerationCompleted)
@@ -14626,6 +14640,21 @@ interface ExperienceStateCaptureService extends Instance {
     readonly _nominal_ExperienceStateCaptureService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExperienceStateRecordingService)
+ */
+interface ExperienceStateRecordingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ExperienceStateRecordingService: unique symbol;
+}
+/**
  * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExplorerFilter)
@@ -15124,42 +15153,6 @@ interface FeatureRestrictionManager extends Instance {
      * @deprecated
      */
     readonly _nominal_FeatureRestrictionManager: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedService)
- */
-interface FeedService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_FeedService: unique symbol;
-    /**
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**: Yields
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedService#BatchRemoveFeedItemsAsync)
-     */
-    BatchRemoveFeedItemsAsync(this: FeedService, feedItemIds: Array<unknown>): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**: Yields
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedService#GetFeedItemsAsync)
-     */
-    GetFeedItemsAsync(this: FeedService, getFeedRequest: object): FeedPages;
-    /**
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**: Yields
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedService#RegisterFeedItemsAsync)
-     */
-    RegisterFeedItemsAsync(this: FeedService, registerFeedItemsRequest: object): object;
 }
 /**
  * A particle emitter with the visual aesthetic of fire.
@@ -26612,6 +26605,8 @@ interface Moderation extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Moderation#InternalCreateReviewableContentAsync)
+     * @param this
+     * @param config
      */
     InternalCreateReviewableContentAsync(this: Moderation, config: object): string;
     /**
@@ -26619,12 +26614,15 @@ interface Moderation extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Moderation#InternalRequestReviewableContentReviewAsync)
+     * @param this
+     * @param config
      */
     InternalRequestReviewableContentReviewAsync(this: Moderation, config: object): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Moderation#InternalProcessReviewableContentEvent)
+     * @param event
      */
     InternalProcessReviewableContentEvent: ((event: object) => boolean) | undefined;
 }
@@ -30924,21 +30922,6 @@ interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {
     readonly _nominal_DataStoreVersionPages: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeedPages)
- */
-interface FeedPages extends Pages {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_FeedPages: unique symbol;
-}
-/**
  * A special version of `Pages` that contains information about a player's friends.
  *
  * - **Tags**: NotCreatable, NotReplicated
@@ -31028,6 +31011,21 @@ interface OutfitPages extends Pages<ReadonlyArray<{
      * @deprecated
      */
     readonly _nominal_OutfitPages: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationPages)
+ */
+interface RecommendationPages extends Pages {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RecommendationPages: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -34269,6 +34267,61 @@ interface RTAnimationTracker extends Instance {
     readonly TrackerPrompt: RBXScriptSignal<(prompt: Enum.TrackerPromptEvent) => void>;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService)
+ */
+interface RecommendationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RecommendationService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#LogActionEvent)
+     */
+    LogActionEvent(this: RecommendationService, actionType: CastsToEnum<Enum.RecommendationActionType>, itemId: string, tracingId: string, actionEventDetails?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#LogImpressionEvent)
+     */
+    LogImpressionEvent(this: RecommendationService, impressionType: CastsToEnum<Enum.RecommendationImpressionType>, itemId: string, tracingId: string, impressionEventDetails?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#GenerateItemListAsync)
+     */
+    GenerateItemListAsync(this: RecommendationService, generateRecommendationItemListRequest: object): RecommendationPages;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#RegisterItemAsync)
+     */
+    RegisterItemAsync(this: RecommendationService, registerRecommendationItemsRequest: object): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#RemoveItemAsync)
+     */
+    RemoveItemAsync(this: RecommendationService, itemId: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#UpdateItemAsync)
+     */
+    UpdateItemAsync(this: RecommendationService, updateRecommendationItemRequest: object): void;
+}
+/**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService)
@@ -36041,6 +36094,21 @@ interface Sky extends Instance {
     SunTextureId: ContentId;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlimService)
+ */
+interface SlimService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SlimService: unique symbol;
+}
+/**
  * A particle emitter with the visual aesthetic of smoke.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Smoke)
@@ -36241,6 +36309,8 @@ interface SocialService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#GetEventRsvpStatusAsync)
+     * @param this Facilitates social functions that impact relationships made on the Roblox platform.
+     * @param eventId
      */
     GetEventRsvpStatusAsync(this: SocialService, eventId: string): Enum.RsvpStatus;
     /**
@@ -36260,6 +36330,8 @@ interface SocialService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#PromptRsvpToEventAsync)
+     * @param this Facilitates social functions that impact relationships made on the Roblox platform.
+     * @param eventId
      */
     PromptRsvpToEventAsync(this: SocialService, eventId: string): Enum.RsvpStatus;
     /**
