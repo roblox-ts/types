@@ -175,6 +175,27 @@ export function createEnumsSourceFile(ctx: Context) {
 		),
 	);
 
+	// declare type IterableFunction<T> = (this: void) => T;
+	statements.push(
+		ts.factory.createTypeAliasDeclaration(
+			[ts.factory.createToken(ts.SyntaxKind.DeclareKeyword)],
+			ts.factory.createIdentifier("IterableFunction"),
+			[
+				ts.factory.createTypeParameterDeclaration(
+					undefined,
+					ts.factory.createIdentifier("T"),
+					undefined,
+					undefined,
+				),
+			],
+			ts.factory.createFunctionTypeNode(
+				undefined,
+				[ts.factory.createParameterDeclaration(undefined, undefined, "this", undefined, ts.factory.createKeywordTypeNode(ts.SyntaxKind.VoidKeyword))],
+				ts.factory.createTypeReferenceNode("T"),
+			),
+		),
+	);
+
 	// declare type CastsToEnum<T extends EnumItem> = T | T["Name" | "Value"];
 	statements.push(
 		ts.factory.createTypeAliasDeclaration(
