@@ -190,7 +190,15 @@ export function createEnumsSourceFile(ctx: Context) {
 			],
 			ts.factory.createFunctionTypeNode(
 				undefined,
-				[ts.factory.createParameterDeclaration(undefined, undefined, "this", undefined, ts.factory.createKeywordTypeNode(ts.SyntaxKind.VoidKeyword))],
+				[
+					ts.factory.createParameterDeclaration(
+						undefined,
+						undefined,
+						"this",
+						undefined,
+						ts.factory.createKeywordTypeNode(ts.SyntaxKind.VoidKeyword),
+					),
+				],
 				ts.factory.createTypeReferenceNode("T"),
 			),
 		),

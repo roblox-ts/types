@@ -78,7 +78,7 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 		apiClass.Superclass === "<<<ROOT>>>" ? undefined : [createExtendsClause(getSafeClassName(apiClass.Superclass))];
 
 	const overrideMembers = new Map<string, Array<ts.TypeElement>>();
-	
+
 	if (apiClass.Name === "SharedTable") {
 		const keyType = ts.factory.createTypeParameterDeclaration(
 			undefined,
@@ -109,13 +109,9 @@ export function createInstanceInterface(ctx: Context, apiClass: ApiClass, securi
 			]),
 		);
 
-		getOrSetDefault(
-			overrideMembers,
-			"[Symbol.iterator]",
-			() => new Array<ts.TypeElement>(),
-		).push(iter);
+		getOrSetDefault(overrideMembers, "[Symbol.iterator]", () => new Array<ts.TypeElement>()).push(iter);
 	}
-	
+
 	const overrideInterface = overrideInterfaceMap.get(getSafeClassName(apiClass.Name));
 	if (overrideInterface) {
 		for (const member of overrideInterface.members) {
