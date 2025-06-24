@@ -7,6 +7,7 @@
 	"description": "TypeScript typings for the Roblox platform. Partially handwritten and partially automatically generated.",
 	"scripts": {
 		"build": "tsc && node out/index.js",
+		"check": "tsc include/**/*.d.ts --noEmit --skipLibCheck",
 		"eslint-src": "npx eslint \"src/**/*.ts\" --max-warnings 0",
 		"eslint-include": "npx eslint \"include/*.ts\" --max-warnings 0",
 		"eslint": "npm run eslint-src && npm run eslint-include"

@@ -17,6 +17,9 @@ jobs:
       - name: Generate Files
         run: npm run build
 
+      - name: Typecheck Files
+        run: npm run check
+
       - uses: actions/upload-artifact@v4
         with:
           name: include

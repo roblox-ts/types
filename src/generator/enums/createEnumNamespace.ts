@@ -120,6 +120,10 @@ function createEnumItemVariable(apiEnumItem: ApiEnumItem) {
 }
 
 export function createEnumNamespace(ctx: Context, apiEnum: ApiEnum) {
+	if (apiEnum.Items.length === 0) {
+		return [];
+	}
+
 	const namespaceStatements = new Array<ts.Statement>();
 
 	for (const apiEnumItem of apiEnum.Items) {

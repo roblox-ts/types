@@ -841,15 +841,6 @@ interface Players extends Instance {
 }
 
 interface Plugin extends Instance {
-	CreatePluginAction(
-		this: Plugin,
-		actionId: string,
-		text: string,
-		statusTip: string,
-		iconName?: string,
-		allowBinding?: boolean,
-	): PluginAction;
-	CreatePluginMenu(this: Plugin, id: string, title?: string, icon?: string): PluginMenu;
 	ImportFbxRig(this: Plugin, isR15?: boolean): Model;
 	Union(this: Plugin, objects: Array<BasePart>): UnionOperation;
 }
@@ -862,16 +853,6 @@ interface PluginMenu extends Instance {
 	AddAction(this: PluginMenu, action: PluginAction): void;
 	AddMenu(this: PluginMenu, menu: PluginMenu): void;
 	AddNewAction(this: PluginMenu, actionId: string, text: string, icon?: string): PluginAction;
-}
-
-interface PluginToolbar extends Instance {
-	CreateButton(
-		this: PluginToolbar,
-		buttonId: string,
-		tooltip: string,
-		iconname: string,
-		text?: string,
-	): PluginToolbarButton;
 }
 
 interface PolicyService extends Instance {
