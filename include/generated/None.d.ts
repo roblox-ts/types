@@ -111,9 +111,10 @@ interface Services {
     MessageBusService: MessageBusService;
     MessagingService: MessagingService;
     MetaBreakpointManager: MetaBreakpointManager;
+    MicroProfilerService: MicroProfilerService;
     MLModelDeliveryService: MLModelDeliveryService;
     MLService: MLService;
-    Moderation: Moderation;
+    ModerationService: ModerationService;
     OmniRecommendationsService: OmniRecommendationsService;
     OpenCloudService: OpenCloudService;
     PackageUIService: PackageUIService;
@@ -161,6 +162,7 @@ interface Services {
     ServerScriptService: ServerScriptService;
     ServerStorage: ServerStorage;
     ServiceVisibilityService: ServiceVisibilityService;
+    SessionCheckService: SessionCheckService;
     SessionService: SessionService;
     SharedTableRegistry: SharedTableRegistry;
     SlimContentProvider: SlimContentProvider;
@@ -482,6 +484,7 @@ interface CreatableInstances {
     TremoloSoundEffect: TremoloSoundEffect;
     TrussPart: TrussPart;
     UIAspectRatioConstraint: UIAspectRatioConstraint;
+    UIContainerQuery: UIContainerQuery;
     UICorner: UICorner;
     UIDragDetector: UIDragDetector;
     UIFlexItem: UIFlexItem;
@@ -607,7 +610,6 @@ interface Instances extends Services, CreatableInstances {
     LodDataEntity: LodDataEntity;
     LuaSourceContainer: LuaSourceContainer;
     ManualSurfaceJointInstance: ManualSurfaceJointInstance;
-    MaterialGenerationSession: MaterialGenerationSession;
     MaterialImportData: MaterialImportData;
     MemoryStoreHashMap: MemoryStoreHashMap;
     MemoryStoreHashMapPages: MemoryStoreHashMapPages;
@@ -1054,9 +1056,19 @@ interface EditableMesh extends RBXObject {
      */
     SkinningEnabled: boolean;
     /**
+     * Adds a new bone and returns a stable bone ID.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#AddBone)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneProperties Options table containing bone parameters: - `Name` — A string that specifies the bone name. Note that all bone   names in a mesh must be unique.
+     * - `ParentId` — Optional bone ID of the new bone's parent.
+     * - `CFrame` — Initial `CFrame` of the bone in the bind pose of   the mesh, in the mesh's local space.
+     * - `Virtual` — Boolean that specifies whether this bone is virtual.   Virtual bones can only be bound to a `FaceControls` instance.
+     *
+     *
+     * @returns Stable bone ID of the new bone.
      */
     AddBone(this: EditableMesh, boneProperties: object): number;
     /**
@@ -1187,39 +1199,68 @@ interface EditableMesh extends RBXObject {
      */
     GetAdjacentVertices(this: EditableMesh, vertexId: number): Array<number>;
     /**
+     * Finds the bone ID of the bone with the given name.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneByName)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneName Bone name to search for.
+     * @returns Bone ID of the bone with the given name.
      */
     GetBoneByName(this: EditableMesh, boneName: string): number;
     /**
+     * Returns the initial `CFrame` of the bone in the bind pose of the mesh.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneCFrame)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId Bone ID for which to get the `CFrame`.
+     * @returns Initial `CFrame` of the bone in the bind pose of the mesh, in the mesh's local space.
      */
     GetBoneCFrame(this: EditableMesh, boneId: number): CFrame;
     /**
+     * Returns `true` if the bone is virtual.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneIsVirtual)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId Bone ID for which to get whether the bone is virtual.
+     * @returns Whether the bone with the given bone ID is virtual. Virtual bones can only be bound to a `FaceControls` instance.
      */
     GetBoneIsVirtual(this: EditableMesh, boneId: number): boolean;
     /**
+     * Returns the bone name.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneName)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId Bone ID for which to get the name.
+     * @returns Name of the bone with the given bone ID.
      */
     GetBoneName(this: EditableMesh, boneId: number): string;
     /**
+     * Returns the parent bone ID, if any.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBoneParent)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId Bone ID for which to get the parent.
+     * @returns Bone ID for the parent of the bone with the given bone ID. If there is no parent, returns `0`.
      */
     GetBoneParent(this: EditableMesh, boneId: number): number;
     /**
+     * Returns all bones of the mesh.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetBones)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @returns List of stable bone IDs.
      */
     GetBones(this: EditableMesh): Array<unknown>;
     /**
@@ -1360,27 +1401,45 @@ interface EditableMesh extends RBXObject {
      */
     GetFacesWithUV(this: EditableMesh, uvId: number): Array<unknown>;
     /**
+     * Returns bone IDs and bone `CFrames` for all bones in a specific FACS corrective pose.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacsCorrectivePose)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param actions Array or 2 or 3 `FacsActionUnit` values that specify a corrective pose.
+     * @returns Array of bone IDs and corresponding array of bone `CFrames`.
      */
     GetFacsCorrectivePose(this: EditableMesh, actions: Array<unknown>): unknown;
     /**
+     * Returns all FACS corrective poses that are in use.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacsCorrectivePoses)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @returns Array of corrective poses. Each corrective pose is specified by a small array of 2 or 3 `FacsActionUnit` values.
      */
     GetFacsCorrectivePoses(this: EditableMesh): Array<unknown>;
     /**
+     * Returns bone IDs and bone `CFrames` for all bones in a specific FACS action unit.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacsPose)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param action FACS action unit for which to get the pose.
+     * @returns Array of bone IDs and corresponding array of bone `CFrame`.
      */
     GetFacsPose(this: EditableMesh, action: CastsToEnum<Enum.FacsActionUnit>): unknown;
     /**
+     * Returns all FACS action units that have poses defined.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacsPoses)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @returns Array of `FacsActionUnit`, one for each FACS action unit that has a pose defined.
      */
     GetFacsPoses(this: EditableMesh): Array<unknown>;
     /**
@@ -1447,15 +1506,25 @@ interface EditableMesh extends RBXObject {
      */
     GetUVs(this: EditableMesh): Array<unknown>;
     /**
+     * Returns skinning blend weights for each bone that is associated with the vertex.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexBoneWeights)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Vertex ID for which to get the associated bone weights.
+     * @returns Skinning blend weights for each bone that is associated with the vertex.
      */
     GetVertexBoneWeights(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
+     * Returns all bone IDs that are associated with the vertex for skinning.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexBones)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Vertex ID for which to get the associated bones.
+     * @returns Bone IDs associated with the vertex for skinning.
      */
     GetVertexBones(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
@@ -1588,9 +1657,13 @@ interface EditableMesh extends RBXObject {
         Vector3
     ]>;
     /**
+     * Removes a bone using its stable bone ID.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#RemoveBone)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId
      */
     RemoveBone(this: EditableMesh, boneId: number): void;
     /**
@@ -1624,27 +1697,47 @@ interface EditableMesh extends RBXObject {
      */
     ResetNormal(this: EditableMesh, normalId: number): void;
     /**
+     * Set the initial `CFrame` for a bone in the mesh's bind pose.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetBoneCFrame)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId Bone ID for which to set the initial `CFrame`.
+     * @param cframe Initial `CFrame` for the bone in the mesh's bind pose, in the mesh's local space.
      */
     SetBoneCFrame(this: EditableMesh, boneId: number, cframe: CFrame): void;
     /**
+     * Set whether a bone is virtual.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetBoneIsVirtual)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId Bone ID for which to set whether the bone is virtual.
+     * @param virtual Whether the bone should be virtual.
      */
     SetBoneIsVirtual(this: EditableMesh, boneId: number, virtual: boolean): void;
     /**
+     * Sets the name for a bone.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetBoneName)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId Bone ID for which to set the name.
+     * @param name Bone name to set.
      */
     SetBoneName(this: EditableMesh, boneId: number, name: string): void;
     /**
+     * Set a parent for a bone.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetBoneParent)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param boneId Bone ID for which to set the parent.
+     * @param parentBoneId Parent bone ID.
      */
     SetBoneParent(this: EditableMesh, boneId: number, parentBoneId: number): void;
     /**
@@ -1718,21 +1811,39 @@ interface EditableMesh extends RBXObject {
      */
     SetFaceVertices(this: EditableMesh, faceId: number, ids: Array<unknown>): void;
     /**
+     * Set `CFrame` for an individual bone in a specific FACS action unit.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetFacsBonePose)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param action FACS action unit for which to set the pose.
+     * @param boneId Bone to set a `CFrame` for this pose.
+     * @param cframe `CFrame` which transforms the bone from the initial bone `CFrame` in the bind pose of the mesh to the combined bone `CFrame` for this pose. All `CFrames` are in the mesh's local space.
      */
     SetFacsBonePose(this: EditableMesh, action: CastsToEnum<Enum.FacsActionUnit>, boneId: number, cframe: CFrame): void;
     /**
+     * Set pose for all bones in a specific FACS corrective pose.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetFacsCorrectivePose)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param actions Array or 2 or 3 `FacsActionUnit` values to apply as a corrective pose.
+     * @param boneIds Bones to set a `CFrame` for this pose.
+     * @param cframes `CFrame` transforms for the bones in this corrective pose. Each bone `CFrame` transforms the bone from the initial bone `CFrame` in the bind pose of the mesh to the combined bone `CFrame` for this pose. All `CFrames` are in the mesh's local space.
      */
     SetFacsCorrectivePose(this: EditableMesh, actions: Array<unknown>, boneIds: Array<unknown>, cframes: Array<unknown>): void;
     /**
+     * Set pose for all bones in a specific FACS action unit.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetFacsPose)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param action FACS action unit to set the pose for.
+     * @param boneIds Bones for which to set a `CFrame` for this pose.
+     * @param cframes `CFrame` transforms for the bones in this pose. Each bone `CFrame` transforms the bone from the initial bone `CFrame` in the bind pose of the mesh to the combined bone `CFrame` for this pose. All `CFrames` are in the mesh's local space.
      */
     SetFacsPose(this: EditableMesh, action: CastsToEnum<Enum.FacsActionUnit>, boneIds: Array<unknown>, cframes: Array<unknown>): void;
     /**
@@ -1769,15 +1880,25 @@ interface EditableMesh extends RBXObject {
      */
     SetUV(this: EditableMesh, uvId: number, uv: Vector2): void;
     /**
+     * Sets skinning blend weights for each bone associated with the vertex.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexBoneWeights)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Vertex ID on which to set skinning blend weights.
+     * @param boneWeights Skinning blend weights to set on the vertex.
      */
     SetVertexBoneWeights(this: EditableMesh, vertexId: number, boneWeights: Array<unknown>): void;
     /**
+     * Assign a list of bones with the vertex for skinning.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexBones)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Vertex ID to set vertex skinning bones.
+     * @param boneIDs Bone IDs to use with this vertex for skinning.
      */
     SetVertexBones(this: EditableMesh, vertexId: number, boneIDs: Array<unknown>): void;
     /**
@@ -17712,7 +17833,7 @@ interface TextBox extends GuiObject {
      */
     readonly _nominal_TextBox: unique symbol;
     /**
-     * Determines whether clicking on the TextBox will clear its `TextBox.Text` property.
+     * Determines whether clicking on the `TextBox` will clear its `TextBox.Text` property.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -17781,7 +17902,7 @@ interface TextBox extends GuiObject {
      */
     MaxVisibleGraphemes: number;
     /**
-     * When set to true, text inside a TextBox is able to move onto multiple lines. This also enables players to use the enter key to move onto a new line.
+     * When set to `true`, text inside a `TextBox` is able to move onto multiple lines. This also enables players to use the enter key to move onto a new line.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -17802,7 +17923,7 @@ interface TextBox extends GuiObject {
      */
     readonly OpenTypeFeaturesError: string;
     /**
-     * Sets the text color that gets used when no text has been entered into the TextBox yet.
+     * Sets the text color that gets used when no text has been entered into the `TextBox` yet.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -17810,7 +17931,7 @@ interface TextBox extends GuiObject {
      */
     PlaceholderColor3: Color3;
     /**
-     * Sets the text that gets displayed when no text has been entered into the TextBox yet.
+     * Sets the text that gets displayed when no text has been entered into the `TextBox` yet.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -17818,7 +17939,7 @@ interface TextBox extends GuiObject {
      */
     PlaceholderText: string;
     /**
-     * Determines whether the TextBox renders the `TextBox.Text` string using rich text formatting.
+     * Determines whether the `TextBox` renders the `TextBox.Text` string using rich text formatting.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -17993,7 +18114,7 @@ interface TextBox extends GuiObject {
      */
     CaptureFocus(this: TextBox): void;
     /**
-     * Returns true if the textbox is focused, or false if it is not.
+     * Returns `true` if the `TextBox` is focused or `false` if it is not.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -20968,6 +21089,8 @@ interface Humanoid extends Instance {
      */
     DisplayName: string;
     /**
+     * Used to disable the internal physics and state machine of the Humanoid.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#EvaluateStateMachine)
@@ -23305,6 +23428,8 @@ interface InputBinding extends Instance {
      */
     readonly _nominal_InputBinding: unique symbol;
     /**
+     * Specifies an alternate `KeyCode` for dispatching directionally "backward" inputs to the parent `InputAction`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Backward)
@@ -23319,6 +23444,8 @@ interface InputBinding extends Instance {
      */
     Down: Enum.KeyCode;
     /**
+     * Specifies an alternate `KeyCode` for dispatching directionally "forward" inputs to the parent `InputAction`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Forward)
@@ -23455,7 +23582,7 @@ interface InputObject extends Instance {
      */
     readonly _nominal_InputObject: unique symbol;
     /**
-     * A Vector3 describing the Delta between mouse/joystick movements.
+     * A `Vector3` describing the delta between input movements.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -23471,7 +23598,7 @@ interface InputObject extends Instance {
      */
     KeyCode: Enum.KeyCode;
     /**
-     * Describes a positional value of this input.
+     * A `Vector3` describing the positional value of this input.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -23487,7 +23614,7 @@ interface InputObject extends Instance {
      */
     UserInputState: Enum.UserInputState;
     /**
-     * Describes the kind of input being performed (mouse, keyboard, gamepad, touch, etc).
+     * Describes the kind of input being performed (mouse, keyboard, gamepad, touch, etc.).
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -23495,11 +23622,14 @@ interface InputObject extends Instance {
      */
     UserInputType: Enum.UserInputType;
     /**
+     * Returns whether the passed in modifier key is down.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputObject#IsModifierKeyDown)
      * @param this An object created when an input begins that describes a particular user input.
      * @param modifierKey
+     * @returns `true` if the passed in `modifierKey` is being held down; `false` otherwise.
      */
     IsModifierKeyDown(this: InputObject, modifierKey: CastsToEnum<Enum.ModifierKey>): boolean;
 }
@@ -25869,6 +25999,13 @@ interface MarketplaceService extends Instance {
      */
     GetUserSubscriptionStatusAsync(this: MarketplaceService, user: Player, subscriptionId: string): UserSubscriptionStatus;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#GetUsersPriceLevelsAsync)
+     */
+    GetUsersPriceLevelsAsync(this: MarketplaceService, userIds: Array<unknown>): Array<unknown>;
+    /**
      * Returns whether the given user has the given asset.
      *
      * - **ThreadSafety**: Unsafe
@@ -26048,21 +26185,6 @@ interface MaterialGenerationService extends Instance {
      * @deprecated
      */
     readonly _nominal_MaterialGenerationService: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialGenerationSession)
- */
-interface MaterialGenerationSession extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_MaterialGenerationSession: unique symbol;
 }
 /**
  * The game service responsible for managing materials.
@@ -26589,9 +26711,9 @@ interface MetaBreakpointManager extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Moderation)
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService)
  */
-interface Moderation extends Instance {
+interface MicroProfilerService extends Instance {
     /**
      * **DO NOT USE!**
      *
@@ -26599,30 +26721,40 @@ interface Moderation extends Instance {
      * @hidden
      * @deprecated
      */
-    readonly _nominal_Moderation: unique symbol;
+    readonly _nominal_MicroProfilerService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService)
+ */
+interface ModerationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ModerationService: unique symbol;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Moderation#InternalCreateReviewableContentAsync)
-     * @param this
-     * @param config
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#InternalCreateReviewableContentAsync)
      */
-    InternalCreateReviewableContentAsync(this: Moderation, config: object): string;
+    InternalCreateReviewableContentAsync(this: ModerationService, config: object): string;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Moderation#InternalRequestReviewableContentReviewAsync)
-     * @param this
-     * @param config
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#InternalRequestReviewableContentReviewAsync)
      */
-    InternalRequestReviewableContentReviewAsync(this: Moderation, config: object): void;
+    InternalRequestReviewableContentReviewAsync(this: ModerationService, config: object): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Moderation#InternalProcessReviewableContentEvent)
-     * @param event
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#InternalProcessReviewableContentEvent)
      */
     InternalProcessReviewableContentEvent: ((event: object) => boolean) | undefined;
 }
@@ -30098,7 +30230,7 @@ interface Tool extends BackpackItem {
      */
     GripUp: Vector3;
     /**
-     * The ManualActivationOnly property controls whether the `Tool` can be activated without executing `Tool:Activate()`.
+     * Controls whether the `Tool` can be activated without executing `Tool:Activate()`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -35924,6 +36056,21 @@ interface ServiceVisibilityService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SessionCheckService)
+ */
+interface SessionCheckService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SessionCheckService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SessionService)
  */
 interface SessionService extends Instance {
@@ -36305,12 +36452,15 @@ interface SocialService extends Instance {
      */
     CanSendGameInviteAsync(this: SocialService, player: Player, recipientId?: number): boolean;
     /**
+     * Returns the local player's RSVP status for the given event.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#GetEventRsvpStatusAsync)
      * @param this Facilitates social functions that impact relationships made on the Roblox platform.
-     * @param eventId
+     * @param eventId The event ID of the event to prompt the player to change their RSVP status for. This must be a valid event ID that exists in the current experience, represented as a string (not a number).
+     * @returns Returns an `RsvpStatus` indicating the player's current RSVP status for the event. If the player has not RSVP'd to the event, this will return `RsvpStatus.None`.
      */
     GetEventRsvpStatusAsync(this: SocialService, eventId: string): Enum.RsvpStatus;
     /**
@@ -36326,12 +36476,15 @@ interface SocialService extends Instance {
      */
     GetPartyAsync(this: SocialService, partyId: string): Array<unknown>;
     /**
+     * Prompts the local `Player` with a prompt to change their RSVP status to the given event.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#PromptRsvpToEventAsync)
      * @param this Facilitates social functions that impact relationships made on the Roblox platform.
-     * @param eventId
+     * @param eventId The event ID of the event to prompt the player to change their RSVP status for. This must be a valid event ID that exists in the current experience, represented as a string (not a number).
+     * @returns Returns a `RsvpStatus` indicating the player's new RSVP status after the prompt is closed. If the player closes the prompt without changing their RSVP status, this will return `RsvpStatus.None` or their old `RsvpStatus` if they had already selected a status.
      */
     PromptRsvpToEventAsync(this: SocialService, eventId: string): Enum.RsvpStatus;
     /**
@@ -37499,7 +37652,7 @@ interface StarterPlayer extends Instance {
      */
     DevCameraOcclusionMode: Enum.DevCameraOcclusionMode;
     /**
-     * Lets developer overwrite the default camera mode for each player if the player is on a computer.
+     * Lets you overwrite the player's camera mode on a computer.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -37507,7 +37660,7 @@ interface StarterPlayer extends Instance {
      */
     DevComputerCameraMovementMode: Enum.DevComputerCameraMovementMode;
     /**
-     * Lets developer overwrite the player's movement mode if the player is on a computer.
+     * Lets you overwrite the player's movement mode on a computer.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -37515,7 +37668,7 @@ interface StarterPlayer extends Instance {
      */
     DevComputerMovementMode: Enum.DevComputerMovementMode;
     /**
-     * Lets developer overwrite the default camera movement mode for each player if the player is on a mobile device.
+     * Lets you overwrite the player's camera mode on a touch-enabled device.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -37523,7 +37676,7 @@ interface StarterPlayer extends Instance {
      */
     DevTouchCameraMovementMode: Enum.DevTouchCameraMovementMode;
     /**
-     * Lets developer overwrite the player's movement mode if the player is on a touch device.
+     * Lets you overwrite the player's movement mode on a touch-enabled device.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -39285,6 +39438,12 @@ interface TestService extends Instance {
      * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
      */
     ScopeTime(this: TestService): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#TakeSnapshot)
+     */
+    TakeSnapshot(this: TestService, snapshotname: string): void;
     /**
      * Prints if a condition is true, otherwise prints a warning.
      *
@@ -41417,6 +41576,45 @@ interface UITextSizeConstraint extends UIConstraint {
     MinTextSize: number;
 }
 /**
+ * - **Tags**: NotReplicated, NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery)
+ */
+interface UIContainerQuery extends UIComponent {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_UIContainerQuery: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery#Active)
+     */
+    Active: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery#AspectRatioRange)
+     */
+    AspectRatioRange: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery#MaxSize)
+     */
+    MaxSize: Vector2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery#MinSize)
+     */
+    MinSize: Vector2;
+}
+/**
  * UI modifier which applies deformation to corners of its parent `GuiObject`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UICorner)
@@ -42588,7 +42786,7 @@ interface UserGameSettings extends Instance {
     readonly StudioModeChanged: RBXScriptSignal<(isStudioMode: boolean) => void>;
 }
 /**
- * `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+ * `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -42613,7 +42811,7 @@ interface UserInputService extends Instance {
      */
     readonly AccelerometerEnabled: boolean;
     /**
-     * Describes whether the device being used by a user has an available gamepad.
+     * Describes whether the user's device has an available gamepad.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -42679,7 +42877,7 @@ interface UserInputService extends Instance {
      */
     readonly MouseEnabled: boolean;
     /**
-     * The content ID of the image used as the user mouse icon.
+     * The content ID of the image for the user's mouse icon.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -42687,7 +42885,7 @@ interface UserInputService extends Instance {
      */
     MouseIcon: ContentId;
     /**
-     * Determines whether the `Mouse` icon is visible.
+     * Determines whether the mouse icon is visible.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -42722,6 +42920,8 @@ interface UserInputService extends Instance {
      */
     readonly OnScreenKeyboardVisible: boolean;
     /**
+     * Queries the primary input type a player is using, based on anticipated user behavior.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -42729,7 +42929,7 @@ interface UserInputService extends Instance {
      */
     readonly PreferredInput: Enum.PreferredInput;
     /**
-     * Describes whether the user's current device has a touch-screen available.
+     * Describes whether the user's device has a touch screen available.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -42765,7 +42965,7 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GamepadSupports)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @param gamepadNum The `UserInputType` of the gamepad.
      * @param gamepadKeyCode The `KeyCode` of the button in question.
      * @returns Whether the given gamepad supports a button corresponding with the given `KeyCode`.
@@ -42777,7 +42977,7 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetConnectedGamepads)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @returns An array of `UserInputTypes` corresponding with the gamepads connected to the user's device.
      */
     GetConnectedGamepads(this: UserInputService): Array<Enum.UserInputType>;
@@ -42787,7 +42987,7 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetDeviceAcceleration)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      */
     GetDeviceAcceleration(this: UserInputService): InputObject;
     /**
@@ -42796,18 +42996,17 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetDeviceGravity)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      */
     GetDeviceGravity(this: UserInputService): InputObject;
     /**
-     * Returns an `InputObject` and a `CFrame`,describing the device's current rotation vector.
+     * Returns an `InputObject` and a `CFrame` describing the device's current rotation vector.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetDeviceRotation)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
-     * @returns A tuple containing two properties: 1. The delta property describes the amount of rotation that last    happened
-     * 2. The CFrame is the device's current rotation relative to its default    reference frame.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
+     * @returns A tuple containing two properties: The delta describing the amount of rotation that last happened, and the `CFrame` of the device's current rotation relative to its default reference frame.
      */
     GetDeviceRotation(this: UserInputService): LuaTuple<[
         InputObject,
@@ -42819,16 +43018,16 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetFocusedTextBox)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      */
     GetFocusedTextBox(this: UserInputService): TextBox | undefined;
     /**
-     * Returns whether a gamepad with the given `UserInputType`''gamepadNum'' is connected.
+     * Returns whether a gamepad with the given `UserInputType` is connected.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetGamepadConnected)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @param gamepadNum The `UserInputType` of the gamepad in question.
      * @returns Whether a gamepad associated with `UserInputType` is connected.
      */
@@ -42839,7 +43038,7 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetGamepadState)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @param gamepadNum The `UserInputType` corresponding with the gamepad in question.
      * @returns An array of `InputObjects` representing the current state of all available inputs for the given gamepad.
      */
@@ -42850,7 +43049,7 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetImageForKeyCode)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @param keyCode The `KeyCode` for which to fetch the associated image.
      * @returns The returned image asset ID.
      */
@@ -42861,7 +43060,7 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetKeysPressed)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @returns An array of `InputObjects` associated with the keys currently being pressed.
      */
     GetKeysPressed(this: UserInputService): Array<InputObject>;
@@ -42871,17 +43070,17 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetLastInputType)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @returns The `UserInputType` associated with the user's most recent input.
      */
     GetLastInputType(this: UserInputService): Enum.UserInputType;
     /**
-     * Returns an array of `InputObjects` corresponding with the mouse buttons currently being held down.
+     * Returns an array of `InputObjects` associated with the mouse buttons currently being held down.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetMouseButtonsPressed)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @returns An array of `InputObjects` corresponding to the mouse buttons currently being currently held down.
      */
     GetMouseButtonsPressed(this: UserInputService): Array<InputObject>;
@@ -42891,28 +43090,28 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetMouseDelta)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @returns Change in movement of the mouse.
      */
     GetMouseDelta(this: UserInputService): Vector2;
     /**
-     * Returns the current screen location of the player's `Mouse` relative to the top left corner of the screen.
+     * Returns the current screen location of the player's `Mouse` relative to the top-left corner of the screen.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetMouseLocation)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @returns A `Vector2` representing the current screen location of the mouse, in pixels.
      */
     GetMouseLocation(this: UserInputService): Vector2;
     /**
-     * Returns an array of `gamepads` connected and enabled for GUI navigation in descending order of priority.
+     * Returns an array of gamepads connected and enabled for `GuiObject` navigation in descending order of priority.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetNavigationGamepads)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
-     * @returns An array of `UserInputTypes` that can be used for GUI navigation, in descending order of priority.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
+     * @returns An array of `UserInputTypes` that can be used for navigation, in descending order of priority.
      */
     GetNavigationGamepads(this: UserInputService): Array<Enum.UserInputType>;
     /**
@@ -42921,7 +43120,7 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetStringForKeyCode)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @param keyCode
      */
     GetStringForKeyCode(this: UserInputService, keyCode: CastsToEnum<Enum.KeyCode>): string;
@@ -42931,7 +43130,7 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetSupportedGamepadKeyCodes)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @param gamepadNum The `UserInputType` of the gamepad.
      * @returns An array of `KeyCodes` supported by the given gamepad.
      */
@@ -42945,7 +43144,7 @@ interface UserInputService extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetUserCFrame)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @param type The `UserCFrame` corresponding to the VR device.
      * @returns A `CFrame` describing the position and orientation of the specified VR device.
      *
@@ -42953,15 +43152,15 @@ interface UserInputService extends Instance {
      */
     GetUserCFrame(this: UserInputService, type: CastsToEnum<Enum.UserCFrame>): CFrame;
     /**
-     * Determines whether a particular button is pressed on a particular gamepad.
+     * Determines whether a particular button is pressed on a gamepad.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#IsGamepadButtonDown)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @param gamepadNum The `UserInputType` of the given gamepad.
-     * @param gamepadKeyCode The `KeyCode` of the specified button.
-     * @returns Whether the specified gamepad button on the given gamepad is pressed is pressed.
+     * @param gamepadKeyCode The `KeyCode` of the specified gamepad button.
+     * @returns Whether the specified button on the given gamepad is pressed is pressed.
      */
     IsGamepadButtonDown(this: UserInputService, gamepadNum: CastsToEnum<Enum.UserInputType>, gamepadKeyCode: CastsToEnum<Enum.KeyCode>): boolean;
     /**
@@ -42970,29 +43169,29 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#IsKeyDown)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @param keyCode The `KeyCode` of the key.
      * @returns Whether the specified key is being held down.
      */
     IsKeyDown(this: UserInputService, keyCode: CastsToEnum<Enum.KeyCode>): boolean;
     /**
-     * Returns whether the given `mouse button` is currently held down.
+     * Returns whether the given mouse button is currently held down.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#IsMouseButtonPressed)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @param mouseButton The `UserInputType` of the mouse button.
      * @returns Whether the given mouse button is currently held down.
      */
     IsMouseButtonPressed(this: UserInputService, mouseButton: CastsToEnum<Enum.UserInputType>): boolean;
     /**
-     * Returns true if the specified `UserInputType` gamepad is allowed to control the navigation `GuiObjects`.
+     * Returns `true` if the specified gamepad is allowed to control navigation and selection `GuiObjects`.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#IsNavigationGamepad)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @param gamepadEnum The `UserInputType` of the specified gamepad.
      * @returns Whether the specified gamepad is a navigation gamepad.
      */
@@ -43003,22 +43202,22 @@ interface UserInputService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#RecenterUserHeadCFrame)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      */
     RecenterUserHeadCFrame(this: UserInputService): void;
     /**
-     * Sets whether or not the specified `Gamepad` can move the `GuiObject` navigator.
+     * Sets whether or not the specified gamepad can move the `GuiObject` navigator.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#SetNavigationGamepad)
-     * @param this `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @param gamepadEnum The `UserInputType` of the specified gamepad.
      * @param enabled Whether the specified gamepad can move the GUI navigator.
      */
     SetNavigationGamepad(this: UserInputService, gamepadEnum: CastsToEnum<Enum.UserInputType>, enabled: boolean): void;
     /**
-     * Fired when a user moves a device that has an accelerometer. Used to track real-world device movement within a Roblox game.
+     * Fires when a user moves a device that has an accelerometer.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43026,7 +43225,7 @@ interface UserInputService extends Instance {
      */
     readonly DeviceAccelerationChanged: RBXScriptSignal<(acceleration: InputObject) => void>;
     /**
-     * Fired when the force of gravity changes on a device that has an enabled accelerometer - such as a mobile device.
+     * Fires when the force of gravity changes on a device that has an enabled accelerometer.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43034,7 +43233,7 @@ interface UserInputService extends Instance {
      */
     readonly DeviceGravityChanged: RBXScriptSignal<(gravity: InputObject) => void>;
     /**
-     * Fired when a user rotates a device that has a gyroscope.
+     * Fires when a user rotates a device that has a gyroscope.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43042,7 +43241,7 @@ interface UserInputService extends Instance {
      */
     readonly DeviceRotationChanged: RBXScriptSignal<(rotation: InputObject, cframe: CFrame) => void>;
     /**
-     * Fires when a gamepad is connected to the client. Passes the ''gamepadNum'' of the gamepad that was connected.
+     * Fires when a gamepad is connected to the client.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43050,7 +43249,7 @@ interface UserInputService extends Instance {
      */
     readonly GamepadConnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
     /**
-     * Fires when a gamepad is disconnected from the client. Passes the `UserInputType` of the gamepad that was disconnected.
+     * Fires when a gamepad is disconnected from the client.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43058,7 +43257,7 @@ interface UserInputService extends Instance {
      */
     readonly GamepadDisconnected: RBXScriptSignal<(gamepadNum: Enum.UserInputType) => void>;
     /**
-     * Fired when a user begins interacting via a Human-Computer Interface device - such as a mouse or gamepad.
+     * Fires when a user begins interacting with an input device such as a mouse or gamepad.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43066,7 +43265,7 @@ interface UserInputService extends Instance {
      */
     readonly InputBegan: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
     /**
-     * Fired when a user changes how they're interacting via a Human-Computer Interface device.
+     * Fires when a user changes how they're interacting with an input device such as a mouse or gamepad.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43074,7 +43273,7 @@ interface UserInputService extends Instance {
      */
     readonly InputChanged: RBXScriptSignal<(input: InputObject, gameProcessedEvent: boolean) => void>;
     /**
-     * Fires when a user stops interacting via a Human-Computer Interface device.
+     * Fires when a user stops interacting with an input device such as a mouse or gamepad.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43090,7 +43289,7 @@ interface UserInputService extends Instance {
      */
     readonly JumpRequest: RBXScriptSignal<() => void>;
     /**
-     * Fires when the client's `UserInputType` is changed.
+     * Fires whenever the client's `UserInputType` is changed.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43098,7 +43297,7 @@ interface UserInputService extends Instance {
      */
     readonly LastInputTypeChanged: RBXScriptSignal<(lastInputType: Enum.UserInputType) => void>;
     /**
-     * Fires when the user performs a specific pointer action (wheel, pinch, pan).
+     * Fires when the user performs a specific pointer action.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43106,7 +43305,7 @@ interface UserInputService extends Instance {
      */
     readonly PointerAction: RBXScriptSignal<(wheel: number, pan: Vector2, pinch: number, gameProcessedEvent: boolean) => void>;
     /**
-     * Fired when the client loses focus on a `TextBox`.
+     * Fires when the client loses focus on a `TextBox`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43114,7 +43313,7 @@ interface UserInputService extends Instance {
      */
     readonly TextBoxFocusReleased: RBXScriptSignal<(textboxReleased: TextBox) => void>;
     /**
-     * Fired when the client focuses on a `TextBox`.
+     * Fires when the client focuses on a `TextBox`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43122,13 +43321,15 @@ interface UserInputService extends Instance {
      */
     readonly TextBoxFocused: RBXScriptSignal<(textboxFocused: TextBox) => void>;
     /**
+     * Fires when the user drags on the screen of a `TouchEnabled` device.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#TouchDrag)
      */
     readonly TouchDrag: RBXScriptSignal<(dragDirection: Enum.SwipeDirection, numberOfTouches: number, gameProcessedEvent: boolean) => void>;
     /**
-     * Fired when a user releases their finger from the screen on a TouchEnabled device - such as the screen of a mobile device.
+     * Fires when a user releases their finger from the screen of a `TouchEnabled` device.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43136,7 +43337,7 @@ interface UserInputService extends Instance {
      */
     readonly TouchEnded: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
     /**
-     * Fired when a user holds at least one finger for a short amount of time on the same screen position on a TouchEnabled device - such as the screen of a mobile device.
+     * Fires when a user holds at least one finger for a short amount of time on the screen of a `TouchEnabled` device.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43144,7 +43345,7 @@ interface UserInputService extends Instance {
      */
     readonly TouchLongPress: RBXScriptSignal<(touchPositions: Array<Vector2>, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
     /**
-     * Fires when a user moves their finger on a `TouchEnabled` device, such as a tablet or smartphone.
+     * Fires when a user moves their finger on the screen of a `TouchEnabled` device.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43152,7 +43353,7 @@ interface UserInputService extends Instance {
      */
     readonly TouchMoved: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
     /**
-     * Fired when a user drags at least one finger on a `TouchEnabled` device - such as the screen of a mobile device.
+     * Fires when the user drags at least one finger on the screen of a `TouchEnabled` device.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43160,7 +43361,7 @@ interface UserInputService extends Instance {
      */
     readonly TouchPan: RBXScriptSignal<(touchPositions: Array<Vector2>, totalTranslation: Vector2, velocity: Vector2, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
     /**
-     * Fired when a user pinches their fingers on a `TouchEnabled` device - such as the screen of a mobile device.
+     * Fires when a user performs a pinch gesture on the screen of a `TouchEnabled` device.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43168,7 +43369,7 @@ interface UserInputService extends Instance {
      */
     readonly TouchPinch: RBXScriptSignal<(touchPositions: Array<Vector2>, scale: number, velocity: number, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
     /**
-     * Fires when a user rotates two fingers on a `TouchEnabled` device - such as the screen of a mobile device.
+     * Fires when a user rotates two fingers on the screen of a `TouchEnabled` device.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43176,7 +43377,7 @@ interface UserInputService extends Instance {
      */
     readonly TouchRotate: RBXScriptSignal<(touchPositions: Array<Vector2>, rotation: number, velocity: number, state: Enum.UserInputState, gameProcessedEvent: boolean) => void>;
     /**
-     * Fired when a user places their finger on a TouchEnabled device - such as the screen of an Apple iPad or iPhone or a Google Android phone.
+     * Fires when a user places their finger on the screen of a `TouchEnabled` device.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43184,7 +43385,7 @@ interface UserInputService extends Instance {
      */
     readonly TouchStarted: RBXScriptSignal<(touch: InputObject, gameProcessedEvent: boolean) => void>;
     /**
-     * Fires on a `TouchEnabled` device when a user places their finger(s) down on the screen, pans across the screen, and lifts their finger off with a certain speed of movement.
+     * Fires on a `TouchEnabled` device when a user places their finger(s) down on the screen, pans across the screen, and lifts their finger(s) off with a certain speed of movement.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43192,7 +43393,7 @@ interface UserInputService extends Instance {
      */
     readonly TouchSwipe: RBXScriptSignal<(swipeDirection: Enum.SwipeDirection, numberOfTouches: number, gameProcessedEvent: boolean) => void>;
     /**
-     * Fired when a user taps their finger on a `TouchEnabled` device - such as the screen of a mobile device.
+     * Fires when a user taps their finger on the screen of a `TouchEnabled` device.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43200,7 +43401,7 @@ interface UserInputService extends Instance {
      */
     readonly TouchTap: RBXScriptSignal<(touchPositions: Array<Vector2>, gameProcessedEvent: boolean) => void>;
     /**
-     * Fires when a user taps the game world on a `TouchEnabled` device - such as the screen of a mobile device.
+     * Fires when a user taps their finger on the screen of a `TouchEnabled` device and the tap location is in the 3D world.
      *
      * - **ThreadSafety**: Unsafe
      *

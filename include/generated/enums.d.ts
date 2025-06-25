@@ -4177,11 +4177,29 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.AvatarSettingsAccessoryLimitMethod;
         }
         export const Remove: Remove;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAccessoryLimitMethod#PreviewScale)
+         */
+        export interface PreviewScale extends globalThis.EnumItem {
+            Name: "PreviewScale";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AvatarSettingsAccessoryLimitMethod;
+        }
+        export const PreviewScale: PreviewScale;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAccessoryLimitMethod#PreviewRemove)
+         */
+        export interface PreviewRemove extends globalThis.EnumItem {
+            Name: "PreviewRemove";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.AvatarSettingsAccessoryLimitMethod;
+        }
+        export const PreviewRemove: PreviewRemove;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarSettingsAccessoryLimitMethod>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AvatarSettingsAccessoryLimitMethod | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AvatarSettingsAccessoryLimitMethod | undefined;
     }
-    export type AvatarSettingsAccessoryLimitMethod = AvatarSettingsAccessoryLimitMethod.Scale | AvatarSettingsAccessoryLimitMethod.Remove;
+    export type AvatarSettingsAccessoryLimitMethod = AvatarSettingsAccessoryLimitMethod.Scale | AvatarSettingsAccessoryLimitMethod.Remove | AvatarSettingsAccessoryLimitMethod.PreviewScale | AvatarSettingsAccessoryLimitMethod.PreviewRemove;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAccessoryMode)
      */
@@ -8216,13 +8234,13 @@ declare namespace Enum {
     }
     export type ContextActionPriority = ContextActionPriority.Low | ContextActionPriority.Medium | ContextActionPriority.High;
     /**
-     * Describes whether a ContextAction should sink or pass input events.
+     * Describes whether a contextual action should sink or pass input events.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContextActionResult)
      */
     export namespace ContextActionResult {
         /**
-         * If *functionToBind* from `ContextActionService:BindAction()` returns Enum.ContextActionResult.Sink, the input event will stop at that function and no other bound actions under it will be processed. This is the default behavior if *functionToBind* does not return anything or yields in any way.
+         * If `functionToBind` from `ContextActionService:BindAction()` returns `ContextActionResult.Sink`, the input event will stop at that function and no other bound actions under it will be processed. This is the default behavior if `functionToBind` does not return anything or yields in any way.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContextActionResult#Sink)
          */
@@ -8233,7 +8251,7 @@ declare namespace Enum {
         }
         export const Sink: Sink;
         /**
-         * If *functionToBind* from `ContextActionService:BindAction()` returns Enum.ContextActionResult.Pass, the input event is considered to have not been handled by *functionToBind* and will continue being passed to actions bound to the same input type.
+         * If `functionToBind` from `ContextActionService:BindAction()` returns `ContextActionResult.Pass`, the input event is considered to have not been handled by `functionToBind` and will continue being passed to actions bound to the same input type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContextActionResult#Pass)
          */
@@ -9185,7 +9203,7 @@ declare namespace Enum {
      */
     export namespace DevComputerMovementMode {
         /**
-         * The player's character will moved based on the user's settings.
+         * Allows players to choose their desired control scheme from the in-experience menu. This is the default movement mode.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DevComputerMovementMode#UserChoice)
          */
@@ -9207,7 +9225,7 @@ declare namespace Enum {
         }
         export const KeyboardMouse: KeyboardMouse;
         /**
-         * The player can right click in the game world and the character will move there. Player can also control character with mouse and keyboard.
+         * Players can only move through the experience by clicking a target location. The player's character will automatically jump when reaching a surmountable obstacle/gap while moving to the click destination.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DevComputerMovementMode#ClickToMove)
          */
@@ -9218,7 +9236,7 @@ declare namespace Enum {
         }
         export const ClickToMove: ClickToMove;
         /**
-         * The player will not respond to default controls. You must define any character movement in custom scripts.
+         * Disables all default controls and allows you to script your own control scheme.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DevComputerMovementMode#Scriptable)
          */
@@ -9289,13 +9307,13 @@ declare namespace Enum {
     }
     export type DevTouchCameraMovementMode = DevTouchCameraMovementMode.UserChoice | DevTouchCameraMovementMode.Classic | DevTouchCameraMovementMode.Follow | DevTouchCameraMovementMode.Orbital;
     /**
-     * Overrides the movement mode of players who are playing on touch devices.
+     * Overrides the movement mode of players who are playing on touch-enabled devices.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DevTouchMovementMode)
      */
     export namespace DevTouchMovementMode {
         /**
-         * The player's character will moved based on the user's settings.
+         * Allows players to choose their desired control scheme from the in-experience menu. This is the default movement mode.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DevTouchMovementMode#UserChoice)
          */
@@ -9344,7 +9362,7 @@ declare namespace Enum {
         }
         export const ClickToMove: ClickToMove;
         /**
-         * The player will not respond to default controls; any character movement must be defined in custom scripts.
+         * The player's character will not respond to default controls; any character movement must be defined in custom scripts.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DevTouchMovementMode#Scriptable)
          */
@@ -9355,7 +9373,7 @@ declare namespace Enum {
         }
         export const Scriptable: Scriptable;
         /**
-         * The player's character is controlled with a virtual thumbstick that appears when they touch the lower portion of the screen. Jumping is controlled with a separate button. Good for portrait mode and one handed play.
+         * The player's character is controlled with a virtual thumbstick that appears when they touch the lower portion of the screen. Jumping is controlled with a separate button.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DevTouchMovementMode#DynamicThumbstick)
          */
@@ -14163,11 +14181,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.HttpError;
         }
         export const ServerProtocolError: ServerProtocolError;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#CreatorEnvironmentsNotSupportedByService)
+         */
+        export interface CreatorEnvironmentsNotSupportedByService extends globalThis.EnumItem {
+            Name: "CreatorEnvironmentsNotSupportedByService";
+            Value: 15;
+            EnumType: typeof globalThis.Enum.HttpError;
+        }
+        export const CreatorEnvironmentsNotSupportedByService: CreatorEnvironmentsNotSupportedByService;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HttpError>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HttpError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HttpError | undefined;
     }
-    export type HttpError = HttpError.OK | HttpError.InvalidUrl | HttpError.DnsResolve | HttpError.ConnectFail | HttpError.OutOfMemory | HttpError.TimedOut | HttpError.TooManyRedirects | HttpError.InvalidRedirect | HttpError.NetFail | HttpError.Aborted | HttpError.SslConnectFail | HttpError.SslVerificationFail | HttpError.Unknown | HttpError.ConnectionClosed | HttpError.ServerProtocolError;
+    export type HttpError = HttpError.OK | HttpError.InvalidUrl | HttpError.DnsResolve | HttpError.ConnectFail | HttpError.OutOfMemory | HttpError.TimedOut | HttpError.TooManyRedirects | HttpError.InvalidRedirect | HttpError.NetFail | HttpError.Aborted | HttpError.SslConnectFail | HttpError.SslVerificationFail | HttpError.Unknown | HttpError.ConnectionClosed | HttpError.ServerProtocolError | HttpError.CreatorEnvironmentsNotSupportedByService;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpRequestType)
      */
@@ -15092,7 +15119,7 @@ declare namespace Enum {
      */
     export namespace InputActionType {
         /**
-         * The `InputAction` will receive boolean values from button inputs, for example `true`/`false` on press/release from inputs such as `KeyCode.ButtonA` or `KeyCode.E`.
+         * The `InputAction` will receive boolean values from button inputs, for example `true`/`false` on press/release from inputs such as `KeyCode.ButtonA` or `KeyCode.E`. This setting also exposes the `UIButton` property on child `InputBindings`, allowing you to easily hook up press or release of a `GuiButton` for the action.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Bool)
          */
@@ -15103,7 +15130,7 @@ declare namespace Enum {
         }
         export const Bool: Bool;
         /**
-         * The `InputAction` will receive numerical values, generally from analog gamepad triggers such as `KeyCode.ButtonL2` or `KeyCode.ButtonR2`.
+         * The `InputAction` will receive numerical values, generally from analog gamepad triggers such as `KeyCode.ButtonL2` or `KeyCode.ButtonR2`. This setting also exposes the `Up` and `Down` properties on child `InputBindings`, allowing for boolean inputs or "1D" inputs as composite directions for the action.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Direction1D)
          */
@@ -15114,7 +15141,7 @@ declare namespace Enum {
         }
         export const Direction1D: Direction1D;
         /**
-         * The `InputAction` will receive `Vector2` values, generally from thumbstick inputs such as `KeyCode.Thumbstick1` and `KeyCode.Thumbstick2`.
+         * The `InputAction` will receive `Vector2` values, generally from thumbstick inputs such as `KeyCode.Thumbstick1` and `KeyCode.Thumbstick2`. This setting also exposes the `Up`, `Down`, `Left`, and `Right` properties on child `InputBindings`, allowing for "2D" inputs as composite directions for the action.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Direction2D)
          */
@@ -15125,6 +15152,8 @@ declare namespace Enum {
         }
         export const Direction2D: Direction2D;
         /**
+         * The `InputAction` will receive `Vector3` values from inputs assigned to the `Up`, `Down`, `Left`, `Right`, `Forward`, and/or `Backward` properties on child `InputBindings`, allowing for "3D" inputs as composite directions for the action.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#Direction3D)
          */
         export interface Direction3D extends globalThis.EnumItem {
@@ -22915,10 +22944,14 @@ declare namespace Enum {
     }
     export type PositionAlignmentMode = PositionAlignmentMode.OneAttachment | PositionAlignmentMode.TwoAttachment;
     /**
+     * This enum is used with `UserInputService.PreferredInput` to indicate the primary input type a player is likely using.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput)
      */
     export namespace PreferredInput {
         /**
+         * The player has connected or most recently interacted with a keyboard or mouse.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#KeyboardAndMouse)
          */
         export interface KeyboardAndMouse extends globalThis.EnumItem {
@@ -22928,6 +22961,8 @@ declare namespace Enum {
         }
         export const KeyboardAndMouse: KeyboardAndMouse;
         /**
+         * The player has connected or most recently interacted with a gamepad.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#Gamepad)
          */
         export interface Gamepad extends globalThis.EnumItem {
@@ -22937,6 +22972,8 @@ declare namespace Enum {
         }
         export const Gamepad: Gamepad;
         /**
+         * The player's device has touch capability and no other input method is available or connected.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#Touch)
          */
         export interface Touch extends globalThis.EnumItem {
@@ -32456,13 +32493,13 @@ declare namespace Enum {
     }
     export type UserCFrame = UserCFrame.Head | UserCFrame.LeftHand | UserCFrame.RightHand | UserCFrame.Floor;
     /**
-     * The **UserInputState** enum describes the state of an input that is currently or was recently performed.
+     * This enum describes the state of an input that is currently or was recently performed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserInputState)
      */
     export namespace UserInputState {
         /**
-         * Occurs when an `InputObject` starts to interact with the game. For example, a mouse button down, or a key down, or when a touch begins touching the screen.
+         * Occurs when an `InputObject` starts to interact with the experience. For example, a mouse button down, a key down, or when the player begins touching the screen.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserInputState#Begin)
          */
@@ -32473,7 +32510,7 @@ declare namespace Enum {
         }
         export const Begin: Begin;
         /**
-         * Occurs each frame an `InputObject` has already begun interacting with the game and part of its state is changing. For example, a movement of the mouse position, a gamepad thumbstick, gamepad trigger button, or screen touch point.
+         * Occurs each frame an `InputObject` has already begun interacting with the experience and part of its state is changing. For example, movement of the mouse position, a gamepad thumbstick movement, an analog gamepad trigger button change, or screen touch point change.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserInputState#Change)
          */
@@ -32484,7 +32521,7 @@ declare namespace Enum {
         }
         export const Change: Change;
         /**
-         * When an `InputObject` finishes interacting with the game. For example, a mouse button up, or a key up, or when a touch stops touching the screen.
+         * Occurs when an `InputObject` finishes interacting with the experience. For example, a mouse button up, a key up, or when the player stops touching the screen.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserInputState#End)
          */
@@ -32495,7 +32532,7 @@ declare namespace Enum {
         }
         export const End: End;
         /**
-         * A special circumstance state that indicates this input is no longer relevant, particularly with `ContextActionService`. For example, binding two action-handling functions will cause the first to Cancel if an input was already in-progress when the second was bound.
+         * A special circumstance state that indicates this input is no longer relevant, particularly with `ContextActionService`. For example, binding two action-handling functions will cause the first to `Cancel` if an input was already in-progress when the second was bound.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserInputState#Cancel)
          */
@@ -32506,7 +32543,7 @@ declare namespace Enum {
         }
         export const Cancel: Cancel;
         /**
-         * A state that should never be seen in a game, essentially just marks the end of the enum.
+         * A state that should never be seen in an experience; essentially just marks the end of the enum.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserInputState#None)
          */

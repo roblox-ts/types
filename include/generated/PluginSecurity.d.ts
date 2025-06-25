@@ -114,9 +114,10 @@ interface Services {
     MessageBusService: MessageBusService;
     MessagingService: MessagingService;
     MetaBreakpointManager: MetaBreakpointManager;
+    MicroProfilerService: MicroProfilerService;
     MLModelDeliveryService: MLModelDeliveryService;
     MLService: MLService;
-    Moderation: Moderation;
+    ModerationService: ModerationService;
     NetworkClient: NetworkClient;
     NetworkServer: NetworkServer;
     NetworkSettings: NetworkSettings;
@@ -174,6 +175,7 @@ interface Services {
     ServerScriptService: ServerScriptService;
     ServerStorage: ServerStorage;
     ServiceVisibilityService: ServiceVisibilityService;
+    SessionCheckService: SessionCheckService;
     SessionService: SessionService;
     SharedTableRegistry: SharedTableRegistry;
     SlimContentProvider: SlimContentProvider;
@@ -502,6 +504,7 @@ interface CreatableInstances {
     TremoloSoundEffect: TremoloSoundEffect;
     TrussPart: TrussPart;
     UIAspectRatioConstraint: UIAspectRatioConstraint;
+    UIContainerQuery: UIContainerQuery;
     UICorner: UICorner;
     UIDragDetector: UIDragDetector;
     UIFlexItem: UIFlexItem;
@@ -637,7 +640,6 @@ interface Instances extends Services, CreatableInstances {
     LuaSettings: LuaSettings;
     LuaSourceContainer: LuaSourceContainer;
     ManualSurfaceJointInstance: ManualSurfaceJointInstance;
-    MaterialGenerationSession: MaterialGenerationSession;
     MaterialImportData: MaterialImportData;
     MemoryStoreHashMap: MemoryStoreHashMap;
     MemoryStoreHashMapPages: MemoryStoreHashMapPages;
@@ -7845,21 +7847,6 @@ interface MaterialGenerationService extends Instance {
     readonly _nominal_MaterialGenerationService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialGenerationSession)
- */
-interface MaterialGenerationSession extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_MaterialGenerationSession: unique symbol;
-}
-/**
  * The game service responsible for managing materials.
  *
  * - **Tags**: NotCreatable, Service
@@ -8140,9 +8127,9 @@ interface MetaBreakpointManager extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Moderation)
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService)
  */
-interface Moderation extends Instance {
+interface MicroProfilerService extends Instance {
     /**
      * **DO NOT USE!**
      *
@@ -8150,7 +8137,22 @@ interface Moderation extends Instance {
      * @hidden
      * @deprecated
      */
-    readonly _nominal_Moderation: unique symbol;
+    readonly _nominal_MicroProfilerService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService)
+ */
+interface ModerationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ModerationService: unique symbol;
 }
 /**
  * Legacy object that contains members useful for pointer input.
@@ -11996,6 +11998,21 @@ interface ServiceVisibilityService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SessionCheckService)
+ */
+interface SessionCheckService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SessionCheckService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SessionService)
  */
 interface SessionService extends Instance {
@@ -14136,6 +14153,21 @@ interface UITextSizeConstraint extends UIConstraint {
     readonly _nominal_UITextSizeConstraint: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated, NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery)
+ */
+interface UIContainerQuery extends UIComponent {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_UIContainerQuery: unique symbol;
+}
+/**
  * UI modifier which applies deformation to corners of its parent `GuiObject`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UICorner)
@@ -14395,7 +14427,7 @@ interface UserGameSettings extends Instance {
     readonly _nominal_UserGameSettings: unique symbol;
 }
 /**
- * `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+ * `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
