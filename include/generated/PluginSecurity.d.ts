@@ -125,6 +125,7 @@ interface Services {
     OpenCloudService: OpenCloudService;
     PackageService: PackageService;
     PackageUIService: PackageUIService;
+    PartyEmulatorService: PartyEmulatorService;
     PatchBundlerFileWatch: PatchBundlerFileWatch;
     PathfindingService: PathfindingService;
     PerformanceControlService: PerformanceControlService;
@@ -276,6 +277,7 @@ interface CreatableInstances {
     AudioFader: AudioFader;
     AudioFilter: AudioFilter;
     AudioFlanger: AudioFlanger;
+    AudioGate: AudioGate;
     AudioLimiter: AudioLimiter;
     AudioListener: AudioListener;
     AudioPitchShifter: AudioPitchShifter;
@@ -1720,6 +1722,21 @@ interface AudioFocusService extends Instance {
     readonly _nominal_AudioFocusService: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate)
+ */
+interface AudioGate extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioGate: unique symbol;
+}
+/**
  * Limits how loud audio streams are allowed to be.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioLimiter)
@@ -1845,8 +1862,6 @@ interface AudioSpeechToText extends Instance {
 }
 /**
  * Plays text as speech audio.
- *
- * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech)
  */
@@ -9398,6 +9413,21 @@ interface ParticleEmitter extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PartyEmulatorService)
+ */
+interface PartyEmulatorService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PartyEmulatorService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PatchBundlerFileWatch)
  */
 interface PatchBundlerFileWatch extends Instance {
@@ -9655,7 +9685,7 @@ interface PlatformFriendsService extends Instance {
     readonly _nominal_PlatformFriendsService: unique symbol;
 }
 /**
- * An object that represents a presently connected client to the game.
+ * An object that represents a presently connected client to the experience.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player)
  */
@@ -9669,12 +9699,12 @@ interface Player extends Instance {
      */
     readonly _nominal_Player: unique symbol;
     /**
-     * Sets the AccountAge of the player.
+     * Sets the `AccountAge` of the player.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#SetAccountAge)
-     * @param this An object that represents a presently connected client to the game.
+     * @param this An object that represents a presently connected client to the experience.
      * @param accountAge The age of the account in days.
      */
     SetAccountAge(this: Player, accountAge: number): void;
@@ -9684,7 +9714,7 @@ interface Player extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#SetSuperSafeChat)
-     * @param this An object that represents a presently connected client to the game.
+     * @param this An object that represents a presently connected client to the experience.
      * @param value A boolean indicating whether or not the player sees filtered chat.
      */
     SetSuperSafeChat(this: Player, value: boolean): void;
@@ -11497,6 +11527,7 @@ interface ScriptEditorService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptEditorService#OpenScriptDocumentAsync)
      * @param this This service is used for interacting with `ScriptDocument` instances.
      * @param script
+     * @param options
      */
     OpenScriptDocumentAsync(this: ScriptEditorService, script: LuaSourceContainer, options?: object): unknown;
     /**

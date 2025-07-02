@@ -9944,6 +9944,42 @@ declare namespace Enum {
     }
     export type DialogTone = DialogTone.Neutral | DialogTone.Friendly | DialogTone.Enemy;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DisplaySize)
+     */
+    export namespace DisplaySize {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DisplaySize#Small)
+         */
+        export interface Small extends globalThis.EnumItem {
+            Name: "Small";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.DisplaySize;
+        }
+        export const Small: Small;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DisplaySize#Medium)
+         */
+        export interface Medium extends globalThis.EnumItem {
+            Name: "Medium";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.DisplaySize;
+        }
+        export const Medium: Medium;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DisplaySize#Large)
+         */
+        export interface Large extends globalThis.EnumItem {
+            Name: "Large";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.DisplaySize;
+        }
+        export const Large: Large;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DisplaySize>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DisplaySize | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DisplaySize | undefined;
+    }
+    export type DisplaySize = DisplaySize.Small | DisplaySize.Medium | DisplaySize.Large;
+    /**
      * Used by `UIAspectRatioConstraint.DominantAxis` for resizing the object to maintain the aspect ratio.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DominantAxis)
@@ -19908,7 +19944,7 @@ declare namespace Enum {
         }
         export const Glacier: Glacier;
         /**
-         * Applies to `BasePart` only.
+         * Applies to `BasePart` only. Note that refraction of light through this material is not supported on mobile devices due to computational limitations.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#Glass)
          */
@@ -19919,7 +19955,7 @@ declare namespace Enum {
         }
         export const Glass: Glass;
         /**
-         * Must be used on a `MeshPart` with UVs laid out to cover much of the 0:1 UV space or more (larger is better). The `MeshPart` must also have a texture applied to its `TextureID`, and that texture image must have a wide value range since the material displays the range from dark/black to light/white values. Obtain [this model](https://create.roblox.com/store/asset/15507769146/ForceFieldMesh) for a functional example of the **ForceField** material.
+         * Must be used on a `MeshPart` with UVs laid out to cover much of the 0:1 UV space or more (larger is better). The `MeshPart` must also have a texture applied to its `TextureID`, and that texture image must have a wide value range since the material displays the range from dark/black to light/white values. Obtain [this model](https://create.roblox.com/store/asset/15507769146/ForceFieldMesh) for a functional example.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#ForceField)
          */
@@ -23499,6 +23535,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PromptCreateAvatarResult | undefined;
     }
     export type PromptCreateAvatarResult = PromptCreateAvatarResult.Success | PromptCreateAvatarResult.PermissionDenied | PromptCreateAvatarResult.Timeout | PromptCreateAvatarResult.UploadFailed | PromptCreateAvatarResult.NoUserInput | PromptCreateAvatarResult.InvalidHumanoidDescription | PromptCreateAvatarResult.UGCValidationFailed | PromptCreateAvatarResult.ModeratedName | PromptCreateAvatarResult.MaxOutfits | PromptCreateAvatarResult.PurchaseFailure | PromptCreateAvatarResult.UnknownFailure | PromptCreateAvatarResult.TokenInvalid;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptLinkSharingResult)
+     */
+    export namespace PromptLinkSharingResult {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptLinkSharingResult#Success)
+         */
+        export interface Success extends globalThis.EnumItem {
+            Name: "Success";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PromptLinkSharingResult;
+        }
+        export const Success: Success;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptLinkSharingResult#PlayerLeft)
+         */
+        export interface PlayerLeft extends globalThis.EnumItem {
+            Name: "PlayerLeft";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PromptLinkSharingResult;
+        }
+        export const PlayerLeft: PlayerLeft;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptLinkSharingResult#InvalidLaunchData)
+         */
+        export interface InvalidLaunchData extends globalThis.EnumItem {
+            Name: "InvalidLaunchData";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.PromptLinkSharingResult;
+        }
+        export const InvalidLaunchData: InvalidLaunchData;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PromptLinkSharingResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PromptLinkSharingResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PromptLinkSharingResult | undefined;
+    }
+    export type PromptLinkSharingResult = PromptLinkSharingResult.Success | PromptLinkSharingResult.PlayerLeft | PromptLinkSharingResult.InvalidLaunchData;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptPublishAssetResult)
      */
