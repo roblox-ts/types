@@ -20423,7 +20423,7 @@ declare namespace Enum {
         }
         export const Cylinder: Cylinder;
         /**
-         * The mesh is determined by the Roblox mesh asset id provided.
+         * The mesh is determined by the Roblox mesh asset ID provided.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshType#FileMesh)
          */
@@ -20844,7 +20844,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * The mouse is locked, and cannot move from, the center of the user's screen.
+         * The mouse is locked and cannot move from the center of the user's screen.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MouseBehavior#LockCenter)
          */
@@ -20855,7 +20855,7 @@ declare namespace Enum {
         }
         export const LockCenter: LockCenter;
         /**
-         * The mouse is locked, and cannot move from, it's current position on the user's screen at the time of locking.
+         * The mouse is locked and cannot move from its current position on the user's screen at the time of locking.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MouseBehavior#LockCurrentPosition)
          */

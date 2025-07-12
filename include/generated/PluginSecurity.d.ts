@@ -38,7 +38,6 @@ interface Services {
     CloudCRUDService: CloudCRUDService;
     CollaboratorsService: CollaboratorsService;
     CollectionService: CollectionService;
-    CommandService: CommandService;
     CommerceService: CommerceService;
     ConfigService: ConfigService;
     ConfigureServerService: ConfigureServerService;
@@ -579,7 +578,6 @@ interface Instances extends Services, CreatableInstances {
     Clothing: Clothing;
     CloudLocalizationTable: CloudLocalizationTable;
     Collaborator: Collaborator;
-    CommandInstance: CommandInstance;
     Constraint: Constraint;
     Controller: Controller;
     ControllerBase: ControllerBase;
@@ -3222,36 +3220,6 @@ interface CollectionService extends Instance {
     readonly _nominal_CollectionService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommandInstance)
- */
-interface CommandInstance extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CommandInstance: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommandService)
- */
-interface CommandService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CommandService: unique symbol;
-}
-/**
  * Supports real-world purchases that you can bundle with digital benefits.
  *
  * - **Tags**: NotCreatable, Service
@@ -5419,7 +5387,7 @@ interface File extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/File#GetTemporaryId)
      * @param this An asset loaded from a file on disk.
-     * @returns The temporary asset id.
+     * @returns The temporary asset ID.
      */
     GetTemporaryId(this: File): ContentId;
 }
@@ -6875,8 +6843,6 @@ interface IncrementalPatchBuilder extends Instance {
 /**
  * Defines a gameplay action mechanic. These actions are then mapped to hardware inputs using `InputBinding`.
  *
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction)
  */
 interface InputAction extends Instance {
@@ -6892,8 +6858,6 @@ interface InputAction extends Instance {
 /**
  * Defines which hardware binding should trigger the parent `InputAction`.
  *
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding)
  */
 interface InputBinding extends Instance {
@@ -6908,8 +6872,6 @@ interface InputBinding extends Instance {
 }
 /**
  * Collection of actions which holds related actions and defines how they interact with other contexts/actions.
- *
- * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputContext)
  */

@@ -37,7 +37,6 @@ interface Services {
     CloudCRUDService: CloudCRUDService;
     CollaboratorsService: CollaboratorsService;
     CollectionService: CollectionService;
-    CommandService: CommandService;
     CommerceService: CommerceService;
     ConfigService: ConfigService;
     ConfigureServerService: ConfigureServerService;
@@ -558,7 +557,6 @@ interface Instances extends Services, CreatableInstances {
     Clothing: Clothing;
     CloudLocalizationTable: CloudLocalizationTable;
     Collaborator: Collaborator;
-    CommandInstance: CommandInstance;
     Constraint: Constraint;
     Controller: Controller;
     ControllerBase: ControllerBase;
@@ -6606,6 +6604,12 @@ interface AuroraScriptObject extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptObject#LODLevel)
      */
     LODLevel: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptObject#PriorFrameInvoked)
+     */
+    PriorFrameInvoked: number;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -6703,6 +6707,12 @@ interface AuroraService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#PlayInputRecording)
+     */
+    PlayInputRecording(this: AuroraService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#SetIncomingReplicationLag)
      */
     SetIncomingReplicationLag(this: AuroraService, seconds: number): void;
@@ -6721,6 +6731,12 @@ interface AuroraService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#StartInputRecording)
+     */
+    StartInputRecording(this: AuroraService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#StartPrediction)
      */
     StartPrediction(this: AuroraService, target: Instance): void;
@@ -6730,6 +6746,12 @@ interface AuroraService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#StepPhysics)
      */
     StepPhysics(this: AuroraService, worldSteps: number, parts?: Array<Instance>): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#StopInputRecording)
+     */
+    StopInputRecording(this: AuroraService): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -7172,7 +7194,7 @@ interface AvatarEditorService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#GetFavorite)
      * @param this A service to support developer Avatar Editors.
-     * @param itemId The id of the specified asset or bundle.
+     * @param itemId The ID of the specified asset or bundle.
      * @param itemType The `AvatarItemType` of the specified asset or bundle.
      * @returns Whether the `LocalPlayer` has favorited the given bundle or asset.
      */
@@ -7233,7 +7255,7 @@ interface AvatarEditorService extends Instance {
      */
     GetOutfits(this: AvatarEditorService, outfitSource?: CastsToEnum<Enum.OutfitSource>, outfitType?: CastsToEnum<Enum.OutfitType>): OutfitPages;
     /**
-     * Returns a list of recommended assets based on a given `AssetType` and asset id.
+     * Returns a list of recommended assets based on a given `AssetType` and asset ID.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -7241,7 +7263,7 @@ interface AvatarEditorService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#GetRecommendedAssets)
      * @param this A service to support developer Avatar Editors.
      * @param assetType The type of asset recommendations to retrieve recommendations for. Only affects the response when item based recommendations don't exist for the given `contextAssetId`.
-     * @param contextAssetId The id of an asset with a type matching the provided assetType used for context when retrieving recommendations.
+     * @param contextAssetId The ID of an asset with a type matching the provided assetType used for context when retrieving recommendations.
      * @returns A list of recommendations based on the given `AssetType`.
      */
     GetRecommendedAssets(this: AvatarEditorService, assetType: CastsToEnum<Enum.AvatarAssetType>, contextAssetId?: number): ReadonlyArray<RecommendedAsset>;
@@ -10655,57 +10677,6 @@ interface CollectionService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CollectionService#TagRemoved)
      */
     readonly TagRemoved: RBXScriptSignal<(tag: string) => void>;
-}
-/**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommandInstance)
- */
-interface CommandInstance extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CommandInstance: unique symbol;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommandInstance#AllowGUIAccessPoints)
-     */
-    readonly AllowGUIAccessPoints: boolean;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommandInstance#DisplayName)
-     */
-    DisplayName: string;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommandInstance#Name)
-     */
-    readonly Name: string;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommandService)
- */
-interface CommandService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CommandService: unique symbol;
 }
 /**
  * Supports real-world purchases that you can bundle with digital benefits.
@@ -18381,6 +18352,13 @@ interface VideoFrame extends GuiObject {
      */
     Video: ContentId;
     /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoFrame#VideoContent)
+     */
+    VideoContent: Content;
+    /**
      * Indicates how loud the `VideoFrame.Video` is currently playing back.
      *
      * - **ThreadSafety**: ReadSafe
@@ -23402,8 +23380,6 @@ interface IncrementalPatchBuilder extends Instance {
 /**
  * Defines a gameplay action mechanic. These actions are then mapped to hardware inputs using `InputBinding`.
  *
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction)
  */
 interface InputAction extends Instance {
@@ -23478,8 +23454,6 @@ interface InputAction extends Instance {
 }
 /**
  * Defines which hardware binding should trigger the parent `InputAction`.
- *
- * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding)
  */
@@ -23591,8 +23565,6 @@ interface InputBinding extends Instance {
 }
 /**
  * Collection of actions which holds related actions and defines how they interact with other contexts/actions.
- *
- * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputContext)
  */
@@ -25123,7 +25095,7 @@ interface LocalizationService extends Instance {
      */
     readonly RobloxLocaleId: string;
     /**
-     * The locale id that the local player has set for their operating system.
+     * The locale ID that the local player has set for their operating system.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -28125,10 +28097,13 @@ interface BasePart extends PVInstance {
      * Returns the base part of an assembly of parts.
      *
      * - **ThreadSafety**: Safe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart#GetRootPart)
      * @param this The abstract base class for in-world objects that physically interact.
      * @returns The base part of an assembly (a collection of parts connected together).
+     *
+     * @deprecated AssemblyRootPart
      */
     GetRootPart(this: BasePart): BasePart;
     /**
@@ -30913,7 +30888,7 @@ interface PackageLink extends Instance {
      */
     get DefaultName(): string;
     /**
-     * The id of the asset this package corresponds to.
+     * The ID of the asset this package corresponds to.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -33550,7 +33525,7 @@ interface Players extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Players#GetHumanoidDescriptionFromOutfitId)
      * @param this A service that contains presently connected `Player` objects.
-     * @param outfitId The id of the outfit for which the HumanoidDescription is sought.
+     * @param outfitId The ID of the outfit for which the HumanoidDescription is sought.
      * @returns HumanoidDescription initialized with the specification for the passed in outfitId.
      */
     GetHumanoidDescriptionFromOutfitId(this: Players, outfitId: number): HumanoidDescription;
