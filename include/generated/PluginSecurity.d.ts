@@ -10447,7 +10447,20 @@ interface PluginToolbarButton extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginToolbarButton#Click)
      */
-    readonly Click: RBXScriptSignal<() => void>;
+	readonly Click: RBXScriptSignal<() => void>;
+	/**
+	 * Determines whether the button can be clicked when the game viewport is hidden, such as while editing a script in a different Studio tab.
+	 *
+	 * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginToolbarButton#ClickableWhenViewportHidden)
+	 */
+	ClickableWhenViewportHidden: boolean
+	/**
+	 * Determines what [icon](https://create.roblox.com/docs/reference/engine/datatypes/Content) should be shown for the button in the plugin toolbar.
+	 * Defaults to the button's text.
+	 *
+	 * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginToolbarButton#Icon)
+	 */
+	Icon: ContentId
 }
 /**
  * Helps you query information regarding policy compliance for players around the world based on age range, location, and platform type.
