@@ -214,7 +214,7 @@ interface BindableFunction<T extends Callback = Callback> extends Instance {
 	Invoke(this: BindableFunction, ...args: Parameters<T>): ReturnType<T>;
 }
 
-interface Camera extends Instance {
+interface Camera extends PVInstance {
 	CameraSubject: Humanoid | BasePart | undefined;
 	GetPartsObscuringTarget(this: Camera, castPoints: Array<Vector3>, ignoreList: Array<Instance>): Array<Instance>;
 	WorldToScreenPoint(this: Camera, worldPoint: Vector3): LuaTuple<[Vector3, boolean]>;
