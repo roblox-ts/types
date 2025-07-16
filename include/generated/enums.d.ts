@@ -22980,6 +22980,42 @@ declare namespace Enum {
     }
     export type PositionAlignmentMode = PositionAlignmentMode.OneAttachment | PositionAlignmentMode.TwoAttachment;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode)
+     */
+    export namespace PredictionMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#Auto)
+         */
+        export interface Auto extends globalThis.EnumItem {
+            Name: "Auto";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PredictionMode;
+        }
+        export const Auto: Auto;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PredictionMode;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#Forced)
+         */
+        export interface Forced extends globalThis.EnumItem {
+            Name: "Forced";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PredictionMode;
+        }
+        export const Forced: Forced;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PredictionMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PredictionMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PredictionMode | undefined;
+    }
+    export type PredictionMode = PredictionMode.Auto | PredictionMode.None | PredictionMode.Forced;
+    /**
      * This enum is used with `UserInputService.PreferredInput` to indicate the primary input type a player is likely using.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput)
