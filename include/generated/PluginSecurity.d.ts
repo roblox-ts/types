@@ -10461,6 +10461,12 @@ interface PluginToolbarButton extends Instance {
 	 * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginToolbarButton#Icon)
 	 */
 	Icon: ContentId
+	/**
+	 * Determines whether a button is clickable in general
+	 *
+	 * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginToolbarButton#Enabled)
+	 */
+	Enabled: boolean
 }
 /**
  * Helps you query information regarding policy compliance for players around the world based on age range, location, and platform type.
