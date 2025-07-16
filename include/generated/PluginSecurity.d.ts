@@ -1720,8 +1720,6 @@ interface AudioFocusService extends Instance {
     readonly _nominal_AudioFocusService: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate)
  */
 interface AudioGate extends Instance {
@@ -13117,14 +13115,6 @@ interface SurfaceAppearance extends Instance {
      * @deprecated
      */
     readonly _nominal_SurfaceAppearance: unique symbol;
-    /**
-     * Determines how the alpha channel of the `SurfaceAppearance.ColorMap` is used.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#AlphaMode)
-     */
-    AlphaMode: Enum.AlphaMode;
     /**
      * Determines the color and opacity of the surface.
      *

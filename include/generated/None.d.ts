@@ -5475,8 +5475,6 @@ interface AudioFocusService extends Instance {
     readonly _nominal_AudioFocusService: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate)
  */
 interface AudioGate extends Instance {
@@ -5516,18 +5514,22 @@ interface AudioGate extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#GetConnectedWires)
+     * @param this
+     * @param pin
      */
     GetConnectedWires(this: AudioGate, pin: string): Array<Instance>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#GetInputPins)
+     * @param this
      */
     GetInputPins(this: AudioGate): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#GetOutputPins)
+     * @param this
      */
     GetOutputPins(this: AudioGate): Array<unknown>;
     /**
@@ -6671,6 +6673,12 @@ interface AuroraService extends Instance {
     /**
      * - **ThreadSafety**: ReadSafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#LockStepIdOffset)
+     */
+    LockStepIdOffset: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#RollbackOffset)
      */
     RollbackOffset: number;
@@ -6901,6 +6909,9 @@ interface AvatarCreationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#AutoSetupAvatarAsync)
+     * @param this A service to support developer avatar creators.
+     * @param player
+     * @param model
      */
     AutoSetupAvatarAsync(this: AvatarCreationService, player: Player, model: Model): string;
     /**
@@ -6941,6 +6952,8 @@ interface AvatarCreationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#LoadGeneratedAvatarAsync)
+     * @param this A service to support developer avatar creators.
+     * @param generationId
      */
     LoadGeneratedAvatarAsync(this: AvatarCreationService, generationId: string): HumanoidDescription;
     /**
@@ -8307,7 +8320,7 @@ interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemot
      */
     readonly _nominal_UnreliableRemoteEvent: unique symbol;
     /**
-     * Fires the `OnClientEvent` event for each client connected to the same `UnreliableRemoteEvent`. Has a 900 byte limit to the payload of the event, otherwise event is dropped.
+     * Fires the `OnClientEvent` event for each client connected to the same `UnreliableRemoteEvent`. Has a 1000 byte limit to the payload of the event. Otherwise, the event is dropped.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -8317,7 +8330,7 @@ interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemot
      */
     FireAllClients(this: UnreliableRemoteEvent, ...args: Parameters<T>): void;
     /**
-     * Fires the `OnClientEvent` event for a specific client connected to the same `UnreliableRemoteEvent`. Has a 900 byte limit to the payload of the event, otherwise event is dropped.
+     * Fires the `OnClientEvent` event for a specific client connected to the same `UnreliableRemoteEvent`. Has a 1000 byte limit to the payload of the event. Otherwise, the event is dropped.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -8328,7 +8341,7 @@ interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemot
      */
     FireClient(this: UnreliableRemoteEvent, player: Player, ...args: Parameters<T>): void;
     /**
-     * Fires the `OnServerEvent` event on the server from one client connected to the same `UnreliableRemoteEvent`. Has a 900 byte limit to the payload of the event, otherwise event is dropped.
+     * Fires the `OnServerEvent` event on the server from one client connected to the same `UnreliableRemoteEvent`. Has a 1000 byte limit to the payload of the event, otherwise event is dropped.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -9444,6 +9457,12 @@ interface CaptureService extends Instance {
      * @param onCaptureReady A callback function that is called with the `contentId` of the new capture once it is ready.
      */
     CaptureScreenshot(this: CaptureService, onCaptureReady: (captureContentId: string) => void): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#GetDeviceInfo)
+     */
+    GetDeviceInfo(this: CaptureService): object;
     /**
      * Prompts the user to save specified captures to their gallery.
      *
@@ -28094,6 +28113,8 @@ interface BasePart extends PVInstance {
      */
     GetRenderCFrame(this: BasePart): CFrame;
     /**
+     * **Deprecated:**
+     *
      * Returns the base part of an assembly of parts.
      *
      * - **ThreadSafety**: Safe
@@ -36560,6 +36581,9 @@ interface SocialService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#PromptLinkSharing)
+     * @param this Facilitates social functions that impact relationships made on the Roblox platform.
+     * @param player
+     * @param options
      */
     PromptLinkSharing(this: SocialService, player: Player, options?: object): unknown;
     /**
@@ -38664,6 +38688,14 @@ interface SurfaceAppearance extends Instance {
      * @deprecated
      */
     readonly _nominal_SurfaceAppearance: unique symbol;
+    /**
+     * Determines how the alpha channel of the `SurfaceAppearance.ColorMap` is used.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#AlphaMode)
+     */
+    AlphaMode: Enum.AlphaMode;
     /**
      * Applies a tint to your existing colormap. Set directly with color picker or programmatically with `Color3`.
      *
