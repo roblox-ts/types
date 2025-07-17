@@ -13116,6 +13116,14 @@ interface SurfaceAppearance extends Instance {
      */
     readonly _nominal_SurfaceAppearance: unique symbol;
     /**
+     * Determines how the alpha channel of the `SurfaceAppearance.ColorMap` is used.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#AlphaMode)
+     */
+    AlphaMode: Enum.AlphaMode;
+    /**
      * Determines the color and opacity of the surface.
      *
      * - **ThreadSafety**: ReadSafe
