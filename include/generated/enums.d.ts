@@ -493,6 +493,8 @@ declare namespace Enum {
      */
     export namespace AdAvailabilityResult {
         /**
+         * An ad is available to show the user.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdAvailabilityResult#IsAvailable)
          */
         export interface IsAvailable extends globalThis.EnumItem {
@@ -502,6 +504,8 @@ declare namespace Enum {
         }
         export const IsAvailable: IsAvailable;
         /**
+         * The device is ineligible to receive ads.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdAvailabilityResult#DeviceIneligible)
          */
         export interface DeviceIneligible extends globalThis.EnumItem {
@@ -511,6 +515,8 @@ declare namespace Enum {
         }
         export const DeviceIneligible: DeviceIneligible;
         /**
+         * The experience is ineligible to receive ads. Check if its eligibility has been revoked.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdAvailabilityResult#ExperienceIneligible)
          */
         export interface ExperienceIneligible extends globalThis.EnumItem {
@@ -520,6 +526,8 @@ declare namespace Enum {
         }
         export const ExperienceIneligible: ExperienceIneligible;
         /**
+         * An unspecified internal error occurred. Try fetching the ad again.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdAvailabilityResult#InternalError)
          */
         export interface InternalError extends globalThis.EnumItem {
@@ -529,6 +537,8 @@ declare namespace Enum {
         }
         export const InternalError: InternalError;
         /**
+         * There are no ads available to fill your ad request. You might have hit the ad frequency limit.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdAvailabilityResult#NoFill)
          */
         export interface NoFill extends globalThis.EnumItem {
@@ -538,6 +548,8 @@ declare namespace Enum {
         }
         export const NoFill: NoFill;
         /**
+         * The user is ineligible to receive ads during this session. The user might be under 13 or located in a blocked region.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdAvailabilityResult#PlayerIneligible)
          */
         export interface PlayerIneligible extends globalThis.EnumItem {
@@ -547,6 +559,8 @@ declare namespace Enum {
         }
         export const PlayerIneligible: PlayerIneligible;
         /**
+         * The publisher is ineligible to receive ads because they have not met the publisher eligibility requirements.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdAvailabilityResult#PublisherIneligible)
          */
         export interface PublisherIneligible extends globalThis.EnumItem {
@@ -640,6 +654,8 @@ declare namespace Enum {
      */
     export namespace AdFormat {
         /**
+         * The format of the rewarded video ad.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdFormat#RewardedVideo)
          */
         export interface RewardedVideo extends globalThis.EnumItem {
@@ -6423,7 +6439,7 @@ declare namespace Enum {
         }
         export const NoOne: NoOne;
         /**
-         * A player can only chat with users in a game that are on their friends list.
+         * A player can only chat with users in a game that are on their connections list.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatPrivacyMode#Friends)
          */
@@ -7879,6 +7895,15 @@ declare namespace Enum {
         }
         export const AndroidEmulatorKick: AndroidEmulatorKick;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#AndroidRootedKick)
+         */
+        export interface AndroidRootedKick extends globalThis.EnumItem {
+            Name: "AndroidRootedKick";
+            Value: 306;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const AndroidRootedKick: AndroidRootedKick;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PlacelaunchErrors)
          */
         export interface PlacelaunchErrors extends globalThis.EnumItem {
@@ -8107,7 +8132,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConnectionError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConnectionError | undefined;
     }
-    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
     /**
      * Used to determine the connection state of the client to the game server.
      *
@@ -9726,11 +9751,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.DeviceForm;
         }
         export const VR: VR;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceForm#Handheld)
+         */
+        export interface Handheld extends globalThis.EnumItem {
+            Name: "Handheld";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.DeviceForm;
+        }
+        export const Handheld: Handheld;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeviceForm>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DeviceForm | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DeviceForm | undefined;
     }
-    export type DeviceForm = DeviceForm.Console | DeviceForm.Phone | DeviceForm.Tablet | DeviceForm.Desktop | DeviceForm.VR;
+    export type DeviceForm = DeviceForm.Console | DeviceForm.Phone | DeviceForm.Tablet | DeviceForm.Desktop | DeviceForm.VR | DeviceForm.Handheld;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceLevel)
      */
@@ -12853,7 +12887,7 @@ declare namespace Enum {
      */
     export namespace FriendRequestEvent {
         /**
-         * A player invokes (sends) a friend request.
+         * A player invokes (sends) a connection request.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendRequestEvent#Issue)
          */
@@ -12864,7 +12898,7 @@ declare namespace Enum {
         }
         export const Issue: Issue;
         /**
-         * A player revokes (cancels) a previously invoked (sent) friend request.
+         * A player revokes (cancels) a previously invoked (sent) connection request.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendRequestEvent#Revoke)
          */
@@ -12875,7 +12909,7 @@ declare namespace Enum {
         }
         export const Revoke: Revoke;
         /**
-         * A player accepts a friend request.
+         * A player accepts a connection request.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendRequestEvent#Accept)
          */
@@ -12886,7 +12920,7 @@ declare namespace Enum {
         }
         export const Accept: Accept;
         /**
-         * A player denies a friend request.
+         * A player denies a connection request.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendRequestEvent#Deny)
          */
@@ -12906,7 +12940,7 @@ declare namespace Enum {
      */
     export namespace FriendStatus {
         /**
-         * The friendship status of two players is unknown.
+         * The connection status of two players is unknown.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendStatus#Unknown)
          */
@@ -12917,7 +12951,7 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
-         * Two players are not friends.
+         * Two players are not connections.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendStatus#NotFriend)
          */
@@ -12928,7 +12962,7 @@ declare namespace Enum {
         }
         export const NotFriend: NotFriend;
         /**
-         * Two players are friends.
+         * Two players are connections.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendStatus#Friend)
          */
@@ -12939,7 +12973,7 @@ declare namespace Enum {
         }
         export const Friend: Friend;
         /**
-         * At least one of two players has sent a friend request to the other player.
+         * At least one of two players has sent a connection request to the other player.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendStatus#FriendRequestSent)
          */
@@ -12950,7 +12984,7 @@ declare namespace Enum {
         }
         export const FriendRequestSent: FriendRequestSent;
         /**
-         * At least one of two players has received a friend request sent by the other player.
+         * At least one of two players has received a connection request sent by the other player.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendStatus#FriendRequestReceived)
          */
@@ -22980,6 +23014,44 @@ declare namespace Enum {
     }
     export type PositionAlignmentMode = PositionAlignmentMode.OneAttachment | PositionAlignmentMode.TwoAttachment;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode)
+     */
+    export namespace PredictionMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#Auto)
+         */
+        export interface Auto extends globalThis.EnumItem {
+            Name: "Auto";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PredictionMode;
+        }
+        export const Auto: Auto;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PredictionMode;
+        }
+        export const None: None;
+        /**
+         * **Deprecated:**
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#Forced)
+         */
+        export interface Forced extends globalThis.EnumItem {
+            Name: "Forced";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PredictionMode;
+        }
+        export const Forced: Forced;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PredictionMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PredictionMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PredictionMode | undefined;
+    }
+    export type PredictionMode = PredictionMode.Auto | PredictionMode.None | PredictionMode.Forced;
+    /**
      * This enum is used with `UserInputService.PreferredInput` to indicate the primary input type a player is likely using.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput)
@@ -26698,6 +26770,8 @@ declare namespace Enum {
      */
     export namespace ShowAdResult {
         /**
+         * The ad was successfully shown to completion.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ShowAdResult#ShowCompleted)
          */
         export interface ShowCompleted extends globalThis.EnumItem {
@@ -26707,6 +26781,8 @@ declare namespace Enum {
         }
         export const ShowCompleted: ShowCompleted;
         /**
+         * You are trying to show a full-screen ad before the ad has fully loaded. You might have failed to properly fetch the ad, or the ad might have expired.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ShowAdResult#AdNotReady)
          */
         export interface AdNotReady extends globalThis.EnumItem {
@@ -26716,6 +26792,8 @@ declare namespace Enum {
         }
         export const AdNotReady: AdNotReady;
         /**
+         * You are trying to show a full-screen ad while another full-screen ad is already playing.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ShowAdResult#AdAlreadyShowing)
          */
         export interface AdAlreadyShowing extends globalThis.EnumItem {
@@ -26725,6 +26803,8 @@ declare namespace Enum {
         }
         export const AdAlreadyShowing: AdAlreadyShowing;
         /**
+         * An unspecified internal error occurred. Try showing the ad again.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ShowAdResult#InternalError)
          */
         export interface InternalError extends globalThis.EnumItem {
@@ -26734,6 +26814,8 @@ declare namespace Enum {
         }
         export const InternalError: InternalError;
         /**
+         * The ad view of the user has been interrupted. The user might have closed the ad view or left the experience, and should not receive a reward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ShowAdResult#ShowInterrupted)
          */
         export interface ShowInterrupted extends globalThis.EnumItem {

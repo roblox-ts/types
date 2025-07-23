@@ -63,6 +63,7 @@ interface Services {
     EditableService: EditableService;
     EventIngestService: EventIngestService;
     ExampleService: ExampleService;
+    ExampleV2Service: ExampleV2Service;
     ExperienceAuthService: ExperienceAuthService;
     ExperienceNotificationService: ExperienceNotificationService;
     ExperienceService: ExperienceService;
@@ -2808,7 +2809,7 @@ interface CalloutService extends Instance {
     readonly _nominal_CalloutService: unique symbol;
 }
 /**
- * A service which provides control over screenshot capture features.
+ * A service which provides control over screenshot and video capture features.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -4518,6 +4519,21 @@ interface ExampleService extends Instance {
     readonly _nominal_ExampleService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExampleV2Service)
+ */
+interface ExampleV2Service extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ExampleV2Service: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExperienceAuthService)
@@ -5182,6 +5198,45 @@ interface Decal extends FaceInstance {
      * @deprecated
      */
     readonly _nominal_Decal: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#MetalnessMap)
+     */
+    MetalnessMap: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#MetalnessMapContent)
+     */
+    set MetalnessMapContent(value: Content);
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#NormalMap)
+     */
+    NormalMap: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#NormalMapContent)
+     */
+    set NormalMapContent(value: Content);
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#RoughnessMap)
+     */
+    RoughnessMap: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#RoughnessMapContent)
+     */
+    set RoughnessMapContent(value: Content);
 }
 /**
  * A Texture object applies a repeating texture to the face of a `BasePart`.
@@ -5501,7 +5556,7 @@ interface GamepadService extends Instance {
     readonly _nominal_GamepadService: unique symbol;
 }
 /**
- * `GenerationService` is a service that allows developers to generate 3D objects from text prompts utilizing Roblox's [Cube 3D foundation model](https://corp.roblox.com/newsroom/2025/03/introducing-roblox-cube).
+ * Service that allows developers to generate 3D objects from text prompts.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -9235,7 +9290,7 @@ interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {
     readonly _nominal_DataStoreVersionPages: unique symbol;
 }
 /**
- * A special version of `Pages` that contains information about a player's friends.
+ * A special version of `Pages` that contains information about a player's connections.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -13115,14 +13170,6 @@ interface SurfaceAppearance extends Instance {
      * @deprecated
      */
     readonly _nominal_SurfaceAppearance: unique symbol;
-    /**
-     * Determines how the alpha channel of the `SurfaceAppearance.ColorMap` is used.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#AlphaMode)
-     */
-    AlphaMode: Enum.AlphaMode;
     /**
      * Determines the color and opacity of the surface.
      *

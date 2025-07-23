@@ -60,6 +60,7 @@ interface Services {
     EditableService: EditableService;
     EventIngestService: EventIngestService;
     ExampleService: ExampleService;
+    ExampleV2Service: ExampleV2Service;
     ExperienceAuthService: ExperienceAuthService;
     ExperienceNotificationService: ExperienceNotificationService;
     ExperienceService: ExperienceService;
@@ -5514,18 +5515,22 @@ interface AudioGate extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#GetConnectedWires)
+     * @param this
+     * @param pin
      */
     GetConnectedWires(this: AudioGate, pin: string): Array<Instance>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#GetInputPins)
+     * @param this
      */
     GetInputPins(this: AudioGate): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#GetOutputPins)
+     * @param this
      */
     GetOutputPins(this: AudioGate): Array<unknown>;
     /**
@@ -5960,13 +5965,15 @@ interface AudioPlayer extends Instance {
      */
     Stop(this: AudioPlayer): void;
     /**
+     * Returns a list of samples across a time range for the given audio.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#GetWaveformAsync)
      * @param this Used to play audio assets.
-     * @param timeRange
-     * @param samples
+     * @param timeRange A `NumberRange` which represents the start and end point of where to sample the audio.
+     * @param samples The number of samples to return.
      */
     GetWaveformAsync(this: AudioPlayer, timeRange: NumberRange, samples: number): Array<unknown>;
     /**
@@ -6530,13 +6537,15 @@ interface AudioTextToSpeech extends Instance {
      */
     Unload(this: AudioTextToSpeech): void;
     /**
+     * Returns a list of samples across a time range for the given audio.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#GetWaveformAsync)
      * @param this Plays text as speech audio.
-     * @param timeRange
-     * @param samples
+     * @param timeRange A `NumberRange` which represents the start and end point of where to sample the audio.
+     * @param samples The number of samples to return.
      */
     GetWaveformAsync(this: AudioTextToSpeech, timeRange: NumberRange, samples: number): Array<unknown>;
     /**
@@ -6666,6 +6675,12 @@ interface AuroraService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#IgnoreRotation)
      */
     IgnoreRotation: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#LockStepIdOffset)
+     */
+    LockStepIdOffset: boolean;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -6899,6 +6914,9 @@ interface AvatarCreationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#AutoSetupAvatarAsync)
+     * @param this A service to support developer avatar creators.
+     * @param player
+     * @param model
      */
     AutoSetupAvatarAsync(this: AvatarCreationService, player: Player, model: Model): string;
     /**
@@ -6939,6 +6957,8 @@ interface AvatarCreationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#LoadGeneratedAvatarAsync)
+     * @param this A service to support developer avatar creators.
+     * @param generationId
      */
     LoadGeneratedAvatarAsync(this: AvatarCreationService, generationId: string): HumanoidDescription;
     /**
@@ -8305,7 +8325,7 @@ interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemot
      */
     readonly _nominal_UnreliableRemoteEvent: unique symbol;
     /**
-     * Fires the `OnClientEvent` event for each client connected to the same `UnreliableRemoteEvent`. Has a 900 byte limit to the payload of the event, otherwise event is dropped.
+     * Fires the `OnClientEvent` event for each client connected to the same `UnreliableRemoteEvent`. Has a 1000 byte limit to the payload of the event. Otherwise, the event is dropped.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -8315,7 +8335,7 @@ interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemot
      */
     FireAllClients(this: UnreliableRemoteEvent, ...args: Parameters<T>): void;
     /**
-     * Fires the `OnClientEvent` event for a specific client connected to the same `UnreliableRemoteEvent`. Has a 900 byte limit to the payload of the event, otherwise event is dropped.
+     * Fires the `OnClientEvent` event for a specific client connected to the same `UnreliableRemoteEvent`. Has a 1000 byte limit to the payload of the event. Otherwise, the event is dropped.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -8326,7 +8346,7 @@ interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemot
      */
     FireClient(this: UnreliableRemoteEvent, player: Player, ...args: Parameters<T>): void;
     /**
-     * Fires the `OnServerEvent` event on the server from one client connected to the same `UnreliableRemoteEvent`. Has a 900 byte limit to the payload of the event, otherwise event is dropped.
+     * Fires the `OnServerEvent` event on the server from one client connected to the same `UnreliableRemoteEvent`. Has a 1000 byte limit to the payload of the event, otherwise event is dropped.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -9417,7 +9437,7 @@ interface CalloutService extends Instance {
     readonly _nominal_CalloutService: unique symbol;
 }
 /**
- * A service which provides control over screenshot capture features.
+ * A service which provides control over screenshot and video capture features.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -9438,28 +9458,34 @@ interface CaptureService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#CaptureScreenshot)
-     * @param this A service which provides control over screenshot capture features.
+     * @param this A service which provides control over screenshot and video capture features.
      * @param onCaptureReady A callback function that is called with the `contentId` of the new capture once it is ready.
      */
     CaptureScreenshot(this: CaptureService, onCaptureReady: (captureContentId: string) => void): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#GetDeviceInfo)
+     */
+    GetDeviceInfo(this: CaptureService): object;
     /**
      * Prompts the user to save specified captures to their gallery.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#PromptSaveCapturesToGallery)
-     * @param this A service which provides control over screenshot capture features.
+     * @param this A service which provides control over screenshot and video capture features.
      * @param captures
      * @param resultCallback A callback function that will be invoked with a dictionary mapping each `contentId` to a boolean indicating if the user accepted saving that capture.
      */
     PromptSaveCapturesToGallery<T extends string>(this: CaptureService, contentIds: Array<T>, resultCallback: (results: Record<T, boolean>) => void): void;
     /**
-     * Prompts the user to share a specified screenshot capture.
+     * Prompts the user to share a specified capture.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#PromptShareCapture)
-     * @param this A service which provides control over screenshot capture features.
+     * @param this A service which provides control over screenshot and video capture features.
      * @param captureContent
      * @param launchData An optional string to include as launch data in the invite link.
      * @param onAcceptedCallback An optional callback function invoked if the user accepts sharing.
@@ -9467,27 +9493,31 @@ interface CaptureService extends Instance {
      */
     PromptShareCapture(this: CaptureService, contentId: string, launchData: string, onAcceptedCallback: () => void, onDeniedCallback: () => void): void;
     /**
+     * Ends a video capture initiated by `StartVideoCaptureAsync()`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StopVideoCapture)
-     * @param this A service which provides control over screenshot capture features.
+     * @param this A service which provides control over screenshot and video capture features.
      */
     StopVideoCapture(this: CaptureService): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#TakeCapture)
-     * @param this A service which provides control over screenshot capture features.
+     * @param this A service which provides control over screenshot and video capture features.
      * @param onCaptureReady
      * @param captureParams
      */
     TakeCapture(this: CaptureService, onCaptureReady: Callback, captureParams?: object): void;
     /**
+     * Initiates a video capture recording.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StartVideoCaptureAsync)
-     * @param this A service which provides control over screenshot capture features.
+     * @param this A service which provides control over screenshot and video capture features.
      * @param onCaptureReady
      * @param captureParams
      */
@@ -14656,6 +14686,21 @@ interface ExampleService extends Instance {
     readonly _nominal_ExampleService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExampleV2Service)
+ */
+interface ExampleV2Service extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ExampleV2Service: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExperienceAuthService)
@@ -14695,7 +14740,7 @@ interface ExperienceInviteOptions extends Instance {
      */
     InviteMessageId: string;
     /**
-     * Roblox `UserId` of the specific friend to invite.
+     * Roblox `UserId` of the specific connection to invite.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -14703,7 +14748,7 @@ interface ExperienceInviteOptions extends Instance {
      */
     InviteUser: number;
     /**
-     * Used to set a parameter in `Player:GetJoinData()` when a friend joins from the invite notification.
+     * Used to set a parameter in `Player:GetJoinData()` when a connection joins from the invite notification.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -15033,6 +15078,24 @@ interface Decal extends FaceInstance {
      */
     LocalTransparencyModifier: number;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#MetalnessMapContent)
+     */
+    get MetalnessMapContent(): Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#NormalMapContent)
+     */
+    get NormalMapContent(): Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#RoughnessMapContent)
+     */
+    get RoughnessMapContent(): Content;
+    /**
      * **Deprecated:** This non-functional property is deprecated and should not be used in new work.
      *
      * - **ThreadSafety**: ReadSafe
@@ -15076,6 +15139,18 @@ interface Decal extends FaceInstance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#Transparency)
      */
     Transparency: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#UVOffset)
+     */
+    UVOffset: Vector2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#UVScale)
+     */
+    UVScale: Vector2;
     /**
      * Determines the rendering order when multiple Decals are assigned the same face.
      *
@@ -15603,7 +15678,7 @@ interface GamepadService extends Instance {
     EnableGamepadCursor(this: GamepadService, guiObject: GuiObject | undefined): void;
 }
 /**
- * `GenerationService` is a service that allows developers to generate 3D objects from text prompts utilizing Roblox's [Cube 3D foundation model](https://corp.roblox.com/newsroom/2025/03/introducing-roblox-cube).
+ * Service that allows developers to generate 3D objects from text prompts.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -15619,31 +15694,32 @@ interface GenerationService extends Instance {
      */
     readonly _nominal_GenerationService: unique symbol;
     /**
-     * Starts the generation of a new 3D mesh from a text prompt and returns unique IDs used to track and retrieve the result. After the generation is complete, use `LoadGeneratedMeshAsync()` to load and display the generated mesh.
+     * Starts the generation of a new 3D mesh from a text prompt and returns unique IDs used to track and retrieve the result.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#GenerateMeshAsync)
-     * @param this `GenerationService` is a service that allows developers to generate 3D objects from text prompts utilizing Roblox's [Cube 3D foundation model](https://corp.roblox.com/newsroom/2025/03/introducing-roblox-cube).
+     * @param this Service that allows developers to generate 3D objects from text prompts.
      * @param inputs A dictionary containing the mesh generation prompts. Currently, the only supported key is the `Prompt` (string) that describes the mesh to generate.
      * @param player The `Player` requesting the generation.
-     * @param options Additional generation options. Currently, no options are supported.
-     * @param intermediateResultCallback A callback function triggered with intermediate generation results. Useful for retrieving early mesh versions (e.g. before textures are applied).
-     * @returns A tuple of generation ID and context ID. - Generation ID: A unique ID returned for each invocation of   `GenerateMeshAsync()`.
-     * - Context ID: Not currently used.
+     * @param options A dictionary for additional generation options to influence the result. The following key is supported: - `SuggestedSize` — Optional `Vector3` representing a size guide for the generated asset. The service will attempt to create a model with a size and proportion similar to the provided `Vector3`. This does not guarantee the final output size.
+     *
+     *
+     * @param intermediateResultCallback A callback function triggered with intermediate generation results. Useful for retrieving early mesh versions before textures are applied.
+     * @returns A tuple of the generation ID (a unique ID returned for each invocation of `GenerateMeshAsync()`) and context ID (not currently used).
      */
     GenerateMeshAsync(this: GenerationService, inputs: object, player: Player, options: object, intermediateResultCallback?: Callback): unknown;
     /**
-     * Retrieves and loads a mesh generated by `GenerationService:GenerateMeshAsync()` using the provided `generationId`. The mesh is returned as a `MeshPart` with `EditableMesh` content.
+     * Retrieves and loads a mesh generated by `GenerationService:GenerateMeshAsync()` using the provided `generationId`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#LoadGeneratedMeshAsync)
-     * @param this `GenerationService` is a service that allows developers to generate 3D objects from text prompts utilizing Roblox's [Cube 3D foundation model](https://corp.roblox.com/newsroom/2025/03/introducing-roblox-cube).
+     * @param this Service that allows developers to generate 3D objects from text prompts.
      * @param generationId The unique ID returned by `GenerateMeshAsync()`. Identifies the mesh to load.
-     * @returns The generated mesh, returned as a `MeshPart` containing an `EditableMesh`.
+     * @returns The generated asset, returned as a `Model` with a single `MeshPart` containing an `EditableMesh`.
      */
     LoadGeneratedMeshAsync(this: GenerationService, generationId: string): MeshPart;
 }
@@ -28092,6 +28168,8 @@ interface BasePart extends PVInstance {
      */
     GetRenderCFrame(this: BasePart): CFrame;
     /**
+     * **Deprecated:**
+     *
      * Returns the base part of an assembly of parts.
      *
      * - **ThreadSafety**: Safe
@@ -31099,7 +31177,7 @@ interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {
     readonly _nominal_DataStoreVersionPages: unique symbol;
 }
 /**
- * A special version of `Pages` that contains information about a player's friends.
+ * A special version of `Pages` that contains information about a player's connections.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -32752,15 +32830,15 @@ interface Player extends Instance {
      */
     SaveString(this: Player, key: string, value: string): void;
     /**
-     * Returns a dictionary of online friends.
+     * Returns a dictionary of online connections.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#GetFriendsOnline)
      * @param this An object that represents a presently connected client to the experience.
-     * @param maxFriends The maximum number of online friends to return.
-     * @returns A dictionary of online friends (see the table above).
+     * @param maxFriends The maximum number of online connections to return.
+     * @returns A dictionary of online connections (see the table above).
      */
     GetFriendsOnline(this: Player, maxFriends?: number): Array<FriendOnlineInfo>;
     /**
@@ -32790,7 +32868,7 @@ interface Player extends Instance {
     /**
      * **Deprecated:** This function is obsolete because the Best Friends feature was removed. Use `Player:IsFriendsWith()` instead.
      *
-     * Returns whether a player is friends with the specified user.
+     * Returns whether a player is connections with the specified user.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -32803,7 +32881,7 @@ interface Player extends Instance {
      */
     IsBestFriendsWith(this: Player, userId: number): boolean;
     /**
-     * Checks whether a player is a friend of the user with the given `Player.UserId`.
+     * Checks whether a player is a connection of the user with the given `Player.UserId`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -32811,7 +32889,7 @@ interface Player extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#IsFriendsWith)
      * @param this An object that represents a presently connected client to the experience.
      * @param userId The `Player.UserId` of the specified player.
-     * @returns A boolean indicating whether a player is a friend of the specified user.
+     * @returns A boolean indicating whether a player is a connection of the specified user.
      */
     IsFriendsWith(this: Player, userId: number): boolean;
     /**
@@ -33505,7 +33583,7 @@ interface Players extends Instance {
      */
     GetCharacterAppearanceInfoAsync(this: Players, userId: number): CharacterAppearanceInfo;
     /**
-     * Returns a `FriendPages` object which contains information for all of the given player's friends.
+     * Returns a `FriendPages` object which contains information for all of the given player's connections.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -34511,7 +34589,7 @@ interface RecommendationService extends Instance {
      * @param this
      * @param registerRecommendationItemsRequest
      */
-    RegisterItemAsync(this: RecommendationService, registerRecommendationItemsRequest: object): object;
+    RegisterItemAsync(this: RecommendationService, player: Player, registerRecommendationItemsRequest: object): object;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -36558,6 +36636,9 @@ interface SocialService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#PromptLinkSharing)
+     * @param this Facilitates social functions that impact relationships made on the Roblox platform.
+     * @param player
+     * @param options
      */
     PromptLinkSharing(this: SocialService, player: Player, options?: object): unknown;
     /**
@@ -38662,6 +38743,14 @@ interface SurfaceAppearance extends Instance {
      * @deprecated
      */
     readonly _nominal_SurfaceAppearance: unique symbol;
+    /**
+     * Determines how the alpha channel of the `SurfaceAppearance.ColorMap` is used.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#AlphaMode)
+     */
+    AlphaMode: Enum.AlphaMode;
     /**
      * Applies a tint to your existing colormap. Set directly with color picker or programmatically with `Color3`.
      *
@@ -41685,15 +41774,15 @@ interface UIContainerQuery extends UIComponent {
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery#Active)
-     */
-    Active: boolean;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery#AspectRatioRange)
      */
     AspectRatioRange: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery#IsActive)
+     */
+    IsActive: boolean;
     /**
      * - **ThreadSafety**: ReadSafe
      *
