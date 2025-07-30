@@ -568,6 +568,7 @@ interface Instances extends Services, CreatableInstances {
     BevelMesh: BevelMesh;
     BodyMover: BodyMover;
     BubbleChatConfiguration: BubbleChatConfiguration;
+    CapturesPages: CapturesPages;
     CatalogPages: CatalogPages;
     ChannelSelectorSoundEffect: ChannelSelectorSoundEffect;
     ChannelTabsConfiguration: ChannelTabsConfiguration;
@@ -7924,6 +7925,8 @@ interface MaterialVariant extends Instance {
      */
     ColorMap: ContentId;
     /**
+     * Determines the color of the surface. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#ColorMapContent)
@@ -7938,6 +7941,8 @@ interface MaterialVariant extends Instance {
      */
     MetalnessMap: ContentId;
     /**
+     * Determines which parts of the surface are metal and are non-metal. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#MetalnessMapContent)
@@ -7952,6 +7957,8 @@ interface MaterialVariant extends Instance {
      */
     NormalMap: ContentId;
     /**
+     * Modifies the lighting of the surface by adding bumps, dents, cracks, and curves without adding more polygons. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#NormalMapContent)
@@ -7966,6 +7973,8 @@ interface MaterialVariant extends Instance {
      */
     RoughnessMap: ContentId;
     /**
+     * Determines the apparent roughness across the surface. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#RoughnessMapContent)
@@ -9202,6 +9211,21 @@ interface BanHistoryPages extends Pages {
      * @deprecated
      */
     readonly _nominal_BanHistoryPages: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CapturesPages)
+ */
+interface CapturesPages extends Pages {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CapturesPages: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -13457,6 +13481,8 @@ interface TerrainDetail extends Instance {
      */
     ColorMap: ContentId;
     /**
+     * Determines the color of the surface. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#ColorMapContent)
@@ -13471,6 +13497,8 @@ interface TerrainDetail extends Instance {
      */
     MetalnessMap: ContentId;
     /**
+     * Determines which parts of the surface are metal and are non-metal. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#MetalnessMapContent)
@@ -13485,6 +13513,8 @@ interface TerrainDetail extends Instance {
      */
     NormalMap: ContentId;
     /**
+     * Modifies the lighting of the surface by adding bumps, dents, cracks, and curves without adding more polygons. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#NormalMapContent)
@@ -13499,6 +13529,8 @@ interface TerrainDetail extends Instance {
      */
     RoughnessMap: ContentId;
     /**
+     * Determines the apparent roughness across the surface. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#RoughnessMapContent)

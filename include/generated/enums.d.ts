@@ -5174,6 +5174,42 @@ declare namespace Enum {
     }
     export type BorderMode = BorderMode.Outline | BorderMode.Middle | BorderMode.Inset;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BorderStrokePosition)
+     */
+    export namespace BorderStrokePosition {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BorderStrokePosition#Outer)
+         */
+        export interface Outer extends globalThis.EnumItem {
+            Name: "Outer";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.BorderStrokePosition;
+        }
+        export const Outer: Outer;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BorderStrokePosition#Center)
+         */
+        export interface Center extends globalThis.EnumItem {
+            Name: "Center";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.BorderStrokePosition;
+        }
+        export const Center: Center;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BorderStrokePosition#Inner)
+         */
+        export interface Inner extends globalThis.EnumItem {
+            Name: "Inner";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.BorderStrokePosition;
+        }
+        export const Inner: Inner;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.BorderStrokePosition>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.BorderStrokePosition | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.BorderStrokePosition | undefined;
+    }
+    export type BorderStrokePosition = BorderStrokePosition.Outer | BorderStrokePosition.Center | BorderStrokePosition.Inner;
+    /**
      * Reason for the breakpoint hit.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BreakReason)
@@ -5702,6 +5738,24 @@ declare namespace Enum {
     }
     export type CameraType = CameraType.Fixed | CameraType.Attach | CameraType.Watch | CameraType.Track | CameraType.Follow | CameraType.Custom | CameraType.Scriptable | CameraType.Orbital;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureGalleryPermission)
+     */
+    export namespace CaptureGalleryPermission {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureGalleryPermission#ReadAndUpload)
+         */
+        export interface ReadAndUpload extends globalThis.EnumItem {
+            Name: "ReadAndUpload";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.CaptureGalleryPermission;
+        }
+        export const ReadAndUpload: ReadAndUpload;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CaptureGalleryPermission>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CaptureGalleryPermission | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CaptureGalleryPermission | undefined;
+    }
+    export type CaptureGalleryPermission = CaptureGalleryPermission.ReadAndUpload;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureType)
      */
     export namespace CaptureType {
@@ -5710,7 +5764,7 @@ declare namespace Enum {
          */
         export interface Screenshot extends globalThis.EnumItem {
             Name: "Screenshot";
-            Value: 0;
+            Value: 1;
             EnumType: typeof globalThis.Enum.CaptureType;
         }
         export const Screenshot: Screenshot;
@@ -5719,7 +5773,7 @@ declare namespace Enum {
          */
         export interface Video extends globalThis.EnumItem {
             Name: "Video";
-            Value: 1;
+            Value: 2;
             EnumType: typeof globalThis.Enum.CaptureType;
         }
         export const Video: Video;
@@ -18758,10 +18812,14 @@ declare namespace Enum {
     }
     export type LexemeType = LexemeType.Eof | LexemeType.Name | LexemeType.QuotedString | LexemeType.Number | LexemeType.And | LexemeType.Or | LexemeType.Equal | LexemeType.TildeEqual | LexemeType.GreaterThan | LexemeType.GreaterThanEqual | LexemeType.LessThan | LexemeType.LessThanEqual | LexemeType.Colon | LexemeType.Dot | LexemeType.LeftParenthesis | LexemeType.RightParenthesis | LexemeType.Star | LexemeType.DoubleStar | LexemeType.ReservedSpecial;
     /**
+     * Enum used by `Lighting.LightingStyle` to indicate the artistic intent behind lighting in the experience.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LightingStyle)
      */
     export namespace LightingStyle {
         /**
+         * The most advanced and realistic lighting and shadows Roblox can deliver.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LightingStyle#Realistic)
          */
         export interface Realistic extends globalThis.EnumItem {
@@ -18771,6 +18829,8 @@ declare namespace Enum {
         }
         export const Realistic: Realistic;
         /**
+         * A flat, retro-Roblox look with softer lights and shadows.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LightingStyle#Soft)
          */
         export interface Soft extends globalThis.EnumItem {
@@ -22165,6 +22225,51 @@ declare namespace Enum {
     }
     export type PathfindingUseImprovedSearch = PathfindingUseImprovedSearch.Default | PathfindingUseImprovedSearch.Disabled | PathfindingUseImprovedSearch.Enabled;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PerformanceOverlayMode)
+     */
+    export namespace PerformanceOverlayMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PerformanceOverlayMode#Overdraw)
+         */
+        export interface Overdraw extends globalThis.EnumItem {
+            Name: "Overdraw";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PerformanceOverlayMode;
+        }
+        export const Overdraw: Overdraw;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PerformanceOverlayMode#Transparent)
+         */
+        export interface Transparent extends globalThis.EnumItem {
+            Name: "Transparent";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PerformanceOverlayMode;
+        }
+        export const Transparent: Transparent;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PerformanceOverlayMode#Decals)
+         */
+        export interface Decals extends globalThis.EnumItem {
+            Name: "Decals";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PerformanceOverlayMode;
+        }
+        export const Decals: Decals;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PerformanceOverlayMode#Lights)
+         */
+        export interface Lights extends globalThis.EnumItem {
+            Name: "Lights";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.PerformanceOverlayMode;
+        }
+        export const Lights: Lights;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PerformanceOverlayMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PerformanceOverlayMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PerformanceOverlayMode | undefined;
+    }
+    export type PerformanceOverlayMode = PerformanceOverlayMode.Overdraw | PerformanceOverlayMode.Transparent | PerformanceOverlayMode.Decals | PerformanceOverlayMode.Lights;
+    /**
      * Used to set the highest permission level that APIs have to have in order to be shown in the Object Browser.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PermissionLevelShown)
@@ -23036,8 +23141,6 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * **Deprecated:**
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#Forced)
          */
         export interface Forced extends globalThis.EnumItem {
@@ -24178,6 +24281,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RaycastFilterType | undefined;
     }
     export type RaycastFilterType = RaycastFilterType.Exclude | RaycastFilterType.Include;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReadCapturesFromGalleryResult)
+     */
+    export namespace ReadCapturesFromGalleryResult {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReadCapturesFromGalleryResult#Success)
+         */
+        export interface Success extends globalThis.EnumItem {
+            Name: "Success";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ReadCapturesFromGalleryResult;
+        }
+        export const Success: Success;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReadCapturesFromGalleryResult#NeedPermission)
+         */
+        export interface NeedPermission extends globalThis.EnumItem {
+            Name: "NeedPermission";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ReadCapturesFromGalleryResult;
+        }
+        export const NeedPermission: NeedPermission;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ReadCapturesFromGalleryResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ReadCapturesFromGalleryResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ReadCapturesFromGalleryResult | undefined;
+    }
+    export type ReadCapturesFromGalleryResult = ReadCapturesFromGalleryResult.Success | ReadCapturesFromGalleryResult.NeedPermission;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationActionType)
      */
@@ -32566,6 +32696,60 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UiMessageType | undefined;
     }
     export type UiMessageType = UiMessageType.UiMessageError | UiMessageType.UiMessageInfo;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult)
+     */
+    export namespace UploadCaptureResult {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#Success)
+         */
+        export interface Success extends globalThis.EnumItem {
+            Name: "Success";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.UploadCaptureResult;
+        }
+        export const Success: Success;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#NeedPermission)
+         */
+        export interface NeedPermission extends globalThis.EnumItem {
+            Name: "NeedPermission";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.UploadCaptureResult;
+        }
+        export const NeedPermission: NeedPermission;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#CaptureModerated)
+         */
+        export interface CaptureModerated extends globalThis.EnumItem {
+            Name: "CaptureModerated";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.UploadCaptureResult;
+        }
+        export const CaptureModerated: CaptureModerated;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#CaptureNotInGallery)
+         */
+        export interface CaptureNotInGallery extends globalThis.EnumItem {
+            Name: "CaptureNotInGallery";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.UploadCaptureResult;
+        }
+        export const CaptureNotInGallery: CaptureNotInGallery;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#IneligibleCapture)
+         */
+        export interface IneligibleCapture extends globalThis.EnumItem {
+            Name: "IneligibleCapture";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.UploadCaptureResult;
+        }
+        export const IneligibleCapture: IneligibleCapture;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UploadCaptureResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UploadCaptureResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UploadCaptureResult | undefined;
+    }
+    export type UploadCaptureResult = UploadCaptureResult.Success | UploadCaptureResult.NeedPermission | UploadCaptureResult.CaptureModerated | UploadCaptureResult.CaptureNotInGallery | UploadCaptureResult.IneligibleCapture;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UsageContext)
      */
