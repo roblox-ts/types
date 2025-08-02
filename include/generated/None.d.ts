@@ -41726,9 +41726,9 @@ interface TweenService extends Instance {
      * @param dt The rate at which the smoothing operation should be applied.
      * @returns The new position and velocity calculated from the smoothing operation.
      */
-    SmoothDamp(this: TweenService, current: unknown, target: unknown, velocity: unknown, smoothTime: number, maxSpeed?: number, dt?: number): LuaTuple<[
-        unknown,
-        unknown
+    SmoothDamp<T extends number | Vector2 | Vector3 | CFrame>(this: TweenService, current: T, target: T, velocity: T, smoothTime: number, maxSpeed?: number, dt?: number): LuaTuple<[
+        T,
+        T
     ]>;
 }
 /**
