@@ -1136,6 +1136,15 @@ interface TweenService extends Instance {
 		tweenInfo: TweenInfo,
 		propertyTable: Partial<ExtractMembers<T, Tweenable>>,
 	): Tween;
+	SmoothDamp<T extends number | Vector2 | Vector3 | CFrame>(
+		this: TweenService,
+		current: T,
+		target: T,
+		velocity: T,
+		smoothTime: number,
+		maxSpeed: number,
+		dt: number,
+	): LuaTuple<[T, T]>;
 }
 
 interface UIPageLayout extends UIGridStyleLayout {
