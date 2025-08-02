@@ -1142,8 +1142,8 @@ interface TweenService extends Instance {
 		target: T,
 		velocity: T,
 		smoothTime: number,
-		maxSpeed: number,
-		dt: number,
+		maxSpeed?: number,
+		dt?: number,
 	): LuaTuple<[T, T]>;
 }
 
