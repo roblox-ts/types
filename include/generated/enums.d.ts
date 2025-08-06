@@ -9805,20 +9805,11 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.DeviceForm;
         }
         export const VR: VR;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceForm#Handheld)
-         */
-        export interface Handheld extends globalThis.EnumItem {
-            Name: "Handheld";
-            Value: 5;
-            EnumType: typeof globalThis.Enum.DeviceForm;
-        }
-        export const Handheld: Handheld;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeviceForm>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DeviceForm | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DeviceForm | undefined;
     }
-    export type DeviceForm = DeviceForm.Console | DeviceForm.Phone | DeviceForm.Tablet | DeviceForm.Desktop | DeviceForm.VR | DeviceForm.Handheld;
+    export type DeviceForm = DeviceForm.Console | DeviceForm.Phone | DeviceForm.Tablet | DeviceForm.Desktop | DeviceForm.VR;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceLevel)
      */
@@ -22414,6 +22405,42 @@ declare namespace Enum {
     }
     export type PhysicsSteppingMethod = PhysicsSteppingMethod.Default | PhysicsSteppingMethod.Fixed | PhysicsSteppingMethod.Adaptive;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlacePublishType)
+     */
+    export namespace PlacePublishType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlacePublishType#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PlacePublishType;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlacePublishType#Publish)
+         */
+        export interface Publish extends globalThis.EnumItem {
+            Name: "Publish";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PlacePublishType;
+        }
+        export const Publish: Publish;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlacePublishType#Save)
+         */
+        export interface Save extends globalThis.EnumItem {
+            Name: "Save";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PlacePublishType;
+        }
+        export const Save: Save;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PlacePublishType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PlacePublishType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlacePublishType | undefined;
+    }
+    export type PlacePublishType = PlacePublishType.None | PlacePublishType.Publish | PlacePublishType.Save;
+    /**
      * Host operating system of the client.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Platform)
@@ -27614,6 +27641,33 @@ declare namespace Enum {
     }
     export type StreamingPauseMode = StreamingPauseMode.Default | StreamingPauseMode.Disabled | StreamingPauseMode.ClientPhysicsPause;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StrokeSizingMode)
+     */
+    export namespace StrokeSizingMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StrokeSizingMode#FixedSize)
+         */
+        export interface FixedSize extends globalThis.EnumItem {
+            Name: "FixedSize";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.StrokeSizingMode;
+        }
+        export const FixedSize: FixedSize;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StrokeSizingMode#ScaledSize)
+         */
+        export interface ScaledSize extends globalThis.EnumItem {
+            Name: "ScaledSize";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.StrokeSizingMode;
+        }
+        export const ScaledSize: ScaledSize;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StrokeSizingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StrokeSizingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StrokeSizingMode | undefined;
+    }
+    export type StrokeSizingMode = StrokeSizingMode.FixedSize | StrokeSizingMode.ScaledSize;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioCloseMode)
      */
     export namespace StudioCloseMode {
@@ -30154,7 +30208,7 @@ declare namespace Enum {
     }
     export type TeamCreateErrorState = TeamCreateErrorState.PlaceSizeTooLarge | TeamCreateErrorState.PlaceSizeApproachingLimit | TeamCreateErrorState.NoError;
     /**
-     * Represents the different lighting systems available for rendering the 3D world. It is used by the `Lighting.Technology` property.
+     * Enum used by `Lighting.Technology` to represent the different lighting systems available for rendering the 3D world.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Technology)
      */
