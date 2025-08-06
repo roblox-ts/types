@@ -83,6 +83,7 @@ interface Services {
     GroupService: GroupService;
     GuiService: GuiService;
     HapticService: HapticService;
+    HarmonyService: HarmonyService;
     HeapProfilerService: HeapProfilerService;
     HeatmapService: HeatmapService;
     HeightmapImporterService: HeightmapImporterService;
@@ -6617,6 +6618,21 @@ interface HapticService extends Instance {
      * @deprecated
      */
     readonly _nominal_HapticService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HarmonyService)
+ */
+interface HarmonyService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_HarmonyService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
