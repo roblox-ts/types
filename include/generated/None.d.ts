@@ -7213,7 +7213,7 @@ interface AvatarEditorService extends Instance {
      * @param humanoidDescription The HumanoidDescription to check if default clothing is required.
      * @returns Returns a HumanoidDescription if default clothing was necessary. Otherwise returns `nil`.
      */
-    CheckApplyDefaultClothing(this: AvatarEditorService, humanoidDescription: HumanoidDescription): HumanoidDescription;
+    CheckApplyDefaultClothing(this: AvatarEditorService, humanoidDescription: HumanoidDescription): HumanoidDescription | undefined;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
