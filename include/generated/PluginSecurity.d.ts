@@ -8898,7 +8898,7 @@ interface VehicleSeat extends BasePart {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera)
  */
-interface Camera extends Instance {
+interface Camera extends PVInstance {
     /**
      * **DO NOT USE!**
      *
