@@ -35,6 +35,9 @@ jobs:
       - name: Generate Files
         run: npm run build
 
+      - name: Typecheck Files
+        run: npm run check
+
       - name: Push Generated Files
         run: |
           git add -A
