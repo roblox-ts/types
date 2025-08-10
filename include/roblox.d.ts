@@ -1863,7 +1863,7 @@ interface FloatCurveKey {
 type FloatCurveKeyConstructor = new (
 	time: number,
 	value: number,
-	interpolation: CastsToEnum<Enum.KeyInterpolationMode>,
+	interpolation?: CastsToEnum<Enum.KeyInterpolationMode>,
 ) => FloatCurveKey;
 declare const FloatCurveKey: FloatCurveKeyConstructor;
 
@@ -2297,7 +2297,7 @@ interface RotationCurveKey {
 type RotationCurveKeyConstructor = new (
 	time: number,
 	value: CFrame,
-	interpolation: CastsToEnum<Enum.KeyInterpolationMode>,
+	interpolation?: CastsToEnum<Enum.KeyInterpolationMode>,
 ) => RotationCurveKey;
 declare const RotationCurveKey: RotationCurveKeyConstructor;
 
