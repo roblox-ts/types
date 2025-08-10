@@ -1344,6 +1344,12 @@ interface CatalogSearchParams {
 	IncludeOffSale: boolean;
 	/** Search for items with the given creator. */
 	CreatorName: string;
+	/** Search for items created by the given creator type.  */
+	CreatorType: Enum.CreatorTypeFilter;
+	/** Search for items created by the given creator ID. */
+	CreatorId: number;
+	/** Specifies the number of items to return. Accepts 10, 28, 30, 60, and 120. Defaults to 30. */
+	Limit: 10 | 28 | 30 | 60 | 120;
 }
 
 interface CatalogSearchParamsConstructor {
@@ -1863,7 +1869,7 @@ interface FloatCurveKey {
 type FloatCurveKeyConstructor = new (
 	time: number,
 	value: number,
-	interpolation: CastsToEnum<Enum.KeyInterpolationMode>,
+	interpolation?: CastsToEnum<Enum.KeyInterpolationMode>,
 ) => FloatCurveKey;
 declare const FloatCurveKey: FloatCurveKeyConstructor;
 
@@ -2297,7 +2303,7 @@ interface RotationCurveKey {
 type RotationCurveKeyConstructor = new (
 	time: number,
 	value: CFrame,
-	interpolation: CastsToEnum<Enum.KeyInterpolationMode>,
+	interpolation?: CastsToEnum<Enum.KeyInterpolationMode>,
 ) => RotationCurveKey;
 declare const RotationCurveKey: RotationCurveKeyConstructor;
 
@@ -2888,6 +2894,9 @@ declare namespace buffer {
 	/** Returns the size of the buffer in bytes. */
 	function len(b: buffer): number;
 
+	/** Reads a range of bits into an unsigned integer from the buffer based on a specific bitCount integer from 0 to 32, inclusive. */
+	function readbits(b: buffer, bitOffset: number, bitCount: number): number;
+
 	/** Reads an 8-bit signed integer from the buffer. */
 	function readi8(b: buffer, offset: number): number;
 
@@ -2914,6 +2923,9 @@ declare namespace buffer {
 
 	/** Writes an 8-bit signed integer to the buffer. */
 	function writei8(b: buffer, offset: number, value: number): void;
+
+	/** Writes data to the buffer based on a specific bitCount integer from 0 to 32, inclusive. `value` is treated as an unsigned 32‑bit number and only bitCount least significant bits are written. */
+	function writebits(b: buffer, bitOffset: number, bitCount: number, value: number): void;
 
 	/** Writes an 8-bit unsigned integer to the buffer. */
 	function writeu8(b: buffer, offset: number, value: number): void;
@@ -3245,7 +3257,7 @@ interface SubscriptionInfo {
 	/**
 	 * The asset ID of the subscription product icon.
 	 */
-	IconImageAssetID: number;
+	IconImageAssetId: number;
 	/**
 	 * The duration of the subscription (for example, `Month`, `Year`, etc.).
 	 */
