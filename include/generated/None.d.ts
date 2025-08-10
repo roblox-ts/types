@@ -39888,7 +39888,7 @@ interface TextChannel extends Instance {
      * @param userId The userId of the `Player`.
      * @returns Returns `TextSource` and `true` if a new `TextSource` is created for the user, `TextSource` and `false` if there is an existing `TextSource`, or `nil` and `false` if the user has chat off or is not in this server.
      */
-    AddUserAsync(this: TextChannel, userId: number): [
+    AddUserAsync(this: TextChannel, userId: number): LuaTuple<[
         source: TextSource,
         isNew: true
     ] | [
@@ -39897,7 +39897,7 @@ interface TextChannel extends Instance {
     ] | [
         source: undefined,
         isNew: false
-    ];
+    ]>;
     /**
      * Sends a `TextChatMessage` to the server.
      *
