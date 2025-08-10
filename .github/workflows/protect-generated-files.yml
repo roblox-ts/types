@@ -3,8 +3,6 @@ name: Protect Generated Files
 on:
   pull_request:
     branches: [ master ]
-    paths:
-      - 'include/generated/**'
 
 jobs:
   check-generated-files:
