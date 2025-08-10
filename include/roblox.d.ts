@@ -1344,6 +1344,12 @@ interface CatalogSearchParams {
 	IncludeOffSale: boolean;
 	/** Search for items with the given creator. */
 	CreatorName: string;
+	/** Search for items created by the given creator type.  */
+	CreatorType: Enum.CreatorTypeFilter;
+	/** Search for items created by the given creator ID. */
+	CreatorId: number;
+	/** Specifies the number of items to return. Accepts 10, 28, 30, 60, and 120. Defaults to 30. */
+	Limit: 10 | 28 | 30 | 60 | 120;
 }
 
 interface CatalogSearchParamsConstructor {
