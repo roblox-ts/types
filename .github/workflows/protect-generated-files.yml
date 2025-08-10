@@ -62,14 +62,14 @@ jobs:
             if (!botComment) {
               const commentBody = `## 🛡️ Generated Files Protection
 
-              **❌ This PR modifies files in \`include/generated/\` which are auto-generated and should NEVER be manually edited.**
+          **❌ This PR modifies files in \`include/generated/\` which are auto-generated and should NEVER be manually edited.**
 
-              ### What you need to do:
-              1. **Remove the changes** to files in \`include/generated/\`
-              2. **Edit \`include/customDefinitions.d.ts\`** instead to make your changes
-              3. These files will be **automatically regenerated** after your PR is merged
+          ### What you need to do:
+          1. **Remove the changes** to files in \`include/generated/\`
+          2. **Edit \`include/customDefinitions.d.ts\`** instead to make your changes
+          3. These files will be **automatically regenerated** after your PR is merged
 
-              *This check will automatically pass once the generated files are removed from your PR.*`;
+          *This check will automatically pass once the generated files are removed from your PR.*`;
 
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
