@@ -3257,7 +3257,7 @@ interface SubscriptionInfo {
 	/**
 	 * The asset ID of the subscription product icon.
 	 */
-	IconImageAssetID: number;
+	IconImageAssetId: number;
 	/**
 	 * The duration of the subscription (for example, `Month`, `Year`, etc.).
 	 */
