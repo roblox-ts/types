@@ -1,0 +1,93 @@
+name: Protect Generated Files
+
+on:
+  pull_request_target:
+    branches: [ master ]
+
+jobs:
+  check-generated-files:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 0
+
+    - name: Fetch base branch
+      run: |
+        git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
+
+    - name: Check for changes in generated files
+      run: |
+        echo "Checking for modifications in include/generated/ directory..."
+
+        # Get the list of changed files in the PR
+        CHANGED_FILES=$(git diff --name-only ${{ github.base_ref }}...HEAD)
+
+        # Check if any files in include/generated/ were modified
+        GENERATED_FILES_CHANGED=$(echo "$CHANGED_FILES" | grep "^include/generated/" || true)
+
+        if [ -n "$GENERATED_FILES_CHANGED" ]; then
+          echo "❌ ERROR: The following generated files were modified:"
+          echo "$GENERATED_FILES_CHANGED"
+          echo ""
+          echo "Files in the include/generated/ directory are auto-generated and should NEVER be manually modified."
+          echo "These files are automatically regenerated after your PR is merged."
+          echo "Please remove these changes from your PR."
+          echo ""
+          echo "To make changes that affect generated files:"
+          echo "1. Edit include/customDefinitions.d.ts instead"
+          echo "2. The generated files will be updated automatically after merge"
+          exit 1
+        else
+          echo "✅ No generated files were modified. Check passed!"
+        fi
+
+    - name: Manage PR comments
+      if: always()
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const { data: comments } = await github.rest.issues.listComments({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+          });
+
+          const botComment = comments.find(comment =>
+            comment.user.type === 'Bot' &&
+            comment.body.includes('Generated Files Protection')
+          );
+
+          if ('${{ job.status }}' === 'failure') {
+            if (!botComment) {
+              const commentBody = `## 🛡️ Generated Files Protection
+
+          **❌ This PR modifies files in \`include/generated/\` which are auto-generated and should NEVER be manually edited.**
+
+          ### What you need to do:
+          1. **Remove the changes** to files in \`include/generated/\`
+          2. **Edit \`include/customDefinitions.d.ts\`** instead to make your changes
+          3. These files will be **automatically regenerated** after your PR is merged
+
+          *This check will automatically pass once the generated files are removed from your PR.*`;
+
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: commentBody
+              });
+            }
+          } else {
+            // If check passed, delete the comment if it exists
+            if (botComment) {
+              await github.rest.issues.deleteComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+              });
+            }
+          }

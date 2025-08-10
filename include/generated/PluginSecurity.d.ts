@@ -38,7 +38,6 @@ interface Services {
     CloudCRUDService: CloudCRUDService;
     CollaboratorsService: CollaboratorsService;
     CollectionService: CollectionService;
-    CommandService: CommandService;
     CommerceService: CommerceService;
     ConfigService: ConfigService;
     ConfigureServerService: ConfigureServerService;
@@ -64,6 +63,7 @@ interface Services {
     EditableService: EditableService;
     EventIngestService: EventIngestService;
     ExampleService: ExampleService;
+    ExampleV2Service: ExampleV2Service;
     ExperienceAuthService: ExperienceAuthService;
     ExperienceNotificationService: ExperienceNotificationService;
     ExperienceService: ExperienceService;
@@ -83,6 +83,7 @@ interface Services {
     GroupService: GroupService;
     GuiService: GuiService;
     HapticService: HapticService;
+    HarmonyService: HarmonyService;
     HeapProfilerService: HeapProfilerService;
     HeatmapService: HeatmapService;
     HeightmapImporterService: HeightmapImporterService;
@@ -114,9 +115,10 @@ interface Services {
     MessageBusService: MessageBusService;
     MessagingService: MessagingService;
     MetaBreakpointManager: MetaBreakpointManager;
+    MicroProfilerService: MicroProfilerService;
     MLModelDeliveryService: MLModelDeliveryService;
     MLService: MLService;
-    Moderation: Moderation;
+    ModerationService: ModerationService;
     NetworkClient: NetworkClient;
     NetworkServer: NetworkServer;
     NetworkSettings: NetworkSettings;
@@ -124,6 +126,7 @@ interface Services {
     OpenCloudService: OpenCloudService;
     PackageService: PackageService;
     PackageUIService: PackageUIService;
+    PartyEmulatorService: PartyEmulatorService;
     PatchBundlerFileWatch: PatchBundlerFileWatch;
     PathfindingService: PathfindingService;
     PerformanceControlService: PerformanceControlService;
@@ -174,6 +177,7 @@ interface Services {
     ServerScriptService: ServerScriptService;
     ServerStorage: ServerStorage;
     ServiceVisibilityService: ServiceVisibilityService;
+    SessionCheckService: SessionCheckService;
     SessionService: SessionService;
     SharedTableRegistry: SharedTableRegistry;
     SlimContentProvider: SlimContentProvider;
@@ -274,6 +278,7 @@ interface CreatableInstances {
     AudioFader: AudioFader;
     AudioFilter: AudioFilter;
     AudioFlanger: AudioFlanger;
+    AudioGate: AudioGate;
     AudioLimiter: AudioLimiter;
     AudioListener: AudioListener;
     AudioPitchShifter: AudioPitchShifter;
@@ -502,6 +507,7 @@ interface CreatableInstances {
     TremoloSoundEffect: TremoloSoundEffect;
     TrussPart: TrussPart;
     UIAspectRatioConstraint: UIAspectRatioConstraint;
+    UIContainerQuery: UIContainerQuery;
     UICorner: UICorner;
     UIDragDetector: UIDragDetector;
     UIFlexItem: UIFlexItem;
@@ -563,6 +569,7 @@ interface Instances extends Services, CreatableInstances {
     BevelMesh: BevelMesh;
     BodyMover: BodyMover;
     BubbleChatConfiguration: BubbleChatConfiguration;
+    CapturesPages: CapturesPages;
     CatalogPages: CatalogPages;
     ChannelSelectorSoundEffect: ChannelSelectorSoundEffect;
     ChannelTabsConfiguration: ChannelTabsConfiguration;
@@ -574,7 +581,6 @@ interface Instances extends Services, CreatableInstances {
     Clothing: Clothing;
     CloudLocalizationTable: CloudLocalizationTable;
     Collaborator: Collaborator;
-    CommandInstance: CommandInstance;
     Constraint: Constraint;
     Controller: Controller;
     ControllerBase: ControllerBase;
@@ -637,7 +643,6 @@ interface Instances extends Services, CreatableInstances {
     LuaSettings: LuaSettings;
     LuaSourceContainer: LuaSourceContainer;
     ManualSurfaceJointInstance: ManualSurfaceJointInstance;
-    MaterialGenerationSession: MaterialGenerationSession;
     MaterialImportData: MaterialImportData;
     MemoryStoreHashMap: MemoryStoreHashMap;
     MemoryStoreHashMapPages: MemoryStoreHashMapPages;
@@ -1718,6 +1723,19 @@ interface AudioFocusService extends Instance {
     readonly _nominal_AudioFocusService: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate)
+ */
+interface AudioGate extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioGate: unique symbol;
+}
+/**
  * Limits how loud audio streams are allowed to be.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioLimiter)
@@ -1843,8 +1861,6 @@ interface AudioSpeechToText extends Instance {
 }
 /**
  * Plays text as speech audio.
- *
- * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech)
  */
@@ -2795,7 +2811,7 @@ interface CalloutService extends Instance {
     readonly _nominal_CalloutService: unique symbol;
 }
 /**
- * A service which provides control over screenshot capture features.
+ * A service which provides control over screenshot and video capture features.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -3203,36 +3219,6 @@ interface CollectionService extends Instance {
      * @deprecated
      */
     readonly _nominal_CollectionService: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommandInstance)
- */
-interface CommandInstance extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CommandInstance: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommandService)
- */
-interface CommandService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_CommandService: unique symbol;
 }
 /**
  * Supports real-world purchases that you can bundle with digital benefits.
@@ -4535,6 +4521,21 @@ interface ExampleService extends Instance {
     readonly _nominal_ExampleService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExampleV2Service)
+ */
+interface ExampleV2Service extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ExampleV2Service: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExperienceAuthService)
@@ -5199,6 +5200,45 @@ interface Decal extends FaceInstance {
      * @deprecated
      */
     readonly _nominal_Decal: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#MetalnessMap)
+     */
+    MetalnessMap: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#MetalnessMapContent)
+     */
+    set MetalnessMapContent(value: Content);
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#NormalMap)
+     */
+    NormalMap: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#NormalMapContent)
+     */
+    set NormalMapContent(value: Content);
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#RoughnessMap)
+     */
+    RoughnessMap: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#RoughnessMapContent)
+     */
+    set RoughnessMapContent(value: Content);
 }
 /**
  * A Texture object applies a repeating texture to the face of a `BasePart`.
@@ -5402,7 +5442,7 @@ interface File extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/File#GetTemporaryId)
      * @param this An asset loaded from a file on disk.
-     * @returns The temporary asset id.
+     * @returns The temporary asset ID.
      */
     GetTemporaryId(this: File): ContentId;
 }
@@ -5518,7 +5558,7 @@ interface GamepadService extends Instance {
     readonly _nominal_GamepadService: unique symbol;
 }
 /**
- * `GenerationService` is a service that allows developers to generate 3D objects from text prompts utilizing Roblox's [Cube 3D foundation model](https://corp.roblox.com/newsroom/2025/03/introducing-roblox-cube).
+ * Service that allows developers to generate 3D objects from text prompts.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -6580,6 +6620,21 @@ interface HapticService extends Instance {
     readonly _nominal_HapticService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HarmonyService)
+ */
+interface HarmonyService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_HarmonyService: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService)
@@ -6858,8 +6913,6 @@ interface IncrementalPatchBuilder extends Instance {
 /**
  * Defines a gameplay action mechanic. These actions are then mapped to hardware inputs using `InputBinding`.
  *
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction)
  */
 interface InputAction extends Instance {
@@ -6875,8 +6928,6 @@ interface InputAction extends Instance {
 /**
  * Defines which hardware binding should trigger the parent `InputAction`.
  *
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding)
  */
 interface InputBinding extends Instance {
@@ -6891,8 +6942,6 @@ interface InputBinding extends Instance {
 }
 /**
  * Collection of actions which holds related actions and defines how they interact with other contexts/actions.
- *
- * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputContext)
  */
@@ -7845,21 +7894,6 @@ interface MaterialGenerationService extends Instance {
     readonly _nominal_MaterialGenerationService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialGenerationSession)
- */
-interface MaterialGenerationSession extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_MaterialGenerationSession: unique symbol;
-}
-/**
  * The game service responsible for managing materials.
  *
  * - **Tags**: NotCreatable, Service
@@ -7907,6 +7941,8 @@ interface MaterialVariant extends Instance {
      */
     ColorMap: ContentId;
     /**
+     * Determines the color of the surface. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#ColorMapContent)
@@ -7921,6 +7957,8 @@ interface MaterialVariant extends Instance {
      */
     MetalnessMap: ContentId;
     /**
+     * Determines which parts of the surface are metal and are non-metal. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#MetalnessMapContent)
@@ -7935,6 +7973,8 @@ interface MaterialVariant extends Instance {
      */
     NormalMap: ContentId;
     /**
+     * Modifies the lighting of the surface by adding bumps, dents, cracks, and curves without adding more polygons. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#NormalMapContent)
@@ -7949,6 +7989,8 @@ interface MaterialVariant extends Instance {
      */
     RoughnessMap: ContentId;
     /**
+     * Determines the apparent roughness across the surface. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#RoughnessMapContent)
@@ -8140,9 +8182,9 @@ interface MetaBreakpointManager extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Moderation)
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService)
  */
-interface Moderation extends Instance {
+interface MicroProfilerService extends Instance {
     /**
      * **DO NOT USE!**
      *
@@ -8150,7 +8192,22 @@ interface Moderation extends Instance {
      * @hidden
      * @deprecated
      */
-    readonly _nominal_Moderation: unique symbol;
+    readonly _nominal_MicroProfilerService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService)
+ */
+interface ModerationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ModerationService: unique symbol;
 }
 /**
  * Legacy object that contains members useful for pointer input.
@@ -8841,7 +8898,7 @@ interface VehicleSeat extends BasePart {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera)
  */
-interface Camera extends Instance {
+interface Camera extends PVInstance {
     /**
      * **DO NOT USE!**
      *
@@ -9174,6 +9231,21 @@ interface BanHistoryPages extends Pages {
 /**
  * - **Tags**: NotCreatable, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CapturesPages)
+ */
+interface CapturesPages extends Pages {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CapturesPages: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CatalogPages)
  */
 interface CatalogPages extends Pages<SearchCatalogResult> {
@@ -9258,7 +9330,7 @@ interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {
     readonly _nominal_DataStoreVersionPages: unique symbol;
 }
 /**
- * A special version of `Pages` that contains information about a player's friends.
+ * A special version of `Pages` that contains information about a player's connections.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -9392,6 +9464,21 @@ interface ParticleEmitter extends Instance {
      * @deprecated
      */
     readonly _nominal_ParticleEmitter: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PartyEmulatorService)
+ */
+interface PartyEmulatorService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PartyEmulatorService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -9653,7 +9740,7 @@ interface PlatformFriendsService extends Instance {
     readonly _nominal_PlatformFriendsService: unique symbol;
 }
 /**
- * An object that represents a presently connected client to the game.
+ * An object that represents a presently connected client to the experience.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player)
  */
@@ -9667,12 +9754,12 @@ interface Player extends Instance {
      */
     readonly _nominal_Player: unique symbol;
     /**
-     * Sets the AccountAge of the player.
+     * Sets the `AccountAge` of the player.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#SetAccountAge)
-     * @param this An object that represents a presently connected client to the game.
+     * @param this An object that represents a presently connected client to the experience.
      * @param accountAge The age of the account in days.
      */
     SetAccountAge(this: Player, accountAge: number): void;
@@ -9682,7 +9769,7 @@ interface Player extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#SetSuperSafeChat)
-     * @param this An object that represents a presently connected client to the game.
+     * @param this An object that represents a presently connected client to the experience.
      * @param value A boolean indicating whether or not the player sees filtered chat.
      */
     SetSuperSafeChat(this: Player, value: boolean): void;
@@ -11495,6 +11582,7 @@ interface ScriptEditorService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptEditorService#OpenScriptDocumentAsync)
      * @param this This service is used for interacting with `ScriptDocument` instances.
      * @param script
+     * @param options
      */
     OpenScriptDocumentAsync(this: ScriptEditorService, script: LuaSourceContainer, options?: object): unknown;
     /**
@@ -11992,6 +12080,21 @@ interface ServiceVisibilityService extends Instance {
      * @deprecated
      */
     readonly _nominal_ServiceVisibilityService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SessionCheckService)
+ */
+interface SessionCheckService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SessionCheckService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -13108,14 +13211,6 @@ interface SurfaceAppearance extends Instance {
      */
     readonly _nominal_SurfaceAppearance: unique symbol;
     /**
-     * Determines how the alpha channel of the `SurfaceAppearance.ColorMap` is used.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#AlphaMode)
-     */
-    AlphaMode: Enum.AlphaMode;
-    /**
      * Determines the color and opacity of the surface.
      *
      * - **ThreadSafety**: ReadSafe
@@ -13402,6 +13497,8 @@ interface TerrainDetail extends Instance {
      */
     ColorMap: ContentId;
     /**
+     * Determines the color of the surface. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#ColorMapContent)
@@ -13416,6 +13513,8 @@ interface TerrainDetail extends Instance {
      */
     MetalnessMap: ContentId;
     /**
+     * Determines which parts of the surface are metal and are non-metal. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#MetalnessMapContent)
@@ -13430,6 +13529,8 @@ interface TerrainDetail extends Instance {
      */
     NormalMap: ContentId;
     /**
+     * Modifies the lighting of the surface by adding bumps, dents, cracks, and curves without adding more polygons. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#NormalMapContent)
@@ -13444,6 +13545,8 @@ interface TerrainDetail extends Instance {
      */
     RoughnessMap: ContentId;
     /**
+     * Determines the apparent roughness across the surface. Only supports asset URIs as textures.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#RoughnessMapContent)
@@ -14136,6 +14239,21 @@ interface UITextSizeConstraint extends UIConstraint {
     readonly _nominal_UITextSizeConstraint: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated, NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery)
+ */
+interface UIContainerQuery extends UIComponent {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_UIContainerQuery: unique symbol;
+}
+/**
  * UI modifier which applies deformation to corners of its parent `GuiObject`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UICorner)
@@ -14395,7 +14513,7 @@ interface UserGameSettings extends Instance {
     readonly _nominal_UserGameSettings: unique symbol;
 }
 /**
- * `UserInputService` is a service used to detect the type of input available on a user's device via the use of a `LocalScript`. The service is also used to detect input events.
+ * `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
