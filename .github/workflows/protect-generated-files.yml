@@ -1,7 +1,7 @@
 name: Protect Generated Files
 
 on:
-  pull_request:
+  pull_request_target:
     branches: [ master ]
 
 jobs:
@@ -12,14 +12,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
+        ref: ${{ github.event.pull_request.head.sha }}
         fetch-depth: 0
+
+    - name: Fetch base branch
+      run: |
+        git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
 
     - name: Check for changes in generated files
       run: |
         echo "Checking for modifications in include/generated/ directory..."
 
         # Get the list of changed files in the PR
-        CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+        CHANGED_FILES=$(git diff --name-only ${{ github.base_ref }}...HEAD)
 
         # Check if any files in include/generated/ were modified
         GENERATED_FILES_CHANGED=$(echo "$CHANGED_FILES" | grep "^include/generated/" || true)
