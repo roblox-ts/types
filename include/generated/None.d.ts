@@ -12,6 +12,7 @@ interface Services {
     AnimationFromVideoCreatorStudioService: AnimationFromVideoCreatorStudioService;
     AnnotationsService: AnnotationsService;
     AppLifecycleObserverService: AppLifecycleObserverService;
+    AppRatingPromptService: AppRatingPromptService;
     AppUpdateService: AppUpdateService;
     AssetCounterService: AssetCounterService;
     AssetDeliveryProxy: AssetDeliveryProxy;
@@ -25,7 +26,6 @@ interface Services {
     AvatarCreationService: AvatarCreationService;
     AvatarEditorService: AvatarEditorService;
     AvatarImportService: AvatarImportService;
-    AvatarPreloader: AvatarPreloader;
     AvatarSettings: AvatarSettings;
     BadgeService: BadgeService;
     BugReporterService: BugReporterService;
@@ -527,6 +527,7 @@ interface CreatableInstances {
     WrapDeformer: WrapDeformer;
     WrapLayer: WrapLayer;
     WrapTarget: WrapTarget;
+    WrapTextureTransfer: WrapTextureTransfer;
 }
 interface Instances extends Services, CreatableInstances {
     AnimationClip: AnimationClip;
@@ -709,6 +710,7 @@ interface Objects extends Instances {
     TerrainReadOperation: TerrainReadOperation;
     TerrainWriteOperation: TerrainWriteOperation;
     VideoCapture: VideoCapture;
+    WebStreamClient: WebStreamClient;
 }
 // GENERATED ROBLOX INSTANCE CLASSES
 /**
@@ -3629,6 +3631,21 @@ interface AppLifecycleObserverService extends Instance {
      * @deprecated
      */
     readonly _nominal_AppLifecycleObserverService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppRatingPromptService)
+ */
+interface AppRatingPromptService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AppRatingPromptService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -6687,6 +6704,24 @@ interface AuroraScriptService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#SendMessage)
      */
     SendMessage(this: AuroraScriptService, instance: Instance, behaviorName: string, functionName: string, args: unknown): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#getBehaviors)
+     */
+    getBehaviors(this: AuroraScriptService): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#getBehaviorsForInstance)
+     */
+    getBehaviorsForInstance(this: AuroraScriptService, instance: Instance): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#getInstancesForBehavior)
+     */
+    getInstancesForBehavior(this: AuroraScriptService, behavior: AuroraScript): Array<Instance>;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -7427,21 +7462,6 @@ interface AvatarImportService extends Instance {
      * @deprecated
      */
     readonly _nominal_AvatarImportService: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarPreloader)
- */
-interface AvatarPreloader extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AvatarPreloader: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarRules)
@@ -9564,6 +9584,13 @@ interface CaptureService extends Instance {
      * @param captureParams
      */
     TakeCapture(this: CaptureService, onCaptureReady: Callback, captureParams?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#PromptCaptureGalleryPermissionAsync)
+     */
+    PromptCaptureGalleryPermissionAsync(this: CaptureService, captureGalleryPermission: CastsToEnum<Enum.CaptureGalleryPermission>): boolean;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -19410,6 +19437,12 @@ interface BoxHandleAdornment extends HandleAdornment {
      */
     readonly _nominal_BoxHandleAdornment: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BoxHandleAdornment#Shading)
+     */
+    Shading: Enum.AdornShading;
+    /**
      * The size of the adornment.
      *
      * - **ThreadSafety**: ReadSafe
@@ -19441,6 +19474,12 @@ interface ConeHandleAdornment extends HandleAdornment {
      */
     Height: number;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConeHandleAdornment#Hollow)
+     */
+    Hollow: boolean;
+    /**
      * The radius of the cone adornment.
      *
      * - **ThreadSafety**: ReadSafe
@@ -19448,6 +19487,12 @@ interface ConeHandleAdornment extends HandleAdornment {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConeHandleAdornment#Radius)
      */
     Radius: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConeHandleAdornment#Shading)
+     */
+    Shading: Enum.AdornShading;
 }
 /**
  * A cylinder that can be adorned to a `BasePart`.
@@ -19495,6 +19540,12 @@ interface CylinderHandleAdornment extends HandleAdornment {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CylinderHandleAdornment#Radius)
      */
     Radius: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CylinderHandleAdornment#Shading)
+     */
+    Shading: Enum.AdornShading;
 }
 /**
  * An image that can be adorned to a `BasePart`.
@@ -19580,6 +19631,12 @@ interface SphereHandleAdornment extends HandleAdornment {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SphereHandleAdornment#Radius)
      */
     Radius: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SphereHandleAdornment#Shading)
+     */
+    Shading: Enum.AdornShading;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WireframeHandleAdornment)
@@ -21118,6 +21175,12 @@ interface HttpService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpService#HttpEnabled)
      */
     get HttpEnabled(): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpService#CreateWebStreamClient)
+     */
+    CreateWebStreamClient(this: HttpService, streamClientType: CastsToEnum<Enum.WebStreamClientType>, requestOptions: object): WebStreamClient;
     /**
      * Generates a UUID/GUID random string, optionally with curly braces.
      *
@@ -32695,11 +32758,13 @@ interface Player extends Instance {
      */
     readonly UserId: number;
     /**
+     * Adds an additional replication focus for the player.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#AddReplicationFocus)
      * @param this An object that represents a presently connected client to the experience.
-     * @param part
+     * @param part The `BasePart` to use as a new replication focus.
      */
     AddReplicationFocus(this: Player, part: BasePart): void;
     /**
@@ -32874,11 +32939,13 @@ interface Player extends Instance {
      */
     Move(this: Player, walkDirection: Vector3, relativeToCamera?: boolean): void;
     /**
+     * Removes a previously added replication focus.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#RemoveReplicationFocus)
      * @param this An object that represents a presently connected client to the experience.
-     * @param part
+     * @param part The `BasePart` to remove as a replication focus.
      */
     RemoveReplicationFocus(this: Player, part: BasePart): void;
     /**
@@ -41932,10 +41999,11 @@ interface UIContainerQuery extends UIComponent {
     AspectRatioRange: NumberRange;
     /**
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery#IsActive)
      */
-    IsActive: boolean;
+    readonly IsActive: boolean;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -45209,6 +45277,19 @@ interface Wire extends Instance {
     TargetName: string;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer)
+ */
+interface WrapTextureTransfer extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WrapTextureTransfer: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLSession)
@@ -45341,4 +45422,56 @@ interface TerrainWriteOperation extends RBXObject {
      * @param this
      */
     GetBlock(this: TerrainWriteOperation): object;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient)
+ */
+interface WebStreamClient extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WebStreamClient: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#ConnectionState)
+     */
+    readonly ConnectionState: Enum.WebStreamClientState;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#Close)
+     */
+    Close(this: WebStreamClient): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#Closed)
+     */
+    readonly Closed: RBXScriptSignal<() => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#Error)
+     */
+    readonly Error: RBXScriptSignal<(responseStatusCode: number, errorMessage: string) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#MessageReceived)
+     */
+    readonly MessageReceived: RBXScriptSignal<(message: string) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#Opened)
+     */
+    readonly Opened: RBXScriptSignal<(responseStatusCode: number, headers: string) => void>;
 }
