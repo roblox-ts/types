@@ -12,6 +12,7 @@ interface Services {
     AnimationFromVideoCreatorStudioService: AnimationFromVideoCreatorStudioService;
     AnnotationsService: AnnotationsService;
     AppLifecycleObserverService: AppLifecycleObserverService;
+    AppRatingPromptService: AppRatingPromptService;
     AppUpdateService: AppUpdateService;
     AssetCounterService: AssetCounterService;
     AssetDeliveryProxy: AssetDeliveryProxy;
@@ -25,7 +26,6 @@ interface Services {
     AvatarCreationService: AvatarCreationService;
     AvatarEditorService: AvatarEditorService;
     AvatarImportService: AvatarImportService;
-    AvatarPreloader: AvatarPreloader;
     AvatarSettings: AvatarSettings;
     BadgeService: BadgeService;
     BugReporterService: BugReporterService;
@@ -547,6 +547,7 @@ interface CreatableInstances {
     WrapDeformer: WrapDeformer;
     WrapLayer: WrapLayer;
     WrapTarget: WrapTarget;
+    WrapTextureTransfer: WrapTextureTransfer;
 }
 interface Instances extends Services, CreatableInstances {
     AnimationClip: AnimationClip;
@@ -761,6 +762,7 @@ interface Objects extends Instances {
     TerrainReadOperation: TerrainReadOperation;
     TerrainWriteOperation: TerrainWriteOperation;
     VideoCapture: VideoCapture;
+    WebStreamClient: WebStreamClient;
 }
 // GENERATED ROBLOX INSTANCE CLASSES
 /**
@@ -1344,6 +1346,21 @@ interface AppLifecycleObserverService extends Instance {
      * @deprecated
      */
     readonly _nominal_AppLifecycleObserverService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppRatingPromptService)
+ */
+interface AppRatingPromptService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AppRatingPromptService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -2053,21 +2070,6 @@ interface AvatarImportService extends Instance {
      * @deprecated
      */
     readonly _nominal_AvatarImportService: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarPreloader)
- */
-interface AvatarPreloader extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AvatarPreloader: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarRules)
@@ -15069,6 +15071,19 @@ interface Wire extends Instance {
     readonly _nominal_Wire: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer)
+ */
+interface WrapTextureTransfer extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WrapTextureTransfer: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLSession)
@@ -15142,4 +15157,19 @@ interface TerrainWriteOperation extends RBXObject {
      * @deprecated
      */
     readonly _nominal_TerrainWriteOperation: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient)
+ */
+interface WebStreamClient extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WebStreamClient: unique symbol;
 }
