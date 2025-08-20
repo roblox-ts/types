@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/types",
-	"version": "1.0.876",
+	"version": "1.0.877",
 	"publishConfig": {
 		"access": "public"
 	},
