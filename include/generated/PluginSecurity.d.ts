@@ -33,6 +33,7 @@ interface Services {
     CalloutService: CalloutService;
     CaptureService: CaptureService;
     ChangeHistoryService: ChangeHistoryService;
+    ChangeHistoryStreamingService: ChangeHistoryStreamingService;
     Chat: Chat;
     ChatbotUIService: ChatbotUIService;
     CloudCRUDService: CloudCRUDService;
@@ -2973,6 +2974,21 @@ interface ChangeHistoryService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#OnUndo)
      */
     readonly OnUndo: RBXScriptSignal<(waypoint: string) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryStreamingService)
+ */
+interface ChangeHistoryStreamingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ChangeHistoryStreamingService: unique symbol;
 }
 /**
  * The base class for objects that change the character's appearance, such as the `BodyColors`, `CharacterMesh`, `ShirtGraphic`, `Pants` and `Shirt` objects.

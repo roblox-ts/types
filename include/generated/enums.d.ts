@@ -579,7 +579,7 @@ declare namespace Enum {
      */
     export namespace AdEventType {
         /**
-         * The event is fired when a click-to-play video ads is being served. This can be used to communicate and promote the reward to users through the UI or signage.
+         * The event is fired when a click-to-play video ad is being served. This can be used to communicate and promote the reward to users through the UI or signage.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#RewardedAdLoaded)
          */
@@ -590,7 +590,7 @@ declare namespace Enum {
         }
         export const RewardedAdLoaded: RewardedAdLoaded;
         /**
-         * The event is fired when a user has watched the click-to-play video for a certain time. This can be used to grant the player a reward such as an in-game item or in-game currency. The RewardedAdGrant enum will only be triggered once per ad rotation.
+         * The event is fired when a user has watched the click-to-play video ad for a certain time. This can be used to grant the player a reward such as an in-game item or in-game currency. The `RewardedAdGrant` enum will only be triggered once per ad rotation.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#RewardedAdGrant)
          */
@@ -601,7 +601,7 @@ declare namespace Enum {
         }
         export const RewardedAdGrant: RewardedAdGrant;
         /**
-         * The event is fired when a click-to-play video ads is rotated out. This can be used to remove any UI or signage that is promoting the reward.
+         * The event is fired when a click-to-play video ad is rotated out. This can be used to remove any UI or signage that is promoting the reward.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#RewardedAdUnloaded)
          */
