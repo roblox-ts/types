@@ -32,6 +32,7 @@ interface Services {
     BulkImportService: BulkImportService;
     CalloutService: CalloutService;
     CaptureService: CaptureService;
+    ChangeHistoryStreamingService: ChangeHistoryStreamingService;
     Chat: Chat;
     ChatbotUIService: ChatbotUIService;
     CloudCRUDService: CloudCRUDService;
@@ -1130,6 +1131,12 @@ interface EditableMesh extends RBXObject {
      * @returns Stable color ID of the new color.
      */
     AddColor(this: EditableMesh, color: Color3, alpha: number): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#AddFace)
+     */
+    AddFace(this: EditableMesh, vertexIds: Array<unknown>): number;
     /**
      * Adds a new normal to the geometry and returns a stable normal ID.
      *
@@ -3387,14 +3394,14 @@ interface AnimationTrack extends Instance {
      */
     AdjustWeight(this: AnimationTrack, weight?: number, fadeTime?: number): void;
     /**
-     * Returns an `event` that fires when a specified `KeyframeMarker` has been hit in an `animation`.
+     * Returns an `RBXScriptSignal` (event) that fires when a specified `KeyframeMarker` has been hit in an `animation`.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#GetMarkerReachedSignal)
      * @param this Controls the playback of an animation on an `Animator`.
      * @param name The name of the `KeyframeMarker` the signal is being created for. Not to be confused with the name of the `Keyframe`.
-     * @returns The signal created and fired when the animation reaches the created `KeyframeMarker`. Not to be confused with the name of the `Keyframe`.
+     * @returns The signal created and fired when the animation reaches the created `KeyframeMarker`.
      */
     GetMarkerReachedSignal(this: AnimationTrack, name: string): RBXScriptSignal<(param?: string) => void>;
     /**
@@ -3790,6 +3797,12 @@ interface AssetService extends Instance {
      */
     readonly _nominal_AssetService: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#AllowInsertFreeAssets)
+     */
+    AllowInsertFreeAssets: boolean;
+    /**
      * Creates a new `EditableImage`.
      *
      * - **ThreadSafety**: Unsafe
@@ -3931,12 +3944,20 @@ interface AssetService extends Instance {
      */
     CreatePlaceInPlayerInventoryAsync(this: AssetService, player: Player, placeName: string, templatePlaceID: number, description: string): number;
     /**
+     * Creates a new `SurfaceAppearance` object using the provided content maps.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateSurfaceAppearanceAsync)
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
-     * @param content
+     * @param content Dictionary containing the following key-value pairs: - `ColorMap` — A `Content` object that contains the color   map. Default is `nil`.
+     * - `MetalnessMap` — A `Content` object that contains the   metalness map. If more than one channel is present, only the red   channel is used. Default is `nil`.
+     * - `NormalMap` — A `Content` object that contains the   normal map. Default is `nil`.
+     * - `RoughnessMap` — A `Content` object that contains the   roughness map. If more than one channel is present, only the red   channel is used. Default is `nil`.
+     *
+     *
+     * @returns A new `SurfaceAppearance` instance with the given maps from the `content` parameter.
      */
     CreateSurfaceAppearanceAsync(this: AssetService, content: object): SurfaceAppearance;
     /**
@@ -4017,6 +4038,13 @@ interface AssetService extends Instance {
         PlaceId: number;
     }>;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#LoadAssetAsync)
+     */
+    LoadAssetAsync(this: AssetService, assetId: number): Instance | undefined;
+    /**
      * Allows in-experience asset creation for users by prompting a publish dialog.
      *
      * - **ThreadSafety**: Unsafe
@@ -4049,7 +4077,7 @@ interface AssetService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#SavePlaceAsync)
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
      */
-    SavePlaceAsync(this: AssetService): void;
+    SavePlaceAsync(this: AssetService, requestParameters?: object): void;
     /**
      * Finds audio assets matching a variety of search criteria.
      *
@@ -5902,6 +5930,12 @@ interface AudioPlayer extends Instance {
      * @deprecated Asset
      */
     AssetId: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#AudioContent)
+     */
+    AudioContent: Content;
     /**
      * Controls whether `Asset` loads automatically once assigned.
      *
@@ -9652,6 +9686,21 @@ interface CaptureService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#UserCaptureSaved)
      */
     readonly UserCaptureSaved: RBXScriptSignal<(captureContentId: ContentId) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryStreamingService)
+ */
+interface ChangeHistoryStreamingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ChangeHistoryStreamingService: unique symbol;
 }
 /**
  * The base class for objects that change the character's appearance, such as the `BodyColors`, `CharacterMesh`, `ShirtGraphic`, `Pants` and `Shirt` objects.
@@ -17085,6 +17134,12 @@ interface GuiButton extends GuiObject {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiButton#MouseButton2Up)
      */
     readonly MouseButton2Up: RBXScriptSignal<(x: number, y: number) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiButton#SecondaryActivated)
+     */
+    readonly SecondaryActivated: RBXScriptSignal<(inputObject: InputObject) => void>;
 }
 /**
  * A 2D user interface element that displays an interactive image.
@@ -18541,7 +18596,7 @@ interface VideoFrame extends GuiObject {
      */
     Volume: number;
     /**
-     * Sets `VideoFrame.Playing` to false, pausing playback if the `VideoFrame.Video` is playing.
+     * Sets `VideoFrame.Playing` to `false`, pausing playback if the `VideoFrame.Video` is playing.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -18550,7 +18605,7 @@ interface VideoFrame extends GuiObject {
      */
     Pause(this: VideoFrame): void;
     /**
-     * Sets `VideoFrame.Playing` to true, playing the `VideoFrame.Video` from the current `VideoFrame.TimePosition`.
+     * Sets `VideoFrame.Playing` to `true`, playing the `VideoFrame.Video` from the current `VideoFrame.TimePosition`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -23754,6 +23809,12 @@ interface InputBinding extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#ReleasedThreshold)
      */
     ReleasedThreshold: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#ResponseCurve)
+     */
+    ResponseCurve: number;
     /**
      * Specifies an alternate `KeyCode` for dispatching directionally "right" inputs to the parent `InputAction`.
      *
@@ -36930,6 +36991,12 @@ interface Sound extends Instance {
      */
     readonly _nominal_Sound: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sound#AudioContent)
+     */
+    AudioContent: Content;
+    /**
      * **Deprecated:** This property has deprecated in favor of `Sound.RollOffMinDistance` and `Sound.RollOffMaxDistance` which should be used instead in new work.
      *
      * The minimum distance, in studs, at which a 3D `Sound` (direct child of a `BasePart` or `Attachment`) will begin to attenuate (decrease in volume).
@@ -38261,6 +38328,13 @@ interface Stats extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Stats#InstanceCount)
      */
     readonly InstanceCount: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Stats#MemoryTrackingEnabled)
+     */
+    readonly MemoryTrackingEnabled: boolean;
     /**
      * A measurement of how many physically simulated components are currently moving in the game world.
      *
@@ -44713,6 +44787,12 @@ interface VideoPlayer extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#TimePosition)
      */
     TimePosition: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#VideoContent)
+     */
+    VideoContent: Content;
     /**
      * - **ThreadSafety**: ReadSafe
      *
