@@ -142,6 +142,7 @@ interface Services {
     PublishService: PublishService;
     RecommendationService: RecommendationService;
     ReflectionService: ReflectionService;
+    RemoteCommandService: RemoteCommandService;
     RemoteCursorService: RemoteCursorService;
     RemoteDebuggerServer: RemoteDebuggerServer;
     ReplicatedFirst: ReplicatedFirst;
@@ -174,6 +175,7 @@ interface Services {
     SnippetService: SnippetService;
     SocialService: SocialService;
     SoundService: SoundService;
+    SoundShimService: SoundShimService;
     StarterGui: StarterGui;
     StarterPack: StarterPack;
     StarterPlayer: StarterPlayer;
@@ -478,6 +480,7 @@ interface CreatableInstances {
     TextChannel: TextChannel;
     TextChatCommand: TextChatCommand;
     TextChatMessageProperties: TextChatMessageProperties;
+    TextGenerator: TextGenerator;
     TextLabel: TextLabel;
     Texture: Texture;
     Tool: Tool;
@@ -703,6 +706,7 @@ interface Objects extends Instances {
     ConfigSnapshot: ConfigSnapshot;
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
+    ExecutedRemoteCommand: ExecutedRemoteCommand;
     MLSession: MLSession;
     Object: RBXObject;
     ScreenshotCapture: ScreenshotCapture;
@@ -1434,24 +1438,39 @@ interface EditableMesh extends RBXObject {
      */
     GetFacesWithAttribute(this: EditableMesh, id: number): Array<unknown>;
     /**
+     * Returns an array of face IDs that use the given color ID.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacesWithColor)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param colorId Color ID to find faces for.
+     * @returns List of face IDs that use the provided color ID.
      */
     GetFacesWithColor(this: EditableMesh, colorId: number): Array<unknown>;
     /**
+     * Returns an array of face IDs that use the given normal ID.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacesWithNormal)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param normalId Normal ID to find faces for.
+     * @returns List of face IDs that use the provided normal ID.
      */
     GetFacesWithNormal(this: EditableMesh, normalId: number): Array<unknown>;
     /**
+     * Returns an array of face IDs that use the given UV ID.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetFacesWithUV)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param uvId UV ID to find faces for.
+     * @returns List of face IDs that use the provided UV ID.
      */
     GetFacesWithUV(this: EditableMesh, uvId: number): Array<unknown>;
     /**
@@ -1582,49 +1601,87 @@ interface EditableMesh extends RBXObject {
      */
     GetVertexBones(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
+     * Returns the color IDs of the faces attached to the given vertex.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexColors)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Stable vertex ID to find color IDs.
+     * @returns Array of color IDs of faces attached to the given vertex.
      */
     GetVertexColors(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
+     * Returns the color ID of a vertex/face pair.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaceColor)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Stable vertex ID.
+     * @param faceId Stable face ID.
+     * @returns Stable color ID of the vertex/face pair.
      */
     GetVertexFaceColor(this: EditableMesh, vertexId: number, faceId: number): number;
     /**
+     * Returns the normal ID of a vertex/face pair.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaceNormal)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Stable vertex ID.
+     * @param faceId Stable face ID.
+     * @returns Stable normal ID of the vertex/face pair.
      */
     GetVertexFaceNormal(this: EditableMesh, vertexId: number, faceId: number): number;
     /**
+     * Returns the UV ID of a vertex/face pair.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaceUV)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Stable vertex ID.
+     * @param faceId Stable face ID.
+     * @returns Stable UV ID of the vertex/face pair.
      */
     GetVertexFaceUV(this: EditableMesh, vertexId: number, faceId: number): number;
     /**
+     * Returns the face IDs of the faces attached to the given vertex.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexFaces)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Stable vertex ID to find faces for.
+     * @returns Array of face IDs attached to the given vertex.
      */
     GetVertexFaces(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
+     * Returns the normal IDs of the faces attached to the given vertex.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexNormals)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Stable vertex ID to find normal IDs.
+     * @returns Array of normal IDs of faces attached to the given vertex.
      */
     GetVertexNormals(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
+     * Returns the UV IDs of the faces attached to the given vertex.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVertexUVs)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Stable vertex ID to find UV IDs.
+     * @returns Array of UV IDs of faces attached to the given vertex.
      */
     GetVertexUVs(this: EditableMesh, vertexId: number): Array<unknown>;
     /**
@@ -1654,24 +1711,39 @@ interface EditableMesh extends RBXObject {
      */
     GetVerticesWithAttribute(this: EditableMesh, id: number): Array<unknown>;
     /**
+     * Returns an array of face IDs that use the given color ID.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVerticesWithColor)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param colorId Color ID to find faces for.
+     * @returns List of face IDs that use the provided color ID.
      */
     GetVerticesWithColor(this: EditableMesh, colorId: number): Array<unknown>;
     /**
+     * Returns an array of vertex IDs that use the given normal ID.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVerticesWithNormal)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param normalId Normal ID to find vertices for.
+     * @returns List of vertex IDs that use the provided normal ID.
      */
     GetVerticesWithNormal(this: EditableMesh, normalId: number): Array<unknown>;
     /**
+     * Returns an array of vertex IDs that use the given UV ID.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetVerticesWithUV)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param uvId UV ID to find vertices for.
+     * @returns List of vertex IDs that use the provided UV ID.
      */
     GetVerticesWithUV(this: EditableMesh, uvId: number): Array<unknown>;
     /**
@@ -1956,21 +2028,39 @@ interface EditableMesh extends RBXObject {
      */
     SetVertexBones(this: EditableMesh, vertexId: number, boneIDs: Array<unknown>): void;
     /**
+     * Sets the color ID of a vertex/face pair.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexFaceColor)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Stable vertex ID.
+     * @param faceId Stable face ID.
+     * @param colorId Stable color ID to set for the vertex/face pair.
      */
     SetVertexFaceColor(this: EditableMesh, vertexId: number, faceId: number, colorId: number): void;
     /**
+     * Sets the normal ID of a vertex/face pair.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexFaceNormal)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Stable vertex ID.
+     * @param faceId Stable face ID.
+     * @param normalId Stable normal ID to set for the vertex/face pair.
      */
     SetVertexFaceNormal(this: EditableMesh, vertexId: number, faceId: number, normalId: number): void;
     /**
+     * Sets the UV ID of a vertex/face pair.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SetVertexFaceUV)
+     * @param this Instance which allows for the runtime creation and manipulation of meshes.
+     * @param vertexId Stable vertex ID.
+     * @param faceId Stable face ID.
+     * @param uvId Stable UV ID to set for the vertex/face pair.
      */
     SetVertexFaceUV(this: EditableMesh, vertexId: number, faceId: number, uvId: number): void;
     /**
@@ -1982,6 +2072,45 @@ interface EditableMesh extends RBXObject {
      * @param this Instance which allows for the runtime creation and manipulation of meshes.
      */
     Triangulate(this: EditableMesh): void;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExecutedRemoteCommand)
+ */
+interface ExecutedRemoteCommand extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ExecutedRemoteCommand: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExecutedRemoteCommand#RunMoreCode)
+     */
+    RunMoreCode(this: ExecutedRemoteCommand, code: string, args: unknown): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExecutedRemoteCommand#SendUpdate)
+     */
+    SendUpdate(this: ExecutedRemoteCommand, args: unknown): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExecutedRemoteCommand#Stop)
+     */
+    Stop(this: ExecutedRemoteCommand): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExecutedRemoteCommand#ReceivedUpdate)
+     */
+    readonly ReceivedUpdate: RBXScriptSignal<(args: unknown) => void>;
 }
 /**
  * `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
@@ -3797,12 +3926,6 @@ interface AssetService extends Instance {
      */
     readonly _nominal_AssetService: unique symbol;
     /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#AllowInsertFreeAssets)
-     */
-    AllowInsertFreeAssets: boolean;
-    /**
      * Creates a new `EditableImage`.
      *
      * - **ThreadSafety**: Unsafe
@@ -3822,6 +3945,13 @@ interface AssetService extends Instance {
      * @param editableMeshOptions Table containing options for the created `EditableMesh`. Currently no options are available since `FixedSize` will always be `false` for empty editable meshes.
      */
     CreateEditableMesh(this: AssetService, editableMeshOptions?: object): EditableMesh;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#ComposeDecalAsync)
+     */
+    ComposeDecalAsync(this: AssetService, layers: Array<unknown>): Decal;
     /**
      * Uploads a new asset to Roblox from the given object.
      *
@@ -3953,7 +4083,7 @@ interface AssetService extends Instance {
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
      * @param content Dictionary containing the following key-value pairs: - `ColorMap` — A `Content` object that contains the color   map. Default is `nil`.
      * - `MetalnessMap` — A `Content` object that contains the   metalness map. If more than one channel is present, only the red   channel is used. Default is `nil`.
-     * - `NormalMap` — A `Content` object that contains the   normal map. Default is `nil`.
+     * - `NormalMap` — A `Content` object that contains the normal   map. Default is `nil`.
      * - `RoughnessMap` — A `Content` object that contains the   roughness map. If more than one channel is present, only the red   channel is used. Default is `nil`.
      *
      *
@@ -4076,6 +4206,7 @@ interface AssetService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#SavePlaceAsync)
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
+     * @param requestParameters Optional dictionary that includes `SaveWithoutPublish`, a boolean indicating whether to save with publish or without publish, and `PlaceId`, the destination place ID to save over. An example usage would be: AssetService:SavePlaceAsync({PlaceId = 1, SaveWithoutPublish = true}). If PlaceId is not provided, the default behavior will save over the current original place which is calling SavePlaceAsync. If SaveWithoutPublish is not provided, the default behavior is SaveWithoutPublish=false.
      */
     SavePlaceAsync(this: AssetService, requestParameters?: object): void;
     /**
@@ -10169,6 +10300,12 @@ interface ClickDetector extends Instance {
      */
     CursorIcon: ContentId;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ClickDetector#CursorIconContent)
+     */
+    CursorIconContent: Content;
+    /**
      * Maximum distance between a character and the `ClickDetector` or `DragDetector` for the player to be able to interact with it.
      *
      * - **ThreadSafety**: ReadSafe
@@ -10231,6 +10368,12 @@ interface DragDetector extends ClickDetector {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DragDetector#ActivatedCursorIcon)
      */
     ActivatedCursorIcon: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DragDetector#ActivatedCursorIconContent)
+     */
+    ActivatedCursorIconContent: Content;
     /**
      * Whether constraint force is applied to the object's center of mass.
      *
@@ -20419,6 +20562,8 @@ interface GuiService extends Instance {
      */
     TouchControlsEnabled: boolean;
     /**
+     * Read-only property which represents the physical rendering size of the viewport.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -27135,6 +27280,12 @@ interface Mouse extends Instance {
      */
     Icon: ContentId;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Mouse#IconContent)
+     */
+    IconContent: Content;
+    /**
      * A `CFrame` positioned at the `Workspace.CurrentCamera` and oriented toward the mouse's 3D position.
      *
      * - **ThreadSafety**: ReadSafe
@@ -30494,6 +30645,12 @@ interface BackpackItem extends Model {
      * @deprecated
      */
     readonly _nominal_BackpackItem: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BackpackItem#TextureContent)
+     */
+    TextureContent: Content;
     /**
      * The texture icon that is displayed for a tool in the player's backpack.
      *
@@ -34934,6 +35091,45 @@ interface ReflectionService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCommandService)
+ */
+interface RemoteCommandService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RemoteCommandService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCommandService#GetExecutingPlayer)
+     */
+    GetExecutingPlayer(this: RemoteCommandService): Player;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCommandService#GetReceivedUpdateSignal)
+     */
+    GetReceivedUpdateSignal(this: RemoteCommandService): RBXScriptSignal;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCommandService#GetStoppingSignal)
+     */
+    GetStoppingSignal(this: RemoteCommandService): RBXScriptSignal;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCommandService#SendUpdate)
+     */
+    SendUpdate(this: RemoteCommandService, args: unknown): void;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCursorService)
  */
 interface RemoteCursorService extends Instance {
@@ -37885,6 +38081,21 @@ interface SoundService extends Instance {
     SetListener(this: SoundService, listenerType: CastsToEnum<Enum.ListenerType.ObjectPosition>, basePart: BasePart): void;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundShimService)
+ */
+interface SoundShimService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SoundShimService: unique symbol;
+}
+/**
  * A particle emitter with the visual aesthetic of sparkles.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sparkles)
@@ -38329,6 +38540,8 @@ interface Stats extends Instance {
      */
     readonly InstanceCount: number;
     /**
+     * An indication of whether memory tracking is enabled. This is guaranteed to be unchanged until the next time the Client is started.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -38498,6 +38711,8 @@ interface Stats extends Instance {
      */
     GetMemoryCategoryNames(this: Stats): Array<unknown>;
     /**
+     * Returns the number of megabytes that are being consumed by all available categories, or an empty array if `MemoryTrackingEnabled` is false.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Stats#GetMemoryUsageMbAllCategories)
@@ -38505,7 +38720,7 @@ interface Stats extends Instance {
      */
     GetMemoryUsageMbAllCategories(this: Stats): Array<unknown>;
     /**
-     * Returns the number of megabytes that are being consumed in the specified `DeveloperMemoryTag` category.
+     * Returns the number of megabytes that are being consumed in the specified `DeveloperMemoryTag` category, or 0 if `MemoryTrackingEnabled` is false.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -38515,7 +38730,7 @@ interface Stats extends Instance {
      */
     GetMemoryUsageMbForTag(this: Stats, tag: CastsToEnum<Enum.DeveloperMemoryTag>): number;
     /**
-     * Returns the total amount of memory being consumed by the current game session, in megabytes.
+     * Returns the total amount of memory being consumed by the current game session, in megabytes, or 0 if `MemoryTrackingEnabled` is false.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -41213,6 +41428,32 @@ interface TextFilterTranslatedResult extends Instance {
     GetTranslations(this: TextFilterTranslatedResult): object;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator)
+ */
+interface TextGenerator extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TextGenerator: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator#SystemPrompt)
+     */
+    SystemPrompt: string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator#GenerateTextAsync)
+     */
+    GenerateTextAsync(this: TextGenerator, request: object): object;
+}
+/**
  * The TextService is a service internally responsible for handling the display of text in the game.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -42137,6 +42378,12 @@ interface UIDragDetector extends UIComponent {
      */
     ActivatedCursorIcon: ContentId;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIDragDetector#ActivatedCursorIconContent)
+     */
+    ActivatedCursorIconContent: Content;
+    /**
      * Determines bounding behavior of the dragged UI object when the detector's `BoundingUI` is set.
      *
      * - **ThreadSafety**: ReadSafe
@@ -42160,6 +42407,12 @@ interface UIDragDetector extends UIComponent {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIDragDetector#CursorIcon)
      */
     CursorIcon: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIDragDetector#CursorIconContent)
+     */
+    CursorIconContent: Content;
     /**
      * The drag axis for the `UIDragDetector` instance when `DragStyle` is set to `UIDragDetectorDragStyle.TranslateLine`.
      *
@@ -43385,6 +43638,12 @@ interface UserInputService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#MouseIcon)
      */
     MouseIcon: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#MouseIconContent)
+     */
+    MouseIconContent: Content;
     /**
      * Determines whether the mouse icon is visible.
      *
