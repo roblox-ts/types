@@ -151,6 +151,7 @@ interface Services {
     PublishService: PublishService;
     RecommendationService: RecommendationService;
     ReflectionService: ReflectionService;
+    RemoteCommandService: RemoteCommandService;
     RemoteCursorService: RemoteCursorService;
     RemoteDebuggerServer: RemoteDebuggerServer;
     RenderSettings: RenderSettings;
@@ -187,6 +188,7 @@ interface Services {
     SnippetService: SnippetService;
     SocialService: SocialService;
     SoundService: SoundService;
+    SoundShimService: SoundShimService;
     StarterGui: StarterGui;
     StarterPack: StarterPack;
     StarterPlayer: StarterPlayer;
@@ -498,6 +500,7 @@ interface CreatableInstances {
     TextChannel: TextChannel;
     TextChatCommand: TextChatCommand;
     TextChatMessageProperties: TextChatMessageProperties;
+    TextGenerator: TextGenerator;
     TextLabel: TextLabel;
     Texture: Texture;
     Tool: Tool;
@@ -755,6 +758,7 @@ interface Objects extends Instances {
     ConfigSnapshot: ConfigSnapshot;
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
+    ExecutedRemoteCommand: ExecutedRemoteCommand;
     MLSession: MLSession;
     Object: RBXObject;
     ScreenshotCapture: ScreenshotCapture;
@@ -876,6 +880,21 @@ interface EditableMesh extends RBXObject {
      * @deprecated
      */
     readonly _nominal_EditableMesh: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExecutedRemoteCommand)
+ */
+interface ExecutedRemoteCommand extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ExecutedRemoteCommand: unique symbol;
 }
 /**
  * `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
@@ -10841,6 +10860,21 @@ interface ReflectionService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCommandService)
+ */
+interface RemoteCommandService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RemoteCommandService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCursorService)
  */
 interface RemoteCursorService extends Instance {
@@ -12513,6 +12547,21 @@ interface SoundService extends Instance {
     OpenDirectionalCurveEditor(this: SoundService, selectedCurveObjects: Array<Instance>): void;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundShimService)
+ */
+interface SoundShimService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SoundShimService: unique symbol;
+}
+/**
  * A particle emitter with the visual aesthetic of sparkles.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sparkles)
@@ -13877,6 +13926,19 @@ interface TextFilterTranslatedResult extends Instance {
      * @deprecated
      */
     readonly _nominal_TextFilterTranslatedResult: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator)
+ */
+interface TextGenerator extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TextGenerator: unique symbol;
 }
 /**
  * The TextService is a service internally responsible for handling the display of text in the game.

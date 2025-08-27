@@ -10077,10 +10077,14 @@ declare namespace Enum {
     }
     export type DialogTone = DialogTone.Neutral | DialogTone.Friendly | DialogTone.Enemy;
     /**
+     * This enum is used with `GuiService.ViewportDisplaySize` to indicate the internally-categorized rendering size of the viewport.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DisplaySize)
      */
     export namespace DisplaySize {
         /**
+         * Viewport is categorized as small. Applies to most tablet/mobile/handheld devices.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DisplaySize#Small)
          */
         export interface Small extends globalThis.EnumItem {
@@ -10090,6 +10094,8 @@ declare namespace Enum {
         }
         export const Small: Small;
         /**
+         * Viewport is categorized as medium. Applies to most laptops and monitors.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DisplaySize#Medium)
          */
         export interface Medium extends globalThis.EnumItem {
@@ -10099,6 +10105,8 @@ declare namespace Enum {
         }
         export const Medium: Medium;
         /**
+         * Viewport is categorized as large. Applies to most TVs or larger.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DisplaySize#Large)
          */
         export interface Large extends globalThis.EnumItem {
@@ -11453,6 +11461,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FacsActionUnit | undefined;
     }
     export type FacsActionUnit = FacsActionUnit.ChinRaiserUpperLip | FacsActionUnit.ChinRaiser | FacsActionUnit.FlatPucker | FacsActionUnit.Funneler | FacsActionUnit.LowerLipSuck | FacsActionUnit.LipPresser | FacsActionUnit.LipsTogether | FacsActionUnit.MouthLeft | FacsActionUnit.MouthRight | FacsActionUnit.Pucker | FacsActionUnit.UpperLipSuck | FacsActionUnit.LeftCheekPuff | FacsActionUnit.LeftDimpler | FacsActionUnit.LeftLipCornerDown | FacsActionUnit.LeftLowerLipDepressor | FacsActionUnit.LeftLipCornerPuller | FacsActionUnit.LeftLipStretcher | FacsActionUnit.LeftUpperLipRaiser | FacsActionUnit.RightCheekPuff | FacsActionUnit.RightDimpler | FacsActionUnit.RightLipCornerDown | FacsActionUnit.RightLowerLipDepressor | FacsActionUnit.RightLipCornerPuller | FacsActionUnit.RightLipStretcher | FacsActionUnit.RightUpperLipRaiser | FacsActionUnit.JawDrop | FacsActionUnit.JawLeft | FacsActionUnit.JawRight | FacsActionUnit.Corrugator | FacsActionUnit.LeftBrowLowerer | FacsActionUnit.LeftOuterBrowRaiser | FacsActionUnit.LeftNoseWrinkler | FacsActionUnit.LeftInnerBrowRaiser | FacsActionUnit.RightBrowLowerer | FacsActionUnit.RightOuterBrowRaiser | FacsActionUnit.RightInnerBrowRaiser | FacsActionUnit.RightNoseWrinkler | FacsActionUnit.EyesLookDown | FacsActionUnit.EyesLookLeft | FacsActionUnit.EyesLookUp | FacsActionUnit.EyesLookRight | FacsActionUnit.LeftCheekRaiser | FacsActionUnit.LeftEyeUpperLidRaiser | FacsActionUnit.LeftEyeClosed | FacsActionUnit.RightCheekRaiser | FacsActionUnit.RightEyeUpperLidRaiser | FacsActionUnit.RightEyeClosed | FacsActionUnit.TongueDown | FacsActionUnit.TongueOut | FacsActionUnit.TongueUp;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureRestrictionAbuseVector)
+     */
+    export namespace FeatureRestrictionAbuseVector {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureRestrictionAbuseVector#ExperienceChat)
+         */
+        export interface ExperienceChat extends globalThis.EnumItem {
+            Name: "ExperienceChat";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FeatureRestrictionAbuseVector;
+        }
+        export const ExperienceChat: ExperienceChat;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureRestrictionAbuseVector#Communication)
+         */
+        export interface Communication extends globalThis.EnumItem {
+            Name: "Communication";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FeatureRestrictionAbuseVector;
+        }
+        export const Communication: Communication;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FeatureRestrictionAbuseVector>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FeatureRestrictionAbuseVector | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FeatureRestrictionAbuseVector | undefined;
+    }
+    export type FeatureRestrictionAbuseVector = FeatureRestrictionAbuseVector.ExperienceChat | FeatureRestrictionAbuseVector.Communication;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FieldOfViewMode)
      */
