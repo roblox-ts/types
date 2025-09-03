@@ -8816,7 +8816,7 @@ declare namespace Enum {
         }
         export const GetSortedAsync: GetSortedAsync;
         /**
-         * Refers to `SetAsync()` and `IncrementAsync()` while using an `OrderedDataStore`.
+         * Refers to `SetAsync()` `IncrementAsync()`, `RemoveAsync()`, and the write of `UpdateAsync()` while using an `OrderedDataStore`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#SetIncrementSortedAsync)
          */
@@ -21635,11 +21635,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.OutfitType;
         }
         export const DynamicHead: DynamicHead;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutfitType#Shoes)
+         */
+        export interface Shoes extends globalThis.EnumItem {
+            Name: "Shoes";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.OutfitType;
+        }
+        export const Shoes: Shoes;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.OutfitType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.OutfitType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.OutfitType | undefined;
     }
-    export type OutfitType = OutfitType.All | OutfitType.Avatar | OutfitType.DynamicHead;
+    export type OutfitType = OutfitType.All | OutfitType.Avatar | OutfitType.DynamicHead | OutfitType.Shoes;
     /**
      * Sets the layout mode of the output.
      *
@@ -32858,6 +32867,60 @@ declare namespace Enum {
     }
     export type UiMessageType = UiMessageType.UiMessageError | UiMessageType.UiMessageInfo;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UpdateState)
+     */
+    export namespace UpdateState {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UpdateState#UpdateNotAvailable)
+         */
+        export interface UpdateNotAvailable extends globalThis.EnumItem {
+            Name: "UpdateNotAvailable";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.UpdateState;
+        }
+        export const UpdateNotAvailable: UpdateNotAvailable;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UpdateState#UpdateAvailable)
+         */
+        export interface UpdateAvailable extends globalThis.EnumItem {
+            Name: "UpdateAvailable";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.UpdateState;
+        }
+        export const UpdateAvailable: UpdateAvailable;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UpdateState#UpdateInProgress)
+         */
+        export interface UpdateInProgress extends globalThis.EnumItem {
+            Name: "UpdateInProgress";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.UpdateState;
+        }
+        export const UpdateInProgress: UpdateInProgress;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UpdateState#UpdateReady)
+         */
+        export interface UpdateReady extends globalThis.EnumItem {
+            Name: "UpdateReady";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.UpdateState;
+        }
+        export const UpdateReady: UpdateReady;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UpdateState#UpdateFailed)
+         */
+        export interface UpdateFailed extends globalThis.EnumItem {
+            Name: "UpdateFailed";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.UpdateState;
+        }
+        export const UpdateFailed: UpdateFailed;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UpdateState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UpdateState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UpdateState | undefined;
+    }
+    export type UpdateState = UpdateState.UpdateNotAvailable | UpdateState.UpdateAvailable | UpdateState.UpdateInProgress | UpdateState.UpdateReady | UpdateState.UpdateFailed;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult)
      */
     export namespace UploadCaptureResult {
@@ -34662,10 +34725,14 @@ declare namespace Enum {
     }
     export type WebSocketState = WebSocketState.Connecting | WebSocketState.Open | WebSocketState.Closing | WebSocketState.Closed;
     /**
+     * WebStreamClientState indicates the current state of a WebStreamClient object.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebStreamClientState)
      */
     export namespace WebStreamClientState {
         /**
+         * The client has sent a request to connect with the server and is waiting for a response.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebStreamClientState#Connecting)
          */
         export interface Connecting extends globalThis.EnumItem {
@@ -34675,6 +34742,8 @@ declare namespace Enum {
         }
         export const Connecting: Connecting;
         /**
+         * The client is connected to the server, allowing for data to be streamed between the server and client.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebStreamClientState#Open)
          */
         export interface Open extends globalThis.EnumItem {
@@ -34684,6 +34753,8 @@ declare namespace Enum {
         }
         export const Open: Open;
         /**
+         * An unrecoverable error has occured while setting up the connection orduring the connection lifetime, cutting off the stream.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebStreamClientState#Error)
          */
         export interface Error extends globalThis.EnumItem {
@@ -34693,6 +34764,8 @@ declare namespace Enum {
         }
         export const Error: Error;
         /**
+         * The connection has run to completion without issues, either closed naturally by the server or manually by the user.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebStreamClientState#Closed)
          */
         export interface Closed extends globalThis.EnumItem {
@@ -34707,10 +34780,14 @@ declare namespace Enum {
     }
     export type WebStreamClientState = WebStreamClientState.Connecting | WebStreamClientState.Open | WebStreamClientState.Error | WebStreamClientState.Closed;
     /**
+     * Specifies what type of streaming to use when creating a `WebStreamClient`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebStreamClientType)
      */
     export namespace WebStreamClientType {
         /**
+         * Traditional Server-Sent Events (SSE) client. Requires `text/event-stream` to be returned in the `Content-Type` header. Messages in the stream will follow the [event stream format](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#event_stream_format).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebStreamClientType#SSE)
          */
         export interface SSE extends globalThis.EnumItem {
@@ -34720,6 +34797,8 @@ declare namespace Enum {
         }
         export const SSE: SSE;
         /**
+         * The client can connect to any server that provides streaming data transfer (e.g. [chunked encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Transfer-Encoding)). It provides no guarantees about the stream format.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebStreamClientType#RawStream)
          */
         export interface RawStream extends globalThis.EnumItem {
