@@ -273,6 +273,7 @@ interface CreatableInstances {
     AudioSearchParams: AudioSearchParams;
     AudioSpeechToText: AudioSpeechToText;
     AudioTextToSpeech: AudioTextToSpeech;
+    AudioTremolo: AudioTremolo;
     AuroraScript: AuroraScript;
     AvatarAccessoryRules: AvatarAccessoryRules;
     AvatarAnimationRules: AvatarAnimationRules;
@@ -6807,6 +6808,87 @@ interface AudioTextToSpeech extends Instance {
     readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo)
+ */
+interface AudioTremolo extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioTremolo: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Bypass)
+     */
+    Bypass: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Depth)
+     */
+    Depth: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Duty)
+     */
+    Duty: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Frequency)
+     */
+    Frequency: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Shape)
+     */
+    Shape: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Skew)
+     */
+    Skew: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Square)
+     */
+    Square: number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#GetConnectedWires)
+     */
+    GetConnectedWires(this: AudioTremolo, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#GetInputPins)
+     */
+    GetInputPins(this: AudioTremolo): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#GetOutputPins)
+     */
+    GetOutputPins(this: AudioTremolo): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#WiringChanged)
+     */
+    readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
+}
+/**
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptObject)
@@ -6857,6 +6939,20 @@ interface AuroraScriptService extends Instance {
      * @deprecated
      */
     readonly _nominal_AuroraScriptService: unique symbol;
+    /**
+     * - **ThreadSafety**: Safe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#FindBinding)
+     */
+    FindBinding(this: AuroraScriptService, instance: Instance, scriptName: string): RBXObject;
+    /**
+     * - **ThreadSafety**: Safe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#FindBindings)
+     */
+    FindBindings(this: AuroraScriptService, instance: Instance): object;
     /**
      * - **ThreadSafety**: Safe
      *
@@ -10300,6 +10396,8 @@ interface ClickDetector extends Instance {
      */
     CursorIcon: ContentId;
     /**
+     * Sets the cursor icon to display when the mouse is hovered over the parent of this `ClickDetector` or `DragDetector`. Only supports asset URIs.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ClickDetector#CursorIconContent)
@@ -10369,6 +10467,8 @@ interface DragDetector extends ClickDetector {
      */
     ActivatedCursorIcon: ContentId;
     /**
+     * Sets the cursor icon to display when the mouse is activated over the parent of this `DragDetector`. Only supports asset URIs
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DragDetector#ActivatedCursorIconContent)
@@ -21376,9 +21476,15 @@ interface HttpService extends Instance {
      */
     get HttpEnabled(): boolean;
     /**
+     * Creates a client that opens a persistent connection to stream data.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HttpService#CreateWebStreamClient)
+     * @param this Allows sending HTTP requests and provides various web-related and JSON methods.
+     * @param streamClientType The type of streaming connection to intiialize the client with.
+     * @param requestOptions A dictionary containing information to be requested from the server. It is identical to `requestOptions` in `HttpService:RequestAsync()`.
+     * @returns A stateful client that emits events in the stream lifecycle.
      */
     CreateWebStreamClient(this: HttpService, streamClientType: CastsToEnum<Enum.WebStreamClientType>, requestOptions: object): WebStreamClient;
     /**
@@ -26011,7 +26117,7 @@ interface AuroraScript extends LuaSourceContainer {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#AddTo)
      */
-    AddTo(this: AuroraScript, instance: Instance): void;
+    AddTo(this: AuroraScript, instance: Instance, parameters?: object): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -27280,6 +27386,8 @@ interface Mouse extends Instance {
      */
     Icon: ContentId;
     /**
+     * The content of the image used as the `Mouse` icon. Only supports asset URIs.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Mouse#IconContent)
@@ -30646,6 +30754,8 @@ interface BackpackItem extends Model {
      */
     readonly _nominal_BackpackItem: unique symbol;
     /**
+     * The texture icon that is displayed for a tool in the player's backpack. Only supports asset URIs.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BackpackItem#TextureContent)
@@ -31122,6 +31232,12 @@ interface Workspace extends WorldRoot {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#AirDensity)
      */
     AirDensity: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#AirTurbulenceIntensity)
+     */
+    AirTurbulenceIntensity: number;
     /**
      * Determines whether assets created by other users can be sold in the game.
      *
@@ -35523,13 +35639,13 @@ interface RunService extends Instance {
      */
     IsClient(this: RunService): boolean;
     /**
-     * Returns whether the **Run** button has been pressed to run the simulation in Studio.
+     * Returns whether a **Run** playtest has been initiated in Studio.
      *
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#IsRunMode)
      * @param this Service responsible for all runtime activity and progression of time.
-     * @returns Whether the **Run** button has been pressed to run the simulation in Studio.
+     * @returns Whether a **Run** playtest has been initiated in Studio.
      */
     IsRunMode(this: RunService): boolean;
     /**
@@ -42378,6 +42494,8 @@ interface UIDragDetector extends UIComponent {
      */
     ActivatedCursorIcon: ContentId;
     /**
+     * Sets the cursor icon to display when the mouse is activated over the parent of this `UIDragDetector`. Only supports asset URIs
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIDragDetector#ActivatedCursorIconContent)
@@ -42408,6 +42526,8 @@ interface UIDragDetector extends UIComponent {
      */
     CursorIcon: ContentId;
     /**
+     * Sets the cursor icon to display when the mouse is hovered over the parent of this `UIDragDetector`. Only asset URIs are supported.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIDragDetector#CursorIconContent)
@@ -43328,6 +43448,12 @@ interface UniqueIdLookupService extends Instance {
      * @deprecated
      */
     readonly _nominal_UniqueIdLookupService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UniqueIdLookupService#GetOrCreateUniqueIdRemoteCommand)
+     */
+    GetOrCreateUniqueIdRemoteCommand(this: UniqueIdLookupService, instance: Instance): string;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -43639,6 +43765,8 @@ interface UserInputService extends Instance {
      */
     MouseIcon: ContentId;
     /**
+     * The content ID of the image for the user's mouse icon. Only supports asset URIs.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#MouseIconContent)
@@ -45763,6 +45891,8 @@ interface TerrainWriteOperation extends RBXObject {
     GetBlock(this: TerrainWriteOperation): object;
 }
 /**
+ * Maintains a streaming connection.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient)
@@ -45777,6 +45907,8 @@ interface WebStreamClient extends RBXObject {
      */
     readonly _nominal_WebStreamClient: unique symbol;
     /**
+     * The current `WebStreamClientState` of the client.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -45784,9 +45916,12 @@ interface WebStreamClient extends RBXObject {
      */
     readonly ConnectionState: Enum.WebStreamClientState;
     /**
+     * Closes the client, aborting the ongoing request.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#Close)
+     * @param this Maintains a streaming connection.
      */
     Close(this: WebStreamClient): void;
     /**
@@ -45796,18 +45931,24 @@ interface WebStreamClient extends RBXObject {
      */
     readonly Closed: RBXScriptSignal<() => void>;
     /**
+     * Fires if an error is received while establishing the connection or during the connection lifetime.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#Error)
      */
     readonly Error: RBXScriptSignal<(responseStatusCode: number, errorMessage: string) => void>;
     /**
+     * Fires each time a message is received from the server.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#MessageReceived)
      */
     readonly MessageReceived: RBXScriptSignal<(message: string) => void>;
     /**
+     * Fires when the a connection is successfully established between the client and server, allowing for events to begin streaming.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#Opened)

@@ -291,6 +291,7 @@ interface CreatableInstances {
     AudioSearchParams: AudioSearchParams;
     AudioSpeechToText: AudioSpeechToText;
     AudioTextToSpeech: AudioTextToSpeech;
+    AudioTremolo: AudioTremolo;
     AuroraScript: AuroraScript;
     AvatarAccessoryRules: AvatarAccessoryRules;
     AvatarAnimationRules: AvatarAnimationRules;
@@ -1910,6 +1911,21 @@ interface AudioTextToSpeech extends Instance {
      * @deprecated
      */
     readonly _nominal_AudioTextToSpeech: unique symbol;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo)
+ */
+interface AudioTremolo extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioTremolo: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable
@@ -15237,6 +15253,8 @@ interface TerrainWriteOperation extends RBXObject {
     readonly _nominal_TerrainWriteOperation: unique symbol;
 }
 /**
+ * Maintains a streaming connection.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient)
