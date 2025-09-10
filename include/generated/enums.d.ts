@@ -23275,28 +23275,28 @@ declare namespace Enum {
         }
         export const Auto: Auto;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#None)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#On)
          */
-        export interface None extends globalThis.EnumItem {
-            Name: "None";
+        export interface On extends globalThis.EnumItem {
+            Name: "On";
             Value: 1;
             EnumType: typeof globalThis.Enum.PredictionMode;
         }
-        export const None: None;
+        export const On: On;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#Forced)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#Off)
          */
-        export interface Forced extends globalThis.EnumItem {
-            Name: "Forced";
+        export interface Off extends globalThis.EnumItem {
+            Name: "Off";
             Value: 2;
             EnumType: typeof globalThis.Enum.PredictionMode;
         }
-        export const Forced: Forced;
+        export const Off: Off;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PredictionMode>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PredictionMode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PredictionMode | undefined;
     }
-    export type PredictionMode = PredictionMode.Auto | PredictionMode.None | PredictionMode.Forced;
+    export type PredictionMode = PredictionMode.Auto | PredictionMode.On | PredictionMode.Off;
     /**
      * This enum is used with `UserInputService.PreferredInput` to indicate the primary input type a player is likely using.
      *
@@ -23342,10 +23342,14 @@ declare namespace Enum {
     }
     export type PreferredInput = PreferredInput.KeyboardAndMouse | PreferredInput.Gamepad | PreferredInput.Touch;
     /**
+     * This enum is used with `GuiService.PreferredTextSize` to indicate the player's preferred text size.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredTextSize)
      */
     export namespace PreferredTextSize {
         /**
+         * The player prefers default text size.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredTextSize#Medium)
          */
         export interface Medium extends globalThis.EnumItem {
@@ -23355,6 +23359,8 @@ declare namespace Enum {
         }
         export const Medium: Medium;
         /**
+         * The player prefers text size slightly increased beyond default.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredTextSize#Large)
          */
         export interface Large extends globalThis.EnumItem {
@@ -23364,6 +23370,8 @@ declare namespace Enum {
         }
         export const Large: Large;
         /**
+         * The player prefers text size moderately increased beyond default.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredTextSize#Larger)
          */
         export interface Larger extends globalThis.EnumItem {
@@ -23373,6 +23381,8 @@ declare namespace Enum {
         }
         export const Larger: Larger;
         /**
+         * The player prefers text size considerably increased beyond default.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredTextSize#Largest)
          */
         export interface Largest extends globalThis.EnumItem {

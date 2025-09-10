@@ -2423,6 +2423,12 @@ interface Instance extends RBXObject {
      */
     IsDescendantOf(this: Instance, ancestor: Instance): boolean;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#IsPredicted)
+     */
+    IsPredicted(this: Instance): boolean;
+    /**
      * Returns `true` if the value stored in the specified property is equal to the code-instantiated default.
      *
      * - **ThreadSafety**: Unsafe
@@ -2464,6 +2470,12 @@ interface Instance extends RBXObject {
      * @param value The value to set the specified attribute to.
      */
     SetAttribute(this: Instance, attribute: string, value: AttributeValue | undefined): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#SetPredictionMode)
+     */
+    SetPredictionMode(this: Instance, mode: CastsToEnum<Enum.PredictionMode>): void;
     /**
      * Returns the child of the `Instance` with the given name. If the child does not exist, it will yield the current thread until it does.
      *
@@ -3159,11 +3171,11 @@ interface KeyframeSequence extends AnimationClip {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/KeyframeSequence#GetKeyframes)
      * @param this This object stores all of the `Keyframes` and other data for the animation.
-     * @returns An array of `Keyframe`.
+     * @returns An array of `Keyframes`.
      */
     GetKeyframes(this: KeyframeSequence): Array<Keyframe>;
     /**
-     * This function removes a `Keyframe` from the `KeyframeSequence` by setting its parent to `nil`.
+     * This method removes a `Keyframe` from the `KeyframeSequence` by setting its parent to `nil`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -6808,6 +6820,8 @@ interface AudioTextToSpeech extends Instance {
     readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
 }
 /**
+ * Creates a trembling effect on a sound by varying the volume of the sound up and down.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo)
@@ -6828,36 +6842,48 @@ interface AudioTremolo extends Instance {
      */
     Bypass: boolean;
     /**
+     * Controls how much the volume will raise and lower.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Depth)
      */
     Depth: number;
     /**
+     * Controls how long the effect will be active during one volume oscillation.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Duty)
      */
     Duty: number;
     /**
+     * Sets how often the effect will oscillate the volume.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Frequency)
      */
     Frequency: number;
     /**
+     * Controls the shape of the low frequency oscillations.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Shape)
      */
     Shape: number;
     /**
+     * Time-skews the low frequency oscillations cycle.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Skew)
      */
     Skew: number;
     /**
+     * Flatness of the low frequency oscillations shape.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Square)
@@ -7051,9 +7077,9 @@ interface AuroraService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#IsPredicted)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#IsInstancePredicted)
      */
-    IsPredicted(this: AuroraService, target: Instance): boolean;
+    IsInstancePredicted(this: AuroraService, target: Instance): boolean;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -7125,7 +7151,7 @@ interface AuroraService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#Misprediction)
      */
-    readonly Misprediction: RBXScriptSignal<(worldStepId: number, mispredictedInstances: Array<unknown>) => void>;
+    readonly Misprediction: RBXScriptSignal<(remoteWorldStepId: number, mispredictedInstances: Array<unknown>) => void>;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -8592,7 +8618,7 @@ interface RemoteEvent<T extends Callback = Callback> extends BaseRemoteEvent {
      */
     readonly _nominal_RemoteEvent: unique symbol;
     /**
-     * Fires the `OnClientEvent` event for each client connected to the same `RemoteEvent`.
+     * Fires the `OnClientEvent` event for each connected client.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -8602,7 +8628,7 @@ interface RemoteEvent<T extends Callback = Callback> extends BaseRemoteEvent {
      */
     FireAllClients(this: RemoteEvent, ...args: Parameters<T>): void;
     /**
-     * Fires the `OnClientEvent` event for a specific client connected to the same `RemoteEvent`.
+     * Fires the `OnClientEvent` event for a specific client.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -8613,7 +8639,7 @@ interface RemoteEvent<T extends Callback = Callback> extends BaseRemoteEvent {
      */
     FireClient(this: RemoteEvent, player: Player, ...args: Parameters<T>): void;
     /**
-     * Fires the `OnServerEvent` event on the server from one client connected to the same `RemoteEvent`.
+     * Fires the `OnServerEvent` event on the server from one connected client.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -8654,7 +8680,7 @@ interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemot
      */
     readonly _nominal_UnreliableRemoteEvent: unique symbol;
     /**
-     * Fires the `OnClientEvent` event for each client connected to the same `UnreliableRemoteEvent`. Has a 1000 byte limit to the payload of the event. Otherwise, the event is dropped.
+     * Fires the `OnClientEvent` event for all connected clients. Has a 1000 byte limit to the payload of the event. Events with larger payloads are dropped.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -8664,7 +8690,7 @@ interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemot
      */
     FireAllClients(this: UnreliableRemoteEvent, ...args: Parameters<T>): void;
     /**
-     * Fires the `OnClientEvent` event for a specific client connected to the same `UnreliableRemoteEvent`. Has a 1000 byte limit to the payload of the event. Otherwise, the event is dropped.
+     * Fires the `OnClientEvent` event for a specific client. Has a 1000 byte limit to the payload of the event. Events with larger payloads are dropped.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -8675,7 +8701,7 @@ interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemot
      */
     FireClient(this: UnreliableRemoteEvent, player: Player, ...args: Parameters<T>): void;
     /**
-     * Fires the `OnServerEvent` event on the server from one client connected to the same `UnreliableRemoteEvent`. Has a 1000 byte limit to the payload of the event, otherwise event is dropped.
+     * Fires the `OnServerEvent` event on the server from one connected client. Has a 1000 byte limit to the payload of the event. Events with larger payloads are dropped.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -9797,12 +9823,6 @@ interface CaptureService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#GetDeviceInfo)
      */
     GetDeviceInfo(this: CaptureService): object;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#PromptCaptureGalleryPermission)
-     */
-    PromptCaptureGalleryPermission(this: CaptureService, captureGalleryPermission: CastsToEnum<Enum.CaptureGalleryPermission>, onAcceptedCallback: Callback, onDeniedCallback: Callback): void;
     /**
      * Prompts the user to save specified captures to their gallery.
      *
@@ -15456,6 +15476,20 @@ interface Decal extends FaceInstance {
      */
     Color3: Color3;
     /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#ColorMap)
+     */
+    ColorMap: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#ColorMapContent)
+     */
+    ColorMapContent: Content;
+    /**
      * Acts as a multiplier for the decal's `Decal.Transparency` property. The effects are only visible to the local player.
      *
      * - **ThreadSafety**: ReadSafe
@@ -20536,7 +20570,7 @@ interface Path2D extends GuiBase {
     readonly ControlPointChanged: RBXScriptSignal<() => void>;
 }
 /**
- * Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+ * Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -20552,7 +20586,7 @@ interface GuiService extends Instance {
      */
     readonly _nominal_GuiService: unique symbol;
     /**
-     * If activated, the `Select` button on a Gamepad or `Backslash` will automatically set a GUI as the selected object.
+     * If activated, the `Select` button on a gamepad or `Backslash` will automatically set a GUI as the selected object.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20560,7 +20594,7 @@ interface GuiService extends Instance {
      */
     AutoSelectGuiEnabled: boolean;
     /**
-     * Toggles whether or not objects in the `CoreGui` can be navigated using a Gamepad.
+     * Toggles whether or not objects in the `CoreGui` can be navigated using a gamepad.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
@@ -20603,7 +20637,7 @@ interface GuiService extends Instance {
      */
     readonly IsWindows: boolean;
     /**
-     * Returns true if any menu of CoreGui is open.
+     * Returns `true` if any menu of `CoreGui` is open.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -20612,6 +20646,8 @@ interface GuiService extends Instance {
      */
     readonly MenuIsOpen: boolean;
     /**
+     * Gets the player's preferred text size as an `PreferredTextSize` value.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -20619,7 +20655,7 @@ interface GuiService extends Instance {
      */
     readonly PreferredTextSize: Enum.PreferredTextSize;
     /**
-     * Gets the user's preferred transparency as a number between 0 and 1, which indicates how opaque they want the backgrounds of certain UI elements to be. The recommended usage is as a multiplier of an element's BackgroundTransparency. Defaults to 1.
+     * Gets the player's preferred transparency as a number between `0` and `1`.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
@@ -20628,7 +20664,7 @@ interface GuiService extends Instance {
      */
     readonly PreferredTransparency: number;
     /**
-     * Returns `true` if the user has enabled reduced motion. Defaults to `false`.
+     * Returns `true` if the player has enabled reduced motion.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
@@ -20637,7 +20673,7 @@ interface GuiService extends Instance {
      */
     readonly ReducedMotionEnabled: boolean;
     /**
-     * Sets the GuiObject currently being focused on by the GUI Navigator (used for Gamepads).
+     * Sets the `GuiObject` currently being focused on by the GUI navigator.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20654,7 +20690,7 @@ interface GuiService extends Instance {
      */
     readonly TopbarInset: Rect;
     /**
-     * Used to enable and disable touch controls and touch control display UI. Defaults to true.
+     * Used to enable and disable touch controls and touch control display UI. Defaults to `true`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20673,13 +20709,13 @@ interface GuiService extends Instance {
     /**
      * **Deprecated:**
      *
-     * Creates a gui selection group where gamepad gui navigation will only consider selectable gui objects that are within the group (children of selectionParent).
+     * Creates a selection group where gamepad GUI navigation will only consider selectable objects that are within the group.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#AddSelectionParent)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
      * @param selectionName
      * @param selectionParent
      *
@@ -20698,7 +20734,7 @@ interface GuiService extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#AddSelectionTuple)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
      * @param selectionName The name of the added selection.
      * @param selections The selection(s) added.
      *
@@ -20706,117 +20742,117 @@ interface GuiService extends Instance {
      */
     AddSelectionTuple(this: GuiService, selectionName: string, selections: Array<GuiObject>): void;
     /**
-     * Closes the Inspect Menu, if open.
+     * Closes the avatar inspection menu, if open.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#CloseInspectMenu)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
      */
     CloseInspectMenu(this: GuiService): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#DismissNotification)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
      * @param notificationId
      */
     DismissNotification(this: GuiService, notificationId: string): boolean;
     /**
-     * Checks if the player Emotes menu is open.
+     * Checks if the player emotes menu is open.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#GetEmotesMenuOpen)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
-     * @returns Indicates whether the Emotes menu is open.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
+     * @returns Whether the emotes menu is open.
      */
     GetEmotesMenuOpen(this: GuiService): boolean;
     /**
-     * Returns whether or not the `gameplay paused` notification has been disabled by the developer.
+     * Returns whether or not the `Player.GameplayPaused` notification has been disabled.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#GetGameplayPausedNotificationEnabled)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
-     * @returns Whether or not the `gameplay paused` notification has been disabled.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
+     * @returns Whether or not the `Player.GameplayPaused` notification has been disabled.
      */
     GetGameplayPausedNotificationEnabled(this: GuiService): boolean;
     /**
-     * Returns two `Vector2` values representing the inset of user GUIs in pixels, from the top left corner of the screen and the bottom right corner of the screen respectively.
+     * Returns two `Vector2` values representing the inset of user GUIs in pixels, from the top‑left corner of the screen and the bottom‑right corner of the screen respectively.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#GetGuiInset)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
-     * @returns A tuple of two Vector2 values describing the current specified Gui Inset.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
+     * @returns A tuple of two `Vector2` values describing the current specified GUI inset.
      */
     GetGuiInset(this: GuiService): LuaTuple<[
         Vector2,
         Vector2
     ]>;
     /**
-     * Returns whether the Inspect and Buy menu functionality is enabled.
+     * Returns whether the avatar inspection menu is enabled.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#GetInspectMenuEnabled)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
-     * @returns A boolean indicating whether the Inspect Menu feature is enabled.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
+     * @returns Whether the avatar inspection menu is enabled.
      */
     GetInspectMenuEnabled(this: GuiService): boolean;
     /**
-     * Allows a developer to bring up the Inspect menu showing the assets listed in this `HumanoidDescription` object.
+     * Allows the avatar inspection menu to appear showing the assets listed in a `HumanoidDescription` object.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#InspectPlayerFromHumanoidDescription)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
-     * @param humanoidDescription A `HumanoidDescription` object that contains the assets to show in the Inspect menu.
-     * @param name The name of the player being Inspected to show in the Inspect menu.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
+     * @param humanoidDescription A `HumanoidDescription` object that contains the assets to show in the inspection menu.
+     * @param name The name of the player being inspected to show in the menu.
      */
     InspectPlayerFromHumanoidDescription(this: GuiService, humanoidDescription: HumanoidDescription, name: string): void;
     /**
-     * Allows the Inspect Menu to appear showing the user that has the given `UserId`.
+     * Allows the avatar inspection menu to appear showing the user that has the given `UserId`.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#InspectPlayerFromUserId)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
      * @param userId The `UserId` of the player to inspect.
      */
     InspectPlayerFromUserId(this: GuiService, userId: number): void;
     /**
-     * Returns true if the client is using the ten foot interface, which is a special version of Roblox's UI, exclusive to consoles. This is the only guaranteed way to verify if the user is on a console or not.
+     * Returns `true` if the client is using the ten foot interface, a special version of Roblox's UI exclusive to consoles.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#IsTenFootInterface)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
      */
     IsTenFootInterface(this: GuiService): boolean;
     /**
      * **Deprecated:**
      *
-     * Removes a group that was created with `GuiService:AddSelectionParent()` or `GuiService:AddSelectionTuple()`.
+     * Removes a group that was created with `AddSelectionParent()` or `AddSelectionTuple()`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#RemoveSelectionGroup)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
      * @param selectionName
      *
      * @deprecated SelectionGroup
      */
     RemoveSelectionGroup(this: GuiService, selectionName: string): void;
     /**
-     * Set GuiService.SelectedObject to a child of provided instance selectionParent that is PlayerGui or its descendants.
+     * Sets `GuiService.SelectedObject` to a child of a provided instance that is the `PlayerGui` or its descendants.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#Select)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
      * @param selectionParent The parent of selection whose descendants are searched.
      */
     Select(this: GuiService, selectionParent: Instance): void;
@@ -20824,42 +20860,42 @@ interface GuiService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#SendNotification)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
      * @param notificationInfo
      */
     SendNotification(this: GuiService, notificationInfo: object): string;
     /**
-     * Opens or closes the player Emotes menu.
+     * Opens or closes the player emotes menu.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#SetEmotesMenuOpen)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
      * @param isOpen
      */
     SetEmotesMenuOpen(this: GuiService, isOpen: boolean): void;
     /**
-     * Allows developers to disable the built-in notification when a players gameplay is paused.
+     * Lets you disable the built-in notification when a player's gameplay is paused.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#SetGameplayPausedNotificationEnabled)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
      * @param enabled Whether or not the built-in notification GUI is disabled.
      */
     SetGameplayPausedNotificationEnabled(this: GuiService, enabled: boolean): void;
     /**
-     * Allows developers to enable or disable default Inspect and Buy functionality.
+     * Allows you to enable or disable the avatar inspection menu.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#SetInspectMenuEnabled)
-     * @param this Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
-     * @param enabled A boolean indicating whether to enable or disable the Inspect Menu feature.
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
+     * @param enabled A boolean indicating whether to enable or disable the menu.
      */
     SetInspectMenuEnabled(this: GuiService, enabled: boolean): void;
     /**
-     * Fires when the user **closes** the Roblox coregui escape menu.
+     * Fires when the user **closes** the Roblox `CoreGui` escape menu.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -20867,7 +20903,7 @@ interface GuiService extends Instance {
      */
     readonly MenuClosed: RBXScriptSignal<() => void>;
     /**
-     * Fires when the user **opens** the Roblox coregui escape menu.
+     * Fires when the user **opens** the Roblox `CoreGui` escape menu.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -28652,8 +28688,6 @@ interface BasePart extends PVInstance {
      */
     GetRenderCFrame(this: BasePart): CFrame;
     /**
-     * **Deprecated:**
-     *
      * Returns the base part of an assembly of parts.
      *
      * - **ThreadSafety**: Safe
@@ -31102,6 +31136,7 @@ interface WorldRoot extends Model {
      * Returns an array of parts whose **bounding boxes** overlap a given box.
      *
      * - **ThreadSafety**: Safe
+     * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#GetPartBoundsInBox)
      * @param this Base class for handling physics simulation and 3D spatial queries.
@@ -31115,6 +31150,7 @@ interface WorldRoot extends Model {
      * Returns an array of parts whose **bounding boxes** overlap a given sphere.
      *
      * - **ThreadSafety**: Safe
+     * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#GetPartBoundsInRadius)
      * @param this Base class for handling physics simulation and 3D spatial queries.
@@ -31128,6 +31164,7 @@ interface WorldRoot extends Model {
      * Returns an array of parts whose occupied space is shared with the given part.
      *
      * - **ThreadSafety**: Safe
+     * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#GetPartsInPart)
      * @param this Base class for handling physics simulation and 3D spatial queries.
@@ -31233,6 +31270,8 @@ interface Workspace extends WorldRoot {
      */
     AirDensity: number;
     /**
+     * Controls the strength of turbulence present in the wind velocity field, affecting the aerodynamic force model.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#AirTurbulenceIntensity)
@@ -31247,6 +31286,12 @@ interface Workspace extends WorldRoot {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#AllowThirdPartySales)
      */
     AllowThirdPartySales: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#AuthorityMode)
+     */
+    AuthorityMode: Enum.AuthorityMode;
     /**
      * Specifies the animation throttling mode for the local client.
      *
@@ -35138,6 +35183,13 @@ interface RecommendationService extends Instance {
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#GetRecommendationItemAsync)
+     */
+    GetRecommendationItemAsync(this: RecommendationService, itemId: string): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#RegisterItemAsync)
      * @param this
      * @param player
@@ -35617,6 +35669,13 @@ interface RunService extends Instance {
      */
     readonly _nominal_RunService: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#ServerFrame)
+     */
+    readonly ServerFrame: number;
+    /**
      * Given a string name of a function and a priority, this method binds the function to `RunService.PreRender`.
      *
      * - **ThreadSafety**: Unsafe
@@ -35688,6 +35747,12 @@ interface RunService extends Instance {
      * @param name The name of the function being unbound.
      */
     UnbindFromRenderStep(this: RunService, name: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#FixedHeartbeat)
+     */
+    readonly FixedHeartbeat: RBXScriptSignal<(deltaTime: number) => void>;
     /**
      * Fires every frame, after the physics simulation has completed.
      *
@@ -41544,6 +41609,8 @@ interface TextFilterTranslatedResult extends Instance {
     GetTranslations(this: TextFilterTranslatedResult): object;
 }
 /**
+ * Gives access to a large language model for text generation.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator)
  */
 interface TextGenerator extends Instance {
@@ -41556,16 +41623,47 @@ interface TextGenerator extends Instance {
      */
     readonly _nominal_TextGenerator: unique symbol;
     /**
+     * Sets a fixed seed for the random number generator, allowing reproducible responses in cases where the same input parameters are used across      multiple requests.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator#Seed)
+     */
+    Seed: number;
+    /**
+     * Provides context to the model about its role, tone, or behavior during conversation.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator#SystemPrompt)
      */
     SystemPrompt: string;
     /**
+     * Controls the "creativity" or randomness of the model's responses.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator#Temperature)
+     */
+    Temperature: number;
+    /**
+     * Helps the AI model narrow or expand the range of possible words to sample from while generating the next token.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator#TopP)
+     */
+    TopP: number;
+    /**
+     * Returns text generated by an LLM based on the provided system and user prompts.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator#GenerateTextAsync)
+     * @param this Gives access to a large language model for text generation.
+     * @param request A dictionary containing optional parameters for the text generation request. The currently supported parameters are `UserPrompt`,      `ContextToken`, and `MaxTokens`.
+     * @returns A dictionary containing the LLM's generated response.
      */
     GenerateTextAsync(this: TextGenerator, request: object): object;
 }
@@ -45122,12 +45220,6 @@ interface VideoPlayer extends Instance {
      * @deprecated
      */
     readonly _nominal_VideoPlayer: unique symbol;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Asset)
-     */
-    Asset: ContentId;
     /**
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
