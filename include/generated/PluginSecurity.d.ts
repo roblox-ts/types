@@ -1913,6 +1913,8 @@ interface AudioTextToSpeech extends Instance {
     readonly _nominal_AudioTextToSpeech: unique symbol;
 }
 /**
+ * Creates a trembling effect on a sound by varying the volume of the sound up and down.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo)
@@ -6611,7 +6613,7 @@ interface Path2D extends GuiBase {
     readonly _nominal_Path2D: unique symbol;
 }
 /**
- * Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+ * Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -13944,6 +13946,8 @@ interface TextFilterTranslatedResult extends Instance {
     readonly _nominal_TextFilterTranslatedResult: unique symbol;
 }
 /**
+ * Gives access to a large language model for text generation.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator)
  */
 interface TextGenerator extends Instance {
