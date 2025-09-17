@@ -1506,7 +1506,7 @@ interface Atmosphere extends Instance {
     readonly _nominal_Atmosphere: unique symbol;
 }
 /**
- * Defines a point and orientation relative to a parent `BasePart`, `Bone`, or another `Attachment`.
+ * Defines a point and orientation relative to an ancestor `PVInstance`, `Bone`, or another `Attachment`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Attachment)
  */
@@ -8581,7 +8581,7 @@ interface OperationGraph extends Instance {
     readonly _nominal_OperationGraph: unique symbol;
 }
 /**
- * Abstract class for all objects that have a physical location in the world, specifically `BaseParts` and `Models`.
+ * Abstract class for all objects that have a physical location in the world.
  *
  * - **Tags**: NotCreatable, NotBrowsable
  *
@@ -10148,11 +10148,14 @@ interface Plugin extends Instance {
      * Used to open the given script instance in an editor window, in Roblox studio, at the given line. If no line is given as an argument it will default to 1.
      *
      * - **ThreadSafety**: Unsafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#OpenScript)
      * @param this
      * @param script
      * @param lineNumber
+     *
+     * @deprecated
      */
     OpenScript(this: Plugin, script: LuaSourceContainer, lineNumber?: number): void;
     /**

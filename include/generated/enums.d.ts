@@ -2149,11 +2149,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.AppUpdateStatus;
         }
         export const AvailableBoundChannel: AvailableBoundChannel;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppUpdateStatus#AvailableBetaProgram)
+         */
+        export interface AvailableBetaProgram extends globalThis.EnumItem {
+            Name: "AvailableBetaProgram";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.AppUpdateStatus;
+        }
+        export const AvailableBetaProgram: AvailableBetaProgram;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AppUpdateStatus>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AppUpdateStatus | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AppUpdateStatus | undefined;
     }
-    export type AppUpdateStatus = AppUpdateStatus.Unknown | AppUpdateStatus.NotSupported | AppUpdateStatus.Failed | AppUpdateStatus.NotAvailable | AppUpdateStatus.Available | AppUpdateStatus.AvailableBoundChannel;
+    export type AppUpdateStatus = AppUpdateStatus.Unknown | AppUpdateStatus.NotSupported | AppUpdateStatus.Failed | AppUpdateStatus.NotAvailable | AppUpdateStatus.Available | AppUpdateStatus.AvailableBoundChannel | AppUpdateStatus.AvailableBetaProgram;
     /**
      * Used by `UIStroke.ApplyStrokeMode` to determine where to apply the stroke.
      *
@@ -8012,6 +8021,15 @@ declare namespace Enum {
         }
         export const AndroidRootedKick: AndroidRootedKick;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#ScreentimeLockoutKick)
+         */
+        export interface ScreentimeLockoutKick extends globalThis.EnumItem {
+            Name: "ScreentimeLockoutKick";
+            Value: 307;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const ScreentimeLockoutKick: ScreentimeLockoutKick;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PlacelaunchErrors)
          */
         export interface PlacelaunchErrors extends globalThis.EnumItem {
@@ -8240,7 +8258,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConnectionError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConnectionError | undefined;
     }
-    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
     /**
      * Used to determine the connection state of the client to the game server.
      *
@@ -22331,6 +22349,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PathfindingUseImprovedSearch | undefined;
     }
     export type PathfindingUseImprovedSearch = PathfindingUseImprovedSearch.Default | PathfindingUseImprovedSearch.Disabled | PathfindingUseImprovedSearch.Enabled;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PeoplePageLayout)
+     */
+    export namespace PeoplePageLayout {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PeoplePageLayout#Card)
+         */
+        export interface Card extends globalThis.EnumItem {
+            Name: "Card";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PeoplePageLayout;
+        }
+        export const Card: Card;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PeoplePageLayout#List)
+         */
+        export interface List extends globalThis.EnumItem {
+            Name: "List";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PeoplePageLayout;
+        }
+        export const List: List;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PeoplePageLayout>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PeoplePageLayout | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PeoplePageLayout | undefined;
+    }
+    export type PeoplePageLayout = PeoplePageLayout.Card | PeoplePageLayout.List;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PerformanceOverlayMode)
      */
