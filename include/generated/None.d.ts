@@ -899,7 +899,7 @@ interface ConfigSnapshot extends RBXObject {
      * @param key
      * @param defaultValue
      */
-    GetValue(this: ConfigSnapshot, key: string, defaultValue: unknown): unknown;
+    GetValue(this: ConfigSnapshot, key: string): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -2361,6 +2361,12 @@ interface Instance extends RBXObject {
      * @returns The full name of the `Instance`.
      */
     GetFullName(this: Instance): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetPredictionMode)
+     */
+    GetPredictionMode(this: Instance): Enum.PredictionMode;
     /**
      * Returns the styled or explicitly modified value of the specified property, or else the default property value if it hasn't been styled/modified.
      *
@@ -4298,7 +4304,7 @@ interface Atmosphere extends Instance {
     Offset: number;
 }
 /**
- * Defines a point and orientation relative to a parent `BasePart`, `Bone`, or another `Attachment`.
+ * Defines a point and orientation relative to an ancestor `PVInstance`, `Bone`, or another `Attachment`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Attachment)
  */
@@ -4443,7 +4449,7 @@ interface Attachment extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Attachment#GetAxis)
-     * @param this Defines a point and orientation relative to a parent `BasePart`, `Bone`, or another `Attachment`.
+     * @param this Defines a point and orientation relative to an ancestor `PVInstance`, `Bone`, or another `Attachment`.
      *
      * @deprecated Axis
      */
@@ -4454,7 +4460,7 @@ interface Attachment extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Attachment#GetConstraints)
-     * @param this Defines a point and orientation relative to a parent `BasePart`, `Bone`, or another `Attachment`.
+     * @param this Defines a point and orientation relative to an ancestor `PVInstance`, `Bone`, or another `Attachment`.
      */
     GetConstraints(this: Attachment): Array<Instance>;
     /**
@@ -4466,7 +4472,7 @@ interface Attachment extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Attachment#GetSecondaryAxis)
-     * @param this Defines a point and orientation relative to a parent `BasePart`, `Bone`, or another `Attachment`.
+     * @param this Defines a point and orientation relative to an ancestor `PVInstance`, `Bone`, or another `Attachment`.
      *
      * @deprecated SecondaryAxis
      */
@@ -4480,7 +4486,7 @@ interface Attachment extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Attachment#SetAxis)
-     * @param this Defines a point and orientation relative to a parent `BasePart`, `Bone`, or another `Attachment`.
+     * @param this Defines a point and orientation relative to an ancestor `PVInstance`, `Bone`, or another `Attachment`.
      * @param axis
      *
      * @deprecated Axis
@@ -4495,7 +4501,7 @@ interface Attachment extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Attachment#SetSecondaryAxis)
-     * @param this Defines a point and orientation relative to a parent `BasePart`, `Bone`, or another `Attachment`.
+     * @param this Defines a point and orientation relative to an ancestor `PVInstance`, `Bone`, or another `Attachment`.
      * @param axis
      *
      * @deprecated SecondaryAxis
@@ -25478,6 +25484,14 @@ interface Lighting extends Instance {
      */
     GlobalShadows: boolean;
     /**
+     * The artistic intent behind lighting in the experience.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Lighting#LightingStyle)
+     */
+    get LightingStyle(): Enum.LightingStyle;
+    /**
      * The lighting hue applied to outdoor areas.
      *
      * - **ThreadSafety**: ReadSafe
@@ -25498,6 +25512,14 @@ interface Lighting extends Instance {
      * @deprecated
      */
     Outlines: boolean;
+    /**
+     * Indicates whether you prefer lighting/shading quality or view distance to scale down first.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Lighting#PrioritizeLightingQuality)
+     */
+    get PrioritizeLightingQuality(): boolean;
     /**
      * **Deprecated:** This item is deprecated and has no current functionality. Do not use it for new work.
      *
@@ -27793,7 +27815,7 @@ interface OperationGraph extends Instance {
     readonly _nominal_OperationGraph: unique symbol;
 }
 /**
- * Abstract class for all objects that have a physical location in the world, specifically `BaseParts` and `Models`.
+ * Abstract class for all objects that have a physical location in the world.
  *
  * - **Tags**: NotCreatable, NotBrowsable
  *
@@ -27814,7 +27836,7 @@ interface PVInstance extends Instance {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PVInstance#GetPivot)
-     * @param this Abstract class for all objects that have a physical location in the world, specifically `BaseParts` and `Models`.
+     * @param this Abstract class for all objects that have a physical location in the world.
      */
     GetPivot(this: PVInstance): CFrame;
     /**
@@ -27823,7 +27845,7 @@ interface PVInstance extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PVInstance#PivotTo)
-     * @param this Abstract class for all objects that have a physical location in the world, specifically `BaseParts` and `Models`.
+     * @param this Abstract class for all objects that have a physical location in the world.
      * @param targetCFrame The `CFrame` that the `PVInstance` pivot should equal after moving it.
      */
     PivotTo(this: PVInstance, targetCFrame: CFrame): void;
@@ -28688,6 +28710,8 @@ interface BasePart extends PVInstance {
      */
     GetRenderCFrame(this: BasePart): CFrame;
     /**
+     * **Deprecated:**
+     *
      * Returns the base part of an assembly of parts.
      *
      * - **ThreadSafety**: Safe
@@ -38169,6 +38193,12 @@ interface SoundService extends Instance {
      */
     readonly _nominal_SoundService: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#AcousticSimulationEnabled)
+     */
+    AcousticSimulationEnabled: boolean;
+    /**
      * The ambient sound environment preset used by `SoundService`.
      *
      * - **ThreadSafety**: ReadSafe
@@ -41623,7 +41653,7 @@ interface TextGenerator extends Instance {
      */
     readonly _nominal_TextGenerator: unique symbol;
     /**
-     * Sets a fixed seed for the random number generator, allowing reproducible responses in cases where the same input parameters are used across      multiple requests.
+     * Sets a fixed seed for the random number generator, allowing reproducible responses in cases where the same input parameters are used across multiple requests.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -41662,7 +41692,7 @@ interface TextGenerator extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator#GenerateTextAsync)
      * @param this Gives access to a large language model for text generation.
-     * @param request A dictionary containing optional parameters for the text generation request. The currently supported parameters are `UserPrompt`,      `ContextToken`, and `MaxTokens`.
+     * @param request A dictionary containing optional parameters for the text generation request. The currently supported parameters are `UserPrompt`, `ContextToken`, and `MaxTokens`.
      * @returns A dictionary containing the LLM's generated response.
      */
     GenerateTextAsync(this: TextGenerator, request: object): object;
@@ -45847,6 +45877,24 @@ interface WrapTextureTransfer extends Instance {
      * @deprecated
      */
     readonly _nominal_WrapTextureTransfer: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer#ReferenceCageMeshContent)
+     */
+    ReferenceCageMeshContent: Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer#UVMaxBound)
+     */
+    UVMaxBound: Vector2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer#UVMinBound)
+     */
+    UVMinBound: Vector2;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
