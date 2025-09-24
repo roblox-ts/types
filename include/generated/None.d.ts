@@ -897,7 +897,6 @@ interface ConfigSnapshot extends RBXObject {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#GetValue)
      * @param this
      * @param key
-     * @param defaultValue
      */
     GetValue(this: ConfigSnapshot, key: string): unknown;
     /**
@@ -7293,17 +7292,27 @@ interface AvatarCreationService extends Instance {
      */
     AutoSetupAvatarAsync(this: AvatarCreationService, player: Player, model: Model, progressCallback?: Callback): string;
     /**
+     * Creates a 2D avatar preview and returns a previewId.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#GenerateAvatar2DPreviewAsync)
+     * @param this A service to support developer avatar creators.
+     * @param avatarGeneration2dPreviewParams A table of arguments for 2D preview generation. Type: `avatarGeneration2dPreviewParams: {SessionId: string, FileId: string, TextPrompt: string?}`
+     * @returns A string previewId
      */
     GenerateAvatar2DPreviewAsync(this: AvatarCreationService, avatarGeneration2dPreviewParams: object): string;
     /**
+     * Generates an avatar and returns a generationId.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#GenerateAvatarAsync)
+     * @param this A service to support developer avatar creators.
+     * @param avatarGenerationParams A table of arguments for generating an avatar. Type: `avatarGenerationParams: {SessionId: string, PreviewId: string}`
+     * @returns A string generationId.
      */
     GenerateAvatarAsync(this: AvatarCreationService, avatarGenerationParams: object): string;
     /**
@@ -7319,10 +7328,15 @@ interface AvatarCreationService extends Instance {
      */
     GetBatchTokenDetailsAsync(this: AvatarCreationService, tokenIds: Array<unknown>): Array<unknown>;
     /**
+     * Load an AvatarGeneration 2D preview on the client from a previewId.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#LoadAvatar2DPreviewAsync)
+     * @param this A service to support developer avatar creators.
+     * @param previewId Load the preview generated from `GenerateAvatar2DPreviewAsync()`.
+     * @returns An `EditableImage` containing the preview image.
      */
     LoadAvatar2DPreviewAsync(this: AvatarCreationService, previewId: string): EditableImage;
     /**
@@ -7349,6 +7363,13 @@ interface AvatarCreationService extends Instance {
      */
     PrepareAvatarForPreviewAsync(this: AvatarCreationService, humanoidModel: Model): void;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#PromptCreateAvatarAssetAsync)
+     */
+    PromptCreateAvatarAssetAsync(this: AvatarCreationService, tokenId: string, player: Player, assetInstance: Instance, assetType: CastsToEnum<Enum.AvatarAssetType>): unknown;
+    /**
      * Prompts a `Player` to purchase and create an avatar from a `HumanoidDescription`.
      *
      * - **ThreadSafety**: Unsafe
@@ -7365,17 +7386,28 @@ interface AvatarCreationService extends Instance {
      */
     PromptCreateAvatarAsync(this: AvatarCreationService, tokenId: string, player: Player, humanoidDescription: HumanoidDescription): unknown;
     /**
+     * Prompt the `Player` to take a selfie and return the FileId.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#PromptSelectAvatarGenerationImageAsync)
+     * @param this A service to support developer avatar creators.
+     * @param player The `Player` to prompt for taking a selfie.
+     * @returns A string FileId of the selfie.
      */
     PromptSelectAvatarGenerationImageAsync(this: AvatarCreationService, player: Player): string;
     /**
+     * Request an AvatarGeneration session for a `Player`.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#RequestAvatarGenerationSessionAsync)
+     * @param this A service to support developer avatar creators.
+     * @param player The `Player` to request an AvatarGeneration session for.
+     * @param callback Callback function that is invoked with a SessionInfo table, with information about the session. Type: `(SessionInfo: { SessionId: string, Allowed2DGenerations: number, Allowed3DGenerations: number, SessionTime: number }) -> ()`
+     * @returns A tuple containing a `RBXScriptConnection` that can be used to cancel the session request and the estimated wait time in seconds.
      */
     RequestAvatarGenerationSessionAsync(this: AvatarCreationService, player: Player, callback: Callback): unknown;
     /**
@@ -7422,6 +7454,12 @@ interface AvatarCreationService extends Instance {
      * - An optional table of strings. This includes failure reasons if   validation was unsuccessful; otherwise `nil` if validation was   successful.
      */
     ValidateUGCFullBodyAsync(this: AvatarCreationService, player: Player, humanoidDescription: HumanoidDescription): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#AvatarAssetModerationCompleted)
+     */
+    readonly AvatarAssetModerationCompleted: RBXScriptSignal<(assetId: number, moderationStatus: Enum.ModerationStatus) => void>;
     /**
      * Fires when an in-experience-created avatar's moderation status has been updated from pending.
      *
@@ -21284,6 +21322,12 @@ interface HapticEffect extends Instance {
      * @param this
      */
     Stop(this: HapticEffect): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect#Ended)
+     */
+    readonly Ended: RBXScriptSignal<() => void>;
 }
 /**
  * Provides haptic feedback to controllers and devices.
@@ -26913,6 +26957,18 @@ interface MaterialVariant extends Instance {
      */
     CustomPhysicalProperties: PhysicalProperties;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#EmissiveStrength)
+     */
+    EmissiveStrength: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#EmissiveTint)
+     */
+    EmissiveTint: Color3;
+    /**
      * Determines texture tiling method.
      *
      * - **ThreadSafety**: ReadSafe
@@ -31973,6 +32029,18 @@ interface ParticleEmitter extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter#FlipbookMode)
      */
     FlipbookMode: Enum.ParticleFlipbookMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter#FlipbookSizeX)
+     */
+    FlipbookSizeX: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter#FlipbookSizeY)
+     */
+    FlipbookSizeY: number;
     /**
      * Determines whether the animation starts at a random frame chosen per particle instead of always starting at frame zero.
      *
@@ -39488,6 +39556,24 @@ interface SurfaceAppearance extends Instance {
     get ColorMapContent(): Content;
     /**
      * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#EmissiveMaskContent)
+     */
+    get EmissiveMaskContent(): Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#EmissiveStrength)
+     */
+    EmissiveStrength: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#EmissiveTint)
+     */
+    EmissiveTint: Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#MetalnessMapContent)
@@ -40060,6 +40146,18 @@ interface TerrainDetail extends Instance {
      * @deprecated
      */
     readonly _nominal_TerrainDetail: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#EmissiveStrength)
+     */
+    EmissiveStrength: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#EmissiveTint)
+     */
+    EmissiveTint: Color3;
     /**
      * The face this TerrainDetail overrides.
      *

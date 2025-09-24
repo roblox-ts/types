@@ -8004,6 +8004,12 @@ interface MaterialVariant extends Instance {
      */
     ColorMapContent: Content;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#EmissiveMaskContent)
+     */
+    EmissiveMaskContent: Content;
+    /**
      * Determines which parts of the surface are metal and are non-metal.
      *
      * - **ThreadSafety**: ReadSafe
@@ -10145,6 +10151,8 @@ interface Plugin extends Instance {
      */
     Negate(this: Plugin, objects: Array<Instance>): Array<Instance>;
     /**
+     * **Deprecated:**
+     *
      * Used to open the given script instance in an editor window, in Roblox studio, at the given line. If no line is given as an argument it will default to 1.
      *
      * - **ThreadSafety**: Unsafe
@@ -13314,6 +13322,12 @@ interface SurfaceAppearance extends Instance {
      */
     set ColorMapContent(value: Content);
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#EmissiveMaskContent)
+     */
+    set EmissiveMaskContent(value: Content);
+    /**
      * Determines which parts of the surface are metal or non-metal.
      *
      * - **ThreadSafety**: ReadSafe
@@ -13592,6 +13606,12 @@ interface TerrainDetail extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#ColorMapContent)
      */
     ColorMapContent: Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#EmissiveMaskContent)
+     */
+    EmissiveMaskContent: Content;
     /**
      * Determines which parts of the surface are metal and are non-metal.
      *
