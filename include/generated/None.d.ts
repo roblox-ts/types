@@ -464,6 +464,7 @@ interface CreatableInstances {
     StudioCallout: StudioCallout;
     StyleDerive: StyleDerive;
     StyleLink: StyleLink;
+    StyleQuery: StyleQuery;
     StyleRule: StyleRule;
     StyleSheet: StyleSheet;
     SunRaysEffect: SunRaysEffect;
@@ -492,7 +493,6 @@ interface CreatableInstances {
     TremoloSoundEffect: TremoloSoundEffect;
     TrussPart: TrussPart;
     UIAspectRatioConstraint: UIAspectRatioConstraint;
-    UIContainerQuery: UIContainerQuery;
     UICorner: UICorner;
     UIDragDetector: UIDragDetector;
     UIFlexItem: UIFlexItem;
@@ -1711,7 +1711,7 @@ interface EditableMesh extends RBXObject {
      */
     GetVerticesWithAttribute(this: EditableMesh, id: number): Array<unknown>;
     /**
-     * Returns an array of face IDs that use the given color ID.
+     * Returns an array of vertex IDs that use the given color ID.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
@@ -5262,6 +5262,12 @@ interface AudioEmitter extends Instance {
      */
     readonly _nominal_AudioEmitter: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#AcousticSimulationEnabled)
+     */
+    AcousticSimulationEnabled: boolean;
+    /**
      * Controls which `AudioListeners` are capable of hearing this `AudioEmitter`.
      *
      * - **ThreadSafety**: ReadSafe
@@ -5273,8 +5279,11 @@ interface AudioEmitter extends Instance {
      * Controls how detailed the audio simulation should be for this `AudioEmitter`.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#SimulationFidelity)
+     *
+     * @deprecated AcousticSimulationEnabled
      */
     SimulationFidelity: Enum.AudioSimulationFidelity;
     /**
@@ -5865,6 +5874,12 @@ interface AudioListener extends Instance {
      */
     readonly _nominal_AudioListener: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#AcousticSimulationEnabled)
+     */
+    AcousticSimulationEnabled: boolean;
+    /**
      * Controls which `AudioEmitters` are audible to this `AudioListener`.
      *
      * - **ThreadSafety**: ReadSafe
@@ -5876,8 +5891,11 @@ interface AudioListener extends Instance {
      * Controls how detailed the audio simulation should be for this `AudioListener`.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#SimulationFidelity)
+     *
+     * @deprecated AcousticSimulationEnabled
      */
     SimulationFidelity: Enum.AudioSimulationFidelity;
     /**
@@ -6591,6 +6609,8 @@ interface AudioSearchParams extends Instance {
     Title: string;
 }
 /**
+ * Converts spoken audio into text.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSpeechToText)
@@ -6605,18 +6625,24 @@ interface AudioSpeechToText extends Instance {
      */
     readonly _nominal_AudioSpeechToText: unique symbol;
     /**
+     * Whether the `AudioSpeechToText` object is enabled for processing input audio into text.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSpeechToText#Enabled)
      */
     Enabled: boolean;
     /**
+     * The text resulting from the conversion of speech audio.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSpeechToText#Text)
      */
     Text: string;
     /**
+     * Whether the `AudioSpeechToText` object is detecting speech in the incoming audio signal.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -6624,14 +6650,18 @@ interface AudioSpeechToText extends Instance {
      */
     readonly VoiceDetected: boolean;
     /**
+     * Returns an array of `Wires` that are connected to the specified pin.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSpeechToText#GetConnectedWires)
-     * @param this
+     * @param this Converts spoken audio into text.
      * @param pin
      */
     GetConnectedWires(this: AudioSpeechToText, pin: string): Array<Instance>;
     /**
+     * Fires when another instance is connected to or disconnected from the `AudioSpeechToText` via a `Wire`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSpeechToText#WiringChanged)
@@ -19147,14 +19177,18 @@ interface BillboardGui extends LayerCollector {
      * Determines the distance in studs at which the `BillboardGui` will stop scaling larger in size.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BillboardGui#DistanceLowerLimit)
+     *
+     * @deprecated
      */
     DistanceLowerLimit: number;
     /**
      * Determines the size `CurrentDistance` increments and decrements in studs as the player's camera moves closer and further from the `BillboardGui`.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BillboardGui#DistanceStep)
      */
@@ -19163,8 +19197,11 @@ interface BillboardGui extends LayerCollector {
      * Determines the distance in studs at which the `BillboardGui` will stop scaling smaller in size.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BillboardGui#DistanceUpperLimit)
+     *
+     * @deprecated
      */
     DistanceUpperLimit: number;
     /**
@@ -21323,6 +21360,8 @@ interface HapticEffect extends Instance {
      */
     Stop(this: HapticEffect): void;
     /**
+     * Fires when the `HapticEffect` has completed playback and stopped.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect#Ended)
@@ -23994,6 +24033,12 @@ interface IncrementalPatchBuilder extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IncrementalPatchBuilder#SerializePatch)
      */
     SerializePatch: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IncrementalPatchBuilder#UseFileLevelCompressionInsteadOfChunk)
+     */
+    UseFileLevelCompressionInsteadOfChunk: boolean;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -27442,6 +27487,12 @@ interface ModerationService extends Instance {
     readonly _nominal_ModerationService: unique symbol;
     /**
      * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#CreateReviewableContentKey)
+     */
+    CreateReviewableContentKey(this: ModerationService, content: Content): string;
+    /**
+     * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#InternalCreateReviewableContentAsync)
@@ -29869,6 +29920,8 @@ interface MeshPart extends TriangleMeshPart {
      * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshPart#HasJointOffset)
+     *
+     * @deprecated
      */
     get HasJointOffset(): boolean;
     /**
@@ -29883,6 +29936,8 @@ interface MeshPart extends TriangleMeshPart {
      * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshPart#JointOffset)
+     *
+     * @deprecated
      */
     get JointOffset(): Vector3;
     /**
@@ -32014,7 +32069,7 @@ interface ParticleEmitter extends Instance {
      */
     FlipbookIncompatible: string;
     /**
-     * Determines the layout of the flipbook texture. Must be None, Grid2x2, Grid4x4, or Grid8x8.
+     * Determines the layout of the flipbook texture. Must be None, Grid2x2, Grid4x4, Grid8x8 or Custom.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -32030,12 +32085,16 @@ interface ParticleEmitter extends Instance {
      */
     FlipbookMode: Enum.ParticleFlipbookMode;
     /**
+     * Defines the number of horizontal frames in a custom flipbook layout.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter#FlipbookSizeX)
      */
     FlipbookSizeX: number;
     /**
+     * Defines the number of vertical frames in a custom flipbook layout.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter#FlipbookSizeY)
@@ -37385,6 +37444,13 @@ interface SocialService extends Instance {
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#PromptFeedbackSubmissionAsync)
+     */
+    PromptFeedbackSubmissionAsync(this: SocialService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#PromptLinkSharing)
      * @param this Facilitates social functions that impact relationships made on the Roblox platform.
      * @param player
@@ -39501,6 +39567,46 @@ interface StyleLink extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleLink#StyleSheet)
      */
     StyleSheet: StyleSheet | undefined;
+}
+/**
+ * - **Tags**: NotReplicated, NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery)
+ */
+interface StyleQuery extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StyleQuery: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#AspectRatioRange)
+     */
+    AspectRatioRange: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#IsActive)
+     */
+    readonly IsActive: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#MaxSize)
+     */
+    MaxSize: Vector2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#MinSize)
+     */
+    MinSize: Vector2;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -42448,19 +42554,19 @@ interface TweenService extends Instance {
      */
     GetValue(this: TweenService, alpha: number, easingStyle: CastsToEnum<Enum.EasingStyle>, easingDirection: CastsToEnum<Enum.EasingDirection>): number;
     /**
-     * Calculates a value simulating a critically damped spring.
+     * Smoothly interpolates a value towards a target, simulating a critically damped spring.
      *
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TweenService#SmoothDamp)
      * @param this Used to create `Tweens` which interpolate, or tween, the properties of instances.
-     * @param current The current position.
-     * @param target The target position.
-     * @param velocity The initial velocity at which the current position should approach the target position.
-     * @param smoothTime The duration in which the total smoothing operation should take place.
-     * @param maxSpeed The maximum speed at which the current position should approach the target position.
-     * @param dt The rate at which the smoothing operation should be applied.
-     * @returns The new position and velocity calculated from the smoothing operation.
+     * @param current The current value to smooth.
+     * @param target The target value to reach.
+     * @param velocity The current velocity with which the current value should approach the target value. You shouldn't modify this value between calls yourself, it's used to store the stateful velocity. In most cases, initialize this with `0`, `zero`, `zero`, or `identity` depending on the type, or if needed, with your initial velocity.
+     * @param smoothTime The duration over which the total smoothing operation should take place. Note that since this is a damped spring, there's no guarantee `current` will be exactly `target` after this time, but it will be close. Smaller values result in quicker smoothing.
+     * @param maxSpeed The maximum speed at which the current value should approach the target value. Leaving this nil defaults to `huge`, meaning the velocity isn't clamped.
+     * @param dt The rate at which the smoothing operation should be applied. If left nil, the current engine delta time will be used.
+     * @returns The new value and new velocity calculated from the smoothing operation.
      */
     SmoothDamp<T extends number | Vector2 | Vector3 | CFrame>(this: TweenService, current: T, target: T, velocity: T, smoothTime: number, maxSpeed?: number, dt?: number): LuaTuple<[
         T,
@@ -42633,46 +42739,6 @@ interface UITextSizeConstraint extends UIConstraint {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UITextSizeConstraint#MinTextSize)
      */
     MinTextSize: number;
-}
-/**
- * - **Tags**: NotReplicated, NotBrowsable
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery)
- */
-interface UIContainerQuery extends UIComponent {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_UIContainerQuery: unique symbol;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery#AspectRatioRange)
-     */
-    AspectRatioRange: NumberRange;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery#IsActive)
-     */
-    readonly IsActive: boolean;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery#MaxSize)
-     */
-    MaxSize: Vector2;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery#MinSize)
-     */
-    MinSize: Vector2;
 }
 /**
  * UI modifier which applies deformation to corners of its parent `GuiObject`.
@@ -43581,12 +43647,16 @@ interface UIStroke extends UIComponent {
      */
     ApplyStrokeMode: Enum.ApplyStrokeMode;
     /**
+     * Specifies an additional offset to the stroke's position, relative to the parent's minimum height or width.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIStroke#BorderOffset)
      */
     BorderOffset: UDim;
     /**
+     * Determines the stroke's position on its parent's border.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIStroke#BorderStrokePosition)
@@ -43617,6 +43687,8 @@ interface UIStroke extends UIComponent {
      */
     LineJoinMode: Enum.LineJoinMode;
     /**
+     * Determines whether the stroke's `Thickness` will be measured in pixels or be relative to the parent.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIStroke#StrokeSizingMode)
@@ -43639,6 +43711,8 @@ interface UIStroke extends UIComponent {
      */
     Transparency: number;
     /**
+     * Determines the order in which the stroke renders relative to sibling `UIStroke` instances.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIStroke#ZIndex)
@@ -45964,6 +46038,8 @@ interface Wire extends Instance {
     TargetName: string;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer)
  */
 interface WrapTextureTransfer extends Instance {
