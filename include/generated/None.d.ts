@@ -89,6 +89,7 @@ interface Services {
     ILegacyStudioBridge: ILegacyStudioBridge;
     IncrementalPatchBuilder: IncrementalPatchBuilder;
     InsertService: InsertService;
+    InstanceExtensionsService: InstanceExtensionsService;
     InternalSyncService: InternalSyncService;
     IXPService: IXPService;
     JointsService: JointsService;
@@ -153,6 +154,7 @@ interface Services {
     RomarkService: RomarkService;
     RtMessagingService: RtMessagingService;
     RunService: RunService;
+    RuntimeContentService: RuntimeContentService;
     SafetyService: SafetyService;
     ScriptChangeService: ScriptChangeService;
     ScriptCloneWatcher: ScriptCloneWatcher;
@@ -3964,10 +3966,15 @@ interface AssetService extends Instance {
      */
     CreateEditableMesh(this: AssetService, editableMeshOptions?: object): EditableMesh;
     /**
+     * Creates a Decal instance that uses composite PBR textures created by layering the provided textures in the order they are provided in the `layers` array. Textures layer based on the alpha value of the ColorMap.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#ComposeDecalAsync)
+     * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
+     * @param layers An array of `Dictionary` tables that maps PBR names to ContentID.
+     * @returns A new `Decal` containing the composed texture set.
      */
     ComposeDecalAsync(this: AssetService, layers: Array<unknown>): Decal;
     /**
@@ -5276,6 +5283,8 @@ interface AudioEmitter extends Instance {
      */
     AudioInteractionGroup: string;
     /**
+     * **Deprecated:**
+     *
      * Controls how detailed the audio simulation should be for this `AudioEmitter`.
      *
      * - **ThreadSafety**: ReadSafe
@@ -5888,6 +5897,8 @@ interface AudioListener extends Instance {
      */
     AudioInteractionGroup: string;
     /**
+     * **Deprecated:**
+     *
      * Controls how detailed the audio simulation should be for this `AudioListener`.
      *
      * - **ThreadSafety**: ReadSafe
@@ -6856,8 +6867,6 @@ interface AudioTextToSpeech extends Instance {
 }
 /**
  * Creates a trembling effect on a sound by varying the volume of the sound up and down.
- *
- * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo)
  */
@@ -18773,7 +18782,7 @@ interface TextBox extends GuiObject {
     readonly ReturnPressedFromOnScreenKeyboard: RBXScriptSignal<() => void>;
 }
 /**
- * - **Tags**: NotBrowsable
+ * A GUI object that displays video content from a connected `VideoPlayer`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay)
  */
@@ -18787,12 +18796,16 @@ interface VideoDisplay extends GuiObject {
      */
     readonly _nominal_VideoDisplay: unique symbol;
     /**
+     * Selects the texture resampling mode for the `VideoDisplay`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#ResampleMode)
      */
     ResampleMode: Enum.ResamplerMode;
     /**
+     * Determines how a video will scale if displayed in a UI element whose aspect ratio differs from the source video.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#ScaleType)
@@ -18805,34 +18818,44 @@ interface VideoDisplay extends GuiObject {
      */
     TileSize: UDim2;
     /**
+     * Determines how a rendered video will be colorized.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#VideoColor3)
      */
     VideoColor3: Color3;
     /**
+     * The offset in pixels of the sub-area of a video to be displayed.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#VideoRectOffset)
      */
     VideoRectOffset: Vector2;
     /**
+     * Determines the size in pixels of the sub-area of a video to be displayed.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#VideoRectSize)
      */
     VideoRectSize: Vector2;
     /**
+     * Determines the transparency of the rendered video.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#VideoTransparency)
      */
     VideoTransparency: number;
     /**
+     * Returns an array of `Wires` that are connected to the specified pin.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#GetConnectedWires)
-     * @param this
+     * @param this A GUI object that displays video content from a connected `VideoPlayer`.
      * @param pin
      */
     GetConnectedWires(this: VideoDisplay, pin: string): Array<Instance>;
@@ -18840,17 +18863,19 @@ interface VideoDisplay extends GuiObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#GetInputPins)
-     * @param this
+     * @param this A GUI object that displays video content from a connected `VideoPlayer`.
      */
     GetInputPins(this: VideoDisplay): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#GetOutputPins)
-     * @param this
+     * @param this A GUI object that displays video content from a connected `VideoPlayer`.
      */
     GetOutputPins(this: VideoDisplay): Array<unknown>;
     /**
+     * Fires when another instance is connected to or disconnected from the `VideoDisplay` via a `Wire`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#WiringChanged)
@@ -19174,6 +19199,8 @@ interface BillboardGui extends LayerCollector {
      */
     readonly CurrentDistance: number;
     /**
+     * **Deprecated:**
+     *
      * Determines the distance in studs at which the `BillboardGui` will stop scaling larger in size.
      *
      * - **ThreadSafety**: ReadSafe
@@ -19194,6 +19221,8 @@ interface BillboardGui extends LayerCollector {
      */
     DistanceStep: number;
     /**
+     * **Deprecated:**
+     *
      * Determines the distance in studs at which the `BillboardGui` will stop scaling smaller in size.
      *
      * - **ThreadSafety**: ReadSafe
@@ -24571,6 +24600,21 @@ interface InsertService extends Instance {
     readonly InternalDelete: RBXScriptSignal<(instance: Instance) => void>;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceExtensionsService)
+ */
+interface InstanceExtensionsService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InstanceExtensionsService: unique symbol;
+}
+/**
  * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalSyncItem)
@@ -26733,12 +26777,15 @@ interface MarketplaceService extends Instance {
      */
     GetUserSubscriptionStatusAsync(this: MarketplaceService, user: Player, subscriptionId: string): UserSubscriptionStatus;
     /**
+     * Returns the regionalized price level of a user, representing the recommended price for an item in their regional market.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#GetUsersPriceLevelsAsync)
      * @param this The service responsible for in-experience transactions.
-     * @param userIds
+     * @param userIds An array of user IDs.
+     * @returns Returns an array of `PriceLevelInfo` objects with a dictionary where the keys are user IDs (strings) and their values are the corresponding price levels (integers between 1 and 1000).
      */
     GetUsersPriceLevelsAsync(this: MarketplaceService, userIds: Array<unknown>): Array<unknown>;
     /**
@@ -29916,6 +29963,8 @@ interface MeshPart extends TriangleMeshPart {
      */
     get DoubleSided(): boolean;
     /**
+     * **Deprecated:**
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
      *
@@ -29932,6 +29981,8 @@ interface MeshPart extends TriangleMeshPart {
      */
     get HasSkinnedMesh(): boolean;
     /**
+     * **Deprecated:**
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
      *
@@ -31605,7 +31656,7 @@ interface Workspace extends WorldRoot {
     readonly PersistentLoaded: RBXScriptSignal<(player: Player) => void>;
 }
 /**
- * Provides some physics features to a `ViewportFrame`.
+ * Extends limited physics for its children on to a parent `ViewportFrame`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldModel)
  */
@@ -34412,7 +34463,7 @@ interface Players extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Players#PlayerRemoving)
      */
-    readonly PlayerRemoving: RBXScriptSignal<(player: Player) => void>;
+    readonly PlayerRemoving: RBXScriptSignal<(player: Player, reason: Enum.PlayerExitReason) => void>;
     /**
      * Fires when the game server recognizes that the user's status for a certain subscription has changed.
      *
@@ -35823,6 +35874,13 @@ interface RunService extends Instance {
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#PredictionState)
+     */
+    readonly PredictionState: Enum.PredictionState;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#ServerFrame)
      */
     readonly ServerFrame: number;
@@ -35913,6 +35971,12 @@ interface RunService extends Instance {
      */
     readonly Heartbeat: RBXScriptSignal<(deltaTime: number) => void>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#Misprediction)
+     */
+    readonly Misprediction: RBXScriptSignal<(remoteWorldStepId: number, mispredictedInstances: Array<unknown>) => void>;
+    /**
      * Fires every frame, after the physics simulation has completed.
      *
      * - **ThreadSafety**: Unsafe
@@ -35960,6 +36024,39 @@ interface RunService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#Stepped)
      */
     readonly Stepped: RBXScriptSignal<(time: number, deltaTime: number) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RuntimeContentService)
+ */
+interface RuntimeContentService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RuntimeContentService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RuntimeContentService#RuntimeContentFail)
+     */
+    readonly RuntimeContentFail: RBXScriptSignal<(id: string) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RuntimeContentService#RuntimeContentQuery)
+     */
+    readonly RuntimeContentQuery: RBXScriptSignal<(id: string, content: string) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RuntimeContentService#RuntimeContentShare)
+     */
+    readonly RuntimeContentShare: RBXScriptSignal<(id: string, content: string) => void>;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -37441,10 +37538,13 @@ interface SocialService extends Instance {
      */
     GetPartyAsync(this: SocialService, partyId: string): Array<unknown>;
     /**
+     * Prompts the player to submit feedback about the current experience.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#PromptFeedbackSubmissionAsync)
+     * @param this Facilitates social functions that impact relationships made on the Roblox platform.
      */
     PromptFeedbackSubmissionAsync(this: SocialService): void;
     /**
@@ -37453,8 +37553,13 @@ interface SocialService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#PromptLinkSharing)
      * @param this Facilitates social functions that impact relationships made on the Roblox platform.
-     * @param player
-     * @param options
+     * @param player Prompts the given `Player` with a Roblox platform-level share sheet with a generated share link.
+     * @param options `Dictionary` that specifies the configuration for the generated link. It includes the following optional key-value pairs: - `FallbackLinkId` (string). Determines how this share link will   direct player to once expired. Default to experience join link.
+     * - `ExpirationSeconds` (number). Determines time to expiration once the   share link is created. Truncates to nearest integer. Defaults to   86,400.
+     * - `PreviewTitle` (string) Preview title of the share link.
+     * - `PreiviewDescription` (string) Preview description of the share   link.
+     * - `PreviewAssettId` (number) Image asset ID used for share link   preview.
+     * - `LaunchData` (string). Used to set a parameter in   `Player:GetJoinData()` when a player joined using the   generated share link.
      */
     PromptLinkSharing(this: SocialService, player: Player, options?: object): unknown;
     /**
@@ -45409,7 +45514,7 @@ interface VideoDeviceInput extends Instance {
     readonly IsReady: boolean;
 }
 /**
- * - **Tags**: NotBrowsable
+ * Used to play video assets.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer)
  */
@@ -45423,6 +45528,8 @@ interface VideoPlayer extends Instance {
      */
     readonly _nominal_VideoPlayer: unique symbol;
     /**
+     * Indicates when the `VideoContent` has loaded and is ready to play.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -45430,6 +45537,8 @@ interface VideoPlayer extends Instance {
      */
     readonly IsLoaded: boolean;
     /**
+     * Denotes whether this `VideoPlayer` is currently playing.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -45437,18 +45546,24 @@ interface VideoPlayer extends Instance {
      */
     readonly IsPlaying: boolean;
     /**
+     * Controls whether this `VideoPlayer` loops.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Looping)
      */
     Looping: boolean;
     /**
+     * Controls the speed at which the video is played.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#PlaybackSpeed)
      */
     PlaybackSpeed: number;
     /**
+     * Gets the original source resolution of the `VideoContent` file.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -45456,6 +45571,8 @@ interface VideoPlayer extends Instance {
      */
     readonly Resolution: Vector2;
     /**
+     * Indicates the length of the `VideoContent` in seconds.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -45463,28 +45580,36 @@ interface VideoPlayer extends Instance {
      */
     readonly TimeLength: number;
     /**
+     * Indicates the progress in seconds of the `VideoContent`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#TimePosition)
      */
     TimePosition: number;
     /**
+     * The asset to be loaded into the `VideoPlayer`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#VideoContent)
      */
     VideoContent: Content;
     /**
+     * Controls how loudly the audio track will be played.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Volume)
      */
     Volume: number;
     /**
+     * Returns an array of `Wires` that are connected to the specified pin.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#GetConnectedWires)
-     * @param this
+     * @param this Used to play video assets.
      * @param pin
      */
     GetConnectedWires(this: VideoPlayer, pin: string): Array<Instance>;
@@ -45492,52 +45617,64 @@ interface VideoPlayer extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#GetInputPins)
-     * @param this
+     * @param this Used to play video assets.
      */
     GetInputPins(this: VideoPlayer): Array<unknown>;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#GetOutputPins)
-     * @param this
+     * @param this Used to play video assets.
      */
     GetOutputPins(this: VideoPlayer): Array<unknown>;
     /**
+     * Pauses the `VideoPlayer` wherever its `TimePosition` is.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Pause)
-     * @param this
+     * @param this Used to play video assets.
      */
     Pause(this: VideoPlayer): void;
     /**
+     * Plays the `VideoPlayer` from wherever its `TimePosition` is.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Play)
-     * @param this
+     * @param this Used to play video assets.
      */
     Play(this: VideoPlayer): void;
     /**
+     * Unloads the `VideoPlayer.VideoContent` to save resources.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Unload)
-     * @param this
+     * @param this Used to play video assets.
      */
     Unload(this: VideoPlayer): void;
     /**
+     * Loads the `VideoContent` before it is played.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#LoadAsync)
-     * @param this
+     * @param this Used to play video assets.
      */
     LoadAsync(this: VideoPlayer): Enum.AssetFetchStatus;
     /**
+     * Fires when the `VideoContent` has completed playback and stopped.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#DidEnd)
      */
     readonly DidEnd: RBXScriptSignal<() => void>;
     /**
+     * Fires when the `VideoContent` loops.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#DidLoop)
@@ -45550,6 +45687,8 @@ interface VideoPlayer extends Instance {
      */
     readonly PlayFailed: RBXScriptSignal<(error: Enum.AssetFetchStatus) => void>;
     /**
+     * Fires when another instance is connected to or disconnected from the `VideoPlayer` via a `Wire`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#WiringChanged)
@@ -46038,7 +46177,7 @@ interface Wire extends Instance {
     TargetName: string;
 }
 /**
- * - **Tags**: NotBrowsable
+ * `WrapTextureTransfer` allows a parent `Decal` to be wrapped around its parent `MeshPart` based on the cage of its `WrapTarget`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer)
  */
@@ -46052,18 +46191,24 @@ interface WrapTextureTransfer extends Instance {
      */
     readonly _nominal_WrapTextureTransfer: unique symbol;
     /**
+     * An optional reference mesh used for pruning and validating the target cage.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer#ReferenceCageMeshContent)
      */
     ReferenceCageMeshContent: Content;
     /**
+     * Determines the maximum bound of the UV space to include in the transfer.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer#UVMaxBound)
      */
     UVMaxBound: Vector2;
     /**
+     * Determines the minimum bound of the UV space to include in the transfer.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer#UVMinBound)
