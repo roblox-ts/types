@@ -730,9 +730,12 @@ interface MemoryStoreSortedMap extends Instance {
 	UpdateAsync<T>(
 		this: MemoryStoreSortedMap,
 		key: string,
-		transformFunction: (value: unknown) => T,
+		transformFunction: (
+			value: unknown,
+			sortKey?: string | number,
+		) => LuaTuple<[value: T, sortKey?: string | number]> | undefined,
 		expiration: number,
-	): T;
+	): LuaTuple<[value?: T, sortKey?: string | number]>;
 	SetAsync(
 		this: MemoryStoreSortedMap,
 		key: string,
