@@ -7681,6 +7681,87 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#ConnectErrors)
+         */
+        export interface ConnectErrors extends globalThis.EnumItem {
+            Name: "ConnectErrors";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const ConnectErrors: ConnectErrors;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#AlreadyConnected)
+         */
+        export interface AlreadyConnected extends globalThis.EnumItem {
+            Name: "AlreadyConnected";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const AlreadyConnected: AlreadyConnected;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#NoFreeIncomingConnections)
+         */
+        export interface NoFreeIncomingConnections extends globalThis.EnumItem {
+            Name: "NoFreeIncomingConnections";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const NoFreeIncomingConnections: NoFreeIncomingConnections;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#ConnectionBanned)
+         */
+        export interface ConnectionBanned extends globalThis.EnumItem {
+            Name: "ConnectionBanned";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const ConnectionBanned: ConnectionBanned;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#InvalidPassword)
+         */
+        export interface InvalidPassword extends globalThis.EnumItem {
+            Name: "InvalidPassword";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const InvalidPassword: InvalidPassword;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#IncompatibleProtocolVersion)
+         */
+        export interface IncompatibleProtocolVersion extends globalThis.EnumItem {
+            Name: "IncompatibleProtocolVersion";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const IncompatibleProtocolVersion: IncompatibleProtocolVersion;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#IPRecentlyConnected)
+         */
+        export interface IPRecentlyConnected extends globalThis.EnumItem {
+            Name: "IPRecentlyConnected";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const IPRecentlyConnected: IPRecentlyConnected;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#OurSystemRequiresSecurity)
+         */
+        export interface OurSystemRequiresSecurity extends globalThis.EnumItem {
+            Name: "OurSystemRequiresSecurity";
+            Value: 9;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const OurSystemRequiresSecurity: OurSystemRequiresSecurity;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#SecurityKeyMismatch)
+         */
+        export interface SecurityKeyMismatch extends globalThis.EnumItem {
+            Name: "SecurityKeyMismatch";
+            Value: 10;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const SecurityKeyMismatch: SecurityKeyMismatch;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectErrors)
          */
         export interface DisconnectErrors extends globalThis.EnumItem {
@@ -8131,6 +8212,15 @@ declare namespace Enum {
         }
         export const ScreentimeLockoutKick: ScreentimeLockoutKick;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectionNotification)
+         */
+        export interface DisconnectionNotification extends globalThis.EnumItem {
+            Name: "DisconnectionNotification";
+            Value: 308;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectionNotification: DisconnectionNotification;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PlacelaunchErrors)
          */
         export interface PlacelaunchErrors extends globalThis.EnumItem {
@@ -8359,7 +8449,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConnectionError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConnectionError | undefined;
     }
-    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.ConnectErrors | ConnectionError.AlreadyConnected | ConnectionError.NoFreeIncomingConnections | ConnectionError.ConnectionBanned | ConnectionError.InvalidPassword | ConnectionError.IncompatibleProtocolVersion | ConnectionError.IPRecentlyConnected | ConnectionError.OurSystemRequiresSecurity | ConnectionError.SecurityKeyMismatch | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.DisconnectionNotification | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
     /**
      * Used to determine the connection state of the client to the game server.
      *
@@ -8432,11 +8522,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.ContentSourceType;
         }
         export const Object: Object;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContentSourceType#Opaque)
+         */
+        export interface Opaque extends globalThis.EnumItem {
+            Name: "Opaque";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.ContentSourceType;
+        }
+        export const Opaque: Opaque;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ContentSourceType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ContentSourceType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ContentSourceType | undefined;
     }
-    export type ContentSourceType = ContentSourceType.None | ContentSourceType.Uri | ContentSourceType.Object;
+    export type ContentSourceType = ContentSourceType.None | ContentSourceType.Uri | ContentSourceType.Object | ContentSourceType.Opaque;
     /**
      * Describes the priority of a context action.
      *
@@ -9724,6 +9823,8 @@ declare namespace Enum {
         }
         export const PhysicsCollision: PhysicsCollision;
         /**
+         * 3D parts used for simulation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeveloperMemoryTag#BaseParts)
          */
         export interface BaseParts extends globalThis.EnumItem {
@@ -22257,6 +22358,8 @@ declare namespace Enum {
         }
         export const Grid8x8: Grid8x8;
         /**
+         * A custom grid size defined by `FlipbookSizeX` and `FlipbookSizeY`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookLayout#Custom)
          */
         export interface Custom extends globalThis.EnumItem {
@@ -23420,6 +23523,42 @@ declare namespace Enum {
     }
     export type PlayerDataLoadFailureBehavior = PlayerDataLoadFailureBehavior.Failure | PlayerDataLoadFailureBehavior.FallbackToDefault | PlayerDataLoadFailureBehavior.Kick;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerExitReason)
+     */
+    export namespace PlayerExitReason {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerExitReason#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PlayerExitReason;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerExitReason#PlatformKick)
+         */
+        export interface PlatformKick extends globalThis.EnumItem {
+            Name: "PlatformKick";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PlayerExitReason;
+        }
+        export const PlatformKick: PlatformKick;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerExitReason#CreatorKick)
+         */
+        export interface CreatorKick extends globalThis.EnumItem {
+            Name: "CreatorKick";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PlayerExitReason;
+        }
+        export const CreatorKick: CreatorKick;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PlayerExitReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PlayerExitReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlayerExitReason | undefined;
+    }
+    export type PlayerExitReason = PlayerExitReason.Unknown | PlayerExitReason.PlatformKick | PlayerExitReason.CreatorKick;
+    /**
      * Used exclusively by Pose.EasingDirection to specify direction of the EasingStyle curve.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PoseEasingDirection)
@@ -23608,6 +23747,51 @@ declare namespace Enum {
     }
     export type PredictionMode = PredictionMode.Automatic | PredictionMode.On | PredictionMode.Off;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionState)
+     */
+    export namespace PredictionState {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionState#Idle)
+         */
+        export interface Idle extends globalThis.EnumItem {
+            Name: "Idle";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PredictionState;
+        }
+        export const Idle: Idle;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionState#Simulating)
+         */
+        export interface Simulating extends globalThis.EnumItem {
+            Name: "Simulating";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PredictionState;
+        }
+        export const Simulating: Simulating;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionState#RollingBack)
+         */
+        export interface RollingBack extends globalThis.EnumItem {
+            Name: "RollingBack";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PredictionState;
+        }
+        export const RollingBack: RollingBack;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionState#Resimulating)
+         */
+        export interface Resimulating extends globalThis.EnumItem {
+            Name: "Resimulating";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.PredictionState;
+        }
+        export const Resimulating: Resimulating;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PredictionState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PredictionState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PredictionState | undefined;
+    }
+    export type PredictionState = PredictionState.Idle | PredictionState.Simulating | PredictionState.RollingBack | PredictionState.Resimulating;
+    /**
      * This enum is used with `UserInputService.PreferredInput` to indicate the primary input type a player is likely using.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput)
@@ -23636,7 +23820,7 @@ declare namespace Enum {
         }
         export const Gamepad: Gamepad;
         /**
-         * The player's device has touch capability and no other input method is available or connected.
+         * The player's device has touch capability and no other input method is available or was recently interacted with.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#Touch)
          */

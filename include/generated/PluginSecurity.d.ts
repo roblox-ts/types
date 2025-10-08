@@ -92,6 +92,7 @@ interface Services {
     ILegacyStudioBridge: ILegacyStudioBridge;
     IncrementalPatchBuilder: IncrementalPatchBuilder;
     InsertService: InsertService;
+    InstanceExtensionsService: InstanceExtensionsService;
     InternalSyncService: InternalSyncService;
     IXPService: IXPService;
     JointsService: JointsService;
@@ -164,6 +165,7 @@ interface Services {
     RomarkService: RomarkService;
     RtMessagingService: RtMessagingService;
     RunService: RunService;
+    RuntimeContentService: RuntimeContentService;
     SafetyService: SafetyService;
     ScriptChangeService: ScriptChangeService;
     ScriptCloneWatcher: ScriptCloneWatcher;
@@ -1916,8 +1918,6 @@ interface AudioTextToSpeech extends Instance {
 }
 /**
  * Creates a trembling effect on a sound by varying the volume of the sound up and down.
- *
- * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo)
  */
@@ -5993,7 +5993,7 @@ interface TextBox extends GuiObject {
     readonly _nominal_TextBox: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
+ * A GUI object that displays video content from a connected `VideoPlayer`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay)
  */
@@ -7045,6 +7045,21 @@ interface InsertService extends Instance {
      * @deprecated
      */
     readonly _nominal_InsertService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceExtensionsService)
+ */
+interface InstanceExtensionsService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InstanceExtensionsService: unique symbol;
 }
 /**
  * - **Tags**: NotReplicated
@@ -9179,7 +9194,7 @@ interface Workspace extends WorldRoot {
     ZoomToExtents(this: Workspace): void;
 }
 /**
- * Provides some physics features to a `ViewportFrame`.
+ * Extends limited physics for its children on to a parent `ViewportFrame`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldModel)
  */
@@ -11206,6 +11221,21 @@ interface RunService extends Instance {
      * @param this Service responsible for all runtime activity and progression of time.
      */
     Stop(this: RunService): void;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RuntimeContentService)
+ */
+interface RuntimeContentService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RuntimeContentService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -14975,7 +15005,7 @@ interface VideoDeviceInput extends Instance {
     readonly _nominal_VideoDeviceInput: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
+ * Used to play video assets.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer)
  */
@@ -15194,7 +15224,7 @@ interface Wire extends Instance {
     readonly _nominal_Wire: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
+ * `WrapTextureTransfer` allows a parent `Decal` to be wrapped around its parent `MeshPart` based on the cage of its `WrapTarget`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer)
  */
