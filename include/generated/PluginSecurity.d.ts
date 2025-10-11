@@ -33,6 +33,7 @@ interface Services {
     CalloutService: CalloutService;
     CaptureService: CaptureService;
     ChangeHistoryService: ChangeHistoryService;
+    ChangeHistoryStreamingService: ChangeHistoryStreamingService;
     Chat: Chat;
     ChatbotUIService: ChatbotUIService;
     CloudCRUDService: CloudCRUDService;
@@ -91,6 +92,7 @@ interface Services {
     ILegacyStudioBridge: ILegacyStudioBridge;
     IncrementalPatchBuilder: IncrementalPatchBuilder;
     InsertService: InsertService;
+    InstanceExtensionsService: InstanceExtensionsService;
     InternalSyncService: InternalSyncService;
     IXPService: IXPService;
     JointsService: JointsService;
@@ -150,6 +152,7 @@ interface Services {
     PublishService: PublishService;
     RecommendationService: RecommendationService;
     ReflectionService: ReflectionService;
+    RemoteCommandService: RemoteCommandService;
     RemoteCursorService: RemoteCursorService;
     RemoteDebuggerServer: RemoteDebuggerServer;
     RenderSettings: RenderSettings;
@@ -162,6 +165,7 @@ interface Services {
     RomarkService: RomarkService;
     RtMessagingService: RtMessagingService;
     RunService: RunService;
+    RuntimeContentService: RuntimeContentService;
     SafetyService: SafetyService;
     ScriptChangeService: ScriptChangeService;
     ScriptCloneWatcher: ScriptCloneWatcher;
@@ -186,6 +190,7 @@ interface Services {
     SnippetService: SnippetService;
     SocialService: SocialService;
     SoundService: SoundService;
+    SoundShimService: SoundShimService;
     StarterGui: StarterGui;
     StarterPack: StarterPack;
     StarterPlayer: StarterPlayer;
@@ -288,6 +293,7 @@ interface CreatableInstances {
     AudioSearchParams: AudioSearchParams;
     AudioSpeechToText: AudioSpeechToText;
     AudioTextToSpeech: AudioTextToSpeech;
+    AudioTremolo: AudioTremolo;
     AuroraScript: AuroraScript;
     AvatarAccessoryRules: AvatarAccessoryRules;
     AvatarAnimationRules: AvatarAnimationRules;
@@ -480,6 +486,7 @@ interface CreatableInstances {
     StudioCallout: StudioCallout;
     StyleDerive: StyleDerive;
     StyleLink: StyleLink;
+    StyleQuery: StyleQuery;
     StyleRule: StyleRule;
     StyleSheet: StyleSheet;
     SunRaysEffect: SunRaysEffect;
@@ -497,6 +504,7 @@ interface CreatableInstances {
     TextChannel: TextChannel;
     TextChatCommand: TextChatCommand;
     TextChatMessageProperties: TextChatMessageProperties;
+    TextGenerator: TextGenerator;
     TextLabel: TextLabel;
     Texture: Texture;
     Tool: Tool;
@@ -507,7 +515,6 @@ interface CreatableInstances {
     TremoloSoundEffect: TremoloSoundEffect;
     TrussPart: TrussPart;
     UIAspectRatioConstraint: UIAspectRatioConstraint;
-    UIContainerQuery: UIContainerQuery;
     UICorner: UICorner;
     UIDragDetector: UIDragDetector;
     UIFlexItem: UIFlexItem;
@@ -754,6 +761,7 @@ interface Objects extends Instances {
     ConfigSnapshot: ConfigSnapshot;
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
+    ExecutedRemoteCommand: ExecutedRemoteCommand;
     MLSession: MLSession;
     Object: RBXObject;
     ScreenshotCapture: ScreenshotCapture;
@@ -875,6 +883,21 @@ interface EditableMesh extends RBXObject {
      * @deprecated
      */
     readonly _nominal_EditableMesh: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExecutedRemoteCommand)
+ */
+interface ExecutedRemoteCommand extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ExecutedRemoteCommand: unique symbol;
 }
 /**
  * `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
@@ -1485,7 +1508,7 @@ interface Atmosphere extends Instance {
     readonly _nominal_Atmosphere: unique symbol;
 }
 /**
- * Defines a point and orientation relative to a parent `BasePart`, `Bone`, or another `Attachment`.
+ * Defines a point and orientation relative to an ancestor `PVInstance`, `Bone`, or another `Attachment`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Attachment)
  */
@@ -1862,6 +1885,8 @@ interface AudioSearchParams extends Instance {
     readonly _nominal_AudioSearchParams: unique symbol;
 }
 /**
+ * Converts spoken audio into text.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSpeechToText)
@@ -1890,6 +1915,21 @@ interface AudioTextToSpeech extends Instance {
      * @deprecated
      */
     readonly _nominal_AudioTextToSpeech: unique symbol;
+}
+/**
+ * Creates a trembling effect on a sound by varying the volume of the sound up and down.
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo)
+ */
+interface AudioTremolo extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioTremolo: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable
@@ -2973,6 +3013,21 @@ interface ChangeHistoryService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#OnUndo)
      */
     readonly OnUndo: RBXScriptSignal<(waypoint: string) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryStreamingService)
+ */
+interface ChangeHistoryStreamingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ChangeHistoryStreamingService: unique symbol;
 }
 /**
  * The base class for objects that change the character's appearance, such as the `BodyColors`, `CharacterMesh`, `ShirtGraphic`, `Pants` and `Shirt` objects.
@@ -5938,7 +5993,7 @@ interface TextBox extends GuiObject {
     readonly _nominal_TextBox: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
+ * A GUI object that displays video content from a connected `VideoPlayer`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay)
  */
@@ -6560,7 +6615,7 @@ interface Path2D extends GuiBase {
     readonly _nominal_Path2D: unique symbol;
 }
 /**
- * Allows developers to control what `GuiObject` is currently being selected by the gamepad navigator, as well as check if Roblox's main menu is currently open.
+ * Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -6990,6 +7045,21 @@ interface InsertService extends Instance {
      * @deprecated
      */
     readonly _nominal_InsertService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceExtensionsService)
+ */
+interface InstanceExtensionsService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InstanceExtensionsService: unique symbol;
 }
 /**
  * - **Tags**: NotReplicated
@@ -7951,6 +8021,12 @@ interface MaterialVariant extends Instance {
      */
     ColorMapContent: Content;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialVariant#EmissiveMaskContent)
+     */
+    EmissiveMaskContent: Content;
+    /**
      * Determines which parts of the surface are metal and are non-metal.
      *
      * - **ThreadSafety**: ReadSafe
@@ -8528,7 +8604,7 @@ interface OperationGraph extends Instance {
     readonly _nominal_OperationGraph: unique symbol;
 }
 /**
- * Abstract class for all objects that have a physical location in the world, specifically `BaseParts` and `Models`.
+ * Abstract class for all objects that have a physical location in the world.
  *
  * - **Tags**: NotCreatable, NotBrowsable
  *
@@ -9118,7 +9194,7 @@ interface Workspace extends WorldRoot {
     ZoomToExtents(this: Workspace): void;
 }
 /**
- * Provides some physics features to a `ViewportFrame`.
+ * Extends limited physics for its children on to a parent `ViewportFrame`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldModel)
  */
@@ -10092,14 +10168,19 @@ interface Plugin extends Instance {
      */
     Negate(this: Plugin, objects: Array<Instance>): Array<Instance>;
     /**
+     * **Deprecated:**
+     *
      * Used to open the given script instance in an editor window, in Roblox studio, at the given line. If no line is given as an argument it will default to 1.
      *
      * - **ThreadSafety**: Unsafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#OpenScript)
      * @param this
      * @param script
      * @param lineNumber
+     *
+     * @deprecated
      */
     OpenScript(this: Plugin, script: LuaSourceContainer, lineNumber?: number): void;
     /**
@@ -10825,6 +10906,21 @@ interface ReflectionService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCommandService)
+ */
+interface RemoteCommandService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RemoteCommandService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCursorService)
  */
 interface RemoteCursorService extends Instance {
@@ -11125,6 +11221,21 @@ interface RunService extends Instance {
      * @param this Service responsible for all runtime activity and progression of time.
      */
     Stop(this: RunService): void;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RuntimeContentService)
+ */
+interface RuntimeContentService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RuntimeContentService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -12497,6 +12608,21 @@ interface SoundService extends Instance {
     OpenDirectionalCurveEditor(this: SoundService, selectedCurveObjects: Array<Instance>): void;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundShimService)
+ */
+interface SoundShimService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SoundShimService: unique symbol;
+}
+/**
  * A particle emitter with the visual aesthetic of sparkles.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sparkles)
@@ -13184,6 +13310,21 @@ interface StyleLink extends Instance {
     readonly _nominal_StyleLink: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated, NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery)
+ */
+interface StyleQuery extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StyleQuery: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StylingService)
@@ -13227,6 +13368,12 @@ interface SurfaceAppearance extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#ColorMapContent)
      */
     set ColorMapContent(value: Content);
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#EmissiveMaskContent)
+     */
+    set EmissiveMaskContent(value: Content);
     /**
      * Determines which parts of the surface are metal or non-metal.
      *
@@ -13506,6 +13653,12 @@ interface TerrainDetail extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#ColorMapContent)
      */
     ColorMapContent: Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainDetail#EmissiveMaskContent)
+     */
+    EmissiveMaskContent: Content;
     /**
      * Determines which parts of the surface are metal and are non-metal.
      *
@@ -13861,6 +14014,21 @@ interface TextFilterTranslatedResult extends Instance {
      * @deprecated
      */
     readonly _nominal_TextFilterTranslatedResult: unique symbol;
+}
+/**
+ * Gives access to a large language model for text generation.
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator)
+ */
+interface TextGenerator extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TextGenerator: unique symbol;
 }
 /**
  * The TextService is a service internally responsible for handling the display of text in the game.
@@ -14239,21 +14407,6 @@ interface UITextSizeConstraint extends UIConstraint {
      * @deprecated
      */
     readonly _nominal_UITextSizeConstraint: unique symbol;
-}
-/**
- * - **Tags**: NotReplicated, NotBrowsable
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIContainerQuery)
- */
-interface UIContainerQuery extends UIComponent {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_UIContainerQuery: unique symbol;
 }
 /**
  * UI modifier which applies deformation to corners of its parent `GuiObject`.
@@ -14852,7 +15005,7 @@ interface VideoDeviceInput extends Instance {
     readonly _nominal_VideoDeviceInput: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
+ * Used to play video assets.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer)
  */
@@ -15071,6 +15224,8 @@ interface Wire extends Instance {
     readonly _nominal_Wire: unique symbol;
 }
 /**
+ * `WrapTextureTransfer` allows a parent `Decal` to be wrapped around its parent `MeshPart` based on the cage of its `WrapTarget`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer)
  */
 interface WrapTextureTransfer extends Instance {
@@ -15159,6 +15314,8 @@ interface TerrainWriteOperation extends RBXObject {
     readonly _nominal_TerrainWriteOperation: unique symbol;
 }
 /**
+ * Maintains a streaming connection.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient)
