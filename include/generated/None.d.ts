@@ -60,7 +60,6 @@ interface Services {
     DraggerService: DraggerService;
     EditableService: EditableService;
     EventIngestService: EventIngestService;
-    ExampleService: ExampleService;
     ExampleV2Service: ExampleV2Service;
     ExperienceAuthService: ExperienceAuthService;
     ExperienceNotificationService: ExperienceNotificationService;
@@ -511,6 +510,7 @@ interface CreatableInstances {
     UnionOperation: UnionOperation;
     UniversalConstraint: UniversalConstraint;
     UnreliableRemoteEvent: UnreliableRemoteEvent;
+    ValueCurve: ValueCurve;
     Vector3Curve: Vector3Curve;
     Vector3Value: Vector3Value;
     VectorForce: VectorForce;
@@ -8139,6 +8139,12 @@ interface MaterialImportData extends BaseImportData {
     DiffuseFilePath: string;
     /**
      * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialImportData#EmissiveFilePath)
+     */
+    EmissiveFilePath: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialImportData#IsPbr)
@@ -9948,6 +9954,20 @@ interface CaptureService extends Instance {
      * @param captureParams
      */
     TakeCapture(this: CaptureService, onCaptureReady: Callback, captureParams?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#InternalCheckPlayabilityAsync)
+     */
+    InternalCheckPlayabilityAsync(this: CaptureService, universeId: number): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#InternalGetStartPlaceIdAsync)
+     */
+    InternalGetStartPlaceIdAsync(this: CaptureService, universeId: number): number;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -12215,7 +12235,7 @@ interface PlaneConstraint extends Constraint {
 /**
  * **Deprecated:**
  *
- * Constrains Attachment0 and Attachment1 such that both points lie in an plane with origin at Attachment0's position and unit normal vector equal to Attachment0's primary axis.
+ * Constrains Attachment0 and Attachment1 such that both points lie in a plane with origin at Attachment0's position and unit normal vector equal to Attachment0's primary axis.
  *
  * - **Tags**:
  *
@@ -15163,21 +15183,6 @@ interface EventIngestService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExampleService)
- */
-interface ExampleService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ExampleService: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExampleV2Service)
  */
 interface ExampleV2Service extends Instance {
@@ -15630,6 +15635,8 @@ interface Decal extends FaceInstance {
      */
     Texture: ContentId;
     /**
+     * The texture content displayed by the Decal. Supports [asset URIs](../../../projects/assets/index.md#asset-uris) and `EditableImage` objects.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#TextureContent)
@@ -19564,7 +19571,7 @@ interface GuiBase3d extends GuiBase {
      */
     readonly _nominal_GuiBase3d: unique symbol;
     /**
-     * Sets the color of a GUI object.
+     * Sets the color of this `GuiBase3d` object.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -19572,7 +19579,7 @@ interface GuiBase3d extends GuiBase {
      */
     Color3: Color3;
     /**
-     * Sets the transparency of a GUI object, where 1 is invisible and 0 is completely visible.
+     * Sets the transparency of this `GuiBase3d` object.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -19580,7 +19587,7 @@ interface GuiBase3d extends GuiBase {
      */
     Transparency: number;
     /**
-     * Determines whether the object and its descendants will be displayed.
+     * Determines whether this `GuiBase3d` object and its descendants will be displayed.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -19751,7 +19758,7 @@ interface SelectionBox extends InstanceAdornment {
     SurfaceTransparency: number;
 }
 /**
- * The PVAdornment class is an abstract class of which the inheritors can be adorned to objects of the PVInstance class.
+ * An abstract class of which the inheritors can be adorned to objects of the `PVInstance` class.
  *
  * - **Tags**: NotCreatable
  *
@@ -19767,7 +19774,7 @@ interface PVAdornment extends GuiBase3d {
      */
     readonly _nominal_PVAdornment: unique symbol;
     /**
-     * The `PVInstance` the PVAdornment is attached to.
+     * The `PVInstance` which this `PVAdornment` is attached to.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -19776,7 +19783,7 @@ interface PVAdornment extends GuiBase3d {
     Adornee: PVInstance | undefined;
 }
 /**
- * HandleAdornment is an abstract class inherited by 3D handle adornments.
+ * An abstract class inherited by 3D handle adornments.
  *
  * - **Tags**: NotCreatable
  *
@@ -19800,7 +19807,7 @@ interface HandleAdornment extends PVAdornment {
      */
     AdornCullingMode: Enum.AdornCullingMode;
     /**
-     * Forces this object to render on top of all 3D objects in the workspace.
+     * Forces this adornment to render on top of all 3D objects in the workspace.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -19824,7 +19831,7 @@ interface HandleAdornment extends PVAdornment {
      */
     SizeRelativeOffset: Vector3;
     /**
-     * Determines the draw order of the `HandleAdornment`.
+     * Determines the draw order of this `HandleAdornment` when `AlwaysOnTop` is `true`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -19832,7 +19839,7 @@ interface HandleAdornment extends PVAdornment {
      */
     ZIndex: number;
     /**
-     * Fires when a user presses down on their left mouse button while hovering over the adornment.
+     * Fires when a player presses down on their left mouse button while hovering over the adornment.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -19840,7 +19847,7 @@ interface HandleAdornment extends PVAdornment {
      */
     readonly MouseButton1Down: RBXScriptSignal<() => void>;
     /**
-     * Fires when a user releases their left mouse button while hovering over the adornment.
+     * Fires when a player releases their left mouse button while hovering over the adornment.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -19848,7 +19855,7 @@ interface HandleAdornment extends PVAdornment {
      */
     readonly MouseButton1Up: RBXScriptSignal<() => void>;
     /**
-     * Fires when a user moves their mouse over the adornment.
+     * Fires when a player moves their mouse over the adornment.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -19856,7 +19863,7 @@ interface HandleAdornment extends PVAdornment {
      */
     readonly MouseEnter: RBXScriptSignal<() => void>;
     /**
-     * Fires when a user moves their mouse out of the adornment.
+     * Fires when a player moves their mouse out of the adornment.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -20081,6 +20088,8 @@ interface SphereHandleAdornment extends HandleAdornment {
     Shading: Enum.AdornShading;
 }
 /**
+ * Renders a wireframe adornment consisting of one or more lines onto a `BasePart` (including `Terrain`) or into the `Workspace`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WireframeHandleAdornment)
  */
 interface WireframeHandleAdornment extends HandleAdornment {
@@ -20093,58 +20102,72 @@ interface WireframeHandleAdornment extends HandleAdornment {
      */
     readonly _nominal_WireframeHandleAdornment: unique symbol;
     /**
+     * The **XYZ** scale of the wireframe adornment.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WireframeHandleAdornment#Scale)
      */
     Scale: Vector3;
     /**
+     * Thickness of the wireframe adornment's lines in pixels.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WireframeHandleAdornment#Thickness)
      */
     Thickness: number;
     /**
+     * Adds a line to the wireframe adornment from a starting point to an ending point relative to the center of the `Adornee`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WireframeHandleAdornment#AddLine)
-     * @param this
-     * @param from
-     * @param to
+     * @param this Renders a wireframe adornment consisting of one or more lines onto a `BasePart` (including `Terrain`) or into the `Workspace`.
+     * @param from Starting point of the line.
+     * @param to Ending point of the line.
      */
     AddLine(this: WireframeHandleAdornment, from: Vector3, to: Vector3): void;
     /**
+     * Adds one or more lines to the wireframe adornment using an array.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WireframeHandleAdornment#AddLines)
-     * @param this
-     * @param points
+     * @param this Renders a wireframe adornment consisting of one or more lines onto a `BasePart` (including `Terrain`) or into the `Workspace`.
+     * @param points Array of `Vector3` points in which each pair acts as a starting point and ending point for a line.
      */
     AddLines(this: WireframeHandleAdornment, points: Array<unknown>): void;
     /**
+     * Adds multiple line segments to the wireframe adornment in a sequence from point to point.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WireframeHandleAdornment#AddPath)
-     * @param this
-     * @param points
-     * @param loop
+     * @param this Renders a wireframe adornment consisting of one or more lines onto a `BasePart` (including `Terrain`) or into the `Workspace`.
+     * @param points Array of `Vector3` points to connect in sequence with line segments.
+     * @param loop Whether the path is closed by connecting its ending point to its starting point with an additional line.
      */
     AddPath(this: WireframeHandleAdornment, points: Array<unknown>, loop: boolean): void;
     /**
+     * Adds a text label to the wireframe adornment.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WireframeHandleAdornment#AddText)
-     * @param this
-     * @param point
-     * @param text
-     * @param size
+     * @param this Renders a wireframe adornment consisting of one or more lines onto a `BasePart` (including `Terrain`) or into the `Workspace`.
+     * @param point Position of the text in the adornment.
+     * @param text String to display.
+     * @param size Size of the text.
      */
     AddText(this: WireframeHandleAdornment, point: Vector3, text: string, size?: number): void;
     /**
+     * Instantly clears all lines and text in the wireframe adornment.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WireframeHandleAdornment#Clear)
-     * @param this
+     * @param this Renders a wireframe adornment consisting of one or more lines onto a `BasePart` (including `Terrain`) or into the `Workspace`.
      */
     Clear(this: WireframeHandleAdornment): void;
 }
@@ -22390,8 +22413,8 @@ interface Humanoid extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#ApplyDescription)
      * @param this A special object that gives models the functionality of a character.
-     * @param humanoidDescription The `HumanoidDescription` Instance which you want to set the character to match.
-     * @param assetTypeVerification
+     * @param humanoidDescription The `HumanoidDescription` instance which you want to set the character to match.
+     * @param assetTypeVerification ⚠️ The default value for this parameter will change from `ClientOnly` to `Always` after 10/20/2025. See [here](https://devforum.roblox.com/t/potential-action-required-update-for-humanoiddescription-apis/3982903) for details.
      */
     ApplyDescription(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
     /**
@@ -22403,7 +22426,7 @@ interface Humanoid extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#ApplyDescriptionReset)
      * @param this A special object that gives models the functionality of a character.
      * @param humanoidDescription The `HumanoidDescription` instance which you want to set the character to match.
-     * @param assetTypeVerification
+     * @param assetTypeVerification ⚠️ The default value for this parameter will change from `ClientOnly` to `Always` after 10/20/2025. See [here](https://devforum.roblox.com/t/potential-action-required-update-for-humanoiddescription-apis/3982903) for details.
      */
     ApplyDescriptionReset(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
     /**
@@ -27535,9 +27558,22 @@ interface ModerationService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#BindReviewableContentEventProcessor)
+     */
+    BindReviewableContentEventProcessor(this: ModerationService, priority: number, callback: Callback): RBXScriptConnection;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#CreateReviewableContentKey)
      */
     CreateReviewableContentKey(this: ModerationService, content: Content): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#CreateReviewableContentAsync)
+     */
+    CreateReviewableContentAsync(this: ModerationService, config: object): string;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -30644,12 +30680,14 @@ interface Camera extends PVInstance {
         boolean
     ]>;
     /**
+     * Adjusts the `CFrame` so that the specified bounding box is fully visible within the camera's viewport.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#ZoomToExtents)
      * @param this A class which defines a view of the 3D world.
-     * @param boundingBoxCFrame
-     * @param boundingBoxSize
+     * @param boundingBoxCFrame The `CFrame` representing the center and orientation of the bounding box to fit into the viewport.
+     * @param boundingBoxSize The `Vector3` size of the bounding box to fit into the viewport.
      */
     ZoomToExtents(this: Camera, boundingBoxCFrame: CFrame, boundingBoxSize: Vector3): void;
     /**
@@ -34282,7 +34320,7 @@ interface Players extends Instance {
      */
     BanAsync(this: Players, config: BanAsyncConfig): void;
     /**
-     * Returns a character Model equipped with everything specified in the passed in HumanoidDescription, and is R6 or R15 as specified by the rigType.
+     * Returns a character `Model` equipped with everything specified in the passed in `HumanoidDescription`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -34291,8 +34329,8 @@ interface Players extends Instance {
      * @param this A service that contains presently connected `Player` objects.
      * @param description Specifies the appearance of the returned character.
      * @param rigType Specifies whether the returned character will be R6 or R15.
-     * @param assetTypeVerification Asset type verification determines if this function will load models or not (You should set this to Always unless you want to load non-catalog assets).
-     * @returns A Humanoid character Model.
+     * @param assetTypeVerification Asset type verification determines if this function will load models or not. ⚠️ The default value for this parameter will change from `ClientOnly` to `Always` after 10/20/2025. See [here](https://devforum.roblox.com/t/potential-action-required-update-for-humanoiddescription-apis/3982903) for details.
+     * @returns A `Humanoid` character `Model`.
      */
     CreateHumanoidModelFromDescription(this: Players, description: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): Model;
     /**
@@ -35874,16 +35912,16 @@ interface RunService extends Instance {
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#PredictionState)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#FrameNumber)
      */
-    readonly PredictionState: Enum.PredictionState;
+    readonly FrameNumber: number;
     /**
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#ServerFrame)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#PredictionState)
      */
-    readonly ServerFrame: number;
+    readonly PredictionState: Enum.PredictionState;
     /**
      * Given a string name of a function and a priority, this method binds the function to `RunService.PreRender`.
      *
@@ -37557,9 +37595,12 @@ interface SocialService extends Instance {
      * @param options `Dictionary` that specifies the configuration for the generated link. It includes the following optional key-value pairs: - `FallbackLinkId` (string). Determines how this share link will   direct player to once expired. Default to experience join link.
      * - `ExpirationSeconds` (number). Determines time to expiration once the   share link is created. Truncates to nearest integer. Defaults to   86,400.
      * - `PreviewTitle` (string) Preview title of the share link.
-     * - `PreiviewDescription` (string) Preview description of the share   link.
-     * - `PreviewAssettId` (number) Image asset ID used for share link   preview.
+     * - `PreviewDescription` (string) Preview description of the share link.
+     * - `PreviewAssetId` (number) Image asset ID used for share link   preview.
      * - `LaunchData` (string). Used to set a parameter in   `Player:GetJoinData()` when a player joined using the   generated share link.
+     *
+     *
+     * @returns A tuple containing an `PromptLinkSharingResult` indicating the result of the link sharing prompt.
      */
     PromptLinkSharing(this: SocialService, player: Player, options?: object): unknown;
     /**
@@ -45400,6 +45441,81 @@ interface Vector3Value extends ValueBase {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Vector3Value#Changed)
      */
     readonly Changed: RBXScriptSignal<(value: Vector3) => void>;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve)
+ */
+interface ValueCurve extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ValueCurve: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#Length)
+     */
+    readonly Length: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#ValueType)
+     */
+    readonly ValueType: string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#GetKeyAtIndex)
+     */
+    GetKeyAtIndex(this: ValueCurve, index: number): ValueCurveKey;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#GetKeyIndicesAtTime)
+     */
+    GetKeyIndicesAtTime(this: ValueCurve, time: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#GetKeys)
+     */
+    GetKeys(this: ValueCurve): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#GetValueAtTime)
+     */
+    GetValueAtTime(this: ValueCurve, time: number): unknown | undefined;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#InsertKey)
+     */
+    InsertKey(this: ValueCurve, key: ValueCurveKey): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#InsertKeyValue)
+     */
+    InsertKeyValue(this: ValueCurve, time: number, value: unknown, keyInterpolationMode?: CastsToEnum<Enum.KeyInterpolationMode>): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#RemoveKeyAtIndex)
+     */
+    RemoveKeyAtIndex(this: ValueCurve, startingIndex: number, count?: number): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#SetKeys)
+     */
+    SetKeys(this: ValueCurve, keys: Array<unknown>): number;
 }
 /**
  * Represents a 3D vector curve, grouping three `FloatCurve` instances.
