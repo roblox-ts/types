@@ -2183,7 +2183,7 @@ interface Instance extends RBXObject {
      */
     AddTag(this: Instance, tag: string): void;
     /**
-     * This function destroys all of an instance's children.
+     * This method destroys all of an instance's children.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -2436,14 +2436,14 @@ interface Instance extends RBXObject {
      */
     IsPredicted(this: Instance): boolean;
     /**
-     * Returns `true` if the value stored in the specified property is equal to the code-instantiated default.
+     * Returns `true` if the value stored in the specified property is not equal to the code-instantiated default.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#IsPropertyModified)
      * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param property Name of the property to query.
-     * @returns Boolean indicating whether the property is modified.
+     * @returns Boolean indicating whether the property is modified from its code‑instantiated default.
      */
     IsPropertyModified(this: Instance, property: string): boolean;
     /**
@@ -7330,6 +7330,13 @@ interface AvatarCreationService extends Instance {
      * @returns A unique identifier for the generated avatar.
      */
     AutoSetupAvatarAsync(this: AvatarCreationService, player: Player, model: Model, progressCallback?: Callback): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#AutoSetupAvatarNewAsync)
+     */
+    AutoSetupAvatarNewAsync(this: AvatarCreationService, player: Player, autoSetupParams: object, progressCallback?: Callback): string;
     /**
      * Creates a 2D avatar preview and returns a previewId.
      *
@@ -33272,6 +33279,7 @@ interface Player extends Instance {
      * Whether player client-side gameplay is currently paused.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#GameplayPaused)
      */
@@ -46499,6 +46507,12 @@ interface WebStreamClient extends RBXObject {
      * @param this Maintains a streaming connection.
      */
     Close(this: WebStreamClient): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#Send)
+     */
+    Send(this: WebStreamClient, data: string): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
