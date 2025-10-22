@@ -6140,6 +6140,33 @@ declare namespace Enum {
     }
     export type CatalogSortType = CatalogSortType.Relevance | CatalogSortType.PriceHighToLow | CatalogSortType.PriceLowToHigh | CatalogSortType.MostFavorited | CatalogSortType.RecentlyCreated | CatalogSortType.Bestselling;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogTimedOptionFilter)
+     */
+    export namespace CatalogTimedOptionFilter {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogTimedOptionFilter#All)
+         */
+        export interface All extends globalThis.EnumItem {
+            Name: "All";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.CatalogTimedOptionFilter;
+        }
+        export const All: All;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogTimedOptionFilter#TimedOptionOnly)
+         */
+        export interface TimedOptionOnly extends globalThis.EnumItem {
+            Name: "TimedOptionOnly";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.CatalogTimedOptionFilter;
+        }
+        export const TimedOptionOnly: TimedOptionOnly;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CatalogTimedOptionFilter>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CatalogTimedOptionFilter | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CatalogTimedOptionFilter | undefined;
+    }
+    export type CatalogTimedOptionFilter = CatalogTimedOptionFilter.All | CatalogTimedOptionFilter.TimedOptionOnly;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellBlock)
      */
     export namespace CellBlock {
@@ -10027,11 +10054,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.DeviceFeatureType;
         }
         export const DeviceCapture: DeviceCapture;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceFeatureType#InExperienceFAE)
+         */
+        export interface InExperienceFAE extends globalThis.EnumItem {
+            Name: "InExperienceFAE";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.DeviceFeatureType;
+        }
+        export const InExperienceFAE: InExperienceFAE;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeviceFeatureType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DeviceFeatureType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DeviceFeatureType | undefined;
     }
-    export type DeviceFeatureType = DeviceFeatureType.DeviceCapture;
+    export type DeviceFeatureType = DeviceFeatureType.DeviceCapture | DeviceFeatureType.InExperienceFAE;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceForm)
      */
@@ -17780,11 +17816,83 @@ declare namespace Enum {
         }
         export const Thumbstick2: Thumbstick2;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick1Up)
+         */
+        export interface Thumbstick1Up extends globalThis.EnumItem {
+            Name: "Thumbstick1Up";
+            Value: 1018;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const Thumbstick1Up: Thumbstick1Up;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick1Down)
+         */
+        export interface Thumbstick1Down extends globalThis.EnumItem {
+            Name: "Thumbstick1Down";
+            Value: 1019;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const Thumbstick1Down: Thumbstick1Down;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick1Left)
+         */
+        export interface Thumbstick1Left extends globalThis.EnumItem {
+            Name: "Thumbstick1Left";
+            Value: 1020;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const Thumbstick1Left: Thumbstick1Left;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick1Right)
+         */
+        export interface Thumbstick1Right extends globalThis.EnumItem {
+            Name: "Thumbstick1Right";
+            Value: 1021;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const Thumbstick1Right: Thumbstick1Right;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick2Up)
+         */
+        export interface Thumbstick2Up extends globalThis.EnumItem {
+            Name: "Thumbstick2Up";
+            Value: 1022;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const Thumbstick2Up: Thumbstick2Up;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick2Down)
+         */
+        export interface Thumbstick2Down extends globalThis.EnumItem {
+            Name: "Thumbstick2Down";
+            Value: 1023;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const Thumbstick2Down: Thumbstick2Down;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick2Left)
+         */
+        export interface Thumbstick2Left extends globalThis.EnumItem {
+            Name: "Thumbstick2Left";
+            Value: 1024;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const Thumbstick2Left: Thumbstick2Left;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick2Right)
+         */
+        export interface Thumbstick2Right extends globalThis.EnumItem {
+            Name: "Thumbstick2Right";
+            Value: 1025;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const Thumbstick2Right: Thumbstick2Right;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseLeftButton)
          */
         export interface MouseLeftButton extends globalThis.EnumItem {
             Name: "MouseLeftButton";
-            Value: 1018;
+            Value: 1026;
             EnumType: typeof globalThis.Enum.KeyCode;
         }
         export const MouseLeftButton: MouseLeftButton;
@@ -17793,7 +17901,7 @@ declare namespace Enum {
          */
         export interface MouseRightButton extends globalThis.EnumItem {
             Name: "MouseRightButton";
-            Value: 1019;
+            Value: 1027;
             EnumType: typeof globalThis.Enum.KeyCode;
         }
         export const MouseRightButton: MouseRightButton;
@@ -17802,7 +17910,7 @@ declare namespace Enum {
          */
         export interface MouseMiddleButton extends globalThis.EnumItem {
             Name: "MouseMiddleButton";
-            Value: 1020;
+            Value: 1028;
             EnumType: typeof globalThis.Enum.KeyCode;
         }
         export const MouseMiddleButton: MouseMiddleButton;
@@ -17811,7 +17919,7 @@ declare namespace Enum {
          */
         export interface MousePosition extends globalThis.EnumItem {
             Name: "MousePosition";
-            Value: 1025;
+            Value: 1033;
             EnumType: typeof globalThis.Enum.KeyCode;
         }
         export const MousePosition: MousePosition;
@@ -18878,7 +18986,7 @@ declare namespace Enum {
          */
         export interface MouseBackButton extends globalThis.EnumItem {
             Name: "MouseBackButton";
-            Value: 1021;
+            Value: 1029;
             EnumType: typeof globalThis.Enum.KeyCode;
         }
         export const MouseBackButton: MouseBackButton;
@@ -18889,7 +18997,7 @@ declare namespace Enum {
          */
         export interface MouseNoButton extends globalThis.EnumItem {
             Name: "MouseNoButton";
-            Value: 1022;
+            Value: 1030;
             EnumType: typeof globalThis.Enum.KeyCode;
         }
         export const MouseNoButton: MouseNoButton;
@@ -18900,7 +19008,7 @@ declare namespace Enum {
          */
         export interface MouseX extends globalThis.EnumItem {
             Name: "MouseX";
-            Value: 1023;
+            Value: 1031;
             EnumType: typeof globalThis.Enum.KeyCode;
         }
         export const MouseX: MouseX;
@@ -18911,7 +19019,7 @@ declare namespace Enum {
          */
         export interface MouseY extends globalThis.EnumItem {
             Name: "MouseY";
-            Value: 1024;
+            Value: 1032;
             EnumType: typeof globalThis.Enum.KeyCode;
         }
         export const MouseY: MouseY;
@@ -18919,7 +19027,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.KeyCode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.KeyCode | undefined;
     }
-    export type KeyCode = KeyCode.Unknown | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.NumLock | KeyCode.CapsLock | KeyCode.ScrollLock | KeyCode.RightShift | KeyCode.LeftShift | KeyCode.RightControl | KeyCode.LeftControl | KeyCode.RightAlt | KeyCode.LeftAlt | KeyCode.RightMeta | KeyCode.LeftMeta | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2 | KeyCode.MouseLeftButton | KeyCode.MouseRightButton | KeyCode.MouseMiddleButton | KeyCode.MousePosition | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95 | KeyCode.MouseBackButton | KeyCode.MouseNoButton | KeyCode.MouseX | KeyCode.MouseY;
+    export type KeyCode = KeyCode.Unknown | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.NumLock | KeyCode.CapsLock | KeyCode.ScrollLock | KeyCode.RightShift | KeyCode.LeftShift | KeyCode.RightControl | KeyCode.LeftControl | KeyCode.RightAlt | KeyCode.LeftAlt | KeyCode.RightMeta | KeyCode.LeftMeta | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2 | KeyCode.Thumbstick1Up | KeyCode.Thumbstick1Down | KeyCode.Thumbstick1Left | KeyCode.Thumbstick1Right | KeyCode.Thumbstick2Up | KeyCode.Thumbstick2Down | KeyCode.Thumbstick2Left | KeyCode.Thumbstick2Right | KeyCode.MouseLeftButton | KeyCode.MouseRightButton | KeyCode.MouseMiddleButton | KeyCode.MousePosition | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95 | KeyCode.MouseBackButton | KeyCode.MouseNoButton | KeyCode.MouseX | KeyCode.MouseY;
     /**
      * Describes the interpolation method between two keys.
      *
@@ -20297,7 +20405,7 @@ declare namespace Enum {
         }
         export const Pavement: Pavement;
         /**
-         * Applies to `BasePart` and `Terrain`.
+         * Applies to `BasePart` only.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Material#CorrodedMetal)
          */
@@ -35915,11 +36023,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.WebStreamClientType;
         }
         export const RawStream: RawStream;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebStreamClientType#WebSocket)
+         */
+        export interface WebSocket extends globalThis.EnumItem {
+            Name: "WebSocket";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.WebStreamClientType;
+        }
+        export const WebSocket: WebSocket;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WebStreamClientType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WebStreamClientType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WebStreamClientType | undefined;
     }
-    export type WebStreamClientType = WebStreamClientType.SSE | WebStreamClientType.RawStream;
+    export type WebStreamClientType = WebStreamClientType.SSE | WebStreamClientType.RawStream | WebStreamClientType.WebSocket;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WeldConstraintPreserve)
      */
