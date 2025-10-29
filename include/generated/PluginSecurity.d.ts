@@ -59,9 +59,11 @@ interface Services {
     DebuggerConnectionManager: DebuggerConnectionManager;
     DebuggerManager: DebuggerManager;
     DebuggerUIService: DebuggerUIService;
+    DebugSettings: DebugSettings;
     DeviceIdService: DeviceIdService;
     DraggerService: DraggerService;
     EditableService: EditableService;
+    EncodingService: EncodingService;
     EventIngestService: EventIngestService;
     ExampleV2Service: ExampleV2Service;
     ExperienceAuthService: ExperienceAuthService;
@@ -77,6 +79,7 @@ interface Services {
     FeatureRestrictionManager: FeatureRestrictionManager;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
+    GameSettings: GameSettings;
     GenerationService: GenerationService;
     GenericChallengeService: GenericChallengeService;
     GeometryService: GeometryService;
@@ -107,6 +110,7 @@ interface Services {
     LogReporterService: LogReporterService;
     LogService: LogService;
     LSPFileSyncService: LSPFileSyncService;
+    LuaSettings: LuaSettings;
     LuauScriptAnalyzerService: LuauScriptAnalyzerService;
     MarketplaceService: MarketplaceService;
     MatchmakingService: MatchmakingService;
@@ -132,6 +136,7 @@ interface Services {
     PathfindingService: PathfindingService;
     PerformanceControlService: PerformanceControlService;
     PhysicsService: PhysicsService;
+    PhysicsSettings: PhysicsSettings;
     PlaceAssetIdsService: PlaceAssetIdsService;
     PlacesService: PlacesService;
     PlaceStatsService: PlaceStatsService;
@@ -232,6 +237,7 @@ interface Services {
     UIDragDetectorService: UIDragDetectorService;
     UniqueIdLookupService: UniqueIdLookupService;
     UnvalidatedAssetService: UnvalidatedAssetService;
+    UserGameSettings: UserGameSettings;
     UserInputService: UserInputService;
     UserService: UserService;
     VersionControlService: VersionControlService;
@@ -261,6 +267,8 @@ interface CreatableInstances {
     Animation: Animation;
     AnimationConstraint: AnimationConstraint;
     AnimationController: AnimationController;
+    AnimationGraphDefinition: AnimationGraphDefinition;
+    AnimationNodeDefinition: AnimationNodeDefinition;
     AnimationRigData: AnimationRigData;
     Animator: Animator;
     Annotation: Annotation;
@@ -611,7 +619,6 @@ interface Instances extends Services, CreatableInstances {
     DebuggerLuaResponse: DebuggerLuaResponse;
     DebuggerVariable: DebuggerVariable;
     DebuggerWatch: DebuggerWatch;
-    DebugSettings: DebugSettings;
     DockWidgetPluginGui: DockWidgetPluginGui;
     DynamicRotate: DynamicRotate;
     EmotesPages: EmotesPages;
@@ -624,7 +631,6 @@ interface Instances extends Services, CreatableInstances {
     File: File;
     FormFactorPart: FormFactorPart;
     FriendPages: FriendPages;
-    GameSettings: GameSettings;
     GenericSettings: GenericSettings;
     GlobalDataStore: GlobalDataStore;
     GlobalSettings: GlobalSettings;
@@ -648,7 +654,6 @@ interface Instances extends Services, CreatableInstances {
     Light: Light;
     LocalDebuggerConnection: LocalDebuggerConnection;
     LodDataEntity: LodDataEntity;
-    LuaSettings: LuaSettings;
     LuaSourceContainer: LuaSourceContainer;
     ManualSurfaceJointInstance: ManualSurfaceJointInstance;
     MaterialImportData: MaterialImportData;
@@ -678,7 +683,6 @@ interface Instances extends Services, CreatableInstances {
     PausedState: PausedState;
     PausedStateBreakpoint: PausedStateBreakpoint;
     PausedStateException: PausedStateException;
-    PhysicsSettings: PhysicsSettings;
     Platform: Platform;
     Player: Player;
     PlayerData: PlayerData;
@@ -750,13 +754,13 @@ interface Instances extends Services, CreatableInstances {
     UIConstraint: UIConstraint;
     UIGridStyleLayout: UIGridStyleLayout;
     UILayout: UILayout;
-    UserGameSettings: UserGameSettings;
     UserSettings: UserSettings;
     ValueBase: ValueBase;
     WebSocketClient: WebSocketClient;
     WorldRoot: WorldRoot;
 }
 interface Objects extends Instances {
+    AnimationNode: AnimationNode;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
     EditableImage: EditableImage;
@@ -789,6 +793,21 @@ interface RBXObject {
      * @deprecated
      */
     readonly _nominal_Object: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNode)
+ */
+interface AnimationNode extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationNode: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -1109,6 +1128,19 @@ interface AnimationClip extends Instance {
     readonly _nominal_AnimationClip: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationGraphDefinition)
+ */
+interface AnimationGraphDefinition extends AnimationClip {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationGraphDefinition: unique symbol;
+}
+/**
  * Stores animation data in the form of curves for each individual channel to animate.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CurveAnimation)
@@ -1241,6 +1273,19 @@ interface AnimationFromVideoCreatorStudioService extends Instance {
      * @deprecated
      */
     readonly _nominal_AnimationFromVideoCreatorStudioService: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition)
+ */
+interface AnimationNodeDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationNodeDefinition: unique symbol;
 }
 /**
  * Used to store information regarding the model an animation was authored for.
@@ -4280,7 +4325,7 @@ interface Debris extends Instance {
 /**
  * Collection of various developer-facing diagnostics information.
  *
- * - **Tags**: NotCreatable, Settings, NotReplicated, NotBrowsable
+ * - **Tags**: NotCreatable, Service, NotReplicated, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebugSettings)
  */
@@ -4531,6 +4576,21 @@ interface EditableService extends Instance {
      * @deprecated
      */
     readonly _nominal_EditableService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EncodingService)
+ */
+interface EncodingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_EncodingService: unique symbol;
 }
 /**
  * Represents a 3D rotation curve through a group of three `FloatCurves`.
@@ -5489,7 +5549,7 @@ interface File extends Instance {
     GetTemporaryId(this: File): ContentId;
 }
 /**
- * A particle emitter with the visual aesthetic of fire.
+ * A preconfigured particle emitter with the visual aesthetic of fire.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Fire)
  */
@@ -5568,7 +5628,7 @@ interface GamePassService extends Instance {
 /**
  * A container for miscellaneous in-game options.
  *
- * - **Tags**: NotCreatable, Settings, NotReplicated, NotBrowsable
+ * - **Tags**: NotCreatable, Service, NotReplicated, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GameSettings)
  */
@@ -7695,7 +7755,7 @@ interface LogService extends Instance {
     readonly _nominal_LogService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, Settings, NotReplicated
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuaSettings)
  */
@@ -9715,7 +9775,7 @@ interface PhysicsService extends Instance {
     readonly _nominal_PhysicsService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, Settings, NotReplicated
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings)
  */
@@ -14640,7 +14700,7 @@ interface UnvalidatedAssetService extends Instance {
 /**
  * The UserGameSettings is a singleton class found inside of the `UserSettings` singleton. It holds various persistent settings relating to how the user wants to control their camera, and their character.
  *
- * - **Tags**: NotCreatable, UserSettings, NotReplicated
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserGameSettings)
  */
@@ -14932,6 +14992,8 @@ interface Vector3Value extends ValueBase {
     readonly _nominal_Vector3Value: unique symbol;
 }
 /**
+ * A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve)
  */
 interface ValueCurve extends Instance {

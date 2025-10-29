@@ -1591,6 +1591,141 @@ declare namespace Enum {
     }
     export type AnimationClipFromVideoStatus = AnimationClipFromVideoStatus.Initializing | AnimationClipFromVideoStatus.Pending | AnimationClipFromVideoStatus.Processing | AnimationClipFromVideoStatus.ErrorGeneric | AnimationClipFromVideoStatus.Success | AnimationClipFromVideoStatus.ErrorVideoTooLong | AnimationClipFromVideoStatus.ErrorNoPersonDetected | AnimationClipFromVideoStatus.ErrorVideoUnstable | AnimationClipFromVideoStatus.Timeout | AnimationClipFromVideoStatus.Cancelled | AnimationClipFromVideoStatus.ErrorMultiplePeople | AnimationClipFromVideoStatus.ErrorUploadingVideo;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType)
+     */
+    export namespace AnimationNodeType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#InvalidNode)
+         */
+        export interface InvalidNode extends globalThis.EnumItem {
+            Name: "InvalidNode";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const InvalidNode: InvalidNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#AddNode)
+         */
+        export interface AddNode extends globalThis.EnumItem {
+            Name: "AddNode";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const AddNode: AddNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#BlendNode)
+         */
+        export interface BlendNode extends globalThis.EnumItem {
+            Name: "BlendNode";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const BlendNode: BlendNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#Blend1DNode)
+         */
+        export interface Blend1DNode extends globalThis.EnumItem {
+            Name: "Blend1DNode";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const Blend1DNode: Blend1DNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#Blend2DNode)
+         */
+        export interface Blend2DNode extends globalThis.EnumItem {
+            Name: "Blend2DNode";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const Blend2DNode: Blend2DNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#ClipNode)
+         */
+        export interface ClipNode extends globalThis.EnumItem {
+            Name: "ClipNode";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const ClipNode: ClipNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#GraphOutput)
+         */
+        export interface GraphOutput extends globalThis.EnumItem {
+            Name: "GraphOutput";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const GraphOutput: GraphOutput;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#MaskNode)
+         */
+        export interface MaskNode extends globalThis.EnumItem {
+            Name: "MaskNode";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const MaskNode: MaskNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#PrioritySelectNode)
+         */
+        export interface PrioritySelectNode extends globalThis.EnumItem {
+            Name: "PrioritySelectNode";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const PrioritySelectNode: PrioritySelectNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#RandomSequenceNode)
+         */
+        export interface RandomSequenceNode extends globalThis.EnumItem {
+            Name: "RandomSequenceNode";
+            Value: 9;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const RandomSequenceNode: RandomSequenceNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#SelectNode)
+         */
+        export interface SelectNode extends globalThis.EnumItem {
+            Name: "SelectNode";
+            Value: 10;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const SelectNode: SelectNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#SequenceNode)
+         */
+        export interface SequenceNode extends globalThis.EnumItem {
+            Name: "SequenceNode";
+            Value: 11;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const SequenceNode: SequenceNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#SpeedNode)
+         */
+        export interface SpeedNode extends globalThis.EnumItem {
+            Name: "SpeedNode";
+            Value: 12;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const SpeedNode: SpeedNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#SubtractNode)
+         */
+        export interface SubtractNode extends globalThis.EnumItem {
+            Name: "SubtractNode";
+            Value: 13;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const SubtractNode: SubtractNode;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationNodeType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationNodeType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationNodeType | undefined;
+    }
+    export type AnimationNodeType = AnimationNodeType.InvalidNode | AnimationNodeType.AddNode | AnimationNodeType.BlendNode | AnimationNodeType.Blend1DNode | AnimationNodeType.Blend2DNode | AnimationNodeType.ClipNode | AnimationNodeType.GraphOutput | AnimationNodeType.MaskNode | AnimationNodeType.PrioritySelectNode | AnimationNodeType.RandomSequenceNode | AnimationNodeType.SelectNode | AnimationNodeType.SequenceNode | AnimationNodeType.SpeedNode | AnimationNodeType.SubtractNode;
+    /**
      * The AnimationPriority Enum determines how concurrently-playing AnimationTracks contribute to the final animation.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationPriority)
@@ -7549,6 +7684,28 @@ declare namespace Enum {
     }
     export type CompletionTriggerKind = CompletionTriggerKind.Invoked | CompletionTriggerKind.TriggerCharacter | CompletionTriggerKind.TriggerForIncompleteCompletions;
     /**
+     * A compression algorithm to use in `EncodingService` methods.
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompressionAlgorithm)
+     */
+    export namespace CompressionAlgorithm {
+        /**
+         * Used to perform compression using [Zstandard](https://en.wikipedia.org/wiki/Zstd) compression, also known as zstd.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompressionAlgorithm#Zstd)
+         */
+        export interface Zstd extends globalThis.EnumItem {
+            Name: "Zstd";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.CompressionAlgorithm;
+        }
+        export const Zstd: Zstd;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CompressionAlgorithm>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CompressionAlgorithm | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CompressionAlgorithm | undefined;
+    }
+    export type CompressionAlgorithm = CompressionAlgorithm.Zstd;
+    /**
      * The camera movement mode currently in-use by the client.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ComputerCameraMovementMode)
@@ -9476,6 +9633,33 @@ declare namespace Enum {
     }
     export type DebuggerStatus = DebuggerStatus.Success | DebuggerStatus.Timeout | DebuggerStatus.ConnectionLost | DebuggerStatus.InvalidResponse | DebuggerStatus.InternalError | DebuggerStatus.InvalidState | DebuggerStatus.RpcError | DebuggerStatus.InvalidArgument | DebuggerStatus.ConnectionClosed;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DefaultScriptSyncFileType)
+     */
+    export namespace DefaultScriptSyncFileType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DefaultScriptSyncFileType#Lua)
+         */
+        export interface Lua extends globalThis.EnumItem {
+            Name: "Lua";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.DefaultScriptSyncFileType;
+        }
+        export const Lua: Lua;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DefaultScriptSyncFileType#Luau)
+         */
+        export interface Luau extends globalThis.EnumItem {
+            Name: "Luau";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.DefaultScriptSyncFileType;
+        }
+        export const Luau: Luau;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DefaultScriptSyncFileType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DefaultScriptSyncFileType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DefaultScriptSyncFileType | undefined;
+    }
+    export type DefaultScriptSyncFileType = DefaultScriptSyncFileType.Lua | DefaultScriptSyncFileType.Luau;
+    /**
      * Determines how the default camera handles objects that are in-between the camera and the camera subject.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DevCameraOcclusionMode)
@@ -11099,6 +11283,70 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ExperienceAuthScope | undefined;
     }
     export type ExperienceAuthScope = ExperienceAuthScope.DefaultScope | ExperienceAuthScope.CreatorAssetsCreate;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceEventStatus)
+     */
+    export namespace ExperienceEventStatus {
+        /**
+         * The event is currently published and available.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceEventStatus#Active)
+         */
+        export interface Active extends globalThis.EnumItem {
+            Name: "Active";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ExperienceEventStatus;
+        }
+        export const Active: Active;
+        /**
+         * The event has been cancelled and will not occur.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceEventStatus#Cancelled)
+         */
+        export interface Cancelled extends globalThis.EnumItem {
+            Name: "Cancelled";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ExperienceEventStatus;
+        }
+        export const Cancelled: Cancelled;
+        /**
+         * The event has been removed by moderation.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceEventStatus#Moderated)
+         */
+        export interface Moderated extends globalThis.EnumItem {
+            Name: "Moderated";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.ExperienceEventStatus;
+        }
+        export const Moderated: Moderated;
+        /**
+         * The event has been unpublished by the creator.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceEventStatus#Unpublished)
+         */
+        export interface Unpublished extends globalThis.EnumItem {
+            Name: "Unpublished";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.ExperienceEventStatus;
+        }
+        export const Unpublished: Unpublished;
+        /**
+         * The event status could not be determined.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceEventStatus#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.ExperienceEventStatus;
+        }
+        export const Unknown: Unknown;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ExperienceEventStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ExperienceEventStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ExperienceEventStatus | undefined;
+    }
+    export type ExperienceEventStatus = ExperienceEventStatus.Active | ExperienceEventStatus.Cancelled | ExperienceEventStatus.Moderated | ExperienceEventStatus.Unpublished | ExperienceEventStatus.Unknown;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceStateRecordingLoadMode)
      */
@@ -14324,6 +14572,72 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HapticEffectType | undefined;
     }
     export type HapticEffectType = HapticEffectType.Custom | HapticEffectType.UIHover | HapticEffectType.UIClick | HapticEffectType.UINotification | HapticEffectType.GameplayExplosion | HapticEffectType.GameplayCollision;
+    /**
+     * A Cryptographic hash function to use in `EncodingService` methods.
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HashAlgorithm)
+     */
+    export namespace HashAlgorithm {
+        /**
+         * Used to compute a 256-bit (32-byte) hash digest using the [BLAKE2b](https://en.wikipedia.org/wiki/BLAKE2) algorithm.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HashAlgorithm#Blake2b)
+         */
+        export interface Blake2b extends globalThis.EnumItem {
+            Name: "Blake2b";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.HashAlgorithm;
+        }
+        export const Blake2b: Blake2b;
+        /**
+         * Used to compute a 256-bit (32-byte) hash digest using the [BLAKE3](https://en.wikipedia.org/wiki/BLAKE3) algorithm.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HashAlgorithm#Blake3)
+         */
+        export interface Blake3 extends globalThis.EnumItem {
+            Name: "Blake3";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.HashAlgorithm;
+        }
+        export const Blake3: Blake3;
+        /**
+         * Used to compute a 128-bit (16-byte) hash digest using the [MD5](https://en.wikipedia.org/wiki/MD5) algorithm.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HashAlgorithm#Md5)
+         */
+        export interface Md5 extends globalThis.EnumItem {
+            Name: "Md5";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.HashAlgorithm;
+        }
+        export const Md5: Md5;
+        /**
+         * Used to compute a 160-bit (20-byte) hash digest using the [SHA-1](https://en.wikipedia.org/wiki/SHA-1) algorithm.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HashAlgorithm#Sha1)
+         */
+        export interface Sha1 extends globalThis.EnumItem {
+            Name: "Sha1";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.HashAlgorithm;
+        }
+        export const Sha1: Sha1;
+        /**
+         * Used to compute a 256-bit (32-byte) hash digest using the [SHA256](https://en.wikipedia.org/wiki/SHA-2) algorithm.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HashAlgorithm#Sha256)
+         */
+        export interface Sha256 extends globalThis.EnumItem {
+            Name: "Sha256";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.HashAlgorithm;
+        }
+        export const Sha256: Sha256;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HashAlgorithm>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HashAlgorithm | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HashAlgorithm | undefined;
+    }
+    export type HashAlgorithm = HashAlgorithm.Blake2b | HashAlgorithm.Blake3 | HashAlgorithm.Md5 | HashAlgorithm.Sha1 | HashAlgorithm.Sha256;
     /**
      * Controls how the `Highlight` effect displays with respect to other objects in the world.
      *
@@ -21228,30 +21542,36 @@ declare namespace Enum {
         }
         export const StreamingMesh: StreamingMesh;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelLevelOfDetail#SLIM)
-         */
-        export interface SLIM extends globalThis.EnumItem {
-            Name: "SLIM";
-            Value: 2;
-            EnumType: typeof globalThis.Enum.ModelLevelOfDetail;
-        }
-        export const SLIM: SLIM;
-        /**
          * A lower resolution mesh will not be displayed.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelLevelOfDetail#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
             Name: "Disabled";
-            Value: 3;
+            Value: 2;
             EnumType: typeof globalThis.Enum.ModelLevelOfDetail;
         }
         export const Disabled: Disabled;
+        /**
+         * @deprecated renamed to Disabled
+         */
+        export const Deactivated: Disabled;
+        /**
+         * A Scalable Lightweight Interactive Model, or SLIM, model (a composite of all child parts of the model) renders at progressively lower resolutions at distances based on the streaming radius. Greatly improves visual quality over `StreamingMesh`.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelLevelOfDetail#SLIM)
+         */
+        export interface SLIM extends globalThis.EnumItem {
+            Name: "SLIM";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.ModelLevelOfDetail;
+        }
+        export const SLIM: SLIM;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ModelLevelOfDetail>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ModelLevelOfDetail | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ModelLevelOfDetail | undefined;
     }
-    export type ModelLevelOfDetail = ModelLevelOfDetail.Automatic | ModelLevelOfDetail.StreamingMesh | ModelLevelOfDetail.SLIM | ModelLevelOfDetail.Disabled;
+    export type ModelLevelOfDetail = ModelLevelOfDetail.Automatic | ModelLevelOfDetail.StreamingMesh | ModelLevelOfDetail.Disabled | ModelLevelOfDetail.SLIM;
     /**
      * Controls how `Models` are sent to clients in experiences with instance streaming enabled.
      *
@@ -27649,11 +27969,101 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.SecurityCapability;
         }
         export const CapabilityControl: CapabilityControl;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Plugin)
+         */
+        export interface Plugin extends globalThis.EnumItem {
+            Name: "Plugin";
+            Value: 23;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const Plugin: Plugin;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#LocalUser)
+         */
+        export interface LocalUser extends globalThis.EnumItem {
+            Name: "LocalUser";
+            Value: 24;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const LocalUser: LocalUser;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#WritePlayer)
+         */
+        export interface WritePlayer extends globalThis.EnumItem {
+            Name: "WritePlayer";
+            Value: 25;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const WritePlayer: WritePlayer;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RobloxScript)
+         */
+        export interface RobloxScript extends globalThis.EnumItem {
+            Name: "RobloxScript";
+            Value: 26;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const RobloxScript: RobloxScript;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RobloxEngine)
+         */
+        export interface RobloxEngine extends globalThis.EnumItem {
+            Name: "RobloxEngine";
+            Value: 27;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const RobloxEngine: RobloxEngine;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Unassigned)
+         */
+        export interface Unassigned extends globalThis.EnumItem {
+            Name: "Unassigned";
+            Value: 28;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const Unassigned: Unassigned;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#InternalTest)
+         */
+        export interface InternalTest extends globalThis.EnumItem {
+            Name: "InternalTest";
+            Value: 29;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const InternalTest: InternalTest;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#PluginOrOpenCloud)
+         */
+        export interface PluginOrOpenCloud extends globalThis.EnumItem {
+            Name: "PluginOrOpenCloud";
+            Value: 30;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const PluginOrOpenCloud: PluginOrOpenCloud;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Assistant)
+         */
+        export interface Assistant extends globalThis.EnumItem {
+            Name: "Assistant";
+            Value: 31;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const Assistant: Assistant;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RemoteCommand)
+         */
+        export interface RemoteCommand extends globalThis.EnumItem {
+            Name: "RemoteCommand";
+            Value: 32;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const RemoteCommand: RemoteCommand;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SecurityCapability>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SecurityCapability | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SecurityCapability | undefined;
     }
-    export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics | SecurityCapability.UI | SecurityCapability.CSG | SecurityCapability.Chat | SecurityCapability.Animation | SecurityCapability.Avatar | SecurityCapability.Input | SecurityCapability.Environment | SecurityCapability.RemoteEvent | SecurityCapability.LegacySound | SecurityCapability.Players | SecurityCapability.CapabilityControl;
+    export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics | SecurityCapability.UI | SecurityCapability.CSG | SecurityCapability.Chat | SecurityCapability.Animation | SecurityCapability.Avatar | SecurityCapability.Input | SecurityCapability.Environment | SecurityCapability.RemoteEvent | SecurityCapability.LegacySound | SecurityCapability.Players | SecurityCapability.CapabilityControl | SecurityCapability.Plugin | SecurityCapability.LocalUser | SecurityCapability.WritePlayer | SecurityCapability.RobloxScript | SecurityCapability.RobloxEngine | SecurityCapability.Unassigned | SecurityCapability.InternalTest | SecurityCapability.PluginOrOpenCloud | SecurityCapability.Assistant | SecurityCapability.RemoteCommand;
     /**
      * Customization options for gamepad selection when `GuiBase2d.SelectionGroup` is true.
      *
@@ -34095,11 +34505,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.UploadCaptureResult;
         }
         export const IneligibleCapture: IneligibleCapture;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#UploadQuotaReached)
+         */
+        export interface UploadQuotaReached extends globalThis.EnumItem {
+            Name: "UploadQuotaReached";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.UploadCaptureResult;
+        }
+        export const UploadQuotaReached: UploadQuotaReached;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UploadCaptureResult>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UploadCaptureResult | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UploadCaptureResult | undefined;
     }
-    export type UploadCaptureResult = UploadCaptureResult.Success | UploadCaptureResult.NeedPermission | UploadCaptureResult.CaptureModerated | UploadCaptureResult.CaptureNotInGallery | UploadCaptureResult.IneligibleCapture;
+    export type UploadCaptureResult = UploadCaptureResult.Success | UploadCaptureResult.NeedPermission | UploadCaptureResult.CaptureModerated | UploadCaptureResult.CaptureNotInGallery | UploadCaptureResult.IneligibleCapture | UploadCaptureResult.UploadQuotaReached;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UsageContext)
      */
@@ -36013,7 +36432,7 @@ declare namespace Enum {
         }
         export const SSE: SSE;
         /**
-         * The client can connect to any server that provides streaming data transfer (e.g. [chunked encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Transfer-Encoding)). It provides no guarantees about the stream format.
+         * General purpose HTTP streaming client. It can connect to any server that provides streaming data transfer (e.g. [chunked encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Transfer-Encoding)). It provides no guarantees about the stream format.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebStreamClientType#RawStream)
          */
@@ -36024,6 +36443,8 @@ declare namespace Enum {
         }
         export const RawStream: RawStream;
         /**
+         * [WebSocket](https://en.wikipedia.org/wiki/WebSocket) client that provides a bidirectional communication channel over a TCP connection.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WebStreamClientType#WebSocket)
          */
         export interface WebSocket extends globalThis.EnumItem {
