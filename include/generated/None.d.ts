@@ -59,6 +59,7 @@ interface Services {
     DeviceIdService: DeviceIdService;
     DraggerService: DraggerService;
     EditableService: EditableService;
+    EncodingService: EncodingService;
     EventIngestService: EventIngestService;
     ExampleV2Service: ExampleV2Service;
     ExperienceAuthService: ExperienceAuthService;
@@ -215,6 +216,7 @@ interface Services {
     UIDragDetectorService: UIDragDetectorService;
     UniqueIdLookupService: UniqueIdLookupService;
     UnvalidatedAssetService: UnvalidatedAssetService;
+    UserGameSettings: UserGameSettings;
     UserInputService: UserInputService;
     UserService: UserService;
     VideoCaptureService: VideoCaptureService;
@@ -243,6 +245,8 @@ interface CreatableInstances {
     Animation: Animation;
     AnimationConstraint: AnimationConstraint;
     AnimationController: AnimationController;
+    AnimationGraphDefinition: AnimationGraphDefinition;
+    AnimationNodeDefinition: AnimationNodeDefinition;
     AnimationRigData: AnimationRigData;
     Animator: Animator;
     Annotation: Annotation;
@@ -698,13 +702,13 @@ interface Instances extends Services, CreatableInstances {
     UIConstraint: UIConstraint;
     UIGridStyleLayout: UIGridStyleLayout;
     UILayout: UILayout;
-    UserGameSettings: UserGameSettings;
     UserSettings: UserSettings;
     ValueBase: ValueBase;
     WebSocketClient: WebSocketClient;
     WorldRoot: WorldRoot;
 }
 interface Objects extends Instances {
+    AnimationNode: AnimationNode;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
     EditableImage: EditableImage;
@@ -777,6 +781,21 @@ interface RBXObject {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Object#Changed)
      */
     readonly Changed: unknown;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNode)
+ */
+interface AnimationNode extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationNode: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -2447,6 +2466,13 @@ interface Instance extends RBXObject {
      */
     IsPropertyModified(this: Instance, property: string): boolean;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#QueryDescendants)
+     */
+    QueryDescendants(this: Instance, selectorGroup: string): Array<Instance>;
+    /**
      * Removes a tag from the instance.
      *
      * - **ThreadSafety**: Unsafe
@@ -3133,6 +3159,19 @@ interface AnimationClip extends Instance {
     Priority: Enum.AnimationPriority;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationGraphDefinition)
+ */
+interface AnimationGraphDefinition extends AnimationClip {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationGraphDefinition: unique symbol;
+}
+/**
  * Stores animation data in the form of curves for each individual channel to animate.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CurveAnimation)
@@ -3351,6 +3390,43 @@ interface AnimationFromVideoCreatorStudioService extends Instance {
      * @deprecated
      */
     readonly _nominal_AnimationFromVideoCreatorStudioService: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition)
+ */
+interface AnimationNodeDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationNodeDefinition: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#NodeType)
+     */
+    NodeType: Enum.AnimationNodeType;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#GetConnectedWires)
+     */
+    GetConnectedWires(this: AnimationNodeDefinition, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#GetInputPins)
+     */
+    GetInputPins(this: AnimationNodeDefinition): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#GetOutputPins)
+     */
+    GetOutputPins(this: AnimationNodeDefinition): Array<unknown>;
 }
 /**
  * Used to store information regarding the model an animation was authored for.
@@ -4193,10 +4269,15 @@ interface AssetService extends Instance {
         PlaceId: number;
     }>;
     /**
+     * Loads a `Model` instance given its asset ID. This is the modern replacement for `InsertService:LoadAsset()` and supports loading third-party assets.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#LoadAssetAsync)
+     * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
+     * @param assetId The asset ID number of the asset being loaded.
+     * @returns A `Model` instance containing the loaded asset.
      */
     LoadAssetAsync(this: AssetService, assetId: number): Instance | undefined;
     /**
@@ -15103,6 +15184,63 @@ interface EditableService extends Instance {
     readonly _nominal_EditableService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EncodingService)
+ */
+interface EncodingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_EncodingService: unique symbol;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EncodingService#Base64Decode)
+     */
+    Base64Decode(this: EncodingService, input: buffer): buffer;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EncodingService#Base64Encode)
+     */
+    Base64Encode(this: EncodingService, input: buffer): buffer;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EncodingService#CompressBuffer)
+     */
+    CompressBuffer(this: EncodingService, input: buffer, algorithm: CastsToEnum<Enum.CompressionAlgorithm>, compressionLevel?: number): buffer;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EncodingService#ComputeBufferHash)
+     */
+    ComputeBufferHash(this: EncodingService, input: buffer, algorithm: CastsToEnum<Enum.HashAlgorithm>): buffer;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EncodingService#ComputeStringHash)
+     */
+    ComputeStringHash(this: EncodingService, input: string, algorithm: CastsToEnum<Enum.HashAlgorithm>): string;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EncodingService#DecompressBuffer)
+     */
+    DecompressBuffer(this: EncodingService, input: buffer, algorithm: CastsToEnum<Enum.CompressionAlgorithm>): buffer;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EncodingService#GetDecompressedBufferSize)
+     */
+    GetDecompressedBufferSize(this: EncodingService, input: buffer, algorithm: CastsToEnum<Enum.CompressionAlgorithm>): number | undefined;
+}
+/**
  * Represents a 3D rotation curve through a group of three `FloatCurves`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EulerRotationCurve)
@@ -15903,7 +16041,7 @@ interface FeatureRestrictionManager extends Instance {
     readonly _nominal_FeatureRestrictionManager: unique symbol;
 }
 /**
- * A particle emitter with the visual aesthetic of fire.
+ * A preconfigured particle emitter with the visual aesthetic of fire.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Fire)
  */
@@ -15942,6 +16080,8 @@ interface Fire extends Instance {
      */
     Heat: number;
     /**
+     * A multiplier for the `Fire` object's transparency that is only visible to the local client.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
      *
@@ -15966,7 +16106,7 @@ interface Fire extends Instance {
      */
     Size: number;
     /**
-     * Value between 0-1 that controls the speed of the particle effect.
+     * Controls the speed of the particle effect.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -36094,9 +36234,15 @@ interface RuntimeContentService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RuntimeContentService#RuntimeContentLRCleanup)
+     */
+    readonly RuntimeContentLRCleanup: RBXScriptSignal<(id: string, priorityList: string) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RuntimeContentService#RuntimeContentQuery)
      */
-    readonly RuntimeContentQuery: RBXScriptSignal<(id: string, content: string) => void>;
+    readonly RuntimeContentQuery: RBXScriptSignal<(id: string, expectedType: string, priorityList: string) => void>;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -37572,6 +37718,13 @@ interface SocialService extends Instance {
      */
     GetEventRsvpStatusAsync(this: SocialService, eventId: string): Enum.RsvpStatus;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#GetExperienceEventAsync)
+     */
+    GetExperienceEventAsync(this: SocialService, eventId: string): object | undefined;
+    /**
      * Returns an array of dictionaries containing data for all members of the specified party who are currently in the experience.
      *
      * - **ThreadSafety**: Unsafe
@@ -37583,6 +37736,13 @@ interface SocialService extends Instance {
      * @returns An array of dictionaries representing the members of the specified party who are currently in the experience.
      */
     GetPartyAsync(this: SocialService, partyId: string): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#GetUpcomingExperienceEventsAsync)
+     */
+    GetUpcomingExperienceEventsAsync(this: SocialService): Array<unknown>;
     /**
      * Prompts the player to submit feedback about the current experience.
      *
@@ -38077,7 +38237,7 @@ interface CompressorSoundEffect extends SoundEffect {
      */
     readonly _nominal_CompressorSoundEffect: unique symbol;
     /**
-     * The time the effect takes to become active after its Threshold has be reached.
+     * The time the effect takes to become active after its `Threshold` has been reached.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -38085,7 +38245,7 @@ interface CompressorSoundEffect extends SoundEffect {
      */
     Attack: number;
     /**
-     * The overall amplification applied to the effect's Sound or SoundGroup after attenuation of sounds above the threshold.
+     * The overall amplification applied to the effect's `Sound` or `SoundGroup` after attenuation of sounds above the threshold.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -38093,7 +38253,7 @@ interface CompressorSoundEffect extends SoundEffect {
      */
     GainMakeup: number;
     /**
-     * The ratio between the `CompressorSoundEffect.SideChain` sound effect, and this sound effect.
+     * The ratio between the `SideChain` sound effect, and this sound effect.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -38101,7 +38261,7 @@ interface CompressorSoundEffect extends SoundEffect {
      */
     Ratio: number;
     /**
-     * The time the effect takes to become inactive after its sound is below the Threshold.
+     * The time the effect takes to become inactive after its sound is below the `Threshold`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -39008,7 +39168,7 @@ interface Stats extends Instance {
      */
     readonly FrameTime: number;
     /**
-     * A measurement of the total amount of time it takes for the server to update its Task Scheduler jobs in seconds.
+     * A measurement of the total amount of time it takes for the server to update its task scheduler jobs in seconds.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -39019,7 +39179,7 @@ interface Stats extends Instance {
     /**
      * **Deprecated:**
      *
-     * A measurement of the total amount of time it takes long it takes for Roblox to update all of its Task Scheduler jobs, in milliseconds.
+     * A measurement of the total amount of time it takes long it takes for Roblox to update all of its task scheduler jobs, in milliseconds.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -39210,7 +39370,7 @@ interface Stats extends Instance {
      */
     GetMemoryCategoryNames(this: Stats): Array<unknown>;
     /**
-     * Returns the number of megabytes that are being consumed by all available categories, or an empty array if `MemoryTrackingEnabled` is false.
+     * Returns the number of megabytes that are being consumed by all available categories, or an empty array if `MemoryTrackingEnabled` is `false`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -39219,7 +39379,7 @@ interface Stats extends Instance {
      */
     GetMemoryUsageMbAllCategories(this: Stats): Array<unknown>;
     /**
-     * Returns the number of megabytes that are being consumed in the specified `DeveloperMemoryTag` category, or 0 if `MemoryTrackingEnabled` is false.
+     * Returns the number of megabytes that are being consumed in the specified `DeveloperMemoryTag` category, or `0` if `MemoryTrackingEnabled` is `false`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -39229,7 +39389,7 @@ interface Stats extends Instance {
      */
     GetMemoryUsageMbForTag(this: Stats, tag: CastsToEnum<Enum.DeveloperMemoryTag>): number;
     /**
-     * Returns the total amount of memory being consumed by the current game session, in megabytes, or 0 if `MemoryTrackingEnabled` is false.
+     * Returns the total amount of memory being consumed by the current game session, in megabytes.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -43927,7 +44087,7 @@ interface UnvalidatedAssetService extends Instance {
 /**
  * The UserGameSettings is a singleton class found inside of the `UserSettings` singleton. It holds various persistent settings relating to how the user wants to control their camera, and their character.
  *
- * - **Tags**: NotCreatable, UserSettings, NotReplicated
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserGameSettings)
  */
@@ -45451,6 +45611,8 @@ interface Vector3Value extends ValueBase {
     readonly Changed: RBXScriptSignal<(value: Vector3) => void>;
 }
 /**
+ * A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve)
  */
 interface ValueCurve extends Instance {
@@ -45463,6 +45625,8 @@ interface ValueCurve extends Instance {
      */
     readonly _nominal_ValueCurve: unique symbol;
     /**
+     * Number of keys in the value curve.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -45470,6 +45634,8 @@ interface ValueCurve extends Instance {
      */
     readonly Length: number;
     /**
+     * Read-only value indicating the type held in this curve.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -45477,51 +45643,91 @@ interface ValueCurve extends Instance {
      */
     readonly ValueType: string;
     /**
+     * Returns a copy of a key at a given index.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#GetKeyAtIndex)
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param index The index in the existing set of keys held by this `ValueCurve`.
      */
     GetKeyAtIndex(this: ValueCurve, index: number): ValueCurveKey;
     /**
+     * Returns the index of the last and first key of a period of time.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#GetKeyIndicesAtTime)
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param time A time during the animation. Inputs will be clamped between `0` and the time of the last key held by this `ValueCurve`.
      */
     GetKeyIndicesAtTime(this: ValueCurve, time: number): Array<unknown>;
     /**
+     * Returns a copy of all the keys in the ValueCurve as a Luau array of `ValueCurveKeys`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#GetKeys)
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @returns Array of `ValueCurveKeys`.
      */
     GetKeys(this: ValueCurve): Array<unknown>;
     /**
+     * Samples the value curve at a given time passed as argument.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#GetValueAtTime)
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param time Time at which to sample the curve.
+     * @returns Value of the curve at the requested `time`.
      */
     GetValueAtTime(this: ValueCurve, time: number): unknown | undefined;
     /**
+     * Adds the key passed as an argument to this curve. If a key at the same time is found, it will be replaced.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#InsertKey)
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param key `ValueCurveKey` to insert.
+     * @returns (see description)
      */
     InsertKey(this: ValueCurve, key: ValueCurveKey): Array<unknown>;
     /**
+     * Creates a key for the given value and inserts it at the given time. If a key at the same time is found, it will be replaced.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#InsertKeyValue)
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param time Time at which to insert the new `ValueCurveKey`. - type: number
+     * @param value Value of the inserted `ValueCurveKey`. - type: any
+     * @param Interpolation Interpolation mode of the inserted `ValueCurveKey`. - type: KeyInterpolationMode
+     * @returns (see description)
      */
     InsertKeyValue(this: ValueCurve, time: number, value: unknown, keyInterpolationMode?: CastsToEnum<Enum.KeyInterpolationMode>): Array<unknown>;
     /**
+     * Removes a given number of keys starting from a given index.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#RemoveKeyAtIndex)
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param startingIndex Starting index from which to remove keys.
+     * @param count Number of keys to remove.
+     * @returns Number of keys removed.
      */
     RemoveKeyAtIndex(this: ValueCurve, startingIndex: number, count?: number): number;
     /**
+     * Resets this curve's keys using the `ValueCurveKey` array passed as an argument.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#SetKeys)
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param keys Array of `ValueCurveKeys`.
+     * @returns Number of keys inserted.
      */
     SetKeys(this: ValueCurve, keys: Array<unknown>): number;
 }
@@ -46508,9 +46714,13 @@ interface WebStreamClient extends RBXObject {
      */
     Close(this: WebStreamClient): void;
     /**
+     * Enqueues data to be transmitted to the server over the streaming connection.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#Send)
+     * @param this Maintains a streaming connection.
+     * @param data Text string to send to the server.
      */
     Send(this: WebStreamClient, data: string): void;
     /**
