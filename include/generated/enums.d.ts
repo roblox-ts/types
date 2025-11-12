@@ -1591,6 +1591,51 @@ declare namespace Enum {
     }
     export type AnimationClipFromVideoStatus = AnimationClipFromVideoStatus.Initializing | AnimationClipFromVideoStatus.Pending | AnimationClipFromVideoStatus.Processing | AnimationClipFromVideoStatus.ErrorGeneric | AnimationClipFromVideoStatus.Success | AnimationClipFromVideoStatus.ErrorVideoTooLong | AnimationClipFromVideoStatus.ErrorNoPersonDetected | AnimationClipFromVideoStatus.ErrorVideoUnstable | AnimationClipFromVideoStatus.Timeout | AnimationClipFromVideoStatus.Cancelled | AnimationClipFromVideoStatus.ErrorMultiplePeople | AnimationClipFromVideoStatus.ErrorUploadingVideo;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodePlayMode)
+     */
+    export namespace AnimationNodePlayMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodePlayMode#Loop)
+         */
+        export interface Loop extends globalThis.EnumItem {
+            Name: "Loop";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AnimationNodePlayMode;
+        }
+        export const Loop: Loop;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodePlayMode#PingPong)
+         */
+        export interface PingPong extends globalThis.EnumItem {
+            Name: "PingPong";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AnimationNodePlayMode;
+        }
+        export const PingPong: PingPong;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodePlayMode#OnceAndHold)
+         */
+        export interface OnceAndHold extends globalThis.EnumItem {
+            Name: "OnceAndHold";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AnimationNodePlayMode;
+        }
+        export const OnceAndHold: OnceAndHold;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodePlayMode#OnceAndReset)
+         */
+        export interface OnceAndReset extends globalThis.EnumItem {
+            Name: "OnceAndReset";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.AnimationNodePlayMode;
+        }
+        export const OnceAndReset: OnceAndReset;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationNodePlayMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationNodePlayMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationNodePlayMode | undefined;
+    }
+    export type AnimationNodePlayMode = AnimationNodePlayMode.Loop | AnimationNodePlayMode.PingPong | AnimationNodePlayMode.OnceAndHold | AnimationNodePlayMode.OnceAndReset;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType)
      */
     export namespace AnimationNodeType {
@@ -3148,6 +3193,33 @@ declare namespace Enum {
         }
         export const DynamicHead: DynamicHead;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#FaceMakeup)
+         */
+        export interface FaceMakeup extends globalThis.EnumItem {
+            Name: "FaceMakeup";
+            Value: 88;
+            EnumType: typeof globalThis.Enum.AssetType;
+        }
+        export const FaceMakeup: FaceMakeup;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#LipMakeup)
+         */
+        export interface LipMakeup extends globalThis.EnumItem {
+            Name: "LipMakeup";
+            Value: 89;
+            EnumType: typeof globalThis.Enum.AssetType;
+        }
+        export const LipMakeup: LipMakeup;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#EyeMakeup)
+         */
+        export interface EyeMakeup extends globalThis.EnumItem {
+            Name: "EyeMakeup";
+            Value: 90;
+            EnumType: typeof globalThis.Enum.AssetType;
+        }
+        export const EyeMakeup: EyeMakeup;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#EarAccessory)
          */
         export interface EarAccessory extends globalThis.EnumItem {
@@ -3169,7 +3241,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AssetType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AssetType | undefined;
     }
-    export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.FontFamily | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.MoodAnimation | AssetType.DynamicHead | AssetType.EarAccessory | AssetType.EyeAccessory;
+    export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.FontFamily | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.MoodAnimation | AssetType.DynamicHead | AssetType.FaceMakeup | AssetType.LipMakeup | AssetType.EyeMakeup | AssetType.EarAccessory | AssetType.EyeAccessory;
     /**
      * Determines the asset type verification mode.
      *
@@ -4143,11 +4215,38 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.AvatarAssetType;
         }
         export const DynamicHead: DynamicHead;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarAssetType#FaceMakeup)
+         */
+        export interface FaceMakeup extends globalThis.EnumItem {
+            Name: "FaceMakeup";
+            Value: 88;
+            EnumType: typeof globalThis.Enum.AvatarAssetType;
+        }
+        export const FaceMakeup: FaceMakeup;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarAssetType#LipMakeup)
+         */
+        export interface LipMakeup extends globalThis.EnumItem {
+            Name: "LipMakeup";
+            Value: 89;
+            EnumType: typeof globalThis.Enum.AvatarAssetType;
+        }
+        export const LipMakeup: LipMakeup;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarAssetType#EyeMakeup)
+         */
+        export interface EyeMakeup extends globalThis.EnumItem {
+            Name: "EyeMakeup";
+            Value: 90;
+            EnumType: typeof globalThis.Enum.AvatarAssetType;
+        }
+        export const EyeMakeup: EyeMakeup;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarAssetType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AvatarAssetType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AvatarAssetType | undefined;
     }
-    export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Gear | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.MoodAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory | AvatarAssetType.DynamicHead;
+    export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Gear | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.MoodAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory | AvatarAssetType.DynamicHead | AvatarAssetType.FaceMakeup | AvatarAssetType.LipMakeup | AvatarAssetType.EyeMakeup;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature)
      */
@@ -11359,6 +11458,33 @@ declare namespace Enum {
     }
     export type ExperienceEventStatus = ExperienceEventStatus.Active | ExperienceEventStatus.Cancelled | ExperienceEventStatus.Moderated | ExperienceEventStatus.Unpublished | ExperienceEventStatus.Unknown;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceStateCaptureSelectionMode)
+     */
+    export namespace ExperienceStateCaptureSelectionMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceStateCaptureSelectionMode#Default)
+         */
+        export interface Default extends globalThis.EnumItem {
+            Name: "Default";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ExperienceStateCaptureSelectionMode;
+        }
+        export const Default: Default;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceStateCaptureSelectionMode#SafetyHighlightMode)
+         */
+        export interface SafetyHighlightMode extends globalThis.EnumItem {
+            Name: "SafetyHighlightMode";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ExperienceStateCaptureSelectionMode;
+        }
+        export const SafetyHighlightMode: SafetyHighlightMode;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ExperienceStateCaptureSelectionMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ExperienceStateCaptureSelectionMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ExperienceStateCaptureSelectionMode | undefined;
+    }
+    export type ExperienceStateCaptureSelectionMode = ExperienceStateCaptureSelectionMode.Default | ExperienceStateCaptureSelectionMode.SafetyHighlightMode;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceStateRecordingLoadMode)
      */
     export namespace ExperienceStateRecordingLoadMode {
@@ -16058,6 +16184,8 @@ declare namespace Enum {
         }
         export const Direction3D: Direction3D;
         /**
+         * The `InputAction` will receive `Vector2` values representing the absolute pixel (**X**, **Y**) coordinates of a pointer input in the viewport.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputActionType#ViewportPosition)
          */
         export interface ViewportPosition extends globalThis.EnumItem {
@@ -18141,6 +18269,8 @@ declare namespace Enum {
         }
         export const Thumbstick2: Thumbstick2;
         /**
+         * Up vector on the gamepad primary thumbstick. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick1Up)
          */
         export interface Thumbstick1Up extends globalThis.EnumItem {
@@ -18150,6 +18280,8 @@ declare namespace Enum {
         }
         export const Thumbstick1Up: Thumbstick1Up;
         /**
+         * Down vector on the gamepad primary thumbstick. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick1Down)
          */
         export interface Thumbstick1Down extends globalThis.EnumItem {
@@ -18159,6 +18291,8 @@ declare namespace Enum {
         }
         export const Thumbstick1Down: Thumbstick1Down;
         /**
+         * Left vector on the gamepad primary thumbstick. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick1Left)
          */
         export interface Thumbstick1Left extends globalThis.EnumItem {
@@ -18168,6 +18302,8 @@ declare namespace Enum {
         }
         export const Thumbstick1Left: Thumbstick1Left;
         /**
+         * Right vector on the gamepad primary thumbstick. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick1Right)
          */
         export interface Thumbstick1Right extends globalThis.EnumItem {
@@ -18177,6 +18313,8 @@ declare namespace Enum {
         }
         export const Thumbstick1Right: Thumbstick1Right;
         /**
+         * Up vector on the gamepad secondary thumbstick. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick2Up)
          */
         export interface Thumbstick2Up extends globalThis.EnumItem {
@@ -18186,6 +18324,8 @@ declare namespace Enum {
         }
         export const Thumbstick2Up: Thumbstick2Up;
         /**
+         * Down vector on the gamepad secondary thumbstick. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick2Down)
          */
         export interface Thumbstick2Down extends globalThis.EnumItem {
@@ -18195,6 +18335,8 @@ declare namespace Enum {
         }
         export const Thumbstick2Down: Thumbstick2Down;
         /**
+         * Left vector on the gamepad secondary thumbstick. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick2Left)
          */
         export interface Thumbstick2Left extends globalThis.EnumItem {
@@ -18204,6 +18346,8 @@ declare namespace Enum {
         }
         export const Thumbstick2Left: Thumbstick2Left;
         /**
+         * Right vector on the gamepad secondary thumbstick. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Thumbstick2Right)
          */
         export interface Thumbstick2Right extends globalThis.EnumItem {
@@ -18240,6 +18384,8 @@ declare namespace Enum {
         }
         export const MouseMiddleButton: MouseMiddleButton;
         /**
+         * The position of a mouse in the viewport. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MousePosition)
          */
         export interface MousePosition extends globalThis.EnumItem {
@@ -28977,6 +29123,69 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Status | undefined;
     }
     export type Status = Status.Poison | Status.Confusion;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency)
+     */
+    export namespace StepFrequency {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency#Hz60)
+         */
+        export interface Hz60 extends globalThis.EnumItem {
+            Name: "Hz60";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.StepFrequency;
+        }
+        export const Hz60: Hz60;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency#Hz30)
+         */
+        export interface Hz30 extends globalThis.EnumItem {
+            Name: "Hz30";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.StepFrequency;
+        }
+        export const Hz30: Hz30;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency#Hz15)
+         */
+        export interface Hz15 extends globalThis.EnumItem {
+            Name: "Hz15";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.StepFrequency;
+        }
+        export const Hz15: Hz15;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency#Hz10)
+         */
+        export interface Hz10 extends globalThis.EnumItem {
+            Name: "Hz10";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.StepFrequency;
+        }
+        export const Hz10: Hz10;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency#Hz5)
+         */
+        export interface Hz5 extends globalThis.EnumItem {
+            Name: "Hz5";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.StepFrequency;
+        }
+        export const Hz5: Hz5;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency#Hz1)
+         */
+        export interface Hz1 extends globalThis.EnumItem {
+            Name: "Hz1";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.StepFrequency;
+        }
+        export const Hz1: Hz1;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StepFrequency>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StepFrequency | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StepFrequency | undefined;
+    }
+    export type StepFrequency = StepFrequency.Hz60 | StepFrequency.Hz30 | StepFrequency.Hz15 | StepFrequency.Hz10 | StepFrequency.Hz5 | StepFrequency.Hz1;
     /**
      * Determines how content is streamed away from Players.
      *
