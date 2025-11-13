@@ -124,7 +124,6 @@ export const CLASS_BLACKLIST = new Set([
 	"Status",
 
 	// super deprecated:
-	"AdService",
 	"FunctionalTest",
 	"PluginManager",
 	"VirtualUser",
