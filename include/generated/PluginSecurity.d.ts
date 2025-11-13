@@ -6,6 +6,7 @@ interface Services {
     AccountService: AccountService;
     AchievementService: AchievementService;
     ActivityHistoryEventService: ActivityHistoryEventService;
+    AdService: AdService;
     AnalyticsService: AnalyticsService;
     AnimationClipProvider: AnimationClipProvider;
     AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
@@ -1079,6 +1080,23 @@ interface AdPortal extends Instance {
      * @deprecated
      */
     readonly _nominal_AdPortal: unique symbol;
+}
+/**
+ * A class that allows the display of mobile video ads.
+ *
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService)
+ */
+interface AdService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AdService: unique symbol;
 }
 /**
  * Collection of methods that allows developers to track how users interact with their experiences.

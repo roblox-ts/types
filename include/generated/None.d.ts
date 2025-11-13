@@ -6,6 +6,7 @@ interface Services {
     AccountService: AccountService;
     AchievementService: AchievementService;
     ActivityHistoryEventService: ActivityHistoryEventService;
+    AdService: AdService;
     AnalyticsService: AnalyticsService;
     AnimationClipProvider: AnimationClipProvider;
     AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
@@ -2854,6 +2855,102 @@ interface AdPortal extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdPortal#Status)
      */
     readonly Status: Enum.AdUnitStatus;
+}
+/**
+ * A class that allows the display of mobile video ads.
+ *
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService)
+ */
+interface AdService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AdService: unique symbol;
+    /**
+     * Creates a reward to give users who watch an entire video ad.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#CreateAdRewardFromDevProductId)
+     * @param this A class that allows the display of mobile video ads.
+     * @param devProductId The ID of the developer product you want to grant as a reward.
+     */
+    CreateAdRewardFromDevProductId(this: AdService, devProductId: number): AdReward;
+    /**
+     * **Deprecated:** `ShowVideoAd` has been decommissioned and is no longer operational.
+     *
+     * Show mobile video advertisements.
+     *
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**:
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#ShowVideoAd)
+     * @param this A class that allows the display of mobile video ads.
+     *
+     * @deprecated
+     */
+    ShowVideoAd(this: AdService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#UnregisterAdOpportunity)
+     * @param this A class that allows the display of mobile video ads.
+     * @param instance
+     */
+    UnregisterAdOpportunity(this: AdService, instance: Instance): void;
+    /**
+     * Checks if a video ad is available to be played to the current user inside the experience.
+     *
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#GetAdAvailabilityNowAsync)
+     * @param this A class that allows the display of mobile video ads.
+     * @param adFormat The format of the requested ad. For example, `RewardedVideo`.
+     */
+    GetAdAvailabilityNowAsync(this: AdService, adFormat: CastsToEnum<Enum.AdFormat>): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#RegisterAdOpportunityAsync)
+     * @param this A class that allows the display of mobile video ads.
+     * @param instance
+     * @param placementId
+     */
+    RegisterAdOpportunityAsync(this: AdService, instance: Instance, placementId?: number): void;
+    /**
+     * Plays the video ad to the current user inside the experience.
+     *
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#ShowRewardedVideoAdAsync)
+     * @param this A class that allows the display of mobile video ads.
+     * @param player The `Player` object for whom you are fetching the ad for.
+     * @param reward The reward object for the reward you want to grant the user who watches an ad to completion.
+     * @param placementId The ID of the placement of the rewarded video ad inside the experience. Allows for reporting on the performance of individual ad placements.
+     */
+    ShowRewardedVideoAdAsync(this: AdService, player: Player, reward: AdReward, placementId?: number): Enum.ShowAdResult;
+    /**
+     * **Deprecated:** `VideoAdClosed` has been decommissioned and is no longer operational.
+     *
+     * Fires when an `AdService` video closes.
+     *
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**:
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#VideoAdClosed)
+     *
+     * @deprecated
+     */
+    readonly VideoAdClosed: RBXScriptSignal<(adShown: boolean) => void>;
 }
 /**
  * Collection of methods that allows developers to track how users interact with their experiences.
