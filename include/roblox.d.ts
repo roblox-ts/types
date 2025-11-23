@@ -2526,20 +2526,20 @@ interface ValueCurveKey {
 	 */
 	readonly _nominal_ValueCurveKey: unique symbol;
 	/** The key interpolation mode for the segment started by this `ValueCurveKey`. */
-	readonly Interpolation: Enum.KeyInterpolationMode;
+	Interpolation: Enum.KeyInterpolationMode;
 	/** The time position of this ValueCurveKey. */
-	readonly Time: number;
+	Time: number;
 	/** The value of this ValueCurveKey. */
-	readonly Value: unknown;
+	Value: unknown;
 	/** The tangent to the right of this ValueCurveKey. */
-	readonly RightTangent: number;
+	RightTangent: number | undefined;
 	/** The tangent to the left of this ValueCurveKey. */
-	readonly LeftTangent: number;
+	LeftTangent: number | undefined;
 }
 
 interface ValueCurveKeyConstructor {
 	/** Returns a new `ValueCurveKey` from the given time and value. */
-	new (time: number, value: unknown, interpolation: Enum.KeyInterpolationMode): ValueCurveKey;
+	new (time: number, value: unknown, interpolation?: Enum.KeyInterpolationMode): ValueCurveKey;
 }
 
 declare const ValueCurveKey: ValueCurveKeyConstructor;
