@@ -75,7 +75,6 @@ export const CLASS_BLACKLIST = new Set([
 	"AppStorageService",
 	"BinaryStringValue",
 	"BrowserService",
-	"CacheableContentProvider",
 	"ClusterPacketCache",
 	"CookiesService",
 	"CorePackages",
