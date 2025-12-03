@@ -19,6 +19,7 @@ interface Services {
     AssetDeliveryProxy: AssetDeliveryProxy;
     AssetImportService: AssetImportService;
     AssetManagerService: AssetManagerService;
+    AssetQualityService: AssetQualityService;
     AssetService: AssetService;
     AudioFocusService: AudioFocusService;
     AuroraScriptService: AuroraScriptService;
@@ -347,6 +348,7 @@ interface CreatableInstances {
     Color3Value: Color3Value;
     ColorCorrectionEffect: ColorCorrectionEffect;
     ColorGradingEffect: ColorGradingEffect;
+    CompositeValueCurve: CompositeValueCurve;
     CompressorSoundEffect: CompressorSoundEffect;
     ConeHandleAdornment: ConeHandleAdornment;
     Configuration: Configuration;
@@ -420,6 +422,7 @@ interface CreatableInstances {
     LineHandleAdornment: LineHandleAdornment;
     LocalizationTable: LocalizationTable;
     LocalScript: LocalScript;
+    MakeupDescription: MakeupDescription;
     ManualGlue: ManualGlue;
     ManualWeld: ManualWeld;
     MarkerCurve: MarkerCurve;
@@ -784,7 +787,7 @@ interface Objects extends Instances {
 }
 // GENERATED ROBLOX INSTANCE CLASSES
 /**
- * Object is the base class for all classes in the Roblox class hierarchy.
+ * `Object` is the base class for all classes in the Roblox class hierarchy.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -1548,6 +1551,21 @@ interface AssetPatchSettings extends Instance {
      * @deprecated
      */
     readonly _nominal_AssetPatchSettings: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetQualityService)
+ */
+interface AssetQualityService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AssetQualityService: unique symbol;
 }
 /**
  * A non-replicated service that handles asset-related queries to the Roblox web API.
@@ -2959,7 +2977,7 @@ interface CaptureService extends Instance {
     readonly _nominal_CaptureService: unique symbol;
 }
 /**
- * **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+ * Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -2980,8 +2998,8 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#FinishRecording)
-     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
-     * @param identifier Identifies the recording from the previous call to `TryBeginRecording()`. If the operation is `ChangeHistoryService.FinishRecordingOperation.Cancel`, this value is ignored, and the recording is determined by context.
+     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param identifier The string returned by a previous call to `TryBeginRecording()`, used to identify which recording to finish. This identifier is **not the same** as the `name` of the action passed to `TryBeginRecording()`. If the operation is `FinishRecordingOperation.Cancel`, this value is ignored, and the recording is determined by context.
      * @param operation Specifies the operation to take.
      * @param finalOptions Optional table of values to pass to `OnFinishRecording`.
      */
@@ -2992,7 +3010,7 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#GetCanRedo)
-     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      */
     GetCanRedo(this: ChangeHistoryService): unknown;
     /**
@@ -3001,14 +3019,14 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#GetCanUndo)
-     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      */
     GetCanUndo(this: ChangeHistoryService): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#IsRecordingInProgress)
-     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      * @param identifier
      */
     IsRecordingInProgress(this: ChangeHistoryService, identifier?: string): boolean;
@@ -3018,7 +3036,7 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#Redo)
-     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      */
     Redo(this: ChangeHistoryService): void;
     /**
@@ -3027,16 +3045,16 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#ResetWaypoints)
-     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      */
     ResetWaypoints(this: ChangeHistoryService): void;
     /**
-     * Sets whether or not the ChangeHistoryService is enabled.
+     * Sets whether or not `ChangeHistoryService` is enabled.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#SetEnabled)
-     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      * @param state
      */
     SetEnabled(this: ChangeHistoryService, state: boolean): void;
@@ -3046,7 +3064,7 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#SetWaypoint)
-     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      * @param name
      */
     SetWaypoint(this: ChangeHistoryService, name: string): void;
@@ -3056,7 +3074,7 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#TryBeginRecording)
-     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      * @param name Name of the action being performed suitable for logging and coding purposes.
      * @param displayName Name of the action being performed to display to the user.
      */
@@ -3067,7 +3085,7 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#Undo)
-     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      */
     Undo(this: ChangeHistoryService): void;
     /**
@@ -3087,7 +3105,7 @@ interface ChangeHistoryService extends Instance {
      */
     readonly OnRecordingStarted: RBXScriptSignal<(name: string, displayName?: string) => void>;
     /**
-     * Fired when the user reverses the undo command. Waypoint describes the type action that has been redone.
+     * Fired when the user reverses the undo command.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -3095,7 +3113,7 @@ interface ChangeHistoryService extends Instance {
      */
     readonly OnRedo: RBXScriptSignal<(waypoint: string) => void>;
     /**
-     * Fired when the user undoes an action in studio. Waypoint describes the type action that has been undone.
+     * Fired when the user undoes an action in studio.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -3382,6 +3400,19 @@ interface CommerceService extends Instance {
      * @deprecated
      */
     readonly _nominal_CommerceService: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CompositeValueCurve)
+ */
+interface CompositeValueCurve extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CompositeValueCurve: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -8006,6 +8037,19 @@ interface MLService extends Instance {
      * @deprecated
      */
     readonly _nominal_MLService: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MakeupDescription)
+ */
+interface MakeupDescription extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_MakeupDescription: unique symbol;
 }
 /**
  * Represents a list of strings markers in chronological order.
@@ -14889,7 +14933,7 @@ interface VRStatusService extends Instance {
     readonly _nominal_VRStatusService: unique symbol;
 }
 /**
- * Base class of all 'Value Instance' objects.
+ * Base class of all "value instance" objects.
  *
  * - **Tags**: NotCreatable
  *

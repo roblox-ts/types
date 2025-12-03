@@ -19,6 +19,7 @@ interface Services {
     AssetDeliveryProxy: AssetDeliveryProxy;
     AssetImportService: AssetImportService;
     AssetManagerService: AssetManagerService;
+    AssetQualityService: AssetQualityService;
     AssetService: AssetService;
     AudioFocusService: AudioFocusService;
     AuroraScriptService: AuroraScriptService;
@@ -325,6 +326,7 @@ interface CreatableInstances {
     Color3Value: Color3Value;
     ColorCorrectionEffect: ColorCorrectionEffect;
     ColorGradingEffect: ColorGradingEffect;
+    CompositeValueCurve: CompositeValueCurve;
     CompressorSoundEffect: CompressorSoundEffect;
     ConeHandleAdornment: ConeHandleAdornment;
     Configuration: Configuration;
@@ -398,6 +400,7 @@ interface CreatableInstances {
     LineHandleAdornment: LineHandleAdornment;
     LocalizationTable: LocalizationTable;
     LocalScript: LocalScript;
+    MakeupDescription: MakeupDescription;
     ManualGlue: ManualGlue;
     ManualWeld: ManualWeld;
     MarkerCurve: MarkerCurve;
@@ -732,7 +735,7 @@ interface Objects extends Instances {
 }
 // GENERATED ROBLOX INSTANCE CLASSES
 /**
- * Object is the base class for all classes in the Roblox class hierarchy.
+ * `Object` is the base class for all classes in the Roblox class hierarchy.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -762,7 +765,7 @@ interface RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Object#GetPropertyChangedSignal)
-     * @param this Object is the base class for all classes in the Roblox class hierarchy.
+     * @param this `Object` is the base class for all classes in the Roblox class hierarchy.
      * @param property The property to connect to.
      * @returns A signal that fires whenever the property changes.
      */
@@ -774,13 +777,13 @@ interface RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Object#IsA)
-     * @param this Object is the base class for all classes in the Roblox class hierarchy.
+     * @param this `Object` is the base class for all classes in the Roblox class hierarchy.
      * @param className The class against which the Object's class will be checked. Case-sensitive.
      * @returns Describes whether the Object's class matched or is a subclass of the given class.
      */
     IsA<T extends keyof Objects>(this: RBXObject, className: T): this is Objects[T];
     /**
-     * Fired immediately after a property of the object changes, with some limitations.
+     * Fires immediately after a property of the object changes, with some limitations.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -4115,6 +4118,21 @@ interface AssetPatchSettings extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetPatchSettings#PatchId)
      */
     PatchId: string;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetQualityService)
+ */
+interface AssetQualityService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AssetQualityService: unique symbol;
 }
 /**
  * A non-replicated service that handles asset-related queries to the Roblox web API.
@@ -11526,6 +11544,37 @@ interface CommerceService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#PromptCommerceProductPurchaseFinished)
      */
     readonly PromptCommerceProductPurchaseFinished: RBXScriptSignal<(user: Player, productId: string) => void>;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CompositeValueCurve)
+ */
+interface CompositeValueCurve extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CompositeValueCurve: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CompositeValueCurve#CurveType)
+     */
+    CurveType: Enum.CompositeValueCurveType;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CompositeValueCurve#GetComponentCurves)
+     */
+    GetComponentCurves(this: CompositeValueCurve): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CompositeValueCurve#GetValueAtTime)
+     */
+    GetValueAtTime(this: CompositeValueCurve, time: number): unknown;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -23369,6 +23418,12 @@ interface HumanoidDescription extends Instance {
      */
     TorsoColor: Color3;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidDescription#UseAvatarSettings)
+     */
+    UseAvatarSettings: boolean;
+    /**
      * A comma-separated list of asset IDs that will be added as `Accessories` to a `Humanoid` rig when `applied`, usually those attached to its waist (such as belts).
      *
      * - **ThreadSafety**: ReadSafe
@@ -24691,6 +24746,12 @@ interface InputBinding extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Vector2Scale)
      */
     Vector2Scale: Vector2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Vector3Scale)
+     */
+    Vector3Scale: Vector3;
 }
 /**
  * Collection of actions which holds related actions and defines how they interact with other contexts/actions.
@@ -26935,6 +26996,49 @@ interface MLService extends Instance {
      * @param assetId
      */
     CreateSessionAsync(this: MLService, assetId: string): MLSession;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MakeupDescription)
+ */
+interface MakeupDescription extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_MakeupDescription: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MakeupDescription#AssetId)
+     */
+    AssetId: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MakeupDescription#Instance)
+     */
+    Instance: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MakeupDescription#MakeupType)
+     */
+    MakeupType: Enum.MakeupType;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MakeupDescription#Order)
+     */
+    Order: number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MakeupDescription#GetAppliedInstance)
+     */
+    GetAppliedInstance(this: MakeupDescription): Instance | undefined;
 }
 /**
  * Represents a list of strings markers in chronological order.
@@ -35848,10 +35952,10 @@ interface RecommendationService extends Instance {
      * @param actionType The enum for the type of action.
      * @param itemId The item ID returned from registration and `GenerateItemListAsync`.
      * @param tracingId The tracing ID returned from the `GenerateItemListAsync` response. Each item has a `TracingId`.
-     * @param actionEventDetails A dictionary containing the following fields: - `Weight` — A number representing the weight of the action. Default is 1.
-     * - `DestinationPlaceId` — The ID of the place the user was sent to after the action. Used for `Play`.
-     * - `CommentText` — Any text associated with the action, such as a comment. Used for `Comment`.
-     * - `ReactionType` — A string describing the type of reaction, for example, "like" or "dislike". Used for `AddReaction` or `RemoveReaction`.
+     * @param actionEventDetails A dictionary containing the following fields: - `Weight` — A number representing the weight of the action.   Default is 1.
+     * - `DestinationPlaceId` — The ID of the place the user was sent   to after the action. Used for   `Play`.
+     * - `CommentText` — Any text associated with the action, such as a   comment. Used for `Comment`.
+     * - `ReactionType` — A string describing the type of reaction, for   example, "like" or "dislike". Used for   `AddReaction` or   `RemoveReaction`.
      */
     LogActionEvent(this: RecommendationService, actionType: CastsToEnum<Enum.RecommendationActionType>, itemId: string, tracingId: string, actionEventDetails?: object): void;
     /**
@@ -35863,9 +35967,9 @@ interface RecommendationService extends Instance {
      * @param itemId The item ID returned from registration and `GenerateItemListAsync`.
      * @param tracingId The tracing ID returned from the `GenerateItemListAsync` response. Each item has a `TracingId`.
      * @param impressionEventDetails A dictionary containing the following fields: - `Duration` — The duration of the impression in seconds.
-     * - `Weight` — A number representing the weight of the impression. Default is 1.
-     * - `ItemPosition` — The position of the item in the recommendation list.
-     * - `DepartureIntent` — The `RecommendationDepartureIntent` indicating the user's intent when leaving a view. For example, `Positive` if the view is considered good.
+     * - `Weight` — A number representing the weight of the impression.   Default is 1.
+     * - `ItemPosition` — The position of the item in the   recommendation list.
+     * - `DepartureIntent` — The `RecommendationDepartureIntent`   indicating the user's intent when leaving a view. For example,   `Positive` if the view is considered good.
      */
     LogImpressionEvent(this: RecommendationService, impressionType: CastsToEnum<Enum.RecommendationImpressionType>, itemId: string, tracingId: string, impressionEventDetails?: object): void;
     /**
@@ -35874,11 +35978,11 @@ interface RecommendationService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#GenerateItemListAsync)
      * @param this A service that provides an interface for you to manage and display personalized content recommendations.
-     * @param generateRecommendationItemListRequest A dictionary containing the following  fields: - `ConfigName` — A unique ID for the specific configuration. This determines how the candidates are ranked.
-     * - `LocationId` — A developer-defined string that specifies the location where the recommendation is used, such as `"For_you"` or `"Lobby"`. This parameter will not affect the items returned, and it can help you track the performance of multiple recommendation features within your experience. Recommendation metrics for each individual location will be displayed in the Creator Hub. `LocationId` **must** be a string and cannot be `"Other"` or `"other"` as these values are reserved by the Creator Hub.
+     * @param generateRecommendationItemListRequest A dictionary containing the following fields: - `ConfigName` — A unique ID for the specific configuration.   This determines how the candidates are ranked.
+     * - `LocationId` — A developer-defined string that specifies the   location where the recommendation is used, such as `"For_you"` or   `"Lobby"`. This parameter will not affect the items returned, and it   can help you track the performance of multiple recommendation   features within your experience. Recommendation metrics for each   individual location will be displayed in the Creator Hub.   `LocationId` **must** be a string and cannot be `"Other"` or   `"other"` as these values are reserved by the Creator Hub.
      * - `PageSize` — The number of items returned for each page.
-     * - `BoostCustomTags` — A list of string tags. Any item with this tag will be boosted in ranking. Note: only supports boosting one tag now.
-     * - `CustomContexts` — A table of key-value pairs used to pass in additional context data for ranking. For example, `UserId` for a Server script.
+     * - `BoostCustomTags` — A list of string tags. Any item with this   tag will be boosted in ranking. Note: only supports boosting one tag   now.
+     * - `CustomContexts` — A table of key-value pairs used to pass in   additional context data for ranking. For example, `UserId` for a   Server script.
      */
     GenerateItemListAsync(this: RecommendationService, generateRecommendationItemListRequest: object): RecommendationPages;
     /**
@@ -35888,7 +35992,13 @@ interface RecommendationService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#GetRecommendationItemAsync)
      * @param this A service that provides an interface for you to manage and display personalized content recommendations.
      * @param itemId The ID of the item to retrieve.
-     * @returns A dictionary representing the recommendation item with the following fields: - `ItemId` — The unique ID for the item. - `ReferenceId` — The developer-provided ID for the item. - `TracingId` — An ID for tracking recommendation sessions. This will be empty when fetching a single item directly. - `Creator` — A table containing the `CreatorId` and `CreatorType`. - `Attributes` — A list of content attributes associated with the item. - `CustomTags` — A list of custom string tags. - `Visibility` — An enum of type `RecommendationItemVisibility`.
+     * @returns A dictionary representing the recommendation item with the following fields: - `ItemId` — The unique ID for the item.
+     * - `ReferenceId` — The developer-provided ID for the item.
+     * - `TracingId` — An ID for tracking recommendation sessions. This   will be empty when fetching a single item directly.
+     * - `Creator` — A table containing the `CreatorId` and   `CreatorType`.
+     * - `Attributes` — A list of content attributes associated with   the item.
+     * - `CustomTags` — A list of custom string tags.
+     * - `Visibility` — An enum of type   `RecommendationItemVisibility`.
      */
     GetRecommendationItemAsync(this: RecommendationService, itemId: string): object;
     /**
@@ -35898,12 +36008,12 @@ interface RecommendationService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#RegisterItemAsync)
      * @param this A service that provides an interface for you to manage and display personalized content recommendations.
      * @param player The player who created the item.
-     * @param registerRecommendationItemsRequest A dictionary containing the following fields: - `ContentType` — The `RecommendationItemContentType` specifying the type of content. Type is defined in a generic way. For example, you can use `Static` for images, `Dynamic` for videos, and `Interactive` for 3D models that support interaction.
-     * - `ReferenceId` — The developer-defined string that uniquely identifies the item.
+     * @param registerRecommendationItemsRequest A dictionary containing the following fields: - `ContentType` — The `RecommendationItemContentType`   specifying the type of content. Type is defined in a generic way.   For example, you can use `Static` for images, `Dynamic` for videos,   and `Interactive` for 3D models that support interaction.
+     * - `ReferenceId` — The developer-defined string that uniquely   identifies the item.
      * - `Duration` — The duration of the content in seconds.
-     * - `Attributes` — The table of attributes for the item, such as `AssetId` or `Description`.
-     * - `CustomTags` — The list of string tags for filtering and boosting.
-     * - `Visibility` — The `RecommendationItemVisibility` enum that controls the item's visibility, such as `Public` or `Private`.
+     * - `Attributes` — The table of attributes for the item, such as   `AssetId` or `Description`.
+     * - `CustomTags` — The list of string tags for filtering and   boosting.
+     * - `Visibility` — The   `RecommendationItemVisibility`   enum that controls the item's visibility, such as `Public` or   `Private`.
      *
      *
      * @returns A table with only two fields: `ItemId` and `ReferenceId`.
@@ -35925,8 +36035,8 @@ interface RecommendationService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#UpdateItemAsync)
      * @param this A service that provides an interface for you to manage and display personalized content recommendations.
      * @param updateRecommendationItemRequest A dictionary containing the following fields: - `ItemId` — The ID of the item to update.
-     * - `ReferenceId` — The new developer-defined string to identify the item.
-     * - `Creator` — The new creator for the item. Creator is a table containing two fields: `CreatorId: number` and `CreatorType: Enum.CreatorType`.
+     * - `ReferenceId` — The new developer-defined string to identify   the item.
+     * - `Creator` — The new creator for the item. Creator is a table   containing two fields: `CreatorId: number` and   `CreatorType: Enum.CreatorType`.
      * - `Duration` — The new duration for the content in seconds.
      * - `Visibility` — The new visibility setting for the item.
      * - `Attributes` — The new table of attributes for the item.
@@ -35949,32 +36059,41 @@ interface ReflectionService extends Instance {
      */
     readonly _nominal_ReflectionService: unique symbol;
     /**
+     * Returns information about a class when given its name, assuming that class is accessible.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService#GetClass)
      * @param this
-     * @param className
-     * @param filter
+     * @param className The name of the class for which you wish to retrieve information.
+     * @param filter An optional filter to restrict or expand the set of classes that this method can return and change the method's behavior.
+     * @returns A `ReflectedClass` dictionary with reflection information if the class exists; otherwise, `nil`.
      */
     GetClass(this: ReflectionService, className: string, filter?: object): object | undefined;
     /**
+     * Returns a list of all classes accessible with filters applied.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService#GetClasses)
      * @param this
-     * @param filter
+     * @param filter An optional filter to restrict or expand the set of classes that this method can return and change the method's behavior.
+     * @returns A list of `ReflectedClass` dictionaries with reflection information for each class that matches the filter criteria.
      */
     GetClasses(this: ReflectionService, filter?: object): Array<unknown>;
     /**
+     * Returns a list of properties for a given class with filters applied.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService#GetPropertiesOfClass)
      * @param this
-     * @param className
-     * @param filter
+     * @param className The name of the class for which you wish to retrieve properties.
+     * @param filter An optional filter to restrict or expand the set of properties that this method can return and change the method's behavior.
+     * @returns A list of `ReflectedProperty` dictionaries with reflection information for each property of the class that matches the filter criteria.
      */
     GetPropertiesOfClass(this: ReflectionService, className: string, filter?: object): Array<unknown>;
 }
@@ -37745,6 +37864,12 @@ interface Sky extends Instance {
      */
     MoonAngularSize: number;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sky#MoonTextureContent)
+     */
+    MoonTextureContent: Content;
+    /**
      * The texture of the moon while using this skybox.
      *
      * - **ThreadSafety**: ReadSafe
@@ -37752,6 +37877,12 @@ interface Sky extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sky#MoonTextureId)
      */
     MoonTextureId: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sky#SkyboxBackContent)
+     */
+    SkyboxBackContent: Content;
     /**
      * The URL link to a picture for the back surface of the sky.
      *
@@ -37769,6 +37900,18 @@ interface Sky extends Instance {
      */
     SkyboxDn: ContentId;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sky#SkyboxDownContent)
+     */
+    SkyboxDownContent: Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sky#SkyboxFrontContent)
+     */
+    SkyboxFrontContent: Content;
+    /**
      * Asset ID for the front surface of the skybox.
      *
      * - **ThreadSafety**: ReadSafe
@@ -37776,6 +37919,12 @@ interface Sky extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sky#SkyboxFt)
      */
     SkyboxFt: ContentId;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sky#SkyboxLeftContent)
+     */
+    SkyboxLeftContent: Content;
     /**
      * Asset ID for the left surface of the skybox.
      *
@@ -37793,6 +37942,12 @@ interface Sky extends Instance {
      */
     SkyboxOrientation: Vector3;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sky#SkyboxRightContent)
+     */
+    SkyboxRightContent: Content;
+    /**
      * Asset ID for the right surface of the skybox.
      *
      * - **ThreadSafety**: ReadSafe
@@ -37809,6 +37964,12 @@ interface Sky extends Instance {
      */
     SkyboxUp: ContentId;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sky#SkyboxUpContent)
+     */
+    SkyboxUpContent: Content;
+    /**
      * How many stars are shown in the skybox.
      *
      * - **ThreadSafety**: ReadSafe
@@ -37824,6 +37985,12 @@ interface Sky extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sky#SunAngularSize)
      */
     SunAngularSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sky#SunTextureContent)
+     */
+    SunTextureContent: Content;
     /**
      * The texture of the sun while using this skybox.
      *
@@ -40872,10 +41039,16 @@ interface TeleportService extends Instance {
         string
     ]>;
     /**
+     * Prompts a `Player` with information about the specified experience. The player can choose to teleport to the target experience through the prompt.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#PromptExperienceDetailsAsync)
+     * @param this Enables transporting `Players` between places and servers.
+     * @param player The `Player` to be presented the prompt.
+     * @param universeId `DataModel.UniverseId` of the experience to be presented to the `Player`
+     * @returns `PromptExperienceDetailsResult`
      */
     PromptExperienceDetailsAsync(this: TeleportService, player: Player, universeId: number): Enum.PromptExperienceDetailsResult;
     /**
@@ -42632,7 +42805,7 @@ interface TextGenerator extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextGenerator#GenerateTextAsync)
      * @param this Gives access to a large language model for text generation.
      * @param request A dictionary containing optional parameters for the text generation request. The currently supported parameters are `UserPrompt`, `ContextToken`, and `MaxTokens`.
-     * @returns A dictionary containing the LLM's generated response.
+     * @returns A dictionary containing the generated response.
      */
     GenerateTextAsync(this: TextGenerator, request: object): object;
 }
@@ -45579,7 +45752,7 @@ interface VRStatusService extends Instance {
     readonly _nominal_VRStatusService: unique symbol;
 }
 /**
- * Base class of all 'Value Instance' objects.
+ * Base class of all "value instance" objects.
  *
  * - **Tags**: NotCreatable
  *
@@ -45620,7 +45793,7 @@ interface BoolValue extends ValueBase {
      */
     Value: boolean;
     /**
-     * Fired whenever the `BoolValue.Value` of the BoolValue is changed.
+     * Fires whenever the `BoolValue.Value` is changed.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -45899,7 +46072,7 @@ interface NumberValue extends ValueBase {
      */
     Value: number;
     /**
-     * Fired whenever the `NumberValue.Value` is changed.
+     * Fires whenever the `NumberValue.Value` is changed.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -45930,7 +46103,7 @@ interface ObjectValue extends ValueBase {
      */
     Value: Instance | undefined;
     /**
-     * Fired whenever the `ObjectValue.Value` is changed.
+     * Fires whenever the `ObjectValue.Value` is changed.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -45992,7 +46165,7 @@ interface StringValue extends ValueBase {
      */
     Value: string;
     /**
-     * Fired whenever `StringValue.Value` is changed.
+     * Fires whenever `StringValue.Value` is changed.
      *
      * - **ThreadSafety**: Unsafe
      *
