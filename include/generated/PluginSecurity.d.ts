@@ -191,7 +191,9 @@ interface Services {
     SessionCheckService: SessionCheckService;
     SessionService: SessionService;
     SharedTableRegistry: SharedTableRegistry;
+    SlimAnimationReplicationService: SlimAnimationReplicationService;
     SlimContentProvider: SlimContentProvider;
+    SlimReplicationService: SlimReplicationService;
     SlimService: SlimService;
     SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
     SnippetService: SnippetService;
@@ -728,6 +730,7 @@ interface Instances extends Services, CreatableInstances {
     ServerReplicator: ServerReplicator;
     ServiceProvider: ServiceProvider;
     SlidingBallConstraint: SlidingBallConstraint;
+    SlimAnimationDataEntity: SlimAnimationDataEntity;
     SoundEffect: SoundEffect;
     StackFrame: StackFrame;
     StandardPages: StandardPages;
@@ -2977,7 +2980,7 @@ interface CaptureService extends Instance {
     readonly _nominal_CaptureService: unique symbol;
 }
 /**
- * Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+ * **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -2998,8 +3001,8 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#FinishRecording)
-     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
-     * @param identifier The string returned by a previous call to `TryBeginRecording()`, used to identify which recording to finish. This identifier is **not the same** as the `name` of the action passed to `TryBeginRecording()`. If the operation is `FinishRecordingOperation.Cancel`, this value is ignored, and the recording is determined by context.
+     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param identifier Identifies the recording from the previous call to `TryBeginRecording()`. If the operation is `ChangeHistoryService.FinishRecordingOperation.Cancel`, this value is ignored, and the recording is determined by context.
      * @param operation Specifies the operation to take.
      * @param finalOptions Optional table of values to pass to `OnFinishRecording`.
      */
@@ -3010,7 +3013,7 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#GetCanRedo)
-     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      */
     GetCanRedo(this: ChangeHistoryService): unknown;
     /**
@@ -3019,14 +3022,14 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#GetCanUndo)
-     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      */
     GetCanUndo(this: ChangeHistoryService): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#IsRecordingInProgress)
-     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      * @param identifier
      */
     IsRecordingInProgress(this: ChangeHistoryService, identifier?: string): boolean;
@@ -3036,7 +3039,7 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#Redo)
-     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      */
     Redo(this: ChangeHistoryService): void;
     /**
@@ -3045,16 +3048,16 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#ResetWaypoints)
-     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      */
     ResetWaypoints(this: ChangeHistoryService): void;
     /**
-     * Sets whether or not `ChangeHistoryService` is enabled.
+     * Sets whether or not the ChangeHistoryService is enabled.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#SetEnabled)
-     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      * @param state
      */
     SetEnabled(this: ChangeHistoryService, state: boolean): void;
@@ -3064,7 +3067,7 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#SetWaypoint)
-     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      * @param name
      */
     SetWaypoint(this: ChangeHistoryService, name: string): void;
@@ -3074,7 +3077,7 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#TryBeginRecording)
-     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      * @param name Name of the action being performed suitable for logging and coding purposes.
      * @param displayName Name of the action being performed to display to the user.
      */
@@ -3085,7 +3088,7 @@ interface ChangeHistoryService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#Undo)
-     * @param this Service which **must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      */
     Undo(this: ChangeHistoryService): void;
     /**
@@ -3105,7 +3108,7 @@ interface ChangeHistoryService extends Instance {
      */
     readonly OnRecordingStarted: RBXScriptSignal<(name: string, displayName?: string) => void>;
     /**
-     * Fired when the user reverses the undo command.
+     * Fired when the user reverses the undo command. Waypoint describes the type action that has been redone.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -3113,7 +3116,7 @@ interface ChangeHistoryService extends Instance {
      */
     readonly OnRedo: RBXScriptSignal<(waypoint: string) => void>;
     /**
-     * Fired when the user undoes an action in studio.
+     * Fired when the user undoes an action in studio. Waypoint describes the type action that has been undone.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -6985,8 +6988,6 @@ interface HumanoidDescription extends Instance {
     readonly _nominal_HumanoidDescription: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription)
  */
 interface HumanoidRigDescription extends Instance {
@@ -8039,6 +8040,8 @@ interface MLService extends Instance {
     readonly _nominal_MLService: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MakeupDescription)
  */
 interface MakeupDescription extends Instance {
@@ -10428,8 +10431,17 @@ interface Plugin extends Instance {
      * @param this
      * @param pluginGuiId A unique and consistent identifier used to storing the widget's dock state and other internal details.
      * @param dockWidgetPluginGuiInfo Describes the `DockWidgetPluginGui` to create (initial state, size, etc).
+     *
+     * @deprecated CreateDockWidgetPluginGuiAsync
      */
     CreateDockWidgetPluginGui(this: Plugin, pluginGuiId: string, dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo): DockWidgetPluginGui;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#CreateDockWidgetPluginGuiAsync)
+     */
+    CreateDockWidgetPluginGuiAsync(this: Plugin, pluginGuiId: string, dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo): DockWidgetPluginGui;
     /**
      * Prompts the user to open a .fbx animation file that can be loaded onto the `rigModel`, then proceeds to insert the animation as a `KeyframeSequence` in the `Workspace`.
      *
@@ -10440,8 +10452,17 @@ interface Plugin extends Instance {
      * @param this
      * @param rigModel
      * @param isR15
+     *
+     * @deprecated ImportFbxAnimationAsync
      */
     ImportFbxAnimation(this: Plugin, rigModel: Instance, isR15?: boolean): Instance | undefined;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#ImportFbxAnimationAsync)
+     */
+    ImportFbxAnimationAsync(this: Plugin, rigModel: Instance, isR15?: boolean): Instance | undefined;
     /**
      * Prompts the user to open a .fbx file, uploads the individual components of the model as meshes, and generates a character rig for use in animation, which is loaded into the `Workspace`.
      *
@@ -10451,8 +10472,17 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#ImportFbxRig)
      * @param this
      * @param isR15
+     *
+     * @deprecated ImportFbxRigAsync
      */
     ImportFbxRig(this: Plugin, isR15?: boolean): Model;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#ImportFbxRigAsync)
+     */
+    ImportFbxRigAsync(this: Plugin, isR15?: boolean): Instance | undefined;
     /**
      * Opens a window in Roblox Studio, which prompts the user to select an asset based on the `assetType` specified. Returns what assetId was selected, or -1 if the window was closed.
      *
@@ -10465,6 +10495,13 @@ interface Plugin extends Instance {
      */
     PromptForExistingAssetId(this: Plugin, assetType: string): number;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptForExistingAssetIdAsync)
+     */
+    PromptForExistingAssetIdAsync(this: Plugin, assetType: string): number;
+    /**
      * Prompts the user to save their current selection with the specified file name. Returns true if the user did save the file.
      *
      * - **ThreadSafety**: Unsafe
@@ -10473,8 +10510,17 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptSaveSelection)
      * @param this
      * @param suggestedFileName
+     *
+     * @deprecated PromptSaveSelectionAsync
      */
     PromptSaveSelection(this: Plugin, suggestedFileName?: string): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptSaveSelectionAsync)
+     */
+    PromptSaveSelectionAsync(this: Plugin, suggestedFileName?: string): boolean;
     /**
      * Fired when the plugin is deactivated.
      *
@@ -12423,6 +12469,51 @@ interface Sky extends Instance {
     readonly _nominal_Sky: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlimAnimationDataEntity)
+ */
+interface SlimAnimationDataEntity extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SlimAnimationDataEntity: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlimAnimationReplicationService)
+ */
+interface SlimAnimationReplicationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SlimAnimationReplicationService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlimReplicationService)
+ */
+interface SlimReplicationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SlimReplicationService: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlimService)
@@ -13326,8 +13417,17 @@ interface StudioService extends Instance {
      * @param this Provides access to configuration of Roblox Studio and allows importing files from the user's file system.
      * @param fileTypeFilter A list of file types that the user is allowed to select. File types are formatted without a period. For example, {"jpg", "png"} would allow only a JPG or PNG file to be selected. If no filter is provided, the filter is `nil` and allows the user to select any file type.
      * @returns The imported `File`. Returns `nil` if no files were selected, or if the selected file was too large (FileSize greater than 100 megabytes).
+     *
+     * @deprecated PromptImportFileAsync
      */
     PromptImportFile(this: StudioService, fileTypeFilter?: Array<unknown>): Instance | undefined;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioService#PromptImportFileAsync)
+     */
+    PromptImportFileAsync(this: StudioService, fileTypeFilter?: Array<unknown>): Instance | undefined;
     /**
      * Prompts the current Studio user to select files to add as `Files`.
      *
@@ -13338,8 +13438,17 @@ interface StudioService extends Instance {
      * @param this Provides access to configuration of Roblox Studio and allows importing files from the user's file system.
      * @param fileTypeFilter A list of file types that the user is allowed to select. File types are formatted without a period. For example, {"jpg", "png"} would allow only JPG and PNG files to be selected. If no filter is provided, the filter is `nil` and allows the user to select any file type.
      * @returns The imported `Files`. Returns an empty list if no files were selected. Returns `nil` if the user selected one or more files that were too large (FileSize greater than 100 megabytes).
+     *
+     * @deprecated PromptImportFilesAsync
      */
     PromptImportFiles(this: StudioService, fileTypeFilter?: Array<unknown>): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioService#PromptImportFilesAsync)
+     */
+    PromptImportFilesAsync(this: StudioService, fileTypeFilter?: Array<unknown>): Array<Instance>;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -13958,8 +14067,17 @@ interface TestService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Run)
      * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
+     *
+     * @deprecated RunAsync
      */
     Run(this: TestService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RunAsync)
+     */
+    RunAsync(this: TestService): void;
 }
 /**
  * - **Tags**: NotCreatable, Service
