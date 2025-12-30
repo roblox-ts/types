@@ -3542,6 +3542,8 @@ interface AngularVelocity extends Constraint {
 /**
  * Aligns two `BaseParts` with an animate-able kinematic or force-based joint.
  *
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint)
  */
 interface AnimationConstraint extends Constraint {
