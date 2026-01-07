@@ -98,6 +98,7 @@ interface Services {
     IncrementalPatchBuilder: IncrementalPatchBuilder;
     InsertService: InsertService;
     InstanceExtensionsService: InstanceExtensionsService;
+    InstanceFileSyncService: InstanceFileSyncService;
     InternalSyncService: InternalSyncService;
     IXPService: IXPService;
     JointsService: JointsService;
@@ -873,6 +874,8 @@ interface VideoCapture extends Capture {
     readonly _nominal_VideoCapture: unique symbol;
 }
 /**
+ * A snapshot of configuration values at a given version. Can be player-specific.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot)
@@ -3405,6 +3408,8 @@ interface CommerceService extends Instance {
     readonly _nominal_CommerceService: unique symbol;
 }
 /**
+ * An animation curve that groups child `FloatCurves` which each animate a different component of a non-unary value.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CompositeValueCurve)
  */
 interface CompositeValueCurve extends Instance {
@@ -3418,6 +3423,8 @@ interface CompositeValueCurve extends Instance {
     readonly _nominal_CompositeValueCurve: unique symbol;
 }
 /**
+ * A game service that gives access to in-experience configuration with updates in real time.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigService)
@@ -7202,6 +7209,45 @@ interface InstanceExtensionsService extends Instance {
     readonly _nominal_InstanceExtensionsService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceFileSyncService)
+ */
+interface InstanceFileSyncService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InstanceFileSyncService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceFileSyncService#GetAllInstances)
+     */
+    GetAllInstances(this: InstanceFileSyncService): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceFileSyncService#GetStatus)
+     */
+    GetStatus(this: InstanceFileSyncService, instance: Instance): Enum.InstanceFileSyncStatus;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceFileSyncService#GetSyncedInstance)
+     */
+    GetSyncedInstance(this: InstanceFileSyncService, filePath: string): Instance | undefined;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceFileSyncService#StatusChanged)
+     */
+    readonly StatusChanged: RBXScriptSignal<(instance: Instance, status: Enum.InstanceFileSyncStatus) => void>;
+}
+/**
  * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalSyncItem)
@@ -10424,6 +10470,8 @@ interface Plugin extends Instance {
      */
     Union(this: Plugin, objects: Array<BasePart>): UnionOperation;
     /**
+     * **Deprecated:**
+     *
      * Creates a `DockWidgetPluginGui` given a `DockWidgetPluginGuiInfo`.
      *
      * - **ThreadSafety**: Unsafe
@@ -10438,13 +10486,20 @@ interface Plugin extends Instance {
      */
     CreateDockWidgetPluginGui(this: Plugin, pluginGuiId: string, dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo): DockWidgetPluginGui;
     /**
+     * Creates a `DockWidgetPluginGui` given a `DockWidgetPluginGuiInfo`.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#CreateDockWidgetPluginGuiAsync)
+     * @param this
+     * @param pluginGuiId A unique and consistent identifier used to storing the widget's dock state and other internal details.
+     * @param dockWidgetPluginGuiInfo Describes the `DockWidgetPluginGui` to create (initial state, size, etc).
      */
     CreateDockWidgetPluginGuiAsync(this: Plugin, pluginGuiId: string, dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo): DockWidgetPluginGui;
     /**
+     * **Deprecated:**
+     *
      * Prompts the user to open a .fbx animation file that can be loaded onto the `rigModel`, then proceeds to insert the animation as a `KeyframeSequence` in the `Workspace`.
      *
      * - **ThreadSafety**: Unsafe
@@ -10459,13 +10514,20 @@ interface Plugin extends Instance {
      */
     ImportFbxAnimation(this: Plugin, rigModel: Instance, isR15?: boolean): Instance | undefined;
     /**
+     * Prompts the user to open a .fbx animation file that can be loaded onto the `rigModel`, then proceeds to insert the animation as a `KeyframeSequence` in the `Workspace`.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#ImportFbxAnimationAsync)
+     * @param this
+     * @param rigModel
+     * @param isR15
      */
     ImportFbxAnimationAsync(this: Plugin, rigModel: Instance, isR15?: boolean): Instance | undefined;
     /**
+     * **Deprecated:**
+     *
      * Prompts the user to open a .fbx file, uploads the individual components of the model as meshes, and generates a character rig for use in animation, which is loaded into the `Workspace`.
      *
      * - **ThreadSafety**: Unsafe
@@ -10479,10 +10541,14 @@ interface Plugin extends Instance {
      */
     ImportFbxRig(this: Plugin, isR15?: boolean): Model;
     /**
+     * Prompts the user to open a .fbx file, uploads the individual components of the model as meshes, and generates a character rig for use in animation, which is loaded into the `Workspace`.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#ImportFbxRigAsync)
+     * @param this
+     * @param isR15
      */
     ImportFbxRigAsync(this: Plugin, isR15?: boolean): Instance | undefined;
     /**
@@ -10497,13 +10563,19 @@ interface Plugin extends Instance {
      */
     PromptForExistingAssetId(this: Plugin, assetType: string): number;
     /**
+     * Opens a window in Roblox Studio, which prompts the user to select an asset based on the `assetType` specified. Returns what assetId was selected, or -1 if the window was closed.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptForExistingAssetIdAsync)
+     * @param this
+     * @param assetType
      */
     PromptForExistingAssetIdAsync(this: Plugin, assetType: string): number;
     /**
+     * **Deprecated:**
+     *
      * Prompts the user to save their current selection with the specified file name. Returns true if the user did save the file.
      *
      * - **ThreadSafety**: Unsafe
@@ -10517,10 +10589,14 @@ interface Plugin extends Instance {
      */
     PromptSaveSelection(this: Plugin, suggestedFileName?: string): boolean;
     /**
+     * Prompts the user to save their current selection with the specified file name. Returns true if the user did save the file.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptSaveSelectionAsync)
+     * @param this
+     * @param suggestedFileName
      */
     PromptSaveSelectionAsync(this: Plugin, suggestedFileName?: string): boolean;
     /**
@@ -12820,7 +12896,7 @@ interface SoundGroup extends Instance {
     readonly _nominal_SoundGroup: unique symbol;
 }
 /**
- * A service that determines various aspects of how `Sounds` play in the experience.
+ * A service that determines various aspects of how the audio engine works. Most of its properties affect how `Sounds` play in the experience.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -12836,6 +12912,8 @@ interface SoundService extends Instance {
      */
     readonly _nominal_SoundService: unique symbol;
     /**
+     * Determines whether the default character sounds will use instances in the advanced audio system vs. `Sounds`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#CharacterSoundsUseNewApi)
@@ -12850,19 +12928,23 @@ interface SoundService extends Instance {
      */
     DefaultListenerLocation: Enum.ListenerLocation;
     /**
+     * Opens the attenuation curve editor in Studio for the provided `AudioEmitter` or `AudioListener` instances.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#OpenAttenuationCurveEditor)
-     * @param this A service that determines various aspects of how `Sounds` play in the experience.
-     * @param selectedCurveObjects
+     * @param this A service that determines various aspects of how the audio engine works. Most of its properties affect how `Sounds` play in the experience.
+     * @param selectedCurveObjects A list of `AudioEmitters` or `AudioListeners`.
      */
     OpenAttenuationCurveEditor(this: SoundService, selectedCurveObjects: Array<Instance>): void;
     /**
+     * Opens the directional curve editor in Studio for the provided `AudioEmitter` or `AudioListener` instances.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#OpenDirectionalCurveEditor)
-     * @param this A service that determines various aspects of how `Sounds` play in the experience.
-     * @param selectedCurveObjects
+     * @param this A service that determines various aspects of how the audio engine works. Most of its properties affect how `Sounds` play in the experience.
+     * @param selectedCurveObjects A list of `AudioEmitters` or `AudioListeners`.
      */
     OpenDirectionalCurveEditor(this: SoundService, selectedCurveObjects: Array<Instance>): void;
 }
@@ -13410,6 +13492,8 @@ interface StudioService extends Instance {
      */
     GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult | undefined;
     /**
+     * **Deprecated:**
+     *
      * Prompts the current Studio user to select one file to add as a `File`.
      *
      * - **ThreadSafety**: Unsafe
@@ -13424,13 +13508,20 @@ interface StudioService extends Instance {
      */
     PromptImportFile(this: StudioService, fileTypeFilter?: Array<unknown>): Instance | undefined;
     /**
+     * Prompts the current Studio user to select one file to add as a `File`.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioService#PromptImportFileAsync)
+     * @param this Provides access to configuration of Roblox Studio and allows importing files from the user's file system.
+     * @param fileTypeFilter A list of file types that the user is allowed to select. File types are formatted without a period. For example, {"jpg", "png"} would allow only a JPG or PNG file to be selected. If no filter is provided, the filter is `nil` and allows the user to select any file type.
+     * @returns The imported `File`. Returns `nil` if no files were selected, or if the selected file was too large (FileSize greater than 100 megabytes).
      */
     PromptImportFileAsync(this: StudioService, fileTypeFilter?: Array<unknown>): Instance | undefined;
     /**
+     * **Deprecated:**
+     *
      * Prompts the current Studio user to select files to add as `Files`.
      *
      * - **ThreadSafety**: Unsafe
@@ -13445,14 +13536,21 @@ interface StudioService extends Instance {
      */
     PromptImportFiles(this: StudioService, fileTypeFilter?: Array<unknown>): Array<Instance>;
     /**
+     * Prompts the current Studio user to select files to add as `Files`.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioService#PromptImportFilesAsync)
+     * @param this Provides access to configuration of Roblox Studio and allows importing files from the user's file system.
+     * @param fileTypeFilter A list of file types that the user is allowed to select. File types are formatted without a period. For example, {"jpg", "png"} would allow only JPG and PNG files to be selected. If no filter is provided, the filter is `nil` and allows the user to select any file type.
+     * @returns The imported `Files`. Returns an empty list if no files were selected. Returns `nil` if the user selected one or more files that were too large (FileSize greater than 100 megabytes).
      */
     PromptImportFilesAsync(this: StudioService, fileTypeFilter?: Array<unknown>): Array<Instance>;
 }
 /**
+ * Service allowing plugins to automate and customize Test and Run mode testing.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService)
@@ -13471,6 +13569,9 @@ interface StudioTestService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#ExecutePlayModeAsync)
+     * @param this Service allowing plugins to automate and customize Test and Run mode testing.
+     * @param args Argument passed to the test session, or `nil`.
+     * @returns Value passed from `StudioTestService:EndTest()`, or `nil`.
      */
     ExecutePlayModeAsync(this: StudioTestService, args: unknown): unknown;
     /**
@@ -13478,6 +13579,9 @@ interface StudioTestService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#ExecuteRunModeAsync)
+     * @param this Service allowing plugins to automate and customize Test and Run mode testing.
+     * @param args Argument passed to the test session, or `nil`.
+     * @returns Value passed from `StudioTestService:EndTest()`, or `nil`.
      */
     ExecuteRunModeAsync(this: StudioTestService, args: unknown): unknown;
 }
@@ -14062,6 +14166,8 @@ interface TestService extends Instance {
      */
     readonly _nominal_TestService: unique symbol;
     /**
+     * **Deprecated:**
+     *
      * Runs scripts which are parented to TestService.
      *
      * - **ThreadSafety**: Unsafe
@@ -14074,10 +14180,13 @@ interface TestService extends Instance {
      */
     Run(this: TestService): void;
     /**
+     * Runs scripts which are parented to TestService.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RunAsync)
+     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
      */
     RunAsync(this: TestService): void;
 }
@@ -14212,7 +14321,7 @@ interface ChatWindowConfiguration extends TextChatConfigurations {
     readonly _nominal_ChatWindowConfiguration: unique symbol;
 }
 /**
- * Immutable data object representing a text chat message.
+ * A data object representing a text chat message.
  *
  * - **Tags**: NotCreatable
  *

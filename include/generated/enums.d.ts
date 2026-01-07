@@ -3791,10 +3791,14 @@ declare namespace Enum {
     }
     export type AudioWindowSize = AudioWindowSize.Small | AudioWindowSize.Medium | AudioWindowSize.Large;
     /**
+     * Enum used with `Workspace.AuthorityMode`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AuthorityMode)
      */
     export namespace AuthorityMode {
         /**
+         * Server authority with client side prediction and rollback enabled.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AuthorityMode#Server)
          */
         export interface Server extends globalThis.EnumItem {
@@ -3804,6 +3808,8 @@ declare namespace Enum {
         }
         export const Server: Server;
         /**
+         * Traditional distributed authority model where, for each instance, the engine decides whether the server or a client should be the authority; `BasePart:SetNetworkOwner()` can be used to influence the decision.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AuthorityMode#Automatic)
          */
         export interface Automatic extends globalThis.EnumItem {
@@ -6509,33 +6515,6 @@ declare namespace Enum {
     }
     export type CatalogSortType = CatalogSortType.Relevance | CatalogSortType.PriceHighToLow | CatalogSortType.PriceLowToHigh | CatalogSortType.MostFavorited | CatalogSortType.RecentlyCreated | CatalogSortType.Bestselling;
     /**
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogTimedOptionFilter)
-     */
-    export namespace CatalogTimedOptionFilter {
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogTimedOptionFilter#All)
-         */
-        export interface All extends globalThis.EnumItem {
-            Name: "All";
-            Value: 1;
-            EnumType: typeof globalThis.Enum.CatalogTimedOptionFilter;
-        }
-        export const All: All;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogTimedOptionFilter#TimedOptionOnly)
-         */
-        export interface TimedOptionOnly extends globalThis.EnumItem {
-            Name: "TimedOptionOnly";
-            Value: 2;
-            EnumType: typeof globalThis.Enum.CatalogTimedOptionFilter;
-        }
-        export const TimedOptionOnly: TimedOptionOnly;
-        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CatalogTimedOptionFilter>;
-        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CatalogTimedOptionFilter | undefined;
-        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CatalogTimedOptionFilter | undefined;
-    }
-    export type CatalogTimedOptionFilter = CatalogTimedOptionFilter.All | CatalogTimedOptionFilter.TimedOptionOnly;
-    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellBlock)
      */
     export namespace CellBlock {
@@ -8495,6 +8474,10 @@ declare namespace Enum {
         }
         export const DisconnectRaknetErrors: DisconnectRaknetErrors;
         /**
+         * @deprecated renamed to DisconnectRaknetErrors
+         */
+        export const DisconnectNoResponse: DisconnectRaknetErrors;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectWrongVersion)
          */
         export interface DisconnectWrongVersion extends globalThis.EnumItem {
@@ -9617,6 +9600,12 @@ declare namespace Enum {
         }
         export const RemoveVersionAsync: RemoveVersionAsync;
         /**
+         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
+         *
+         *
+         *
+         *  Refers to `GetAsync()`, `GetVersionAsync()`, `GetVersionAtTimeAsync()`, and the read of `UpdateAsync()` for `DataStore`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#StandardRead)
          */
         export interface StandardRead extends globalThis.EnumItem {
@@ -9626,6 +9615,12 @@ declare namespace Enum {
         }
         export const StandardRead: StandardRead;
         /**
+         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
+         *
+         *
+         *
+         *  Refers to `SetAsync()`, `IncrementAsync()`, and the write of `UpdateAsync()` for `DataStore`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#StandardWrite)
          */
         export interface StandardWrite extends globalThis.EnumItem {
@@ -9635,6 +9630,12 @@ declare namespace Enum {
         }
         export const StandardWrite: StandardWrite;
         /**
+         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
+         *
+         *
+         *
+         *  Refers to `ListDataStoresAsync()`, and `ListKeysAsync()` and `ListVersionsAsync()` for `DataStore`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#StandardList)
          */
         export interface StandardList extends globalThis.EnumItem {
@@ -9644,6 +9645,12 @@ declare namespace Enum {
         }
         export const StandardList: StandardList;
         /**
+         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
+         *
+         *
+         *
+         *  Refers to `RemoveAsync()` for `DataStore`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#StandardRemove)
          */
         export interface StandardRemove extends globalThis.EnumItem {
@@ -9653,6 +9660,12 @@ declare namespace Enum {
         }
         export const StandardRemove: StandardRemove;
         /**
+         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
+         *
+         *
+         *
+         *  Refers to `GetAsync()` and the read of `UpdateAsync()` for `OrderedDataStore`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#OrderedRead)
          */
         export interface OrderedRead extends globalThis.EnumItem {
@@ -9662,6 +9675,12 @@ declare namespace Enum {
         }
         export const OrderedRead: OrderedRead;
         /**
+         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
+         *
+         *
+         *
+         *  Refers to `SetAsync()`, `IncrementAsync()`, and the write of `UpdateAsync()` for `OrderedDataStore`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#OrderedWrite)
          */
         export interface OrderedWrite extends globalThis.EnumItem {
@@ -9671,6 +9690,12 @@ declare namespace Enum {
         }
         export const OrderedWrite: OrderedWrite;
         /**
+         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
+         *
+         *
+         *
+         *  Refers to `GetSortedAsync()` for `OrderedDataStore`. GetRequestBudgetForRequestType()`with this enum will return`0`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#OrderedList)
          */
         export interface OrderedList extends globalThis.EnumItem {
@@ -9680,6 +9705,12 @@ declare namespace Enum {
         }
         export const OrderedList: OrderedList;
         /**
+         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
+         *
+         *
+         *
+         *  Refers to `RemoveAsync()` for `OrderedDataStore`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#OrderedRemove)
          */
         export interface OrderedRemove extends globalThis.EnumItem {
@@ -16675,6 +16706,51 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InputType | undefined;
     }
     export type InputType = InputType.NoInput | InputType.Constant | InputType.Sin;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InstanceFileSyncStatus)
+     */
+    export namespace InstanceFileSyncStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InstanceFileSyncStatus#NotSynced)
+         */
+        export interface NotSynced extends globalThis.EnumItem {
+            Name: "NotSynced";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.InstanceFileSyncStatus;
+        }
+        export const NotSynced: NotSynced;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InstanceFileSyncStatus#Errored)
+         */
+        export interface Errored extends globalThis.EnumItem {
+            Name: "Errored";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.InstanceFileSyncStatus;
+        }
+        export const Errored: Errored;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InstanceFileSyncStatus#SyncedAsRoot)
+         */
+        export interface SyncedAsRoot extends globalThis.EnumItem {
+            Name: "SyncedAsRoot";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.InstanceFileSyncStatus;
+        }
+        export const SyncedAsRoot: SyncedAsRoot;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InstanceFileSyncStatus#SyncedAsDescendant)
+         */
+        export interface SyncedAsDescendant extends globalThis.EnumItem {
+            Name: "SyncedAsDescendant";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.InstanceFileSyncStatus;
+        }
+        export const SyncedAsDescendant: SyncedAsDescendant;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InstanceFileSyncStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.InstanceFileSyncStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InstanceFileSyncStatus | undefined;
+    }
+    export type InstanceFileSyncStatus = InstanceFileSyncStatus.NotSynced | InstanceFileSyncStatus.Errored | InstanceFileSyncStatus.SyncedAsRoot | InstanceFileSyncStatus.SyncedAsDescendant;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IntermediateMeshGenerationResult)
      */
@@ -24895,10 +24971,14 @@ declare namespace Enum {
     }
     export type PositionAlignmentMode = PositionAlignmentMode.OneAttachment | PositionAlignmentMode.TwoAttachment;
     /**
+     * Enum used with `RunService:SetPredictionMode()` to define the prediction mode for the instance.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode)
      */
     export namespace PredictionMode {
         /**
+         * The engine will automatically decide if this instance should be predicted or not. Currently, only `BaseParts` near the local player character's `Humanoid` will be predicted within a dynamic radius that grows and shrinks based on the device's capability to handle the simulation load.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#Automatic)
          */
         export interface Automatic extends globalThis.EnumItem {
@@ -24908,6 +24988,8 @@ declare namespace Enum {
         }
         export const Automatic: Automatic;
         /**
+         * The instance will be predicted. Mismatches in the attributes of this instance between the client and server will cause a rollback and resimulation. If the instance is a `BasePart`, its physics properties will be predicted ahead of the replicated authoritative server state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#On)
          */
         export interface On extends globalThis.EnumItem {
@@ -24917,6 +24999,8 @@ declare namespace Enum {
         }
         export const On: On;
         /**
+         * The instance will **not** be predicted. Regular network ownership semantics apply.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionMode#Off)
          */
         export interface Off extends globalThis.EnumItem {
@@ -24931,10 +25015,14 @@ declare namespace Enum {
     }
     export type PredictionMode = PredictionMode.Automatic | PredictionMode.On | PredictionMode.Off;
     /**
+     * Enum used with `RunService:GetPredictionStatus()` to check the status of a specific instance.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionStatus)
      */
     export namespace PredictionStatus {
         /**
+         * This instance is authoritative.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionStatus#Authoritative)
          */
         export interface Authoritative extends globalThis.EnumItem {
@@ -24944,6 +25032,8 @@ declare namespace Enum {
         }
         export const Authoritative: Authoritative;
         /**
+         * This instance is being predicted.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionStatus#Predicted)
          */
         export interface Predicted extends globalThis.EnumItem {
@@ -24953,6 +25043,8 @@ declare namespace Enum {
         }
         export const Predicted: Predicted;
         /**
+         * The instance will not be resimulated; classic simulation rules apply instead.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictionStatus#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -29842,10 +29934,14 @@ declare namespace Enum {
     }
     export type Status = Status.Poison | Status.Confusion;
     /**
+     * Enum used with `RunService:BindToSimulation()` to indicate the frequency at which the bound function is called.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency)
      */
     export namespace StepFrequency {
         /**
+         * The bound function is called at 60 Hz.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency#Hz60)
          */
         export interface Hz60 extends globalThis.EnumItem {
@@ -29855,6 +29951,8 @@ declare namespace Enum {
         }
         export const Hz60: Hz60;
         /**
+         * The bound function is called at 30 Hz.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency#Hz30)
          */
         export interface Hz30 extends globalThis.EnumItem {
@@ -29864,6 +29962,8 @@ declare namespace Enum {
         }
         export const Hz30: Hz30;
         /**
+         * The bound function is called at 15 Hz.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency#Hz15)
          */
         export interface Hz15 extends globalThis.EnumItem {
@@ -29873,6 +29973,8 @@ declare namespace Enum {
         }
         export const Hz15: Hz15;
         /**
+         * The bound function is called at 10 Hz.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency#Hz10)
          */
         export interface Hz10 extends globalThis.EnumItem {
@@ -29882,6 +29984,8 @@ declare namespace Enum {
         }
         export const Hz10: Hz10;
         /**
+         * The bound function is called at 5 Hz.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency#Hz5)
          */
         export interface Hz5 extends globalThis.EnumItem {
@@ -29891,6 +29995,8 @@ declare namespace Enum {
         }
         export const Hz5: Hz5;
         /**
+         * The bound function is called at 1 Hz.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StepFrequency#Hz1)
          */
         export interface Hz1 extends globalThis.EnumItem {
