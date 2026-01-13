@@ -77,8 +77,6 @@ jobs:
             git push https://osyrisrblx:${{ secrets.github_token }}@github.com/roblox-ts/types.git HEAD:deploy
             npm publish
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
 
       - name: Send Build Failure Notification
         uses: rjstone/discord-webhook-notify@v1
