@@ -8,6 +8,10 @@ on:
     branches:
       - master
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     if: contains(github.event.commits[0].message, '[skip ci]') == false &&
