@@ -13020,7 +13020,7 @@ declare namespace Enum {
         }
         export const Legacy: Legacy;
         /**
-         * Arial has been removed from Roblox. Using Arial will map to Arimo.
+         * `Arial` has been removed. Using it will map to the `Arimo` font family of the `Font` data type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Arial)
          */
@@ -13031,7 +13031,7 @@ declare namespace Enum {
         }
         export const Arial: Arial;
         /**
-         * Arial has been removed from Roblox. Using Arial will map to Arimo.
+         * `ArialBold` has been removed. Using it will map to the `Arimo` font family of the `Font` data type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#ArialBold)
          */
@@ -13196,7 +13196,7 @@ declare namespace Enum {
         }
         export const SourceSansSemibold: SourceSansSemibold;
         /**
-         * Gotham has been removed from Roblox. Using Gotham will map to Montserrat.
+         * `Gotham` has been removed. Using it will map to the `Montserrat` font family of the `Font` data type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Gotham)
          */
@@ -13211,7 +13211,7 @@ declare namespace Enum {
          */
         export const Montserrat: Gotham;
         /**
-         * Gotham has been removed from Roblox. Using Gotham will map to Montserrat.
+         * `GothamMedium` has been removed. Using it will map to the `Montserrat` font family of the `Font` data type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#GothamMedium)
          */
@@ -13230,7 +13230,7 @@ declare namespace Enum {
          */
         export const MontserratMedium: GothamMedium;
         /**
-         * Gotham has been removed from Roblox. Using Gotham will map to Montserrat.
+         * `GothamBold` has been removed. Using it will map to the `Montserrat` font family of the `Font` data type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#GothamBold)
          */
@@ -13245,7 +13245,7 @@ declare namespace Enum {
          */
         export const MontserratBold: GothamBold;
         /**
-         * Gotham has been removed from Roblox. Using Gotham will map to Montserrat.
+         * `GothamBlack` has been removed. Using it will map to the `Montserrat` font family of the `Font` data type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#GothamBlack)
          */
@@ -13601,7 +13601,7 @@ declare namespace Enum {
         }
         export const ArimoBold: ArimoBold;
         /**
-         * Set when the `TextLabel.FontFace` property is set to a `Font` that has no corresponding enum value.
+         * Set when the GUI object's font face is set to a `Font` that has no corresponding enum value.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font#Unknown)
          */
@@ -13621,7 +13621,7 @@ declare namespace Enum {
      */
     export namespace FontSize {
         /**
-         * Font size 8.
+         * Font size `8`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size8)
          */
@@ -13632,7 +13632,7 @@ declare namespace Enum {
         }
         export const Size8: Size8;
         /**
-         * Font size 9.
+         * Font size `9`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size9)
          */
@@ -13643,7 +13643,7 @@ declare namespace Enum {
         }
         export const Size9: Size9;
         /**
-         * Font size 10.
+         * Font size `10`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size10)
          */
@@ -13654,7 +13654,7 @@ declare namespace Enum {
         }
         export const Size10: Size10;
         /**
-         * Font size 11.
+         * Font size `11`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size11)
          */
@@ -13665,7 +13665,7 @@ declare namespace Enum {
         }
         export const Size11: Size11;
         /**
-         * Font size 12.
+         * Font size `12`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size12)
          */
@@ -13676,7 +13676,7 @@ declare namespace Enum {
         }
         export const Size12: Size12;
         /**
-         * Font size 14.
+         * Font size `14`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size14)
          */
@@ -13687,7 +13687,7 @@ declare namespace Enum {
         }
         export const Size14: Size14;
         /**
-         * Font size 18.
+         * Font size `18`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size18)
          */
@@ -13698,7 +13698,7 @@ declare namespace Enum {
         }
         export const Size18: Size18;
         /**
-         * Font size 24.
+         * Font size `24`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size24)
          */
@@ -13709,7 +13709,7 @@ declare namespace Enum {
         }
         export const Size24: Size24;
         /**
-         * Font size 36.
+         * Font size `36`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size36)
          */
@@ -13720,7 +13720,7 @@ declare namespace Enum {
         }
         export const Size36: Size36;
         /**
-         * Font size 48.
+         * Font size `48`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size48)
          */
@@ -13731,7 +13731,7 @@ declare namespace Enum {
         }
         export const Size48: Size48;
         /**
-         * Font size 28.
+         * Font size `28`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size28)
          */
@@ -13742,7 +13742,7 @@ declare namespace Enum {
         }
         export const Size28: Size28;
         /**
-         * Font size 32.
+         * Font size `32`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size32)
          */
@@ -13753,7 +13753,7 @@ declare namespace Enum {
         }
         export const Size32: Size32;
         /**
-         * Font size 42.
+         * Font size `42`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size42)
          */
@@ -13764,7 +13764,7 @@ declare namespace Enum {
         }
         export const Size42: Size42;
         /**
-         * Font size 60.
+         * Font size `60`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size60)
          */
@@ -13775,7 +13775,7 @@ declare namespace Enum {
         }
         export const Size60: Size60;
         /**
-         * Font size 96.
+         * Font size `96`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize#Size96)
          */
@@ -13791,7 +13791,7 @@ declare namespace Enum {
     }
     export type FontSize = FontSize.Size8 | FontSize.Size9 | FontSize.Size10 | FontSize.Size11 | FontSize.Size12 | FontSize.Size14 | FontSize.Size18 | FontSize.Size24 | FontSize.Size36 | FontSize.Size48 | FontSize.Size28 | FontSize.Size32 | FontSize.Size42 | FontSize.Size60 | FontSize.Size96;
     /**
-     * Describes whether a `Font` is italic or not.
+     * Describes whether a `Font` style is normal or italic.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontStyle)
      */
@@ -15630,11 +15630,29 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.HttpError;
         }
         export const CreatorEnvironmentsNotSupportedByService: CreatorEnvironmentsNotSupportedByService;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#InactivityTimeout)
+         */
+        export interface InactivityTimeout extends globalThis.EnumItem {
+            Name: "InactivityTimeout";
+            Value: 16;
+            EnumType: typeof globalThis.Enum.HttpError;
+        }
+        export const InactivityTimeout: InactivityTimeout;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#TooManyOutstandingRequests)
+         */
+        export interface TooManyOutstandingRequests extends globalThis.EnumItem {
+            Name: "TooManyOutstandingRequests";
+            Value: 17;
+            EnumType: typeof globalThis.Enum.HttpError;
+        }
+        export const TooManyOutstandingRequests: TooManyOutstandingRequests;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.HttpError>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.HttpError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.HttpError | undefined;
     }
-    export type HttpError = HttpError.OK | HttpError.InvalidUrl | HttpError.DnsResolve | HttpError.ConnectFail | HttpError.OutOfMemory | HttpError.TimedOut | HttpError.TooManyRedirects | HttpError.InvalidRedirect | HttpError.NetFail | HttpError.Aborted | HttpError.SslConnectFail | HttpError.SslVerificationFail | HttpError.Unknown | HttpError.ConnectionClosed | HttpError.ServerProtocolError | HttpError.CreatorEnvironmentsNotSupportedByService;
+    export type HttpError = HttpError.OK | HttpError.InvalidUrl | HttpError.DnsResolve | HttpError.ConnectFail | HttpError.OutOfMemory | HttpError.TimedOut | HttpError.TooManyRedirects | HttpError.InvalidRedirect | HttpError.NetFail | HttpError.Aborted | HttpError.SslConnectFail | HttpError.SslVerificationFail | HttpError.Unknown | HttpError.ConnectionClosed | HttpError.ServerProtocolError | HttpError.CreatorEnvironmentsNotSupportedByService | HttpError.InactivityTimeout | HttpError.TooManyOutstandingRequests;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpRequestType)
      */
@@ -26345,7 +26363,7 @@ declare namespace Enum {
         }
         export const Comment: Comment;
         /**
-         * The user joined an experience through the item.
+         * The user joined an experience through the item, or played a mini-game associated with the item.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationActionType#Play)
          */
@@ -28583,7 +28601,7 @@ declare namespace Enum {
         }
         export const CoreUISafeInsets: CoreUISafeInsets;
         /**
-         * Top bar safe area insets are added to the `DeviceSafeInsets` area, resulting in an area guaranteed to be unobscured by both device screen cutouts and Roblox core UI elements like the experience controls. Unlike `CoreUISafeInsets`, this area's position and size is dynamic and is limited to the space available within the top bar area itself, outside of `CoreUISafeInsets`.
+         * Top bar safe area insets are added to the `DeviceSafeInsets` area, resulting in an area guaranteed to be unobscured by both device screen cutouts and Roblox core UI elements like the experience controls. Unlike `CoreUISafeInsets`, this area's position and size is dynamic and is limited to the space available within the top bar area itself, outside of `CoreUISafeInsets`. See the `GuiService.TopbarInset` property which represents the absolute size and position of the unobstructed area within the top bar space.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenInsets#TopbarSafeInsets)
          */
@@ -28664,6 +28682,51 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScreenOrientation | undefined;
     }
     export type ScreenOrientation = ScreenOrientation.LandscapeLeft | ScreenOrientation.LandscapeRight | ScreenOrientation.LandscapeSensor | ScreenOrientation.Portrait | ScreenOrientation.Sensor;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult)
+     */
+    export namespace ScreenshotCaptureResult {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult#Success)
+         */
+        export interface Success extends globalThis.EnumItem {
+            Name: "Success";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ScreenshotCaptureResult;
+        }
+        export const Success: Success;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult#OtherError)
+         */
+        export interface OtherError extends globalThis.EnumItem {
+            Name: "OtherError";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ScreenshotCaptureResult;
+        }
+        export const OtherError: OtherError;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult#NoDeviceSupport)
+         */
+        export interface NoDeviceSupport extends globalThis.EnumItem {
+            Name: "NoDeviceSupport";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.ScreenshotCaptureResult;
+        }
+        export const NoDeviceSupport: NoDeviceSupport;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult#NoSpaceOnDevice)
+         */
+        export interface NoSpaceOnDevice extends globalThis.EnumItem {
+            Name: "NoSpaceOnDevice";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.ScreenshotCaptureResult;
+        }
+        export const NoSpaceOnDevice: NoSpaceOnDevice;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScreenshotCaptureResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ScreenshotCaptureResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScreenshotCaptureResult | undefined;
+    }
+    export type ScreenshotCaptureResult = ScreenshotCaptureResult.Success | ScreenshotCaptureResult.OtherError | ScreenshotCaptureResult.NoDeviceSupport | ScreenshotCaptureResult.NoSpaceOnDevice;
     /**
      * This enum is used with `ScrollingFrame.HorizontalScrollBarInset` and `ScrollingFrame.VerticalScrollBarInset` to indicate whether the canvas should be inset by `ScrollBarThickness` for the respective scroll bar.
      *
@@ -34976,10 +35039,14 @@ declare namespace Enum {
     }
     export type TweenStatus = TweenStatus.Canceled | TweenStatus.Completed;
     /**
+     * Used to determine what UI elements should be captured with `CaptureService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UICaptureMode)
      */
     export namespace UICaptureMode {
         /**
+         * Capture all UI elements.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UICaptureMode#All)
          */
         export interface All extends globalThis.EnumItem {
@@ -34989,6 +35056,8 @@ declare namespace Enum {
         }
         export const All: All;
         /**
+         * Capture no UI elements.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UICaptureMode#None)
          */
         export interface None extends globalThis.EnumItem {

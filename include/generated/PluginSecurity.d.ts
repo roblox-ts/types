@@ -823,7 +823,7 @@ interface AnimationNode extends RBXObject {
     readonly _nominal_AnimationNode: unique symbol;
 }
 /**
- * A class which defines a piece of content, such as a screnshot or video, taken in-experience.
+ * A class which defines a piece of content, such as a screenshot or video, taken in-experience.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -10245,11 +10245,11 @@ interface Plugin extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#Activate)
      * @param this
-     * @param exclusiveMouse A boolean specifying whether to activate the plugin with exclusive mouse. If true, a `PluginMouse` can be retrieved via `Plugin:GetMouse()`.
+     * @param exclusiveMouse A boolean specifying whether to activate the plugin with exclusive mouse. If `true`, a `PluginMouse` can be retrieved via `GetMouse()`.
      */
     Activate(this: Plugin, exclusiveMouse: boolean): void;
     /**
-     * Creates a `PluginAction` which is an object that represents a generic performable action in Roblox Studio, with no directly associated `Toolbar` or `Button`.
+     * Creates a `PluginAction` which represents a generic performable action in Studio with no directly‑associated `PluginToolbarButton`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -10270,8 +10270,8 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#CreatePluginMenu)
      * @param this
      * @param id Unique ID for the menu.
-     * @param title The text to be displayed when used as a sub menu.
-     * @param icon The icon to be displayed when used as a sub menu.
+     * @param title The text to be displayed when used as a submenu.
+     * @param icon The icon to be displayed when used as a submenu.
      */
     CreatePluginMenu(this: Plugin, id: string, title?: string, icon?: string): PluginMenu;
     /**
@@ -10294,7 +10294,7 @@ interface Plugin extends Instance {
      */
     Deactivate(this: Plugin): void;
     /**
-     * Returns the `JointCreationMode` the user has set in Studio under the Model tab.
+     * Returns the `JointCreationMode` the user has set in Studio's toolbar.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -10345,6 +10345,8 @@ interface Plugin extends Instance {
      */
     GetStudioUserId(this: Plugin): number;
     /**
+     * Intersects the given parts and returns the resulting `IntersectOperation`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#Intersect)
@@ -10353,7 +10355,7 @@ interface Plugin extends Instance {
      */
     Intersect(this: Plugin, objects: Array<Instance>): Instance | undefined;
     /**
-     * Returns true if this plugin is currently active, after having been activated via the `Plugin:Activate()` function.
+     * Returns `true` if this plugin is currently active, after having been activated via the `Activate()` function.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -10363,7 +10365,7 @@ interface Plugin extends Instance {
      */
     IsActivated(this: Plugin): boolean;
     /**
-     * Returns true if this plugin is currently active with an exclusive mouse, after having been activated via the `Plugin:Activate()` function.
+     * Returns `true` if this plugin is currently active with an exclusive mouse.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -10373,7 +10375,7 @@ interface Plugin extends Instance {
      */
     IsActivatedWithExclusiveMouse(this: Plugin): boolean;
     /**
-     * Negates the given parts and returns the resulting NegateOperations.
+     * Negates the given parts and returns the resulting `NegateOperations`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -10429,7 +10431,7 @@ interface Plugin extends Instance {
      */
     SelectRibbonTool(this: Plugin, tool: CastsToEnum<Enum.RibbonTool>, position: UDim2): void;
     /**
-     * Separates the given UnionOperations and returns the resulting parts.
+     * Separates the given `UnionOperations` and returns the resulting parts.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -10460,7 +10462,7 @@ interface Plugin extends Instance {
      */
     StartDrag(this: Plugin, dragData: object): void;
     /**
-     * Unions the given parts and returns the resulting UnionOperation.
+     * Unions the given parts and returns the resulting `UnionOperation`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -10470,7 +10472,7 @@ interface Plugin extends Instance {
      */
     Union(this: Plugin, objects: Array<BasePart>): UnionOperation;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `CreateDockWidgetPluginGuiAsync()`.
      *
      * Creates a `DockWidgetPluginGui` given a `DockWidgetPluginGuiInfo`.
      *
@@ -10500,7 +10502,7 @@ interface Plugin extends Instance {
     /**
      * **Deprecated:**
      *
-     * Prompts the user to open a .fbx animation file that can be loaded onto the `rigModel`, then proceeds to insert the animation as a `KeyframeSequence` in the `Workspace`.
+     * Prompts the user to open a `.fbx` animation file that can be loaded onto the `rigModel`, then proceeds to insert the animation as a `KeyframeSequence` in the `Workspace`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -10514,7 +10516,7 @@ interface Plugin extends Instance {
      */
     ImportFbxAnimation(this: Plugin, rigModel: Instance, isR15?: boolean): Instance | undefined;
     /**
-     * Prompts the user to open a .fbx animation file that can be loaded onto the `rigModel`, then proceeds to insert the animation as a `KeyframeSequence` in the `Workspace`.
+     * Prompts the user to open a `.fbx` animation file that can be loaded onto the `rigModel`, then proceeds to insert the animation as a `KeyframeSequence` in the `Workspace`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -10528,7 +10530,7 @@ interface Plugin extends Instance {
     /**
      * **Deprecated:**
      *
-     * Prompts the user to open a .fbx file, uploads the individual components of the model as meshes, and generates a character rig for use in animation, which is loaded into the `Workspace`.
+     * Prompts the user to open a `.fbx` file, uploads the individual components of the model as meshes, and generates a character rig for use in animation, which is loaded into the `Workspace`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -10541,7 +10543,7 @@ interface Plugin extends Instance {
      */
     ImportFbxRig(this: Plugin, isR15?: boolean): Model;
     /**
-     * Prompts the user to open a .fbx file, uploads the individual components of the model as meshes, and generates a character rig for use in animation, which is loaded into the `Workspace`.
+     * Prompts the user to open a `.fbx` file, uploads the individual components of the model as meshes, and generates a character rig for use in animation, which is loaded into the `Workspace`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -10552,7 +10554,7 @@ interface Plugin extends Instance {
      */
     ImportFbxRigAsync(this: Plugin, isR15?: boolean): Instance | undefined;
     /**
-     * Opens a window in Roblox Studio, which prompts the user to select an asset based on the `assetType` specified. Returns what assetId was selected, or -1 if the window was closed.
+     * Opens a window in Roblox Studio which prompts the user to select an asset based on the `assetType` specified.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -10563,7 +10565,7 @@ interface Plugin extends Instance {
      */
     PromptForExistingAssetId(this: Plugin, assetType: string): number;
     /**
-     * Opens a window in Roblox Studio, which prompts the user to select an asset based on the `assetType` specified. Returns what assetId was selected, or -1 if the window was closed.
+     * Opens a window in Roblox Studio which prompts the user to select an asset based on the `assetType` specified.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -10576,7 +10578,7 @@ interface Plugin extends Instance {
     /**
      * **Deprecated:**
      *
-     * Prompts the user to save their current selection with the specified file name. Returns true if the user did save the file.
+     * Prompts the user to save their current selection with the specified file name.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -10589,7 +10591,7 @@ interface Plugin extends Instance {
      */
     PromptSaveSelection(this: Plugin, suggestedFileName?: string): boolean;
     /**
-     * Prompts the user to save their current selection with the specified file name. Returns true if the user did save the file.
+     * Prompts the user to save their current selection with the specified file name.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -10631,7 +10633,7 @@ interface PluginAction extends Instance {
      */
     readonly _nominal_PluginAction: unique symbol;
     /**
-     * Fires when the action is triggered. This can be done by either activating the action from the Quick Access Toolbar, or by using the keyboard shortcut that was bound to it.
+     * Fires when the action is triggered.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -10790,7 +10792,7 @@ interface PluginMenu extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginMenu#AddMenu)
      * @param this A context menu that can be shown in Studio. Displays a list of `PluginActions` and supports submenus.
-     * @param menu The menu to add as a sub menu. Uses its `PluginMenu.Title` and `PluginMenu.Icon` to display.
+     * @param menu The menu to add as a submenu. Uses its `Title` and `Icon` to display.
      */
     AddMenu(this: PluginMenu, menu: PluginMenu): void;
     /**
@@ -10800,7 +10802,7 @@ interface PluginMenu extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginMenu#AddNewAction)
      * @param this A context menu that can be shown in Studio. Displays a list of `PluginActions` and supports submenus.
-     * @param actionId Must be a unique string that identifies this PluginAction from others.
+     * @param actionId Must be a unique string that identifies this `PluginAction` from others.
      * @param text The text to be displayed.
      * @param icon The icon to be displayed.
      * @returns The created `PluginAction`.
@@ -10874,8 +10876,8 @@ interface PluginToolbar extends Instance {
      * @param this
      * @param buttonId A unique button ID.
      * @param tooltip The text displayed in the tooltip shown when a user hovers over the button.
-     * @param iconname The asset ID (e.g. rbxassetid://1507949215) of the icon displayed in the button.
-     * @param text Text displayed under the button icon. Optional. If this field is not provided, the **ID** will be used instead.
+     * @param iconname The asset ID of the icon displayed in the button.
+     * @param text Optional text displayed under the button icon.
      * @returns The created `PluginToolbarButton` instance.
      */
     CreateButton(this: PluginToolbar, buttonId: string, tooltip: string, iconname: string, text?: string): PluginToolbarButton;
@@ -14168,7 +14170,7 @@ interface TestService extends Instance {
     /**
      * **Deprecated:**
      *
-     * Runs scripts which are parented to TestService.
+     * Runs scripts which are parented to `TestService`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -14180,7 +14182,7 @@ interface TestService extends Instance {
      */
     Run(this: TestService): void;
     /**
-     * Runs scripts which are parented to TestService.
+     * Runs scripts which are parented to `TestService`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields

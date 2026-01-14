@@ -811,7 +811,7 @@ interface AnimationNode extends RBXObject {
     readonly _nominal_AnimationNode: unique symbol;
 }
 /**
- * A class which defines a piece of content, such as a screnshot or video, taken in-experience.
+ * A class which defines a piece of content, such as a screenshot or video, taken in-experience.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -2930,13 +2930,15 @@ interface AdService extends Instance {
      */
     GetAdAvailabilityNowAsync(this: AdService, adFormat: CastsToEnum<Enum.AdFormat>): unknown;
     /**
+     * Tracks how many times a user had the chance to watch a video ad and the rate at which they actually watched the ad.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#RegisterAdOpportunityAsync)
      * @param this A class that allows the display of mobile video ads.
      * @param instance
-     * @param placementId
+     * @param placementId The ID of the placement of the rewarded video ad inside the experience. Allows for reporting on the performance of individual ad placements.
      */
     RegisterAdOpportunityAsync(this: AdService, instance: Instance, placementId?: number): void;
     /**
@@ -7623,14 +7625,7 @@ interface AvatarCreationService extends Instance {
      * @param progressCallback Optional callback function that will be invoked periodically with a progressInfo table with the overall progress (from 0 to 1). Type: `(progressInfo: { Progress: number }) -> ()`
      * @returns A unique identifier for the generated avatar.
      */
-    AutoSetupAvatarAsync(this: AvatarCreationService, player: Player, model: Model, progressCallback?: Callback): string;
-    /**
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**: Yields
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#AutoSetupAvatarNewAsync)
-     */
-    AutoSetupAvatarNewAsync(this: AvatarCreationService, player: Player, autoSetupParams: object, progressCallback?: Callback): string;
+    AutoSetupAvatarAsync(this: AvatarCreationService, player: Player, autoSetupParams: object, progressCallback?: Callback): string;
     /**
      * Creates a 2D avatar preview and returns a previewId.
      *
@@ -8064,6 +8059,13 @@ interface AvatarEditorService extends Instance {
      */
     GetFavoriteAsync(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): boolean;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#GetHeadShapesAsync)
+     */
+    GetHeadShapesAsync(this: AvatarEditorService): Array<unknown>;
+    /**
      * **Deprecated:**
      *
      * Returns an `InventoryPages` object with information about owned items in the users inventory with the given AvatarAssetTypes.
@@ -8485,7 +8487,7 @@ interface BadgeService extends Instance {
      */
     IsLegal(this: BadgeService, badgeId: number): boolean;
     /**
-     * **Deprecated:** This function has been superseded by `BadgeService:UserHasBadgeAsync()` which should be used for new instead.
+     * **Deprecated:** This method has been superseded by `BadgeService:UserHasBadgeAsync()` which should be used for new instead.
      *
      * Checks whether a user has the badge given the `Player.UserId` and the badge ID.
      *
@@ -10493,12 +10495,9 @@ interface CaptureService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#TakeCapture)
-     * @param this A service which provides control over screenshot and video capture features.
-     * @param onCaptureReady
-     * @param captureParams
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#TakeScreenshotCaptureAsync)
      */
-    TakeCapture(this: CaptureService, onCaptureReady: Callback, captureParams?: object): void;
+    TakeScreenshotCaptureAsync(this: CaptureService, onCaptureReady: Callback, captureParams?: object): void;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -24984,7 +24983,7 @@ interface InputAction extends Instance {
     /**
      * Returns the current state of the `InputAction`.
      *
-     * - **ThreadSafety**: Unsafe
+     * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#GetState)
      * @param this Defines a gameplay action mechanic. These actions are then mapped to hardware inputs using `InputBinding`.
@@ -28126,6 +28125,8 @@ interface MaterialVariant extends Instance {
      */
     readonly _nominal_MaterialVariant: unique symbol;
     /**
+     * Determines how the alpha channel of the `MaterialVariant.ColorMap` is used.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotBrowsable
      *
@@ -34826,7 +34827,7 @@ interface Player extends Instance {
      */
     GetRoleInGroupAsync(this: Player, groupId: number): string;
     /**
-     * **Deprecated:** This function is obsolete because the Best Friends feature was removed. Use `Player:IsFriendsWith()` instead.
+     * **Deprecated:** This function is obsolete because the "best friends" feature was removed. Use `Player:IsFriendsWithAsync()` instead.
      *
      * Returns whether a player is connections with the specified user.
      *
@@ -34841,7 +34842,7 @@ interface Player extends Instance {
      */
     IsBestFriendsWith(this: Player, userId: number): boolean;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by the `Player:IsFriendsWithAsync()` method which should be used for new work.
      *
      * Checks whether a player is a connection of the user with the given `Player.UserId`.
      *
@@ -41282,23 +41283,11 @@ interface StyleQuery extends Instance {
     readonly _nominal_StyleQuery: unique symbol;
     /**
      * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#AspectRatioRange)
-     */
-    AspectRatioRange: NumberRange;
-    /**
-     * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#IsActive)
      */
     readonly IsActive: boolean;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#MinSize)
-     */
-    MinSize: Vector2;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -42096,7 +42085,7 @@ interface TestService extends Instance {
      */
     readonly _nominal_TestService: unique symbol;
     /**
-     * If set to true, the game will start running when the TestService's `TestService:Run()` method is called.
+     * If set to `true`, the game will start running when the service's `TestService:Run()` method is called.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -42121,7 +42110,7 @@ interface TestService extends Instance {
      */
     readonly ErrorCount: number;
     /**
-     * When set to true, the TestService will be executed when using the *Run* action in Roblox Studio.
+     * When set to `true`, `TestService` will be executed when using the **Run** action in Roblox Studio.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -42208,7 +42197,7 @@ interface TestService extends Instance {
      */
     readonly WarnCount: number;
     /**
-     * Prints result of condition to output.
+     * Prints result of a condition to the output.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -42221,7 +42210,7 @@ interface TestService extends Instance {
      */
     Check(this: TestService, condition: boolean, description: string, source?: Instance, line?: number): void;
     /**
-     * Prints "Test checkpoint: ", followed by text, to the output, in blue text.
+     * Prints `Test checkpoint:` followed by a string to the output in blue text.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -42233,7 +42222,7 @@ interface TestService extends Instance {
      */
     Checkpoint(this: TestService, text: string, source?: Instance, line?: number): void;
     /**
-     * Prints Testing Done to the output, in blue text.
+     * Prints `Testing Done` to the output in blue text.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -42242,7 +42231,7 @@ interface TestService extends Instance {
      */
     Done(this: TestService): void;
     /**
-     * Prints a red message to the output, prefixed by `TestService:`.
+     * Prints a red error message to the output, prefixed by `TestService:`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -42254,7 +42243,7 @@ interface TestService extends Instance {
      */
     Error(this: TestService, description: string, source?: Instance, line?: number): void;
     /**
-     * Indicates a fatal error in a TestService run. If this is called inside of a script running inside of the TestService, this will initiate a breakpoint on the line that invoked the error.
+     * Indicates a fatal error in a `TestService` run.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -42266,7 +42255,7 @@ interface TestService extends Instance {
      */
     Fail(this: TestService, description: string, source?: Instance, line?: number): void;
     /**
-     * Prints Test message, followed by text to the output, in blue text.
+     * Prints `TestService:` followed by a string to the output in blue text.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -42278,7 +42267,7 @@ interface TestService extends Instance {
      */
     Message(this: TestService, text: string, source?: Instance, line?: number): void;
     /**
-     * Prints whether a condition is true along with description text.
+     * Prints whether a condition is true along with a description string.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -42306,7 +42295,7 @@ interface TestService extends Instance {
      */
     TakeSnapshot(this: TestService, snapshotname: string): void;
     /**
-     * Prints if a condition is true, otherwise prints a warning.
+     * Prints if a condition is `true`, otherwise prints a warning.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -42327,7 +42316,7 @@ interface TestService extends Instance {
      */
     isFeatureEnabled(this: TestService, name: string): boolean;
     /**
-     * Fired when the server should collect a conditional test result.
+     * Fires when the server should collect a conditional test result.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -42335,7 +42324,7 @@ interface TestService extends Instance {
      */
     readonly ServerCollectConditionalResult: RBXScriptSignal<(condition: boolean, text: string, script: Instance, line: number) => void>;
     /**
-     * Fired when the server should collect a test result.
+     * Fires when the server should collect a test result.
      *
      * - **ThreadSafety**: Unsafe
      *
