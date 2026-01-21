@@ -51,6 +51,7 @@ interface Services {
     ControllerService: ControllerService;
     ConversationalAIAcceptanceService: ConversationalAIAcceptanceService;
     CoreGui: CoreGui;
+    CoreGuiConfiguration: CoreGuiConfiguration;
     CoreScriptDebuggingManagerHelper: CoreScriptDebuggingManagerHelper;
     CreationDBService: CreationDBService;
     CreatorStoreService: CreatorStoreService;
@@ -587,6 +588,7 @@ interface Instances extends Services, CreatableInstances {
     AuroraScriptObject: AuroraScriptObject;
     BackpackItem: BackpackItem;
     BanHistoryPages: BanHistoryPages;
+    BaseCoreGuiConfiguration: BaseCoreGuiConfiguration;
     BaseImportData: BaseImportData;
     BasePart: BasePart;
     BasePlayerGui: BasePlayerGui;
@@ -597,6 +599,7 @@ interface Instances extends Services, CreatableInstances {
     BodyMover: BodyMover;
     BubbleChatConfiguration: BubbleChatConfiguration;
     CapturesPages: CapturesPages;
+    CapturesViewConfiguration: CapturesViewConfiguration;
     CatalogPages: CatalogPages;
     ChannelSelectorSoundEffect: ChannelSelectorSoundEffect;
     ChannelTabsConfiguration: ChannelTabsConfiguration;
@@ -700,6 +703,7 @@ interface Instances extends Services, CreatableInstances {
     PlayerDataRecord: PlayerDataRecord;
     PlayerDataRecordConfig: PlayerDataRecordConfig;
     PlayerGui: PlayerGui;
+    PlayerListConfiguration: PlayerListConfiguration;
     PlayerMouse: PlayerMouse;
     PlayerScripts: PlayerScripts;
     Plugin: Plugin;
@@ -727,6 +731,7 @@ interface Instances extends Services, CreatableInstances {
     ScriptDocument: ScriptDocument;
     ScriptRuntime: ScriptRuntime;
     SelectionLasso: SelectionLasso;
+    SelfViewConfiguration: SelfViewConfiguration;
     SensorBase: SensorBase;
     ServerReplicator: ServerReplicator;
     ServiceProvider: ServiceProvider;
@@ -1966,7 +1971,7 @@ interface AudioReverb extends Instance {
     readonly _nominal_AudioReverb: unique symbol;
 }
 /**
- * Instance to be passed to `AssetService:SearchAudio()` to search for audio assets.
+ * Instance to be passed to `AssetService:SearchAudioAsync()` to search for audio assets.
  *
  * - **Tags**: NotReplicated
  *
@@ -2266,6 +2271,66 @@ interface BadgeService extends Instance {
      * @deprecated
      */
     readonly _nominal_BadgeService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseCoreGuiConfiguration)
+ */
+interface BaseCoreGuiConfiguration extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_BaseCoreGuiConfiguration: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CapturesViewConfiguration)
+ */
+interface CapturesViewConfiguration extends BaseCoreGuiConfiguration {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CapturesViewConfiguration: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerListConfiguration)
+ */
+interface PlayerListConfiguration extends BaseCoreGuiConfiguration {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PlayerListConfiguration: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SelfViewConfiguration)
+ */
+interface SelfViewConfiguration extends BaseCoreGuiConfiguration {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SelfViewConfiguration: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -4029,6 +4094,21 @@ interface ConversationalAIAcceptanceService extends Instance {
      * @deprecated
      */
     readonly _nominal_ConversationalAIAcceptanceService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGuiConfiguration)
+ */
+interface CoreGuiConfiguration extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CoreGuiConfiguration: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -7209,6 +7289,8 @@ interface InstanceExtensionsService extends Instance {
     readonly _nominal_InstanceExtensionsService: unique symbol;
 }
 /**
+ * A service for interacting with file sync from a plugin.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceFileSyncService)
@@ -7223,24 +7305,40 @@ interface InstanceFileSyncService extends Instance {
      */
     readonly _nominal_InstanceFileSyncService: unique symbol;
     /**
+     * Returns an array of all instances currently involved in file synchronization.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceFileSyncService#GetAllInstances)
+     * @param this A service for interacting with file sync from a plugin.
+     * @returns Returns an array of `Instances`.
      */
     GetAllInstances(this: InstanceFileSyncService): Array<Instance>;
     /**
+     * Returns the synchronization status of a specific instance.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceFileSyncService#GetStatus)
+     * @param this A service for interacting with file sync from a plugin.
+     * @param instance The instance to check.
+     * @returns Returns the `InstanceFileSyncStatus` for the instance.
      */
     GetStatus(this: InstanceFileSyncService, instance: Instance): Enum.InstanceFileSyncStatus;
     /**
+     * Returns the instance corresponding to a given file path.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceFileSyncService#GetSyncedInstance)
+     * @param this A service for interacting with file sync from a plugin.
+     * @param filePath The absolute path to the file.
+     * @returns Returns the Instance being synced to the file path, if one exists. Otherwise, returns nil.
      */
     GetSyncedInstance(this: InstanceFileSyncService, filePath: string): Instance | undefined;
     /**
+     * Fires when the synchronization status of an instance changes.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceFileSyncService#StatusChanged)
@@ -9484,7 +9582,7 @@ interface Pages<T = unknown> extends Instance {
     readonly _nominal_Pages: unique symbol;
 }
 /**
- * A special version of the `Pages` class returned by `AssetService:SearchAudio()`.
+ * A special version of the `Pages` class returned by `AssetService:SearchAudioAsync()`.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -14461,7 +14559,7 @@ interface TextGenerator extends Instance {
     readonly _nominal_TextGenerator: unique symbol;
 }
 /**
- * The TextService is a service internally responsible for handling the display of text in the game.
+ * Service internally responsible for handling the display of text.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *

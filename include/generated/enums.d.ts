@@ -2717,7 +2717,7 @@ declare namespace Enum {
     }
     export type AssetFetchStatus = AssetFetchStatus.Success | AssetFetchStatus.Failure | AssetFetchStatus.None | AssetFetchStatus.Loading | AssetFetchStatus.TimedOut;
     /**
-     * This Enum can be used to match the AssetTypeId from `MarketplaceService:GetProductInfo()` to an asset type.
+     * This Enum can be used to match the AssetTypeId from `MarketplaceService:GetProductInfoAsync()` to an asset type.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType)
      */
@@ -9255,11 +9255,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.CoreGuiType;
         }
         export const Captures: Captures;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CoreGuiType#AvatarSwitcher)
+         */
+        export interface AvatarSwitcher extends globalThis.EnumItem {
+            Name: "AvatarSwitcher";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.CoreGuiType;
+        }
+        export const AvatarSwitcher: AvatarSwitcher;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CoreGuiType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CoreGuiType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CoreGuiType | undefined;
     }
-    export type CoreGuiType = CoreGuiType.PlayerList | CoreGuiType.Health | CoreGuiType.Backpack | CoreGuiType.Chat | CoreGuiType.All | CoreGuiType.EmotesMenu | CoreGuiType.SelfView | CoreGuiType.Captures;
+    export type CoreGuiType = CoreGuiType.PlayerList | CoreGuiType.Health | CoreGuiType.Backpack | CoreGuiType.Chat | CoreGuiType.All | CoreGuiType.EmotesMenu | CoreGuiType.SelfView | CoreGuiType.Captures | CoreGuiType.AvatarSwitcher;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateAssetResult)
      */
@@ -16725,10 +16734,14 @@ declare namespace Enum {
     }
     export type InputType = InputType.NoInput | InputType.Constant | InputType.Sin;
     /**
+     * Describes the file sync status of an Instance.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InstanceFileSyncStatus)
      */
     export namespace InstanceFileSyncStatus {
         /**
+         * The `Instance` is not being synced or errored.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InstanceFileSyncStatus#NotSynced)
          */
         export interface NotSynced extends globalThis.EnumItem {
@@ -16738,6 +16751,8 @@ declare namespace Enum {
         }
         export const NotSynced: NotSynced;
         /**
+         * The `Instance` is a sync root that has errored and stopped syncing.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InstanceFileSyncStatus#Errored)
          */
         export interface Errored extends globalThis.EnumItem {
@@ -16747,6 +16762,8 @@ declare namespace Enum {
         }
         export const Errored: Errored;
         /**
+         * The `Instance` is being synced as the root of a sync tree.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InstanceFileSyncStatus#SyncedAsRoot)
          */
         export interface SyncedAsRoot extends globalThis.EnumItem {
@@ -16756,6 +16773,8 @@ declare namespace Enum {
         }
         export const SyncedAsRoot: SyncedAsRoot;
         /**
+         * The `Instance` is being synced because it is a descendant of a sync root.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InstanceFileSyncStatus#SyncedAsDescendant)
          */
         export interface SyncedAsDescendant extends globalThis.EnumItem {
@@ -24473,13 +24492,22 @@ declare namespace Enum {
         }
         export const MetaOS: MetaOS;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Platform#Web)
+         */
+        export interface Web extends globalThis.EnumItem {
+            Name: "Web";
+            Value: 21;
+            EnumType: typeof globalThis.Enum.Platform;
+        }
+        export const Web: Web;
+        /**
          * The client's operating system is unknown.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Platform#None)
          */
         export interface None extends globalThis.EnumItem {
             Name: "None";
-            Value: 21;
+            Value: 22;
             EnumType: typeof globalThis.Enum.Platform;
         }
         export const None: None;
@@ -24487,7 +24515,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Platform | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Platform | undefined;
     }
-    export type Platform = Platform.Windows | Platform.OSX | Platform.IOS | Platform.Android | Platform.XBoxOne | Platform.PS4 | Platform.PS3 | Platform.XBox360 | Platform.WiiU | Platform.NX | Platform.Ouya | Platform.AndroidTV | Platform.Chromecast | Platform.Linux | Platform.SteamOS | Platform.WebOS | Platform.DOS | Platform.BeOS | Platform.UWP | Platform.PS5 | Platform.MetaOS | Platform.None;
+    export type Platform = Platform.Windows | Platform.OSX | Platform.IOS | Platform.Android | Platform.XBoxOne | Platform.PS4 | Platform.PS3 | Platform.XBox360 | Platform.WiiU | Platform.NX | Platform.Ouya | Platform.AndroidTV | Platform.Chromecast | Platform.Linux | Platform.SteamOS | Platform.WebOS | Platform.DOS | Platform.BeOS | Platform.UWP | Platform.PS5 | Platform.MetaOS | Platform.Web | Platform.None;
     /**
      * Describes the current state of a `Tween` in its `Tween.PlaybackState` property.
      *
@@ -33778,11 +33806,29 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.TextInputType;
         }
         export const OneTimePassword: OneTimePassword;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextInputType#NewPassword)
+         */
+        export interface NewPassword extends globalThis.EnumItem {
+            Name: "NewPassword";
+            Value: 9;
+            EnumType: typeof globalThis.Enum.TextInputType;
+        }
+        export const NewPassword: NewPassword;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextInputType#NewPasswordShown)
+         */
+        export interface NewPasswordShown extends globalThis.EnumItem {
+            Name: "NewPasswordShown";
+            Value: 10;
+            EnumType: typeof globalThis.Enum.TextInputType;
+        }
+        export const NewPasswordShown: NewPasswordShown;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextInputType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TextInputType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TextInputType | undefined;
     }
-    export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone | TextInputType.Password | TextInputType.PasswordShown | TextInputType.Username | TextInputType.OneTimePassword;
+    export type TextInputType = TextInputType.Default | TextInputType.NoSuggestions | TextInputType.Number | TextInputType.Email | TextInputType.Phone | TextInputType.Password | TextInputType.PasswordShown | TextInputType.Username | TextInputType.OneTimePassword | TextInputType.NewPassword | TextInputType.NewPasswordShown;
     /**
      * Controls the truncation of text when using the `TextTruncate` property.
      *
