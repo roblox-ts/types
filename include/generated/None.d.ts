@@ -49,6 +49,7 @@ interface Services {
     ContextActionService: ContextActionService;
     ControllerService: ControllerService;
     ConversationalAIAcceptanceService: ConversationalAIAcceptanceService;
+    CoreGuiConfiguration: CoreGuiConfiguration;
     CoreScriptDebuggingManagerHelper: CoreScriptDebuggingManagerHelper;
     CreationDBService: CreationDBService;
     CreatorStoreService: CreatorStoreService;
@@ -563,6 +564,7 @@ interface Instances extends Services, CreatableInstances {
     AuroraScriptObject: AuroraScriptObject;
     BackpackItem: BackpackItem;
     BanHistoryPages: BanHistoryPages;
+    BaseCoreGuiConfiguration: BaseCoreGuiConfiguration;
     BaseImportData: BaseImportData;
     BasePart: BasePart;
     BasePlayerGui: BasePlayerGui;
@@ -573,6 +575,7 @@ interface Instances extends Services, CreatableInstances {
     BodyMover: BodyMover;
     BubbleChatConfiguration: BubbleChatConfiguration;
     CapturesPages: CapturesPages;
+    CapturesViewConfiguration: CapturesViewConfiguration;
     CatalogPages: CatalogPages;
     ChannelSelectorSoundEffect: ChannelSelectorSoundEffect;
     ChannelTabsConfiguration: ChannelTabsConfiguration;
@@ -665,6 +668,7 @@ interface Instances extends Services, CreatableInstances {
     PlayerDataRecord: PlayerDataRecord;
     PlayerDataRecordConfig: PlayerDataRecordConfig;
     PlayerGui: PlayerGui;
+    PlayerListConfiguration: PlayerListConfiguration;
     PlayerMouse: PlayerMouse;
     PlayerScripts: PlayerScripts;
     PluginManagerInterface: PluginManagerInterface;
@@ -679,6 +683,7 @@ interface Instances extends Services, CreatableInstances {
     ScriptBuilder: ScriptBuilder;
     ScriptRuntime: ScriptRuntime;
     SelectionLasso: SelectionLasso;
+    SelfViewConfiguration: SelfViewConfiguration;
     SensorBase: SensorBase;
     ServiceProvider: ServiceProvider;
     SlidingBallConstraint: SlidingBallConstraint;
@@ -6822,7 +6827,7 @@ interface AudioReverb extends Instance {
     readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
 }
 /**
- * Instance to be passed to `AssetService:SearchAudio()` to search for audio assets.
+ * Instance to be passed to `AssetService:SearchAudioAsync()` to search for audio assets.
  *
  * - **Tags**: NotReplicated
  *
@@ -7432,12 +7437,6 @@ interface AuroraService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#SetIncomingReplicationLag)
      */
     SetIncomingReplicationLag(this: AuroraService, seconds: number): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#SetPropertyIsInput)
-     */
-    SetPropertyIsInput(this: AuroraService, target: Instance, propertyName: string, isInput: boolean): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -8516,6 +8515,90 @@ interface BadgeService extends Instance {
      * @returns Indicates if the specified user has the specified badge.
      */
     UserHasBadgeAsync(this: BadgeService, userId: number, badgeId: number): boolean;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseCoreGuiConfiguration)
+ */
+interface BaseCoreGuiConfiguration extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_BaseCoreGuiConfiguration: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseCoreGuiConfiguration#Enabled)
+     */
+    Enabled: boolean;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CapturesViewConfiguration)
+ */
+interface CapturesViewConfiguration extends BaseCoreGuiConfiguration {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CapturesViewConfiguration: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CapturesViewConfiguration#Open)
+     */
+    Open: boolean;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerListConfiguration)
+ */
+interface PlayerListConfiguration extends BaseCoreGuiConfiguration {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PlayerListConfiguration: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerListConfiguration#Open)
+     */
+    Open: boolean;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SelfViewConfiguration)
+ */
+interface SelfViewConfiguration extends BaseCoreGuiConfiguration {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SelfViewConfiguration: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SelfViewConfiguration#Open)
+     */
+    Open: boolean;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -14551,6 +14634,39 @@ interface ConversationalAIAcceptanceService extends Instance {
      * @deprecated
      */
     readonly _nominal_ConversationalAIAcceptanceService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGuiConfiguration)
+ */
+interface CoreGuiConfiguration extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CoreGuiConfiguration: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGuiConfiguration#CapturesViewConfiguration)
+     */
+    CapturesViewConfiguration: CapturesViewConfiguration | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGuiConfiguration#PlayerListConfiguration)
+     */
+    PlayerListConfiguration: PlayerListConfiguration | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGuiConfiguration#SelfViewConfiguration)
+     */
+    SelfViewConfiguration: SelfViewConfiguration | undefined;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -22191,7 +22307,7 @@ interface HapticEffect extends Instance {
      */
     Play(this: HapticEffect): void;
     /**
-     * Method used to define a custom waveform as a table and apply it to the haptic.
+     * Defines a custom waveform as a table and applies it to the haptic. <pre><code>This method takes in an array of `FloatCurveKey` objects. </code></pre>
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -25540,6 +25656,8 @@ interface InstanceExtensionsService extends Instance {
     readonly _nominal_InstanceExtensionsService: unique symbol;
 }
 /**
+ * A service for interacting with file sync from a plugin.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceFileSyncService)
@@ -27884,7 +28002,7 @@ interface MarketplaceService extends Instance {
      * local ProductIdentifier = {     InfoType = Enum.InfoType.GamePass,     Id = 123456 }
      * ```
      * @returns The array of ranked items in a personalized order for the current user. Each array has: - `ProductIdentifier`: The corresponding ID from the input array.
-     * - `ProductInfo`: The standard product info dictionary returned by   `GetProductInfo`.
+     * - `ProductInfo`: The standard product info dictionary returned by   `GetProductInfoAsync`.
      */
     RankProductsAsync(this: MarketplaceService, productIdentifiers: Array<unknown>): Array<unknown>;
     /**
@@ -32916,7 +33034,7 @@ interface Pages<T = unknown> extends Instance {
     AdvanceToNextPageAsync(this: Pages): void;
 }
 /**
- * A special version of the `Pages` class returned by `AssetService:SearchAudio()`.
+ * A special version of the `Pages` class returned by `AssetService:SearchAudioAsync()`.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -39156,7 +39274,7 @@ interface SocialService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#OnCallInviteInvoked)
      * @param tag String to help differentiate between various phone book entry points.
      * @param callParticipantIds Array containing all of the players involved in the call. The caller will always be the first player in the array.
-     * @returns Table including the `PlaceId` and `ReservedServerAccessCode` keys whose values are the `DataModel.PlaceId` and the server access code returned by `TeleportService:ReserveServer()`, respectively.
+     * @returns Table including the `PlaceId` and `ReservedServerAccessCode` keys whose values are the `DataModel.PlaceId` and the server access code returned by `TeleportService:ReserveServerAsync()`, respectively.
      */
     OnCallInviteInvoked: ((tag: string, callParticipantIds: Array<unknown>) => Instance) | undefined;
 }
@@ -41813,14 +41931,14 @@ interface TeleportService extends Instance {
      */
     TeleportToPlaceInstance(this: TeleportService, placeId: number, instanceId: string, player?: Player, spawnName?: string, teleportData?: TeleportData, customLoadingScreen?: ScreenGui): void;
     /**
-     * Teleport a group of `Players` to a reserved server created using `TeleportService:ReserveServer()`.
+     * Teleport a group of `Players` to a reserved server created using `TeleportService:ReserveServerAsync()`.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#TeleportToPrivateServer)
      * @param this Enables transporting `Players` between places and servers.
      * @param placeId The ID of the place to teleport to.
-     * @param reservedServerAccessCode The reserved server access code returned by `TeleportService:ReserveServer()`.
+     * @param reservedServerAccessCode The reserved server access code returned by `TeleportService:ReserveServerAsync()`.
      * @param players An array of `Players` to teleport.
      * @param spawnName Optional name of the `SpawnLocation` to spawn at.
      * @param teleportData Optional data to be passed to the destination place. Can be retrieved using `TeleportService:GetLocalPlayerTeleportData()`.
@@ -42085,7 +42203,7 @@ interface TestService extends Instance {
      */
     readonly _nominal_TestService: unique symbol;
     /**
-     * If set to `true`, the game will start running when the service's `TestService:Run()` method is called.
+     * If set to `true`, the game will start running when the service's `TestService:RunAsync()` method is called.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -43646,7 +43764,7 @@ interface TextGenerator extends Instance {
     GenerateTextAsync(this: TextGenerator, request: object): object;
 }
 /**
- * The TextService is a service internally responsible for handling the display of text in the game.
+ * Service internally responsible for handling the display of text.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -43667,22 +43785,22 @@ interface TextService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextService#GetTextSize)
-     * @param this The TextService is a service internally responsible for handling the display of text in the game.
+     * @param this Service internally responsible for handling the display of text.
      * @param string The string for which the text size is to be calculated.
-     * @param fontSize The integer representing the font size used.
+     * @param fontSize The integer representing the font size used. Does not accept an `FontSize` value.
      * @param font The font used.
-     * @param frameSize The `TextLabel.AbsoluteSize` of the text object to be used. Required to compute how the text will wrap.
+     * @param frameSize The `GuiBase2d.AbsoluteSize` of the text object to be used. Required to compute how the text will wrap.
      * @returns The size of the space required, in pixels, by the string with the specified formatting.
      */
     GetTextSize(this: TextService, string: string, fontSize: number, font: CastsToEnum<Enum.Font>, frameSize: Vector2): Vector2;
     /**
-     * Chat translation is not supported in legacy chat. This method is no longer supported and should not be used.
+     * Filters and translates a string.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextService#FilterAndTranslateStringAsync)
-     * @param this The TextService is a service internally responsible for handling the display of text in the game.
+     * @param this Service internally responsible for handling the display of text.
      * @param stringToFilter
      * @param fromUserId
      * @param targetLocales
@@ -43690,16 +43808,16 @@ interface TextService extends Instance {
      */
     FilterAndTranslateStringAsync(this: TextService, stringToFilter: string, fromUserId: number, targetLocales: Array<unknown>, textContext?: CastsToEnum<Enum.TextFilterContext>): TextFilterTranslatedResult;
     /**
-     * Filters a string being received from a user, and returns a `TextFilterResult` which can be used to distribute the correctly filtered text accordingly.
+     * Filters a string being received from a user and returns a `TextFilterResult` which can be used to distribute the correctly filtered text accordingly.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextService#FilterStringAsync)
-     * @param this The TextService is a service internally responsible for handling the display of text in the game.
+     * @param this Service internally responsible for handling the display of text.
      * @param stringToFilter The text to be filtered.
-     * @param fromUserId The userId of the player filtering the text.
-     * @param textContext The context that the filtered message will be used in.
+     * @param fromUserId The `Player.UserId` of the player filtering the text.
+     * @param textContext The context that the filtered message will be used in. This parameter does not impact the filtered result of the query and is only used to improve Roblox's text filtering.
      */
     FilterStringAsync(this: TextService, stringToFilter: string, fromUserId: number, textContext?: CastsToEnum<Enum.TextFilterContext>): TextFilterResult;
     /**
@@ -43709,29 +43827,31 @@ interface TextService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextService#GetFamilyInfoAsync)
-     * @param this The TextService is a service internally responsible for handling the display of text in the game.
+     * @param this Service internally responsible for handling the display of text.
      * @param assetId Asset ID of the font family to look up.
      * @returns The information about the font family.
      */
     GetFamilyInfoAsync(this: TextService, assetId: ContentId): object;
     /**
-     * Calculates the width and height of text given parameters.
+     * Computes the `Vector2` dimensions (in pixels) that will be taken up with text when using a `GetTextBoundsParams` object.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextService#GetTextBoundsAsync)
-     * @param this The TextService is a service internally responsible for handling the display of text in the game.
+     * @param this Service internally responsible for handling the display of text.
      * @param params A reference to a `GetTextBoundsParams` object.
      * @returns The size of the text as a `Vector2`.
      */
     GetTextBoundsAsync(this: TextService, params: GetTextBoundsParams): Vector2;
     /**
+     * Returns the offset used to up-scale text based on the current `GuiService.PreferredTextSize` setting.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextService#GetTextSizeOffsetAsync)
-     * @param this The TextService is a service internally responsible for handling the display of text in the game.
+     * @param this Service internally responsible for handling the display of text.
      * @param fontSize
      * @param font
      */
