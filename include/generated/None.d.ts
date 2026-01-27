@@ -12422,8 +12422,6 @@ interface AngularVelocity extends Constraint {
 /**
  * Aligns two `BaseParts` with an animate-able kinematic or force-based joint.
  *
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint)
  */
 interface AnimationConstraint extends Constraint {
@@ -40438,7 +40436,6 @@ interface StarterPlayer extends Instance {
     CharacterWalkSpeed: number;
     /**
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotBrowsable
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterPlayer#ClassicDeath)
      */
