@@ -896,7 +896,7 @@ declare namespace Enum {
     }
     export type AdUnitStatus = AdUnitStatus.Inactive | AdUnitStatus.Active;
     /**
-     * Culling method used for Adorns.
+     * Culling method used for adornments.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdornCullingMode)
      */
@@ -9504,6 +9504,42 @@ declare namespace Enum {
     }
     export type CustomCameraMode = CustomCameraMode.Default | CustomCameraMode.Classic | CustomCameraMode.Follow;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelExtractorFileType)
+     */
+    export namespace DataModelExtractorFileType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelExtractorFileType#PlaceFile)
+         */
+        export interface PlaceFile extends globalThis.EnumItem {
+            Name: "PlaceFile";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.DataModelExtractorFileType;
+        }
+        export const PlaceFile: PlaceFile;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelExtractorFileType#FirstSlice)
+         */
+        export interface FirstSlice extends globalThis.EnumItem {
+            Name: "FirstSlice";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.DataModelExtractorFileType;
+        }
+        export const FirstSlice: FirstSlice;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelExtractorFileType#NonFirstSliceSlice)
+         */
+        export interface NonFirstSliceSlice extends globalThis.EnumItem {
+            Name: "NonFirstSliceSlice";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.DataModelExtractorFileType;
+        }
+        export const NonFirstSliceSlice: NonFirstSliceSlice;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DataModelExtractorFileType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DataModelExtractorFileType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DataModelExtractorFileType | undefined;
+    }
+    export type DataModelExtractorFileType = DataModelExtractorFileType.PlaceFile | DataModelExtractorFileType.FirstSlice | DataModelExtractorFileType.NonFirstSliceSlice;
+    /**
      * Indicates the type of data store request being made.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType)
@@ -11640,6 +11676,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ElasticBehavior | undefined;
     }
     export type ElasticBehavior = ElasticBehavior.WhenScrollable | ElasticBehavior.Always | ElasticBehavior.Never;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngineFolder)
+     */
+    export namespace EngineFolder {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngineFolder#Screenshots)
+         */
+        export interface Screenshots extends globalThis.EnumItem {
+            Name: "Screenshots";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.EngineFolder;
+        }
+        export const Screenshots: Screenshots;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngineFolder#Videos)
+         */
+        export interface Videos extends globalThis.EnumItem {
+            Name: "Videos";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.EngineFolder;
+        }
+        export const Videos: Videos;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngineFolder#Logs)
+         */
+        export interface Logs extends globalThis.EnumItem {
+            Name: "Logs";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.EngineFolder;
+        }
+        export const Logs: Logs;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EngineFolder>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.EngineFolder | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.EngineFolder | undefined;
+    }
+    export type EngineFolder = EngineFolder.Screenshots | EngineFolder.Videos | EngineFolder.Logs;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EnviromentalPhysicsThrottle)
      */
@@ -18440,7 +18512,7 @@ declare namespace Enum {
         }
         export const LeftMeta: LeftMeta;
         /**
-         * The left side `Super` key. Better known as the Windows key or Cmd key.
+         * The left side `Super` key. Better known as the Windows key or `Cmd` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#LeftSuper)
          */
@@ -18451,7 +18523,7 @@ declare namespace Enum {
         }
         export const LeftSuper: LeftSuper;
         /**
-         * The right side `Super` key. Better known as the Windows key or Cmd key.
+         * The right side `Super` key. Better known as the Windows key or `Cmd` key.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#RightSuper)
          */
@@ -18896,6 +18968,8 @@ declare namespace Enum {
         }
         export const MousePosition: MousePosition;
         /**
+         * The position of a touch in the viewport. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Touch)
          */
         export interface Touch extends globalThis.EnumItem {
@@ -29144,11 +29218,173 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.SecurityCapability;
         }
         export const RemoteCommand: RemoteCommand;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AssetRead)
+         */
+        export interface AssetRead extends globalThis.EnumItem {
+            Name: "AssetRead";
+            Value: 33;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const AssetRead: AssetRead;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AssetManagement)
+         */
+        export interface AssetManagement extends globalThis.EnumItem {
+            Name: "AssetManagement";
+            Value: 34;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const AssetManagement: AssetManagement;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#DynamicGeneration)
+         */
+        export interface DynamicGeneration extends globalThis.EnumItem {
+            Name: "DynamicGeneration";
+            Value: 35;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const DynamicGeneration: DynamicGeneration;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#PlatformAvatarEditing)
+         */
+        export interface PlatformAvatarEditing extends globalThis.EnumItem {
+            Name: "PlatformAvatarEditing";
+            Value: 36;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const PlatformAvatarEditing: PlatformAvatarEditing;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AssetCreateUpdate)
+         */
+        export interface AssetCreateUpdate extends globalThis.EnumItem {
+            Name: "AssetCreateUpdate";
+            Value: 37;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const AssetCreateUpdate: AssetCreateUpdate;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Capture)
+         */
+        export interface Capture extends globalThis.EnumItem {
+            Name: "Capture";
+            Value: 38;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const Capture: Capture;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#SensitiveInput)
+         */
+        export interface SensitiveInput extends globalThis.EnumItem {
+            Name: "SensitiveInput";
+            Value: 39;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const SensitiveInput: SensitiveInput;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Monetization)
+         */
+        export interface Monetization extends globalThis.EnumItem {
+            Name: "Monetization";
+            Value: 40;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const Monetization: Monetization;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#LoadOwnedAsset)
+         */
+        export interface LoadOwnedAsset extends globalThis.EnumItem {
+            Name: "LoadOwnedAsset";
+            Value: 41;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const LoadOwnedAsset: LoadOwnedAsset;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Social)
+         */
+        export interface Social extends globalThis.EnumItem {
+            Name: "Social";
+            Value: 42;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const Social: Social;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#ServerCommunication)
+         */
+        export interface ServerCommunication extends globalThis.EnumItem {
+            Name: "ServerCommunication";
+            Value: 43;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const ServerCommunication: ServerCommunication;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Logging)
+         */
+        export interface Logging extends globalThis.EnumItem {
+            Name: "Logging";
+            Value: 44;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const Logging: Logging;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#PromptExternalPurchase)
+         */
+        export interface PromptExternalPurchase extends globalThis.EnumItem {
+            Name: "PromptExternalPurchase";
+            Value: 45;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const PromptExternalPurchase: PromptExternalPurchase;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Groups)
+         */
+        export interface Groups extends globalThis.EnumItem {
+            Name: "Groups";
+            Value: 46;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const Groups: Groups;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Teleport)
+         */
+        export interface Teleport extends globalThis.EnumItem {
+            Name: "Teleport";
+            Value: 47;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const Teleport: Teleport;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Consequences)
+         */
+        export interface Consequences extends globalThis.EnumItem {
+            Name: "Consequences";
+            Value: 48;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const Consequences: Consequences;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Material)
+         */
+        export interface Material extends globalThis.EnumItem {
+            Name: "Material";
+            Value: 49;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const Material: Material;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AvatarBehavior)
+         */
+        export interface AvatarBehavior extends globalThis.EnumItem {
+            Name: "AvatarBehavior";
+            Value: 50;
+            EnumType: typeof globalThis.Enum.SecurityCapability;
+        }
+        export const AvatarBehavior: AvatarBehavior;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SecurityCapability>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SecurityCapability | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SecurityCapability | undefined;
     }
-    export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics | SecurityCapability.UI | SecurityCapability.CSG | SecurityCapability.Chat | SecurityCapability.Animation | SecurityCapability.Avatar | SecurityCapability.Input | SecurityCapability.Environment | SecurityCapability.RemoteEvent | SecurityCapability.LegacySound | SecurityCapability.Players | SecurityCapability.CapabilityControl | SecurityCapability.Plugin | SecurityCapability.LocalUser | SecurityCapability.WritePlayer | SecurityCapability.RobloxScript | SecurityCapability.RobloxEngine | SecurityCapability.Unassigned | SecurityCapability.InternalTest | SecurityCapability.PluginOrOpenCloud | SecurityCapability.Assistant | SecurityCapability.RemoteCommand;
+    export type SecurityCapability = SecurityCapability.RunClientScript | SecurityCapability.RunServerScript | SecurityCapability.AccessOutsideWrite | SecurityCapability.AssetRequire | SecurityCapability.LoadString | SecurityCapability.ScriptGlobals | SecurityCapability.CreateInstances | SecurityCapability.Basic | SecurityCapability.Audio | SecurityCapability.DataStore | SecurityCapability.Network | SecurityCapability.Physics | SecurityCapability.UI | SecurityCapability.CSG | SecurityCapability.Chat | SecurityCapability.Animation | SecurityCapability.Avatar | SecurityCapability.Input | SecurityCapability.Environment | SecurityCapability.RemoteEvent | SecurityCapability.LegacySound | SecurityCapability.Players | SecurityCapability.CapabilityControl | SecurityCapability.Plugin | SecurityCapability.LocalUser | SecurityCapability.WritePlayer | SecurityCapability.RobloxScript | SecurityCapability.RobloxEngine | SecurityCapability.Unassigned | SecurityCapability.InternalTest | SecurityCapability.PluginOrOpenCloud | SecurityCapability.Assistant | SecurityCapability.RemoteCommand | SecurityCapability.AssetRead | SecurityCapability.AssetManagement | SecurityCapability.DynamicGeneration | SecurityCapability.PlatformAvatarEditing | SecurityCapability.AssetCreateUpdate | SecurityCapability.Capture | SecurityCapability.SensitiveInput | SecurityCapability.Monetization | SecurityCapability.LoadOwnedAsset | SecurityCapability.Social | SecurityCapability.ServerCommunication | SecurityCapability.Logging | SecurityCapability.PromptExternalPurchase | SecurityCapability.Groups | SecurityCapability.Teleport | SecurityCapability.Consequences | SecurityCapability.Material | SecurityCapability.AvatarBehavior;
     /**
      * Customization options for gamepad selection when `GuiBase2d.SelectionGroup` is true.
      *

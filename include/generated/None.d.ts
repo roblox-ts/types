@@ -77,6 +77,7 @@ interface Services {
     FacialAnimationRecordingService: FacialAnimationRecordingService;
     FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
     FeatureRestrictionManager: FeatureRestrictionManager;
+    FileManagerService: FileManagerService;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
     GenerationService: GenerationService;
@@ -2429,9 +2430,10 @@ interface Instance extends RBXObject {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#GetStyled)
      * @param this `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
      * @param name Name of the property to query.
+     * @param selector Optional selector for the pseudo instance you are targeting on the instance.
      * @returns The styled or explicitly modified value of the specified property, or else the default property value if it hasn't been styled/modified.
      */
-    GetStyled(this: Instance, name: string): unknown;
+    GetStyled(this: Instance, name: string, selector?: string): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -3022,7 +3024,7 @@ interface AnalyticsService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#FireEvent)
      * @param this Collection of methods that allows developers to track how users interact with their experiences.
      * @param category 'The category of event to report. Cannot contain the following characters: comma `,`, double quote `"` or newline characters `\r\n`'.
-     * @param value A value to be serialized and reported. Serialized length must not exceed 1 KB, or 1024 bytes.
+     * @param value A value to be serialized and reported. Serialized length must not exceed 1 KiB, or 1024 bytes.
      *
      * @deprecated
      */
@@ -3133,7 +3135,7 @@ interface AnalyticsService extends Instance {
      * @param flowType Should specify the direction that currency is flowing using `AnalyticsEconomyFlowType`.
      * @param currencyType The name of the currency being added or removed, for example `"gold"`, `"gems"`, or `"energy"`. Limited to 5 unique currency types per experience.
      * @param amount The amount of currency being added or removed. This value should always be positive.
-     * @param endingBalance The user's balance after the currency has been added or removed. This value should always be greater than or equal to 0.
+     * @param endingBalance The user's balance after the currency has been added or removed. This value should always be greater than or equal to `0`.
      * @param transactionType The type of transaction that occurred. While you're free to use any transaction type, it's recommended to use the provided types from `AnalyticsEconomyTransactionType` such as `"IAP"` or `"ContextualPurchase"` to enable future insights from Roblox tools and charts. Because this field type is a string, you'll need to pass the `Name` value of the enum. For example `Enum.AnalyticsEconomyTransactionType.IAP.Name`. Limited to 20 unique types per experience.
      * @param itemSku Optional SKU of the item or bundle being purchased. This is a unique identifier for the item being purchased. Limited to 100 unique SKUs per experience.
      * @param customFields Optional dictionary of custom fields that will provide breakdowns in Roblox-provided charts. Only specific keys, provided by `AnalyticsCustomFieldKeys`, will be used for these breakdowns. Limited to 8,000 unique combinations of values across the three custom fields per experience.
@@ -3548,24 +3550,6 @@ interface AnimationNodeDefinition extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#NodeType)
      */
     NodeType: Enum.AnimationNodeType;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#GetConnectedWires)
-     */
-    GetConnectedWires(this: AnimationNodeDefinition, pin: string): Array<Instance>;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#GetInputPins)
-     */
-    GetInputPins(this: AnimationNodeDefinition): Array<unknown>;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#GetOutputPins)
-     */
-    GetOutputPins(this: AnimationNodeDefinition): Array<unknown>;
 }
 /**
  * Used to store information regarding the model an animation was authored for.
@@ -10576,9 +10560,14 @@ interface CaptureService extends Instance {
      */
     StopVideoCapture(this: CaptureService): void;
     /**
+     * Initiates a screenshot capture.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#TakeScreenshotCaptureAsync)
+     * @param this A service which provides control over screenshot and video capture features.
+     * @param onCaptureReady A callback function that is called on screenshot capture completion with a `ScreenshotCaptureResult` and, if successful, a `ScreenshotCapture`.
+     * @param captureParams A dictionary that modifies capture behavior.
      */
     TakeScreenshotCaptureAsync(this: CaptureService, onCaptureReady: Callback, captureParams?: object): void;
     /**
@@ -16714,6 +16703,21 @@ interface FeatureRestrictionManager extends Instance {
     readonly _nominal_FeatureRestrictionManager: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FileManagerService)
+ */
+interface FileManagerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FileManagerService: unique symbol;
+}
+/**
  * A preconfigured particle emitter with the visual aesthetic of fire.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Fire)
@@ -20741,7 +20745,7 @@ interface HandleAdornment extends PVAdornment {
     readonly MouseLeave: RBXScriptSignal<() => void>;
 }
 /**
- * A box that can be adorned to a `BasePart`.
+ * A box-shaped handle that can be adorned to a `BasePart`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BoxHandleAdornment)
  */
@@ -20761,7 +20765,7 @@ interface BoxHandleAdornment extends HandleAdornment {
      */
     Shading: Enum.AdornShading;
     /**
-     * The size of the adornment.
+     * Size of the adornment.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20770,7 +20774,7 @@ interface BoxHandleAdornment extends HandleAdornment {
     Size: Vector3;
 }
 /**
- * A cone that can be adorned to a `BasePart`.
+ * A cone-shaped handle that can be adorned to a `BasePart`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConeHandleAdornment)
  */
@@ -20784,7 +20788,7 @@ interface ConeHandleAdornment extends HandleAdornment {
      */
     readonly _nominal_ConeHandleAdornment: unique symbol;
     /**
-     * The height of the cone adornment.
+     * Height of the cone adornment.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20798,7 +20802,7 @@ interface ConeHandleAdornment extends HandleAdornment {
      */
     Hollow: boolean;
     /**
-     * The radius of the cone adornment.
+     * Radius of the cone adornment.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20813,7 +20817,7 @@ interface ConeHandleAdornment extends HandleAdornment {
     Shading: Enum.AdornShading;
 }
 /**
- * A cylinder that can be adorned to a `BasePart`.
+ * A cylinder-shaped handle that can be adorned to a `BasePart`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CylinderHandleAdornment)
  */
@@ -20827,7 +20831,7 @@ interface CylinderHandleAdornment extends HandleAdornment {
      */
     readonly _nominal_CylinderHandleAdornment: unique symbol;
     /**
-     * Angle of cylindrical sector (pie-slice).
+     * Angle of the cylinder handle as in a "pie slice" sector.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20835,7 +20839,7 @@ interface CylinderHandleAdornment extends HandleAdornment {
      */
     Angle: number;
     /**
-     * The height of the cylinder adornment.
+     * Height of the cylinder adornment.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20843,7 +20847,7 @@ interface CylinderHandleAdornment extends HandleAdornment {
      */
     Height: number;
     /**
-     * Inner radius of a hollow cylinder.
+     * Inner radius with which to render a hollow cylinder.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20851,7 +20855,7 @@ interface CylinderHandleAdornment extends HandleAdornment {
      */
     InnerRadius: number;
     /**
-     * The radius of the cylinder adornment.
+     * Radius of the cylinder adornment.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20866,7 +20870,7 @@ interface CylinderHandleAdornment extends HandleAdornment {
     Shading: Enum.AdornShading;
 }
 /**
- * An image that can be adorned to a `BasePart`.
+ * An image handle that can be adorned to a `BasePart`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ImageHandleAdornment)
  */
@@ -20880,7 +20884,7 @@ interface ImageHandleAdornment extends HandleAdornment {
      */
     readonly _nominal_ImageHandleAdornment: unique symbol;
     /**
-     * The image to draw for the adornment.
+     * Image to draw for the adornment.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20888,7 +20892,7 @@ interface ImageHandleAdornment extends HandleAdornment {
      */
     Image: ContentId;
     /**
-     * The size in studs of the image.
+     * Size of the image in studs.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20897,7 +20901,7 @@ interface ImageHandleAdornment extends HandleAdornment {
     Size: Vector2;
 }
 /**
- * A line that can be adorned to a `BasePart`.
+ * A line-shaped handle that can be adorned to a `BasePart`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LineHandleAdornment)
  */
@@ -20911,7 +20915,7 @@ interface LineHandleAdornment extends HandleAdornment {
      */
     readonly _nominal_LineHandleAdornment: unique symbol;
     /**
-     * The length of the line.
+     * Length of the line.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20919,7 +20923,7 @@ interface LineHandleAdornment extends HandleAdornment {
      */
     Length: number;
     /**
-     * The thickness of the line in pixels.
+     * Thickness of the line in pixels.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20928,6 +20932,8 @@ interface LineHandleAdornment extends HandleAdornment {
     Thickness: number;
 }
 /**
+ * A pyramid-shaped handle that can be adorned to a `BasePart`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PyramidHandleAdornment)
  */
 interface PyramidHandleAdornment extends HandleAdornment {
@@ -20940,6 +20946,8 @@ interface PyramidHandleAdornment extends HandleAdornment {
      */
     readonly _nominal_PyramidHandleAdornment: unique symbol;
     /**
+     * Height of the pyramid adornment.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PyramidHandleAdornment#Height)
@@ -20952,12 +20960,16 @@ interface PyramidHandleAdornment extends HandleAdornment {
      */
     Shading: Enum.AdornShading;
     /**
+     * Number of sides for the pyramid adornment.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PyramidHandleAdornment#Sides)
      */
     Sides: number;
     /**
+     * Size of the pyramid adornment's base.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PyramidHandleAdornment#Size)
@@ -20965,7 +20977,7 @@ interface PyramidHandleAdornment extends HandleAdornment {
     Size: number;
 }
 /**
- * The SphereHandleAdornment is a sphere that can be adorned to a BasePart.
+ * A sphere-shaped handle that can be adorned to a `BasePart`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SphereHandleAdornment)
  */
@@ -20979,7 +20991,7 @@ interface SphereHandleAdornment extends HandleAdornment {
      */
     readonly _nominal_SphereHandleAdornment: unique symbol;
     /**
-     * The radius of the sphere adornment.
+     * Radius of the sphere adornment.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -21435,7 +21447,7 @@ interface Path2D extends GuiBase {
      */
     Closed: boolean;
     /**
-     * Determines the Color of the `Path2D`.
+     * Determines the color of the `Path2D`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -23318,7 +23330,7 @@ interface Humanoid extends Instance {
      */
     UnequipTools(this: Humanoid): void;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `ApplyDescriptionAsync()`.
      *
      * Makes the character's look match that of the passed in `HumanoidDescription`.
      *
@@ -23346,7 +23358,7 @@ interface Humanoid extends Instance {
      */
     ApplyDescriptionAsync(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `ApplyDescriptionResetAsync()`.
      *
      * Makes the character's look match that of the passed in `HumanoidDescription`, even after external changes.
      *
@@ -23374,7 +23386,7 @@ interface Humanoid extends Instance {
      */
     ApplyDescriptionResetAsync(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `PlayEmoteAsync()`.
      *
      * Plays emotes and returns if was successfully ran.
      *
@@ -25734,7 +25746,7 @@ interface JointInstance extends Instance {
      */
     C0: CFrame;
     /**
-     * Is subtracted from the `JointInstance.C0` property to create an offset point for `JointInstance.Part1`.
+     * Subtracted from the `C0` property to create an offset point for `Part1`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -27828,7 +27840,7 @@ interface MarketplaceService extends Instance {
         Name: string;
     }>;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `GetProductInfoAsync()`.
      *
      * Returns the product information of an asset using its asset ID.
      *
@@ -27923,7 +27935,7 @@ interface MarketplaceService extends Instance {
      */
     GetUsersPriceLevelsAsync(this: MarketplaceService, userIds: Array<unknown>): Array<unknown>;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `PlayerOwnsAssetAsync()`.
      *
      * Returns whether the given user has the given asset.
      *
@@ -27953,7 +27965,7 @@ interface MarketplaceService extends Instance {
      */
     PlayerOwnsAssetAsync(this: MarketplaceService, player: Instance, assetId: number): boolean;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `PlayerOwnsBundleAsync()`.
      *
      * Returns whether the given player owns the given bundle.
      *
@@ -28781,27 +28793,11 @@ interface ModerationService extends Instance {
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#InternalCreateReviewableContentAsync)
-     * @param this
-     * @param config
-     */
-    InternalCreateReviewableContentAsync(this: ModerationService, config: object): string;
-    /**
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**: Yields
-     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#InternalRequestReviewableContentReviewAsync)
      * @param this
      * @param config
      */
     InternalRequestReviewableContentReviewAsync(this: ModerationService, config: object): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#InternalProcessReviewableContentEvent)
-     * @param event
-     */
-    InternalProcessReviewableContentEvent: ((event: object) => boolean) | undefined;
 }
 /**
  * Legacy object that contains members useful for pointer input.
@@ -34859,9 +34855,9 @@ interface Player extends Instance {
      */
     SaveString(this: Player, key: string, value: string): void;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `GetFriendsOnline()`.
      *
-     * Returns a dictionary of online connections.
+     * Returns a dictionary of online connections. Returns the product information of an asset using its asset ID.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -34915,7 +34911,7 @@ interface Player extends Instance {
      */
     GetRankInGroupAsync(this: Player, groupId: number): number;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `GetRoleInGroup()`.
      *
      * Returns the player's role in the group as a string, or `Guest` if the player isn't part of the group.
      *
@@ -34986,7 +34982,7 @@ interface Player extends Instance {
      */
     IsFriendsWithAsync(this: Player, userId: number): boolean;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `IsInGroupAsync()`.
      *
      * Checks whether a player is a member of a group with the given ID.
      *
@@ -35014,7 +35010,7 @@ interface Player extends Instance {
      */
     IsInGroupAsync(this: Player, groupId: number): boolean;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `LoadCharacterAsync()`.
      *
      * Creates a new character for the player, removing the old one. Also clears the player's `Backpack` and `PlayerGui`.
      *
@@ -35038,7 +35034,7 @@ interface Player extends Instance {
      */
     LoadCharacterAsync(this: Player): void;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `LoadCharacterWithHumanoidDescriptionAsync()`.
      *
      * Spawns a player character with everything equipped in the passed in `HumanoidDescription`.
      *
@@ -35610,7 +35606,7 @@ interface Players extends Instance {
      */
     RespawnTime: number;
     /**
-     * Returns the `Player` with the given `UserId` if they are in-game.
+     * Returns the `Player` with the given `UserId` if they are in-experience.
      *
      * - **ThreadSafety**: Safe
      *
@@ -35656,7 +35652,7 @@ interface Players extends Instance {
      */
     BanAsync(this: Players, config: BanAsyncConfig): void;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `CreateHumanoidModelFromDescription()`.
      *
      * Returns a character `Model` equipped with everything specified in the passed in `HumanoidDescription`.
      *
@@ -35688,7 +35684,7 @@ interface Players extends Instance {
      */
     CreateHumanoidModelFromDescriptionAsync(this: Players, description: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): Model;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `CreateHumanoidModelFromUserIdAsync()`.
      *
      * Returns a character Model set-up with everything equipped to match the avatar of the user specified by the passed in userId.
      *
@@ -35766,7 +35762,7 @@ interface Players extends Instance {
      */
     GetFriendsAsync(this: Players, userId: number): FriendPages;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `GetHumanoidDescriptionFromOutfitIdAsync()`.
      *
      * Returns the HumanoidDescription for a specified outfit, which will be set with the parts/colors/Animations etc of the outfit.
      *
@@ -35794,7 +35790,7 @@ interface Players extends Instance {
      */
     GetHumanoidDescriptionFromOutfitIdAsync(this: Players, outfitId: number): HumanoidDescription;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `GetHumanoidDescriptionFromUserIdAsync()`.
      *
      * Returns a HumanoidDescription which specifies everything equipped for the avatar of the user specified by the passed in userId.
      *
@@ -35881,7 +35877,7 @@ interface Players extends Instance {
      */
     UnbanAsync(this: Players, config: UnbanAsyncConfig): void;
     /**
-     * Fires when a player enters the game.
+     * Fires when a player enters the experience.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -35889,7 +35885,7 @@ interface Players extends Instance {
      */
     readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
     /**
-     * Fires when the game server recognizes that a player's membership has changed.
+     * Fires when the experience server recognizes that a player's membership has changed.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -35897,7 +35893,7 @@ interface Players extends Instance {
      */
     readonly PlayerMembershipChanged: RBXScriptSignal<(player: Player) => void>;
     /**
-     * Fires when a player is about to leave the game.
+     * Fires when a player is about to leave the experience.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -35905,7 +35901,7 @@ interface Players extends Instance {
      */
     readonly PlayerRemoving: RBXScriptSignal<(player: Player, reason: Enum.PlayerExitReason) => void>;
     /**
-     * Fires when the game server recognizes that the user's status for a certain subscription has changed.
+     * Fires when the experience server recognizes that the user's status for a certain subscription has changed.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -37120,7 +37116,7 @@ interface ReplicatedFirst extends Instance {
      */
     readonly _nominal_ReplicatedFirst: unique symbol;
     /**
-     * Immediately removes the default Roblox loading screen. Note if any object has been placed in `ReplicatedFirst`, the default loading screen will remove after 5 seconds regardless if this function has been called or not.
+     * Immediately removes the default Roblox loading screen.
      *
      * - **ThreadSafety**: Unsafe
      *
