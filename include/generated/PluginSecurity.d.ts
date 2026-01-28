@@ -81,6 +81,7 @@ interface Services {
     FacialAnimationRecordingService: FacialAnimationRecordingService;
     FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
     FeatureRestrictionManager: FeatureRestrictionManager;
+    FileManagerService: FileManagerService;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
     GameSettings: GameSettings;
@@ -4503,6 +4504,75 @@ interface DebugSettings extends Instance {
      * @deprecated
      */
     readonly _nominal_DebugSettings: unique symbol;
+    /**
+     * Describes whether a `DataModel` is actively in memory, as an integer (where 1 = true, and 0 = false).
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebugSettings#DataModel)
+     */
+    readonly DataModel: number;
+    /**
+     * The number of instances active in the simulation.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebugSettings#InstanceCount)
+     */
+    readonly InstanceCount: number;
+    /**
+     * Whether or not a stacktrace is displayed in the output for an error.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebugSettings#IsScriptStackTracingEnabled)
+     */
+    IsScriptStackTracingEnabled: boolean;
+    /**
+     * Returns the number of internal DataModel jobs actively being processed.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebugSettings#JobCount)
+     */
+    readonly JobCount: number;
+    /**
+     * The number of players currently in the active game-instance.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebugSettings#PlayerCount)
+     */
+    readonly PlayerCount: number;
+    /**
+     * Whether or not sound warnings should be reported.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebugSettings#ReportSoundWarnings)
+     */
+    ReportSoundWarnings: boolean;
+    /**
+     * The current client version of Roblox. Can also be retrieved by using the version() function.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebugSettings#RobloxVersion)
+     */
+    readonly RobloxVersion: string;
+    /**
+     * Sets the internal sampling method used to measure elapsed time with consistency across platforms.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DebugSettings#TickCountPreciseOverride)
+     */
+    TickCountPreciseOverride: Enum.TickCountSampleMethod;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -5716,6 +5786,21 @@ interface File extends Instance {
     GetTemporaryId(this: File): ContentId;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FileManagerService)
+ */
+interface FileManagerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FileManagerService: unique symbol;
+}
+/**
  * A preconfigured particle emitter with the visual aesthetic of fire.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Fire)
@@ -5808,6 +5893,17 @@ interface GameSettings extends Instance {
      * @deprecated
      */
     readonly _nominal_GameSettings: unique symbol;
+    /**
+     * **Deprecated:**
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**:
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GameSettings#VideoCaptureEnabled)
+     *
+     * @deprecated
+     */
+    VideoCaptureEnabled: boolean;
 }
 /**
  * The GamepadService is internally responsible for handling inputs from various controllers, such as Xbox One or PlayStation DualShock controllers.
@@ -6547,7 +6643,7 @@ interface HandleAdornment extends PVAdornment {
     readonly _nominal_HandleAdornment: unique symbol;
 }
 /**
- * A box that can be adorned to a `BasePart`.
+ * A box-shaped handle that can be adorned to a `BasePart`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BoxHandleAdornment)
  */
@@ -6562,7 +6658,7 @@ interface BoxHandleAdornment extends HandleAdornment {
     readonly _nominal_BoxHandleAdornment: unique symbol;
 }
 /**
- * A cone that can be adorned to a `BasePart`.
+ * A cone-shaped handle that can be adorned to a `BasePart`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConeHandleAdornment)
  */
@@ -6577,7 +6673,7 @@ interface ConeHandleAdornment extends HandleAdornment {
     readonly _nominal_ConeHandleAdornment: unique symbol;
 }
 /**
- * A cylinder that can be adorned to a `BasePart`.
+ * A cylinder-shaped handle that can be adorned to a `BasePart`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CylinderHandleAdornment)
  */
@@ -6592,7 +6688,7 @@ interface CylinderHandleAdornment extends HandleAdornment {
     readonly _nominal_CylinderHandleAdornment: unique symbol;
 }
 /**
- * An image that can be adorned to a `BasePart`.
+ * An image handle that can be adorned to a `BasePart`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ImageHandleAdornment)
  */
@@ -6607,7 +6703,7 @@ interface ImageHandleAdornment extends HandleAdornment {
     readonly _nominal_ImageHandleAdornment: unique symbol;
 }
 /**
- * A line that can be adorned to a `BasePart`.
+ * A line-shaped handle that can be adorned to a `BasePart`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LineHandleAdornment)
  */
@@ -6622,6 +6718,8 @@ interface LineHandleAdornment extends HandleAdornment {
     readonly _nominal_LineHandleAdornment: unique symbol;
 }
 /**
+ * A pyramid-shaped handle that can be adorned to a `BasePart`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PyramidHandleAdornment)
  */
 interface PyramidHandleAdornment extends HandleAdornment {
@@ -6635,7 +6733,7 @@ interface PyramidHandleAdornment extends HandleAdornment {
     readonly _nominal_PyramidHandleAdornment: unique symbol;
 }
 /**
- * The SphereHandleAdornment is a sphere that can be adorned to a BasePart.
+ * A sphere-shaped handle that can be adorned to a `BasePart`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SphereHandleAdornment)
  */
@@ -8678,7 +8776,7 @@ interface NetworkMarker extends Instance {
     readonly _nominal_NetworkMarker: unique symbol;
 }
 /**
- * The NetworkPeer object is the most basic class of the network objects.
+ * The `NetworkPeer` object is the most basic class of the network objects.
  *
  * - **Tags**: NotCreatable, NotBrowsable
  *
@@ -8699,7 +8797,7 @@ interface NetworkPeer extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkPeer#SetOutgoingKBPSLimit)
-     * @param this The NetworkPeer object is the most basic class of the network objects.
+     * @param this The `NetworkPeer` object is the most basic class of the network objects.
      * @param limit
      */
     SetOutgoingKBPSLimit(this: NetworkPeer, limit: number): void;
@@ -8805,7 +8903,7 @@ interface NetworkSettings extends Instance {
      */
     EmulatedTotalMemoryInMB: number;
     /**
-     * Describes how much free memory is available, in MBs.
+     * Describes how much free memory is available, in MiBs.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
@@ -10052,6 +10150,213 @@ interface PhysicsSettings extends Instance {
      * @deprecated
      */
     readonly _nominal_PhysicsSettings: unique symbol;
+    /**
+     * When set to true, physically simulated objects will stop being simulated if they have little to no motion for a set period of time.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AllowSleep)
+     */
+    AllowSleep: boolean;
+    /**
+     * When set to true, parts that are `BasePart.Anchored` will show a gray surface outline on the surface of the part's bounding box that is currently facing the ground.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreAnchorsShown)
+     */
+    AreAnchorsShown: boolean;
+    /**
+     * When set to true, each physics assembly is assigned a unique color and the `Part` associated with the assembly are outlined with the color. Parts that are attached together by `JointInstance` will share the same color.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreAssembliesShown)
+     */
+    AreAssembliesShown: boolean;
+    /**
+     * When set to true, parts that are actively being physically simulated will have a red outline.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreAwakePartsHighlighted)
+     */
+    AreAwakePartsHighlighted: boolean;
+    /**
+     * When set to true, `Part` will be outlined with a specific color, depending on the state of its root simulation body.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreBodyTypesShown)
+     */
+    AreBodyTypesShown: boolean;
+    /**
+     * When set to true, each contact island will render `SelectionBox` adorns on the parts in contact islands, where each contact island is assigned a random color.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreContactIslandsShown)
+     */
+    AreContactIslandsShown: boolean;
+    /**
+     * When set to true, sphere adorns will be drawn at the contact points of each part where physics interactions are occurring.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreContactPointsShown)
+     */
+    AreContactPointsShown: boolean;
+    /**
+     * When set to true, XYZ axes are rendered at the `BasePart.CFrame` of every part.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreJointCoordinatesShown)
+     */
+    AreJointCoordinatesShown: boolean;
+    /**
+     * When set to true, every individual mechanism of parts is given a unique color.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreMechanismsShown)
+     */
+    AreMechanismsShown: boolean;
+    /**
+     * An ancient property that hasn't work correctly since late 2007. It's supposed to render an XYZ axis on the root part of a `Model`, but the axis rendering component doesn't work correctly.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreModelCoordsShown)
+     */
+    AreModelCoordsShown: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreNonAnchorsShown)
+     */
+    AreNonAnchorsShown: boolean;
+    /**
+     * When set to true, each player's character is outlined with a unique color, and each part that the player has network ownership over is outlined with the same color.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreOwnersShown)
+     */
+    AreOwnersShown: boolean;
+    /**
+     * An ancient property that hasn't worked correctly since late 2007. It's supposed to render a large XYZ axis in the center of each `BasePart`, but the axis rendering component doesn't work correctly.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#ArePartCoordsShown)
+     */
+    ArePartCoordsShown: boolean;
+    /**
+     * When set to true, a cylinder is drawn around each player's character, representing their `Player.SimulationRadius`.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreRegionsShown)
+     */
+    AreRegionsShown: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreTerrainReplicationRegionsShown)
+     */
+    AreTerrainReplicationRegionsShown: boolean;
+    /**
+     * When set to true, parts that aren't aligned on the 1x1x1 grid will be outlined yellow.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreUnalignedPartsShown)
+     */
+    AreUnalignedPartsShown: boolean;
+    /**
+     * An ancient property that hasn't worked correctly since late 2007. It's supposed to render a large XYZ axis in the center of the world, but the axis rendering component doesn't work correctly.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreWorldCoordsShown)
+     */
+    AreWorldCoordsShown: boolean;
+    /**
+     * When set to true, Roblox will fall back to using its legacy CSG solver when performing solid model operations.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#DisableCSGv2)
+     */
+    DisableCSGv2: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#DisableCSGv3ForPlugins)
+     */
+    DisableCSGv3ForPlugins: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden, NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#ForceCSGv2)
+     */
+    ForceCSGv2: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#IsInterpolationThrottleShown)
+     */
+    IsInterpolationThrottleShown: boolean;
+    /**
+     * This property is supposed to show the `BasePart.ReceiveAge` of a part, but it does not work correctly.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#IsReceiveAgeShown)
+     */
+    IsReceiveAgeShown: boolean;
+    /**
+     * When set to true, the joint connections of each part, and the states of their underlying primitive components are visualized as a spanning tree.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#IsTreeShown)
+     */
+    IsTreeShown: boolean;
+    /**
+     * Controls the throttle rate of Roblox's physics engine.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#PhysicsEnvironmentalThrottle)
+     */
+    PhysicsEnvironmentalThrottle: Enum.EnviromentalPhysicsThrottle;
+    /**
+     * When set to true, the underlying collision geometry for `PartOperation` and `MeshPart` is rendered.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#ShowDecompositionGeometry)
+     */
+    ShowDecompositionGeometry: boolean;
+    /**
+     * If the `PhysicsSettings.PhysicsEnvironmentalThrottle` is set to `DefaultAuto`, this specifies the maximum time that the physics environmental throttle has to wait before it is allowed to automatically change.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#ThrottleAdjustTime)
+     */
+    ThrottleAdjustTime: number;
+    /**
+     * If set to true, version 2 of Roblox's CSG solver will be used instead of version 1.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#UseCSGv2)
+     */
+    UseCSGv2: boolean;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -10624,7 +10929,7 @@ interface Plugin extends Instance {
      */
     ImportFbxAnimationAsync(this: Plugin, rigModel: Instance, isR15?: boolean): Instance | undefined;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `ImportFbxRigAsync()`.
      *
      * Prompts the user to open a `.fbx` file, uploads the individual components of the model as meshes, and generates a character rig for use in animation, which is loaded into the `Workspace`.
      *
@@ -10672,7 +10977,7 @@ interface Plugin extends Instance {
      */
     PromptForExistingAssetIdAsync(this: Plugin, assetType: string): number;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `PromptSaveSelectionAsync()`.
      *
      * Prompts the user to save their current selection with the specified file name.
      *
