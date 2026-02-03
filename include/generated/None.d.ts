@@ -218,6 +218,7 @@ interface Services {
     TextService: TextService;
     TextureGenerationService: TextureGenerationService;
     ToastNotificationService: ToastNotificationService;
+    TraceRouteService: TraceRouteService;
     TracerService: TracerService;
     TutorialService: TutorialService;
     TweenService: TweenService;
@@ -240,6 +241,7 @@ interface Services {
     WebSocketService: WebSocketService;
     WebViewService: WebViewService;
     Workspace: Workspace;
+    WrapDeformMeshProvider: WrapDeformMeshProvider;
 }
 interface CreatableInstances {
     Accessory: Accessory;
@@ -10603,7 +10605,7 @@ interface CaptureService extends Instance {
      * @param captureTypeFilters An array of `CaptureType`.
      * @returns Tuple of (result: `ReadCapturesFromGalleryResult`, capturesPages: `CapturesPages`)
      */
-    ReadCapturesFromGalleryAsync(this: CaptureService, captureTypeFilters?: Array<unknown>): unknown;
+    ReadCapturesFromGalleryAsync(this: CaptureService, captureTypeFilters?: Array<unknown>, readFromAllEligibleExperiences?: boolean): unknown;
     /**
      * Initiates a video capture recording.
      *
@@ -12445,7 +12447,7 @@ interface AnimationConstraint extends Constraint {
      */
     readonly C1: CFrame;
     /**
-     * Toggles whether the `AnimationConstraint` is kinematic or physically simulated.
+     * Toggles whether the constraint is kinematic or physically simulated.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -12491,7 +12493,7 @@ interface AnimationConstraint extends Constraint {
      */
     readonly Part1: BasePart | undefined;
     /**
-     * Describes the current animation offset of the `AnimationConstraint` joint.
+     * Describes the current animation offset of the constraint joint.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -27078,13 +27080,14 @@ interface LocalizationTable extends Instance {
      */
     GetString(this: LocalizationTable, targetLocaleId: string, key: string): string;
     /**
-     * Returns a `Translator` for entries in this LocalizationTable, in the specified language.
+     * Returns a `Translator` for entries in this LocalizationTable, in the specified locale.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LocalizationTable#GetTranslator)
      * @param this A LocalizationTable is a database of translations. It contains source strings and translations for various languages.
      * @param localeId
+     * @returns The `Translator` instance for the specified locale.
      */
     GetTranslator(this: LocalizationTable, localeId: string): Translator;
     /**
@@ -36928,6 +36931,20 @@ interface ReflectionService extends Instance {
      */
     GetClasses(this: ReflectionService, filter?: object): Array<unknown>;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService#GetEventsOfClass)
+     */
+    GetEventsOfClass(this: ReflectionService, className: string, filter?: object): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService#GetMethodsOfClass)
+     */
+    GetMethodsOfClass(this: ReflectionService, className: string, filter?: object): Array<unknown>;
+    /**
      * Returns a list of properties for a given class with filters applied.
      *
      * - **ThreadSafety**: Unsafe
@@ -43544,6 +43561,13 @@ interface TextChatService extends Instance {
      */
     CanUsersDirectChatAsync(this: TextChatService, requesterUserId: number, userIds: Array<unknown>): Array<unknown>;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatService#GetChatGroupsAsync)
+     */
+    GetChatGroupsAsync(this: TextChatService, players: Array<Instance>): Array<unknown>;
+    /**
      * Fires when `TextChatService:DisplayBubble()` is called.
      *
      * - **ThreadSafety**: Unsafe
@@ -43975,6 +43999,21 @@ interface TouchTransmitter extends Instance {
      * @deprecated
      */
     readonly _nominal_TouchTransmitter: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TraceRouteService)
+ */
+interface TraceRouteService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TraceRouteService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -46058,7 +46097,7 @@ interface UserInputService extends Instance {
         CFrame
     ]>;
     /**
-     * Returns the currently `TextBox` the client is currently focused on.
+     * Returns the `TextBox` the client is currently focused on.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -47872,6 +47911,13 @@ interface VoiceChatService extends Instance {
      */
     readonly _nominal_VoiceChatService: unique symbol;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatService#GetChatGroupsAsync)
+     */
+    GetChatGroupsAsync(this: VoiceChatService, players: Array<Instance>): Array<unknown>;
+    /**
      * Returns whether or not the given user has voice enabled.
      *
      * - **ThreadSafety**: Unsafe
@@ -48078,6 +48124,21 @@ interface Wire extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Wire#TargetName)
      */
     TargetName: string;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapDeformMeshProvider)
+ */
+interface WrapDeformMeshProvider extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WrapDeformMeshProvider: unique symbol;
 }
 /**
  * `WrapTextureTransfer` allows a parent `Decal` to be wrapped around its parent `MeshPart` based on the cage of its `WrapTarget`.
