@@ -148,6 +148,7 @@ interface Services {
     PlaceStatsService: PlaceStatsService;
     PlatformCloudStorageService: PlatformCloudStorageService;
     PlatformFriendsService: PlatformFriendsService;
+    PlatformLibraries: PlatformLibraries;
     PlayerDataService: PlayerDataService;
     PlayerHydrationService: PlayerHydrationService;
     Players: Players;
@@ -724,6 +725,7 @@ interface Instances extends Services, CreatableInstances {
     QWidgetPluginGui: QWidgetPluginGui;
     RecommendationPages: RecommendationPages;
     RobloxSerializableInstance: RobloxSerializableInstance;
+    RolloutValidation: RolloutValidation;
     RootImportData: RootImportData;
     RunningAverageItemDouble: RunningAverageItemDouble;
     RunningAverageItemInt: RunningAverageItemInt;
@@ -10436,6 +10438,21 @@ interface PlatformFriendsService extends Instance {
     readonly _nominal_PlatformFriendsService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlatformLibraries)
+ */
+interface PlatformLibraries extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PlatformLibraries: unique symbol;
+}
+/**
  * An object that represents a presently connected client to the experience.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player)
@@ -11781,6 +11798,21 @@ interface RobloxServerStorage extends Instance {
      * @deprecated
      */
     readonly _nominal_RobloxServerStorage: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RolloutValidation)
+ */
+interface RolloutValidation extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RolloutValidation: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -13890,10 +13922,6 @@ interface StudioService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioService#GizmoRaycast)
-     * @param this Provides access to configuration of Roblox Studio and allows importing files from the user's file system.
-     * @param origin
-     * @param direction
-     * @param raycastParams
      */
     GizmoRaycast(this: StudioService, origin: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult | undefined;
     /**
