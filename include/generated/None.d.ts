@@ -137,6 +137,7 @@ interface Services {
     PlaceStatsService: PlaceStatsService;
     PlatformCloudStorageService: PlatformCloudStorageService;
     PlatformFriendsService: PlatformFriendsService;
+    PlatformLibraries: PlatformLibraries;
     PlayerDataService: PlayerDataService;
     PlayerHydrationService: PlayerHydrationService;
     Players: Players;
@@ -681,6 +682,7 @@ interface Instances extends Services, CreatableInstances {
     PVInstance: PVInstance;
     RecommendationPages: RecommendationPages;
     RobloxSerializableInstance: RobloxSerializableInstance;
+    RolloutValidation: RolloutValidation;
     RootImportData: RootImportData;
     ScreenshotHud: ScreenshotHud;
     ScriptBuilder: ScriptBuilder;
@@ -4886,21 +4888,28 @@ interface AudioAnalyzer extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioAnalyzer#GetConnectedWires)
      * @param this Takes measurements from audio streams that are connected to it via one or more `Wires`.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioAnalyzer, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioAnalyzer#GetInputPins)
      * @param this Takes measurements from audio streams that are connected to it via one or more `Wires`.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioAnalyzer): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioAnalyzer#GetOutputPins)
      * @param this Takes measurements from audio streams that are connected to it via one or more `Wires`.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioAnalyzer): Array<unknown>;
     /**
@@ -4951,25 +4960,28 @@ interface AudioChannelMixer extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#GetConnectedWires)
      * @param this Combines multiple audio streams into a single, multichannel audio stream.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioChannelMixer, pin: string): Array<Instance>;
     /**
-     * Returns the input pins that can be selected by `Wire.TargetName`.
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#GetInputPins)
      * @param this Combines multiple audio streams into a single, multichannel audio stream.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioChannelMixer): Array<unknown>;
     /**
-     * Returns the output pin available for `Wire.SourceName`.
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelMixer#GetOutputPins)
      * @param this Combines multiple audio streams into a single, multichannel audio stream.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioChannelMixer): Array<unknown>;
     /**
@@ -5010,25 +5022,28 @@ interface AudioChannelSplitter extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#GetConnectedWires)
      * @param this Splits an audio stream into component channels so that each can be processed independently.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioChannelSplitter, pin: string): Array<Instance>;
     /**
-     * Returns the input pin available for `Wire.TargetName`.
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#GetInputPins)
      * @param this Splits an audio stream into component channels so that each can be processed independently.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioChannelSplitter): Array<unknown>;
     /**
-     * Returns the output pins that can be selected by `Wire.SourceName`.
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChannelSplitter#GetOutputPins)
      * @param this Splits an audio stream into component channels so that each can be processed independently.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioChannelSplitter): Array<unknown>;
     /**
@@ -5093,21 +5108,28 @@ interface AudioChorus extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChorus#GetConnectedWires)
      * @param this Makes an audio stream sound more voluminous. If applied to a single voice, it may sound like multiple voices.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioChorus, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChorus#GetInputPins)
      * @param this Makes an audio stream sound more voluminous. If applied to a single voice, it may sound like multiple voices.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioChorus): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioChorus#GetOutputPins)
      * @param this Makes an audio stream sound more voluminous. If applied to a single voice, it may sound like multiple voices.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioChorus): Array<unknown>;
     /**
@@ -5188,21 +5210,28 @@ interface AudioCompressor extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioCompressor#GetConnectedWires)
      * @param this Adjusts the dynamic range of input streams.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioCompressor, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioCompressor#GetInputPins)
      * @param this Adjusts the dynamic range of input streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioCompressor): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioCompressor#GetOutputPins)
      * @param this Adjusts the dynamic range of input streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioCompressor): Array<unknown>;
     /**
@@ -5275,21 +5304,28 @@ interface AudioDeviceInput extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceInput#GetConnectedWires)
      * @param this Produces audio streams from physical devices, such as microphones.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioDeviceInput, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceInput#GetInputPins)
      * @param this Produces audio streams from physical devices, such as microphones.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioDeviceInput): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceInput#GetOutputPins)
      * @param this Produces audio streams from physical devices, such as microphones.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioDeviceInput): Array<unknown>;
     /**
@@ -5349,21 +5385,28 @@ interface AudioDeviceOutput extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceOutput#GetConnectedWires)
      * @param this Accepts audio streams to be rendered out to physical hardware devices such as speakers or headphones.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioDeviceOutput, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceOutput#GetInputPins)
      * @param this Accepts audio streams to be rendered out to physical hardware devices such as speakers or headphones.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioDeviceOutput): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDeviceOutput#GetOutputPins)
      * @param this Accepts audio streams to be rendered out to physical hardware devices such as speakers or headphones.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioDeviceOutput): Array<unknown>;
     /**
@@ -5412,21 +5455,28 @@ interface AudioDistortion extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDistortion#GetConnectedWires)
      * @param this Distorts audio streams, making them sound fuzzier, grittier, and louder.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioDistortion, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDistortion#GetInputPins)
      * @param this Distorts audio streams, making them sound fuzzier, grittier, and louder.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioDistortion): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioDistortion#GetOutputPins)
      * @param this Distorts audio streams, making them sound fuzzier, grittier, and louder.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioDistortion): Array<unknown>;
     /**
@@ -5505,21 +5555,28 @@ interface AudioEcho extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEcho#GetConnectedWires)
      * @param this Overlays delayed copies of audio streams.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioEcho, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEcho#GetInputPins)
      * @param this Overlays delayed copies of audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioEcho): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEcho#GetOutputPins)
      * @param this Overlays delayed copies of audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioEcho): Array<unknown>;
     /**
@@ -5600,7 +5657,8 @@ interface AudioEmitter extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#GetConnectedWires)
      * @param this Emits audio streams into the world.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioEmitter, pin: string): Array<Instance>;
     /**
@@ -5614,10 +5672,13 @@ interface AudioEmitter extends Instance {
      */
     GetDistanceAttenuation(this: AudioEmitter): object;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#GetInputPins)
      * @param this Emits audio streams into the world.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioEmitter): Array<unknown>;
     /**
@@ -5630,10 +5691,13 @@ interface AudioEmitter extends Instance {
      */
     GetInteractingListeners(this: AudioEmitter): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#GetOutputPins)
      * @param this Emits audio streams into the world.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioEmitter): Array<unknown>;
     /**
@@ -5728,21 +5792,28 @@ interface AudioEqualizer extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEqualizer#GetConnectedWires)
      * @param this Adjusts the frequency content of audio streams.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioEqualizer, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEqualizer#GetInputPins)
      * @param this Adjusts the frequency content of audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioEqualizer): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEqualizer#GetOutputPins)
      * @param this Adjusts the frequency content of audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioEqualizer): Array<unknown>;
     /**
@@ -5791,21 +5862,28 @@ interface AudioFader extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFader#GetConnectedWires)
      * @param this Adjusts the volume of audio streams.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioFader, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFader#GetInputPins)
      * @param this Adjusts the volume of audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioFader): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFader#GetOutputPins)
      * @param this Adjusts the volume of audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioFader): Array<unknown>;
     /**
@@ -5878,7 +5956,8 @@ interface AudioFilter extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFilter#GetConnectedWires)
      * @param this Adjusts the frequency content of audio streams.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioFilter, pin: string): Array<Instance>;
     /**
@@ -5893,17 +5972,23 @@ interface AudioFilter extends Instance {
      */
     GetGainAt(this: AudioFilter, frequency: number): number;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFilter#GetInputPins)
      * @param this Adjusts the frequency content of audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioFilter): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFilter#GetOutputPins)
      * @param this Adjusts the frequency content of audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioFilter): Array<unknown>;
     /**
@@ -5968,21 +6053,28 @@ interface AudioFlanger extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFlanger#GetConnectedWires)
      * @param this Imparts a whooshing or sweeping sound on audio streams.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioFlanger, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFlanger#GetInputPins)
      * @param this Imparts a whooshing or sweeping sound on audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioFlanger): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioFlanger#GetOutputPins)
      * @param this Imparts a whooshing or sweeping sound on audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioFlanger): Array<unknown>;
     /**
@@ -6046,28 +6138,39 @@ interface AudioGate extends Instance {
      */
     Threshold: NumberRange;
     /**
+     * Returns an array of `Wires` that are connected to the specified pin.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#GetConnectedWires)
      * @param this
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioGate, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#GetInputPins)
      * @param this
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioGate): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#GetOutputPins)
      * @param this
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioGate): Array<unknown>;
     /**
+     * Fires when another instance is connected to or disconnected from the `AudioAnalyzer` via a `Wire`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#WiringChanged)
@@ -6119,21 +6222,28 @@ interface AudioLimiter extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioLimiter#GetConnectedWires)
      * @param this Limits how loud audio streams are allowed to be.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioLimiter, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioLimiter#GetInputPins)
      * @param this Limits how loud audio streams are allowed to be.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioLimiter): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioLimiter#GetOutputPins)
      * @param this Limits how loud audio streams are allowed to be.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioLimiter): Array<unknown>;
     /**
@@ -6214,7 +6324,8 @@ interface AudioListener extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#GetConnectedWires)
      * @param this Records an audio stream from its surrounding `AudioEmitters` in the 3D world.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioListener, pin: string): Array<Instance>;
     /**
@@ -6228,10 +6339,13 @@ interface AudioListener extends Instance {
      */
     GetDistanceAttenuation(this: AudioListener): object;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#GetInputPins)
      * @param this Records an audio stream from its surrounding `AudioEmitters` in the 3D world.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioListener): Array<unknown>;
     /**
@@ -6244,10 +6358,13 @@ interface AudioListener extends Instance {
      */
     GetInteractingEmitters(this: AudioListener): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#GetOutputPins)
      * @param this Records an audio stream from its surrounding `AudioEmitters` in the 3D world.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioListener): Array<unknown>;
     /**
@@ -6324,21 +6441,28 @@ interface AudioPitchShifter extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPitchShifter#GetConnectedWires)
      * @param this Adjusts the perceived pitch of audio streams.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioPitchShifter, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPitchShifter#GetInputPins)
      * @param this Adjusts the perceived pitch of audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioPitchShifter): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPitchShifter#GetOutputPins)
      * @param this Adjusts the perceived pitch of audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioPitchShifter): Array<unknown>;
     /**
@@ -6488,21 +6612,28 @@ interface AudioPlayer extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#GetConnectedWires)
      * @param this Used to play audio assets.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioPlayer, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#GetInputPins)
      * @param this Used to play audio assets.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioPlayer): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#GetOutputPins)
      * @param this Used to play audio assets.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioPlayer): Array<unknown>;
     /**
@@ -6595,25 +6726,34 @@ interface AudioRecorder extends Instance {
      */
     Clear(this: AudioRecorder): void;
     /**
+     * Returns an array of `Wires` that are connected to the specified pin.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetConnectedWires)
      * @param this Records audio streams in-experience.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioRecorder, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetInputPins)
      * @param this Records audio streams in-experience.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioRecorder): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetOutputPins)
      * @param this Records audio streams in-experience.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioRecorder): Array<unknown>;
     /**
@@ -6655,6 +6795,8 @@ interface AudioRecorder extends Instance {
      */
     RecordAsync(this: AudioRecorder): void;
     /**
+     * Fires when another instance is connected to or disconnected from the `AudioAnalyzer` via a `Wire`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#WiringChanged)
@@ -6786,21 +6928,28 @@ interface AudioReverb extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioReverb#GetConnectedWires)
      * @param this Reverberates audio streams.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioReverb, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioReverb#GetInputPins)
      * @param this Reverberates audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioReverb): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioReverb#GetOutputPins)
      * @param this Reverberates audio streams.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioReverb): Array<unknown>;
     /**
@@ -6950,7 +7099,8 @@ interface AudioSpeechToText extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSpeechToText#GetConnectedWires)
      * @param this Converts spoken audio into text.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioSpeechToText, pin: string): Array<Instance>;
     /**
@@ -7073,7 +7223,8 @@ interface AudioTextToSpeech extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#GetConnectedWires)
      * @param this Plays text as speech audio.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioTextToSpeech, pin: string): Array<Instance>;
     /**
@@ -7217,28 +7368,39 @@ interface AudioTremolo extends Instance {
      */
     Square: number;
     /**
+     * Returns an array of `Wires` that are connected to the specified pin.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#GetConnectedWires)
      * @param this Creates a trembling effect on a sound by varying the volume of the sound up and down.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioTremolo, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#GetInputPins)
      * @param this Creates a trembling effect on a sound by varying the volume of the sound up and down.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioTremolo): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#GetOutputPins)
      * @param this Creates a trembling effect on a sound by varying the volume of the sound up and down.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioTremolo): Array<unknown>;
     /**
+     * Fires when another instance is connected to or disconnected from the `AudioAnalyzer` via a `Wire`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#WiringChanged)
@@ -7598,7 +7760,7 @@ interface AvatarCreationService extends Instance {
      */
     GetValidationRules(this: AvatarCreationService): object;
     /**
-     * Automatically sets up a custom `Model` as an avatar asset.
+     * Automatically sets up a custom `Model` and/or avatar accessories.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -7606,7 +7768,7 @@ interface AvatarCreationService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#AutoSetupAvatarAsync)
      * @param this A service to support developer avatar creators.
      * @param player The `Player` that the avatar is being set up for.
-     * @param model The humanoid `Model` that will be set up as an avatar.
+     * @param autoSetupParams A table containing the arguments. Type: `type AutoSetupAccessory = { AccessoryType: Enum.AccessoryType, IsLayered: bool, Instance: Model, } type AutoSetupParams = { Body: Model?, Accessories: {AutoSetupAccessory}, }`
      * @param progressCallback Optional callback function that will be invoked periodically with a progressInfo table with the overall progress (from 0 to 1). Type: `(progressInfo: { Progress: number }) -> ()`
      * @returns A unique identifier for the generated avatar.
      */
@@ -7987,10 +8149,7 @@ interface AvatarEditorService extends Instance {
      * @param this A service to support developer Avatar Editors.
      * @param itemIds The list of item ids to get details of.
      * @param itemType The type of the item ids provided.
-     * @returns Returns an array of item details with the following fields:
-     * ```lua
-     *   {     "AssetType" = "string",     "CreatorName" = "string",     "CreatorTargetId" = 0,     "CreatorType" = "string",     "Description" = "string",     "FavoriteCount" = 0,     "Genres" = [       "All"     ],     "Id" = 0,     "ItemRestrictions" = [       "Limited"     ],     "ItemStatus": [       "New"     ],     "ItemType" = "string",     "LowestPrice" = 0,     "Name" = "string",     "Price" = 0,     "ProductId" = 0   }
-     * ``` .
+     * @returns Returns an array of item details. See `AvatarEditorService:GetBatchItemDetailsAsync()` for the response format.
      *
      * @deprecated GetBatchItemDetailsAsync
      */
@@ -8007,10 +8166,7 @@ interface AvatarEditorService extends Instance {
      * @param this A service to support developer Avatar Editors.
      * @param itemIds The list of item ids to get details of.
      * @param itemType The type of the item ids provided.
-     * @returns Returns an array of item details with the following fields:
-     * ```lua
-     *   {     "AssetType" = "string",     "CreatorName" = "string",     "CreatorTargetId" = 0,     "CreatorType" = "string",     "Description" = "string",     "FavoriteCount" = 0,     "Genres" = [       "All"     ],     "Id" = 0,     "ItemRestrictions" = [       "Limited"     ],     "ItemStatus": [       "New"     ],     "ItemType" = "string",     "LowestPrice" = 0,     "Name" = "string",     "Price" = 0,     "ProductId" = 0   }
-     * ``` .
+     * @returns Returns an array of item details.
      */
     GetBatchItemDetailsAsync(this: AvatarEditorService, itemIds: Array<unknown>, itemType: CastsToEnum<Enum.AvatarItemType>): Array<unknown>;
     /**
@@ -8110,7 +8266,7 @@ interface AvatarEditorService extends Instance {
      * @param this A service to support developer Avatar Editors.
      * @param itemId The ID of the item whose details are being retrieved.
      * @param itemType An enum value indicating the type of item whose details are being retrieved.
-     * @returns A table containing the item info for the retrieved item. See above for a sample table.
+     * @returns A table containing the item info for the retrieved item.
      */
     GetItemDetailsAsync(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): object;
     /**
@@ -8251,6 +8407,7 @@ interface AvatarEditorService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#SearchCatalogAsync)
      * @param this A service to support developer Avatar Editors.
      * @param searchParameters An object containing the parameters used for the search.
+     * @returns A `CatalogPages` object containing the search results.
      */
     SearchCatalogAsync(this: AvatarEditorService, searchParameters: CatalogSearchParams): CatalogPages;
     /**
@@ -10390,6 +10547,8 @@ interface BodyPartDescription extends Instance {
      */
     Color: Color3;
     /**
+     * Specifies the head shape identifier to apply to a Dynamic Head when this `BodyPartDescription` is applied.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyPartDescription#HeadShape)
@@ -10603,6 +10762,7 @@ interface CaptureService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#ReadCapturesFromGalleryAsync)
      * @param this A service which provides control over screenshot and video capture features.
      * @param captureTypeFilters An array of `CaptureType`.
+     * @param readFromAllEligibleExperiences A boolean; default is `false`.
      * @returns Tuple of (result: `ReadCapturesFromGalleryResult`, capturesPages: `CapturesPages`)
      */
     ReadCapturesFromGalleryAsync(this: CaptureService, captureTypeFilters?: Array<unknown>, readFromAllEligibleExperiences?: boolean): unknown;
@@ -17040,20 +17200,29 @@ interface GenerationService extends Instance {
      * @param this Service that allows developers to generate 3D objects from text prompts.
      * @param inputs A dictionary containing the mesh generation prompts. Currently, the only supported key is the `Prompt` (string) that describes the mesh to generate.
      * @param player The `Player` requesting the generation.
-     * @param options A dictionary for additional generation options to influence the result. The following key is supported: - `SuggestedSize` — Optional `Vector3` representing a size guide for the generated asset. The service will attempt to create a model with a size and proportion similar to the provided `Vector3`. This does not guarantee the final output size.
+     * @param options A dictionary for additional generation options to influence the result. The optional `SuggestedSize` key (`Vector3`) represents a size guide for the generated asset, meaning `GenerationService` will attempt to create a model with a size and proportion similar to the provided `Vector3`, although there is no guarantee on the final output size.
      * @param intermediateResultCallback A callback function triggered with intermediate generation results. Useful for retrieving early mesh versions before textures are applied.
      * @returns A tuple of the generation ID (a unique ID returned for each invocation of `GenerateMeshAsync()`) and context ID (not currently used).
      */
     GenerateMeshAsync(this: GenerationService, inputs: object, player: Player, options: object, intermediateResultCallback?: Callback): unknown;
     /**
+     * Enables generation of multi-mesh geometries according to provided `inputs` and a `schema`.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#GenerateModelAsync)
      * @param this Service that allows developers to generate 3D objects from text prompts.
-     * @param inputs
-     * @param schema
-     * @param options
+     * @param inputs A table representing conditioning inputs with the following keys: - `TextPrompt` — String description of the object to generate.
+     * - `Size` — Optional `Vector3` describing the object size to   generate. This is only approximate; scale the model extents   post‑generation if you need a specific size.
+     * - `MaxTriangles` — Optional integer describing the maximum number of   triangles that the returned model will contain. Lower values result   in more faceted and low-poly generations.
+     * - `GenerateTextures` — `true` (default) textures the resulting   generation, while `false` will not generate textures.
+     *
+     *
+     * @param schema Table representing the generation schema. Must contain a `PredefinedSchema` key with a string value; current valid options are `Car5` for a basic vehicle chassis consisting of five `Models`, or `Body1` which results in a single mesh output.
+     * @param options Currently not used; reserved for future customization options.
+     * @returns Tuple with the following elements: - A standard `Model` container instance that is compliant with   the specified `schema`.
+     * - A table containing a UUID and other metadata about the generation.
      */
     GenerateModelAsync(this: GenerationService, inputs: object, schema: object, options?: object): unknown;
     /**
@@ -19738,21 +19907,28 @@ interface VideoDisplay extends GuiObject {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#GetConnectedWires)
      * @param this A GUI object that displays video content from a connected `VideoPlayer`.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: VideoDisplay, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#GetInputPins)
      * @param this A GUI object that displays video content from a connected `VideoPlayer`.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: VideoDisplay): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay#GetOutputPins)
      * @param this A GUI object that displays video content from a connected `VideoPlayer`.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: VideoDisplay): Array<unknown>;
     /**
@@ -34311,6 +34487,21 @@ interface PlatformFriendsService extends Instance {
     readonly _nominal_PlatformFriendsService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlatformLibraries)
+ */
+interface PlatformLibraries extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PlatformLibraries: unique symbol;
+}
+/**
  * An object that represents a presently connected client to the experience.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player)
@@ -34858,7 +35049,7 @@ interface Player extends Instance {
      */
     SaveString(this: Player, key: string, value: string): void;
     /**
-     * **Deprecated:** This method has been superseded by `GetFriendsOnline()`.
+     * **Deprecated:** This method has been superseded by `GetFriendsOnlineAsync()`.
      *
      * Returns a dictionary of online connections. Returns the product information of an asset using its asset ID.
      *
@@ -37203,6 +37394,21 @@ interface RobloxServerStorage extends Instance {
      * @deprecated
      */
     readonly _nominal_RobloxServerStorage: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RolloutValidation)
+ */
+interface RolloutValidation extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RolloutValidation: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -42420,8 +42626,9 @@ interface TestService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#TakeSnapshot)
      * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
      * @param snapshotname
+     * @param source
      */
-    TakeSnapshot(this: TestService, snapshotname: string): void;
+    TakeSnapshot(this: TestService, snapshotname: string, source?: Instance): void;
     /**
      * Prints if a condition is `true`, otherwise prints a warning.
      *
@@ -43543,8 +43750,8 @@ interface TextChatService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatService#CanUsersChatAsync)
      * @param this A service handling in-experience text chat.
-     * @param userIdFrom
-     * @param userIdTo
+     * @param userIdFrom The user must be in the current server, otherwise an error will occur.
+     * @param userIdTo The user must be in the current server, otherwise an error will occur.
      */
     CanUsersChatAsync(this: TextChatService, userIdFrom: number, userIdTo: number): boolean;
     /**
@@ -43561,10 +43768,15 @@ interface TextChatService extends Instance {
      */
     CanUsersDirectChatAsync(this: TextChatService, requesterUserId: number, userIds: Array<unknown>): Array<unknown>;
     /**
+     * Returns chat group IDs that indicate which players can synchronously text chat together.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatService#GetChatGroupsAsync)
+     * @param this A service handling in-experience text chat.
+     * @param players A list of `Players` currently in the experience to evaluate for text chat compatibility.
+     * @returns A sorted array of arrays of chat group ID strings. Players who share a matching chat group ID are eligible to synchronously text chat with each other.
      */
     GetChatGroupsAsync(this: TextChatService, players: Array<Instance>): Array<unknown>;
     /**
@@ -47522,21 +47734,28 @@ interface VideoPlayer extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#GetConnectedWires)
      * @param this Used to play video assets.
-     * @param pin
+     * @param pin An input or output pin on this instance
+     * @returns An array of `Wires`
      */
     GetConnectedWires(this: VideoPlayer, pin: string): Array<Instance>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.TargetName` to connect to this instance via its `Wire.TargetInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#GetInputPins)
      * @param this Used to play video assets.
+     * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: VideoPlayer): Array<unknown>;
     /**
+     * Gets the list of pins that `Wire` can use in `Wire.SourceName` to connect to this instance via its `Wire.SourceInstance` property.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#GetOutputPins)
      * @param this Used to play video assets.
+     * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: VideoPlayer): Array<unknown>;
     /**
@@ -47911,10 +48130,15 @@ interface VoiceChatService extends Instance {
      */
     readonly _nominal_VoiceChatService: unique symbol;
     /**
+     * Returns chat group IDs that indicate which players can voice chat together.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatService#GetChatGroupsAsync)
+     * @param this **VoiceChatService** is responsible for voice chat's high-level functionality.
+     * @param players A list of `Players` currently in the experience to evaluate for voice chat compatibility.
+     * @returns A sorted array of arrays of chat group ID strings. Players who share a matching chat group ID are eligible to voice chat with each other.
      */
     GetChatGroupsAsync(this: VoiceChatService, players: Array<Instance>): Array<unknown>;
     /**
