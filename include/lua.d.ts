@@ -567,6 +567,15 @@ declare namespace math {
 
 	/** Returns the hyperbolic tangent of x. */
 	function tanh(n: number): number;
+	
+	/** Returns if x is nan or not */
+	function isnan(x: number): boolean;
+
+	/** Returns if x is infinite or not */
+	function isinf(x: number): boolean;
+
+	/** Returns is x is finite or not */
+	function isfinite(x: number): boolean;
 }
 
 /**
