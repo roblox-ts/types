@@ -951,11 +951,25 @@ interface ServiceProvider<S = unknown> extends Instance {
 	GetService<T extends keyof S>(this: ServiceProvider<S>, className: T): S[T];
 }
 
+interface SocialServiceEventResult {
+	Id: string;
+	Title: string;
+	Description: string;
+	StartTime: TimeValueTable;
+	EndTime: TimeValueTable;
+	HasStarted: boolean;
+	HasEnded: boolean;
+	Status: Enum.ExperienceEventStatus;
+	UserRsvpStatus?: Enum.RsvpStatus;
+}
+
 interface SocialService extends Instance {
 	PromptGameInvite(this: SocialService, player: Player, experienceInviteOptions?: Instance): void;
 	PromptPhoneBook(this: SocialService, player: Player, tag: string): void;
 	CanSendCallInviteAsync(this: SocialService, player: Player): boolean;
 	CanSendGameInviteAsync(this: SocialService, player: Player, recipientId?: number): boolean;
+	GetExperienceEventAsync(this: SocialService, eventId: string): SocialServiceEventResult | undefined;
+	GetUpcomingExperienceEventsAsync(this: SocialService): Array<SocialServiceEventResult>;
 	readonly CallInviteStateChanged: RBXScriptSignal<(player: Player, inviteState: Enum.InviteState) => void>;
 	readonly PhoneBookPromptClosed: RBXScriptSignal<(player: Player) => void>;
 	readonly GameInvitePromptClosed: RBXScriptSignal<(senderPlayer: Player, recipientIds: Array<number>) => void>;
