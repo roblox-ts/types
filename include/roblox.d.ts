@@ -196,7 +196,7 @@ interface ProductInfo {
 
 interface AssetProductInfo extends ProductInfo {
 	/** Describes whether the asset is a User Product, Developer Product, or Game Pass */
-	ProductType: "User Product";
+	ProductType?: "Collectible Item" | "User Product";
 	/** If InfoType was Asset, this is the ID of the given asset. */
 	AssetId: number;
 	/** The [type of asset](https://developer.roblox.com/articles/Asset-types) (e.g. place, model, shirt). In TypeScript, you should compare this value to a member of the `AssetTypeId` const enum. */
