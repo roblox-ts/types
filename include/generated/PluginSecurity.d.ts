@@ -14422,7 +14422,7 @@ interface TeleportOptions extends Instance {
     readonly _nominal_TeleportOptions: unique symbol;
 }
 /**
- * Enables transporting `Players` between places and servers.
+ * Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -16237,7 +16237,7 @@ interface TerrainWriteOperation extends RBXObject {
 /**
  * An object for sampling frames from video content.
  *
- * - **Tags**: NotCreatable
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoSampler)
  */

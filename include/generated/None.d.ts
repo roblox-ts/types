@@ -3116,6 +3116,12 @@ interface AnalyticsService extends Instance {
         [index: string]: number;
     }, customData?: unknown): void;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#GetDurationLoggerTimestamp)
+     */
+    GetDurationLoggerTimestamp(this: AnalyticsService): number;
+    /**
      * Logs an event used to track custom metrics of a user in experience.
      *
      * - **ThreadSafety**: Unsafe
@@ -6511,6 +6517,7 @@ interface AudioPlayer extends Instance {
     AssetId: string;
     /**
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#AudioContent)
      */
@@ -10982,6 +10989,12 @@ interface CharacterMesh extends CharacterAppearance {
      */
     readonly _nominal_CharacterMesh: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CharacterMesh#BaseTextureContent)
+     */
+    BaseTextureContent: Content;
+    /**
      * The texture of a CharacterMesh. It can be overridden by Shirts, Pants, T-Shirts, and the `CharacterMesh.OverlayTextureId` property.
      *
      * - **ThreadSafety**: ReadSafe
@@ -10998,6 +11011,12 @@ interface CharacterMesh extends CharacterAppearance {
      */
     BodyPart: Enum.BodyPart;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CharacterMesh#MeshContent)
+     */
+    MeshContent: Content;
+    /**
      * Used to load a mesh file, and apply it to the given BodyPart.
      *
      * - **ThreadSafety**: ReadSafe
@@ -11005,6 +11024,12 @@ interface CharacterMesh extends CharacterAppearance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CharacterMesh#MeshId)
      */
     MeshId: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CharacterMesh#OverlayTextureContent)
+     */
+    OverlayTextureContent: Content;
     /**
      * The assetId of the overlay texture. The overlay covers Shirts, Pants, T-Shirts, and the `CharacterMesh.BaseTextureId`.
      *
@@ -15416,6 +15441,12 @@ interface DataStoreService extends Instance {
      * @param requestType
      */
     GetRequestBudgetForRequestType(this: DataStoreService, requestType: CastsToEnum<Enum.DataStoreRequestType>): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreService#SetRateLimitForRequestType)
+     */
+    SetRateLimitForRequestType(this: DataStoreService, requestType: CastsToEnum<Enum.DataStoreRequestType>, baseLimit: number, perPlayerLimit: number): void;
     /**
      * Returns a `DataStoreListingPages` object for enumerating through all of the experience's data stores.
      *
@@ -24085,6 +24116,12 @@ interface HumanoidDescription extends Instance {
      */
     ShouldersAccessory: string;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidDescription#StaticFacialAnimation)
+     */
+    StaticFacialAnimation: boolean;
+    /**
      * When this description is `applied` to a `Humanoid`, this determines the `Animation.AnimationId` to play when its `state` is `Swimming`.
      *
      * - **ThreadSafety**: ReadSafe
@@ -25342,6 +25379,12 @@ interface InputBinding extends Instance {
      */
     Backward: Enum.KeyCode;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#ClampMagnitudeToOne)
+     */
+    ClampMagnitudeToOne: boolean;
+    /**
      * Specifies an alternate `KeyCode` for dispatching directionally "down" inputs to the parent `InputAction`.
      *
      * - **ThreadSafety**: ReadSafe
@@ -25388,6 +25431,8 @@ interface InputBinding extends Instance {
      */
     PressedThreshold: number;
     /**
+     * Specifies a primary `KeyCode` that must be pressed for the binding to activate.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#PrimaryModifier)
@@ -25426,6 +25471,8 @@ interface InputBinding extends Instance {
      */
     Scale: number;
     /**
+     * Specifies a secondary `KeyCode` that must be pressed for the binding to activate.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#SecondaryModifier)
@@ -37122,17 +37169,29 @@ interface ReflectionService extends Instance {
      */
     GetClasses(this: ReflectionService, filter?: object): Array<unknown>;
     /**
+     * Returns a list of events for a given class with filters applied.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService#GetEventsOfClass)
+     * @param this
+     * @param className The name of the class for which you wish to retrieve events.
+     * @param filter An optional filter to restrict or expand the set of events that this method can return and change the method's behavior.
+     * @returns A list of `ReflectedEvent` dictionaries with reflection information for each event of the class that matches the filter criteria.
      */
     GetEventsOfClass(this: ReflectionService, className: string, filter?: object): Array<unknown>;
     /**
+     * Returns a list of methods for a given class with filters applied.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService#GetMethodsOfClass)
+     * @param this
+     * @param className The name of the class for which you wish to retrieve methods.
+     * @param filter An optional filter to restrict or expand the set of methods that this method can return and change the method's behavior.
+     * @returns A list of `ReflectedMethod` dictionaries with reflection information for each method of the class that matches the filter criteria.
      */
     GetMethodsOfClass(this: ReflectionService, className: string, filter?: object): Array<unknown>;
     /**
@@ -39512,6 +39571,13 @@ interface Sound extends Instance {
     /**
      * - **ThreadSafety**: ReadSafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sound#AcousticSimulationEnabled)
+     */
+    AcousticSimulationEnabled: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sound#AudioContent)
      */
     AudioContent: Content;
@@ -41204,24 +41270,6 @@ interface StudioCameraService extends Instance {
      * @deprecated
      */
     readonly _nominal_StudioCameraService: unique symbol;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCameraService#LockCameraSpeed)
-     */
-    LockCameraSpeed: boolean;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCameraService#LoggingEnabled)
-     */
-    LoggingEnabled: boolean;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCameraService#ShowCameraSpeed)
-     */
-    readonly ShowCameraSpeed: RBXScriptSignal<(speed: number) => void>;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -41493,6 +41541,12 @@ interface StyleRule extends StyleBase {
      */
     GetProperty(this: StyleRule, name: string): unknown;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#GetPropertyTransitions)
+     */
+    GetPropertyTransitions(this: StyleRule): object;
+    /**
      * Lets you declare and set multiple properties of the `StyleRule` at once.
      *
      * - **ThreadSafety**: Unsafe
@@ -41511,6 +41565,12 @@ interface StyleRule extends StyleBase {
      * @param value Property value to set, for example `Color3.new(1, 0, 0.25)`.
      */
     SetProperty(this: StyleRule, name: string, value: unknown): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#SetPropertyTransitions)
+     */
+    SetPropertyTransitions(this: StyleRule, properties: object): void;
 }
 /**
  * Aggregates `StyleRules` and can be linked to `DataModel` trees to apply style properties to instances.
@@ -42038,7 +42098,7 @@ interface TeleportOptions extends Instance {
     SetTeleportData(this: TeleportOptions, teleportData: unknown): void;
 }
 /**
- * Enables transporting `Players` between places and servers.
+ * Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -42072,7 +42132,7 @@ interface TeleportService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#GetArrivingTeleportGui)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @returns The *customLoadingScreen* the `LocalPlayer` arrived into the place with.
      */
     GetArrivingTeleportGui(this: TeleportService): ScreenGui | undefined;
@@ -42082,7 +42142,7 @@ interface TeleportService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#GetLocalPlayerTeleportData)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @returns The teleport data the `Players.LocalPlayer` arrived into the place with.
      */
     GetLocalPlayerTeleportData(this: TeleportService): unknown;
@@ -42092,7 +42152,7 @@ interface TeleportService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#GetTeleportSetting)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @param setting The key the value was stored under using `TeleportService:SetTeleportSetting()`.
      * @returns The value stored under the given key.
      */
@@ -42103,7 +42163,7 @@ interface TeleportService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#SetTeleportGui)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @param gui The loading `ScreenGui` that is to be displayed during teleportation.
      */
     SetTeleportGui(this: TeleportService, gui: ScreenGui): void;
@@ -42113,7 +42173,7 @@ interface TeleportService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#SetTeleportSetting)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @param setting The key to store the *value* under. This key can be used to retrieve the value using `TeleportService:GetTeleportSetting()`.
      * @param value The value to store.
      */
@@ -42124,7 +42184,7 @@ interface TeleportService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#Teleport)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @param placeId The ID of the place to teleport to.
      * @param player The `Player` to teleport, if this function is being called from the client this defaults to the `Players.LocalPlayer`.
      * @param teleportData Optional data to be passed to the destination place. Can be retrieved using `TeleportService:GetLocalPlayerTeleportData()`.
@@ -42137,7 +42197,7 @@ interface TeleportService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#TeleportToPlaceInstance)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @param placeId The ID of the place to teleport to.
      * @param instanceId The `DataModel.JobId` of the server instance to teleport to.
      * @param player The `Player` to teleport, if this function is being called from the client this defaults to the `Players.LocalPlayer`.
@@ -42152,7 +42212,7 @@ interface TeleportService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#TeleportToPrivateServer)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @param placeId The ID of the place to teleport to.
      * @param reservedServerAccessCode The reserved server access code returned by `TeleportService:ReserveServerAsync()`.
      * @param players An array of `Players` to teleport.
@@ -42167,7 +42227,7 @@ interface TeleportService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#TeleportToSpawnByName)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @param placeId The ID of the place to teleport to.
      * @param spawnName The name of the `SpawnLocation` to spawn at.
      * @param player The `Player` to teleport, if this function is being called from the client this defaults to the `Players.LocalPlayer`.
@@ -42182,7 +42242,7 @@ interface TeleportService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#GetPlayerPlaceInstanceAsync)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @param userId The `Player.UserId` of the `Player`.
      * @returns See the table above.
      */
@@ -42199,7 +42259,7 @@ interface TeleportService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#PromptExperienceDetailsAsync)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @param player The `Player` to be presented the prompt.
      * @param universeId `DataModel.UniverseId` of the experience to be presented to the `Player`
      * @returns `PromptExperienceDetailsResult`
@@ -42214,7 +42274,7 @@ interface TeleportService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#ReserveServer)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @param placeId The `DataModel.PlaceId` of the place the reserved server is being created for.
      * @returns The server access code required by `TeleportService:TeleportToPrivateServer()` and the `DataModel.PrivateServerId` for the reserved server.
      *
@@ -42231,7 +42291,7 @@ interface TeleportService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#ReserveServerAsync)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @param placeId The `DataModel.PlaceId` of the place the reserved server is being created for.
      * @returns The server access code required by `TeleportService:TeleportToPrivateServer()` and the `DataModel.PrivateServerId` for the reserved server.
      */
@@ -42243,7 +42303,7 @@ interface TeleportService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#TeleportAsync)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @param placeId The place ID the player(s) should be teleported to.
      * @param players An array of the player(s) to teleport.
      * @param teleportOptions An optional `TeleportOptions` object containing additional arguments to the `TeleportService:TeleportAsync()` call. If this is not passed, no result will be returned.
@@ -42257,7 +42317,7 @@ interface TeleportService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#TeleportPartyAsync)
-     * @param this Enables transporting `Players` between places and servers.
+     * @param this Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
      * @param placeId The ID of the place to teleport to.
      * @param players An array containing the `Players` to teleport.
      * @param teleportData Optional data to be passed to the destination place. Can be retrieved using `TeleportService:GetLocalPlayerTeleportData()`.
@@ -42623,6 +42683,18 @@ interface TestService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#StartTestSession)
+     */
+    StartTestSession(this: TestService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#StopTestSession)
+     */
+    StopTestSession(this: TestService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#TakeSnapshot)
      * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
      * @param snapshotname
@@ -42642,6 +42714,12 @@ interface TestService extends Instance {
      * @param line
      */
     Warn(this: TestService, condition: boolean, description: string, source?: Instance, line?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#getTestSessionProviderStats)
+     */
+    getTestSessionProviderStats(this: TestService, providerName: string): object;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -48540,7 +48618,7 @@ interface TerrainWriteOperation extends RBXObject {
 /**
  * An object for sampling frames from video content.
  *
- * - **Tags**: NotCreatable
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoSampler)
  */
