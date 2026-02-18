@@ -1066,7 +1066,7 @@ declare namespace Enum {
      */
     export namespace AlphaMode {
         /**
-         * Overlays the `ColorMap` on top of the underlying part color based on the map's alpha channel. ![](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AlphaMode/Fern-Overlay.png)
+         * Overlays the `ColorMap` on top of the underlying part color based on the map's alpha channel.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlphaMode#Overlay)
          */
@@ -1077,7 +1077,7 @@ declare namespace Enum {
         }
         export const Overlay: Overlay;
         /**
-         * Uses the `ColorMap` alpha channel to control the transparency of the surface. ![](https://prod.docsiteassets.roblox.com/assets/engine-api/enums/AlphaMode/Fern-Cutout.png)
+         * Uses the `ColorMap` alpha channel to control the transparency of the surface.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlphaMode#Transparency)
          */
@@ -1099,6 +1099,8 @@ declare namespace Enum {
         }
         export const TintMask: TintMask;
         /**
+         * Ignores the `ColorMap` alpha channel and assumes an opacity value of 1 everywhere.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AlphaMode#Opaque)
          */
         export interface Opaque extends globalThis.EnumItem {
@@ -6108,6 +6110,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CameraMode | undefined;
     }
     export type CameraMode = CameraMode.Classic | CameraMode.LockFirstPerson;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraNavigationModel)
+     */
+    export namespace CameraNavigationModel {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraNavigationModel#Roblox)
+         */
+        export interface Roblox extends globalThis.EnumItem {
+            Name: "Roblox";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.CameraNavigationModel;
+        }
+        export const Roblox: Roblox;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraNavigationModel#IndustryCompatible)
+         */
+        export interface IndustryCompatible extends globalThis.EnumItem {
+            Name: "IndustryCompatible";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.CameraNavigationModel;
+        }
+        export const IndustryCompatible: IndustryCompatible;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CameraNavigationModel>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CameraNavigationModel | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CameraNavigationModel | undefined;
+    }
+    export type CameraNavigationModel = CameraNavigationModel.Roblox | CameraNavigationModel.IndustryCompatible;
     /**
      * The CameraPanMode Enum represents the available pan modes for `Camera:SetCameraPanMode()`.
      *
