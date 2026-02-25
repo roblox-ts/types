@@ -38,7 +38,6 @@ interface Services {
     ChangeHistoryService: ChangeHistoryService;
     ChangeHistoryStreamingService: ChangeHistoryStreamingService;
     Chat: Chat;
-    ChatbotUIService: ChatbotUIService;
     CloudCRUDService: CloudCRUDService;
     CollaboratorsService: CollaboratorsService;
     CollectionService: CollectionService;
@@ -172,6 +171,7 @@ interface Services {
     RibbonNotificationService: RibbonNotificationService;
     RobloxPluginGuiService: RobloxPluginGuiService;
     RobloxServerStorage: RobloxServerStorage;
+    RolloutValidationService: RolloutValidationService;
     RomarkRbxAnalyticsService: RomarkRbxAnalyticsService;
     RomarkService: RomarkService;
     RtMessagingService: RtMessagingService;
@@ -210,7 +210,6 @@ interface Services {
     StartPageService: StartPageService;
     StartupMessageService: StartupMessageService;
     Stats: Stats;
-    StreamingService: StreamingService;
     Studio: Studio;
     StudioAssetService: StudioAssetService;
     StudioCameraService: StudioCameraService;
@@ -797,6 +796,7 @@ interface Objects extends Instances {
     TerrainWriteOperation: TerrainWriteOperation;
     VideoCapture: VideoCapture;
     VideoSampler: VideoSampler;
+    VoxelBuffer: VoxelBuffer;
     WebStreamClient: WebStreamClient;
 }
 // GENERATED ROBLOX INSTANCE CLASSES
@@ -3337,21 +3337,6 @@ interface Chat extends Instance {
      * @deprecated
      */
     readonly _nominal_Chat: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChatbotUIService)
- */
-interface ChatbotUIService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ChatbotUIService: unique symbol;
 }
 /**
  * An object that provides user input on in-experience `BaseParts` and `Models`.
@@ -11800,7 +11785,7 @@ interface RobloxServerStorage extends Instance {
     readonly _nominal_RobloxServerStorage: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable
+ * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RolloutValidation)
  */
@@ -11813,6 +11798,21 @@ interface RolloutValidation extends Instance {
      * @deprecated
      */
     readonly _nominal_RolloutValidation: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RolloutValidationService)
+ */
+interface RolloutValidationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RolloutValidationService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -13673,21 +13673,6 @@ interface TotalCountTimeIntervalItem extends StatsItem {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StreamingService)
- */
-interface StreamingService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_StreamingService: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio)
  */
 interface Studio extends Instance {
@@ -14422,7 +14407,7 @@ interface TeleportOptions extends Instance {
     readonly _nominal_TeleportOptions: unique symbol;
 }
 /**
- * Enables transporting <code>Players</code> between places and servers. <pre><code>For more information on how to teleport players between servers, see </code></pre> <a href="../../../projects/teleport.md">Teleport between places</a>.
+ * Enables transporting `Players` between places and servers. For more information on how to teleport players between servers, see [Teleport between places](../../../projects/teleport.md).
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -16250,6 +16235,21 @@ interface VideoSampler extends RBXObject {
      * @deprecated
      */
     readonly _nominal_VideoSampler: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoxelBuffer)
+ */
+interface VoxelBuffer extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_VoxelBuffer: unique symbol;
 }
 /**
  * Maintains a streaming connection.
