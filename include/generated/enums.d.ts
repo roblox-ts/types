@@ -27683,133 +27683,16 @@ declare namespace Enum {
          */
         export interface Root extends globalThis.EnumItem {
             Name: "Root";
-            Value: 1;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const Root: Root;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Pelvis)
-         */
-        export interface Pelvis extends globalThis.EnumItem {
-            Name: "Pelvis";
             Value: 2;
             EnumType: typeof globalThis.Enum.RigLabel;
         }
-        export const Pelvis: Pelvis;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Waist)
-         */
-        export interface Waist extends globalThis.EnumItem {
-            Name: "Waist";
-            Value: 3;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const Waist: Waist;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Chest)
-         */
-        export interface Chest extends globalThis.EnumItem {
-            Name: "Chest";
-            Value: 4;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const Chest: Chest;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Neck)
-         */
-        export interface Neck extends globalThis.EnumItem {
-            Name: "Neck";
-            Value: 5;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const Neck: Neck;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#HeadBase)
-         */
-        export interface HeadBase extends globalThis.EnumItem {
-            Name: "HeadBase";
-            Value: 6;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const HeadBase: HeadBase;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#LeftClavicle)
-         */
-        export interface LeftClavicle extends globalThis.EnumItem {
-            Name: "LeftClavicle";
-            Value: 7;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const LeftClavicle: LeftClavicle;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#LeftShoulder)
-         */
-        export interface LeftShoulder extends globalThis.EnumItem {
-            Name: "LeftShoulder";
-            Value: 8;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const LeftShoulder: LeftShoulder;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#LeftElbow)
-         */
-        export interface LeftElbow extends globalThis.EnumItem {
-            Name: "LeftElbow";
-            Value: 9;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const LeftElbow: LeftElbow;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#LeftWrist)
-         */
-        export interface LeftWrist extends globalThis.EnumItem {
-            Name: "LeftWrist";
-            Value: 10;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const LeftWrist: LeftWrist;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#RightClavicle)
-         */
-        export interface RightClavicle extends globalThis.EnumItem {
-            Name: "RightClavicle";
-            Value: 11;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const RightClavicle: RightClavicle;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#RightShoulder)
-         */
-        export interface RightShoulder extends globalThis.EnumItem {
-            Name: "RightShoulder";
-            Value: 12;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const RightShoulder: RightShoulder;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#RightElbow)
-         */
-        export interface RightElbow extends globalThis.EnumItem {
-            Name: "RightElbow";
-            Value: 13;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const RightElbow: RightElbow;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#RightWrist)
-         */
-        export interface RightWrist extends globalThis.EnumItem {
-            Name: "RightWrist";
-            Value: 14;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const RightWrist: RightWrist;
+        export const Root: Root;
         /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#LeftHip)
          */
         export interface LeftHip extends globalThis.EnumItem {
             Name: "LeftHip";
-            Value: 15;
+            Value: 3;
             EnumType: typeof globalThis.Enum.RigLabel;
         }
         export const LeftHip: LeftHip;
@@ -27818,7 +27701,7 @@ declare namespace Enum {
          */
         export interface LeftKnee extends globalThis.EnumItem {
             Name: "LeftKnee";
-            Value: 16;
+            Value: 4;
             EnumType: typeof globalThis.Enum.RigLabel;
         }
         export const LeftKnee: LeftKnee;
@@ -27827,25 +27710,16 @@ declare namespace Enum {
          */
         export interface LeftAnkle extends globalThis.EnumItem {
             Name: "LeftAnkle";
-            Value: 17;
+            Value: 5;
             EnumType: typeof globalThis.Enum.RigLabel;
         }
         export const LeftAnkle: LeftAnkle;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#LeftToes)
-         */
-        export interface LeftToes extends globalThis.EnumItem {
-            Name: "LeftToes";
-            Value: 18;
-            EnumType: typeof globalThis.Enum.RigLabel;
-        }
-        export const LeftToes: LeftToes;
         /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#RightHip)
          */
         export interface RightHip extends globalThis.EnumItem {
             Name: "RightHip";
-            Value: 19;
+            Value: 7;
             EnumType: typeof globalThis.Enum.RigLabel;
         }
         export const RightHip: RightHip;
@@ -27854,7 +27728,7 @@ declare namespace Enum {
          */
         export interface RightKnee extends globalThis.EnumItem {
             Name: "RightKnee";
-            Value: 20;
+            Value: 8;
             EnumType: typeof globalThis.Enum.RigLabel;
         }
         export const RightKnee: RightKnee;
@@ -27863,16 +27737,142 @@ declare namespace Enum {
          */
         export interface RightAnkle extends globalThis.EnumItem {
             Name: "RightAnkle";
-            Value: 21;
+            Value: 9;
             EnumType: typeof globalThis.Enum.RigLabel;
         }
         export const RightAnkle: RightAnkle;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Waist)
+         */
+        export interface Waist extends globalThis.EnumItem {
+            Name: "Waist";
+            Value: 11;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const Waist: Waist;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#LeftShoulder)
+         */
+        export interface LeftShoulder extends globalThis.EnumItem {
+            Name: "LeftShoulder";
+            Value: 12;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const LeftShoulder: LeftShoulder;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#LeftElbow)
+         */
+        export interface LeftElbow extends globalThis.EnumItem {
+            Name: "LeftElbow";
+            Value: 13;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const LeftElbow: LeftElbow;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#LeftWrist)
+         */
+        export interface LeftWrist extends globalThis.EnumItem {
+            Name: "LeftWrist";
+            Value: 14;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const LeftWrist: LeftWrist;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#RightShoulder)
+         */
+        export interface RightShoulder extends globalThis.EnumItem {
+            Name: "RightShoulder";
+            Value: 16;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const RightShoulder: RightShoulder;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#RightElbow)
+         */
+        export interface RightElbow extends globalThis.EnumItem {
+            Name: "RightElbow";
+            Value: 17;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const RightElbow: RightElbow;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#RightWrist)
+         */
+        export interface RightWrist extends globalThis.EnumItem {
+            Name: "RightWrist";
+            Value: 18;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const RightWrist: RightWrist;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Neck)
+         */
+        export interface Neck extends globalThis.EnumItem {
+            Name: "Neck";
+            Value: 20;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const Neck: Neck;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Pelvis)
+         */
+        export interface Pelvis extends globalThis.EnumItem {
+            Name: "Pelvis";
+            Value: 23;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const Pelvis: Pelvis;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Chest)
+         */
+        export interface Chest extends globalThis.EnumItem {
+            Name: "Chest";
+            Value: 24;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const Chest: Chest;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#HeadBase)
+         */
+        export interface HeadBase extends globalThis.EnumItem {
+            Name: "HeadBase";
+            Value: 25;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const HeadBase: HeadBase;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#LeftClavicle)
+         */
+        export interface LeftClavicle extends globalThis.EnumItem {
+            Name: "LeftClavicle";
+            Value: 26;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const LeftClavicle: LeftClavicle;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#RightClavicle)
+         */
+        export interface RightClavicle extends globalThis.EnumItem {
+            Name: "RightClavicle";
+            Value: 27;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const RightClavicle: RightClavicle;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#LeftToes)
+         */
+        export interface LeftToes extends globalThis.EnumItem {
+            Name: "LeftToes";
+            Value: 28;
+            EnumType: typeof globalThis.Enum.RigLabel;
+        }
+        export const LeftToes: LeftToes;
         /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#RightToes)
          */
         export interface RightToes extends globalThis.EnumItem {
             Name: "RightToes";
-            Value: 22;
+            Value: 29;
             EnumType: typeof globalThis.Enum.RigLabel;
         }
         export const RightToes: RightToes;
@@ -27880,7 +27880,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RigLabel | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RigLabel | undefined;
     }
-    export type RigLabel = RigLabel.Invalid | RigLabel.Root | RigLabel.Pelvis | RigLabel.Waist | RigLabel.Chest | RigLabel.Neck | RigLabel.HeadBase | RigLabel.LeftClavicle | RigLabel.LeftShoulder | RigLabel.LeftElbow | RigLabel.LeftWrist | RigLabel.RightClavicle | RigLabel.RightShoulder | RigLabel.RightElbow | RigLabel.RightWrist | RigLabel.LeftHip | RigLabel.LeftKnee | RigLabel.LeftAnkle | RigLabel.LeftToes | RigLabel.RightHip | RigLabel.RightKnee | RigLabel.RightAnkle | RigLabel.RightToes;
+    export type RigLabel = RigLabel.Invalid | RigLabel.Root | RigLabel.LeftHip | RigLabel.LeftKnee | RigLabel.LeftAnkle | RigLabel.RightHip | RigLabel.RightKnee | RigLabel.RightAnkle | RigLabel.Waist | RigLabel.LeftShoulder | RigLabel.LeftElbow | RigLabel.LeftWrist | RigLabel.RightShoulder | RigLabel.RightElbow | RigLabel.RightWrist | RigLabel.Neck | RigLabel.Pelvis | RigLabel.Chest | RigLabel.HeadBase | RigLabel.LeftClavicle | RigLabel.RightClavicle | RigLabel.LeftToes | RigLabel.RightToes;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigScale)
      */
@@ -33955,6 +33955,150 @@ declare namespace Enum {
     }
     export type TerrainFace = TerrainFace.Top | TerrainFace.Side | TerrainFace.Bottom;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainLiquidMergeOperation)
+     */
+    export namespace TerrainLiquidMergeOperation {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainLiquidMergeOperation#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.TerrainLiquidMergeOperation;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainLiquidMergeOperation#Source)
+         */
+        export interface Source extends globalThis.EnumItem {
+            Name: "Source";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.TerrainLiquidMergeOperation;
+        }
+        export const Source: Source;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainLiquidMergeOperation#Union)
+         */
+        export interface Union extends globalThis.EnumItem {
+            Name: "Union";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.TerrainLiquidMergeOperation;
+        }
+        export const Union: Union;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainLiquidMergeOperation#Difference)
+         */
+        export interface Difference extends globalThis.EnumItem {
+            Name: "Difference";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.TerrainLiquidMergeOperation;
+        }
+        export const Difference: Difference;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainLiquidMergeOperation#Intersect)
+         */
+        export interface Intersect extends globalThis.EnumItem {
+            Name: "Intersect";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.TerrainLiquidMergeOperation;
+        }
+        export const Intersect: Intersect;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TerrainLiquidMergeOperation>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TerrainLiquidMergeOperation | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TerrainLiquidMergeOperation | undefined;
+    }
+    export type TerrainLiquidMergeOperation = TerrainLiquidMergeOperation.None | TerrainLiquidMergeOperation.Source | TerrainLiquidMergeOperation.Union | TerrainLiquidMergeOperation.Difference | TerrainLiquidMergeOperation.Intersect;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainSolidMergeOperation)
+     */
+    export namespace TerrainSolidMergeOperation {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainSolidMergeOperation#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.TerrainSolidMergeOperation;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainSolidMergeOperation#Paint)
+         */
+        export interface Paint extends globalThis.EnumItem {
+            Name: "Paint";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.TerrainSolidMergeOperation;
+        }
+        export const Paint: Paint;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainSolidMergeOperation#Source)
+         */
+        export interface Source extends globalThis.EnumItem {
+            Name: "Source";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.TerrainSolidMergeOperation;
+        }
+        export const Source: Source;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainSolidMergeOperation#Union)
+         */
+        export interface Union extends globalThis.EnumItem {
+            Name: "Union";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.TerrainSolidMergeOperation;
+        }
+        export const Union: Union;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainSolidMergeOperation#Dig)
+         */
+        export interface Dig extends globalThis.EnumItem {
+            Name: "Dig";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.TerrainSolidMergeOperation;
+        }
+        export const Dig: Dig;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainSolidMergeOperation#Difference)
+         */
+        export interface Difference extends globalThis.EnumItem {
+            Name: "Difference";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.TerrainSolidMergeOperation;
+        }
+        export const Difference: Difference;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainSolidMergeOperation#Intersect)
+         */
+        export interface Intersect extends globalThis.EnumItem {
+            Name: "Intersect";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.TerrainSolidMergeOperation;
+        }
+        export const Intersect: Intersect;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainSolidMergeOperation#Cut)
+         */
+        export interface Cut extends globalThis.EnumItem {
+            Name: "Cut";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.TerrainSolidMergeOperation;
+        }
+        export const Cut: Cut;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainSolidMergeOperation#Place)
+         */
+        export interface Place extends globalThis.EnumItem {
+            Name: "Place";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.TerrainSolidMergeOperation;
+        }
+        export const Place: Place;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TerrainSolidMergeOperation>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TerrainSolidMergeOperation | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TerrainSolidMergeOperation | undefined;
+    }
+    export type TerrainSolidMergeOperation = TerrainSolidMergeOperation.None | TerrainSolidMergeOperation.Paint | TerrainSolidMergeOperation.Source | TerrainSolidMergeOperation.Union | TerrainSolidMergeOperation.Dig | TerrainSolidMergeOperation.Difference | TerrainSolidMergeOperation.Intersect | TerrainSolidMergeOperation.Cut | TerrainSolidMergeOperation.Place;
+    /**
      * Indicates the status of a `TextChatMessage`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextChatMessageStatus)
@@ -37794,6 +37938,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VoiceControlPath | undefined;
     }
     export type VoiceControlPath = VoiceControlPath.Publish | VoiceControlPath.Subscribe | VoiceControlPath.Join;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceRccReconnectReason)
+     */
+    export namespace VoiceRccReconnectReason {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceRccReconnectReason#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.VoiceRccReconnectReason;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceRccReconnectReason#Migration)
+         */
+        export interface Migration extends globalThis.EnumItem {
+            Name: "Migration";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.VoiceRccReconnectReason;
+        }
+        export const Migration: Migration;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceRccReconnectReason#CloseRoom)
+         */
+        export interface CloseRoom extends globalThis.EnumItem {
+            Name: "CloseRoom";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.VoiceRccReconnectReason;
+        }
+        export const CloseRoom: CloseRoom;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VoiceRccReconnectReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VoiceRccReconnectReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VoiceRccReconnectReason | undefined;
+    }
+    export type VoiceRccReconnectReason = VoiceRccReconnectReason.Unknown | VoiceRccReconnectReason.Migration | VoiceRccReconnectReason.CloseRoom;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VolumetricAudio)
      */
