@@ -314,6 +314,7 @@ interface CreatableInstances {
     AudioTextToSpeech: AudioTextToSpeech;
     AudioTremolo: AudioTremolo;
     AuroraScript: AuroraScript;
+    AvatarAbilityRules: AvatarAbilityRules;
     AvatarAccessoryRules: AvatarAccessoryRules;
     AvatarAnimationRules: AvatarAnimationRules;
     AvatarBodyRules: AvatarBodyRules;
@@ -375,6 +376,7 @@ interface CreatableInstances {
     DepthOfFieldEffect: DepthOfFieldEffect;
     Dialog: Dialog;
     DialogChoice: DialogChoice;
+    DigitsRigDescription: DigitsRigDescription;
     DistortionSoundEffect: DistortionSoundEffect;
     DoubleConstrainedValue: DoubleConstrainedValue;
     DragDetector: DragDetector;
@@ -399,7 +401,6 @@ interface CreatableInstances {
     Glue: Glue;
     GroundController: GroundController;
     Handles: Handles;
-    HandRigDescription: HandRigDescription;
     HapticEffect: HapticEffect;
     Hat: Hat;
     HiddenSurfaceRemovalAsset: HiddenSurfaceRemovalAsset;
@@ -546,6 +547,7 @@ interface CreatableInstances {
     UIPadding: UIPadding;
     UIPageLayout: UIPageLayout;
     UIScale: UIScale;
+    UIShadow: UIShadow;
     UISizeConstraint: UISizeConstraint;
     UIStroke: UIStroke;
     UITableLayout: UITableLayout;
@@ -782,6 +784,7 @@ interface Instances extends Services, CreatableInstances {
 }
 interface Objects extends Instances {
     AnimationNode: AnimationNode;
+    AuroraHandle: AuroraHandle;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
     EditableImage: EditableImage;
@@ -831,6 +834,23 @@ interface AnimationNode extends RBXObject {
      * @deprecated
      */
     readonly _nominal_AnimationNode: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraHandle)
+ *
+ * @deprecated
+ */
+interface AuroraHandle extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AuroraHandle: unique symbol;
 }
 /**
  * A class which defines a piece of content, such as a screenshot or video, taken in-experience.
@@ -2087,6 +2107,19 @@ interface AuroraService extends Instance {
      * @deprecated
      */
     readonly _nominal_AuroraService: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAbilityRules)
+ */
+interface AvatarAbilityRules extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AvatarAbilityRules: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules)
@@ -4757,6 +4790,19 @@ interface DialogChoice extends Instance {
     readonly _nominal_DialogChoice: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription)
+ */
+interface DigitsRigDescription extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_DigitsRigDescription: unique symbol;
+}
+/**
  * A helper object used to create tools that can drag parts.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Dragger)
@@ -6944,21 +6990,6 @@ interface GuiService extends Instance {
      * @deprecated
      */
     readonly _nominal_GuiService: unique symbol;
-}
-/**
- * - **Tags**: NotBrowsable
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription)
- */
-interface HandRigDescription extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_HandRigDescription: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect)
@@ -13014,7 +13045,7 @@ interface SlimAnimationReplicationService extends Instance {
     readonly _nominal_SlimAnimationReplicationService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, Service, NotReplicated
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlimReplicationService)
  */
@@ -14138,7 +14169,7 @@ interface StyleLink extends Instance {
     readonly _nominal_StyleLink: unique symbol;
 }
 /**
- * - **Tags**: NotReplicated, NotBrowsable
+ * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery)
  */
@@ -15450,6 +15481,19 @@ interface UIScale extends UIComponent {
      * @deprecated
      */
     readonly _nominal_UIScale: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow)
+ */
+interface UIShadow extends UIComponent {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_UIShadow: unique symbol;
 }
 /**
  * Applies an outline to text or a UI border.
