@@ -292,6 +292,7 @@ interface CreatableInstances {
     AudioTextToSpeech: AudioTextToSpeech;
     AudioTremolo: AudioTremolo;
     AuroraScript: AuroraScript;
+    AvatarAbilityRules: AvatarAbilityRules;
     AvatarAccessoryRules: AvatarAccessoryRules;
     AvatarAnimationRules: AvatarAnimationRules;
     AvatarBodyRules: AvatarBodyRules;
@@ -353,6 +354,7 @@ interface CreatableInstances {
     DepthOfFieldEffect: DepthOfFieldEffect;
     Dialog: Dialog;
     DialogChoice: DialogChoice;
+    DigitsRigDescription: DigitsRigDescription;
     DistortionSoundEffect: DistortionSoundEffect;
     DoubleConstrainedValue: DoubleConstrainedValue;
     DragDetector: DragDetector;
@@ -377,7 +379,6 @@ interface CreatableInstances {
     Glue: Glue;
     GroundController: GroundController;
     Handles: Handles;
-    HandRigDescription: HandRigDescription;
     HapticEffect: HapticEffect;
     Hat: Hat;
     HiddenSurfaceRemovalAsset: HiddenSurfaceRemovalAsset;
@@ -522,6 +523,7 @@ interface CreatableInstances {
     UIPadding: UIPadding;
     UIPageLayout: UIPageLayout;
     UIScale: UIScale;
+    UIShadow: UIShadow;
     UISizeConstraint: UISizeConstraint;
     UIStroke: UIStroke;
     UITableLayout: UITableLayout;
@@ -730,6 +732,7 @@ interface Instances extends Services, CreatableInstances {
 }
 interface Objects extends Instances {
     AnimationNode: AnimationNode;
+    AuroraHandle: AuroraHandle;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
     EditableImage: EditableImage;
@@ -819,6 +822,35 @@ interface AnimationNode extends RBXObject {
      * @deprecated
      */
     readonly _nominal_AnimationNode: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraHandle)
+ *
+ * @deprecated
+ */
+interface AuroraHandle extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AuroraHandle: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraHandle#Destroy)
+     */
+    Destroy(this: AuroraHandle): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraHandle#ForEach)
+     */
+    ForEach(this: AuroraHandle, iterator: Callback): void;
 }
 /**
  * A class which defines a piece of content, such as a screenshot or video, taken in-experience.
@@ -4214,15 +4246,15 @@ interface AssetService extends Instance {
      */
     CreateEditableMesh(this: AssetService, editableMeshOptions?: object): EditableMesh;
     /**
-     * Creates a Decal instance that uses composite PBR textures created by layering the provided textures in the order they are provided in the `layers` array. Textures layer based on the alpha value of the ColorMap.
+     * Modifies an existing `Decal` to contain a composite PBR textures created by layering the provided textures in the order they are provided in the `layers` array. Textures layer based on the alpha value of the color map.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#ComposeDecalAsync)
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
-     * @param layers An array of `Dictionary` tables that maps PBR names to ContentID.
-     * @returns A new `Decal` containing the composed texture set.
+     * @param decal A `Decal` instance that will be modified to contain a representation of the layers. Any existing maps on this instance will be cleared.
+     * @param layers An array of dictionary tables that maps PBR names to `Content` IDs.
      */
     ComposeDecalAsync(this: AssetService, decal: Decal, layers: Array<unknown>): void;
     /**
@@ -7466,6 +7498,12 @@ interface AuroraScriptService extends Instance {
      */
     readonly _nominal_AuroraScriptService: unique symbol;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#CreateCollection)
+     */
+    CreateCollection(this: AuroraScriptService, query: string, root?: Instance): AuroraHandle;
+    /**
      * - **ThreadSafety**: Safe
      * - **Tags**: CustomLuaState
      *
@@ -7658,6 +7696,19 @@ interface AuroraService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#Step)
      */
     readonly Step: RBXScriptSignal<() => void>;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAbilityRules)
+ */
+interface AvatarAbilityRules extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AvatarAbilityRules: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules)
@@ -10742,6 +10793,13 @@ interface CaptureService extends Instance {
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#CheckUploadCaptureStatusAsync)
+     */
+    CheckUploadCaptureStatusAsync(this: CaptureService, token: string): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#InternalCheckPlayabilityAsync)
      */
     InternalCheckPlayabilityAsync(this: CaptureService, universeId: number): boolean;
@@ -10773,6 +10831,13 @@ interface CaptureService extends Instance {
      * @returns Tuple of (result: `ReadCapturesFromGalleryResult`, capturesPages: `CapturesPages`)
      */
     ReadCapturesFromGalleryAsync(this: CaptureService, captureTypeFilters?: Array<unknown>, readFromAllEligibleExperiences?: boolean): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StartUploadCaptureAsync)
+     */
+    StartUploadCaptureAsync(this: CaptureService, capture: Capture): unknown;
     /**
      * Initiates a video capture recording.
      *
@@ -15430,6 +15495,10 @@ interface DataStoreService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreService#SetRateLimitForRequestType)
+     * @param this A game service that gives access to persistent data storage across places in a game.
+     * @param requestType
+     * @param baseLimit
+     * @param perPlayerLimit
      */
     SetRateLimitForRequestType(this: DataStoreService, requestType: CastsToEnum<Enum.DataStoreRequestType>, baseLimit: number, perPlayerLimit: number): void;
     /**
@@ -15794,6 +15863,289 @@ interface DialogChoice extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DialogChoice#UserDialog)
      */
     UserDialog: string;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription)
+ */
+interface DigitsRigDescription extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_DigitsRigDescription: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Index1)
+     */
+    Index1: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Index1TposeAdjustment)
+     */
+    Index1TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Index2)
+     */
+    Index2: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Index2TposeAdjustment)
+     */
+    Index2TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Index3)
+     */
+    Index3: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Index3TposeAdjustment)
+     */
+    Index3TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#IndexRange)
+     */
+    IndexRange: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#IndexSize)
+     */
+    IndexSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Middle1)
+     */
+    Middle1: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Middle1TposeAdjustment)
+     */
+    Middle1TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Middle2)
+     */
+    Middle2: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Middle2TposeAdjustment)
+     */
+    Middle2TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Middle3)
+     */
+    Middle3: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Middle3TposeAdjustment)
+     */
+    Middle3TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#MiddleRange)
+     */
+    MiddleRange: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#MiddleSize)
+     */
+    MiddleSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Pinky1)
+     */
+    Pinky1: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Pinky1TposeAdjustment)
+     */
+    Pinky1TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Pinky2)
+     */
+    Pinky2: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Pinky2TposeAdjustment)
+     */
+    Pinky2TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Pinky3)
+     */
+    Pinky3: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Pinky3TposeAdjustment)
+     */
+    Pinky3TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#PinkyRange)
+     */
+    PinkyRange: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#PinkySize)
+     */
+    PinkySize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Ring1)
+     */
+    Ring1: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Ring1TposeAdjustment)
+     */
+    Ring1TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Ring2)
+     */
+    Ring2: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Ring2TposeAdjustment)
+     */
+    Ring2TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Ring3)
+     */
+    Ring3: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Ring3TposeAdjustment)
+     */
+    Ring3TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#RingRange)
+     */
+    RingRange: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#RingSize)
+     */
+    RingSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Side)
+     */
+    Side: Enum.DigitsRigDescriptionSide;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Thumb1)
+     */
+    Thumb1: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Thumb1TposeAdjustment)
+     */
+    Thumb1TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Thumb2)
+     */
+    Thumb2: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Thumb2TposeAdjustment)
+     */
+    Thumb2TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Thumb3)
+     */
+    Thumb3: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Thumb3TposeAdjustment)
+     */
+    Thumb3TposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#ThumbRange)
+     */
+    ThumbRange: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#ThumbSize)
+     */
+    ThumbSize: number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#GetFingerControl)
+     */
+    GetFingerControl(this: DigitsRigDescription, fingerIndex: number): Vector3;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#GetFingerTip)
+     */
+    GetFingerTip(this: DigitsRigDescription, fingerIndex: number): Vector3;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#SetFingerControl)
+     */
+    SetFingerControl(this: DigitsRigDescription, fingerIndex: number, control: Vector3): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#SetFingerTip)
+     */
+    SetFingerTip(this: DigitsRigDescription, fingerIndex: number, point: Vector3): void;
 }
 /**
  * A helper object used to create tools that can drag parts.
@@ -17328,7 +17680,18 @@ interface GeometryService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#CreateSolidPrimitive)
+     */
+    CreateSolidPrimitive(this: GeometryService, type: CastsToEnum<Enum.SolidPrimitiveType>, options?: object): MeshPart;
+    /**
+     * This API has not been released.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#GenerateFragmentSites)
+     * @param this Service containing geometric operations.
+     * @param part
+     * @param options
      */
     GenerateFragmentSites(this: GeometryService, part: BasePart, options?: object): Array<unknown>;
     /**
@@ -18066,6 +18429,12 @@ interface GuiObject extends GuiBase2d {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiObject#GuiState)
      */
     readonly GuiState: Enum.GuiState;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiObject#InputSink)
+     */
+    InputSink: Enum.InputSink;
     /**
      * Determines whether the `GuiButton` can be interacted with or not, or if the `GuiState` of the `GuiObject` is changing or not.
      *
@@ -19526,12 +19895,14 @@ interface ScrollingFrame extends GuiObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScrollingFrame#GetScrollVelocity)
+     * @param this `ScrollingFrame` is a special `Frame` type with built-in scrolling interactivity and different ways to customize how the scrolling works.
      */
     GetScrollVelocity(this: ScrollingFrame): Vector2;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScrollingFrame#ResetScrollVelocity)
+     * @param this `ScrollingFrame` is a special `Frame` type with built-in scrolling interactivity and different ways to customize how the scrolling works.
      */
     ResetScrollVelocity(this: ScrollingFrame): void;
 }
@@ -22064,6 +22435,8 @@ interface GuiService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#GetInsetArea)
+     * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
+     * @param screenInsets
      */
     GetInsetArea(this: GuiService, screenInsets: CastsToEnum<Enum.ScreenInsets>): Rect;
     /**
@@ -22185,301 +22558,6 @@ interface GuiService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#MenuOpened)
      */
     readonly MenuOpened: RBXScriptSignal<() => void>;
-}
-/**
- * - **Tags**: NotBrowsable
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription)
- */
-interface HandRigDescription extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_HandRigDescription: unique symbol;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Index1)
-     */
-    Index1: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Index1TposeAdjustment)
-     */
-    Index1TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Index2)
-     */
-    Index2: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Index2TposeAdjustment)
-     */
-    Index2TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Index3)
-     */
-    Index3: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Index3TposeAdjustment)
-     */
-    Index3TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#IndexRange)
-     */
-    IndexRange: Vector3;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#IndexSize)
-     */
-    IndexSize: number;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Middle1)
-     */
-    Middle1: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Middle1TposeAdjustment)
-     */
-    Middle1TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Middle2)
-     */
-    Middle2: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Middle2TposeAdjustment)
-     */
-    Middle2TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Middle3)
-     */
-    Middle3: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Middle3TposeAdjustment)
-     */
-    Middle3TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#MiddleRange)
-     */
-    MiddleRange: Vector3;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#MiddleSize)
-     */
-    MiddleSize: number;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Pinky1)
-     */
-    Pinky1: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Pinky1TposeAdjustment)
-     */
-    Pinky1TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Pinky2)
-     */
-    Pinky2: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Pinky2TposeAdjustment)
-     */
-    Pinky2TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Pinky3)
-     */
-    Pinky3: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Pinky3TposeAdjustment)
-     */
-    Pinky3TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#PinkyRange)
-     */
-    PinkyRange: Vector3;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#PinkySize)
-     */
-    PinkySize: number;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Ring1)
-     */
-    Ring1: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Ring1TposeAdjustment)
-     */
-    Ring1TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Ring2)
-     */
-    Ring2: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Ring2TposeAdjustment)
-     */
-    Ring2TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Ring3)
-     */
-    Ring3: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Ring3TposeAdjustment)
-     */
-    Ring3TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#RingRange)
-     */
-    RingRange: Vector3;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#RingSize)
-     */
-    RingSize: number;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Side)
-     */
-    Side: Enum.HandRigDescriptionSide;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Thumb1)
-     */
-    Thumb1: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Thumb1TposeAdjustment)
-     */
-    Thumb1TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Thumb2)
-     */
-    Thumb2: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Thumb2TposeAdjustment)
-     */
-    Thumb2TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Thumb3)
-     */
-    Thumb3: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#Thumb3TposeAdjustment)
-     */
-    Thumb3TposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#ThumbRange)
-     */
-    ThumbRange: Vector3;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#ThumbSize)
-     */
-    ThumbSize: number;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#GetFingerControl)
-     * @param this
-     * @param fingerIndex
-     */
-    GetFingerControl(this: HandRigDescription, fingerIndex: number): Vector3;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#GetFingerTip)
-     * @param this
-     * @param fingerIndex
-     */
-    GetFingerTip(this: HandRigDescription, fingerIndex: number): Vector3;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#SetFingerControl)
-     * @param this
-     * @param fingerIndex
-     * @param control
-     */
-    SetFingerControl(this: HandRigDescription, fingerIndex: number, control: Vector3): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HandRigDescription#SetFingerTip)
-     * @param this
-     * @param fingerIndex
-     * @param point
-     */
-    SetFingerTip(this: HandRigDescription, fingerIndex: number, point: Vector3): void;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect)
@@ -27872,6 +27950,7 @@ interface MakeupDescription extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MakeupDescription#GetAppliedInstance)
+     * @param this
      */
     GetAppliedInstance(this: MakeupDescription): Instance | undefined;
 }
@@ -28110,6 +28189,13 @@ interface MarketplaceService extends Instance {
      * @returns A dictionary containing information about the queried item, described in the previous tables.
      */
     GetProductInfoAsync(this: MarketplaceService, assetId: number, infoType?: CastsToEnum<Enum.InfoType>): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#GetRobloxSubscriptionDetailsAsync)
+     */
+    GetRobloxSubscriptionDetailsAsync(this: MarketplaceService, user: Player): object;
     /**
      * Returns the product information of a subscription for the given `subscriptionId`.
      *
@@ -33598,6 +33684,12 @@ interface ParticleEmitter extends Instance {
      */
     Enabled: boolean;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter#FlipbookBlendFrames)
+     */
+    FlipbookBlendFrames: boolean;
+    /**
      * Determines how fast the flipbook texture animates in frames per second.
      *
      * - **ThreadSafety**: ReadSafe
@@ -37234,24 +37326,29 @@ interface RemoteCommandService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCommandService#GetExecutingPlayer)
+     * @param this
      */
     GetExecutingPlayer(this: RemoteCommandService): Player;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCommandService#GetReceivedUpdateSignal)
+     * @param this
      */
     GetReceivedUpdateSignal(this: RemoteCommandService): RBXScriptSignal;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCommandService#GetStoppingSignal)
+     * @param this
      */
     GetStoppingSignal(this: RemoteCommandService): RBXScriptSignal;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCommandService#SendUpdate)
+     * @param this
+     * @param args
      */
     SendUpdate(this: RemoteCommandService, args: unknown): void;
 }
@@ -39201,7 +39298,7 @@ interface SlimAnimationReplicationService extends Instance {
     readonly _nominal_SlimAnimationReplicationService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, Service, NotReplicated
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlimReplicationService)
  */
@@ -41547,6 +41644,7 @@ interface StyleRule extends StyleBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#GetPropertyTransitions)
+     * @param this Defines style properties which override properties on the instances affected by the `Selector` property.
      */
     GetPropertyTransitions(this: StyleRule): object;
     /**
@@ -41572,6 +41670,8 @@ interface StyleRule extends StyleBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#SetPropertyTransitions)
+     * @param this Defines style properties which override properties on the instances affected by the `Selector` property.
+     * @param properties
      */
     SetPropertyTransitions(this: StyleRule, properties: object): void;
 }
@@ -41665,7 +41765,7 @@ interface StyleLink extends Instance {
     StyleSheet: StyleSheet | undefined;
 }
 /**
- * - **Tags**: NotReplicated, NotBrowsable
+ * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery)
  */
@@ -45814,6 +45914,55 @@ interface UIScale extends UIComponent {
     Scale: number;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow)
+ */
+interface UIShadow extends UIComponent {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_UIShadow: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#BlurRadius)
+     */
+    BlurRadius: UDim;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#Color)
+     */
+    Color: Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#Offset)
+     */
+    Offset: UDim2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#Spread)
+     */
+    Spread: UDim2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#Transparency)
+     */
+    Transparency: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#ZIndex)
+     */
+    ZIndex: number;
+}
+/**
  * Applies an outline to text or a UI border.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIStroke)
@@ -45941,6 +46090,8 @@ interface UniqueIdLookupService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UniqueIdLookupService#GetOrCreateUniqueIdRemoteCommand)
+     * @param this
+     * @param instance
      */
     GetOrCreateUniqueIdRemoteCommand(this: UniqueIdLookupService, instance: Instance): string;
 }
