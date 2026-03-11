@@ -12,6 +12,7 @@ interface Services {
     AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
     AnimationFromVideoCreatorStudioService: AnimationFromVideoCreatorStudioService;
     AnnotationsService: AnnotationsService;
+    AppAgeSignalsService: AppAgeSignalsService;
     AppLifecycleObserverService: AppLifecycleObserverService;
     AppRatingPromptService: AppRatingPromptService;
     AppUpdateService: AppUpdateService;
@@ -87,6 +88,7 @@ interface Services {
     GenerationService: GenerationService;
     GenericChallengeService: GenericChallengeService;
     GeometryService: GeometryService;
+    GongService: GongService;
     GroupService: GroupService;
     GuiService: GuiService;
     HapticService: HapticService;
@@ -757,6 +759,7 @@ interface Instances extends Services, CreatableInstances {
     SyncScriptBuilder: SyncScriptBuilder;
     TeleportAsyncResult: TeleportAsyncResult;
     Terrain: Terrain;
+    TestCase: TestCase;
     TextChatConfigurations: TextChatConfigurations;
     TextChatMessage: TextChatMessage;
     TextFilterResult: TextFilterResult;
@@ -1471,6 +1474,21 @@ interface AnnotationsService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppAgeSignalsService)
+ */
+interface AppAgeSignalsService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AppAgeSignalsService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppLifecycleObserverService)
  */
 interface AppLifecycleObserverService extends Instance {
@@ -1891,6 +1909,8 @@ interface AudioFocusService extends Instance {
     readonly _nominal_AudioFocusService: unique symbol;
 }
 /**
+ * Mutes audio streams that fall below a certain volume threshold.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate)
  */
 interface AudioGate extends Instance {
@@ -2221,7 +2241,7 @@ interface AvatarCreationService extends Instance {
 /**
  * A service to support developer Avatar Editors.
  *
- * - **Tags**: NotCreatable, Service, NotReplicated
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService)
  */
@@ -3108,7 +3128,7 @@ interface ChangeHistoryService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#FinishRecording)
      * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
-     * @param identifier Identifies the recording from the previous call to `TryBeginRecording()`. If the operation is `ChangeHistoryService.FinishRecordingOperation.Cancel`, this value is ignored, and the recording is determined by context.
+     * @param identifier Identifies the recording from the previous call to `TryBeginRecording()`. If the operation is `FinishRecordingOperation.Cancel`, this value is ignored, and the recording is determined by context.
      * @param operation Specifies the operation to take.
      * @param finalOptions Optional table of values to pass to `OnFinishRecording`.
      */
@@ -6097,6 +6117,21 @@ interface OrderedDataStore extends GlobalDataStore {
     RemoveAsync(this: OrderedDataStore, key: string): number | undefined;
     SetAsync(this: OrderedDataStore, key: string, value?: unknown): void;
     UpdateAsync(this: OrderedDataStore, key: string, transformFunction: (oldValue: number | undefined) => number | undefined): number | undefined;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GongService)
+ */
+interface GongService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_GongService: unique symbol;
 }
 /**
  * GroupService is a service that allows developers to fetch information about a Roblox group from within a game.
@@ -14014,6 +14049,12 @@ interface StudioTestService extends Instance {
      */
     readonly _nominal_StudioTestService: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#EditModeActive)
+     */
+    EditModeActive: boolean;
+    /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -14597,6 +14638,21 @@ interface TerrainRegion extends Instance {
      * @deprecated
      */
     ConvertToSmooth(this: TerrainRegion): void;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase)
+ */
+interface TestCase extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestCase: unique symbol;
 }
 /**
  * A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.

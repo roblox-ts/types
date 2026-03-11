@@ -3699,6 +3699,8 @@ declare namespace Enum {
         }
         export const Notch: Notch;
         /**
+         * Filter that cuts sound above a specified `Frequency`, at a slope of -6dB/octave.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioFilterType#Lowpass6dB)
          */
         export interface Lowpass6dB extends globalThis.EnumItem {
@@ -3746,10 +3748,14 @@ declare namespace Enum {
     }
     export type AudioSimulationFidelity = AudioSimulationFidelity.None | AudioSimulationFidelity.Automatic;
     /**
+     * The categorization of an audio asset.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSubType)
      */
     export namespace AudioSubType {
         /**
+         * Represents an asset which contains music.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSubType#Music)
          */
         export interface Music extends globalThis.EnumItem {
@@ -3759,6 +3765,8 @@ declare namespace Enum {
         }
         export const Music: Music;
         /**
+         * Represents an asset which is a sound effect.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSubType#SoundEffect)
          */
         export interface SoundEffect extends globalThis.EnumItem {
@@ -3773,6 +3781,8 @@ declare namespace Enum {
     }
     export type AudioSubType = AudioSubType.Music | AudioSubType.SoundEffect;
     /**
+     * For audio effects that use some internal buffering, determines the window-size used.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioWindowSize)
      */
     export namespace AudioWindowSize {
@@ -9036,6 +9046,15 @@ declare namespace Enum {
         }
         export const PlacelaunchCreatorBan: PlacelaunchCreatorBan;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PlacelaunchDeviceBlock)
+         */
+        export interface PlacelaunchDeviceBlock extends globalThis.EnumItem {
+            Name: "PlacelaunchDeviceBlock";
+            Value: 601;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const PlacelaunchDeviceBlock: PlacelaunchDeviceBlock;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PlacelaunchCustomMessage)
          */
         export interface PlacelaunchCustomMessage extends globalThis.EnumItem {
@@ -9129,7 +9148,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConnectionError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConnectionError | undefined;
     }
-    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.ConnectErrors | ConnectionError.AlreadyConnected | ConnectionError.NoFreeIncomingConnections | ConnectionError.ConnectionBanned | ConnectionError.InvalidPassword | ConnectionError.IncompatibleProtocolVersion | ConnectionError.IPRecentlyConnected | ConnectionError.OurSystemRequiresSecurity | ConnectionError.SecurityKeyMismatch | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.DisconnectionNotification | ConnectionError.DisconnectVerboselyModeratedGame | ConnectionError.DisconnectCollaboratorNotAgeVerified | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequired | ConnectionError.DisconnectCollaboratorOwnerActionRequired | ConnectionError.DisconnectCollaboratorTooManyCollaborators | ConnectionError.DisconnectCollaboratorUnknownError | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.ConnectErrors | ConnectionError.AlreadyConnected | ConnectionError.NoFreeIncomingConnections | ConnectionError.ConnectionBanned | ConnectionError.InvalidPassword | ConnectionError.IncompatibleProtocolVersion | ConnectionError.IPRecentlyConnected | ConnectionError.OurSystemRequiresSecurity | ConnectionError.SecurityKeyMismatch | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.DisconnectionNotification | ConnectionError.DisconnectVerboselyModeratedGame | ConnectionError.DisconnectCollaboratorNotAgeVerified | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequired | ConnectionError.DisconnectCollaboratorOwnerActionRequired | ConnectionError.DisconnectCollaboratorTooManyCollaborators | ConnectionError.DisconnectCollaboratorUnknownError | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchDeviceBlock | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
     /**
      * Used to determine the connection state of the client to the game server.
      *
@@ -11318,6 +11337,42 @@ declare namespace Enum {
     }
     export type DisplaySize = DisplaySize.Small | DisplaySize.Medium | DisplaySize.Large;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DomainType)
+     */
+    export namespace DomainType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DomainType#EXPERIENCE)
+         */
+        export interface EXPERIENCE extends globalThis.EnumItem {
+            Name: "EXPERIENCE";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.DomainType;
+        }
+        export const EXPERIENCE: EXPERIENCE;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DomainType#GROUP)
+         */
+        export interface GROUP extends globalThis.EnumItem {
+            Name: "GROUP";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.DomainType;
+        }
+        export const GROUP: GROUP;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DomainType#OAUTH)
+         */
+        export interface OAUTH extends globalThis.EnumItem {
+            Name: "OAUTH";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.DomainType;
+        }
+        export const OAUTH: OAUTH;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DomainType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DomainType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DomainType | undefined;
+    }
+    export type DomainType = DomainType.EXPERIENCE | DomainType.GROUP | DomainType.OAUTH;
+    /**
      * Used by `UIAspectRatioConstraint.DominantAxis` for resizing the object to maintain the aspect ratio.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DominantAxis)
@@ -12308,6 +12363,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ExplosionType | undefined;
     }
     export type ExplosionType = ExplosionType.NoCraters | ExplosionType.Craters;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExternalEditorMode)
+     */
+    export namespace ExternalEditorMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExternalEditorMode#SystemDefault)
+         */
+        export interface SystemDefault extends globalThis.EnumItem {
+            Name: "SystemDefault";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ExternalEditorMode;
+        }
+        export const SystemDefault: SystemDefault;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExternalEditorMode#CustomEditor)
+         */
+        export interface CustomEditor extends globalThis.EnumItem {
+            Name: "CustomEditor";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ExternalEditorMode;
+        }
+        export const CustomEditor: CustomEditor;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ExternalEditorMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ExternalEditorMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ExternalEditorMode | undefined;
+    }
+    export type ExternalEditorMode = ExternalEditorMode.SystemDefault | ExternalEditorMode.CustomEditor;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FACSDataLod)
      */
@@ -27965,14 +28047,18 @@ declare namespace Enum {
         }
         export const Neck: Neck;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Pelvis)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Spine)
          */
-        export interface Pelvis extends globalThis.EnumItem {
-            Name: "Pelvis";
+        export interface Spine extends globalThis.EnumItem {
+            Name: "Spine";
             Value: 23;
             EnumType: typeof globalThis.Enum.RigLabel;
         }
-        export const Pelvis: Pelvis;
+        export const Spine: Spine;
+        /**
+         * @deprecated renamed to Spine
+         */
+        export const Pelvis: Spine;
         /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Chest)
          */
@@ -28010,23 +28096,31 @@ declare namespace Enum {
         }
         export const RightClavicle: RightClavicle;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#LeftToes)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#LeftToeBase)
          */
-        export interface LeftToes extends globalThis.EnumItem {
-            Name: "LeftToes";
+        export interface LeftToeBase extends globalThis.EnumItem {
+            Name: "LeftToeBase";
             Value: 28;
             EnumType: typeof globalThis.Enum.RigLabel;
         }
-        export const LeftToes: LeftToes;
+        export const LeftToeBase: LeftToeBase;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#RightToes)
+         * @deprecated renamed to LeftToeBase
          */
-        export interface RightToes extends globalThis.EnumItem {
-            Name: "RightToes";
+        export const LeftToes: LeftToeBase;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#RightToeBase)
+         */
+        export interface RightToeBase extends globalThis.EnumItem {
+            Name: "RightToeBase";
             Value: 29;
             EnumType: typeof globalThis.Enum.RigLabel;
         }
-        export const RightToes: RightToes;
+        export const RightToeBase: RightToeBase;
+        /**
+         * @deprecated renamed to RightToeBase
+         */
+        export const RightToes: RightToeBase;
         /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Thumb1)
          */
@@ -28166,7 +28260,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RigLabel | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RigLabel | undefined;
     }
-    export type RigLabel = RigLabel.Invalid | RigLabel.Root | RigLabel.LeftHip | RigLabel.LeftKnee | RigLabel.LeftAnkle | RigLabel.RightHip | RigLabel.RightKnee | RigLabel.RightAnkle | RigLabel.Waist | RigLabel.LeftShoulder | RigLabel.LeftElbow | RigLabel.LeftWrist | RigLabel.RightShoulder | RigLabel.RightElbow | RigLabel.RightWrist | RigLabel.Neck | RigLabel.Pelvis | RigLabel.Chest | RigLabel.HeadBase | RigLabel.LeftClavicle | RigLabel.RightClavicle | RigLabel.LeftToes | RigLabel.RightToes | RigLabel.Thumb1 | RigLabel.Thumb2 | RigLabel.Thumb3 | RigLabel.Index1 | RigLabel.Index2 | RigLabel.Index3 | RigLabel.Middle1 | RigLabel.Middle2 | RigLabel.Middle3 | RigLabel.Ring1 | RigLabel.Ring2 | RigLabel.Ring3 | RigLabel.Pinky1 | RigLabel.Pinky2 | RigLabel.Pinky3;
+    export type RigLabel = RigLabel.Invalid | RigLabel.Root | RigLabel.LeftHip | RigLabel.LeftKnee | RigLabel.LeftAnkle | RigLabel.RightHip | RigLabel.RightKnee | RigLabel.RightAnkle | RigLabel.Waist | RigLabel.LeftShoulder | RigLabel.LeftElbow | RigLabel.LeftWrist | RigLabel.RightShoulder | RigLabel.RightElbow | RigLabel.RightWrist | RigLabel.Neck | RigLabel.Spine | RigLabel.Chest | RigLabel.HeadBase | RigLabel.LeftClavicle | RigLabel.RightClavicle | RigLabel.LeftToeBase | RigLabel.RightToeBase | RigLabel.Thumb1 | RigLabel.Thumb2 | RigLabel.Thumb3 | RigLabel.Index1 | RigLabel.Index2 | RigLabel.Index3 | RigLabel.Middle1 | RigLabel.Middle2 | RigLabel.Middle3 | RigLabel.Ring1 | RigLabel.Ring2 | RigLabel.Ring3 | RigLabel.Pinky1 | RigLabel.Pinky2 | RigLabel.Pinky3;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigScale)
      */
@@ -29835,6 +29929,8 @@ declare namespace Enum {
         }
         export const LoadUnownedAsset: LoadUnownedAsset;
         /**
+         * **Deprecated:**
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AssetRequire)
          */
         export interface AssetRequire extends globalThis.EnumItem {
@@ -29844,6 +29940,8 @@ declare namespace Enum {
         }
         export const AssetRequire: AssetRequire;
         /**
+         * **Deprecated:**
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Avatar)
          */
         export interface Avatar extends globalThis.EnumItem {
@@ -38324,10 +38422,14 @@ declare namespace Enum {
     }
     export type VoiceRccReconnectReason = VoiceRccReconnectReason.Unknown | VoiceRccReconnectReason.Migration | VoiceRccReconnectReason.CloseRoom;
     /**
+     * Controls how the engine renders volumetric audio effects.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VolumetricAudio)
      */
     export namespace VolumetricAudio {
         /**
+         * Volumetric audio is disabled; sound emanates from a single point.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VolumetricAudio#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -38337,6 +38439,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * Currently equivalent to `VolumetricAudio.Disabled`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VolumetricAudio#Automatic)
          */
         export interface Automatic extends globalThis.EnumItem {
@@ -38346,6 +38450,8 @@ declare namespace Enum {
         }
         export const Automatic: Automatic;
         /**
+         * Volumetric audio is enabled; sound emanates from the object's volume.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VolumetricAudio#Enabled)
          */
         export interface Enabled extends globalThis.EnumItem {

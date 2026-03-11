@@ -12,6 +12,7 @@ interface Services {
     AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
     AnimationFromVideoCreatorStudioService: AnimationFromVideoCreatorStudioService;
     AnnotationsService: AnnotationsService;
+    AppAgeSignalsService: AppAgeSignalsService;
     AppLifecycleObserverService: AppLifecycleObserverService;
     AppRatingPromptService: AppRatingPromptService;
     AppUpdateService: AppUpdateService;
@@ -82,6 +83,7 @@ interface Services {
     GenerationService: GenerationService;
     GenericChallengeService: GenericChallengeService;
     GeometryService: GeometryService;
+    GongService: GongService;
     GroupService: GroupService;
     GuiService: GuiService;
     HapticService: HapticService;
@@ -706,6 +708,7 @@ interface Instances extends Services, CreatableInstances {
     SyncScriptBuilder: SyncScriptBuilder;
     TeleportAsyncResult: TeleportAsyncResult;
     Terrain: Terrain;
+    TestCase: TestCase;
     TextChatConfigurations: TextChatConfigurations;
     TextChatMessage: TextChatMessage;
     TextFilterResult: TextFilterResult;
@@ -2940,6 +2943,12 @@ interface AdService extends Instance {
      */
     CreateAdRewardFromDevProductId(this: AdService, devProductId: number): AdReward;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#RegisterDisclosureButton)
+     */
+    RegisterDisclosureButton(this: AdService, disclosureButton: GuiButton, immersiveBrandedAdId: string): void;
+    /**
      * **Deprecated:** `ShowVideoAd` has been decommissioned and is no longer operational.
      *
      * Show mobile video advertisements.
@@ -2971,7 +2980,14 @@ interface AdService extends Instance {
      * @param this A class that allows the display of mobile video ads.
      * @param adFormat The format of the requested ad. For example, `RewardedVideo`.
      */
-    GetAdAvailabilityNowAsync(this: AdService, adFormat: CastsToEnum<Enum.AdFormat>): unknown;
+    GetAdAvailabilityNowAsync(this: AdService, adFormat: CastsToEnum<Enum.AdFormat>): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#GetCampaignEligibilityAsync)
+     */
+    GetCampaignEligibilityAsync(this: AdService, campaignId: string, player?: Player): object;
     /**
      * Tracks how many times a user had the chance to watch a video ad and the rate at which they actually watched the ad.
      *
@@ -3028,7 +3044,7 @@ interface AnalyticsService extends Instance {
      */
     readonly _nominal_AnalyticsService: unique symbol;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This deprecated function is a variant of `AnalyticsService:LogCustomEvent()` which should be used instead.
      *
      * Fires a custom event with a custom event name and data.
      *
@@ -3045,14 +3061,9 @@ interface AnalyticsService extends Instance {
      */
     FireCustomEvent(this: AnalyticsService, player: Player | undefined, eventCategory: string, customData?: unknown): void;
     /**
-     * **Deprecated:** This function has been deprecated in favor of more descriptive methods, including: - `AnalyticsService:FireCustomEvent()`
-     * - `AnalyticsService:FireInGameEconomyEvent()`
-     * - `AnalyticsService:FireLogEvent()`
-     * - `AnalyticsService:FirePlayerProgressionEvent()`
+     * **Deprecated:** This function has been deprecated in favor of more descriptive methods, including `AnalyticsService:LogCustomEvent()`, `AnalyticsService:LogEconomyEvent()`, and `AnalyticsService:LogProgressionEvent()`.
      *
      * Report a custom event to PlayFab.
-     *
-     *
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
@@ -3066,7 +3077,7 @@ interface AnalyticsService extends Instance {
      */
     FireEvent(this: AnalyticsService, category: string, value: unknown): void;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This deprecated function is a variant of `AnalyticsService:LogEconomyEvent()` which should be used instead.
      *
      * Fire an event used to track player actions pertaining to the in-game economy.
      *
@@ -3106,9 +3117,6 @@ interface AnalyticsService extends Instance {
      * @param logLevel The specified log level (e.g. Debug, Error).
      * @param message User defined message.
      * @param debugInfo Optional. A dictionary which contains predefined keys including "errorCode" and "stackTrace". Both keys values are strings. stackTrace is a traceback of the current function call stack.
-     * ```lua
-     * local debugInfo = {             errorCode = '123',             stackTrace = debug.traceback()       }
-     * ```
      * @param customData Optional. User defined data, could be a string, a number or a table.
      *
      * @deprecated
@@ -3118,7 +3126,7 @@ interface AnalyticsService extends Instance {
         stackTrace?: string;
     }, customData?: unknown): void;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This deprecated function is a variant of `AnalyticsService:LogProgressionEvent()` which should be used instead.
      *
      * Fire an event used to track player progression through the game.
      *
@@ -3131,13 +3139,7 @@ interface AnalyticsService extends Instance {
      * @param category A user defined category for progression.
      * @param progressionStatus Indicates the status of the progression.
      * @param location The event location. A dictionary that each key-value represents an entry of location data. The key-value is a string-string pair. With this developers can query where is the most frequent location for a specific progression event category. For example, the category could be "LevelUp".
-     * ```lua
-     * local location = {     ["placeDesc"] = "Dungeon1",     ["levelDesc"] = "level2",     ["mapDesc"] = "LeftChamberMap",     ["ProgresionType"] = "LevelUp",     ["userDefinedKey5"] = "0005" }
-     * ```
      * @param statistics Optional. A dictionary that each key-value represents an entry of statistics data that allows developers to track any specific data that they want to collect as players progress through their game. Key-Value is a string-number pair.
-     * ```lua
-     * local statistics = {     ["numberOfKills"] = 111,     ["numberOfExp"] = 222,     ["userDefinedKey3"] = number,     ["userDefinedKey4"] = number,     ["userDefinedKey5"] = number }
-     * ```
      * @param customData Optional. User defined data, could be a string, a number or a table.
      *
      * @deprecated
@@ -4041,6 +4043,21 @@ interface AnnotationsService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppAgeSignalsService)
+ */
+interface AppAgeSignalsService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AppAgeSignalsService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppLifecycleObserverService)
  */
 interface AppLifecycleObserverService extends Instance {
@@ -4914,6 +4931,8 @@ interface AudioAnalyzer extends Instance {
      */
     SpectrumEnabled: boolean;
     /**
+     * Controls the resolution and timeliness of `GetSpectrum`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioAnalyzer#WindowSize)
@@ -4958,6 +4977,7 @@ interface AudioAnalyzer extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioAnalyzer#GetSpectrum)
      * @param this Takes measurements from audio streams that are connected to it via one or more `Wires`.
+     * @returns A table of numbers representing the amplitude levels of various frequencies of audio within the last buffer, or an empty table if a spectrum cannot be obtained.
      */
     GetSpectrum(this: AudioAnalyzer): Array<number>;
     /**
@@ -5573,6 +5593,8 @@ interface AudioEcho extends Instance {
      */
     Feedback: number;
     /**
+     * The time taken to interpolate between `DelayTime` values.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEcho#RampTime)
@@ -5641,6 +5663,8 @@ interface AudioEmitter extends Instance {
      */
     readonly _nominal_AudioEmitter: unique symbol;
     /**
+     * Determines whether acoustic simulation should be used for this `AudioEmitter`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#AcousticSimulationEnabled)
@@ -6140,6 +6164,8 @@ interface AudioFocusService extends Instance {
     readonly _nominal_AudioFocusService: unique symbol;
 }
 /**
+ * Mutes audio streams that fall below a certain volume threshold.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate)
  */
 interface AudioGate extends Instance {
@@ -6152,24 +6178,32 @@ interface AudioGate extends Instance {
      */
     readonly _nominal_AudioGate: unique symbol;
     /**
+     * Controls how long it takes for the gate to open when the signal level rises above the `Threshold`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#Attack)
      */
     Attack: number;
     /**
+     * Whether audio streams are passed-through unaffected by this effect.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#Bypass)
      */
     Bypass: boolean;
     /**
+     * Controls how long it takes for the gate to close when the signal level drops below the `Threshold`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#Release)
      */
     Release: number;
     /**
+     * The gain value(s) around which the gate opens and closes.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#Threshold)
@@ -6181,7 +6215,7 @@ interface AudioGate extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#GetConnectedWires)
-     * @param this
+     * @param this Mutes audio streams that fall below a certain volume threshold.
      * @param pin An input or output pin on this instance
      * @returns An array of `Wires`
      */
@@ -6192,7 +6226,7 @@ interface AudioGate extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#GetInputPins)
-     * @param this
+     * @param this Mutes audio streams that fall below a certain volume threshold.
      * @returns An array of strings representing valid pin names.
      */
     GetInputPins(this: AudioGate): Array<unknown>;
@@ -6202,12 +6236,12 @@ interface AudioGate extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioGate#GetOutputPins)
-     * @param this
+     * @param this Mutes audio streams that fall below a certain volume threshold.
      * @returns An array of strings representing valid pin names.
      */
     GetOutputPins(this: AudioGate): Array<unknown>;
     /**
-     * Fires when another instance is connected to or disconnected from the `AudioAnalyzer` via a `Wire`.
+     * Fires when another instance is connected to or disconnected from the `AudioGate` via a `Wire`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -6308,6 +6342,8 @@ interface AudioListener extends Instance {
      */
     readonly _nominal_AudioListener: unique symbol;
     /**
+     * Determines whether acoustic simulation should be used for this `AudioListener`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#AcousticSimulationEnabled)
@@ -6467,6 +6503,8 @@ interface AudioPitchShifter extends Instance {
      */
     Pitch: number;
     /**
+     * Controls how much audio will be buffered and shifted at once.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPitchShifter#WindowSize)
@@ -6548,6 +6586,8 @@ interface AudioPlayer extends Instance {
      */
     AssetId: string;
     /**
+     * The audio content to be loaded into the `AudioPlayer`.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
      *
@@ -6694,13 +6734,16 @@ interface AudioPlayer extends Instance {
      */
     Stop(this: AudioPlayer): void;
     /**
+     * Returns a sampling of the waveform data for the loaded `Asset`.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#GetWaveformAsync)
      * @param this Used to play audio assets.
-     * @param timeRange
-     * @param samples
+     * @param timeRange The start and end time (in seconds) of the segment to read.
+     * @param samples The number of samples to return for the specified range.
+     * @returns A table of `samples` numbers ranging between -1 and 1 representing the sampled waveform, or an empty table if a waveform could not be read.
      */
     GetWaveformAsync(this: AudioPlayer, timeRange: NumberRange, samples: number): Array<unknown>;
     /**
@@ -6745,12 +6788,16 @@ interface AudioRecorder extends Instance {
      */
     readonly _nominal_AudioRecorder: unique symbol;
     /**
+     * Whether the `AudioRecorder` is currently recording.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#IsRecording)
      */
     get IsRecording(): boolean;
     /**
+     * The current length of the recording in seconds.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -6758,6 +6805,8 @@ interface AudioRecorder extends Instance {
      */
     readonly TimeLength: number;
     /**
+     * Clears out the recording from the `AudioRecorder`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#Clear)
@@ -6796,13 +6845,18 @@ interface AudioRecorder extends Instance {
      */
     GetOutputPins(this: AudioRecorder): Array<unknown>;
     /**
+     * Returns a `Content` object representing the current audio recording.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetTemporaryContent)
      * @param this Records audio streams in-experience.
+     * @returns A temporary `Content` ID that can be used with `AudioPlayer`.
      */
     GetTemporaryContent(this: AudioRecorder): Content;
     /**
+     * Stops recording audio.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#Stop)
@@ -6810,22 +6864,30 @@ interface AudioRecorder extends Instance {
      */
     Stop(this: AudioRecorder): void;
     /**
+     * Returns whether the `AudioRecorder` can currently record.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#CanRecordAsync)
      * @param this Records audio streams in-experience.
+     * @returns `true` if recording is possible, `false` otherwise.
      */
     CanRecordAsync(this: AudioRecorder): boolean;
     /**
+     * Returns any instances which cannot be recorded.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioRecorder#GetUnrecordableInstancesAsync)
      * @param this Records audio streams in-experience.
+     * @returns A table of `Instances` that are not recordable.
      */
     GetUnrecordableInstancesAsync(this: AudioRecorder): Array<Instance>;
     /**
+     * Starts recording audio.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -6834,7 +6896,7 @@ interface AudioRecorder extends Instance {
      */
     RecordAsync(this: AudioRecorder): void;
     /**
-     * Fires when another instance is connected to or disconnected from the `AudioAnalyzer` via a `Wire`.
+     * Fires when another instance is connected to or disconnected from the `AudioRecorder` via a `Wire`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -7033,6 +7095,8 @@ interface AudioSearchParams extends Instance {
      */
     Artist: string;
     /**
+     * The subtype of the audio asset.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSearchParams#AudioSubType)
@@ -7294,13 +7358,16 @@ interface AudioTextToSpeech extends Instance {
      */
     Unload(this: AudioTextToSpeech): void;
     /**
+     * Returns a sampling of the waveform data for the generated audio.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#GetWaveformAsync)
      * @param this Plays text as speech audio.
-     * @param timeRange
-     * @param samples
+     * @param timeRange The start and end time (in seconds) of the segment to read.
+     * @param samples The number of samples to return for the specified range.
+     * @returns A table of `samples` numbers ranging between -1 and 1 representing the sampled waveform,
      */
     GetWaveformAsync(this: AudioTextToSpeech, timeRange: NumberRange, samples: number): Array<unknown>;
     /**
@@ -7353,6 +7420,8 @@ interface AudioTremolo extends Instance {
      */
     readonly _nominal_AudioTremolo: unique symbol;
     /**
+     * Whether audio streams are passed-through unaffected by this effect.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTremolo#Bypass)
@@ -7438,7 +7507,7 @@ interface AudioTremolo extends Instance {
      */
     GetOutputPins(this: AudioTremolo): Array<unknown>;
     /**
-     * Fires when another instance is connected to or disconnected from the `AudioAnalyzer` via a `Wire`.
+     * Fires when another instance is connected to or disconnected from the `AudioTremolo` via a `Wire`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -8023,7 +8092,7 @@ interface AvatarCreationService extends Instance {
 /**
  * A service to support developer Avatar Editors.
  *
- * - **Tags**: NotCreatable, Service, NotReplicated
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService)
  */
@@ -16126,24 +16195,34 @@ interface DigitsRigDescription extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#GetFingerControl)
+     * @param this
+     * @param fingerIndex
      */
     GetFingerControl(this: DigitsRigDescription, fingerIndex: number): Vector3;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#GetFingerTip)
+     * @param this
+     * @param fingerIndex
      */
     GetFingerTip(this: DigitsRigDescription, fingerIndex: number): Vector3;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#SetFingerControl)
+     * @param this
+     * @param fingerIndex
+     * @param control
      */
     SetFingerControl(this: DigitsRigDescription, fingerIndex: number, control: Vector3): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#SetFingerTip)
+     * @param this
+     * @param fingerIndex
+     * @param point
      */
     SetFingerTip(this: DigitsRigDescription, fingerIndex: number, point: Vector3): void;
 }
@@ -17684,97 +17763,113 @@ interface GeometryService extends Instance {
      */
     CreateSolidPrimitive(this: GeometryService, type: CastsToEnum<Enum.SolidPrimitiveType>, options?: object): MeshPart;
     /**
-     * This API has not been released.
+     * Provides an array of positions which can easily be passed into `FragmentAsync` to perform simple types of destruction.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#GenerateFragmentSites)
      * @param this Service containing geometric operations.
-     * @param part
-     * @param options
+     * @param part The `Part`, `PartOperation`, or `MeshPart` which you are planning to pass into `FragmentAsync()`. This is necessary to make the fragment site generation and the subsequent `FragmentAsync()` call efficient.
+     * @param options Options table containing all the controls for the method: - `SiteSpacing` — The approximate distance between sites, which   directly corresponds to the diameter of the resulting fragments. If   not specified, a reasonable value will be chosen.
+     * - `Origin` — If provided, this will be the center of the area to be   fragmented. If not provided, the entire object will be fragmented.
+     * - `Radius` — If provided, this will be the center of the area to be   fragmented. Either `Origin` and `Radius` should both be provided, or   neither.
+     *
+     *
+     * @returns An array of `Vector3` which is typically passed into `FragmentAsync()`. The output depends on the options provided. If `Origin` and `Radius` are provided, then the output array will contain several `Vector3` elements which will all be located within the radius, but the last element of the array will be an inner array containing many `Vector3` sites which are outside the radius. If `Origin` and `Radius` are not provided, the output will simply be an array of `Vector3` positions within the extents of the input `part`.
      */
     GenerateFragmentSites(this: GeometryService, part: BasePart, options?: object): Array<unknown>;
     /**
-     * This API has not been released.
+     * Breaks a `BasePart` into multiple `MeshPart` instances, according to the pattern of points passed in, by using voronoi decomposition.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#FragmentAsync)
      * @param this Service containing geometric operations.
-     * @param part
-     * @param sites
-     * @param options
+     * @param part A `Part`, `PartOperation`, or `MeshPart` to operate on.
+     * @param sites Array of `Vector3` defining the site positions. Each site will become a separate part. You can also provide a jagged 2D array of `Vector3` by including inner arrays of `Vector3` as elements of the outer array. Each inner array will have all of its voronoi cells merged into a single part. `GeometryService:GenerateFragmentSites` can be used to easily create this input.
+     * @param options Options table containing all the controls for the method: - `CollisionFidelity` — The value of   `CollisionFidelity` in the   resulting parts, with one caveat: If a 2D array of sites is   provided, this collision fidelity will only be applied to parts   which came from more than one site. The others will be given `Hull`   precision.
+     * - `RenderFidelity` — The value of   `RenderFidelity` in the resulting   parts.
+     * - `FluidFidelity` — The value of   `FluidFidelity` in the   resulting parts.
+     * - `SplitApart` — Boolean controlling whether a part should be split   into multiple parts if it contains multiple connected components.   Default is `true` (split).
+     *
+     *
+     * @returns Array of `MeshPart` along with mapping info. Each array element is a Dictionary with two elements: `{ “Instance”: instance, “Index”: index }`. `Index` is the index in the outer array of sites; in other words, it tells you which group of sites this instance came from. Note that it is possible for multiple instances to have the same index, if SplitApart is `true`.
      */
     FragmentAsync(this: GeometryService, part: BasePart, sites: Array<unknown>, options?: object): Array<unknown>;
     /**
-     * Creates one or more `PartOperations` from the intersecting geometry of one part and other parts.
+     * Creates one or more `PartOperations` or `MeshParts` from the intersecting geometry of multiple parts.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#IntersectAsync)
      * @param this Service containing geometric operations.
-     * @param part Main `Part` or `PartOperation` to operate on.
-     * @param parts Array of parts to intersect with the main part.
+     * @param part Main `Part`, `PartOperation`, or `MeshPart` to operate on.
+     * @param parts Array of other parts to intersect with the main part.
      * @param options Options table containing all the controls for the method: - `CollisionFidelity` — The value of   `CollisionFidelity` in the   resulting parts.
-     * - `RenderFidelity` — The value of   `RenderFidelity` in the resulting   parts.
-     * - `FluidFidelity` — The value of   `FluidFidelity` in the resulting   parts.
+     * - `RenderFidelity` — The value of   `RenderFidelity` or   `RenderFidelity` in the resulting   parts.
+     * - `FluidFidelity` — The value of   `FluidFidelity` in the   resulting parts.
      * - `SplitApart` — Boolean controlling whether the objects should all be   kept together or properly split apart. Default is `true` (split).
      *
      *
-     * @returns One or more `PartOperations` from the intersecting geometry of the main part (`part`) and the other parts.
+     * @returns One or more `PartOperations` or `MeshParts`. If the input contained any `MeshParts`, then the results will always be `MeshParts`.
      */
     IntersectAsync(this: GeometryService, part: Part | PartOperation, parts: ReadonlyArray<Part | PartOperation>, options?: GeometryServiceAsyncMethodConfig): Array<PartOperation>;
     /**
-     * Creates one or more `PartOperations` from one part minus the geometry occupied by other parts.
+     * Creates one or more `PartOperations` or `MeshParts` from one part minus the space occupied by other parts.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#SubtractAsync)
      * @param this Service containing geometric operations.
-     * @param part Main `Part` or `PartOperation` to operate on.
+     * @param part Main `Part`, `PartOperation`, or `MeshPart` to operate on.
      * @param parts Array of parts to subtract from the main part.
      * @param options Options table containing all the controls for the method: - `CollisionFidelity` — The value of   `CollisionFidelity` in the   resulting parts.
-     * - `RenderFidelity` — The value of   `RenderFidelity` in the resulting   parts.
-     * - `FluidFidelity` — The value of   `FluidFidelity` in the resulting   parts.
+     * - `RenderFidelity` — The value of   `RenderFidelity` or   `RenderFidelity` in the resulting   parts.
+     * - `FluidFidelity` — The value of   `FluidFidelity` in the   resulting parts.
      * - `SplitApart` — Boolean controlling whether the objects should all be   kept together or properly split apart. Default is `true` (split).
      *
      *
-     * @returns One or more `PartOperations` from the geometry of the main part (`part`) minus the geometry occupied by the other parts.
+     * @returns One or more `PartOperations` or `MeshParts`. If the input contained any `MeshParts`, then the results will always be `MeshParts`.
      */
     SubtractAsync(this: GeometryService, part: Part | PartOperation, parts: ReadonlyArray<Part | PartOperation>, options?: GeometryServiceAsyncMethodConfig): Array<PartOperation>;
     /**
-     * This API has not been released.
+     * Creates a `MeshPart` which has the shape of the input part stretched/dragged through the given set of `CFrame` positions.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#SweepPartAsync)
      * @param this Service containing geometric operations.
-     * @param part
-     * @param cframes
-     * @param options
+     * @param part A `Part`, `PartOperation`, or `MeshPart` to operate on.
+     * @param cframes Array of coordinate frames to sweep parts through.
+     * @param options Options table containing all the controls for the method: - `CollisionFidelity` — The value of   `CollisionFidelity` in the   resulting parts.
+     * - `RenderFidelity` — The value of   `RenderFidelity` in the resulting   parts.
+     * - `FluidFidelity` — The value of   `FluidFidelity` in the   resulting parts.
+     *
+     *
+     * @returns A new `MeshPart` with the swept geometry.
      */
     SweepPartAsync(this: GeometryService, part: BasePart, cframes: Array<unknown>, options?: object): MeshPart;
     /**
-     * Creates one or more `PartOperations` from one part plus the geometry occupied by other parts.
+     * Creates one or more `PartOperations` or `MeshParts` from one part plus the space occupied by other parts.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#UnionAsync)
      * @param this Service containing geometric operations.
-     * @param part Main `Part` or `PartOperation` to operate on.
+     * @param part Main `Part`, `PartOperation`, or `MeshPart` to operate on.
      * @param parts Array of parts to union with the main part.
      * @param options Options table containing all the controls for the method: - `CollisionFidelity` — The value of   `CollisionFidelity` in the   resulting parts.
-     * - `RenderFidelity` — The value of   `RenderFidelity` in the resulting   parts.
-     * - `FluidFidelity` — The value of   `FluidFidelity` in the resulting   parts.
+     * - `RenderFidelity` — The value of   `RenderFidelity` or   `RenderFidelity` in the resulting   parts.
+     * - `FluidFidelity` — The value of   `FluidFidelity` in the   resulting parts.
      * - `SplitApart` — Boolean controlling whether the objects should all be   kept together or properly split apart. Default is `true` (split).
      *
      *
-     * @returns One or more `PartOperations` from the geometry of the main part (`part`) plus the geometry occupied by the other parts.
+     * @returns One or more `PartOperations` or `MeshParts`. If the input contained any `MeshParts`, then the results will always be `MeshParts`.
      */
     UnionAsync(this: GeometryService, part: Part | PartOperation, parts: ReadonlyArray<Part | PartOperation>, options?: GeometryServiceAsyncMethodConfig): Array<PartOperation>;
 }
@@ -18019,6 +18114,8 @@ interface DataStore extends GlobalDataStore {
      * @param this
      * @param key Key name for which a version is to be removed. If `DataStoreOptions.AllScopes` was set to true when accessing the data store through `DataStoreService:GetDataStore()`, this key name must be prepended with the original scope as in "scope/key".
      * @param version Version number of the key to remove.
+     *
+     * @deprecated
      */
     RemoveVersionAsync(this: DataStore, key: string, version: string): void;
     GetAsync<T>(this: DataStore, key: string, options?: DataStoreGetOptions): LuaTuple<[
@@ -18079,6 +18176,21 @@ interface OrderedDataStore extends GlobalDataStore {
     RemoveAsync(this: OrderedDataStore, key: string): number | undefined;
     SetAsync(this: OrderedDataStore, key: string, value?: unknown): void;
     UpdateAsync(this: OrderedDataStore, key: string, transformFunction: (oldValue: number | undefined) => number | undefined): number | undefined;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GongService)
+ */
+interface GongService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_GongService: unique symbol;
 }
 /**
  * GroupService is a service that allows developers to fetch information about a Roblox group from within a game.
@@ -23444,6 +23556,12 @@ interface Humanoid extends Instance {
      */
     GetPlayingAnimationTracks(this: Humanoid): Array<AnimationTrack>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#GetRelativeVelocityAtFloor)
+     */
+    GetRelativeVelocityAtFloor(this: Humanoid): Vector3;
+    /**
      * Returns the humanoid's current `HumanoidStateType`.
      *
      * - **ThreadSafety**: Safe
@@ -24636,33 +24754,33 @@ interface HumanoidRigDescription extends Instance {
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToes)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToeBase)
      */
-    LeftToes: Instance | undefined;
+    LeftToeBase: Instance | undefined;
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToesRangeMax)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToeBaseRangeMax)
      */
-    LeftToesRangeMax: Vector3;
+    LeftToeBaseRangeMax: Vector3;
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToesRangeMin)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToeBaseRangeMin)
      */
-    LeftToesRangeMin: Vector3;
+    LeftToeBaseRangeMin: Vector3;
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToesSize)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToeBaseSize)
      */
-    LeftToesSize: number;
+    LeftToeBaseSize: number;
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToesTposeAdjustment)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToeBaseTposeAdjustment)
      */
-    LeftToesTposeAdjustment: CFrame;
+    LeftToeBaseTposeAdjustment: CFrame;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -24723,36 +24841,6 @@ interface HumanoidRigDescription extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#NeckTposeAdjustment)
      */
     NeckTposeAdjustment: CFrame;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Pelvis)
-     */
-    Pelvis: Instance | undefined;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#PelvisRangeMax)
-     */
-    PelvisRangeMax: Vector3;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#PelvisRangeMin)
-     */
-    PelvisRangeMin: Vector3;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#PelvisSize)
-     */
-    PelvisSize: number;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#PelvisTposeAdjustment)
-     */
-    PelvisTposeAdjustment: CFrame;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -24936,33 +25024,33 @@ interface HumanoidRigDescription extends Instance {
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToes)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToeBase)
      */
-    RightToes: Instance | undefined;
+    RightToeBase: Instance | undefined;
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToesRangeMax)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToeBaseRangeMax)
      */
-    RightToesRangeMax: Vector3;
+    RightToeBaseRangeMax: Vector3;
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToesRangeMin)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToeBaseRangeMin)
      */
-    RightToesRangeMin: Vector3;
+    RightToeBaseRangeMin: Vector3;
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToesSize)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToeBaseSize)
      */
-    RightToesSize: number;
+    RightToeBaseSize: number;
     /**
      * - **ThreadSafety**: ReadSafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToesTposeAdjustment)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToeBaseTposeAdjustment)
      */
-    RightToesTposeAdjustment: CFrame;
+    RightToeBaseTposeAdjustment: CFrame;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -25023,6 +25111,36 @@ interface HumanoidRigDescription extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RootTposeAdjustment)
      */
     RootTposeAdjustment: CFrame;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Spine)
+     */
+    Spine: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#SpineRangeMax)
+     */
+    SpineRangeMax: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#SpineRangeMin)
+     */
+    SpineRangeMin: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#SpineSize)
+     */
+    SpineSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#SpineTposeAdjustment)
+     */
+    SpineTposeAdjustment: CFrame;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -25870,7 +25988,7 @@ interface InsertService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InsertService#GetFreeModels)
      * @param this Used to insert assets from the Roblox website.
-     * @param searchText String used to search for free decals in the Catalog.
+     * @param searchText String used to search for free models in the Catalog.
      * @param pageNum The page number in the Catalog to return.
      * @returns A single table (of returned free models) wrapped in a table.
      *
@@ -28194,6 +28312,8 @@ interface MarketplaceService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#GetRobloxSubscriptionDetailsAsync)
+     * @param this The service responsible for in-experience transactions.
+     * @param user
      */
     GetRobloxSubscriptionDetailsAsync(this: MarketplaceService, user: Player): object;
     /**
@@ -30543,7 +30663,12 @@ interface BasePart extends PVInstance {
      */
     TorqueToAngularAcceleration(this: BasePart, torque: Vector3, angVelocity?: Vector3): Vector3;
     /**
-     * Creates a new `IntersectOperation` from the overlapping geometry of the part and the other parts in the given array.
+     * Note: It is highly recommended to use the newer `GeometryService:IntersectAsync` instead of this function. As well as having better performance and more features, the new function differs as follows: - The output is an array of instances rather than a single instance.
+     * - The input parts do not need to be parented to the scene, allowing for   background operations.
+     * - When the `SplitApart` option is set to `true` (default), each distinct   body will be returned in its own `PartOperation`.
+     * - All the returned parts are in the coordinate space of the main part, so   their `PVInstance.Origin` positions are the same as the main   part's. This keeps the vertices of the mesh in the same position   relative to the object as before the operation, but it does also mean   the `(0, 0, 0)` of a returned part is not necessarily at the center of   its body.
+     *
+     *  Creates a new `IntersectOperation` from the overlapping geometry   of the part and the other parts in the given array.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -30557,7 +30682,12 @@ interface BasePart extends PVInstance {
      */
     IntersectAsync(this: BasePart, parts: Array<Instance>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>, renderFidelity?: CastsToEnum<Enum.RenderFidelity>): Instance | undefined;
     /**
-     * Creates a new `UnionOperation` from the part, minus the geometry occupied by the parts in the given array.
+     * Note: It is highly recommended to use the newer `GeometryService:UnionAsync` instead of this function. As well as having better performance and more features, the new function differs as follows: - The output is an array of instances rather than a single instance.
+     * - The input parts do not need to be parented to the scene, allowing for   background operations.
+     * - When the `SplitApart` option is set to `true` (default), each distinct   body will be returned in its own `PartOperation`.
+     * - All the returned parts are in the coordinate space of the main part, so   their `PVInstance.Origin` positions are the same as the main   part's. This keeps the vertices of the mesh in the same position   relative to the object as before the operation, but it does also mean   the `(0, 0, 0)` of a returned part is not necessarily at the center of   its body.
+     *
+     *  Creates a new `UnionOperation` from the part, minus the geometry   occupied by the parts in the given array.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -30571,7 +30701,7 @@ interface BasePart extends PVInstance {
      */
     SubtractAsync(this: BasePart, parts: Array<BasePart>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>): UnionOperation | undefined;
     /**
-     * Creates a new `UnionOperation` from the part, plus the geometry occupied by the parts in the given array.
+     * Note: It is highly recommended to use the newer <code>GeometryService:UnionAsync</code> instead of this function. As well as having better performance and more features, the new function differs as follows: <ul> <li>The output is an array of instances rather than a single instance.</li> <li>The input parts do not need to be parented to the scene, allowing for   background operations.</li> <li>When the <code>SplitApart</code> option is set to <code>true</code> (default), each distinct   body will be returned in its own <code>PartOperation</code>.</li> <li>All the returned parts are in the coordinate space of the main part, so   their <code>PVInstance.Origin</code> positions are the same as the main   part's. This keeps the vertices of the mesh in the same position   relative to the object as before the operation, but it does also mean   the <code>(0, 0, 0)</code> of a returned part is not necessarily at the center of   its body.<pre><code>Creates a new `UnionOperation` from the part, plus the geometry </code></pre> </li> </ul> occupied by the parts in the given array.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -33684,6 +33814,8 @@ interface ParticleEmitter extends Instance {
      */
     Enabled: boolean;
     /**
+     * Determines whether the flipbook frames are blended between.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter#FlipbookBlendFrames)
@@ -34840,6 +34972,12 @@ interface Player extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#GameplayPaused)
      */
     get GameplayPaused(): boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#HasRobloxSubscription)
+     */
+    get HasRobloxSubscription(): boolean;
     /**
      * Indicates if a player has a **Verified** badge.
      *
@@ -38791,7 +38929,7 @@ interface DataModel extends ServiceProvider<Services> {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#RunService)
      */
-    readonly RunService: Instance | undefined;
+    readonly RunService: RunService | undefined;
     /**
      * **Deprecated:** This property has been deprecated. Use `DataModel.PrivateServerId` instead.
      *
@@ -41789,24 +41927,32 @@ interface StyleQuery extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#GetCondition)
+     * @param this
+     * @param name
      */
     GetCondition(this: StyleQuery, name: string): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#GetConditions)
+     * @param this
      */
     GetConditions(this: StyleQuery): object;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#SetCondition)
+     * @param this
+     * @param name
+     * @param value
      */
     SetCondition(this: StyleQuery, name: string, value: unknown): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#SetConditions)
+     * @param this
+     * @param conditions
      */
     SetConditions(this: StyleQuery, conditions: object): void;
 }
@@ -42566,6 +42712,45 @@ interface TerrainRegion extends Instance {
     readonly SizeInCells: Vector3;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase)
+ */
+interface TestCase extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestCase: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#Assert)
+     */
+    Assert(this: TestCase, condition: boolean, message?: string, source?: Instance, line?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#EndTest)
+     */
+    EndTest(this: TestCase, message?: string, source?: Instance, line?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#Message)
+     */
+    Message(this: TestCase, text: string, source?: Instance, line?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#Require)
+     */
+    Require(this: TestCase, condition: boolean, message?: string, source?: Instance, line?: number): void;
+}
+/**
  * A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
  *
  * - **Tags**: Service
@@ -42763,6 +42948,12 @@ interface TestService extends Instance {
      * @param line
      */
     Message(this: TestService, text: string, source?: Instance, line?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RegisterTest)
+     */
+    RegisterTest(this: TestService, testOptions: object): TestCase;
     /**
      * Prints whether a condition is true along with a description string.
      *
@@ -43924,15 +44115,15 @@ interface TextChatService extends Instance {
      */
     CanUserChatAsync(this: TextChatService, userId: number): boolean;
     /**
-     * Determines whether or not two users would receive messages between each other.
+     * Determines whether or not two users can receive messages from each other.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatService#CanUsersChatAsync)
      * @param this A service handling in-experience text chat.
-     * @param userIdFrom The user must be in the current server, otherwise an error will occur.
-     * @param userIdTo The user must be in the current server, otherwise an error will occur.
+     * @param userIdFrom
+     * @param userIdTo
      */
     CanUsersChatAsync(this: TextChatService, userIdFrom: number, userIdTo: number): boolean;
     /**
@@ -43943,9 +44134,9 @@ interface TextChatService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatService#CanUsersDirectChatAsync)
      * @param this A service handling in-experience text chat.
-     * @param requesterUserId The user who would have initiated the direct chat request. If the requesterUserId is not in the current server, this method will error.
-     * @param userIds A list of users who the requesterUserId would like to chat with directly. Users not in the current server are ignored.
-     * @returns A list of users who could participate in the direct chat request. If none of the users can direct chat with the requesterUserId, the result is an empty array.
+     * @param requesterUserId The user who would have initiated the direct chat request. If the user is not in the current server, this method will error.
+     * @param userIds A list of users who the `requesterUserId` would like to chat with directly. Users not in the current server are ignored.
+     * @returns A list of users who could participate in the direct chat request. If none of the users can direct chat with the `requesterUserId`, the result is an empty array.
      */
     CanUsersDirectChatAsync(this: TextChatService, requesterUserId: number, userIds: Array<unknown>): Array<unknown>;
     /**
