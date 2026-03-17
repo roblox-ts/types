@@ -3077,9 +3077,6 @@ interface SettableCores {
 	BadgesNotificationsActive: boolean;
 	ResetButtonCallback: boolean | BindableEvent;
 	ChatMakeSystemMessage: MakeSystemMessageConfig;
-	ChatWindowSize: UDim2;
-	ChatWindowPosition: UDim2;
-	ChatBarDisabled: boolean;
 	SendNotification: SendNotificationConfig;
 	TopbarEnabled: boolean;
 	DevConsoleVisible: boolean;
@@ -3088,13 +3085,46 @@ interface SettableCores {
 	PromptBlockPlayer: Player;
 	PromptUnblockPlayer: Player;
 	AvatarContextMenuEnabled: boolean;
+	AvatarContextMenuTarget: player;
 	AddAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
 	RemoveAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
+	AvatarContextMenuTheme: {
+		BackgroundColor?: Color3;
+		BackgroundTransparency?: number;
+		BackgroundImage?: string;
+		BackgroundImageTransparency?: number;
+		BackgroundImageScaleType?: Enum.ScaleType;
+		BackgroundImageSliceCenter?: Rect;
+		NameTagColor?: Color3;
+		NameUnderlineColor?: Color3;
+		ButtonFrameColor?: Color3;
+		ButtonFrameTransparency?: number;
+		ButtonColor?: Color3;
+		ButtonTransparency?: number;
+		ButtonHoverColor?: Color3;
+		ButtonHoverTransparency?: number;
+		ButtonUnderlineColor?: Color3;
+		ButtonImage?: string;
+		ButtonImageScaleType?: Enum.ScaleType;
+		ButtonImageSliceCenter?: Rect;
+		Font?: Enum.Font;
+		TextColor?: Color3;
+		TextScale?: number;
+		LeaveMenuImage?: string;
+		ScrollLeftImage?: string;
+		ScrollRightImage?: string;
+		SelectedCharacterIndicator?: MeshPart;
+		Size?: UDim2;
+		MinSize?: Vector2;
+		MaxSize?: Vector2;
+		AspectRatio?: number;
+		AnchorPoint?: Vector2;
+		OnScreenPosition?: UDim2;
+		OffScreenPosition?: UDim2;
+	};
 	CoreGuiChatConnections:
 		| { [name: string]: BindableEvent | BindableFunction }
 		| Map<string, BindableEvent | BindableFunction>;
-	VREnableControllerModels: boolean;
-	VRLaserPointerMode: "Disabled" | "Pointer" | "Navigation" | "Hidden";
 }
 
 // type
