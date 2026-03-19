@@ -401,6 +401,69 @@ declare namespace Enum {
     }
     export type ActionType = ActionType.Nothing | ActionType.Pause | ActionType.Lose | ActionType.Draw | ActionType.Win;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActivePayerStatus)
+     */
+    export namespace ActivePayerStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActivePayerStatus#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ActivePayerStatus;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActivePayerStatus#Never)
+         */
+        export interface Never extends globalThis.EnumItem {
+            Name: "Never";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ActivePayerStatus;
+        }
+        export const Never: Never;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActivePayerStatus#Lapsed)
+         */
+        export interface Lapsed extends globalThis.EnumItem {
+            Name: "Lapsed";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.ActivePayerStatus;
+        }
+        export const Lapsed: Lapsed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActivePayerStatus#Casual50Percent)
+         */
+        export interface Casual50Percent extends globalThis.EnumItem {
+            Name: "Casual50Percent";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.ActivePayerStatus;
+        }
+        export const Casual50Percent: Casual50Percent;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActivePayerStatus#Intermediate35Percent)
+         */
+        export interface Intermediate35Percent extends globalThis.EnumItem {
+            Name: "Intermediate35Percent";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.ActivePayerStatus;
+        }
+        export const Intermediate35Percent: Intermediate35Percent;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActivePayerStatus#Top15Percent)
+         */
+        export interface Top15Percent extends globalThis.EnumItem {
+            Name: "Top15Percent";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.ActivePayerStatus;
+        }
+        export const Top15Percent: Top15Percent;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ActivePayerStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ActivePayerStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ActivePayerStatus | undefined;
+    }
+    export type ActivePayerStatus = ActivePayerStatus.Unknown | ActivePayerStatus.Never | ActivePayerStatus.Lapsed | ActivePayerStatus.Casual50Percent | ActivePayerStatus.Intermediate35Percent | ActivePayerStatus.Top15Percent;
+    /**
      * The CFrame value in which the body mover constraint is expressed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActuatorRelativeTo)
@@ -1673,6 +1736,33 @@ declare namespace Enum {
     }
     export type AnimationNodeInterruptible = AnimationNodeInterruptible.Always | AnimationNodeInterruptible.Finished | AnimationNodeInterruptible.Trigger;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodePhaseSync)
+     */
+    export namespace AnimationNodePhaseSync {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodePhaseSync#Synced)
+         */
+        export interface Synced extends globalThis.EnumItem {
+            Name: "Synced";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AnimationNodePhaseSync;
+        }
+        export const Synced: Synced;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodePhaseSync#Unsynced)
+         */
+        export interface Unsynced extends globalThis.EnumItem {
+            Name: "Unsynced";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AnimationNodePhaseSync;
+        }
+        export const Unsynced: Unsynced;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationNodePhaseSync>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationNodePhaseSync | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationNodePhaseSync | undefined;
+    }
+    export type AnimationNodePhaseSync = AnimationNodePhaseSync.Synced | AnimationNodePhaseSync.Unsynced;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodePlayMode)
      */
     export namespace AnimationNodePlayMode {
@@ -1776,14 +1866,18 @@ declare namespace Enum {
         }
         export const AddNode: AddNode;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#BlendNode)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#OverNode)
          */
-        export interface BlendNode extends globalThis.EnumItem {
-            Name: "BlendNode";
+        export interface OverNode extends globalThis.EnumItem {
+            Name: "OverNode";
             Value: 2;
             EnumType: typeof globalThis.Enum.AnimationNodeType;
         }
-        export const BlendNode: BlendNode;
+        export const OverNode: OverNode;
+        /**
+         * @deprecated renamed to OverNode
+         */
+        export const BlendNode: OverNode;
         /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#Blend1DNode)
          */
@@ -1887,7 +1981,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationNodeType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationNodeType | undefined;
     }
-    export type AnimationNodeType = AnimationNodeType.InvalidNode | AnimationNodeType.AddNode | AnimationNodeType.BlendNode | AnimationNodeType.Blend1DNode | AnimationNodeType.Blend2DNode | AnimationNodeType.ClipNode | AnimationNodeType.GraphOutput | AnimationNodeType.MaskNode | AnimationNodeType.PrioritySelectNode | AnimationNodeType.RandomSequenceNode | AnimationNodeType.SelectNode | AnimationNodeType.SequenceNode | AnimationNodeType.SpeedNode | AnimationNodeType.SubtractNode;
+    export type AnimationNodeType = AnimationNodeType.InvalidNode | AnimationNodeType.AddNode | AnimationNodeType.OverNode | AnimationNodeType.Blend1DNode | AnimationNodeType.Blend2DNode | AnimationNodeType.ClipNode | AnimationNodeType.GraphOutput | AnimationNodeType.MaskNode | AnimationNodeType.PrioritySelectNode | AnimationNodeType.RandomSequenceNode | AnimationNodeType.SelectNode | AnimationNodeType.SequenceNode | AnimationNodeType.SpeedNode | AnimationNodeType.SubtractNode;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeWaitFor)
      */
@@ -9507,6 +9601,60 @@ declare namespace Enum {
     }
     export type CreateAssetResult = CreateAssetResult.Success | CreateAssetResult.PermissionDenied | CreateAssetResult.UploadFailed | CreateAssetResult.Unknown;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateContentResult)
+     */
+    export namespace CreateContentResult {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateContentResult#Success)
+         */
+        export interface Success extends globalThis.EnumItem {
+            Name: "Success";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.CreateContentResult;
+        }
+        export const Success: Success;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateContentResult#PermissionDenied)
+         */
+        export interface PermissionDenied extends globalThis.EnumItem {
+            Name: "PermissionDenied";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.CreateContentResult;
+        }
+        export const PermissionDenied: PermissionDenied;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateContentResult#UploadFailed)
+         */
+        export interface UploadFailed extends globalThis.EnumItem {
+            Name: "UploadFailed";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.CreateContentResult;
+        }
+        export const UploadFailed: UploadFailed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateContentResult#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.CreateContentResult;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateContentResult#StorageLimitExceeded)
+         */
+        export interface StorageLimitExceeded extends globalThis.EnumItem {
+            Name: "StorageLimitExceeded";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.CreateContentResult;
+        }
+        export const StorageLimitExceeded: StorageLimitExceeded;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CreateContentResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CreateContentResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CreateContentResult | undefined;
+    }
+    export type CreateContentResult = CreateContentResult.Success | CreateContentResult.PermissionDenied | CreateContentResult.UploadFailed | CreateContentResult.Unknown | CreateContentResult.StorageLimitExceeded;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateOutfitFailure)
      */
     export namespace CreateOutfitFailure {
@@ -9837,11 +9985,7 @@ declare namespace Enum {
         }
         export const RemoveVersionAsync: RemoveVersionAsync;
         /**
-         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
-         *
-         *
-         *
-         *  Refers to `GetAsync()`, `GetVersionAsync()`, `GetVersionAtTimeAsync()`, and the read of `UpdateAsync()` for `DataStore`.
+         * Refers to `GetAsync()`, `GetVersionAsync()`, `GetVersionAtTimeAsync()`, and the read of `UpdateAsync()` for `DataStore`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#StandardRead)
          */
@@ -9852,11 +9996,7 @@ declare namespace Enum {
         }
         export const StandardRead: StandardRead;
         /**
-         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
-         *
-         *
-         *
-         *  Refers to `SetAsync()`, `IncrementAsync()`, and the write of `UpdateAsync()` for `DataStore`.
+         * Refers to `SetAsync()`, `IncrementAsync()`, and the write of `UpdateAsync()` for `DataStore`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#StandardWrite)
          */
@@ -9867,11 +10007,7 @@ declare namespace Enum {
         }
         export const StandardWrite: StandardWrite;
         /**
-         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
-         *
-         *
-         *
-         *  Refers to `ListDataStoresAsync()`, and `ListKeysAsync()` and `ListVersionsAsync()` for `DataStore`.
+         * Refers to `ListDataStoresAsync()`, and `ListKeysAsync()` and `ListVersionsAsync()` for `DataStore`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#StandardList)
          */
@@ -9882,11 +10018,7 @@ declare namespace Enum {
         }
         export const StandardList: StandardList;
         /**
-         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
-         *
-         *
-         *
-         *  Refers to `RemoveAsync()` for `DataStore`.
+         * Refers to `RemoveAsync()` for `DataStore`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#StandardRemove)
          */
@@ -9897,11 +10029,7 @@ declare namespace Enum {
         }
         export const StandardRemove: StandardRemove;
         /**
-         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
-         *
-         *
-         *
-         *  Refers to `GetAsync()` and the read of `UpdateAsync()` for `OrderedDataStore`.
+         * Refers to `GetAsync()` and the read of `UpdateAsync()` for `OrderedDataStore`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#OrderedRead)
          */
@@ -9912,11 +10040,7 @@ declare namespace Enum {
         }
         export const OrderedRead: OrderedRead;
         /**
-         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
-         *
-         *
-         *
-         *  Refers to `SetAsync()`, `IncrementAsync()`, and the write of `UpdateAsync()` for `OrderedDataStore`.
+         * Refers to `SetAsync()`, `IncrementAsync()`, and the write of `UpdateAsync()` for `OrderedDataStore`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#OrderedWrite)
          */
@@ -9927,11 +10051,7 @@ declare namespace Enum {
         }
         export const OrderedWrite: OrderedWrite;
         /**
-         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
-         *
-         *
-         *
-         *  Refers to `GetSortedAsync()` for `OrderedDataStore`. GetRequestBudgetForRequestType()`with this enum will return`0`.
+         * Refers to `GetSortedAsync()` for `OrderedDataStore`. GetRequestBudgetForRequestType()`with this enum will return`0`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#OrderedList)
          */
@@ -9942,11 +10062,7 @@ declare namespace Enum {
         }
         export const OrderedList: OrderedList;
         /**
-         * This request type is not yet active, `GetRequestBudgetForRequestType()` with this enum will return `0`.
-         *
-         *
-         *
-         *  Refers to `RemoveAsync()` for `OrderedDataStore`.
+         * Refers to `RemoveAsync()` for `OrderedDataStore`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataStoreRequestType#OrderedRemove)
          */
@@ -25331,6 +25447,42 @@ declare namespace Enum {
     }
     export type PlayerExitReason = PlayerExitReason.Unknown | PlayerExitReason.PlatformKick | PlayerExitReason.CreatorKick;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformSpenderStatus)
+     */
+    export namespace PlayerPlatformSpenderStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformSpenderStatus#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PlayerPlatformSpenderStatus;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformSpenderStatus#Active)
+         */
+        export interface Active extends globalThis.EnumItem {
+            Name: "Active";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PlayerPlatformSpenderStatus;
+        }
+        export const Active: Active;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformSpenderStatus#OtherPayer)
+         */
+        export interface OtherPayer extends globalThis.EnumItem {
+            Name: "OtherPayer";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PlayerPlatformSpenderStatus;
+        }
+        export const OtherPayer: OtherPayer;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PlayerPlatformSpenderStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PlayerPlatformSpenderStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlayerPlatformSpenderStatus | undefined;
+    }
+    export type PlayerPlatformSpenderStatus = PlayerPlatformSpenderStatus.Unknown | PlayerPlatformSpenderStatus.Active | PlayerPlatformSpenderStatus.OtherPayer;
+    /**
      * Used exclusively by Pose.EasingDirection to specify direction of the EasingStyle curve.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PoseEasingDirection)
@@ -38772,6 +38924,69 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WeldConstraintPreserve | undefined;
     }
     export type WeldConstraintPreserve = WeldConstraintPreserve.All | WeldConstraintPreserve.None | WeldConstraintPreserve.Touching;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WhenUserFirstPlayed)
+     */
+    export namespace WhenUserFirstPlayed {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WhenUserFirstPlayed#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.WhenUserFirstPlayed;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WhenUserFirstPlayed#Days0To30)
+         */
+        export interface Days0To30 extends globalThis.EnumItem {
+            Name: "Days0To30";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.WhenUserFirstPlayed;
+        }
+        export const Days0To30: Days0To30;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WhenUserFirstPlayed#Days31To90)
+         */
+        export interface Days31To90 extends globalThis.EnumItem {
+            Name: "Days31To90";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.WhenUserFirstPlayed;
+        }
+        export const Days31To90: Days31To90;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WhenUserFirstPlayed#Days91To180)
+         */
+        export interface Days91To180 extends globalThis.EnumItem {
+            Name: "Days91To180";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.WhenUserFirstPlayed;
+        }
+        export const Days91To180: Days91To180;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WhenUserFirstPlayed#Days181To365)
+         */
+        export interface Days181To365 extends globalThis.EnumItem {
+            Name: "Days181To365";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.WhenUserFirstPlayed;
+        }
+        export const Days181To365: Days181To365;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WhenUserFirstPlayed#Days366Plus)
+         */
+        export interface Days366Plus extends globalThis.EnumItem {
+            Name: "Days366Plus";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.WhenUserFirstPlayed;
+        }
+        export const Days366Plus: Days366Plus;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WhenUserFirstPlayed>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WhenUserFirstPlayed | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WhenUserFirstPlayed | undefined;
+    }
+    export type WhenUserFirstPlayed = WhenUserFirstPlayed.Unknown | WhenUserFirstPlayed.Days0To30 | WhenUserFirstPlayed.Days31To90 | WhenUserFirstPlayed.Days91To180 | WhenUserFirstPlayed.Days181To365 | WhenUserFirstPlayed.Days366Plus;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WhisperChatPrivacyMode)
      */

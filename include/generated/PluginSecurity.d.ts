@@ -787,7 +787,6 @@ interface Instances extends Services, CreatableInstances {
 }
 interface Objects extends Instances {
     AnimationNode: AnimationNode;
-    AuroraHandle: AuroraHandle;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
     EditableImage: EditableImage;
@@ -795,6 +794,7 @@ interface Objects extends Instances {
     ExecutedRemoteCommand: ExecutedRemoteCommand;
     MLSession: MLSession;
     Object: RBXObject;
+    OutputLink: OutputLink;
     ScreenshotCapture: ScreenshotCapture;
     TerrainIterateOperation: TerrainIterateOperation;
     TerrainModifyOperation: TerrainModifyOperation;
@@ -837,23 +837,6 @@ interface AnimationNode extends RBXObject {
      * @deprecated
      */
     readonly _nominal_AnimationNode: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraHandle)
- *
- * @deprecated
- */
-interface AuroraHandle extends RBXObject {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AuroraHandle: unique symbol;
 }
 /**
  * A class which defines a piece of content, such as a screenshot or video, taken in-experience.
@@ -1150,7 +1133,7 @@ interface AdService extends Instance {
     readonly _nominal_AdService: unique symbol;
 }
 /**
- * Collection of methods that allows developers to track how users interact with their experiences.
+ * Collection of methods that allows you to track how users interact with your experiences.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -8337,8 +8320,6 @@ interface MLService extends Instance {
     readonly _nominal_MLService: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MakeupDescription)
  */
 interface MakeupDescription extends Instance {
@@ -14210,8 +14191,6 @@ interface StyleLink extends Instance {
     readonly _nominal_StyleLink: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery)
  */
 interface StyleQuery extends Instance {
@@ -15539,6 +15518,8 @@ interface UIScale extends UIComponent {
     readonly _nominal_UIScale: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow)
  */
 interface UIShadow extends UIComponent {
@@ -16258,6 +16239,21 @@ interface MLSession extends RBXObject {
      * @deprecated
      */
     readonly _nominal_MLSession: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OutputLink)
+ */
+interface OutputLink extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_OutputLink: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
