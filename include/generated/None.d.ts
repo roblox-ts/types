@@ -735,7 +735,6 @@ interface Instances extends Services, CreatableInstances {
 }
 interface Objects extends Instances {
     AnimationNode: AnimationNode;
-    AuroraHandle: AuroraHandle;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
     EditableImage: EditableImage;
@@ -743,6 +742,7 @@ interface Objects extends Instances {
     ExecutedRemoteCommand: ExecutedRemoteCommand;
     MLSession: MLSession;
     Object: RBXObject;
+    OutputLink: OutputLink;
     ScreenshotCapture: ScreenshotCapture;
     TerrainIterateOperation: TerrainIterateOperation;
     TerrainModifyOperation: TerrainModifyOperation;
@@ -825,35 +825,6 @@ interface AnimationNode extends RBXObject {
      * @deprecated
      */
     readonly _nominal_AnimationNode: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraHandle)
- *
- * @deprecated
- */
-interface AuroraHandle extends RBXObject {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AuroraHandle: unique symbol;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraHandle#Destroy)
-     */
-    Destroy(this: AuroraHandle): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraHandle#ForEach)
-     */
-    ForEach(this: AuroraHandle, iterator: Callback): void;
 }
 /**
  * A class which defines a piece of content, such as a screenshot or video, taken in-experience.
@@ -3028,7 +2999,7 @@ interface AdService extends Instance {
     readonly VideoAdClosed: RBXScriptSignal<(adShown: boolean) => void>;
 }
 /**
- * Collection of methods that allows developers to track how users interact with their experiences.
+ * Collection of methods that allows you to track how users interact with your experiences.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -3052,7 +3023,7 @@ interface AnalyticsService extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#FireCustomEvent)
-     * @param this Collection of methods that allows developers to track how users interact with their experiences.
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The player who triggered the custom event. `nil` if not player related.
      * @param eventCategory User defined category. This should be the name of the event.
      * @param customData Optional. User defined data, could be a string, a number or a table.
@@ -3069,7 +3040,7 @@ interface AnalyticsService extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#FireEvent)
-     * @param this Collection of methods that allows developers to track how users interact with their experiences.
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param category 'The category of event to report. Cannot contain the following characters: comma `,`, double quote `"` or newline characters `\r\n`'.
      * @param value A value to be serialized and reported. Serialized length must not exceed 1 KiB, or 1024 bytes.
      *
@@ -3085,7 +3056,7 @@ interface AnalyticsService extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#FireInGameEconomyEvent)
-     * @param this Collection of methods that allows developers to track how users interact with their experiences.
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The player who triggered the economy event.
      * @param itemName The name of the item.
      * @param economyAction Indicates the acquisition or spending of an in game resource.
@@ -3112,7 +3083,7 @@ interface AnalyticsService extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#FireLogEvent)
-     * @param this Collection of methods that allows developers to track how users interact with their experiences.
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The player who triggered the error event, `nil` if not player related.
      * @param logLevel The specified log level (e.g. Debug, Error).
      * @param message User defined message.
@@ -3134,7 +3105,7 @@ interface AnalyticsService extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#FirePlayerProgressionEvent)
-     * @param this Collection of methods that allows developers to track how users interact with their experiences.
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The player who triggered the event.
      * @param category A user defined category for progression.
      * @param progressionStatus Indicates the status of the progression.
@@ -3161,7 +3132,7 @@ interface AnalyticsService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogCustomEvent)
-     * @param this Collection of methods that allows developers to track how users interact with their experiences.
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The user who triggered the event.
      * @param eventName The name of the custom event.
      * @param value The value of the event that will be used in aggregation.
@@ -3174,7 +3145,7 @@ interface AnalyticsService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogEconomyEvent)
-     * @param this Collection of methods that allows developers to track how users interact with their experiences.
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The user who triggered the event.
      * @param flowType Should specify the direction that currency is flowing using `AnalyticsEconomyFlowType`.
      * @param currencyType The name of the currency being added or removed, for example `"gold"`, `"gems"`, or `"energy"`. Limited to 5 unique currency types per experience.
@@ -3191,7 +3162,7 @@ interface AnalyticsService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogFunnelStepEvent)
-     * @param this Collection of methods that allows developers to track how users interact with their experiences.
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The user who triggered the event.
      * @param funnelName The name of the funnel. This should be the same for all steps in the funnel. Limited to 10 unique funnels per experience.
      * @param funnelSessionId Optional unique identifier for the funnel session. This should be the same for all steps in the funnel. Note that this field is only necessary for **recurring** funnels, for example a purchase flow funnel or an item upgrade funnel. If you don't have a natural funnel session identifier, it's recommended to use `HttpService:GenerateGUID()`.
@@ -3206,7 +3177,7 @@ interface AnalyticsService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogOnboardingFunnelStepEvent)
-     * @param this Collection of methods that allows developers to track how users interact with their experiences.
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The user who triggered the event.
      * @param step The step number in the funnel. This should be unique for each step in the funnel. All funnels start at step 1. Limited to steps 1-100. Note that if any steps are skipped, the intermediate steps will be considered completed.
      * @param stepName Optional name of the step in the funnel. This field is only used for display purposes in Roblox-provided charts.
@@ -3219,7 +3190,7 @@ interface AnalyticsService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionCompleteEvent)
-     * @param this Collection of methods that allows developers to track how users interact with their experiences.
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The player who triggered the event.
      * @param progressionPathName
      * @param level
@@ -3233,7 +3204,7 @@ interface AnalyticsService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionEvent)
-     * @param this Collection of methods that allows developers to track how users interact with their experiences.
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The player who triggered the event.
      * @param progressionPathName
      * @param status
@@ -3248,7 +3219,7 @@ interface AnalyticsService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionFailEvent)
-     * @param this Collection of methods that allows developers to track how users interact with their experiences.
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The user who triggered the event.
      * @param progressionPathName
      * @param level
@@ -3262,7 +3233,7 @@ interface AnalyticsService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionStartEvent)
-     * @param this Collection of methods that allows developers to track how users interact with their experiences.
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The player who triggered the event.
      * @param progressionPathName
      * @param level
@@ -3270,6 +3241,13 @@ interface AnalyticsService extends Instance {
      * @param customFields
      */
     LogProgressionStartEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName?: string, customFields?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#GetPlayerSegmentsAsync)
+     */
+    GetPlayerSegmentsAsync(this: AnalyticsService, player: Player): object;
 }
 /**
  * References an animation asset which can be loaded by an `AnimationController`.
@@ -4325,6 +4303,13 @@ interface AssetService extends Instance {
      * @returns The `CreateAssetResult` and asset version number pair if successful.
      */
     CreateAssetVersionAsync(this: AssetService, object: RBXObject, assetType: CastsToEnum<Enum.AssetType>, assetId: number, requestParameters?: object): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateDataModelContentAsync)
+     */
+    CreateDataModelContentAsync(this: AssetService, content: Content, options?: object): unknown;
     /**
      * Creates a new `EditableImage` object populated with the given image.
      *
@@ -7571,7 +7556,7 @@ interface AuroraScriptService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#CreateCollection)
      */
-    CreateCollection(this: AuroraScriptService, query: string, root?: Instance): AuroraHandle;
+    CreateCollection(this: AuroraScriptService, query: string, root?: Instance): CollectionHandle;
     /**
      * - **ThreadSafety**: Safe
      * - **Tags**: CustomLuaState
@@ -7753,12 +7738,6 @@ interface AuroraService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#Misprediction)
      */
     readonly Misprediction: RBXScriptSignal<(remoteWorldStepId: number, mispredictedInstances: Array<unknown>) => void>;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#Rollback)
-     */
-    readonly Rollback: RBXScriptSignal<(worldStepId: number) => void>;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -9314,6 +9293,12 @@ interface RootImportData extends BaseImportData {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RootImportData#RigVisualization)
      */
     RigVisualization: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RootImportData#ScaleFactor)
+     */
+    ScaleFactor: number;
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -10925,7 +10910,7 @@ interface CaptureService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#UploadCaptureAsync)
      * @param this A service which provides control over screenshot and video capture features.
-     * @param capture a capture object of type `Capture`
+     * @param capture The `Capture` to upload.
      * @returns Tuple of (result: `UploadCaptureResult`, assetId: `number`)
      */
     UploadCaptureAsync(this: CaptureService, capture: Capture): unknown;
@@ -15561,6 +15546,8 @@ interface DataStoreService extends Instance {
      */
     GetRequestBudgetForRequestType(this: DataStoreService, requestType: CastsToEnum<Enum.DataStoreRequestType>): number;
     /**
+     * Sets the rate limit for a given request type per minute.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreService#SetRateLimitForRequestType)
@@ -19055,6 +19042,8 @@ interface GuiButton extends GuiObject {
      */
     readonly MouseButton2Up: RBXScriptSignal<(x: number, y: number) => void>;
     /**
+     * Fires when a right-click is detected on desktop, long press detected on mobile, or triangle / Y activated in UI navigation mode on console. This function is not available yet.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiButton#SecondaryActivated)
@@ -20512,6 +20501,24 @@ interface VideoFrame extends GuiObject {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoFrame#Resolution)
      */
     readonly Resolution: Vector2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoFrame#RollOffMaxDistance)
+     */
+    RollOffMaxDistance: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoFrame#RollOffMinDistance)
+     */
+    RollOffMinDistance: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoFrame#RollOffMode)
+     */
+    RollOffMode: Enum.RollOffMode;
     /**
      * Indicates the length of the `VideoFrame.Video` in seconds.
      *
@@ -28027,8 +28034,6 @@ interface MLService extends Instance {
     CreateSessionAsync(this: MLService, assetId: string): MLSession;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MakeupDescription)
  */
 interface MakeupDescription extends Instance {
@@ -35523,6 +35528,7 @@ interface Player extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#LoadCharacterWithHumanoidDescription)
      * @param this An object that represents a presently connected client to the experience.
      * @param humanoidDescription A `HumanoidDescription` containing traits like body parts/colors, body scaling, accessories, clothing, and animations that will be equipped to the loaded character.
+     * @param assetTypeVerification The asset type verification mode.
      *
      * @deprecated LoadCharacterWithHumanoidDescriptionAsync
      */
@@ -35536,8 +35542,9 @@ interface Player extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#LoadCharacterWithHumanoidDescriptionAsync)
      * @param this An object that represents a presently connected client to the experience.
      * @param humanoidDescription A `HumanoidDescription` containing traits like body parts/colors, body scaling, accessories, clothing, and animations that will be equipped to the loaded character.
+     * @param assetTypeVerification The asset type verification mode.
      */
-    LoadCharacterWithHumanoidDescriptionAsync(this: Player, humanoidDescription: HumanoidDescription): void;
+    LoadCharacterWithHumanoidDescriptionAsync(this: Player, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
     /**
      * Requests that the server stream to the player around the specified location.
      *
@@ -38058,6 +38065,12 @@ interface RunService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#RenderStepped)
      */
     readonly RenderStepped: RBXScriptSignal<(deltaTime: number) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#Rollback)
+     */
+    readonly Rollback: RBXScriptSignal<(time: number) => void>;
     /**
      * Fires every frame, prior to the physics simulation.
      *
@@ -41807,6 +41820,12 @@ interface StyleRule extends StyleBase {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#SetPropertyTransition)
+     */
+    SetPropertyTransition(this: StyleRule, property: string, transitionParams: unknown): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#SetPropertyTransitions)
      * @param this Defines style properties which override properties on the instances affected by the `Selector` property.
      * @param properties
@@ -41903,8 +41922,6 @@ interface StyleLink extends Instance {
     StyleSheet: StyleSheet | undefined;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery)
  */
 interface StyleQuery extends Instance {
@@ -45235,6 +45252,20 @@ interface UICorner extends UIComponent {
      */
     readonly _nominal_UICorner: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden, NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UICorner#BottomLeftRadius)
+     */
+    set BottomLeftRadius(value: UDim);
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden, NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UICorner#BottomRightRadius)
+     */
+    set BottomRightRadius(value: UDim);
+    /**
      * Determines the radius of the component.
      *
      * - **ThreadSafety**: ReadSafe
@@ -45242,6 +45273,20 @@ interface UICorner extends UIComponent {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UICorner#CornerRadius)
      */
     CornerRadius: UDim;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden, NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UICorner#TopLeftRadius)
+     */
+    set TopLeftRadius(value: UDim);
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden, NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UICorner#TopRightRadius)
+     */
+    set TopRightRadius(value: UDim);
 }
 /**
  * Instance which facilitates and encourages interaction with UI elements in an experience.
@@ -46105,6 +46150,8 @@ interface UIScale extends UIComponent {
     Scale: number;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow)
  */
 interface UIShadow extends UIComponent {
@@ -48849,6 +48896,21 @@ interface MLSession extends RBXObject {
      * @param data
      */
     ForwardAsync(this: MLSession, data: object): object;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OutputLink)
+ */
+interface OutputLink extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_OutputLink: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
