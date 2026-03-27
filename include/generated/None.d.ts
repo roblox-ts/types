@@ -48,7 +48,6 @@ interface Services {
     ContentProvider: ContentProvider;
     ContextActionService: ContextActionService;
     ControllerService: ControllerService;
-    ConversationalAIAcceptanceService: ConversationalAIAcceptanceService;
     CoreGuiConfiguration: CoreGuiConfiguration;
     CoreScriptDebuggingManagerHelper: CoreScriptDebuggingManagerHelper;
     CreationDBService: CreationDBService;
@@ -60,6 +59,7 @@ interface Services {
     DebuggablePluginWatcher: DebuggablePluginWatcher;
     DebuggerConnectionManager: DebuggerConnectionManager;
     DebuggerUIService: DebuggerUIService;
+    DeferredAssetManagerService: DeferredAssetManagerService;
     DeviceIdService: DeviceIdService;
     DraggerService: DraggerService;
     EditableService: EditableService;
@@ -93,10 +93,12 @@ interface Services {
     HeightmapImporterService: HeightmapImporterService;
     HttpService: HttpService;
     ILegacyStudioBridge: ILegacyStudioBridge;
+    ImageScreenCaptureService: ImageScreenCaptureService;
     IncrementalPatchBuilder: IncrementalPatchBuilder;
     InsertService: InsertService;
     InstanceExtensionsService: InstanceExtensionsService;
     InstanceFileSyncService: InstanceFileSyncService;
+    InternalMessagingService: InternalMessagingService;
     InternalSyncService: InternalSyncService;
     IXPService: IXPService;
     JointsService: JointsService;
@@ -197,6 +199,7 @@ interface Services {
     Stats: Stats;
     StudioAssetService: StudioAssetService;
     StudioCameraService: StudioCameraService;
+    StudioCaptureService: StudioCaptureService;
     StudioDeviceEmulatorService: StudioDeviceEmulatorService;
     StudioPublishService: StudioPublishService;
     StudioScriptDebugEventListener: StudioScriptDebugEventListener;
@@ -702,6 +705,7 @@ interface Instances extends Services, CreatableInstances {
     StarterCharacterScripts: StarterCharacterScripts;
     StarterPlayerScripts: StarterPlayerScripts;
     StudioObjectBase: StudioObjectBase;
+    StudioScreenshotCapture: StudioScreenshotCapture;
     StudioWidget: StudioWidget;
     StyleBase: StyleBase;
     SurfaceGuiBase: SurfaceGuiBase;
@@ -3242,10 +3246,15 @@ interface AnalyticsService extends Instance {
      */
     LogProgressionStartEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName?: string, customFields?: object): void;
     /**
+     * Returns coarse player segment buckets for the current experience.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#GetPlayerSegmentsAsync)
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
+     * @param player The player whose segment buckets should be returned.
+     * @returns A dictionary containing coarse player segment buckets for the current experience.
      */
     GetPlayerSegmentsAsync(this: AnalyticsService, player: Player): object;
 }
@@ -6670,6 +6679,12 @@ interface AudioPlayer extends Instance {
      */
     Volume: number;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#Cancel)
+     */
+    Cancel(this: AudioPlayer, actionId?: number): boolean;
+    /**
      * Returns an array of `Wires` that are connected to the specified pin.
      *
      * - **ThreadSafety**: Unsafe
@@ -6708,7 +6723,7 @@ interface AudioPlayer extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#Play)
      * @param this Used to play audio assets.
      */
-    Play(this: AudioPlayer): void;
+    Play(this: AudioPlayer, atTime?: number): number | undefined;
     /**
      * Stops the `AudioPlayer` wherever its `TimePosition` is.
      *
@@ -6717,7 +6732,7 @@ interface AudioPlayer extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#Stop)
      * @param this Used to play audio assets.
      */
-    Stop(this: AudioPlayer): void;
+    Stop(this: AudioPlayer, atTime?: number): number | undefined;
     /**
      * Returns a sampling of the waveform data for the loaded `Asset`.
      *
@@ -7572,6 +7587,12 @@ interface AuroraScriptService extends Instance {
      */
     FindBindings(this: AuroraScriptService, instance: Instance): object;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#GetAllCollections)
+     */
+    GetAllCollections(this: AuroraScriptService): Array<unknown>;
+    /**
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#GetLocalFrameId)
@@ -7681,9 +7702,9 @@ interface AuroraService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#SetIncomingReplicationLag)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#SetReplicationLag)
      */
-    SetIncomingReplicationLag(this: AuroraService, seconds: number): void;
+    SetReplicationLag(this: AuroraService, seconds: number): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -7732,12 +7753,6 @@ interface AuroraService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#FixedRateTick)
      */
     readonly FixedRateTick: RBXScriptSignal<(deltaTime: number, worldStepId: number) => void>;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#Misprediction)
-     */
-    readonly Misprediction: RBXScriptSignal<(remoteWorldStepId: number, mispredictedInstances: Array<unknown>) => void>;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -14901,21 +14916,6 @@ interface ControllerService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConversationalAIAcceptanceService)
- */
-interface ConversationalAIAcceptanceService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ConversationalAIAcceptanceService: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGuiConfiguration)
  */
 interface CoreGuiConfiguration extends Instance {
@@ -15745,6 +15745,21 @@ interface DebuggerVariable extends Instance {
      * @deprecated
      */
     readonly _nominal_DebuggerVariable: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DeferredAssetManagerService)
+ */
+interface DeferredAssetManagerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_DeferredAssetManagerService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -18092,6 +18107,8 @@ interface DataStore extends GlobalDataStore {
      */
     ListVersionsAsync(this: DataStore, key: string, sortDirection?: CastsToEnum<Enum.SortDirection>, minDate?: number, maxDate?: number, pageSize?: number): DataStoreVersionPages;
     /**
+     * **Deprecated:**
+     *
      * Permanently deletes the specified version of a key.
      *
      * - **ThreadSafety**: Unsafe
@@ -20054,7 +20071,7 @@ interface TextBox extends GuiObject {
      */
     Font: Enum.Font;
     /**
-     * Determines the font used to render text.
+     * Determines the font face used to render text.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20091,7 +20108,7 @@ interface TextBox extends GuiObject {
      */
     MaxVisibleGraphemes: number;
     /**
-     * When set to `true`, text inside a `TextBox` is able to move onto multiple lines. This also enables players to use the enter key to move onto a new line.
+     * When set to `true`, text inside a `TextBox` is able to move onto multiple lines.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20112,7 +20129,7 @@ interface TextBox extends GuiObject {
      */
     readonly OpenTypeFeaturesError: string;
     /**
-     * Sets the text color that gets used when no text has been entered into the `TextBox` yet.
+     * Sets the text color that gets used when no text has been entered into the `TextBox`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20120,7 +20137,7 @@ interface TextBox extends GuiObject {
      */
     PlaceholderColor3: Color3;
     /**
-     * Sets the text that gets displayed when no text has been entered into the `TextBox` yet.
+     * Sets the text that gets displayed when no text has been entered into the `TextBox`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20128,7 +20145,7 @@ interface TextBox extends GuiObject {
      */
     PlaceholderText: string;
     /**
-     * Determines whether the `TextBox` renders the `TextBox.Text` string using rich text formatting.
+     * Determines whether the `TextBox` renders the `Text` string using rich text formatting.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20136,7 +20153,7 @@ interface TextBox extends GuiObject {
      */
     RichText: boolean;
     /**
-     * Determines the starting position of a text selection, or -1 if no text is selected.
+     * Determines the starting position of a text selection.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20144,7 +20161,7 @@ interface TextBox extends GuiObject {
      */
     SelectionStart: number;
     /**
-     * If set to true, input native to the platform is used instead of Roblox's built-in keyboard.
+     * If set to `true`, input native to the platform is used instead of Roblox's built-in keyboard.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20152,7 +20169,7 @@ interface TextBox extends GuiObject {
      */
     ShowNativeInput: boolean;
     /**
-     * Determines the string rendered by the UI element.
+     * Determines the string rendered by the `TextBox` element.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20160,7 +20177,7 @@ interface TextBox extends GuiObject {
      */
     Text: string;
     /**
-     * The size of a UI element's text in offsets.
+     * The size of a `TextBox` element's text in offsets.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -20180,7 +20197,7 @@ interface TextBox extends GuiObject {
      */
     TextColor: BrickColor;
     /**
-     * Determines the color of rendered text.
+     * Determines the color of non-placeholder rendered text.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20202,7 +20219,7 @@ interface TextBox extends GuiObject {
      */
     TextEditable: boolean;
     /**
-     * Whether the text fits within the constraints of the TextBox.
+     * Whether the text fits within the constraints of the `TextBox`.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -20211,7 +20228,7 @@ interface TextBox extends GuiObject {
      */
     readonly TextFits: boolean;
     /**
-     * Changes whether text is resized to fit the GUI object that renders it.
+     * Changes whether text is resized to fit within the `TextBox`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20243,7 +20260,7 @@ interface TextBox extends GuiObject {
      */
     TextStrokeTransparency: number;
     /**
-     * Determines the transparency of rendered text.
+     * Determines the transparency of the rendered text.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20251,7 +20268,7 @@ interface TextBox extends GuiObject {
      */
     TextTransparency: number;
     /**
-     * Controls the truncation of the text displayed in this TextBox.
+     * Controls the truncation of the text displayed in the `TextBox`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20270,7 +20287,7 @@ interface TextBox extends GuiObject {
      */
     TextWrap: boolean;
     /**
-     * Determines if text wraps to multiple lines within the `GuiObject` element space, truncating excess text.
+     * Determines if text wraps to multiple lines within the `TextBox` element space, truncating excess text.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20278,7 +20295,7 @@ interface TextBox extends GuiObject {
      */
     TextWrapped: boolean;
     /**
-     * Determines the horizontal alignment of rendered text.
+     * Determines the horizontal alignment of the rendered text.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20286,7 +20303,7 @@ interface TextBox extends GuiObject {
      */
     TextXAlignment: Enum.TextXAlignment;
     /**
-     * Determines the vertical alignment of rendered text.
+     * Determines the vertical alignment of the rendered text.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -20294,7 +20311,7 @@ interface TextBox extends GuiObject {
      */
     TextYAlignment: Enum.TextYAlignment;
     /**
-     * Forces the client to focus on the TextBox.
+     * Forces the client to focus on the `TextBox`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -20322,7 +20339,7 @@ interface TextBox extends GuiObject {
      */
     ReleaseFocus(this: TextBox, submitted?: boolean): void;
     /**
-     * Fires when the client lets their focus leave the `TextBox`.
+     * Fires when the `TextBox` loses its focus.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -25401,6 +25418,21 @@ interface IXPService extends Instance {
     readonly _nominal_IXPService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ImageScreenCaptureService)
+ */
+interface ImageScreenCaptureService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ImageScreenCaptureService: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ImportSession)
@@ -26118,6 +26150,21 @@ interface InstanceFileSyncService extends Instance {
      * @deprecated
      */
     readonly _nominal_InstanceFileSyncService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalMessagingService)
+ */
+interface InternalMessagingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InternalMessagingService: unique symbol;
 }
 /**
  * - **Tags**: NotReplicated
@@ -28250,6 +28297,12 @@ interface MarketplaceService extends Instance {
      */
     PromptPurchase(this: MarketplaceService, player: Player, assetId: number, equipIfPurchased?: boolean, currencyType?: CastsToEnum<Enum.CurrencyType>): void;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptRobloxSubscriptionPurchase)
+     */
+    PromptRobloxSubscriptionPurchase(this: MarketplaceService, user: Player): void;
+    /**
      * Prompts a user to purchase a subscription for the given `subscriptionId`.
      *
      * - **ThreadSafety**: Unsafe
@@ -28536,6 +28589,12 @@ interface MarketplaceService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptPurchaseFinished)
      */
     readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptRobloxSubscriptionPurchaseFinished)
+     */
+    readonly PromptRobloxSubscriptionPurchaseFinished: RBXScriptSignal<(user: Player, didTryPurchasing: boolean) => void>;
     /**
      * Fires when a purchase prompt for a subscription is closed.
      *
@@ -38024,7 +38083,7 @@ interface RunService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#Misprediction)
      */
-    readonly Misprediction: RBXScriptSignal<(remoteWorldStepId: number, mispredictedInstances: Array<unknown>) => void>;
+    readonly Misprediction: RBXScriptSignal<(time: number, instances: Array<unknown>, stats: object) => void>;
     /**
      * Fires every frame, after the physics simulation has completed.
      *
@@ -38610,6 +38669,12 @@ interface ControllerPartSensor extends ControllerSensor {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControllerPartSensor#SearchDistance)
      */
     SearchDistance: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControllerPartSensor#SensedMaterial)
+     */
+    SensedMaterial: Enum.Material;
     /**
      * A reference to the `BasePart` hit by the sensor.
      *
@@ -40733,6 +40798,12 @@ interface SoundService extends Instance {
         BasePart
     ]>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#GetMixerTime)
+     */
+    GetMixerTime(this: SoundService): number;
+    /**
      * Plays a copy of a `Sound` locally, such that it will only be heard by the client calling this method.
      *
      * - **ThreadSafety**: Unsafe
@@ -41525,6 +41596,21 @@ interface StudioCameraService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService)
+ */
+interface StudioCaptureService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StudioCaptureService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceEmulatorService)
  */
 interface StudioDeviceEmulatorService extends Instance {
@@ -41581,6 +41667,21 @@ interface StudioPublishService extends Instance {
      * @deprecated
      */
     readonly _nominal_StudioPublishService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture)
+ */
+interface StudioScreenshotCapture extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StudioScreenshotCapture: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated

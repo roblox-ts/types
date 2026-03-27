@@ -49,7 +49,6 @@ interface Services {
     ContentProvider: ContentProvider;
     ContextActionService: ContextActionService;
     ControllerService: ControllerService;
-    ConversationalAIAcceptanceService: ConversationalAIAcceptanceService;
     CoreGui: CoreGui;
     CoreGuiConfiguration: CoreGuiConfiguration;
     CoreScriptDebuggingManagerHelper: CoreScriptDebuggingManagerHelper;
@@ -64,6 +63,7 @@ interface Services {
     DebuggerManager: DebuggerManager;
     DebuggerUIService: DebuggerUIService;
     DebugSettings: DebugSettings;
+    DeferredAssetManagerService: DeferredAssetManagerService;
     DeviceIdService: DeviceIdService;
     DraggerService: DraggerService;
     EditableService: EditableService;
@@ -98,10 +98,12 @@ interface Services {
     HeightmapImporterService: HeightmapImporterService;
     HttpService: HttpService;
     ILegacyStudioBridge: ILegacyStudioBridge;
+    ImageScreenCaptureService: ImageScreenCaptureService;
     IncrementalPatchBuilder: IncrementalPatchBuilder;
     InsertService: InsertService;
     InstanceExtensionsService: InstanceExtensionsService;
     InstanceFileSyncService: InstanceFileSyncService;
+    InternalMessagingService: InternalMessagingService;
     InternalSyncService: InternalSyncService;
     IXPService: IXPService;
     JointsService: JointsService;
@@ -215,6 +217,7 @@ interface Services {
     Studio: Studio;
     StudioAssetService: StudioAssetService;
     StudioCameraService: StudioCameraService;
+    StudioCaptureService: StudioCaptureService;
     StudioData: StudioData;
     StudioDeviceEmulatorService: StudioDeviceEmulatorService;
     StudioPublishService: StudioPublishService;
@@ -752,6 +755,7 @@ interface Instances extends Services, CreatableInstances {
     StarterPlayerScripts: StarterPlayerScripts;
     StatsItem: StatsItem;
     StudioObjectBase: StudioObjectBase;
+    StudioScreenshotCapture: StudioScreenshotCapture;
     StudioTheme: StudioTheme;
     StudioWidget: StudioWidget;
     StyleBase: StyleBase;
@@ -4107,21 +4111,6 @@ interface ControllerService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConversationalAIAcceptanceService)
- */
-interface ConversationalAIAcceptanceService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_ConversationalAIAcceptanceService: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGuiConfiguration)
  */
 interface CoreGuiConfiguration extends Instance {
@@ -4746,6 +4735,21 @@ interface DebuggerWatch extends Instance {
      * @deprecated
      */
     readonly _nominal_DebuggerWatch: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DeferredAssetManagerService)
+ */
+interface DeferredAssetManagerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_DeferredAssetManagerService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -7284,6 +7288,21 @@ interface IXPService extends Instance {
     readonly _nominal_IXPService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ImageScreenCaptureService)
+ */
+interface ImageScreenCaptureService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ImageScreenCaptureService: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ImportSession)
@@ -7478,6 +7497,21 @@ interface InstanceFileSyncService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceFileSyncService#StatusChanged)
      */
     readonly StatusChanged: RBXScriptSignal<(instance: Instance, status: Enum.InstanceFileSyncStatus) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalMessagingService)
+ */
+interface InternalMessagingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InternalMessagingService: unique symbol;
 }
 /**
  * - **Tags**: NotReplicated
@@ -12469,7 +12503,8 @@ interface ScriptEditorService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptEditorService#OpenScriptDocumentAsync)
      * @param this This service is used for interacting with `ScriptDocument` instances.
      * @param script
-     * @param options
+     * @param options A dictionary that supports the following options: - `Temporary` — Boolean. Whether to open the script in a preview   tab. Default is false.
+     * - `HighlightRange` — A nested dictionary containing a line and   character range to highlight in the editor. Example:   `HighlightRange = { Start = { Line = 10, Character = 1 }, End = { Line = 15, Character = 20 }}`.
      */
     OpenScriptDocumentAsync(this: ScriptEditorService, script: LuaSourceContainer, options?: object): unknown;
     /**
@@ -13811,6 +13846,40 @@ interface StudioCameraService extends Instance {
     readonly _nominal_StudioCameraService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService)
+ */
+interface StudioCaptureService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StudioCaptureService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService#CanCaptureScreenshot)
+     */
+    CanCaptureScreenshot(this: StudioCaptureService): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService#CaptureScreenshot)
+     */
+    CaptureScreenshot(this: StudioCaptureService, screenshotOptions: object): StudioScreenshotCapture;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService#RequestScreenshotPermissionAsync)
+     */
+    RequestScreenshotPermissionAsync(this: StudioCaptureService): boolean;
+}
+/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioData)
@@ -13884,6 +13953,82 @@ interface StudioPublishService extends Instance {
      * @deprecated
      */
     readonly _nominal_StudioPublishService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture)
+ */
+interface StudioScreenshotCapture extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StudioScreenshotCapture: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#BufferFormat)
+     */
+    readonly BufferFormat: Enum.StudioCaptureScreenshotFormat;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#BufferStatus)
+     */
+    readonly BufferStatus: Enum.StudioCaptureBufferStatus;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#OriginalSize)
+     */
+    readonly OriginalSize: Vector2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#Position)
+     */
+    readonly Position: Vector2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#Resolution)
+     */
+    readonly Resolution: Vector2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#UICaptureMode)
+     */
+    readonly UICaptureMode: Enum.UICaptureMode;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#GetBuffer)
+     */
+    GetBuffer(this: StudioScreenshotCapture): buffer;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#GetErrors)
+     */
+    GetErrors(this: StudioScreenshotCapture): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#ScaleAsync)
+     */
+    ScaleAsync(this: StudioScreenshotCapture, strategy: CastsToEnum<Enum.ResamplerMode>, newSize: Vector2): StudioScreenshotCapture;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
