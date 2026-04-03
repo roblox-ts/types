@@ -156,11 +156,13 @@ interface Services {
     PlayerHydrationService: PlayerHydrationService;
     Players: Players;
     PlayerViewService: PlayerViewService;
+    PluginConnectionService: PluginConnectionService;
     PluginDebugService: PluginDebugService;
     PluginGuiService: PluginGuiService;
     PluginManagementService: PluginManagementService;
     PluginPolicyService: PluginPolicyService;
     PolicyService: PolicyService;
+    ProceduralBehaviorSchedulerService: ProceduralBehaviorSchedulerService;
     ProcessInstancePhysicsService: ProcessInstancePhysicsService;
     ProximityPromptService: ProximityPromptService;
     PublishService: PublishService;
@@ -402,6 +404,7 @@ interface CreatableInstances {
     Folder: Folder;
     ForceField: ForceField;
     Frame: Frame;
+    GeneratedFolder: GeneratedFolder;
     GetTextBoundsParams: GetTextBoundsParams;
     Glue: Glue;
     GroundController: GroundController;
@@ -468,9 +471,11 @@ interface CreatableInstances {
     PointLight: PointLight;
     Pose: Pose;
     PrismaticConstraint: PrismaticConstraint;
+    ProceduralModel: ProceduralModel;
     ProximityPrompt: ProximityPrompt;
     PyramidHandleAdornment: PyramidHandleAdornment;
     RayValue: RayValue;
+    RealtimeMedia: RealtimeMedia;
     RelativeGui: RelativeGui;
     RemoteEvent: RemoteEvent;
     RemoteFunction: RemoteFunction;
@@ -799,6 +804,7 @@ interface Objects extends Instances {
     MLSession: MLSession;
     Object: RBXObject;
     OutputLink: OutputLink;
+    PluginConnection: PluginConnection;
     ScreenshotCapture: ScreenshotCapture;
     TerrainIterateOperation: TerrainIterateOperation;
     TerrainModifyOperation: TerrainModifyOperation;
@@ -806,6 +812,7 @@ interface Objects extends Instances {
     TerrainWriteOperation: TerrainWriteOperation;
     VideoCapture: VideoCapture;
     VideoSampler: VideoSampler;
+    VirtualInput: VirtualInput;
     VoxelBuffer: VoxelBuffer;
     WebStreamClient: WebStreamClient;
 }
@@ -5888,6 +5895,19 @@ interface Folder extends Instance {
     readonly _nominal_Folder: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeneratedFolder)
+ */
+interface GeneratedFolder extends Folder {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_GeneratedFolder: unique symbol;
+}
+/**
  * Protects a `Humanoid` from taking damage dealt through the `Humanoid:TakeDamage()` method and protects `BaseParts` from having their joints broken due to an `Explosion`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ForceField)
@@ -8354,6 +8374,8 @@ interface MLService extends Instance {
     readonly _nominal_MLService: unique symbol;
 }
 /**
+ * Describes the appearance of a makeup item for the `HumanoidDescription`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MakeupDescription)
  */
 interface MakeupDescription extends Instance {
@@ -9530,6 +9552,19 @@ interface Tool extends BackpackItem {
      * @deprecated
      */
     readonly _nominal_Tool: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralModel)
+ */
+interface ProceduralModel extends Model {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ProceduralModel: unique symbol;
 }
 /**
  * Base class for handling physics simulation and 3D spatial queries.
@@ -11143,6 +11178,39 @@ interface PluginCapabilities extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService)
+ */
+interface PluginConnectionService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PluginConnectionService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService#CanHaveConnectionType)
+     */
+    CanHaveConnectionType(this: PluginConnectionService, type: CastsToEnum<Enum.PluginConnectionTargetType>): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService#GetPluginConnectionsOfType)
+     */
+    GetPluginConnectionsOfType(this: PluginConnectionService, type: CastsToEnum<Enum.PluginConnectionTargetType>): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService#Connected)
+     */
+    readonly Connected: RBXScriptSignal<(conn: PluginConnection) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginDebugService)
  */
 interface PluginDebugService extends Instance {
@@ -11573,6 +11641,21 @@ interface SunRaysEffect extends PostEffect {
     readonly _nominal_SunRaysEffect: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralBehaviorSchedulerService)
+ */
+interface ProceduralBehaviorSchedulerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ProceduralBehaviorSchedulerService: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProcessInstancePhysicsService)
@@ -11648,6 +11731,19 @@ interface RTAnimationTracker extends Instance {
      * @deprecated
      */
     readonly _nominal_RTAnimationTracker: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RealtimeMedia)
+ */
+interface RealtimeMedia extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RealtimeMedia: unique symbol;
 }
 /**
  * A service that provides an interface for you to manage and display personalized content recommendations.
@@ -14184,6 +14280,13 @@ interface StudioTestService extends Instance {
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#ExecuteMultiplayerTestAsync)
+     */
+    ExecuteMultiplayerTestAsync(this: StudioTestService, numPlayers: number, args: unknown): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#ExecutePlayModeAsync)
      * @param this Service allowing plugins to automate and customize Test and Run mode testing.
      * @param args Argument passed to the test session, or `nil`.
@@ -15770,6 +15873,12 @@ interface UserInputService extends Instance {
      * @deprecated
      */
     readonly _nominal_UserInputService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#CreateVirtualInput)
+     */
+    CreateVirtualInput(this: UserInputService): RBXObject;
 }
 /**
  * A service that handles queries regarding users on the Roblox platform.
@@ -16403,6 +16512,54 @@ interface OutputLink extends RBXObject {
 /**
  * - **Tags**: NotCreatable, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection)
+ */
+interface PluginConnection extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PluginConnection: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection#Connected)
+     */
+    readonly Connected: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection#TargetId)
+     */
+    readonly TargetId: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection#Type)
+     */
+    readonly Type: Enum.PluginConnectionTargetType;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection#BindToMessage)
+     */
+    BindToMessage(this: PluginConnection, callbackFunction: Callback): RBXScriptConnection;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection#SendMessage)
+     */
+    SendMessage(this: PluginConnection, message: buffer): void;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainIterateOperation)
  */
 interface TerrainIterateOperation extends RBXObject {
@@ -16476,6 +16633,57 @@ interface VideoSampler extends RBXObject {
      * @deprecated
      */
     readonly _nominal_VideoSampler: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput)
+ */
+interface VirtualInput extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_VirtualInput: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendKey)
+     */
+    SendKey(this: VirtualInput, isPressed: boolean, keyCode: CastsToEnum<Enum.KeyCode>, isRepeatedKey?: boolean): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMouseButton)
+     */
+    SendMouseButton(this: VirtualInput, position: Vector2, button: CastsToEnum<Enum.UserInputType>, isDown: boolean, repeatCount?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMouseDelta)
+     */
+    SendMouseDelta(this: VirtualInput, positionDelta: Vector2): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMousePosition)
+     */
+    SendMousePosition(this: VirtualInput, position: Vector2): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendPointerAction)
+     */
+    SendPointerAction(this: VirtualInput, position: Vector2, pointerAction: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendTextInput)
+     */
+    SendTextInput(this: VirtualInput, text: string): void;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
