@@ -22913,7 +22913,7 @@ declare namespace Enum {
      */
     export namespace ModelStreamingBehavior {
         /**
-         * Engine determines best behavior. Currently equivalent to **Legacy**.
+         * Default behavior (subject to change).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelStreamingBehavior#Default)
          */
@@ -22935,7 +22935,7 @@ declare namespace Enum {
         }
         export const Legacy: Legacy;
         /**
-         * Models are never sent during player join. Models that are "non-spatial" (containing no `BasePart` descendants) are sent soon after join, but before the `Workspace.PersistentLoaded` event fires. Models that are "spatial" (containing `BasePart` descendants) are sent when any `BasePart` descendant needs to be streamed to a client, and may stream out when all `BasePart` descendants are eligible to stream out.
+         * Models are never sent during player join. See [model streaming controls](../../../workspace/streaming/index.md#model-streaming-controls) for detailed behavioral notes.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelStreamingBehavior#Improved)
          */
@@ -22957,7 +22957,7 @@ declare namespace Enum {
      */
     export namespace ModelStreamingMode {
         /**
-         * Engine determines best behavior. Currently equivalent to **Nonatomic**.
+         * Default behavior (subject to change).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelStreamingMode#Default)
          */
@@ -22990,7 +22990,7 @@ declare namespace Enum {
         }
         export const Persistent: Persistent;
         /**
-         * Behaves as a persistent model for players that have been added using `Model:AddPersistentPlayer()`. For other players, behavior is the same as **Atomic**. You can revert a model from player persistence via `Model:RemovePersistentPlayer()`.
+         * Behaves as a persistent model for players that have been added using `Model:AddPersistentPlayer()`. For other players, behavior is the same as `Atomic`. You can revert a model from player persistence via `Model:RemovePersistentPlayer()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelStreamingMode#PersistentPerPlayer)
          */
@@ -28382,10 +28382,6 @@ declare namespace Enum {
         }
         export const Spine: Spine;
         /**
-         * @deprecated renamed to Spine
-         */
-        export const Pelvis: Spine;
-        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Chest)
          */
         export interface Chest extends globalThis.EnumItem {
@@ -28431,10 +28427,6 @@ declare namespace Enum {
         }
         export const LeftToeBase: LeftToeBase;
         /**
-         * @deprecated renamed to LeftToeBase
-         */
-        export const LeftToes: LeftToeBase;
-        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#RightToeBase)
          */
         export interface RightToeBase extends globalThis.EnumItem {
@@ -28443,10 +28435,6 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.RigLabel;
         }
         export const RightToeBase: RightToeBase;
-        /**
-         * @deprecated renamed to RightToeBase
-         */
-        export const RightToes: RightToeBase;
         /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigLabel#Thumb1)
          */
@@ -31270,13 +31258,13 @@ declare namespace Enum {
     }
     export type StepFrequency = StepFrequency.Hz60 | StepFrequency.Hz30 | StepFrequency.Hz15 | StepFrequency.Hz10 | StepFrequency.Hz5 | StepFrequency.Hz1;
     /**
-     * Determines how content is streamed away from Players.
+     * Determines how content is streamed out from `Player` clients.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StreamOutBehavior)
      */
     export namespace StreamOutBehavior {
         /**
-         * Currently equivalent to LowMemory. This will eventually change to Opportunistic.
+         * Default behavior (subject to change).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StreamOutBehavior#Default)
          */
@@ -31298,7 +31286,7 @@ declare namespace Enum {
         }
         export const LowMemory: LowMemory;
         /**
-         * Stream out content that is significantly outside of the current StreamingRadius.
+         * Stream out content that is significantly outside of the current `Workspace.StreamingTargetRadius`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StreamOutBehavior#Opportunistic)
          */
@@ -31320,7 +31308,7 @@ declare namespace Enum {
      */
     export namespace StreamingIntegrityMode {
         /**
-         * Default behavior (currently equivalent to **Disabled**).
+         * Default behavior (subject to change).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StreamingIntegrityMode#Default)
          */
@@ -31369,7 +31357,7 @@ declare namespace Enum {
     }
     export type StreamingIntegrityMode = StreamingIntegrityMode.Default | StreamingIntegrityMode.Disabled | StreamingIntegrityMode.MinimumRadiusPause | StreamingIntegrityMode.PauseOutsideLoadedArea;
     /**
-     * Determines how a Players client should handle not having enough content streamed in to continue playing properly.
+     * Determines how a client should handle not having enough content streamed in to continue playing properly.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StreamingPauseMode)
      */
@@ -31377,7 +31365,7 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
-         * Default behavior (currently no change to gameplay).
+         * Default behavior (subject to change).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StreamingPauseMode#Default)
          */

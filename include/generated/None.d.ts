@@ -2929,7 +2929,7 @@ interface AdService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#RegisterDisclosureButton)
      */
-    RegisterDisclosureButton(this: AdService, disclosureButton: GuiButton, immersiveBrandedAdId: string): void;
+    RegisterDisclosureButton(this: AdService, disclosureButton: GuiButton, adIntegrationPlacementId: string): void;
     /**
      * **Deprecated:** `ShowVideoAd` has been decommissioned and is no longer operational.
      *
@@ -6694,9 +6694,14 @@ interface AudioPlayer extends Instance {
      */
     Volume: number;
     /**
+     * Attempts to cancel a pre-planned future `Play` or `Stop` command.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#Cancel)
+     * @param this Used to play audio assets.
+     * @param actionId The unique-ID of a pre-planned `Play` or `Stop` command.
+     * @returns Whether the cancellation was successful. Returns false if the action has already occurred, or otherwise does not exist.
      */
     Cancel(this: AudioPlayer, actionId?: number): boolean;
     /**
@@ -19102,8 +19107,6 @@ interface GuiButton extends GuiObject {
      */
     readonly MouseButton2Up: RBXScriptSignal<(x: number, y: number) => void>;
     /**
-     * Fires when a right-click is detected on desktop, long press detected on mobile, or triangle / Y activated in UI navigation mode on console. This function is not available yet.
-     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiButton#SecondaryActivated)
@@ -27867,6 +27870,13 @@ interface LogService extends Instance {
      */
     ClearOutput(this: LogService): void;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#Error)
+     */
+    Error(this: LogService, message: string, context?: object): void;
+    /**
      * Returns a table of tables, each with the message string, message type, and timestamp of a message that the client displays in the output window.
      *
      * - **ThreadSafety**: Unsafe
@@ -27876,13 +27886,41 @@ interface LogService extends Instance {
      */
     GetLogHistory(this: LogService): Array<LogInfo>;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#Info)
+     */
+    Info(this: LogService, message: string, context?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#Log)
+     */
+    Log(this: LogService, messageType: CastsToEnum<Enum.MessageType>, message: string, context?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#Output)
+     */
+    Output(this: LogService, message: string, context?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#Warn)
+     */
+    Warn(this: LogService, message: string, context?: object): void;
+    /**
      * Fires when the client outputs text.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#MessageOut)
      */
-    readonly MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType) => void>;
+    readonly MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType, context: object) => void>;
 }
 /**
  * The base class for all objects which contain Luau code.
@@ -41011,9 +41049,13 @@ interface SoundService extends Instance {
         BasePart
     ]>;
     /**
+     * Returns the number of seconds since the audio engine began mixing.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#GetMixerTime)
+     * @param this A service that determines various aspects of how the audio engine works. Most of its properties affect how `Sounds` play in the experience.
+     * @returns The number of seconds since the audio engine began mixing. This value is stable, sample-accurate, and monotonically-increasing – intended to be used for scheduling audible changes at precise times.
      */
     GetMixerTime(this: SoundService): number;
     /**
@@ -42397,6 +42439,12 @@ interface SurfaceAppearance extends Instance {
     get NormalMapContent(): Content;
     /**
      * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#ResampleMode)
+     */
+    ResampleMode: Enum.ResamplerMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#RoughnessMapContent)
@@ -42859,7 +42907,7 @@ interface TeleportService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportService#PromptExperienceDetailsAsync)
      * @param this Enables transporting `Players` between places and servers. For more information on how to teleport players between servers, see [Teleport between places](../../../projects/teleport.md).
      * @param player The `Player` to be presented the prompt.
-     * @param universeId `DataModel.UniverseId` of the experience to be presented to the `Player`
+     * @param universeId `DataModel.UniverseId` of the experience to be presented to the `Player`.
      * @returns `PromptExperienceDetailsResult`
      */
     PromptExperienceDetailsAsync(this: TeleportService, player: Player, universeId: number): Enum.PromptExperienceDetailsResult;
