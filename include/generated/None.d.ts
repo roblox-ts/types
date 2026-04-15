@@ -99,6 +99,7 @@ interface Services {
     InstanceExtensionsService: InstanceExtensionsService;
     InstanceFileSyncService: InstanceFileSyncService;
     InternalMessagingService: InternalMessagingService;
+    InternalMessagingServiceVerifier: InternalMessagingServiceVerifier;
     InternalSyncService: InternalSyncService;
     IXPService: IXPService;
     JointsService: JointsService;
@@ -149,6 +150,7 @@ interface Services {
     PluginManagementService: PluginManagementService;
     PluginPolicyService: PluginPolicyService;
     PolicyService: PolicyService;
+    Preloaded: Preloaded;
     ProceduralBehaviorSchedulerService: ProceduralBehaviorSchedulerService;
     ProcessInstancePhysicsService: ProcessInstancePhysicsService;
     ProximityPromptService: ProximityPromptService;
@@ -203,6 +205,7 @@ interface Services {
     StudioCameraService: StudioCameraService;
     StudioCaptureService: StudioCaptureService;
     StudioDeviceEmulatorService: StudioDeviceEmulatorService;
+    StudioDeviceSimulatorService: StudioDeviceSimulatorService;
     StudioPublishService: StudioPublishService;
     StudioScriptDebugEventListener: StudioScriptDebugEventListener;
     StudioSdkService: StudioSdkService;
@@ -2961,6 +2964,7 @@ interface AdService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#GetAdAvailabilityNowAsync)
      * @param this A class that allows the display of mobile video ads.
      * @param adFormat The format of the requested ad. For example, `RewardedVideo`.
+     * @returns A dictionary with the `AdAvailabilityResult` for the requested ad format.
      */
     GetAdAvailabilityNowAsync(this: AdService, adFormat: CastsToEnum<Enum.AdFormat>): object;
     /**
@@ -17573,6 +17577,8 @@ interface GeneratedFolder extends Folder {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeneratedFolder#SetPrimaryPart)
+     * @param this
+     * @param part
      */
     SetPrimaryPart(this: GeneratedFolder, part: BasePart): void;
 }
@@ -17825,7 +17831,7 @@ interface GeometryService extends Instance {
      * - `Radius` — If provided, this will be the center of the area to be   fragmented. Either `Origin` and `Radius` should both be provided, or   neither.
      *
      *
-     * @returns An array of `Vector3` which is typically passed into `FragmentAsync()`. The output depends on the options provided. If `Origin` and `Radius` are provided, then the output array will contain several `Vector3` elements which will all be located within the radius, but the last element of the array will be an inner array containing many `Vector3` sites which are outside the radius. If `Origin` and `Radius` are not provided, the output will simply be an array of `Vector3` positions within the extents of the input `part`.
+     * @returns An array of `Vector3` which is typically passed into `FragmentAsync()`. The output depends on the options provided. If `Origin` and `Radius` are provided, then the output array will contain several `Vector3` elements which will all be located within the radius, but the first element of the array will be an inner array containing many `Vector3` sites which are outside the radius. If `Origin` and `Radius` are not provided, the output will simply be an array of `Vector3` positions within the extents of the input `part`.
      */
     GenerateFragmentSites(this: GeometryService, part: BasePart, options?: object): Array<unknown>;
     /**
@@ -26215,6 +26221,21 @@ interface InternalMessagingService extends Instance {
     readonly _nominal_InternalMessagingService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalMessagingServiceVerifier)
+ */
+interface InternalMessagingServiceVerifier extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InternalMessagingServiceVerifier: unique symbol;
+}
+/**
  * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalSyncItem)
@@ -27861,7 +27882,7 @@ interface LogService extends Instance {
      */
     readonly _nominal_LogService: unique symbol;
     /**
-     * Clears the Roblox Studio output window.
+     * Clears Roblox Studio's **Output** window.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -27870,14 +27891,19 @@ interface LogService extends Instance {
      */
     ClearOutput(this: LogService): void;
     /**
+     * Logs a message at the `MessageType.MessageError` level and throws a structured error with optional context.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#Error)
+     * @param this A service that allows you to read outputted text.
+     * @param message The message string. Supports `{key}` template placeholders when a context table is provided.
+     * @param context An optional dictionary of key-value pairs. When provided, `{key}` placeholders in the message are replaced with the corresponding values.
      */
     Error(this: LogService, message: string, context?: object): void;
     /**
-     * Returns a table of tables, each with the message string, message type, and timestamp of a message that the client displays in the output window.
+     * Returns a table of tables, each with the message string, message type, and timestamp of a message that the client displays in the **Output** window.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -27886,31 +27912,52 @@ interface LogService extends Instance {
      */
     GetLogHistory(this: LogService): Array<LogInfo>;
     /**
+     * Logs a message at the `MessageType.MessageInfo` level with optional structured context.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#Info)
+     * @param this A service that allows you to read outputted text.
+     * @param message The message string. Supports `{key}` template placeholders when a context table is provided.
+     * @param context An optional dictionary of key-value pairs. When provided, `{key}` placeholders in the message are replaced with the corresponding values.
      */
     Info(this: LogService, message: string, context?: object): void;
     /**
+     * Logs a message at the specified level with optional structured context.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#Log)
+     * @param this A service that allows you to read outputted text.
+     * @param messageType The `MessageType` specifying the log level.
+     * @param message The message string. Supports `{key}` template placeholders when a context table is provided.
+     * @param context An optional dictionary of key-value pairs. When provided, `{key}` placeholders in the message are replaced with the corresponding values.
      */
     Log(this: LogService, messageType: CastsToEnum<Enum.MessageType>, message: string, context?: object): void;
     /**
+     * Logs a message at the `MessageType.MessageOutput` level with optional structured context.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#Output)
+     * @param this A service that allows you to read outputted text.
+     * @param message The message string. Supports `{key}` template placeholders when a context table is provided.
+     * @param context An optional dictionary of key-value pairs. When provided, `{key}` placeholders in the message are replaced with the corresponding values.
      */
     Output(this: LogService, message: string, context?: object): void;
     /**
+     * Logs a message at the `MessageType.MessageWarning` level with optional structured context.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#Warn)
+     * @param this A service that allows you to read outputted text.
+     * @param message The message string. Supports `{key}` template placeholders when a context table is provided.
+     * @param context An optional dictionary of key-value pairs. When provided, `{key}` placeholders in the message are replaced with the corresponding values.
      */
     Warn(this: LogService, message: string, context?: object): void;
     /**
@@ -28305,6 +28352,12 @@ interface MarketplaceService extends Instance {
      */
     readonly _nominal_MarketplaceService: unique symbol;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#BindReceiptHandler)
+     */
+    BindReceiptHandler(this: MarketplaceService, transactionType: CastsToEnum<Enum.ReceiptType>, handler: Callback, filter?: Array<unknown>): RBXScriptConnection;
+    /**
      * Prompts a user to purchase multiple avatar items with the given `assetId` or `bundleId`.
      *
      * - **ThreadSafety**: Unsafe
@@ -28588,6 +28641,13 @@ interface MarketplaceService extends Instance {
      * @returns Indicates whether the given player's inventory contains the given bundle.
      */
     PlayerOwnsBundleAsync(this: MarketplaceService, player: Player, bundleId: number): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptRobuxTransferAsync)
+     */
+    PromptRobuxTransferAsync(this: MarketplaceService, sender: Player, receiverUserId: number, amount: number): string;
     /**
      * Takes a list of product IDs and returns a personalized ordered list of those products.
      *
@@ -33045,6 +33105,7 @@ interface ProceduralModel extends Model {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralModel#ForceGeneration)
+     * @param this
      */
     ForceGeneration(this: ProceduralModel): boolean;
     /**
@@ -33052,6 +33113,7 @@ interface ProceduralModel extends Model {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralModel#WaitForGenerationAsync)
+     * @param this
      */
     WaitForGenerationAsync(this: ProceduralModel): boolean;
 }
@@ -37071,6 +37133,21 @@ interface SunRaysEffect extends PostEffect {
     Spread: number;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Preloaded)
+ */
+interface Preloaded extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Preloaded: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralBehaviorSchedulerService)
@@ -38318,6 +38395,8 @@ interface RunService extends Instance {
      */
     readonly Heartbeat: RBXScriptSignal<(deltaTime: number) => void>;
     /**
+     * In the server authority model, fires during prediction when the engine detects that the client has diverged from the server's authoritative state. Intended for plugin-based debugging.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#Misprediction)
@@ -38364,6 +38443,8 @@ interface RunService extends Instance {
      */
     readonly RenderStepped: RBXScriptSignal<(deltaTime: number) => void>;
     /**
+     * In the server authority model, this fires after rolling back the predicted state due to a misprediction, but before resimulation begins.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#Rollback)
@@ -38912,6 +38993,18 @@ interface ControllerPartSensor extends ControllerSensor {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControllerPartSensor#HitNormal)
      */
     HitNormal: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControllerPartSensor#LadderSearchHeight)
+     */
+    LadderSearchHeight: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControllerPartSensor#LadderSearchOffset)
+     */
+    LadderSearchOffset: number;
     /**
      * The distance from the sensor's parent `BasePart` to use when sensing other parts.
      *
@@ -41879,6 +41972,21 @@ interface StudioDeviceEmulatorService extends Instance {
     readonly _nominal_StudioDeviceEmulatorService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService)
+ */
+interface StudioDeviceSimulatorService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StudioDeviceSimulatorService: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioObjectBase)
@@ -42296,6 +42404,8 @@ interface StyleLink extends Instance {
     StyleSheet: StyleSheet | undefined;
 }
 /**
+ * Instance used to set conditions such as `"MaxSize"` and `"PreferredInput"` for a `StyleRule`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery)
  */
 interface StyleQuery extends Instance {
@@ -42308,6 +42418,8 @@ interface StyleQuery extends Instance {
      */
     readonly _nominal_StyleQuery: unique symbol;
     /**
+     * A boolean that determines whether a `StyleRule.Selector` of `@` will match the `StyleQuery` name.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -42315,35 +42427,43 @@ interface StyleQuery extends Instance {
      */
     readonly IsActive: boolean;
     /**
+     * Returns the value of a specific condition in the `StyleQuery`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#GetCondition)
-     * @param this
-     * @param name
+     * @param this Instance used to set conditions such as `"MaxSize"` and `"PreferredInput"` for a `StyleRule`.
+     * @param name String name of the condition, for example `"MaxSize"` or `"ViewportDisplaySize"`.
+     * @returns Value of the condition.
      */
     GetCondition(this: StyleQuery, name: string): unknown;
     /**
+     * Returns a dictionary of key-value pairs describing the conditoins set on the `StyleQuery`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#GetConditions)
-     * @param this
+     * @param this Instance used to set conditions such as `"MaxSize"` and `"PreferredInput"` for a `StyleRule`.
+     * @returns Dictionary of key-value pairs describing the conditions set on the `StyleQuery`.
      */
     GetConditions(this: StyleQuery): object;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#SetCondition)
-     * @param this
-     * @param name
-     * @param value
+     * @param this Instance used to set conditions such as `"MaxSize"` and `"PreferredInput"` for a `StyleRule`.
+     * @param name Condition name to set, for example `"MinSize"`.
+     * @param value Condition value to set, for example `Vector2.new(100, 0)`.
      */
     SetCondition(this: StyleQuery, name: string, value: unknown): void;
     /**
+     * Lets you declare and set multiple conditions of the `StyleQuery` at once.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery#SetConditions)
-     * @param this
-     * @param conditions
+     * @param this Instance used to set conditions such as `"MaxSize"` and `"PreferredInput"` for a `StyleRule`.
+     * @param conditions Dictionary of key-value pairs defining the conditions to set.
      */
     SetConditions(this: StyleQuery, conditions: object): void;
 }
@@ -43419,6 +43539,13 @@ interface TestService extends Instance {
      * @param name
      */
     isFeatureEnabled(this: TestService, name: string): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RequestValidationAsync)
+     */
+    RequestValidationAsync(this: TestService, artifactType: string, artifactName: string): unknown;
     /**
      * Fires when the server should collect a conditional test result.
      *

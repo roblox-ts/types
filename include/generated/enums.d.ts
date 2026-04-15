@@ -11174,6 +11174,42 @@ declare namespace Enum {
     }
     export type DeviceLevel = DeviceLevel.Low | DeviceLevel.Medium | DeviceLevel.High;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceSimulatorScalingMode)
+     */
+    export namespace DeviceSimulatorScalingMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceSimulatorScalingMode#ScaleToPhysicalSize)
+         */
+        export interface ScaleToPhysicalSize extends globalThis.EnumItem {
+            Name: "ScaleToPhysicalSize";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.DeviceSimulatorScalingMode;
+        }
+        export const ScaleToPhysicalSize: ScaleToPhysicalSize;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceSimulatorScalingMode#ActualResolution)
+         */
+        export interface ActualResolution extends globalThis.EnumItem {
+            Name: "ActualResolution";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.DeviceSimulatorScalingMode;
+        }
+        export const ActualResolution: ActualResolution;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceSimulatorScalingMode#FitToWindow)
+         */
+        export interface FitToWindow extends globalThis.EnumItem {
+            Name: "FitToWindow";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.DeviceSimulatorScalingMode;
+        }
+        export const FitToWindow: FitToWindow;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DeviceSimulatorScalingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DeviceSimulatorScalingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DeviceSimulatorScalingMode | undefined;
+    }
+    export type DeviceSimulatorScalingMode = DeviceSimulatorScalingMode.ScaleToPhysicalSize | DeviceSimulatorScalingMode.ActualResolution | DeviceSimulatorScalingMode.FitToWindow;
+    /**
      * Device category of the client.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceType)
@@ -27124,6 +27160,69 @@ declare namespace Enum {
     }
     export type ReadCapturesFromGalleryResult = ReadCapturesFromGalleryResult.Success | ReadCapturesFromGalleryResult.NeedPermission;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptDecision)
+     */
+    export namespace ReceiptDecision {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptDecision#NotProcessedYet)
+         */
+        export interface NotProcessedYet extends globalThis.EnumItem {
+            Name: "NotProcessedYet";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ReceiptDecision;
+        }
+        export const NotProcessedYet: NotProcessedYet;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptDecision#Processed)
+         */
+        export interface Processed extends globalThis.EnumItem {
+            Name: "Processed";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ReceiptDecision;
+        }
+        export const Processed: Processed;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ReceiptDecision>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ReceiptDecision | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ReceiptDecision | undefined;
+    }
+    export type ReceiptDecision = ReceiptDecision.NotProcessedYet | ReceiptDecision.Processed;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptType)
+     */
+    export namespace ReceiptType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptType#DeveloperProduct)
+         */
+        export interface DeveloperProduct extends globalThis.EnumItem {
+            Name: "DeveloperProduct";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ReceiptType;
+        }
+        export const DeveloperProduct: DeveloperProduct;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptType#RobuxTransferSender)
+         */
+        export interface RobuxTransferSender extends globalThis.EnumItem {
+            Name: "RobuxTransferSender";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ReceiptType;
+        }
+        export const RobuxTransferSender: RobuxTransferSender;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptType#RobuxTransferReceiver)
+         */
+        export interface RobuxTransferReceiver extends globalThis.EnumItem {
+            Name: "RobuxTransferReceiver";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.ReceiptType;
+        }
+        export const RobuxTransferReceiver: RobuxTransferReceiver;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ReceiptType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ReceiptType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ReceiptType | undefined;
+    }
+    export type ReceiptType = ReceiptType.DeveloperProduct | ReceiptType.RobuxTransferSender | ReceiptType.RobuxTransferReceiver;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationActionType)
      */
     export namespace RecommendationActionType {
@@ -30426,11 +30525,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.SensorMode;
         }
         export const Ladder: Ladder;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SensorMode#ClassicLadder)
+         */
+        export interface ClassicLadder extends globalThis.EnumItem {
+            Name: "ClassicLadder";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.SensorMode;
+        }
+        export const ClassicLadder: ClassicLadder;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SensorMode>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SensorMode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SensorMode | undefined;
     }
-    export type SensorMode = SensorMode.Floor | SensorMode.Ladder;
+    export type SensorMode = SensorMode.Floor | SensorMode.Ladder | SensorMode.ClassicLadder;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SensorUpdateType)
      */
@@ -38811,11 +38919,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.VoiceRccReconnectReason;
         }
         export const CloseRoom: CloseRoom;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceRccReconnectReason#FAEUpdate)
+         */
+        export interface FAEUpdate extends globalThis.EnumItem {
+            Name: "FAEUpdate";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.VoiceRccReconnectReason;
+        }
+        export const FAEUpdate: FAEUpdate;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VoiceRccReconnectReason>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VoiceRccReconnectReason | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VoiceRccReconnectReason | undefined;
     }
-    export type VoiceRccReconnectReason = VoiceRccReconnectReason.Unknown | VoiceRccReconnectReason.Migration | VoiceRccReconnectReason.CloseRoom;
+    export type VoiceRccReconnectReason = VoiceRccReconnectReason.Unknown | VoiceRccReconnectReason.Migration | VoiceRccReconnectReason.CloseRoom | VoiceRccReconnectReason.FAEUpdate;
     /**
      * Controls how the engine renders volumetric audio effects.
      *
