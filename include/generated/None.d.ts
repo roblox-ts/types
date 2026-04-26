@@ -171,6 +171,7 @@ interface Services {
     RunService: RunService;
     RuntimeContentService: RuntimeContentService;
     SafetyService: SafetyService;
+    SceneAnalysisService: SceneAnalysisService;
     ScriptChangeService: ScriptChangeService;
     ScriptCloneWatcher: ScriptCloneWatcher;
     ScriptCloneWatcherHelper: ScriptCloneWatcherHelper;
@@ -624,7 +625,6 @@ interface Instances extends Services, CreatableInstances {
     DebuggerLuaResponse: DebuggerLuaResponse;
     DebuggerVariable: DebuggerVariable;
     DynamicRotate: DynamicRotate;
-    EmotesPages: EmotesPages;
     ExplorerFilterAutocompleter: ExplorerFilterAutocompleter;
     FaceInstance: FaceInstance;
     FacialAnimationStreamingServiceStats: FacialAnimationStreamingServiceStats;
@@ -1051,8 +1051,9 @@ interface EditableImage extends RBXObject {
      * @param color Color of the circle.
      * @param transparency Transparency of the circle with 0 being fully opaque and 1 being fully transparent.
      * @param combineType How the pixels of the source image are blended with the pixels of the added image.
+     * @param antiAliasing Determines whether anti-aliasing is applied to the circle. When set to `AntiAliasing.Enabled`, circle edges are soft. When set to `AntiAliasing.Disabled`, circle edges are hard.
      */
-    DrawCircle(this: EditableImage, center: Vector2, radius: number, color: Color3, transparency: number, combineType: CastsToEnum<Enum.ImageCombineType>): void;
+    DrawCircle(this: EditableImage, center: Vector2, radius: number, color: Color3, transparency: number, combineType: CastsToEnum<Enum.ImageCombineType>, antiAliasing?: CastsToEnum<Enum.AntiAliasing>): void;
     /**
      * Draws another `EditableImage` into this `EditableImage` at the given position.
      *
@@ -1114,8 +1115,9 @@ interface EditableImage extends RBXObject {
      * @param color Color of the line.
      * @param transparency Transparency of the line.
      * @param combineType How the pixels of the source image are blended with the pixels of the added image.
+     * @param antiAliasing Determines whether anti-aliasing is applied to the line. When set to `AntiAliasing.Enabled`, line edges are soft. When set to `AntiAliasing.Disabled`, line edges are hard.
      */
-    DrawLine(this: EditableImage, p1: Vector2, p2: Vector2, color: Color3, transparency: number, combineType: CastsToEnum<Enum.ImageCombineType>): void;
+    DrawLine(this: EditableImage, p1: Vector2, p2: Vector2, color: Color3, transparency: number, combineType: CastsToEnum<Enum.ImageCombineType>, antiAliasing?: CastsToEnum<Enum.AntiAliasing>): void;
     /**
      * Draws a rectangle of the given size at the given top-left position.
      *
@@ -2931,6 +2933,9 @@ interface AdService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#RegisterDisclosureButton)
+     * @param this A class that allows the display of mobile video ads.
+     * @param disclosureButton The `GuiButton` you want to mark as an ad disclosure.
+     * @param adIntegrationPlacementId The id of the placement that this disclosure is attached to.
      */
     RegisterDisclosureButton(this: AdService, disclosureButton: GuiButton, adIntegrationPlacementId: string): void;
     /**
@@ -2972,6 +2977,10 @@ interface AdService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#GetCampaignEligibilityAsync)
+     * @param this A class that allows the display of mobile video ads.
+     * @param campaignId The id of the campaign that you want to check a `Player`'s eligibility for.
+     * @param player The `Player` you want to check eligibility for. If omitted, it will default to `LocalPlayer`.
+     * @returns A dictionary that looks like `{ IsEligible: boolean }`.
      */
     GetCampaignEligibilityAsync(this: AdService, campaignId: string, player?: Player): object;
     /**
@@ -3308,6 +3317,15 @@ interface AnimationClip extends Instance {
      * @deprecated
      */
     readonly _nominal_AnimationClip: unique symbol;
+    /**
+     * Returns the length (in seconds) of this `AnimationClip`. This will return `0` until the animation has fully loaded and thus may not be immediately available.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationClip#Length)
+     */
+    readonly Length: number;
     /**
      * Determines whether the animation stored in this `AnimationClip` is intended to loop.
      *
@@ -3970,6 +3988,12 @@ interface Animator extends Instance {
      * @param this Responsible for the playback and replication of `Animations`.
      */
     GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animator#GetTrackByAnimationId)
+     */
+    GetTrackByAnimationId(this: Animator, animationId: ContentId): AnimationTrack;
     /**
      * Loads an `Animation` onto an `Animator`, returning an `AnimationTrack`.
      *
@@ -16678,7 +16702,7 @@ interface ExperienceInviteOptions extends Instance {
      */
     InviteMessageId: string;
     /**
-     * Roblox `UserId` of the specific connection to invite.
+     * Roblox `UserId` of the specific friend to invite.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -16686,7 +16710,7 @@ interface ExperienceInviteOptions extends Instance {
      */
     InviteUser: number;
     /**
-     * Used to set a parameter in `Player:GetJoinData()` when a connection joins from the invite notification.
+     * Used to set a parameter in `Player:GetJoinData()` when a friend joins from the invite notification.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -28358,6 +28382,12 @@ interface MarketplaceService extends Instance {
      */
     BindReceiptHandler(this: MarketplaceService, transactionType: CastsToEnum<Enum.ReceiptType>, handler: Callback, filter?: Array<unknown>): RBXScriptConnection;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#OpenShop)
+     */
+    OpenShop(this: MarketplaceService, player: Player): void;
+    /**
      * Prompts a user to purchase multiple avatar items with the given `assetId` or `bundleId`.
      *
      * - **ThreadSafety**: Unsafe
@@ -28412,10 +28442,13 @@ interface MarketplaceService extends Instance {
      * Prompts a user to purchase Roblox Premium.
      *
      * - **ThreadSafety**: Unsafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptPremiumPurchase)
      * @param this The service responsible for in-experience transactions.
      * @param player The user being prompted to purchase Premium.
+     *
+     * @deprecated PromptRobloxSubscriptionPurchase
      */
     PromptPremiumPurchase(this: MarketplaceService, player: Player): void;
     /**
@@ -28445,9 +28478,13 @@ interface MarketplaceService extends Instance {
      */
     PromptPurchase(this: MarketplaceService, player: Player, assetId: number, equipIfPurchased?: boolean, currencyType?: CastsToEnum<Enum.CurrencyType>): void;
     /**
+     * Prompts a user to purchase a Roblox Plus subscription.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptRobloxSubscriptionPurchase)
+     * @param this The service responsible for in-experience transactions.
+     * @param user The `Player` to be prompted to purchase Roblox Plus.
      */
     PromptRobloxSubscriptionPurchase(this: MarketplaceService, user: Player): void;
     /**
@@ -28514,12 +28551,15 @@ interface MarketplaceService extends Instance {
      */
     GetProductInfoAsync(this: MarketplaceService, assetId: number, infoType?: CastsToEnum<Enum.InfoType>): object;
     /**
+     * Returns the subscription details for the given user for the Roblox Subscription ecosystem.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#GetRobloxSubscriptionDetailsAsync)
      * @param this The service responsible for in-experience transactions.
-     * @param user
+     * @param user The user regarding whom to check the subscription status.
+     * @returns A dictionary containing subscription details such as `IsSubscribed`, `IsOriginExperience`, and optionally `StartTime`.
      */
     GetRobloxSubscriptionDetailsAsync(this: MarketplaceService, user: Player): object;
     /**
@@ -28745,6 +28785,8 @@ interface MarketplaceService extends Instance {
      */
     readonly PromptPurchaseFinished: RBXScriptSignal<(player: Player, assetId: number, isPurchased: boolean) => void>;
     /**
+     * Fires when a purchase prompt for Roblox Plus is closed.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptRobloxSubscriptionPurchaseFinished)
@@ -33895,7 +33937,7 @@ interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {
     readonly _nominal_DataStoreVersionPages: unique symbol;
 }
 /**
- * A special version of `Pages` that contains information about a player's connections.
+ * A special version of `Pages` that contains information about a player's friends.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -33931,21 +33973,6 @@ interface InventoryPages<T = unknown> extends Pages<T> {
      * @deprecated
      */
     readonly _nominal_InventoryPages: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EmotesPages)
- */
-interface EmotesPages extends InventoryPages {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_EmotesPages: unique symbol;
 }
 /**
  * A special type of `Pages` object whose pages contain key-value pairs from a `MemoryStoreHashMap`.
@@ -35239,6 +35266,8 @@ interface Player extends Instance {
      */
     get GameplayPaused(): boolean;
     /**
+     * Indicates whether the player has an active Roblox subscription.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#HasRobloxSubscription)
@@ -35602,31 +35631,38 @@ interface Player extends Instance {
     /**
      * **Deprecated:** This method has been superseded by `GetFriendsOnlineAsync()`.
      *
-     * Returns a dictionary of online connections. Returns the product information of an asset using its asset ID.
+     * Returns a dictionary of online friends. Returns the product information of an asset using its asset ID.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#GetFriendsOnline)
      * @param this An object that represents a presently connected client to the experience.
-     * @param maxFriends The maximum number of online connections to return.
-     * @returns A dictionary of online connections (see the table above).
+     * @param maxFriends The maximum number of online friends to return.
+     * @returns A dictionary of online friends (see the table above).
      *
      * @deprecated GetFriendsOnlineAsync
      */
     GetFriendsOnline(this: Player, maxFriends?: number): Array<FriendOnlineInfo>;
     /**
-     * Returns a dictionary of online connections.
+     * Returns a dictionary of online friends.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#GetFriendsOnlineAsync)
      * @param this An object that represents a presently connected client to the experience.
-     * @param maxFriends The maximum number of online connections to return.
-     * @returns A dictionary of online connections (see the table above).
+     * @param maxFriends The maximum number of online friends to return.
+     * @returns A dictionary of online friends (see the table above).
      */
     GetFriendsOnlineAsync(this: Player, maxFriends?: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#GetFriendsWhoPlayedAsync)
+     */
+    GetFriendsWhoPlayedAsync(this: Player): Array<unknown>;
     /**
      * **Deprecated:**
      *
@@ -35686,7 +35722,7 @@ interface Player extends Instance {
     /**
      * **Deprecated:** This function is obsolete because the "best friends" feature was removed. Use `Player:IsFriendsWithAsync()` instead.
      *
-     * Returns whether a player is connections with the specified user.
+     * Returns whether a player is friends with the specified user.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -35701,7 +35737,7 @@ interface Player extends Instance {
     /**
      * **Deprecated:** This method has been superseded by the `Player:IsFriendsWithAsync()` method which should be used for new work.
      *
-     * Checks whether a player is a connection of the user with the given `Player.UserId`.
+     * Checks whether a player is a friend of the user with the given `Player.UserId`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -35709,13 +35745,13 @@ interface Player extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#IsFriendsWith)
      * @param this An object that represents a presently connected client to the experience.
      * @param userId The `Player.UserId` of the specified player.
-     * @returns A boolean indicating whether a player is a connection of the specified user.
+     * @returns A boolean indicating whether a player is a friend of the specified user.
      *
      * @deprecated IsFriendsWithAsync
      */
     IsFriendsWith(this: Player, userId: number): boolean;
     /**
-     * Checks whether a player is a connection of the user with the given `Player.UserId`.
+     * Checks whether a player is a friend of the user with the given `Player.UserId`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -35723,7 +35759,7 @@ interface Player extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#IsFriendsWithAsync)
      * @param this An object that represents a presently connected client to the experience.
      * @param userId The `Player.UserId` of the specified player.
-     * @returns A boolean indicating whether a player is a connection of the specified user.
+     * @returns A boolean indicating whether a player is a friend of the specified user.
      */
     IsFriendsWithAsync(this: Player, userId: number): boolean;
     /**
@@ -36498,7 +36534,7 @@ interface Players extends Instance {
      */
     GetCharacterAppearanceInfoAsync(this: Players, userId: number): CharacterAppearanceInfo;
     /**
-     * Returns a `FriendPages` object which contains information for all of the given player's connections.
+     * Returns a `FriendPages` object which contains information for all of the given player's friends.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -38512,6 +38548,63 @@ interface SafetyService extends Instance {
      * @deprecated
      */
     readonly _nominal_SafetyService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService)
+ */
+interface SceneAnalysisService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SceneAnalysisService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService#GetAnimationMemoryAsync)
+     */
+    GetAnimationMemoryAsync(this: SceneAnalysisService): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService#GetAudioMemoryAsync)
+     */
+    GetAudioMemoryAsync(this: SceneAnalysisService): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService#GetInstanceCompositionAsync)
+     */
+    GetInstanceCompositionAsync(this: SceneAnalysisService): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService#GetScriptMemoryAsync)
+     */
+    GetScriptMemoryAsync(this: SceneAnalysisService): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService#GetTriangleCompositionAsync)
+     */
+    GetTriangleCompositionAsync(this: SceneAnalysisService): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService#GetUnparentedInstancesAsync)
+     */
+    GetUnparentedInstancesAsync(this: SceneAnalysisService): object;
 }
 /**
  * A 2D user interface that allows users to capture and save screenshots to their local device.
