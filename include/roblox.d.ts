@@ -1972,12 +1972,26 @@ interface OverlapParams {
 	 */
 	readonly _nominal_OverlapParams: unique symbol;
 	/**
+	 * An optional array of instances whose descendants will be excluded from the query. This property can be used simultaneously with [IncludeInstances](https://create.roblox.com/docs/reference/engine/datatypes/OverlapParams#IncludeInstances) to allow for mixed filtering, for example including a large folder but excluding specific child instances. If an instance matches both an exclude and include filter, exclusions take priority over inclusions.
+	 */
+	ExcludeInstances: Array<Instance> | undefined;
+	/**
+	 * An optional array of instances whose descendants will be included in the query. This property can be used simultaneously with [ExcludeInstances](https://create.roblox.com/docs/reference/engine/datatypes/OverlapParams#ExcludeInstances) to allow for mixed filtering. If an instance matches both an exclude and include filter, exclusions take priority over inclusions.
+	 *
+	 * Setting `IncludeInstances` to `nil` versus an empty array (`{}`) has opposite effects. `IncludeInstances = nil` is the most permissive filter (includes everything), whereas `IncludeInstances = {}` is the most restrictive filter (includes nothing).
+	 */
+	IncludeInstances: Array<Instance> | undefined;
+	/**
 	 * An array of objects whose descendants will be used in filtering.
+	 *
+	 * @deprecated
 	 */
 	FilterDescendantsInstances: Array<Instance>;
 	/**
 	 * `RaycastFilterType.Include` or `RaycastFilterType.Exclude`. Determines how the `FilterDescendantInstances` is
 	 * used. `Exclude` will skip the `FilterDescendantInstances`, and `Include` will exclusively include them.
+	 *
+	 * @deprecated
 	 */
 	FilterType: Enum.RaycastFilterType;
 	/**
@@ -2000,6 +2014,8 @@ interface OverlapParams {
 	/**
 	 * For efficiency and simplicity, this method is the preferred way to add instances to the filter.
 	 * It has the additional advantage that it allows FilterDescendantsInstances to be updated from a parallel context.
+	 *
+	 * @deprecated
 	 */
 	AddToFilter(this: OverlapParams, instances: Instance | Array<Instance>): void;
 }
@@ -2175,7 +2191,20 @@ interface RaycastParams {
 	 * @deprecated
 	 */
 	readonly _nominal_RaycastParams: unique symbol;
-	/** An array of objects whose descendants will be used in filtering raycasting candidates. */
+	/**
+	 * An optional array of instances whose descendants will be excluded from the query. This property can be used simultaneously with [IncludeInstances](https://create.roblox.com/docs/reference/engine/datatypes/RaycastParams#IncludeInstances) to allow for mixed filtering, for example including a large folder but excluding specific child instances. If an instance matches both an exclude and include filter, exclusions take priority over inclusions.
+	 */
+	ExcludeInstances: Array<Instance> | undefined;
+	/**
+	 * An optional array of instances whose descendants will be included in the query. This property can be used simultaneously with [ExcludeInstances](https://create.roblox.com/docs/reference/engine/datatypes/RaycastParams#ExcludeInstances) to allow for mixed filtering. If an instance matches both an exclude and include filter, exclusions take priority over inclusions.
+	 *
+	 * Setting `IncludeInstances` to `nil` versus an empty array (`{}`) has opposite effects. `IncludeInstances = nil` is the most permissive filter (includes everything), whereas `IncludeInstances = {}` is the most restrictive filter (includes nothing).
+	 */
+	IncludeInstances: Array<Instance> | undefined;
+	/** An array of objects whose descendants will be used in filtering raycasting candidates.
+	 *
+	 * @deprecated
+	 */
 	FilterDescendantsInstances: Array<Instance>;
 	/**
 	 * Determines how the `FilterDescendantsInstances` list will be used, depending on the
@@ -2185,6 +2214,8 @@ interface RaycastParams {
 	 * which are descendants of objects in the filter list will be considered in the raycast operation.
 	 * - `Enum.RaycastFilterType.Exclude` — Every [BasePart](https://developer.roblox.com/api-reference/class/BasePart)
 	 * in the game will be considered except those that are descendants of objects in the filter list.
+	 *
+	 * @deprecated
 	 */
 	FilterType: Enum.RaycastFilterType;
 	/**
@@ -2211,6 +2242,8 @@ interface RaycastParams {
 	/**
 	 * For efficiency and simplicity, this method is the preferred way to add instances to the filter.
 	 * It has the additional advantage that it allows FilterDescendantsInstances to be updated from a parallel context.
+	 *
+	 * @deprecated
 	 */
 	AddToFilter(this: RaycastParams, instances: Instance | Array<Instance>): void;
 }
