@@ -1984,14 +1984,14 @@ interface OverlapParams {
 	/**
 	 * An array of objects whose descendants will be used in filtering.
 	 *
-	 * @deprecated
+	 * @deprecated Use `ExcludeInstances` and `IncludeInstances`
 	 */
 	FilterDescendantsInstances: Array<Instance>;
 	/**
 	 * `RaycastFilterType.Include` or `RaycastFilterType.Exclude`. Determines how the `FilterDescendantInstances` is
 	 * used. `Exclude` will skip the `FilterDescendantInstances`, and `Include` will exclusively include them.
 	 *
-	 * @deprecated
+	 * @deprecated Use `ExcludeInstances` and `IncludeInstances`
 	 */
 	FilterType: Enum.RaycastFilterType;
 	/**
@@ -2015,7 +2015,7 @@ interface OverlapParams {
 	 * For efficiency and simplicity, this method is the preferred way to add instances to the filter.
 	 * It has the additional advantage that it allows FilterDescendantsInstances to be updated from a parallel context.
 	 *
-	 * @deprecated
+	 * @deprecated Use `ExcludeInstances` and `IncludeInstances`
 	 */
 	AddToFilter(this: OverlapParams, instances: Instance | Array<Instance>): void;
 }
@@ -2203,7 +2203,7 @@ interface RaycastParams {
 	IncludeInstances: Array<Instance> | undefined;
 	/** An array of objects whose descendants will be used in filtering raycasting candidates.
 	 *
-	 * @deprecated
+	 * @deprecated Use `ExcludeInstances` and `IncludeInstances`
 	 */
 	FilterDescendantsInstances: Array<Instance>;
 	/**
@@ -2215,7 +2215,7 @@ interface RaycastParams {
 	 * - `Enum.RaycastFilterType.Exclude` — Every [BasePart](https://developer.roblox.com/api-reference/class/BasePart)
 	 * in the game will be considered except those that are descendants of objects in the filter list.
 	 *
-	 * @deprecated
+	 * @deprecated Use `ExcludeInstances` and `IncludeInstances`
 	 */
 	FilterType: Enum.RaycastFilterType;
 	/**
@@ -2243,7 +2243,7 @@ interface RaycastParams {
 	 * For efficiency and simplicity, this method is the preferred way to add instances to the filter.
 	 * It has the additional advantage that it allows FilterDescendantsInstances to be updated from a parallel context.
 	 *
-	 * @deprecated
+	 * @deprecated Use `ExcludeInstances` and `IncludeInstances`
 	 */
 	AddToFilter(this: RaycastParams, instances: Instance | Array<Instance>): void;
 }
