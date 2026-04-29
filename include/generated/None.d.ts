@@ -39,6 +39,7 @@ interface Services {
     ChangeHistoryStreamingService: ChangeHistoryStreamingService;
     Chat: Chat;
     CloudCRUDService: CloudCRUDService;
+    CloudExecutionService: CloudExecutionService;
     CollaboratorsService: CollaboratorsService;
     CollectionService: CollectionService;
     CommerceService: CommerceService;
@@ -9406,6 +9407,12 @@ interface RootImportData extends BaseImportData {
     /**
      * - **ThreadSafety**: ReadSafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RootImportData#VersionedAssetId)
+     */
+    VersionedAssetId: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RootImportData#WorldForward)
      */
     WorldForward: Enum.NormalId;
@@ -11915,6 +11922,21 @@ interface CloudCRUDService extends Instance {
      * @deprecated
      */
     readonly _nominal_CloudCRUDService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CloudExecutionService)
+ */
+interface CloudExecutionService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CloudExecutionService: unique symbol;
 }
 /**
  * Renders realistic clouds that drift slowly across the sky.
@@ -15669,8 +15691,6 @@ interface DataStoreSetOptions extends Instance {
 /**
  * Allows scheduling the guaranteed destruction of an object without yielding.
  *
- *  .
- *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Debris)
@@ -15691,8 +15711,6 @@ interface Debris extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Debris#AddItem)
      * @param this Allows scheduling the guaranteed destruction of an object without yielding.
-     *
-     *  .
      * @param item The `Instance` to add to `Debris`.
      * @param lifetime Number of seconds before the `Instance` should be destroyed.
      */
@@ -17586,6 +17604,8 @@ interface Folder extends Instance {
     readonly _nominal_Folder: unique symbol;
 }
 /**
+ * A container that stores `ProceduralModel` generation results.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeneratedFolder)
  */
 interface GeneratedFolder extends Folder {
@@ -17598,10 +17618,12 @@ interface GeneratedFolder extends Folder {
      */
     readonly _nominal_GeneratedFolder: unique symbol;
     /**
+     * Specifies which part within the `GeneratedFolder` should be set as the `PrimaryPart` of the `ProceduralModel`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeneratedFolder#SetPrimaryPart)
-     * @param this
+     * @param this A container that stores `ProceduralModel` generation results.
      * @param part
      */
     SetPrimaryPart(this: GeneratedFolder, part: BasePart): void;
@@ -23445,7 +23467,7 @@ interface Humanoid extends Instance {
      */
     RightLeg: BasePart | undefined;
     /**
-     * A reference to the humanoid's **HumanoidRootPart** object.
+     * A reference to the humanoid's `HumanoidRootPart` object.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -23860,7 +23882,7 @@ interface Humanoid extends Instance {
      */
     ApplyDescription(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
     /**
-     * Makes the character's look match that of the passed in `HumanoidDescription`.
+     * Makes the character's look match that of the passed in `HumanoidDescription`. If `UseAvatarSettings` is true, the Avatar Settings for the experience will also be applied to the character.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -31594,6 +31616,12 @@ interface Terrain extends BasePart {
      */
     FillWedge(this: Terrain, cframe: CFrame, size: Vector3, material: CastsToEnum<Enum.Material>): void;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#GetBaseMaterialSlotIndex)
+     */
+    GetBaseMaterialSlotIndex(this: Terrain, baseMaterial: CastsToEnum<Enum.Material>): number | undefined;
+    /**
      * **Deprecated:** This item is a deprecated function of a legacy `Terrain` engine that has been removed. Do not use it for new work.
      *
      * Returns the closest CellMaterial from the legacy terrain engine that matches the smooth terrain voxel specified.
@@ -31611,6 +31639,12 @@ interface Terrain extends BasePart {
      */
     GetCell(this: Terrain, x: number, y: number, z: number): unknown;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#GetFirstCustomMaterialSlotIndex)
+     */
+    GetFirstCustomMaterialSlotIndex(this: Terrain): number;
+    /**
      * Returns current terrain material color for specified terrain material.
      *
      * - **ThreadSafety**: Safe
@@ -31620,6 +31654,12 @@ interface Terrain extends BasePart {
      * @param material
      */
     GetMaterialColor(this: Terrain, material: CastsToEnum<Enum.Material>): Color3;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#GetMaterialSlot)
+     */
+    GetMaterialSlot(this: Terrain, slotIndex: number): unknown;
     /**
      * **Deprecated:** This item is a deprecated function of a legacy `Terrain` engine that has been removed. Do not use it for new work.
      *
@@ -31731,6 +31771,12 @@ interface Terrain extends BasePart {
      */
     ReplaceMaterial(this: Terrain, region: Region3, resolution: number, sourceMaterial: CastsToEnum<Enum.Material>, targetMaterial: CastsToEnum<Enum.Material>): void;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#ResetMaterialSlot)
+     */
+    ResetMaterialSlot(this: Terrain, slotIndex: number): void;
+    /**
      * **Deprecated:** This item is a deprecated function of a legacy `Terrain` engine that has been removed. Do not use it for new work.
      *
      * Sets the occupancy and material of a specific terrain voxel.
@@ -31779,6 +31825,12 @@ interface Terrain extends BasePart {
      * @param value
      */
     SetMaterialColor(this: Terrain, material: CastsToEnum<Enum.Material>, value: Color3): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#SetMaterialSlot)
+     */
+    SetMaterialSlot(this: Terrain, slotIndex: number, baseMaterial: CastsToEnum<Enum.Material>, materialVariant: string, color: Color3): void;
     /**
      * **Deprecated:** This item is a deprecated function of a legacy `Terrain` engine that has been removed. Do not use it for new work.
      *
@@ -33113,6 +33165,8 @@ interface Tool extends BackpackItem {
     readonly Unequipped: RBXScriptSignal<() => void>;
 }
 /**
+ * Procedural models support edit-time procedural generation. Instead of manually constructing model content, a procedural model generates its contents automatically in response to parameter changes.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralModel)
  */
 interface ProceduralModel extends Model {
@@ -33125,6 +33179,8 @@ interface ProceduralModel extends Model {
      */
     readonly _nominal_ProceduralModel: unique symbol;
     /**
+     * Stores errors that the generator module might encounter during generation.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -33132,12 +33188,16 @@ interface ProceduralModel extends Model {
      */
     readonly GenerationError: string;
     /**
+     * A reference to a `ModuleScript` that contains code which defines how the `ProceduralModel` generates its contents in response to parameter changes.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralModel#Generator)
      */
     Generator: ModuleScript | undefined;
     /**
+     * Defines the bounding volume used for generation.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralModel#Size)
@@ -33147,15 +33207,18 @@ interface ProceduralModel extends Model {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralModel#ForceGeneration)
-     * @param this
+     * @param this Procedural models support edit-time procedural generation. Instead of manually constructing model content, a procedural model generates its contents automatically in response to parameter changes.
      */
     ForceGeneration(this: ProceduralModel): boolean;
     /**
+     * Waits for generation to complete after making parameter changes.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralModel#WaitForGenerationAsync)
-     * @param this
+     * @param this Procedural models support edit-time procedural generation. Instead of manually constructing model content, a procedural model generates its contents automatically in response to parameter changes.
+     * @returns Was the generation successful?
      */
     WaitForGenerationAsync(this: ProceduralModel): boolean;
 }
@@ -36453,7 +36516,7 @@ interface Players extends Instance {
      */
     CreateHumanoidModelFromDescription(this: Players, description: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): Model;
     /**
-     * Returns a character `Model` equipped with everything specified in the passed in `HumanoidDescription`.
+     * Returns a character `Model` equipped with everything specified in the passed in `HumanoidDescription`. If `UseAvatarSettings` is set to true, Avatar Settings in the experience will be applied to the returned model.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -36706,6 +36769,8 @@ interface PluginCapabilities extends Instance {
     readonly _nominal_PluginCapabilities: unique symbol;
 }
 /**
+ * This service is used by plugins to communicate with other instances of themselves running in other data models.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService)
@@ -38340,7 +38405,7 @@ interface RunService extends Instance {
      * @param function The function to call. This function will be passed one parameter called `deltaTime` which shows how much time passed between the beginning of the previous simulation step and the beginning of the current simulation step.
      * @param frequency Optional `StepFrequency` value indicating the frequency at which to call the bound function. If not provided, the default frequency will be used.
      */
-    BindToSimulation(this: RunService, callback: Callback, frequency?: CastsToEnum<Enum.StepFrequency>): RBXScriptConnection;
+    BindToSimulation(this: RunService, callback: Callback, frequency?: CastsToEnum<Enum.StepFrequency>, priority?: number): RBXScriptConnection;
     /**
      * Checks the `PredictionStatus` of a specific context instance, useful for debugging scripts affecting multiple instances where some might be predicted and others might not.
      *
@@ -42346,6 +42411,12 @@ interface StyleRule extends StyleBase {
      */
     readonly SelectorError: string;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#GetDefaultPropertyTransition)
+     */
+    GetDefaultPropertyTransition(this: StyleRule): unknown;
+    /**
      * Returns a dictionary of key-value pairs describing the properties of the `StyleRule`.
      *
      * - **ThreadSafety**: Unsafe
@@ -42373,6 +42444,12 @@ interface StyleRule extends StyleBase {
      * @param this Defines style properties which override properties on the instances affected by the `Selector` property.
      */
     GetPropertyTransitions(this: StyleRule): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#SetDefaultPropertyTransition)
+     */
+    SetDefaultPropertyTransition(this: StyleRule, transitionParams: unknown): void;
     /**
      * Lets you declare and set multiple properties of the `StyleRule` at once.
      *
@@ -49513,6 +49590,8 @@ interface OutputLink extends RBXObject {
     readonly _nominal_OutputLink: unique symbol;
 }
 /**
+ * Encapsulates a connection between the current data model and another for plugin communication.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection)
@@ -49686,6 +49765,8 @@ interface VideoSampler extends RBXObject {
     GetSamplesAtTimesAsync(this: VideoSampler, times: Array<unknown>): Array<unknown>;
 }
 /**
+ * Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput)

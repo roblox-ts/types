@@ -40,6 +40,7 @@ interface Services {
     ChangeHistoryStreamingService: ChangeHistoryStreamingService;
     Chat: Chat;
     CloudCRUDService: CloudCRUDService;
+    CloudExecutionService: CloudExecutionService;
     CollaboratorsService: CollaboratorsService;
     CollectionService: CollectionService;
     CommerceService: CommerceService;
@@ -3434,6 +3435,21 @@ interface CloudCRUDService extends Instance {
     readonly _nominal_CloudCRUDService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CloudExecutionService)
+ */
+interface CloudExecutionService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CloudExecutionService: unique symbol;
+}
+/**
  * Renders realistic clouds that drift slowly across the sky.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Clouds)
@@ -4495,8 +4511,6 @@ interface DataStoreSetOptions extends Instance {
 }
 /**
  * Allows scheduling the guaranteed destruction of an object without yielding.
- *
- *  .
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -5898,6 +5912,8 @@ interface Folder extends Instance {
     readonly _nominal_Folder: unique symbol;
 }
 /**
+ * A container that stores `ProceduralModel` generation results.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeneratedFolder)
  */
 interface GeneratedFolder extends Folder {
@@ -9021,6 +9037,48 @@ interface NetworkSettings extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#FreeMemoryMBytes)
      */
     readonly FreeMemoryMBytes: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#InboundNetworkJitterMs)
+     */
+    InboundNetworkJitterMs: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#InboundNetworkLossPercent)
+     */
+    InboundNetworkLossPercent: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#InboundNetworkMinDelayMs)
+     */
+    InboundNetworkMinDelayMs: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#OutboundNetworkJitterMs)
+     */
+    OutboundNetworkJitterMs: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#OutboundNetworkLossPercent)
+     */
+    OutboundNetworkLossPercent: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#OutboundNetworkMinDelayMs)
+     */
+    OutboundNetworkMinDelayMs: number;
 }
 /**
  * An instance used to prevent collisions between two specific parts.
@@ -9572,6 +9630,8 @@ interface Tool extends BackpackItem {
     readonly _nominal_Tool: unique symbol;
 }
 /**
+ * Procedural models support edit-time procedural generation. Instead of manually constructing model content, a procedural model generates its contents automatically in response to parameter changes.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralModel)
  */
 interface ProceduralModel extends Model {
@@ -11179,6 +11239,8 @@ interface PluginCapabilities extends Instance {
     readonly _nominal_PluginCapabilities: unique symbol;
 }
 /**
+ * This service is used by plugins to communicate with other instances of themselves running in other data models.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService)
@@ -11193,18 +11255,29 @@ interface PluginConnectionService extends Instance {
      */
     readonly _nominal_PluginConnectionService: unique symbol;
     /**
+     * Checks if the current data model context can ever have connections of a given type.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService#CanHaveConnectionType)
+     * @param this This service is used by plugins to communicate with other instances of themselves running in other data models.
+     * @param type The connection type to check.
      */
     CanHaveConnectionType(this: PluginConnectionService, type: CastsToEnum<Enum.PluginConnectionTargetType>): boolean;
     /**
+     * Returns a list of currently connected `PluginConnection` objects with the given connection type.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService#GetPluginConnectionsOfType)
+     * @param this This service is used by plugins to communicate with other instances of themselves running in other data models.
+     * @param type The connection type to check.
+     * @returns An array of the currently connected `PluginConnection` objects with that target type.
      */
     GetPluginConnectionsOfType(this: PluginConnectionService, type: CastsToEnum<Enum.PluginConnectionTargetType>): Array<unknown>;
     /**
+     * Fires just after a new `PluginConnection` successfully connects.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService#Connected)
@@ -16042,9 +16115,13 @@ interface UserInputService extends Instance {
      */
     readonly _nominal_UserInputService: unique symbol;
     /**
+     * Creates a `VirtualInput` object that a Studio plugin can use to simulate mouse, keyboard, and pointer input.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#CreateVirtualInput)
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
+     * @returns A new `VirtualInput` object, or `nil` if the feature is not available.
      */
     CreateVirtualInput(this: UserInputService): RBXObject;
 }
@@ -16678,6 +16755,8 @@ interface OutputLink extends RBXObject {
     readonly _nominal_OutputLink: unique symbol;
 }
 /**
+ * Encapsulates a connection between the current data model and another for plugin communication.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection)
@@ -16692,6 +16771,8 @@ interface PluginConnection extends RBXObject {
      */
     readonly _nominal_PluginConnection: unique symbol;
     /**
+     * Whether this `PluginConnection` object is still connected.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -16699,6 +16780,8 @@ interface PluginConnection extends RBXObject {
      */
     readonly Connected: boolean;
     /**
+     * A unique ID for the target data model.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -16706,6 +16789,8 @@ interface PluginConnection extends RBXObject {
      */
     readonly TargetId: string;
     /**
+     * This `PluginConnectionTargetType` describes the relationship of the target data model to the current one.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -16713,15 +16798,24 @@ interface PluginConnection extends RBXObject {
      */
     readonly Type: Enum.PluginConnectionTargetType;
     /**
+     * Binds a callback to this `PluginConnection` to receive messages from `SendMessage()`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection#BindToMessage)
+     * @param this Encapsulates a connection between the current data model and another for plugin communication.
+     * @param callback A function accepting a string or a buffer which will be called when this `PluginConnection` receives a message.
+     * @returns A `RBXScriptConnection` representing the binding of this callback to the `PluginConnection`. Disconnect it to disconnect this callback from the connection.
      */
     BindToMessage(this: PluginConnection, callbackFunction: Callback): RBXScriptConnection;
     /**
+     * Sends a payload to the remote data model.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection#SendMessage)
+     * @param this Encapsulates a connection between the current data model and another for plugin communication.
+     * @param message The string or buffer to be sent.
      */
     SendMessage(this: PluginConnection, message: unknown): void;
 }
@@ -16803,6 +16897,8 @@ interface VideoSampler extends RBXObject {
     readonly _nominal_VideoSampler: unique symbol;
 }
 /**
+ * Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput)
@@ -16817,39 +16913,69 @@ interface VirtualInput extends RBXObject {
      */
     readonly _nominal_VirtualInput: unique symbol;
     /**
+     * Injects a keyboard key press or release event.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendKey)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param isPressed Whether to simulate a key press (`true`) or a key release (`false`).
+     * @param keyCode The `KeyCode` of the key to inject.
+     * @param isRepeatedKey Whether this is an auto-repeat event, as occurs when a key is held down. Only valid for text-manipulation keys such as `KeyCode.Backspace`, `KeyCode.Delete`, and the arrow keys. Defaults to `false`.
      */
     SendKey(this: VirtualInput, isPressed: boolean, keyCode: CastsToEnum<Enum.KeyCode>, isRepeatedKey?: boolean): void;
     /**
+     * Injects a mouse button press or release event at the specified screen position.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMouseButton)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param position The screen-space position in pixels at which to inject the event.
+     * @param button The mouse button to use. Supported values are `UserInputType.MouseButton1`, `UserInputType.MouseButton2`, and `UserInputType.MouseButton3`.
+     * @param isDown Whether to simulate a button press (`true`) or a button release (`false`).
+     * @param repeatCount The consecutive-click count for multi-click detection, such as a double- or triple-click. Defaults to `0`.
      */
     SendMouseButton(this: VirtualInput, position: Vector2, button: CastsToEnum<Enum.UserInputType>, isDown: boolean, repeatCount?: number): void;
     /**
+     * Injects a relative mouse movement event. Only works while the player's cursor is locked.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMouseDelta)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param positionDelta The relative mouse movement in pixels along each axis.
      */
     SendMouseDelta(this: VirtualInput, positionDelta: Vector2): void;
     /**
+     * Moves the virtual mouse cursor to the specified absolute screen position.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMousePosition)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param position The target screen-space position in pixels.
      */
     SendMousePosition(this: VirtualInput, position: Vector2): void;
     /**
+     * Injects a scroll wheel, trackpad pan, or pinch gesture event at the specified screen position.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendPointerAction)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param position The screen-space position in pixels at which to inject the event.
+     * @param pointerAction A dictionary describing the pointer action to inject. Accepted keys are `Wheel` (number), `Pan` (`Vector2`), and `Pinch` (number). At least one key must have a non-zero value.
      */
     SendPointerAction(this: VirtualInput, position: Vector2, pointerAction: object): void;
     /**
+     * Injects a text input event as if the specified string was typed on a keyboard.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendTextInput)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param text The string to inject as text input.
      */
     SendTextInput(this: VirtualInput, text: string): void;
 }
