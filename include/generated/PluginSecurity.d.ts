@@ -140,6 +140,7 @@ interface Services {
     NetworkSettings: NetworkSettings;
     OmniRecommendationsService: OmniRecommendationsService;
     OpenCloudService: OpenCloudService;
+    Packages: Packages;
     PackageService: PackageService;
     PackageUIService: PackageUIService;
     PartyEmulatorService: PartyEmulatorService;
@@ -9038,6 +9039,8 @@ interface NetworkSettings extends Instance {
      */
     readonly FreeMemoryMBytes: number;
     /**
+     * Adds jitter to playtest connections in the server-to-client direction.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -9045,6 +9048,8 @@ interface NetworkSettings extends Instance {
      */
     InboundNetworkJitterMs: number;
     /**
+     * Sets the probability that packets on playtest connections from server to client are dropped.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -9052,6 +9057,8 @@ interface NetworkSettings extends Instance {
      */
     InboundNetworkLossPercent: number;
     /**
+     * Adds latency to playtest connections in the server-to-client direction.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -9059,6 +9066,8 @@ interface NetworkSettings extends Instance {
      */
     InboundNetworkMinDelayMs: number;
     /**
+     * Adds jitter to playtest connections in the client-to-server direction.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -9066,6 +9075,8 @@ interface NetworkSettings extends Instance {
      */
     OutboundNetworkJitterMs: number;
     /**
+     * Sets the probability that packets on playtest connections from client to server are dropped.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -9073,6 +9084,8 @@ interface NetworkSettings extends Instance {
      */
     OutboundNetworkLossPercent: number;
     /**
+     * Adds latency to playtest connections in the client-to-server direction.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -9703,6 +9716,8 @@ interface Workspace extends WorldRoot {
      */
     readonly _nominal_Workspace: unique symbol;
     /**
+     * Controls whether parts that fall below `Workspace.FallenPartsDestroyHeight` are automatically destroyed.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#FallHeightEnabled)
@@ -9728,6 +9743,8 @@ interface Workspace extends WorldRoot {
      */
     set InterpolationThrottling(value: Enum.InterpolationThrottlingMode);
     /**
+     * Sets the Luau type checking mode for scripts in the experience.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#LuauTypeCheckMode)
@@ -9842,6 +9859,21 @@ interface PackageUIService extends Instance {
      * @deprecated
      */
     readonly _nominal_PackageUIService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Packages)
+ */
+interface Packages extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Packages: unique symbol;
 }
 /**
  * An abstract class for pages objects.
@@ -14112,6 +14144,8 @@ interface StudioDeviceEmulatorService extends Instance {
     readonly _nominal_StudioDeviceEmulatorService: unique symbol;
 }
 /**
+ * Service allowing you to control Studio's Device Simulator.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService)
@@ -14130,6 +14164,9 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#CreateDeviceAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @param config
+     * @returns string
      */
     CreateDeviceAsync(this: StudioDeviceSimulatorService, config: object): string;
     /**
@@ -14137,6 +14174,8 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetDeviceAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @returns string
      */
     GetDeviceAsync(this: StudioDeviceSimulatorService): string;
     /**
@@ -14144,6 +14183,9 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetDeviceInfoAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @param deviceId
+     * @returns A dictionary containing the device configuration and passed to `CreateDeviceAsync` and `UpdateDeviceAsync`.
      */
     GetDeviceInfoAsync(this: StudioDeviceSimulatorService, deviceId: string): object;
     /**
@@ -14151,6 +14193,8 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetDeviceListAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @returns An array of device IDs.
      */
     GetDeviceListAsync(this: StudioDeviceSimulatorService): Array<unknown>;
     /**
@@ -14158,6 +14202,8 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetOrientationAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @returns ScreenOrientation
      */
     GetOrientationAsync(this: StudioDeviceSimulatorService): Enum.ScreenOrientation;
     /**
@@ -14165,6 +14211,8 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetPixelDensityAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @returns number
      */
     GetPixelDensityAsync(this: StudioDeviceSimulatorService): number;
     /**
@@ -14172,6 +14220,8 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetResolutionAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @returns Vector2
      */
     GetResolutionAsync(this: StudioDeviceSimulatorService): Vector2;
     /**
@@ -14179,6 +14229,8 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetScalingModeAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @returns DeviceSimulatorScalingMode
      */
     GetScalingModeAsync(this: StudioDeviceSimulatorService): Enum.DeviceSimulatorScalingMode;
     /**
@@ -14186,6 +14238,8 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#RemoveDeviceAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @param deviceId
      */
     RemoveDeviceAsync(this: StudioDeviceSimulatorService, deviceId: string): void;
     /**
@@ -14193,6 +14247,8 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetDeviceAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @param deviceId
      */
     SetDeviceAsync(this: StudioDeviceSimulatorService, deviceId: string): void;
     /**
@@ -14200,6 +14256,8 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetOrientationAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @param orientation
      */
     SetOrientationAsync(this: StudioDeviceSimulatorService, orientation: CastsToEnum<Enum.ScreenOrientation>): void;
     /**
@@ -14207,6 +14265,8 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetPixelDensityAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @param density
      */
     SetPixelDensityAsync(this: StudioDeviceSimulatorService, density: number): void;
     /**
@@ -14214,6 +14274,9 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetResolutionAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @param width
+     * @param height
      */
     SetResolutionAsync(this: StudioDeviceSimulatorService, width: number, height: number): void;
     /**
@@ -14221,6 +14284,8 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetScalingModeAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @param mode
      */
     SetScalingModeAsync(this: StudioDeviceSimulatorService, mode: CastsToEnum<Enum.DeviceSimulatorScalingMode>): void;
     /**
@@ -14228,6 +14293,7 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#StopSimulationAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
      */
     StopSimulationAsync(this: StudioDeviceSimulatorService): void;
     /**
@@ -14235,6 +14301,9 @@ interface StudioDeviceSimulatorService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#UpdateDeviceAsync)
+     * @param this Service allowing you to control Studio's Device Simulator.
+     * @param deviceId
+     * @param config
      */
     UpdateDeviceAsync(this: StudioDeviceSimulatorService, deviceId: string, config: object): void;
     /**
@@ -14520,6 +14589,9 @@ interface StudioTestService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#ExecuteMultiplayerTestAsync)
+     * @param this Service allowing plugins to automate and customize Test and Run mode testing.
+     * @param numPlayers
+     * @param args
      */
     ExecuteMultiplayerTestAsync(this: StudioTestService, numPlayers: number, args: unknown): unknown;
     /**
@@ -16114,16 +16186,6 @@ interface UserInputService extends Instance {
      * @deprecated
      */
     readonly _nominal_UserInputService: unique symbol;
-    /**
-     * Creates a `VirtualInput` object that a Studio plugin can use to simulate mouse, keyboard, and pointer input.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#CreateVirtualInput)
-     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
-     * @returns A new `VirtualInput` object, or `nil` if the feature is not available.
-     */
-    CreateVirtualInput(this: UserInputService): RBXObject;
 }
 /**
  * A service that handles queries regarding users on the Roblox platform.
@@ -16912,72 +16974,6 @@ interface VirtualInput extends RBXObject {
      * @deprecated
      */
     readonly _nominal_VirtualInput: unique symbol;
-    /**
-     * Injects a keyboard key press or release event.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendKey)
-     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
-     * @param isPressed Whether to simulate a key press (`true`) or a key release (`false`).
-     * @param keyCode The `KeyCode` of the key to inject.
-     * @param isRepeatedKey Whether this is an auto-repeat event, as occurs when a key is held down. Only valid for text-manipulation keys such as `KeyCode.Backspace`, `KeyCode.Delete`, and the arrow keys. Defaults to `false`.
-     */
-    SendKey(this: VirtualInput, isPressed: boolean, keyCode: CastsToEnum<Enum.KeyCode>, isRepeatedKey?: boolean): void;
-    /**
-     * Injects a mouse button press or release event at the specified screen position.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMouseButton)
-     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
-     * @param position The screen-space position in pixels at which to inject the event.
-     * @param button The mouse button to use. Supported values are `UserInputType.MouseButton1`, `UserInputType.MouseButton2`, and `UserInputType.MouseButton3`.
-     * @param isDown Whether to simulate a button press (`true`) or a button release (`false`).
-     * @param repeatCount The consecutive-click count for multi-click detection, such as a double- or triple-click. Defaults to `0`.
-     */
-    SendMouseButton(this: VirtualInput, position: Vector2, button: CastsToEnum<Enum.UserInputType>, isDown: boolean, repeatCount?: number): void;
-    /**
-     * Injects a relative mouse movement event. Only works while the player's cursor is locked.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMouseDelta)
-     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
-     * @param positionDelta The relative mouse movement in pixels along each axis.
-     */
-    SendMouseDelta(this: VirtualInput, positionDelta: Vector2): void;
-    /**
-     * Moves the virtual mouse cursor to the specified absolute screen position.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMousePosition)
-     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
-     * @param position The target screen-space position in pixels.
-     */
-    SendMousePosition(this: VirtualInput, position: Vector2): void;
-    /**
-     * Injects a scroll wheel, trackpad pan, or pinch gesture event at the specified screen position.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendPointerAction)
-     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
-     * @param position The screen-space position in pixels at which to inject the event.
-     * @param pointerAction A dictionary describing the pointer action to inject. Accepted keys are `Wheel` (number), `Pan` (`Vector2`), and `Pinch` (number). At least one key must have a non-zero value.
-     */
-    SendPointerAction(this: VirtualInput, position: Vector2, pointerAction: object): void;
-    /**
-     * Injects a text input event as if the specified string was typed on a keyboard.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendTextInput)
-     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
-     * @param text The string to inject as text input.
-     */
-    SendTextInput(this: VirtualInput, text: string): void;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated

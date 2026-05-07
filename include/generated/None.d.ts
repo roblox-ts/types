@@ -131,6 +131,7 @@ interface Services {
     ModerationService: ModerationService;
     OmniRecommendationsService: OmniRecommendationsService;
     OpenCloudService: OpenCloudService;
+    Packages: Packages;
     PackageUIService: PackageUIService;
     PartyEmulatorService: PartyEmulatorService;
     PatchBundlerFileWatch: PatchBundlerFileWatch;
@@ -2251,7 +2252,7 @@ interface Instance extends RBXObject {
      */
     Parent: Instance | undefined;
     /**
-     * Turns the instance to be a sandboxed container.
+     * When enabled, the instance can only access abilities in its `Capabilities` list.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -2578,7 +2579,7 @@ interface Instance extends RBXObject {
     WaitForChild(this: Instance, childName: string | number): Instance;
     WaitForChild(this: Instance, childName: string | number, timeOut: number): Instance | undefined;
     /**
-     * Fires when the `Instance.Parent` property of the object or one of its ancestors is changed.
+     * Fires when the `Instance.Parent` property of this object or one of its ancestors is changed.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -28248,6 +28249,18 @@ interface MLService extends Instance {
     readonly _nominal_MLService: unique symbol;
     /**
      * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLService#IsPostProcessReady)
+     */
+    IsPostProcessReady(this: MLService): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLService#SetPostProcessEnabled)
+     */
+    SetPostProcessEnabled(this: MLService, enabled: boolean): void;
+    /**
+     * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLService#CreateSessionAsync)
@@ -28255,6 +28268,13 @@ interface MLService extends Instance {
      * @param assetId
      */
     CreateSessionAsync(this: MLService, assetId: string): MLSession;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLService#LoadPostProcessModelAsync)
+     */
+    LoadPostProcessModelAsync(this: MLService, assetId: number): void;
 }
 /**
  * Describes the appearance of a makeup item for the `HumanoidDescription`.
@@ -28461,6 +28481,8 @@ interface MarketplaceService extends Instance {
      */
     PromptGamePassPurchase(this: MarketplaceService, player: Player, gamePassId: number): void;
     /**
+     * **Deprecated:** This method has been superseded by `PromptRobloxSubscriptionPurchase()`.
+     *
      * Prompts a user to purchase Roblox Premium.
      *
      * - **ThreadSafety**: Unsafe
@@ -33582,6 +33604,8 @@ interface Workspace extends WorldRoot {
      */
     DistributedGameTime: number;
     /**
+     * Controls whether parts that fall below `Workspace.FallenPartsDestroyHeight` are automatically destroyed.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#FallHeightEnabled)
@@ -33612,6 +33636,8 @@ interface Workspace extends WorldRoot {
      */
     Gravity: number;
     /**
+     * The world position at which new objects are placed when inserted from the toolbox.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -33630,6 +33656,8 @@ interface Workspace extends WorldRoot {
      */
     get InterpolationThrottling(): Enum.InterpolationThrottlingMode;
     /**
+     * Controls whether animation retargeting is enabled for character animations.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#Retargeting)
@@ -33802,6 +33830,21 @@ interface PackageUIService extends Instance {
      * @deprecated
      */
     readonly _nominal_PackageUIService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Packages)
+ */
+interface Packages extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Packages: unique symbol;
 }
 /**
  * An abstract class for pages objects.
@@ -35724,6 +35767,8 @@ interface Player extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#GetFriendsWhoPlayedAsync)
+     * @param this An object that represents a presently connected client to the experience.
+     * @returns An array of user IDs.
      */
     GetFriendsWhoPlayedAsync(this: Player): Array<unknown>;
     /**
@@ -37780,6 +37825,12 @@ interface RecommendationService extends Instance {
     LogImpressionEvent(this: RecommendationService, impressionType: CastsToEnum<Enum.RecommendationImpressionType>, itemId: string, tracingId: string, impressionEventDetails?: object): void;
     /**
      * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#LogPreferenceEvent)
+     */
+    LogPreferenceEvent(this: RecommendationService, preferenceType: CastsToEnum<Enum.RecommendationPreferenceType>, targetType: CastsToEnum<Enum.RecommendationPreferenceTargetType>, targetId: string, tracingId?: string, itemId?: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#GenerateItemListAsync)
@@ -38404,6 +38455,7 @@ interface RunService extends Instance {
      * @param this Service responsible for all runtime activity and progression of time.
      * @param function The function to call. This function will be passed one parameter called `deltaTime` which shows how much time passed between the beginning of the previous simulation step and the beginning of the current simulation step.
      * @param frequency Optional `StepFrequency` value indicating the frequency at which to call the bound function. If not provided, the default frequency will be used.
+     * @param priority Optional priority of the binding as an integer; it determines the order in which bound functions are called within a simulation step. Lower numbers are called first. If two bindings have the same priority, the order between them is unspecified. Defaults to 2000.
      */
     BindToSimulation(this: RunService, callback: Callback, frequency?: CastsToEnum<Enum.StepFrequency>, priority?: number): RBXScriptConnection;
     /**
@@ -39666,6 +39718,12 @@ interface DataModel extends ServiceProvider<Services> {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#Loaded)
      */
     readonly Loaded: RBXScriptSignal<() => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#ServerLifecycleChanged)
+     */
+    readonly ServerLifecycleChanged: RBXScriptSignal<(serverLifecycleChangedEvent: object) => void>;
     /**
      * **Deprecated:** This function is deprecated. It is recommended to use `DataModel:BindToClose()` instead.
      *
@@ -42130,6 +42188,8 @@ interface StudioDeviceEmulatorService extends Instance {
     readonly _nominal_StudioDeviceEmulatorService: unique symbol;
 }
 /**
+ * Service allowing you to control Studio's Device Simulator.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService)
@@ -42254,12 +42314,15 @@ interface StudioTestService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#AddPlayers)
+     * @param this Service allowing plugins to automate and customize Test and Run mode testing.
+     * @param numPlayers
      */
     AddPlayers(this: StudioTestService, numPlayers: number): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#CanLeaveTest)
+     * @param this Service allowing plugins to automate and customize Test and Run mode testing.
      */
     CanLeaveTest(this: StudioTestService): boolean;
     /**
@@ -42282,6 +42345,7 @@ interface StudioTestService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#LeaveTest)
+     * @param this Service allowing plugins to automate and customize Test and Run mode testing.
      */
     LeaveTest(this: StudioTestService): void;
 }
@@ -42411,9 +42475,13 @@ interface StyleRule extends StyleBase {
      */
     readonly SelectorError: string;
     /**
+     * Returns the default transition applied to all properties of the `StyleRule` that don't have an explicit transition set.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#GetDefaultPropertyTransition)
+     * @param this Defines style properties which override properties on the instances affected by the `Selector` property.
+     * @returns The default transition as a `TweenInfo` or string token, or `nil` if no default transition is set.
      */
     GetDefaultPropertyTransition(this: StyleRule): unknown;
     /**
@@ -42438,16 +42506,23 @@ interface StyleRule extends StyleBase {
      */
     GetProperty(this: StyleRule, name: string): unknown;
     /**
+     * Returns a dictionary of all property transitions set on the `StyleRule`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#GetPropertyTransitions)
      * @param this Defines style properties which override properties on the instances affected by the `Selector` property.
+     * @returns Dictionary of key-value pairs mapping property names to their transition parameters.
      */
     GetPropertyTransitions(this: StyleRule): object;
     /**
+     * Sets or clears a default transition that applies to all properties of the `StyleRule` that don't have an explicit transition set.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#SetDefaultPropertyTransition)
+     * @param this Defines style properties which override properties on the instances affected by the `Selector` property.
+     * @param transitionParams Either a `TweenInfo`, a token string defining the default transition timing, or `nil` to remove the default transition.
      */
     SetDefaultPropertyTransition(this: StyleRule, transitionParams: unknown): void;
     /**
@@ -42470,17 +42545,24 @@ interface StyleRule extends StyleBase {
      */
     SetProperty(this: StyleRule, name: string, value: unknown): void;
     /**
+     * Sets or clears the transition for a single property on the `StyleRule`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#SetPropertyTransition)
+     * @param this Defines style properties which override properties on the instances affected by the `Selector` property.
+     * @param property String name of the property to set a transition for, for example `"BackgroundColor3"` or `"Size"`.
+     * @param transitionParams A `TweenInfo` or token string defining the transition timing, or `nil` to remove the transition for this property.
      */
     SetPropertyTransition(this: StyleRule, property: string, transitionParams: unknown): void;
     /**
+     * Lets you declare and set transitions for multiple properties of the `StyleRule` at once.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleRule#SetPropertyTransitions)
      * @param this Defines style properties which override properties on the instances affected by the `Selector` property.
-     * @param properties
+     * @param properties Dictionary of property names to transition parameters.
      */
     SetPropertyTransitions(this: StyleRule, properties: object): void;
 }
@@ -45943,7 +46025,7 @@ interface UICorner extends UIComponent {
      */
     set BottomRightRadius(value: UDim);
     /**
-     * Determines the radius of the component.
+     * Sets all four corner radii at once and reads from `TopLeftRadius`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -47402,6 +47484,16 @@ interface UserInputService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#VREnabled)
      */
     readonly VREnabled: boolean;
+    /**
+     * Creates a `VirtualInput` object that a Studio plugin can use to simulate mouse, keyboard, and pointer input.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#CreateVirtualInput)
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
+     * @returns A new `VirtualInput` object, or `nil` if the feature is not available.
+     */
+    CreateVirtualInput(this: UserInputService): RBXObject;
     /**
      * Returns whether the given `UserInputType` gamepad supports a button corresponding with the given `KeyCode`.
      *
@@ -49780,6 +49872,72 @@ interface VirtualInput extends RBXObject {
      * @deprecated
      */
     readonly _nominal_VirtualInput: unique symbol;
+    /**
+     * Injects a keyboard key press or release event.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendKey)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param isPressed Whether to simulate a key press (`true`) or a key release (`false`).
+     * @param keyCode The `KeyCode` of the key to inject.
+     * @param isRepeatedKey Whether this is an auto-repeat event, as occurs when a key is held down. Only valid for text-manipulation keys such as `KeyCode.Backspace`, `KeyCode.Delete`, and the arrow keys. Defaults to `false`.
+     */
+    SendKey(this: VirtualInput, isPressed: boolean, keyCode: CastsToEnum<Enum.KeyCode>, isRepeatedKey?: boolean): void;
+    /**
+     * Injects a mouse button press or release event at the specified screen position.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMouseButton)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param position The screen-space position in pixels at which to inject the event.
+     * @param button The mouse button to use. Supported values are `UserInputType.MouseButton1`, `UserInputType.MouseButton2`, and `UserInputType.MouseButton3`.
+     * @param isDown Whether to simulate a button press (`true`) or a button release (`false`).
+     * @param repeatCount The consecutive-click count for multi-click detection, such as a double- or triple-click. Defaults to `0`.
+     */
+    SendMouseButton(this: VirtualInput, position: Vector2, button: CastsToEnum<Enum.UserInputType>, isDown: boolean, repeatCount?: number): void;
+    /**
+     * Injects a relative mouse movement event. Only works while the player's cursor is locked.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMouseDelta)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param positionDelta The relative mouse movement in pixels along each axis.
+     */
+    SendMouseDelta(this: VirtualInput, positionDelta: Vector2): void;
+    /**
+     * Moves the virtual mouse cursor to the specified absolute screen position.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMousePosition)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param position The target screen-space position in pixels.
+     */
+    SendMousePosition(this: VirtualInput, position: Vector2): void;
+    /**
+     * Injects a scroll wheel, trackpad pan, or pinch gesture event at the specified screen position.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendPointerAction)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param position The screen-space position in pixels at which to inject the event.
+     * @param pointerAction A dictionary describing the pointer action to inject. Accepted keys are `Wheel` (number), `Pan` (`Vector2`), and `Pinch` (number). At least one key must have a non-zero value.
+     */
+    SendPointerAction(this: VirtualInput, position: Vector2, pointerAction: object): void;
+    /**
+     * Injects a text input event as if the specified string was typed on a keyboard.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendTextInput)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param text The string to inject as text input.
+     */
+    SendTextInput(this: VirtualInput, text: string): void;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
