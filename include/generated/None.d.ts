@@ -179,6 +179,7 @@ interface Services {
     ScriptCloneWatcherHelper: ScriptCloneWatcherHelper;
     ScriptCommitService: ScriptCommitService;
     ScriptContext: ScriptContext;
+    ScriptDebuggerService: ScriptDebuggerService;
     ScriptProfilerService: ScriptProfilerService;
     ScriptRegistrationService: ScriptRegistrationService;
     SelectionHighlightManager: SelectionHighlightManager;
@@ -3972,7 +3973,7 @@ interface Animator extends Instance {
      */
     readonly RootMotionWeight: number;
     /**
-     * Computes relative velocities between parts and apply them to `Motor6D.Part1`. These relative velocity calculations and assignments happen in the order provided.
+     * Computes relative velocities between parts and applies them to `Motor6D.Part1`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -3982,7 +3983,7 @@ interface Animator extends Instance {
      */
     ApplyJointVelocities(this: Animator, motors: Array<Motor6D>): void;
     /**
-     * Returns the list of currently playing `AnimationTracks`.
+     * Returns the list of currently active `AnimationTracks`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -3991,9 +3992,14 @@ interface Animator extends Instance {
      */
     GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
     /**
+     * Returns an existing `AnimationTrack` on this `Animator` that was loaded from an `Animation` with the given animation ID. Unlike `LoadAnimation()`, this method does not create a new `AnimationTrack` instance.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animator#GetTrackByAnimationId)
+     * @param this Responsible for the playback and replication of `Animations`.
+     * @param animationId The asset ID of the `Animation` whose loaded track should be retrieved.
+     * @returns The first `AnimationTrack` on this `Animator` that was loaded from the given animation ID, or `nil` if none has been loaded.
      */
     GetTrackByAnimationId(this: Animator, animationId: ContentId): AnimationTrack;
     /**
@@ -4015,7 +4021,7 @@ interface Animator extends Instance {
      */
     RegisterEvaluationParallelCallback(this: Animator, callback: Callback): void;
     /**
-     * Fires when the Animator starts playing an AnimationTrack.
+     * Fires when the `Animator` starts playing an `AnimationTrack`.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -8060,7 +8066,7 @@ interface AvatarCreationService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#PromptSelectAvatarGenerationImageAsync)
      * @param this A service to support developer avatar creators.
      * @param player The `Player` to prompt for taking a selfie.
-     * @returns A string FileId of the selfie.
+     * @returns A string FileId of the selfie on success, or an error string describing the reason for failure.
      */
     PromptSelectAvatarGenerationImageAsync(this: AvatarCreationService, player: Player): string;
     /**
@@ -10936,6 +10942,8 @@ interface CaptureService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#CheckUploadCaptureStatusAsync)
+     * @param this A service which provides control over screenshot and video capture features.
+     * @param token
      */
     CheckUploadCaptureStatusAsync(this: CaptureService, token: string): unknown;
     /**
@@ -10978,6 +10986,8 @@ interface CaptureService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StartUploadCaptureAsync)
+     * @param this A service which provides control over screenshot and video capture features.
+     * @param capture
      */
     StartUploadCaptureAsync(this: CaptureService, capture: Capture): unknown;
     /**
@@ -17747,6 +17757,20 @@ interface GenerationService extends Instance {
      */
     readonly _nominal_GenerationService: unique symbol;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#ConnectAsync)
+     */
+    ConnectAsync(this: GenerationService, sessionId: string, sdp: string, type: string, relay: string): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#DisconnectAsync)
+     */
+    DisconnectAsync(this: GenerationService, sessionId: string): boolean;
+    /**
      * Starts the generation of a new 3D mesh from a text prompt and returns unique IDs used to track and retrieve the result.
      *
      * - **ThreadSafety**: Unsafe
@@ -17782,6 +17806,20 @@ interface GenerationService extends Instance {
      */
     GenerateModelAsync(this: GenerationService, inputs: object, schema: object, options?: object): unknown;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#GetVideoGenSessionAsync)
+     */
+    GetVideoGenSessionAsync(this: GenerationService): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#GetVideoGenTriggersAsync)
+     */
+    GetVideoGenTriggersAsync(this: GenerationService, sessionId: string, lookbackSeconds: number): object;
+    /**
      * Retrieves and loads a mesh generated by `GenerationService:GenerateMeshAsync()` using the provided `generationId`.
      *
      * - **ThreadSafety**: Unsafe
@@ -17793,6 +17831,27 @@ interface GenerationService extends Instance {
      * @returns The generated asset, returned as a `Model` with a single `MeshPart` containing an `EditableMesh`.
      */
     LoadGeneratedMeshAsync(this: GenerationService, generationId: string): MeshPart;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#StartVideoGenSessionAsync)
+     */
+    StartVideoGenSessionAsync(this: GenerationService, sessionId: string, prompt: string, imageData: string, imageS3Reference: string, triggers: object): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#UpdateVideoGenSessionPromptAsync)
+     */
+    UpdateVideoGenSessionPromptAsync(this: GenerationService, sessionId: string, prompt: string, imageData: string, imageS3Reference: string, mode: string): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#UpdateVideoGenSessionTriggersAsync)
+     */
+    UpdateVideoGenSessionTriggersAsync(this: GenerationService, sessionId: string, triggers: object): boolean;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -20599,6 +20658,12 @@ interface VideoFrame extends GuiObject {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoFrame#Looped)
      */
     Looped: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoFrame#MaximumResolution)
+     */
+    MaximumResolution: Enum.VideoSampleSize;
     /**
      * Indicates whether the `VideoFrame.Video` is currently playing. It can be set to start or pause playback.
      *
@@ -23679,9 +23744,12 @@ interface Humanoid extends Instance {
      */
     GetPlayingAnimationTracks(this: Humanoid): Array<AnimationTrack>;
     /**
+     * Returns the humanoid's actual physical velocity relative to the surface it is standing on as a `Vector3` in world-space orientation.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#GetRelativeVelocityAtFloor)
+     * @param this A special object that gives models the functionality of a character.
      */
     GetRelativeVelocityAtFloor(this: Humanoid): Vector3;
     /**
@@ -28418,15 +28486,24 @@ interface MarketplaceService extends Instance {
      */
     readonly _nominal_MarketplaceService: unique symbol;
     /**
+     * Registers a callback to process receipts of a specific type.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#BindReceiptHandler)
+     * @param this The service responsible for in-experience transactions.
+     * @param transactionType The `ReceiptType` indicating which kind of receipt to handle.
+     * @param handler A callback function that receives a receipt info dictionary and must return an `ReceiptDecision` value.
+     * @param filter An optional array of product IDs. When provided, the handler only fires for receipts matching those product IDs. Not supported for `RobuxTransferSender` or `RobuxTransferReceiver` receipt types.
+     * @returns A `RBXScriptConnection` that can be disconnected to unregister the handler.
      */
     BindReceiptHandler(this: MarketplaceService, transactionType: CastsToEnum<Enum.ReceiptType>, handler: Callback, filter?: Array<unknown>): RBXScriptConnection;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#OpenShop)
+     * @param this The service responsible for in-experience transactions.
+     * @param player
      */
     OpenShop(this: MarketplaceService, player: Player): void;
     /**
@@ -28726,10 +28803,17 @@ interface MarketplaceService extends Instance {
      */
     PlayerOwnsBundleAsync(this: MarketplaceService, player: Player, bundleId: number): boolean;
     /**
+     * Initiates a Robux transfer from the sender to another user.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptRobuxTransferAsync)
+     * @param this The service responsible for in-experience transactions.
+     * @param sender The `Player` initiating the transfer. Must be a valid player currently in the server.
+     * @param receiverUserId The `UserId` of the user who will receive the Robux.
+     * @param amount The amount of Robux to transfer. Must be a positive integer.
+     * @returns A string `transferRequestId` that uniquely identifies this transfer request. Use this ID to correlate with receipts delivered through `BindReceiptHandler`.
      */
     PromptRobuxTransferAsync(this: MarketplaceService, sender: Player, receiverUserId: number, amount: number): string;
     /**
@@ -34586,7 +34670,7 @@ interface Path extends Instance {
      */
     readonly _nominal_Path: unique symbol;
     /**
-     * The success of the generated `Path`.
+     * The `PathStatus` of the generated `Path`.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -34595,7 +34679,7 @@ interface Path extends Instance {
      */
     readonly Status: Enum.PathStatus;
     /**
-     * **Deprecated:** This item has been superseded by `Path:GetWaypoints()` which should be used in all new work instead.
+     * **Deprecated:** This item has been superseded by `GetWaypoints()` which should be used in all new work instead.
      *
      * Returns a table of `Path` instances.
      *
@@ -34697,7 +34781,7 @@ interface PathfindingLink extends Instance {
      */
     IsBidirectional: boolean;
     /**
-     * A classifying string to add additional information about the link. This Label is included in the waypoint generated by this link.
+     * A classifying string to add additional information about the link.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -34706,7 +34790,7 @@ interface PathfindingLink extends Instance {
     Label: string;
 }
 /**
- * Modifiers used to represent space that has a higher or lower cost to be traversed when creating paths using the `PathfindingService`.
+ * Modifiers used to represent space that has a higher or lower cost to be traversed when creating paths using `PathfindingService`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PathfindingModifier)
  */
@@ -34720,7 +34804,7 @@ interface PathfindingModifier extends Instance {
      */
     readonly _nominal_PathfindingModifier: unique symbol;
     /**
-     * The name of the navigation area inside or on top of the `Part` volume.
+     * The name of the navigation area inside or on top of the parts enclosed by the modifier.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -34770,7 +34854,7 @@ interface PathfindingService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PathfindingService#CreatePath)
      * @param this Used to find logical paths between two points.
-     * @param agentParameters Luau table which lets you fine-tune the path for the size of the agent (the humanoid that will move along the path). See above for valid keys, types, and descriptions.
+     * @param agentParameters Lua table which lets you fine-tune the path based on various agent parameters.
      * @returns A `Path` object.
      */
     CreatePath(this: PathfindingService, agentParameters?: AgentParameters): Path;
@@ -35489,6 +35573,12 @@ interface Player extends Instance {
      * @param part The `BasePart` to use as a new replication focus.
      */
     AddReplicationFocus(this: Player, part: BasePart): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#ClearCachedAvatarAppearance)
+     */
+    ClearCachedAvatarAppearance(this: Player): void;
     /**
      * Removes all accessories and other character appearance objects from a player's `Character`.
      *
@@ -36543,7 +36633,7 @@ interface Players extends Instance {
      */
     BanAsync(this: Players, config: BanAsyncConfig): void;
     /**
-     * **Deprecated:** This method has been superseded by `CreateHumanoidModelFromDescription()`.
+     * **Deprecated:** This method has been superseded by `CreateHumanoidModelFromDescriptionAsync()`.
      *
      * Returns a character `Model` equipped with everything specified in the passed in `HumanoidDescription`.
      *
@@ -37827,6 +37917,12 @@ interface RecommendationService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#LogPreferenceEvent)
+     * @param this A service that provides an interface for you to manage and display personalized content recommendations.
+     * @param preferenceType
+     * @param targetType
+     * @param targetId
+     * @param tracingId
+     * @param itemId
      */
     LogPreferenceEvent(this: RecommendationService, preferenceType: CastsToEnum<Enum.RecommendationPreferenceType>, targetType: CastsToEnum<Enum.RecommendationPreferenceTargetType>, targetId: string, tracingId?: string, itemId?: string): void;
     /**
@@ -38685,6 +38781,8 @@ interface SceneAnalysisService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService#GetAnimationMemoryAsync)
+     * @param this
+     * @returns A dictionary tree of loaded animation clip memory, deduplicated by clip.
      */
     GetAnimationMemoryAsync(this: SceneAnalysisService): object;
     /**
@@ -38692,6 +38790,8 @@ interface SceneAnalysisService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService#GetAudioMemoryAsync)
+     * @param this
+     * @returns A dictionary tree of loaded audio asset memory, deduplicated by asset ID.
      */
     GetAudioMemoryAsync(this: SceneAnalysisService): object;
     /**
@@ -38699,6 +38799,8 @@ interface SceneAnalysisService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService#GetInstanceCompositionAsync)
+     * @param this
+     * @returns A dictionary tree of instance counts grouped by category and class name.
      */
     GetInstanceCompositionAsync(this: SceneAnalysisService): object;
     /**
@@ -38706,6 +38808,8 @@ interface SceneAnalysisService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService#GetScriptMemoryAsync)
+     * @param this
+     * @returns A dictionary tree of per-script Luau VM heap memory grouped by service and script type.
      */
     GetScriptMemoryAsync(this: SceneAnalysisService): object;
     /**
@@ -38713,6 +38817,8 @@ interface SceneAnalysisService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService#GetTriangleCompositionAsync)
+     * @param this
+     * @returns A dictionary tree of triangle and draw call counts broken down by render pass type.
      */
     GetTriangleCompositionAsync(this: SceneAnalysisService): object;
     /**
@@ -38720,6 +38826,8 @@ interface SceneAnalysisService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService#GetUnparentedInstancesAsync)
+     * @param this
+     * @returns A dictionary tree of unparented instances grouped by the host script holding the reference.
      */
     GetUnparentedInstancesAsync(this: SceneAnalysisService): object;
 }
@@ -38974,12 +39082,15 @@ interface ScriptContext extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptContext#EnableCoverage)
+     * @param this
+     * @param instance
      */
     EnableCoverage(this: ScriptContext, instance: Instance): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptContext#GetCoverageStats)
+     * @param this
      */
     GetCoverageStats(this: ScriptContext): Array<unknown>;
     /**
@@ -38990,6 +39101,21 @@ interface ScriptContext extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptContext#Error)
      */
     readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script?: LuaSourceContainer) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService)
+ */
+interface ScriptDebuggerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ScriptDebuggerService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -41378,6 +41504,12 @@ interface SoundService extends Instance {
      */
     PlayLocalSound(this: SoundService, sound: Sound): void;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#SetInputDevice)
+     */
+    SetInputDevice(this: SoundService, nameOrInstance: unknown, guidOrPin: string): void;
+    /**
      * Sets the listener used by `Sounds`.
      *
      * - **ThreadSafety**: Unsafe
@@ -43721,6 +43853,8 @@ interface TestService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RegisterTest)
+     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
+     * @param testOptions
      */
     RegisterTest(this: TestService, testOptions: object): TestCase;
     /**
@@ -43791,6 +43925,13 @@ interface TestService extends Instance {
      * @param name
      */
     isFeatureEnabled(this: TestService, name: string): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#CaptureScreenshotAsync)
+     */
+    CaptureScreenshotAsync(this: TestService, artifactName?: string, options?: object): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -46011,41 +46152,46 @@ interface UICorner extends UIComponent {
      */
     readonly _nominal_UICorner: unique symbol;
     /**
+     * Determines the radius of the bottom-left corner.
+     *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden, NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UICorner#BottomLeftRadius)
      */
-    set BottomLeftRadius(value: UDim);
+    BottomLeftRadius: UDim;
     /**
+     * Determines the radius of the bottom-right corner.
+     *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden, NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UICorner#BottomRightRadius)
      */
-    set BottomRightRadius(value: UDim);
+    BottomRightRadius: UDim;
     /**
      * Sets all four corner radii at once and reads from `TopLeftRadius`.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UICorner#CornerRadius)
      */
     CornerRadius: UDim;
     /**
+     * Determines the radius of the top-left corner.
+     *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden, NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UICorner#TopLeftRadius)
      */
-    set TopLeftRadius(value: UDim);
+    TopLeftRadius: UDim;
     /**
+     * Determines the radius of the top-right corner.
+     *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden, NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UICorner#TopRightRadius)
      */
-    set TopRightRadius(value: UDim);
+    TopRightRadius: UDim;
 }
 /**
  * Instance which facilitates and encourages interaction with UI elements in an experience.
@@ -46909,6 +47055,8 @@ interface UIScale extends UIComponent {
     Scale: number;
 }
 /**
+ * Renders a shadow below the parent UI instance.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow)
@@ -46923,36 +47071,48 @@ interface UIShadow extends UIComponent {
      */
     readonly _nominal_UIShadow: unique symbol;
     /**
+     * Determines the shadow's blurriness.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#BlurRadius)
      */
     BlurRadius: UDim;
     /**
+     * Determines the shadow's color.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#Color)
      */
     Color: Color3;
     /**
+     * Moves the shadow relative to the parent's position.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#Offset)
      */
     Offset: UDim2;
     /**
+     * Expands or shrinks the shadow relative to the parent's size.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#Spread)
      */
     Spread: UDim2;
     /**
+     * Sets the shadow's transparency.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#Transparency)
      */
     Transparency: number;
     /**
+     * Determines the shadow's render order relative to sibling `UIShadow` instances.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#ZIndex)
@@ -48916,6 +49076,12 @@ interface VideoPlayer extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#Looping)
      */
     Looping: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#MaximumResolution)
+     */
+    MaximumResolution: Enum.VideoSampleSize;
     /**
      * Controls the speed at which the video is played.
      *

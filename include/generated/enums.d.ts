@@ -2865,6 +2865,33 @@ declare namespace Enum {
     }
     export type AssetFetchStatus = AssetFetchStatus.Success | AssetFetchStatus.Failure | AssetFetchStatus.None | AssetFetchStatus.Loading | AssetFetchStatus.TimedOut;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetRepresentation)
+     */
+    export namespace AssetRepresentation {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetRepresentation#FullLength)
+         */
+        export interface FullLength extends globalThis.EnumItem {
+            Name: "FullLength";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AssetRepresentation;
+        }
+        export const FullLength: FullLength;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetRepresentation#ShortPreview)
+         */
+        export interface ShortPreview extends globalThis.EnumItem {
+            Name: "ShortPreview";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AssetRepresentation;
+        }
+        export const ShortPreview: ShortPreview;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AssetRepresentation>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AssetRepresentation | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AssetRepresentation | undefined;
+    }
+    export type AssetRepresentation = AssetRepresentation.FullLength | AssetRepresentation.ShortPreview;
+    /**
      * This Enum can be used to match the AssetTypeId from `MarketplaceService:GetProductInfoAsync()` to an asset type.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType)
@@ -7686,11 +7713,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.CollisionFidelity;
         }
         export const PreciseConvexDecomposition: PreciseConvexDecomposition;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CollisionFidelity#Scalable)
+         */
+        export interface Scalable extends globalThis.EnumItem {
+            Name: "Scalable";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.CollisionFidelity;
+        }
+        export const Scalable: Scalable;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CollisionFidelity>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CollisionFidelity | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CollisionFidelity | undefined;
     }
-    export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition;
+    export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition | CollisionFidelity.Scalable;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CommandPermission)
      */
@@ -9211,6 +9247,15 @@ declare namespace Enum {
         }
         export const PlacelaunchUserPrivacyUnauthorized: PlacelaunchUserPrivacyUnauthorized;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PlacelaunchVipOwnerNotPresent)
+         */
+        export interface PlacelaunchVipOwnerNotPresent extends globalThis.EnumItem {
+            Name: "PlacelaunchVipOwnerNotPresent";
+            Value: 541;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const PlacelaunchVipOwnerNotPresent: PlacelaunchVipOwnerNotPresent;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PlacelaunchAgeVerificationRequired)
          */
         export interface PlacelaunchAgeVerificationRequired extends globalThis.EnumItem {
@@ -9349,7 +9394,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConnectionError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConnectionError | undefined;
     }
-    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.ConnectErrors | ConnectionError.AlreadyConnected | ConnectionError.NoFreeIncomingConnections | ConnectionError.ConnectionBanned | ConnectionError.InvalidPassword | ConnectionError.IncompatibleProtocolVersion | ConnectionError.IPRecentlyConnected | ConnectionError.OurSystemRequiresSecurity | ConnectionError.SecurityKeyMismatch | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.DisconnectionNotification | ConnectionError.DisconnectVerboselyModeratedGame | ConnectionError.DisconnectCollaboratorNotAgeVerified | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequired | ConnectionError.DisconnectCollaboratorOwnerActionRequired | ConnectionError.DisconnectCollaboratorTooManyCollaborators | ConnectionError.DisconnectCollaboratorUnknownError | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchAgeVerificationRequired | ConnectionError.PlacelaunchParentalApprovalRequired | ConnectionError.PlacelaunchCoreGated | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchDeviceBlock | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.ConnectErrors | ConnectionError.AlreadyConnected | ConnectionError.NoFreeIncomingConnections | ConnectionError.ConnectionBanned | ConnectionError.InvalidPassword | ConnectionError.IncompatibleProtocolVersion | ConnectionError.IPRecentlyConnected | ConnectionError.OurSystemRequiresSecurity | ConnectionError.SecurityKeyMismatch | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.DisconnectionNotification | ConnectionError.DisconnectVerboselyModeratedGame | ConnectionError.DisconnectCollaboratorNotAgeVerified | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequired | ConnectionError.DisconnectCollaboratorOwnerActionRequired | ConnectionError.DisconnectCollaboratorTooManyCollaborators | ConnectionError.DisconnectCollaboratorUnknownError | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchVipOwnerNotPresent | ConnectionError.PlacelaunchAgeVerificationRequired | ConnectionError.PlacelaunchParentalApprovalRequired | ConnectionError.PlacelaunchCoreGated | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchDeviceBlock | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
     /**
      * Used to determine the connection state of the client to the game server.
      *
@@ -10204,6 +10249,42 @@ declare namespace Enum {
     }
     export type DataStoreRequestType = DataStoreRequestType.GetAsync | DataStoreRequestType.SetIncrementAsync | DataStoreRequestType.UpdateAsync | DataStoreRequestType.GetSortedAsync | DataStoreRequestType.SetIncrementSortedAsync | DataStoreRequestType.OnUpdate | DataStoreRequestType.ListAsync | DataStoreRequestType.GetVersionAsync | DataStoreRequestType.RemoveVersionAsync | DataStoreRequestType.StandardRead | DataStoreRequestType.StandardWrite | DataStoreRequestType.StandardList | DataStoreRequestType.StandardRemove | DataStoreRequestType.OrderedRead | DataStoreRequestType.OrderedWrite | DataStoreRequestType.OrderedList | DataStoreRequestType.OrderedRemove;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebugBreakModeType)
+     */
+    export namespace DebugBreakModeType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebugBreakModeType#Never)
+         */
+        export interface Never extends globalThis.EnumItem {
+            Name: "Never";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.DebugBreakModeType;
+        }
+        export const Never: Never;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebugBreakModeType#Always)
+         */
+        export interface Always extends globalThis.EnumItem {
+            Name: "Always";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.DebugBreakModeType;
+        }
+        export const Always: Always;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebugBreakModeType#Unhandled)
+         */
+        export interface Unhandled extends globalThis.EnumItem {
+            Name: "Unhandled";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.DebugBreakModeType;
+        }
+        export const Unhandled: Unhandled;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DebugBreakModeType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DebugBreakModeType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DebugBreakModeType | undefined;
+    }
+    export type DebugBreakModeType = DebugBreakModeType.Never | DebugBreakModeType.Always | DebugBreakModeType.Unhandled;
+    /**
      * Reason for the end of the debugger session.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebuggerEndReason)
@@ -10448,6 +10529,51 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DebuggerPauseReason | undefined;
     }
     export type DebuggerPauseReason = DebuggerPauseReason.Unknown | DebuggerPauseReason.Requested | DebuggerPauseReason.Breakpoint | DebuggerPauseReason.Exception | DebuggerPauseReason.SingleStep | DebuggerPauseReason.Entrypoint;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebuggerResumeType)
+     */
+    export namespace DebuggerResumeType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebuggerResumeType#StepInto)
+         */
+        export interface StepInto extends globalThis.EnumItem {
+            Name: "StepInto";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.DebuggerResumeType;
+        }
+        export const StepInto: StepInto;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebuggerResumeType#StepOut)
+         */
+        export interface StepOut extends globalThis.EnumItem {
+            Name: "StepOut";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.DebuggerResumeType;
+        }
+        export const StepOut: StepOut;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebuggerResumeType#StepOver)
+         */
+        export interface StepOver extends globalThis.EnumItem {
+            Name: "StepOver";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.DebuggerResumeType;
+        }
+        export const StepOver: StepOver;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebuggerResumeType#Resume)
+         */
+        export interface Resume extends globalThis.EnumItem {
+            Name: "Resume";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.DebuggerResumeType;
+        }
+        export const Resume: Resume;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DebuggerResumeType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DebuggerResumeType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DebuggerResumeType | undefined;
+    }
+    export type DebuggerResumeType = DebuggerResumeType.StepInto | DebuggerResumeType.StepOut | DebuggerResumeType.StepOver | DebuggerResumeType.Resume;
     /**
      * Result of a debugger request.
      *
@@ -12318,10 +12444,14 @@ declare namespace Enum {
     }
     export type EngineFolder = EngineFolder.Screenshots | EngineFolder.Videos | EngineFolder.Logs;
     /**
+     * Used to control the throttle rate of Roblox's physics engine.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EnviromentalPhysicsThrottle)
      */
     export namespace EnviromentalPhysicsThrottle {
         /**
+         * Automatically adjusts throttle level based on performance.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EnviromentalPhysicsThrottle#DefaultAuto)
          */
         export interface DefaultAuto extends globalThis.EnumItem {
@@ -12331,6 +12461,8 @@ declare namespace Enum {
         }
         export const DefaultAuto: DefaultAuto;
         /**
+         * No throttling; every physics step runs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EnviromentalPhysicsThrottle#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -12340,6 +12472,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * Maximum throttling; physics is effectively frozen.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EnviromentalPhysicsThrottle#Always)
          */
         export interface Always extends globalThis.EnumItem {
@@ -12349,6 +12483,8 @@ declare namespace Enum {
         }
         export const Always: Always;
         /**
+         * Runs 1 out of every 2 steps (50% reduction). If `Workspace.PhysicsSteppingMethod` is set to `Adaptive`, skipping is based on groups of 4 steps instead of individual steps.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EnviromentalPhysicsThrottle#Skip2)
          */
         export interface Skip2 extends globalThis.EnumItem {
@@ -12358,6 +12494,8 @@ declare namespace Enum {
         }
         export const Skip2: Skip2;
         /**
+         * Runs 1 out of every 4 steps (75% reduction). If `Workspace.PhysicsSteppingMethod` is set to `Adaptive`, skipping is based on groups of 4 steps instead of individual steps.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EnviromentalPhysicsThrottle#Skip4)
          */
         export interface Skip4 extends globalThis.EnumItem {
@@ -12367,6 +12505,8 @@ declare namespace Enum {
         }
         export const Skip4: Skip4;
         /**
+         * Runs 1 out of every 8 steps (87.5% reduction). If `Workspace.PhysicsSteppingMethod` is set to `Adaptive`, skipping is based on groups of 4 steps instead of individual steps.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EnviromentalPhysicsThrottle#Skip8)
          */
         export interface Skip8 extends globalThis.EnumItem {
@@ -12376,6 +12516,8 @@ declare namespace Enum {
         }
         export const Skip8: Skip8;
         /**
+         * Runs 1 out of every 16 steps (93.75% reduction). If `Workspace.PhysicsSteppingMethod` is set to `Adaptive`, skipping is based on groups of 4 steps instead of individual steps.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EnviromentalPhysicsThrottle#Skip16)
          */
         export interface Skip16 extends globalThis.EnumItem {
@@ -17076,11 +17218,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.ImageCombineType;
         }
         export const AlphaBlend: AlphaBlend;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ImageCombineType#NormalMapBlend)
+         */
+        export interface NormalMapBlend extends globalThis.EnumItem {
+            Name: "NormalMapBlend";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.ImageCombineType;
+        }
+        export const NormalMapBlend: NormalMapBlend;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ImageCombineType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ImageCombineType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ImageCombineType | undefined;
     }
-    export type ImageCombineType = ImageCombineType.BlendSourceOver | ImageCombineType.Overwrite | ImageCombineType.Add | ImageCombineType.Multiply | ImageCombineType.AlphaBlend;
+    export type ImageCombineType = ImageCombineType.BlendSourceOver | ImageCombineType.Overwrite | ImageCombineType.Add | ImageCombineType.Multiply | ImageCombineType.AlphaBlend | ImageCombineType.NormalMapBlend;
     /**
      * The InOut Enum is used to set where the object is on the side of its parent.
      *
@@ -27316,10 +27467,14 @@ declare namespace Enum {
     }
     export type ReadCapturesFromGalleryResult = ReadCapturesFromGalleryResult.Success | ReadCapturesFromGalleryResult.NeedPermission;
     /**
+     * `ReceiptDecision` works with `MarketplaceService` to indicate the acknowledgement of receipts.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptDecision)
      */
     export namespace ReceiptDecision {
         /**
+         * The receipt has not been processed yet. Returning this value keeps the receipt unresolved so it will be delivered again on the next opportunity, such as when the user rejoins a server.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptDecision#NotProcessedYet)
          */
         export interface NotProcessedYet extends globalThis.EnumItem {
@@ -27329,6 +27484,8 @@ declare namespace Enum {
         }
         export const NotProcessedYet: NotProcessedYet;
         /**
+         * The receipt has been processed and all benefits have been granted. The receipt is marked as complete and will not be delivered again.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptDecision#Processed)
          */
         export interface Processed extends globalThis.EnumItem {
@@ -27343,6 +27500,8 @@ declare namespace Enum {
     }
     export type ReceiptDecision = ReceiptDecision.NotProcessedYet | ReceiptDecision.Processed;
     /**
+     * `ReceiptType` is used to work with server-sided receipt processing.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptType)
      */
     export namespace ReceiptType {
@@ -27356,6 +27515,8 @@ declare namespace Enum {
         }
         export const DeveloperProduct: DeveloperProduct;
         /**
+         * Used for processing receipts for the user who initiated a Robux transfer. The receipt's `PlayerId` is the sender's user ID and includes a `TransferRequestId` field.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptType#RobuxTransferSender)
          */
         export interface RobuxTransferSender extends globalThis.EnumItem {
@@ -27365,6 +27526,8 @@ declare namespace Enum {
         }
         export const RobuxTransferSender: RobuxTransferSender;
         /**
+         * Used for processing receipts for the user who received Robux via a transfer. The receipt's `PlayerId` is the receiver's user ID and includes a `TransferRequestId` field.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptType#RobuxTransferReceiver)
          */
         export interface RobuxTransferReceiver extends globalThis.EnumItem {
@@ -30065,6 +30228,96 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScreenshotCaptureResult | undefined;
     }
     export type ScreenshotCaptureResult = ScreenshotCaptureResult.Success | ScreenshotCaptureResult.OtherError | ScreenshotCaptureResult.NoDeviceSupport | ScreenshotCaptureResult.NoSpaceOnDevice;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptStoppedReason)
+     */
+    export namespace ScriptStoppedReason {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptStoppedReason#Breakpoint)
+         */
+        export interface Breakpoint extends globalThis.EnumItem {
+            Name: "Breakpoint";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ScriptStoppedReason;
+        }
+        export const Breakpoint: Breakpoint;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptStoppedReason#Exception)
+         */
+        export interface Exception extends globalThis.EnumItem {
+            Name: "Exception";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ScriptStoppedReason;
+        }
+        export const Exception: Exception;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptStoppedReason#Pause)
+         */
+        export interface Pause extends globalThis.EnumItem {
+            Name: "Pause";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.ScriptStoppedReason;
+        }
+        export const Pause: Pause;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptStoppedReason#Step)
+         */
+        export interface Step extends globalThis.EnumItem {
+            Name: "Step";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.ScriptStoppedReason;
+        }
+        export const Step: Step;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptStoppedReason#Entry)
+         */
+        export interface Entry extends globalThis.EnumItem {
+            Name: "Entry";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.ScriptStoppedReason;
+        }
+        export const Entry: Entry;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScriptStoppedReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ScriptStoppedReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScriptStoppedReason | undefined;
+    }
+    export type ScriptStoppedReason = ScriptStoppedReason.Breakpoint | ScriptStoppedReason.Exception | ScriptStoppedReason.Pause | ScriptStoppedReason.Step | ScriptStoppedReason.Entry;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptVariableScope)
+     */
+    export namespace ScriptVariableScope {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptVariableScope#Local)
+         */
+        export interface Local extends globalThis.EnumItem {
+            Name: "Local";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ScriptVariableScope;
+        }
+        export const Local: Local;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptVariableScope#Upvalue)
+         */
+        export interface Upvalue extends globalThis.EnumItem {
+            Name: "Upvalue";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ScriptVariableScope;
+        }
+        export const Upvalue: Upvalue;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptVariableScope#Global)
+         */
+        export interface Global extends globalThis.EnumItem {
+            Name: "Global";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.ScriptVariableScope;
+        }
+        export const Global: Global;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScriptVariableScope>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ScriptVariableScope | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScriptVariableScope | undefined;
+    }
+    export type ScriptVariableScope = ScriptVariableScope.Local | ScriptVariableScope.Upvalue | ScriptVariableScope.Global;
     /**
      * This enum is used with `ScrollingFrame.HorizontalScrollBarInset` and `ScrollingFrame.VerticalScrollBarInset` to indicate whether the canvas should be inset by `ScrollBarThickness` for the respective scroll bar.
      *
