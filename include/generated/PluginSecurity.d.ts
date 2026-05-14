@@ -194,6 +194,7 @@ interface Services {
     ScriptCloneWatcherHelper: ScriptCloneWatcherHelper;
     ScriptCommitService: ScriptCommitService;
     ScriptContext: ScriptContext;
+    ScriptDebuggerService: ScriptDebuggerService;
     ScriptEditorService: ScriptEditorService;
     ScriptProfilerService: ScriptProfilerService;
     ScriptRegistrationService: ScriptRegistrationService;
@@ -1425,7 +1426,7 @@ interface Animator extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animator#StepAnimations)
      * @param this Responsible for the playback and replication of `Animations`.
-     * @param deltaTime The amount of time in seconds animation playback is to be incremented by.
+     * @param deltaTime The amount of time in seconds animation playback is to be incremented. by.
      */
     StepAnimations(this: Animator, deltaTime: number): void;
 }
@@ -10230,7 +10231,7 @@ interface PathfindingLink extends Instance {
     readonly _nominal_PathfindingLink: unique symbol;
 }
 /**
- * Modifiers used to represent space that has a higher or lower cost to be traversed when creating paths using the `PathfindingService`.
+ * Modifiers used to represent space that has a higher or lower cost to be traversed when creating paths using `PathfindingService`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PathfindingModifier)
  */
@@ -12442,6 +12443,93 @@ interface ScriptDebugger extends Instance {
     readonly _nominal_ScriptDebugger: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService)
+ */
+interface ScriptDebuggerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ScriptDebuggerService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#AddBreakpoint)
+     */
+    AddBreakpoint(this: ScriptDebuggerService, scriptInstance: LuaSourceContainer, breakpoint: object): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#ClearBreakpoints)
+     */
+    ClearBreakpoints(this: ScriptDebuggerService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#Evaluate)
+     */
+    Evaluate(this: ScriptDebuggerService, expression: string, frameId?: number): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#GetRootVariables)
+     */
+    GetRootVariables(this: ScriptDebuggerService, frameId: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#GetStackTrace)
+     */
+    GetStackTrace(this: ScriptDebuggerService, threadId: number, startFrame?: number): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#GetThreads)
+     */
+    GetThreads(this: ScriptDebuggerService): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#GetVariables)
+     */
+    GetVariables(this: ScriptDebuggerService, variablesReference: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#Pause)
+     */
+    Pause(this: ScriptDebuggerService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#RemoveBreakpoint)
+     */
+    RemoveBreakpoint(this: ScriptDebuggerService, scriptInstance: LuaSourceContainer, line: number): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#SetExceptionBreakMode)
+     */
+    SetExceptionBreakMode(this: ScriptDebuggerService, breakMode: CastsToEnum<Enum.DebugBreakModeType>): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#Resumed)
+     */
+    readonly Resumed: RBXScriptSignal<(threadIds: Array<unknown>) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#OnStopped)
+     */
+    OnStopped: ((stopped: object) => object) | undefined;
+}
+/**
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument)
@@ -14097,12 +14185,15 @@ interface StudioCaptureService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService#CanCaptureScreenshot)
+     * @param this
      */
     CanCaptureScreenshot(this: StudioCaptureService): boolean;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService#CaptureScreenshot)
+     * @param this
+     * @param screenshotOptions
      */
     CaptureScreenshot(this: StudioCaptureService, screenshotOptions: object): StudioScreenshotCapture;
     /**
@@ -14110,6 +14201,7 @@ interface StudioCaptureService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService#RequestScreenshotPermissionAsync)
+     * @param this
      */
     RequestScreenshotPermissionAsync(this: StudioCaptureService): boolean;
 }
@@ -14418,12 +14510,14 @@ interface StudioScreenshotCapture extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#GetBuffer)
+     * @param this
      */
     GetBuffer(this: StudioScreenshotCapture): buffer;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#GetErrors)
+     * @param this
      */
     GetErrors(this: StudioScreenshotCapture): Array<unknown>;
     /**
@@ -14431,6 +14525,9 @@ interface StudioScreenshotCapture extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#ScaleAsync)
+     * @param this
+     * @param strategy
+     * @param newSize
      */
     ScaleAsync(this: StudioScreenshotCapture, strategy: CastsToEnum<Enum.ResamplerMode>, newSize: Vector2): StudioScreenshotCapture;
 }
@@ -16079,6 +16176,8 @@ interface UIScale extends UIComponent {
     readonly _nominal_UIScale: unique symbol;
 }
 /**
+ * Renders a shadow below the parent UI instance.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow)
