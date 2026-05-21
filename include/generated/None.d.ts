@@ -79,7 +79,6 @@ interface Services {
     FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
     FeatureRestrictionManager: FeatureRestrictionManager;
     FileManagerService: FileManagerService;
-    FileSyncReplicationService: FileSyncReplicationService;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
     GenerationService: GenerationService;
@@ -91,7 +90,6 @@ interface Services {
     HapticService: HapticService;
     HarmonyService: HarmonyService;
     HeapProfilerService: HeapProfilerService;
-    HeatmapQueryService: HeatmapQueryService;
     HeatmapService: HeatmapService;
     HeightmapImporterService: HeightmapImporterService;
     HttpService: HttpService;
@@ -8356,13 +8354,6 @@ interface AvatarEditorService extends Instance {
      */
     GetBatchItemDetailsAsync(this: AvatarEditorService, itemIds: Array<unknown>, itemType: CastsToEnum<Enum.AvatarItemType>): Array<unknown>;
     /**
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**: Yields
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#GetBundlesByAssetIdAsync)
-     */
-    GetBundlesByAssetIdAsync(this: AvatarEditorService, assetId: number, limit?: number): CatalogPages;
-    /**
      * **Deprecated:**
      *
      * Returns if the `Players.LocalPlayer` has favorited the given bundle or asset.
@@ -8708,7 +8699,7 @@ interface AvatarSettings extends Instance {
     readonly _nominal_AvatarSettings: unique symbol;
 }
 /**
- * A container object that holds a player's inventory. Any `Tool` in a player's `Backpack` will be displayed in their inventory at the bottom of the screen.
+ * A container object that holds a player's inventory. Any `Tool` in a player's Backpack will be displayed in their inventory at the bottom of their screen.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Backpack)
  */
@@ -9469,7 +9460,7 @@ interface BasePlayerGui extends Instance {
     GetGuiObjectsAtPosition(this: BasePlayerGui, x: number, y: number): Array<GuiObject>;
 }
 /**
- * A container that holds a player's UI.
+ * A container for a player's currently rendered `ScreenGuis`.
  *
  * - **Tags**: NotCreatable, PlayerReplicated
  *
@@ -9518,7 +9509,7 @@ interface PlayerGui extends BasePlayerGui {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerGui#GetTopbarTransparency)
-     * @param this A container that holds a player's UI.
+     * @param this A container for a player's currently rendered `ScreenGuis`.
      *
      * @deprecated
      */
@@ -9532,7 +9523,7 @@ interface PlayerGui extends BasePlayerGui {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerGui#SetTopbarTransparency)
-     * @param this A container that holds a player's UI.
+     * @param this A container for a player's currently rendered `ScreenGuis`.
      * @param transparency
      *
      * @deprecated
@@ -12423,7 +12414,7 @@ interface ConfigService extends Instance {
     GetConfigForPlayerAsync(this: ConfigService, player: Player): ConfigSnapshot;
 }
 /**
- * A container object designed to hold value objects. Makes values used in `Tools` or any model using `Scripts` more accessible.
+ * The Configuration object is a container object that is designed to hold value objects to make values used in `Tools` or any model using `Scripts` more accessible.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Configuration)
  */
@@ -16840,7 +16831,7 @@ interface ExperienceStateCaptureService extends Instance {
     readonly _nominal_ExperienceStateCaptureService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, Service
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExperienceStateRecordingService)
  */
@@ -17428,21 +17419,6 @@ interface FileManagerService extends Instance {
      * @deprecated
      */
     readonly _nominal_FileManagerService: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FileSyncReplicationService)
- */
-interface FileSyncReplicationService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_FileSyncReplicationService: unique symbol;
 }
 /**
  * A preconfigured particle emitter with the visual aesthetic of fire.
@@ -20192,8 +20168,6 @@ interface ScrollingFrame extends GuiObject {
      */
     VerticalScrollBarPosition: Enum.VerticalScrollBarPosition;
     /**
-     * Returns a `Vector2` representing the current inertial scroll velocity after the user stops their input.
-     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScrollingFrame#GetScrollVelocity)
@@ -20201,8 +20175,6 @@ interface ScrollingFrame extends GuiObject {
      */
     GetScrollVelocity(this: ScrollingFrame): Vector2;
     /**
-     * Resets the inertial scroll velocity of the `ScrollingFrame` to `0` on both axes.
-     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScrollingFrame#ResetScrollVelocity)
@@ -23061,21 +23033,6 @@ interface HeapProfilerService extends Instance {
      * @deprecated
      */
     readonly _nominal_HeapProfilerService: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeatmapQueryService)
- */
-interface HeatmapQueryService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_HeatmapQueryService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -25943,12 +25900,6 @@ interface InputBinding extends Instance {
      */
     UIButton: GuiButton | undefined;
     /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#UIModifier)
-     */
-    UIModifier: GuiButton | undefined;
-    /**
      * Specifies an alternate `KeyCode` for dispatching directionally "up" inputs to the parent `InputAction`.
      *
      * - **ThreadSafety**: ReadSafe
@@ -28551,6 +28502,8 @@ interface MarketplaceService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#OpenShop)
+     * @param this The service responsible for in-experience transactions.
+     * @param player
      */
     OpenShop(this: MarketplaceService, player: Player): void;
     /**
@@ -31536,7 +31489,7 @@ interface WedgePart extends FormFactorPart {
     readonly _nominal_WedgePart: unique symbol;
 }
 /**
- * `Terrain` lets you to create dynamically morphable environments.
+ * Terrain lets you to create dynamically morphable environments.
  *
  * - **Tags**: NotCreatable
  *
@@ -31552,9 +31505,9 @@ interface Terrain extends BasePart {
      */
     readonly _nominal_Terrain: unique symbol;
     /**
-     * **Deprecated:** The legacy terrain engine has been removed, so this property will always be `true`.
+     * **Deprecated:** Sets the specified terrain voxel's material to ''Water'' and sets its occupancy to 1.
      *
-     * Returns `true` if the game is using the smooth terrain system.
+     * Returns true if the current game is using the smooth terrain system.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -31574,7 +31527,7 @@ interface Terrain extends BasePart {
      */
     readonly MaxExtents: Region3int16;
     /**
-     * The tint of `Terrain` water.
+     * The tint of the Terrain water.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -31582,7 +31535,7 @@ interface Terrain extends BasePart {
      */
     WaterColor: Color3;
     /**
-     * Controls how opaque `Terrain` water reflections are.
+     * Controls how opaque the Terrain's water reflections are.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -31590,7 +31543,7 @@ interface Terrain extends BasePart {
      */
     WaterReflectance: number;
     /**
-     * The transparency of `Terrain` water.
+     * The transparency of the Terrain water.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -31598,7 +31551,7 @@ interface Terrain extends BasePart {
      */
     WaterTransparency: number;
     /**
-     * Sets the maximum height of `Terrain` water waves in studs.
+     * Sets the maximum height of the Terrain water waves in studs.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -31606,7 +31559,7 @@ interface Terrain extends BasePart {
      */
     WaterWaveSize: number;
     /**
-     * Sets how many times `Terrain` water waves will move up and down per minute.
+     * Sets how many times the Terrain water waves will move up and down per minute.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -31616,13 +31569,13 @@ interface Terrain extends BasePart {
     /**
      * **Deprecated:** This item is a deprecated function of a legacy `Terrain` engine that has been removed. Do not use it for new work.
      *
-     * Obsolete function which no longer does anything.
+     * *(OBSOLETE)* No longer does anything.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#AutowedgeCell)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param x
      * @param y
      * @param z
@@ -31633,49 +31586,49 @@ interface Terrain extends BasePart {
     /**
      * **Deprecated:** This item is a deprecated function of a legacy `Terrain` engine that has been removed. Do not use it for new work.
      *
-     * Obsolete function which no longer does anything.
+     * *(OBSOLETE)* No longer does anything.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#AutowedgeCells)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param region
      *
      * @deprecated
      */
     AutowedgeCells(this: Terrain, region: Region3int16): void;
     /**
-     * Returns the world position of the center of the terrain cell.
+     * Returns the world position of the center of the terrain cell (x, y, z).
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#CellCenterToWorld)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param x
      * @param y
      * @param z
      */
     CellCenterToWorld(this: Terrain, x: number, y: number, z: number): Vector3;
     /**
-     * Returns the position of the lower-left-forward corner of the grid cell.
+     * Returns the position of the lower-left-forward corner of the grid cell (x, y, z).
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#CellCornerToWorld)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param x
      * @param y
      * @param z
      */
     CellCornerToWorld(this: Terrain, x: number, y: number, z: number): Vector3;
     /**
-     * Clears all terrain.
+     * Clears the terrain.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#Clear)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      */
     Clear(this: Terrain): void;
     /**
@@ -31683,25 +31636,28 @@ interface Terrain extends BasePart {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#ClearVoxelsAsync_beta)
+     * @param this Terrain lets you to create dynamically morphable environments.
+     * @param region
+     * @param channelIds
      */
     ClearVoxelsAsync_beta(this: Terrain, region: Region3, channelIds: Array<unknown>): void;
     /**
-     * Stores a chunk of terrain into a `TerrainRegion` object so it can be loaded back later.
+     * Stores a chunk of terrain into a `TerrainRegion` object so it can be loaded back later. Note: `TerrainRegion` data does not replicate between server and client.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#CopyRegion)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param region
      */
     CopyRegion(this: Terrain, region: Region3int16): TerrainRegion;
     /**
-     * Returns the number of non-empty cells in the terrain.
+     * Returns the number of non-empty cells in the Terrain.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#CountCells)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      */
     CountCells(this: Terrain): number;
     /**
@@ -31710,7 +31666,7 @@ interface Terrain extends BasePart {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#FillBall)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param center The position of the center of the terrain ball.
      * @param radius The radius in studs of the terrain ball.
      * @param material The `Material` of the terrain ball.
@@ -31722,9 +31678,9 @@ interface Terrain extends BasePart {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#FillBlock)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param cframe The position and orientation of the terrain block.
-     * @param size The size in studs of the square block (both the height and width).
+     * @param size The size in studs of the square block - both the height and width.
      * @param material The `Material` of the terrain block.
      */
     FillBlock(this: Terrain, cframe: CFrame, size: Vector3, material: CastsToEnum<Enum.Material>): void;
@@ -31734,7 +31690,7 @@ interface Terrain extends BasePart {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#FillCylinder)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param cframe The position and orientation of the terrain cylinder.
      * @param height The height in studs of the terrain cylinder.
      * @param radius The radius in studs of the terrain cylinder.
@@ -31747,19 +31703,19 @@ interface Terrain extends BasePart {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#FillRegion)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param region
      * @param resolution
      * @param material
      */
     FillRegion(this: Terrain, region: Region3, resolution: number, material: CastsToEnum<Enum.Material>): void;
     /**
-     * Fills a wedge-shaped volume of terrain with the given `Material`.
+     * Fills a wedge-shaped volume of Terrain with the given `Material` and the area's CFrame and Size.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#FillWedge)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param cframe The position and orientation of the wedge to fill.
      * @param size The size of the wedge to fill.
      * @param material The material with which the wedge will be filled.
@@ -31774,13 +31730,13 @@ interface Terrain extends BasePart {
     /**
      * **Deprecated:** This item is a deprecated function of a legacy `Terrain` engine that has been removed. Do not use it for new work.
      *
-     * Returns the closest cell material from the legacy terrain engine that matches the smooth terrain voxel specified.
+     * Returns the closest CellMaterial from the legacy terrain engine that matches the smooth terrain voxel specified.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#GetCell)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param x
      * @param y
      * @param z
@@ -31800,7 +31756,7 @@ interface Terrain extends BasePart {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#GetMaterialColor)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param material
      */
     GetMaterialColor(this: Terrain, material: CastsToEnum<Enum.Material>): Color3;
@@ -31813,13 +31769,13 @@ interface Terrain extends BasePart {
     /**
      * **Deprecated:** This item is a deprecated function of a legacy `Terrain` engine that has been removed. Do not use it for new work.
      *
-     * Returns `true` if the cell is a water cell.
+     * Returns if the cell is a water cell.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#GetWaterCell)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param x
      * @param y
      * @param z
@@ -31832,6 +31788,10 @@ interface Terrain extends BasePart {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#IterateVoxelsAsync_beta)
+     * @param this Terrain lets you to create dynamically morphable environments.
+     * @param region
+     * @param resolution
+     * @param channelIds
      */
     IterateVoxelsAsync_beta(this: Terrain, region: Region3, resolution: number, channelIds: Array<unknown>): TerrainIterateOperation;
     /**
@@ -31839,15 +31799,19 @@ interface Terrain extends BasePart {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#ModifyVoxelsAsync_beta)
+     * @param this Terrain lets you to create dynamically morphable environments.
+     * @param region
+     * @param resolution
+     * @param channelIds
      */
     ModifyVoxelsAsync_beta(this: Terrain, region: Region3, resolution: number, channelIds: Array<unknown>): TerrainModifyOperation;
     /**
-     * Applies a chunk of terrain to the `Terrain` object.
+     * Applies a chunk of terrain to the Terrain object. Note: `TerrainRegion` data does not replicate between server and client.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#PasteRegion)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param region
      * @param corner
      * @param pasteEmptyCells
@@ -31860,7 +31824,7 @@ interface Terrain extends BasePart {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#ReadVoxelChannels)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param region Target region to read from. Must be aligned to the voxel grid. Will throw an error if region is too large; limit is currently 4194304 voxels³.
      * @param resolution Voxel resolution. Must be 4.
      * @param channelIds Array of channel IDs (strings) that need to be accessed from the voxel data. Each channel ID represents a type of data that's stored in voxel. Current supported IDs are `{"SolidMaterial", "SolidOccupancy", "LiquidOccupancy"}`.
@@ -31878,9 +31842,9 @@ interface Terrain extends BasePart {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#ReadVoxels)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
-     * @param region Target region to read from. Must be aligned to the voxel grid. Will throw an error if region is too large. The limit is currently 4194304 voxels³.
-     * @param resolution Voxel resolution. Must be `4`.
+     * @param this Terrain lets you to create dynamically morphable environments.
+     * @param region Target region to read from. Must be aligned to the voxel grid. Will throw an error if region is too large. The limit is currently 4194304 voxels^3.
+     * @param resolution Voxel resolution. Must be 4.
      * @returns Returns raw voxel data as two 3D arrays. - `materials` - 3D array of `Material` from the target area. Also   contains a Size field, equal to the dimensions of the nested arrays.
      * - `occupancies` - 3D array of occupancy values from the target area.   Also contains a Size field, equal to the dimensions of the nested   arrays.
      */
@@ -31893,6 +31857,10 @@ interface Terrain extends BasePart {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#ReadVoxelsAsync_beta)
+     * @param this Terrain lets you to create dynamically morphable environments.
+     * @param region
+     * @param resolution
+     * @param channelIds
      */
     ReadVoxelsAsync_beta(this: Terrain, region: Region3, resolution: number, channelIds: Array<unknown>): TerrainReadOperation;
     /**
@@ -31901,9 +31869,9 @@ interface Terrain extends BasePart {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#ReplaceMaterial)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param region The region in which the replacement operation will occur.
-     * @param resolution The resolution at which the replacement operation will take place; at the moment this must be exactly `4`.
+     * @param resolution The resolution at which the replacement operation will take place; at the moment this must be exactly 4.
      * @param sourceMaterial The old material that shall be replaced.
      * @param targetMaterial The new material.
      */
@@ -31923,7 +31891,7 @@ interface Terrain extends BasePart {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#SetCell)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param x
      * @param y
      * @param z
@@ -31943,7 +31911,7 @@ interface Terrain extends BasePart {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#SetCells)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param region
      * @param material
      * @param block
@@ -31958,7 +31926,7 @@ interface Terrain extends BasePart {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#SetMaterialColor)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param material
      * @param value
      */
@@ -31972,13 +31940,13 @@ interface Terrain extends BasePart {
     /**
      * **Deprecated:** This item is a deprecated function of a legacy `Terrain` engine that has been removed. Do not use it for new work.
      *
-     * Sets the specified terrain voxel's material to water and sets its occupancy to `1`.
+     * Sets the specified terrain voxel's material to ''Water'' and sets its occupancy to 1.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#SetWaterCell)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param x
      * @param y
      * @param z
@@ -31989,22 +31957,22 @@ interface Terrain extends BasePart {
      */
     SetWaterCell(this: Terrain, x: number, y: number, z: number, force: CastsToEnum<Enum.WaterForce>, direction: CastsToEnum<Enum.WaterDirection>): void;
     /**
-     * Returns the grid cell location that contains the position point.
+     * Returns the grid cell location that contains the point **position**.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#WorldToCell)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param position
      */
     WorldToCell(this: Terrain, position: Vector3): Vector3;
     /**
-     * Returns the grid cell location that contains the position point, preferring empty grid cells when position is on a grid edge.
+     * Returns the grid cell location that contains the point position, preferring empty grid cells when position is on a grid edge.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#WorldToCellPreferEmpty)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param position
      */
     WorldToCellPreferEmpty(this: Terrain, position: Vector3): Vector3;
@@ -32014,7 +31982,7 @@ interface Terrain extends BasePart {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#WorldToCellPreferSolid)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param position
      */
     WorldToCellPreferSolid(this: Terrain, position: Vector3): Vector3;
@@ -32025,12 +31993,12 @@ interface Terrain extends BasePart {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#WriteVoxelChannels)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param region Target region to write to. Must be aligned to the voxel grid. Will throw an error if region is too large; limit is currently 4194304 voxels³.
-     * @param resolution Voxel resolution. Must be `4`.
-     * @param channels Dictionary of voxel data similar to the return value of `ReadVoxelChannels()`. Keys represent each channel ID with their respective value as an array of 3D data. The dictionary can support single or multiple channel inputs. - `SolidMaterial` — The `Material` material of the voxel. Note   that `Water` is not supported anymore; instead, a   voxel that contains only water should be entered as   `SolidMaterial = Enum.Material.Air, LiquidOccupancy = x`, where `x`   is a number between `0` (exclusive) and `1` (inclusive).
-     * - `SolidOccupancy` — The occupancy of the voxel's material as   specified in the `SolidMaterial` channel. This should be a value   between `0` (empty) and `1` (full).
-     * - `LiquidOccupancy` — Specifies the occupancy of the   `Water` material in a voxel as a value between `0` (no   water) and `1` (full of water). If the `SolidOccupancy` is 1 and the   `SolidMaterial` is not `Air`, this will be `0`.
+     * @param resolution Voxel resolution. Must be 4.
+     * @param channels Dictionary of voxel data similar to the return value of `ReadVoxelChannels()`. Keys represent each channel ID with their respective value as an array of 3D data. The dictionary can support single or multiple channel inputs. - `SolidMaterial` — The `Material` material of the voxel. Note   that `Water` is not supported anymore; instead, a   voxel that contains only water should be entered as   `SolidMaterial = Enum.Material.Air, LiquidOccupancy = x`, where `x`   is a number between 0 (exclusive) and 1 (inclusive).
+     * - `SolidOccupancy` — The occupancy of the voxel's material as   specified in the `SolidMaterial` channel. This should be a value   between 0 (empty) and 1 (full).
+     * - `LiquidOccupancy` — Specifies the occupancy of the   `Water` material in a voxel as a value between 0 (no   water) and 1 (full of water). If the `SolidOccupancy` is 1 and the   `SolidMaterial` is not `Air`, this will be 0.
      */
     WriteVoxelChannels(this: Terrain, region: Region3, resolution: number, channels: VoxelChannels): void;
     /**
@@ -32040,11 +32008,11 @@ interface Terrain extends BasePart {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#WriteVoxels)
-     * @param this `Terrain` lets you to create dynamically morphable environments.
+     * @param this Terrain lets you to create dynamically morphable environments.
      * @param region Target region to write to. Must be aligned to the voxel grid. Will throw an error if region is too large.
-     * @param resolution Voxel resolution. Must be `4`.
-     * @param materials 3D array of `Material`. Dimensions must exactly match the size of the target region in voxels.
-     * @param occupancy 3D array of voxel occupancies (number between `0` and `1`). Dimensions must exactly match the size of the target region in voxels.
+     * @param resolution Voxel resolution. Must be 4.
+     * @param materials 3D array of Enum.Material. Dimensions must exactly match the size of the target region in voxels.
+     * @param occupancy 3D array of voxel occupancies (number between 0 and 1). Dimensions must exactly match the size of the target region in voxels.
      */
     WriteVoxels(this: Terrain, region: Region3, resolution: number, materials: Array<Array<Array<CastsToEnum<Enum.Material>>>>, occupancy: Array<Array<Array<number>>>): void;
     /**
@@ -32052,6 +32020,10 @@ interface Terrain extends BasePart {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#WriteVoxelsAsync_beta)
+     * @param this Terrain lets you to create dynamically morphable environments.
+     * @param region
+     * @param resolution
+     * @param channelIds
      */
     WriteVoxelsAsync_beta(this: Terrain, region: Region3, resolution: number, channelIds: Array<unknown>): TerrainWriteOperation;
 }
@@ -36403,7 +36375,7 @@ interface PlayerHydrationService extends Instance {
     readonly _nominal_PlayerHydrationService: unique symbol;
 }
 /**
- * A container for client-side scripts to be run inside `Player` objects within the `Players` service.
+ * A container for LocalScripts to be run on the client.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -36419,39 +36391,39 @@ interface PlayerScripts extends Instance {
      */
     readonly _nominal_PlayerScripts: unique symbol;
     /**
-     * Unregisters all `ComputerCameraMovementMode` enums from the game's settings menu.
+     * Unregisters all ComputerCameraMovementMode enums from the experience's settings menu.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerScripts#ClearComputerCameraMovementModes)
-     * @param this A container for client-side scripts to be run inside `Player` objects within the `Players` service.
+     * @param this A container for LocalScripts to be run on the client.
      */
     ClearComputerCameraMovementModes(this: PlayerScripts): void;
     /**
-     * Unregisters all `ComputerMovementMode` enums from the game's settings menu.
+     * Unregisters all ComputerMovementMode enums from the experience's settings menu.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerScripts#ClearComputerMovementModes)
-     * @param this A container for client-side scripts to be run inside `Player` objects within the `Players` service.
+     * @param this A container for LocalScripts to be run on the client.
      */
     ClearComputerMovementModes(this: PlayerScripts): void;
     /**
-     * Unregisters all `TouchCameraMovementMode` enums from the game's settings menu.
+     * Unregisters all TouchCameraMovementMode enums from the experience's settings menu.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerScripts#ClearTouchCameraMovementModes)
-     * @param this A container for client-side scripts to be run inside `Player` objects within the `Players` service.
+     * @param this A container for LocalScripts to be run on the client.
      */
     ClearTouchCameraMovementModes(this: PlayerScripts): void;
     /**
-     * Unregisters all `TouchMovementMode` enums from the game's settings menu.
+     * Unregisters all TouchMovementMode enums from the experience's settings menu.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerScripts#ClearTouchMovementModes)
-     * @param this A container for client-side scripts to be run inside `Player` objects within the `Players` service.
+     * @param this A container for LocalScripts to be run on the client.
      */
     ClearTouchMovementModes(this: PlayerScripts): void;
     /**
@@ -36460,7 +36432,7 @@ interface PlayerScripts extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerScripts#RegisterComputerCameraMovementMode)
-     * @param this A container for client-side scripts to be run inside `Player` objects within the `Players` service.
+     * @param this A container for LocalScripts to be run on the client.
      * @param cameraMovementMode
      */
     RegisterComputerCameraMovementMode(this: PlayerScripts, cameraMovementMode: CastsToEnum<Enum.ComputerCameraMovementMode>): void;
@@ -36470,7 +36442,7 @@ interface PlayerScripts extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerScripts#RegisterComputerMovementMode)
-     * @param this A container for client-side scripts to be run inside `Player` objects within the `Players` service.
+     * @param this A container for LocalScripts to be run on the client.
      * @param movementMode
      */
     RegisterComputerMovementMode(this: PlayerScripts, movementMode: CastsToEnum<Enum.ComputerMovementMode>): void;
@@ -36480,7 +36452,7 @@ interface PlayerScripts extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerScripts#RegisterTouchCameraMovementMode)
-     * @param this A container for client-side scripts to be run inside `Player` objects within the `Players` service.
+     * @param this A container for LocalScripts to be run on the client.
      * @param cameraMovementMode
      */
     RegisterTouchCameraMovementMode(this: PlayerScripts, cameraMovementMode: CastsToEnum<Enum.TouchCameraMovementMode>): void;
@@ -36490,7 +36462,7 @@ interface PlayerScripts extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerScripts#RegisterTouchMovementMode)
-     * @param this A container for client-side scripts to be run inside `Player` objects within the `Players` service.
+     * @param this A container for LocalScripts to be run on the client.
      * @param movementMode
      */
     RegisterTouchMovementMode(this: PlayerScripts, movementMode: CastsToEnum<Enum.TouchMovementMode>): void;
@@ -41651,7 +41623,7 @@ interface StartPageService extends Instance {
     readonly _nominal_StartPageService: unique symbol;
 }
 /**
- * If the game allows gear, `StarterGear` is a container automatically inserted into each `Player` object when the player joins the game. Whenever the player's character spawns, the contents of that player's `StarterGear` are copied into the player's `Backpack`.
+ * If the game allows gear, StarterGear contains all of a player's appropriate gear. Whenever the player's character spawns, all of the contents of that player's StarterGear will get copied into the player's `Backpack`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterGear)
  */
@@ -41666,7 +41638,7 @@ interface StarterGear extends Instance {
     readonly _nominal_StarterGear: unique symbol;
 }
 /**
- * A container whose contents are copied into each player's `Backpack` when their player character spawns. It is generally used to hold `Tools`.
+ * A service-level container whose contents are copied into each player's `Backpack` when the player spawns. It is generally used to hold `Tools`, but is sometimes used to hold `LocalScripts` to ensure that each player gets a copy.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -47352,16 +47324,12 @@ interface UserGameSettings extends Instance {
      */
     MouseSensitivity: number;
     /**
-     * Internal MicroProfiler setting specifying the frame rate used when capturing server-side RCC profiler data.
-     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserGameSettings#RCCProfilerRecordFrameRate)
      */
     RCCProfilerRecordFrameRate: number;
     /**
-     * Internal MicroProfiler setting specifying the duration over which server-side RCC profiler data is captured.
-     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserGameSettings#RCCProfilerRecordTimeFrame)
@@ -47400,16 +47368,12 @@ interface UserGameSettings extends Instance {
      */
     TouchMovementMode: Enum.TouchMovementMode;
     /**
-     * Indicates whether smooth rotation is used instead of snap rotation in VR.
-     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserGameSettings#VRSmoothRotationEnabled)
      */
     get VRSmoothRotationEnabled(): boolean;
     /**
-     * Indicates whether the VR vignette comfort effect is enabled.
-     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserGameSettings#VignetteEnabled)
@@ -49918,6 +49882,8 @@ interface TerrainIterateOperation extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainIterateOperation#CommitBlock)
+     * @param this
+     * @param block
      */
     CommitBlock(this: TerrainIterateOperation, block: object): RBXScriptSignal;
     /**
@@ -49945,6 +49911,8 @@ interface TerrainModifyOperation extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainModifyOperation#CommitBlock)
+     * @param this
+     * @param block
      */
     CommitBlock(this: TerrainModifyOperation, block: object): RBXScriptSignal;
     /**
@@ -49993,6 +49961,8 @@ interface TerrainWriteOperation extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainWriteOperation#CommitBlock)
+     * @param this
+     * @param block
      */
     CommitBlock(this: TerrainWriteOperation, block: object): RBXScriptSignal;
     /**
@@ -50000,6 +49970,7 @@ interface TerrainWriteOperation extends RBXObject {
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainWriteOperation#GetBlock)
+     * @param this
      */
     GetBlock(this: TerrainWriteOperation): object;
 }
