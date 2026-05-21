@@ -3556,20 +3556,11 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.AssetType;
         }
         export const VoxelFragment: VoxelFragment;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#AvatarBackground)
-         */
-        export interface AvatarBackground extends globalThis.EnumItem {
-            Name: "AvatarBackground";
-            Value: 92;
-            EnumType: typeof globalThis.Enum.AssetType;
-        }
-        export const AvatarBackground: AvatarBackground;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AssetType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AssetType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AssetType | undefined;
     }
-    export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.FontFamily | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.MoodAnimation | AssetType.DynamicHead | AssetType.FaceMakeup | AssetType.LipMakeup | AssetType.EyeMakeup | AssetType.VoxelFragment | AssetType.AvatarBackground;
+    export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.FontFamily | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.MoodAnimation | AssetType.DynamicHead | AssetType.FaceMakeup | AssetType.LipMakeup | AssetType.EyeMakeup | AssetType.VoxelFragment;
     /**
      * Determines the asset type verification mode.
      *
@@ -4586,20 +4577,11 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.AvatarAssetType;
         }
         export const EyeMakeup: EyeMakeup;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarAssetType#AvatarBackground)
-         */
-        export interface AvatarBackground extends globalThis.EnumItem {
-            Name: "AvatarBackground";
-            Value: 92;
-            EnumType: typeof globalThis.Enum.AvatarAssetType;
-        }
-        export const AvatarBackground: AvatarBackground;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AvatarAssetType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AvatarAssetType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AvatarAssetType | undefined;
     }
-    export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Gear | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory | AvatarAssetType.MoodAnimation | AvatarAssetType.DynamicHead | AvatarAssetType.FaceMakeup | AvatarAssetType.LipMakeup | AvatarAssetType.EyeMakeup | AvatarAssetType.AvatarBackground;
+    export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Gear | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory | AvatarAssetType.MoodAnimation | AvatarAssetType.DynamicHead | AvatarAssetType.FaceMakeup | AvatarAssetType.LipMakeup | AvatarAssetType.EyeMakeup;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature)
      */
@@ -9139,24 +9121,6 @@ declare namespace Enum {
         }
         export const DisconnectCollaboratorUnknownError: DisconnectCollaboratorUnknownError;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectCollaboratorRequestedEviction)
-         */
-        export interface DisconnectCollaboratorRequestedEviction extends globalThis.EnumItem {
-            Name: "DisconnectCollaboratorRequestedEviction";
-            Value: 315;
-            EnumType: typeof globalThis.Enum.ConnectionError;
-        }
-        export const DisconnectCollaboratorRequestedEviction: DisconnectCollaboratorRequestedEviction;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectCollaboratorTrustedConnectionsRequiredPC)
-         */
-        export interface DisconnectCollaboratorTrustedConnectionsRequiredPC extends globalThis.EnumItem {
-            Name: "DisconnectCollaboratorTrustedConnectionsRequiredPC";
-            Value: 316;
-            EnumType: typeof globalThis.Enum.ConnectionError;
-        }
-        export const DisconnectCollaboratorTrustedConnectionsRequiredPC: DisconnectCollaboratorTrustedConnectionsRequiredPC;
-        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PlacelaunchErrors)
          */
         export interface PlacelaunchErrors extends globalThis.EnumItem {
@@ -9430,7 +9394,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConnectionError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConnectionError | undefined;
     }
-    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.ConnectErrors | ConnectionError.AlreadyConnected | ConnectionError.NoFreeIncomingConnections | ConnectionError.ConnectionBanned | ConnectionError.InvalidPassword | ConnectionError.IncompatibleProtocolVersion | ConnectionError.IPRecentlyConnected | ConnectionError.OurSystemRequiresSecurity | ConnectionError.SecurityKeyMismatch | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.DisconnectionNotification | ConnectionError.DisconnectVerboselyModeratedGame | ConnectionError.DisconnectCollaboratorNotAgeVerified | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequired | ConnectionError.DisconnectCollaboratorOwnerActionRequired | ConnectionError.DisconnectCollaboratorTooManyCollaborators | ConnectionError.DisconnectCollaboratorUnknownError | ConnectionError.DisconnectCollaboratorRequestedEviction | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequiredPC | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchVipOwnerNotPresent | ConnectionError.PlacelaunchAgeVerificationRequired | ConnectionError.PlacelaunchParentalApprovalRequired | ConnectionError.PlacelaunchCoreGated | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchDeviceBlock | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.ConnectErrors | ConnectionError.AlreadyConnected | ConnectionError.NoFreeIncomingConnections | ConnectionError.ConnectionBanned | ConnectionError.InvalidPassword | ConnectionError.IncompatibleProtocolVersion | ConnectionError.IPRecentlyConnected | ConnectionError.OurSystemRequiresSecurity | ConnectionError.SecurityKeyMismatch | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.DisconnectionNotification | ConnectionError.DisconnectVerboselyModeratedGame | ConnectionError.DisconnectCollaboratorNotAgeVerified | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequired | ConnectionError.DisconnectCollaboratorOwnerActionRequired | ConnectionError.DisconnectCollaboratorTooManyCollaborators | ConnectionError.DisconnectCollaboratorUnknownError | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchVipOwnerNotPresent | ConnectionError.PlacelaunchAgeVerificationRequired | ConnectionError.PlacelaunchParentalApprovalRequired | ConnectionError.PlacelaunchCoreGated | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchDeviceBlock | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
     /**
      * Used to determine the connection state of the client to the game server.
      *
@@ -12444,60 +12408,6 @@ declare namespace Enum {
     }
     export type ElasticBehavior = ElasticBehavior.WhenScrollable | ElasticBehavior.Always | ElasticBehavior.Never;
     /**
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngagementLevel)
-     */
-    export namespace EngagementLevel {
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngagementLevel#Unknown)
-         */
-        export interface Unknown extends globalThis.EnumItem {
-            Name: "Unknown";
-            Value: 0;
-            EnumType: typeof globalThis.Enum.EngagementLevel;
-        }
-        export const Unknown: Unknown;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngagementLevel#Inactive)
-         */
-        export interface Inactive extends globalThis.EnumItem {
-            Name: "Inactive";
-            Value: 1;
-            EnumType: typeof globalThis.Enum.EngagementLevel;
-        }
-        export const Inactive: Inactive;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngagementLevel#Low)
-         */
-        export interface Low extends globalThis.EnumItem {
-            Name: "Low";
-            Value: 2;
-            EnumType: typeof globalThis.Enum.EngagementLevel;
-        }
-        export const Low: Low;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngagementLevel#Medium)
-         */
-        export interface Medium extends globalThis.EnumItem {
-            Name: "Medium";
-            Value: 3;
-            EnumType: typeof globalThis.Enum.EngagementLevel;
-        }
-        export const Medium: Medium;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngagementLevel#High)
-         */
-        export interface High extends globalThis.EnumItem {
-            Name: "High";
-            Value: 4;
-            EnumType: typeof globalThis.Enum.EngagementLevel;
-        }
-        export const High: High;
-        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EngagementLevel>;
-        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.EngagementLevel | undefined;
-        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.EngagementLevel | undefined;
-    }
-    export type EngagementLevel = EngagementLevel.Unknown | EngagementLevel.Inactive | EngagementLevel.Low | EngagementLevel.Medium | EngagementLevel.High;
-    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngineFolder)
      */
     export namespace EngineFolder {
@@ -12621,60 +12531,6 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.EnviromentalPhysicsThrottle | undefined;
     }
     export type EnviromentalPhysicsThrottle = EnviromentalPhysicsThrottle.DefaultAuto | EnviromentalPhysicsThrottle.Disabled | EnviromentalPhysicsThrottle.Always | EnviromentalPhysicsThrottle.Skip2 | EnviromentalPhysicsThrottle.Skip4 | EnviromentalPhysicsThrottle.Skip8 | EnviromentalPhysicsThrottle.Skip16;
-    /**
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceActivationStatus)
-     */
-    export namespace ExperienceActivationStatus {
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceActivationStatus#Unknown)
-         */
-        export interface Unknown extends globalThis.EnumItem {
-            Name: "Unknown";
-            Value: 0;
-            EnumType: typeof globalThis.Enum.ExperienceActivationStatus;
-        }
-        export const Unknown: Unknown;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceActivationStatus#New)
-         */
-        export interface New extends globalThis.EnumItem {
-            Name: "New";
-            Value: 1;
-            EnumType: typeof globalThis.Enum.ExperienceActivationStatus;
-        }
-        export const New: New;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceActivationStatus#Active)
-         */
-        export interface Active extends globalThis.EnumItem {
-            Name: "Active";
-            Value: 2;
-            EnumType: typeof globalThis.Enum.ExperienceActivationStatus;
-        }
-        export const Active: Active;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceActivationStatus#Lapsed)
-         */
-        export interface Lapsed extends globalThis.EnumItem {
-            Name: "Lapsed";
-            Value: 3;
-            EnumType: typeof globalThis.Enum.ExperienceActivationStatus;
-        }
-        export const Lapsed: Lapsed;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceActivationStatus#Reactivated)
-         */
-        export interface Reactivated extends globalThis.EnumItem {
-            Name: "Reactivated";
-            Value: 4;
-            EnumType: typeof globalThis.Enum.ExperienceActivationStatus;
-        }
-        export const Reactivated: Reactivated;
-        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ExperienceActivationStatus>;
-        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ExperienceActivationStatus | undefined;
-        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ExperienceActivationStatus | undefined;
-    }
-    export type ExperienceActivationStatus = ExperienceActivationStatus.Unknown | ExperienceActivationStatus.New | ExperienceActivationStatus.Active | ExperienceActivationStatus.Lapsed | ExperienceActivationStatus.Reactivated;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceAuthScope)
      */
@@ -18056,10 +17912,6 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.KeyCode;
         }
         export const Unknown: Unknown;
-        /**
-         * @deprecated renamed to Unknown
-         */
-        export const None: Unknown;
         /**
          * The `Backspace` key.
          *
@@ -25996,60 +25848,6 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlayerExitReason | undefined;
     }
     export type PlayerExitReason = PlayerExitReason.Unknown | PlayerExitReason.PlatformKick | PlayerExitReason.CreatorKick;
-    /**
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformActivationStatus)
-     */
-    export namespace PlayerPlatformActivationStatus {
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformActivationStatus#Unknown)
-         */
-        export interface Unknown extends globalThis.EnumItem {
-            Name: "Unknown";
-            Value: 0;
-            EnumType: typeof globalThis.Enum.PlayerPlatformActivationStatus;
-        }
-        export const Unknown: Unknown;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformActivationStatus#New)
-         */
-        export interface New extends globalThis.EnumItem {
-            Name: "New";
-            Value: 1;
-            EnumType: typeof globalThis.Enum.PlayerPlatformActivationStatus;
-        }
-        export const New: New;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformActivationStatus#Active)
-         */
-        export interface Active extends globalThis.EnumItem {
-            Name: "Active";
-            Value: 2;
-            EnumType: typeof globalThis.Enum.PlayerPlatformActivationStatus;
-        }
-        export const Active: Active;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformActivationStatus#Lapsed)
-         */
-        export interface Lapsed extends globalThis.EnumItem {
-            Name: "Lapsed";
-            Value: 3;
-            EnumType: typeof globalThis.Enum.PlayerPlatformActivationStatus;
-        }
-        export const Lapsed: Lapsed;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformActivationStatus#Reactivated)
-         */
-        export interface Reactivated extends globalThis.EnumItem {
-            Name: "Reactivated";
-            Value: 4;
-            EnumType: typeof globalThis.Enum.PlayerPlatformActivationStatus;
-        }
-        export const Reactivated: Reactivated;
-        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PlayerPlatformActivationStatus>;
-        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PlayerPlatformActivationStatus | undefined;
-        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlayerPlatformActivationStatus | undefined;
-    }
-    export type PlayerPlatformActivationStatus = PlayerPlatformActivationStatus.Unknown | PlayerPlatformActivationStatus.New | PlayerPlatformActivationStatus.Active | PlayerPlatformActivationStatus.Lapsed | PlayerPlatformActivationStatus.Reactivated;
     /**
      * Describes a player's platform-wide spender status bucket.
      *
