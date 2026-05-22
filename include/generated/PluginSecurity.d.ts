@@ -83,6 +83,7 @@ interface Services {
     FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
     FeatureRestrictionManager: FeatureRestrictionManager;
     FileManagerService: FileManagerService;
+    FileSyncReplicationService: FileSyncReplicationService;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
     GameSettings: GameSettings;
@@ -95,6 +96,7 @@ interface Services {
     HapticService: HapticService;
     HarmonyService: HarmonyService;
     HeapProfilerService: HeapProfilerService;
+    HeatmapQueryService: HeatmapQueryService;
     HeatmapService: HeatmapService;
     HeightmapImporterService: HeightmapImporterService;
     HttpService: HttpService;
@@ -2299,7 +2301,7 @@ interface AvatarSettings extends Instance {
     readonly _nominal_AvatarSettings: unique symbol;
 }
 /**
- * A container object that holds a player's inventory. Any `Tool` in a player's Backpack will be displayed in their inventory at the bottom of their screen.
+ * A container object that holds a player's inventory. Any `Tool` in a player's `Backpack` will be displayed in their inventory at the bottom of the screen.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Backpack)
  */
@@ -2545,7 +2547,7 @@ interface CoreGui extends BasePlayerGui {
     readonly _nominal_CoreGui: unique symbol;
 }
 /**
- * A container for a player's currently rendered `ScreenGuis`.
+ * A container that holds a player's UI.
  *
  * - **Tags**: NotCreatable, PlayerReplicated
  *
@@ -3563,7 +3565,7 @@ interface ConfigService extends Instance {
     readonly _nominal_ConfigService: unique symbol;
 }
 /**
- * The Configuration object is a container object that is designed to hold value objects to make values used in `Tools` or any model using `Scripts` more accessible.
+ * A container object designed to hold value objects. Makes values used in `Tools` or any model using `Scripts` more accessible.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Configuration)
  */
@@ -5022,7 +5024,7 @@ interface ExperienceStateCaptureService extends Instance {
     readonly _nominal_ExperienceStateCaptureService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, Service, NotReplicated
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExperienceStateRecordingService)
  */
@@ -5867,6 +5869,21 @@ interface FileManagerService extends Instance {
      * @deprecated
      */
     readonly _nominal_FileManagerService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FileSyncReplicationService)
+ */
+interface FileSyncReplicationService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FileSyncReplicationService: unique symbol;
 }
 /**
  * A preconfigured particle emitter with the visual aesthetic of fire.
@@ -7136,6 +7153,21 @@ interface HeapProfilerService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService#OnNewData)
      */
     readonly OnNewData: RBXScriptSignal<(player: Player, jsonString: buffer, id: number, compressedLength: number, uncompressedLength: number) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeatmapQueryService)
+ */
+interface HeatmapQueryService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_HeatmapQueryService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -9353,7 +9385,7 @@ interface WedgePart extends FormFactorPart {
     readonly _nominal_WedgePart: unique symbol;
 }
 /**
- * Terrain lets you to create dynamically morphable environments.
+ * `Terrain` lets you to create dynamically morphable environments.
  *
  * - **Tags**: NotCreatable
  *
@@ -9369,7 +9401,7 @@ interface Terrain extends BasePart {
      */
     readonly _nominal_Terrain: unique symbol;
     /**
-     * **Deprecated:** Since all places now automatically use the new terrain engine, this method is obsolete. Do not use it for new work.
+     * **Deprecated:** Since all places now automatically use the new terrain engine, this method is obsolete.
      *
      * Transforms the legacy terrain engine into the new terrain engine.
      *
@@ -9377,7 +9409,7 @@ interface Terrain extends BasePart {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Terrain#ConvertToSmooth)
-     * @param this Terrain lets you to create dynamically morphable environments.
+     * @param this `Terrain` lets you to create dynamically morphable environments.
      *
      * @deprecated
      */
@@ -10761,7 +10793,7 @@ interface PlayerHydrationService extends Instance {
     readonly _nominal_PlayerHydrationService: unique symbol;
 }
 /**
- * A container for LocalScripts to be run on the client.
+ * A container for client-side scripts to be run inside `Player` objects within the `Players` service.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -13850,7 +13882,7 @@ interface StartPageService extends Instance {
     readonly _nominal_StartPageService: unique symbol;
 }
 /**
- * If the game allows gear, StarterGear contains all of a player's appropriate gear. Whenever the player's character spawns, all of the contents of that player's StarterGear will get copied into the player's `Backpack`.
+ * If the game allows gear, `StarterGear` is a container automatically inserted into each `Player` object when the player joins the game. Whenever the player's character spawns, the contents of that player's `StarterGear` are copied into the player's `Backpack`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterGear)
  */
@@ -13865,7 +13897,7 @@ interface StarterGear extends Instance {
     readonly _nominal_StarterGear: unique symbol;
 }
 /**
- * A service-level container whose contents are copied into each player's `Backpack` when the player spawns. It is generally used to hold `Tools`, but is sometimes used to hold `LocalScripts` to ensure that each player gets a copy.
+ * A container whose contents are copied into each player's `Backpack` when their player character spawns. It is generally used to hold `Tools`.
  *
  * - **Tags**: NotCreatable, Service
  *
