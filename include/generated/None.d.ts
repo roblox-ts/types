@@ -7957,7 +7957,7 @@ interface AvatarCreationService extends Instance {
      */
     AutoSetupAvatarAsync(this: AvatarCreationService, player: Player, autoSetupParams: object, progressCallback?: Callback): string;
     /**
-     * Creates a 2D avatar preview and returns a previewId.
+     * Creates a 2D avatar preview and returns a `previewId`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -12837,6 +12837,18 @@ interface AnimationConstraint extends Constraint {
     readonly _nominal_AnimationConstraint: unique symbol;
     /**
      * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint#AngularDamping)
+     */
+    AngularDamping: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint#AngularStrength)
+     */
+    AngularStrength: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint#C0)
@@ -12861,6 +12873,18 @@ interface AnimationConstraint extends Constraint {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint#IsKinematic)
      */
     IsKinematic: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint#LinearDamping)
+     */
+    LinearDamping: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint#LinearStrength)
+     */
+    LinearStrength: number;
     /**
      * Maximum force magnitude the constraint can apply to achieve its goal.
      *
@@ -18443,6 +18467,13 @@ interface GroupService extends Instance {
      */
     GetGroupsAsync(this: GroupService, userId: number): Array<GetGroupsAsyncResult>;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GroupService#GetRolesInGroupAsync)
+     */
+    GetRolesInGroupAsync(this: GroupService, userId: number, groupId: number): unknown;
+    /**
      * Prompts the local `Player` to join a specified Roblox group via a native modal.
      *
      * - **ThreadSafety**: Unsafe
@@ -22760,6 +22791,8 @@ interface GuiService extends Instance {
         Vector2
     ]>;
     /**
+     * Takes an `ScreenInsets` value and returns a `Rect2D` describing the inset region, relative to the `CoreUISafeInsets` area.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#GetInsetArea)
@@ -25412,7 +25445,8 @@ interface HumanoidRigDescription extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetJointFromName)
      * @param this
-     * @param name
+     * @param name string
+     * @returns Instance
      */
     GetJointFromName(this: HumanoidRigDescription, name: string): Instance | undefined;
     /**
@@ -25420,6 +25454,7 @@ interface HumanoidRigDescription extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetJointNames)
      * @param this
+     * @returns Array
      */
     GetJointNames(this: HumanoidRigDescription): Array<unknown>;
     /**
@@ -25427,6 +25462,7 @@ interface HumanoidRigDescription extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetR15JointNames)
      * @param this
+     * @returns Array
      */
     GetR15JointNames(this: HumanoidRigDescription): Array<unknown>;
     /**
@@ -25434,6 +25470,7 @@ interface HumanoidRigDescription extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetR6JointNames)
      * @param this
+     * @returns Array
      */
     GetR6JointNames(this: HumanoidRigDescription): Array<unknown>;
 }
@@ -29624,6 +29661,32 @@ interface MicroProfilerService extends Instance {
      * @deprecated
      */
     readonly _nominal_MicroProfilerService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService#GetDataInRange)
+     */
+    GetDataInRange(this: MicroProfilerService, slotId: number, offset: number, size: number, destBuffer: buffer, destBufferOffset: number): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService#GetDataSize)
+     */
+    GetDataSize(this: MicroProfilerService, slotId: number): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService#ProcessCommand)
+     */
+    ProcessCommand(this: MicroProfilerService, cmdBuf: buffer, cmdOffset: number, cmdSize: number, respBuf: buffer, respOffset: number, respSize: number): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService#DataChanged)
+     */
+    readonly DataChanged: RBXScriptSignal<(slotId: number, flags: number) => void>;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -30843,12 +30906,15 @@ interface BasePart extends PVInstance {
      */
     Velocity: Vector3;
     /**
+     * Returns the torque needed to achieve a given angular acceleration on this part's assembly, optionally accounting for gyroscopic effects.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart#AngularAccelerationToTorque)
      * @param this The abstract base class for in-world objects that physically interact.
-     * @param angAcceleration
-     * @param angVelocity
+     * @param angAcceleration The desired angular acceleration vector in world space.
+     * @param angVelocity The current angular velocity of the assembly in world space. Defaults to `(0, 0, 0)`. Supply the assembly's angular velocity to account for gyroscopic effects.
+     * @returns A `Vector3` representing the world-space torque required to produce the specified angular acceleration.
      */
     AngularAccelerationToTorque(this: BasePart, angAcceleration: Vector3, angVelocity?: Vector3): Vector3;
     /**
@@ -31090,12 +31156,15 @@ interface BasePart extends PVInstance {
      */
     SetNetworkOwnershipAuto(this: BasePart): void;
     /**
+     * Returns the angular acceleration that would result from applying a given torque to this part's assembly, optionally accounting for gyroscopic effects.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart#TorqueToAngularAcceleration)
      * @param this The abstract base class for in-world objects that physically interact.
-     * @param torque
-     * @param angVelocity
+     * @param torque The torque vector applied to the assembly in world space.
+     * @param angVelocity The current angular velocity of the assembly in world space. Defaults to `(0, 0, 0)`. Supply the assembly's angular velocity to account for gyroscopic effects.
+     * @returns A `Vector3` representing the resulting angular acceleration in world space.
      */
     TorqueToAngularAcceleration(this: BasePart, torque: Vector3, angVelocity?: Vector3): Vector3;
     /**
@@ -32342,7 +32411,7 @@ interface VehicleSeat extends BasePart {
      */
     readonly _nominal_VehicleSeat: unique symbol;
     /**
-     * Displays how many hinges are detected by the VehicleSeat. Useful for debugging vehicle designs.
+     * Displays how many hinges are detected by the `VehicleSeat`. Useful for debugging vehicle designs.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -32359,7 +32428,7 @@ interface VehicleSeat extends BasePart {
      */
     Disabled: boolean;
     /**
-     * If true, a fancy speed bar will be displayed speed on screen that tells you what speed the Vehicle is moving at.
+     * If `true`, a UI speed bar will be displayed on screen that tells you what speed the vehicle is moving at.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -32375,7 +32444,7 @@ interface VehicleSeat extends BasePart {
      */
     MaxSpeed: number;
     /**
-     * The humanoid that is sitting in the seat.
+     * The `Humanoid` that is sitting in the seat.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -32384,7 +32453,7 @@ interface VehicleSeat extends BasePart {
      */
     readonly Occupant: Humanoid | undefined;
     /**
-     * The direction of movement, tied to the keys A and D. Must be one of 1 (right), 0 (straight), or -1 (left). Will refresh back to 0 unless constantly set.
+     * The direction of movement, tied to left and right movement inputs.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -32393,7 +32462,7 @@ interface VehicleSeat extends BasePart {
      */
     Steer: number;
     /**
-     * Functions identically to `VehicleSeat.Steer`, but the value is not an integer.
+     * The left-to-right movement float, tied to left and right movement inputs.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -32401,7 +32470,7 @@ interface VehicleSeat extends BasePart {
      */
     SteerFloat: number;
     /**
-     * The direction of movement, tied to the keys W and S. Must be an integer 1 (forward) 0 (null) or -1 (reverse). Will refresh back to 0 unless constantly set.
+     * The direction of throttle, tied to forward and backward movement inputs.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -32410,7 +32479,7 @@ interface VehicleSeat extends BasePart {
      */
     Throttle: number;
     /**
-     * Functions identically to `VehicleSeat.Throttle`, but the value is not an integer.
+     * The forward-to-reverse throttle float, tied to forward and backward movement inputs.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -32418,7 +32487,7 @@ interface VehicleSeat extends BasePart {
      */
     ThrottleFloat: number;
     /**
-     * How fast the vehicles will be able to attain `VehicleSeat.MaxSpeed`. The greater the number, the faster it will reach the maximum speed.
+     * How fast the vehicle will be able to attain `MaxSpeed`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -32434,13 +32503,13 @@ interface VehicleSeat extends BasePart {
      */
     TurnSpeed: number;
     /**
-     * Forces the character with the specified `Humanoid` to sit in the VehicleSeat.
+     * Forces the character with the specified `Humanoid` to sit in the `VehicleSeat`.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VehicleSeat#Sit)
      * @param this A seat object that can be used to control a vehicle.
-     * @param humanoid The humanoid being forced to sit in the VehicleSeat.
+     * @param humanoid The `Humanoid` being forced to sit in the `VehicleSeat`.
      */
     Sit(this: VehicleSeat, humanoid: Instance): void;
     /**
@@ -35915,6 +35984,8 @@ interface Player extends Instance {
      * @param this An object that represents a presently connected client to the experience.
      * @param groupId The `groupId` of the specified group.
      * @returns The player's rank in the group.
+     *
+     * @deprecated GetRolesInGroupAsync
      */
     GetRankInGroupAsync(this: Player, groupId: number): number;
     /**
@@ -35943,6 +36014,8 @@ interface Player extends Instance {
      * @param this An object that represents a presently connected client to the experience.
      * @param groupId The group ID of the specified group.
      * @returns The player's role in the specified group, or `Guest` if the player is not a member.
+     *
+     * @deprecated GetRolesInGroupAsync
      */
     GetRoleInGroupAsync(this: Player, groupId: number): string;
     /**
@@ -37946,11 +38019,11 @@ interface RecommendationService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#LogPreferenceEvent)
      * @param this A service that provides an interface for you to manage and display personalized content recommendations.
-     * @param preferenceType
-     * @param targetType
-     * @param targetId
-     * @param tracingId
-     * @param itemId
+     * @param preferenceType The enum for the type of preference.
+     * @param targetType The enum for the type of target.
+     * @param targetId The identifier of the preference target. The format depends on `targetType`.
+     * @param tracingId The tracing ID returned from the `GenerateItemListAsync` response. Pass an empty string if the preference originates outside a recommendation feed.
+     * @param itemId The item ID returned from the `GenerateItemListAsync` response. Pass an empty string if the preference originates outside a recommendation feed.
      */
     LogPreferenceEvent(this: RecommendationService, preferenceType: CastsToEnum<Enum.RecommendationPreferenceType>, targetType: CastsToEnum<Enum.RecommendationPreferenceTargetType>, targetId: string, tracingId?: string, itemId?: string): void;
     /**
@@ -40508,8 +40581,9 @@ interface SocialService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#PromptFeedbackSubmissionAsync)
      * @param this Facilitates social functions that impact relationships made on the Roblox platform.
+     * @param options Optional `Dictionary` configuring the prompt. Supported keys: - `FeedbackType` (`FeedbackType`). Selects which feedback flow to display. Defaults to `FeedbackType.Feedback`.
      */
-    PromptFeedbackSubmissionAsync(this: SocialService): void;
+    PromptFeedbackSubmissionAsync(this: SocialService, options?: object): void;
     /**
      * **Deprecated:**
      *
@@ -41104,7 +41178,7 @@ interface AssetSoundEffect extends CustomSoundEffect {
     readonly _nominal_AssetSoundEffect: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, NotBrowsable
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChannelSelectorSoundEffect)
  */
@@ -47681,7 +47755,7 @@ interface UserInputService extends Instance {
      */
     readonly VREnabled: boolean;
     /**
-     * Creates a `VirtualInput` object that a Studio plugin can use to simulate mouse, keyboard, and pointer input.
+     * Creates a `VirtualInput` object for simulating mouse, keyboard, and pointer input.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -48185,6 +48259,13 @@ interface UserService extends Instance {
      * @deprecated
      */
     readonly _nominal_UserService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserService#GetUserFromGlobalUserIdAsync)
+     */
+    GetUserFromGlobalUserIdAsync(this: UserService, userId: number): User;
     /**
      * Returns an array of user information including user name and display name.
      *
@@ -49424,15 +49505,6 @@ interface VoiceChatInternal extends Instance {
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatInternal#GetSpeakerDevices)
-     *
-     * @deprecated
-     */
-    GetSpeakerDevices(this: VoiceChatInternal): unknown;
-    /**
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**:
-     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatInternal#GetVoiceChatApiVersion)
      *
      * @deprecated
@@ -49510,15 +49582,6 @@ interface VoiceChatInternal extends Instance {
      * @deprecated
      */
     SetMicDevice(this: VoiceChatInternal, micDeviceName: string, micDeviceGuid: string): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     * - **Tags**:
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatInternal#SetSpeakerDevice)
-     *
-     * @deprecated
-     */
-    SetSpeakerDevice(this: VoiceChatInternal, speakerDeviceName: string, speakerDeviceGuid: string): void;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
@@ -50052,7 +50115,7 @@ interface VideoSampler extends RBXObject {
     GetSamplesAtTimesAsync(this: VideoSampler, times: Array<unknown>): Array<unknown>;
 }
 /**
- * Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+ * Simulates mouse, keyboard, and pointer input as if it were performed by a real player.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -50073,7 +50136,7 @@ interface VirtualInput extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendKey)
-     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param this Simulates mouse, keyboard, and pointer input as if it were performed by a real player.
      * @param isPressed Whether to simulate a key press (`true`) or a key release (`false`).
      * @param keyCode The `KeyCode` of the key to inject.
      * @param isRepeatedKey Whether this is an auto-repeat event, as occurs when a key is held down. Only valid for text-manipulation keys such as `KeyCode.Backspace`, `KeyCode.Delete`, and the arrow keys. Defaults to `false`.
@@ -50085,7 +50148,7 @@ interface VirtualInput extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMouseButton)
-     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param this Simulates mouse, keyboard, and pointer input as if it were performed by a real player.
      * @param position The screen-space position in pixels at which to inject the event.
      * @param button The mouse button to use. Supported values are `UserInputType.MouseButton1`, `UserInputType.MouseButton2`, and `UserInputType.MouseButton3`.
      * @param isDown Whether to simulate a button press (`true`) or a button release (`false`).
@@ -50098,7 +50161,7 @@ interface VirtualInput extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMouseDelta)
-     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param this Simulates mouse, keyboard, and pointer input as if it were performed by a real player.
      * @param positionDelta The relative mouse movement in pixels along each axis.
      */
     SendMouseDelta(this: VirtualInput, positionDelta: Vector2): void;
@@ -50108,7 +50171,7 @@ interface VirtualInput extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMousePosition)
-     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param this Simulates mouse, keyboard, and pointer input as if it were performed by a real player.
      * @param position The target screen-space position in pixels.
      */
     SendMousePosition(this: VirtualInput, position: Vector2): void;
@@ -50118,7 +50181,7 @@ interface VirtualInput extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendPointerAction)
-     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param this Simulates mouse, keyboard, and pointer input as if it were performed by a real player.
      * @param position The screen-space position in pixels at which to inject the event.
      * @param pointerAction A dictionary describing the pointer action to inject. Accepted keys are `Wheel` (number), `Pan` (`Vector2`), and `Pinch` (number). At least one key must have a non-zero value.
      */
@@ -50129,7 +50192,7 @@ interface VirtualInput extends RBXObject {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendTextInput)
-     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param this Simulates mouse, keyboard, and pointer input as if it were performed by a real player.
      * @param text The string to inject as text input.
      */
     SendTextInput(this: VirtualInput, text: string): void;

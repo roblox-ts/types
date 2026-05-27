@@ -9792,6 +9792,12 @@ interface Workspace extends WorldRoot {
      */
     set StreamingEnabled(value: boolean);
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#ApplyRecommendedStreamingSettings)
+     */
+    ApplyRecommendedStreamingSettings(this: Workspace): boolean;
+    /**
      * **Deprecated:**
      *
      * Goes through all `BaseParts` given, breaking any joints connected to these parts.
@@ -13634,7 +13640,7 @@ interface AssetSoundEffect extends CustomSoundEffect {
     readonly _nominal_AssetSoundEffect: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, NotBrowsable
+ * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChannelSelectorSoundEffect)
  */
@@ -17090,7 +17096,7 @@ interface VideoSampler extends RBXObject {
     readonly _nominal_VideoSampler: unique symbol;
 }
 /**
- * Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+ * Simulates mouse, keyboard, and pointer input as if it were performed by a real player.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *

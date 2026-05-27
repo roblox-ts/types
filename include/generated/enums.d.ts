@@ -11799,15 +11799,6 @@ declare namespace Enum {
         }
         export const EXPERIENCE: EXPERIENCE;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DomainType#GROUP)
-         */
-        export interface GROUP extends globalThis.EnumItem {
-            Name: "GROUP";
-            Value: 2;
-            EnumType: typeof globalThis.Enum.DomainType;
-        }
-        export const GROUP: GROUP;
-        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DomainType#OAUTH)
          */
         export interface OAUTH extends globalThis.EnumItem {
@@ -11820,7 +11811,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DomainType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DomainType | undefined;
     }
-    export type DomainType = DomainType.EXPERIENCE | DomainType.GROUP | DomainType.OAUTH;
+    export type DomainType = DomainType.EXPERIENCE | DomainType.OAUTH;
     /**
      * Used by `UIAspectRatioConstraint.DominantAxis` for resizing the object to maintain the aspect ratio.
      *
@@ -13579,6 +13570,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FeatureRestrictionAbuseVector | undefined;
     }
     export type FeatureRestrictionAbuseVector = FeatureRestrictionAbuseVector.ExperienceChat | FeatureRestrictionAbuseVector.Communication;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedbackType)
+     */
+    export namespace FeedbackType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedbackType#Feedback)
+         */
+        export interface Feedback extends globalThis.EnumItem {
+            Name: "Feedback";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FeedbackType;
+        }
+        export const Feedback: Feedback;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedbackType#PlayerSupport)
+         */
+        export interface PlayerSupport extends globalThis.EnumItem {
+            Name: "PlayerSupport";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FeedbackType;
+        }
+        export const PlayerSupport: PlayerSupport;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FeedbackType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FeedbackType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FeedbackType | undefined;
+    }
+    export type FeedbackType = FeedbackType.Feedback | FeedbackType.PlayerSupport;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FieldOfViewMode)
      */
@@ -15858,7 +15876,7 @@ declare namespace Enum {
         }
         export const Joined: Joined;
         /**
-         * The player submitted a request to join the group.
+         * The player submitted a request to join the group, or already had a pending join request prior to prompting.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GroupMembershipStatus#JoinRequestPending)
          */
@@ -24317,6 +24335,8 @@ declare namespace Enum {
      */
     export namespace OutfitType {
         /**
+         * Returns outfits of every type, with no filtering applied.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutfitType#All)
          */
         export interface All extends globalThis.EnumItem {
@@ -24326,6 +24346,8 @@ declare namespace Enum {
         }
         export const All: All;
         /**
+         * A full-body avatar outfit.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutfitType#Avatar)
          */
         export interface Avatar extends globalThis.EnumItem {
@@ -24335,6 +24357,8 @@ declare namespace Enum {
         }
         export const Avatar: Avatar;
         /**
+         * An outfit containing a dynamic head.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutfitType#DynamicHead)
          */
         export interface DynamicHead extends globalThis.EnumItem {
@@ -24344,6 +24368,8 @@ declare namespace Enum {
         }
         export const DynamicHead: DynamicHead;
         /**
+         * An outfit consisting of a pair of shoes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutfitType#Shoes)
          */
         export interface Shoes extends globalThis.EnumItem {
@@ -24352,11 +24378,22 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.OutfitType;
         }
         export const Shoes: Shoes;
+        /**
+         * An outfit consisting of makeup items applied to the avatar's face.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutfitType#Makeup)
+         */
+        export interface Makeup extends globalThis.EnumItem {
+            Name: "Makeup";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.OutfitType;
+        }
+        export const Makeup: Makeup;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.OutfitType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.OutfitType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.OutfitType | undefined;
     }
-    export type OutfitType = OutfitType.All | OutfitType.Avatar | OutfitType.DynamicHead | OutfitType.Shoes;
+    export type OutfitType = OutfitType.All | OutfitType.Avatar | OutfitType.DynamicHead | OutfitType.Shoes | OutfitType.Makeup;
     /**
      * Sets the layout mode of the output.
      *
@@ -27717,7 +27754,7 @@ declare namespace Enum {
         }
         export const DeveloperProduct: DeveloperProduct;
         /**
-         * Used for processing receipts for the user who initiated a Robux transfer. The receipt's `PlayerId` is the sender's user ID and includes a `TransferRequestId` field.
+         * Used for processing receipts for the user who initiated a Robux transfer. The receipt's `PlayerId` is the sender's user ID and includes a `TransferRequestId` field. Delivered immediately if no receiver approval was required, otherwise deferred until the sender's next session join.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptType#RobuxTransferSender)
          */
@@ -27728,7 +27765,7 @@ declare namespace Enum {
         }
         export const RobuxTransferSender: RobuxTransferSender;
         /**
-         * Used for processing receipts for the user who received Robux via a transfer. The receipt's `PlayerId` is the receiver's user ID and includes a `TransferRequestId` field.
+         * Used for processing receipts for the user who received Robux via a transfer. The receipt's `PlayerId` is the receiver's user ID and includes a `TransferRequestId` field. Always deferred until the receiver's next session join.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptType#RobuxTransferReceiver)
          */
@@ -27970,6 +28007,8 @@ declare namespace Enum {
      */
     export namespace RecommendationPreferenceTargetType {
         /**
+         * The target is another Roblox user. The `targetId` is the user key.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationPreferenceTargetType#User)
          */
         export interface User extends globalThis.EnumItem {
@@ -27979,6 +28018,8 @@ declare namespace Enum {
         }
         export const User: User;
         /**
+         * The target is a universe. The `targetId` is the universe ID as a string.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationPreferenceTargetType#Universe)
          */
         export interface Universe extends globalThis.EnumItem {
@@ -27988,6 +28029,8 @@ declare namespace Enum {
         }
         export const Universe: Universe;
         /**
+         * The target is a custom content tag. The `targetId` is the tag string.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationPreferenceTargetType#CustomTag)
          */
         export interface CustomTag extends globalThis.EnumItem {
@@ -28006,6 +28049,8 @@ declare namespace Enum {
      */
     export namespace RecommendationPreferenceType {
         /**
+         * The user started following the target.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationPreferenceType#AddFollow)
          */
         export interface AddFollow extends globalThis.EnumItem {
@@ -28015,6 +28060,8 @@ declare namespace Enum {
         }
         export const AddFollow: AddFollow;
         /**
+         * The user stopped following the target.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationPreferenceType#RemoveFollow)
          */
         export interface RemoveFollow extends globalThis.EnumItem {
@@ -28024,6 +28071,8 @@ declare namespace Enum {
         }
         export const RemoveFollow: RemoveFollow;
         /**
+         * The user muted the target.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationPreferenceType#AddMute)
          */
         export interface AddMute extends globalThis.EnumItem {
@@ -28033,6 +28082,8 @@ declare namespace Enum {
         }
         export const AddMute: AddMute;
         /**
+         * The user unmuted a previously muted target.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationPreferenceType#RemoveMute)
          */
         export interface RemoveMute extends globalThis.EnumItem {
