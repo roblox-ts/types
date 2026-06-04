@@ -61,6 +61,7 @@ interface Services {
     DebuggerConnectionManager: DebuggerConnectionManager;
     DebuggerUIService: DebuggerUIService;
     DeferredAssetManagerService: DeferredAssetManagerService;
+    DesignFoundationsService: DesignFoundationsService;
     DeviceIdService: DeviceIdService;
     DraggerService: DraggerService;
     EditableService: EditableService;
@@ -1189,17 +1190,6 @@ interface EditableMesh extends RBXObject {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#FixedSize)
      */
     get FixedSize(): boolean;
-    /**
-     * **Deprecated:**
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**:
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#SkinningEnabled)
-     *
-     * @deprecated
-     */
-    SkinningEnabled: boolean;
     /**
      * Adds a new bone and returns a stable bone ID.
      *
@@ -8188,7 +8178,7 @@ interface AvatarEditorService extends Instance {
      * @param outfit The `Outfit` that the player will be prompted to created.
      * @param rigType The `RigType` that the outfit will be created for if the player confirms the prompt.
      */
-    PromptCreateOutfit(this: AvatarEditorService, outfit: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
+    PromptCreateOutfit(this: AvatarEditorService, outfit: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>, outfitOptions: object, outfitType: unknown): void;
     /**
      * Prompts the `Players.LocalPlayer` to delete the given outfit.
      *
@@ -15883,6 +15873,21 @@ interface DeferredAssetManagerService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DesignFoundationsService)
+ */
+interface DesignFoundationsService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_DesignFoundationsService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DeviceIdService)
  */
 interface DeviceIdService extends Instance {
@@ -18467,10 +18472,16 @@ interface GroupService extends Instance {
      */
     GetGroupsAsync(this: GroupService, userId: number): Array<GetGroupsAsyncResult>;
     /**
+     * Returns all roles held by the specified user in the specified group, supporting multi-role group membership.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GroupService#GetRolesInGroupAsync)
+     * @param this GroupService is a service that allows developers to fetch information about a Roblox group from within a game.
+     * @param userId The user's ID.
+     * @param groupId The group's ID.
+     * @returns A table with two fields: `IsMember` (boolean) and `Roles` (array of public role tables). Each role table contains `Id` (int64), `Name` (string), and `Rank` (int). The array is ordered as returned by the backend.
      */
     GetRolesInGroupAsync(this: GroupService, userId: number, groupId: number): unknown;
     /**
@@ -35975,6 +35986,8 @@ interface Player extends Instance {
      */
     GetRankInGroup(this: Player, groupId: number): number;
     /**
+     * **Deprecated:** This method only returns a single role rank and may produce arbitrary results when a user holds multiple roles. Use `GroupService:GetRolesInGroupAsync()` instead, which returns all roles.
+     *
      * Returns the player's rank in the group as an integer.
      *
      * - **ThreadSafety**: Unsafe
@@ -36005,6 +36018,8 @@ interface Player extends Instance {
      */
     GetRoleInGroup(this: Player, groupId: number): string;
     /**
+     * **Deprecated:** This method only returns a single role name and may produce arbitrary results when a user holds multiple roles. Use `GroupService:GetRolesInGroupAsync()` instead, which returns all roles.
+     *
      * Returns the player's role in the group as a string, or `Guest` if the player isn't part of the group.
      *
      * - **ThreadSafety**: Unsafe
@@ -38675,6 +38690,12 @@ interface RunService extends Instance {
      * @returns Whether the current environment is running the client.
      */
     IsClient(this: RunService): boolean;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#IsResimulating)
+     */
+    IsResimulating(this: RunService): boolean;
     /**
      * Returns whether a **Run** playtest has been initiated in Studio.
      *
@@ -47188,6 +47209,12 @@ interface UIShadow extends UIComponent {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#Color)
      */
     Color: Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#Enabled)
+     */
+    Enabled: boolean;
     /**
      * Moves the shadow relative to the parent's position.
      *
