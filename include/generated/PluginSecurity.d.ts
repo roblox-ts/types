@@ -212,6 +212,7 @@ interface Services {
     SharedTableRegistry: SharedTableRegistry;
     SlimAnimationReplicationService: SlimAnimationReplicationService;
     SlimContentProvider: SlimContentProvider;
+    SlimDebugSettings: SlimDebugSettings;
     SlimReplicationService: SlimReplicationService;
     SlimService: SlimService;
     SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
@@ -815,6 +816,7 @@ interface Objects extends Instances {
     OutputLink: OutputLink;
     PluginConnection: PluginConnection;
     ScreenshotCapture: ScreenshotCapture;
+    StudioActionOverride: StudioActionOverride;
     TerrainIterateOperation: TerrainIterateOperation;
     TerrainModifyOperation: TerrainModifyOperation;
     TerrainReadOperation: TerrainReadOperation;
@@ -927,7 +929,7 @@ interface ConfigSnapshot extends RBXObject {
     readonly _nominal_ConfigSnapshot: unique symbol;
 }
 /**
- * Instance which allows for the runtime creation and manipulation of images.
+ * Object which allows for the runtime creation and manipulation of images.
  *
  * - **Tags**: NotCreatable
  *
@@ -944,7 +946,7 @@ interface EditableImage extends RBXObject {
     readonly _nominal_EditableImage: unique symbol;
 }
 /**
- * Instance which allows for the runtime creation and manipulation of meshes.
+ * Object which allows for the runtime creation and manipulation of meshes.
  *
  * - **Tags**: NotCreatable
  *
@@ -2514,7 +2516,7 @@ interface RootImportData extends BaseImportData {
     readonly _nominal_RootImportData: unique symbol;
 }
 /**
- * The BasePlayerGui is an abstract class which the GUI drawing storage classes inherit from.
+ * `BasePlayerGui` is an abstract class which the GUI drawing storage classes inherit from.
  *
  * - **Tags**: NotCreatable
  *
@@ -12029,6 +12031,132 @@ interface RenderSettings extends Instance {
      * @deprecated
      */
     readonly _nominal_RenderSettings: unique symbol;
+    /**
+     * Sets the starting quality level of the framerate manager.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#AutoFRMLevel)
+     */
+    AutoFRMLevel: number;
+    /**
+     * Whether all scene updates will be given an unlimited budget, regardless of how computationally expensive it may be.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#EagerBulkExecution)
+     */
+    EagerBulkExecution: boolean;
+    /**
+     * Sets the graphics quality level in Roblox Studio.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#EditQualityLevel)
+     */
+    EditQualityLevel: Enum.QualityLevel;
+    /**
+     * Toggles the enabled state of the framerate manager.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden, NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#EnableFRM)
+     */
+    EnableFRM: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#Enable VR Mode)
+     */
+    "Enable VR Mode": boolean;
+    /**
+     * Sets whether materials should be generated per part, or per unique appearance in Roblox's exporter.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#ExportMergeByMaterial)
+     */
+    ExportMergeByMaterial: boolean;
+    /**
+     * Specifies the behavior of the framerate manager.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#FrameRateManager)
+     */
+    FrameRateManager: Enum.FramerateManagerMode;
+    /**
+     * The graphics API that Roblox will use on startup.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#GraphicsMode)
+     */
+    GraphicsMode: Enum.GraphicsMode;
+    /**
+     * The size in bytes of the mesh cache.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#MeshCacheSize)
+     */
+    MeshCacheSize: number;
+    /**
+     * Studio only. Used to visually verify the quality of `MeshParts` at lower level of detail at close range.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#MeshPartDetailLevel)
+     */
+    MeshPartDetailLevel: Enum.MeshPartDetailLevel;
+    /**
+     * Controls the quality level in Roblox Studio.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#QualityLevel)
+     */
+    QualityLevel: Enum.QualityLevel;
+    /**
+     * Whether Roblox Studio will automatically reload changes that are made to files in Roblox's `content` folder.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#ReloadAssets)
+     */
+    ReloadAssets: boolean;
+    /**
+     * Whether a wireframe of polygons will be shown on all `PartOperation` objects.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#RenderCSGTrianglesDebug)
+     */
+    RenderCSGTrianglesDebug: boolean;
+    /**
+     * Whether bounding boxes are rendered around each individual rendered entity in the scene.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#ShowBoundingBoxes)
+     */
+    ShowBoundingBoxes: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#ViewMode)
+     */
+    ViewMode: Enum.ViewMode;
+    /**
+     * Returns the maximum quality level.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#GetMaxQualityLevel)
+     * @param this
+     */
+    GetMaxQualityLevel(this: RenderSettings): number;
 }
 /**
  * An internal testing utility for the rendering pipeline.
@@ -13472,6 +13600,21 @@ interface SlimAnimationReplicationService extends Instance {
     readonly _nominal_SlimAnimationReplicationService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlimDebugSettings)
+ */
+interface SlimDebugSettings extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SlimDebugSettings: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlimReplicationService)
@@ -14142,6 +14285,763 @@ interface Studio extends Instance {
      * @deprecated
      */
     readonly _nominal_Studio: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#ActionOnStopSync)
+     */
+    ActionOnStopSync: Enum.ActionOnStopSync;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Active Color)
+     */
+    "Active Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Active Hover Over Color)
+     */
+    "Active Hover Over Color": Color3;
+    /**
+     * If set to true, Roblox Studio will attempt to transfer script changes that were made during a Play Solo session to the opened place.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Always Save Script Changes)
+     */
+    "Always Save Script Changes": boolean;
+    /**
+     * If set to true, the hover selection box that is shown when mousing over selectable objects in the `Workspace` will flash between `Hover Over Color` and `Select Color` based on the `Hover Animate Speed`.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Animate Hover Over)
+     */
+    "Animate Hover Over": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Clean Empty Line)
+     */
+    "Auto Clean Empty Line": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Closing Brackets)
+     */
+    "Auto Closing Brackets": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Closing Quotes)
+     */
+    "Auto Closing Quotes": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Delete Closing Brackets and Quotes)
+     */
+    "Auto Delete Closing Brackets and Quotes": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Indent Rule)
+     */
+    "Auto Indent Rule": Enum.AutoIndentRule;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto-Recovery Enabled)
+     */
+    "Auto-Recovery Enabled": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto-Recovery Interval (Minutes))
+     */
+    "Auto-Recovery Interval (Minutes)": number;
+    /**
+     * Specifies the background color of Roblox Studio's script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Background Color)
+     */
+    "Background Color": Color3;
+    /**
+     * Sets the scrolling mode of the `Advanced Objects` tab in Roblox Studio.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Basic Objects Display Mode)
+     */
+    "Basic Objects Display Mode": Enum.ListDisplayMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Bool Color)
+     */
+    "Bool Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Bracket Color)
+     */
+    "Bracket Color": Color3;
+    /**
+     * Sets the color of built-in functions and keywords in the script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Built-in Function Color)
+     */
+    "Built-in Function Color": Color3;
+    /**
+     * Sets how many studs the camera will move forward or backwards when using the mouse wheel.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Camera Mouse Wheel Speed)
+     */
+    "Camera Mouse Wheel Speed": number;
+    /**
+     * Sets the speed in studs/sec that the camera moves while holding down Shift with the movement keys.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Camera Shift Speed)
+     */
+    "Camera Shift Speed": number;
+    /**
+     * Sets the speed in studs/sec that the camera moves when movement keys are pressed.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Camera Speed)
+     */
+    "Camera Speed": number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Camera Zoom to Mouse Position)
+     */
+    "Camera Zoom to Mouse Position": boolean;
+    /**
+     * If set to true, the output will be automatically cleared when game sessions are switched.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Clear Output On Start)
+     */
+    "Clear Output On Start": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#CommandBarLocalState)
+     */
+    CommandBarLocalState: boolean;
+    /**
+     * Specifies the color of comments in Roblox Studio's script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Comment Color)
+     */
+    "Comment Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Current Line Highlight Color)
+     */
+    "Current Line Highlight Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Debugger Current Line Color)
+     */
+    "Debugger Current Line Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Debugger Error Line Color)
+     */
+    "Debugger Error Line Color": Color3;
+    /**
+     * If set to true, deprecated objects will be shown in the Advanced Objects window, as well as the Object Browser.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#DeprecatedObjectsShown)
+     */
+    DeprecatedObjectsShown: boolean;
+    /**
+     * When set to true, the script editor and command bar will show an autocomplete menu while writing.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Autocomplete)
+     */
+    "Enable Autocomplete": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable CoreScript Debugger)
+     */
+    "Enable CoreScript Debugger": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Http Sandboxing)
+     */
+    "Enable Http Sandboxing": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Internal Beta Features)
+     */
+    "Enable Internal Beta Features": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Internal Features)
+     */
+    "Enable Internal Features": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Temporary Tabs)
+     */
+    "Enable Temporary Tabs": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Temporary Tabs In Explorer)
+     */
+    "Enable Temporary Tabs In Explorer": boolean;
+    /**
+     * Specifies the color of the wavy underline shown when malformed code is detected in the script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Error Color)
+     */
+    "Error Color": Color3;
+    /**
+     * Sets the highlight color of matches in the script editor's Find Selection operation (Ctrl+F).
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Find Selection Background Color)
+     */
+    "Find Selection Background Color": Color3;
+    /**
+     * Specifies the font used in the script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Font)
+     */
+    Font: QFont;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Format On Paste)
+     */
+    "Format On Paste": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Format On Type)
+     */
+    "Format On Type": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Function Name Color)
+     */
+    "Function Name Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Highlight Current Line)
+     */
+    "Highlight Current Line": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Highlight Occurances)
+     */
+    "Highlight Occurances": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#HintColor)
+     */
+    HintColor: Color3;
+    /**
+     * Specifies how frequently the hover animation flashes when the mouse is hovering over a selectable object in the `Workspace`.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Hover Animate Speed)
+     */
+    "Hover Animate Speed": Enum.HoverAnimateSpeed;
+    /**
+     * Specifies the color that the hover selection box uses.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Hover Over Color)
+     */
+    "Hover Over Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Indent Using Spaces)
+     */
+    "Indent Using Spaces": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#InformationColor)
+     */
+    InformationColor: Color3;
+    /**
+     * Sets the text color of built-in Luau keywords.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Keyword Color)
+     */
+    "Keyword Color": Color3;
+    /**
+     * Sets the thickness of the `Model.PrimaryPart` selection adornee. This value is constrained between 0 and 0.05.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Line Thickness)
+     */
+    "Line Thickness": number;
+    /**
+     * Specifies whether or not the Lua Debugger feature is enabled.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#LuaDebuggerEnabled)
+     */
+    LuaDebuggerEnabled: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden, NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#LuaDebuggerEnabledAtStartup)
+     */
+    readonly LuaDebuggerEnabledAtStartup: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Luau Keyword Color)
+     */
+    "Luau Keyword Color": Color3;
+    /**
+     * Sets the highlight color of double-clicked variables in the script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Matching Word Background Color)
+     */
+    "Matching Word Background Color": Color3;
+    /**
+     * The maximum number of lines that can be displayed in the output.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Maximum Output Lines)
+     */
+    "Maximum Output Lines": number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Menu Item Background Color)
+     */
+    "Menu Item Background Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Method Color)
+     */
+    "Method Color": Color3;
+    /**
+     * Specifies the color of numbers in Roblox Studio's script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Number Color)
+     */
+    "Number Color": Color3;
+    /**
+     * If set to true, audio being played will only be heard if the game window is being focused on.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Only Play Audio from Window in Focus)
+     */
+    "Only Play Audio from Window in Focus": boolean;
+    /**
+     * Sets the text color of operator characters in the script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Operator Color)
+     */
+    "Operator Color": Color3;
+    /**
+     * Specifies the font used by the output.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Output Font)
+     */
+    "Output Font": QFont;
+    /**
+     * Sets the layout mode of the output.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Output Layout Mode)
+     */
+    "Output Layout Mode": Enum.OutputLayoutMode;
+    /**
+     * Sets the highest permission level that APIs have to have in order to be shown in the Object Browser. See `PermissionLevelShown` for more info.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#PermissionLevelShown)
+     */
+    PermissionLevelShown: Enum.PermissionLevelShown;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#PluginDebuggingEnabled)
+     */
+    PluginDebuggingEnabled: boolean;
+    /**
+     * The directory where local plugins are stored.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#PluginsDir)
+     */
+    PluginsDir: QDir;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#PreferredTextSize)
+     */
+    PreferredTextSize: Enum.PreferredTextSize;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Primary Text Color)
+     */
+    "Primary Text Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Property Color)
+     */
+    "Property Color": Color3;
+    /**
+     * When set to true, Roblox Studio shortcuts will take priority over inputs being captured in the game window.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Respect Studio shortcuts when game has focus)
+     */
+    "Respect Studio shortcuts when game has focus": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Ruler Color)
+     */
+    "Ruler Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Rulers)
+     */
+    Rulers: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#RuntimeUndoBehavior)
+     */
+    RuntimeUndoBehavior: Enum.RuntimeUndoBehavior;
+    /**
+     * The time (in seconds) a script can wait to be resumed before timing out.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#ScriptTimeoutLength)
+     */
+    ScriptTimeoutLength: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Script Editor Color Preset)
+     */
+    "Script Editor Color Preset": Enum.StudioScriptEditorColorPresets;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Script Editor Scrollbar Background Color)
+     */
+    "Script Editor Scrollbar Background Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Script Editor Scrollbar Handle Color)
+     */
+    "Script Editor Scrollbar Handle Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Scroll Past Last Line)
+     */
+    "Scroll Past Last Line": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Secondary Text Color)
+     */
+    "Secondary Text Color": Color3;
+    /**
+     * The color of the selection box used with object selections in the `Workspace`.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Select Color)
+     */
+    "Select Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Select/Hover Color)
+     */
+    "Select/Hover Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Selected Menu Item Background Color)
+     */
+    "Selected Menu Item Background Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Selected Text Color)
+     */
+    "Selected Text Color": Color3;
+    /**
+     * Sets the background color of selected text in the script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Selection Background Color)
+     */
+    "Selection Background Color": Color3;
+    /**
+     * Sets the text color of selected text in the script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Selection Color)
+     */
+    "Selection Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Set Pivot of Imported Parts)
+     */
+    "Set Pivot of Imported Parts": boolean;
+    /**
+     * If set to true, the `CoreGui` will be visible in the Explorer while the game is running.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show Core GUI in Explorer while Playing)
+     */
+    "Show Core GUI in Explorer while Playing": boolean;
+    /**
+     * If set to true, basic diagnostic information is shown in the bottom right.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show Diagnostics Bar)
+     */
+    "Show Diagnostics Bar": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show FileSyncService)
+     */
+    "Show FileSyncService": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show Hidden Objects in Explorer)
+     */
+    "Show Hidden Objects in Explorer": boolean;
+    /**
+     * If set to true, hovering over an object in the `Workspace` will show a selection box.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show Hover Over)
+     */
+    "Show Hover Over": boolean;
+    /**
+     * When set to true, the navigation mesh used by the `PathfindingService` will be visualized.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show Navigation Mesh)
+     */
+    "Show Navigation Mesh": boolean;
+    /**
+     * When set to true, the `PluginGuiService` will be shown in Roblox Studio's explorer.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show Plugin GUI Service in Explorer)
+     */
+    "Show Plugin GUI Service in Explorer": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show Whitespace)
+     */
+    "Show Whitespace": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show plus button on hover in Explorer)
+     */
+    "Show plus button on hover in Explorer": boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Skip Closing Brackets and Quotes)
+     */
+    "Skip Closing Brackets and Quotes": boolean;
+    /**
+     * Specifies the color of strings in the script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#String Color)
+     */
+    "String Color": Color3;
+    /**
+     * Specifies how many spaces are used to represent a tab in the script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Tab Width)
+     */
+    "Tab Width": number;
+    /**
+     * Specifies the color of normal text in the script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Text Color)
+     */
+    "Text Color": Color3;
+    /**
+     * If set to true, text in the script editor will be wrapped.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Text Wrapping)
+     */
+    "Text Wrapping": boolean;
+    /**
+     * Used to get/set current `theme` used by Studio.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Theme)
+     */
+    Theme: StudioTheme;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#TypeColor)
+     */
+    TypeColor: Color3;
+    /**
+     * **Deprecated:**
+     *
+     * Specifies the color scheme of Roblox Studio.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden, NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#UI Theme)
+     *
+     * @deprecated
+     */
+    readonly "UI Theme": Enum.UITheme;
+    /**
+     * Specifies the color of the wavy underline shown when the script analyzer picks up a problem that should be addressed in the script editor.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Warning Color)
+     */
+    "Warning Color": Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Whitespace Color)
+     */
+    "Whitespace Color": Color3;
     /**
      * Returns a list of `themes` available in Studio.
      *
@@ -17033,6 +17933,21 @@ interface PluginConnection extends RBXObject {
      * @param message The string or buffer to be sent.
      */
     SendMessage(this: PluginConnection, message: unknown): void;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioActionOverride)
+ */
+interface StudioActionOverride extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StudioActionOverride: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
