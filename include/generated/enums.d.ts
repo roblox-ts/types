@@ -6626,11 +6626,29 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.CanCollaborateError;
         }
         export const OutsideOwnerAgeBucket: OutsideOwnerAgeBucket;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CanCollaborateError#NotAuthorized)
+         */
+        export interface NotAuthorized extends globalThis.EnumItem {
+            Name: "NotAuthorized";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.CanCollaborateError;
+        }
+        export const NotAuthorized: NotAuthorized;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CanCollaborateError#OutsideAgeBucketTcPc)
+         */
+        export interface OutsideAgeBucketTcPc extends globalThis.EnumItem {
+            Name: "OutsideAgeBucketTcPc";
+            Value: 9;
+            EnumType: typeof globalThis.Enum.CanCollaborateError;
+        }
+        export const OutsideAgeBucketTcPc: OutsideAgeBucketTcPc;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CanCollaborateError>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CanCollaborateError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CanCollaborateError | undefined;
     }
-    export type CanCollaborateError = CanCollaborateError.Invalid | CanCollaborateError.None | CanCollaborateError.NotAgeVerified | CanCollaborateError.OutsideAgeBucket | CanCollaborateError.TooManyCollaborators | CanCollaborateError.PCBlock | CanCollaborateError.NotFound | CanCollaborateError.OutsideOwnerAgeBucket;
+    export type CanCollaborateError = CanCollaborateError.Invalid | CanCollaborateError.None | CanCollaborateError.NotAgeVerified | CanCollaborateError.OutsideAgeBucket | CanCollaborateError.TooManyCollaborators | CanCollaborateError.PCBlock | CanCollaborateError.NotFound | CanCollaborateError.OutsideOwnerAgeBucket | CanCollaborateError.NotAuthorized | CanCollaborateError.OutsideAgeBucketTcPc;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureGalleryPermission)
      */
@@ -7631,11 +7649,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.CloseReason;
         }
         export const OutOfMemory: OutOfMemory;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CloseReason#Moderation)
+         */
+        export interface Moderation extends globalThis.EnumItem {
+            Name: "Moderation";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.CloseReason;
+        }
+        export const Moderation: Moderation;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CloseReason>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CloseReason | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CloseReason | undefined;
     }
-    export type CloseReason = CloseReason.Unknown | CloseReason.RobloxMaintenance | CloseReason.DeveloperShutdown | CloseReason.DeveloperUpdate | CloseReason.ServerEmpty | CloseReason.OutOfMemory;
+    export type CloseReason = CloseReason.Unknown | CloseReason.RobloxMaintenance | CloseReason.DeveloperShutdown | CloseReason.DeveloperUpdate | CloseReason.ServerEmpty | CloseReason.OutOfMemory | CloseReason.Moderation;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CollaboratorStatus)
      */
@@ -9157,6 +9184,51 @@ declare namespace Enum {
         }
         export const DisconnectCollaboratorTrustedConnectionsRequiredPC: DisconnectCollaboratorTrustedConnectionsRequiredPC;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectRemoteAttestationUnsupported)
+         */
+        export interface DisconnectRemoteAttestationUnsupported extends globalThis.EnumItem {
+            Name: "DisconnectRemoteAttestationUnsupported";
+            Value: 317;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectRemoteAttestationUnsupported: DisconnectRemoteAttestationUnsupported;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectRemoteAttestationGeneralFailure)
+         */
+        export interface DisconnectRemoteAttestationGeneralFailure extends globalThis.EnumItem {
+            Name: "DisconnectRemoteAttestationGeneralFailure";
+            Value: 318;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectRemoteAttestationGeneralFailure: DisconnectRemoteAttestationGeneralFailure;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectRemoteAttestationTimeout)
+         */
+        export interface DisconnectRemoteAttestationTimeout extends globalThis.EnumItem {
+            Name: "DisconnectRemoteAttestationTimeout";
+            Value: 319;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectRemoteAttestationTimeout: DisconnectRemoteAttestationTimeout;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectRemoteAttestationOSOutOfDate)
+         */
+        export interface DisconnectRemoteAttestationOSOutOfDate extends globalThis.EnumItem {
+            Name: "DisconnectRemoteAttestationOSOutOfDate";
+            Value: 320;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectRemoteAttestationOSOutOfDate: DisconnectRemoteAttestationOSOutOfDate;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectRemoteAttestationBootValidationFailure)
+         */
+        export interface DisconnectRemoteAttestationBootValidationFailure extends globalThis.EnumItem {
+            Name: "DisconnectRemoteAttestationBootValidationFailure";
+            Value: 321;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectRemoteAttestationBootValidationFailure: DisconnectRemoteAttestationBootValidationFailure;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PlacelaunchErrors)
          */
         export interface PlacelaunchErrors extends globalThis.EnumItem {
@@ -9319,6 +9391,15 @@ declare namespace Enum {
         }
         export const PlacelaunchCoreGated: PlacelaunchCoreGated;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PlacelaunchCollaborationCoreGated)
+         */
+        export interface PlacelaunchCollaborationCoreGated extends globalThis.EnumItem {
+            Name: "PlacelaunchCollaborationCoreGated";
+            Value: 545;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const PlacelaunchCollaborationCoreGated: PlacelaunchCollaborationCoreGated;
+        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#PlacelaunchCreatorBan)
          */
         export interface PlacelaunchCreatorBan extends globalThis.EnumItem {
@@ -9430,7 +9511,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConnectionError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConnectionError | undefined;
     }
-    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.ConnectErrors | ConnectionError.AlreadyConnected | ConnectionError.NoFreeIncomingConnections | ConnectionError.ConnectionBanned | ConnectionError.InvalidPassword | ConnectionError.IncompatibleProtocolVersion | ConnectionError.IPRecentlyConnected | ConnectionError.OurSystemRequiresSecurity | ConnectionError.SecurityKeyMismatch | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.DisconnectionNotification | ConnectionError.DisconnectVerboselyModeratedGame | ConnectionError.DisconnectCollaboratorNotAgeVerified | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequired | ConnectionError.DisconnectCollaboratorOwnerActionRequired | ConnectionError.DisconnectCollaboratorTooManyCollaborators | ConnectionError.DisconnectCollaboratorUnknownError | ConnectionError.DisconnectCollaboratorRequestedEviction | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequiredPC | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchVipOwnerNotPresent | ConnectionError.PlacelaunchAgeVerificationRequired | ConnectionError.PlacelaunchParentalApprovalRequired | ConnectionError.PlacelaunchCoreGated | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchDeviceBlock | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.ConnectErrors | ConnectionError.AlreadyConnected | ConnectionError.NoFreeIncomingConnections | ConnectionError.ConnectionBanned | ConnectionError.InvalidPassword | ConnectionError.IncompatibleProtocolVersion | ConnectionError.IPRecentlyConnected | ConnectionError.OurSystemRequiresSecurity | ConnectionError.SecurityKeyMismatch | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.DisconnectionNotification | ConnectionError.DisconnectVerboselyModeratedGame | ConnectionError.DisconnectCollaboratorNotAgeVerified | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequired | ConnectionError.DisconnectCollaboratorOwnerActionRequired | ConnectionError.DisconnectCollaboratorTooManyCollaborators | ConnectionError.DisconnectCollaboratorUnknownError | ConnectionError.DisconnectCollaboratorRequestedEviction | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequiredPC | ConnectionError.DisconnectRemoteAttestationUnsupported | ConnectionError.DisconnectRemoteAttestationGeneralFailure | ConnectionError.DisconnectRemoteAttestationTimeout | ConnectionError.DisconnectRemoteAttestationOSOutOfDate | ConnectionError.DisconnectRemoteAttestationBootValidationFailure | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchVipOwnerNotPresent | ConnectionError.PlacelaunchAgeVerificationRequired | ConnectionError.PlacelaunchParentalApprovalRequired | ConnectionError.PlacelaunchCoreGated | ConnectionError.PlacelaunchCollaborationCoreGated | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchDeviceBlock | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
     /**
      * Used to determine the connection state of the client to the game server.
      *
@@ -17838,6 +17919,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.IntermediateMeshGenerationResult | undefined;
     }
     export type IntermediateMeshGenerationResult = IntermediateMeshGenerationResult.HighQualityMesh;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InternalVideoUsage)
+     */
+    export namespace InternalVideoUsage {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InternalVideoUsage#Default)
+         */
+        export interface Default extends globalThis.EnumItem {
+            Name: "Default";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.InternalVideoUsage;
+        }
+        export const Default: Default;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InternalVideoUsage#WatchPage)
+         */
+        export interface WatchPage extends globalThis.EnumItem {
+            Name: "WatchPage";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.InternalVideoUsage;
+        }
+        export const WatchPage: WatchPage;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InternalVideoUsage#HomeCarousel)
+         */
+        export interface HomeCarousel extends globalThis.EnumItem {
+            Name: "HomeCarousel";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.InternalVideoUsage;
+        }
+        export const HomeCarousel: HomeCarousel;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InternalVideoUsage>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.InternalVideoUsage | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InternalVideoUsage | undefined;
+    }
+    export type InternalVideoUsage = InternalVideoUsage.Default | InternalVideoUsage.WatchPage | InternalVideoUsage.HomeCarousel;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InterpolationThrottlingMode)
      */
@@ -31646,6 +31763,69 @@ declare namespace Enum {
     }
     export type SizeConstraint = SizeConstraint.RelativeXY | SizeConstraint.RelativeXX | SizeConstraint.RelativeYY;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode)
+     */
+    export namespace SlimTintMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.SlimTintMode;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#LOD)
+         */
+        export interface LOD extends globalThis.EnumItem {
+            Name: "LOD";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.SlimTintMode;
+        }
+        export const LOD: LOD;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#Meshes)
+         */
+        export interface Meshes extends globalThis.EnumItem {
+            Name: "Meshes";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.SlimTintMode;
+        }
+        export const Meshes: Meshes;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#MeshResourcePtr)
+         */
+        export interface MeshResourcePtr extends globalThis.EnumItem {
+            Name: "MeshResourcePtr";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.SlimTintMode;
+        }
+        export const MeshResourcePtr: MeshResourcePtr;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#ContentId)
+         */
+        export interface ContentId extends globalThis.EnumItem {
+            Name: "ContentId";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.SlimTintMode;
+        }
+        export const ContentId: ContentId;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#Zone)
+         */
+        export interface Zone extends globalThis.EnumItem {
+            Name: "Zone";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.SlimTintMode;
+        }
+        export const Zone: Zone;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SlimTintMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SlimTintMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SlimTintMode | undefined;
+    }
+    export type SlimTintMode = SlimTintMode.None | SlimTintMode.LOD | SlimTintMode.Meshes | SlimTintMode.MeshResourcePtr | SlimTintMode.ContentId | SlimTintMode.Zone;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolidPrimitiveType)
      */
     export namespace SolidPrimitiveType {
@@ -32337,6 +32517,78 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StrokeSizingMode | undefined;
     }
     export type StrokeSizingMode = StrokeSizingMode.FixedSize | StrokeSizingMode.ScaledSize;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioAction)
+     */
+    export namespace StudioAction {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioAction#Undo)
+         */
+        export interface Undo extends globalThis.EnumItem {
+            Name: "Undo";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.StudioAction;
+        }
+        export const Undo: Undo;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioAction#Redo)
+         */
+        export interface Redo extends globalThis.EnumItem {
+            Name: "Redo";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.StudioAction;
+        }
+        export const Redo: Redo;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioAction#SelectAll)
+         */
+        export interface SelectAll extends globalThis.EnumItem {
+            Name: "SelectAll";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.StudioAction;
+        }
+        export const SelectAll: SelectAll;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioAction#DeleteSelected)
+         */
+        export interface DeleteSelected extends globalThis.EnumItem {
+            Name: "DeleteSelected";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.StudioAction;
+        }
+        export const DeleteSelected: DeleteSelected;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioAction#Copy)
+         */
+        export interface Copy extends globalThis.EnumItem {
+            Name: "Copy";
+            Value: 61;
+            EnumType: typeof globalThis.Enum.StudioAction;
+        }
+        export const Copy: Copy;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioAction#Cut)
+         */
+        export interface Cut extends globalThis.EnumItem {
+            Name: "Cut";
+            Value: 62;
+            EnumType: typeof globalThis.Enum.StudioAction;
+        }
+        export const Cut: Cut;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioAction#Paste)
+         */
+        export interface Paste extends globalThis.EnumItem {
+            Name: "Paste";
+            Value: 63;
+            EnumType: typeof globalThis.Enum.StudioAction;
+        }
+        export const Paste: Paste;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioAction>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StudioAction | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StudioAction | undefined;
+    }
+    export type StudioAction = StudioAction.Undo | StudioAction.Redo | StudioAction.SelectAll | StudioAction.DeleteSelected | StudioAction.Copy | StudioAction.Cut | StudioAction.Paste;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioCaptureBufferStatus)
      */
