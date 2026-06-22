@@ -1320,17 +1320,11 @@ interface WorldRoot extends Model {
 	GetPartsInPart(this: WorldRoot, part: BasePart, overlapParams?: OverlapParams): Array<BasePart>;
 }
 
-interface Platform extends Part {
-	readonly RemoteCreateMotor6D: RBXScriptSignal<(humanoid: Humanoid) => void>;
-}
-
 interface SkateboardPlatform extends Part {
 	readonly Equipped: RBXScriptSignal<(humanoid: Humanoid, skateboardController: SkateboardController) => void>;
-	readonly RemoteCreateMotor6D: RBXScriptSignal<(humanoid: Humanoid) => void>;
 	readonly Unequipped: RBXScriptSignal<(humanoid: Humanoid) => void>;
 }
 
 interface Seat extends Part {
 	Sit(this: Seat, humanoid: Humanoid | undefined): void;
-	readonly RemoteCreateSeatWeld: RBXScriptSignal<(humanoid: Humanoid) => void>;
 }
