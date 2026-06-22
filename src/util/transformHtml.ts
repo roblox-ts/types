@@ -73,7 +73,7 @@ const TAG_TRANSFORMERS: { [K in string]?: (node: Element) => string } = {
 		assertTag(codeNode, "code", "Unexpected pre child");
 		// <pre><code class=\"language-lua\">
 		const className = codeNode.attribs.class;
-		const language = className.startsWith("language-") ? className.slice("language-".length) : "";
+		const language = className?.startsWith("language-") ? className.slice("language-".length) : "";
 		return `\n\`\`\`${language}\n${transformNodeList(codeNode.children)}\n\`\`\``;
 	},
 	a: node => `[${transformNodeList(node.children)}](${node.attribs.href})`,
