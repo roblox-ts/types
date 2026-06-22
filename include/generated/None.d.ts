@@ -22856,7 +22856,10 @@ interface HapticEffect extends Instance {
      */
     Play(this: HapticEffect): void;
     /**
-     * Defines a custom waveform as a table and applies it to the haptic. <pre><code>This method takes in an array of `FloatCurveKey` objects. </code></pre>
+     * Defines a custom waveform as a table and applies it to the haptic.
+     * ```
+     * This method takes in an array of `FloatCurveKey` objects.
+     * ```
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -31004,7 +31007,15 @@ interface BasePart extends PVInstance {
      */
     SubtractAsync(this: BasePart, parts: Array<BasePart>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>): UnionOperation | undefined;
     /**
-     * Note: It is highly recommended to use the newer <code>GeometryService:UnionAsync</code> instead of this function. As well as having better performance and more features, the new function differs as follows: <ul> <li>The output is an array of instances rather than a single instance.</li> <li>The input parts do not need to be parented to the scene, allowing for   background operations.</li> <li>When the <code>SplitApart</code> option is set to <code>true</code> (default), each distinct   body will be returned in its own <code>PartOperation</code>.</li> <li>All the returned parts are in the coordinate space of the main part, so   their <code>PVInstance.Origin</code> positions are the same as the main   part's. This keeps the vertices of the mesh in the same position   relative to the object as before the operation, but it does also mean   the <code>(0, 0, 0)</code> of a returned part is not necessarily at the center of   its body.<pre><code>Creates a new `UnionOperation` from the part, plus the geometry </code></pre> </li> </ul> occupied by the parts in the given array.
+     * Note: It is highly recommended to use the newer `GeometryService:UnionAsync` instead of this function. As well as having better performance and more features, the new function differs as follows: - The output is an array of instances rather than a single instance.
+     * - The input parts do not need to be parented to the scene, allowing for   background operations.
+     * - When the `SplitApart` option is set to `true` (default), each distinct   body will be returned in its own `PartOperation`.
+     * - All the returned parts are in the coordinate space of the main part, so   their `PVInstance.Origin` positions are the same as the main   part's. This keeps the vertices of the mesh in the same position   relative to the object as before the operation, but it does also mean   the `(0, 0, 0)` of a returned part is not necessarily at the center of   its body.
+     * ```
+     * Creates a new `UnionOperation` from the part, plus the geometry
+     * ```
+     *
+     *  occupied by the parts in the given array.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
