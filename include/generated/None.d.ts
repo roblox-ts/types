@@ -2522,6 +2522,8 @@ interface Instance extends RBXObject {
      */
     IsPropertyModified(this: Instance, property: string): boolean;
     /**
+     * Returns an array containing all descendants of the instance that match the `selector` string.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
@@ -2707,8 +2709,11 @@ interface AccessoryDescription extends Instance {
      * The layered clothing puffiness, if the `Accessory` is layered.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AccessoryDescription#Puffiness)
+     *
+     * @deprecated
      */
     Puffiness: number;
     /**
@@ -5727,6 +5732,40 @@ interface AudioEmitter extends Instance {
      */
     AudioInteractionGroup: string;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#DiffractionEnabled)
+     */
+    DiffractionEnabled: Enum.SimulationMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#OcclusionEnabled)
+     */
+    OcclusionEnabled: Enum.SimulationMode;
+    /**
+     * The `Instance` whose position and orientation is used as the emitter's position if `PositionType` is set to `EmitterPositionType.Instance`.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#PositionInstance)
+     */
+    PositionInstance: Instance | undefined;
+    /**
+     * Determines how the `AudioEmitter` determines its 3D location.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#PositionType)
+     */
+    PositionType: Enum.EmitterPositionType;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#ReverbEnabled)
+     */
+    ReverbEnabled: Enum.SimulationMode;
+    /**
      * **Deprecated:**
      *
      * Controls how detailed the audio simulation should be for this `AudioEmitter`.
@@ -6405,6 +6444,40 @@ interface AudioListener extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#AudioInteractionGroup)
      */
     AudioInteractionGroup: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#DiffractionEnabled)
+     */
+    DiffractionEnabled: Enum.SimulationMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#OcclusionEnabled)
+     */
+    OcclusionEnabled: Enum.SimulationMode;
+    /**
+     * The `Instance` whose position and orientation is used as the listener's position if `PositionType` is set to `ListenerPositionType.Instance`.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#PositionInstance)
+     */
+    PositionInstance: Instance | undefined;
+    /**
+     * Determines how the `AudioListener` determines its 3D location.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#PositionType)
+     */
+    PositionType: Enum.ListenerPositionType;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#ReverbEnabled)
+     */
+    ReverbEnabled: Enum.SimulationMode;
     /**
      * **Deprecated:**
      *
@@ -9732,8 +9805,11 @@ interface WrapLayer extends BaseWrap {
      * Controls how much underlying clothing items inflate the current clothing item.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#Puffiness)
+     *
+     * @deprecated
      */
     Puffiness: number;
     /**
@@ -9771,8 +9847,11 @@ interface WrapLayer extends BaseWrap {
      * Allows slight shrinking/expanding of the resulting render mesh, without affecting any other layers.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#ShrinkFactor)
+     *
+     * @deprecated
      */
     get ShrinkFactor(): number;
 }
@@ -9794,8 +9873,11 @@ interface WrapTarget extends BaseWrap {
      * Defines how much the body mesh can be compressed by clothing.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTarget#Stiffness)
+     *
+     * @deprecated
      */
     get Stiffness(): number;
 }
@@ -12640,12 +12722,16 @@ interface AnimationConstraint extends Constraint {
      */
     readonly _nominal_AnimationConstraint: unique symbol;
     /**
+     * Damping ratio for the rotational part of the constraint. Higher values reduce oscillation around the target orientation.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint#AngularDamping)
      */
     AngularDamping: number;
     /**
+     * Controls how rigidly the constraint enforces the rotational part of its target `Transform`. Higher values track the target orientation more stiffly.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint#AngularStrength)
@@ -12678,12 +12764,16 @@ interface AnimationConstraint extends Constraint {
      */
     IsKinematic: boolean;
     /**
+     * Damping ratio for the translational part of the constraint. Higher values reduce oscillation around the target position.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint#LinearDamping)
      */
     LinearDamping: number;
     /**
+     * Controls how rigidly the constraint enforces the translational part of its target `Transform`. Higher values track the target position more stiffly.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint#LinearStrength)
@@ -16963,6 +17053,8 @@ interface Decal extends FaceInstance {
      */
     get NormalMapContent(): Content;
     /**
+     * Rotates the decal texture.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#Rotation)
@@ -25693,10 +25785,13 @@ interface InputAction extends Instance {
      * Updates the `InputAction` to the given state and fires the appropriate signals.
      *
      * - **ThreadSafety**: Unsafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#Fire)
      * @param this Defines a gameplay action mechanic. These actions are then mapped to hardware inputs using `InputBinding`.
      * @param state
+     *
+     * @deprecated
      */
     Fire(this: InputAction, state: unknown): void;
     /**
@@ -25859,6 +25954,12 @@ interface InputBinding extends Instance {
      */
     SecondaryModifier: Enum.KeyCode;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Type)
+     */
+    Type: Enum.InputBindingType;
+    /**
      * Connects a `GuiButton` to a boolean action.
      *
      * - **ThreadSafety**: ReadSafe
@@ -25898,6 +25999,16 @@ interface InputBinding extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Vector3Scale)
      */
     Vector3Scale: Vector3;
+    /**
+     * Programmatically updates the parent `InputAction` state through this binding.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Fire)
+     * @param this Defines which hardware binding should trigger the parent `InputAction`.
+     * @param state The state value to apply; must match the parent action's `Type`.
+     */
+    Fire(this: InputBinding, state: unknown): void;
 }
 /**
  * Collection of actions which holds related actions and defines how they interact with other contexts/actions.
@@ -27019,6 +27130,8 @@ interface LanguageService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LanguageService#GetCapabilitiesUsedInPackageAsync)
+     * @param this
+     * @param instances
      */
     GetCapabilitiesUsedInPackageAsync(this: LanguageService, instances: Array<Instance>): object;
 }
@@ -27472,6 +27585,8 @@ interface LiveSyncService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LiveSyncService#GetSyncState)
+     * @param this
+     * @param instance
      */
     GetSyncState(this: LiveSyncService, instance: Instance): unknown;
     /**
@@ -35453,6 +35568,13 @@ interface Player extends Instance {
      */
     DistanceFromCharacter(this: Player, point: Vector3): number;
     /**
+     * - **ThreadSafety**: Safe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#GetCameraState)
+     */
+    GetCameraState(this: Player): object;
+    /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#GetData)
@@ -35737,8 +35859,6 @@ interface Player extends Instance {
      */
     GetRankInGroup(this: Player, groupId: number): number;
     /**
-     * **Deprecated:** This method only returns a single role rank and may produce arbitrary results when a user holds multiple roles. Use `GroupService:GetRolesInGroupAsync()` instead, which returns all roles.
-     *
      * Returns the player's rank in the group as an integer.
      *
      * - **ThreadSafety**: Unsafe
@@ -35769,8 +35889,6 @@ interface Player extends Instance {
      */
     GetRoleInGroup(this: Player, groupId: number): string;
     /**
-     * **Deprecated:** This method only returns a single role name and may produce arbitrary results when a user holds multiple roles. Use `GroupService:GetRolesInGroupAsync()` instead, which returns all roles.
-     *
      * Returns the player's role in the group as a string, or `Guest` if the player isn't part of the group.
      *
      * - **ThreadSafety**: Unsafe
@@ -36497,7 +36615,7 @@ interface Players extends Instance {
      * -  `DisplayReason` (required; string) — The message that will be   displayed to users when they attempt to and fail to join an   experience. Maximum string length is `400`.
      * -  `PrivateReason` (required; string) — Internal messaging that will be   returned when querying the user's ban history. Maximum string length   is `1000`.
      * -  `ExcludeAltAccounts` (optional; boolean) — When `true`, Roblox does   not attempt to ban alternate accounts. Default is `false`.
-     * -  `ApplyDeviceBlock` (optional; boolean) — When `true`, Roblox will   block banned users' devices from rejoining the experience for 24   hours after the ban is applied. Default is `false`.
+     * -  `ApplyDeviceBlock` (optional; boolean) — When `true`, Roblox will   block banned users' devices from rejoining the experience for 24   hours after the ban is applied. Default is `false`. The block can be   overridden by unbanning a user via a call to   `Players:UnbanAsync()`. Note that unbanning a user through any   other method will not lift the device block.
      */
     BanAsync(this: Players, config: BanAsyncConfig): void;
     /**
@@ -38955,6 +39073,8 @@ interface ScriptContext extends Instance {
     readonly Error: RBXScriptSignal<(message: string, stackTrace: string, script?: LuaSourceContainer) => void>;
 }
 /**
+ * Provides programmatic breakpoint management, execution control, and runtime inspection of Luau scripts during a playtest.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService)
@@ -39703,6 +39823,8 @@ interface DataModel extends ServiceProvider<Services> {
      */
     readonly ServerLifecycleChanged: RBXScriptSignal<(serverLifecycleChangedEvent: object) => void>;
     /**
+     * Fires on the server when the server has been scheduled to restart. Provides the scheduled restart time, source, and custom attributes.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#ServerRestartScheduled)
@@ -41299,6 +41421,12 @@ interface SoundService extends Instance {
      */
     get CharacterSoundsUseNewApi(): Enum.RolloutState;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#DiffractionEnabled)
+     */
+    DiffractionEnabled: boolean;
+    /**
      * The number of studs to be considered a meter by `SoundService` when simulating the Doppler effect for `Sounds`.
      *
      * - **ThreadSafety**: ReadSafe
@@ -41315,23 +41443,35 @@ interface SoundService extends Instance {
      */
     DopplerScale: number;
     /**
+     * The `CFrame` that is used as the listener's position if `ListenerType` is set to `ListenerType.CFrame`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#ListenerCFrame)
      */
     ListenerCFrame: CFrame;
     /**
+     * The `Instance` whose translation or coordinate frame is used as the listener's position if `ListenerType` is set to `ListenerType.ObjectPosition` or `ListenerType.ObjectCFrame`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#ListenerObject)
      */
     ListenerObject: Instance | undefined;
     /**
+     * The current listener type used by 3D `Sounds` to determine where they will be heard from.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#ListenerType)
      */
     ListenerType: Enum.ListenerType;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#OcclusionEnabled)
+     */
+    OcclusionEnabled: boolean;
     /**
      * Sets whether `Sound` playback from a client will replicate to the server.
      *
@@ -41340,6 +41480,12 @@ interface SoundService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#RespectFilteringEnabled)
      */
     RespectFilteringEnabled: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#ReverbEnabled)
+     */
+    ReverbEnabled: boolean;
     /**
      * Determines how fast the volume of a `Sound` attenuates beyond its `Sound.RollOffMinDistance`.
      *
@@ -46966,8 +47112,6 @@ interface UIScale extends UIComponent {
 /**
  * Renders a shadow below the parent UI instance.
  *
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow)
  */
 interface UIShadow extends UIComponent {
@@ -47742,8 +47886,9 @@ interface UserInputService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetStringForKeyCode)
      * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
      * @param keyCode
+     * @param format
      */
-    GetStringForKeyCode(this: UserInputService, keyCode: CastsToEnum<Enum.KeyCode>): string;
+    GetStringForKeyCode(this: UserInputService, keyCode: CastsToEnum<Enum.KeyCode>, format?: CastsToEnum<Enum.KeyCodeStringFormat>): string;
     /**
      * Returns an array of `KeyCodes` that the gamepad associated with the given `UserInputType` supports.
      *
@@ -49509,12 +49654,15 @@ interface WebSocketClient extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient#Close)
+     * @param this
      */
     Close(this: WebSocketClient): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient#Send)
+     * @param this
+     * @param data
      */
     Send(this: WebSocketClient, data: string): void;
     /**
@@ -49554,6 +49702,8 @@ interface WebSocketService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketService#CreateClient)
+     * @param this
+     * @param uri
      */
     CreateClient(this: WebSocketService, uri: string): WebSocketClient;
 }

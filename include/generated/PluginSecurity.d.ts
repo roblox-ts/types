@@ -2707,8 +2707,11 @@ interface WrapLayer extends BaseWrap {
      * Allows slight shrinking/expanding of the resulting render mesh, without affecting any other layers.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#ShrinkFactor)
+     *
+     * @deprecated
      */
     set ShrinkFactor(value: number);
 }
@@ -2730,8 +2733,11 @@ interface WrapTarget extends BaseWrap {
      * Defines how much the body mesh can be compressed by clothing.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTarget#Stiffness)
+     *
+     * @deprecated
      */
     set Stiffness(value: number);
 }
@@ -12532,6 +12538,8 @@ interface ScriptDebugger extends Instance {
     readonly _nominal_ScriptDebugger: unique symbol;
 }
 /**
+ * Provides programmatic breakpoint management, execution control, and runtime inspection of Luau scripts during a playtest.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService)
@@ -12546,75 +12554,154 @@ interface ScriptDebuggerService extends Instance {
      */
     readonly _nominal_ScriptDebuggerService: unique symbol;
     /**
+     * Adds a breakpoint to a script. If a breakpoint already exists on the same script and line, its data is replaced.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#AddBreakpoint)
+     * @param this Provides programmatic breakpoint management, execution control, and runtime inspection of Luau scripts during a playtest.
+     * @param scriptInstance The `LuaSourceContainer` to place the breakpoint on.
+     * @param breakpoint Dictionary describing the breakpoint configuration through the following key-value pairs: - `Line` — Required 1-based line number.
+     * - `Enabled` — Optional boolean whether the breakpoint is active.   Default is `true`.
+     * - `Condition` — Optional string indicating the Luau expression which   must be truthy to pause, for example `"health < 10"`.
+     * - `LogMessage` — Optional string message logged when the breakpoint is   hit. This string is parsed as a comma-separated list of Luau   expressions, evaluated in the breakpoint's scope, and concatenated   `print()`‑style with spaces between segments.   String literals are quoted; bare identifiers reference live values.   For example, `"'count is', count"` produces output like   `count is 7`.
+     * - `ContinueExecution` — If `true`, the `DataModel` does not   pause when the breakpoint is hit. Default is `false`.
+     *
+     *
+     * @returns Dictionary indicating whether the breakpoint was placed successfully and on which line. Includes the following key-value pairs: - `Verified` — Boolean value indicating whether the breakpoint was   placed successfully.
+     * - `Line` — The line number the breakpoint was placed on.
+     * - `Message` — Optional explanation if `Verified` is `false`.
      */
     AddBreakpoint(this: ScriptDebuggerService, scriptInstance: LuaSourceContainer, breakpoint: object): object;
     /**
+     * Removes all breakpoints across all scripts.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#ClearBreakpoints)
+     * @param this Provides programmatic breakpoint management, execution control, and runtime inspection of Luau scripts during a playtest.
      */
     ClearBreakpoints(this: ScriptDebuggerService): void;
     /**
+     * Evaluates a Luau expression in a stack frame's context.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#Evaluate)
+     * @param this Provides programmatic breakpoint management, execution control, and runtime inspection of Luau scripts during a playtest.
+     * @param expression The Luau expression to evaluate.
+     * @param frameId Optional frame identifier. If omitted, evaluates globally.
+     * @returns Dictionary with the following key-value pairs: - `Result` — String representation of the evaluated result.
+     * - `Type` — String indicating the Luau type of the result (`"number"`,   `"string"`, `"table"`, `"Instance"`, etc.).
+     * - `VariablesReference` — If greater than `0`, drill into with   `GetVariables()`.
      */
     Evaluate(this: ScriptDebuggerService, expression: string, frameId?: number): object;
     /**
+     * Returns the root variables (locals, upvalues, globals) for a stack frame.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#GetRootVariables)
+     * @param this Provides programmatic breakpoint management, execution control, and runtime inspection of Luau scripts during a playtest.
+     * @param frameId The frame identifier from a debug stack frame `Id` field (see `GetStackTrace()`).
+     * @returns An array of script variable dictionaries, each containing the following key-value pairs: - `Name` — String value indicating the variable name or table key.
+     * - `Value` — String representation of the value.
+     * - `Type` — String indicating the Luau type (`"number"`, `"string"`,   `"table"`, `"Instance"`, etc.).
+     * - `Scope` — `ScriptVariableScope` value (children inherit   parent's scope).
+     * - `VariablesReference` — If greater than `0`, call   `GetVariables()` with   this to get children.
      */
     GetRootVariables(this: ScriptDebuggerService, frameId: number): Array<unknown>;
     /**
+     * Returns the call stack for a paused thread.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#GetStackTrace)
+     * @param this Provides programmatic breakpoint management, execution control, and runtime inspection of Luau scripts during a playtest.
+     * @param threadId The thread identifier from a script debug thread `Id` field (see `GetThreads()`).
+     * @param startFrame Optional 1-based frame index for paginated retrieval.
+     * @returns Dictionary containing the frames ordered innermost (current) to outermost. Contains the following key-value pairs: - `Frames` — Array of debug stack frame dictionaries. Each dictionary   item contains the following key-value pairs:
+     * - `Id` — Numerical frame identifier; use with     `GetRootVariables()`     and `Evaluate()`.
+     * - `Name` — Human-readable name of the function at this frame.
+     * - `ScriptPath` — Full instance path of the script, for example     `"ServerScriptService.MainScript"`.
+     * - `Line` — 1-based line number where execution is paused at this     frame.
+     * - `TotalFrames` — Total frame count, provided when paginating.
      */
     GetStackTrace(this: ScriptDebuggerService, threadId: number, startFrame?: number): object;
     /**
+     * Returns all paused Luau threads.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#GetThreads)
+     * @param this Provides programmatic breakpoint management, execution control, and runtime inspection of Luau scripts during a playtest.
+     * @returns An array of script debug thread dictionaries, each containing the following key-value pairs: - `Id` — Numerical thread identifier; use with   `GetStackTrace()` and   stepping.
+     * - `Name` — Human-readable name of the script.
      */
     GetThreads(this: ScriptDebuggerService): Array<unknown>;
     /**
+     * Drills into structured variables (tables, `Instances`).
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#GetVariables)
+     * @param this Provides programmatic breakpoint management, execution control, and runtime inspection of Luau scripts during a playtest.
+     * @param variablesReference A reference from a previous script variable's `VariablesReference` field (see `GetRootVariables()`).
+     * @returns An array of script variable dictionaries representing the children in the same format as variable dictionaries from `GetRootVariables()`. Returns empty if the `DataModel` is not stopped at a breakpoint or exception, or when stopped via `Pause()`.
      */
     GetVariables(this: ScriptDebuggerService, variablesReference: number): Array<unknown>;
     /**
+     * Requests the debugger to pause at the next safe point.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#Pause)
+     * @param this Provides programmatic breakpoint management, execution control, and runtime inspection of Luau scripts during a playtest.
      */
     Pause(this: ScriptDebuggerService): void;
     /**
+     * Removes the breakpoint on the given script and line.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#RemoveBreakpoint)
+     * @param this Provides programmatic breakpoint management, execution control, and runtime inspection of Luau scripts during a playtest.
+     * @param scriptInstance The `LuaSourceContainer` containing the breakpoint.
+     * @param line The 1-based line number of the breakpoint to remove.
+     * @returns `true` if a breakpoint was removed, `false` if no breakpoint existed on the line.
      */
     RemoveBreakpoint(this: ScriptDebuggerService, scriptInstance: LuaSourceContainer, line: number): boolean;
     /**
+     * Controls when the debugger pauses on exceptions.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#SetExceptionBreakMode)
+     * @param this Provides programmatic breakpoint management, execution control, and runtime inspection of Luau scripts during a playtest.
+     * @param breakMode The `DebugBreakModeType` to set.
      */
     SetExceptionBreakMode(this: ScriptDebuggerService, breakMode: CastsToEnum<Enum.DebugBreakModeType>): void;
     /**
+     * Fires when a previously paused thread resumes execution.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#Resumed)
      */
     readonly Resumed: RBXScriptSignal<(threadIds: Array<unknown>) => void>;
     /**
+     * The primary callback for reacting to debugger pauses. Returns a resume action.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDebuggerService#OnStopped)
+     * @param stopped Dictionary describing why the debugger paused. The following key-value pairs are valid: - `Reason` — `ScriptStoppedReason` why the debugger paused.
+     * - `ThreadIds` — Array of thread identifiers that stopped.
+     * - `ExceptionText` — Error message present when `Reason` is   `ScriptStoppedReason.Exception`.
+     *
+     *
+     * @returns Dictionary specifying how to resume execution. Contains the following key-value pairs: - `steppedType` — `DebuggerResumeType` describing how to resume.
+     * - `threadId` — Number indicating which thread to step. Required for   step actions.
      */
     OnStopped: ((stopped: object) => object) | undefined;
 }
@@ -17084,8 +17171,6 @@ interface UIScale extends UIComponent {
 }
 /**
  * Renders a shadow below the parent UI instance.
- *
- * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow)
  */
