@@ -2,3 +2,4 @@ node_modules
 .github
 include/generated
 devhub-scraper-master
+scripts

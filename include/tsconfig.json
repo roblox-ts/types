@@ -13,7 +13,7 @@
 		"rootDir": ".",
 		"outDir": "out",
 		// optional
-		"baseUrl": "src",
+		"baseUrl": ".",
 		"declaration": false,
 		"forceConsistentCasingInFileNames": true,
 		"sourceMap": true,
