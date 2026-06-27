@@ -828,6 +828,55 @@ interface RBXScriptSignal<T extends Callback = Callback> {
 interface Instances {}
 interface CreatableInstances {}
 
+/** @internal Trim leading spaces from a selector string literal type. */
+type _TrimLeft<S extends string> = S extends ` ${infer R}` ? _TrimLeft<R> : S;
+
+/** @internal Strip a leading `>> ` or `> ` combinator from an already-trimmed token. */
+type _StripLeadingCombinator<S extends string> = S extends `>> ${infer R}` ? R : S extends `> ${infer R}` ? R : S;
+
+/**
+ * @internal The leading Roblox class name of a simple selector token.
+ * Splits at the first `:` `.` `#` `[` or ` `, returning `""` when the token starts with one of those characters.
+ * Checking `:` first ensures `Part:has(...)` yields `"Part"` rather than splitting at a nested `.`.
+ */
+type _SelectorLeadingClass<S extends string> = S extends `${infer C}:${string}`
+	? C
+	: S extends `${infer C}.${string}`
+		? C
+		: S extends `${infer C}#${string}`
+			? C
+			: S extends `${infer C}[${string}`
+				? C
+				: S extends `${infer C} ${string}`
+					? C
+					: S;
+
+/**
+ * @internal The final simple-selector segment after following all top-level combinators.
+ * `${string} >> ` / `${string} > ` are greedy, so they match the *last* combinator in the string.
+ * After a ` >> ` split, any remaining ` > ` is also resolved, covering two-level chains.
+ * Combinators inside `:has(> …)` are safe: the outer grammar requires a space before `>` / `>>`,
+ * whereas the inner grammar writes `(>` with no preceding space.
+ */
+type _TrailingSegment<S extends string> = S extends `${string} >> ${infer R}`
+	? R extends `${string} > ${infer T}`
+		? _StripLeadingCombinator<_TrimLeft<T>>
+		: _StripLeadingCombinator<_TrimLeft<R>>
+	: S extends `${string} > ${infer R}`
+		? _StripLeadingCombinator<_TrimLeft<R>>
+		: _StripLeadingCombinator<_TrimLeft<S>>;
+
+/** @internal Resolves a complex selector to the narrowest `Instance` subtype it can produce. */
+type _ResolveComplexSelector<S extends string> =
+	_SelectorLeadingClass<_TrailingSegment<S>> extends infer C extends keyof Instances ? Instances[C] : Instance;
+
+/** @internal Union of result types for a comma-separated selector list. */
+type _QueryDescendantsResult<S extends string> = S extends `${infer A}, ${infer B}`
+	? _ResolveComplexSelector<A> | _QueryDescendantsResult<B>
+	: S extends `${infer A},${infer B}`
+		? _ResolveComplexSelector<A> | _QueryDescendantsResult<B>
+		: _ResolveComplexSelector<S>;
+
 // InstanceConstructor
 interface InstanceConstructor {
 	/**
