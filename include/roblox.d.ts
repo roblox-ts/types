@@ -76,9 +76,9 @@ interface GetGroupsAsyncResult {
 	IsInClan: boolean;
 }
 
-type HttpHeaders = Record<string, string> | Map<string, string>;
+type HttpHeaders = Record<string, string | Secret> | Map<string, string | Secret>;
 interface RequestAsyncRequest {
-	Url: string;
+	Url: string | Secret;
 	Method?: "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "PATCH";
 	Body?: string;
 	Headers?: HttpHeaders;
@@ -2514,6 +2514,35 @@ interface UDim2Constructor {
 }
 
 declare const UDim2: UDim2Constructor;
+
+// ValueCurveKey
+interface ValueCurveKey {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_ValueCurveKey: unique symbol;
+	/** The key interpolation mode for the segment started by this `ValueCurveKey`. */
+	Interpolation: Enum.KeyInterpolationMode;
+	/** The time position of this ValueCurveKey. */
+	Time: number;
+	/** The value of this ValueCurveKey. */
+	Value: unknown;
+	/** The tangent to the right of this ValueCurveKey. */
+	RightTangent: number | undefined;
+	/** The tangent to the left of this ValueCurveKey. */
+	LeftTangent: number | undefined;
+}
+
+interface ValueCurveKeyConstructor {
+	/** Returns a new `ValueCurveKey` from the given time and value. */
+	new (time: number, value: unknown, interpolation?: Enum.KeyInterpolationMode): ValueCurveKey;
+}
+
+declare const ValueCurveKey: ValueCurveKeyConstructor;
 
 // Vector2
 interface Vector2 {
