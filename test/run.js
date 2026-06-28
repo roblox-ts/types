@@ -1,17 +1,24 @@
 // @ts-check
 //
-// Unit-test runner for the QueryDescendants selector resolver (include/selector.d.ts).
+// Type-level test runner for the published @rbxts/types.
 //
-// Methodology (mirrors the original investigation): the only reliable way to validate
-// template-literal type metaprogramming is empirically — drive the TypeScript compiler
-// API over a fixture and read back the *actual* inferred type for each declaration.
+// Template-literal type metaprogramming (e.g. the QueryDescendants selector resolver)
+// can't be validated reliably by reading the source — the only ground truth is what the
+// compiler actually infers. This harness drives the TypeScript compiler API over the
+// *real* published types so cases exercise exactly what ships:
 //
-//   1. createProgram over [selector.d.ts, mocks.d.ts, cases.ts]
-//   2. getTypeChecker -> typeToString for every variable declaration in cases.ts
-//   3. compare against the `//=>` annotation on the same line (union order normalized)
-//   4. for `// @expect-error` markers, assert the following statement is rejected
+//   include/roblox.d.ts  ->  @rbxts/compiler-types (lib)
+//                            include/generated/*.d.ts (Roblox classes)
+//                            include/customDefinitions.d.ts + include/selector.d.ts
 //
-// Exits non-zero if any case fails.
+// Every `*.ts` file under test/cases/ is a case file. For each variable declaration
+// annotated with `//=> <type>`, the runner compares the inferred type against the
+// annotation (union member order is normalized). A `// @expect-error` line asserts that
+// the following statement is rejected by the type-checker.
+//
+// Add new suites by dropping another file in test/cases/ — no runner changes needed.
+//
+// Exits non-zero if any check fails.
 
 const fs = require("fs");
 const path = require("path");
@@ -20,30 +27,36 @@ const ts = require("typescript");
 const TEST_DIR = __dirname;
 const ROOT = path.resolve(TEST_DIR, "..");
 
-const SELECTOR_DTS = path.join(ROOT, "include", "selector.d.ts");
-const MOCKS_DTS = path.join(TEST_DIR, "mocks.d.ts");
-const CASES_TS = path.join(TEST_DIR, "cases.ts");
+const ROBLOX_DTS = path.join(ROOT, "include", "roblox.d.ts");
+const PRELUDE_DTS = path.join(TEST_DIR, "prelude.d.ts");
+const CASES_DIR = path.join(TEST_DIR, "cases");
 
+const caseFiles = fs
+	.readdirSync(CASES_DIR)
+	.filter(f => f.endsWith(".ts"))
+	.map(f => path.join(CASES_DIR, f))
+	.sort();
+
+if (caseFiles.length === 0) {
+	console.error(`No case files found in ${CASES_DIR}`);
+	process.exit(1);
+}
+
+// Mirror include/tsconfig.json / `npm run check`: roblox.d.ts carries a `no-default-lib`
+// directive, so the default lib is dropped and @rbxts/compiler-types supplies the lib.
 /** @type {ts.CompilerOptions} */
 const compilerOptions = {
 	strict: true,
-	target: ts.ScriptTarget.ES2020,
+	target: ts.ScriptTarget.ESNext,
 	module: ts.ModuleKind.CommonJS,
+	moduleResolution: ts.ModuleResolutionKind.NodeJs,
 	types: [],
 	noEmit: true,
 	skipLibCheck: true,
 };
 
-const program = ts.createProgram([SELECTOR_DTS, MOCKS_DTS, CASES_TS], compilerOptions);
+const program = ts.createProgram([ROBLOX_DTS, PRELUDE_DTS, ...caseFiles], compilerOptions);
 const checker = program.getTypeChecker();
-const casesSource = program.getSourceFile(CASES_TS);
-if (!casesSource) {
-	console.error("Could not load test/cases.ts");
-	process.exit(1);
-}
-
-const casesText = fs.readFileSync(CASES_TS, "utf8");
-const rawLines = casesText.split("\n");
 
 /**
  * Normalize a printed type so comparison ignores union member ordering (which is not
@@ -61,107 +74,90 @@ function normalizeType(typeString) {
 	return s;
 }
 
-const TYPE_FORMAT_FLAGS =
-	ts.TypeFormatFlags.NoTruncation |
-	ts.TypeFormatFlags.UseFullyQualifiedType |
-	ts.TypeFormatFlags.WriteArrayAsGenericType;
-
-// WriteArrayAsGenericType would print Array<T>; we actually want T[] form to match the
-// annotations, so don't use it. Recompute without it.
 const PRINT_FLAGS = ts.TypeFormatFlags.NoTruncation;
 
-/** @typedef {{ name: string, line: number, expected: string, actual: string, ok: boolean }} Result */
+/** @typedef {{ file: string, name: string, line: number, expected: string, actual: string, ok: boolean }} Result */
 
 /** @type {Result[]} */
 const results = [];
-
-/**
- * @param {ts.VariableDeclaration} decl
- */
-function recordDeclaration(decl) {
-	if (!ts.isIdentifier(decl.name)) return;
-	const name = decl.name.text;
-	const line = casesSource.getLineAndCharacterOfPosition(decl.name.getStart(casesSource)).line;
-	const lineText = rawLines[line] ?? "";
-	const markerIdx = lineText.indexOf("//=>");
-	if (markerIdx === -1) return; // not an annotated case
-	const expected = lineText.slice(markerIdx + "//=>".length).trim();
-
-	const type = checker.getTypeAtLocation(decl.name);
-	const actual = checker.typeToString(type, decl.name, PRINT_FLAGS);
-
-	const ok = normalizeType(actual) === normalizeType(expected);
-	results.push({ name, line: line + 1, expected, actual, ok });
-}
-
-ts.forEachChild(casesSource, function visit(node) {
-	if (ts.isVariableStatement(node)) {
-		for (const decl of node.declarationList.declarations) {
-			recordDeclaration(decl);
-		}
-	}
-	ts.forEachChild(node, visit);
-});
-
-// ----- expect-error handling -----
-
-// Lines (0-based) that should produce a type error: the first statement line after each
-// `// @expect-error` marker.
-/** @type {Set<number>} */
-const expectedErrorLines = new Set();
-for (let i = 0; i < rawLines.length; i++) {
-	if (rawLines[i].trim().startsWith("// @expect-error")) {
-		for (let j = i + 1; j < rawLines.length; j++) {
-			const t = rawLines[j].trim();
-			if (t === "" || t.startsWith("//")) continue;
-			expectedErrorLines.add(j);
-			break;
-		}
-	}
-}
-
-/** @type {Map<number, string>} */
-const actualErrors = new Map();
-for (const diag of ts.getPreEmitDiagnostics(program)) {
-	if (!diag.file || diag.file.fileName !== casesSource.fileName) continue;
-	if (diag.start === undefined) continue;
-	const line = diag.file.getLineAndCharacterOfPosition(diag.start).line;
-	const message = ts.flattenDiagnosticMessageText(diag.messageText, "\n");
-	if (!actualErrors.has(line)) actualErrors.set(line, message);
-}
-
-// ----- report -----
-
 let failures = 0;
 
-console.log("Type resolution cases:\n");
-for (const r of results) {
-	const status = r.ok ? "PASS" : "FAIL";
-	if (!r.ok) failures++;
-	console.log(`  [${status}] ${r.name} (line ${r.line})`);
-	if (!r.ok) {
-		console.log(`         expected: ${r.expected}`);
-		console.log(`         actual:   ${r.actual}`);
+for (const caseFile of caseFiles) {
+	const source = program.getSourceFile(caseFile);
+	if (!source) {
+		console.error(`Could not load ${caseFile}`);
+		process.exit(1);
+	}
+	const rawLines = fs.readFileSync(caseFile, "utf8").split("\n");
+	const relName = path.relative(ROOT, caseFile);
+
+	// ----- type-resolution cases (`//=>` annotations) -----
+
+	ts.forEachChild(source, function visit(node) {
+		if (ts.isVariableStatement(node)) {
+			for (const decl of node.declarationList.declarations) {
+				if (!ts.isIdentifier(decl.name)) continue;
+				const line = source.getLineAndCharacterOfPosition(decl.name.getStart(source)).line;
+				const lineText = rawLines[line] ?? "";
+				const markerIdx = lineText.indexOf("//=>");
+				if (markerIdx === -1) continue;
+				const expected = lineText.slice(markerIdx + "//=>".length).trim();
+				const type = checker.getTypeAtLocation(decl.name);
+				const actual = checker.typeToString(type, decl.name, PRINT_FLAGS);
+				const ok = normalizeType(actual) === normalizeType(expected);
+				if (!ok) failures++;
+				results.push({ file: relName, name: decl.name.text, line: line + 1, expected, actual, ok });
+			}
+		}
+		ts.forEachChild(node, visit);
+	});
+
+	// ----- compile-error cases (`// @expect-error`) -----
+
+	/** @type {Set<number>} */
+	const expectedErrorLines = new Set();
+	for (let i = 0; i < rawLines.length; i++) {
+		if (rawLines[i].trim().startsWith("// @expect-error")) {
+			for (let j = i + 1; j < rawLines.length; j++) {
+				const t = rawLines[j].trim();
+				if (t === "" || t.startsWith("//")) continue;
+				expectedErrorLines.add(j);
+				break;
+			}
+		}
+	}
+
+	/** @type {Map<number, string>} */
+	const actualErrors = new Map();
+	for (const diag of ts.getPreEmitDiagnostics(program, source)) {
+		if (!diag.file || diag.file.fileName !== source.fileName || diag.start === undefined) continue;
+		const line = diag.file.getLineAndCharacterOfPosition(diag.start).line;
+		if (!actualErrors.has(line)) actualErrors.set(line, ts.flattenDiagnosticMessageText(diag.messageText, "\n"));
+	}
+
+	const errorLines = [...new Set([...expectedErrorLines, ...actualErrors.keys()])].sort((a, b) => a - b);
+
+	// ----- report for this file -----
+
+	console.log(`\n${relName}`);
+	for (const r of results.filter(r => r.file === relName)) {
+		console.log(`  [${r.ok ? "PASS" : "FAIL"}] ${r.name} (line ${r.line})`);
+		if (!r.ok) {
+			console.log(`         expected: ${r.expected}`);
+			console.log(`         actual:   ${r.actual}`);
+		}
+	}
+	for (const line of errorLines) {
+		const expected = expectedErrorLines.has(line);
+		const actual = actualErrors.has(line);
+		const ok = expected && actual;
+		if (!ok) failures++;
+		const stmt = (rawLines[line] ?? "").trim();
+		console.log(`  [${ok ? "PASS" : "FAIL"}] expect-error: ${stmt} (line ${line + 1})`);
+		if (expected && !actual) console.log(`         expected a type error here, but none was reported`);
+		if (!expected && actual) console.log(`         unexpected type error: ${actualErrors.get(line)}`);
 	}
 }
-
-console.log("\nCompile-error cases:\n");
-const allErrorLines = new Set([...expectedErrorLines, ...actualErrors.keys()]);
-const sortedErrorLines = [...allErrorLines].sort((a, b) => a - b);
-for (const line of sortedErrorLines) {
-	const expected = expectedErrorLines.has(line);
-	const actual = actualErrors.has(line);
-	const ok = expected && actual;
-	const status = ok ? "PASS" : "FAIL";
-	if (!ok) failures++;
-	const stmt = (rawLines[line] ?? "").trim();
-	console.log(`  [${status}] line ${line + 1}: ${stmt}`);
-	if (expected && !actual) console.log(`         expected a type error here, but none was reported`);
-	if (!expected && actual) console.log(`         unexpected type error: ${actualErrors.get(line)}`);
-}
-
-const total = results.length + sortedErrorLines.length;
-console.log(`\n${total - failures}/${total} checks passed.`);
 
 if (failures > 0) {
 	console.error(`\n${failures} check(s) failed.`);

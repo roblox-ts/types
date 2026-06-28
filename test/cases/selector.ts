@@ -1,8 +1,9 @@
 // Test cases for the `QueryDescendants` selector resolver (include/selector.d.ts).
 //
-// Each `const` / `declare const` below is annotated with the type the resolver is
-// expected to produce, written after a `//=>` marker. The runner (test/run.js) drives
-// the TypeScript compiler API to read back the *actual* inferred type for every
+// Compiled against the real published types (see test/prelude.d.ts). Each `const` /
+// `declare const` below is annotated with the type the resolver is expected to
+// produce, written after a `//=>` marker. The runner (test/run.js) drives the
+// TypeScript compiler API to read back the *actual* inferred type for every
 // declaration and compares it against the annotation. Union member order is not
 // significant in TypeScript, so the comparison normalizes unions before comparing.
 //
