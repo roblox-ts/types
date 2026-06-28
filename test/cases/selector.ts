@@ -1,3 +1,5 @@
+/// <reference path="../../include/roblox.d.ts" />
+
 // Test cases for the `QueryDescendants` selector resolver (include/selector.d.ts), run by
 // test/run.ts against the real published types (`game` is the real `DataModel` global from
 // include/roblox.d.ts). Each declaration's `//=>` annotation is the expected resolved type; a
@@ -54,12 +56,12 @@ const emptyString = game.QueryDescendants(""); //=> Instance[]
 
 // ===== Validation: ValidateSelector resolves to a readable error string for bad input =====
 
-declare const v_valid: Selector.ValidateSelector<"Part">; //=> "Part"
-declare const v_badPseudo: Selector.ValidateSelector<"Part:foo(x)">; //=> "Invalid selector: ':foo' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)"
-declare const v_pseudoNoArgs: Selector.ValidateSelector<"Part:hover">; //=> "Invalid selector: ':hover' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)"
-declare const v_trailingComma: Selector.ValidateSelector<"Part,">; //=> "Invalid selector: empty selector in list (check for a stray or trailing comma)"
-declare const v_leadingComma: Selector.ValidateSelector<", Part">; //=> "Invalid selector: empty selector in list (check for a stray or trailing comma)"
-declare const v_doubleComma: Selector.ValidateSelector<"Part,,Model">; //=> "Invalid selector: empty selector in list (check for a stray or trailing comma)"
+declare const validationSuccess: Selector.ValidateSelector<"Part">; //=> "Part"
+declare const validationBadPseudo: Selector.ValidateSelector<"Part:foo(x)">; //=> "Invalid selector: ':foo' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)"
+declare const validationPseudoNoArgs: Selector.ValidateSelector<"Part:hover">; //=> "Invalid selector: ':hover' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)"
+declare const validationTrailingComma: Selector.ValidateSelector<"Part,">; //=> "Invalid selector: empty selector in list (check for a stray or trailing comma)"
+declare const validationLeadingComma: Selector.ValidateSelector<", Part">; //=> "Invalid selector: empty selector in list (check for a stray or trailing comma)"
+declare const validationDoubleComma: Selector.ValidateSelector<"Part,,Model">; //=> "Invalid selector: empty selector in list (check for a stray or trailing comma)"
 
 // ===== Validation surfaces as a call-site compile error =====
 
