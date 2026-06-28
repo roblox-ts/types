@@ -23,6 +23,11 @@ jobs:
 
       - uses: bahmutov/npm-install@v1
 
+      # include/generated/ is intentionally stale on PRs (it's regenerated post-merge), so
+      # rebuild it here to test against the real QueryDescendants override from customDefinitions.
+      - name: Generate Files
+        run: npm run build
+
       - name: Type-check test runner
         run: npm run check-tests
 
