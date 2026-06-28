@@ -21,9 +21,6 @@
  * Only the **last** combinator segment's class determines the return type (the
  * selector's subject), unioned across comma-separated selectors. Pseudo-classes
  * never change the subject's class, so they are treated as ignorable filters.
- *
- * @see ValidateSelector — surfaces readable compile errors for malformed selectors.
- * @see Solve — resolves a selector string to its matched instance type.
  */
 declare namespace Selector {
 	type BreakSymbols = "[" | "]" | "<" | ">" | "=" | "'" | "." | "#" | "," | ":" | "(" | ")";
@@ -68,7 +65,7 @@ declare namespace Selector {
 			: [U, ...Rest]
 		: never;
 
-	// Paren-depth- and quote-aware: a break character only separates at paren depth 0 and
+	// Aware of paren depth and quotes: a break character only separates at paren depth 0 and
 	// outside quotes, so the contents of :not(...) / :has(...) and quoted attribute values
 	// (their inner "," and ">"/">>") stay in one group.
 	type ParseSeparatedWithBreak<
