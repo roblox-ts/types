@@ -28,7 +28,6 @@ const TEST_DIR = __dirname;
 const ROOT = path.resolve(TEST_DIR, "..");
 
 const ROBLOX_DTS = path.join(ROOT, "include", "roblox.d.ts");
-const PRELUDE_DTS = path.join(TEST_DIR, "prelude.d.ts");
 const CASES_DIR = path.join(TEST_DIR, "cases");
 
 const caseFiles = fs
@@ -55,7 +54,7 @@ const compilerOptions = {
 	skipLibCheck: true,
 };
 
-const program = ts.createProgram([ROBLOX_DTS, PRELUDE_DTS, ...caseFiles], compilerOptions);
+const program = ts.createProgram([ROBLOX_DTS, ...caseFiles], compilerOptions);
 const checker = program.getTypeChecker();
 
 /**
