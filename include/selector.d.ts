@@ -68,11 +68,9 @@ declare namespace Selector {
 			: [U, ...Rest]
 		: never;
 
-	// Paren-depth- and quote-aware: a break character only separates when we are
-	// at paren depth 0 and outside a quoted string. This keeps the contents of
-	// :not(...) / :has(...) — including inner "," and ">"/">>" — inside one group,
-	// and also prevents special characters inside quoted attribute values from
-	// being treated as separators.
+	// Paren-depth- and quote-aware: a break character only separates at paren depth 0 and
+	// outside quotes, so the contents of :not(...) / :has(...) and quoted attribute values
+	// (their inner "," and ">"/">>") stay in one group.
 	type ParseSeparatedWithBreak<
 		Tokens extends Array<string>,
 		BreakCharacters extends string,
@@ -236,15 +234,13 @@ declare namespace Selector {
 								: T
 			: never;
 
-	// Remove (...) groups by string matching so pseudo-class contents (inner commas/combinators)
-	// can't leak into the fast splitters. Leftover residue always sits after the class's ":",
-	// so leading-class extraction is unaffected (except deeply nested :has( , ) — see router).
+	// Remove (...) groups so pseudo-class contents (inner commas/combinators) can't leak into the
+	// fast splitters. The residue sits after the class's ":", so leading-class extraction is fine.
 	type StripParens<S extends string> = S extends `${infer A}(${string})${infer B}` ? StripParens<`${A}${B}`> : S;
 
-	// Remove [...] attribute/property filters by string matching. Their contents never affect
-	// the subject class, but an unquoted special character inside a value (e.g. the "." in
-	// "[Transparency=0.5]" or a ">" in "[a>b]") would otherwise fool the fast splitters/leading-
-	// class extraction. Brackets don't nest, so a single non-greedy pass per group is enough.
+	// Remove [...] filters: their contents don't affect the subject class, but an unquoted special
+	// char in a value (e.g. "." in "[Transparency=0.5]", ">" in "[a>b]") would fool the fast
+	// splitters / leading-class extraction. Brackets don't nest, so one pass per group works.
 	type StripBrackets<S extends string> = S extends `${infer A}[${string}]${infer B}` ? StripBrackets<`${A}${B}`> : S;
 
 	type FastClause<S extends string> =
@@ -252,8 +248,6 @@ declare namespace Selector {
 
 	type FastSolve<S extends string> = S extends `${infer A},${infer B}` ? FastClause<A> | FastSolve<B> : FastClause<S>;
 
-	// Router: only selectors containing "(" (pseudo-classes) or "'" (quoted values) need the
-	// tokenizer; everything else takes the cheap path.
 	// --- Selector validation: only :not() and :has() are valid pseudo-classes ---
 	// Remove quoted segments so ':' inside an attribute value is never read as a pseudo-class.
 	type StripQuotes<S extends string> = S extends `${infer A}'${string}'${infer B}` ? StripQuotes<`${A}${B}`> : S;

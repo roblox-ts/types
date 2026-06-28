@@ -1,15 +1,7 @@
-// Test cases for the `QueryDescendants` selector resolver (include/selector.d.ts).
-//
-// Compiled against the real published types — `game` is the real `DataModel` global
-// declared in include/roblox.d.ts. Each `const` / `declare const` below is annotated
-// with the type the resolver is expected to produce, written after a `//=>` marker.
-// The runner (test/run.ts) drives the
-// TypeScript compiler API to read back the *actual* inferred type for every
-// declaration and compares it against the annotation. Union member order is not
-// significant in TypeScript, so the comparison normalizes unions before comparing.
-//
-// Lines preceding a statement with `// @expect-error` assert that the statement is
-// rejected by the type-checker (used for selector-validation failures at the call site).
+// Test cases for the `QueryDescendants` selector resolver (include/selector.d.ts), run by
+// test/run.ts against the real published types (`game` is the real `DataModel` global from
+// include/roblox.d.ts). Each declaration's `//=>` annotation is the expected resolved type; a
+// `// @expect-error` line asserts the following call is rejected (selector validation).
 
 // ===== Subject resolution: single class =====
 

@@ -1,25 +1,15 @@
 // Type-level test runner for the published @rbxts/types.
 //
-// Run with `node test/run.ts` (Node strips the types — no build step). Uses only
-// erasable TypeScript syntax so it works under Node's native type stripping.
+// Run with `node test/run.ts` — Node strips the types, no build step (the runner uses only
+// erasable syntax). Template-literal type metaprogramming can't be checked by reading the
+// source, so this drives the TypeScript compiler API over the real published types
+// (include/roblox.d.ts, which pulls in @rbxts/compiler-types, the generated classes, and the
+// custom definitions) and reads back what the compiler actually infers.
 //
-// Template-literal type metaprogramming (e.g. the QueryDescendants selector resolver)
-// can't be validated reliably by reading the source — the only ground truth is what the
-// compiler actually infers. This harness drives the TypeScript compiler API over the
-// *real* published types so cases exercise exactly what ships:
-//
-//   include/roblox.d.ts  ->  @rbxts/compiler-types (lib)
-//                            include/generated/*.d.ts (Roblox classes)
-//                            include/customDefinitions.d.ts + include/selector.d.ts
-//
-// Every `*.ts` file under test/cases/ is a case file. For each variable declaration
-// annotated with `//=> <type>`, the runner compares the inferred type against the
-// annotation (union member order is normalized). A `// @expect-error` line asserts that
-// the following statement is rejected by the type-checker.
-//
-// Add new suites by dropping another file in test/cases/ — no runner changes needed.
-//
-// Exits non-zero if any check fails.
+// Every `*.ts` file under test/cases/ is a suite. For each variable declaration annotated with
+// `//=> <type>`, the inferred type is compared to the annotation (union order ignored). A
+// `// @expect-error` line asserts the following statement is rejected by the type-checker. Add
+// a suite by dropping in a file — no runner changes needed. Exits non-zero on failure.
 
 import type { CompilerOptions, Node } from "typescript";
 

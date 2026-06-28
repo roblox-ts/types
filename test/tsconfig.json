@@ -10,8 +10,7 @@
 		"noEmit": true,
 		"forceConsistentCasingInFileNames": true
 	},
-	// Only the runner is type-checked here. The case files under cases/ are exercised by
-	// the runner against the real published types — they rely on the global Roblox types
-	// (and intentionally contain `// @expect-error` lines), so they aren't checked standalone.
+	// Only the runner is type-checked here. The case files under cases/ rely on global Roblox
+	// types and contain intentional `// @expect-error` lines, so the runner exercises them instead.
 	"include": ["run.ts"]
 }
