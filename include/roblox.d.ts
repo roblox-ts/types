@@ -1,6 +1,7 @@
 /// <reference no-default-lib="true"/>
 /// <reference path="lua.d.ts" />
 /// <reference path="macro_math.d.ts" />
+/// <reference path="selector.d.ts" />
 /// <reference path="generated/enums.d.ts" />
 /// <reference path="generated/None.d.ts" />
 /// <reference types="@rbxts/compiler-types" />

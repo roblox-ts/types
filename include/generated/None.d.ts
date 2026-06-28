@@ -2532,7 +2532,7 @@ interface Instance extends RBXObject {
      * @param selector Selector string used to filter elements.
      * @returns An array of instances (empty if nothing matched the selector).
      */
-    QueryDescendants(this: Instance, selector: string): Array<Instance>;
+    QueryDescendants<S extends string>(this: Instance, selector: Selector.ValidateSelector<S> extends S ? S : Selector.ValidateSelector<S>): string extends S ? Array<Instance> : Array<Selector.Solve<S>>;
     /**
      * Removes a tag from the instance.
      *
