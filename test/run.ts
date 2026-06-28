@@ -1,6 +1,7 @@
-// @ts-check
-//
 // Type-level test runner for the published @rbxts/types.
+//
+// Run with `node test/run.ts` (Node strips the types — no build step). Uses only
+// erasable TypeScript syntax so it works under Node's native type stripping.
 //
 // Template-literal type metaprogramming (e.g. the QueryDescendants selector resolver)
 // can't be validated reliably by reading the source — the only ground truth is what the
@@ -20,9 +21,11 @@
 //
 // Exits non-zero if any check fails.
 
-const fs = require("fs");
-const path = require("path");
-const ts = require("typescript");
+import type { CompilerOptions, Node } from "typescript";
+
+const fs = require("fs") as typeof import("fs");
+const path = require("path") as typeof import("path");
+const ts = require("typescript") as typeof import("typescript");
 
 const TEST_DIR = __dirname;
 const ROOT = path.resolve(TEST_DIR, "..");
@@ -43,8 +46,7 @@ if (caseFiles.length === 0) {
 
 // Mirror include/tsconfig.json / `npm run check`: roblox.d.ts carries a `no-default-lib`
 // directive, so the default lib is dropped and @rbxts/compiler-types supplies the lib.
-/** @type {ts.CompilerOptions} */
-const compilerOptions = {
+const compilerOptions: CompilerOptions = {
 	strict: true,
 	target: ts.ScriptTarget.ESNext,
 	module: ts.ModuleKind.CommonJS,
@@ -57,12 +59,9 @@ const compilerOptions = {
 const program = ts.createProgram([ROBLOX_DTS, ...caseFiles], compilerOptions);
 const checker = program.getTypeChecker();
 
-/**
- * Normalize a printed type so comparison ignores union member ordering (which is not
- * significant in TypeScript). `(B | A)[]` and `(A | B)[]` compare equal.
- * @param {string} typeString
- */
-function normalizeType(typeString) {
+/** Normalize a printed type so comparison ignores union member ordering (which is not
+ * significant in TypeScript): `(B | A)[]` and `(A | B)[]` compare equal. */
+function normalizeType(typeString: string): string {
 	let s = typeString.trim();
 	const arrayMatch = /^\((.*)\)\[\]$/.exec(s);
 	if (arrayMatch) {
@@ -75,10 +74,16 @@ function normalizeType(typeString) {
 
 const PRINT_FLAGS = ts.TypeFormatFlags.NoTruncation;
 
-/** @typedef {{ file: string, name: string, line: number, expected: string, actual: string, ok: boolean }} Result */
+interface Result {
+	file: string;
+	name: string;
+	line: number;
+	expected: string;
+	actual: string;
+	ok: boolean;
+}
 
-/** @type {Result[]} */
-const results = [];
+const results: Result[] = [];
 let failures = 0;
 
 for (const caseFile of caseFiles) {
@@ -92,7 +97,7 @@ for (const caseFile of caseFiles) {
 
 	// ----- type-resolution cases (`//=>` annotations) -----
 
-	ts.forEachChild(source, function visit(node) {
+	const visit = (node: Node): void => {
 		if (ts.isVariableStatement(node)) {
 			for (const decl of node.declarationList.declarations) {
 				if (!ts.isIdentifier(decl.name)) continue;
@@ -109,12 +114,12 @@ for (const caseFile of caseFiles) {
 			}
 		}
 		ts.forEachChild(node, visit);
-	});
+	};
+	ts.forEachChild(source, visit);
 
 	// ----- compile-error cases (`// @expect-error`) -----
 
-	/** @type {Set<number>} */
-	const expectedErrorLines = new Set();
+	const expectedErrorLines = new Set<number>();
 	for (let i = 0; i < rawLines.length; i++) {
 		if (rawLines[i].trim().startsWith("// @expect-error")) {
 			for (let j = i + 1; j < rawLines.length; j++) {
@@ -126,8 +131,7 @@ for (const caseFile of caseFiles) {
 		}
 	}
 
-	/** @type {Map<number, string>} */
-	const actualErrors = new Map();
+	const actualErrors = new Map<number, string>();
 	for (const diag of ts.getPreEmitDiagnostics(program, source)) {
 		if (!diag.file || diag.file.fileName !== source.fileName || diag.start === undefined) continue;
 		const line = diag.file.getLineAndCharacterOfPosition(diag.start).line;

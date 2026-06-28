@@ -8,7 +8,7 @@
 	"scripts": {
 		"build": "tsc && node out/index.js",
 		"check": "tsc include/**/*.d.ts --noEmit --skipLibCheck",
-		"test": "node test/run.js",
+		"test": "node test/run.ts",
 		"eslint-src": "npx eslint \"src/**/*.ts\" --max-warnings 0",
 		"eslint-include": "npx eslint \"include/*.ts\" --max-warnings 0",
 		"eslint": "npm run eslint-src && npm run eslint-include"

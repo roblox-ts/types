@@ -586,22 +586,6 @@ interface Instance extends RBXObject {
 	GetAttribute(this: Instance, attribute: string): AttributeValue | undefined;
 	SetAttribute(this: Instance, attribute: string, value: AttributeValue | undefined): void;
 	GetAttributes(this: Instance): Map<string, AttributeValue>;
-	/**
-	 * Returns an array of descendants that match the given selector string.
-	 *
-	 * The selector uses a CSS/jQuery-like syntax (mirroring Roblox's `StyleRule`):
-	 * class names (`Part`), tags (`.Fruit`), names (`#MyPart`), attribute/property
-	 * filters (`[CanCollide = false]`, `[$Health = 100]`), the `>` (child) and `>>`
-	 * (descendant) combinators, comma-separated selector lists, and the `:not()` /
-	 * `:has()` pseudo-classes.
-	 *
-	 * When the selector is a string literal, the return type is narrowed to the
-	 * matched class (the subject of the last combinator segment, unioned across the
-	 * selector list); malformed selectors surface a readable compile error. A
-	 * dynamic `string` selector resolves to `Array<Instance>`.
-	 *
-	 * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Instance#QueryDescendants)
-	 */
 	QueryDescendants<S extends string>(
 		this: Instance,
 		selector: Selector.ValidateSelector<S> extends S ? S : Selector.ValidateSelector<S>,
