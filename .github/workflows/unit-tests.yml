@@ -1,0 +1,30 @@
+name: Unit Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  unit-tests:
+    if: contains(github.event.commits[0].message, '[skip ci]') == false
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+        with:
+          # 22.18+/24 run `.ts` files via native type stripping (no build step for the runner).
+          node-version: '24.x'
+
+      - uses: bahmutov/npm-install@v1
+
+      - name: Type-check test runner
+        run: npm run check-tests
+
+      - name: Run type-level tests
+        run: npm test

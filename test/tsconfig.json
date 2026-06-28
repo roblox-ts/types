@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"target": "ES2022",
+		"types": ["node"],
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"noEmit": true,
+		"forceConsistentCasingInFileNames": true
+	},
+	// Only the runner is type-checked here. The case files under cases/ are exercised by
+	// the runner against the real published types — they rely on the global Roblox types
+	// (and intentionally contain `// @expect-error` lines), so they aren't checked standalone.
+	"include": ["run.ts"]
+}
