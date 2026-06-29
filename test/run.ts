@@ -17,6 +17,22 @@ const fs = require("fs") as typeof import("fs");
 const path = require("path") as typeof import("path");
 const ts = require("typescript") as typeof import("typescript");
 
+// Minimal ANSI coloring. Honors FORCE_COLOR / NO_COLOR and falls back to plain text when
+// stdout isn't a TTY (e.g. CI logs, pipes), so the output degrades gracefully.
+const useColor =
+	(process.env.FORCE_COLOR ?? "") !== "" || (!!process.stdout.isTTY && (process.env.NO_COLOR ?? "") === "");
+const paint =
+	(code: string) =>
+	(s: string): string =>
+		useColor ? `\x1b[${code}m${s}\x1b[0m` : s;
+const green = paint("32");
+const red = paint("31");
+const cyan = paint("36");
+const bold = paint("1");
+const dim = paint("2");
+const tick = green("✓");
+const cross = red("✗");
+
 const TEST_DIR = __dirname;
 const ROOT = path.resolve(TEST_DIR, "..");
 
@@ -74,7 +90,10 @@ interface Result {
 }
 
 const results: Array<Result> = [];
+let total = 0;
 let failures = 0;
+
+console.log(bold(`Type-level tests · ${caseFiles.length} suite${caseFiles.length === 1 ? "" : "s"}`));
 
 for (const caseFile of caseFiles) {
 	const source = program.getSourceFile(caseFile);
@@ -132,28 +151,31 @@ for (const caseFile of caseFiles) {
 
 	// ----- report for this file -----
 
-	console.log(`\n${relName}`);
+	console.log(`\n${bold(cyan(relName))}`);
 	for (const r of results.filter(r => r.file === relName)) {
-		console.log(`  [${r.ok ? "PASS" : "FAIL"}] ${r.name} (line ${r.line})`);
+		total++;
+		console.log(`  ${r.ok ? tick : cross} ${r.name} ${dim(`(line ${r.line})`)}`);
 		if (!r.ok) {
-			console.log(`         expected: ${r.expected}`);
-			console.log(`         actual:   ${r.actual}`);
+			console.log(`      ${dim("expected:")} ${green(r.expected)}`);
+			console.log(`      ${dim("actual:  ")} ${red(r.actual)}`);
 		}
 	}
 	for (const line of errorLines) {
+		total++;
 		const expected = expectedErrorLines.has(line);
 		const actual = actualErrors.has(line);
 		const ok = expected && actual;
 		if (!ok) failures++;
 		const stmt = (rawLines[line] ?? "").trim();
-		console.log(`  [${ok ? "PASS" : "FAIL"}] expect-error: ${stmt} (line ${line + 1})`);
-		if (expected && !actual) console.log(`         expected a type error here, but none was reported`);
-		if (!expected && actual) console.log(`         unexpected type error: ${actualErrors.get(line)}`);
+		console.log(`  ${ok ? tick : cross} ${dim("expect-error:")} ${stmt} ${dim(`(line ${line + 1})`)}`);
+		if (expected && !actual) console.log(`      ${red("expected a type error here, but none was reported")}`);
+		if (!expected && actual) console.log(`      ${red(`unexpected type error: ${actualErrors.get(line)}`)}`);
 	}
 }
 
+const passed = total - failures;
 if (failures > 0) {
-	console.error(`\n${failures} check(s) failed.`);
+	console.error(`\n${cross} ${bold(red(`${failures} of ${total} checks failed`))} ${dim(`(${passed} passed)`)}`);
 	process.exit(1);
 }
-console.log("\nAll checks passed.");
+console.log(`\n${tick} ${bold(green(`All ${total} checks passed`))}`);
