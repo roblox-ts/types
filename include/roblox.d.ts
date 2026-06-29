@@ -3149,6 +3149,7 @@ interface CheckableTypes extends CheckablePrimitives {
 	Rect: Rect;
 	Region3: Region3;
 	Region3int16: Region3int16;
+	Secret: Secret;
 	TweenInfo: TweenInfo;
 	UDim: UDim;
 	UDim2: UDim2;
