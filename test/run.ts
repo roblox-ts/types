@@ -17,10 +17,9 @@ const fs = require("fs") as typeof import("fs");
 const path = require("path") as typeof import("path");
 const ts = require("typescript") as typeof import("typescript");
 
-// Minimal ANSI coloring. Honors FORCE_COLOR / NO_COLOR and falls back to plain text when
-// stdout isn't a TTY (e.g. CI logs, pipes), so the output degrades gracefully.
-const useColor =
-	(process.env.FORCE_COLOR ?? "") !== "" || (!!process.stdout.isTTY && (process.env.NO_COLOR ?? "") === "");
+// Minimal ANSI coloring. Honors NO_COLOR and falls back to plain text when stdout isn't a
+// TTY (e.g. CI logs, pipes), so the output degrades gracefully.
+const useColor = !!process.stdout.isTTY && (process.env.NO_COLOR ?? "") === "";
 const paint =
 	(code: string) =>
 	(s: string): string =>
