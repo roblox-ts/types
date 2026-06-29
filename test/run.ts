@@ -73,7 +73,7 @@ interface Result {
 	ok: boolean;
 }
 
-const results: Result[] = [];
+const results: Array<Result> = [];
 let failures = 0;
 
 for (const caseFile of caseFiles) {
