@@ -569,6 +569,33 @@ interface Instance extends RBXObject {
 	Clone<T extends Instance>(this: T): T;
 	GetActor(this: Instance): Actor | undefined;
 	GetDescendants(this: Instance): Array<Instance>;
+	/**
+	 * Returns an array of all descendants matching the given selector string.
+	 *
+	 * **Selectors**
+	 * - `ClassName` — matches via `IsA` (e.g. `"BasePart"`)
+	 * - `.Tag` — CollectionService tag (e.g. `".Fruit"`)
+	 * - `#Name` — exact `Instance.Name` (e.g. `"#MyPart"`)
+	 * - `[property = value]` — property value match (e.g. `"[CanCollide = false]"`)
+	 * - `[$attribute]` — attribute presence (e.g. `"[$FuelCapacity]"`)
+	 * - `[$attribute = value]` — attribute value match (e.g. `"[$FuelCapacity = 75]"`)
+	 *
+	 * Selectors can be freely combined, e.g. `"Model.Apple[$Variety = Fuji]"`.
+	 *
+	 * **Combinators**
+	 * - `A > B` — `B` must be a *direct child* of `A`
+	 * - `A >> B` — `B` must be a *descendant* of `A` (implicit default)
+	 * - `A, B` — union; returns matches from both selectors
+	 *
+	 * **Pseudo-classes**
+	 * - `:not(sel, ...)` — excludes matches (e.g. `":not(SpotLight, PointLight)"`)
+	 * - `:has(rel-sel)` — keeps instances that contain a matching descendant (e.g. `":has(Tool)"`)
+	 *
+	 * The return type is automatically narrowed when the selector begins with a known Roblox class
+	 * name. For example `QueryDescendants("Part#MyPart")` returns `Array<Part>` and
+	 * `QueryDescendants("Part, SpotLight")` returns `Array<Part | SpotLight>`.
+	 */
+	QueryDescendants<S extends string>(this: Instance, selector: S): Array<_QueryDescendantsResult<S>>;
 	GetTags(this: Instance): Array<string>;
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
 	WaitForChild(this: Instance, childName: string | number): Instance;
