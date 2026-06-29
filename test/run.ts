@@ -8,7 +8,7 @@
 //
 // Every `*.ts` file under test/cases/ is a suite. For each variable declaration annotated with
 // `//=> <type>`, the inferred type is compared to the annotation (union order ignored). A
-// `// @expect-error` line asserts the following statement is rejected by the type-checker. Add
+// `// @ts-expect-error` line asserts the following statement is rejected by the type-checker. Add
 // a suite by dropping in a file — no runner changes needed. Exits non-zero on failure.
 
 import type { CompilerOptions, Node } from "typescript";
@@ -123,28 +123,23 @@ for (const caseFile of caseFiles) {
 	};
 	ts.forEachChild(source, visit);
 
-	// ----- compile-error cases (`// @expect-error`) -----
+	// ----- rejection cases (`// @ts-expect-error`) -----
+	//
+	// `@ts-expect-error` suppresses the error on the next line, so a selector that's correctly
+	// rejected produces no diagnostic. If the call instead type-checks, TS reports an
+	// "Unused '@ts-expect-error' directive" on the directive line — that's the failure tell.
 
-	const expectedErrorLines = new Set<number>();
+	const directiveLines = new Set<number>();
 	for (let i = 0; i < rawLines.length; i++) {
-		if (rawLines[i].trim().startsWith("// @expect-error")) {
-			for (let j = i + 1; j < rawLines.length; j++) {
-				const t = rawLines[j].trim();
-				if (t === "" || t.startsWith("//")) continue;
-				expectedErrorLines.add(j);
-				break;
-			}
-		}
+		if (rawLines[i].trim().startsWith("// @ts-expect-error")) directiveLines.add(i);
 	}
 
-	const actualErrors = new Map<number, string>();
+	const diagByLine = new Map<number, string>();
 	for (const diag of ts.getPreEmitDiagnostics(program, source)) {
 		if (!diag.file || diag.file.fileName !== source.fileName || diag.start === undefined) continue;
 		const line = diag.file.getLineAndCharacterOfPosition(diag.start).line;
-		if (!actualErrors.has(line)) actualErrors.set(line, ts.flattenDiagnosticMessageText(diag.messageText, "\n"));
+		if (!diagByLine.has(line)) diagByLine.set(line, ts.flattenDiagnosticMessageText(diag.messageText, "\n"));
 	}
-
-	const errorLines = [...new Set([...expectedErrorLines, ...actualErrors.keys()])].sort((a, b) => a - b);
 
 	// ----- report for this file -----
 
@@ -157,16 +152,23 @@ for (const caseFile of caseFiles) {
 			console.log(`      ${dim("actual:  ")} ${red(r.actual)}`);
 		}
 	}
-	for (const line of errorLines) {
+	for (const line of [...directiveLines].sort((a, b) => a - b)) {
 		total++;
-		const expected = expectedErrorLines.has(line);
-		const actual = actualErrors.has(line);
-		const ok = expected && actual;
+		const ok = !diagByLine.has(line); // directive used (error suppressed) => rejected as expected
 		if (!ok) failures++;
-		const stmt = (rawLines[line] ?? "").trim();
-		console.log(`  ${ok ? tick : cross} ${dim("expect-error:")} ${stmt} ${dim(`(line ${line + 1})`)}`);
-		if (expected && !actual) console.log(`      ${red("expected a type error here, but none was reported")}`);
-		if (!expected && actual) console.log(`      ${red(`unexpected type error: ${actualErrors.get(line)}`)}`);
+		const stmt = (rawLines[line + 1] ?? "").trim();
+		console.log(`  ${ok ? tick : cross} ${dim("rejects:")} ${stmt} ${dim(`(line ${line + 2})`)}`);
+		if (!ok) console.log(`      ${red("expected this selector to be rejected, but it type-checks")}`);
+	}
+	// Any diagnostic not silenced by a directive is an unexpected error in a positive case.
+	for (const [line, message] of [...diagByLine].sort((a, b) => a[0] - b[0])) {
+		if (directiveLines.has(line)) continue;
+		total++;
+		failures++;
+		console.log(
+			`  ${cross} ${dim("unexpected error:")} ${(rawLines[line] ?? "").trim()} ${dim(`(line ${line + 1})`)}`,
+		);
+		console.log(`      ${red(message)}`);
 	}
 }
 

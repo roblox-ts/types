@@ -3,7 +3,7 @@
 // Test cases for the `QueryDescendants` selector resolver (include/selector.d.ts), run by
 // test/run.ts against the real published types (`game` is the real `DataModel` global from
 // include/roblox.d.ts). Each declaration's `//=>` annotation is the expected resolved type; a
-// `// @expect-error` line asserts the following call is rejected (selector validation).
+// `// @ts-expect-error` line asserts the following call is rejected (selector validation).
 
 // ===== Subject resolution: single class =====
 
@@ -65,9 +65,9 @@ declare const validationDoubleComma: Selector.ValidateSelector<"Part,,Model">; /
 
 // ===== Validation surfaces as a call-site compile error =====
 
-// @expect-error unsupported pseudo-class is rejected at the call site
+// @ts-expect-error unsupported pseudo-class is rejected at the call site
 game.QueryDescendants("Part:foo(x)");
-// @expect-error stray trailing comma is rejected at the call site
+// @ts-expect-error stray trailing comma is rejected at the call site
 game.QueryDescendants("Part,");
-// @expect-error leading comma is rejected at the call site
+// @ts-expect-error leading comma is rejected at the call site
 game.QueryDescendants(", Part");
