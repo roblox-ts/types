@@ -1,26 +1,15 @@
 /// <reference no-default-lib="true"/>
 
 /**
- * Type-level resolver for the jQuery/CSS-like selector strings accepted by
- * `Instance:QueryDescendants()`.
+ * Resolves the selector strings accepted by `Instance:QueryDescendants()` to the type of the
+ * instances they match, so string-literal selectors get a precise return type. The grammar is
+ * documented at https://create.roblox.com/docs/reference/engine/classes/Instance#QueryDescendants
  *
- * The selector grammar mirrors Roblox's `StyleRule` syntax:
- *
- * - `ClassName` — matches via `IsA` (polymorphic). Abstract bases such as
- *   `BasePart`/`GuiObject` are valid and resolve to that base type.
- * - `.Tag` (CollectionService) / `#Name` (`Instance.Name`) — resolve to
- *   `Instance` because they carry no class information.
- * - `[property = value]` / `[$attribute = value]` — attribute/property filters.
- * - Combinators: `>` (child), `>>` (descendant, also the implicit first
- *   filter), `,` (selector list).
- * - Pseudo-classes: `:not(...)`, `:has(...)`.
- *
- * Whitespace is intentionally **not** a descendant combinator — Roblox uses
- * `>>`, unlike CSS.
- *
- * Only the **last** combinator segment's class determines the return type (the
- * selector's subject), unioned across comma-separated selectors. Pseudo-classes
- * never change the subject's class, so they are treated as ignorable filters.
+ * Only the class named in the last combinator segment affects the result, unioned across
+ * comma-separated selectors. `.Tag` and `#Name` carry no class information and resolve to
+ * `Instance`; attribute filters and pseudo-classes never change the class. Note that
+ * whitespace is not a combinator in this grammar (descendant matching is `>>`), so spaces
+ * are ignored rather than treated as separators.
  */
 declare namespace Selector {
 	type BreakSymbols = "[" | "]" | "<" | ">" | "=" | "'" | "." | "#" | "," | ":" | "(" | ")";
@@ -207,12 +196,16 @@ declare namespace Selector {
 
 	type SolveEachClause<T> = T extends [] ? Array<Instance> : { [K in keyof T]: SolveClause<T[K]> };
 
-	// --- Tokenizer-based path: full correctness for parens (:has/:not) and quotes ---
+	// Tokenizer path. `Solve` routes here only for the shapes the string matching below can't
+	// split safely: quoted values and nested parens.
 	type SlowSolve<T extends string> = SolveEachClause<Parse<Lex<T>>>[number];
 
-	// --- Fast path: delimiter-level string matching, no char-by-char lexing ---
-	// LastSegment: peel everything up to the final ">" (handles ">" and ">>", spaced or not,
-	// in O(number of ">") rather than O(characters)).
+	// String-matching path for everything else. It recovers just the subject class of each
+	// comma group, which avoids the tokenizer's per-character recursion (and with it, TS's
+	// recursion limit on long selectors).
+
+	// Everything before the last ">" cannot affect the subject, so peel up to it (covers both
+	// ">" and ">>", spaced or not).
 	type LastSegment<S extends string> = S extends `${string}>${infer R}` ? LastSegment<R> : S;
 
 	// Leading class name of a trimmed segment: prefix before the first : . # [ or space, trimmed.
@@ -284,11 +277,13 @@ declare namespace Selector {
 				: never
 			: never;
 
-	// Nested pseudo-classes that contain a top-level comma, e.g. ":has(X:has(.y), Z)", and any
-	// quoted value still go through the tokenizer; everything else is stripped + fast.
+	// Routes between the two paths. Quoted values can hide separators from the strippers above,
+	// and a nested pseudo-class (e.g. ":has(X:has(.y), Z)") leaves its top-level comma behind
+	// after StripParens, so both shapes go through the tokenizer. Everything else is stripped
+	// down to bare segments and solved by string matching.
 	export type Solve<S extends string> = S extends `${string}'${string}`
 		? SlowSolve<S>
 		: S extends `${string}(${string}(${string})${string})${string}`
-			? SlowSolve<S> // nested parens (rare) -> tokenizer for full correctness
+			? SlowSolve<S>
 			: FastSolve<StripBrackets<StripParens<S>>>;
 }

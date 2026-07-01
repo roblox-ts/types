@@ -8,12 +8,10 @@
 	"scripts": {
 		"build": "tsc && node out/index.js",
 		"check": "tsc include/**/*.d.ts --noEmit --skipLibCheck",
-		"test": "node test/run.ts",
-		"check-tests": "tsc -p test",
+		"test": "tsc && node out/tests/run.js",
 		"eslint-src": "npx eslint \"src/**/*.ts\" --max-warnings 0",
 		"eslint-include": "npx eslint \"include/*.ts\" --max-warnings 0",
-		"eslint-test": "npx eslint \"test/**/*.ts\" --max-warnings 0",
-		"eslint": "npm run eslint-src && npm run eslint-include && npm run eslint-test"
+		"eslint": "npm run eslint-src && npm run eslint-include"
 	},
 	"main": "include/roblox.d.ts",
 	"types": "include/roblox.d.ts",

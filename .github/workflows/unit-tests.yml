@@ -15,21 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install NodeJS
-        uses: actions/setup-node@v4
-        with:
-          # 22.18+/24 run `.ts` files via native type stripping (no build step for the runner).
-          node-version: '24.x'
-
       - uses: bahmutov/npm-install@v1
 
-      # include/generated/ is intentionally stale on PRs (it's regenerated post-merge), so
-      # rebuild it here to test against the real QueryDescendants override from customDefinitions.
+      # PRs leave include/generated/ untouched (it is regenerated after merge), so build it
+      # here to pick up the overrides from customDefinitions.d.ts before testing.
       - name: Generate Files
         run: npm run build
-
-      - name: Type-check test runner
-        run: npm run check-tests
 
       - name: Run type-level tests
         run: npm test
