@@ -1,3 +1,5 @@
+/// <reference path="selector.d.ts" />
+
 interface Actor extends Model {
 	SendMessage(this: Actor, topic: string, ...message: Array<unknown>): void;
 }
@@ -584,6 +586,10 @@ interface Instance extends RBXObject {
 	GetAttribute(this: Instance, attribute: string): AttributeValue | undefined;
 	SetAttribute(this: Instance, attribute: string, value: AttributeValue | undefined): void;
 	GetAttributes(this: Instance): Map<string, AttributeValue>;
+	QueryDescendants<S extends string>(
+		this: Instance,
+		selector: Selector.ValidateSelector<S> extends S ? S : Selector.ValidateSelector<S>,
+	): string extends S ? Array<Instance> : Array<Selector.Solve<S>>;
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance | undefined) => void>;
 }
 

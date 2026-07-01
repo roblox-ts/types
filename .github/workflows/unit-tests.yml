@@ -1,0 +1,26 @@
+name: Unit Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  unit-tests:
+    if: contains(github.event.commits[0].message, '[skip ci]') == false
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: bahmutov/npm-install@v1
+
+      # PRs leave include/generated/ untouched (it is regenerated after merge), so build it
+      # here to pick up the overrides from customDefinitions.d.ts before testing.
+      - name: Generate Files
+        run: npm run build
+
+      - name: Run type-level tests
+        run: npm test
