@@ -3184,12 +3184,15 @@ declare function type(value: unknown): keyof CheckablePrimitives;
 
 /** The strings which can be returned by typeOf and their corresponding types */
 interface CheckableTypes extends CheckablePrimitives {
+	AdReward: AdReward;
 	Axes: Axes;
 	BrickColor: BrickColor;
 	CFrame: CFrame;
+	CatalogSearchParams: CatalogSearchParams;
 	Color3: Color3;
 	ColorSequence: ColorSequence;
 	ColorSequenceKeypoint: ColorSequenceKeypoint;
+	Content: Content;
 	DateTime: DateTime;
 	DockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo;
 	Enum: Enum;
@@ -3203,6 +3206,7 @@ interface CheckableTypes extends CheckablePrimitives {
 	NumberSequence: NumberSequence;
 	NumberSequenceKeypoint: NumberSequenceKeypoint;
 	OverlapParams: OverlapParams;
+	Path2DControlPoint: Path2DControlPoint;
 	PathWaypoint: PathWaypoint;
 	PhysicalProperties: PhysicalProperties;
 	Random: Random;
@@ -3214,10 +3218,15 @@ interface CheckableTypes extends CheckablePrimitives {
 	Rect: Rect;
 	Region3: Region3;
 	Region3int16: Region3int16;
+	RotationCurveKey: RotationCurveKey;
 	Secret: Secret;
+	SecurityCapabilities: SecurityCapabilities;
+	SharedTable: SharedTable;
 	TweenInfo: TweenInfo;
 	UDim: UDim;
 	UDim2: UDim2;
+	User: User;
+	ValueCurveKey: ValueCurveKey;
 	Vector2: Vector2;
 	Vector2int16: Vector2int16;
 	Vector3: Vector3;
