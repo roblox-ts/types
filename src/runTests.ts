@@ -1,7 +1,7 @@
 // Type-level tests for the handwritten declarations in include/.
 //
 // Hand-tracing template-literal types is unreliable, so these tests build a program over
-// include/roblox.d.ts and every *.ts file in test/cases/, then ask the checker what it
+// include/roblox.d.ts and every *.ts file in tests/, then ask the checker what it
 // actually infers at each annotated declaration.
 //
 // `//=> <type>` after a variable declaration asserts its inferred type (union member order
@@ -12,8 +12,8 @@ import fs from "fs";
 import path from "path";
 import ts from "typescript";
 
-import { INCLUDE_FOLDER_PATH, TSCONFIG_PATH } from "../constants";
-import { createParseConfigFileHost } from "../util/createParseConfigFileHost";
+import { INCLUDE_FOLDER_PATH, TSCONFIG_PATH } from "./constants";
+import { createParseConfigFileHost } from "./util/createParseConfigFileHost";
 
 // ANSI colors, unconditionally — the GitHub Actions log viewer renders them.
 const paint =
@@ -28,9 +28,9 @@ const dim = paint("2");
 const tick = green("✓");
 const cross = red("✗");
 
-const ROOT = path.join(__dirname, "..", "..");
+const ROOT = path.join(__dirname, "..");
 const ROBLOX_DTS = path.join(INCLUDE_FOLDER_PATH, "roblox.d.ts");
-const CASES_DIR = path.join(ROOT, "test", "cases");
+const CASES_DIR = path.join(ROOT, "tests");
 
 const caseFiles = fs
 	.readdirSync(CASES_DIR)

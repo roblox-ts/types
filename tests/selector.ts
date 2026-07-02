@@ -1,7 +1,7 @@
-/// <reference path="../../include/roblox.d.ts" />
+/// <reference path="../include/roblox.d.ts" />
 
 // Cases for the QueryDescendants selector resolver (include/selector.d.ts), checked by
-// `npm test` (src/tests/run.ts). `game` is the DataModel global from include/roblox.d.ts.
+// `npm test` (src/runTests.ts). `game` is the DataModel global from include/roblox.d.ts.
 // `//=> <type>` asserts the type inferred for the declaration; `// @ts-expect-error` asserts
 // that the statement below it fails to type-check.
 
