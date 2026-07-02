@@ -3187,8 +3187,8 @@ interface CheckableTypes extends CheckablePrimitives {
 	AdReward: AdReward;
 	Axes: Axes;
 	BrickColor: BrickColor;
-	CFrame: CFrame;
 	CatalogSearchParams: CatalogSearchParams;
+	CFrame: CFrame;
 	Color3: Color3;
 	ColorSequence: ColorSequence;
 	ColorSequenceKeypoint: ColorSequenceKeypoint;
