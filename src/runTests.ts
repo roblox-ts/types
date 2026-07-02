@@ -87,7 +87,7 @@ for (const caseFile of caseFiles) {
 	const rawLines = fs.readFileSync(caseFile, "utf8").split("\n");
 	const relName = path.relative(ROOT, caseFile);
 
-	// ----- type-resolution cases (`//=>` annotations) -----
+	// Type-resolution cases (`//=>` annotations)
 
 	const visit = (node: ts.Node): void => {
 		if (ts.isVariableStatement(node)) {
@@ -109,7 +109,7 @@ for (const caseFile of caseFiles) {
 	};
 	ts.forEachChild(source, visit);
 
-	// ----- rejection cases (`// @ts-expect-error`) -----
+	// Rejection cases (`// @ts-expect-error`)
 	//
 	// The directive suppresses the error it expects: a correctly rejected statement produces
 	// no diagnostic, and a wrongly accepted one produces "Unused '@ts-expect-error' directive"
@@ -127,7 +127,7 @@ for (const caseFile of caseFiles) {
 		if (!diagByLine.has(line)) diagByLine.set(line, ts.flattenDiagnosticMessageText(diag.messageText, "\n"));
 	}
 
-	// ----- report for this file -----
+	// Report for this file
 
 	console.log(`\n${bold(cyan(relName))}`);
 	for (const r of results.filter(r => r.file === relName)) {
