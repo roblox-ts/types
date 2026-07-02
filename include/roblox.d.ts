@@ -2548,6 +2548,38 @@ interface UDim2Constructor {
 
 declare const UDim2: UDim2Constructor;
 
+// User
+interface User {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_User: unique symbol;
+	/** The domain user ID for this user within the associated domain. This is an integer that uniquely identifies the user within the specific domain type and domain ID combination. */
+	readonly Id: number;
+	/** The `Enum.DomainType` that identifies the kind of domain this domain user ID belongs to. Currently supported values are `Enum.DomainType.EXPERIENCE` and `Enum.DomainType.OAUTH`. */
+	readonly DomainType: Enum.DomainType;
+	/** The identifier of the specific domain instance that this user ID is scoped to. For `Enum.DomainType.EXPERIENCE`, this is the universe ID. For `Enum.DomainType.OAUTH`, this is the application ID. */
+	readonly DomainId: number;
+	/**
+	 * Serializes this `User` into a string that encodes the domain type, domain ID, and domain user ID. The result is stable, URL-safe, and compact. Use this when storing or transmitting user identity.
+	 * The string can be converted back to a `User` via `User.fromString()`.
+	 */
+	ToString(this: User): string;
+}
+
+interface UserConstructor {
+	/** Creates a new `User` from the given domain user ID, using the current experience as the domain. The ID must be a valid domain user ID (above the global user ID range). */
+	fromId: (domainUserId: number) => User;
+	/** Deserializes a `User` from a string previously produced by ToString(). */
+	fromString: (userString: string) => User;
+}
+
+declare const User: UserConstructor;
+
 // ValueCurveKey
 interface ValueCurveKey {
 	/**
@@ -3152,12 +3184,15 @@ declare function type(value: unknown): keyof CheckablePrimitives;
 
 /** The strings which can be returned by typeOf and their corresponding types */
 interface CheckableTypes extends CheckablePrimitives {
+	AdReward: AdReward;
 	Axes: Axes;
 	BrickColor: BrickColor;
 	CFrame: CFrame;
+	CatalogSearchParams: CatalogSearchParams;
 	Color3: Color3;
 	ColorSequence: ColorSequence;
 	ColorSequenceKeypoint: ColorSequenceKeypoint;
+	Content: Content;
 	DateTime: DateTime;
 	DockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo;
 	Enum: Enum;
@@ -3171,6 +3206,7 @@ interface CheckableTypes extends CheckablePrimitives {
 	NumberSequence: NumberSequence;
 	NumberSequenceKeypoint: NumberSequenceKeypoint;
 	OverlapParams: OverlapParams;
+	Path2DControlPoint: Path2DControlPoint;
 	PathWaypoint: PathWaypoint;
 	PhysicalProperties: PhysicalProperties;
 	Random: Random;
@@ -3182,10 +3218,15 @@ interface CheckableTypes extends CheckablePrimitives {
 	Rect: Rect;
 	Region3: Region3;
 	Region3int16: Region3int16;
+	RotationCurveKey: RotationCurveKey;
 	Secret: Secret;
+	SecurityCapabilities: SecurityCapabilities;
+	SharedTable: SharedTable;
 	TweenInfo: TweenInfo;
 	UDim: UDim;
 	UDim2: UDim2;
+	User: User;
+	ValueCurveKey: ValueCurveKey;
 	Vector2: Vector2;
 	Vector2int16: Vector2int16;
 	Vector3: Vector3;
