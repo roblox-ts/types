@@ -460,6 +460,21 @@ declare namespace math {
 	/** The value HUGE_VAL, a value larger than or equal to any other numerical value. */
 	const huge: number;
 
+	/** The value of Euler's number, e. */
+	const e: number;
+
+	/** A NaN value, as defined by the IEEE 754 standard. Comparing directly to `math.nan` will always return false; use `math.isnan()` instead. */
+	const nan: number;
+
+	/** The value of the golden ratio. */
+	const phi: number;
+
+	/** The value of the square root of 2. */
+	const sqrt2: number;
+
+	/** The value of tau, which is defined as `2 * math.pi` */
+	const tau: number;
+
 	/** Returns the absolute value of x. */
 	function abs(n: number): number;
 
