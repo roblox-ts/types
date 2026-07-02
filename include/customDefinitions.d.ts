@@ -570,7 +570,6 @@ interface Instance extends RBXObject {
 	 */
 	Clone<T extends Instance>(this: T): T;
 	GetActor(this: Instance): Actor | undefined;
-	GetDescendants(this: Instance): Array<Instance>;
 	GetTags(this: Instance): Array<string>;
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
 	WaitForChild(this: Instance, childName: string | number): Instance;

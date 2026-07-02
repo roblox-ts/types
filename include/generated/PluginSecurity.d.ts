@@ -2704,6 +2704,8 @@ interface WrapLayer extends BaseWrap {
      */
     set ReferenceOrigin(value: CFrame);
     /**
+     * **Deprecated:**
+     *
      * Allows slight shrinking/expanding of the resulting render mesh, without affecting any other layers.
      *
      * - **ThreadSafety**: ReadSafe
@@ -2730,6 +2732,8 @@ interface WrapTarget extends BaseWrap {
      */
     readonly _nominal_WrapTarget: unique symbol;
     /**
+     * **Deprecated:**
+     *
      * Defines how much the body mesh can be compressed by clothing.
      *
      * - **ThreadSafety**: ReadSafe
@@ -3658,7 +3662,7 @@ interface AngularVelocity extends Constraint {
     readonly _nominal_AngularVelocity: unique symbol;
 }
 /**
- * Aligns two `BaseParts` with an animate-able kinematic or force-based joint.
+ * Aligns two `BaseParts` with an animate-able kinematic or force-based joint that supports physical simulation (ragdoll, arm strength). The default joint type for R15 avatar rigs.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint)
  */
@@ -4826,6 +4830,8 @@ interface DialogChoice extends Instance {
     readonly _nominal_DialogChoice: unique symbol;
 }
 /**
+ * Maps the 15 phalanx joints of one hand (5 fingers, 3 joints each) and exposes forward- and inverse-kinematics helpers for controlling finger poses at runtime.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription)
  */
 interface DigitsRigDescription extends Instance {
@@ -7304,6 +7310,8 @@ interface HumanoidDescription extends Instance {
     readonly _nominal_HumanoidDescription: unique symbol;
 }
 /**
+ * Stores the joint mapping, T-pose, and per-joint properties for a 22-joint bipedal character rig. Joints may be `AnimationConstraint`, `Motor6D`, or `Bone` instances.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription)
  */
 interface HumanoidRigDescription extends Instance {
@@ -7789,7 +7797,7 @@ interface Motor extends JointInstance {
     readonly _nominal_Motor: unique symbol;
 }
 /**
- * Creates an animatable joint between two `BaseParts`.
+ * Creates an animatable joint between two `BaseParts`. Superseded by `AnimationConstraint` for avatar/character rigs. Motor6D is no longer used by default for player characters when `AvatarJointUpgrade` is enabled.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Motor6D)
  */
@@ -9388,14 +9396,6 @@ interface MeshPart extends TriangleMeshPart {
      * @deprecated
      */
     readonly _nominal_MeshPart: unique symbol;
-    /**
-     * Determines whether to render both faces of polygons in the mesh.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshPart#DoubleSided)
-     */
-    set DoubleSided(value: boolean);
     /**
      * The level of detail used to render the `MeshPart`.
      *
@@ -13406,17 +13406,6 @@ interface DataModel extends ServiceProvider<Services> {
      */
     GetJobsInfo(this: DataModel): Array<unknown>;
     /**
-     * Returns an array of `Instances` associated with the given content URL.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#GetObjects)
-     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
-     * @param url The given content URL.
-     * @returns An array of `Instances` associated with the content URL.
-     */
-    GetObjects(this: DataModel, url: ContentId): Array<Instance>;
-    /**
      * Sets the `DataModel.PlaceId` of the current game instance.
      *
      * - **ThreadSafety**: Unsafe
@@ -13436,6 +13425,17 @@ interface DataModel extends ServiceProvider<Services> {
      * @param universeId The ID to set the `DataModel.GameId` to.
      */
     SetUniverseId(this: DataModel, universeId: number): void;
+    /**
+     * Returns an array of `Instances` associated with the given content URL.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#GetObjects)
+     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
+     * @param url The given content URL.
+     * @returns An array of `Instances` associated with the content URL.
+     */
+    GetObjects(this: DataModel, url: ContentId): Array<Instance>;
 }
 /**
  * The abstract class for settings database classes.

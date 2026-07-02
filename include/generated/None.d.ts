@@ -1054,7 +1054,7 @@ interface EditableImage extends RBXObject {
      * @param radius Radius of the circle in pixels.
      * @param color Color of the circle.
      * @param transparency Transparency of the circle with 0 being fully opaque and 1 being fully transparent.
-     * @param combineType How the pixels of the source image are blended with the pixels of the added image.
+     * @param combineType How the drawn pixels (source) are combined with the existing pixels of this image (destination).
      * @param antiAliasing Determines whether anti-aliasing is applied to the circle. When set to `AntiAliasing.Enabled`, circle edges are soft. When set to `AntiAliasing.Disabled`, circle edges are hard.
      */
     DrawCircle(this: EditableImage, center: Vector2, radius: number, color: Color3, transparency: number, combineType: CastsToEnum<Enum.ImageCombineType>, antiAliasing?: CastsToEnum<Enum.AntiAliasing>): void;
@@ -1065,9 +1065,9 @@ interface EditableImage extends RBXObject {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableImage#DrawImage)
      * @param this Object which allows for the runtime creation and manipulation of images.
-     * @param position Position at which the top-left corner of the added image will be drawn.
-     * @param image The `EditableImage` to draw into this `EditableImage`.
-     * @param combineType How the pixels of the source image should be blended with the pixels of the added image.
+     * @param position Position at which the top-left corner of the source image will be drawn.
+     * @param image The source `EditableImage` to draw into this `EditableImage`.
+     * @param combineType How the pixels of the source image are combined with the existing pixels of this image (destination).
      */
     DrawImage(this: EditableImage, position: Vector2, image: EditableImage, combineType: CastsToEnum<Enum.ImageCombineType>): void;
     /**
@@ -1118,7 +1118,7 @@ interface EditableImage extends RBXObject {
      * @param p2 End point of the line.
      * @param color Color of the line.
      * @param transparency Transparency of the line.
-     * @param combineType How the pixels of the source image are blended with the pixels of the added image.
+     * @param combineType How the drawn pixels (source) are combined with the existing pixels of this image (destination).
      * @param antiAliasing Determines whether anti-aliasing is applied to the line. When set to `AntiAliasing.Enabled`, line edges are soft. When set to `AntiAliasing.Disabled`, line edges are hard.
      */
     DrawLine(this: EditableImage, p1: Vector2, p2: Vector2, color: Color3, transparency: number, combineType: CastsToEnum<Enum.ImageCombineType>, antiAliasing?: CastsToEnum<Enum.AntiAliasing>): void;
@@ -1133,7 +1133,7 @@ interface EditableImage extends RBXObject {
      * @param size Size of the rectangle to draw, in pixels.
      * @param color Color of the rectangle.
      * @param transparency Transparency of the rectangle.
-     * @param combineType How the pixels of the source image are blended with the pixels of the added image.
+     * @param combineType How the drawn pixels (source) are combined with the existing pixels of this image (destination).
      */
     DrawRectangle(this: EditableImage, position: Vector2, size: Vector2, color: Color3, transparency: number, combineType: CastsToEnum<Enum.ImageCombineType>): void;
     /**
@@ -2706,6 +2706,8 @@ interface AccessoryDescription extends Instance {
      */
     Position: Vector3;
     /**
+     * **Deprecated:**
+     *
      * The layered clothing puffiness, if the `Accessory` is layered.
      *
      * - **ThreadSafety**: ReadSafe
@@ -7829,9 +7831,10 @@ interface AvatarCreationService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#GenerateAvatar2DPreviewAsync)
      * @param this A service to support developer avatar creators.
      * @param avatarGeneration2dPreviewParams A table of arguments for 2D preview generation. Type: `avatarGeneration2dPreviewParams: {SessionId: string, FileId: string, TextPrompt: string?}`
+     * @param progressCallback Optional callback function that will be invoked periodically with a progressInfo table with the overall progress (from 0 to 1). Type: `(progressInfo: { Progress: number }) -> ()`
      * @returns A string previewId
      */
-    GenerateAvatar2DPreviewAsync(this: AvatarCreationService, avatarGeneration2dPreviewParams: object): string;
+    GenerateAvatar2DPreviewAsync(this: AvatarCreationService, avatarGeneration2dPreviewParams: object, progressCallback?: Callback): string;
     /**
      * Generates an avatar and returns a generationId.
      *
@@ -7841,9 +7844,10 @@ interface AvatarCreationService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#GenerateAvatarAsync)
      * @param this A service to support developer avatar creators.
      * @param avatarGenerationParams A table of arguments for generating an avatar. Type: `avatarGenerationParams: {SessionId: string, PreviewId: string}`
+     * @param progressCallback Optional callback function that will be invoked periodically with a progressInfo table with the overall progress (from 0 to 1). Type: `(progressInfo: { Progress: number }) -> ()`
      * @returns A string generationId.
      */
-    GenerateAvatarAsync(this: AvatarCreationService, avatarGenerationParams: object): string;
+    GenerateAvatarAsync(this: AvatarCreationService, avatarGenerationParams: object, progressCallback?: Callback): string;
     /**
      * Gets the avatar creation token details for a list of avatar creation tokens at once.
      *
@@ -9802,6 +9806,8 @@ interface WrapLayer extends BaseWrap {
      */
     Order: number;
     /**
+     * **Deprecated:**
+     *
      * Controls how much underlying clothing items inflate the current clothing item.
      *
      * - **ThreadSafety**: ReadSafe
@@ -9844,6 +9850,8 @@ interface WrapLayer extends BaseWrap {
      */
     readonly ReferenceOriginWorld: CFrame;
     /**
+     * **Deprecated:**
+     *
      * Allows slight shrinking/expanding of the resulting render mesh, without affecting any other layers.
      *
      * - **ThreadSafety**: ReadSafe
@@ -9870,6 +9878,8 @@ interface WrapTarget extends BaseWrap {
      */
     readonly _nominal_WrapTarget: unique symbol;
     /**
+     * **Deprecated:**
+     *
      * Defines how much the body mesh can be compressed by clothing.
      *
      * - **ThreadSafety**: ReadSafe
@@ -12708,7 +12718,7 @@ interface AngularVelocity extends Constraint {
     RelativeTo: Enum.ActuatorRelativeTo;
 }
 /**
- * Aligns two `BaseParts` with an animate-able kinematic or force-based joint.
+ * Aligns two `BaseParts` with an animate-able kinematic or force-based joint that supports physical simulation (ragdoll, arm strength). The default joint type for R15 avatar rigs.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint)
  */
@@ -15976,6 +15986,8 @@ interface DialogChoice extends Instance {
     UserDialog: string;
 }
 /**
+ * Maps the 15 phalanx joints of one hand (5 fingers, 3 joints each) and exposes forward- and inverse-kinematics helpers for controlling finger poses at runtime.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription)
  */
 interface DigitsRigDescription extends Instance {
@@ -16237,7 +16249,7 @@ interface DigitsRigDescription extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#GetFingerControl)
-     * @param this
+     * @param this Maps the 15 phalanx joints of one hand (5 fingers, 3 joints each) and exposes forward- and inverse-kinematics helpers for controlling finger poses at runtime.
      * @param fingerIndex
      */
     GetFingerControl(this: DigitsRigDescription, fingerIndex: number): Vector3;
@@ -16245,7 +16257,7 @@ interface DigitsRigDescription extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#GetFingerTip)
-     * @param this
+     * @param this Maps the 15 phalanx joints of one hand (5 fingers, 3 joints each) and exposes forward- and inverse-kinematics helpers for controlling finger poses at runtime.
      * @param fingerIndex
      */
     GetFingerTip(this: DigitsRigDescription, fingerIndex: number): Vector3;
@@ -16253,7 +16265,7 @@ interface DigitsRigDescription extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#SetFingerControl)
-     * @param this
+     * @param this Maps the 15 phalanx joints of one hand (5 fingers, 3 joints each) and exposes forward- and inverse-kinematics helpers for controlling finger poses at runtime.
      * @param fingerIndex
      * @param control
      */
@@ -16262,7 +16274,7 @@ interface DigitsRigDescription extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#SetFingerTip)
-     * @param this
+     * @param this Maps the 15 phalanx joints of one hand (5 fingers, 3 joints each) and exposes forward- and inverse-kinematics helpers for controlling finger poses at runtime.
      * @param fingerIndex
      * @param point
      */
@@ -17005,6 +17017,12 @@ interface Decal extends FaceInstance {
      * @deprecated
      */
     readonly _nominal_Decal: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#AutoLocalize)
+     */
+    AutoLocalize: boolean;
     /**
      * The `Color3` tint of the `Decal`.
      *
@@ -19207,6 +19225,8 @@ interface GuiButton extends GuiObject {
      */
     readonly MouseButton2Up: RBXScriptSignal<(x: number, y: number) => void>;
     /**
+     * Fires when the button's "secondary" input is activated.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiButton#SecondaryActivated)
@@ -20658,6 +20678,7 @@ interface VideoFrame extends GuiObject {
     readonly _nominal_VideoFrame: unique symbol;
     /**
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoFrame#InternalVideoUsage)
      */
@@ -20681,6 +20702,7 @@ interface VideoFrame extends GuiObject {
     Looped: boolean;
     /**
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoFrame#MaximumResolution)
      */
@@ -23775,10 +23797,13 @@ interface Humanoid extends Instance {
      */
     GetLimb(this: Humanoid, part: Instance): Enum.Limb;
     /**
+     * Returns the current intended movement velocity of the Humanoid.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#GetMoveVelocity)
      * @param this A special object that gives models the functionality of a character.
+     * @returns A `Vector3` representing the Humanoid's intended movement velocity in world space.
      */
     GetMoveVelocity(this: Humanoid): Vector3;
     /**
@@ -24746,6 +24771,8 @@ interface HumanoidDescription extends Instance {
     readonly EquippedEmotesChanged: RBXScriptSignal<(newEquippedEmotes: EquippedEmotes) => void>;
 }
 /**
+ * Stores the joint mapping, T-pose, and per-joint properties for a 22-joint bipedal character rig. Joints may be `AnimationConstraint`, `Motor6D`, or `Bone` instances.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription)
  */
 interface HumanoidRigDescription extends Instance {
@@ -25421,7 +25448,7 @@ interface HumanoidRigDescription extends Instance {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetJointFromName)
-     * @param this
+     * @param this Stores the joint mapping, T-pose, and per-joint properties for a 22-joint bipedal character rig. Joints may be `AnimationConstraint`, `Motor6D`, or `Bone` instances.
      * @param name string
      * @returns Instance
      */
@@ -25430,7 +25457,7 @@ interface HumanoidRigDescription extends Instance {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetJointNames)
-     * @param this
+     * @param this Stores the joint mapping, T-pose, and per-joint properties for a 22-joint bipedal character rig. Joints may be `AnimationConstraint`, `Motor6D`, or `Bone` instances.
      * @returns Array
      */
     GetJointNames(this: HumanoidRigDescription): Array<unknown>;
@@ -25438,7 +25465,7 @@ interface HumanoidRigDescription extends Instance {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetR15JointNames)
-     * @param this
+     * @param this Stores the joint mapping, T-pose, and per-joint properties for a 22-joint bipedal character rig. Joints may be `AnimationConstraint`, `Motor6D`, or `Bone` instances.
      * @returns Array
      */
     GetR15JointNames(this: HumanoidRigDescription): Array<unknown>;
@@ -25446,7 +25473,7 @@ interface HumanoidRigDescription extends Instance {
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetR6JointNames)
-     * @param this
+     * @param this Stores the joint mapping, T-pose, and per-joint properties for a 22-joint bipedal character rig. Joints may be `AnimationConstraint`, `Motor6D`, or `Bone` instances.
      * @returns Array
      */
     GetR6JointNames(this: HumanoidRigDescription): Array<unknown>;
@@ -25782,6 +25809,8 @@ interface InputAction extends Instance {
      */
     Type: Enum.InputActionType;
     /**
+     * **Deprecated:** Use `InputBinding:Fire()` with a `Scriptable` binding instead.
+     *
      * Updates the `InputAction` to the given state and fires the appropriate signals.
      *
      * - **ThreadSafety**: Unsafe
@@ -25954,6 +25983,8 @@ interface InputBinding extends Instance {
      */
     SecondaryModifier: Enum.KeyCode;
     /**
+     * Determines whether this binding is triggered by hardware input or programmatically via `Fire()`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Type)
@@ -26727,7 +26758,7 @@ interface Motor extends JointInstance {
     SetDesiredAngle(this: Motor, value: number): void;
 }
 /**
- * Creates an animatable joint between two `BaseParts`.
+ * Creates an animatable joint between two `BaseParts`. Superseded by `AnimationConstraint` for avatar/character rigs. Motor6D is no longer used by default for player characters when `AvatarJointUpgrade` is enabled.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Motor6D)
  */
@@ -27130,8 +27161,6 @@ interface LanguageService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LanguageService#GetCapabilitiesUsedInPackageAsync)
-     * @param this
-     * @param instances
      */
     GetCapabilitiesUsedInPackageAsync(this: LanguageService, instances: Array<Instance>): object;
 }
@@ -27585,8 +27614,6 @@ interface LiveSyncService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LiveSyncService#GetSyncState)
-     * @param this
-     * @param instance
      */
     GetSyncState(this: LiveSyncService, instance: Instance): unknown;
     /**
@@ -30862,7 +30889,7 @@ interface BasePart extends PVInstance {
      */
     ApplyImpulseAtPosition(this: BasePart, impulse: Vector3, position: Vector3): void;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method is deprecated. To break specific joints, iterate over the part's connections using `BasePart:GetJoints()` and call `Instance:Destroy()` on the joints you want to remove.
      *
      * Breaks any surface connection with any adjacent part, including `Weld` and other `JointInstance`.
      *
@@ -32057,7 +32084,7 @@ interface MeshPart extends TriangleMeshPart {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshPart#DoubleSided)
      */
-    get DoubleSided(): boolean;
+    DoubleSided: boolean;
     /**
      * **Deprecated:**
      *
@@ -35808,7 +35835,7 @@ interface Player extends Instance {
     /**
      * **Deprecated:** This method has been superseded by `GetFriendsOnlineAsync()`.
      *
-     * Returns a dictionary of online friends. Returns the product information of an asset using its asset ID.
+     * Returns a dictionary of online friends.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -35843,7 +35870,7 @@ interface Player extends Instance {
      */
     GetFriendsWhoPlayedAsync(this: Player): Array<unknown>;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method has been superseded by `GetRankInGroupAsync()`.
      *
      * Returns the player's rank in the group as an integer.
      *
@@ -35859,6 +35886,8 @@ interface Player extends Instance {
      */
     GetRankInGroup(this: Player, groupId: number): number;
     /**
+     * **Deprecated:** This method only returns a single role rank and may produce arbitrary results when a user holds multiple roles. Use `GroupService:GetRolesInGroupAsync()` instead, which returns all roles.
+     *
      * Returns the player's rank in the group as an integer.
      *
      * - **ThreadSafety**: Unsafe
@@ -35889,6 +35918,8 @@ interface Player extends Instance {
      */
     GetRoleInGroup(this: Player, groupId: number): string;
     /**
+     * **Deprecated:** This method only returns a single role name and may produce arbitrary results when a user holds multiple roles. Use `GroupService:GetRolesInGroupAsync()` instead, which returns all roles.
+     *
      * Returns the player's role in the group as a string, or `Guest` if the player isn't part of the group.
      *
      * - **ThreadSafety**: Unsafe
@@ -36796,6 +36827,13 @@ interface Players extends Instance {
      * @returns The name of a user with the specified `Player.UserId`.
      */
     GetNameFromUserIdAsync(this: Players, userId: User): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Players#GetProfileConfigurationFromUserIdAsync)
+     */
+    GetProfileConfigurationFromUserIdAsync(this: Players, userId: User): object;
     /**
      * Sends a query to the Roblox website for the `userId` of an account with a given username.
      *
@@ -41798,6 +41836,8 @@ interface StarterPlayer extends Instance {
      */
     CharacterWalkSpeed: number;
     /**
+     * Controls whether the character uses the classic death behavior when the Humanoid's health reaches zero.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterPlayer#ClassicDeath)
@@ -41868,6 +41908,8 @@ interface StarterPlayer extends Instance {
      */
     LoadCharacterAppearance: boolean;
     /**
+     * Sets the character controller mode used by the player's character.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterPlayer#LuaCharacterController)
@@ -43876,6 +43918,18 @@ interface TestService extends Instance {
      */
     Fail(this: TestService, description: string, source?: Instance, line?: number): void;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#GetTestControlSchema)
+     */
+    GetTestControlSchema(this: TestService, providerName: string): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#GetTestControls)
+     */
+    GetTestControls(this: TestService, providerName: string): object;
+    /**
      * Prints `TestService:` followed by a string to the output in blue text.
      *
      * - **ThreadSafety**: Unsafe
@@ -43911,10 +43965,22 @@ interface TestService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#ResetTestControl)
+     */
+    ResetTestControl(this: TestService, providerName: string, controlName: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#ScopeTime)
      * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
      */
     ScopeTime(this: TestService): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#SetTestControl)
+     */
+    SetTestControl(this: TestService, providerName: string, controlName: string, value: unknown): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -43977,6 +44043,20 @@ interface TestService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RequestValidationAsync)
      */
     RequestValidationAsync(this: TestService, artifactType: string, artifactName: string): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#StartVideoCaptureAsync)
+     */
+    StartVideoCaptureAsync(this: TestService, artifactName?: string, options?: object): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#StopVideoCaptureAsync)
+     */
+    StopVideoCaptureAsync(this: TestService): unknown;
     /**
      * Fires when the server should collect a conditional test result.
      *
@@ -47879,14 +47959,15 @@ interface UserInputService extends Instance {
      */
     GetNavigationGamepads(this: UserInputService): Array<Enum.UserInputType>;
     /**
-     * Returns a string representing a key the user should press in order to input a given `KeyCode`.
+     * Returns a string representing a key the user should press in order to input a given `KeyCode`, optionally in an abbreviated format.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#GetStringForKeyCode)
      * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
-     * @param keyCode
-     * @param format
+     * @param keyCode The `KeyCode` to get the display string for.
+     * @param format An `KeyCodeStringFormat` value that controls the format of the returned string. Defaults to `KeyCodeStringFormat.Default`. Pass `KeyCodeStringFormat.Abbreviated` to get shortened labels suitable for compact UI such as `"Bksp"`, `"LCtrl"`, or `"Esc"`.
+     * @returns A string representing the key the user should press for the given key code, formatted according to the specified `KeyCodeStringFormat`.
      */
     GetStringForKeyCode(this: UserInputService, keyCode: CastsToEnum<Enum.KeyCode>, format?: CastsToEnum<Enum.KeyCodeStringFormat>): string;
     /**
@@ -49134,6 +49215,7 @@ interface VideoPlayer extends Instance {
     readonly _nominal_VideoPlayer: unique symbol;
     /**
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#InternalVideoUsage)
      */
@@ -49166,6 +49248,7 @@ interface VideoPlayer extends Instance {
     Looping: boolean;
     /**
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer#MaximumResolution)
      */
@@ -49654,15 +49737,12 @@ interface WebSocketClient extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient#Close)
-     * @param this
      */
     Close(this: WebSocketClient): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketClient#Send)
-     * @param this
-     * @param data
      */
     Send(this: WebSocketClient, data: string): void;
     /**
@@ -49702,8 +49782,6 @@ interface WebSocketService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WebSocketService#CreateClient)
-     * @param this
-     * @param uri
      */
     CreateClient(this: WebSocketService, uri: string): WebSocketClient;
 }
