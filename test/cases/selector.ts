@@ -5,7 +5,7 @@
 // `//=> <type>` asserts the type inferred for the declaration; `// @ts-expect-error` asserts
 // that the statement below it fails to type-check.
 
-// ===== Subject resolution: single class =====
+// Subject resolution: single class
 
 const parts = game.QueryDescendants("Part"); //=> Part[]
 const taggedParts = game.QueryDescendants("Part.Fruit"); //=> Part[]
@@ -19,7 +19,7 @@ const propertyOnly = game.QueryDescendants("[CanCollide = false]"); //=> Instanc
 const attrPresence = game.QueryDescendants("[$FuelCapacity]"); //=> Instance[]
 const attrValueOnly = game.QueryDescendants("[$FuelCapacity = 75]"); //=> Instance[]
 
-// ===== Combinators (`>` child / `>>` descendant) — only the last segment is the subject =====
+// Combinators (`>` child / `>>` descendant)
 
 const nested = game.QueryDescendants("Workspace > Folder > Model > Part"); //=> Part[]
 const complexCombo = game.QueryDescendants("Model[$Health = 100] > Part.Enemy#Boss"); //=> Part[]
@@ -30,19 +30,19 @@ const trailing = game.QueryDescendants("Model >"); //=> Instance[]
 const comboTag = game.QueryDescendants("Model > .Tagged"); //=> Instance[]
 const comboName = game.QueryDescendants("Folder > #SpecialPart"); //=> Instance[]
 
-// ===== Tags / names without a class resolve to Instance =====
+// Tags / names without a class resolve to Instance
 
 const tagged = game.QueryDescendants(".Fruit"); //=> Instance[]
 const named = game.QueryDescendants("#MyPart"); //=> Instance[]
 
-// ===== Selector lists (comma) union the subjects =====
+// Selector lists (comma) union the subjects
 
 const mixed = game.QueryDescendants("Part, Model, SpotLight"); //=> (Part | Model | SpotLight)[]
 const mixedCombinators = game.QueryDescendants("Folder > Part, Model .Foo, ImageButton#CloseButton"); //=> (Part | Model | ImageButton)[]
 const complex = game.QueryDescendants("Model.Apple[$Kind = Red], Part#Tree"); //=> (Model | Part)[]
 const kitchen = game.QueryDescendants("Part[Anchored=true], Model > SpotLight.Bright, ImageButton, .UI"); //=> (Part | SpotLight | ImageButton | Instance)[]
 
-// ===== Pseudo-classes (`:not` / `:has`) are filters — they never change the subject =====
+// Pseudo-classes (`:not` / `:has`)
 
 const notPseudo = game.QueryDescendants("Part:not(.Foo)"); //=> Part[]
 const hasPseudo = game.QueryDescendants("Model:has(.Child)"); //=> Model[]
@@ -57,18 +57,18 @@ const bareHasPseudo = game.QueryDescendants(":has(Tool)"); //=> Instance[]
 const hasRelativeChild = game.QueryDescendants("MeshPart:has(> .SwordPart)"); //=> MeshPart[]
 const hasNestedRelativeNot = game.QueryDescendants("MeshPart:has(> :not(SurfaceAppearance, Texture))"); //=> MeshPart[]
 
-// ===== Quoted attribute values — inner commas/combinators/brackets don't split =====
+// Quoted attribute values
 
 const quotedComma = game.QueryDescendants("Part[Name = 'Hello, World']"); //=> Part[]
 const quotedCombinator = game.QueryDescendants("Model[Name = 'a > b'] > Part"); //=> Part[]
 const quotedBracketAndComma = game.QueryDescendants("Model[Name = 'a], b > c'] > TextButton"); //=> TextButton[]
 
-// ===== Dynamic (non-literal) and empty selectors fall back to Instance[] =====
+// Dynamic (non-literal) and empty selectors fall back to Instance[]
 
 const fallback = game.QueryDescendants(game.Name); //=> Instance[]
 const emptyString = game.QueryDescendants(""); //=> Instance[]
 
-// ===== Validation: ValidateSelector resolves to a readable error string for bad input =====
+// Validation: readable error strings
 
 declare const validationSuccess: Selector.ValidateSelector<"Part">; //=> "Part"
 declare const validationBadPseudo: Selector.ValidateSelector<"Part:foo(x)">; //=> "Invalid selector: ':foo' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)"
@@ -81,9 +81,7 @@ declare const validationQuotedComma: Selector.ValidateSelector<"Part[Name=',']">
 declare const validationBracketPseudo: Selector.ValidateSelector<"Part[Url=http://example.com]">; //=> "Part[Url=http://example.com]"
 declare const validationBracketComma: Selector.ValidateSelector<"Part[Name=Hello,World]">; //=> "Part[Name=Hello,World]"
 
-// ===== Validation surfaces as a call-site compile error =====
-// The wording of each rejection is asserted by the ValidateSelector cases above; these check
-// that the same selectors are rejected where it matters, at the call site.
+// Validation at call sites
 
 // @ts-expect-error unsupported pseudo-class is rejected at the call site
 game.QueryDescendants("Part:foo(x)");

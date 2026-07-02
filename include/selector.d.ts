@@ -39,9 +39,7 @@ declare namespace Selector {
 			? Acc
 			: [...Acc, Curr];
 
-	// Aware of paren depth and quotes: a break character only separates at paren depth 0 and
-	// outside quotes, so the contents of :not(...) / :has(...) and quoted attribute values
-	// (their inner "," and ">"/">>") stay in one group.
+	// Separators inside pseudo-class arguments and quoted values do not split the outer selector.
 	type ParseSeparatedWithBreak<
 		Tokens extends Array<string>,
 		BreakCharacters extends string,
@@ -180,19 +178,13 @@ declare namespace Selector {
 					: SolveChars<Rest, Head, Done, Result, Depth>
 		: AddSolvedHead<Result, Head>;
 
-	// Tokenizer path. `Solve` routes here only for the shapes the string matching below can't
-	// split safely: quoted values and nested parens.
+	// Nested pseudo-classes can contain selector lists, so this path tracks only top-level
+	// separators while keeping the subject class from the current segment.
 	type SlowSolve<T extends string> = SolveChars<T>;
 
-	// String-matching path for everything else. It recovers just the subject class of each
-	// comma group, which avoids the tokenizer's per-character recursion (and with it, TS's
-	// recursion limit on long selectors).
-
-	// Everything before the last ">" cannot affect the subject, so peel up to it (covers both
-	// ">" and ">>", spaced or not).
+	// Only the final combinator segment can determine the subject type.
 	type LastSegment<S extends string> = S extends `${string}>${infer R}` ? LastSegment<R> : S;
 
-	// Leading class name of a trimmed segment: prefix before the first : . # [ or space, trimmed.
 	type LeadingClass<S extends string> =
 		Trim<S> extends infer T extends string
 			? T extends `${infer C}:${string}`
@@ -208,8 +200,7 @@ declare namespace Selector {
 								: T
 			: never;
 
-	// Remove (...) and [...] groups so pseudo-class contents and filter values can't leak into the
-	// fast splitters. The residue sits after the class's ":" / "[", so leading-class extraction is fine.
+	// Filters do not affect the subject class, but their values can contain selector separators.
 	type StripFiltersAndParens<S extends string> = S extends `${infer A}[${string}]${infer B}`
 		? StripFiltersAndParens<`${A}${B}`>
 		: S extends `${infer A}(${string})${infer B}`
@@ -225,21 +216,17 @@ declare namespace Selector {
 		? SlowSolve<S>
 		: FastSolve<StripFiltersAndParens<S>>;
 
-	// Remove quoted segments so hidden separators and ':' inside attribute values are ignored.
 	type StripQuotes<S extends string> = S extends `${infer A}'${string}'${infer B}` ? StripQuotes<`${A}${B}`> : S;
 
-	// Validation only cares about selector-list separators and pseudo-class names, so attribute
-	// filters can be removed before checking; their contents never introduce either.
+	// Attribute values are not selector syntax, even when they contain ":" or ",".
 	type StripValidationGroups<S extends string> = S extends `${infer A}'${string}'${infer B}`
 		? StripValidationGroups<`${A}${B}`>
 		: S extends `${infer A}[${string}]${infer B}`
 			? StripValidationGroups<`${A}${B}`>
 			: S;
 
-	// --- Selector validation: only :not() and :has() are valid pseudo-classes ---
 	type SupportedPseudo = "not" | "has";
 
-	// never => all pseudo-classes are supported; otherwise the first offending name.
 	type CheckPseudos<S extends string> = S extends `${string}:${infer R}`
 		? R extends `${infer Name}(${infer Rest}`
 			? Name extends SupportedPseudo
@@ -248,8 +235,7 @@ declare namespace Selector {
 			: R // ':' not followed by 'name(' -> pseudo-classes require arguments
 		: never;
 
-	// true if a comma-separated list has an empty item (leading/trailing/double comma).
-	// The whole-empty selector "" has no comma and is intentionally allowed (-> Instance[]).
+	// The whole-empty selector "" is intentionally allowed.
 	type HasEmptyListItem<S extends string> = S extends `${string},${string}` ? CheckListItems<S> : false;
 	type CheckListItems<S extends string> = S extends `${infer A},${infer B}`
 		? Trim<A> extends ""
@@ -273,15 +259,13 @@ declare namespace Selector {
 				: S
 			: S;
 
-	// Returns S when valid, otherwise a human-readable error string.
 	export type ValidateSelector<S extends string> = string extends S
 		? S
 		: StripValidationGroups<S> extends infer Q extends string
 			? ValidateUnquoted<S, Q>
 			: never;
 
-	// Routes between the two paths. Quoted values are stripped before solving so their hidden
-	// separators cannot affect fast splitting; nested pseudo-classes still use the tokenizer.
+	// Quoted values are stripped before solving so most selectors can stay on the cheaper path.
 	export type Solve<S extends string> = S extends `${string}'${string}`
 		? SolveUnquoted<StripQuotes<S>>
 		: SolveUnquoted<S>;
