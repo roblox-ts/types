@@ -5,7 +5,8 @@
 // actually infers at each annotated declaration.
 //
 // `//=> <type>` after a variable declaration asserts its inferred type (union member order
-// is ignored); `// @ts-expect-error` asserts that the statement below it fails to type-check.
+// is ignored); `// @ts-expect-error <message>` asserts that the statement below it fails.
+// When `<message>` is present, it must appear in the suppressed diagnostic.
 
 import assert from "assert";
 import fs from "fs";
@@ -115,9 +116,13 @@ for (const caseFile of caseFiles) {
 	// no diagnostic, and a wrongly accepted one produces "Unused '@ts-expect-error' directive"
 	// on the directive line.
 
-	const directiveLines = new Set<number>();
+	const directiveLines = new Map<number, string | undefined>();
+	const directiveMarker = "// @ts-expect-error";
 	for (let i = 0; i < rawLines.length; i++) {
-		if (rawLines[i].trim().startsWith("// @ts-expect-error")) directiveLines.add(i);
+		const line = rawLines[i].trim();
+		if (!line.startsWith(directiveMarker)) continue;
+		const expected = line.slice(directiveMarker.length).trim();
+		directiveLines.set(i, expected === "" ? undefined : expected);
 	}
 
 	const diagByLine = new Map<number, string>();
@@ -125,6 +130,20 @@ for (const caseFile of caseFiles) {
 		if (!diag.file || diag.file.fileName !== source.fileName || diag.start === undefined) continue;
 		const line = diag.file.getLineAndCharacterOfPosition(diag.start).line;
 		if (!diagByLine.has(line)) diagByLine.set(line, ts.flattenDiagnosticMessageText(diag.messageText, "\n"));
+	}
+
+	// `@ts-expect-error` hides the diagnostic from the program, but the checker still has it.
+	const rawDiagByLine = new Map<number, Array<string>>();
+	for (const diag of checker.getDiagnostics(source)) {
+		if (!diag.file || diag.file.fileName !== source.fileName || diag.start === undefined) continue;
+		const line = diag.file.getLineAndCharacterOfPosition(diag.start).line;
+		const message = ts.flattenDiagnosticMessageText(diag.messageText, "\n");
+		const messages = rawDiagByLine.get(line);
+		if (messages) {
+			messages.push(message);
+		} else {
+			rawDiagByLine.set(line, [message]);
+		}
 	}
 
 	// Report for this file
@@ -138,13 +157,19 @@ for (const caseFile of caseFiles) {
 			console.log(`      ${dim("actual:  ")} ${red(r.actual)}`);
 		}
 	}
-	for (const line of [...directiveLines].sort((a, b) => a - b)) {
+	for (const [line, expected] of [...directiveLines].sort((a, b) => a[0] - b[0])) {
 		total++;
-		const ok = !diagByLine.has(line);
+		const actual = (rawDiagByLine.get(line + 1) ?? []).join("\n");
+		const ok = !diagByLine.has(line) && (expected === undefined || actual.includes(expected));
 		if (!ok) failures++;
 		const stmt = (rawLines[line + 1] ?? "").trim();
 		console.log(`  ${ok ? tick : cross} ${dim("rejects:")} ${stmt} ${dim(`(line ${line + 2})`)}`);
-		if (!ok) console.log(`      ${red("expected this selector to be rejected, but it type-checks")}`);
+		if (!diagByLine.has(line) && expected !== undefined && !actual.includes(expected)) {
+			console.log(`      ${dim("expected diagnostic containing:")} ${green(expected)}`);
+			console.log(`      ${dim("actual:                       ")} ${red(actual)}`);
+		} else if (!ok) {
+			console.log(`      ${red("expected this selector to be rejected, but it type-checks")}`);
+		}
 	}
 	// Diagnostics on lines without a directive are failures in positive cases.
 	for (const [line, message] of [...diagByLine].sort((a, b) => a[0] - b[0])) {

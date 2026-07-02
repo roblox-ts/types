@@ -83,9 +83,9 @@ declare const validationBracketComma: Selector.ValidateSelector<"Part[Name=Hello
 
 // Validation at call sites
 
-// @ts-expect-error unsupported pseudo-class is rejected at the call site
+// @ts-expect-error Invalid selector: ':foo' is not a supported pseudo-class
 game.QueryDescendants("Part:foo(x)");
-// @ts-expect-error stray trailing comma is rejected at the call site
+// @ts-expect-error Invalid selector: empty selector in list
 game.QueryDescendants("Part,");
-// @ts-expect-error leading comma is rejected at the call site
+// @ts-expect-error Invalid selector: empty selector in list
 game.QueryDescendants(", Part");
