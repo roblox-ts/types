@@ -39,21 +39,6 @@ declare namespace Selector {
 			? Acc
 			: [...Acc, Curr];
 
-	type ArrayWith<C extends number, Acc extends Array<any> = []> = Acc extends { length: C }
-		? Acc
-		: ArrayWith<C, [...Acc, any]>;
-
-	type Consume<T extends Array<any>, C extends number> = T extends [...ArrayWith<C>, ...infer R] ? R : [];
-
-	type ConsumeWhitespace<T extends Array<string>> = T extends [
-		infer U extends string,
-		...infer Rest extends Array<string>,
-	]
-		? Trim<U> extends ""
-			? ConsumeWhitespace<Rest>
-			: [U, ...Rest]
-		: never;
-
 	// Aware of paren depth and quotes: a break character only separates at paren depth 0 and
 	// outside quotes, so the contents of :not(...) / :has(...) and quoted attribute values
 	// (their inner "," and ">"/">>") stay in one group.
@@ -140,65 +125,64 @@ declare namespace Selector {
 			? { [k in keyof L]: L[k][0] }
 			: never;
 
-	type ParseQuotedString<Tokens extends Array<string>, Acc extends string = ""> = Tokens extends
-		| []
-		| ["'", ...Array<any>]
-		? [Tokens, Acc]
-		: ParseQuotedString<Consume<Tokens, 1>, `${Acc}${Tokens[0]}`>;
+	type SolveHead<Head extends string | undefined> = Head extends string
+		? Trim<Head> extends infer C extends keyof Instances
+			? Instances[C]
+			: Instance
+		: Instance;
 
-	type MaybeParseQuotesIntoString<Tokens extends Array<string>> = Tokens[0] extends "'"
-		? ParseQuotedString<Consume<Tokens, 1>>[1]
-		: Trim<Tokens[0]>;
+	type AddSolvedHead<Result, Head extends string | undefined> = [Result] extends [never]
+		? SolveHead<Head>
+		: Result | SolveHead<Head>;
 
-	type MaybeParseProperties<Tokens extends Array<string>, Result> = Tokens extends []
-		? Result
-		: Tokens[0] extends "["
-			? Result & {
-					filter: {
-						key: Trim<Tokens[1]>;
-						value: MaybeParseQuotesIntoString<ConsumeWhitespace<Consume<Tokens, 3>>>;
-					};
-				}
-			: Result;
+	type HeadBreak = ":" | "." | "#" | "[" | " ";
 
-	type ParseClauseInner<Tokens extends Array<string>> = Tokens extends []
-		? { kind: "empty" }
-		: Tokens[0] extends "."
-			? MaybeParseProperties<Consume<Tokens, 2>, { kind: "tag"; tag: Trim<Tokens[1]> }>
-			: Tokens[0] extends "#"
-				? MaybeParseProperties<Consume<Tokens, 2>, { kind: "name"; name: Trim<Tokens[1]> }>
-				: Trim<Tokens[0]> extends ""
-					? { kind: "empty" }
-					: MaybeParseProperties<Consume<Tokens, 1>, { kind: "class"; class: Trim<Tokens[0]> }>;
+	type ReadHead<
+		Head extends string | undefined = undefined,
+		Done extends boolean = false,
+		C extends string = "",
+	> = Done extends true
+		? [Head, Done]
+		: Head extends undefined
+			? Trim<C> extends ""
+				? [undefined, false]
+				: C extends HeadBreak
+					? ["", true]
+					: [C, false]
+			: C extends HeadBreak
+				? [Head, true]
+				: [`${Head}${C}`, false];
 
-	type ParseClause<Tokens extends Array<string>> =
-		ParseSeparatedWithBreak<Tokens, ">" | ">>"> extends infer List extends Array<
-			[Array<string>, string | undefined]
-		>
-			? {
-					[K in keyof List]: ParseClauseInner<ConsumeWhitespace<List[K][0]>> & { relationship: List[K][1] };
-				}
-			: never;
-
-	type Parse<Tokens extends Array<string>> =
-		ParseSeparated<Tokens, ","> extends infer List extends Array<Array<string>>
-			? { [k in keyof List]: ParseClause<ConsumeWhitespace<List[k]>> }
-			: never;
-
-	type Last<T> = T extends [...infer _, infer U] ? U : never;
-
-	type SolveClause<T> =
-		Last<T> extends { kind: "class"; class: infer U }
-			? U extends keyof Instances
-				? Instances[U]
-				: Instance
-			: Instance;
-
-	type SolveEachClause<T> = T extends [] ? Array<Instance> : { [K in keyof T]: SolveClause<T[K]> };
+	type SolveChars<
+		S extends string,
+		Head extends string | undefined = undefined,
+		Done extends boolean = false,
+		Result = never,
+		Depth extends Array<any> = [],
+	> = S extends `${infer C}${infer Rest}`
+		? Depth extends []
+			? C extends "("
+				? SolveChars<Rest, Head, Done, Result, [any]>
+				: C extends ","
+					? SolveChars<Rest, undefined, false, AddSolvedHead<Result, Head>, Depth>
+					: C extends ">"
+						? SolveChars<Rest, undefined, false, Result, Depth>
+						: ReadHead<Head, Done, C> extends [
+									infer NextHead extends string | undefined,
+									infer NextDone extends boolean,
+							  ]
+							? SolveChars<Rest, NextHead, NextDone, Result, Depth>
+							: never
+			: C extends "("
+				? SolveChars<Rest, Head, Done, Result, [...Depth, any]>
+				: C extends ")"
+					? SolveChars<Rest, Head, Done, Result, Depth extends [any, ...infer D] ? D : []>
+					: SolveChars<Rest, Head, Done, Result, Depth>
+		: AddSolvedHead<Result, Head>;
 
 	// Tokenizer path. `Solve` routes here only for the shapes the string matching below can't
 	// split safely: quoted values and nested parens.
-	type SlowSolve<T extends string> = SolveEachClause<Parse<Lex<T>>>[number];
+	type SlowSolve<T extends string> = SolveChars<T>;
 
 	// String-matching path for everything else. It recovers just the subject class of each
 	// comma group, which avoids the tokenizer's per-character recursion (and with it, TS's
@@ -224,24 +208,35 @@ declare namespace Selector {
 								: T
 			: never;
 
-	// Remove (...) groups so pseudo-class contents (inner commas/combinators) can't leak into the
-	// fast splitters. The residue sits after the class's ":", so leading-class extraction is fine.
-	type StripParens<S extends string> = S extends `${infer A}(${string})${infer B}` ? StripParens<`${A}${B}`> : S;
-
-	// Remove [...] filters: their contents don't affect the subject class, but an unquoted special
-	// char in a value (e.g. "." in "[Transparency=0.5]", ">" in "[a>b]") would fool the fast
-	// splitters / leading-class extraction. Brackets don't nest, so one pass per group works.
-	type StripBrackets<S extends string> = S extends `${infer A}[${string}]${infer B}` ? StripBrackets<`${A}${B}`> : S;
+	// Remove (...) and [...] groups so pseudo-class contents and filter values can't leak into the
+	// fast splitters. The residue sits after the class's ":" / "[", so leading-class extraction is fine.
+	type StripFiltersAndParens<S extends string> = S extends `${infer A}[${string}]${infer B}`
+		? StripFiltersAndParens<`${A}${B}`>
+		: S extends `${infer A}(${string})${infer B}`
+			? StripFiltersAndParens<`${A}${B}`>
+			: S;
 
 	type FastClause<S extends string> =
 		LeadingClass<LastSegment<S>> extends infer C extends keyof Instances ? Instances[C] : Instance;
 
 	type FastSolve<S extends string> = S extends `${infer A},${infer B}` ? FastClause<A> | FastSolve<B> : FastClause<S>;
 
-	// --- Selector validation: only :not() and :has() are valid pseudo-classes ---
-	// Remove quoted segments so ':' inside an attribute value is never read as a pseudo-class.
+	type SolveUnquoted<S extends string> = S extends `${string}(${string}(${string})${string})${string}`
+		? SlowSolve<S>
+		: FastSolve<StripFiltersAndParens<S>>;
+
+	// Remove quoted segments so hidden separators and ':' inside attribute values are ignored.
 	type StripQuotes<S extends string> = S extends `${infer A}'${string}'${infer B}` ? StripQuotes<`${A}${B}`> : S;
 
+	// Validation only cares about selector-list separators and pseudo-class names, so attribute
+	// filters can be removed before checking; their contents never introduce either.
+	type StripValidationGroups<S extends string> = S extends `${infer A}'${string}'${infer B}`
+		? StripValidationGroups<`${A}${B}`>
+		: S extends `${infer A}[${string}]${infer B}`
+			? StripValidationGroups<`${A}${B}`>
+			: S;
+
+	// --- Selector validation: only :not() and :has() are valid pseudo-classes ---
 	type SupportedPseudo = "not" | "has";
 
 	// never => all pseudo-classes are supported; otherwise the first offending name.
@@ -264,26 +259,30 @@ declare namespace Selector {
 			? true
 			: false;
 
+	type ValidateUnquoted<S extends string, Q extends string> = Q extends `${string}:${string}`
+		? CheckPseudos<Q> extends infer Bad
+			? [Bad] extends [never]
+				? HasEmptyListItem<Q> extends true
+					? `Invalid selector: empty selector in list (check for a stray or trailing comma)`
+					: S
+				: `Invalid selector: ':${Bad & string}' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)`
+			: never
+		: Q extends `${string},${string}`
+			? HasEmptyListItem<Q> extends true
+				? `Invalid selector: empty selector in list (check for a stray or trailing comma)`
+				: S
+			: S;
+
 	// Returns S when valid, otherwise a human-readable error string.
 	export type ValidateSelector<S extends string> = string extends S
 		? S
-		: StripQuotes<S> extends infer Q extends string
-			? CheckPseudos<Q> extends infer Bad
-				? [Bad] extends [never]
-					? HasEmptyListItem<Q> extends true
-						? `Invalid selector: empty selector in list (check for a stray or trailing comma)`
-						: S
-					: `Invalid selector: ':${Bad & string}' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)`
-				: never
+		: StripValidationGroups<S> extends infer Q extends string
+			? ValidateUnquoted<S, Q>
 			: never;
 
-	// Routes between the two paths. Quoted values can hide separators from the strippers above,
-	// and a nested pseudo-class (e.g. ":has(X:has(.y), Z)") leaves its top-level comma behind
-	// after StripParens, so both shapes go through the tokenizer. Everything else is stripped
-	// down to bare segments and solved by string matching.
+	// Routes between the two paths. Quoted values are stripped before solving so their hidden
+	// separators cannot affect fast splitting; nested pseudo-classes still use the tokenizer.
 	export type Solve<S extends string> = S extends `${string}'${string}`
-		? SlowSolve<S>
-		: S extends `${string}(${string}(${string})${string})${string}`
-			? SlowSolve<S>
-			: FastSolve<StripBrackets<StripParens<S>>>;
+		? SolveUnquoted<StripQuotes<S>>
+		: SolveUnquoted<S>;
 }
