@@ -10,15 +10,21 @@
 const parts = game.QueryDescendants("Part"); //=> Part[]
 const taggedParts = game.QueryDescendants("Part.Fruit"); //=> Part[]
 const namedParts = game.QueryDescendants("Part#RedTree"); //=> Part[]
+const baseParts = game.QueryDescendants("BasePart"); //=> BasePart[]
 const noncollide = game.QueryDescendants("Part[CanCollide = false]"); //=> Part[]
 const manyAttrs = game.QueryDescendants("Part[$Type=Enemy][$Level=5][Transparency=0.5].Boss#FinalBoss"); //=> Part[]
 const attrDot = game.QueryDescendants("Part[Transparency=0.5]"); //=> Part[]
 const attrCombinatorChar = game.QueryDescendants("Part[Health>50] > Model"); //=> Model[]
+const propertyOnly = game.QueryDescendants("[CanCollide = false]"); //=> Instance[]
+const attrPresence = game.QueryDescendants("[$FuelCapacity]"); //=> Instance[]
+const attrValueOnly = game.QueryDescendants("[$FuelCapacity = 75]"); //=> Instance[]
 
 // ===== Combinators (`>` child / `>>` descendant) — only the last segment is the subject =====
 
 const nested = game.QueryDescendants("Workspace > Folder > Model > Part"); //=> Part[]
 const complexCombo = game.QueryDescendants("Model[$Health = 100] > Part.Enemy#Boss"); //=> Part[]
+const descendantCombo = game.QueryDescendants("Model >> Part"); //=> Part[]
+const descendantAttrSubject = game.QueryDescendants("Model >> [$OnFire = true]"); //=> Instance[]
 const leading = game.QueryDescendants("> Model"); //=> Model[]
 const trailing = game.QueryDescendants("Model >"); //=> Instance[]
 const comboTag = game.QueryDescendants("Model > .Tagged"); //=> Instance[]
@@ -43,11 +49,19 @@ const hasPseudo = game.QueryDescendants("Model:has(.Child)"); //=> Model[]
 const pseudoChild = game.QueryDescendants("Folder > Part:not(#Excluded)"); //=> Part[]
 const pseudoList = game.QueryDescendants("Part:not(.A), Model:has(#B)"); //=> (Part | Model)[]
 const pseudoInnerComma = game.QueryDescendants("Part:not(.A, .B, .C)"); //=> Part[]
+const pseudoQuotedInnerComma = game.QueryDescendants("Part:has(Model[Name = 'a,b'], Folder)"); //=> Part[]
+const pseudoNestedList = game.QueryDescendants("Part:has(Model:has([Name = 'a,b']), Folder), TextButton"); //=> (Part | TextButton)[]
+const pseudoTrailingCombinator = game.QueryDescendants("Part:has(Model:has(.x)) >"); //=> Instance[]
+const bareNotPseudo = game.QueryDescendants(":not(SpotLight, PointLight)"); //=> Instance[]
+const bareHasPseudo = game.QueryDescendants(":has(Tool)"); //=> Instance[]
+const hasRelativeChild = game.QueryDescendants("MeshPart:has(> .SwordPart)"); //=> MeshPart[]
+const hasNestedRelativeNot = game.QueryDescendants("MeshPart:has(> :not(SurfaceAppearance, Texture))"); //=> MeshPart[]
 
-// ===== Quoted attribute values (slow/tokenizer path) — inner commas/combinators don't split =====
+// ===== Quoted attribute values — inner commas/combinators/brackets don't split =====
 
 const quotedComma = game.QueryDescendants("Part[Name = 'Hello, World']"); //=> Part[]
 const quotedCombinator = game.QueryDescendants("Model[Name = 'a > b'] > Part"); //=> Part[]
+const quotedBracketAndComma = game.QueryDescendants("Model[Name = 'a], b > c'] > TextButton"); //=> TextButton[]
 
 // ===== Dynamic (non-literal) and empty selectors fall back to Instance[] =====
 
@@ -62,6 +76,10 @@ declare const validationPseudoNoArgs: Selector.ValidateSelector<"Part:hover">; /
 declare const validationTrailingComma: Selector.ValidateSelector<"Part,">; //=> "Invalid selector: empty selector in list (check for a stray or trailing comma)"
 declare const validationLeadingComma: Selector.ValidateSelector<", Part">; //=> "Invalid selector: empty selector in list (check for a stray or trailing comma)"
 declare const validationDoubleComma: Selector.ValidateSelector<"Part,,Model">; //=> "Invalid selector: empty selector in list (check for a stray or trailing comma)"
+declare const validationQuotedPseudo: Selector.ValidateSelector<"Part[Name=':foo(x)']">; //=> "Part[Name=':foo(x)']"
+declare const validationQuotedComma: Selector.ValidateSelector<"Part[Name=',']">; //=> "Part[Name=',']"
+declare const validationBracketPseudo: Selector.ValidateSelector<"Part[Url=http://example.com]">; //=> "Part[Url=http://example.com]"
+declare const validationBracketComma: Selector.ValidateSelector<"Part[Name=Hello,World]">; //=> "Part[Name=Hello,World]"
 
 // ===== Validation surfaces as a call-site compile error =====
 // The wording of each rejection is asserted by the ValidateSelector cases above; these check
