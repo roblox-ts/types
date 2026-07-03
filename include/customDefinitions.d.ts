@@ -1327,3 +1327,7 @@ interface SkateboardPlatform extends Part {
 interface Seat extends Part {
 	Sit(this: Seat, humanoid: Humanoid | undefined): void;
 }
+
+interface ScriptEditorService extends Instance {
+	GetScriptDocuments(this: ScriptEditorService): Array<ScriptDocument>;
+}
