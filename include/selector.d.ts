@@ -76,20 +76,9 @@ declare namespace Selector {
 	// Only the final combinator segment can determine the subject type.
 	type LastSegment<S extends string> = S extends `${string}>${infer R}` ? LastSegment<R> : S;
 
-	type LeadingClass<S extends string> =
-		Trim<S> extends infer T extends string
-			? T extends `${infer C}:${string}`
-				? Trim<C>
-				: T extends `${infer C}.${string}`
-					? Trim<C>
-					: T extends `${infer C}#${string}`
-						? Trim<C>
-						: T extends `${infer C}[${string}`
-							? Trim<C>
-							: T extends `${infer C} ${string}`
-								? Trim<C>
-								: T
-			: never;
+	type CutAt<S extends string, D extends string> = S extends `${infer Prefix}${D}${string}` ? Prefix : S;
+
+	type LeadingClass<S extends string> = CutAt<CutAt<CutAt<CutAt<Trim<S>, ":">, ".">, "#">, " ">;
 
 	// Filters do not affect the subject class, but their values can contain selector separators.
 	type StripFiltersAndParens<S extends string> = S extends `${infer A}[${string}]${infer B}`
