@@ -23,6 +23,8 @@ interface Services {
     AssetQualityService: AssetQualityService;
     AssetService: AssetService;
     AudioFocusService: AudioFocusService;
+    AuroraScriptService: AuroraScriptService;
+    AuroraService: AuroraService;
     AvatarChatService: AvatarChatService;
     AvatarCreationService: AvatarCreationService;
     AvatarEditorService: AvatarEditorService;
@@ -61,6 +63,7 @@ interface Services {
     DebuggerUIService: DebuggerUIService;
     DeferredAssetManagerService: DeferredAssetManagerService;
     DesignFoundationsService: DesignFoundationsService;
+    DeviceDisplayService: DeviceDisplayService;
     DeviceIdService: DeviceIdService;
     DraggerService: DraggerService;
     EditableService: EditableService;
@@ -103,6 +106,7 @@ interface Services {
     InstanceFileSyncService: InstanceFileSyncService;
     InternalMessagingService: InternalMessagingService;
     InternalMessagingServiceVerifier: InternalMessagingServiceVerifier;
+    InternalSyncService: InternalSyncService;
     IXPService: IXPService;
     JointsService: JointsService;
     KeyframeSequenceProvider: KeyframeSequenceProvider;
@@ -152,6 +156,7 @@ interface Services {
     PluginManagementService: PluginManagementService;
     PluginPolicyService: PluginPolicyService;
     PolicyService: PolicyService;
+    PopLatencyService: PopLatencyService;
     Preloaded: Preloaded;
     ProceduralBehaviorSchedulerService: ProceduralBehaviorSchedulerService;
     ProcessInstancePhysicsService: ProcessInstancePhysicsService;
@@ -306,6 +311,7 @@ interface CreatableInstances {
     AudioSpeechToText: AudioSpeechToText;
     AudioTextToSpeech: AudioTextToSpeech;
     AudioTremolo: AudioTremolo;
+    AuroraScript: AuroraScript;
     AvatarAbilityRules: AvatarAbilityRules;
     AvatarAccessoryRules: AvatarAccessoryRules;
     AvatarAnimationRules: AvatarAnimationRules;
@@ -412,6 +418,7 @@ interface CreatableInstances {
     InputBinding: InputBinding;
     InputContext: InputContext;
     IntConstrainedValue: IntConstrainedValue;
+    InternalSyncItem: InternalSyncItem;
     IntersectOperation: IntersectOperation;
     IntValue: IntValue;
     Keyframe: Keyframe;
@@ -627,6 +634,7 @@ interface Instances extends Services, CreatableInstances {
     DebuggerConnection: DebuggerConnection;
     DebuggerLuaResponse: DebuggerLuaResponse;
     DebuggerVariable: DebuggerVariable;
+    DisplayWakeLock: DisplayWakeLock;
     DynamicRotate: DynamicRotate;
     ExplorerFilterAutocompleter: ExplorerFilterAutocompleter;
     FaceInstance: FaceInstance;
@@ -2532,7 +2540,7 @@ interface Instance extends RBXObject {
      * @param selector Selector string used to filter elements.
      * @returns An array of instances (empty if nothing matched the selector).
      */
-    QueryDescendants(this: Instance, selector: string): Array<Instance>;
+    QueryDescendants<S extends string>(this: Instance, selector: Selector.ValidateSelector<S> extends S ? S : Selector.ValidateSelector<S>): string extends S ? Array<Instance> : Array<Selector.Solve<S>>;
     /**
      * Removes a tag from the instance.
      *
@@ -2911,7 +2919,7 @@ interface AdPortal extends Instance {
     readonly Status: Enum.AdUnitStatus;
 }
 /**
- * A class that allows the display of mobile video ads.
+ * The service responsible for in-experience advertising.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -2927,22 +2935,24 @@ interface AdService extends Instance {
      */
     readonly _nominal_AdService: unique symbol;
     /**
-     * Creates a reward to give users who watch an entire video ad.
+     * Creates an `AdReward` to give users who watch a video ad.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#CreateAdRewardFromDevProductId)
-     * @param this A class that allows the display of mobile video ads.
+     * @param this The service responsible for in-experience advertising.
      * @param devProductId The ID of the developer product you want to grant as a reward.
      */
     CreateAdRewardFromDevProductId(this: AdService, devProductId: number): AdReward;
     /**
+     * Registers an ad disclosure button for an [ad integration](../../../production/promotion/ad-integrations.md).
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#RegisterDisclosureButton)
-     * @param this A class that allows the display of mobile video ads.
-     * @param disclosureButton The `GuiButton` you want to mark as an ad disclosure.
-     * @param adIntegrationPlacementId The id of the placement that this disclosure is attached to.
+     * @param this The service responsible for in-experience advertising.
+     * @param disclosureButton The `GuiButton` you want to mark as an ad integration disclosure. The `GuiButton` must follow labeling guidelines outlined [here](../../../production/promotion/ad-integrations.md#labeling-and-disclosure).
+     * @param adIntegrationPlacementId The ID of the placement that this disclosure is attached to.
      */
     RegisterDisclosureButton(this: AdService, disclosureButton: GuiButton, adIntegrationPlacementId: string): void;
     /**
@@ -2954,7 +2964,7 @@ interface AdService extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#ShowVideoAd)
-     * @param this A class that allows the display of mobile video ads.
+     * @param this The service responsible for in-experience advertising.
      *
      * @deprecated
      */
@@ -2963,30 +2973,32 @@ interface AdService extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#UnregisterAdOpportunity)
-     * @param this A class that allows the display of mobile video ads.
+     * @param this The service responsible for in-experience advertising.
      * @param instance
      */
     UnregisterAdOpportunity(this: AdService, instance: Instance): void;
     /**
-     * Checks if a video ad is available to be played to the current user inside the experience.
+     * Checks if an ad with the specified format is available to be shown to the `LocalPlayer`.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#GetAdAvailabilityNowAsync)
-     * @param this A class that allows the display of mobile video ads.
-     * @param adFormat The format of the requested ad. For example, `RewardedVideo`.
-     * @returns A dictionary with the `AdAvailabilityResult` for the requested ad format.
+     * @param this The service responsible for in-experience advertising.
+     * @param adFormat The format of the requested ad. For example, `AdFormat.RewardedVideo`.
+     * @returns A dictionary that looks like `{ AdAvailabilityResult: Enum.AdAvailabilityResult }`.
      */
     GetAdAvailabilityNowAsync(this: AdService, adFormat: CastsToEnum<Enum.AdFormat>): object;
     /**
+     * Checks a `Player`'s eligibility to be shown an [ad integration](../../../production/promotion/ad-integrations.md) campaign.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#GetCampaignEligibilityAsync)
-     * @param this A class that allows the display of mobile video ads.
-     * @param campaignId The id of the campaign that you want to check a `Player`'s eligibility for.
-     * @param player The `Player` you want to check eligibility for. If omitted, it will default to `LocalPlayer`.
+     * @param this The service responsible for in-experience advertising.
+     * @param campaignId The ID of the campaign that you want to check a `Player`'s eligibility for.
+     * @param player The `Player` you want to check eligibility for. If omitted, it will default to the `LocalPlayer`. On the server, `player` argument is required.
      * @returns A dictionary that looks like `{ IsEligible: boolean }`.
      */
     GetCampaignEligibilityAsync(this: AdService, campaignId: string, player?: Player): object;
@@ -2997,7 +3009,7 @@ interface AdService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#RegisterAdOpportunityAsync)
-     * @param this A class that allows the display of mobile video ads.
+     * @param this The service responsible for in-experience advertising.
      * @param instance
      * @param placementId The ID of the placement of the rewarded video ad inside the experience. Allows for reporting on the performance of individual ad placements.
      */
@@ -3009,10 +3021,11 @@ interface AdService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#ShowRewardedVideoAdAsync)
-     * @param this A class that allows the display of mobile video ads.
-     * @param player The `Player` object for whom you are fetching the ad for.
-     * @param reward The reward object for the reward you want to grant the user who watches an ad to completion.
+     * @param this The service responsible for in-experience advertising.
+     * @param player The `Player` to trigger a rewarded video ad play for.
+     * @param reward The `AdReward` to grant the user after they view the ad.
      * @param placementId The ID of the placement of the rewarded video ad inside the experience. Allows for reporting on the performance of individual ad placements.
+     * @returns The `ShowAdResult` of the client's ad presentation. You should not use this result to grant the reward. Instead, you should grant the reward from your `ProcessReceipt` implementation. For [developer products](../../../production/monetization/developer-products.md) earned through rewarded video ads, the `ProductPurchaseChannel` will be `ProductPurchaseChannel.AdReward`.
      */
     ShowRewardedVideoAdAsync(this: AdService, player: Player, reward: AdReward, placementId?: number): Enum.ShowAdResult;
     /**
@@ -3492,7 +3505,7 @@ interface AnimationClipProvider extends Instance {
      * @param userId The user ID of the user.
      * @returns An `InventoryPages` of animations.
      *
-     * @deprecated
+     * @deprecated GetAnimationsAsync
      */
     GetAnimations(this: AnimationClipProvider, userId: User): Instance | undefined;
     /**
@@ -4479,7 +4492,7 @@ interface AssetService extends Instance {
      * @param packageAssetId
      * @returns Asset IDs that are contained in a specified package.
      *
-     * @deprecated
+     * @deprecated GetAssetIdsForPackageAsync
      */
     GetAssetIdsForPackage(this: AssetService, packageAssetId: number): Array<number>;
     /**
@@ -4545,7 +4558,7 @@ interface AssetService extends Instance {
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
      * @param creationID
      *
-     * @deprecated
+     * @deprecated GetProductInfo
      */
     GetCreatorAssetID(this: AssetService, creationID: number): number;
     /**
@@ -4620,7 +4633,7 @@ interface AssetService extends Instance {
      * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
      * @param searchParameters
      *
-     * @deprecated
+     * @deprecated SearchAudioAsync
      */
     SearchAudio(this: AssetService, searchParameters: AudioSearchParams): AudioPages;
     /**
@@ -4757,7 +4770,7 @@ interface Attachment extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Attachment#Rotation)
      *
-     * @deprecated
+     * @deprecated Orientation
      */
     Rotation: Vector3;
     /**
@@ -4823,7 +4836,7 @@ interface Attachment extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Attachment#WorldRotation)
      *
-     * @deprecated
+     * @deprecated WorldOrientation
      */
     readonly WorldRotation: Vector3;
     /**
@@ -4846,7 +4859,7 @@ interface Attachment extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Attachment#GetAxis)
      * @param this Defines a point and orientation relative to an ancestor `PVInstance`, `Bone`, or another `Attachment`.
      *
-     * @deprecated
+     * @deprecated Axis
      */
     GetAxis(this: Attachment): Vector3;
     /**
@@ -4869,7 +4882,7 @@ interface Attachment extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Attachment#GetSecondaryAxis)
      * @param this Defines a point and orientation relative to an ancestor `PVInstance`, `Bone`, or another `Attachment`.
      *
-     * @deprecated
+     * @deprecated SecondaryAxis
      */
     GetSecondaryAxis(this: Attachment): Vector3;
     /**
@@ -4884,7 +4897,7 @@ interface Attachment extends Instance {
      * @param this Defines a point and orientation relative to an ancestor `PVInstance`, `Bone`, or another `Attachment`.
      * @param axis
      *
-     * @deprecated
+     * @deprecated Axis
      */
     SetAxis(this: Attachment, axis: Vector3): void;
     /**
@@ -4899,7 +4912,7 @@ interface Attachment extends Instance {
      * @param this Defines a point and orientation relative to an ancestor `PVInstance`, `Bone`, or another `Attachment`.
      * @param axis
      *
-     * @deprecated
+     * @deprecated SecondaryAxis
      */
     SetSecondaryAxis(this: Attachment, axis: Vector3): void;
 }
@@ -5777,7 +5790,7 @@ interface AudioEmitter extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioEmitter#SimulationFidelity)
      *
-     * @deprecated
+     * @deprecated AcousticSimulationEnabled
      */
     SimulationFidelity: Enum.AudioSimulationFidelity;
     /**
@@ -6490,7 +6503,7 @@ interface AudioListener extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioListener#SimulationFidelity)
      *
-     * @deprecated
+     * @deprecated AcousticSimulationEnabled
      */
     SimulationFidelity: Enum.AudioSimulationFidelity;
     /**
@@ -6705,7 +6718,7 @@ interface AudioPlayer extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#AssetId)
      *
-     * @deprecated
+     * @deprecated Asset
      */
     AssetId: string;
     /**
@@ -7250,7 +7263,7 @@ interface AudioSearchParams extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSearchParams#AudioSubtype)
      *
-     * @deprecated
+     * @deprecated AudioSubType
      */
     AudioSubtype: Enum.AudioSubType;
     /**
@@ -7687,6 +7700,216 @@ interface AuroraScriptObject extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptObject#PriorFrameInvoked)
      */
     PriorFrameInvoked: number;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService)
+ *
+ * @deprecated
+ */
+interface AuroraScriptService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AuroraScriptService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#CreateCollection)
+     */
+    CreateCollection(this: AuroraScriptService, query: string, root?: Instance): CollectionHandle;
+    /**
+     * - **ThreadSafety**: Safe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#FindBinding)
+     */
+    FindBinding(this: AuroraScriptService, instance: Instance, scriptName: string): RBXObject;
+    /**
+     * - **ThreadSafety**: Safe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#FindBindings)
+     */
+    FindBindings(this: AuroraScriptService, instance: Instance): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#GetAllCollections)
+     */
+    GetAllCollections(this: AuroraScriptService): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#GetLocalFrameId)
+     */
+    GetLocalFrameId(this: AuroraScriptService): number;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#SendMessage)
+     */
+    SendMessage(this: AuroraScriptService, instance: Instance, behaviorName: string, functionName: string, args: unknown): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#getBehaviors)
+     */
+    getBehaviors(this: AuroraScriptService): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#getBehaviorsForInstance)
+     */
+    getBehaviorsForInstance(this: AuroraScriptService, instance: Instance): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#getInstancesForBehavior)
+     */
+    getInstancesForBehavior(this: AuroraScriptService, behavior: AuroraScript): Array<Instance>;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService)
+ *
+ * @deprecated
+ */
+interface AuroraService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AuroraService: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#HashRoundingPoint)
+     */
+    HashRoundingPoint: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#IgnoreRotation)
+     */
+    IgnoreRotation: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#LockStepIdOffset)
+     */
+    LockStepIdOffset: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#RollbackOffset)
+     */
+    RollbackOffset: number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#GetPredictedInstances)
+     */
+    GetPredictedInstances(this: AuroraService): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#GetRemoteWorldStepId)
+     */
+    GetRemoteWorldStepId(this: AuroraService): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#GetServerView)
+     */
+    GetServerView(this: AuroraService, target: Instance): Instance | undefined;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#GetWorldStepId)
+     */
+    GetWorldStepId(this: AuroraService): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#IsInstancePredicted)
+     */
+    IsInstancePredicted(this: AuroraService, target: Instance): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#PlayInputRecording)
+     */
+    PlayInputRecording(this: AuroraService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#SetReplicationLag)
+     */
+    SetReplicationLag(this: AuroraService, seconds: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#ShowDebugVisualizer)
+     */
+    ShowDebugVisualizer(this: AuroraService, state: boolean): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#StartInputRecording)
+     */
+    StartInputRecording(this: AuroraService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#StartPrediction)
+     */
+    StartPrediction(this: AuroraService, target: Instance): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#StepPhysics)
+     */
+    StepPhysics(this: AuroraService, worldSteps: number, parts?: Array<Instance>): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#StopInputRecording)
+     */
+    StopInputRecording(this: AuroraService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#StopPrediction)
+     */
+    StopPrediction(this: AuroraService, target: Instance): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#UpdateProperties)
+     */
+    UpdateProperties(this: AuroraService, target: Instance): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#FixedRateTick)
+     */
+    readonly FixedRateTick: RBXScriptSignal<(deltaTime: number, worldStepId: number) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService#Step)
+     */
+    readonly Step: RBXScriptSignal<() => void>;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAbilityRules)
@@ -8127,7 +8350,7 @@ interface AvatarEditorService extends Instance {
      * @param humanoidDescription The HumanoidDescription to check if default clothing is required.
      * @returns Returns a HumanoidDescription if default clothing was necessary. Otherwise returns `nil`.
      *
-     * @deprecated
+     * @deprecated CheckApplyDefaultClothingAsync
      */
     CheckApplyDefaultClothing(this: AvatarEditorService, humanoidDescription: HumanoidDescription): HumanoidDescription | undefined;
     /**
@@ -8152,7 +8375,7 @@ interface AvatarEditorService extends Instance {
      * @param this A service to support developer Avatar Editors.
      * @param humanoidDescription
      *
-     * @deprecated
+     * @deprecated ConformToAvatarRulesAsync
      */
     ConformToAvatarRules(this: AvatarEditorService, humanoidDescription: HumanoidDescription): HumanoidDescription;
     /**
@@ -8179,7 +8402,7 @@ interface AvatarEditorService extends Instance {
      * @param this A service to support developer Avatar Editors.
      * @returns A dictionary containing the platform Avatar rules for things like scaling, default shirts and pants, number of wearable assets, ect. See the example return in the main description above.
      *
-     * @deprecated
+     * @deprecated GetAvatarRulesAsync
      */
     GetAvatarRules(this: AvatarEditorService): AvatarRules;
     /**
@@ -8207,7 +8430,7 @@ interface AvatarEditorService extends Instance {
      * @param itemType The type of the item ids provided.
      * @returns Returns an array of item details. See `AvatarEditorService:GetBatchItemDetailsAsync()` for the response format.
      *
-     * @deprecated
+     * @deprecated GetBatchItemDetailsAsync
      */
     GetBatchItemDetails(this: AvatarEditorService, itemIds: ReadonlyArray<number>, itemType: CastsToEnum<Enum.AvatarItemType.Asset>): ReadonlyArray<AssetItemDetails>;
     GetBatchItemDetails(this: AvatarEditorService, itemIds: ReadonlyArray<number>, itemType: CastsToEnum<Enum.AvatarItemType.Bundle>): ReadonlyArray<BundleItemDetails>;
@@ -8226,10 +8449,16 @@ interface AvatarEditorService extends Instance {
      */
     GetBatchItemDetailsAsync(this: AvatarEditorService, itemIds: Array<unknown>, itemType: CastsToEnum<Enum.AvatarItemType>): Array<unknown>;
     /**
+     * Returns a `CatalogPages` object containing bundles that include the given asset.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#GetBundlesByAssetIdAsync)
+     * @param this A service to support developer Avatar Editors.
+     * @param assetId The ID of the asset to find bundles for.
+     * @param limit The number of results per page. Accepts `10`, `25`, `50`, and `100`.
+     * @returns A `CatalogPages` object containing bundles that include the given asset.
      */
     GetBundlesByAssetIdAsync(this: AvatarEditorService, assetId: number, limit?: number): CatalogPages;
     /**
@@ -8246,7 +8475,7 @@ interface AvatarEditorService extends Instance {
      * @param itemType The `AvatarItemType` of the specified asset or bundle.
      * @returns Whether the `LocalPlayer` has favorited the given bundle or asset.
      *
-     * @deprecated
+     * @deprecated GetFavoriteAsync
      */
     GetFavorite(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType>): boolean;
     /**
@@ -8285,7 +8514,7 @@ interface AvatarEditorService extends Instance {
      * @param this A service to support developer Avatar Editors.
      * @param assetTypes The `AvatarAssetType` that can will be checked for in the player's inventory.
      *
-     * @deprecated
+     * @deprecated GetInventoryAsync
      */
     GetInventory(this: AvatarEditorService, assetTypes: ReadonlyArray<Enum.AvatarAssetType>): InventoryPages<{
         AssetId: number;
@@ -8318,7 +8547,7 @@ interface AvatarEditorService extends Instance {
      * @param itemType An enum value indicating the type of item whose details are being retrieved.
      * @returns A table containing the item info for the retrieved item. See above for a sample table.
      *
-     * @deprecated
+     * @deprecated GetItemDetailsAsync
      */
     GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType.Asset>): AssetItemDetails;
     GetItemDetails(this: AvatarEditorService, itemId: number, itemType: CastsToEnum<Enum.AvatarItemType.Bundle>): BundleItemDetails;
@@ -8349,7 +8578,7 @@ interface AvatarEditorService extends Instance {
      * @param outfitId The ID of the outfit whose details are being retrieved.
      * @returns A table containing the outfit info for the retrieved outfit. See above for a sample table.
      *
-     * @deprecated
+     * @deprecated GetOutfitDetailsAsync
      */
     GetOutfitDetails(this: AvatarEditorService, outfitId: number): object;
     /**
@@ -8377,7 +8606,7 @@ interface AvatarEditorService extends Instance {
      * @param outfitSource
      * @param outfitType
      *
-     * @deprecated
+     * @deprecated GetOutfitsAsync
      */
     GetOutfits(this: AvatarEditorService, outfitSource?: CastsToEnum<Enum.OutfitSource>, outfitType?: CastsToEnum<Enum.OutfitType>): OutfitPages;
     /**
@@ -8406,7 +8635,7 @@ interface AvatarEditorService extends Instance {
      * @param contextAssetId The ID of an asset with a type matching the provided assetType used for context when retrieving recommendations.
      * @returns A list of recommendations based on the given `AssetType`.
      *
-     * @deprecated
+     * @deprecated GetRecommendedAssetsAsync
      */
     GetRecommendedAssets(this: AvatarEditorService, assetType: CastsToEnum<Enum.AvatarAssetType>, contextAssetId?: number): ReadonlyArray<RecommendedAsset>;
     /**
@@ -8435,7 +8664,7 @@ interface AvatarEditorService extends Instance {
      * @param bundleId A list of recommended bundles.
      * @returns The bundle ID that the recommended bundles will be returned for.
      *
-     * @deprecated
+     * @deprecated GetRecommendedBundlesAsync
      */
     GetRecommendedBundles(this: AvatarEditorService, bundleId: number): ReadonlyArray<RecommendedBundle>;
     /**
@@ -8462,7 +8691,7 @@ interface AvatarEditorService extends Instance {
      * @param this A service to support developer Avatar Editors.
      * @param searchParameters An object containing the parameters used for the search.
      *
-     * @deprecated
+     * @deprecated SearchCatalogAsync
      */
     SearchCatalog(this: AvatarEditorService, searchParameters: CatalogSearchParams): CatalogPages;
     /**
@@ -8622,7 +8851,7 @@ interface BadgeService extends Instance {
      * @param badgeId The ID of the badge to be awarded.
      * @returns Boolean of `true` if the badge was awarded successfully.
      *
-     * @deprecated
+     * @deprecated AwardBadgeAsync
      */
     AwardBadge(this: BadgeService, userId: number, badgeId: number): boolean;
     /**
@@ -10181,7 +10410,7 @@ interface BodyMover extends Instance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyAngularVelocity)
  *
- * @deprecated
+ * @deprecated AngularVelocity
  */
 interface BodyAngularVelocity extends BodyMover {
     /**
@@ -10226,7 +10455,7 @@ interface BodyAngularVelocity extends BodyMover {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyForce)
  *
- * @deprecated
+ * @deprecated VectorForce
  */
 interface BodyForce extends BodyMover {
     /**
@@ -10255,7 +10484,7 @@ interface BodyForce extends BodyMover {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyGyro)
  *
- * @deprecated
+ * @deprecated AlignOrientation
  */
 interface BodyGyro extends BodyMover {
     /**
@@ -10308,7 +10537,7 @@ interface BodyGyro extends BodyMover {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyPosition)
  *
- * @deprecated
+ * @deprecated AlignPosition
  */
 interface BodyPosition extends BodyMover {
     /**
@@ -10380,7 +10609,7 @@ interface BodyPosition extends BodyMover {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyThrust)
  *
- * @deprecated
+ * @deprecated VectorForce
  */
 interface BodyThrust extends BodyMover {
     /**
@@ -10417,7 +10646,7 @@ interface BodyThrust extends BodyMover {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyVelocity)
  *
- * @deprecated
+ * @deprecated LinearVelocity
  */
 interface BodyVelocity extends BodyMover {
     /**
@@ -10484,7 +10713,7 @@ interface BodyVelocity extends BodyMover {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RocketPropulsion)
  *
- * @deprecated
+ * @deprecated LineForce
  */
 interface RocketPropulsion extends BodyMover {
     /**
@@ -10936,7 +11165,7 @@ interface CaptureService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#CaptureSaved)
      *
-     * @deprecated
+     * @deprecated UserCaptureSaved
      */
     readonly CaptureSaved: RBXScriptSignal<(captureInfo: Record<string, unknown>) => void>;
     /**
@@ -11416,7 +11645,7 @@ interface Chat extends Instance {
      * @param playerToFilterFor Player that the string is being filtered for.
      * @returns Filtered string result.
      *
-     * @deprecated
+     * @deprecated FilterStringAsync
      */
     FilterStringForPlayerAsync(this: Chat, stringToFilter: string, playerToFilterFor: Player): string;
     /**
@@ -11793,6 +12022,13 @@ interface DragDetector extends ClickDetector {
      */
     readonly DragContinue: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DragDetector#DragContinueReplicate)
+     */
+    readonly DragContinueReplicate: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
+    /**
      * Fires when a user stops dragging the object.
      *
      * - **ThreadSafety**: Unsafe
@@ -11801,6 +12037,13 @@ interface DragDetector extends ClickDetector {
      */
     readonly DragEnd: RBXScriptSignal<(playerWhoDragged: Player) => void>;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DragDetector#DragEndReplicate)
+     */
+    readonly DragEndReplicate: RBXScriptSignal<(playerWhoDragged: Player) => void>;
+    /**
      * Fires when a user starts dragging the object.
      *
      * - **ThreadSafety**: Unsafe
@@ -11808,6 +12051,20 @@ interface DragDetector extends ClickDetector {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DragDetector#DragStart)
      */
     readonly DragStart: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, hitFrame: CFrame, clickedPart: BasePart, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DragDetector#DragStartReplicate)
+     */
+    readonly DragStartReplicate: RBXScriptSignal<(playerWhoDragged: Player, cursorRay: Ray, viewFrame: CFrame, hitFrame: CFrame, clickedPart: BasePart, vrInputFrame: CFrame | undefined, isModeSwitchKeyDown: boolean) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DragDetector#RestartPhysicalDragReplicate)
+     */
+    readonly RestartPhysicalDragReplicate: RBXScriptSignal<(hitPoint: Vector3) => void>;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -11928,7 +12185,7 @@ interface Collaborator extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Collaborator#CollaboratorColor)
      *
-     * @deprecated
+     * @deprecated CollaboratorColor3
      */
     CollaboratorColor: number;
     /**
@@ -12117,7 +12374,7 @@ interface CollectionService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CollectionService#ItemAdded)
      *
-     * @deprecated
+     * @deprecated GetInstanceAddedSignal
      */
     readonly ItemAdded: RBXScriptSignal<(instance: Instance) => void>;
     /**
@@ -12130,7 +12387,7 @@ interface CollectionService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CollectionService#ItemRemoved)
      *
-     * @deprecated
+     * @deprecated GetInstanceRemovedSignal
      */
     readonly ItemRemoved: RBXScriptSignal<(instance: Instance) => void>;
     /**
@@ -13254,7 +13511,7 @@ interface PlaneConstraint extends Constraint {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plane)
  *
- * @deprecated
+ * @deprecated PlaneConstraint
  */
 interface Plane extends PlaneConstraint {
     /**
@@ -13927,7 +14184,7 @@ interface TorsionSpringConstraint extends Constraint {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TorsionSpringConstraint#LimitEnabled)
      *
-     * @deprecated
+     * @deprecated LimitsEnabled
      */
     LimitEnabled: boolean;
     /**
@@ -14139,7 +14396,7 @@ interface ContentProvider extends Instance {
      * @param this Service that is used to load content, or assets, into a game.
      * @param contentId
      *
-     * @deprecated
+     * @deprecated PreloadAsync
      */
     Preload(this: ContentProvider, contentId: ContentId): void;
     /**
@@ -14268,7 +14525,7 @@ interface ContextActionService extends Instance {
      * @param createTouchButton
      * @param inputTypes
      *
-     * @deprecated
+     * @deprecated BindAction
      */
     BindActionToInputTypes(this: ContextActionService, actionName: string, functionToBind: Callback, createTouchButton: boolean, inputTypes: unknown): void;
     /**
@@ -15814,6 +16071,21 @@ interface DesignFoundationsService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DeviceDisplayService)
+ */
+interface DeviceDisplayService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_DeviceDisplayService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DeviceIdService)
  */
 interface DeviceIdService extends Instance {
@@ -16279,6 +16551,21 @@ interface DigitsRigDescription extends Instance {
      * @param point
      */
     SetFingerTip(this: DigitsRigDescription, fingerIndex: number, point: Vector3): void;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DisplayWakeLock)
+ */
+interface DisplayWakeLock extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_DisplayWakeLock: unique symbol;
 }
 /**
  * A helper object used to create tools that can drag parts.
@@ -18515,7 +18802,7 @@ interface GuiBase2d extends GuiBase {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiBase2d#Localize)
      *
-     * @deprecated
+     * @deprecated AutoLocalize
      */
     Localize: boolean;
     /**
@@ -19427,7 +19714,7 @@ interface TextButton extends GuiButton {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextButton#FontSize)
      *
-     * @deprecated
+     * @deprecated TextSize
      */
     FontSize: Enum.FontSize;
     /**
@@ -19589,7 +19876,7 @@ interface TextButton extends GuiButton {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextButton#TextWrap)
      *
-     * @deprecated
+     * @deprecated TextWrapped
      */
     TextWrap: boolean;
     /**
@@ -19796,7 +20083,7 @@ interface TextLabel extends GuiLabel {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextLabel#FontSize)
      *
-     * @deprecated
+     * @deprecated TextSize
      */
     FontSize: Enum.FontSize;
     /**
@@ -19958,7 +20245,7 @@ interface TextLabel extends GuiLabel {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextLabel#TextWrap)
      *
-     * @deprecated
+     * @deprecated TextWrapped
      */
     TextWrap: boolean;
     /**
@@ -20258,7 +20545,7 @@ interface TextBox extends GuiObject {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextBox#FontSize)
      *
-     * @deprecated
+     * @deprecated TextSize
      */
     FontSize: Enum.FontSize;
     /**
@@ -20453,7 +20740,7 @@ interface TextBox extends GuiObject {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextBox#TextWrap)
      *
-     * @deprecated
+     * @deprecated TextWrapped
      */
     TextWrap: boolean;
     /**
@@ -21548,7 +21835,7 @@ interface SelectionBox extends InstanceAdornment {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SelectionBox#SurfaceColor)
      *
-     * @deprecated
+     * @deprecated SurfaceColor3
      */
     SurfaceColor: BrickColor;
     /**
@@ -22070,7 +22357,7 @@ interface SelectionSphere extends PVAdornment {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SelectionSphere#SurfaceColor)
      *
-     * @deprecated
+     * @deprecated SurfaceColor3
      */
     SurfaceColor: BrickColor;
     /**
@@ -22714,7 +23001,7 @@ interface GuiService extends Instance {
      * @param selectionName
      * @param selectionParent
      *
-     * @deprecated
+     * @deprecated SelectionGroup
      */
     AddSelectionParent(this: GuiService, selectionName: string, selectionParent: GuiObject): void;
     /**
@@ -22733,7 +23020,7 @@ interface GuiService extends Instance {
      * @param selectionName The name of the added selection.
      * @param selections The selection(s) added.
      *
-     * @deprecated
+     * @deprecated SelectionGroup
      */
     AddSelectionTuple(this: GuiService, selectionName: string, selections: Array<GuiObject>): void;
     /**
@@ -22848,7 +23135,7 @@ interface GuiService extends Instance {
      * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
      * @param selectionName
      *
-     * @deprecated
+     * @deprecated SelectionGroup
      */
     RemoveSelectionGroup(this: GuiService, selectionName: string): void;
     /**
@@ -24025,7 +24312,7 @@ interface Humanoid extends Instance {
      * @param humanoidDescription The `HumanoidDescription` instance which you want to set the character to match.
      * @param assetTypeVerification The asset type verification mode.
      *
-     * @deprecated
+     * @deprecated ApplyDescriptionAsync
      */
     ApplyDescription(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
     /**
@@ -24053,7 +24340,7 @@ interface Humanoid extends Instance {
      * @param humanoidDescription The `HumanoidDescription` instance which you want to set the character to match.
      * @param assetTypeVerification The asset type verification mode.
      *
-     * @deprecated
+     * @deprecated ApplyDescriptionResetAsync
      */
     ApplyDescriptionReset(this: Humanoid, humanoidDescription: HumanoidDescription, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): void;
     /**
@@ -24081,7 +24368,7 @@ interface Humanoid extends Instance {
      * @param emoteName name of the emote to play.
      * @returns successfully played.
      *
-     * @deprecated
+     * @deprecated PlayEmoteAsync
      */
     PlayEmote(this: Humanoid, emoteName: string): boolean;
     /**
@@ -26241,7 +26528,7 @@ interface InsertService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InsertService#GetBaseCategories)
      * @param this Used to insert assets from the Roblox website.
      *
-     * @deprecated
+     * @deprecated GetBaseSets
      */
     GetBaseCategories(this: InsertService): Array<unknown>;
     /**
@@ -26287,7 +26574,7 @@ interface InsertService extends Instance {
      * @param pageNum The page number in the Catalog to return.
      * @returns A single table (of returned free decals) wrapped in a table.
      *
-     * @deprecated
+     * @deprecated GetFreeDecalsAsync
      */
     GetFreeDecals(this: InsertService, searchText: string, pageNum: number): [
         Array<FreeSearchResult>
@@ -26319,7 +26606,7 @@ interface InsertService extends Instance {
      * @param pageNum The page number in the Catalog to return.
      * @returns A single table (of returned free models) wrapped in a table.
      *
-     * @deprecated
+     * @deprecated GetFreeModelsAsync
      */
     GetFreeModels(this: InsertService, searchText: string, pageNum: number): [
         Array<FreeSearchResult>
@@ -26358,7 +26645,7 @@ interface InsertService extends Instance {
      * @param this Used to insert assets from the Roblox website.
      * @param userId
      *
-     * @deprecated
+     * @deprecated GetUserSets
      */
     GetUserCategories(this: InsertService, userId: User): Array<unknown>;
     /**
@@ -26399,6 +26686,13 @@ interface InsertService extends Instance {
      * @param assetVersionId
      */
     LoadAssetVersion(this: InsertService, assetVersionId: number): Model;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InsertService#InternalDelete)
+     */
+    readonly InternalDelete: RBXScriptSignal<(instance: Instance) => void>;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -26461,6 +26755,36 @@ interface InternalMessagingServiceVerifier extends Instance {
      * @deprecated
      */
     readonly _nominal_InternalMessagingServiceVerifier: unique symbol;
+}
+/**
+ * - **Tags**: NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalSyncItem)
+ */
+interface InternalSyncItem extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InternalSyncItem: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalSyncService)
+ */
+interface InternalSyncService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InternalSyncService: unique symbol;
 }
 /**
  * The base class for joints.
@@ -26560,7 +26884,7 @@ interface DynamicRotate extends JointInstance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RotateP)
  *
- * @deprecated
+ * @deprecated HingeConstraint
  */
 interface RotateP extends DynamicRotate {
     /**
@@ -26579,7 +26903,7 @@ interface RotateP extends DynamicRotate {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RotateV)
  *
- * @deprecated
+ * @deprecated HingeConstraint
  */
 interface RotateV extends DynamicRotate {
     /**
@@ -26600,7 +26924,7 @@ interface RotateV extends DynamicRotate {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Glue)
  *
- * @deprecated
+ * @deprecated WeldConstraint
  */
 interface Glue extends JointInstance {
     /**
@@ -26653,7 +26977,7 @@ interface Glue extends JointInstance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ManualSurfaceJointInstance)
  *
- * @deprecated
+ * @deprecated WeldConstraint
  */
 interface ManualSurfaceJointInstance extends JointInstance {
     /**
@@ -26674,7 +26998,7 @@ interface ManualSurfaceJointInstance extends JointInstance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ManualGlue)
  *
- * @deprecated
+ * @deprecated WeldConstraint
  */
 interface ManualGlue extends ManualSurfaceJointInstance {
     /**
@@ -26695,7 +27019,7 @@ interface ManualGlue extends ManualSurfaceJointInstance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ManualWeld)
  *
- * @deprecated
+ * @deprecated WeldConstraint
  */
 interface ManualWeld extends ManualSurfaceJointInstance {
     /**
@@ -26788,7 +27112,7 @@ interface Motor6D extends Motor {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Rotate)
  *
- * @deprecated
+ * @deprecated HingeConstraint
  */
 interface Rotate extends JointInstance {
     /**
@@ -26809,7 +27133,7 @@ interface Rotate extends JointInstance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Snap)
  *
- * @deprecated
+ * @deprecated WeldConstraint
  */
 interface Snap extends JointInstance {
     /**
@@ -27114,7 +27438,7 @@ interface KeyframeSequenceProvider extends Instance {
      * @param userId The user ID of the user.
      * @returns An `InventoryPages` of animations.
      *
-     * @deprecated
+     * @deprecated GetAnimationsAsync
      */
     GetAnimations(this: KeyframeSequenceProvider, userId: number): InventoryPages<number>;
     /**
@@ -27749,7 +28073,7 @@ interface LocalizationTable extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LocalizationTable#DevelopmentLanguage)
      *
-     * @deprecated
+     * @deprecated SourceLocaleId
      */
     DevelopmentLanguage: string;
     /**
@@ -27762,7 +28086,7 @@ interface LocalizationTable extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LocalizationTable#Root)
      *
-     * @deprecated
+     * @deprecated RootLocalizationTable
      */
     Root: Instance | undefined;
     /**
@@ -27782,7 +28106,7 @@ interface LocalizationTable extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LocalizationTable#GetContents)
      * @param this A LocalizationTable is a database of translations. It contains source strings and translations for various languages.
      *
-     * @deprecated
+     * @deprecated GetEntries
      */
     GetContents(this: LocalizationTable): string;
     /**
@@ -27809,7 +28133,7 @@ interface LocalizationTable extends Instance {
      * @param key An optional unique key for fast hash lookups in code. If it is non-empty it must be unique in the table.
      * @returns Translated string.
      *
-     * @deprecated
+     * @deprecated GetTranslator
      */
     GetString(this: LocalizationTable, targetLocaleId: string, key: string): string;
     /**
@@ -27860,7 +28184,7 @@ interface LocalizationTable extends Instance {
      * @param this A LocalizationTable is a database of translations. It contains source strings and translations for various languages.
      * @param key
      *
-     * @deprecated
+     * @deprecated RemoveEntry
      */
     RemoveKey(this: LocalizationTable, key: string): void;
     /**
@@ -27885,7 +28209,7 @@ interface LocalizationTable extends Instance {
      * @param this A LocalizationTable is a database of translations. It contains source strings and translations for various languages.
      * @param contents
      *
-     * @deprecated
+     * @deprecated SetEntries
      */
     SetContents(this: LocalizationTable, contents: string): void;
     /**
@@ -27910,7 +28234,7 @@ interface LocalizationTable extends Instance {
      * @param targetLocaleId
      * @param text
      *
-     * @deprecated
+     * @deprecated SetEntryValue
      */
     SetEntry(this: LocalizationTable, key: string, targetLocaleId: string, text: string): void;
     /**
@@ -28167,6 +28491,77 @@ interface LuaSourceContainer extends Instance {
      * @deprecated
      */
     readonly _nominal_LuaSourceContainer: unique symbol;
+}
+/**
+ * - **Tags**:
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript)
+ *
+ * @deprecated
+ */
+interface AuroraScript extends LuaSourceContainer {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AuroraScript: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#EnableCulling)
+     */
+    EnableCulling: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#EnableLOD)
+     */
+    EnableLOD: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#LODCriticality)
+     */
+    LODCriticality: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#Priority)
+     */
+    Priority: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#Source)
+     */
+    Source: ProtectedString;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#AddTo)
+     */
+    AddTo(this: AuroraScript, instance: Instance, parameters?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#IsOnInstance)
+     */
+    IsOnInstance(this: AuroraScript, instance: Instance): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#RemoveFrom)
+     */
+    RemoveFrom(this: AuroraScript, instance: Instance): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript#SignalFired)
+     */
+    SignalFired(this: AuroraScript, instance: Instance, topic: string): RBXScriptSignal;
 }
 /**
  * The base class for all script objects which run automatically.
@@ -28540,9 +28935,10 @@ interface MarketplaceService extends Instance {
      * @param player The user to prompt to purchase items.
      * @param lineItems An array of avatar items to be included in the bulk purchase. Each line item contains the following structure:
      * ```lua
-     * {   Type: MarketplaceProductType,   Id: string }
+     * {   Type: MarketplaceProductType,   Id: string,   PurchaseOptions: { {Type: PurchaseOption, Value: number?} }? }
      * ``` Each line item contains the following pairs: - `Type`: The corresponding `MarketplaceProductType` (Enum).
      * - `Id`: The ID of the asset or bundle.
+     * - `PurchaseOptions`: Optional. An array containing a single purchase   option to display in the prompt. If omitted, the permanent purchase   is prompted. See the PurchaseOptions section below for details.
      *
      *
      * @param options Not available at this time.
@@ -28593,7 +28989,7 @@ interface MarketplaceService extends Instance {
      * @param this The service responsible for in-experience transactions.
      * @param player The user being prompted to purchase Premium.
      *
-     * @deprecated
+     * @deprecated PromptRobloxSubscriptionPurchase
      */
     PromptPremiumPurchase(this: MarketplaceService, player: Player): void;
     /**
@@ -28673,7 +29069,7 @@ interface MarketplaceService extends Instance {
      * @param infoType An `InfoType` enum value specifying the type of information being retrieved.
      * @returns A dictionary containing information about the queried item, described in the previous tables.
      *
-     * @deprecated
+     * @deprecated GetProductInfoAsync
      */
     GetProductInfo(this: MarketplaceService, id: number): AssetProductInfo;
     GetProductInfo(this: MarketplaceService, id: number, infoType: CastsToEnum<Enum.InfoType.Asset>): AssetProductInfo;
@@ -28780,7 +29176,7 @@ interface MarketplaceService extends Instance {
      * @param assetId The asset ID for which the given player's inventory is tested.
      * @returns Indicates whether the given player's inventory contains the given asset.
      *
-     * @deprecated
+     * @deprecated PlayerOwnsAssetAsync
      */
     PlayerOwnsAsset(this: MarketplaceService, player: Player, assetId: number): boolean;
     /**
@@ -28810,7 +29206,7 @@ interface MarketplaceService extends Instance {
      * @param bundleId The bundle ID for which the given player's inventory is tested.
      * @returns Indicates whether the given player's inventory contains the given bundle.
      *
-     * @deprecated
+     * @deprecated PlayerOwnsBundleAsync
      */
     PlayerOwnsBundle(this: MarketplaceService, player: Player, bundleId: number): boolean;
     /**
@@ -29849,7 +30245,7 @@ interface Mouse extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Mouse#KeyDown)
      *
-     * @deprecated
+     * @deprecated InputBegan
      */
     readonly KeyDown: RBXScriptSignal<(key: string) => void>;
     /**
@@ -29862,7 +30258,7 @@ interface Mouse extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Mouse#KeyUp)
      *
-     * @deprecated
+     * @deprecated InputEnded
      */
     readonly KeyUp: RBXScriptSignal<(key: string) => void>;
     /**
@@ -30008,7 +30404,7 @@ interface OmniRecommendationsService extends Instance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudApiV1)
  *
- * @deprecated
+ * @deprecated HttpService
  */
 interface OpenCloudApiV1 extends Instance {
     /**
@@ -30054,7 +30450,7 @@ interface OpenCloudApiV1 extends Instance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudService)
  *
- * @deprecated
+ * @deprecated HttpService
  */
 interface OpenCloudService extends Instance {
     /**
@@ -30391,7 +30787,7 @@ interface BasePart extends PVInstance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart#CollisionGroupId)
      *
-     * @deprecated
+     * @deprecated CollisionGroup
      */
     CollisionGroupId: number;
     /**
@@ -30743,7 +31139,7 @@ interface BasePart extends PVInstance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart#RotVelocity)
      *
-     * @deprecated
+     * @deprecated AssemblyAngularVelocity
      */
     RotVelocity: Vector3;
     /**
@@ -30756,7 +31152,7 @@ interface BasePart extends PVInstance {
      */
     Rotation: Vector3;
     /**
-     * Determines the dimensions of a part (length, width, height).
+     * Determines the dimensions of a part (length, height, width).
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -30842,7 +31238,7 @@ interface BasePart extends PVInstance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart#Velocity)
      *
-     * @deprecated
+     * @deprecated AssemblyLinearVelocity
      */
     Velocity: Vector3;
     /**
@@ -31020,7 +31416,7 @@ interface BasePart extends PVInstance {
      * @param this The abstract base class for in-world objects that physically interact.
      * @returns The base part of an assembly (a collection of parts connected together).
      *
-     * @deprecated
+     * @deprecated AssemblyRootPart
      */
     GetRootPart(this: BasePart): BasePart;
     /**
@@ -31200,7 +31596,7 @@ interface BasePart extends PVInstance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart#StoppedTouching)
      *
-     * @deprecated
+     * @deprecated TouchEnded
      */
     readonly StoppedTouching: RBXScriptSignal<(otherPart: BasePart) => void>;
     /**
@@ -31301,6 +31697,20 @@ interface Platform extends Part {
      * @deprecated
      */
     readonly _nominal_Platform: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Platform#RemoteCreateMotor6D)
+     */
+    readonly RemoteCreateMotor6D: RBXScriptSignal<(humanoid: Instance) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Platform#RemoteDestroyMotor6D)
+     */
+    readonly RemoteDestroyMotor6D: RBXScriptSignal<() => void>;
 }
 /**
  * A type of `BasePart` that characters can 'sit' in. When a character touches an enabled Seat object, it will be attached to the part by a `Weld` and the default character scripts will play a sitting animation.
@@ -31343,6 +31753,20 @@ interface Seat extends Part {
      * @param humanoid
      */
     Sit(this: Seat, humanoid: Humanoid | undefined): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Seat#RemoteCreateSeatWeld)
+     */
+    readonly RemoteCreateSeatWeld: RBXScriptSignal<(humanoid: Instance) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Seat#RemoteDestroySeatWeld)
+     */
+    readonly RemoteDestroySeatWeld: RBXScriptSignal<() => void>;
 }
 /**
  * **Deprecated:** The SkateboardPlatform object has been deprecated and is no longer supported by Roblox. Developers looking to create skateboards or similar vehicles are advised to program their own systems. Additionally, the `VehicleSeat` object can be used to quickly create simple vehicles.
@@ -31434,6 +31858,20 @@ interface SkateboardPlatform extends Part {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SkateboardPlatform#MoveStateChanged)
      */
     readonly MoveStateChanged: RBXScriptSignal<(newState: Enum.MoveState, oldState: Enum.MoveState) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SkateboardPlatform#RemoteCreateMotor6D)
+     */
+    readonly RemoteCreateMotor6D: RBXScriptSignal<(humanoid: Instance) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SkateboardPlatform#RemoteDestroyMotor6D)
+     */
+    readonly RemoteDestroyMotor6D: RBXScriptSignal<() => void>;
     /**
      * Fired whenever the skateboard is unequipped.
      *
@@ -32408,6 +32846,20 @@ interface VehicleSeat extends BasePart {
      * @param humanoid The `Humanoid` being forced to sit in the `VehicleSeat`.
      */
     Sit(this: VehicleSeat, humanoid: Instance): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VehicleSeat#RemoteCreateSeatWeld)
+     */
+    readonly RemoteCreateSeatWeld: RBXScriptSignal<(humanoid: Instance) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VehicleSeat#RemoteDestroySeatWeld)
+     */
+    readonly RemoteDestroySeatWeld: RBXScriptSignal<() => void>;
 }
 /**
  * A class which defines a view of the 3D world.
@@ -32457,7 +32909,7 @@ interface Camera extends PVInstance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#CoordinateFrame)
      *
-     * @deprecated
+     * @deprecated CFrame
      */
     CoordinateFrame: CFrame;
     /**
@@ -32744,7 +33196,7 @@ interface Camera extends PVInstance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#WorldToViewportPoint)
      * @param this A class which defines a view of the 3D world.
      * @param worldPoint The `Vector3` world position.
-     * @returns A tuple containing, in order: -  A `Vector3` whose **X** and **Y** components represent the   offset of the `worldPoint` from the top left corner of the viewport,   in pixels. The `Vector3` **Z** component represents the   depth of the `worldPoint` from the screen (in studs).
+     * @returns A tuple containing, in order: -  A `Vector3` whose **X** and **Y** components represent the   offset of the `worldPoint` from the top left corner of the viewport,   in pixels for `Workspace.CurrentCamera`. For cameras inside a   `ViewportFrame`, the values are normalized to [0, 1]. The   `Vector3` **Z** component represents the depth of the   `worldPoint` from the screen (in studs).
      * -  A boolean indicating if the `worldPoint` is within the bounds of the   screen.
      */
     WorldToViewportPoint(this: Camera, worldPoint: Vector3): LuaTuple<[
@@ -32868,7 +33320,7 @@ interface Model extends PVInstance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model#GetModelCFrame)
      * @param this Models are container objects, meaning they group objects together. They are best used to hold collections of `BaseParts` and have a number of functions that extend their functionality.
      *
-     * @deprecated
+     * @deprecated GetPrimaryPartCFrame
      */
     GetModelCFrame(this: Model): CFrame;
     /**
@@ -32882,7 +33334,7 @@ interface Model extends PVInstance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model#GetModelSize)
      * @param this Models are container objects, meaning they group objects together. They are best used to hold collections of `BaseParts` and have a number of functions that extend their functionality.
      *
-     * @deprecated
+     * @deprecated GetExtentsSize
      */
     GetModelSize(this: Model): Vector3;
     /**
@@ -32906,7 +33358,7 @@ interface Model extends PVInstance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model#GetPrimaryPartCFrame)
      * @param this Models are container objects, meaning they group objects together. They are best used to hold collections of `BaseParts` and have a number of functions that extend their functionality.
      *
-     * @deprecated
+     * @deprecated GetPivot
      */
     GetPrimaryPartCFrame(this: Model): CFrame;
     /**
@@ -32964,7 +33416,7 @@ interface Model extends PVInstance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model#ResetOrientationToIdentity)
      * @param this Models are container objects, meaning they group objects together. They are best used to hold collections of `BaseParts` and have a number of functions that extend their functionality.
      *
-     * @deprecated
+     * @deprecated SetPrimaryPartCFrame
      */
     ResetOrientationToIdentity(this: Model): void;
     /**
@@ -32988,7 +33440,7 @@ interface Model extends PVInstance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model#SetIdentityOrientation)
      * @param this Models are container objects, meaning they group objects together. They are best used to hold collections of `BaseParts` and have a number of functions that extend their functionality.
      *
-     * @deprecated
+     * @deprecated SetPrimaryPartCFrame
      */
     SetIdentityOrientation(this: Model): void;
     /**
@@ -33003,7 +33455,7 @@ interface Model extends PVInstance {
      * @param this Models are container objects, meaning they group objects together. They are best used to hold collections of `BaseParts` and have a number of functions that extend their functionality.
      * @param cframe The `CFrame` to be set.
      *
-     * @deprecated
+     * @deprecated PivotTo
      */
     SetPrimaryPartCFrame(this: Model, cframe: CFrame): void;
     /**
@@ -33377,7 +33829,7 @@ interface WorldRoot extends Model {
      * @param ignoreWater
      * @returns The `BasePart` or `Terrain` cell hit, the `Vector3` point of intersection, the `Vector3` surface normal at the point of intersection, and the `Material` of the `BasePart` or terrain cell hit.
      *
-     * @deprecated
+     * @deprecated Raycast
      */
     FindPartOnRay(this: WorldRoot, ray: Ray, ignoreDescendantsInstance?: Instance, terrainCellsAreCubes?: boolean, ignoreWater?: boolean): LuaTuple<[
         BasePart | undefined,
@@ -33401,7 +33853,7 @@ interface WorldRoot extends Model {
      * @param ignoreWater
      * @returns The `BasePart` or `Terrain` cell hit, the `Vector3` point of intersection, the `Vector3` surface normal at the point of intersection, and the `Material` of the `BasePart` or terrain cell hit.
      *
-     * @deprecated
+     * @deprecated Raycast
      */
     FindPartOnRayWithIgnoreList(this: WorldRoot, ray: Ray, ignoreDescendantsTable: Array<Instance>, terrainCellsAreCubes?: boolean, ignoreWater?: boolean): LuaTuple<[
         BasePart | undefined,
@@ -33424,7 +33876,7 @@ interface WorldRoot extends Model {
      * @param ignoreWater
      * @returns The `BasePart` or `Terrain` cell hit, the `Vector3` point of intersection, the `Vector3` surface normal at the point of intersection, and the `Material` of the `BasePart` or terrain cell hit.
      *
-     * @deprecated
+     * @deprecated Raycast
      */
     FindPartOnRayWithWhitelist(this: WorldRoot, ray: Ray, whitelistDescendantsTable: Array<Instance>, ignoreWater?: boolean): LuaTuple<[
         BasePart | undefined,
@@ -33447,7 +33899,7 @@ interface WorldRoot extends Model {
      * @param maxParts The maximum amount of `BaseParts` to be returned.
      * @returns An array of `BaseParts` within the `Region3`.
      *
-     * @deprecated
+     * @deprecated GetPartBoundsInBox
      */
     FindPartsInRegion3(this: WorldRoot, region: Region3, ignoreDescendantsInstance?: Instance, maxParts?: number): Array<BasePart>;
     /**
@@ -33465,7 +33917,7 @@ interface WorldRoot extends Model {
      * @param maxParts The maximum number of `BaseParts` to be returned.
      * @returns An array of `BaseParts` found within the `Region3`.
      *
-     * @deprecated
+     * @deprecated GetPartBoundsInBox
      */
     FindPartsInRegion3WithIgnoreList(this: WorldRoot, region: Region3, ignoreDescendantsTable: Array<Instance>, maxParts?: number): Array<BasePart>;
     /**
@@ -33483,7 +33935,7 @@ interface WorldRoot extends Model {
      * @param maxParts The maximum number of `BaseParts` to be returned.
      * @returns An array of `BaseParts` within the `Region3`.
      *
-     * @deprecated
+     * @deprecated GetPartBoundsInBox
      */
     FindPartsInRegion3WithWhiteList(this: WorldRoot, region: Region3, whitelistDescendantsTable: Array<Instance>, maxParts?: number): Array<BasePart>;
     /**
@@ -33541,7 +33993,7 @@ interface WorldRoot extends Model {
      * @param ignoreDescendentsInstance An `Instance` to be ignored.
      * @returns True if the `Region3` is empty.
      *
-     * @deprecated
+     * @deprecated GetPartBoundsInBox
      */
     IsRegion3Empty(this: WorldRoot, region: Region3, ignoreDescendentsInstance?: Instance): boolean;
     /**
@@ -33558,7 +34010,7 @@ interface WorldRoot extends Model {
      * @param ignoreDescendentsTable An array of objects to be ignored.
      * @returns True if the `Region3` is empty.
      *
-     * @deprecated
+     * @deprecated GetPartBoundsInBox
      */
     IsRegion3EmptyWithIgnoreList(this: WorldRoot, region: Region3, ignoreDescendentsTable: Array<Instance>): boolean;
     /**
@@ -34529,7 +34981,7 @@ interface ParticleEmitter extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter#VelocitySpread)
      *
-     * @deprecated
+     * @deprecated SpreadAngle
      */
     VelocitySpread: number;
     /**
@@ -34567,6 +35019,20 @@ interface ParticleEmitter extends Instance {
      * @param particleCount The number of particles to emit.
      */
     Emit(this: ParticleEmitter, particleCount?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter#OnClearRequested)
+     */
+    readonly OnClearRequested: RBXScriptSignal<() => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter#OnEmitRequested)
+     */
+    readonly OnEmitRequested: RBXScriptSignal<(particleCount: number) => void>;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -34667,7 +35133,7 @@ interface Path extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path#GetPointCoordinates)
      * @param this Stores the result of paths created by `PathfindingService:CreatePath()`.
      *
-     * @deprecated
+     * @deprecated GetWaypoints
      */
     GetPointCoordinates(this: Path): Array<unknown>;
     /**
@@ -34851,7 +35317,7 @@ interface PathfindingService extends Instance {
      * @param maxDistance
      * @returns A `Path` object.
      *
-     * @deprecated
+     * @deprecated FindPathAsync
      */
     ComputeRawPathAsync(this: PathfindingService, start: Vector3, finish: Vector3, maxDistance: number): Path;
     /**
@@ -34868,7 +35334,7 @@ interface PathfindingService extends Instance {
      * @param finish
      * @param maxDistance
      *
-     * @deprecated
+     * @deprecated FindPathAsync
      */
     ComputeSmoothPathAsync(this: PathfindingService, start: Vector3, finish: Vector3, maxDistance: number): Path;
     /**
@@ -34972,7 +35438,7 @@ interface PhysicsService extends Instance {
      * @param name
      * @param part
      *
-     * @deprecated
+     * @deprecated CollisionGroup
      */
     CollisionGroupContainsPart(this: PhysicsService, name: string, part: BasePart): boolean;
     /**
@@ -35010,7 +35476,7 @@ interface PhysicsService extends Instance {
      * @param this
      * @param name
      *
-     * @deprecated
+     * @deprecated RegisterCollisionGroup
      */
     CreateCollisionGroup(this: PhysicsService, name: string): number;
     /**
@@ -35026,7 +35492,7 @@ interface PhysicsService extends Instance {
      * @param name The name of the collision group being retrieved.
      * @returns The ID of the retrieved collision group, or `nil` if no such group exists.
      *
-     * @deprecated
+     * @deprecated CollisionGroup
      */
     GetCollisionGroupId(this: PhysicsService, name: string): number;
     /**
@@ -35041,7 +35507,7 @@ interface PhysicsService extends Instance {
      * @param this
      * @param name
      *
-     * @deprecated
+     * @deprecated CollisionGroup
      */
     GetCollisionGroupName(this: PhysicsService, name: number): string;
     /**
@@ -35055,7 +35521,7 @@ interface PhysicsService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsService#GetCollisionGroups)
      * @param this
      *
-     * @deprecated
+     * @deprecated GetRegisteredCollisionGroups
      */
     GetCollisionGroups(this: PhysicsService): Array<CollisionGroupInfo & {
         id: number;
@@ -35110,7 +35576,7 @@ interface PhysicsService extends Instance {
      * @param this
      * @param name
      *
-     * @deprecated
+     * @deprecated UnregisterCollisionGroup
      */
     RemoveCollisionGroup(this: PhysicsService, name: string): void;
     /**
@@ -35137,7 +35603,7 @@ interface PhysicsService extends Instance {
      * @param part The part being set.
      * @param name The name of collision group that the part's collision group is being set to.
      *
-     * @deprecated
+     * @deprecated CollisionGroup
      */
     SetPartCollisionGroup(this: PhysicsService, part: BasePart, name: string): void;
     /**
@@ -35328,7 +35794,7 @@ interface Player extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#CharacterAppearance)
      *
-     * @deprecated
+     * @deprecated CharacterAppearanceId
      */
     CharacterAppearance: string;
     /**
@@ -35845,7 +36311,7 @@ interface Player extends Instance {
      * @param maxFriends The maximum number of online friends to return.
      * @returns A dictionary of online friends (see the table above).
      *
-     * @deprecated
+     * @deprecated GetFriendsOnlineAsync
      */
     GetFriendsOnline(this: Player, maxFriends?: number): Array<FriendOnlineInfo>;
     /**
@@ -35882,7 +36348,7 @@ interface Player extends Instance {
      * @param groupId The `groupId` of the specified group.
      * @returns The player's rank in the group.
      *
-     * @deprecated
+     * @deprecated GetRankInGroupAsync
      */
     GetRankInGroup(this: Player, groupId: number): number;
     /**
@@ -35898,7 +36364,7 @@ interface Player extends Instance {
      * @param groupId The `groupId` of the specified group.
      * @returns The player's rank in the group.
      *
-     * @deprecated
+     * @deprecated GetRolesInGroupAsync
      */
     GetRankInGroupAsync(this: Player, groupId: number): number;
     /**
@@ -35914,7 +36380,7 @@ interface Player extends Instance {
      * @param groupId The group ID of the specified group.
      * @returns The player's role in the specified group, or `Guest` if the player is not a member.
      *
-     * @deprecated
+     * @deprecated GetRoleInGroupAsync
      */
     GetRoleInGroup(this: Player, groupId: number): string;
     /**
@@ -35930,7 +36396,7 @@ interface Player extends Instance {
      * @param groupId The group ID of the specified group.
      * @returns The player's role in the specified group, or `Guest` if the player is not a member.
      *
-     * @deprecated
+     * @deprecated GetRolesInGroupAsync
      */
     GetRoleInGroupAsync(this: Player, groupId: number): string;
     /**
@@ -35961,7 +36427,7 @@ interface Player extends Instance {
      * @param userId The `Player.UserId` of the specified player.
      * @returns A boolean indicating whether a player is a friend of the specified user.
      *
-     * @deprecated
+     * @deprecated IsFriendsWithAsync
      */
     IsFriendsWith(this: Player, userId: User): boolean;
     /**
@@ -35989,7 +36455,7 @@ interface Player extends Instance {
      * @param groupId The group ID of the specified group.
      * @returns A boolean indicating whether the player is in the specified group.
      *
-     * @deprecated
+     * @deprecated IsInGroupAsync
      */
     IsInGroup(this: Player, groupId: number): boolean;
     /**
@@ -36015,7 +36481,7 @@ interface Player extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#LoadCharacter)
      * @param this An object that represents a presently connected client to the experience.
      *
-     * @deprecated
+     * @deprecated LoadCharacterAsync
      */
     LoadCharacter(this: Player): void;
     /**
@@ -36041,7 +36507,7 @@ interface Player extends Instance {
      * @param humanoidDescription A `HumanoidDescription` containing traits like body parts/colors, body scaling, accessories, clothing, and animations that will be equipped to the loaded character.
      * @param assetTypeVerification The asset type verification mode.
      *
-     * @deprecated
+     * @deprecated LoadCharacterWithHumanoidDescriptionAsync
      */
     LoadCharacterWithHumanoidDescription(this: Player, humanoidDescription: HumanoidDescription): void;
     /**
@@ -36582,7 +37048,7 @@ interface Players extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Players#NumPlayers)
      *
-     * @deprecated
+     * @deprecated GetPlayers
      */
     readonly NumPlayers: number;
     /**
@@ -36664,7 +37130,7 @@ interface Players extends Instance {
      * @param assetTypeVerification The asset type verification mode.
      * @returns A `Humanoid` character `Model`.
      *
-     * @deprecated
+     * @deprecated CreateHumanoidModelFromDescriptionAsync
      */
     CreateHumanoidModelFromDescription(this: Players, description: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): Model;
     /**
@@ -36694,7 +37160,7 @@ interface Players extends Instance {
      * @param userId The userId for a Roblox user. (The UserId is the number in the profile of the user e.g www.roblox.com/users/1/profile).
      * @returns A Humanoid character Model.
      *
-     * @deprecated
+     * @deprecated CreateHumanoidModelFromUserIdAsync
      */
     CreateHumanoidModelFromUserId(this: Players, userId: User): Model;
     /**
@@ -36772,7 +37238,7 @@ interface Players extends Instance {
      * @param outfitId The ID of the outfit for which the HumanoidDescription is sought.
      * @returns HumanoidDescription initialized with the specification for the passed in outfitId.
      *
-     * @deprecated
+     * @deprecated GetHumanoidDescriptionFromOutfitIdAsync
      */
     GetHumanoidDescriptionFromOutfitId(this: Players, outfitId: number): HumanoidDescription;
     /**
@@ -36800,7 +37266,7 @@ interface Players extends Instance {
      * @param userId The userId for a Roblox user. (The UserId is the number in the profile of the user e.g www.roblox.com/users/1/profile).
      * @returns HumanoidDescription initialized with the passed in user's avatar specification.
      *
-     * @deprecated
+     * @deprecated GetHumanoidDescriptionFromUserIdAsync
      */
     GetHumanoidDescriptionFromUserId(this: Players, userId: User): HumanoidDescription;
     /**
@@ -37030,6 +37496,21 @@ interface PolicyService extends Instance {
      * @returns A dictionary containing information about the policy information of the requested player; see above for the dictionary structure.
      */
     GetPolicyInfoForPlayerAsync(this: PolicyService, player: Player): PolicyInfo;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PopLatencyService)
+ */
+interface PopLatencyService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PopLatencyService: unique symbol;
 }
 /**
  * Base class of all 'Pose Instance' objects.
@@ -37840,6 +38321,13 @@ interface RealtimeMedia extends Instance {
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RealtimeMedia#AudioInputActive)
+     */
+    readonly AudioInputActive: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RealtimeMedia#IsConnected)
      */
     readonly IsConnected: boolean;
@@ -38213,6 +38701,34 @@ interface RemoteFunction<T extends Callback = Callback> extends Instance {
      * @returns Values returned from the `OnServerInvoke` callback.
      */
     InvokeServer(this: RemoteFunction, ...args: Parameters<T>): ReturnType<T>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteFunction#RemoteOnInvokeClient)
+     */
+    readonly RemoteOnInvokeClient: RBXScriptSignal<(id: number, arguments: unknown) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteFunction#RemoteOnInvokeError)
+     */
+    readonly RemoteOnInvokeError: RBXScriptSignal<(id: number, arguments: string) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteFunction#RemoteOnInvokeServer)
+     */
+    readonly RemoteOnInvokeServer: RBXScriptSignal<(id: number, player: Player, arguments: unknown) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteFunction#RemoteOnInvokeSuccess)
+     */
+    readonly RemoteOnInvokeSuccess: RBXScriptSignal<(id: number, arguments: unknown) => void>;
     /**
      * Callback for when the `RemoteFunction` is invoked with `InvokeClient()`.
      *
@@ -38733,12 +39249,6 @@ interface RuntimeContentService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RuntimeContentService#RuntimeContentLRCleanup)
-     */
-    readonly RuntimeContentLRCleanup: RBXScriptSignal<(id: string, priorityList: string) => void>;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RuntimeContentService#RuntimeContentQuery)
      */
     readonly RuntimeContentQuery: RBXScriptSignal<(id: string, expectedType: string, priorityList: string) => void>;
@@ -39008,7 +39518,7 @@ interface SyncScriptBuilder extends ScriptBuilder {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SyncScriptBuilder#RawBytecode)
      *
-     * @deprecated
+     * @deprecated CompileTarget
      */
     RawBytecode: boolean;
 }
@@ -39708,7 +40218,7 @@ interface DataModel extends ServiceProvider<Services> {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#VIPServerId)
      *
-     * @deprecated
+     * @deprecated PrivateServerId
      */
     readonly VIPServerId: string;
     /**
@@ -39721,7 +40231,7 @@ interface DataModel extends ServiceProvider<Services> {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#VIPServerOwnerId)
      *
-     * @deprecated
+     * @deprecated PrivateServerOwnerId
      */
     readonly VIPServerOwnerId: number;
     /**
@@ -39878,7 +40388,7 @@ interface DataModel extends ServiceProvider<Services> {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#OnClose)
      *
-     * @deprecated
+     * @deprecated BindToClose
      */
     OnClose: (() => unknown) | undefined;
 }
@@ -40506,7 +41016,7 @@ interface SocialService extends Instance {
      */
     GetUpcomingExperienceEventsAsync(this: SocialService): Array<unknown>;
     /**
-     * Prompts the player to submit feedback about the current experience.
+     * Prompts the player to submit feedback or a player support ticket about the current experience.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -40535,7 +41045,7 @@ interface SocialService extends Instance {
      *
      * @returns A tuple containing an `PromptLinkSharingResult` indicating the result of the link sharing prompt.
      *
-     * @deprecated
+     * @deprecated PromptLinkSharingAsync
      */
     PromptLinkSharing(this: SocialService, player: Player, options?: object): unknown;
     /**
@@ -40649,7 +41159,7 @@ interface Sound extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sound#EmitterSize)
      *
-     * @deprecated
+     * @deprecated RollOffMinDistance
      */
     EmitterSize: number;
     /**
@@ -40705,7 +41215,7 @@ interface Sound extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sound#MaxDistance)
      *
-     * @deprecated
+     * @deprecated RollOffMaxDistance
      */
     MaxDistance: number;
     /**
@@ -40718,7 +41228,7 @@ interface Sound extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sound#MinDistance)
      *
-     * @deprecated
+     * @deprecated RollOffMinDistance
      */
     MinDistance: number;
     /**
@@ -40731,7 +41241,7 @@ interface Sound extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sound#Pitch)
      *
-     * @deprecated
+     * @deprecated PlaybackSpeed
      */
     Pitch: number;
     /**
@@ -43508,7 +44018,7 @@ interface TeleportService extends Instance {
      * @param placeId The `DataModel.PlaceId` of the place the reserved server is being created for.
      * @returns The server access code required by `TeleportService:TeleportToPrivateServer()` and the `DataModel.PrivateServerId` for the reserved server.
      *
-     * @deprecated
+     * @deprecated ReserveServerAsync
      */
     ReserveServer(this: TeleportService, placeId: number): LuaTuple<[
         string,
@@ -43790,7 +44300,7 @@ interface TestService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Is30FpsThrottleEnabled)
      *
-     * @deprecated
+     * @deprecated ThrottlePhysicsToRealtime
      */
     Is30FpsThrottleEnabled: boolean;
     /**
@@ -45867,6 +46377,13 @@ interface Trail extends Instance {
      * @param this Used to create a trail effect between two attachments.
      */
     Clear(this: Trail): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Hidden
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Trail#OnClearRequested)
+     */
+    readonly OnClearRequested: RBXScriptSignal<() => void>;
 }
 /**
  * The role of a Translator is to manufacture/return strings localized for the viewing player.
@@ -47673,7 +48190,7 @@ interface UserInputService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#ModalEnabled)
      *
-     * @deprecated
+     * @deprecated TouchControlsEnabled
      */
     ModalEnabled: boolean;
     /**
