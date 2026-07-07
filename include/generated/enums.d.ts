@@ -27771,10 +27771,14 @@ declare namespace Enum {
     }
     export type ProximityPromptStyle = ProximityPromptStyle.Default | ProximityPromptStyle.Custom;
     /**
+     * Specifies the type of purchase option in a bulk purchase prompt.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PurchaseOption)
      */
     export namespace PurchaseOption {
         /**
+         * A timed ownership option. The `Value` field specifies the duration in seconds.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PurchaseOption#TimedOption)
          */
         export interface TimedOption extends globalThis.EnumItem {
@@ -27784,6 +27788,8 @@ declare namespace Enum {
         }
         export const TimedOption: TimedOption;
         /**
+         * A permanent ownership purchase option.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PurchaseOption#Permanent)
          */
         export interface Permanent extends globalThis.EnumItem {
@@ -30338,10 +30344,14 @@ declare namespace Enum {
     }
     export type SafeAreaCompatibility = SafeAreaCompatibility.None | SafeAreaCompatibility.FullscreenExtension;
     /**
+     * Filters catalog search results by sales type.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SalesTypeFilter)
      */
     export namespace SalesTypeFilter {
         /**
+         * Returns all items regardless of sales type.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SalesTypeFilter#All)
          */
         export interface All extends globalThis.EnumItem {
@@ -30351,6 +30361,8 @@ declare namespace Enum {
         }
         export const All: All;
         /**
+         * Returns only collectible items (Limited and Limited Unique).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SalesTypeFilter#Collectibles)
          */
         export interface Collectibles extends globalThis.EnumItem {
@@ -30360,6 +30372,8 @@ declare namespace Enum {
         }
         export const Collectibles: Collectibles;
         /**
+         * Returns only items with Premium pricing.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SalesTypeFilter#Premium)
          */
         export interface Premium extends globalThis.EnumItem {
@@ -30369,6 +30383,8 @@ declare namespace Enum {
         }
         export const Premium: Premium;
         /**
+         * Returns only items that have timed options available.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SalesTypeFilter#TimedOptions)
          */
         export interface TimedOptions extends globalThis.EnumItem {
