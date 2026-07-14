@@ -67,6 +67,7 @@ interface Services {
     DeviceIdService: DeviceIdService;
     DraggerService: DraggerService;
     EditableService: EditableService;
+    EditorSourceService: EditorSourceService;
     EncodingService: EncodingService;
     EventIngestService: EventIngestService;
     ExampleV2Service: ExampleV2Service;
@@ -3094,7 +3095,7 @@ interface AnalyticsService extends Instance {
     /**
      * **Deprecated:** This deprecated function is a variant of `AnalyticsService:LogEconomyEvent()` which should be used instead.
      *
-     * Fire an event used to track player actions pertaining to the in-game economy.
+     * Fire an event used to track player actions pertaining to the in-game
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
@@ -3215,6 +3216,12 @@ interface AnalyticsService extends Instance {
      * @param customFields Optional dictionary of custom fields that will provide breakdowns in Roblox-provided charts. Only specific keys, provided by `AnalyticsCustomFieldKeys`, will be used for these breakdowns. Limited to 8,000 unique combinations of values across the three custom fields per experience.
      */
     LogFunnelStepEvent(this: AnalyticsService, player: Player, funnelName: string, funnelSessionId?: string, step?: number, stepName?: string, customFields?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogJourneyEvent)
+     */
+    LogJourneyEvent(this: AnalyticsService, player: Player, journeyName: string, nodeName: string, journeySessionId?: string, customFields?: object): void;
     /**
      * Logs an event used to track user actions stepping through an onboarding funnel.
      *
@@ -7358,6 +7365,18 @@ interface AudioSpeechToText extends Instance {
      */
     GetConnectedWires(this: AudioSpeechToText, pin: string): Array<Instance>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSpeechToText#GetInputPins)
+     */
+    GetInputPins(this: AudioSpeechToText): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSpeechToText#GetOutputPins)
+     */
+    GetOutputPins(this: AudioSpeechToText): Array<unknown>;
+    /**
      * Fires when another instance is connected to or disconnected from the `AudioSpeechToText` via a `Wire`.
      *
      * - **ThreadSafety**: Unsafe
@@ -7481,6 +7500,18 @@ interface AudioTextToSpeech extends Instance {
      * @returns An array of `Wires`
      */
     GetConnectedWires(this: AudioTextToSpeech, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#GetInputPins)
+     */
+    GetInputPins(this: AudioTextToSpeech): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#GetOutputPins)
+     */
+    GetOutputPins(this: AudioTextToSpeech): Array<unknown>;
     /**
      * Pauses the `AudioTextToSpeech` object wherever its `TimePosition` is.
      *
@@ -8150,6 +8181,13 @@ interface AvatarCreationService extends Instance {
      * -  A secondary optional string result. In the case of   `PromptCreateAvatarResult.Success`, this will indicate the   outfit ID. In the case of any failure enum, this will be `nil`.
      */
     PromptCreateAvatarAsync(this: AvatarCreationService, tokenId: string, player: Player, humanoidDescription: HumanoidDescription): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#PromptCreateMakeupAsync)
+     */
+    PromptCreateMakeupAsync(this: AvatarCreationService, player: Player, makeupAssetEntries: Array<unknown>, thumbnailHeadColor?: Color3): unknown;
     /**
      * Prompt the `Player` to take a selfie and return the FileId.
      *
@@ -9555,7 +9593,7 @@ interface BasePlayerGui extends Instance {
      */
     readonly _nominal_BasePlayerGui: unique symbol;
     /**
-     * Returns a list of all `GuiObject` instances occupying the given point on the screen.
+     * Returns a list of all `GuiObject` instances occupying the given
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -10215,6 +10253,8 @@ interface Beam extends Instance {
      */
     LightInfluence: number;
     /**
+     * Determines a multiplier for `Beam.Transparency` that is only visible to the local client.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
      *
@@ -16759,6 +16799,21 @@ interface EditableService extends Instance {
     readonly _nominal_EditableService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditorSourceService)
+ */
+interface EditorSourceService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_EditorSourceService: unique symbol;
+}
+/**
  * Service providing common encoding, hashing, and compression methods.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -18403,6 +18458,13 @@ interface GlobalDataStore extends Instance {
      * @deprecated
      */
     OnUpdate(this: GlobalDataStore, key: string, callback: Callback): RBXScriptConnection;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GlobalDataStore#BatchGetAsync)
+     */
+    BatchGetAsync(this: GlobalDataStore, keys: Array<unknown>, options?: object): object;
     /**
      * Returns the value of a key in a specified data store and a `DataStoreKeyInfo` instance.
      *
@@ -20141,7 +20203,7 @@ interface TextLabel extends GuiLabel {
      */
     Text: string;
     /**
-     * Read-only property which reflects the absolute size of rendered text in offsets.
+     * Read-only property which reflects the absolute size of rendered text in
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -20249,7 +20311,7 @@ interface TextLabel extends GuiLabel {
      */
     TextWrap: boolean;
     /**
-     * Determines if text wraps to multiple lines within the `TextLabel` element's space, truncating excess text.
+     * Determines if text wraps to multiple lines within the `TextLabel`
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -26088,6 +26150,13 @@ interface InputAction extends Instance {
      */
     Enabled: boolean;
     /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#PreferredBinding)
+     */
+    readonly PreferredBinding: InputBinding | undefined;
+    /**
      * Specifies what type of input value the action is expecting.
      *
      * - **ThreadSafety**: ReadSafe
@@ -26175,6 +26244,18 @@ interface InputBinding extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#ClampMagnitudeToOne)
      */
     ClampMagnitudeToOne: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#DisplayImage)
+     */
+    DisplayImage: Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#DisplayName)
+     */
+    DisplayName: string;
     /**
      * Specifies an alternate `KeyCode` for dispatching directionally "down" inputs to the parent `InputAction`.
      *
@@ -36061,10 +36142,14 @@ interface Player extends Instance {
      */
     DistanceFromCharacter(this: Player, point: Vector3): number;
     /**
+     * Returns a dictionary containing the player's current camera state.
+     *
      * - **ThreadSafety**: Safe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#GetCameraState)
+     * @param this An object that represents a presently connected client to the experience.
+     * @returns A dictionary containing `CFrame`, `FieldOfView`, and `ViewportSize` values.
      */
     GetCameraState(this: Player): object;
     /**
@@ -36417,7 +36502,7 @@ interface Player extends Instance {
     /**
      * **Deprecated:** This method has been superseded by the `Player:IsFriendsWithAsync()` method which should be used for new work.
      *
-     * Checks whether a player is a friend of the user with the given `Player.UserId`.
+     * Checks whether a player is a friend of the user with the given
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -40202,13 +40287,6 @@ interface DataModel extends ServiceProvider<Services> {
      */
     readonly PrivateServerOwnerId: number;
     /**
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#RunService)
-     */
-    readonly RunService: RunService | undefined;
-    /**
      * **Deprecated:** This property has been deprecated. Use `DataModel.PrivateServerId` instead.
      *
      * A string that could identify the current server as a private server.
@@ -40243,6 +40321,13 @@ interface DataModel extends ServiceProvider<Services> {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#Workspace)
      */
     readonly Workspace: Workspace;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#RunService)
+     */
+    readonly RunService: RunService | undefined;
     /**
      * Binds a function to be called before the server shuts down.
      *
@@ -45954,7 +46039,7 @@ interface TextService extends Instance {
      */
     FilterAndTranslateStringAsync(this: TextService, stringToFilter: string, fromUserId: number, targetLocales: Array<unknown>, textContext?: CastsToEnum<Enum.TextFilterContext>): TextFilterTranslatedResult;
     /**
-     * Filters a string being received from a user and returns a `TextFilterResult` which can be used to distribute the correctly filtered text accordingly.
+     * Filters a string being received from a user and returns a
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields

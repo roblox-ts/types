@@ -26845,6 +26845,42 @@ declare namespace Enum {
     }
     export type PredictionStatus = PredictionStatus.Authoritative | PredictionStatus.Predicted | PredictionStatus.None;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictiveStreamingMode)
+     */
+    export namespace PredictiveStreamingMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictiveStreamingMode#Default)
+         */
+        export interface Default extends globalThis.EnumItem {
+            Name: "Default";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PredictiveStreamingMode;
+        }
+        export const Default: Default;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictiveStreamingMode#Enabled)
+         */
+        export interface Enabled extends globalThis.EnumItem {
+            Name: "Enabled";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PredictiveStreamingMode;
+        }
+        export const Enabled: Enabled;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictiveStreamingMode#Disabled)
+         */
+        export interface Disabled extends globalThis.EnumItem {
+            Name: "Disabled";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PredictiveStreamingMode;
+        }
+        export const Disabled: Disabled;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PredictiveStreamingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PredictiveStreamingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PredictiveStreamingMode | undefined;
+    }
+    export type PredictiveStreamingMode = PredictiveStreamingMode.Default | PredictiveStreamingMode.Enabled | PredictiveStreamingMode.Disabled;
+    /**
      * This enum is used with `UserInputService.PreferredInput` to indicate the primary input type a player is likely using.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput)
@@ -27499,6 +27535,78 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PromptCreateAvatarResult | undefined;
     }
     export type PromptCreateAvatarResult = PromptCreateAvatarResult.Success | PromptCreateAvatarResult.PermissionDenied | PromptCreateAvatarResult.Timeout | PromptCreateAvatarResult.UploadFailed | PromptCreateAvatarResult.NoUserInput | PromptCreateAvatarResult.InvalidHumanoidDescription | PromptCreateAvatarResult.UGCValidationFailed | PromptCreateAvatarResult.ModeratedName | PromptCreateAvatarResult.MaxOutfits | PromptCreateAvatarResult.PurchaseFailure | PromptCreateAvatarResult.UnknownFailure | PromptCreateAvatarResult.TokenInvalid;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult)
+     */
+    export namespace PromptCreateOutfitResult {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#Success)
+         */
+        export interface Success extends globalThis.EnumItem {
+            Name: "Success";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const Success: Success;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#PartialSuccess)
+         */
+        export interface PartialSuccess extends globalThis.EnumItem {
+            Name: "PartialSuccess";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const PartialSuccess: PartialSuccess;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#CreationFailure)
+         */
+        export interface CreationFailure extends globalThis.EnumItem {
+            Name: "CreationFailure";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const CreationFailure: CreationFailure;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#PermissionDenied)
+         */
+        export interface PermissionDenied extends globalThis.EnumItem {
+            Name: "PermissionDenied";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const PermissionDenied: PermissionDenied;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#Timeout)
+         */
+        export interface Timeout extends globalThis.EnumItem {
+            Name: "Timeout";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const Timeout: Timeout;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#NoUserInput)
+         */
+        export interface NoUserInput extends globalThis.EnumItem {
+            Name: "NoUserInput";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const NoUserInput: NoUserInput;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#UnknownFailure)
+         */
+        export interface UnknownFailure extends globalThis.EnumItem {
+            Name: "UnknownFailure";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const UnknownFailure: UnknownFailure;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PromptCreateOutfitResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PromptCreateOutfitResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PromptCreateOutfitResult | undefined;
+    }
+    export type PromptCreateOutfitResult = PromptCreateOutfitResult.Success | PromptCreateOutfitResult.PartialSuccess | PromptCreateOutfitResult.CreationFailure | PromptCreateOutfitResult.PermissionDenied | PromptCreateOutfitResult.Timeout | PromptCreateOutfitResult.NoUserInput | PromptCreateOutfitResult.UnknownFailure;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptExperienceDetailsResult)
      */
@@ -30917,10 +31025,14 @@ declare namespace Enum {
     }
     export type ScreenOrientation = ScreenOrientation.LandscapeLeft | ScreenOrientation.LandscapeRight | ScreenOrientation.LandscapeSensor | ScreenOrientation.Portrait | ScreenOrientation.Sensor;
     /**
+     * Describes the result of a screenshot capture initiated by `CaptureService:TakeScreenshotCaptureAsync()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult)
      */
     export namespace ScreenshotCaptureResult {
         /**
+         * The screenshot capture completed successfully.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult#Success)
          */
         export interface Success extends globalThis.EnumItem {
@@ -30930,6 +31042,8 @@ declare namespace Enum {
         }
         export const Success: Success;
         /**
+         * The screenshot capture failed due to an unspecified error.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult#OtherError)
          */
         export interface OtherError extends globalThis.EnumItem {
@@ -30939,6 +31053,8 @@ declare namespace Enum {
         }
         export const OtherError: OtherError;
         /**
+         * The device does not support screenshot captures.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult#NoDeviceSupport)
          */
         export interface NoDeviceSupport extends globalThis.EnumItem {
@@ -30948,6 +31064,8 @@ declare namespace Enum {
         }
         export const NoDeviceSupport: NoDeviceSupport;
         /**
+         * The device does not have enough storage space to save the screenshot capture.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult#NoSpaceOnDevice)
          */
         export interface NoSpaceOnDevice extends globalThis.EnumItem {
@@ -32213,24 +32331,6 @@ declare namespace Enum {
         }
         export const Meshes: Meshes;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#MeshResourcePtr)
-         */
-        export interface MeshResourcePtr extends globalThis.EnumItem {
-            Name: "MeshResourcePtr";
-            Value: 3;
-            EnumType: typeof globalThis.Enum.SlimTintMode;
-        }
-        export const MeshResourcePtr: MeshResourcePtr;
-        /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#ContentId)
-         */
-        export interface ContentId extends globalThis.EnumItem {
-            Name: "ContentId";
-            Value: 4;
-            EnumType: typeof globalThis.Enum.SlimTintMode;
-        }
-        export const ContentId: ContentId;
-        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#Zone)
          */
         export interface Zone extends globalThis.EnumItem {
@@ -32243,7 +32343,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SlimTintMode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SlimTintMode | undefined;
     }
-    export type SlimTintMode = SlimTintMode.None | SlimTintMode.LOD | SlimTintMode.Meshes | SlimTintMode.MeshResourcePtr | SlimTintMode.ContentId | SlimTintMode.Zone;
+    export type SlimTintMode = SlimTintMode.None | SlimTintMode.LOD | SlimTintMode.Meshes | SlimTintMode.Zone;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolidPrimitiveType)
      */
