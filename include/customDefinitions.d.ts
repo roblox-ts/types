@@ -152,13 +152,11 @@ interface CaptureService extends Instance {
 interface CatalogPages extends Pages<SearchCatalogResult> {}
 
 interface OutfitPages
-	extends Pages<
-		ReadonlyArray<{
-			Id: number;
-			Name: string;
-			IsEditable: boolean;
-		}>
-	> {}
+	extends Pages<{
+		Id: number;
+		Name: string;
+		IsEditable: boolean;
+	}> {}
 
 interface BadgeService extends Instance {
 	/** @server */
