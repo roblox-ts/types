@@ -71,6 +71,7 @@ interface Services {
     DeviceIdService: DeviceIdService;
     DraggerService: DraggerService;
     EditableService: EditableService;
+    EditorSourceService: EditorSourceService;
     EncodingService: EncodingService;
     EventIngestService: EventIngestService;
     ExampleV2Service: ExampleV2Service;
@@ -4960,6 +4961,21 @@ interface EditableService extends Instance {
      * @deprecated
      */
     readonly _nominal_EditableService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditorSourceService)
+ */
+interface EditorSourceService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_EditorSourceService: unique symbol;
 }
 /**
  * Service providing common encoding, hashing, and compression methods.
@@ -11252,25 +11268,25 @@ interface Plugin extends Instance {
      */
     ImportFbxRigAsync(this: Plugin, isR15?: boolean): Instance | undefined;
     /**
-     * Opens a window in Roblox Studio which prompts the user to select an asset based on the `assetType` specified.
+     * Opens a window in Roblox Studio that prompts the user to select an existing `AssetType.Animation` asset. The `assetType` parameter must be `Animation`; other values are not supported and cause an error.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptForExistingAssetId)
      * @param this
-     * @param assetType
+     * @param assetType The asset type to browse. Only `Animation` is supported.
      */
     PromptForExistingAssetId(this: Plugin, assetType: string): number;
     /**
-     * Opens a window in Roblox Studio which prompts the user to select an asset based on the `assetType` specified.
+     * Opens a window in Roblox Studio that prompts the user to select an existing `AssetType.Animation` asset. The `assetType` parameter must be `Animation`; other values are not supported and cause an error.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptForExistingAssetIdAsync)
      * @param this
-     * @param assetType
+     * @param assetType The asset type to browse. Only `Animation` is supported.
      */
     PromptForExistingAssetIdAsync(this: Plugin, assetType: string): number;
     /**
@@ -13020,6 +13036,13 @@ interface ScriptDocument extends Instance {
      * @param anchorCharacter
      */
     RequestSetSelectionAsync(this: ScriptDocument, cursorLine: number, cursorCharacter: number, anchorLine?: number, anchorCharacter?: number): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#ReviewableTextEditsAsync)
+     */
+    ReviewableTextEditsAsync(this: ScriptDocument, changes: Array<unknown>): unknown;
     /**
      * Fires when the ScriptDocument changes, including immediately after a text change.
      *
