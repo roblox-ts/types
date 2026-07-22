@@ -127,6 +127,7 @@ interface Services {
     LogReporterService: LogReporterService;
     LogService: LogService;
     LuaSettings: LuaSettings;
+    LuauExpressionService: LuauExpressionService;
     LuauScriptAnalyzerService: LuauScriptAnalyzerService;
     MarketplaceService: MarketplaceService;
     MatchmakingService: MatchmakingService;
@@ -154,6 +155,7 @@ interface Services {
     PerformanceControlService: PerformanceControlService;
     PhysicsService: PhysicsService;
     PhysicsSettings: PhysicsSettings;
+    PinShortcutService: PinShortcutService;
     PlaceAssetIdsService: PlaceAssetIdsService;
     PlacesService: PlacesService;
     PlaceStatsService: PlaceStatsService;
@@ -184,6 +186,7 @@ interface Services {
     RenderSettings: RenderSettings;
     ReplicatedFirst: ReplicatedFirst;
     ReplicatedStorage: ReplicatedStorage;
+    RequestOrchestratorService: RequestOrchestratorService;
     RibbonNotificationService: RibbonNotificationService;
     RobloxPluginGuiService: RobloxPluginGuiService;
     RobloxServerStorage: RobloxServerStorage;
@@ -283,6 +286,7 @@ interface Services {
     VRStatusService: VRStatusService;
     WebSocketService: WebSocketService;
     WebViewService: WebViewService;
+    WindowProtocolService: WindowProtocolService;
     Workspace: Workspace;
     WrapDeformMeshProvider: WrapDeformMeshProvider;
 }
@@ -475,6 +479,7 @@ interface CreatableInstances {
     ParticleEmitter: ParticleEmitter;
     PartOperation: PartOperation;
     Path2D: Path2D;
+    Path3D: Path3D;
     PathfindingLink: PathfindingLink;
     PathfindingModifier: PathfindingModifier;
     PitchShiftSoundEffect: PitchShiftSoundEffect;
@@ -816,6 +821,7 @@ interface Objects extends Instances {
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
     ExecutedRemoteCommand: ExecutedRemoteCommand;
+    LuauExpression: LuauExpression;
     MLSession: MLSession;
     Object: RBXObject;
     OutputLink: OutputLink;
@@ -6089,7 +6095,7 @@ interface GameSettings extends Instance {
      */
     readonly _nominal_GameSettings: unique symbol;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This property is deprecated. Do not use it for new work.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**:
@@ -6342,7 +6348,7 @@ interface GuiObject extends GuiBase2d {
     readonly _nominal_GuiObject: unique symbol;
 }
 /**
- * Blends descendants as a group with color/transparency.
+ * Blends descendants as a flattened group with an optional color/transparency modification.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CanvasGroup)
  */
@@ -8466,6 +8472,21 @@ interface ModuleScript extends LuaSourceContainer {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuauExpressionService)
+ */
+interface LuauExpressionService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_LuauExpressionService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuauScriptAnalyzerService)
  */
 interface LuauScriptAnalyzerService extends Instance {
@@ -9857,7 +9878,7 @@ interface Workspace extends WorldRoot {
      */
     ApplyRecommendedStreamingSettings(this: Workspace): boolean;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method is deprecated. Do not use it for new work.
      *
      * Goes through all `BaseParts` given, breaking any joints connected to these parts.
      *
@@ -9872,7 +9893,7 @@ interface Workspace extends WorldRoot {
      */
     readonly BreakJoints: never;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method is deprecated. Do not use it for new work.
      *
      * Goes through all `BaseParts` given. If any part's side has a `SurfaceType` that can make a joint it will create a joint with any adjacent parts.
      *
@@ -10313,6 +10334,19 @@ interface Path extends Instance {
     readonly _nominal_Path: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path3D)
+ */
+interface Path3D extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Path3D: unique symbol;
+}
+/**
  * Connects two locations which otherwise by default are unconnected.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PathfindingLink)
@@ -10655,6 +10689,21 @@ interface PhysicsSettings extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#UseCSGv2)
      */
     UseCSGv2: boolean;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PinShortcutService)
+ */
+interface PinShortcutService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PinShortcutService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -12269,6 +12318,21 @@ interface ReplicatedStorage extends Instance {
      * @deprecated
      */
     readonly _nominal_ReplicatedStorage: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RequestOrchestratorService)
+ */
+interface RequestOrchestratorService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RequestOrchestratorService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -16459,7 +16523,7 @@ interface TestService extends Instance {
      */
     readonly _nominal_TestService: unique symbol;
     /**
-     * **Deprecated:**
+     * **Deprecated:** Use `RunAsync()` instead.
      *
      * Runs scripts which are parented to `TestService`.
      *
@@ -17990,6 +18054,21 @@ interface WeldConstraint extends Instance {
     readonly _nominal_WeldConstraint: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WindowProtocolService)
+ */
+interface WindowProtocolService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WindowProtocolService: unique symbol;
+}
+/**
  * Connects one or more `Instances` to form a processing graph of their streams. At the moment, only audio streams are supported, but this may expand in the future.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Wire)
@@ -18033,6 +18112,21 @@ interface WrapTextureTransfer extends Instance {
      * @deprecated
      */
     readonly _nominal_WrapTextureTransfer: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuauExpression)
+ */
+interface LuauExpression extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_LuauExpression: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
