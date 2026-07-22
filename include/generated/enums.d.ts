@@ -11959,6 +11959,60 @@ declare namespace Enum {
     }
     export type DisplaySize = DisplaySize.Small | DisplaySize.Medium | DisplaySize.Large;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DistanceAttenuationMode)
+     */
+    export namespace DistanceAttenuationMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DistanceAttenuationMode#Custom)
+         */
+        export interface Custom extends globalThis.EnumItem {
+            Name: "Custom";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.DistanceAttenuationMode;
+        }
+        export const Custom: Custom;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DistanceAttenuationMode#InverseTapered)
+         */
+        export interface InverseTapered extends globalThis.EnumItem {
+            Name: "InverseTapered";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.DistanceAttenuationMode;
+        }
+        export const InverseTapered: InverseTapered;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DistanceAttenuationMode#Linear)
+         */
+        export interface Linear extends globalThis.EnumItem {
+            Name: "Linear";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.DistanceAttenuationMode;
+        }
+        export const Linear: Linear;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DistanceAttenuationMode#LinearSquared)
+         */
+        export interface LinearSquared extends globalThis.EnumItem {
+            Name: "LinearSquared";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.DistanceAttenuationMode;
+        }
+        export const LinearSquared: LinearSquared;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DistanceAttenuationMode#Inverse)
+         */
+        export interface Inverse extends globalThis.EnumItem {
+            Name: "Inverse";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.DistanceAttenuationMode;
+        }
+        export const Inverse: Inverse;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DistanceAttenuationMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DistanceAttenuationMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DistanceAttenuationMode | undefined;
+    }
+    export type DistanceAttenuationMode = DistanceAttenuationMode.Custom | DistanceAttenuationMode.InverseTapered | DistanceAttenuationMode.Linear | DistanceAttenuationMode.LinearSquared | DistanceAttenuationMode.Inverse;
+    /**
      * Specifies the type of domain that a `User` is scoped to.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DomainType)
@@ -18426,20 +18480,18 @@ declare namespace Enum {
      */
     export namespace KeyCode {
         /**
-         * Blank value that represents no key being pressed.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Unknown)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#None)
          */
-        export interface Unknown extends globalThis.EnumItem {
-            Name: "Unknown";
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
             Value: 0;
             EnumType: typeof globalThis.Enum.KeyCode;
         }
-        export const Unknown: Unknown;
+        export const None: None;
         /**
-         * @deprecated renamed to Unknown
+         * @deprecated renamed to None
          */
-        export const None: Unknown;
+        export const Unknown: None;
         /**
          * The `Backspace` key.
          *
@@ -21480,11 +21532,65 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.KeyCode;
         }
         export const TouchPinch: TouchPinch;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonCenter)
+         */
+        export interface ButtonCenter extends globalThis.EnumItem {
+            Name: "ButtonCenter";
+            Value: 1051;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const ButtonCenter: ButtonCenter;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonBack)
+         */
+        export interface ButtonBack extends globalThis.EnumItem {
+            Name: "ButtonBack";
+            Value: 1052;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const ButtonBack: ButtonBack;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonUp)
+         */
+        export interface ButtonUp extends globalThis.EnumItem {
+            Name: "ButtonUp";
+            Value: 1053;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const ButtonUp: ButtonUp;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonDown)
+         */
+        export interface ButtonDown extends globalThis.EnumItem {
+            Name: "ButtonDown";
+            Value: 1054;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const ButtonDown: ButtonDown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonLeft)
+         */
+        export interface ButtonLeft extends globalThis.EnumItem {
+            Name: "ButtonLeft";
+            Value: 1055;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const ButtonLeft: ButtonLeft;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonRight)
+         */
+        export interface ButtonRight extends globalThis.EnumItem {
+            Name: "ButtonRight";
+            Value: 1056;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const ButtonRight: ButtonRight;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.KeyCode>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.KeyCode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.KeyCode | undefined;
     }
-    export type KeyCode = KeyCode.Unknown | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95 | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.NumLock | KeyCode.CapsLock | KeyCode.ScrollLock | KeyCode.RightShift | KeyCode.LeftShift | KeyCode.RightControl | KeyCode.LeftControl | KeyCode.RightAlt | KeyCode.LeftAlt | KeyCode.RightMeta | KeyCode.LeftMeta | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2 | KeyCode.Thumbstick1Up | KeyCode.Thumbstick1Down | KeyCode.Thumbstick1Left | KeyCode.Thumbstick1Right | KeyCode.Thumbstick2Up | KeyCode.Thumbstick2Down | KeyCode.Thumbstick2Left | KeyCode.Thumbstick2Right | KeyCode.MouseLeftButton | KeyCode.MouseRightButton | KeyCode.MouseMiddleButton | KeyCode.MouseBackButton | KeyCode.MouseNoButton | KeyCode.MouseX | KeyCode.MouseY | KeyCode.MousePosition | KeyCode.TouchPosition | KeyCode.MouseWheel | KeyCode.TrackpadPan | KeyCode.TrackpadPinch | KeyCode.MouseDelta | KeyCode.TouchDelta | KeyCode.TouchPinch;
+    export type KeyCode = KeyCode.None | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95 | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.NumLock | KeyCode.CapsLock | KeyCode.ScrollLock | KeyCode.RightShift | KeyCode.LeftShift | KeyCode.RightControl | KeyCode.LeftControl | KeyCode.RightAlt | KeyCode.LeftAlt | KeyCode.RightMeta | KeyCode.LeftMeta | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2 | KeyCode.Thumbstick1Up | KeyCode.Thumbstick1Down | KeyCode.Thumbstick1Left | KeyCode.Thumbstick1Right | KeyCode.Thumbstick2Up | KeyCode.Thumbstick2Down | KeyCode.Thumbstick2Left | KeyCode.Thumbstick2Right | KeyCode.MouseLeftButton | KeyCode.MouseRightButton | KeyCode.MouseMiddleButton | KeyCode.MouseBackButton | KeyCode.MouseNoButton | KeyCode.MouseX | KeyCode.MouseY | KeyCode.MousePosition | KeyCode.TouchPosition | KeyCode.MouseWheel | KeyCode.TrackpadPan | KeyCode.TrackpadPinch | KeyCode.MouseDelta | KeyCode.TouchDelta | KeyCode.TouchPinch | KeyCode.ButtonCenter | KeyCode.ButtonBack | KeyCode.ButtonUp | KeyCode.ButtonDown | KeyCode.ButtonLeft | KeyCode.ButtonRight;
     /**
      * Determines the string format returned by `UserInputService:GetStringForKeyCode()`.
      *
@@ -21595,6 +21701,24 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.KeywordFilterType | undefined;
     }
     export type KeywordFilterType = KeywordFilterType.Include | KeywordFilterType.Exclude;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KnownWindow)
+     */
+    export namespace KnownWindow {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KnownWindow#Main)
+         */
+        export interface Main extends globalThis.EnumItem {
+            Name: "Main";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.KnownWindow;
+        }
+        export const Main: Main;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.KnownWindow>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.KnownWindow | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.KnownWindow | undefined;
+    }
+    export type KnownWindow = KnownWindow.Main;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Language)
      */
@@ -25785,6 +25909,42 @@ declare namespace Enum {
     }
     export type PhysicsSteppingMethod = PhysicsSteppingMethod.Default | PhysicsSteppingMethod.Fixed | PhysicsSteppingMethod.Adaptive;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PioneerSource)
+     */
+    export namespace PioneerSource {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PioneerSource#Roblox)
+         */
+        export interface Roblox extends globalThis.EnumItem {
+            Name: "Roblox";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PioneerSource;
+        }
+        export const Roblox: Roblox;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PioneerSource#DaveyBazooka)
+         */
+        export interface DaveyBazooka extends globalThis.EnumItem {
+            Name: "DaveyBazooka";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PioneerSource;
+        }
+        export const DaveyBazooka: DaveyBazooka;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PioneerSource#Oof)
+         */
+        export interface Oof extends globalThis.EnumItem {
+            Name: "Oof";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PioneerSource;
+        }
+        export const Oof: Oof;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PioneerSource>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PioneerSource | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PioneerSource | undefined;
+    }
+    export type PioneerSource = PioneerSource.Roblox | PioneerSource.DaveyBazooka | PioneerSource.Oof;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlaceContentPreference)
      */
     export namespace PlaceContentPreference {
@@ -26919,11 +27079,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.PreferredInput;
         }
         export const Touch: Touch;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#MicroGamepad)
+         */
+        export interface MicroGamepad extends globalThis.EnumItem {
+            Name: "MicroGamepad";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.PreferredInput;
+        }
+        export const MicroGamepad: MicroGamepad;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PreferredInput>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PreferredInput | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PreferredInput | undefined;
     }
-    export type PreferredInput = PreferredInput.KeyboardAndMouse | PreferredInput.Gamepad | PreferredInput.Touch;
+    export type PreferredInput = PreferredInput.KeyboardAndMouse | PreferredInput.Gamepad | PreferredInput.Touch | PreferredInput.MicroGamepad;
     /**
      * This enum is used with `GuiService.PreferredTextSize` to indicate the player's preferred text size.
      *
@@ -32300,10 +32469,14 @@ declare namespace Enum {
     }
     export type SizeConstraint = SizeConstraint.RelativeXY | SizeConstraint.RelativeXX | SizeConstraint.RelativeYY;
     /**
+     * Determines the color-coding mode used by the SLIM debug tint overlay in the Developer Console.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode)
      */
     export namespace SlimTintMode {
         /**
+         * No tint is applied. Meshes render with their normal appearance.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -32313,6 +32486,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * Colors each mesh by its current level of detail using a blue-to-red heatmap. Blue indicates the lowest detail and warmer colors indicate higher detail. Useful for verifying that distant meshes are streaming at reduced fidelity.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#LOD)
          */
         export interface LOD extends globalThis.EnumItem {
@@ -32322,6 +32497,8 @@ declare namespace Enum {
         }
         export const LOD: LOD;
         /**
+         * Assigns a distinct color to each individual mesh within a model. Useful for identifying mesh boundaries and verifying how a model is split into separate mesh parts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#Meshes)
          */
         export interface Meshes extends globalThis.EnumItem {
@@ -32331,6 +32508,8 @@ declare namespace Enum {
         }
         export const Meshes: Meshes;
         /**
+         * Colors meshes by streaming zone. Green indicates the high-fidelity zone where the DataModel is present.; yellow indicates the low-fidelity zone where the DataModel is absent).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#Zone)
          */
         export interface Zone extends globalThis.EnumItem {
@@ -37481,6 +37660,69 @@ declare namespace Enum {
     }
     export type TickCountSampleMethod = TickCountSampleMethod.Fast | TickCountSampleMethod.Benchmark | TickCountSampleMethod.Precise;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarControlsPosition)
+     */
+    export namespace TitleBarControlsPosition {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarControlsPosition#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.TitleBarControlsPosition;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarControlsPosition#Left)
+         */
+        export interface Left extends globalThis.EnumItem {
+            Name: "Left";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.TitleBarControlsPosition;
+        }
+        export const Left: Left;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarControlsPosition#Right)
+         */
+        export interface Right extends globalThis.EnumItem {
+            Name: "Right";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.TitleBarControlsPosition;
+        }
+        export const Right: Right;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TitleBarControlsPosition>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TitleBarControlsPosition | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TitleBarControlsPosition | undefined;
+    }
+    export type TitleBarControlsPosition = TitleBarControlsPosition.Unknown | TitleBarControlsPosition.Left | TitleBarControlsPosition.Right;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarMode)
+     */
+    export namespace TitleBarMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarMode#Native)
+         */
+        export interface Native extends globalThis.EnumItem {
+            Name: "Native";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.TitleBarMode;
+        }
+        export const Native: Native;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarMode#Custom)
+         */
+        export interface Custom extends globalThis.EnumItem {
+            Name: "Custom";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.TitleBarMode;
+        }
+        export const Custom: Custom;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TitleBarMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TitleBarMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TitleBarMode | undefined;
+    }
+    export type TitleBarMode = TitleBarMode.Native | TitleBarMode.Custom;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TonemapperPreset)
      */
     export namespace TonemapperPreset {
@@ -38819,6 +39061,114 @@ declare namespace Enum {
     }
     export type UsageContext = UsageContext.Default | UsageContext.Preview;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource)
+     */
+    export namespace UserAcquisitionSource {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#PendingAttribution)
+         */
+        export interface PendingAttribution extends globalThis.EnumItem {
+            Name: "PendingAttribution";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const PendingAttribution: PendingAttribution;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#HomeRecommendation)
+         */
+        export interface HomeRecommendation extends globalThis.EnumItem {
+            Name: "HomeRecommendation";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const HomeRecommendation: HomeRecommendation;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#ContinueToPlay)
+         */
+        export interface ContinueToPlay extends globalThis.EnumItem {
+            Name: "ContinueToPlay";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const ContinueToPlay: ContinueToPlay;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Curation)
+         */
+        export interface Curation extends globalThis.EnumItem {
+            Name: "Curation";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Curation: Curation;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Friends)
+         */
+        export interface Friends extends globalThis.EnumItem {
+            Name: "Friends";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Friends: Friends;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Search)
+         */
+        export interface Search extends globalThis.EnumItem {
+            Name: "Search";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Search: Search;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Teleport)
+         */
+        export interface Teleport extends globalThis.EnumItem {
+            Name: "Teleport";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Teleport: Teleport;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Ads)
+         */
+        export interface Ads extends globalThis.EnumItem {
+            Name: "Ads";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Ads: Ads;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#HomeOther)
+         */
+        export interface HomeOther extends globalThis.EnumItem {
+            Name: "HomeOther";
+            Value: 9;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const HomeOther: HomeOther;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Other)
+         */
+        export interface Other extends globalThis.EnumItem {
+            Name: "Other";
+            Value: 10;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Other: Other;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UserAcquisitionSource>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UserAcquisitionSource | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserAcquisitionSource | undefined;
+    }
+    export type UserAcquisitionSource = UserAcquisitionSource.Unknown | UserAcquisitionSource.PendingAttribution | UserAcquisitionSource.HomeRecommendation | UserAcquisitionSource.ContinueToPlay | UserAcquisitionSource.Curation | UserAcquisitionSource.Friends | UserAcquisitionSource.Search | UserAcquisitionSource.Teleport | UserAcquisitionSource.Ads | UserAcquisitionSource.HomeOther | UserAcquisitionSource.Other;
+    /**
      * Determines what body part is being tracked by a VR device, and what its CFrame actually is.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserCFrame)
@@ -38871,6 +39221,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserCFrame | undefined;
     }
     export type UserCFrame = UserCFrame.Head | UserCFrame.LeftHand | UserCFrame.RightHand | UserCFrame.Floor;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserIdMode)
+     */
+    export namespace UserIdMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserIdMode#Invalid)
+         */
+        export interface Invalid extends globalThis.EnumItem {
+            Name: "Invalid";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.UserIdMode;
+        }
+        export const Invalid: Invalid;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserIdMode#Global)
+         */
+        export interface Global extends globalThis.EnumItem {
+            Name: "Global";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.UserIdMode;
+        }
+        export const Global: Global;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserIdMode#Domain)
+         */
+        export interface Domain extends globalThis.EnumItem {
+            Name: "Domain";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.UserIdMode;
+        }
+        export const Domain: Domain;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UserIdMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UserIdMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserIdMode | undefined;
+    }
+    export type UserIdMode = UserIdMode.Invalid | UserIdMode.Global | UserIdMode.Domain;
     /**
      * This enum describes the state of an input that is currently or was recently performed.
      *
@@ -39179,6 +39565,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserInputType | undefined;
     }
     export type UserInputType = UserInputType.MouseButton1 | UserInputType.MouseButton2 | UserInputType.MouseButton3 | UserInputType.MouseWheel | UserInputType.MouseMovement | UserInputType.Touch | UserInputType.Keyboard | UserInputType.Focus | UserInputType.Accelerometer | UserInputType.Gyro | UserInputType.Gamepad1 | UserInputType.Gamepad2 | UserInputType.Gamepad3 | UserInputType.Gamepad4 | UserInputType.Gamepad5 | UserInputType.Gamepad6 | UserInputType.Gamepad7 | UserInputType.Gamepad8 | UserInputType.TextInput | UserInputType.InputMethod | UserInputType.None;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserReturnStatus)
+     */
+    export namespace UserReturnStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserReturnStatus#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.UserReturnStatus;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserReturnStatus#New)
+         */
+        export interface New extends globalThis.EnumItem {
+            Name: "New";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.UserReturnStatus;
+        }
+        export const New: New;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserReturnStatus#Returning)
+         */
+        export interface Returning extends globalThis.EnumItem {
+            Name: "Returning";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.UserReturnStatus;
+        }
+        export const Returning: Returning;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UserReturnStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UserReturnStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserReturnStatus | undefined;
+    }
+    export type UserReturnStatus = UserReturnStatus.Unknown | UserReturnStatus.New | UserReturnStatus.Returning;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRComfortSetting)
      */
@@ -40985,6 +41407,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WhisperChatPrivacyMode | undefined;
     }
     export type WhisperChatPrivacyMode = WhisperChatPrivacyMode.AllUsers | WhisperChatPrivacyMode.NoOne;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindowState)
+     */
+    export namespace WindowState {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindowState#Normal)
+         */
+        export interface Normal extends globalThis.EnumItem {
+            Name: "Normal";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.WindowState;
+        }
+        export const Normal: Normal;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindowState#Minimized)
+         */
+        export interface Minimized extends globalThis.EnumItem {
+            Name: "Minimized";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.WindowState;
+        }
+        export const Minimized: Minimized;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindowState#Maximized)
+         */
+        export interface Maximized extends globalThis.EnumItem {
+            Name: "Maximized";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.WindowState;
+        }
+        export const Maximized: Maximized;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WindowState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WindowState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WindowState | undefined;
+    }
+    export type WindowState = WindowState.Normal | WindowState.Minimized | WindowState.Maximized;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerAutoSkin)
      */
