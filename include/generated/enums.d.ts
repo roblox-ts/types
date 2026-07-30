@@ -2744,6 +2744,33 @@ declare namespace Enum {
     }
     export type AppUpdateStatus = AppUpdateStatus.Unknown | AppUpdateStatus.NotSupported | AppUpdateStatus.Failed | AppUpdateStatus.NotAvailable | AppUpdateStatus.Available | AppUpdateStatus.AvailableBoundChannel | AppUpdateStatus.AvailableBetaProgram;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ApplyShadowMode)
+     */
+    export namespace ApplyShadowMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ApplyShadowMode#Shape)
+         */
+        export interface Shape extends globalThis.EnumItem {
+            Name: "Shape";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ApplyShadowMode;
+        }
+        export const Shape: Shape;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ApplyShadowMode#Text)
+         */
+        export interface Text extends globalThis.EnumItem {
+            Name: "Text";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ApplyShadowMode;
+        }
+        export const Text: Text;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ApplyShadowMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ApplyShadowMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ApplyShadowMode | undefined;
+    }
+    export type ApplyShadowMode = ApplyShadowMode.Shape | ApplyShadowMode.Text;
+    /**
      * Used by `UIStroke.ApplyStrokeMode` to determine where to apply the stroke.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ApplyStrokeMode)
@@ -3584,15 +3611,6 @@ declare namespace Enum {
         }
         export const EyeMakeup: EyeMakeup;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#VoxelFragment)
-         */
-        export interface VoxelFragment extends globalThis.EnumItem {
-            Name: "VoxelFragment";
-            Value: 91;
-            EnumType: typeof globalThis.Enum.AssetType;
-        }
-        export const VoxelFragment: VoxelFragment;
-        /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#AvatarBackground)
          */
         export interface AvatarBackground extends globalThis.EnumItem {
@@ -3614,7 +3632,7 @@ declare namespace Enum {
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AssetType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AssetType | undefined;
     }
-    export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.FontFamily | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.MoodAnimation | AssetType.DynamicHead | AssetType.FaceMakeup | AssetType.LipMakeup | AssetType.EyeMakeup | AssetType.VoxelFragment | AssetType.AvatarBackground | AssetType.TextDocument;
+    export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.FontFamily | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.MoodAnimation | AssetType.DynamicHead | AssetType.FaceMakeup | AssetType.LipMakeup | AssetType.EyeMakeup | AssetType.AvatarBackground | AssetType.TextDocument;
     /**
      * Determines the asset type verification mode.
      *
@@ -15834,6 +15852,42 @@ declare namespace Enum {
     }
     export type GearType = GearType.MeleeWeapons | GearType.RangedWeapons | GearType.Explosives | GearType.PowerUps | GearType.NavigationEnhancers | GearType.MusicalInstruments | GearType.SocialItems | GearType.BuildingTools | GearType.Transport;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GenerateMomentTextResult)
+     */
+    export namespace GenerateMomentTextResult {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GenerateMomentTextResult#Success)
+         */
+        export interface Success extends globalThis.EnumItem {
+            Name: "Success";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.GenerateMomentTextResult;
+        }
+        export const Success: Success;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GenerateMomentTextResult#Pending)
+         */
+        export interface Pending extends globalThis.EnumItem {
+            Name: "Pending";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.GenerateMomentTextResult;
+        }
+        export const Pending: Pending;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GenerateMomentTextResult#Failed)
+         */
+        export interface Failed extends globalThis.EnumItem {
+            Name: "Failed";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.GenerateMomentTextResult;
+        }
+        export const Failed: Failed;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GenerateMomentTextResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.GenerateMomentTextResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GenerateMomentTextResult | undefined;
+    }
+    export type GenerateMomentTextResult = GenerateMomentTextResult.Success | GenerateMomentTextResult.Pending | GenerateMomentTextResult.Failed;
+    /**
      * **Deprecated:**
      *
      * Used to represent the type of game.
@@ -18249,11 +18303,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.InternalVideoUsage;
         }
         export const HomeCarousel: HomeCarousel;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InternalVideoUsage#FeatureTileAd)
+         */
+        export interface FeatureTileAd extends globalThis.EnumItem {
+            Name: "FeatureTileAd";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.InternalVideoUsage;
+        }
+        export const FeatureTileAd: FeatureTileAd;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InternalVideoUsage>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.InternalVideoUsage | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InternalVideoUsage | undefined;
     }
-    export type InternalVideoUsage = InternalVideoUsage.Default | InternalVideoUsage.WatchPage | InternalVideoUsage.HomeCarousel;
+    export type InternalVideoUsage = InternalVideoUsage.Default | InternalVideoUsage.WatchPage | InternalVideoUsage.HomeCarousel | InternalVideoUsage.FeatureTileAd;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InterpolationThrottlingMode)
      */
@@ -23511,6 +23574,60 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MembershipType | undefined;
     }
     export type MembershipType = MembershipType.None | MembershipType.BuildersClub | MembershipType.TurboBuildersClub | MembershipType.OutrageousBuildersClub | MembershipType.Premium;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshAttribute)
+     */
+    export namespace MeshAttribute {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshAttribute#Vertex)
+         */
+        export interface Vertex extends globalThis.EnumItem {
+            Name: "Vertex";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.MeshAttribute;
+        }
+        export const Vertex: Vertex;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshAttribute#Normal)
+         */
+        export interface Normal extends globalThis.EnumItem {
+            Name: "Normal";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.MeshAttribute;
+        }
+        export const Normal: Normal;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshAttribute#Color)
+         */
+        export interface Color extends globalThis.EnumItem {
+            Name: "Color";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.MeshAttribute;
+        }
+        export const Color: Color;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshAttribute#UV)
+         */
+        export interface UV extends globalThis.EnumItem {
+            Name: "UV";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.MeshAttribute;
+        }
+        export const UV: UV;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshAttribute#Face)
+         */
+        export interface Face extends globalThis.EnumItem {
+            Name: "Face";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.MeshAttribute;
+        }
+        export const Face: Face;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MeshAttribute>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MeshAttribute | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MeshAttribute | undefined;
+    }
+    export type MeshAttribute = MeshAttribute.Vertex | MeshAttribute.Normal | MeshAttribute.Color | MeshAttribute.UV | MeshAttribute.Face;
     /**
      * The level of detail of `MeshParts` displayed in Studio.
      *
@@ -39565,6 +39682,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserInputType | undefined;
     }
     export type UserInputType = UserInputType.MouseButton1 | UserInputType.MouseButton2 | UserInputType.MouseButton3 | UserInputType.MouseWheel | UserInputType.MouseMovement | UserInputType.Touch | UserInputType.Keyboard | UserInputType.Focus | UserInputType.Accelerometer | UserInputType.Gyro | UserInputType.Gamepad1 | UserInputType.Gamepad2 | UserInputType.Gamepad3 | UserInputType.Gamepad4 | UserInputType.Gamepad5 | UserInputType.Gamepad6 | UserInputType.Gamepad7 | UserInputType.Gamepad8 | UserInputType.TextInput | UserInputType.InputMethod | UserInputType.None;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserNewReturningStatus)
+     */
+    export namespace UserNewReturningStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserNewReturningStatus#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.UserNewReturningStatus;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserNewReturningStatus#New)
+         */
+        export interface New extends globalThis.EnumItem {
+            Name: "New";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.UserNewReturningStatus;
+        }
+        export const New: New;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserNewReturningStatus#Returning)
+         */
+        export interface Returning extends globalThis.EnumItem {
+            Name: "Returning";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.UserNewReturningStatus;
+        }
+        export const Returning: Returning;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UserNewReturningStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UserNewReturningStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserNewReturningStatus | undefined;
+    }
+    export type UserNewReturningStatus = UserNewReturningStatus.Unknown | UserNewReturningStatus.New | UserNewReturningStatus.Returning;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserReturnStatus)
      */
