@@ -420,6 +420,7 @@ interface CreatableInstances {
     ImageHandleAdornment: ImageHandleAdornment;
     ImageLabel: ImageLabel;
     InputAction: InputAction;
+    InputActionLabel: InputActionLabel;
     InputBinding: InputBinding;
     InputContext: InputContext;
     IntConstrainedValue: IntConstrainedValue;
@@ -1283,6 +1284,69 @@ interface EditableMesh extends RBXObject {
      * @returns Stable vertex ID of the new vertex.
      */
     AddVertex(this: EditableMesh, p: Vector3): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#BatchAdd)
+     */
+    BatchAdd(this: EditableMesh, attr: CastsToEnum<Enum.MeshAttribute>, data: Array<unknown>): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#BatchGetFaceAttributes)
+     */
+    BatchGetFaceAttributes(this: EditableMesh, attr: CastsToEnum<Enum.MeshAttribute>, faceIds: Array<unknown>): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#BatchGetValues)
+     */
+    BatchGetValues(this: EditableMesh, ids: Array<unknown>): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#BatchGetVertexAttributes)
+     */
+    BatchGetVertexAttributes(this: EditableMesh, attr: CastsToEnum<Enum.MeshAttribute>, vertexIds: Array<unknown>): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#BatchGetVertexFaceAttributes)
+     */
+    BatchGetVertexFaceAttributes(this: EditableMesh, attr: CastsToEnum<Enum.MeshAttribute>, vertexIds: Array<unknown>, faceIds: Array<unknown>): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#BatchRemove)
+     */
+    BatchRemove(this: EditableMesh, ids: Array<unknown>): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#BatchSetFaceAttributes)
+     */
+    BatchSetFaceAttributes(this: EditableMesh, faceIds: Array<unknown>, attrIdArrays: Array<unknown>): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#BatchSetValues)
+     */
+    BatchSetValues(this: EditableMesh, ids: Array<unknown>, values: Array<unknown>): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#BatchSetVertexFaceAttributes)
+     */
+    BatchSetVertexFaceAttributes(this: EditableMesh, vertexIds: Array<unknown>, faceIds: Array<unknown>, attrIds: Array<unknown>): void;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: NotBrowsable
@@ -3984,6 +4048,8 @@ interface Animator extends Instance {
      */
     readonly _nominal_Animator: unique symbol;
     /**
+     * Indicates whether animation evaluation was throttled (skipped) this frame for this `Animator`.
+     *
      * - **ThreadSafety**: Safe
      * - **Tags**: NotReplicated
      *
@@ -3991,6 +4057,8 @@ interface Animator extends Instance {
      */
     readonly EvaluationThrottled: boolean;
     /**
+     * Controls whether animation LOD throttling is allowed for this `Animator`. When set to `false`, animations always evaluate at full fidelity.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animator#PreferLodEnabled)
@@ -4017,7 +4085,7 @@ interface Animator extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animator#ApplyJointVelocities)
      * @param this Responsible for the playback and replication of `Animations`.
-     * @param motors
+     * @param motors An array of `Motor6D` instances to compute and apply velocities for.
      */
     ApplyJointVelocities(this: Animator, motors: Array<Motor6D>): void;
     /**
@@ -4054,8 +4122,6 @@ interface Animator extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animator#RegisterEvaluationParallelCallback)
-     * @param this Responsible for the playback and replication of `Animations`.
-     * @param callback
      */
     RegisterEvaluationParallelCallback(this: Animator, callback: Callback): void;
     /**
@@ -8309,6 +8375,12 @@ interface AvatarCreationService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#AvatarModerationCompleted)
      */
     readonly AvatarModerationCompleted: RBXScriptSignal<(outfitId: number, moderationStatus: Enum.ModerationStatus) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCreationService#AvatarOutfitModerationCompleted)
+     */
+    readonly AvatarOutfitModerationCompleted: RBXScriptSignal<(outfitId: number, moderationStatus: Enum.ModerationStatus, outfitType: Enum.OutfitType) => void>;
 }
 /**
  * A service to support developer Avatar Editors.
@@ -9267,9 +9339,21 @@ interface MaterialImportData extends BaseImportData {
     /**
      * - **ThreadSafety**: ReadSafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialImportData#DiffuseVersionedAssetId)
+     */
+    DiffuseVersionedAssetId: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialImportData#EmissiveFilePath)
      */
     EmissiveFilePath: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialImportData#EmissiveVersionedAssetId)
+     */
+    EmissiveVersionedAssetId: number;
     /**
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -9286,15 +9370,33 @@ interface MaterialImportData extends BaseImportData {
     /**
      * - **ThreadSafety**: ReadSafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialImportData#MetalnessVersionedAssetId)
+     */
+    MetalnessVersionedAssetId: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialImportData#NormalFilePath)
      */
     NormalFilePath: string;
     /**
      * - **ThreadSafety**: ReadSafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialImportData#NormalVersionedAssetId)
+     */
+    NormalVersionedAssetId: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialImportData#RoughnessFilePath)
      */
     RoughnessFilePath: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MaterialImportData#RoughnessVersionedAssetId)
+     */
+    RoughnessVersionedAssetId: number;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -9439,6 +9541,12 @@ interface MeshImportData extends BaseImportData {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshImportData#UseImportedPivot)
      */
     UseImportedPivot: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshImportData#VersionedAssetId)
+     */
+    VersionedAssetId: number;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -20382,6 +20490,93 @@ interface TextLabel extends GuiLabel {
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextLabel#TextYAlignment)
+     */
+    TextYAlignment: Enum.TextYAlignment;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel)
+ */
+interface InputActionLabel extends GuiObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InputActionLabel: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel#FontFace)
+     */
+    FontFace: Font;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel#ImageColor3)
+     */
+    ImageColor3: Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel#ImageTransparency)
+     */
+    ImageTransparency: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel#InputAction)
+     */
+    InputAction: InputAction | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel#ResolvedImageContent)
+     */
+    readonly ResolvedImageContent: Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel#ResolvedText)
+     */
+    readonly ResolvedText: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel#TextColor3)
+     */
+    TextColor3: Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel#TextSize)
+     */
+    TextSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel#TextTransparency)
+     */
+    TextTransparency: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel#TextWrapped)
+     */
+    TextWrapped: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel#TextXAlignment)
+     */
+    TextXAlignment: Enum.TextXAlignment;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel#TextYAlignment)
      */
     TextYAlignment: Enum.TextYAlignment;
 }
@@ -44769,9 +44964,16 @@ interface TestService extends Instance {
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#FetchTestControlsAsync)
+     */
+    FetchTestControlsAsync(this: TestService, category: string): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RequestValidationAsync)
      */
-    RequestValidationAsync(this: TestService, artifactType: string, artifactName: string): unknown;
+    RequestValidationAsync(this: TestService, artifactType: string, artifactName: string, timeoutSeconds?: number): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -47405,12 +47607,14 @@ interface UIGradient extends UIComponent {
     Rotation: number;
     /**
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotBrowsable
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIGradient#Scale)
      */
     Scale: number;
     /**
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotBrowsable
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIGradient#TileMode)
      */
@@ -47425,6 +47629,7 @@ interface UIGradient extends UIComponent {
     Transparency: NumberSequence;
     /**
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotBrowsable
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIGradient#Type)
      */
@@ -47965,6 +48170,12 @@ interface UIShadow extends UIComponent {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#Enabled)
      */
     Enabled: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow#Mode)
+     */
+    Mode: Enum.ApplyShadowMode;
     /**
      * Moves the shadow relative to the parent's position.
      *

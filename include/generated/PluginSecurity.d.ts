@@ -442,6 +442,7 @@ interface CreatableInstances {
     ImageHandleAdornment: ImageHandleAdornment;
     ImageLabel: ImageLabel;
     InputAction: InputAction;
+    InputActionLabel: InputActionLabel;
     InputBinding: InputBinding;
     InputContext: InputContext;
     IntConstrainedValue: IntConstrainedValue;
@@ -6470,6 +6471,19 @@ interface TextLabel extends GuiLabel {
      * @deprecated
      */
     readonly _nominal_TextLabel: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel)
+ */
+interface InputActionLabel extends GuiObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InputActionLabel: unique symbol;
 }
 /**
  * - **Tags**: NotReplicated
