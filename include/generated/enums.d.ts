@@ -3620,6 +3620,8 @@ declare namespace Enum {
         }
         export const AvatarBackground: AvatarBackground;
         /**
+         * The asset is a text document.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#TextDocument)
          */
         export interface TextDocument extends globalThis.EnumItem {
@@ -10223,6 +10225,51 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CustomCameraMode | undefined;
     }
     export type CustomCameraMode = CustomCameraMode.Default | CustomCameraMode.Classic | CustomCameraMode.Follow;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelChangeType)
+     */
+    export namespace DataModelChangeType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelChangeType#Add)
+         */
+        export interface Add extends globalThis.EnumItem {
+            Name: "Add";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.DataModelChangeType;
+        }
+        export const Add: Add;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelChangeType#Remove)
+         */
+        export interface Remove extends globalThis.EnumItem {
+            Name: "Remove";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.DataModelChangeType;
+        }
+        export const Remove: Remove;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelChangeType#Modify)
+         */
+        export interface Modify extends globalThis.EnumItem {
+            Name: "Modify";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.DataModelChangeType;
+        }
+        export const Modify: Modify;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelChangeType#AddPackage)
+         */
+        export interface AddPackage extends globalThis.EnumItem {
+            Name: "AddPackage";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.DataModelChangeType;
+        }
+        export const AddPackage: AddPackage;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DataModelChangeType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DataModelChangeType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DataModelChangeType | undefined;
+    }
+    export type DataModelChangeType = DataModelChangeType.Add | DataModelChangeType.Remove | DataModelChangeType.Modify | DataModelChangeType.AddPackage;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelExtractorFileType)
      */
@@ -21596,6 +21643,8 @@ declare namespace Enum {
         }
         export const TouchPinch: TouchPinch;
         /**
+         * TV remote `Center` button.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonCenter)
          */
         export interface ButtonCenter extends globalThis.EnumItem {
@@ -21605,6 +21654,8 @@ declare namespace Enum {
         }
         export const ButtonCenter: ButtonCenter;
         /**
+         * TV remote `Back` button.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonBack)
          */
         export interface ButtonBack extends globalThis.EnumItem {
@@ -21614,6 +21665,8 @@ declare namespace Enum {
         }
         export const ButtonBack: ButtonBack;
         /**
+         * `MicroGamepad` (including TV remotes) `Up` directional button.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonUp)
          */
         export interface ButtonUp extends globalThis.EnumItem {
@@ -21623,6 +21676,8 @@ declare namespace Enum {
         }
         export const ButtonUp: ButtonUp;
         /**
+         * `MicroGamepad` (including TV remotes) `Down` directional button.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonDown)
          */
         export interface ButtonDown extends globalThis.EnumItem {
@@ -21632,6 +21687,8 @@ declare namespace Enum {
         }
         export const ButtonDown: ButtonDown;
         /**
+         * `MicroGamepad` (including TV remotes) `Left` directional button.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonLeft)
          */
         export interface ButtonLeft extends globalThis.EnumItem {
@@ -21641,6 +21698,8 @@ declare namespace Enum {
         }
         export const ButtonLeft: ButtonLeft;
         /**
+         * `MicroGamepad` (including TV remotes) `Right` directional button.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonRight)
          */
         export interface ButtonRight extends globalThis.EnumItem {
@@ -27197,6 +27256,8 @@ declare namespace Enum {
         }
         export const Touch: Touch;
         /**
+         * The player has connected or most recently interacted with a gamepad without a thumbstick (for example, a TV remote or another limited-input gamepad), and no standard gamepad is currently connected.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#MicroGamepad)
          */
         export interface MicroGamepad extends globalThis.EnumItem {
@@ -32640,6 +32701,94 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SlimTintMode | undefined;
     }
     export type SlimTintMode = SlimTintMode.None | SlimTintMode.LOD | SlimTintMode.Meshes | SlimTintMode.Zone;
+    /**
+     * Describes the backend transcoding state of a SLIM model, from upload through transcoding to success or failure.
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus)
+     */
+    export namespace SlimTranscoderStatus {
+        /**
+         * The transcoding status has not yet been determined. This is the initial state before the model has been queried. Shown as magenta in the debug tint overlay.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.SlimTranscoderStatus;
+        }
+        export const Unknown: Unknown;
+        /**
+         * The model is SLIM-enabled but does not yet have a generated hash, so transcoding has not been requested. Shown as cyan in the debug tint overlay.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus#NoHash)
+         */
+        export interface NoHash extends globalThis.EnumItem {
+            Name: "NoHash";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.SlimTranscoderStatus;
+        }
+        export const NoHash: NoHash;
+        /**
+         * The model's property set has not been uploaded to the content-delivery network. Shown as orange in the debug tint overlay.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus#NotUploaded)
+         */
+        export interface NotUploaded extends globalThis.EnumItem {
+            Name: "NotUploaded";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.SlimTranscoderStatus;
+        }
+        export const NotUploaded: NotUploaded;
+        /**
+         * The property set has been uploaded to the content-delivery network but has not yet been transcoded into SLIM assets. Shown as yellow in the debug tint overlay.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus#Uploaded)
+         */
+        export interface Uploaded extends globalThis.EnumItem {
+            Name: "Uploaded";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.SlimTranscoderStatus;
+        }
+        export const Uploaded: Uploaded;
+        /**
+         * SLIM transcoding is currently in progress on the backend. The model is expected to transition to Succeeded or Failed once transcoding completes. Shown as blue in the debug tint overlay.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus#InProgress)
+         */
+        export interface InProgress extends globalThis.EnumItem {
+            Name: "InProgress";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.SlimTranscoderStatus;
+        }
+        export const InProgress: InProgress;
+        /**
+         * Transcoding completed successfully and the SLIM assets are available for streaming. Shown as green in the debug tint overlay.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus#Succeeded)
+         */
+        export interface Succeeded extends globalThis.EnumItem {
+            Name: "Succeeded";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.SlimTranscoderStatus;
+        }
+        export const Succeeded: Succeeded;
+        /**
+         * Transcoding did not complete successfully. Shown as red in the debug tint overlay.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus#Failed)
+         */
+        export interface Failed extends globalThis.EnumItem {
+            Name: "Failed";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.SlimTranscoderStatus;
+        }
+        export const Failed: Failed;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SlimTranscoderStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SlimTranscoderStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SlimTranscoderStatus | undefined;
+    }
+    export type SlimTranscoderStatus = SlimTranscoderStatus.Unknown | SlimTranscoderStatus.NoHash | SlimTranscoderStatus.NotUploaded | SlimTranscoderStatus.Uploaded | SlimTranscoderStatus.InProgress | SlimTranscoderStatus.Succeeded | SlimTranscoderStatus.Failed;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolidPrimitiveType)
      */
@@ -40170,6 +40319,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VelocityConstraintMode | undefined;
     }
     export type VelocityConstraintMode = VelocityConstraintMode.Line | VelocityConstraintMode.Plane | VelocityConstraintMode.Vector;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerifiedLevel)
+     */
+    export namespace VerifiedLevel {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerifiedLevel#Low)
+         */
+        export interface Low extends globalThis.EnumItem {
+            Name: "Low";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.VerifiedLevel;
+        }
+        export const Low: Low;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerifiedLevel#High)
+         */
+        export interface High extends globalThis.EnumItem {
+            Name: "High";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.VerifiedLevel;
+        }
+        export const High: High;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VerifiedLevel>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VerifiedLevel | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VerifiedLevel | undefined;
+    }
+    export type VerifiedLevel = VerifiedLevel.Low | VerifiedLevel.High;
     /**
      * Used by `UIGridStyleLayout.VerticalAlignment` to align the layout vertically within its parent.
      *

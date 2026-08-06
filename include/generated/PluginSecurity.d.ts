@@ -707,6 +707,7 @@ interface Instances extends Services, CreatableInstances {
     LuaSourceContainer: LuaSourceContainer;
     ManualSurfaceJointInstance: ManualSurfaceJointInstance;
     MaterialImportData: MaterialImportData;
+    MemoryStoreDistributedCounter: MemoryStoreDistributedCounter;
     MemoryStoreHashMap: MemoryStoreHashMap;
     MemoryStoreHashMapPages: MemoryStoreHashMapPages;
     MemoryStoreQueue: MemoryStoreQueue;
@@ -819,6 +820,7 @@ interface Objects extends Instances {
     AnimationNode: AnimationNode;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
+    DataModelDiff: DataModelDiff;
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
     ExecutedRemoteCommand: ExecutedRemoteCommand;
@@ -939,6 +941,21 @@ interface ConfigSnapshot extends RBXObject {
      * @deprecated
      */
     readonly _nominal_ConfigSnapshot: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModelDiff)
+ */
+interface DataModelDiff extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_DataModelDiff: unique symbol;
 }
 /**
  * Object which allows for the runtime creation and manipulation of images.
@@ -6473,6 +6490,8 @@ interface TextLabel extends GuiLabel {
     readonly _nominal_TextLabel: unique symbol;
 }
 /**
+ * A `GuiObject` that automatically displays the keybinding for an action as text or an image.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel)
  */
 interface InputActionLabel extends GuiObject {
@@ -7247,6 +7266,8 @@ interface HarmonyService extends Instance {
     readonly _nominal_HarmonyService: unique symbol;
 }
 /**
+ * Provides methods which return Luau heap memory usage summaries on client and server.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService)
@@ -7261,20 +7282,24 @@ interface HeapProfilerService extends Instance {
      */
     readonly _nominal_HeapProfilerService: unique symbol;
     /**
+     * Returns a summary of Luau heap memory usage for the requested player's client.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService#ClientRequestDataAsync)
-     * @param this
+     * @param this Provides methods which return Luau heap memory usage summaries on client and server.
      * @param player
      */
     ClientRequestDataAsync(this: HeapProfilerService, player: Player): string;
     /**
+     * Returns a summary of Luau heap memory usage on the client.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService#ServerRequestDataAsync)
-     * @param this
+     * @param this Provides methods which return Luau heap memory usage summaries on client and server.
      */
     ServerRequestDataAsync(this: HeapProfilerService): string;
     /**
@@ -8430,7 +8455,7 @@ interface BaseScript extends LuaSourceContainer {
      */
     readonly _nominal_BaseScript: unique symbol;
     /**
-     * Determines the context under which the script will run.
+     * Determines the context under which the script runs.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -8755,6 +8780,21 @@ interface MemStorageConnection extends Instance {
      * @param this
      */
     Disconnect(this: MemStorageConnection): void;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreDistributedCounter)
+ */
+interface MemoryStoreDistributedCounter extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_MemoryStoreDistributedCounter: unique symbol;
 }
 /**
  * Provides access to a hash map within `MemoryStoreService`.
@@ -10483,6 +10523,8 @@ interface PhysicsService extends Instance {
     readonly _nominal_PhysicsService: unique symbol;
 }
 /**
+ * Lets you view debugging features in Roblox's physics engine, found under the Physics tab in Studio's settings menu.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings)
@@ -10577,6 +10619,8 @@ interface PhysicsSettings extends Instance {
      */
     AreModelCoordsShown: boolean;
     /**
+     * When set to true, parts that are not `BasePart.Anchored` will be highlighted.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreNonAnchorsShown)
@@ -10607,6 +10651,8 @@ interface PhysicsSettings extends Instance {
      */
     AreRegionsShown: boolean;
     /**
+     * When set to true, shows terrain replication streaming regions.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreTerrainReplicationRegionsShown)
@@ -10637,12 +10683,16 @@ interface PhysicsSettings extends Instance {
      */
     DisableCSGv2: boolean;
     /**
+     * When set to true, disables CSGv3 for plugin solid modeling operations.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#DisableCSGv3ForPlugins)
      */
     DisableCSGv3ForPlugins: boolean;
     /**
+     * When set to true, forces the use of CSGv2 for solid modeling operations.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
      *
@@ -10650,6 +10700,8 @@ interface PhysicsSettings extends Instance {
      */
     ForceCSGv2: boolean;
     /**
+     * When set to true, shows physics interpolation throttle information.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#IsInterpolationThrottleShown)
@@ -13631,16 +13683,6 @@ interface DataModel extends ServiceProvider<Services> {
      */
     readonly _nominal_DataModel: unique symbol;
     /**
-     * Returns a table containing basic information about the jobs performed by the task scheduler.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#GetJobsInfo)
-     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
-     * @returns A table containing information about the jobs performed by the task scheduler, see above for the format.
-     */
-    GetJobsInfo(this: DataModel): Array<unknown>;
-    /**
      * Sets the `DataModel.PlaceId` of the current game instance.
      *
      * - **ThreadSafety**: Unsafe
@@ -13660,6 +13702,16 @@ interface DataModel extends ServiceProvider<Services> {
      * @param universeId The ID to set the `DataModel.GameId` to.
      */
     SetUniverseId(this: DataModel, universeId: number): void;
+    /**
+     * Returns a table containing basic information about the jobs performed by the task scheduler.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#GetJobsInfo)
+     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
+     * @returns A table containing information about the jobs performed by the task scheduler, see above for the format.
+     */
+    GetJobsInfo(this: DataModel): Array<unknown>;
     /**
      * Returns an array of `Instances` associated with the given content URL.
      *
@@ -14519,18 +14571,24 @@ interface Studio extends Instance {
      */
     readonly _nominal_Studio: unique symbol;
     /**
+     * Sets the action Studio takes when stopping file sync.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#ActionOnStopSync)
      */
     ActionOnStopSync: Enum.ActionOnStopSync;
     /**
+     * Sets the color of active UI elements in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Active Color)
      */
     "Active Color": Color3;
     /**
+     * Sets the color of active UI elements when hovered in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Active Hover Over Color)
@@ -14565,36 +14623,48 @@ interface Studio extends Instance {
      */
     "Animation Skeleton Transparency": number;
     /**
+     * Controls whether trailing whitespace is automatically removed from empty lines in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Clean Empty Line)
      */
     "Auto Clean Empty Line": boolean;
     /**
+     * Controls whether the script editor automatically inserts a matching closing bracket.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Closing Brackets)
      */
     "Auto Closing Brackets": boolean;
     /**
+     * Controls whether the script editor automatically inserts a matching closing quote.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Closing Quotes)
      */
     "Auto Closing Quotes": boolean;
     /**
+     * Controls whether deleting an opening bracket or quote also removes its closing counterpart.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Delete Closing Brackets and Quotes)
      */
     "Auto Delete Closing Brackets and Quotes": boolean;
     /**
+     * Sets the rule used to determine automatic indentation in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Indent Rule)
      */
     "Auto Indent Rule": Enum.AutoIndentRule;
     /**
+     * Controls whether Studio automatically saves recovery files at a set interval.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto-Recovery Enabled)
@@ -14624,6 +14694,8 @@ interface Studio extends Instance {
      */
     "Basic Objects Display Mode": Enum.ListDisplayMode;
     /**
+     * Sets the color of boolean literals in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14631,6 +14703,8 @@ interface Studio extends Instance {
      */
     "Bool Color": Color3;
     /**
+     * Sets the color of brackets in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14671,6 +14745,8 @@ interface Studio extends Instance {
      */
     "Camera Speed": number;
     /**
+     * Controls whether the camera zooms toward the mouse cursor position.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Camera Zoom to Mouse Position)
@@ -14685,6 +14761,8 @@ interface Studio extends Instance {
      */
     "Clear Output On Start": boolean;
     /**
+     * Controls whether the command bar retains its input state between sessions.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#CommandBarLocalState)
@@ -14700,6 +14778,8 @@ interface Studio extends Instance {
      */
     "Comment Color": Color3;
     /**
+     * Sets the color of the current line highlight in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14707,6 +14787,8 @@ interface Studio extends Instance {
      */
     "Current Line Highlight Color": Color3;
     /**
+     * Sets the color of the current debugger line in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14714,6 +14796,8 @@ interface Studio extends Instance {
      */
     "Debugger Current Line Color": Color3;
     /**
+     * Sets the color of debugger error lines in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14737,36 +14821,48 @@ interface Studio extends Instance {
      */
     "Enable Autocomplete": boolean;
     /**
+     * Controls whether the CoreScript debugger is available in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable CoreScript Debugger)
      */
     "Enable CoreScript Debugger": boolean;
     /**
+     * Controls whether HTTP requests from plugins are sandboxed.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Http Sandboxing)
      */
     "Enable Http Sandboxing": boolean;
     /**
+     * Controls whether internal beta features are accessible in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Internal Beta Features)
      */
     "Enable Internal Beta Features": boolean;
     /**
+     * Controls whether internal developer features are accessible in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Internal Features)
      */
     "Enable Internal Features": boolean;
     /**
+     * Controls whether opening a script creates a temporary tab that is replaced on the next open.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Temporary Tabs)
      */
     "Enable Temporary Tabs": boolean;
     /**
+     * Controls whether clicking a script in the Explorer opens it in a temporary tab.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Temporary Tabs In Explorer)
@@ -14799,18 +14895,24 @@ interface Studio extends Instance {
      */
     Font: QFont;
     /**
+     * Controls whether pasted code is automatically formatted in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Format On Paste)
      */
     "Format On Paste": boolean;
     /**
+     * Controls whether code is automatically formatted as you type in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Format On Type)
      */
     "Format On Type": boolean;
     /**
+     * Sets the color of function names in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14818,18 +14920,24 @@ interface Studio extends Instance {
      */
     "Function Name Color": Color3;
     /**
+     * Controls whether the current line is highlighted in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Highlight Current Line)
      */
     "Highlight Current Line": boolean;
     /**
+     * Controls whether other occurrences of the word under the cursor are highlighted.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Highlight Occurances)
      */
     "Highlight Occurances": boolean;
     /**
+     * Sets the color of hint diagnostics in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14853,12 +14961,16 @@ interface Studio extends Instance {
      */
     "Hover Over Color": Color3;
     /**
+     * Controls whether the script editor uses spaces instead of tabs for indentation.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Indent Using Spaces)
      */
     "Indent Using Spaces": boolean;
     /**
+     * Sets the color of information diagnostics in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14891,6 +15003,8 @@ interface Studio extends Instance {
      */
     LuaDebuggerEnabled: boolean;
     /**
+     * Controls whether the Lua debugger is enabled when Studio starts.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
      *
@@ -14898,6 +15012,8 @@ interface Studio extends Instance {
      */
     readonly LuaDebuggerEnabledAtStartup: boolean;
     /**
+     * Sets the color of Luau-specific keywords in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14922,6 +15038,8 @@ interface Studio extends Instance {
      */
     "Maximum Output Lines": number;
     /**
+     * Sets the background color of menu items in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14929,6 +15047,8 @@ interface Studio extends Instance {
      */
     "Menu Item Background Color": Color3;
     /**
+     * Sets the color of method names in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14986,6 +15106,8 @@ interface Studio extends Instance {
      */
     PermissionLevelShown: Enum.PermissionLevelShown;
     /**
+     * Controls whether plugin script debugging is enabled in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#PluginDebuggingEnabled)
@@ -15000,12 +15122,16 @@ interface Studio extends Instance {
      */
     PluginsDir: QDir;
     /**
+     * Sets the preferred font size in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#PreferredTextSize)
      */
     PreferredTextSize: Enum.PreferredTextSize;
     /**
+     * Sets the primary text color in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15013,6 +15139,8 @@ interface Studio extends Instance {
      */
     "Primary Text Color": Color3;
     /**
+     * Sets the color of property names in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15028,6 +15156,8 @@ interface Studio extends Instance {
      */
     "Respect Studio shortcuts when game has focus": boolean;
     /**
+     * Sets the color of the column ruler in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15035,12 +15165,16 @@ interface Studio extends Instance {
      */
     "Ruler Color": Color3;
     /**
+     * Sets the column positions at which vertical ruler lines are drawn in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Rulers)
      */
     Rulers: string;
     /**
+     * Sets how Studio handles undo operations during runtime playback.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#RuntimeUndoBehavior)
@@ -15055,12 +15189,16 @@ interface Studio extends Instance {
      */
     ScriptTimeoutLength: number;
     /**
+     * Sets the color preset applied to the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Script Editor Color Preset)
      */
     "Script Editor Color Preset": Enum.StudioScriptEditorColorPresets;
     /**
+     * Sets the background color of the script editor scrollbar in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15068,6 +15206,8 @@ interface Studio extends Instance {
      */
     "Script Editor Scrollbar Background Color": Color3;
     /**
+     * Sets the handle color of the script editor scrollbar in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15075,12 +15215,16 @@ interface Studio extends Instance {
      */
     "Script Editor Scrollbar Handle Color": Color3;
     /**
+     * Controls whether the script editor allows scrolling below the last line.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Scroll Past Last Line)
      */
     "Scroll Past Last Line": boolean;
     /**
+     * Sets the secondary text color in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15102,6 +15246,8 @@ interface Studio extends Instance {
      */
     "Select/Hover Color": Color3;
     /**
+     * Sets the background color of selected menu items in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15109,6 +15255,8 @@ interface Studio extends Instance {
      */
     "Selected Menu Item Background Color": Color3;
     /**
+     * Sets the color of selected text in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15134,6 +15282,8 @@ interface Studio extends Instance {
      */
     "Selection Color": Color3;
     /**
+     * Sets whether the pivot point is repositioned when parts are imported.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Set Pivot of Imported Parts)
@@ -15186,12 +15336,16 @@ interface Studio extends Instance {
      */
     "Show Diagnostics Bar": boolean;
     /**
+     * Controls whether FileSyncService is shown in the Explorer panel.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show FileSyncService)
      */
     "Show FileSyncService": boolean;
     /**
+     * Controls whether hidden objects are visible in the Explorer panel.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show Hidden Objects in Explorer)
@@ -15222,18 +15376,24 @@ interface Studio extends Instance {
      */
     "Show Plugin GUI Service in Explorer": boolean;
     /**
+     * Controls whether whitespace characters are shown as visible glyphs in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show Whitespace)
      */
     "Show Whitespace": boolean;
     /**
+     * Controls whether a plus button appears when hovering over items in the Explorer.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show plus button on hover in Explorer)
      */
     "Show plus button on hover in Explorer": boolean;
     /**
+     * Controls whether the cursor skips over a typed closing bracket or quote if one already exists.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Skip Closing Brackets and Quotes)
@@ -15282,6 +15442,8 @@ interface Studio extends Instance {
      */
     Theme: StudioTheme;
     /**
+     * Sets the color of type annotations in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15311,6 +15473,8 @@ interface Studio extends Instance {
      */
     "Warning Color": Color3;
     /**
+     * Sets the color of visible whitespace characters in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -17480,7 +17644,7 @@ interface UnvalidatedAssetService extends Instance {
     readonly _nominal_UnvalidatedAssetService: unique symbol;
 }
 /**
- * The UserGameSettings is a singleton class found inside of the `UserSettings` singleton. It holds various persistent settings relating to how the user wants to control their camera, and their character.
+ * `UserGameSettings` is a singleton class found inside of the `UserSettings` singleton. It holds various persistent settings relating to how the user wants to control their camera, and their character.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
