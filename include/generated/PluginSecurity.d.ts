@@ -338,6 +338,7 @@ interface CreatableInstances {
     AudioSpeechToText: AudioSpeechToText;
     AudioTextToSpeech: AudioTextToSpeech;
     AudioTremolo: AudioTremolo;
+    AudioWindSynthesizer: AudioWindSynthesizer;
     AuroraScript: AuroraScript;
     AvatarAbilityRules: AvatarAbilityRules;
     AvatarAccessoryRules: AvatarAccessoryRules;
@@ -597,6 +598,7 @@ interface CreatableInstances {
     VideoDisplay: VideoDisplay;
     VideoFrame: VideoFrame;
     VideoPlayer: VideoPlayer;
+    ViewportCamera: ViewportCamera;
     ViewportFrame: ViewportFrame;
     VisualizationMode: VisualizationMode;
     VisualizationModeCategory: VisualizationModeCategory;
@@ -824,6 +826,7 @@ interface Objects extends Instances {
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
     ExecutedRemoteCommand: ExecutedRemoteCommand;
+    Logger: Logger;
     LuauExpression: LuauExpression;
     MLSession: MLSession;
     Object: RBXObject;
@@ -2110,6 +2113,21 @@ interface AudioTremolo extends Instance {
      * @deprecated
      */
     readonly _nominal_AudioTremolo: unique symbol;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioWindSynthesizer)
+ */
+interface AudioWindSynthesizer extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioWindSynthesizer: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable
@@ -9740,6 +9758,19 @@ interface Camera extends PVInstance {
     readonly _nominal_Camera: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ViewportCamera)
+ */
+interface ViewportCamera extends Camera {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ViewportCamera: unique symbol;
+}
+/**
  * Models are container objects, meaning they group objects together. They are best used to hold collections of `BaseParts` and have a number of functions that extend their functionality.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model)
@@ -9926,9 +9957,13 @@ interface Workspace extends WorldRoot {
      */
     set StreamingEnabled(value: boolean);
     /**
+     * Applies Roblox's recommended instance streaming settings to the `Workspace`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#ApplyRecommendedStreamingSettings)
+     * @param this `Workspace` houses 3D objects which are rendered to the 3D world. Objects not descending from it will not be rendered or physically interact with the world.
+     * @returns `true` if one or more streaming properties were changed; `false` if every value already matched its recommended setting.
      */
     ApplyRecommendedStreamingSettings(this: Workspace): boolean;
     /**
@@ -18290,6 +18325,21 @@ interface WrapTextureTransfer extends Instance {
      * @deprecated
      */
     readonly _nominal_WrapTextureTransfer: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Logger)
+ */
+interface Logger extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Logger: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable

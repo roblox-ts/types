@@ -316,6 +316,7 @@ interface CreatableInstances {
     AudioSpeechToText: AudioSpeechToText;
     AudioTextToSpeech: AudioTextToSpeech;
     AudioTremolo: AudioTremolo;
+    AudioWindSynthesizer: AudioWindSynthesizer;
     AuroraScript: AuroraScript;
     AvatarAbilityRules: AvatarAbilityRules;
     AvatarAccessoryRules: AvatarAccessoryRules;
@@ -573,6 +574,7 @@ interface CreatableInstances {
     VideoDisplay: VideoDisplay;
     VideoFrame: VideoFrame;
     VideoPlayer: VideoPlayer;
+    ViewportCamera: ViewportCamera;
     ViewportFrame: ViewportFrame;
     VisualizationMode: VisualizationMode;
     VisualizationModeCategory: VisualizationModeCategory;
@@ -772,6 +774,7 @@ interface Objects extends Instances {
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
     ExecutedRemoteCommand: ExecutedRemoteCommand;
+    Logger: Logger;
     LuauExpression: LuauExpression;
     MLSession: MLSession;
     Object: RBXObject;
@@ -1182,6 +1185,12 @@ interface EditableImage extends RBXObject {
      * @returns Buffer where each pixel is represented by four bytes (red, green, blue and alpha respectively). The length of the buffer can be calculated as `X * Size.Y * 4` bytes.
      */
     ReadPixelsBuffer(this: EditableImage, position: Vector2, size: Vector2): buffer;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableImage#SampleImageProjected)
+     */
+    SampleImageProjected(this: EditableImage, sourceMesh: EditableMesh, sourceTexture: EditableImage, projectionConfig: object, brushConfig: object): void;
     /**
      * Writes a rectangular region of pixels into the image.
      *
@@ -7816,6 +7825,75 @@ interface AudioTremolo extends Instance {
     readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioWindSynthesizer)
+ */
+interface AudioWindSynthesizer extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioWindSynthesizer: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioWindSynthesizer#Enabled)
+     */
+    Enabled: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioWindSynthesizer#PositionInstance)
+     */
+    PositionInstance: Instance | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioWindSynthesizer#PositionType)
+     */
+    PositionType: Enum.AudioPositionType;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioWindSynthesizer#Profile)
+     */
+    Profile: Enum.WindSoundProfile;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioWindSynthesizer#Volume)
+     */
+    Volume: number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioWindSynthesizer#GetConnectedWires)
+     */
+    GetConnectedWires(this: AudioWindSynthesizer, pin: string): Array<Instance>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioWindSynthesizer#GetInputPins)
+     */
+    GetInputPins(this: AudioWindSynthesizer): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioWindSynthesizer#GetOutputPins)
+     */
+    GetOutputPins(this: AudioWindSynthesizer): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioWindSynthesizer#WiringChanged)
+     */
+    readonly WiringChanged: RBXScriptSignal<(connected: boolean, pin: string, wire: Wire, instance: Instance) => void>;
+}
+/**
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptObject)
@@ -7866,12 +7944,6 @@ interface AuroraScriptService extends Instance {
      * @deprecated
      */
     readonly _nominal_AuroraScriptService: unique symbol;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService#CreateCollection)
-     */
-    CreateCollection(this: AuroraScriptService, query: string, root?: Instance): CollectionHandle;
     /**
      * - **ThreadSafety**: Safe
      * - **Tags**: CustomLuaState
@@ -12485,6 +12557,12 @@ interface CollectionService extends Instance {
      */
     AddTag(this: CollectionService, instance: Instance, tag: string): void;
     AddTag(this: Instance, tag: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CollectionService#CreateCollection)
+     */
+    CreateCollection(this: CollectionService, query: string, root?: Instance): CollectionHandle;
     /**
      * Returns an array of all tags in the experience.
      *
@@ -21898,6 +21976,7 @@ interface AdGui extends SurfaceGuiBase {
      * Used to react to the AdGui events.
      *
      * - **ThreadSafety**: Unsafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdGui#OnAdEvent)
      * @param eventInfo Options table for the method: - `PlayerId` – The user ID of the player related to the ad event.
@@ -21905,6 +21984,8 @@ interface AdGui extends SurfaceGuiBase {
      *
      *
      * @returns Whether the callback has successfully reacted to the event.
+     *
+     * @deprecated
      */
     OnAdEvent: ((eventInfo: object) => boolean) | undefined;
 }
@@ -28796,6 +28877,13 @@ interface LogService extends Instance {
      */
     GetLogHistory(this: LogService): Array<LogInfo>;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#GetLogger)
+     */
+    GetLogger(this: LogService, name: string): Logger;
+    /**
      * Logs a message at the `MessageType.MessageInfo` level with optional structured context.
      *
      * - **ThreadSafety**: Unsafe
@@ -31778,13 +31866,13 @@ interface BasePart extends PVInstance {
      */
     GetConnectedParts(this: BasePart, recursive?: boolean): Array<BasePart>;
     /**
-     * Return all joints or constraints that are connected to this part.
+     * Return all Joints or Constraints that is connected to this Part.
      *
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BasePart#GetJoints)
      * @param this The abstract base class for in-world objects that physically interact.
-     * @returns An array of all `JointInstances` or `Constraints` connected to this `BasePart`.
+     * @returns An array of all Joints or Constraints connected to the Part.
      */
     GetJoints(this: BasePart): Array<Constraint | JointInstance>;
     /**
@@ -31941,7 +32029,12 @@ interface BasePart extends PVInstance {
      */
     TorqueToAngularAcceleration(this: BasePart, torque: Vector3, angVelocity?: Vector3): Vector3;
     /**
-     * Creates a new `IntersectOperation` from the overlapping geometry of the part and the other parts in the given array.
+     * Note: It is highly recommended to use the newer `GeometryService:IntersectAsync` instead of this function. As well as having better performance and more features, the new function differs as follows: - The output is an array of instances rather than a single instance.
+     * - The input parts do not need to be parented to the scene, allowing for   background operations.
+     * - When the `SplitApart` option is set to `true` (default), each distinct   body will be returned in its own `PartOperation`.
+     * - All the returned parts are in the coordinate space of the main part, so   their `PVInstance.Origin` positions are the same as the main   part's. This keeps the vertices of the mesh in the same position   relative to the object as before the operation, but it does also mean   the `(0, 0, 0)` of a returned part is not necessarily at the center of   its body.
+     *
+     *  Creates a new `IntersectOperation` from the overlapping geometry   of the part and the other parts in the given array.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -31955,7 +32048,12 @@ interface BasePart extends PVInstance {
      */
     IntersectAsync(this: BasePart, parts: Array<Instance>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>, renderFidelity?: CastsToEnum<Enum.RenderFidelity>): Instance | undefined;
     /**
-     * Creates a new `UnionOperation` from the part, minus the geometry occupied by the parts in the given array.
+     * Note: It is highly recommended to use the newer `GeometryService:UnionAsync` instead of this function. As well as having better performance and more features, the new function differs as follows: - The output is an array of instances rather than a single instance.
+     * - The input parts do not need to be parented to the scene, allowing for   background operations.
+     * - When the `SplitApart` option is set to `true` (default), each distinct   body will be returned in its own `PartOperation`.
+     * - All the returned parts are in the coordinate space of the main part, so   their `PVInstance.Origin` positions are the same as the main   part's. This keeps the vertices of the mesh in the same position   relative to the object as before the operation, but it does also mean   the `(0, 0, 0)` of a returned part is not necessarily at the center of   its body.
+     *
+     *  Creates a new `UnionOperation` from the part, minus the geometry   occupied by the parts in the given array.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -31969,7 +32067,15 @@ interface BasePart extends PVInstance {
      */
     SubtractAsync(this: BasePart, parts: Array<BasePart>, collisionfidelity?: CastsToEnum<Enum.CollisionFidelity>): UnionOperation | undefined;
     /**
-     * Creates a new `UnionOperation` from the part, plus the geometry occupied by the parts in the given array.
+     * Note: It is highly recommended to use the newer `GeometryService:UnionAsync` instead of this function. As well as having better performance and more features, the new function differs as follows: - The output is an array of instances rather than a single instance.
+     * - The input parts do not need to be parented to the scene, allowing for   background operations.
+     * - When the `SplitApart` option is set to `true` (default), each distinct   body will be returned in its own `PartOperation`.
+     * - All the returned parts are in the coordinate space of the main part, so   their `PVInstance.Origin` positions are the same as the main   part's. This keeps the vertices of the mesh in the same position   relative to the object as before the operation, but it does also mean   the `(0, 0, 0)` of a returned part is not necessarily at the center of   its body.
+     * ```
+     * Creates a new `UnionOperation` from the part, plus the geometry
+     * ```
+     *
+     *  occupied by the parts in the given array.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -33640,6 +33746,19 @@ interface Camera extends PVInstance {
     readonly InterpolationFinished: RBXScriptSignal<() => void>;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ViewportCamera)
+ */
+interface ViewportCamera extends Camera {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ViewportCamera: unique symbol;
+}
+/**
  * Models are container objects, meaning they group objects together. They are best used to hold collections of `BaseParts` and have a number of functions that extend their functionality.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model)
@@ -34230,6 +34349,18 @@ interface WorldRoot extends Model {
      */
     BulkMoveTo(this: WorldRoot, partList: Array<Instance>, cframeList: Array<unknown>, eventMode?: CastsToEnum<Enum.BulkMoveMode>): void;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#CollisionGroupSetCollidable)
+     */
+    CollisionGroupSetCollidable(this: WorldRoot, name1: string, name2: string, collidable: boolean): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#CollisionGroupsAreCollidable)
+     */
+    CollisionGroupsAreCollidable(this: WorldRoot, name1: string, name2: string): boolean;
+    /**
      * **Deprecated:** This function has been deprecated. Use `WorldRoot:Raycast()` along with `RaycastParams` for new work.
      *
      * Returns the first `BasePart` or `Terrain` cell intersecting with the given `Ray`.
@@ -34355,6 +34486,12 @@ interface WorldRoot extends Model {
      */
     FindPartsInRegion3WithWhiteList(this: WorldRoot, region: Region3, whitelistDescendantsTable: Array<Instance>, maxParts?: number): Array<BasePart>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#GetMaxCollisionGroups)
+     */
+    GetMaxCollisionGroups(this: WorldRoot): number;
+    /**
      * Returns an array of parts whose **bounding boxes** overlap a given box.
      *
      * - **ThreadSafety**: Safe
@@ -34395,6 +34532,18 @@ interface WorldRoot extends Model {
      * @returns An array of `BaseParts` which matched the spatial query.
      */
     GetPartsInPart(this: WorldRoot, part: BasePart, overlapParams?: OverlapParams): Array<BasePart>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#GetRegisteredCollisionGroups)
+     */
+    GetRegisteredCollisionGroups(this: WorldRoot): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#IsCollisionGroupRegistered)
+     */
+    IsCollisionGroupRegistered(this: WorldRoot, name: string): boolean;
     /**
      * **Deprecated:** This function has been deprecated. Use `WorldRoot:GetPartBoundsInBox()` along with `OverlapParams` for new work.
      *
@@ -34445,6 +34594,18 @@ interface WorldRoot extends Model {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#RegisterCollisionGroup)
+     */
+    RegisterCollisionGroup(this: WorldRoot, name: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#RenameCollisionGroup)
+     */
+    RenameCollisionGroup(this: WorldRoot, from: string, to: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#Shapecast)
      * @param this Base class for handling physics simulation and 3D spatial queries.
      * @param part
@@ -34466,6 +34627,12 @@ interface WorldRoot extends Model {
      * @returns Contains the result of the shapecast operation, or `nil` if no eligible `BasePart` or `Terrain` cell was hit.
      */
     Spherecast(this: WorldRoot, position: Vector3, radius: number, direction: Vector3, raycastParams?: RaycastParams): RaycastResult | undefined;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#UnregisterCollisionGroup)
+     */
+    UnregisterCollisionGroup(this: WorldRoot, name: string): void;
 }
 /**
  * `Workspace` houses 3D objects which are rendered to the 3D world. Objects not descending from it will not be rendered or physically interact with the world.
@@ -34705,6 +34872,12 @@ interface WorldModel extends WorldRoot {
      * @deprecated
      */
     readonly _nominal_WorldModel: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldModel#UseWorkspaceCollisionGroups)
+     */
+    UseWorkspaceCollisionGroups: boolean;
 }
 /**
  * Links a `DataModel` instance to a corresponding asset in the cloud.
@@ -36343,6 +36516,12 @@ interface Player extends Instance {
      */
     readonly FollowUserId: number;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#FrustumStreaming)
+     */
+    FrustumStreaming: Enum.FrustumStreamingMode;
+    /**
      * Whether player client-side gameplay is currently paused.
      *
      * - **ThreadSafety**: ReadSafe
@@ -36563,13 +36742,14 @@ interface Player extends Instance {
      */
     HasAppearanceLoaded(this: Player): boolean;
     /**
-     * Returns whether the player is verified with concrete, real-world signals.
+     * Returns whether the player meets the specified verification level.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#IsVerified)
      * @param this An object that represents a presently connected client to the experience.
-     * @returns A boolean indicating whether the player is verified.
+     * @param level The verification level to check. Defaults to `VerifiedLevel.Low`.
+     * @returns A boolean indicating whether the player meets the specified verification level.
      */
     IsVerified(this: Player, level?: CastsToEnum<Enum.VerifiedLevel>): boolean;
     /**
@@ -37519,7 +37699,7 @@ interface Players extends Instance {
      */
     RespawnTime: number;
     /**
-     * Returns the `Player` with the given `UserId` if they are in-experience.
+     * Returns the `Player` with the given `UserId` if they are in-game.
      *
      * - **ThreadSafety**: Safe
      *
@@ -37549,7 +37729,7 @@ interface Players extends Instance {
      */
     GetPlayers(this: Players): Array<Player>;
     /**
-     * Bans users from your experience, with options to specify duration, reason, whether the ban applies to the entire universe or just the current place, and more. This method is enabled and disabled by the `Players.BanningEnabled` property, which you can toggle in Studio.
+     * Bans users from your game, with options to specify duration, reason, whether the ban applies to the entire universe or just the current place, and more. This method is enabled and disabled by the `Players.BanningEnabled` property, which you can toggle in Studio.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -37557,12 +37737,12 @@ interface Players extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Players#BanAsync)
      * @param this A service that contains presently connected `Player` objects.
      * @param config -  `UserIds` (required; array) — Array of `UserIds`   of players to be banned. Max size is `50`.
-     * -  `ApplyToUniverse` (optional; boolean) — Whether ban propagates to   all places within the experience universe. Default is `true`.
+     * -  `ApplyToUniverse` (optional; boolean) — Whether ban propagates to   all places within the game universe. Default is `true`.
      * -  `Duration` (required; integer) — Duration of the ban, in seconds.   Permanent bans should have a value of `-1`. `0` and all other   negative values are invalid.
-     * -  `DisplayReason` (required; string) — The message that will be   displayed to users when they attempt to and fail to join an   experience. Maximum string length is `400`.
+     * -  `DisplayReason` (required; string) — The message that will be   displayed to users when they attempt to and fail to join a game.   Maximum string length is `400`.
      * -  `PrivateReason` (required; string) — Internal messaging that will be   returned when querying the user's ban history. Maximum string length   is `1000`.
      * -  `ExcludeAltAccounts` (optional; boolean) — When `true`, Roblox does   not attempt to ban alternate accounts. Default is `false`.
-     * -  `ApplyDeviceBlock` (optional; boolean) — When `true`, Roblox will   block banned users' devices from rejoining the experience for 24   hours after the ban is applied. Default is `false`. The block can be   overridden by unbanning a user via a call to   `Players:UnbanAsync()`. Note that unbanning a user through any   other method will not lift the device block.
+     * -  `ApplyDeviceBlock` (optional; boolean) — When `true`, Roblox will   block banned users' devices from rejoining the game for 24 hours   after the ban is applied. Default is `false`. The block can be   overridden by unbanning a user via a call to   `Players:UnbanAsync()`. Note that unbanning a user through any   other method will not lift the device block.
      */
     BanAsync(this: Players, config: BanAsyncConfig): void;
     /**
@@ -37584,7 +37764,7 @@ interface Players extends Instance {
      */
     CreateHumanoidModelFromDescription(this: Players, description: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>, assetTypeVerification?: CastsToEnum<Enum.AssetTypeVerification>): Model;
     /**
-     * Returns a character `Model` equipped with everything specified in the passed in `HumanoidDescription`. If `UseAvatarSettings` is set to true, Avatar Settings in the experience will be applied to the returned model.
+     * Returns a character `Model` equipped with everything specified in the passed in `HumanoidDescription`. If `UseAvatarSettings` is set to true, Avatar Settings in the game will be applied to the returned model.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -37626,7 +37806,7 @@ interface Players extends Instance {
      */
     CreateHumanoidModelFromUserIdAsync(this: Players, userId: User): Model;
     /**
-     * Retrieves the ban and unban history of any user within the experience's universe. This method is enabled and disabled by the `Players.BanningEnabled` property, which you can toggle in Studio.
+     * Retrieves the ban and unban history of any user within the game's universe. This method is enabled and disabled by the `Players.BanningEnabled` property, which you can toggle in Studio.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -37787,18 +37967,18 @@ interface Players extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Players#UnbanAsync)
      * @param this A service that contains presently connected `Player` objects.
-     * @param config | Name              | Type    | Description                                                                |
-     * | ----------------- | ------- | -------------------------------------------------------------------------- |
-     * | `UserIds`         | array   | UserIDs to be force allowed into the experience(s).
+     * @param config | Name              | Type    | Description                                                          |
+     * | ----------------- | ------- | -------------------------------------------------------------------- |
+     * | `UserIds`         | array   | UserIDs to be force allowed into the game(s).
      *
      *
      *
      * Max size is `50`. |
-     * | `ApplyToUniverse` | boolean | Propagates the unban to all places within this universe.                   |
+     * | `ApplyToUniverse` | boolean | Propagates the unban to all places within this universe.             |
      */
     UnbanAsync(this: Players, config: UnbanAsyncConfig): void;
     /**
-     * Fires when a player enters the experience.
+     * Fires when a player enters the game.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -37806,7 +37986,7 @@ interface Players extends Instance {
      */
     readonly PlayerAdded: RBXScriptSignal<(player: Player) => void>;
     /**
-     * Fires when the experience server recognizes that a player's membership has changed.
+     * Fires when the game server recognizes that a player's membership has changed.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -37814,7 +37994,7 @@ interface Players extends Instance {
      */
     readonly PlayerMembershipChanged: RBXScriptSignal<(player: Player) => void>;
     /**
-     * Fires when a player is about to leave the experience.
+     * Fires when a player is about to leave the game.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -37822,7 +38002,7 @@ interface Players extends Instance {
      */
     readonly PlayerRemoving: RBXScriptSignal<(player: Player, reason: Enum.PlayerExitReason) => void>;
     /**
-     * Fires when the experience server recognizes that the user's status for a certain subscription has changed.
+     * Fires when the game server recognizes that the user's status for a certain subscription has changed.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -40693,6 +40873,13 @@ interface DataModel extends ServiceProvider<Services> {
      */
     readonly VIPServerOwnerId: number;
     /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#RunService)
+     */
+    readonly RunService: RunService | undefined;
+    /**
      * A reference to the `Workspace` service.
      *
      * - **ThreadSafety**: ReadSafe
@@ -40701,13 +40888,6 @@ interface DataModel extends ServiceProvider<Services> {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#Workspace)
      */
     readonly Workspace: Workspace;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#RunService)
-     */
-    readonly RunService: RunService | undefined;
     /**
      * Binds a function to be called before the server shuts down.
      *
@@ -51005,6 +51185,83 @@ interface WrapTextureTransfer extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer#UVMinBound)
      */
     UVMinBound: Vector2;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Logger)
+ */
+interface Logger extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Logger: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Logger#FullPath)
+     */
+    readonly FullPath: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Logger#Name)
+     */
+    readonly Name: string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Logger#Error)
+     */
+    Error(this: Logger, message: string, context?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Logger#GetLogger)
+     */
+    GetLogger(this: Logger, name: string): Logger;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Logger#Info)
+     */
+    Info(this: Logger, message: string, context?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Logger#Log)
+     */
+    Log(this: Logger, messageType: CastsToEnum<Enum.MessageType>, message: string, context?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Logger#Output)
+     */
+    Output(this: Logger, message: string, context?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Logger#Warn)
+     */
+    Warn(this: Logger, message: string, context?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Logger#MessageOut)
+     */
+    readonly MessageOut: RBXScriptSignal<(message: string, messageType: Enum.MessageType, context: object) => void>;
 }
 /**
  * - **Tags**: NotCreatable

@@ -3955,6 +3955,33 @@ declare namespace Enum {
     }
     export type AudioFilterType = AudioFilterType.Peak | AudioFilterType.LowShelf | AudioFilterType.HighShelf | AudioFilterType.Lowpass12dB | AudioFilterType.Lowpass24dB | AudioFilterType.Lowpass48dB | AudioFilterType.Highpass12dB | AudioFilterType.Highpass24dB | AudioFilterType.Highpass48dB | AudioFilterType.Bandpass | AudioFilterType.Notch | AudioFilterType.Lowpass6dB;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioPositionType)
+     */
+    export namespace AudioPositionType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioPositionType#Parent)
+         */
+        export interface Parent extends globalThis.EnumItem {
+            Name: "Parent";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AudioPositionType;
+        }
+        export const Parent: Parent;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioPositionType#Instance)
+         */
+        export interface Instance extends globalThis.EnumItem {
+            Name: "Instance";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AudioPositionType;
+        }
+        export const Instance: Instance;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioPositionType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AudioPositionType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioPositionType | undefined;
+    }
+    export type AudioPositionType = AudioPositionType.Parent | AudioPositionType.Instance;
+    /**
      * Enum which determines how detailed audio simulation should be for `AudioEmitters` and `AudioListeners`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSimulationFidelity)
@@ -15601,6 +15628,51 @@ declare namespace Enum {
     }
     export type FriendStatus = FriendStatus.Unknown | FriendStatus.NotFriend | FriendStatus.Friend | FriendStatus.FriendRequestSent | FriendStatus.FriendRequestReceived;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrustumStreamingMode)
+     */
+    export namespace FrustumStreamingMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrustumStreamingMode#Default)
+         */
+        export interface Default extends globalThis.EnumItem {
+            Name: "Default";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FrustumStreamingMode;
+        }
+        export const Default: Default;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrustumStreamingMode#Enabled)
+         */
+        export interface Enabled extends globalThis.EnumItem {
+            Name: "Enabled";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FrustumStreamingMode;
+        }
+        export const Enabled: Enabled;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrustumStreamingMode#Disabled)
+         */
+        export interface Disabled extends globalThis.EnumItem {
+            Name: "Disabled";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FrustumStreamingMode;
+        }
+        export const Disabled: Disabled;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrustumStreamingMode#Automatic)
+         */
+        export interface Automatic extends globalThis.EnumItem {
+            Name: "Automatic";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FrustumStreamingMode;
+        }
+        export const Automatic: Automatic;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FrustumStreamingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FrustumStreamingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FrustumStreamingMode | undefined;
+    }
+    export type FrustumStreamingMode = FrustumStreamingMode.Default | FrustumStreamingMode.Enabled | FrustumStreamingMode.Disabled | FrustumStreamingMode.Automatic;
+    /**
      * Status of a single functional test run.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FunctionalTestResult)
@@ -17837,11 +17909,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.ImageCombineType;
         }
         export const NormalMapBlend: NormalMapBlend;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ImageCombineType#Subtract)
+         */
+        export interface Subtract extends globalThis.EnumItem {
+            Name: "Subtract";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.ImageCombineType;
+        }
+        export const Subtract: Subtract;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ImageCombineType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ImageCombineType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ImageCombineType | undefined;
     }
-    export type ImageCombineType = ImageCombineType.BlendSourceOver | ImageCombineType.Overwrite | ImageCombineType.Add | ImageCombineType.Multiply | ImageCombineType.AlphaBlend | ImageCombineType.NormalMapBlend;
+    export type ImageCombineType = ImageCombineType.BlendSourceOver | ImageCombineType.Overwrite | ImageCombineType.Add | ImageCombineType.Multiply | ImageCombineType.AlphaBlend | ImageCombineType.NormalMapBlend | ImageCombineType.Subtract;
     /**
      * The InOut Enum is used to set where the object is on the side of its parent.
      *
@@ -27181,10 +27262,14 @@ declare namespace Enum {
     }
     export type PredictionStatus = PredictionStatus.Authoritative | PredictionStatus.Predicted | PredictionStatus.None;
     /**
+     * Used with `Workspace.PredictiveStreamingMode` to control whether the engine streams instances predictively. predictively.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictiveStreamingMode)
      */
     export namespace PredictiveStreamingMode {
         /**
+         * Default behavior, currently equivalent to `Disabled`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictiveStreamingMode#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -27194,6 +27279,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Allow the engine to make streaming decisions predictively.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictiveStreamingMode#Enabled)
          */
         export interface Enabled extends globalThis.EnumItem {
@@ -27203,6 +27290,8 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         /**
+         * Disable predictive streaming.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictiveStreamingMode#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -32686,6 +32775,24 @@ declare namespace Enum {
         }
         export const Meshes: Meshes;
         /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#MeshResourcePtr)
+         */
+        export interface MeshResourcePtr extends globalThis.EnumItem {
+            Name: "MeshResourcePtr";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.SlimTintMode;
+        }
+        export const MeshResourcePtr: MeshResourcePtr;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#ContentId)
+         */
+        export interface ContentId extends globalThis.EnumItem {
+            Name: "ContentId";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.SlimTintMode;
+        }
+        export const ContentId: ContentId;
+        /**
          * Colors meshes by streaming zone. Green indicates the high-fidelity zone where the DataModel is present.; yellow indicates the low-fidelity zone where the DataModel is absent).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#Zone)
@@ -32696,11 +32803,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.SlimTintMode;
         }
         export const Zone: Zone;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#TranscoderStatus)
+         */
+        export interface TranscoderStatus extends globalThis.EnumItem {
+            Name: "TranscoderStatus";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.SlimTintMode;
+        }
+        export const TranscoderStatus: TranscoderStatus;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SlimTintMode>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SlimTintMode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SlimTintMode | undefined;
     }
-    export type SlimTintMode = SlimTintMode.None | SlimTintMode.LOD | SlimTintMode.Meshes | SlimTintMode.Zone;
+    export type SlimTintMode = SlimTintMode.None | SlimTintMode.LOD | SlimTintMode.Meshes | SlimTintMode.MeshResourcePtr | SlimTintMode.ContentId | SlimTintMode.Zone | SlimTintMode.TranscoderStatus;
     /**
      * Describes the backend transcoding state of a SLIM model, from upload through transcoding to success or failure.
      *
@@ -32789,6 +32905,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SlimTranscoderStatus | undefined;
     }
     export type SlimTranscoderStatus = SlimTranscoderStatus.Unknown | SlimTranscoderStatus.NoHash | SlimTranscoderStatus.NotUploaded | SlimTranscoderStatus.Uploaded | SlimTranscoderStatus.InProgress | SlimTranscoderStatus.Succeeded | SlimTranscoderStatus.Failed;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimViewContext)
+     */
+    export namespace SlimViewContext {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimViewContext#Player)
+         */
+        export interface Player extends globalThis.EnumItem {
+            Name: "Player";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.SlimViewContext;
+        }
+        export const Player: Player;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimViewContext#Editor)
+         */
+        export interface Editor extends globalThis.EnumItem {
+            Name: "Editor";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.SlimViewContext;
+        }
+        export const Editor: Editor;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimViewContext#ImGui)
+         */
+        export interface ImGui extends globalThis.EnumItem {
+            Name: "ImGui";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.SlimViewContext;
+        }
+        export const ImGui: ImGui;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SlimViewContext>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SlimViewContext | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SlimViewContext | undefined;
+    }
+    export type SlimViewContext = SlimViewContext.Player | SlimViewContext.Editor | SlimViewContext.ImGui;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolidPrimitiveType)
      */
@@ -40320,10 +40472,14 @@ declare namespace Enum {
     }
     export type VelocityConstraintMode = VelocityConstraintMode.Line | VelocityConstraintMode.Plane | VelocityConstraintMode.Vector;
     /**
+     * Specifies the level of player verification required by `Player:IsVerified()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerifiedLevel)
      */
     export namespace VerifiedLevel {
         /**
+         * Requires the player to meet the low verification level or higher. This is the default value for `Player:IsVerified()`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerifiedLevel#Low)
          */
         export interface Low extends globalThis.EnumItem {
@@ -40333,6 +40489,8 @@ declare namespace Enum {
         }
         export const Low: Low;
         /**
+         * Requires the player to meet the high verification level.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerifiedLevel#High)
          */
         export interface High extends globalThis.EnumItem {
@@ -41736,6 +41894,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WhisperChatPrivacyMode | undefined;
     }
     export type WhisperChatPrivacyMode = WhisperChatPrivacyMode.AllUsers | WhisperChatPrivacyMode.NoOne;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindSoundProfile)
+     */
+    export namespace WindSoundProfile {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindSoundProfile#Turbulence)
+         */
+        export interface Turbulence extends globalThis.EnumItem {
+            Name: "Turbulence";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.WindSoundProfile;
+        }
+        export const Turbulence: Turbulence;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindSoundProfile#Whistle)
+         */
+        export interface Whistle extends globalThis.EnumItem {
+            Name: "Whistle";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.WindSoundProfile;
+        }
+        export const Whistle: Whistle;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindSoundProfile#Foliage)
+         */
+        export interface Foliage extends globalThis.EnumItem {
+            Name: "Foliage";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.WindSoundProfile;
+        }
+        export const Foliage: Foliage;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WindSoundProfile>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WindSoundProfile | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WindSoundProfile | undefined;
+    }
+    export type WindSoundProfile = WindSoundProfile.Turbulence | WindSoundProfile.Whistle | WindSoundProfile.Foliage;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindowState)
      */
