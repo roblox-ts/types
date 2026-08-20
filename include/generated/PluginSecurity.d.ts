@@ -13964,26 +13964,6 @@ interface DataModel extends ServiceProvider<Services> {
      */
     readonly _nominal_DataModel: unique symbol;
     /**
-     * Sets the `DataModel.PlaceId` of the current game instance.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#SetPlaceId)
-     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
-     * @param placeId The ID to set the `DataModel.PlaceId` to.
-     */
-    SetPlaceId(this: DataModel, placeId: number): void;
-    /**
-     * Sets the `DataModel.GameId` of the current game instance to the given `universeId`.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#SetUniverseId)
-     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
-     * @param universeId The ID to set the `DataModel.GameId` to.
-     */
-    SetUniverseId(this: DataModel, universeId: number): void;
-    /**
      * Returns a table containing basic information about the jobs performed by the task scheduler.
      *
      * - **ThreadSafety**: Unsafe
@@ -14004,6 +13984,26 @@ interface DataModel extends ServiceProvider<Services> {
      * @returns An array of `Instances` associated with the content URL.
      */
     GetObjects(this: DataModel, url: ContentId): Array<Instance>;
+    /**
+     * Sets the `DataModel.PlaceId` of the current game instance.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#SetPlaceId)
+     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
+     * @param placeId The ID to set the `DataModel.PlaceId` to.
+     */
+    SetPlaceId(this: DataModel, placeId: number): void;
+    /**
+     * Sets the `DataModel.GameId` of the current game instance to the given `universeId`.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#SetUniverseId)
+     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
+     * @param universeId The ID to set the `DataModel.GameId` to.
+     */
+    SetUniverseId(this: DataModel, universeId: number): void;
 }
 /**
  * The abstract class for settings database classes.
