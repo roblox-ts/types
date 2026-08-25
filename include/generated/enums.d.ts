@@ -588,6 +588,8 @@ declare namespace Enum {
     }
     export type ActuatorType = ActuatorType.None | ActuatorType.Motor | ActuatorType.Servo;
     /**
+     * Indicates whether an ad is available or the reason it cannot be shown.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdAvailabilityResult)
      */
     export namespace AdAvailabilityResult {
@@ -749,11 +751,13 @@ declare namespace Enum {
     }
     export type AdEventType = AdEventType.VideoLoaded | AdEventType.VideoRemoved | AdEventType.UserCompletedVideo | AdEventType.RewardedAdLoaded | AdEventType.RewardedAdGrant | AdEventType.RewardedAdUnloaded;
     /**
+     * Specifies the format of an ad used with `AdService` methods.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdFormat)
      */
     export namespace AdFormat {
         /**
-         * The format of the rewarded video ad.
+         * A full-screen video ad that plays to completion and rewards the viewer, used as the `adFormat` argument for `AdService` methods.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdFormat#RewardedVideo)
          */
@@ -791,10 +795,14 @@ declare namespace Enum {
     }
     export type AdShape = AdShape.HorizontalRectangle;
     /**
+     * Describes the method by which a player teleports during an immersive ad portal flow.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdTeleportMethod)
      */
     export namespace AdTeleportMethod {
         /**
+         * Default uninitialized sentinel value indicating that no teleport method has been determined yet.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdTeleportMethod#Undefined)
          */
         export interface Undefined extends globalThis.EnumItem {
@@ -804,6 +812,8 @@ declare namespace Enum {
         }
         export const Undefined: Undefined;
         /**
+         * The player teleported forward to the advertiser's destination experience by walking into an `AdPortal`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdTeleportMethod#PortalForward)
          */
         export interface PortalForward extends globalThis.EnumItem {
@@ -813,6 +823,8 @@ declare namespace Enum {
         }
         export const PortalForward: PortalForward;
         /**
+         * The player initiated a return teleport to the publisher's experience by pressing the back button in the in-game menu.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdTeleportMethod#InGameMenuBackButton)
          */
         export interface InGameMenuBackButton extends globalThis.EnumItem {
@@ -822,6 +834,8 @@ declare namespace Enum {
         }
         export const InGameMenuBackButton: InGameMenuBackButton;
         /**
+         * The player initiated a return teleport to the publisher's experience by pressing a back button rendered in the ad destination's UI overlay.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdTeleportMethod#UIBackButton)
          */
         export interface UIBackButton extends globalThis.EnumItem {
@@ -836,10 +850,14 @@ declare namespace Enum {
     }
     export type AdTeleportMethod = AdTeleportMethod.Undefined | AdTeleportMethod.PortalForward | AdTeleportMethod.InGameMenuBackButton | AdTeleportMethod.UIBackButton;
     /**
+     * Describes the type of user-interaction or system event that occurred on the immersive ad UI overlay of an `AdGui`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType)
      */
     export namespace AdUIEventType {
         /**
+         * The player clicked the "Sponsored" label on the ad overlay, which opens the ad disclosure prompt showing advertiser and payer information.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#AdLabelClicked)
          */
         export interface AdLabelClicked extends globalThis.EnumItem {
@@ -849,6 +867,8 @@ declare namespace Enum {
         }
         export const AdLabelClicked: AdLabelClicked;
         /**
+         * The player clicked the volume toggle button on the ad overlay, which mutes or unmutes the video ad audio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#VolumeButtonClicked)
          */
         export interface VolumeButtonClicked extends globalThis.EnumItem {
@@ -858,6 +878,8 @@ declare namespace Enum {
         }
         export const VolumeButtonClicked: VolumeButtonClicked;
         /**
+         * The player clicked the fullscreen toggle button, which smoothly zooms the camera to a centered view of the ad surface and enables audio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#FullscreenButtonClicked)
          */
         export interface FullscreenButtonClicked extends globalThis.EnumItem {
@@ -867,6 +889,8 @@ declare namespace Enum {
         }
         export const FullscreenButtonClicked: FullscreenButtonClicked;
         /**
+         * The player clicked the play button on the ad overlay. If the ad is already in fullscreen, playback resumes; otherwise it enters fullscreen mode which also starts (or resumes) the video.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#PlayButtonClicked)
          */
         export interface PlayButtonClicked extends globalThis.EnumItem {
@@ -876,6 +900,8 @@ declare namespace Enum {
         }
         export const PlayButtonClicked: PlayButtonClicked;
         /**
+         * The player clicked the pause button while a video ad is playing in fullscreen mode, which pauses video playback.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#PauseButtonClicked)
          */
         export interface PauseButtonClicked extends globalThis.EnumItem {
@@ -885,6 +911,8 @@ declare namespace Enum {
         }
         export const PauseButtonClicked: PauseButtonClicked;
         /**
+         * The player clicked the close button on the fullscreen video ad view, which exits fullscreen mode and returns to the normal camera position.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#CloseButtonClicked)
          */
         export interface CloseButtonClicked extends globalThis.EnumItem {
@@ -894,6 +922,8 @@ declare namespace Enum {
         }
         export const CloseButtonClicked: CloseButtonClicked;
         /**
+         * The player clicked the "Why this ad?" link, which displays the EUDSA (European Digital Services Act) disclosure prompt showing the advertiser and payer names for the current ad creative.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#WhyThisAdClicked)
          */
         export interface WhyThisAdClicked extends globalThis.EnumItem {
@@ -903,6 +933,8 @@ declare namespace Enum {
         }
         export const WhyThisAdClicked: WhyThisAdClicked;
         /**
+         * A system-initiated play/resume event that clears the force-pause state set by `PauseEventTriggered` and resumes video playback if the stream is open.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#PlayEventTriggered)
          */
         export interface PlayEventTriggered extends globalThis.EnumItem {
@@ -912,6 +944,8 @@ declare namespace Enum {
         }
         export const PlayEventTriggered: PlayEventTriggered;
         /**
+         * A system-initiated pause event, used when the engine needs to force-pause the video (for example, when a dropdown menu opens over the ad). Prevents viewability-based auto-play from resuming playback until a corresponding `PlayEventTriggered` clears that pause.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#PauseEventTriggered)
          */
         export interface PauseEventTriggered extends globalThis.EnumItem {
@@ -926,10 +960,14 @@ declare namespace Enum {
     }
     export type AdUIEventType = AdUIEventType.AdLabelClicked | AdUIEventType.VolumeButtonClicked | AdUIEventType.FullscreenButtonClicked | AdUIEventType.PlayButtonClicked | AdUIEventType.PauseButtonClicked | AdUIEventType.CloseButtonClicked | AdUIEventType.WhyThisAdClicked | AdUIEventType.PlayEventTriggered | AdUIEventType.PauseEventTriggered;
     /**
+     * Describes the type of ad creative currently rendered by an `AdGui`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIType)
      */
     export namespace AdUIType {
         /**
+         * The `AdGui` has no ad creative loaded and is not rendering ad content.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIType#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -939,6 +977,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * The `AdGui` is rendering a static image ad creative.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIType#Image)
          */
         export interface Image extends globalThis.EnumItem {
@@ -948,6 +988,8 @@ declare namespace Enum {
         }
         export const Image: Image;
         /**
+         * The `AdGui` is rendering a video ad creative.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIType#Video)
          */
         export interface Video extends globalThis.EnumItem {
@@ -1904,6 +1946,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationNodeTransitionType | undefined;
     }
     export type AnimationNodeTransitionType = AnimationNodeTransitionType.CrossFade | AnimationNodeTransitionType.InertialBlend | AnimationNodeTransitionType.DeadBlend;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeTransitionWhen)
+     */
+    export namespace AnimationNodeTransitionWhen {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeTransitionWhen#Finished)
+         */
+        export interface Finished extends globalThis.EnumItem {
+            Name: "Finished";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AnimationNodeTransitionWhen;
+        }
+        export const Finished: Finished;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeTransitionWhen#BeforeFinished)
+         */
+        export interface BeforeFinished extends globalThis.EnumItem {
+            Name: "BeforeFinished";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AnimationNodeTransitionWhen;
+        }
+        export const BeforeFinished: BeforeFinished;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationNodeTransitionWhen>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationNodeTransitionWhen | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationNodeTransitionWhen | undefined;
+    }
+    export type AnimationNodeTransitionWhen = AnimationNodeTransitionWhen.Finished | AnimationNodeTransitionWhen.BeforeFinished;
     /**
      * Specifies the type of an animation graph node, determining how it processes or combines animation data.
      *
@@ -8236,21 +8305,19 @@ declare namespace Enum {
         }
         export const PreciseConvexDecomposition: PreciseConvexDecomposition;
         /**
-         * Collision model that supports precision scaling of convex decomposition fidelity.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CollisionFidelity#Scalable)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CollisionFidelity#Tunable)
          */
-        export interface Scalable extends globalThis.EnumItem {
-            Name: "Scalable";
+        export interface Tunable extends globalThis.EnumItem {
+            Name: "Tunable";
             Value: 4;
             EnumType: typeof globalThis.Enum.CollisionFidelity;
         }
-        export const Scalable: Scalable;
+        export const Tunable: Tunable;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CollisionFidelity>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CollisionFidelity | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CollisionFidelity | undefined;
     }
-    export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition | CollisionFidelity.Scalable;
+    export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition | CollisionFidelity.Tunable;
     /**
      * Specifies the minimum security permission level required to invoke a Studio command.
      *
@@ -16599,11 +16666,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.GenerateMomentTextResult;
         }
         export const Failed: Failed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GenerateMomentTextResult#Filtered)
+         */
+        export interface Filtered extends globalThis.EnumItem {
+            Name: "Filtered";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.GenerateMomentTextResult;
+        }
+        export const Filtered: Filtered;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GenerateMomentTextResult>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.GenerateMomentTextResult | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GenerateMomentTextResult | undefined;
     }
-    export type GenerateMomentTextResult = GenerateMomentTextResult.Success | GenerateMomentTextResult.Pending | GenerateMomentTextResult.Failed;
+    export type GenerateMomentTextResult = GenerateMomentTextResult.Success | GenerateMomentTextResult.Pending | GenerateMomentTextResult.Failed | GenerateMomentTextResult.Filtered;
     /**
      * **Deprecated:**
      *
@@ -32982,10 +33058,14 @@ declare namespace Enum {
     }
     export type ScrollingDirection = ScrollingDirection.X | ScrollingDirection.Y | ScrollingDirection.XY;
     /**
+     * Identifies a specific permission capability that a sandboxed script container may grant or restrict.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability)
      */
     export namespace SecurityCapability {
         /**
+         * Indicates that a script container is permitted to execute scripts on the client (`LocalScript`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RunClientScript)
          */
         export interface RunClientScript extends globalThis.EnumItem {
@@ -32995,6 +33075,8 @@ declare namespace Enum {
         }
         export const RunClientScript: RunClientScript;
         /**
+         * Indicates that a script container is permitted to execute scripts on the server (`Script`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RunServerScript)
          */
         export interface RunServerScript extends globalThis.EnumItem {
@@ -33004,6 +33086,8 @@ declare namespace Enum {
         }
         export const RunServerScript: RunServerScript;
         /**
+         * Grants a script read-write access to instances that live outside its sandboxed container.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AccessOutsideWrite)
          */
         export interface AccessOutsideWrite extends globalThis.EnumItem {
@@ -33013,7 +33097,9 @@ declare namespace Enum {
         }
         export const AccessOutsideWrite: AccessOutsideWrite;
         /**
-         * **Deprecated:**
+         * **Deprecated:** Use `SecurityCapability.LoadUnownedAsset` instead.
+         *
+         * Deprecated. Use `SecurityCapability.LoadUnownedAsset` instead.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AssetRequire)
          */
@@ -33024,6 +33110,8 @@ declare namespace Enum {
         }
         export const AssetRequire: AssetRequire;
         /**
+         * Allows a script to use the `loadstring()` Luau built-in to compile and execute a string as code.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#LoadString)
          */
         export interface LoadString extends globalThis.EnumItem {
@@ -33033,6 +33121,8 @@ declare namespace Enum {
         }
         export const LoadString: LoadString;
         /**
+         * Allows a script to access the `shared` and `_G` shared global variable tables.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#ScriptGlobals)
          */
         export interface ScriptGlobals extends globalThis.EnumItem {
@@ -33042,6 +33132,8 @@ declare namespace Enum {
         }
         export const ScriptGlobals: ScriptGlobals;
         /**
+         * Allows a script to create new `Instance` objects using `new()`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#CreateInstances)
          */
         export interface CreateInstances extends globalThis.EnumItem {
@@ -33051,6 +33143,8 @@ declare namespace Enum {
         }
         export const CreateInstances: CreateInstances;
         /**
+         * Guards access to a broad set of general-purpose engine APIs that do not belong to a more specific capability category.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Basic)
          */
         export interface Basic extends globalThis.EnumItem {
@@ -33060,6 +33154,8 @@ declare namespace Enum {
         }
         export const Basic: Basic;
         /**
+         * Guards access to audio engine APIs such as `Sound`, `AudioPlayer`, and related classes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Audio)
          */
         export interface Audio extends globalThis.EnumItem {
@@ -33069,6 +33165,8 @@ declare namespace Enum {
         }
         export const Audio: Audio;
         /**
+         * Guards access to data store APIs such as `DataStoreService` and its associated objects.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#DataStore)
          */
         export interface DataStore extends globalThis.EnumItem {
@@ -33078,6 +33176,8 @@ declare namespace Enum {
         }
         export const DataStore: DataStore;
         /**
+         * Guards access to low-level networking APIs such as `HttpService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Network)
          */
         export interface Network extends globalThis.EnumItem {
@@ -33087,6 +33187,8 @@ declare namespace Enum {
         }
         export const Network: Network;
         /**
+         * Guards access to physics engine APIs such as `Constraint` classes and `BasePart` physics properties.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Physics)
          */
         export interface Physics extends globalThis.EnumItem {
@@ -33096,6 +33198,8 @@ declare namespace Enum {
         }
         export const Physics: Physics;
         /**
+         * Guards access to UI engine APIs such as `ScreenGui`, `Frame`, and other `GuiObject` classes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#UI)
          */
         export interface UI extends globalThis.EnumItem {
@@ -33105,6 +33209,8 @@ declare namespace Enum {
         }
         export const UI: UI;
         /**
+         * Guards access to Constructive Solid Geometry (CSG) APIs such as `UnionOperation` and `NegateOperation`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#CSG)
          */
         export interface CSG extends globalThis.EnumItem {
@@ -33114,6 +33220,8 @@ declare namespace Enum {
         }
         export const CSG: CSG;
         /**
+         * Guards access to chat engine APIs such as `TextChatService` and related chat classes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Chat)
          */
         export interface Chat extends globalThis.EnumItem {
@@ -33123,6 +33231,8 @@ declare namespace Enum {
         }
         export const Chat: Chat;
         /**
+         * Guards access to animation engine APIs such as `AnimationController` and related classes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Animation)
          */
         export interface Animation extends globalThis.EnumItem {
@@ -33132,7 +33242,9 @@ declare namespace Enum {
         }
         export const Animation: Animation;
         /**
-         * **Deprecated:**
+         * **Deprecated:** Use `SecurityCapability.AvatarAppearance` instead.
+         *
+         * Deprecated. Use `SecurityCapability.AvatarAppearance` instead.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Avatar)
          */
@@ -33143,6 +33255,8 @@ declare namespace Enum {
         }
         export const Avatar: Avatar;
         /**
+         * Guards access to user input APIs such as `UserInputService` and `ContextActionService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Input)
          */
         export interface Input extends globalThis.EnumItem {
@@ -33152,6 +33266,8 @@ declare namespace Enum {
         }
         export const Input: Input;
         /**
+         * Guards access to environment and world-setting APIs such as `Lighting` and `Atmosphere`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Environment)
          */
         export interface Environment extends globalThis.EnumItem {
@@ -33161,6 +33277,8 @@ declare namespace Enum {
         }
         export const Environment: Environment;
         /**
+         * Guards access to remote event and function APIs such as `RemoteEvent` and `RemoteFunction`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RemoteEvent)
          */
         export interface RemoteEvent extends globalThis.EnumItem {
@@ -33170,6 +33288,8 @@ declare namespace Enum {
         }
         export const RemoteEvent: RemoteEvent;
         /**
+         * Guards access to the legacy `Sound` and pre-`VoiceChatService.UseAudioApi` sound stack APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#LegacySound)
          */
         export interface LegacySound extends globalThis.EnumItem {
@@ -33179,6 +33299,8 @@ declare namespace Enum {
         }
         export const LegacySound: LegacySound;
         /**
+         * Guards access to `Players` service APIs that query or manage connected players.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Players)
          */
         export interface Players extends globalThis.EnumItem {
@@ -33188,6 +33310,8 @@ declare namespace Enum {
         }
         export const Players: Players;
         /**
+         * Guards access to the `Capabilities` and `Sandboxed` properties that configure script sandboxing.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#CapabilityControl)
          */
         export interface CapabilityControl extends globalThis.EnumItem {
@@ -33197,6 +33321,8 @@ declare namespace Enum {
         }
         export const CapabilityControl: CapabilityControl;
         /**
+         * Mirrors the legacy `Plugin` permission level, granting access to Studio plugin APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Plugin)
          */
         export interface Plugin extends globalThis.EnumItem {
@@ -33206,6 +33332,8 @@ declare namespace Enum {
         }
         export const Plugin: Plugin;
         /**
+         * Mirrors the legacy `LocalUser` permission level, granting access to IDE-only and Studio-level APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#LocalUser)
          */
         export interface LocalUser extends globalThis.EnumItem {
@@ -33215,6 +33343,8 @@ declare namespace Enum {
         }
         export const LocalUser: LocalUser;
         /**
+         * Mirrors the legacy `WritePlayer` permission level, granting the ability to modify player identity properties such as name and `UserId`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#WritePlayer)
          */
         export interface WritePlayer extends globalThis.EnumItem {
@@ -33224,6 +33354,8 @@ declare namespace Enum {
         }
         export const WritePlayer: WritePlayer;
         /**
+         * Mirrors the legacy `RobloxScript` permission level, granting access to `CoreScript` APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RobloxScript)
          */
         export interface RobloxScript extends globalThis.EnumItem {
@@ -33233,6 +33365,8 @@ declare namespace Enum {
         }
         export const RobloxScript: RobloxScript;
         /**
+         * Mirrors the legacy `RobloxEngine` permission level, granting access to internal engine-level APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RobloxEngine)
          */
         export interface RobloxEngine extends globalThis.EnumItem {
@@ -33242,6 +33376,8 @@ declare namespace Enum {
         }
         export const RobloxEngine: RobloxEngine;
         /**
+         * The default capability assigned to API members that have not been explicitly assigned to any other capability category.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Unassigned)
          */
         export interface Unassigned extends globalThis.EnumItem {
@@ -33251,6 +33387,8 @@ declare namespace Enum {
         }
         export const Unassigned: Unassigned;
         /**
+         * Restricts access to non-sensitive APIs that are intentionally kept internal.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#InternalTest)
          */
         export interface InternalTest extends globalThis.EnumItem {
@@ -33260,6 +33398,8 @@ declare namespace Enum {
         }
         export const InternalTest: InternalTest;
         /**
+         * Restricts access to APIs callable only from Studio plugin or Open Cloud Luau execution sessions.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#PluginOrOpenCloud)
          */
         export interface PluginOrOpenCloud extends globalThis.EnumItem {
@@ -33269,6 +33409,8 @@ declare namespace Enum {
         }
         export const PluginOrOpenCloud: PluginOrOpenCloud;
         /**
+         * Restricts access to APIs that may only be called from Studio Assistant execution contexts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Assistant)
          */
         export interface Assistant extends globalThis.EnumItem {
@@ -33278,6 +33420,8 @@ declare namespace Enum {
         }
         export const Assistant: Assistant;
         /**
+         * Restricts access to APIs that are executable only from Studio's `RemoteCommandService` in Team Create sessions.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RemoteCommand)
          */
         export interface RemoteCommand extends globalThis.EnumItem {
@@ -33287,6 +33431,8 @@ declare namespace Enum {
         }
         export const RemoteCommand: RemoteCommand;
         /**
+         * Guards access to APIs that read or query asset metadata from the Roblox catalog.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AssetRead)
          */
         export interface AssetRead extends globalThis.EnumItem {
@@ -33296,6 +33442,8 @@ declare namespace Enum {
         }
         export const AssetRead: AssetRead;
         /**
+         * Guards access to asset management APIs such as `ContentProvider:PreloadAsync()` and encryption-key registration.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AssetManagement)
          */
         export interface AssetManagement extends globalThis.EnumItem {
@@ -33305,6 +33453,8 @@ declare namespace Enum {
         }
         export const AssetManagement: AssetManagement;
         /**
+         * Guards access to procedural and AI-driven content generation APIs such as `EditableMesh` and `AvatarCreationService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#DynamicGeneration)
          */
         export interface DynamicGeneration extends globalThis.EnumItem {
@@ -33314,6 +33464,8 @@ declare namespace Enum {
         }
         export const DynamicGeneration: DynamicGeneration;
         /**
+         * Guards access to platform-level avatar editing APIs provided by `AvatarEditorService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#PlatformAvatarEditing)
          */
         export interface PlatformAvatarEditing extends globalThis.EnumItem {
@@ -33323,6 +33475,8 @@ declare namespace Enum {
         }
         export const PlatformAvatarEditing: PlatformAvatarEditing;
         /**
+         * Guards access to APIs that create or update published Roblox assets.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AssetCreateUpdate)
          */
         export interface AssetCreateUpdate extends globalThis.EnumItem {
@@ -33332,6 +33486,8 @@ declare namespace Enum {
         }
         export const AssetCreateUpdate: AssetCreateUpdate;
         /**
+         * Guards access to `CaptureService` APIs that take screenshots and record video.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Capture)
          */
         export interface Capture extends globalThis.EnumItem {
@@ -33341,6 +33497,8 @@ declare namespace Enum {
         }
         export const Capture: Capture;
         /**
+         * Guards access to sensitive user input APIs such as those that can read raw keyboard or mouse data beyond normal game input.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#SensitiveInput)
          */
         export interface SensitiveInput extends globalThis.EnumItem {
@@ -33350,6 +33508,8 @@ declare namespace Enum {
         }
         export const SensitiveInput: SensitiveInput;
         /**
+         * Guards access to in-experience purchase and monetization APIs such as `MarketplaceService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Monetization)
          */
         export interface Monetization extends globalThis.EnumItem {
@@ -33359,6 +33519,8 @@ declare namespace Enum {
         }
         export const Monetization: Monetization;
         /**
+         * Allows a script to load assets that are owned by the experience's creator using `InsertService` or `require()`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#LoadOwnedAsset)
          */
         export interface LoadOwnedAsset extends globalThis.EnumItem {
@@ -33368,6 +33530,8 @@ declare namespace Enum {
         }
         export const LoadOwnedAsset: LoadOwnedAsset;
         /**
+         * Guards access to social APIs such as `SocialService`, `FriendPages`, and `ExperienceInviteOptions`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Social)
          */
         export interface Social extends globalThis.EnumItem {
@@ -33377,6 +33541,8 @@ declare namespace Enum {
         }
         export const Social: Social;
         /**
+         * Guards access to server-to-server messaging APIs such as `MessagingService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#ServerCommunication)
          */
         export interface ServerCommunication extends globalThis.EnumItem {
@@ -33386,6 +33552,8 @@ declare namespace Enum {
         }
         export const ServerCommunication: ServerCommunication;
         /**
+         * Guards access to `LogService` and logging-related APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Logging)
          */
         export interface Logging extends globalThis.EnumItem {
@@ -33395,6 +33563,8 @@ declare namespace Enum {
         }
         export const Logging: Logging;
         /**
+         * Guards access to APIs that initiate external (non-Roblox) purchase prompts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#PromptExternalPurchase)
          */
         export interface PromptExternalPurchase extends globalThis.EnumItem {
@@ -33404,6 +33574,8 @@ declare namespace Enum {
         }
         export const PromptExternalPurchase: PromptExternalPurchase;
         /**
+         * Guards access to group-related APIs such as `GroupService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Groups)
          */
         export interface Groups extends globalThis.EnumItem {
@@ -33413,6 +33585,8 @@ declare namespace Enum {
         }
         export const Groups: Groups;
         /**
+         * Guards access to teleportation APIs such as `TeleportService`, `TeleportOptions`, and `TeleportAsyncResult`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Teleport)
          */
         export interface Teleport extends globalThis.EnumItem {
@@ -33422,6 +33596,8 @@ declare namespace Enum {
         }
         export const Teleport: Teleport;
         /**
+         * Guards access to moderation and player-consequence APIs such as `Players:BanAsync()` and `ModerationService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Consequences)
          */
         export interface Consequences extends globalThis.EnumItem {
@@ -33431,6 +33607,8 @@ declare namespace Enum {
         }
         export const Consequences: Consequences;
         /**
+         * Guards access to `MaterialService`, `MaterialVariant`, and custom material APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Material)
          */
         export interface Material extends globalThis.EnumItem {
@@ -33440,6 +33618,8 @@ declare namespace Enum {
         }
         export const Material: Material;
         /**
+         * Guards access to APIs that control avatar locomotion and behavior at runtime.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AvatarBehavior)
          */
         export interface AvatarBehavior extends globalThis.EnumItem {
@@ -33449,6 +33629,8 @@ declare namespace Enum {
         }
         export const AvatarBehavior: AvatarBehavior;
         /**
+         * Guards access to APIs that read or modify avatar appearance, such as `HumanoidDescription`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AvatarAppearance)
          */
         export interface AvatarAppearance extends globalThis.EnumItem {
@@ -33458,6 +33640,8 @@ declare namespace Enum {
         }
         export const AvatarAppearance: AvatarAppearance;
         /**
+         * Allows a script to `require()` asset IDs or call `InsertService:LoadAsset()` for assets not owned by the creator.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#LoadUnownedAsset)
          */
         export interface LoadUnownedAsset extends globalThis.EnumItem {
@@ -33838,6 +34022,8 @@ declare namespace Enum {
     }
     export type Severity = Severity.Error | Severity.Warning | Severity.Information | Severity.Hint;
     /**
+     * Result codes returned by `AdService:ShowRewardedVideoAdAsync()` indicating whether a rewarded video ad completed successfully or why it did not.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ShowAdResult)
      */
     export namespace ShowAdResult {
@@ -33897,6 +34083,8 @@ declare namespace Enum {
         }
         export const ShowInterrupted: ShowInterrupted;
         /**
+         * The device does not have sufficient video memory available to display the ad.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ShowAdResult#InsufficientMemory)
          */
         export interface InsufficientMemory extends globalThis.EnumItem {
@@ -34166,7 +34354,7 @@ declare namespace Enum {
         }
         export const NoHash: NoHash;
         /**
-         * The model's property set has not been uploaded to the content-delivery network. Shown as orange in the debug tint overlay.
+         * The model has not been uploaded to the content-delivery network. Shown as orange in the debug tint overlay.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus#NotUploaded)
          */
@@ -34177,7 +34365,7 @@ declare namespace Enum {
         }
         export const NotUploaded: NotUploaded;
         /**
-         * The property set has been uploaded to the content-delivery network but has not yet been transcoded into SLIM assets. Shown as yellow in the debug tint overlay.
+         * The model has been uploaded to the content-delivery network but has not yet been transcoded into SLIM assets. Shown as yellow in the debug tint overlay.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus#Uploaded)
          */

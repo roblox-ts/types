@@ -539,6 +539,8 @@ interface CreatableInstances {
     SpotLight: SpotLight;
     SpringConstraint: SpringConstraint;
     StarterGear: StarterGear;
+    StateMachineDefinition: StateMachineDefinition;
+    StateMachineTransitionDefinition: StateMachineTransitionDefinition;
     StringValue: StringValue;
     StudioAttachment: StudioAttachment;
     StudioCallout: StudioCallout;
@@ -1163,6 +1165,8 @@ interface ActivityHistoryEventService extends Instance {
     readonly _nominal_ActivityHistoryEventService: unique symbol;
 }
 /**
+ * A portal that teleports players to a sponsored experience as part of immersive ads.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdPortal)
  */
 interface AdPortal extends Instance {
@@ -5809,6 +5813,12 @@ interface Decal extends FaceInstance {
     readonly _nominal_Decal: unique symbol;
     /**
      * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#EmissiveMaskContent)
+     */
+    set EmissiveMaskContent(value: Content);
+    /**
+     * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#MetalnessMap)
@@ -6862,6 +6872,8 @@ interface SurfaceGuiBase extends LayerCollector {
     readonly _nominal_SurfaceGuiBase: unique symbol;
 }
 /**
+ * A surface-based GUI that displays immersive ads on a face of a `Part` in the 3D world.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdGui)
  */
 interface AdGui extends SurfaceGuiBase {
@@ -9688,7 +9700,7 @@ interface Terrain extends BasePart {
 /**
  * Abstract intermediate class that manages physical geometry properties for PartOperations and MeshParts.
  *
- * - **Tags**: NotCreatable
+ * - **Tags**: NotCreatable, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart)
  */
@@ -9710,6 +9722,13 @@ interface TriangleMeshPart extends BasePart {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart#CollisionFidelity)
      */
     set CollisionFidelity(value: Enum.CollisionFidelity);
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart#CollisionPrecision)
+     */
+    set CollisionPrecision(value: number);
     /**
      * Determines the geometric representation used to compute aerodynamic forces and torques.
      *
@@ -13964,6 +13983,26 @@ interface DataModel extends ServiceProvider<Services> {
      */
     readonly _nominal_DataModel: unique symbol;
     /**
+     * Sets the `DataModel.PlaceId` of the current game instance.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#SetPlaceId)
+     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
+     * @param placeId The ID to set the `DataModel.PlaceId` to.
+     */
+    SetPlaceId(this: DataModel, placeId: number): void;
+    /**
+     * Sets the `DataModel.GameId` of the current game instance to the given `universeId`.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#SetUniverseId)
+     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
+     * @param universeId The ID to set the `DataModel.GameId` to.
+     */
+    SetUniverseId(this: DataModel, universeId: number): void;
+    /**
      * Returns a table containing basic information about the jobs performed by the task scheduler.
      *
      * - **ThreadSafety**: Unsafe
@@ -13984,26 +14023,6 @@ interface DataModel extends ServiceProvider<Services> {
      * @returns An array of `Instances` associated with the content URL.
      */
     GetObjects(this: DataModel, url: ContentId): Array<Instance>;
-    /**
-     * Sets the `DataModel.PlaceId` of the current game instance.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#SetPlaceId)
-     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
-     * @param placeId The ID to set the `DataModel.PlaceId` to.
-     */
-    SetPlaceId(this: DataModel, placeId: number): void;
-    /**
-     * Sets the `DataModel.GameId` of the current game instance to the given `universeId`.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#SetUniverseId)
-     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
-     * @param universeId The ID to set the `DataModel.GameId` to.
-     */
-    SetUniverseId(this: DataModel, universeId: number): void;
 }
 /**
  * The abstract class for settings database classes.
@@ -14709,6 +14728,36 @@ interface StartupMessageService extends Instance {
      * @deprecated
      */
     readonly _nominal_StartupMessageService: unique symbol;
+}
+/**
+ * - **Tags**: NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StateMachineDefinition)
+ */
+interface StateMachineDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StateMachineDefinition: unique symbol;
+}
+/**
+ * - **Tags**: NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StateMachineTransitionDefinition)
+ */
+interface StateMachineTransitionDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StateMachineTransitionDefinition: unique symbol;
 }
 /**
  * Performance metrics for a game.
@@ -18393,6 +18442,8 @@ interface VideoService extends Instance {
     readonly _nominal_VideoService: unique symbol;
 }
 /**
+ * Service that schedules and runs viewability checks for immersive ad instances in a place.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VisibilityCheckDispatcher)

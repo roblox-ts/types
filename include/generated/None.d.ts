@@ -515,6 +515,8 @@ interface CreatableInstances {
     SpotLight: SpotLight;
     SpringConstraint: SpringConstraint;
     StarterGear: StarterGear;
+    StateMachineDefinition: StateMachineDefinition;
+    StateMachineTransitionDefinition: StateMachineTransitionDefinition;
     StringValue: StringValue;
     StudioAttachment: StudioAttachment;
     StudioCallout: StudioCallout;
@@ -1430,9 +1432,12 @@ interface EditableMesh extends RBXObject {
      */
     BatchSetVertexFaceAttributes(this: EditableMesh, vertexIds: Array<unknown>, faceIds: Array<unknown>, attrIds: Array<unknown>): void;
     /**
+     * Clears all of an EditableMesh's geometry.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#Clear)
+     * @param this Object which allows for the runtime creation and manipulation of meshes.
      */
     Clear(this: EditableMesh): void;
     /**
@@ -3059,6 +3064,8 @@ interface ActivityHistoryEventService extends Instance {
     readonly _nominal_ActivityHistoryEventService: unique symbol;
 }
 /**
+ * A portal that teleports players to a sponsored experience as part of immersive ads.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdPortal)
  */
 interface AdPortal extends Instance {
@@ -3071,6 +3078,8 @@ interface AdPortal extends Instance {
      */
     readonly _nominal_AdPortal: unique symbol;
     /**
+     * Indicates whether the portal is currently active and able to teleport players.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -3102,6 +3111,7 @@ interface AdService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#CreateAdRewardFromDevProductId)
      * @param this The service responsible for in-experience advertising.
      * @param devProductId The ID of the developer product you want to grant as a reward.
+     * @returns An `AdReward` configured as a developer-product reward for the specified product.
      */
     CreateAdRewardFromDevProductId(this: AdService, devProductId: number): AdReward;
     /**
@@ -3115,6 +3125,12 @@ interface AdService extends Instance {
      * @param adIntegrationPlacementId The ID of the placement that this disclosure is attached to.
      */
     RegisterDisclosureButton(this: AdService, disclosureButton: GuiButton, adIntegrationPlacementId: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#RegisterImpressionSource)
+     */
+    RegisterImpressionSource(this: AdService, instance: Instance, adIntegrationPlacementId: string): void;
     /**
      * **Deprecated:** `ShowVideoAd` has been decommissioned and is no longer operational.
      *
@@ -3130,11 +3146,13 @@ interface AdService extends Instance {
      */
     ShowVideoAd(this: AdService): void;
     /**
+     * Stops tracking an instance that was previously registered with `RegisterAdOpportunityAsync`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#UnregisterAdOpportunity)
      * @param this The service responsible for in-experience advertising.
-     * @param instance
+     * @param instance The instance to stop tracking. This should be an instance that you previously passed to `RegisterAdOpportunityAsync`.
      */
     UnregisterAdOpportunity(this: AdService, instance: Instance): void;
     /**
@@ -3170,15 +3188,12 @@ interface AdService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#RegisterAdOpportunityAsync)
      * @param this The service responsible for in-experience advertising.
-     * @param instance
+     * @param instance The `GuiButton` to track as a rewarded video ad opportunity. Must be a descendant of a `ScreenGui`.
      * @param placementId The ID of the placement of the rewarded video ad inside the experience. Allows for reporting on the performance of individual ad placements.
      */
     RegisterAdOpportunityAsync(this: AdService, instance: Instance, placementId?: number): void;
     /**
      * Plays the video ad to the current user inside the experience.
-     * ```
-     * **Warning**: Rewarded Video ads must be user opt-in and clearly disclosed. For details, review our [eligibility requirements](../../../production/promotion/rewarded-video-ads.md#eligibility-requirements) and [advertising standards](https://en.help.roblox.com/hc/en-us/articles/13722260778260-Advertising-Standards).
-     * ```
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -3806,30 +3821,48 @@ interface AnimationNodeDefinition extends Instance {
      */
     NodeType: Enum.AnimationNodeType;
     /**
+     * Appends a named input pin to the end of the ordered input pin list.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#AddInputPin)
+     * @param this
+     * @param pin Name of the input pin to append. Should match the `Name` of the corresponding `ObjectValue` wiring child.
      */
     AddInputPin(this: AnimationNodeDefinition, pin: string): void;
     /**
+     * Returns the current ordered list of input pin names.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#GetOrderedInputPinNames)
+     * @param this
+     * @returns The ordered list of input pin names.
      */
     GetOrderedInputPinNames(this: AnimationNodeDefinition): Array<unknown>;
     /**
+     * Removes the first input pin matching the given name from the ordered pin list.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#RemoveInputPin)
+     * @param this
+     * @param pin Name of the input pin to remove. Only the first pin matching this name is removed.
      */
     RemoveInputPin(this: AnimationNodeDefinition, pin: string): void;
     /**
+     * Bulk-replaces the entire ordered input pin list.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#SetOrderedInputPinNames)
+     * @param this
+     * @param pins The new ordered list of input pin names, replacing the existing list.
      */
     SetOrderedInputPinNames(this: AnimationNodeDefinition, pins: Array<unknown>): void;
     /**
+     * Fires whenever the ordered input pin list is modified.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#InputPinsChanged)
@@ -4615,6 +4648,13 @@ interface AssetService extends Instance {
      */
     CreateDataModelContentAsync(this: AssetService, content: Content, options?: object): unknown;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateDecalAsync)
+     */
+    CreateDecalAsync(this: AssetService, content: object): Decal;
+    /**
      * Creates a new `EditableImage` object populated with the given image.
      *
      * - **ThreadSafety**: Unsafe
@@ -4706,6 +4746,13 @@ interface AssetService extends Instance {
      * @returns A new `SurfaceAppearance` instance with the given maps from the `content` parameter.
      */
     CreateSurfaceAppearanceAsync(this: AssetService, content: object): SurfaceAppearance;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateTextureAsync)
+     */
+    CreateTextureAsync(this: AssetService, content: object): Texture;
     /**
      * **Deprecated:** Use `GetAssetIdsForPackageAsync()` instead.
      *
@@ -9293,10 +9340,16 @@ interface BadgeService extends Instance {
      */
     GetBadgeInfoAsync(this: BadgeService, badgeId: number): BadgeInfo;
     /**
+     * Checks a list of badge IDs against a `User` and returns, for each badge the player owns, its ID and the date it was awarded.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BadgeService#GetUserBadgesAsync)
+     * @param this Provides information on badges and awards them.
+     * @param userId The `User` of the player to check for ownership of the specified badges.
+     * @param badgeIds The list of IDs of the badges to check ownership of. Maximum length of 100.
+     * @returns A list of dictionaries, one for each badge the given user owns out of the provided badge IDs. Each dictionary contains a `BadgeId` and an `AwardedDate`. Empty if none of the provided badges are owned by the given user. Not guaranteed to be in the same order as the input list. Some badge IDs may be omitted if the user with the target `User` has not recently been in the server and the badge IDs are not associated with the requesting experience.
      */
     GetUserBadgesAsync(this: BadgeService, userId: User, badgeIds: Array<unknown>): Array<unknown>;
     /**
@@ -12925,17 +12978,19 @@ interface CommerceService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#PromptCommerceProductPurchase)
      * @param this Supports real-world purchases that you can bundle with digital benefits.
-     * @param user
-     * @param commerceProductId
+     * @param user The `Player` to prompt with the purchase flow. When called from a `LocalScript`, this must be the local player.
+     * @param commerceProductId The identifier of the commerce product to purchase, either the numeric ID or the full `COM-`-prefixed form.
      */
     PromptCommerceProductPurchase(this: CommerceService, user: Player, commerceProductId: string): void;
     /**
+     * Legacy endpoint that opens an in-experience browser to a real-world commerce URL for the specified player; superseded by `CommerceService:PromptCommerceProductPurchase()`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#PromptRealWorldCommerceBrowser)
      * @param this Supports real-world purchases that you can bundle with digital benefits.
-     * @param player
-     * @param url
+     * @param player The `Player` for whom the browser opens. When called from a `LocalScript`, this must be the local player.
+     * @param url The real-world commerce URL to open. The URL must be on the commerce allowlist, or the request is ignored.
      */
     PromptRealWorldCommerceBrowser(this: CommerceService, player: Player, url: string): void;
     /**
@@ -12946,15 +13001,19 @@ interface CommerceService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#GetCommerceProductInfoAsync)
      * @param this Supports real-world purchases that you can bundle with digital benefits.
-     * @param commerceProductId
+     * @param commerceProductId The identifier of the commerce product to look up, either the numeric ID or the full `COM-`-prefixed form.
+     * @returns A dictionary of information about the commerce product, including whether it `IsForSale`, an `Item` sub-table of display details (`Name`, `Description`, `IconImageAssetId`, `DisplayPrice`, and `IsPurchasable`), and the `Benefits` granted by purchasing it.
      */
     GetCommerceProductInfoAsync(this: CommerceService, commerceProductId: string): object;
     /**
+     * Legacy endpoint that returns whether the current user is eligible for real-world commerce; superseded by `PolicyService`.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#UserEligibleForRealWorldCommerceAsync)
      * @param this Supports real-world purchases that you can bundle with digital benefits.
+     * @returns `true` if the current user is eligible for real-world commerce.
      */
     UserEligibleForRealWorldCommerceAsync(this: CommerceService): boolean;
     /**
@@ -17946,6 +18005,24 @@ interface Decal extends FaceInstance {
      */
     ColorMapContent: Content;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#EmissiveMaskContent)
+     */
+    get EmissiveMaskContent(): Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#EmissiveStrength)
+     */
+    EmissiveStrength: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#EmissiveTint)
+     */
+    EmissiveTint: Color3;
+    /**
      * Acts as a multiplier for the decal's `Transparency` property. The effects are only visible to the local player.
      *
      * - **ThreadSafety**: ReadSafe
@@ -22274,6 +22351,8 @@ interface SurfaceGuiBase extends LayerCollector {
     Face: Enum.NormalId;
 }
 /**
+ * A surface-based GUI that displays immersive ads on a face of a `Part` in the 3D world.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdGui)
  */
 interface AdGui extends SurfaceGuiBase {
@@ -22286,6 +22365,8 @@ interface AdGui extends SurfaceGuiBase {
      */
     readonly _nominal_AdGui: unique symbol;
     /**
+     * Determines the shape of the ad displayed by the `AdGui`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdGui#AdShape)
@@ -22300,18 +22381,24 @@ interface AdGui extends SurfaceGuiBase {
      */
     EnableVideoAds: boolean;
     /**
+     * The image the `AdGui` displays when no ad is available to serve.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdGui#FallbackImage)
      */
     FallbackImage: ContentId;
     /**
+     * The `Content` equivalent of `AdGui.FallbackImage` that supports asset URIs and `EditableImage` objects.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdGui#FallbackImageContent)
      */
     FallbackImageContent: Content;
     /**
+     * Indicates whether the `AdGui` is currently displaying a served ad.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -33426,7 +33513,7 @@ interface Terrain extends BasePart {
 /**
  * Abstract intermediate class that manages physical geometry properties for PartOperations and MeshParts.
  *
- * - **Tags**: NotCreatable
+ * - **Tags**: NotCreatable, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart)
  */
@@ -33448,6 +33535,13 @@ interface TriangleMeshPart extends BasePart {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart#CollisionFidelity)
      */
     get CollisionFidelity(): Enum.CollisionFidelity;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart#CollisionPrecision)
+     */
+    get CollisionPrecision(): number;
     /**
      * Determines the geometric representation used to compute aerodynamic forces and torques.
      *
@@ -41569,6 +41663,13 @@ interface DataModel extends ServiceProvider<Services> {
      */
     readonly VIPServerOwnerId: number;
     /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#RunService)
+     */
+    readonly RunService: RunService | undefined;
+    /**
      * A reference to the `Workspace` service.
      *
      * - **ThreadSafety**: ReadSafe
@@ -41577,13 +41678,6 @@ interface DataModel extends ServiceProvider<Services> {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#Workspace)
      */
     readonly Workspace: Workspace;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#RunService)
-     */
-    readonly RunService: RunService | undefined;
     /**
      * Binds a function to be called before the server shuts down.
      *
@@ -41711,6 +41805,12 @@ interface DataModel extends ServiceProvider<Services> {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#ServerLifecycleChanged)
      */
     readonly ServerLifecycleChanged: RBXScriptSignal<(serverLifecycleChangedEvent: object) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#ServerLowMemoryWarning)
+     */
+    readonly ServerLowMemoryWarning: RBXScriptSignal<() => void>;
     /**
      * Fires on the server when the server has been scheduled to restart. Provides the scheduled restart time, source, and custom attributes.
      *
@@ -43840,6 +43940,36 @@ interface StartupMessageService extends Instance {
     readonly _nominal_StartupMessageService: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StateMachineDefinition)
+ */
+interface StateMachineDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StateMachineDefinition: unique symbol;
+}
+/**
+ * - **Tags**: NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StateMachineTransitionDefinition)
+ */
+interface StateMachineTransitionDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StateMachineTransitionDefinition: unique symbol;
+}
+/**
  * Performance metrics for a game.
  *
  * - **Tags**: NotCreatable, Service
@@ -45306,6 +45436,8 @@ interface TeleportService extends Instance {
      */
     Teleport(this: TeleportService, placeId: number, player?: Player, teleportData?: TeleportData, customLoadingScreen?: ScreenGui): void;
     /**
+     * **Deprecated:** Use `TeleportAsync()` instead. For a migration guide, see [Teleport between places](../../../projects/teleport.md#migrate-to-secure-teleports).
+     *
      * Teleports a `Player` to the server instance associated with the given *placeId* and *instanceId*.
      *
      * - **ThreadSafety**: Unsafe
@@ -45324,6 +45456,8 @@ interface TeleportService extends Instance {
      */
     TeleportToPlaceInstance(this: TeleportService, placeId: number, instanceId: string, player?: Player, spawnName?: string, teleportData?: TeleportData, customLoadingScreen?: ScreenGui): void;
     /**
+     * **Deprecated:** Use `TeleportAsync()` instead. For a migration guide, see [Teleport between places](../../../projects/teleport.md#migrate-to-secure-teleports).
+     *
      * Teleport a group of `Players` to a reserved server created using `TeleportService:ReserveServerAsync()`.
      *
      * - **ThreadSafety**: Unsafe
@@ -45342,6 +45476,8 @@ interface TeleportService extends Instance {
      */
     TeleportToPrivateServer(this: TeleportService, placeId: number, reservedServerAccessCode: string, players: Array<Player>, spawnName?: string, teleportData?: TeleportData, customLoadingScreen?: ScreenGui): void;
     /**
+     * **Deprecated:** Use `TeleportAsync()` instead. For a migration guide, see [Teleport between places](../../../projects/teleport.md#migrate-to-secure-teleports).
+     *
      * A variant of `TeleportService:Teleport()` that causes the `Player` to spawn at a `SpawnLocation` of the given name at the destination place.
      *
      * - **ThreadSafety**: Unsafe
@@ -45434,6 +45570,8 @@ interface TeleportService extends Instance {
      */
     TeleportAsync(this: TeleportService, placeId: number, players: ReadonlyArray<Player>, options?: TeleportOptions): TeleportAsyncResult;
     /**
+     * **Deprecated:** Use `TeleportAsync()` instead. For a migration guide, see [Teleport between places](../../../projects/teleport.md#migrate-to-secure-teleports).
+     *
      * Teleports a group of `Players` to the same server of the place with the given `PlaceId`, returning the `JobId` of the server instance they were teleported to.
      *
      * - **ThreadSafety**: Unsafe
@@ -45903,6 +46041,24 @@ interface TestService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#SignalProfilingCapture)
+     */
+    SignalProfilingCapture(this: TestService, target?: string, options?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#SignalProfilingStart)
+     */
+    SignalProfilingStart(this: TestService, target?: string, options?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#SignalProfilingStop)
+     */
+    SignalProfilingStop(this: TestService, target?: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#StartTestSession)
      */
     StartTestSession(this: TestService): void;
@@ -45973,7 +46129,7 @@ interface TestService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RequestValidationAsync)
      */
-    RequestValidationAsync(this: TestService, artifactType: string, artifactName: string, timeoutSeconds?: number): unknown;
+    RequestValidationAsync(this: TestService, module: string, artifactName: string, options: unknown): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -51453,6 +51609,8 @@ interface VideoService extends Instance {
     CreateVideoSamplerAsync(this: VideoService, content: Content, options?: object): VideoSampler;
 }
 /**
+ * Service that schedules and runs viewability checks for immersive ad instances in a place.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VisibilityCheckDispatcher)
