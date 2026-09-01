@@ -2733,7 +2733,7 @@ interface Instance extends RBXObject {
      * @param attribute The name of the attribute being set.
      * @param value The value to set the specified attribute to.
      */
-    SetAttribute(this: Instance, attribute: string, value: AttributeValue | undefined): void;
+    SetAttribute(this: Instance, attribute: string, value: SetAttributeValue | undefined): void;
     /**
      * Returns the child of the `Instance` with the given name. If the child does not exist, it will yield the current thread until it does.
      *

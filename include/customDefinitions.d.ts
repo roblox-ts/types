@@ -581,7 +581,7 @@ interface Instance extends RBXObject {
 	FindFirstAncestorOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 	FindFirstChildOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 	GetAttribute(this: Instance, attribute: string): AttributeValue | undefined;
-	SetAttribute(this: Instance, attribute: string, value: AttributeValue | undefined): void;
+	SetAttribute(this: Instance, attribute: string, value: SetAttributeValue | undefined): void;
 	GetAttributes(this: Instance): Map<string, AttributeValue>;
 	QueryDescendants<S extends string>(
 		this: Instance,

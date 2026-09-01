@@ -1889,6 +1889,25 @@ interface FontConstructor {
 }
 declare const Font: FontConstructor;
 
+// InstanceHandle
+interface InstanceHandle {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_InstanceHandle: unique symbol;
+	Get(this: InstanceHandle): Instance | undefined;
+	Wait(this: InstanceHandle): Instance;
+	Wait(this: InstanceHandle, timeout: number): Instance | undefined;
+}
+interface InstanceHandleConstructor {
+	new (instance: Instance | undefined): InstanceHandle;
+}
+declare const InstanceHandle: InstanceHandleConstructor;
+
 // NumberRange
 interface NumberRange {
 	/**
@@ -3203,6 +3222,7 @@ interface CheckableTypes extends CheckablePrimitives {
 	FloatCurveKey: FloatCurveKey;
 	Font: Font;
 	Instance: Instance;
+	InstanceHandle: InstanceHandle;
 	NumberRange: NumberRange;
 	NumberSequence: NumberSequence;
 	NumberSequenceKeypoint: NumberSequenceKeypoint;
@@ -3245,11 +3265,13 @@ type AttributeValue =
 	| Vector2
 	| Vector3
 	| CFrame
+	| InstanceHandle
 	| NumberSequence
 	| ColorSequence
 	| NumberRange
 	| Rect
 	| Font;
+type SetAttributeValue = AttributeValue | Instance;
 
 declare const enum RobloxEmoji {
 	Robux = "",
