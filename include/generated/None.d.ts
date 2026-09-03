@@ -35,6 +35,7 @@ interface Services {
     BugReporterService: BugReporterService;
     BulkImportService: BulkImportService;
     CacheableContentProvider: CacheableContentProvider;
+    CallingService: CallingService;
     CalloutService: CalloutService;
     CaptureService: CaptureService;
     ChangeHistoryStreamingService: ChangeHistoryStreamingService;
@@ -269,6 +270,7 @@ interface Services {
     WebViewService: WebViewService;
     WindowProtocolService: WindowProtocolService;
     Workspace: Workspace;
+    WrapContentProvider: WrapContentProvider;
     WrapDeformMeshProvider: WrapDeformMeshProvider;
 }
 interface CreatableInstances {
@@ -369,6 +371,7 @@ interface CreatableInstances {
     Configuration: Configuration;
     ControllerManager: ControllerManager;
     ControllerPartSensor: ControllerPartSensor;
+    ControlState: ControlState;
     CornerWedgePart: CornerWedgePart;
     CurveAnimation: CurveAnimation;
     CustomLog: CustomLog;
@@ -468,7 +471,6 @@ interface CreatableInstances {
     PitchShiftSoundEffect: PitchShiftSoundEffect;
     Plane: Plane;
     PlaneConstraint: PlaneConstraint;
-    PlayerControlState: PlayerControlState;
     PluginCapabilities: PluginCapabilities;
     PointLight: PointLight;
     Pose: Pose;
@@ -888,6 +890,8 @@ interface Capture extends RBXObject {
      */
     readonly _nominal_Capture: unique symbol;
     /**
+     * The date and time at which the capture was taken.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -895,6 +899,8 @@ interface Capture extends RBXObject {
      */
     readonly CaptureTime: DateTime;
     /**
+     * Indicates whether the capture is a screenshot or a video.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -902,6 +908,8 @@ interface Capture extends RBXObject {
      */
     readonly CaptureType: Enum.CaptureType;
     /**
+     * A temporary local identifier for the capture's stored file.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -909,6 +917,8 @@ interface Capture extends RBXObject {
      */
     readonly LocalId: string;
     /**
+     * The ID of the place in which the capture was taken.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -916,6 +926,8 @@ interface Capture extends RBXObject {
      */
     readonly SourcePlaceId: number;
     /**
+     * The ID of the experience in which the capture was taken.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -3111,7 +3123,7 @@ interface AdService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#CreateAdRewardFromDevProductId)
      * @param this The service responsible for in-experience advertising.
      * @param devProductId The ID of the developer product you want to grant as a reward.
-     * @returns An `AdReward` configured as a developer-product reward for the specified product.
+     * @returns An `AdReward` configured as a developer product reward for the specified product.
      */
     CreateAdRewardFromDevProductId(this: AdService, devProductId: number): AdReward;
     /**
@@ -3152,7 +3164,7 @@ interface AdService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdService#UnregisterAdOpportunity)
      * @param this The service responsible for in-experience advertising.
-     * @param instance The instance to stop tracking. This should be an instance that you previously passed to `RegisterAdOpportunityAsync`.
+     * @param instance The instance to stop tracking. This should be an instance that you previously passed to `RegisterAdOpportunityAsync()`.
      */
     UnregisterAdOpportunity(this: AdService, instance: Instance): void;
     /**
@@ -3497,6 +3509,8 @@ interface Animation extends Instance {
      */
     readonly _nominal_Animation: unique symbol;
     /**
+     * A reference to the animation asset associated with this `Animation`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animation#AnimationContent)
@@ -3528,7 +3542,7 @@ interface AnimationClip extends Instance {
      */
     readonly _nominal_AnimationClip: unique symbol;
     /**
-     * Returns the length (in seconds) of this `AnimationClip`. This will return `0` until the animation has fully loaded and thus may not be immediately available.
+     * The length in seconds of this clip. Returns `0` until the animation has fully loaded.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -3705,12 +3719,15 @@ interface AnimationClipProvider extends Instance {
      */
     GetAnimationsAsync(this: AnimationClipProvider, userId: User): Instance | undefined;
     /**
+     * Returns a `ClipEvaluator` for the `AnimationClip` at the given content ID, loaded asynchronously.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationClipProvider#GetClipEvaluatorAsync)
      * @param this Provides functions to load and preview `AnimationClips`.
-     * @param assetId
+     * @param assetId The content ID of the animation to load.
+     * @returns A `ClipEvaluator` that can sample the loaded `AnimationClip`.
      */
     GetClipEvaluatorAsync(this: AnimationClipProvider, assetId: ContentId): ClipEvaluator;
 }
@@ -3803,6 +3820,8 @@ interface AnimationFromVideoCreatorStudioService extends Instance {
     readonly _nominal_AnimationFromVideoCreatorStudioService: unique symbol;
 }
 /**
+ * A single node within an animation graph, connected to other nodes through named input pins.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition)
  */
 interface AnimationNodeDefinition extends Instance {
@@ -3815,6 +3834,8 @@ interface AnimationNodeDefinition extends Instance {
      */
     readonly _nominal_AnimationNodeDefinition: unique symbol;
     /**
+     * The kind of node this definition represents within its animation graph.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#NodeType)
@@ -3826,7 +3847,7 @@ interface AnimationNodeDefinition extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#AddInputPin)
-     * @param this
+     * @param this A single node within an animation graph, connected to other nodes through named input pins.
      * @param pin Name of the input pin to append. Should match the `Name` of the corresponding `ObjectValue` wiring child.
      */
     AddInputPin(this: AnimationNodeDefinition, pin: string): void;
@@ -3836,7 +3857,7 @@ interface AnimationNodeDefinition extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#GetOrderedInputPinNames)
-     * @param this
+     * @param this A single node within an animation graph, connected to other nodes through named input pins.
      * @returns The ordered list of input pin names.
      */
     GetOrderedInputPinNames(this: AnimationNodeDefinition): Array<unknown>;
@@ -3846,7 +3867,7 @@ interface AnimationNodeDefinition extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#RemoveInputPin)
-     * @param this
+     * @param this A single node within an animation graph, connected to other nodes through named input pins.
      * @param pin Name of the input pin to remove. Only the first pin matching this name is removed.
      */
     RemoveInputPin(this: AnimationNodeDefinition, pin: string): void;
@@ -3856,7 +3877,7 @@ interface AnimationNodeDefinition extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#SetOrderedInputPinNames)
-     * @param this
+     * @param this A single node within an animation graph, connected to other nodes through named input pins.
      * @param pins The new ordered list of input pin names, replacing the existing list.
      */
     SetOrderedInputPinNames(this: AnimationNodeDefinition, pins: Array<unknown>): void;
@@ -4250,6 +4271,7 @@ interface Animator extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animator#GetPlayingAnimationTracks)
      * @param this Responsible for the playback and replication of `Animations`.
+     * @returns An array of currently active `AnimationTracks` on this `Animator`, including tracks that are fading out.
      */
     GetPlayingAnimationTracks(this: Animator): Array<AnimationTrack>;
     /**
@@ -4271,6 +4293,7 @@ interface Animator extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animator#LoadAnimation)
      * @param this Responsible for the playback and replication of `Animations`.
      * @param animation The `Animation` to be used.
+     * @returns A new `AnimationTrack` linked to the given `Animation`.
      */
     LoadAnimation(this: Animator, animation: Animation): AnimationTrack;
     /**
@@ -4863,19 +4886,12 @@ interface AssetService extends Instance {
      */
     LoadAssetAsync(this: AssetService, assetId: number): Instance | undefined;
     /**
-     * Allows in-experience asset creation for users by prompting a publish dialog.
-     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#PromptCreateAssetAsync)
-     * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
-     * @param player The user who submits an asset creation.
-     * @param instance The asset to be created. Currently can't contain scripts or nest non-public assets.
-     * @param assetType The asset type. Currently can only be `AssetType.Model`.
-     * @returns The `PromptCreateAssetResult` and asset ID pair if successful.
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#PromptCreatePlatformContentAsync)
      */
-    PromptCreateAssetAsync(this: AssetService, player: Player, instance: Instance, assetType: CastsToEnum<Enum.AssetType>): unknown;
+    PromptCreatePlatformContentAsync(this: AssetService, player: Player, object: RBXObject, assetType: CastsToEnum<Enum.AssetType>): unknown;
     /**
      * Prompts the specified player to select and upload a video, which is then converted into an `AnimationClip`.
      *
@@ -8716,7 +8732,7 @@ interface AvatarEditorService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#PromptCreateOutfit)
      * @param this A service to support developer Avatar Editors.
      * @param outfit The `Outfit` that the player will be prompted to created.
-     * @param rigType The `RigType` that the outfit will be created for if the player confirms the prompt.
+     * @param rigType The `HumanoidRigType` that the outfit will be created for if the player confirms the prompt.
      * @param outfitOptions Reserved for future options. Must be empty or omitted.
      * @param outfitType Optional `OutfitType`. Only `Avatar` and `Makeup` values are accepted. When omitted, the type is inferred from the description.
      */
@@ -8742,14 +8758,14 @@ interface AvatarEditorService extends Instance {
      */
     PromptRenameOutfit(this: AvatarEditorService, outfitId: number): void;
     /**
-     * Prompts the `Players.LocalPlayer` to update their avatar based on the given `HumanoidDescription` and `RigType` of R6 or R15.
+     * Prompts the `Players.LocalPlayer` to update their avatar based on the given `HumanoidDescription` and `HumanoidRigType` of R6 or R15.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#PromptSaveAvatar)
      * @param this A service to support developer Avatar Editors.
      * @param humanoidDescription The given `HumanoidDescription` being prompted to save.
-     * @param rigType The `RigType` that the avatar will be saved for if the player confirms the prompt.
+     * @param rigType The `HumanoidRigType` that the avatar will be saved for if the player confirms the prompt.
      */
     PromptSaveAvatar(this: AvatarEditorService, humanoidDescription: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
     /**
@@ -8772,8 +8788,8 @@ interface AvatarEditorService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEditorService#PromptUpdateOutfit)
      * @param this A service to support developer Avatar Editors.
      * @param outfitId The outfitId of the outfit to update.
-     * @param updatedOutfit A HumanoidDescription that represents the new outfit data.
-     * @param rigType The HumanoidRigType to update the outfit to.
+     * @param updatedOutfit A `HumanoidDescription` that represents the new outfit data.
+     * @param rigType The `HumanoidRigType` to update the outfit to.
      */
     PromptUpdateOutfit(this: AvatarEditorService, outfitId: number, updatedOutfit: HumanoidDescription, rigType: CastsToEnum<Enum.HumanoidRigType>): void;
     /**
@@ -10623,6 +10639,20 @@ interface WrapTarget extends BaseWrap {
      * @deprecated
      */
     get Stiffness(): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTarget#CreateTextureInCageSpaceAsync)
+     */
+    CreateTextureInCageSpaceAsync(this: WrapTarget, texture: EditableImage, options?: object): EditableImage;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTarget#CreateTextureInTargetSpaceAsync)
+     */
+    CreateTextureInTargetSpaceAsync(this: WrapTarget, texture: EditableImage, wrapTextureTransfer: WrapTextureTransfer): EditableImage;
 }
 /**
  * Connects two `Attachments` by drawing a texture between them.
@@ -11501,6 +11531,36 @@ interface SlimContentProvider extends CacheableContentProvider {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapContentProvider)
+ */
+interface WrapContentProvider extends CacheableContentProvider {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WrapContentProvider: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CallingService)
+ */
+interface CallingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CallingService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CalloutService)
  */
 interface CalloutService extends Instance {
@@ -11590,12 +11650,15 @@ interface CaptureService extends Instance {
      */
     TakeScreenshotCaptureAsync(this: CaptureService, onCaptureReady: Callback, captureParams?: object): void;
     /**
+     * Polls the status of an in-progress capture upload started by `StartUploadCaptureAsync()`.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#CheckUploadCaptureStatusAsync)
      * @param this A service which provides control over screenshot and video capture features.
-     * @param token
+     * @param token The token returned by `StartUploadCaptureAsync()` that identifies the in-progress upload.
+     * @returns Tuple of (result: `UploadCaptureResult`, assetId: `number`)
      */
     CheckUploadCaptureStatusAsync(this: CaptureService, token: string): unknown;
     /**
@@ -11613,6 +11676,8 @@ interface CaptureService extends Instance {
      */
     InternalGetStartPlaceIdAsync(this: CaptureService, universeId: number): number;
     /**
+     * Prompts the user for permission to access their local capture gallery.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -11623,6 +11688,8 @@ interface CaptureService extends Instance {
      */
     PromptCaptureGalleryPermissionAsync(this: CaptureService, captureGalleryPermission: CastsToEnum<Enum.CaptureGalleryPermission>): boolean;
     /**
+     * Returns a paginated list of captures from the user's gallery.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -11634,12 +11701,15 @@ interface CaptureService extends Instance {
      */
     ReadCapturesFromGalleryAsync(this: CaptureService, captureTypeFilters?: Array<unknown>, readFromAllEligibleExperiences?: boolean): unknown;
     /**
+     * Begins uploading a capture to the asset system and returns a token used to poll the upload's status.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StartUploadCaptureAsync)
      * @param this A service which provides control over screenshot and video capture features.
-     * @param capture
+     * @param capture The `Capture` to upload.
+     * @returns Tuple of (result: `UploadCaptureResult`, token: `string`)
      */
     StartUploadCaptureAsync(this: CaptureService, capture: Capture): unknown;
     /**
@@ -11651,10 +11721,13 @@ interface CaptureService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CaptureService#StartVideoCaptureAsync)
      * @param this A service which provides control over screenshot and video capture features.
      * @param onCaptureReady A callback function that is called on video capture completion with a `VideoCaptureResult` and, if successful, a `VideoCapture`.
-     * @param captureParams
+     * @param captureParams A dictionary of optional parameters that modify capture behavior. Currently non-operational.
+     * @returns A `VideoCaptureStartedResult` indicating whether the video recording started successfully.
      */
     StartVideoCaptureAsync(this: CaptureService, onCaptureReady: Callback, captureParams?: object): Enum.VideoCaptureStartedResult;
     /**
+     * Uploads a capture to the asset system and returns the result and asset ID.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -11682,6 +11755,8 @@ interface CaptureService extends Instance {
     readonly CaptureEnded: RBXScriptSignal<(captureType: Enum.CaptureType) => void>;
     /**
      * **Deprecated:** This event has been superseded by the `UserCaptureSaved` event.
+     *
+     * Fires when a screenshot capture is saved to the user's gallery.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
@@ -12978,7 +13053,7 @@ interface CommerceService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#PromptCommerceProductPurchase)
      * @param this Supports real-world purchases that you can bundle with digital benefits.
-     * @param user The `Player` to prompt with the purchase flow. When called from a `LocalScript`, this must be the local player.
+     * @param user The `Player` to prompt with the purchase flow. When called from a client script, this must be the local player.
      * @param commerceProductId The identifier of the commerce product to purchase, either the numeric ID or the full `COM-`-prefixed form.
      */
     PromptCommerceProductPurchase(this: CommerceService, user: Player, commerceProductId: string): void;
@@ -12989,7 +13064,7 @@ interface CommerceService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CommerceService#PromptRealWorldCommerceBrowser)
      * @param this Supports real-world purchases that you can bundle with digital benefits.
-     * @param player The `Player` for whom the browser opens. When called from a `LocalScript`, this must be the local player.
+     * @param player The `Player` for whom the browser opens. When called from a client script, this must be the local player.
      * @param url The real-world commerce URL to open. The URL must be on the commerce allowlist, or the request is ignored.
      */
     PromptRealWorldCommerceBrowser(this: CommerceService, player: Player, url: string): void;
@@ -13054,6 +13129,7 @@ interface CompositeValueCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CompositeValueCurve#GetComponentCurves)
      * @param this An animation curve that groups child `FloatCurves` which each animate a different component of a non-unary value.
+     * @returns An array of the child `FloatCurve` instances that drive the components of the animated value, in the order listed at the top of this page. Any expected child curve that does not yet exist is created as an empty `FloatCurve` and included in the result.
      */
     GetComponentCurves(this: CompositeValueCurve): Array<Instance>;
     /**
@@ -14934,14 +15010,18 @@ interface ContentProvider extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContentProvider#GetAssetFetchStatusChangedSignal)
      * @param this Service that is used to load content, or assets, into a game.
-     * @param contentId
+     * @param contentId The ID of the content to monitor for fetch status changes.
+     * @returns An `RBXScriptSignal` that fires when the `AssetFetchStatus` of the given content changes.
      */
     GetAssetFetchStatusChangedSignal(this: ContentProvider, contentId: ContentId): RBXScriptSignal;
     /**
+     * Returns an array of the asset IDs that currently have a registered encryption key.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContentProvider#ListEncryptedAssets)
      * @param this Service that is used to load content, or assets, into a game.
+     * @returns An array of the asset IDs that currently have an encryption key registered on this `ContentProvider`.
      */
     ListEncryptedAssets(this: ContentProvider): Array<unknown>;
     /**
@@ -14954,46 +15034,56 @@ interface ContentProvider extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContentProvider#Preload)
      * @param this Service that is used to load content, or assets, into a game.
-     * @param contentId
+     * @param contentId The content URL of the asset to preload.
      *
      * @deprecated PreloadAsync
      */
     Preload(this: ContentProvider, contentId: ContentId): void;
     /**
+     * Registers a fallback encryption key used to decrypt any encrypted asset that doesn't have its own key registered.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContentProvider#RegisterDefaultEncryptionKey)
      * @param this Service that is used to load content, or assets, into a game.
-     * @param encryptionKey
+     * @param encryptionKey The key to use as the default for decrypting encrypted assets.
      */
     RegisterDefaultEncryptionKey(this: ContentProvider, encryptionKey: string): void;
     /**
+     * Decrypts the provided session key and registers the result as the default encryption key.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContentProvider#RegisterDefaultSessionKey)
      * @param this Service that is used to load content, or assets, into a game.
-     * @param sessionKey
+     * @param sessionKey The session-encrypted key to decrypt and register as the default encryption key.
      */
     RegisterDefaultSessionKey(this: ContentProvider, sessionKey: string): void;
     /**
+     * Registers an encryption key used to decrypt a specific encrypted asset.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContentProvider#RegisterEncryptedAsset)
      * @param this Service that is used to load content, or assets, into a game.
-     * @param assetId
-     * @param encryptionKey
+     * @param assetId The asset to associate the encryption key with.
+     * @param encryptionKey The key used to decrypt the specified asset.
      */
     RegisterEncryptedAsset(this: ContentProvider, assetId: ContentId, encryptionKey: string): void;
     /**
+     * Decrypts the provided session key and registers it as the encryption key for a specific asset.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContentProvider#RegisterSessionEncryptedAsset)
      * @param this Service that is used to load content, or assets, into a game.
-     * @param contentId
-     * @param sessionKey
+     * @param contentId The asset to associate the decrypted key with.
+     * @param sessionKey The session-encrypted key to decrypt and register for the specified asset.
      */
     RegisterSessionEncryptedAsset(this: ContentProvider, contentId: ContentId, sessionKey: string): void;
     /**
+     * Clears the default encryption key previously set on the `ContentProvider`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContentProvider#UnregisterDefaultEncryptionKey)
@@ -15001,11 +15091,13 @@ interface ContentProvider extends Instance {
      */
     UnregisterDefaultEncryptionKey(this: ContentProvider): void;
     /**
+     * Removes the encryption key registered for a specific asset.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContentProvider#UnregisterEncryptedAsset)
      * @param this Service that is used to load content, or assets, into a game.
-     * @param assetId
+     * @param assetId The asset whose registered encryption key should be removed.
      */
     UnregisterEncryptedAsset(this: ContentProvider, assetId: ContentId): void;
     /**
@@ -15021,6 +15113,8 @@ interface ContentProvider extends Instance {
      */
     PreloadAsync(this: ContentProvider, contentIdList: Array<Instance | string>, callback?: (contentId: string, status: Enum.AssetFetchStatus) => void): void;
     /**
+     * Fires when the `ContentProvider` fails to fetch an asset, passing the asset's ID.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContentProvider#AssetFetchFailed)
@@ -15232,6 +15326,111 @@ interface ContextActionService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ContextActionService#LocalToolUnequipped)
      */
     readonly LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Instance) => void>;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState)
+ */
+interface ControlState extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ControlState: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#Owner)
+     */
+    Owner: Player | undefined;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#AddBoolField)
+     */
+    AddBoolField(this: ControlState, name: string, defaultValue?: boolean): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#AddCFrameField)
+     */
+    AddCFrameField(this: ControlState, name: string, defaultValue?: CFrame): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#AddInstanceField)
+     */
+    AddInstanceField(this: ControlState, name: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#AddIntField)
+     */
+    AddIntField(this: ControlState, name: string, defaultValue?: number, min?: number, max?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#AddNumberField)
+     */
+    AddNumberField(this: ControlState, name: string, defaultValue?: number, min?: number, max?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#AddUnitVector3Field)
+     */
+    AddUnitVector3Field(this: ControlState, name: string, defaultValue?: Vector3): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#AddVector2Field)
+     */
+    AddVector2Field(this: ControlState, name: string, defaultValue?: Vector2, maxMagnitude?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#AddVector3Field)
+     */
+    AddVector3Field(this: ControlState, name: string, defaultValue?: Vector3, maxMagnitude?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#GetChangedState)
+     */
+    GetChangedState(this: ControlState, prev?: CastsToEnum<Enum.StateReferenceFrame>, next?: CastsToEnum<Enum.StateReferenceFrame>): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#GetReplicationWeight)
+     */
+    GetReplicationWeight(this: ControlState): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#GetState)
+     */
+    GetState(this: ControlState, ref?: CastsToEnum<Enum.StateReferenceFrame>): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#SetField)
+     */
+    SetField(this: ControlState, name: string, value: unknown): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#UpdateFields)
+     */
+    UpdateFields(this: ControlState, state: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#OnStateChanged)
+     */
+    readonly OnStateChanged: RBXScriptSignal<() => void>;
 }
 /**
  * The base class for controller objects, such as the `HumanoidController` object.
@@ -15776,6 +15975,8 @@ interface ControllerService extends Instance {
     readonly _nominal_ControllerService: unique symbol;
 }
 /**
+ * Service that groups the configuration objects controlling Roblox's built-in `CoreGui` elements.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGuiConfiguration)
@@ -15790,18 +15991,24 @@ interface CoreGuiConfiguration extends Instance {
      */
     readonly _nominal_CoreGuiConfiguration: unique symbol;
     /**
+     * References the `CapturesViewConfiguration` object that controls the built-in captures view.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGuiConfiguration#CapturesViewConfiguration)
      */
     CapturesViewConfiguration: CapturesViewConfiguration | undefined;
     /**
+     * References the `PlayerListConfiguration` object that controls the built-in player list.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGuiConfiguration#PlayerListConfiguration)
      */
     PlayerListConfiguration: PlayerListConfiguration | undefined;
     /**
+     * References the `SelfViewConfiguration` object that controls the built-in self view.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGuiConfiguration#SelfViewConfiguration)
@@ -16877,283 +17084,375 @@ interface DigitsRigDescription extends Instance {
      */
     readonly _nominal_DigitsRigDescription: unique symbol;
     /**
+     * The instance mapped to the proximal (first) phalanx of the index finger.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Index1)
      */
     Index1: Instance | undefined;
     /**
+     * CFrame applied to `Index1` to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Index1TposeAdjustment)
      */
     Index1TposeAdjustment: CFrame;
     /**
+     * The instance mapped to the medial (second) phalanx of the index finger.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Index2)
      */
     Index2: Instance | undefined;
     /**
+     * CFrame applied to `Index2` to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Index2TposeAdjustment)
      */
     Index2TposeAdjustment: CFrame;
     /**
+     * The instance mapped to the distal (third) phalanx of the index finger.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Index3)
      */
     Index3: Instance | undefined;
     /**
+     * CFrame applied to `Index3` to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Index3TposeAdjustment)
      */
     Index3TposeAdjustment: CFrame;
     /**
+     * Motion range vector for the index finger used by the finger solver.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#IndexRange)
      */
     IndexRange: Vector3;
     /**
+     * Size of the index finger used by the finger solver to preserve contacts.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#IndexSize)
      */
     IndexSize: number;
     /**
+     * The instance mapped to the proximal (first) phalanx of the middle finger.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Middle1)
      */
     Middle1: Instance | undefined;
     /**
+     * CFrame applied to Middle1 to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Middle1TposeAdjustment)
      */
     Middle1TposeAdjustment: CFrame;
     /**
+     * The instance mapped to the medial (second) phalanx of the middle finger.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Middle2)
      */
     Middle2: Instance | undefined;
     /**
+     * CFrame applied to `Middle2` to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Middle2TposeAdjustment)
      */
     Middle2TposeAdjustment: CFrame;
     /**
+     * The instance mapped to the distal (third) phalanx of the middle finger.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Middle3)
      */
     Middle3: Instance | undefined;
     /**
+     * CFrame applied to `Middle3` to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Middle3TposeAdjustment)
      */
     Middle3TposeAdjustment: CFrame;
     /**
+     * Motion range vector for the middle finger used by the finger solver.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#MiddleRange)
      */
     MiddleRange: Vector3;
     /**
+     * Scale factor for the middle finger used by the scalable-property system.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#MiddleSize)
      */
     MiddleSize: number;
     /**
+     * The instance mapped to the proximal (first) phalanx of the pinky finger.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Pinky1)
      */
     Pinky1: Instance | undefined;
     /**
+     * CFrame applied to `Pinky1` to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Pinky1TposeAdjustment)
      */
     Pinky1TposeAdjustment: CFrame;
     /**
+     * The instance mapped to the medial (second) phalanx of the pinky finger.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Pinky2)
      */
     Pinky2: Instance | undefined;
     /**
+     * CFrame applied to Pinky2 to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Pinky2TposeAdjustment)
      */
     Pinky2TposeAdjustment: CFrame;
     /**
+     * The instance mapped to the distal (third) phalanx of the pinky finger.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Pinky3)
      */
     Pinky3: Instance | undefined;
     /**
+     * CFrame applied to `Pinky3` to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Pinky3TposeAdjustment)
      */
     Pinky3TposeAdjustment: CFrame;
     /**
+     * Motion range vector for the pinky finger used by the finger solver.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#PinkyRange)
      */
     PinkyRange: Vector3;
     /**
+     * Scale factor for the pinky finger used by the scalable-property system.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#PinkySize)
      */
     PinkySize: number;
     /**
+     * The instance mapped to the proximal (first) phalanx of the ring finger.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Ring1)
      */
     Ring1: Instance | undefined;
     /**
+     * CFrame applied to `Ring1` to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Ring1TposeAdjustment)
      */
     Ring1TposeAdjustment: CFrame;
     /**
+     * The instance mapped to the medial (second) phalanx of the ring finger.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Ring2)
      */
     Ring2: Instance | undefined;
     /**
+     * CFrame applied to `Ring2` to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Ring2TposeAdjustment)
      */
     Ring2TposeAdjustment: CFrame;
     /**
+     * The instance mapped to the distal (third) phalanx of the ring finger.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Ring3)
      */
     Ring3: Instance | undefined;
     /**
+     * CFrame applied to `Ring3` to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Ring3TposeAdjustment)
      */
     Ring3TposeAdjustment: CFrame;
     /**
+     * Motion range vector for the ring finger used by the finger solver.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#RingRange)
      */
     RingRange: Vector3;
     /**
+     * Scale factor for the ring finger used by the scalable-property system.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#RingSize)
      */
     RingSize: number;
     /**
+     * Which hand this description belongs to: `None`, `Left`, or `Right`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Side)
      */
     Side: Enum.DigitsRigDescriptionSide;
     /**
+     * The instance mapped to the proximal (first) phalanx of the thumb.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Thumb1)
      */
     Thumb1: Instance | undefined;
     /**
+     * CFrame applied to `Thumb1` to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Thumb1TposeAdjustment)
      */
     Thumb1TposeAdjustment: CFrame;
     /**
+     * The instance mapped to the medial (second) phalanx of the thumb.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Thumb2)
      */
     Thumb2: Instance | undefined;
     /**
+     * CFrame applied to `Thumb2` to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Thumb2TposeAdjustment)
      */
     Thumb2TposeAdjustment: CFrame;
     /**
+     * The instance mapped to the distal (third) phalanx of the thumb.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Thumb3)
      */
     Thumb3: Instance | undefined;
     /**
+     * CFrame applied to `Thumb3` to normalize the joint into its canonical T-pose orientation before retargeting or solving.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#Thumb3TposeAdjustment)
      */
     Thumb3TposeAdjustment: CFrame;
     /**
+     * Motion range vector for the thumb used by the finger solver.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#ThumbRange)
      */
     ThumbRange: Vector3;
     /**
+     * Scale factor for the thumb used by the scalable-property system.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#ThumbSize)
      */
     ThumbSize: number;
     /**
+     * Returns the current forward-kinematics control vector for the specified finger.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#GetFingerControl)
      * @param this Maps the 15 phalanx joints of one hand (5 fingers, 3 joints each) and exposes forward- and inverse-kinematics helpers for controlling finger poses at runtime.
-     * @param fingerIndex
+     * @param fingerIndex 1-based index of the finger to query (1 = Thumb, 2 = Index, 3 = Middle, 4 = Ring, 5 = Pinky).
+     * @returns The control `Vector3` whose X is extension [0, 1], Y is lateral rotation [-1, 1], and Z is axial rotation [-1, 1].
      */
     GetFingerControl(this: DigitsRigDescription, fingerIndex: number): Vector3;
     /**
+     * Returns the world-space position of the fingertip for the specified finger.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#GetFingerTip)
      * @param this Maps the 15 phalanx joints of one hand (5 fingers, 3 joints each) and exposes forward- and inverse-kinematics helpers for controlling finger poses at runtime.
-     * @param fingerIndex
+     * @param fingerIndex 1-based index of the finger to query (1 = Thumb, 2 = Index, 3 = Middle, 4 = Ring, 5 = Pinky).
+     * @returns The world-space `Vector3` position of the fingertip. Currently always returns `Vector3.zero`.
      */
     GetFingerTip(this: DigitsRigDescription, fingerIndex: number): Vector3;
     /**
+     * Drives the three-joint chain of the specified finger using forward kinematics.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#SetFingerControl)
      * @param this Maps the 15 phalanx joints of one hand (5 fingers, 3 joints each) and exposes forward- and inverse-kinematics helpers for controlling finger poses at runtime.
-     * @param fingerIndex
-     * @param control
+     * @param fingerIndex 1-based index of the finger to drive (1 = Thumb, 2 = Index, 3 = Middle, 4 = Ring, 5 = Pinky).
+     * @param control A `Vector3` whose X sets extension [0, 1], Y sets lateral rotation [-1, 1], and Z sets axial rotation [-1, 1]; each component is clamped before application.
      */
     SetFingerControl(this: DigitsRigDescription, fingerIndex: number, control: Vector3): void;
     /**
+     * Moves the fingertip of the specified finger toward a world-space target using inverse kinematics.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#SetFingerTip)
      * @param this Maps the 15 phalanx joints of one hand (5 fingers, 3 joints each) and exposes forward- and inverse-kinematics helpers for controlling finger poses at runtime.
-     * @param fingerIndex
-     * @param point
+     * @param fingerIndex 1-based index of the finger to solve (1 = Thumb, 2 = Index, 3 = Middle, 4 = Ring, 5 = Pinky).
+     * @param point World-space `Vector3` target position for the fingertip.
      */
     SetFingerTip(this: DigitsRigDescription, fingerIndex: number, point: Vector3): void;
 }
@@ -17539,7 +17838,8 @@ interface EulerRotationCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EulerRotationCurve#GetAnglesAtTime)
      * @param this Represents a 3D rotation curve through a group of three `FloatCurves`.
-     * @param time
+     * @param time The time, in seconds, at which to sample the three channel curves.
+     * @returns An array of three values holding the sampled `X`, `Y`, and `Z` Euler angles; any channel whose curve is missing or has no key at `time` is returned as `nil`.
      */
     GetAnglesAtTime(this: EulerRotationCurve, time: number): Array<unknown>;
     /**
@@ -17549,7 +17849,8 @@ interface EulerRotationCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EulerRotationCurve#GetRotationAtTime)
      * @param this Represents a 3D rotation curve through a group of three `FloatCurves`.
-     * @param time
+     * @param time The time, in seconds, at which to sample the curve.
+     * @returns A `CFrame` whose rotation is composed from the `X`, `Y`, and `Z` Euler angles sampled at `time`, applied in the order given by `EulerRotationCurve.RotationOrder`; empty channels are treated as zero.
      */
     GetRotationAtTime(this: EulerRotationCurve, time: number): CFrame;
     /**
@@ -17559,6 +17860,7 @@ interface EulerRotationCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EulerRotationCurve#X)
      * @param this Represents a 3D rotation curve through a group of three `FloatCurves`.
+     * @returns The `FloatCurve` controlling the `X` Euler angle channel.
      */
     X(this: EulerRotationCurve): FloatCurve;
     /**
@@ -17568,6 +17870,7 @@ interface EulerRotationCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EulerRotationCurve#Y)
      * @param this Represents a 3D rotation curve through a group of three `FloatCurves`.
+     * @returns The `FloatCurve` controlling the `Y` Euler angle channel.
      */
     Y(this: EulerRotationCurve): FloatCurve;
     /**
@@ -17577,6 +17880,7 @@ interface EulerRotationCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EulerRotationCurve#Z)
      * @param this Represents a 3D rotation curve through a group of three `FloatCurves`.
+     * @returns The `FloatCurve` controlling the `Z` Euler angle channel.
      */
     Z(this: EulerRotationCurve): FloatCurve;
 }
@@ -17932,6 +18236,456 @@ interface FaceControls extends Instance {
      * @deprecated
      */
     readonly _nominal_FaceControls: unique symbol;
+    /**
+     * Raises the chin up; moves the lower lip upwards.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#ChinRaiser)
+     */
+    ChinRaiser: number;
+    /**
+     * Moves the upper lip when ChinRaiser is engaged and touching the upper lip.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#ChinRaiserUpperLip)
+     */
+    ChinRaiserUpperLip: number;
+    /**
+     * Brings the left and right brows inward together.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#Corrugator)
+     */
+    Corrugator: number;
+    /**
+     * Moves gaze down. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#EyesLookDown)
+     */
+    EyesLookDown: number;
+    /**
+     * Moves gaze left. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#EyesLookLeft)
+     */
+    EyesLookLeft: number;
+    /**
+     * Moves gaze right. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#EyesLookRight)
+     */
+    EyesLookRight: number;
+    /**
+     * Moves gaze up. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#EyesLookUp)
+     */
+    EyesLookUp: number;
+    /**
+     * Also known as lip tightener; brings the corners of the mouth inward and pressing the lips back against the teeth.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#FlatPucker)
+     */
+    FlatPucker: number;
+    /**
+     * Makes a 'O' shape with the mouth.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#Funneler)
+     */
+    Funneler: number;
+    /**
+     * Lowers the jaw downward opening the mouth. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#JawDrop)
+     */
+    JawDrop: number;
+    /**
+     * Moves mouth and jaw to the left (character left).
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#JawLeft)
+     */
+    JawLeft: number;
+    /**
+     * Moves mouth and jaw to the right (character right).
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#JawRight)
+     */
+    JawRight: number;
+    /**
+     * Lowers the left brow down.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftBrowLowerer)
+     */
+    LeftBrowLowerer: number;
+    /**
+     * Puffs up the left cheek.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftCheekPuff)
+     */
+    LeftCheekPuff: number;
+    /**
+     * Squints the left eye.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftCheekRaiser)
+     */
+    LeftCheekRaiser: number;
+    /**
+     * Moves the corners of the mouth back in Z.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftDimpler)
+     */
+    LeftDimpler: number;
+    /**
+     * Closes the left eyelid. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftEyeClosed)
+     */
+    LeftEyeClosed: number;
+    /**
+     * Raises the left eyelid upwards to reveal more of the eye white above the iris.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftEyeUpperLidRaiser)
+     */
+    LeftEyeUpperLidRaiser: number;
+    /**
+     * Raises the interior half of the left brow upwards.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftInnerBrowRaiser)
+     */
+    LeftInnerBrowRaiser: number;
+    /**
+     * Lowers the corners of the mouth downwards in a frown.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftLipCornerDown)
+     */
+    LeftLipCornerDown: number;
+    /**
+     * Raises the corners of the mouth upwards in a smile. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftLipCornerPuller)
+     */
+    LeftLipCornerPuller: number;
+    /**
+     * Stretches the corners of the mouth apart. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftLipStretcher)
+     */
+    LeftLipStretcher: number;
+    /**
+     * Lowers the lower lip down away from the upper lip revealing the lower teeth. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftLowerLipDepressor)
+     */
+    LeftLowerLipDepressor: number;
+    /**
+     * Raise the left nostril, pulls the brow down slightly, and wrinkles on the side of the nose.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftNoseWrinkler)
+     */
+    LeftNoseWrinkler: number;
+    /**
+     * Raises the outer part of the left brow upwards.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftOuterBrowRaiser)
+     */
+    LeftOuterBrowRaiser: number;
+    /**
+     * Raises the left upper lip away from the lower lip revealing the upper teeth. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftUpperLipRaiser)
+     */
+    LeftUpperLipRaiser: number;
+    /**
+     * Presses the lips together.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LipPresser)
+     */
+    LipPresser: number;
+    /**
+     * Brings the lips together relative to JawDrop. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LipsTogether)
+     */
+    LipsTogether: number;
+    /**
+     * Rolls the lower lip up over the teeth.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LowerLipSuck)
+     */
+    LowerLipSuck: number;
+    /**
+     * Moves the mouth left.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#MouthLeft)
+     */
+    MouthLeft: number;
+    /**
+     * Moves the mouth right.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#MouthRight)
+     */
+    MouthRight: number;
+    /**
+     * Makes a kiss-like shape with the mouth. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#Pucker)
+     */
+    Pucker: number;
+    /**
+     * Lowers the right brow down.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightBrowLowerer)
+     */
+    RightBrowLowerer: number;
+    /**
+     * Puffs up the right cheek.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightCheekPuff)
+     */
+    RightCheekPuff: number;
+    /**
+     * Squints the right eye.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightCheekRaiser)
+     */
+    RightCheekRaiser: number;
+    /**
+     * Moves the corners of the mouth back in Z.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightDimpler)
+     */
+    RightDimpler: number;
+    /**
+     * Closes the right eyelid. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightEyeClosed)
+     */
+    RightEyeClosed: number;
+    /**
+     * Raises the right eyelid upwards to reveal more of the eye white above the iris.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightEyeUpperLidRaiser)
+     */
+    RightEyeUpperLidRaiser: number;
+    /**
+     * Raises the interior half of the right brow upwards.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightInnerBrowRaiser)
+     */
+    RightInnerBrowRaiser: number;
+    /**
+     * Lowers the corners of the mouth downwards in a frown.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightLipCornerDown)
+     */
+    RightLipCornerDown: number;
+    /**
+     * Raises the corners of the mouth upwards in a smile. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightLipCornerPuller)
+     */
+    RightLipCornerPuller: number;
+    /**
+     * Stretches the corners of the mouth apart. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightLipStretcher)
+     */
+    RightLipStretcher: number;
+    /**
+     * Lowers the lower lip down away from the upper lip revealing the lower teeth. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightLowerLipDepressor)
+     */
+    RightLowerLipDepressor: number;
+    /**
+     * Raises the right nostril, pulls the brow down slightly, and wrinkles on the side of the nose.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightNoseWrinkler)
+     */
+    RightNoseWrinkler: number;
+    /**
+     * Raises the outer part of the right brow upwards.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightOuterBrowRaiser)
+     */
+    RightOuterBrowRaiser: number;
+    /**
+     * Raises the right upper lip away from the lower lip revealing the upper teeth. This is a required pose for avatars.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightUpperLipRaiser)
+     */
+    RightUpperLipRaiser: number;
+    /**
+     * Bends the tongue down.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#TongueDown)
+     */
+    TongueDown: number;
+    /**
+     * Extends the tip of the tongue out of the mouth.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#TongueOut)
+     */
+    TongueOut: number;
+    /**
+     * Bends the tongue up.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#TongueUp)
+     */
+    TongueUp: number;
+    /**
+     * Rolls the upper lip around the teeth.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#UpperLipSuck)
+     */
+    UpperLipSuck: number;
 }
 /**
  * An abstract class from which the `Decal` and `Texture` classes inherit.
@@ -18486,7 +19240,8 @@ interface FloatCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FloatCurve#GetKeyAtIndex)
      * @param this A sorted list of time-value pairs that define a curve. Used to animate a single numerical value.
-     * @param index
+     * @param index One-based index of the key to retrieve.
+     * @returns Copy of the `FloatCurveKey` stored at `index`.
      */
     GetKeyAtIndex(this: FloatCurve, index: number): FloatCurveKey;
     /**
@@ -18496,7 +19251,8 @@ interface FloatCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FloatCurve#GetKeyIndicesAtTime)
      * @param this A sorted list of time-value pairs that define a curve. Used to animate a single numerical value.
-     * @param time
+     * @param time Time value to locate within the curve's sorted keys.
+     * @returns Array of two one-based indices that bracket `time`: the last key at or before `time` and the first key at or after it.
      */
     GetKeyIndicesAtTime(this: FloatCurve, time: number): [
         before: number,
@@ -18597,7 +19353,7 @@ interface GeneratedFolder extends Folder {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeneratedFolder#SetPrimaryPart)
      * @param this A container that stores `ProceduralModel` generation results.
-     * @param part
+     * @param part The `BasePart` inside this `GeneratedFolder` to designate as the `PrimaryPart` of the resulting `ProceduralModel`.
      */
     SetPrimaryPart(this: GeneratedFolder, part: BasePart): void;
 }
@@ -18798,10 +19554,17 @@ interface GenerationService extends Instance {
      */
     LoadGeneratedMeshAsync(this: GenerationService, generationId: string): MeshPart;
     /**
+     * Segments an existing `MeshPart` into multiple named parts according to a provided schema, returning a `Model` organized by the schema groups.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GenerationService#SegmentMeshAsync)
+     * @param this Service that allows developers to generate 3D objects from text prompts.
+     * @param meshPart The `MeshPart` to segment. Must contain mesh geometry (either an `EditableMesh` or a published mesh asset the caller has edit permission for).
+     * @param schema A table specifying how to segment the mesh. Provide exactly one of `PredefinedSchema` (a string such as `"Car5"` or `"Body1"`) or `SchemaDefinition` (a table with a `Groups` array of part-name strings defining the segmentation structure).
+     * @param options Has no effect.
+     * @returns A tuple containing a `Model` whose children are organized according to the specified schema (each group as a child `Model` with a `MeshPart` inside), and a table with a `UUID` key holding the backend job identifier.
      */
     SegmentMeshAsync(this: GenerationService, meshPart: MeshPart, schema: object, options?: object): unknown;
     /**
@@ -18894,9 +19657,9 @@ interface GeometryService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#CreateSolidPrimitive)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeometryService#CreateBasicMeshPart)
      */
-    CreateSolidPrimitive(this: GeometryService, type: CastsToEnum<Enum.SolidPrimitiveType>, options?: object): MeshPart;
+    CreateBasicMeshPart(this: GeometryService, shape: CastsToEnum<Enum.BasicMeshPartShape>, options?: object): MeshPart;
     /**
      * Provides an array of positions which can easily be passed into `FragmentAsync` to perform simple types of destruction.
      *
@@ -19712,6 +20475,7 @@ interface GuiObject extends GuiBase2d {
      * Controls whether, and how, the `GuiObject` sinks input that occurs over it.
      *
      * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiObject#InputSink)
      */
@@ -21340,6 +22104,8 @@ interface TextBox extends GuiObject {
      */
     ClearTextOnFocus: boolean;
     /**
+     * A copy of `TextBox.Text` that contains exactly what is being rendered by the `TextBox`.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -21409,12 +22175,16 @@ interface TextBox extends GuiObject {
      */
     MultiLine: boolean;
     /**
+     * Applies OpenType typographic features to the text rendered by the `TextBox`.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextBox#OpenTypeFeatures)
      */
     OpenTypeFeatures: string;
     /**
+     * Read-only property that describes why the `TextBox.OpenTypeFeatures` string could not be applied.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -21498,6 +22268,8 @@ interface TextBox extends GuiObject {
      */
     TextColor3: Color3;
     /**
+     * Direction in which the text is rendered.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextBox#TextDirection)
@@ -21613,12 +22385,13 @@ interface TextBox extends GuiObject {
      */
     CaptureFocus(this: TextBox): void;
     /**
-     * Returns `true` if the `TextBox` is focused or `false` if it is not.
+     * Whether the TextBox currently has focus.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextBox#IsFocused)
      * @param this A 2D user interface element that displays player-editable text.
+     * @returns Returns `true` if the `TextBox` is focused or `false` if it is not.
      */
     IsFocused(this: TextBox): boolean;
     /**
@@ -21628,7 +22401,7 @@ interface TextBox extends GuiObject {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextBox#ReleaseFocus)
      * @param this A 2D user interface element that displays player-editable text.
-     * @param submitted
+     * @param submitted Whether the `TextBox.FocusLost` event's `enterPressed` parameter reports `true`, as if the player pressed Enter to submit text. Defaults to `false`.
      */
     ReleaseFocus(this: TextBox, submitted?: boolean): void;
     /**
@@ -21673,9 +22446,21 @@ interface TextChannelWindow extends GuiObject {
     /**
      * - **ThreadSafety**: ReadSafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChannelWindow#FontFace)
+     */
+    FontFace: Font;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChannelWindow#Target)
      */
     Target: TextChannel | undefined;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChannelWindow#UseDefaultFont)
+     */
+    UseDefaultFont: boolean;
 }
 /**
  * A GUI object that displays video content from a connected `VideoPlayer`.
@@ -22851,6 +23636,8 @@ interface BoxHandleAdornment extends HandleAdornment {
      */
     readonly _nominal_BoxHandleAdornment: unique symbol;
     /**
+     * Determines how the box adornment is shaded and whether it draws through geometry that would otherwise occlude it.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BoxHandleAdornment#Shading)
@@ -22888,6 +23675,8 @@ interface ConeHandleAdornment extends HandleAdornment {
      */
     Height: number;
     /**
+     * Determines whether the cone is drawn as a hollow shell rather than a solid, capped cone.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConeHandleAdornment#Hollow)
@@ -22902,6 +23691,8 @@ interface ConeHandleAdornment extends HandleAdornment {
      */
     Radius: number;
     /**
+     * Determines how the cone adornment is shaded and whether it draws through geometry that would otherwise occlude it.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConeHandleAdornment#Shading)
@@ -22955,6 +23746,8 @@ interface CylinderHandleAdornment extends HandleAdornment {
      */
     Radius: number;
     /**
+     * Determines how the cylinder adornment is shaded and whether it draws through geometry that would otherwise occlude it.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CylinderHandleAdornment#Shading)
@@ -22984,6 +23777,8 @@ interface ImageHandleAdornment extends HandleAdornment {
      */
     Image: ContentId;
     /**
+     * The image content displayed by this adornment.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ImageHandleAdornment#ImageContent)
@@ -23052,6 +23847,8 @@ interface PyramidHandleAdornment extends HandleAdornment {
      */
     Height: number;
     /**
+     * The `AdornShading` mode that controls shading and whether the pyramid draws through occluding geometry.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PyramidHandleAdornment#Shading)
@@ -23097,6 +23894,8 @@ interface SphereHandleAdornment extends HandleAdornment {
      */
     Radius: number;
     /**
+     * Determines how the sphere adornment is shaded and whether it draws through geometry that would otherwise occlude it.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SphereHandleAdornment#Shading)
@@ -23525,6 +24324,8 @@ interface SelectionPointLasso extends SelectionLasso {
     Point: Vector3;
 }
 /**
+ * Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D)
  */
 interface Path2D extends GuiBase {
@@ -23582,7 +24383,8 @@ interface Path2D extends GuiBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D#GetBoundingRect)
-     * @param this
+     * @param this Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
+     * @returns The `Rect` bounding box that encloses the path, expanded by its rendered thickness.
      */
     GetBoundingRect(this: Path2D): Rect;
     /**
@@ -23591,8 +24393,8 @@ interface Path2D extends GuiBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D#GetControlPoint)
-     * @param this
-     * @param index
+     * @param this Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
+     * @param index The 1-based index of the control point to return.
      * @returns The control point at the given index.
      */
     GetControlPoint(this: Path2D, index: number): Path2DControlPoint;
@@ -23602,7 +24404,7 @@ interface Path2D extends GuiBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D#GetControlPoints)
-     * @param this
+     * @param this Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
      * @returns Table of all the `Path2DControlPoints`.
      */
     GetControlPoints(this: Path2D): Array<unknown>;
@@ -23612,7 +24414,8 @@ interface Path2D extends GuiBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D#GetLength)
-     * @param this
+     * @param this Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
+     * @returns The total length of the path.
      */
     GetLength(this: Path2D): number;
     /**
@@ -23621,7 +24424,8 @@ interface Path2D extends GuiBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D#GetMaxControlPoints)
-     * @param this
+     * @param this Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
+     * @returns The maximum number of control points a `Path2D` supports.
      */
     GetMaxControlPoints(this: Path2D): number;
     /**
@@ -23630,7 +24434,7 @@ interface Path2D extends GuiBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D#GetPositionOnCurve)
-     * @param this
+     * @param this Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
      * @param t The value to query the `Path2D` at.
      * @returns The position in parameter space.
      */
@@ -23641,7 +24445,7 @@ interface Path2D extends GuiBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D#GetPositionOnCurveArcLength)
-     * @param this
+     * @param this Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
      * @param t The value to query the Path2D at.
      * @returns The position in arc length space.
      */
@@ -23652,8 +24456,9 @@ interface Path2D extends GuiBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D#GetTangentOnCurve)
-     * @param this
+     * @param this Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
      * @param t The value to query the `Path2D` at.
+     * @returns The tangent in parameter space.
      */
     GetTangentOnCurve(this: Path2D, t: number): Vector2;
     /**
@@ -23662,7 +24467,7 @@ interface Path2D extends GuiBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D#GetTangentOnCurveArcLength)
-     * @param this
+     * @param this Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
      * @param t The value to query the `Path2D` at.
      * @returns The tangent in arc length space.
      */
@@ -23673,7 +24478,7 @@ interface Path2D extends GuiBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D#InsertControlPoint)
-     * @param this
+     * @param this Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
      * @param index The index to insert at.
      * @param point The control point to insert.
      */
@@ -23684,7 +24489,7 @@ interface Path2D extends GuiBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D#RemoveControlPoint)
-     * @param this
+     * @param this Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
      * @param index The index to remove at.
      */
     RemoveControlPoint(this: Path2D, index: number): void;
@@ -23694,7 +24499,7 @@ interface Path2D extends GuiBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D#SetControlPoints)
-     * @param this
+     * @param this Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
      * @param controlPoints The new list of control points to set.
      */
     SetControlPoints(this: Path2D, controlPoints: Array<unknown>): void;
@@ -23704,9 +24509,9 @@ interface Path2D extends GuiBase {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D#UpdateControlPoint)
-     * @param this
+     * @param this Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
      * @param index The control point index to update.
-     * @param point
+     * @param point The new `Path2DControlPoint` value to store at the index.
      */
     UpdateControlPoint(this: Path2D, index: number, point: Path2DControlPoint): void;
     /**
@@ -23865,8 +24670,8 @@ interface GuiService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#AddSelectionParent)
      * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
-     * @param selectionName
-     * @param selectionParent
+     * @param selectionName A unique name identifying this selection group.
+     * @param selectionParent The `GuiObject` whose selectable descendants form the navigation group.
      *
      * @deprecated SelectionGroup
      */
@@ -23900,11 +24705,14 @@ interface GuiService extends Instance {
      */
     CloseInspectMenu(this: GuiService): void;
     /**
+     * Dismisses a notification previously shown by `SendNotification()`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#DismissNotification)
      * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
-     * @param notificationId
+     * @param notificationId The identifier returned by `SendNotification()` for the notification to dismiss.
+     * @returns `true` if a matching notification was found and dismissed; `false` if no active notification has the given `notificationId`.
      */
     DismissNotification(this: GuiService, notificationId: string): boolean;
     /**
@@ -23947,7 +24755,8 @@ interface GuiService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#GetInsetArea)
      * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
-     * @param screenInsets
+     * @param screenInsets The `ScreenInsets` value indicating which inset area to query.
+     * @returns A `Rect` of the usable region for the specified `ScreenInsets` area.
      */
     GetInsetArea(this: GuiService, screenInsets: CastsToEnum<Enum.ScreenInsets>): Rect;
     /**
@@ -23988,6 +24797,7 @@ interface GuiService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#IsTenFootInterface)
      * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
+     * @returns `true` if the client is using the ten foot interface (console UI mode); `false` otherwise.
      */
     IsTenFootInterface(this: GuiService): boolean;
     /**
@@ -24000,7 +24810,7 @@ interface GuiService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#RemoveSelectionGroup)
      * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
-     * @param selectionName
+     * @param selectionName The name of the selection group to remove.
      *
      * @deprecated SelectionGroup
      */
@@ -24016,11 +24826,14 @@ interface GuiService extends Instance {
      */
     Select(this: GuiService, selectionParent: Instance): void;
     /**
+     * Displays a notification described by `notificationInfo` and returns a unique identifier for it.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#SendNotification)
      * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
-     * @param notificationInfo
+     * @param notificationInfo A dictionary describing the notification. Recognized fields are `Title` (string), `Text` (string), `Icon` (string), `Buttons` (an array of button tables, each with a `Text` string, a `ButtonType` `NotificationButtonType` value, and an `OnActivated` callback), and `OnDisplay`/`OnDismiss` callback functions.
+     * @returns A unique identifier string for the notification, which can be passed to `DismissNotification()`. Returns an empty string if the notification could not be queued.
      */
     SendNotification(this: GuiService, notificationInfo: object): string;
     /**
@@ -24030,7 +24843,7 @@ interface GuiService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiService#SetEmotesMenuOpen)
      * @param this Offers numerous properties and methods for working with `GuiObjects`, player preferences, and other UI‑related tasks.
-     * @param isOpen
+     * @param isOpen Whether to open (`true`) or close (`false`) the emotes menu.
      */
     SetEmotesMenuOpen(this: GuiService, isOpen: boolean): void;
     /**
@@ -25963,666 +26776,888 @@ interface HumanoidRigDescription extends Instance {
      */
     readonly _nominal_HumanoidRigDescription: unique symbol;
     /**
+     * The chest joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Chest)
      */
     Chest: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the chest joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#ChestRangeMax)
      */
     ChestRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the chest joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#ChestRangeMin)
      */
     ChestRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the chest joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#ChestSize)
      */
     ChestSize: number;
     /**
+     * T-pose alignment transform for the chest joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#ChestTposeAdjustment)
      */
     ChestTposeAdjustment: CFrame;
     /**
+     * The head base joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadBase)
      */
     HeadBase: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the head base joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadBaseRangeMax)
      */
     HeadBaseRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the head base joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadBaseRangeMin)
      */
     HeadBaseRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the head base joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadBaseSize)
      */
     HeadBaseSize: number;
     /**
+     * T-pose alignment transform for the head base joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#HeadBaseTposeAdjustment)
      */
     HeadBaseTposeAdjustment: CFrame;
     /**
+     * The left ankle joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftAnkle)
      */
     LeftAnkle: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the left ankle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftAnkleRangeMax)
      */
     LeftAnkleRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the left ankle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftAnkleRangeMin)
      */
     LeftAnkleRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the left ankle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftAnkleSize)
      */
     LeftAnkleSize: number;
     /**
+     * T-pose alignment transform for the left ankle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftAnkleTposeAdjustment)
      */
     LeftAnkleTposeAdjustment: CFrame;
     /**
+     * The left clavicle joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftClavicle)
      */
     LeftClavicle: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the left clavicle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftClavicleRangeMax)
      */
     LeftClavicleRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the left clavicle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftClavicleRangeMin)
      */
     LeftClavicleRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the left clavicle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftClavicleSize)
      */
     LeftClavicleSize: number;
     /**
+     * T-pose alignment transform for the left clavicle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftClavicleTposeAdjustment)
      */
     LeftClavicleTposeAdjustment: CFrame;
     /**
+     * The left elbow joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftElbow)
      */
     LeftElbow: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the left elbow joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftElbowRangeMax)
      */
     LeftElbowRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the left elbow joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftElbowRangeMin)
      */
     LeftElbowRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the left elbow joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftElbowSize)
      */
     LeftElbowSize: number;
     /**
+     * T-pose alignment transform for the left elbow joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftElbowTposeAdjustment)
      */
     LeftElbowTposeAdjustment: CFrame;
     /**
+     * The left hip joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftHip)
      */
     LeftHip: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the left hip joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftHipRangeMax)
      */
     LeftHipRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the left hip joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftHipRangeMin)
      */
     LeftHipRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the left hip joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftHipSize)
      */
     LeftHipSize: number;
     /**
+     * T-pose alignment transform for the left hip joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftHipTposeAdjustment)
      */
     LeftHipTposeAdjustment: CFrame;
     /**
+     * The left knee joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftKnee)
      */
     LeftKnee: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the left knee joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftKneeRangeMax)
      */
     LeftKneeRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the left knee joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftKneeRangeMin)
      */
     LeftKneeRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the left knee joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftKneeSize)
      */
     LeftKneeSize: number;
     /**
+     * T-pose alignment transform for the left knee joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftKneeTposeAdjustment)
      */
     LeftKneeTposeAdjustment: CFrame;
     /**
+     * The left shoulder joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftShoulder)
      */
     LeftShoulder: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the left shoulder joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftShoulderRangeMax)
      */
     LeftShoulderRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the left shoulder joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftShoulderRangeMin)
      */
     LeftShoulderRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the left shoulder joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftShoulderSize)
      */
     LeftShoulderSize: number;
     /**
+     * T-pose alignment transform for the left shoulder joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftShoulderTposeAdjustment)
      */
     LeftShoulderTposeAdjustment: CFrame;
     /**
+     * The left toe base joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToeBase)
      */
     LeftToeBase: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the left toe base joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToeBaseRangeMax)
      */
     LeftToeBaseRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the left toe base joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToeBaseRangeMin)
      */
     LeftToeBaseRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the left toe base joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToeBaseSize)
      */
     LeftToeBaseSize: number;
     /**
+     * T-pose alignment transform for the left toe base joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftToeBaseTposeAdjustment)
      */
     LeftToeBaseTposeAdjustment: CFrame;
     /**
+     * The left wrist joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftWrist)
      */
     LeftWrist: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the left wrist joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftWristRangeMax)
      */
     LeftWristRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the left wrist joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftWristRangeMin)
      */
     LeftWristRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the left wrist joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftWristSize)
      */
     LeftWristSize: number;
     /**
+     * T-pose alignment transform for the left wrist joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#LeftWristTposeAdjustment)
      */
     LeftWristTposeAdjustment: CFrame;
     /**
+     * The neck joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Neck)
      */
     Neck: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the neck joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#NeckRangeMax)
      */
     NeckRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the neck joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#NeckRangeMin)
      */
     NeckRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the neck joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#NeckSize)
      */
     NeckSize: number;
     /**
+     * T-pose alignment transform for the neck joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#NeckTposeAdjustment)
      */
     NeckTposeAdjustment: CFrame;
     /**
+     * The right ankle joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightAnkle)
      */
     RightAnkle: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the right ankle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightAnkleRangeMax)
      */
     RightAnkleRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the right ankle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightAnkleRangeMin)
      */
     RightAnkleRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the right ankle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightAnkleSize)
      */
     RightAnkleSize: number;
     /**
+     * T-pose alignment transform for the right ankle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightAnkleTposeAdjustment)
      */
     RightAnkleTposeAdjustment: CFrame;
     /**
+     * The right clavicle joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightClavicle)
      */
     RightClavicle: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the right clavicle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightClavicleRangeMax)
      */
     RightClavicleRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the right clavicle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightClavicleRangeMin)
      */
     RightClavicleRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the right clavicle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightClavicleSize)
      */
     RightClavicleSize: number;
     /**
+     * T-pose alignment transform for the right clavicle joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightClavicleTposeAdjustment)
      */
     RightClavicleTposeAdjustment: CFrame;
     /**
+     * The right elbow joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightElbow)
      */
     RightElbow: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the right elbow joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightElbowRangeMax)
      */
     RightElbowRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the right elbow joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightElbowRangeMin)
      */
     RightElbowRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the right elbow joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightElbowSize)
      */
     RightElbowSize: number;
     /**
+     * T-pose alignment transform for the right elbow joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightElbowTposeAdjustment)
      */
     RightElbowTposeAdjustment: CFrame;
     /**
+     * The right hip joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightHip)
      */
     RightHip: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the right hip joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightHipRangeMax)
      */
     RightHipRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the right hip joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightHipRangeMin)
      */
     RightHipRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the right hip joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightHipSize)
      */
     RightHipSize: number;
     /**
+     * T-pose alignment transform for the right hip joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightHipTposeAdjustment)
      */
     RightHipTposeAdjustment: CFrame;
     /**
+     * The right knee joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightKnee)
      */
     RightKnee: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the right knee joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightKneeRangeMax)
      */
     RightKneeRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the right knee joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightKneeRangeMin)
      */
     RightKneeRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the right knee joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightKneeSize)
      */
     RightKneeSize: number;
     /**
+     * T-pose alignment transform for the right knee joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightKneeTposeAdjustment)
      */
     RightKneeTposeAdjustment: CFrame;
     /**
+     * The right shoulder joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightShoulder)
      */
     RightShoulder: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the right shoulder joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightShoulderRangeMax)
      */
     RightShoulderRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the right shoulder joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightShoulderRangeMin)
      */
     RightShoulderRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the right shoulder joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightShoulderSize)
      */
     RightShoulderSize: number;
     /**
+     * T-pose alignment transform for the right shoulder joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightShoulderTposeAdjustment)
      */
     RightShoulderTposeAdjustment: CFrame;
     /**
+     * The right toe base joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToeBase)
      */
     RightToeBase: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the right toe base joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToeBaseRangeMax)
      */
     RightToeBaseRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the right toe base joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToeBaseRangeMin)
      */
     RightToeBaseRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the right toe base joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToeBaseSize)
      */
     RightToeBaseSize: number;
     /**
+     * T-pose alignment transform for the right toe base joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightToeBaseTposeAdjustment)
      */
     RightToeBaseTposeAdjustment: CFrame;
     /**
+     * The right wrist joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightWrist)
      */
     RightWrist: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the right wrist joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightWristRangeMax)
      */
     RightWristRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the right wrist joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightWristRangeMin)
      */
     RightWristRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the right wrist joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightWristSize)
      */
     RightWristSize: number;
     /**
+     * T-pose alignment transform for the right wrist joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RightWristTposeAdjustment)
      */
     RightWristTposeAdjustment: CFrame;
     /**
+     * The root joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Root)
      */
     Root: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the root joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RootRangeMax)
      */
     RootRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the root joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RootRangeMin)
      */
     RootRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the root joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RootSize)
      */
     RootSize: number;
     /**
+     * T-pose alignment transform for the root joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#RootTposeAdjustment)
      */
     RootTposeAdjustment: CFrame;
     /**
+     * The spine joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Spine)
      */
     Spine: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the spine joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#SpineRangeMax)
      */
     SpineRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the spine joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#SpineRangeMin)
      */
     SpineRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the spine joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#SpineSize)
      */
     SpineSize: number;
     /**
+     * T-pose alignment transform for the spine joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#SpineTposeAdjustment)
      */
     SpineTposeAdjustment: CFrame;
     /**
+     * The waist joint instance in the rig hierarchy.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#Waist)
      */
     Waist: Instance | undefined;
     /**
+     * Maximum rotation limit per axis for the waist joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#WaistRangeMax)
      */
     WaistRangeMax: Vector3;
     /**
+     * Minimum rotation limit per axis for the waist joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#WaistRangeMin)
      */
     WaistRangeMin: Vector3;
     /**
+     * Volume sphere diameter for the waist joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#WaistSize)
      */
     WaistSize: number;
     /**
+     * T-pose alignment transform for the waist joint.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#WaistTposeAdjustment)
      */
     WaistTposeAdjustment: CFrame;
     /**
+     * Returns the joint instance associated with the given name string.
+     *
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetJointFromName)
@@ -26632,6 +27667,8 @@ interface HumanoidRigDescription extends Instance {
      */
     GetJointFromName(this: HumanoidRigDescription, name: string): Instance | undefined;
     /**
+     * Returns the full set of 22 standard joint names in hierarchy order.
+     *
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetJointNames)
@@ -26640,6 +27677,8 @@ interface HumanoidRigDescription extends Instance {
      */
     GetJointNames(this: HumanoidRigDescription): Array<unknown>;
     /**
+     * Returns the 15 joint names used by R15 rigs.
+     *
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetR15JointNames)
@@ -26648,6 +27687,8 @@ interface HumanoidRigDescription extends Instance {
      */
     GetR15JointNames(this: HumanoidRigDescription): Array<unknown>;
     /**
+     * Returns the 6 joint names used by R6 rigs.
+     *
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetR6JointNames)
@@ -26759,47 +27800,65 @@ interface IKControl extends Instance {
      */
     Weight: number;
     /**
+     * Returns the number of segments in the IK chain between the `ChainRoot` and the `EndEffector`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IKControl#GetChainCount)
      * @param this Specifies a control to generate a procedural animation pose using Inverse Kinematics.
+     * @returns The number of segments in the chain, or `0` if the chain isn't valid.
      */
     GetChainCount(this: IKControl): number;
     /**
+     * Returns the total length, in studs, of the IK chain between the `ChainRoot` and the `EndEffector`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IKControl#GetChainLength)
      * @param this Specifies a control to generate a procedural animation pose using Inverse Kinematics.
+     * @returns The combined length of the chain in studs, or `0` if the chain isn't valid.
      */
     GetChainLength(this: IKControl): number;
     /**
+     * Returns the `CFrame` of the chain node at the given index, relative to its parent node in the chain.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IKControl#GetNodeLocalCFrame)
      * @param this Specifies a control to generate a procedural animation pose using Inverse Kinematics.
-     * @param index
+     * @param index The 1-based position of the node in the chain, from `1` (the `ChainRoot`) up to `GetChainCount()` plus `1` (the `EndEffector`).
+     * @returns The node's `CFrame` in the local space of its parent node, or the identity `CFrame` if the index is out of range or the chain hasn't been solved.
      */
     GetNodeLocalCFrame(this: IKControl, index: number): CFrame;
     /**
+     * Returns the world-space `CFrame` of the chain node at the given index.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IKControl#GetNodeWorldCFrame)
      * @param this Specifies a control to generate a procedural animation pose using Inverse Kinematics.
-     * @param index
+     * @param index The 1-based position of the node in the chain, from `1` (the `ChainRoot`) up to `GetChainCount()` plus `1` (the `EndEffector`).
+     * @returns The node's world-space `CFrame`, or the identity `CFrame` if the index is out of range or the chain hasn't been solved.
      */
     GetNodeWorldCFrame(this: IKControl, index: number): CFrame;
     /**
+     * Returns the world-space target `CFrame` the solver aims for before `SmoothTime` smoothing is applied.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IKControl#GetRawFinalTarget)
      * @param this Specifies a control to generate a procedural animation pose using Inverse Kinematics.
+     * @returns The final target `CFrame`, in world space, before smoothing.
      */
     GetRawFinalTarget(this: IKControl): CFrame;
     /**
+     * Returns the world-space target `CFrame` the solver aims for after `SmoothTime` smoothing is applied.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IKControl#GetSmoothedFinalTarget)
      * @param this Specifies a control to generate a procedural animation pose using Inverse Kinematics.
+     * @returns The final target `CFrame`, in world space, after smoothing.
      */
     GetSmoothedFinalTarget(this: IKControl): CFrame;
 }
@@ -29383,6 +30442,7 @@ interface LogService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LogService#GetLogHistory)
      * @param this A service that allows you to read outputted text.
+     * @returns An array of tables, each containing `message` (string), `messageType` (`MessageType`), `timestamp` (number, in seconds), and optionally `context` (dictionary) for entries logged with structured context.
      */
     GetLogHistory(this: LogService): Array<LogInfo>;
     /**
@@ -29720,6 +30780,8 @@ interface MLModelDeliveryService extends Instance {
     readonly _nominal_MLModelDeliveryService: unique symbol;
 }
 /**
+ * A service that runs in-engine machine learning inference by loading model bundles and creating inference sessions.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLService)
@@ -29746,12 +30808,15 @@ interface MLService extends Instance {
      */
     SetPostProcessEnabled(this: MLService, enabled: boolean): void;
     /**
+     * Creates an `MLSession` for the model bundle identified by the given asset ID.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLService#CreateSessionAsync)
-     * @param this
-     * @param assetId
+     * @param this A service that runs in-engine machine learning inference by loading model bundles and creating inference sessions.
+     * @param assetId The asset ID of the model bundle to load.
+     * @returns An `MLSession` created from the loaded model bundle.
      */
     CreateSessionAsync(this: MLService, assetId: string): MLSession;
     /**
@@ -29849,7 +30914,7 @@ interface MarkerCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarkerCurve#GetMarkerAtIndex)
      * @param this Represents a list of strings markers in chronological order.
-     * @param index
+     * @param index One-based index of the marker to retrieve, ordered chronologically. Must be within range or the call throws.
      * @returns A table containing the time and value of the marker at the provided index.
      */
     GetMarkerAtIndex(this: MarkerCurve, index: number): object;
@@ -31023,6 +32088,8 @@ interface MetaBreakpointManager extends Instance {
     readonly _nominal_MetaBreakpointManager: unique symbol;
 }
 /**
+ * A service that connects the engine's MicroProfiler to the data model, feeding context into profile dumps and letting privileged scripts capture them to disk.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService)
@@ -31037,26 +32104,52 @@ interface MicroProfilerService extends Instance {
      */
     readonly _nominal_MicroProfilerService: unique symbol;
     /**
+     * Reads profiling capture data from a slot into a provided Luau buffer.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService#GetDataInRange)
+     * @param this A service that connects the engine's MicroProfiler to the data model, feeding context into profile dumps and letting privileged scripts capture them to disk.
+     * @param slotId
+     * @param offset
+     * @param size
+     * @param destBuffer
+     * @param destBufferOffset
+     * @returns The number of bytes actually copied into `destBuffer` starting at `destBufferOffset`. Returns `0` if the read fails.
      */
     GetDataInRange(this: MicroProfilerService, slotId: number, offset: number, size: number, destBuffer: buffer, destBufferOffset: number): number;
     /**
+     * Returns the total byte count of profiling data stored in a slot.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService#GetDataSize)
+     * @param this A service that connects the engine's MicroProfiler to the data model, feeding context into profile dumps and letting privileged scripts capture them to disk.
+     * @param slotId
+     * @returns The total size, in bytes, of the profiling data available in the slot. Returns `0` when no data is available.
      */
     GetDataSize(this: MicroProfilerService, slotId: number): number;
     /**
+     * Dispatches a binary command to the MicroProfiler control channel and writes the response into a buffer.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService#ProcessCommand)
+     * @param this A service that connects the engine's MicroProfiler to the data model, feeding context into profile dumps and letting privileged scripts capture them to disk.
+     * @param cmdBuf
+     * @param cmdOffset
+     * @param cmdSize
+     * @param respBuf
+     * @param respOffset
+     * @param respSize
+     * @returns The number of bytes written into `respBuf` as the command response. Returns `0` if the command is not run.
      */
     ProcessCommand(this: MicroProfilerService, cmdBuf: buffer, cmdOffset: number, cmdSize: number, respBuf: buffer, respOffset: number, respSize: number): number;
     /**
+     * Fires when profiling data in a slot has changed since the last frame.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService#DataChanged)
@@ -31064,6 +32157,8 @@ interface MicroProfilerService extends Instance {
     readonly DataChanged: RBXScriptSignal<(slotId: number, flags: number) => void>;
 }
 /**
+ * Server-side service for submitting player captures to content moderation review and receiving the results asynchronously.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService)
@@ -31078,29 +32173,38 @@ interface ModerationService extends Instance {
      */
     readonly _nominal_ModerationService: unique symbol;
     /**
+     * Registers a server-side processor, ordered by `priority`, that is invoked for each moderation review event on reviewable content.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#BindReviewableContentEventProcessor)
-     * @param this
-     * @param priority
-     * @param callback
+     * @param this Server-side service for submitting player captures to content moderation review and receiving the results asynchronously.
+     * @param priority Determines the order in which this processor is invoked relative to other bound processors.
+     * @param callback The function invoked for each reviewable-content event. It receives a table describing the event and should return `true` to acknowledge the event or `false` to leave it for redelivery.
+     * @returns A connection that can be disconnected to unregister the processor.
      */
     BindReviewableContentEventProcessor(this: ModerationService, priority: number, callback: Callback): RBXScriptConnection;
     /**
+     * Returns an opaque key that identifies a screenshot or video capture for use with `CreateReviewableContentAsync()`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#CreateReviewableContentKey)
-     * @param this
-     * @param content
+     * @param this Server-side service for submitting player captures to content moderation review and receiving the results asynchronously.
+     * @param content A `Content` referring to a screenshot or video capture (a temporary URI from `CaptureService:CaptureScreenshot()`, a `ScreenshotCapture`, or a `VideoCapture`).
+     * @returns An opaque content key identifying the capture.
      */
     CreateReviewableContentKey(this: ModerationService, content: Content): string;
     /**
+     * Registers user-generated captures for moderation review and triggers the owning clients to upload them, returning the reviewable-content ID.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#CreateReviewableContentAsync)
-     * @param this
-     * @param config
+     * @param this Server-side service for submitting player captures to content moderation review and receiving the results asynchronously.
+     * @param config A table of parameters describing the content to review, including an optional `Id`, an optional `Ref`, and a `Content` list of image or video items.
+     * @returns The ID of the created reviewable content.
      */
     CreateReviewableContentAsync(this: ModerationService, config: object): string;
     /**
@@ -31108,8 +32212,6 @@ interface ModerationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#InternalRequestReviewableContentReviewAsync)
-     * @param this
-     * @param config
      */
     InternalRequestReviewableContentReviewAsync(this: ModerationService, config: object): void;
 }
@@ -31439,6 +32541,8 @@ interface OmniRecommendationsService extends Instance {
 /**
  * **Deprecated:** This class is deprecated and should not be used for new work. Use `HttpService` instead and see the [In-experience HTTP requests guide](../../../cloud-services/http-service.md).
  *
+ * Deprecated Open Cloud API surface for in-experience cloud operations such as user notifications.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudApiV1)
@@ -31457,12 +32561,17 @@ interface OpenCloudApiV1 extends Instance {
     /**
      * **Deprecated:** This method is deprecated. Do not use it for new work.
      *
+     * Creates and returns an `OpenCloudModel` container for a registered model type name.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudApiV1#CreateModel)
      * @param this **Deprecated:** This class is deprecated and should not be used for new work. Use `HttpService` instead and see the [In-experience HTTP requests guide](../../../cloud-services/http-service.md).
-     * @param name
+     *
+     * Deprecated Open Cloud API surface for in-experience cloud operations such as user notifications.
+     * @param name The registered model type name (for example, `"UserNotification"`).
+     * @returns An `OpenCloudModel` container wrapping a typed model instance.
      *
      * @deprecated
      */
@@ -31470,13 +32579,18 @@ interface OpenCloudApiV1 extends Instance {
     /**
      * **Deprecated:** This method is deprecated. Do not use it for new work.
      *
+     * Deprecated method that attempted to send a user notification via Open Cloud; always errors.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudApiV1#CreateUserNotificationAsync)
      * @param this **Deprecated:** This class is deprecated and should not be used for new work. Use `HttpService` instead and see the [In-experience HTTP requests guide](../../../cloud-services/http-service.md).
-     * @param user
-     * @param userNotification
+     *
+     * Deprecated Open Cloud API surface for in-experience cloud operations such as user notifications.
+     * @param user The target user identifier.
+     * @param userNotification An `OpenCloudModel` container (from `OpenCloudApiV1:CreateModel()`) populated with notification payload fields.
+     * @returns Unused; the call always errors.
      *
      * @deprecated
      */
@@ -31484,6 +32598,8 @@ interface OpenCloudApiV1 extends Instance {
 }
 /**
  * **Deprecated:** This class is deprecated and should not be used for new work. Use `HttpService` instead and see the [In-experience HTTP requests guide](../../../cloud-services/http-service.md).
+ *
+ * Deprecated. Do not use for new work; prefer `HttpService` for in-experience HTTP requests.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -31503,11 +32619,15 @@ interface OpenCloudService extends Instance {
     /**
      * **Deprecated:** This method is deprecated. Do not use it for new work.
      *
+     * Returns an `OpenCloudApiV1` object. Always raises an error.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudService#GetApiV1)
      * @param this **Deprecated:** This class is deprecated and should not be used for new work. Use `HttpService` instead and see the [In-experience HTTP requests guide](../../../cloud-services/http-service.md).
+     *
+     * Deprecated. Do not use for new work; prefer `HttpService` for in-experience HTTP requests.
      *
      * @deprecated
      */
@@ -31515,15 +32635,20 @@ interface OpenCloudService extends Instance {
     /**
      * **Deprecated:** This method is deprecated. Do not use it for new work.
      *
+     * Deprecated. Dispatches a named Open Cloud call and returns its result.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudService#InvokeAsync)
      * @param this **Deprecated:** This class is deprecated and should not be used for new work. Use `HttpService` instead and see the [In-experience HTTP requests guide](../../../cloud-services/http-service.md).
-     * @param version
-     * @param methodName
-     * @param arguments
-     * @param headers
+     *
+     * Deprecated. Do not use for new work; prefer `HttpService` for in-experience HTTP requests.
+     * @param version API version string identifying the call surface.
+     * @param methodName Name of the Open Cloud method to invoke.
+     * @param arguments A dictionary of arguments forwarded with the call.
+     * @param headers Optional request headers dictionary.
+     * @returns A dictionary containing the response.
      *
      * @deprecated
      */
@@ -34820,10 +35945,13 @@ interface ProceduralModel extends Model {
      */
     Size: Vector3;
     /**
+     * Immediately runs any pending generation instead of waiting for the scheduled regeneration.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralModel#ForceGeneration)
      * @param this Procedural models support edit-time procedural generation. Instead of manually constructing model content, a procedural model generates its contents automatically in response to parameter changes.
+     * @returns Whether the `ProceduralModel` is up to date after the call: `true` if generation completed successfully or nothing needed to be regenerated, `false` otherwise.
      */
     ForceGeneration(this: ProceduralModel): boolean;
     /**
@@ -34881,14 +36009,14 @@ interface WorldRoot extends Model {
      */
     Blockcast(this: WorldRoot, cframe: CFrame, size: Vector3, direction: Vector3, raycastParams?: RaycastParams): RaycastResult | undefined;
     /**
-     * Moves a table of `BaseParts` to a table of `CFrames`.
+     * Moves an array of `BaseParts` to an array of `CFrames`.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldRoot#BulkMoveTo)
      * @param this Base class for handling physics simulation and 3D spatial queries.
-     * @param partList A table of `BaseParts` to be moved.
-     * @param cframeList A table of `CFrames` that the parts will be moved to, matched by index to `partList`.
+     * @param partList An array of `BaseParts` to be moved. Each entry is matched by index to the corresponding entry in `cframeList`.
+     * @param cframeList An array of `CFrames` that the parts will be moved to, matched by index to `partList`. Both arrays must be the same length.
      * @param eventMode An `BulkMoveMode` enum specifying which `Changed` events fire during the move. Default is `FireAllEvents`.
      */
     BulkMoveTo(this: WorldRoot, partList: Array<Instance>, cframeList: Array<unknown>, eventMode?: CastsToEnum<Enum.BulkMoveMode>): void;
@@ -36285,6 +37413,7 @@ interface Path extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path#GetPointCoordinates)
      * @param this Stores the result of paths created by `PathfindingService:CreatePath()`.
+     * @returns An array of `Vector3` positions for each waypoint in the path.
      *
      * @deprecated GetWaypoints
      */
@@ -36307,7 +37436,8 @@ interface Path extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path#CheckOcclusionAsync)
      * @param this Stores the result of paths created by `PathfindingService:CreatePath()`.
-     * @param start
+     * @param start The 1-based index of the waypoint from which to begin checking for occlusion.
+     * @returns The 1-based index of the first blocked waypoint starting from `start`, or `-1` if the path is not blocked.
      */
     CheckOcclusionAsync(this: Path, start: number): number;
     /**
@@ -36460,6 +37590,8 @@ interface PathfindingService extends Instance {
      */
     EmptyCutoff: number;
     /**
+     * Creates a `Path` object based on the given agent parameters.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PathfindingService#CreatePath)
@@ -37821,111 +38953,6 @@ interface Player extends Instance {
      */
     readonly OnTeleport: RBXScriptSignal<(teleportState: Enum.TeleportState, placeId: number, spawnName: string) => void>;
     readonly Name: string;
-}
-/**
- * - **Tags**: NotBrowsable
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState)
- */
-interface PlayerControlState extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_PlayerControlState: unique symbol;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#Owner)
-     */
-    Owner: Player | undefined;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#AddBoolField)
-     */
-    AddBoolField(this: PlayerControlState, name: string, defaultValue?: boolean): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#AddCFrameField)
-     */
-    AddCFrameField(this: PlayerControlState, name: string, defaultValue?: CFrame): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#AddInstanceField)
-     */
-    AddInstanceField(this: PlayerControlState, name: string): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#AddIntField)
-     */
-    AddIntField(this: PlayerControlState, name: string, defaultValue?: number, min?: number, max?: number): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#AddNumberField)
-     */
-    AddNumberField(this: PlayerControlState, name: string, defaultValue?: number, min?: number, max?: number): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#AddUnitVector3Field)
-     */
-    AddUnitVector3Field(this: PlayerControlState, name: string, defaultValue?: Vector3): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#AddVector2Field)
-     */
-    AddVector2Field(this: PlayerControlState, name: string, defaultValue?: Vector2, maxMagnitude?: number): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#AddVector3Field)
-     */
-    AddVector3Field(this: PlayerControlState, name: string, defaultValue?: Vector3, maxMagnitude?: number): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#GetChangedState)
-     */
-    GetChangedState(this: PlayerControlState, prev?: CastsToEnum<Enum.StateReferenceFrame>, next?: CastsToEnum<Enum.StateReferenceFrame>): object;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#GetReplicationWeight)
-     */
-    GetReplicationWeight(this: PlayerControlState): number;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#GetState)
-     */
-    GetState(this: PlayerControlState, ref?: CastsToEnum<Enum.StateReferenceFrame>): object;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#SetField)
-     */
-    SetField(this: PlayerControlState, name: string, value: unknown): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#UpdateFields)
-     */
-    UpdateFields(this: PlayerControlState, state: object): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState#OnStateChanged)
-     */
-    readonly OnStateChanged: RBXScriptSignal<() => void>;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -39764,6 +40791,8 @@ interface RecommendationService extends Instance {
      */
     readonly _nominal_RecommendationService: unique symbol;
     /**
+     * Logs a user action, such as a reaction or play, taken on a recommended item.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#LogActionEvent)
@@ -39778,6 +40807,8 @@ interface RecommendationService extends Instance {
      */
     LogActionEvent(this: RecommendationService, actionType: CastsToEnum<Enum.RecommendationActionType>, itemId: string, tracingId: string, actionEventDetails?: object): void;
     /**
+     * Logs an impression event, such as a user viewing a recommended item.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#LogImpressionEvent)
@@ -39792,6 +40823,8 @@ interface RecommendationService extends Instance {
      */
     LogImpressionEvent(this: RecommendationService, impressionType: CastsToEnum<Enum.RecommendationImpressionType>, itemId: string, tracingId: string, impressionEventDetails?: object): void;
     /**
+     * Logs a user preference signal, such as follow or mute, toward a user, universe, or custom content tag.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RecommendationService#LogPreferenceEvent)
@@ -39804,6 +40837,8 @@ interface RecommendationService extends Instance {
      */
     LogPreferenceEvent(this: RecommendationService, preferenceType: CastsToEnum<Enum.RecommendationPreferenceType>, targetType: CastsToEnum<Enum.RecommendationPreferenceTargetType>, targetId: string, tracingId?: string, itemId?: string): void;
     /**
+     * Returns a paginated list of personalized recommendation items for the specified request configuration.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -39812,11 +40847,16 @@ interface RecommendationService extends Instance {
      * @param generateRecommendationItemListRequest A dictionary containing the following fields: - `ConfigName` — A unique ID for the specific configuration.   This determines how the candidates are ranked.
      * - `LocationId` — A developer-defined string that specifies the   location where the recommendation is used, such as `"For_you"` or   `"Lobby"`. This parameter will not affect the items returned, and it   can help you track the performance of multiple recommendation   features within your experience. Recommendation metrics for each   individual location will be displayed in the Creator Hub.   `LocationId` **must** be a string and cannot be `"Other"` or   `"other"` as these values are reserved by the Creator Hub.
      * - `PageSize` — The number of items returned for each page.
-     * - `BoostCustomTags` — A list of string tags. Any item with this   tag will be boosted in ranking. Note: only supports boosting one tag   now.
+     * - `BoostCustomTags` — A list of string tags. Any item with this   tag will be boosted in ranking. Supports boosting one tag.
      * - `CustomContexts` — A table of key-value pairs used to pass in   additional context data for ranking. For example, `UserId` for a   Server script.
+     *
+     *
+     * @returns A `RecommendationPages` object containing the paginated list of recommended items for the given request configuration.
      */
     GenerateItemListAsync(this: RecommendationService, generateRecommendationItemListRequest: object): RecommendationPages;
     /**
+     * Retrieves a single registered recommendation item by its `ItemId`.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -39833,6 +40873,8 @@ interface RecommendationService extends Instance {
      */
     GetRecommendationItemAsync(this: RecommendationService, itemId: string): object;
     /**
+     * Registers a new item on the server so it can be included in recommendations, returning the generated `ItemId` and `ReferenceId`.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -39851,6 +40893,8 @@ interface RecommendationService extends Instance {
      */
     RegisterItemAsync(this: RecommendationService, player: Player, registerRecommendationItemsRequest: object): object;
     /**
+     * Removes a registered item from the recommendation system by its `ItemId`.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -39860,6 +40904,8 @@ interface RecommendationService extends Instance {
      */
     RemoveItemAsync(this: RecommendationService, itemId: string): void;
     /**
+     * Updates the mutable attributes of an existing recommendation item.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -40331,7 +41377,8 @@ interface RotationCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RotationCurve#GetKeyAtIndex)
      * @param this Represents a sequence of rotations and the interpolation curve between them.
-     * @param index
+     * @param index Index of the key to return.
+     * @returns Copy of the `RotationCurveKey` stored at `index`.
      */
     GetKeyAtIndex(this: RotationCurve, index: number): RotationCurveKey;
     /**
@@ -40341,7 +41388,8 @@ interface RotationCurve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RotationCurve#GetKeyIndicesAtTime)
      * @param this Represents a sequence of rotations and the interpolation curve between them.
-     * @param time
+     * @param time Time to look up within the curve.
+     * @returns Array with the indices of the keys that bracket `time`.
      */
     GetKeyIndicesAtTime(this: RotationCurve, time: number): Array<unknown>;
     /**
@@ -40764,6 +41812,8 @@ interface ScreenshotHud extends Instance {
      */
     CameraButtonIcon: ContentId;
     /**
+     * The image content used as the icon for the camera button.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScreenshotHud#CameraButtonIconContent)
@@ -40807,12 +41857,16 @@ interface ScreenshotHud extends Instance {
      */
     ExperienceNameOverlayEnabled: boolean;
     /**
+     * Whether Roblox's core GUI is hidden while a screenshot is captured.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScreenshotHud#HideCoreGuiForCaptures)
      */
     HideCoreGuiForCaptures: boolean;
     /**
+     * Whether the local player's GUI is hidden while a screenshot is captured.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScreenshotHud#HidePlayerGuiForCaptures)
@@ -40834,7 +41888,7 @@ interface ScreenshotHud extends Instance {
     /**
      * **Deprecated:** This property is deprecated. Do not use it for new work.
      *
-     * Currently disabled with no effect.
+     * Has no effect.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
@@ -40907,7 +41961,7 @@ interface SyncScriptBuilder extends ScriptBuilder {
      */
     PackAsSource: boolean;
     /**
-     * **Deprecated:** This property should not be used for new work.
+     * **Deprecated:**
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**:
@@ -41383,6 +42437,8 @@ interface FluidForceSensor extends SensorBase {
     EvaluateAsync(this: FluidForceSensor, linearVelocity: Vector3, angularVelocity: Vector3, cframe: CFrame): unknown;
 }
 /**
+ * Serializes and deserializes `instances` to and from the `.rbxm` format.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SerializationService)
@@ -41403,8 +42459,9 @@ interface SerializationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SerializationService#DeserializeInstancesAsync)
-     * @param this
-     * @param buffer
+     * @param this Serializes and deserializes `instances` to and from the `.rbxm` format.
+     * @param buffer A `buffer` containing the `.rbxm` content to deserialize.
+     * @returns A list of the `instances` reconstructed from the buffer's `.rbxm` content.
      */
     DeserializeInstancesAsync(this: SerializationService, buffer: buffer): Array<Instance>;
     /**
@@ -41414,8 +42471,9 @@ interface SerializationService extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SerializationService#SerializeInstancesAsync)
-     * @param this
-     * @param inputInstances
+     * @param this Serializes and deserializes `instances` to and from the `.rbxm` format.
+     * @param inputInstances The list of `instances` to serialize.
+     * @returns A `buffer` containing the `.rbxm` content of the serialized instances.
      */
     SerializeInstancesAsync(this: SerializationService, inputInstances: Array<Instance>): buffer;
 }
@@ -41663,6 +42721,8 @@ interface DataModel extends ServiceProvider<Services> {
      */
     readonly VIPServerOwnerId: number;
     /**
+     * A reference to the `RunService` service.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -42340,7 +43400,7 @@ interface SocialService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#GetPlayersByPartyId)
      * @param this Facilitates social functions that impact relationships made on the Roblox platform.
-     * @param partyId
+     * @param partyId The unique identifier of the party to filter players by, corresponding to a `Player.PartyId` value.
      * @returns A table of `Player` objects whose `Player.PartyId` property matches the passed `partyId`.
      */
     GetPlayersByPartyId(this: SocialService, partyId: string): Array<Instance>;
@@ -42442,7 +43502,7 @@ interface SocialService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#GetPartyAsync)
      * @param this Facilitates social functions that impact relationships made on the Roblox platform.
-     * @param partyId
+     * @param partyId The unique identifier of the party to retrieve member data for, corresponding to a `Player.PartyId` value.
      * @returns An array of dictionaries representing the members of the specified party who are currently in the experience.
      */
     GetPartyAsync(this: SocialService, partyId: string): Array<unknown>;
@@ -42491,6 +43551,8 @@ interface SocialService extends Instance {
      */
     PromptLinkSharing(this: SocialService, player: Player, options?: object): unknown;
     /**
+     * Generates an expiring share link and prompts the given `Player` with the platform share sheet.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -42545,6 +43607,8 @@ interface SocialService extends Instance {
      */
     readonly PhoneBookPromptClosed: RBXScriptSignal<(player: Player) => void>;
     /**
+     * Fires when the player closes the share sheet opened by `PromptLinkSharingAsync()`.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SocialService#ShareSheetClosed)
@@ -44371,6 +45435,8 @@ interface StudioCameraService extends Instance {
     readonly _nominal_StudioCameraService: unique symbol;
 }
 /**
+ * A Studio-only service that lets plugins capture screenshots of the active place's 3D viewport.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService)
@@ -44463,6 +45529,8 @@ interface StudioPublishService extends Instance {
     readonly _nominal_StudioPublishService: unique symbol;
 }
 /**
+ * Represents a single screenshot captured from Studio, exposing the resulting image buffer and the parameters the capture was taken with.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture)
@@ -44524,21 +45592,28 @@ interface StudioTestService extends Instance {
      */
     readonly _nominal_StudioTestService: unique symbol;
     /**
+     * Adds additional simulated clients to the running multiplayer test session.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#AddPlayers)
      * @param this Service allowing plugins to automate and customize Test and Run mode testing.
-     * @param numPlayers
+     * @param numPlayers The number of additional client DataModels to add. Must be between 1 and 8.
      */
     AddPlayers(this: StudioTestService, numPlayers: number): void;
     /**
+     * Returns whether the calling client DataModel can disconnect from the test.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#CanLeaveTest)
      * @param this Service allowing plugins to automate and customize Test and Run mode testing.
+     * @returns `true` if the client can leave, `false` otherwise.
      */
     CanLeaveTest(this: StudioTestService): boolean;
     /**
+     * Ends the current Studio test session from the server DataModel.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#EndTest)
@@ -44547,6 +45622,8 @@ interface StudioTestService extends Instance {
      */
     EndTest(this: StudioTestService, value: unknown): void;
     /**
+     * Returns the argument passed to the method that started the current test session.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#GetTestArgs)
@@ -44555,6 +45632,8 @@ interface StudioTestService extends Instance {
      */
     GetTestArgs(this: StudioTestService): unknown;
     /**
+     * Disconnects the calling client from the active multiplayer test.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#LeaveTest)
@@ -46162,6 +47241,8 @@ interface TestService extends Instance {
     readonly ServerCollectResult: RBXScriptSignal<(text: string, script: Instance, line: number) => void>;
 }
 /**
+ * A service that manages a user's `TextBox` state during gameplay.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextBoxService)
@@ -46218,7 +47299,7 @@ interface TextChannel extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChannel#SetDirectChatRequester)
      * @param this Represents a text chat channel.
-     * @param requester
+     * @param requester The `Player` whose direct-message permissions gate the channel; only users who can send direct messages to this player are delivered messages on the channel.
      */
     SetDirectChatRequester(this: TextChannel, requester: Player): void;
     /**
@@ -46281,6 +47362,7 @@ interface TextChannel extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChannel#ShouldDeliverCallback)
      * @param message The message being sent, which also contains the sender of the message.
      * @param textSource The `TextSource` of the user who will be receiving the message.
+     * @returns A truthy value (such as `true`, `1`, or a non-empty string) to deliver the message to the given client, or a falsy value (including `nil`) to withhold it from that client.
      */
     ShouldDeliverCallback: (message: TextChatMessage, textSource: TextSource) => boolean;
 }
@@ -46299,6 +47381,8 @@ interface TextChatCommand extends Instance {
      */
     readonly _nominal_TextChatCommand: unique symbol;
     /**
+     * Determines whether the `TextChatCommand` is shown as a suggestion in the chat autocomplete menu.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatCommand#AutocompleteVisible)
@@ -46900,6 +47984,7 @@ interface ChatWindowConfiguration extends TextChatConfigurations {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChatWindowConfiguration#DeriveNewMessageProperties)
      * @param this Configures properties of the default chat window.
+     * @returns A new `ChatWindowMessageProperties` instance whose values you can modify and return from a `TextChatService.OnChatWindowAdded` callback to customize how individual messages appear in the chat window.
      */
     DeriveNewMessageProperties(this: ChatWindowConfiguration): ChatWindowMessageProperties;
 }
@@ -46920,12 +48005,16 @@ interface TextChatMessage extends Instance {
      */
     readonly _nominal_TextChatMessage: unique symbol;
     /**
+     * A reference to the `BubbleChatMessageProperties` that overrides the appearance of this message's chat bubble.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatMessage#BubbleChatMessageProperties)
      */
     BubbleChatMessageProperties: BubbleChatMessageProperties | undefined;
     /**
+     * A reference to the `ChatWindowMessageProperties` that overrides the appearance of this message in the chat window.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatMessage#ChatWindowMessageProperties)
@@ -47044,6 +48133,8 @@ interface TextChatMessageProperties extends Instance {
     Translation: string;
 }
 /**
+ * Overrides `BubbleChatConfiguration` properties for an individual bubble chat message.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BubbleChatMessageProperties)
  */
 interface BubbleChatMessageProperties extends TextChatMessageProperties {
@@ -47080,6 +48171,8 @@ interface BubbleChatMessageProperties extends TextChatMessageProperties {
      */
     FontFace: Font;
     /**
+     * Determines whether the tail at the bottom of the chat bubble is visible.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BubbleChatMessageProperties#TailVisible)
@@ -47103,6 +48196,8 @@ interface BubbleChatMessageProperties extends TextChatMessageProperties {
     TextSize: number;
 }
 /**
+ * Customizes the appearance of an individual text chat message displayed in the chat window.
+ *
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChatWindowMessageProperties)
@@ -47233,7 +48328,8 @@ interface TextChatService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatService#CanUserChatAsync)
      * @param this A service handling in-experience text chat.
-     * @param userId
+     * @param userId The `Player.UserId` of the user whose chat permission is being checked.
+     * @returns A boolean indicating whether the user has permission to chat.
      */
     CanUserChatAsync(this: TextChatService, userId: User): boolean;
     /**
@@ -47244,8 +48340,9 @@ interface TextChatService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatService#CanUsersChatAsync)
      * @param this A service handling in-experience text chat.
-     * @param userIdFrom
-     * @param userIdTo
+     * @param userIdFrom The `Player.UserId` of the potential message sender.
+     * @param userIdTo The `Player.UserId` of the potential message receiver.
+     * @returns A boolean indicating whether the two users can exchange messages.
      */
     CanUsersChatAsync(this: TextChatService, userIdFrom: User, userIdTo: User): boolean;
     /**
@@ -48171,7 +49268,7 @@ interface TweenService extends Instance {
     /**
      * Calculates a new alpha given an `EasingStyle` and `EasingDirection`.
      *
-     * - **ThreadSafety**: Unsafe
+     * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TweenService#GetValue)
      * @param this Used to create `Tweens` which interpolate, or tween, the properties of instances.
@@ -51119,7 +52216,7 @@ interface Vector3Value extends ValueBase {
     readonly Changed: RBXScriptSignal<(value: Vector3) => void>;
 }
 /**
- * A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+ * A sorted list of time-value pairs that define a curve. Used to animate any type of value.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve)
  */
@@ -51156,8 +52253,9 @@ interface ValueCurve extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#GetKeyAtIndex)
-     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate any type of value.
      * @param index The index in the existing set of keys held by this `ValueCurve`.
+     * @returns A copy of the `ValueCurveKey` stored at the given `index`.
      */
     GetKeyAtIndex(this: ValueCurve, index: number): ValueCurveKey;
     /**
@@ -51166,8 +52264,9 @@ interface ValueCurve extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#GetKeyIndicesAtTime)
-     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate any type of value.
      * @param time A time during the animation. Inputs will be clamped between `0` and the time of the last key held by this `ValueCurve`.
+     * @returns An array of two indices bracketing `time`: the index of the last key at or before `time`, and the index of the first key at or after `time`.
      */
     GetKeyIndicesAtTime(this: ValueCurve, time: number): Array<unknown>;
     /**
@@ -51176,7 +52275,7 @@ interface ValueCurve extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#GetKeys)
-     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate any type of value.
      * @returns Array of `ValueCurveKeys`.
      */
     GetKeys(this: ValueCurve): Array<unknown>;
@@ -51186,7 +52285,7 @@ interface ValueCurve extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#GetValueAtTime)
-     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate any type of value.
      * @param time Time at which to sample the curve.
      * @returns Value of the curve at the requested `time`.
      */
@@ -51197,7 +52296,7 @@ interface ValueCurve extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#InsertKey)
-     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate any type of value.
      * @param key `ValueCurveKey` to insert.
      * @returns (see description)
      */
@@ -51208,7 +52307,7 @@ interface ValueCurve extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#InsertKeyValue)
-     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate any type of value.
      * @param time Time at which to insert the new `ValueCurveKey`. - type: number
      * @param value Value of the inserted `ValueCurveKey`. - type: any
      * @param Interpolation Interpolation mode of the inserted `ValueCurveKey`. - type: KeyInterpolationMode
@@ -51221,7 +52320,7 @@ interface ValueCurve extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#RemoveKeyAtIndex)
-     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate any type of value.
      * @param startingIndex Starting index from which to remove keys.
      * @param count Number of keys to remove.
      * @returns Number of keys removed.
@@ -51233,7 +52332,7 @@ interface ValueCurve extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve#SetKeys)
-     * @param this A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+     * @param this A sorted list of time-value pairs that define a curve. Used to animate any type of value.
      * @param keys Array of `ValueCurveKeys`.
      * @returns Number of keys inserted.
      */
@@ -51275,6 +52374,7 @@ interface Vector3Curve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Vector3Curve#X)
      * @param this Represents a 3D vector curve, grouping three `FloatCurve` instances.
+     * @returns The `FloatCurve` controlling the X channel, or a newly created empty `FloatCurve` if none exists yet.
      */
     X(this: Vector3Curve): FloatCurve;
     /**
@@ -51284,6 +52384,7 @@ interface Vector3Curve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Vector3Curve#Y)
      * @param this Represents a 3D vector curve, grouping three `FloatCurve` instances.
+     * @returns The `FloatCurve` controlling the Y channel, or a newly created empty `FloatCurve` if none exists yet.
      */
     Y(this: Vector3Curve): FloatCurve;
     /**
@@ -51293,6 +52394,7 @@ interface Vector3Curve extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Vector3Curve#Z)
      * @param this Represents a 3D vector curve, grouping three `FloatCurve` instances.
+     * @returns The `FloatCurve` controlling the Z channel, or a newly created empty `FloatCurve` if none exists yet.
      */
     Z(this: Vector3Curve): FloatCurve;
 }
@@ -52230,6 +53332,8 @@ interface LuauExpression extends RBXObject {
     readonly _nominal_LuauExpression: unique symbol;
 }
 /**
+ * A machine-learning inference session that wraps a single loaded model and runs it through `MLSession:ForwardAsync()`.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLSession)
@@ -52244,12 +53348,15 @@ interface MLSession extends RBXObject {
      */
     readonly _nominal_MLSession: unique symbol;
     /**
+     * Runs the session's model on the given input and asynchronously returns the model's output.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLSession#ForwardAsync)
-     * @param this
-     * @param data
+     * @param this A machine-learning inference session that wraps a single loaded model and runs it through `MLSession:ForwardAsync()`.
+     * @param data A dictionary mapping each of the model's input names to that input's tensor, given as a nested array of numbers matching the input's shape.
+     * @returns A dictionary mapping each of the model's output names to that output's tensor, given as a nested array of numbers matching the output's shape.
      */
     ForwardAsync(this: MLSession, data: object): object;
 }
