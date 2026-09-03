@@ -35,6 +35,7 @@ interface Services {
     BugReporterService: BugReporterService;
     BulkImportService: BulkImportService;
     CacheableContentProvider: CacheableContentProvider;
+    CallingService: CallingService;
     CalloutService: CalloutService;
     CaptureService: CaptureService;
     ChangeHistoryService: ChangeHistoryService;
@@ -291,6 +292,7 @@ interface Services {
     WebViewService: WebViewService;
     WindowProtocolService: WindowProtocolService;
     Workspace: Workspace;
+    WrapContentProvider: WrapContentProvider;
     WrapDeformMeshProvider: WrapDeformMeshProvider;
 }
 interface CreatableInstances {
@@ -391,6 +393,7 @@ interface CreatableInstances {
     Configuration: Configuration;
     ControllerManager: ControllerManager;
     ControllerPartSensor: ControllerPartSensor;
+    ControlState: ControlState;
     CornerWedgePart: CornerWedgePart;
     CurveAnimation: CurveAnimation;
     CustomLog: CustomLog;
@@ -490,7 +493,6 @@ interface CreatableInstances {
     PitchShiftSoundEffect: PitchShiftSoundEffect;
     Plane: Plane;
     PlaneConstraint: PlaneConstraint;
-    PlayerControlState: PlayerControlState;
     PluginAction: PluginAction;
     PluginCapabilities: PluginCapabilities;
     PointLight: PointLight;
@@ -1393,6 +1395,8 @@ interface AnimationFromVideoCreatorStudioService extends Instance {
     readonly _nominal_AnimationFromVideoCreatorStudioService: unique symbol;
 }
 /**
+ * A single node within an animation graph, connected to other nodes through named input pins.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition)
  */
 interface AnimationNodeDefinition extends Instance {
@@ -3177,6 +3181,36 @@ interface SlimContentProvider extends CacheableContentProvider {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapContentProvider)
+ */
+interface WrapContentProvider extends CacheableContentProvider {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WrapContentProvider: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CallingService)
+ */
+interface CallingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CallingService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CalloutService)
  */
 interface CalloutService extends Instance {
@@ -4106,6 +4140,21 @@ interface ContextActionService extends Instance {
     readonly _nominal_ContextActionService: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState)
+ */
+interface ControlState extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ControlState: unique symbol;
+}
+/**
  * The base class for controller objects, such as the `HumanoidController` object.
  *
  * - **Tags**: NotCreatable
@@ -4271,6 +4320,8 @@ interface ControllerService extends Instance {
     readonly _nominal_ControllerService: unique symbol;
 }
 /**
+ * Service that groups the configuration objects controlling Roblox's built-in `CoreGui` elements.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGuiConfiguration)
@@ -5329,456 +5380,6 @@ interface FaceControls extends Instance {
      * @deprecated
      */
     readonly _nominal_FaceControls: unique symbol;
-    /**
-     * Raises the chin up; moves the lower lip upwards.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#ChinRaiser)
-     */
-    ChinRaiser: number;
-    /**
-     * Moves the upper lip when ChinRaiser is engaged and touching the upper lip.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#ChinRaiserUpperLip)
-     */
-    ChinRaiserUpperLip: number;
-    /**
-     * Brings the left and right brows inward together.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#Corrugator)
-     */
-    Corrugator: number;
-    /**
-     * Moves gaze down. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#EyesLookDown)
-     */
-    EyesLookDown: number;
-    /**
-     * Moves gaze left. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#EyesLookLeft)
-     */
-    EyesLookLeft: number;
-    /**
-     * Moves gaze right. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#EyesLookRight)
-     */
-    EyesLookRight: number;
-    /**
-     * Moves gaze up. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#EyesLookUp)
-     */
-    EyesLookUp: number;
-    /**
-     * Also known as lip tightener; brings the corners of the mouth inward and pressing the lips back against the teeth.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#FlatPucker)
-     */
-    FlatPucker: number;
-    /**
-     * Makes a 'O' shape with the mouth.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#Funneler)
-     */
-    Funneler: number;
-    /**
-     * Lowers the jaw downward opening the mouth. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#JawDrop)
-     */
-    JawDrop: number;
-    /**
-     * Moves mouth and jaw to the left (character left).
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#JawLeft)
-     */
-    JawLeft: number;
-    /**
-     * Moves mouth and jaw to the right (character right).
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#JawRight)
-     */
-    JawRight: number;
-    /**
-     * Lowers the left brow down.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftBrowLowerer)
-     */
-    LeftBrowLowerer: number;
-    /**
-     * Puffs up the left cheek.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftCheekPuff)
-     */
-    LeftCheekPuff: number;
-    /**
-     * Squints the left eye.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftCheekRaiser)
-     */
-    LeftCheekRaiser: number;
-    /**
-     * Moves the corners of the mouth back in Z.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftDimpler)
-     */
-    LeftDimpler: number;
-    /**
-     * Closes the left eyelid. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftEyeClosed)
-     */
-    LeftEyeClosed: number;
-    /**
-     * Raises the left eyelid upwards to reveal more of the eye white above the iris.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftEyeUpperLidRaiser)
-     */
-    LeftEyeUpperLidRaiser: number;
-    /**
-     * Raises the interior half of the left brow upwards.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftInnerBrowRaiser)
-     */
-    LeftInnerBrowRaiser: number;
-    /**
-     * Lowers the corners of the mouth downwards in a frown.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftLipCornerDown)
-     */
-    LeftLipCornerDown: number;
-    /**
-     * Raises the corners of the mouth upwards in a smile. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftLipCornerPuller)
-     */
-    LeftLipCornerPuller: number;
-    /**
-     * Stretches the corners of the mouth apart. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftLipStretcher)
-     */
-    LeftLipStretcher: number;
-    /**
-     * Lowers the lower lip down away from the upper lip revealing the lower teeth. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftLowerLipDepressor)
-     */
-    LeftLowerLipDepressor: number;
-    /**
-     * Raise the left nostril, pulls the brow down slightly, and wrinkles on the side of the nose.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftNoseWrinkler)
-     */
-    LeftNoseWrinkler: number;
-    /**
-     * Raises the outer part of the left brow upwards.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftOuterBrowRaiser)
-     */
-    LeftOuterBrowRaiser: number;
-    /**
-     * Raises the left upper lip away from the lower lip revealing the upper teeth. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftUpperLipRaiser)
-     */
-    LeftUpperLipRaiser: number;
-    /**
-     * Presses the lips together.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LipPresser)
-     */
-    LipPresser: number;
-    /**
-     * Brings the lips together relative to JawDrop. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LipsTogether)
-     */
-    LipsTogether: number;
-    /**
-     * Rolls the lower lip up over the teeth.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LowerLipSuck)
-     */
-    LowerLipSuck: number;
-    /**
-     * Moves the mouth left.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#MouthLeft)
-     */
-    MouthLeft: number;
-    /**
-     * Moves the mouth right.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#MouthRight)
-     */
-    MouthRight: number;
-    /**
-     * Makes a kiss-like shape with the mouth. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#Pucker)
-     */
-    Pucker: number;
-    /**
-     * Lowers the right brow down.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightBrowLowerer)
-     */
-    RightBrowLowerer: number;
-    /**
-     * Puffs up the right cheek.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightCheekPuff)
-     */
-    RightCheekPuff: number;
-    /**
-     * Squints the right eye.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightCheekRaiser)
-     */
-    RightCheekRaiser: number;
-    /**
-     * Moves the corners of the mouth back in Z.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightDimpler)
-     */
-    RightDimpler: number;
-    /**
-     * Closes the right eyelid. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightEyeClosed)
-     */
-    RightEyeClosed: number;
-    /**
-     * Raises the right eyelid upwards to reveal more of the eye white above the iris.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightEyeUpperLidRaiser)
-     */
-    RightEyeUpperLidRaiser: number;
-    /**
-     * Raises the interior half of the right brow upwards.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightInnerBrowRaiser)
-     */
-    RightInnerBrowRaiser: number;
-    /**
-     * Lowers the corners of the mouth downwards in a frown.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightLipCornerDown)
-     */
-    RightLipCornerDown: number;
-    /**
-     * Raises the corners of the mouth upwards in a smile. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightLipCornerPuller)
-     */
-    RightLipCornerPuller: number;
-    /**
-     * Stretches the corners of the mouth apart. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightLipStretcher)
-     */
-    RightLipStretcher: number;
-    /**
-     * Lowers the lower lip down away from the upper lip revealing the lower teeth. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightLowerLipDepressor)
-     */
-    RightLowerLipDepressor: number;
-    /**
-     * Raises the right nostril, pulls the brow down slightly, and wrinkles on the side of the nose.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightNoseWrinkler)
-     */
-    RightNoseWrinkler: number;
-    /**
-     * Raises the outer part of the right brow upwards.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightOuterBrowRaiser)
-     */
-    RightOuterBrowRaiser: number;
-    /**
-     * Raises the right upper lip away from the lower lip revealing the upper teeth. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightUpperLipRaiser)
-     */
-    RightUpperLipRaiser: number;
-    /**
-     * Bends the tongue down.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#TongueDown)
-     */
-    TongueDown: number;
-    /**
-     * Extends the tip of the tongue out of the mouth.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#TongueOut)
-     */
-    TongueOut: number;
-    /**
-     * Bends the tongue up.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#TongueUp)
-     */
-    TongueUp: number;
-    /**
-     * Rolls the upper lip around the teeth.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#UpperLipSuck)
-     */
-    UpperLipSuck: number;
 }
 /**
  * An abstract class from which the `Decal` and `Texture` classes inherit.
@@ -7290,6 +6891,8 @@ interface SelectionPointLasso extends SelectionLasso {
     readonly _nominal_SelectionPointLasso: unique symbol;
 }
 /**
+ * Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D)
  */
 interface Path2D extends GuiBase {
@@ -8686,6 +8289,8 @@ interface MLModelDeliveryService extends Instance {
     readonly _nominal_MLModelDeliveryService: unique symbol;
 }
 /**
+ * A service that runs in-engine machine learning inference by loading model bundles and creating inference sessions.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLService)
@@ -9089,6 +8694,8 @@ interface MetaBreakpointManager extends Instance {
     readonly _nominal_MetaBreakpointManager: unique symbol;
 }
 /**
+ * A service that connects the engine's MicroProfiler to the data model, feeding context into profile dumps and letting privileged scripts capture them to disk.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService)
@@ -9104,6 +8711,8 @@ interface MicroProfilerService extends Instance {
     readonly _nominal_MicroProfilerService: unique symbol;
 }
 /**
+ * Server-side service for submitting player captures to content moderation review and receiving the results asynchronously.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService)
@@ -9338,6 +8947,8 @@ interface NetworkSettings extends Instance {
      */
     readonly _nominal_NetworkSettings: unique symbol;
     /**
+     * The total device memory, in MiB, that the client emulates when testing under a simulated device.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
      *
@@ -9456,6 +9067,8 @@ interface OmniRecommendationsService extends Instance {
 /**
  * **Deprecated:** This class is deprecated and should not be used for new work. Use `HttpService` instead and see the [In-experience HTTP requests guide](../../../cloud-services/http-service.md).
  *
+ * Deprecated Open Cloud API surface for in-experience cloud operations such as user notifications.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudApiV1)
@@ -9474,6 +9087,8 @@ interface OpenCloudApiV1 extends Instance {
 }
 /**
  * **Deprecated:** This class is deprecated and should not be used for new work. Use `HttpService` instead and see the [In-experience HTTP requests guide](../../../cloud-services/http-service.md).
+ *
+ * Deprecated. Do not use for new work; prefer `HttpService` for in-experience HTTP requests.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -11070,21 +10685,6 @@ interface Player extends Instance {
      */
     SetSuperSafeChat(this: Player, value: boolean): void;
     readonly Name: string;
-}
-/**
- * - **Tags**: NotBrowsable
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerControlState)
- */
-interface PlayerControlState extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_PlayerControlState: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -13901,6 +13501,8 @@ interface FluidForceSensor extends SensorBase {
     readonly _nominal_FluidForceSensor: unique symbol;
 }
 /**
+ * Serializes and deserializes `instances` to and from the `.rbxm` format.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SerializationService)
@@ -15891,6 +15493,8 @@ interface StudioCameraService extends Instance {
     readonly _nominal_StudioCameraService: unique symbol;
 }
 /**
+ * A Studio-only service that lets plugins capture screenshots of the active place's 3D viewport.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService)
@@ -15905,26 +15509,35 @@ interface StudioCaptureService extends Instance {
      */
     readonly _nominal_StudioCaptureService: unique symbol;
     /**
+     * Returns whether a screenshot can currently be captured.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService#CanCaptureScreenshot)
-     * @param this
+     * @param this A Studio-only service that lets plugins capture screenshots of the active place's 3D viewport.
+     * @returns A boolean that is `false` when a screenshot is known to be uncapturable, or `true` otherwise.
      */
     CanCaptureScreenshot(this: StudioCaptureService): boolean;
     /**
+     * Captures a screenshot of the active place according to the provided options.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService#CaptureScreenshot)
-     * @param this
-     * @param screenshotOptions
+     * @param this A Studio-only service that lets plugins capture screenshots of the active place's 3D viewport.
+     * @param screenshotOptions A dictionary of options controlling the capture, such as `Position`, `CaptureSize`, `OutputSize`, `ResampleMode`, `Format`, and `UICaptureMode`.
+     * @returns A `StudioScreenshotCapture` that holds the requested image in the requested format.
      */
     CaptureScreenshot(this: StudioCaptureService, screenshotOptions: object): StudioScreenshotCapture;
     /**
+     * Requests the user's permission for the plugin to capture screenshots from the Studio 3D view.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService#RequestScreenshotPermissionAsync)
-     * @param this
+     * @param this A Studio-only service that lets plugins capture screenshots of the active place's 3D viewport.
+     * @returns A boolean that is `true` if the user granted permission and `false` otherwise.
      */
     RequestScreenshotPermissionAsync(this: StudioCaptureService): boolean;
 }
@@ -16208,6 +15821,8 @@ interface StudioPublishService extends Instance {
     readonly _nominal_StudioPublishService: unique symbol;
 }
 /**
+ * Represents a single screenshot captured from Studio, exposing the resulting image buffer and the parameters the capture was taken with.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture)
@@ -16222,6 +15837,8 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly _nominal_StudioScreenshotCapture: unique symbol;
     /**
+     * The pixel format of the image data returned by `GetBuffer()`.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -16229,6 +15846,8 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly BufferFormat: Enum.StudioCaptureScreenshotFormat;
     /**
+     * Reflects the current state of the capture as its image data is produced.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -16236,6 +15855,8 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly BufferStatus: Enum.StudioCaptureBufferStatus;
     /**
+     * The size, in pixels, of the region available for capture from `Position` to the edge of the Studio view.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -16243,6 +15864,8 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly OriginalSize: Vector2;
     /**
+     * The top-left corner, in pixels, of the captured region within the Studio view.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -16250,6 +15873,8 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly Position: Vector2;
     /**
+     * The pixel dimensions of the captured image.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -16257,6 +15882,8 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly Resolution: Vector2;
     /**
+     * Indicates which user-interface layers were included in the capture.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -16264,27 +15891,36 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly UICaptureMode: Enum.UICaptureMode;
     /**
+     * Returns the captured image data as a buffer in the capture's pixel format.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#GetBuffer)
-     * @param this
+     * @param this Represents a single screenshot captured from Studio, exposing the resulting image buffer and the parameters the capture was taken with.
+     * @returns A buffer containing the captured image data in the capture's `BufferFormat`.
      */
     GetBuffer(this: StudioScreenshotCapture): buffer;
     /**
+     * Returns an array of error messages recorded during the capture.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#GetErrors)
-     * @param this
+     * @param this Represents a single screenshot captured from Studio, exposing the resulting image buffer and the parameters the capture was taken with.
+     * @returns An array of strings describing any errors that occurred during the capture.
      */
     GetErrors(this: StudioScreenshotCapture): Array<unknown>;
     /**
+     * Produces a new capture containing a resized copy of this capture's image.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#ScaleAsync)
-     * @param this
-     * @param strategy
-     * @param newSize
+     * @param this Represents a single screenshot captured from Studio, exposing the resulting image buffer and the parameters the capture was taken with.
+     * @param strategy The `ResamplerMode` used to resample the image. `ResamplerMode.Default` applies bilinear filtering; `ResamplerMode.Pixelated` applies nearest-neighbor (point) sampling.
+     * @param newSize The width and height, in pixels, of the scaled image.
+     * @returns A new `StudioScreenshotCapture` whose image is this capture scaled to `newSize`.
      */
     ScaleAsync(this: StudioScreenshotCapture, strategy: CastsToEnum<Enum.ResamplerMode>, newSize: Vector2): StudioScreenshotCapture;
 }
@@ -16341,7 +15977,8 @@ interface StudioService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioService#GetClassIcon)
      * @param this Provides access to configuration of Roblox Studio and allows importing files from the user's file system.
-     * @param className
+     * @param className The name of the Roblox class to retrieve the Explorer window icon for.
+     * @returns A dictionary containing `Image`, `ImageRectOffset`, and `ImageRectSize` fields that can be applied to an `ImageLabel` to display the class icon.
      */
     GetClassIcon(this: StudioService, className: string): object;
     /**
@@ -16351,6 +15988,7 @@ interface StudioService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioService#GetUserId)
      * @param this Provides access to configuration of Roblox Studio and allows importing files from the user's file system.
+     * @returns The UserId of the logged-in Studio user, or 0 if the user is not logged in.
      */
     GetUserId(this: StudioService): number;
     /**
@@ -16433,22 +16071,29 @@ interface StudioTestService extends Instance {
      */
     readonly _nominal_StudioTestService: unique symbol;
     /**
+     * Plugin-facing. Indicates whether the session is the idle edit `DataModel` with no Studio test session running.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#EditModeActive)
      */
     EditModeActive: boolean;
     /**
+     * Launches a multiplayer test session and yields until it completes.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#ExecuteMultiplayerTestAsync)
      * @param this Service allowing plugins to automate and customize Test and Run mode testing.
-     * @param numPlayers
-     * @param args
+     * @param numPlayers The number of client DataModels to create. Must be between 1 and 8.
+     * @param args An optional Roblox-serializable value forwarded to scripts inside the test session.
+     * @returns The value passed to `StudioTestService:EndTest()`.
      */
     ExecuteMultiplayerTestAsync(this: StudioTestService, numPlayers: number, args: unknown): unknown;
     /**
+     * Starts a solo Test session and yields until it ends.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -16459,6 +16104,8 @@ interface StudioTestService extends Instance {
      */
     ExecutePlayModeAsync(this: StudioTestService, args: unknown): unknown;
     /**
+     * Starts a Run test session and yields until it ends.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -16470,6 +16117,8 @@ interface StudioTestService extends Instance {
     ExecuteRunModeAsync(this: StudioTestService, args: unknown): unknown;
 }
 /**
+ * A collection of colors that make up a Roblox Studio theme, letting a plugin query the color of a Studio UI element for the theme the user currently has active.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTheme)
@@ -16489,7 +16138,7 @@ interface StudioTheme extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTheme#GetColor)
-     * @param this
+     * @param this A collection of colors that make up a Roblox Studio theme, letting a plugin query the color of a Studio UI element for the theme the user currently has active.
      * @param styleguideitem The element you want to get the theme color for.
      * @param modifier The modifier you want to place on the `StyleGuideColor` element.
      * @returns The corresponding Color3 theme value.
@@ -17098,6 +16747,8 @@ interface TestService extends Instance {
     RunAsync(this: TestService): void;
 }
 /**
+ * A service that manages a user's `TextBox` state during gameplay.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextBoxService)
@@ -17260,6 +16911,8 @@ interface TextChatMessageProperties extends Instance {
     readonly _nominal_TextChatMessageProperties: unique symbol;
 }
 /**
+ * Overrides `BubbleChatConfiguration` properties for an individual bubble chat message.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BubbleChatMessageProperties)
  */
 interface BubbleChatMessageProperties extends TextChatMessageProperties {
@@ -17273,6 +16926,8 @@ interface BubbleChatMessageProperties extends TextChatMessageProperties {
     readonly _nominal_BubbleChatMessageProperties: unique symbol;
 }
 /**
+ * Customizes the appearance of an individual text chat message displayed in the chat window.
+ *
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChatWindowMessageProperties)
@@ -18318,7 +17973,7 @@ interface Vector3Value extends ValueBase {
     readonly _nominal_Vector3Value: unique symbol;
 }
 /**
- * A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+ * A sorted list of time-value pairs that define a curve. Used to animate any type of value.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve)
  */
@@ -18706,6 +18361,8 @@ interface LuauExpression extends RBXObject {
     readonly _nominal_LuauExpression: unique symbol;
 }
 /**
+ * A machine-learning inference session that wraps a single loaded model and runs it through `MLSession:ForwardAsync()`.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLSession)
