@@ -10,143 +10,232 @@
  * `Instance`; attribute filters and pseudo-classes never change the class. Note that
  * whitespace is not a combinator in this grammar (descendant matching is `>>`), so spaces
  * are ignored rather than treated as separators.
+ *
+ * Dynamic templates and selectors exceeding the bounded analysis budget fall back to
+ * `Instance`. Validation checks unsupported pseudo-classes and empty list entries; it
+ * is not a complete runtime grammar check.
  */
 declare namespace Selector {
-	type Trim<T extends string> = T extends `${infer S} ` ? Trim<S> : T extends ` ${infer S}` ? Trim<S> : T;
+	// Bounds are deliberately below TypeScript's recursion limit. A broad string means
+	// analysis stopped; callers must preserve it as an Instance fallback, never a partial type.
+	type OtherWhitespace = "\t" | "\n" | "\r" | "\f" | "\v";
+	type Trim<T extends string, Steps extends Array<unknown> = []> = Steps["length"] extends 128
+		? string
+		: T extends `${infer S} `
+			? Trim<S, [...Steps, unknown]>
+			: T extends ` ${infer S}`
+				? Trim<S, [...Steps, unknown]>
+				: T;
 
-	type SolveHead<Head extends string | undefined> = Head extends string
-		? Trim<Head> extends infer C extends keyof Instances
-			? Instances[C]
-			: Instance
-		: Instance;
-
-	type AddSolvedHead<Result, Head extends string | undefined> = [Result] extends [never]
-		? SolveHead<Head>
-		: Result | SolveHead<Head>;
-
-	type HeadBreak = ":" | "." | "#" | "[" | " ";
-
-	type ReadHead<
-		Head extends string | undefined = undefined,
-		Done extends boolean = false,
-		C extends string = "",
-	> = Done extends true
-		? [Head, Done]
-		: Head extends undefined
-			? Trim<C> extends ""
-				? [undefined, false]
-				: C extends HeadBreak
-					? ["", true]
-					: [C, false]
-			: C extends HeadBreak
-				? [Head, true]
-				: [`${Head}${C}`, false];
-
-	type SolveChars<
-		S extends string,
-		Head extends string | undefined = undefined,
-		Done extends boolean = false,
-		Result = never,
-		Depth extends Array<any> = [],
-	> = S extends `${infer C}${infer Rest}`
-		? Depth extends []
-			? C extends "("
-				? SolveChars<Rest, Head, Done, Result, [any]>
-				: C extends ","
-					? SolveChars<Rest, undefined, false, AddSolvedHead<Result, Head>, Depth>
-					: C extends ">"
-						? SolveChars<Rest, undefined, false, Result, Depth>
-						: ReadHead<Head, Done, C> extends [
-									infer NextHead extends string | undefined,
-									infer NextDone extends boolean,
-							  ]
-							? SolveChars<Rest, NextHead, NextDone, Result, Depth>
-							: never
-			: C extends "("
-				? SolveChars<Rest, Head, Done, Result, [...Depth, any]>
-				: C extends ")"
-					? SolveChars<Rest, Head, Done, Result, Depth extends [any, ...infer D] ? D : []>
-					: SolveChars<Rest, Head, Done, Result, Depth>
-		: AddSolvedHead<Result, Head>;
-
-	// Nested pseudo-classes can contain selector lists, so this path tracks only top-level
-	// separators while keeping the subject class from the current segment.
-	type SlowSolve<T extends string> = SolveChars<T>;
+	// Infinite template-literal key sets (including `${number}`) have no required keys.
+	// Unlike `string extends S`, this also detects selectors such as `Part.${string}`.
+	type IsDynamic<S extends string> = Record<never, never> extends Record<S, unknown> ? true : false;
 
 	// Only the final combinator segment can determine the subject type.
-	type LastSegment<S extends string> = S extends `${string}>${infer R}` ? LastSegment<R> : S;
+	type LastSegment<S extends string, Steps extends Array<unknown> = []> = Steps["length"] extends 128
+		? string
+		: S extends `${string}>${infer R}`
+			? LastSegment<R, [...Steps, unknown]>
+			: S;
 
 	type CutAt<S extends string, D extends string> = S extends `${infer Prefix}${D}${string}` ? Prefix : S;
 
 	type LeadingClass<S extends string> = CutAt<CutAt<CutAt<CutAt<Trim<S>, ":">, ".">, "#">, " ">;
 
-	// Filters do not affect the subject class, but their values can contain selector separators.
-	type StripFiltersAndParens<S extends string> = S extends `${infer A}[${string}]${infer B}`
-		? StripFiltersAndParens<`${A}${B}`>
-		: S extends `${infer A}(${string})${infer B}`
-			? StripFiltersAndParens<`${A}${B}`>
-			: S;
+	// Consume a quoted value without interpreting the other quote character as syntax.
+	// Values without backslashes use a single template match, regardless of their length.
+	type QuotedRest<S extends string, Quote extends "'" | '"'> = S extends `${infer A}${Quote}${infer B}`
+		? A extends `${string}\\${string}`
+			? EscapedQuotedRest<S, Quote>
+			: B
+		: string;
 
-	type FastClause<S extends string> =
-		LeadingClass<LastSegment<S>> extends infer C extends keyof Instances ? Instances[C] : Instance;
+	type EscapedQuotedRest<
+		S extends string,
+		Quote extends string,
+		Steps extends Array<unknown> = [],
+	> = Steps["length"] extends 256
+		? string
+		: S extends `\\${string}${infer Rest}`
+			? EscapedQuotedRest<Rest, Quote, [...Steps, unknown]>
+			: S extends `${Quote}${infer Rest}`
+				? Rest
+				: S extends `${string}${infer Rest}`
+					? EscapedQuotedRest<Rest, Quote, [...Steps, unknown]>
+					: string;
 
-	type FastSolve<S extends string> = S extends `${infer A},${infer B}` ? FastClause<A> | FastSolve<B> : FastClause<S>;
+	type StripQuote<
+		S extends string,
+		Quote extends "'" | '"',
+		Out extends string,
+		Steps extends Array<unknown>,
+	> = S extends `${infer A}${Quote}${infer B}`
+		? QuotedRest<B, Quote> extends infer Rest extends string
+			? string extends Rest
+				? string
+				: StripQuotes<Rest, `${Out}${A}`, [...Steps, unknown]>
+			: never
+		: `${Out}${S}`;
 
-	type SolveUnquoted<S extends string> = S extends `${string}(${string}(${string})${string})${string}`
-		? SlowSolve<S>
-		: FastSolve<StripFiltersAndParens<S>>;
+	type StripQuotes<
+		S extends string,
+		Out extends string = "",
+		Steps extends Array<unknown> = [],
+	> = Steps["length"] extends 128
+		? string
+		: S extends `${infer A}'${string}`
+			? A extends `${string}"${string}`
+				? StripQuote<S, '"', Out, Steps>
+				: StripQuote<S, "'", Out, Steps>
+			: S extends `${string}"${string}`
+				? StripQuote<S, '"', Out, Steps>
+				: `${Out}${S}`;
 
-	type StripQuotes<S extends string> = S extends `${infer A}'${string}'${infer B}` ? StripQuotes<`${A}${B}`> : S;
-
-	// Attribute values are not selector syntax, even when they contain ":" or ",".
-	type StripValidationGroups<S extends string> = S extends `${infer A}'${string}'${infer B}`
-		? StripValidationGroups<`${A}${B}`>
+	// Quoted delimiters must be removed before filters or pseudo-class groups are read.
+	// Sharing this normalization between validation and inference also lets the checker cache it.
+	// A dot is an opaque filter marker: it preserves a nonempty selector inside :not([$x]).
+	type StripFilters<S extends string, Steps extends Array<unknown> = []> = Steps["length"] extends 128
+		? string
 		: S extends `${infer A}[${string}]${infer B}`
-			? StripValidationGroups<`${A}${B}`>
+			? StripFilters<`${A}.${B}`, [...Steps, unknown]>
 			: S;
+	type ReplaceWhitespace<
+		S extends string,
+		W extends string,
+		Steps extends Array<unknown> = [],
+	> = Steps["length"] extends 128
+		? string
+		: S extends `${infer A}${W}${infer B}`
+			? ReplaceWhitespace<`${A} ${B}`, W, [...Steps, unknown]>
+			: S;
+	type NormalizeWhitespace<S extends string> = S extends `${string}${OtherWhitespace}${string}`
+		? ReplaceWhitespace<
+				ReplaceWhitespace<ReplaceWhitespace<ReplaceWhitespace<ReplaceWhitespace<S, "\t">, "\n">, "\r">, "\f">,
+				"\v"
+			>
+		: S;
+	type Normalize<S extends string> = NormalizeWhitespace<StripFilters<StripQuotes<S>>>;
+
+	// Jump between parentheses rather than visiting every character. Quoted values and
+	// filters are already opaque, so only these delimiters affect nesting.
+	type StripClose<
+		S extends string,
+		Out extends string,
+		Depth extends Array<unknown>,
+		Steps extends Array<unknown>,
+	> = S extends `${string})${infer Rest}`
+		? Depth extends [unknown, ...infer D]
+			? StripParens<Rest, Out, D, [...Steps, unknown]>
+			: string
+		: string;
+
+	type StripParens<
+		S extends string,
+		Out extends string = "",
+		Depth extends Array<unknown> = [],
+		Steps extends Array<unknown> = [],
+	> = Steps["length"] extends 128
+		? string
+		: S extends `${infer A}(${infer B}`
+			? A extends `${string})${string}`
+				? StripClose<S, Out, Depth, Steps>
+				: StripParens<B, Depth extends [] ? `${Out}${A}` : Out, [...Depth, unknown], [...Steps, unknown]>
+			: S extends `${string})${string}`
+				? StripClose<S, Out, Depth, Steps>
+				: Depth extends []
+					? `${Out}${S}`
+					: string;
+
+	type FastClause<S extends string> = S extends keyof Instances
+		? Instances[S]
+		: LeadingClass<LastSegment<S>> extends infer C extends keyof Instances
+			? Instances[C]
+			: Instance;
+
+	// Accumulate the union so long lists remain tail-recursive.
+	type FastSolve<S extends string, Result = never, Steps extends Array<unknown> = []> = Steps["length"] extends 128
+		? Instance
+		: S extends `${infer A},${infer B}`
+			? FastSolve<B, Result | FastClause<A>, [...Steps, unknown]>
+			: Result | FastClause<S>;
+
+	type StripFlatParens<S extends string, Steps extends Array<unknown> = []> = Steps["length"] extends 128
+		? string
+		: S extends `${infer A}(${string})${infer B}`
+			? StripFlatParens<`${A}${B}`, [...Steps, unknown]>
+			: S;
+
+	type SolveNormalized<S extends string> = string extends S
+		? Instance
+		: S extends `${string}(${string}`
+			? S extends `${string}(${string}(${string})${string})${string}`
+				? FastSolve<StripParens<S>>
+				: FastSolve<StripFlatParens<S>>
+			: S extends `${string},${string}`
+				? FastSolve<S>
+				: FastClause<S>;
 
 	type SupportedPseudo = "not" | "has";
 
-	type CheckPseudos<S extends string> = S extends `${string}:${infer R}`
-		? R extends `${infer Name}(${infer Rest}`
-			? Name extends SupportedPseudo
-				? CheckPseudos<Rest>
-				: Name
-			: R // ':' not followed by 'name(' -> pseudo-classes require arguments
-		: never;
+	type CheckPseudos<S extends string, Steps extends Array<unknown> = []> = Steps["length"] extends 128
+		? never
+		: S extends `${string}:${infer R}`
+			? R extends `${infer Name}(${infer Rest}`
+				? Name extends SupportedPseudo
+					? CheckPseudos<Rest, [...Steps, unknown]>
+					: Name
+				: R // ':' not followed by 'name(' -> pseudo-classes require arguments
+			: never;
+
+	// Parentheses delimit nested lists just as commas delimit their entries.
+	type HasEmptyGroup<S extends string, Steps extends Array<unknown> = []> = Steps["length"] extends 128
+		? false
+		: S extends `${string}(${infer Rest}`
+			? Trim<Rest> extends `)${string}` | `,${string}`
+				? true
+				: HasEmptyGroup<Rest, [...Steps, unknown]>
+			: false;
 
 	// The whole-empty selector "" is intentionally allowed.
 	type HasEmptyListItem<S extends string> = S extends `${string},${string}` ? CheckListItems<S> : false;
-	type CheckListItems<S extends string> = S extends `${infer A},${infer B}`
-		? Trim<A> extends ""
-			? true
-			: CheckListItems<B>
-		: Trim<S> extends ""
-			? true
-			: false;
+	type CheckListItems<S extends string, Steps extends Array<unknown> = []> = Steps["length"] extends 128
+		? false
+		: S extends `${infer A},${infer B}`
+			? Trim<A> extends "" | `${string}(` | `)${string}`
+				? true
+				: CheckListItems<B, [...Steps, unknown]>
+			: Trim<S> extends "" | `)${string}`
+				? true
+				: false;
 
 	type ValidateUnquoted<S extends string, Q extends string> = Q extends `${string}:${string}`
 		? CheckPseudos<Q> extends infer Bad
 			? [Bad] extends [never]
-				? HasEmptyListItem<Q> extends true
+				? true extends HasEmptyListItem<Q> | HasEmptyGroup<Q>
 					? `Invalid selector: empty selector in list (check for a stray or trailing comma)`
 					: S
 				: `Invalid selector: ':${Bad & string}' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)`
 			: never
 		: Q extends `${string},${string}`
-			? HasEmptyListItem<Q> extends true
+			? true extends HasEmptyListItem<Q> | HasEmptyGroup<Q>
 				? `Invalid selector: empty selector in list (check for a stray or trailing comma)`
 				: S
 			: S;
 
-	export type ValidateSelector<S extends string> = string extends S
-		? S
-		: StripValidationGroups<S> extends infer Q extends string
-			? ValidateUnquoted<S, Q>
-			: never;
+	// Distribute over the original selector so each normalized branch retains its own input.
+	export type ValidateSelector<S extends string> = S extends `${string}${":" | ","}${string}`
+		? IsDynamic<S> extends true
+			? S
+			: Normalize<S> extends infer Q extends string
+				? string extends Q
+					? S
+					: ValidateUnquoted<S, Q>
+				: never
+		: S;
 
-	// Quoted values are stripped before solving so most selectors can stay on the cheaper path.
-	export type Solve<S extends string> = S extends `${string}'${string}`
-		? SolveUnquoted<StripQuotes<S>>
-		: SolveUnquoted<S>;
+	export type Solve<S extends string> = S extends keyof Instances
+		? Instances[S]
+		: IsDynamic<S> extends true
+			? Instance
+			: SolveNormalized<Normalize<S>>;
 }
