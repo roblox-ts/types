@@ -3176,8 +3176,7 @@ interface SettableCores {
 	AddAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
 	RemoveAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
 	CoreGuiChatConnections:
-		| { [name: string]: BindableEvent | BindableFunction }
-		| Map<string, BindableEvent | BindableFunction>;
+		{ [name: string]: BindableEvent | BindableFunction } | Map<string, BindableEvent | BindableFunction>;
 	VREnableControllerModels: boolean;
 	VRLaserPointerMode: "Disabled" | "Pointer" | "Navigation" | "Hidden";
 }
