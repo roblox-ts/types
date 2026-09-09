@@ -24,6 +24,18 @@ export default defineConfig(
 			"simple-import-sort": simpleImportSort,
 		},
 		rules: {
+			// keep the existing lint policy when recommended presets change
+			"no-class-assign": "error",
+			"no-constant-binary-expression": "off",
+			"no-empty-static-block": "off",
+			"no-inner-declarations": ["error", "functions", { blockScopedFunctions: "disallow" }],
+			"no-shadow-restricted-names": ["error", { reportGlobalThis: false }],
+			"no-unassigned-vars": "off",
+			"no-unused-private-class-members": "off",
+			"no-useless-assignment": "off",
+			"no-with": "error",
+			"preserve-caught-error": "off",
+
 			"prettier/prettier": "warn",
 			"@typescript-eslint/array-type": [
 				"warn",
@@ -36,9 +48,10 @@ export default defineConfig(
 				"error",
 				{
 					ignoreVoid: true,
+					checkThenables: true,
 				},
 			],
-			"@typescript-eslint/no-unused-vars": "warn",
+			"@typescript-eslint/no-unused-vars": ["warn", { caughtErrors: "none" }],
 			"@typescript-eslint/explicit-function-return-type": "off",
 			"@typescript-eslint/no-empty-function": "off",
 			"@typescript-eslint/no-namespace": "off",
@@ -78,24 +91,40 @@ export default defineConfig(
 					message: "You must add a `this` parameter definition",
 				},
 			],
-			"@typescript-eslint/no-empty-object-type": [
+			// no-restricted-types retains the old ban-types restrictions and autofixes
+			"@typescript-eslint/no-restricted-types": [
 				"error",
 				{
-					allowInterfaces: "always",
+					types: {
+						String: { fixWith: "string" },
+						Boolean: { fixWith: "boolean" },
+						Number: { fixWith: "number" },
+						Symbol: { fixWith: "symbol" },
+						BigInt: { fixWith: "bigint" },
+						Function: true,
+						Object: { suggest: ["object", "unknown", "NonNullable<unknown>"] },
+						"{}": { suggest: ["object", "unknown", "Record<string, never>", "NonNullable<unknown>"] },
+					},
 				},
 			],
+			"@typescript-eslint/no-unsafe-function-type": "off",
+			"@typescript-eslint/no-wrapper-object-types": "off",
+			"@typescript-eslint/prefer-namespace-keyword": "off",
+			"@typescript-eslint/no-empty-object-type": "off",
 		},
 	},
 	{
 		files: ["include/**/*.ts"],
 		languageOptions: { parserOptions: { project: "./include/tsconfig.json" } },
 		rules: {
+			"@typescript-eslint/no-restricted-types": "off",
 			"@typescript-eslint/no-explicit-any": "off",
 			"@typescript-eslint/triple-slash-reference": "off",
 			"@typescript-eslint/no-unused-vars": [
 				"warn",
 				{
 					varsIgnorePattern: "_",
+					caughtErrors: "none",
 				},
 			],
 			"@typescript-eslint/no-empty-object-type": "off",
