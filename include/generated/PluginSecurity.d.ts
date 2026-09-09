@@ -8,6 +8,7 @@ interface Services {
     ActivityHistoryEventService: ActivityHistoryEventService;
     AdService: AdService;
     AnalyticsService: AnalyticsService;
+    AnimatedImageService: AnimatedImageService;
     AnimationClipProvider: AnimationClipProvider;
     AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
     AnimationFromVideoCreatorStudioService: AnimationFromVideoCreatorStudioService;
@@ -59,7 +60,6 @@ interface Services {
     CreationDBService: CreationDBService;
     CreatorStoreService: CreatorStoreService;
     CrossDMScriptChangeListener: CrossDMScriptChangeListener;
-    DataModelPatchService: DataModelPatchService;
     DataStoreService: DataStoreService;
     Debris: Debris;
     DebuggablePluginWatcher: DebuggablePluginWatcher;
@@ -144,6 +144,7 @@ interface Services {
     MLModelDeliveryService: MLModelDeliveryService;
     MLService: MLService;
     ModerationService: ModerationService;
+    MomentsService: MomentsService;
     NetworkClient: NetworkClient;
     NetworkServer: NetworkServer;
     NetworkSettings: NetworkSettings;
@@ -312,6 +313,8 @@ interface CreatableInstances {
     AnimationGraphDefinition: AnimationGraphDefinition;
     AnimationNodeDefinition: AnimationNodeDefinition;
     AnimationRigData: AnimationRigData;
+    AnimationValueNodeDefinition: AnimationValueNodeDefinition;
+    AnimationValueOutputDefinition: AnimationValueOutputDefinition;
     Animator: Animator;
     Annotation: Annotation;
     ArcHandles: ArcHandles;
@@ -623,6 +626,7 @@ interface CreatableInstances {
     WrapTextureTransfer: WrapTextureTransfer;
 }
 interface Instances extends Services, CreatableInstances {
+    AnimatedImage: AnimatedImage;
     AnimationClip: AnimationClip;
     AnimationImportData: AnimationImportData;
     AnimationStreamTrack: AnimationStreamTrack;
@@ -827,6 +831,7 @@ interface Instances extends Services, CreatableInstances {
     WorldRoot: WorldRoot;
 }
 interface Objects extends Instances {
+    AnimatedImageTrack: AnimatedImageTrack;
     AnimationNode: AnimationNode;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
@@ -869,6 +874,21 @@ interface RBXObject {
      * @deprecated
      */
     readonly _nominal_Object: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImageTrack)
+ */
+interface AnimatedImageTrack extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimatedImageTrack: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -1216,6 +1236,21 @@ interface AnalyticsService extends Instance {
     readonly _nominal_AnalyticsService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImageService)
+ */
+interface AnimatedImageService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimatedImageService: unique symbol;
+}
+/**
  * References an animation asset which can be loaded by an `AnimationController`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animation)
@@ -1455,6 +1490,32 @@ interface AnimationTrack extends Instance {
      * @deprecated
      */
     readonly _nominal_AnimationTrack: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationValueNodeDefinition)
+ */
+interface AnimationValueNodeDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationValueNodeDefinition: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationValueOutputDefinition)
+ */
+interface AnimationValueOutputDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationValueOutputDefinition: unique symbol;
 }
 /**
  * Responsible for the playback and replication of `Animations`.
@@ -4140,8 +4201,6 @@ interface ContextActionService extends Instance {
     readonly _nominal_ContextActionService: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState)
  */
 interface ControlState extends Instance {
@@ -4518,21 +4577,6 @@ interface SpecialMesh extends FileMesh {
      * @deprecated
      */
     readonly _nominal_SpecialMesh: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModelPatchService)
- */
-interface DataModelPatchService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_DataModelPatchService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable
@@ -5419,6 +5463,8 @@ interface Decal extends FaceInstance {
      */
     set EmissiveMaskContent(value: Content);
     /**
+     * Content ID that determines the metalness map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
      *
@@ -5426,12 +5472,16 @@ interface Decal extends FaceInstance {
      */
     MetalnessMap: ContentId;
     /**
+     * `Content` object that determines the metalness map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#MetalnessMapContent)
      */
     set MetalnessMapContent(value: Content);
     /**
+     * Content ID that determines the normal map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
      *
@@ -5439,12 +5489,16 @@ interface Decal extends FaceInstance {
      */
     NormalMap: ContentId;
     /**
+     * `Content` object that determines the normal map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#NormalMapContent)
      */
     set NormalMapContent(value: Content);
     /**
+     * Content ID that determines the roughness map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
      *
@@ -5452,6 +5506,8 @@ interface Decal extends FaceInstance {
      */
     RoughnessMap: ContentId;
     /**
+     * `Content` object that determines the roughness map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#RoughnessMapContent)
@@ -6022,6 +6078,21 @@ interface GuiBase extends Instance {
      * @deprecated
      */
     readonly _nominal_GuiBase: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImage)
+ */
+interface AnimatedImage extends GuiBase {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimatedImage: unique symbol;
 }
 /**
  * An abstract class inherited by 2D `GuiObjects`.
@@ -8726,6 +8797,21 @@ interface ModerationService extends Instance {
      * @deprecated
      */
     readonly _nominal_ModerationService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MomentsService)
+ */
+interface MomentsService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_MomentsService: unique symbol;
 }
 /**
  * Legacy object that contains members useful for pointer input.
@@ -12397,6 +12483,8 @@ interface RunService extends Instance {
      */
     readonly _nominal_RunService: unique symbol;
     /**
+     * The current run state of the game's simulation.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -17463,7 +17551,7 @@ interface UIFlexItem extends UIComponent {
     readonly _nominal_UIFlexItem: unique symbol;
 }
 /**
- * Applies a color and transparency gradient to the UI elements rendered by the parent `GuiObject`.
+ * Applies a color and transparency gradient to the parent `GuiObject`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIGradient)
  */
