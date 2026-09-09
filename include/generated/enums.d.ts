@@ -1307,6 +1307,8 @@ declare namespace Enum {
      */
     export namespace AnalyticsCustomFieldKeys {
         /**
+         * The first custom field key, used to provide a breakdown dimension in Roblox-provided analytics charts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsCustomFieldKeys#CustomField01)
          */
         export interface CustomField01 extends globalThis.EnumItem {
@@ -1316,6 +1318,8 @@ declare namespace Enum {
         }
         export const CustomField01: CustomField01;
         /**
+         * The second custom field key, used to provide a breakdown dimension in Roblox-provided analytics charts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsCustomFieldKeys#CustomField02)
          */
         export interface CustomField02 extends globalThis.EnumItem {
@@ -1325,6 +1329,8 @@ declare namespace Enum {
         }
         export const CustomField02: CustomField02;
         /**
+         * The third custom field key, used to provide a breakdown dimension in Roblox-provided analytics charts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsCustomFieldKeys#CustomField03)
          */
         export interface CustomField03 extends globalThis.EnumItem {
@@ -1339,6 +1345,8 @@ declare namespace Enum {
     }
     export type AnalyticsCustomFieldKeys = AnalyticsCustomFieldKeys.CustomField01 | AnalyticsCustomFieldKeys.CustomField02 | AnalyticsCustomFieldKeys.CustomField03;
     /**
+     * Describes the type of economic transaction in `AnalyticsService:FireInGameEconomyEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsEconomyAction)
      */
     export namespace AnalyticsEconomyAction {
@@ -1381,6 +1389,8 @@ declare namespace Enum {
     }
     export type AnalyticsEconomyAction = AnalyticsEconomyAction.Default | AnalyticsEconomyAction.Acquire | AnalyticsEconomyAction.Spend;
     /**
+     * Specifies the direction of currency flow in an economy event logged by `AnalyticsService:LogEconomyEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsEconomyFlowType)
      */
     export namespace AnalyticsEconomyFlowType {
@@ -1412,6 +1422,8 @@ declare namespace Enum {
     }
     export type AnalyticsEconomyFlowType = AnalyticsEconomyFlowType.Sink | AnalyticsEconomyFlowType.Source;
     /**
+     * Categorizes the context of an in-experience economic transaction for use with `AnalyticsService:LogEconomyEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsEconomyTransactionType)
      */
     export namespace AnalyticsEconomyTransactionType {
@@ -1487,6 +1499,8 @@ declare namespace Enum {
     }
     export type AnalyticsEconomyTransactionType = AnalyticsEconomyTransactionType.IAP | AnalyticsEconomyTransactionType.Shop | AnalyticsEconomyTransactionType.Gameplay | AnalyticsEconomyTransactionType.ContextualPurchase | AnalyticsEconomyTransactionType.TimedReward | AnalyticsEconomyTransactionType.Onboarding;
     /**
+     * Specifies the severity level of an analytics log event passed to `AnalyticsService:FireLogEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsLogLevel)
      */
     export namespace AnalyticsLogLevel {
@@ -1513,6 +1527,8 @@ declare namespace Enum {
         }
         export const Debug: Debug;
         /**
+         * Used for general informational messages that highlight progress or state changes during normal operation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsLogLevel#Information)
          */
         export interface Information extends globalThis.EnumItem {
@@ -1626,10 +1642,14 @@ declare namespace Enum {
     }
     export type AnalyticsProgressionStatus = AnalyticsProgressionStatus.Default | AnalyticsProgressionStatus.Begin | AnalyticsProgressionStatus.Complete | AnalyticsProgressionStatus.Abandon | AnalyticsProgressionStatus.Fail;
     /**
+     * Specifies the player's progression status in a level-progression event logged by `AnalyticsService:LogProgressionEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsProgressionType)
      */
     export namespace AnalyticsProgressionType {
         /**
+         * A custom progression status for events outside the standard start/fail/complete lifecycle.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsProgressionType#Custom)
          */
         export interface Custom extends globalThis.EnumItem {
@@ -1639,6 +1659,8 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         /**
+         * The player started the level attempt.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsProgressionType#Start)
          */
         export interface Start extends globalThis.EnumItem {
@@ -1648,6 +1670,8 @@ declare namespace Enum {
         }
         export const Start: Start;
         /**
+         * The player failed the level attempt.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsProgressionType#Fail)
          */
         export interface Fail extends globalThis.EnumItem {
@@ -1657,6 +1681,8 @@ declare namespace Enum {
         }
         export const Fail: Fail;
         /**
+         * The player completed the level successfully.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsProgressionType#Complete)
          */
         export interface Complete extends globalThis.EnumItem {
@@ -1670,6 +1696,105 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnalyticsProgressionType | undefined;
     }
     export type AnalyticsProgressionType = AnalyticsProgressionType.Custom | AnalyticsProgressionType.Start | AnalyticsProgressionType.Fail | AnalyticsProgressionType.Complete;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImagePlaybackState)
+     */
+    export namespace AnimatedImagePlaybackState {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImagePlaybackState#Begin)
+         */
+        export interface Begin extends globalThis.EnumItem {
+            Name: "Begin";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AnimatedImagePlaybackState;
+        }
+        export const Begin: Begin;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImagePlaybackState#Playing)
+         */
+        export interface Playing extends globalThis.EnumItem {
+            Name: "Playing";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AnimatedImagePlaybackState;
+        }
+        export const Playing: Playing;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImagePlaybackState#Paused)
+         */
+        export interface Paused extends globalThis.EnumItem {
+            Name: "Paused";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AnimatedImagePlaybackState;
+        }
+        export const Paused: Paused;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImagePlaybackState#Completed)
+         */
+        export interface Completed extends globalThis.EnumItem {
+            Name: "Completed";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.AnimatedImagePlaybackState;
+        }
+        export const Completed: Completed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImagePlaybackState#Canceled)
+         */
+        export interface Canceled extends globalThis.EnumItem {
+            Name: "Canceled";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.AnimatedImagePlaybackState;
+        }
+        export const Canceled: Canceled;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimatedImagePlaybackState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimatedImagePlaybackState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimatedImagePlaybackState | undefined;
+    }
+    export type AnimatedImagePlaybackState = AnimatedImagePlaybackState.Begin | AnimatedImagePlaybackState.Playing | AnimatedImagePlaybackState.Paused | AnimatedImagePlaybackState.Completed | AnimatedImagePlaybackState.Canceled;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImageScaleType)
+     */
+    export namespace AnimatedImageScaleType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImageScaleType#Stretch)
+         */
+        export interface Stretch extends globalThis.EnumItem {
+            Name: "Stretch";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AnimatedImageScaleType;
+        }
+        export const Stretch: Stretch;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImageScaleType#Tile)
+         */
+        export interface Tile extends globalThis.EnumItem {
+            Name: "Tile";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AnimatedImageScaleType;
+        }
+        export const Tile: Tile;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImageScaleType#Fit)
+         */
+        export interface Fit extends globalThis.EnumItem {
+            Name: "Fit";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AnimatedImageScaleType;
+        }
+        export const Fit: Fit;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImageScaleType#Crop)
+         */
+        export interface Crop extends globalThis.EnumItem {
+            Name: "Crop";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.AnimatedImageScaleType;
+        }
+        export const Crop: Crop;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimatedImageScaleType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimatedImageScaleType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimatedImageScaleType | undefined;
+    }
+    export type AnimatedImageScaleType = AnimatedImageScaleType.Stretch | AnimatedImageScaleType.Tile | AnimatedImageScaleType.Fit | AnimatedImageScaleType.Crop;
     /**
      * Indicates the current status or final outcome of a video-to-animation conversion started by `AssetService:PromptImportAnimationClipFromVideoAsync()`.
      *
@@ -2291,6 +2416,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationPriority | undefined;
     }
     export type AnimationPriority = AnimationPriority.Idle | AnimationPriority.Movement | AnimationPriority.Action | AnimationPriority.Action2 | AnimationPriority.Action3 | AnimationPriority.Action4 | AnimationPriority.Core;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationValueNodeType)
+     */
+    export namespace AnimationValueNodeType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationValueNodeType#Invalid)
+         */
+        export interface Invalid extends globalThis.EnumItem {
+            Name: "Invalid";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AnimationValueNodeType;
+        }
+        export const Invalid: Invalid;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationValueNodeType#Expression)
+         */
+        export interface Expression extends globalThis.EnumItem {
+            Name: "Expression";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AnimationValueNodeType;
+        }
+        export const Expression: Expression;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationValueNodeType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationValueNodeType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationValueNodeType | undefined;
+    }
+    export type AnimationValueNodeType = AnimationValueNodeType.Invalid | AnimationValueNodeType.Expression;
     /**
      * Animation Retargeting setting.
      *
@@ -10395,11 +10547,74 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.ConnectionError;
         }
         export const TeleportIsTeleporting: TeleportIsTeleporting;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#TransportErrors)
+         */
+        export interface TransportErrors extends globalThis.EnumItem {
+            Name: "TransportErrors";
+            Value: 1024;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const TransportErrors: TransportErrors;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectTransportIoError)
+         */
+        export interface DisconnectTransportIoError extends globalThis.EnumItem {
+            Name: "DisconnectTransportIoError";
+            Value: 1025;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectTransportIoError: DisconnectTransportIoError;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectTransportIoInternetError)
+         */
+        export interface DisconnectTransportIoInternetError extends globalThis.EnumItem {
+            Name: "DisconnectTransportIoInternetError";
+            Value: 1026;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectTransportIoInternetError: DisconnectTransportIoInternetError;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectTransportProtocolError)
+         */
+        export interface DisconnectTransportProtocolError extends globalThis.EnumItem {
+            Name: "DisconnectTransportProtocolError";
+            Value: 1027;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectTransportProtocolError: DisconnectTransportProtocolError;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectTransportNgtcp2Error)
+         */
+        export interface DisconnectTransportNgtcp2Error extends globalThis.EnumItem {
+            Name: "DisconnectTransportNgtcp2Error";
+            Value: 1028;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectTransportNgtcp2Error: DisconnectTransportNgtcp2Error;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectTransportQuicError)
+         */
+        export interface DisconnectTransportQuicError extends globalThis.EnumItem {
+            Name: "DisconnectTransportQuicError";
+            Value: 1029;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectTransportQuicError: DisconnectTransportQuicError;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectTransportRnaError)
+         */
+        export interface DisconnectTransportRnaError extends globalThis.EnumItem {
+            Name: "DisconnectTransportRnaError";
+            Value: 1030;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectTransportRnaError: DisconnectTransportRnaError;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ConnectionError>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConnectionError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConnectionError | undefined;
     }
-    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.ConnectErrors | ConnectionError.AlreadyConnected | ConnectionError.NoFreeIncomingConnections | ConnectionError.ConnectionBanned | ConnectionError.InvalidPassword | ConnectionError.IncompatibleProtocolVersion | ConnectionError.IPRecentlyConnected | ConnectionError.OurSystemRequiresSecurity | ConnectionError.SecurityKeyMismatch | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.DisconnectionNotification | ConnectionError.DisconnectVerboselyModeratedGame | ConnectionError.DisconnectCollaboratorNotAgeVerified | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequired | ConnectionError.DisconnectCollaboratorOwnerActionRequired | ConnectionError.DisconnectCollaboratorTooManyCollaborators | ConnectionError.DisconnectCollaboratorUnknownError | ConnectionError.DisconnectCollaboratorRequestedEviction | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequiredPC | ConnectionError.DisconnectRemoteAttestationUnsupported | ConnectionError.DisconnectRemoteAttestationGeneralFailure | ConnectionError.DisconnectRemoteAttestationTimeout | ConnectionError.DisconnectRemoteAttestationOSOutOfDate | ConnectionError.DisconnectRemoteAttestationBootValidationFailure | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchVipOwnerNotPresent | ConnectionError.PlacelaunchAgeVerificationRequired | ConnectionError.PlacelaunchParentalApprovalRequired | ConnectionError.PlacelaunchCoreGated | ConnectionError.PlacelaunchCollaborationCoreGated | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchDeviceBlock | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.ConnectErrors | ConnectionError.AlreadyConnected | ConnectionError.NoFreeIncomingConnections | ConnectionError.ConnectionBanned | ConnectionError.InvalidPassword | ConnectionError.IncompatibleProtocolVersion | ConnectionError.IPRecentlyConnected | ConnectionError.OurSystemRequiresSecurity | ConnectionError.SecurityKeyMismatch | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.DisconnectionNotification | ConnectionError.DisconnectVerboselyModeratedGame | ConnectionError.DisconnectCollaboratorNotAgeVerified | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequired | ConnectionError.DisconnectCollaboratorOwnerActionRequired | ConnectionError.DisconnectCollaboratorTooManyCollaborators | ConnectionError.DisconnectCollaboratorUnknownError | ConnectionError.DisconnectCollaboratorRequestedEviction | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequiredPC | ConnectionError.DisconnectRemoteAttestationUnsupported | ConnectionError.DisconnectRemoteAttestationGeneralFailure | ConnectionError.DisconnectRemoteAttestationTimeout | ConnectionError.DisconnectRemoteAttestationOSOutOfDate | ConnectionError.DisconnectRemoteAttestationBootValidationFailure | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchVipOwnerNotPresent | ConnectionError.PlacelaunchAgeVerificationRequired | ConnectionError.PlacelaunchParentalApprovalRequired | ConnectionError.PlacelaunchCoreGated | ConnectionError.PlacelaunchCollaborationCoreGated | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchDeviceBlock | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting | ConnectionError.TransportErrors | ConnectionError.DisconnectTransportIoError | ConnectionError.DisconnectTransportIoInternetError | ConnectionError.DisconnectTransportProtocolError | ConnectionError.DisconnectTransportNgtcp2Error | ConnectionError.DisconnectTransportQuicError | ConnectionError.DisconnectTransportRnaError;
     /**
      * Used to determine the connection state of the client to the game server.
      *
@@ -17144,13 +17359,13 @@ declare namespace Enum {
     }
     export type Genre = Genre.All | Genre.TownAndCity | Genre.Fantasy | Genre.SciFi | Genre.Ninja | Genre.Scary | Genre.Pirate | Genre.Adventure | Genre.Sports | Genre.Funny | Genre.WildWest | Genre.War | Genre.SkatePark | Genre.Tutorial;
     /**
-     * Controls how a `UIGradient` tiles when its gradient sequence doesn't span the full render area.
+     * Used alongside `UIGradient.TileMode` to set how the gradient repeats.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientTileMode)
      */
     export namespace GradientTileMode {
         /**
-         * Extends the gradient's terminal colors beyond the defined sequence range without repeating.
+         * Default mode where the color/transparency values at the start and end of the sequence extend infinitely, so the start values fill any area before the gradient and the end values fill any area after it.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientTileMode#Clamp)
          */
@@ -17161,7 +17376,7 @@ declare namespace Enum {
         }
         export const Clamp: Clamp;
         /**
-         * Repeats the gradient sequence from the start each time it reaches the end, producing a tiled pattern.
+         * The gradient repeats by wrapping the color/transparency sequence tiles seamlessly from end back to start. This can produce a visible seam if the first and last color/transparency values in the sequence differ.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientTileMode#Repeat)
          */
@@ -17172,7 +17387,7 @@ declare namespace Enum {
         }
         export const Repeat: Repeat;
         /**
-         * Repeats the gradient by reversing direction with each tile, producing a mirrored pattern.
+         * The gradient reflects at each boundary so the color/transparency sequence ping-pongs. This produces a smooth repetition with no seam, since the direction reverses at each tile edge.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientTileMode#Mirror)
          */
@@ -17188,13 +17403,13 @@ declare namespace Enum {
     }
     export type GradientTileMode = GradientTileMode.Clamp | GradientTileMode.Repeat | GradientTileMode.Mirror;
     /**
-     * Specifies the shape of a gradient applied by a `UIGradient`.
+     * Used alongside `UIGradient.Type` to set the shape of the gradient.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientType)
      */
     export namespace GradientType {
         /**
-         * Colors transition along a straight line across the UI element.
+         * The color/transparency sequence transitions in a straight line across the element. The direction is controlled by `Rotation` and the position by `Offset`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientType#Linear)
          */
@@ -17205,7 +17420,7 @@ declare namespace Enum {
         }
         export const Linear: Linear;
         /**
-         * Colors radiate outward from a center point in concentric rings.
+         * The color/transparency sequence radiates outward from the element's center, optionally shifted by `Offset`. The radius is defined by the average of the element's width and height divided by two, effectively `(width+height)/4`. `Rotation` has no effect on a radial gradient.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientType#Radial)
          */
@@ -17216,7 +17431,7 @@ declare namespace Enum {
         }
         export const Radial: Radial;
         /**
-         * Colors sweep angularly around a center point, producing a cone-like or pie-chart gradient.
+         * The color/transparency sequence sweeps clockwise around the center of the element, optionally shifted by `Offset`. `Rotation` controls the starting angle of the sweep.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientType#Conical)
          */
@@ -27771,6 +27986,42 @@ declare namespace Enum {
     }
     export type PhysicsSteppingMethod = PhysicsSteppingMethod.Default | PhysicsSteppingMethod.Fixed | PhysicsSteppingMethod.Adaptive;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PinExperienceStatus)
+     */
+    export namespace PinExperienceStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PinExperienceStatus#Success)
+         */
+        export interface Success extends globalThis.EnumItem {
+            Name: "Success";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PinExperienceStatus;
+        }
+        export const Success: Success;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PinExperienceStatus#Failure)
+         */
+        export interface Failure extends globalThis.EnumItem {
+            Name: "Failure";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PinExperienceStatus;
+        }
+        export const Failure: Failure;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PinExperienceStatus#AlreadyExists)
+         */
+        export interface AlreadyExists extends globalThis.EnumItem {
+            Name: "AlreadyExists";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PinExperienceStatus;
+        }
+        export const AlreadyExists: AlreadyExists;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PinExperienceStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PinExperienceStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PinExperienceStatus | undefined;
+    }
+    export type PinExperienceStatus = PinExperienceStatus.Success | PinExperienceStatus.Failure | PinExperienceStatus.AlreadyExists;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PioneerSource)
      */
     export namespace PioneerSource {
@@ -36073,10 +36324,14 @@ declare namespace Enum {
     }
     export type StudioPlaceUpdateFailureReason = StudioPlaceUpdateFailureReason.Other | StudioPlaceUpdateFailureReason.TeamCreateConflict;
     /**
+     * Color categories used to theme the Script Editor in Roblox Studio.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories)
      */
     export namespace StudioScriptEditorColorCategories {
         /**
+         * Fallback foreground color used for script text that does not match any more specific syntax category.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -36086,6 +36341,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Color applied to operator tokens such as `+`, `-`, `*`, `/`, `==`, and `..` in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Operator)
          */
         export interface Operator extends globalThis.EnumItem {
@@ -36095,6 +36352,8 @@ declare namespace Enum {
         }
         export const Operator: Operator;
         /**
+         * Color applied to numeric literal tokens in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Number)
          */
         export interface Number extends globalThis.EnumItem {
@@ -36104,6 +36363,8 @@ declare namespace Enum {
         }
         export const Number: Number;
         /**
+         * Color applied to string literal tokens, including quoted strings and long-string literals.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#String)
          */
         export interface String extends globalThis.EnumItem {
@@ -36113,6 +36374,8 @@ declare namespace Enum {
         }
         export const String: String;
         /**
+         * Color applied to comment tokens (single-line `--` and block `--[[ ]]` comments) in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Comment)
          */
         export interface Comment extends globalThis.EnumItem {
@@ -36122,6 +36385,8 @@ declare namespace Enum {
         }
         export const Comment: Comment;
         /**
+         * Color applied to Luau reserved keywords such as `if`, `then`, `else`, `do`, `end`, `return`, and `while`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Keyword)
          */
         export interface Keyword extends globalThis.EnumItem {
@@ -36131,6 +36396,8 @@ declare namespace Enum {
         }
         export const Keyword: Keyword;
         /**
+         * Color applied to Luau built-in functions and standard library identifiers in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Builtin)
          */
         export interface Builtin extends globalThis.EnumItem {
@@ -36140,6 +36407,8 @@ declare namespace Enum {
         }
         export const Builtin: Builtin;
         /**
+         * Color applied to method call identifiers in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Method)
          */
         export interface Method extends globalThis.EnumItem {
@@ -36149,6 +36418,8 @@ declare namespace Enum {
         }
         export const Method: Method;
         /**
+         * Color applied to property access identifiers (tokens following a `.` operator) in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Property)
          */
         export interface Property extends globalThis.EnumItem {
@@ -36158,6 +36429,8 @@ declare namespace Enum {
         }
         export const Property: Property;
         /**
+         * Color applied to the `nil` literal token in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Nil)
          */
         export interface Nil extends globalThis.EnumItem {
@@ -36167,6 +36440,8 @@ declare namespace Enum {
         }
         export const Nil: Nil;
         /**
+         * Foreground color used to highlight boolean literals (`true` and `false`) in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Bool)
          */
         export interface Bool extends globalThis.EnumItem {
@@ -36176,6 +36451,8 @@ declare namespace Enum {
         }
         export const Bool: Bool;
         /**
+         * Color applied to the `function` keyword token in function declarations.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Function)
          */
         export interface Function extends globalThis.EnumItem {
@@ -36185,6 +36462,8 @@ declare namespace Enum {
         }
         export const Function: Function;
         /**
+         * Color applied to the `local` keyword token in local variable and function declarations.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Local)
          */
         export interface Local extends globalThis.EnumItem {
@@ -36194,6 +36473,8 @@ declare namespace Enum {
         }
         export const Local: Local;
         /**
+         * Color applied to the `self` identifier token in method bodies.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Self)
          */
         export interface Self extends globalThis.EnumItem {
@@ -36203,6 +36484,8 @@ declare namespace Enum {
         }
         export const Self: Self;
         /**
+         * Color applied to Luau-specific type annotation keywords such as `type` and `typeof`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#LuauKeyword)
          */
         export interface LuauKeyword extends globalThis.EnumItem {
@@ -36212,6 +36495,8 @@ declare namespace Enum {
         }
         export const LuauKeyword: LuauKeyword;
         /**
+         * Color applied to the identifier that names a function in its declaration.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#FunctionName)
          */
         export interface FunctionName extends globalThis.EnumItem {
@@ -36221,6 +36506,8 @@ declare namespace Enum {
         }
         export const FunctionName: FunctionName;
         /**
+         * Color applied to `TODO` markers found inside comments in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#TODO)
          */
         export interface TODO extends globalThis.EnumItem {
@@ -36230,6 +36517,8 @@ declare namespace Enum {
         }
         export const TODO: TODO;
         /**
+         * Main background color of the Script Editor canvas.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Background)
          */
         export interface Background extends globalThis.EnumItem {
@@ -36239,6 +36528,8 @@ declare namespace Enum {
         }
         export const Background: Background;
         /**
+         * Foreground color for text within the currently selected range in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#SelectionText)
          */
         export interface SelectionText extends globalThis.EnumItem {
@@ -36248,6 +36539,8 @@ declare namespace Enum {
         }
         export const SelectionText: SelectionText;
         /**
+         * Background highlight color for the currently selected text range in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#SelectionBackground)
          */
         export interface SelectionBackground extends globalThis.EnumItem {
@@ -36257,6 +36550,8 @@ declare namespace Enum {
         }
         export const SelectionBackground: SelectionBackground;
         /**
+         * Background highlight color applied to text ranges matched by a Find or Replace operation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#FindSelectionBackground)
          */
         export interface FindSelectionBackground extends globalThis.EnumItem {
@@ -36266,6 +36561,8 @@ declare namespace Enum {
         }
         export const FindSelectionBackground: FindSelectionBackground;
         /**
+         * Background highlight color applied to all occurrences of the word under the cursor when word-highlight is active.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MatchingWordBackground)
          */
         export interface MatchingWordBackground extends globalThis.EnumItem {
@@ -36275,6 +36572,8 @@ declare namespace Enum {
         }
         export const MatchingWordBackground: MatchingWordBackground;
         /**
+         * Color used for warning-severity diagnostic markers and underlines in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Warning)
          */
         export interface Warning extends globalThis.EnumItem {
@@ -36284,6 +36583,8 @@ declare namespace Enum {
         }
         export const Warning: Warning;
         /**
+         * Color used for error-severity diagnostic markers and underlines in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Error)
          */
         export interface Error extends globalThis.EnumItem {
@@ -36293,6 +36594,8 @@ declare namespace Enum {
         }
         export const Error: Error;
         /**
+         * Color used for information-severity diagnostic markers in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Info)
          */
         export interface Info extends globalThis.EnumItem {
@@ -36302,6 +36605,8 @@ declare namespace Enum {
         }
         export const Info: Info;
         /**
+         * Color used for hint-severity diagnostic markers in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Hint)
          */
         export interface Hint extends globalThis.EnumItem {
@@ -36311,6 +36616,8 @@ declare namespace Enum {
         }
         export const Hint: Hint;
         /**
+         * Color used to render visible whitespace characters (spaces and tabs) when that display option is enabled.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Whitespace)
          */
         export interface Whitespace extends globalThis.EnumItem {
@@ -36320,6 +36627,8 @@ declare namespace Enum {
         }
         export const Whitespace: Whitespace;
         /**
+         * Background highlight color applied to the line that currently contains the text cursor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#ActiveLine)
          */
         export interface ActiveLine extends globalThis.EnumItem {
@@ -36329,6 +36638,8 @@ declare namespace Enum {
         }
         export const ActiveLine: ActiveLine;
         /**
+         * Background highlight color for the line the debugger is currently paused on.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#DebuggerCurrentLine)
          */
         export interface DebuggerCurrentLine extends globalThis.EnumItem {
@@ -36338,6 +36649,8 @@ declare namespace Enum {
         }
         export const DebuggerCurrentLine: DebuggerCurrentLine;
         /**
+         * Background highlight color for a line that caused a runtime error during a debugging session.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#DebuggerErrorLine)
          */
         export interface DebuggerErrorLine extends globalThis.EnumItem {
@@ -36347,6 +36660,8 @@ declare namespace Enum {
         }
         export const DebuggerErrorLine: DebuggerErrorLine;
         /**
+         * Color of the vertical column ruler line drawn at the configured character-width limit in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Ruler)
          */
         export interface Ruler extends globalThis.EnumItem {
@@ -36356,6 +36671,8 @@ declare namespace Enum {
         }
         export const Ruler: Ruler;
         /**
+         * Color applied to bracket characters such as `(`, `)`, `[`, `]`, `{`, and `}` in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Bracket)
          */
         export interface Bracket extends globalThis.EnumItem {
@@ -36365,6 +36682,8 @@ declare namespace Enum {
         }
         export const Bracket: Bracket;
         /**
+         * Color applied to Luau type name tokens in type annotations and declarations.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Type)
          */
         export interface Type extends globalThis.EnumItem {
@@ -36374,6 +36693,8 @@ declare namespace Enum {
         }
         export const Type: Type;
         /**
+         * Primary text color for items listed in autocomplete and context-menu popups.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuPrimaryText)
          */
         export interface MenuPrimaryText extends globalThis.EnumItem {
@@ -36383,6 +36704,8 @@ declare namespace Enum {
         }
         export const MenuPrimaryText: MenuPrimaryText;
         /**
+         * Secondary text color (for example, type annotations or documentation hints) in autocomplete popups.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuSecondaryText)
          */
         export interface MenuSecondaryText extends globalThis.EnumItem {
@@ -36392,6 +36715,8 @@ declare namespace Enum {
         }
         export const MenuSecondaryText: MenuSecondaryText;
         /**
+         * Text color of the currently highlighted item in autocomplete and context-menu popups.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuSelectedText)
          */
         export interface MenuSelectedText extends globalThis.EnumItem {
@@ -36401,6 +36726,8 @@ declare namespace Enum {
         }
         export const MenuSelectedText: MenuSelectedText;
         /**
+         * Background color for autocomplete and context-menu popups in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuBackground)
          */
         export interface MenuBackground extends globalThis.EnumItem {
@@ -36410,6 +36737,8 @@ declare namespace Enum {
         }
         export const MenuBackground: MenuBackground;
         /**
+         * Background color of the currently highlighted item in autocomplete and context-menu popups.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuSelectedBackground)
          */
         export interface MenuSelectedBackground extends globalThis.EnumItem {
@@ -36419,6 +36748,8 @@ declare namespace Enum {
         }
         export const MenuSelectedBackground: MenuSelectedBackground;
         /**
+         * Background color of the scrollbar track inside autocomplete and context-menu popups.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuScrollbarBackground)
          */
         export interface MenuScrollbarBackground extends globalThis.EnumItem {
@@ -36428,6 +36759,8 @@ declare namespace Enum {
         }
         export const MenuScrollbarBackground: MenuScrollbarBackground;
         /**
+         * Color of the scrollbar thumb (handle) inside autocomplete and context-menu popups.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuScrollbarHandle)
          */
         export interface MenuScrollbarHandle extends globalThis.EnumItem {
@@ -36437,6 +36770,8 @@ declare namespace Enum {
         }
         export const MenuScrollbarHandle: MenuScrollbarHandle;
         /**
+         * Border color for autocomplete and context-menu popups in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuBorder)
          */
         export interface MenuBorder extends globalThis.EnumItem {
@@ -36446,6 +36781,8 @@ declare namespace Enum {
         }
         export const MenuBorder: MenuBorder;
         /**
+         * Background color for inline code blocks rendered in the documentation viewer panel within Studio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#DocViewCodeBackground)
          */
         export interface DocViewCodeBackground extends globalThis.EnumItem {
@@ -36455,6 +36792,8 @@ declare namespace Enum {
         }
         export const DocViewCodeBackground: DocViewCodeBackground;
         /**
+         * Text color for labels displayed in the AI Code Overlay panel.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#AICOOverlayText)
          */
         export interface AICOOverlayText extends globalThis.EnumItem {
@@ -36464,6 +36803,8 @@ declare namespace Enum {
         }
         export const AICOOverlayText: AICOOverlayText;
         /**
+         * Background color for AI Code Overlay action buttons in their default (idle) state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#AICOOverlayButtonBackground)
          */
         export interface AICOOverlayButtonBackground extends globalThis.EnumItem {
@@ -36473,6 +36814,8 @@ declare namespace Enum {
         }
         export const AICOOverlayButtonBackground: AICOOverlayButtonBackground;
         /**
+         * Background color for AI Code Overlay action buttons when the pointer hovers over them.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#AICOOverlayButtonBackgroundHover)
          */
         export interface AICOOverlayButtonBackgroundHover extends globalThis.EnumItem {
@@ -36482,6 +36825,8 @@ declare namespace Enum {
         }
         export const AICOOverlayButtonBackgroundHover: AICOOverlayButtonBackgroundHover;
         /**
+         * Background color for AI Code Overlay action buttons while they are being pressed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#AICOOverlayButtonBackgroundPressed)
          */
         export interface AICOOverlayButtonBackgroundPressed extends globalThis.EnumItem {
@@ -36491,6 +36836,8 @@ declare namespace Enum {
         }
         export const AICOOverlayButtonBackgroundPressed: AICOOverlayButtonBackgroundPressed;
         /**
+         * Color of the vertical guide lines drawn at each indentation level in the script editor gutter.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#IndentationRuler)
          */
         export interface IndentationRuler extends globalThis.EnumItem {
@@ -36499,11 +36846,29 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.StudioScriptEditorColorCategories;
         }
         export const IndentationRuler: IndentationRuler;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#ReviewableChangeAddedText)
+         */
+        export interface ReviewableChangeAddedText extends globalThis.EnumItem {
+            Name: "ReviewableChangeAddedText";
+            Value: 47;
+            EnumType: typeof globalThis.Enum.StudioScriptEditorColorCategories;
+        }
+        export const ReviewableChangeAddedText: ReviewableChangeAddedText;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#ReviewableChangeRemovedText)
+         */
+        export interface ReviewableChangeRemovedText extends globalThis.EnumItem {
+            Name: "ReviewableChangeRemovedText";
+            Value: 48;
+            EnumType: typeof globalThis.Enum.StudioScriptEditorColorCategories;
+        }
+        export const ReviewableChangeRemovedText: ReviewableChangeRemovedText;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioScriptEditorColorCategories>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StudioScriptEditorColorCategories | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StudioScriptEditorColorCategories | undefined;
     }
-    export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin | StudioScriptEditorColorCategories.Method | StudioScriptEditorColorCategories.Property | StudioScriptEditorColorCategories.Nil | StudioScriptEditorColorCategories.Bool | StudioScriptEditorColorCategories.Function | StudioScriptEditorColorCategories.Local | StudioScriptEditorColorCategories.Self | StudioScriptEditorColorCategories.LuauKeyword | StudioScriptEditorColorCategories.FunctionName | StudioScriptEditorColorCategories.TODO | StudioScriptEditorColorCategories.Background | StudioScriptEditorColorCategories.SelectionText | StudioScriptEditorColorCategories.SelectionBackground | StudioScriptEditorColorCategories.FindSelectionBackground | StudioScriptEditorColorCategories.MatchingWordBackground | StudioScriptEditorColorCategories.Warning | StudioScriptEditorColorCategories.Error | StudioScriptEditorColorCategories.Info | StudioScriptEditorColorCategories.Hint | StudioScriptEditorColorCategories.Whitespace | StudioScriptEditorColorCategories.ActiveLine | StudioScriptEditorColorCategories.DebuggerCurrentLine | StudioScriptEditorColorCategories.DebuggerErrorLine | StudioScriptEditorColorCategories.Ruler | StudioScriptEditorColorCategories.Bracket | StudioScriptEditorColorCategories.Type | StudioScriptEditorColorCategories.MenuPrimaryText | StudioScriptEditorColorCategories.MenuSecondaryText | StudioScriptEditorColorCategories.MenuSelectedText | StudioScriptEditorColorCategories.MenuBackground | StudioScriptEditorColorCategories.MenuSelectedBackground | StudioScriptEditorColorCategories.MenuScrollbarBackground | StudioScriptEditorColorCategories.MenuScrollbarHandle | StudioScriptEditorColorCategories.MenuBorder | StudioScriptEditorColorCategories.DocViewCodeBackground | StudioScriptEditorColorCategories.AICOOverlayText | StudioScriptEditorColorCategories.AICOOverlayButtonBackground | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundHover | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundPressed | StudioScriptEditorColorCategories.IndentationRuler;
+    export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin | StudioScriptEditorColorCategories.Method | StudioScriptEditorColorCategories.Property | StudioScriptEditorColorCategories.Nil | StudioScriptEditorColorCategories.Bool | StudioScriptEditorColorCategories.Function | StudioScriptEditorColorCategories.Local | StudioScriptEditorColorCategories.Self | StudioScriptEditorColorCategories.LuauKeyword | StudioScriptEditorColorCategories.FunctionName | StudioScriptEditorColorCategories.TODO | StudioScriptEditorColorCategories.Background | StudioScriptEditorColorCategories.SelectionText | StudioScriptEditorColorCategories.SelectionBackground | StudioScriptEditorColorCategories.FindSelectionBackground | StudioScriptEditorColorCategories.MatchingWordBackground | StudioScriptEditorColorCategories.Warning | StudioScriptEditorColorCategories.Error | StudioScriptEditorColorCategories.Info | StudioScriptEditorColorCategories.Hint | StudioScriptEditorColorCategories.Whitespace | StudioScriptEditorColorCategories.ActiveLine | StudioScriptEditorColorCategories.DebuggerCurrentLine | StudioScriptEditorColorCategories.DebuggerErrorLine | StudioScriptEditorColorCategories.Ruler | StudioScriptEditorColorCategories.Bracket | StudioScriptEditorColorCategories.Type | StudioScriptEditorColorCategories.MenuPrimaryText | StudioScriptEditorColorCategories.MenuSecondaryText | StudioScriptEditorColorCategories.MenuSelectedText | StudioScriptEditorColorCategories.MenuBackground | StudioScriptEditorColorCategories.MenuSelectedBackground | StudioScriptEditorColorCategories.MenuScrollbarBackground | StudioScriptEditorColorCategories.MenuScrollbarHandle | StudioScriptEditorColorCategories.MenuBorder | StudioScriptEditorColorCategories.DocViewCodeBackground | StudioScriptEditorColorCategories.AICOOverlayText | StudioScriptEditorColorCategories.AICOOverlayButtonBackground | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundHover | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundPressed | StudioScriptEditorColorCategories.IndentationRuler | StudioScriptEditorColorCategories.ReviewableChangeAddedText | StudioScriptEditorColorCategories.ReviewableChangeRemovedText;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorPresets)
      */

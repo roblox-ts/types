@@ -8,6 +8,7 @@ interface Services {
     ActivityHistoryEventService: ActivityHistoryEventService;
     AdService: AdService;
     AnalyticsService: AnalyticsService;
+    AnimatedImageService: AnimatedImageService;
     AnimationClipProvider: AnimationClipProvider;
     AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
     AnimationFromVideoCreatorStudioService: AnimationFromVideoCreatorStudioService;
@@ -57,7 +58,6 @@ interface Services {
     CreationDBService: CreationDBService;
     CreatorStoreService: CreatorStoreService;
     CrossDMScriptChangeListener: CrossDMScriptChangeListener;
-    DataModelPatchService: DataModelPatchService;
     DataStoreService: DataStoreService;
     Debris: Debris;
     DebuggablePluginWatcher: DebuggablePluginWatcher;
@@ -138,6 +138,7 @@ interface Services {
     MLModelDeliveryService: MLModelDeliveryService;
     MLService: MLService;
     ModerationService: ModerationService;
+    MomentsService: MomentsService;
     OmniRecommendationsService: OmniRecommendationsService;
     OpenCloudService: OpenCloudService;
     Packages: Packages;
@@ -290,6 +291,8 @@ interface CreatableInstances {
     AnimationGraphDefinition: AnimationGraphDefinition;
     AnimationNodeDefinition: AnimationNodeDefinition;
     AnimationRigData: AnimationRigData;
+    AnimationValueNodeDefinition: AnimationValueNodeDefinition;
+    AnimationValueOutputDefinition: AnimationValueOutputDefinition;
     Animator: Animator;
     Annotation: Annotation;
     ArcHandles: ArcHandles;
@@ -599,6 +602,7 @@ interface CreatableInstances {
     WrapTextureTransfer: WrapTextureTransfer;
 }
 interface Instances extends Services, CreatableInstances {
+    AnimatedImage: AnimatedImage;
     AnimationClip: AnimationClip;
     AnimationImportData: AnimationImportData;
     AnimationStreamTrack: AnimationStreamTrack;
@@ -775,6 +779,7 @@ interface Instances extends Services, CreatableInstances {
     WorldRoot: WorldRoot;
 }
 interface Objects extends Instances {
+    AnimatedImageTrack: AnimatedImageTrack;
     AnimationNode: AnimationNode;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
@@ -857,6 +862,21 @@ interface RBXObject {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Object#Changed)
      */
     readonly Changed: unknown;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImageTrack)
+ */
+interface AnimatedImageTrack extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimatedImageTrack: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -3406,9 +3426,17 @@ interface AnalyticsService extends Instance {
      */
     LogFunnelStepEvent(this: AnalyticsService, player: Player, funnelName: string, funnelSessionId?: string, step?: number, stepName?: string, customFields?: object): void;
     /**
+     * Logs a journey event used to track non-linear player paths through an experience.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogJourneyEvent)
+     * @param this Collection of methods that allows you to track how users interact with your experiences.
+     * @param player The player who triggered the journey event.
+     * @param journeyName The name of the journey. This should be the same for all nodes in the journey. Cannot be empty and cannot contain a comma `,`, double quote `"`, single quote `'`, or newline character.
+     * @param nodeName The name of the node the player reached in the journey. Cannot be empty, cannot contain a comma `,`, double quote `"`, single quote `'`, or newline character, and cannot start with `__` (double underscore), which is reserved.
+     * @param journeySessionId Optional unique identifier for the journey session. This should be the same for all nodes in a single session of the journey. If provided, cannot contain a comma `,`, double quote `"`, single quote `'`, or newline character.
+     * @param customFields Optional dictionary of custom fields that will provide breakdowns in Roblox-provided charts. Only specific keys, provided by `AnalyticsCustomFieldKeys`, will be used for these breakdowns. Limited to 8,000 unique combinations of values across the three custom fields per experience.
      */
     LogJourneyEvent(this: AnalyticsService, player: Player, journeyName: string, nodeName: string, journeySessionId?: string, customFields?: object): void;
     /**
@@ -3432,10 +3460,10 @@ interface AnalyticsService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionCompleteEvent)
      * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The player who triggered the event.
-     * @param progressionPathName
-     * @param level
-     * @param levelName
-     * @param customFields
+     * @param progressionPathName The name of the progression path this event belongs to, such as a world, chapter, or level group. This groups related progression events together. Cannot be empty and cannot contain a comma `,`, double quote `"`, single quote `'`, or newline character.
+     * @param level The numeric level the player is progressing through within the progression path.
+     * @param levelName The name of the level associated with this event. This field is used for display purposes in Roblox-provided charts.
+     * @param customFields Optional dictionary of custom fields that will provide breakdowns in Roblox-provided charts. Only specific keys, provided by `AnalyticsCustomFieldKeys`, will be used for these breakdowns. Limited to 8,000 unique combinations of values across the three custom fields per experience.
      */
     LogProgressionCompleteEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName?: string, customFields?: object): void;
     /**
@@ -3446,11 +3474,11 @@ interface AnalyticsService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionEvent)
      * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The player who triggered the event.
-     * @param progressionPathName
-     * @param status
-     * @param level
-     * @param levelName
-     * @param customFields
+     * @param progressionPathName The name of the progression path this event belongs to, such as a world, chapter, or level group. This groups related progression events together. Cannot be empty and cannot contain a comma `,`, double quote `"`, single quote `'`, or newline character.
+     * @param status The progression status to record, provided as an `AnalyticsProgressionType` value such as `Start`, `Complete`, or `Fail`. The `AnalyticsService:LogProgressionStartEvent()`, `AnalyticsService:LogProgressionCompleteEvent()`, and `AnalyticsService:LogProgressionFailEvent()` methods are shortcuts that set this status for you.
+     * @param level The numeric level the player is progressing through within the progression path.
+     * @param levelName The name of the level associated with this event. This field is used for display purposes in Roblox-provided charts.
+     * @param customFields Optional dictionary of custom fields that will provide breakdowns in Roblox-provided charts. Only specific keys, provided by `AnalyticsCustomFieldKeys`, will be used for these breakdowns. Limited to 8,000 unique combinations of values across the three custom fields per experience.
      */
     LogProgressionEvent(this: AnalyticsService, player: Player, progressionPathName: string, status: CastsToEnum<Enum.AnalyticsProgressionType>, level: number, levelName?: string, customFields?: object): void;
     /**
@@ -3461,10 +3489,10 @@ interface AnalyticsService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionFailEvent)
      * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The user who triggered the event.
-     * @param progressionPathName
-     * @param level
-     * @param levelName
-     * @param customFields
+     * @param progressionPathName The name of the progression path this event belongs to, such as a world, chapter, or level group. This groups related progression events together. Cannot be empty and cannot contain a comma `,`, double quote `"`, single quote `'`, or newline character.
+     * @param level The numeric level the player is progressing through within the progression path.
+     * @param levelName The name of the level associated with this event. This field is used for display purposes in Roblox-provided charts.
+     * @param customFields Optional dictionary of custom fields that will provide breakdowns in Roblox-provided charts. Only specific keys, provided by `AnalyticsCustomFieldKeys`, will be used for these breakdowns. Limited to 8,000 unique combinations of values across the three custom fields per experience.
      */
     LogProgressionFailEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName?: string, customFields?: object): void;
     /**
@@ -3475,10 +3503,10 @@ interface AnalyticsService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnalyticsService#LogProgressionStartEvent)
      * @param this Collection of methods that allows you to track how users interact with your experiences.
      * @param player The player who triggered the event.
-     * @param progressionPathName
-     * @param level
-     * @param levelName
-     * @param customFields
+     * @param progressionPathName The name of the progression path this event belongs to, such as a world, chapter, or level group. This groups related progression events together. Cannot be empty and cannot contain a comma `,`, double quote `"`, single quote `'`, or newline character.
+     * @param level The numeric level the player is progressing through within the progression path.
+     * @param levelName The name of the level associated with this event. This field is used for display purposes in Roblox-provided charts.
+     * @param customFields Optional dictionary of custom fields that will provide breakdowns in Roblox-provided charts. Only specific keys, provided by `AnalyticsCustomFieldKeys`, will be used for these breakdowns. Limited to 8,000 unique combinations of values across the three custom fields per experience.
      */
     LogProgressionStartEvent(this: AnalyticsService, player: Player, progressionPathName: string, level: number, levelName?: string, customFields?: object): void;
     /**
@@ -3493,6 +3521,21 @@ interface AnalyticsService extends Instance {
      * @returns A dictionary containing coarse player segment buckets for the current experience.
      */
     GetPlayerSegmentsAsync(this: AnalyticsService, player: Player): object;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImageService)
+ */
+interface AnimatedImageService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimatedImageService: unique symbol;
 }
 /**
  * References an animation asset which can be loaded by an `AnimationController`.
@@ -4208,6 +4251,38 @@ interface AnimationTrack extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationTrack#Stopped)
      */
     readonly Stopped: RBXScriptSignal<() => void>;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationValueNodeDefinition)
+ */
+interface AnimationValueNodeDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationValueNodeDefinition: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationValueNodeDefinition#NodeType)
+     */
+    NodeType: Enum.AnimationValueNodeType;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationValueOutputDefinition)
+ */
+interface AnimationValueOutputDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationValueOutputDefinition: unique symbol;
 }
 /**
  * Responsible for the playback and replication of `Animations`.
@@ -9575,6 +9650,18 @@ interface AnimationImportData extends BaseImportData {
      * @deprecated
      */
     readonly _nominal_AnimationImportData: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationImportData#ForceNewVersion)
+     */
+    ForceNewVersion: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationImportData#VersionedAssetId)
+     */
+    VersionedAssetId: number;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -15328,8 +15415,6 @@ interface ContextActionService extends Instance {
     readonly LocalToolUnequipped: RBXScriptSignal<(toolUnequipped: Instance) => void>;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState)
  */
 interface ControlState extends Instance {
@@ -16299,21 +16384,6 @@ interface SpecialMesh extends FileMesh {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SpecialMesh#MeshType)
      */
     MeshType: Enum.MeshType;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModelPatchService)
- */
-interface DataModelPatchService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_DataModelPatchService: unique symbol;
 }
 /**
  * Specifies additional parameters for a `GlobalDataStore:GetAsync()` call.
@@ -18727,6 +18797,8 @@ interface Decal extends FaceInstance {
      */
     readonly _nominal_Decal: unique symbol;
     /**
+     * When set to `true`, the decal's image asset is eligible for automatic localization capture.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#AutoLocalize)
@@ -18786,12 +18858,16 @@ interface Decal extends FaceInstance {
      */
     LocalTransparencyModifier: number;
     /**
+     * `Content` object that determines the metalness map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#MetalnessMapContent)
      */
     get MetalnessMapContent(): Content;
     /**
+     * `Content` object that determines the normal map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#NormalMapContent)
@@ -18806,6 +18882,8 @@ interface Decal extends FaceInstance {
      */
     Rotation: number;
     /**
+     * `Content` object that determines the roughness map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#RoughnessMapContent)
@@ -18813,6 +18891,8 @@ interface Decal extends FaceInstance {
     get RoughnessMapContent(): Content;
     /**
      * **Deprecated:** This non-functional property is deprecated and should not be used in new work.
+     *
+     * Deprecated property that previously set the shininess of the decal.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -18824,6 +18904,8 @@ interface Decal extends FaceInstance {
     Shiny: number;
     /**
      * **Deprecated:** This property no longer functions correctly and is deprecated. It should not be used in new work.
+     *
+     * Deprecated property that previously set the specularity of the decal.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -19331,6 +19413,12 @@ interface Folder extends Instance {
      * @deprecated
      */
     readonly _nominal_Folder: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Folder#IconTint)
+     */
+    IconTint: Color3;
 }
 /**
  * A container that stores `ProceduralModel` generation results.
@@ -20215,6 +20303,21 @@ interface GuiBase extends Instance {
     readonly _nominal_GuiBase: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImage)
+ */
+interface AnimatedImage extends GuiBase {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimatedImage: unique symbol;
+}
+/**
  * An abstract class inherited by 2D `GuiObjects`.
  *
  * - **Tags**: NotCreatable, NotBrowsable
@@ -20591,6 +20694,8 @@ interface GuiObject extends GuiBase2d {
      * - **Tags**: Hidden, NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiObject#Transparency)
+     *
+     * @deprecated
      */
     Transparency: number;
     /**
@@ -20613,6 +20718,7 @@ interface GuiObject extends GuiBase2d {
      * Smoothly moves a GUI to a new `UDim2`.
      *
      * - **ThreadSafety**: Unsafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiObject#TweenPosition)
      * @param this An abstract class for all 2D user interface objects.
@@ -20623,12 +20729,15 @@ interface GuiObject extends GuiBase2d {
      * @param override Whether the tween will override an in-progress tween.
      * @param callback A callback function to execute when the tween completes.
      * @returns Whether the tween will play.
+     *
+     * @deprecated
      */
     TweenPosition(this: GuiObject, endPosition: UDim2, easingDirection?: CastsToEnum<Enum.EasingDirection>, easingStyle?: CastsToEnum<Enum.EasingStyle>, time?: number, override?: boolean, callback?: (finishedTween: Enum.TweenStatus) => void): boolean;
     /**
      * Smoothly resizes a `GuiObject` to a new `UDim2`.
      *
      * - **ThreadSafety**: Unsafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiObject#TweenSize)
      * @param this An abstract class for all 2D user interface objects.
@@ -20639,12 +20748,15 @@ interface GuiObject extends GuiBase2d {
      * @param override Whether the tween will override an in-progress tween.
      * @param callback A callback function to execute when the tween completes.
      * @returns Whether the tween will play.
+     *
+     * @deprecated
      */
     TweenSize(this: GuiObject, endSize: UDim2, easingDirection?: CastsToEnum<Enum.EasingDirection>, easingStyle?: CastsToEnum<Enum.EasingStyle>, time?: number, override?: boolean, callback?: (finishedTween: Enum.TweenStatus) => void): boolean;
     /**
      * Smoothly moves a GUI to a new size and position.
      *
      * - **ThreadSafety**: Unsafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GuiObject#TweenSizeAndPosition)
      * @param this An abstract class for all 2D user interface objects.
@@ -20656,6 +20768,8 @@ interface GuiObject extends GuiBase2d {
      * @param override Whether the tween will override an in-progress tween.
      * @param callback A callback function to execute when the tween completes.
      * @returns Whether the tween will play.
+     *
+     * @deprecated
      */
     TweenSizeAndPosition(this: GuiObject, endSize: UDim2, endPosition: UDim2, easingDirection?: CastsToEnum<Enum.EasingDirection>, easingStyle?: CastsToEnum<Enum.EasingStyle>, time?: number, override?: boolean, callback?: (finishedTween: Enum.TweenStatus) => void): boolean;
     /**
@@ -32216,6 +32330,21 @@ interface ModerationService extends Instance {
     InternalRequestReviewableContentReviewAsync(this: ModerationService, config: object): void;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MomentsService)
+ */
+interface MomentsService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_MomentsService: unique symbol;
+}
+/**
  * Legacy object that contains members useful for pointer input.
  *
  * - **Tags**: NotCreatable
@@ -36436,6 +36565,12 @@ interface Workspace extends WorldRoot {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#Retargeting)
      */
     Retargeting: Enum.AnimatorRetargetingMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#StreamingAdaptiveRadius)
+     */
+    StreamingAdaptiveRadius: boolean;
     /**
      * Whether content streaming is enabled for the place.
      *
@@ -41487,6 +41622,12 @@ interface RunService extends Instance {
      */
     readonly FrameNumber: number;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#BindToAnimation)
+     */
+    BindToAnimation(this: RunService, callback: Callback, frequency?: CastsToEnum<Enum.StepFrequency>, priority?: number): RBXScriptConnection;
+    /**
      * Given a string name of a function and a priority, this method binds the function to `RunService.PreRender`.
      *
      * - **ThreadSafety**: Unsafe
@@ -41508,6 +41649,7 @@ interface RunService extends Instance {
      * @param function The function to call. This function will be passed one parameter called `deltaTime` which shows how much time passed between the beginning of the previous simulation step and the beginning of the current simulation step.
      * @param frequency Optional `StepFrequency` value indicating the frequency at which to call the bound function. If not provided, the default frequency will be used.
      * @param priority Optional priority of the binding as an integer; it determines the order in which bound functions are called within a simulation step. Lower numbers are called first. If two bindings have the same priority, the order between them is unspecified. Defaults to 2000.
+     * @returns An `RBXScriptConnection` that can be disconnected to unbind the function from the simulation step.
      */
     BindToSimulation(this: RunService, callback: Callback, frequency?: CastsToEnum<Enum.StepFrequency>, priority?: number): RBXScriptConnection;
     /**
@@ -41518,6 +41660,7 @@ interface RunService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#GetPredictionStatus)
      * @param this Service responsible for all runtime activity and progression of time.
      * @param context The `Instance` for which to check prediction status.
+     * @returns The `PredictionStatus` of the given instance, indicating whether it is predicted, authoritative, or not participating in prediction.
      */
     GetPredictionStatus(this: RunService, context: Instance): Enum.PredictionStatus;
     /**
@@ -41531,9 +41674,13 @@ interface RunService extends Instance {
      */
     IsClient(this: RunService): boolean;
     /**
+     * Returns whether the client is currently in a resimulation step after a misprediction in the server authority model.
+     *
      * - **ThreadSafety**: Safe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#IsResimulating)
+     * @param this Service responsible for all runtime activity and progression of time.
+     * @returns Whether the engine is currently resimulating.
      */
     IsResimulating(this: RunService): boolean;
     /**
@@ -47272,6 +47419,12 @@ interface TextChannel extends Instance {
      */
     readonly _nominal_TextChannel: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChannel#AddPlayersOnJoin)
+     */
+    AddPlayersOnJoin: boolean;
+    /**
      * The `TextChannel` will only deliver messages to users that can send direct messages to the `DirectChatRequester`.
      *
      * - **ThreadSafety**: ReadSafe
@@ -49831,7 +49984,7 @@ interface UIFlexItem extends UIComponent {
     ShrinkRatio: number;
 }
 /**
- * Applies a color and transparency gradient to the UI elements rendered by the parent `GuiObject`.
+ * Applies a color and transparency gradient to the parent `GuiObject`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIGradient)
  */
@@ -49845,7 +49998,7 @@ interface UIGradient extends UIComponent {
      */
     readonly _nominal_UIGradient: unique symbol;
     /**
-     * Determines the color blended with the parent GuiObject along the length of the gradient.
+     * Determines the color blended with the parent `GuiObject` along the length of the gradient.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -49861,7 +50014,7 @@ interface UIGradient extends UIComponent {
      */
     Enabled: boolean;
     /**
-     * Determines the scalar translation of the gradient from the center of the parent GuiObject.
+     * Determines the scalar translation of the gradient from the center of the parent `GuiObject`.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -49877,21 +50030,23 @@ interface UIGradient extends UIComponent {
      */
     Rotation: number;
     /**
+     * Multiplies the extent of the gradient, controlling how much of the color/transparency sequence is visible within the element.
+     *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotBrowsable
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIGradient#Scale)
      */
     Scale: number;
     /**
+     * Determines how the gradient repeats.
+     *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotBrowsable
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIGradient#TileMode)
      */
     TileMode: Enum.GradientTileMode;
     /**
-     * Determines how much the parent GuiObject can be seen through along the length of the gradient.
+     * Determines how much the parent `GuiObject` can be seen through along the length of the gradient.
      *
      * - **ThreadSafety**: ReadSafe
      *
@@ -49899,8 +50054,9 @@ interface UIGradient extends UIComponent {
      */
     Transparency: NumberSequence;
     /**
+     * Determines the shape of the gradient as linear, radial, or conical.
+     *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotBrowsable
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIGradient#Type)
      */
