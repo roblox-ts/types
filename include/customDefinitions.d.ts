@@ -151,14 +151,13 @@ interface CaptureService extends Instance {
 
 interface CatalogPages extends Pages<SearchCatalogResult> {}
 
-interface OutfitPages
-	extends Pages<
-		ReadonlyArray<{
-			Id: number;
-			Name: string;
-			IsEditable: boolean;
-		}>
-	> {}
+interface OutfitPages extends Pages<
+	ReadonlyArray<{
+		Id: number;
+		Name: string;
+		IsEditable: boolean;
+	}>
+> {}
 
 interface BadgeService extends Instance {
 	/** @server */
@@ -374,8 +373,13 @@ interface FloatCurve extends Instance {
 	InsertKey(this: FloatCurve, key: FloatCurveKey): [isNew: boolean, index: number];
 }
 
-interface FriendPages
-	extends Pages<{ AvatarFinal: boolean; AvatarUri: string; Id: number; Username: string; IsOnline: boolean }> {}
+interface FriendPages extends Pages<{
+	AvatarFinal: boolean;
+	AvatarUri: string;
+	Id: number;
+	Username: string;
+	IsOnline: boolean;
+}> {}
 
 interface GamepadService extends Instance {
 	EnableGamepadCursor(this: GamepadService, guiObject: GuiObject | undefined): void;
