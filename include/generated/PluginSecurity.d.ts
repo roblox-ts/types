@@ -83,6 +83,7 @@ interface Services {
     ExperienceStateCaptureService: ExperienceStateCaptureService;
     ExperienceStateRecordingService: ExperienceStateRecordingService;
     ExplorerServiceVisibilityService: ExplorerServiceVisibilityService;
+    ExternalIdentityService: ExternalIdentityService;
     FaceAnimatorService: FaceAnimatorService;
     FacialAgeEstimationService: FacialAgeEstimationService;
     FacialAnimationRecordingService: FacialAnimationRecordingService;
@@ -182,6 +183,7 @@ interface Services {
     ProcessInstancePhysicsService: ProcessInstancePhysicsService;
     ProximityPromptService: ProximityPromptService;
     PublishService: PublishService;
+    QueueService: QueueService;
     RecommendationService: RecommendationService;
     ReflectionService: ReflectionService;
     RemoteCommandService: RemoteCommandService;
@@ -302,6 +304,7 @@ interface CreatableInstances {
     Accoutrement: Accoutrement;
     Actor: Actor;
     AdGui: AdGui;
+    AdPlacement: AdPlacement;
     AdPortal: AdPortal;
     AirController: AirController;
     AlignOrientation: AlignOrientation;
@@ -792,6 +795,7 @@ interface Instances extends Services, CreatableInstances {
     SoundEffect: SoundEffect;
     StackFrame: StackFrame;
     StandardPages: StandardPages;
+    StandardQueue: StandardQueue;
     StarterCharacterScripts: StarterCharacterScripts;
     StarterPlayerScripts: StarterPlayerScripts;
     StatsItem: StatsItem;
@@ -1185,6 +1189,19 @@ interface ActivityHistoryEventService extends Instance {
      * @deprecated
      */
     readonly _nominal_ActivityHistoryEventService: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdPlacement)
+ */
+interface AdPlacement extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AdPlacement: unique symbol;
 }
 /**
  * A portal that teleports players to a sponsored experience as part of immersive ads.
@@ -2462,6 +2479,8 @@ interface BadgeService extends Instance {
     readonly _nominal_BadgeService: unique symbol;
 }
 /**
+ * Base class for the configuration objects that control individual built-in `CoreGui` elements.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseCoreGuiConfiguration)
@@ -2477,6 +2496,8 @@ interface BaseCoreGuiConfiguration extends Instance {
     readonly _nominal_BaseCoreGuiConfiguration: unique symbol;
 }
 /**
+ * Controls the built-in captures view, the `CoreGui` element that lets players browse and manage screenshots and video captures they take within an experience.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CapturesViewConfiguration)
@@ -2492,6 +2513,8 @@ interface CapturesViewConfiguration extends BaseCoreGuiConfiguration {
     readonly _nominal_CapturesViewConfiguration: unique symbol;
 }
 /**
+ * Controls the built-in player list, the `CoreGui` element that displays the players currently in the experience.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerListConfiguration)
@@ -2507,6 +2530,8 @@ interface PlayerListConfiguration extends BaseCoreGuiConfiguration {
     readonly _nominal_PlayerListConfiguration: unique symbol;
 }
 /**
+ * Controls the built-in self view, the `CoreGui` element that shows a player a preview of their own character within an experience.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SelfViewConfiguration)
@@ -4231,6 +4256,8 @@ interface Controller extends Instance {
     readonly _nominal_Controller: unique symbol;
 }
 /**
+ * A `Controller` held within `ControllerService` that translates player input into movement for the user's character `Humanoid`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidController)
  */
 interface HumanoidController extends Controller {
@@ -4244,6 +4271,8 @@ interface HumanoidController extends Controller {
     readonly _nominal_HumanoidController: unique symbol;
 }
 /**
+ * Translates player input into throttle and steer axis values for a `SkateboardPlatform`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SkateboardController)
  */
 interface SkateboardController extends Controller {
@@ -4257,6 +4286,8 @@ interface SkateboardController extends Controller {
     readonly _nominal_SkateboardController: unique symbol;
 }
 /**
+ * An object responsible for translating a seated player's directional input into throttle and steering for a `VehicleSeat`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VehicleController)
  */
 interface VehicleController extends Controller {
@@ -5394,6 +5425,21 @@ interface Explosion extends Instance {
      * @deprecated
      */
     readonly _nominal_Explosion: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExternalIdentityService)
+ */
+interface ExternalIdentityService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ExternalIdentityService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -7119,6 +7165,8 @@ interface HeatmapService extends Instance {
     readonly _nominal_HeatmapService: unique symbol;
 }
 /**
+ * A Studio-only service that backs the Terrain Editor's heightmap import tool, converting heightmap and colormap images into voxel `Terrain`.
+ *
  * - **Tags**: Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeightmapImporterService)
@@ -8196,6 +8244,8 @@ interface LogService extends Instance {
     readonly _nominal_LogService: unique symbol;
 }
 /**
+ * Settings related to how the engine handles Luau, its dialect of Lua.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuaSettings)
@@ -8568,6 +8618,8 @@ interface MaterialVariant extends Instance {
     RoughnessMapContent: Content;
 }
 /**
+ * Represents a live binding created by `Bind()` on `MemStorageService` that runs a callback whenever a memory-storage key changes.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemStorageConnection)
@@ -8582,10 +8634,12 @@ interface MemStorageConnection extends Instance {
      */
     readonly _nominal_MemStorageConnection: unique symbol;
     /**
+     * Ends the binding so its callback no longer runs when the associated memory-storage key changes.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemStorageConnection#Disconnect)
-     * @param this
+     * @param this Represents a live binding created by `Bind()` on `MemStorageService` that runs a callback whenever a memory-storage key changes.
      */
     Disconnect(this: MemStorageConnection): void;
 }
@@ -8765,8 +8819,6 @@ interface MetaBreakpointManager extends Instance {
     readonly _nominal_MetaBreakpointManager: unique symbol;
 }
 /**
- * A service that connects the engine's MicroProfiler to the data model, feeding context into profile dumps and letting privileged scripts capture them to disk.
- *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MicroProfilerService)
@@ -9240,6 +9292,8 @@ interface BasePart extends PVInstance {
     readonly _nominal_BasePart: unique symbol;
 }
 /**
+ * A type of `BasePart` that has a corner wedge shape.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CornerWedgePart)
  */
 interface CornerWedgePart extends BasePart {
@@ -9762,6 +9816,8 @@ interface Workspace extends WorldRoot {
     /**
      * **Deprecated:** This property should not be used for new work.
      *
+     * Deprecated setting that configured the interpolation throttling mode; it no longer takes effect.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
      *
@@ -9837,7 +9893,7 @@ interface Workspace extends WorldRoot {
     ZoomToExtents(this: Workspace): void;
 }
 /**
- * Extends limited physics for its children on to a parent `ViewportFrame`.
+ * Extends limited physics to its children.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldModel)
  */
@@ -11983,6 +12039,21 @@ interface PublishService extends Instance {
     readonly _nominal_PublishService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/QueueService)
+ */
+interface QueueService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_QueueService: unique symbol;
+}
+/**
  * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RTAnimationTracker)
@@ -12028,6 +12099,8 @@ interface RecommendationService extends Instance {
     readonly _nominal_RecommendationService: unique symbol;
 }
 /**
+ * A service that allows scripts to query the engine's API at runtime for information about classes, properties, methods, and events.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService)
@@ -14307,6 +14380,21 @@ interface StackFrame extends Instance {
     readonly _nominal_StackFrame: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StandardQueue)
+ */
+interface StandardQueue extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StandardQueue: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StartPageService)
@@ -14435,8 +14523,6 @@ interface StateMachineDefinition extends Instance {
     readonly _nominal_StateMachineDefinition: unique symbol;
 }
 /**
- * - **Tags**: NotReplicated
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StateMachineTransitionDefinition)
  */
 interface StateMachineTransitionDefinition extends Instance {
@@ -14496,6 +14582,7 @@ interface StatsItem extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StatsItem#GetValue)
      * @param this A single performance metric.
+     * @returns The numeric value of the stats item.
      */
     GetValue(this: StatsItem): number;
     /**
@@ -14505,6 +14592,7 @@ interface StatsItem extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StatsItem#GetValueString)
      * @param this A single performance metric.
+     * @returns The value of the stats item formatted as a string.
      */
     GetValueString(this: StatsItem): string;
 }
@@ -14577,6 +14665,8 @@ interface TotalCountTimeIntervalItem extends StatsItem {
     readonly _nominal_TotalCountTimeIntervalItem: unique symbol;
 }
 /**
+ * Represents Roblox Studio's script editor settings.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio)
@@ -15507,7 +15597,7 @@ interface Studio extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#GetAvailableThemes)
-     * @param this
+     * @param this Represents Roblox Studio's script editor settings.
      * @returns A list of themes available in Studio.
      */
     GetAvailableThemes(this: Studio): Array<unknown>;
@@ -16752,6 +16842,8 @@ interface TerrainDetail extends Instance {
     RoughnessMapContent: Content;
 }
 /**
+ * An object that stores a chunk of terrain voxel data, produced by `Terrain:CopyRegion()` and consumed by `Terrain:PasteRegion()`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainRegion)
  */
 interface TerrainRegion extends Instance {
@@ -16772,7 +16864,7 @@ interface TerrainRegion extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainRegion#ConvertToSmooth)
-     * @param this
+     * @param this An object that stores a chunk of terrain voxel data, produced by `Terrain:CopyRegion()` and consumed by `Terrain:PasteRegion()`.
      *
      * @deprecated
      */
