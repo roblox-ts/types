@@ -321,10 +321,14 @@ declare namespace Enum {
     }
     export type ActionOnAutoResumeSync = ActionOnAutoResumeSync.DontResume | ActionOnAutoResumeSync.KeepStudio | ActionOnAutoResumeSync.KeepLocal;
     /**
+     * Specifies how Roblox Studio handles local files when file sync stops.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnStopSync)
      */
     export namespace ActionOnStopSync {
         /**
+         * Prompts before deleting local files when file sync stops.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnStopSync#AlwaysAsk)
          */
         export interface AlwaysAsk extends globalThis.EnumItem {
@@ -334,6 +338,8 @@ declare namespace Enum {
         }
         export const AlwaysAsk: AlwaysAsk;
         /**
+         * Keeps local files when file sync stops.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnStopSync#KeepLocalFiles)
          */
         export interface KeepLocalFiles extends globalThis.EnumItem {
@@ -343,6 +349,8 @@ declare namespace Enum {
         }
         export const KeepLocalFiles: KeepLocalFiles;
         /**
+         * Deletes local files when file sync stops.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnStopSync#DeleteLocalFiles)
          */
         export interface DeleteLocalFiles extends globalThis.EnumItem {
@@ -680,8 +688,6 @@ declare namespace Enum {
      */
     export namespace AdEventType {
         /**
-         * **Deprecated:**
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#VideoLoaded)
          */
         export interface VideoLoaded extends globalThis.EnumItem {
@@ -691,8 +697,6 @@ declare namespace Enum {
         }
         export const VideoLoaded: VideoLoaded;
         /**
-         * **Deprecated:**
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#VideoRemoved)
          */
         export interface VideoRemoved extends globalThis.EnumItem {
@@ -702,8 +706,6 @@ declare namespace Enum {
         }
         export const VideoRemoved: VideoRemoved;
         /**
-         * **Deprecated:**
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#UserCompletedVideo)
          */
         export interface UserCompletedVideo extends globalThis.EnumItem {
@@ -713,8 +715,6 @@ declare namespace Enum {
         }
         export const UserCompletedVideo: UserCompletedVideo;
         /**
-         * **Deprecated:**
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#RewardedAdLoaded)
          */
         export interface RewardedAdLoaded extends globalThis.EnumItem {
@@ -724,8 +724,6 @@ declare namespace Enum {
         }
         export const RewardedAdLoaded: RewardedAdLoaded;
         /**
-         * **Deprecated:**
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#RewardedAdGrant)
          */
         export interface RewardedAdGrant extends globalThis.EnumItem {
@@ -735,8 +733,6 @@ declare namespace Enum {
         }
         export const RewardedAdGrant: RewardedAdGrant;
         /**
-         * **Deprecated:**
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#RewardedAdUnloaded)
          */
         export interface RewardedAdUnloaded extends globalThis.EnumItem {
@@ -1966,6 +1962,42 @@ declare namespace Enum {
     }
     export type AnimationNodeBlend2DInputMode = AnimationNodeBlend2DInputMode.Cartesian | AnimationNodeBlend2DInputMode.Polar;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeBlendMode)
+     */
+    export namespace AnimationNodeBlendMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeBlendMode#Over)
+         */
+        export interface Over extends globalThis.EnumItem {
+            Name: "Over";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AnimationNodeBlendMode;
+        }
+        export const Over: Over;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeBlendMode#Add)
+         */
+        export interface Add extends globalThis.EnumItem {
+            Name: "Add";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AnimationNodeBlendMode;
+        }
+        export const Add: Add;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeBlendMode#Subtract)
+         */
+        export interface Subtract extends globalThis.EnumItem {
+            Name: "Subtract";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AnimationNodeBlendMode;
+        }
+        export const Subtract: Subtract;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationNodeBlendMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationNodeBlendMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationNodeBlendMode | undefined;
+    }
+    export type AnimationNodeBlendMode = AnimationNodeBlendMode.Over | AnimationNodeBlendMode.Add | AnimationNodeBlendMode.Subtract;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeInterruptible)
      */
     export namespace AnimationNodeInterruptible {
@@ -2296,11 +2328,29 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.AnimationNodeType;
         }
         export const SubtractNode: SubtractNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#OneShotNode)
+         */
+        export interface OneShotNode extends globalThis.EnumItem {
+            Name: "OneShotNode";
+            Value: 14;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const OneShotNode: OneShotNode;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#StateMachineNode)
+         */
+        export interface StateMachineNode extends globalThis.EnumItem {
+            Name: "StateMachineNode";
+            Value: 16;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const StateMachineNode: StateMachineNode;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationNodeType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationNodeType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationNodeType | undefined;
     }
-    export type AnimationNodeType = AnimationNodeType.InvalidNode | AnimationNodeType.AddNode | AnimationNodeType.OverNode | AnimationNodeType.Blend1DNode | AnimationNodeType.Blend2DNode | AnimationNodeType.ClipNode | AnimationNodeType.GraphOutput | AnimationNodeType.MaskNode | AnimationNodeType.PrioritySelectNode | AnimationNodeType.RandomSequenceNode | AnimationNodeType.SelectNode | AnimationNodeType.SequenceNode | AnimationNodeType.SpeedNode | AnimationNodeType.SubtractNode;
+    export type AnimationNodeType = AnimationNodeType.InvalidNode | AnimationNodeType.AddNode | AnimationNodeType.OverNode | AnimationNodeType.Blend1DNode | AnimationNodeType.Blend2DNode | AnimationNodeType.ClipNode | AnimationNodeType.GraphOutput | AnimationNodeType.MaskNode | AnimationNodeType.PrioritySelectNode | AnimationNodeType.RandomSequenceNode | AnimationNodeType.SelectNode | AnimationNodeType.SequenceNode | AnimationNodeType.SpeedNode | AnimationNodeType.SubtractNode | AnimationNodeType.OneShotNode | AnimationNodeType.StateMachineNode;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeWaitFor)
      */
@@ -2461,7 +2511,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * Retargeting disabled.
+         * Animation retargeting is off; animations play exactly as authored without adapting joint transforms to the character's body proportions.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatorRetargetingMode#Disabled)
          */
@@ -2472,7 +2522,7 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
-         * Retargeting enabled.
+         * Animation retargeting is always active; the Animator adapts animations to the character's body proportions regardless of the platform default.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatorRetargetingMode#Enabled)
          */
@@ -4557,10 +4607,14 @@ declare namespace Enum {
     }
     export type AuthorityMode = AuthorityMode.Server | AuthorityMode.Automatic;
     /**
+     * Specifies how Roblox Studio automatically indents lines in the script editor.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AutoIndentRule)
      */
     export namespace AutoIndentRule {
         /**
+         * Disables automatic indentation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AutoIndentRule#Off)
          */
         export interface Off extends globalThis.EnumItem {
@@ -4570,6 +4624,8 @@ declare namespace Enum {
         }
         export const Off: Off;
         /**
+         * Indents new lines according to the script's block structure.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AutoIndentRule#Absolute)
          */
         export interface Absolute extends globalThis.EnumItem {
@@ -4579,6 +4635,8 @@ declare namespace Enum {
         }
         export const Absolute: Absolute;
         /**
+         * Indents new lines according to the script's block structure and the indentation of the reference line.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AutoIndentRule#Relative)
          */
         export interface Relative extends globalThis.EnumItem {
@@ -6093,7 +6151,7 @@ declare namespace Enum {
      */
     export namespace AvatarUnificationMode {
         /**
-         * Uses the engine-default avatar unification state.
+         * Resolves to the engine's current built-in default for avatar unification, which currently behaves the same as `Disabled`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarUnificationMode#Default)
          */
@@ -6104,7 +6162,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * Avatar unification is disabled.
+         * Disables the R6-to-R15 adapter; R6 avatars in an R6 experience load using the standard R6 rig with no adapter parts applied.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarUnificationMode#Disabled)
          */
@@ -6115,7 +6173,7 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
-         * Avatar unification is enabled.
+         * Enables the R6-to-R15 adapter; R6 avatars joining an R6 experience receive invisible R15 adapter `MeshParts` welded to their R6-named joints, preserving R6 scale while enabling R15 features such as layered clothing and animatable heads.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarUnificationMode#Enabled)
          */
@@ -6969,7 +7027,7 @@ declare namespace Enum {
      */
     export namespace Button {
         /**
-         * The Dismount button.
+         * Represents the dismount action that can be bound on a `Controller` to detect when a player triggers the dismount input.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Button#Dismount)
          */
@@ -6980,7 +7038,7 @@ declare namespace Enum {
         }
         export const Dismount: Dismount;
         /**
-         * The Jump button.
+         * Represents the jump action that can be bound on a `Controller` to detect when a player triggers the jump input.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Button#Jump)
          */
@@ -8141,10 +8199,14 @@ declare namespace Enum {
     }
     export type CenterDialogType = CenterDialogType.UnsolicitedDialog | CenterDialogType.PlayerInitiatedDialog | CenterDialogType.ModalDialog | CenterDialogType.QuitDialog;
     /**
+     * Specifies which character controller implementation an experience uses.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CharacterControlMode)
      */
     export namespace CharacterControlMode {
         /**
+         * Uses Roblox's default character controller selection.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CharacterControlMode#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -8154,6 +8216,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Uses the legacy character controller.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CharacterControlMode#Legacy)
          */
         export interface Legacy extends globalThis.EnumItem {
@@ -8163,6 +8227,8 @@ declare namespace Enum {
         }
         export const Legacy: Legacy;
         /**
+         * Does not load a character controller.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CharacterControlMode#NoCharacterController)
          */
         export interface NoCharacterController extends globalThis.EnumItem {
@@ -8172,6 +8238,8 @@ declare namespace Enum {
         }
         export const NoCharacterController: NoCharacterController;
         /**
+         * Uses the Luau character controller.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CharacterControlMode#LuaCharacterController)
          */
         export interface LuaCharacterController extends globalThis.EnumItem {
@@ -8610,6 +8678,8 @@ declare namespace Enum {
         }
         export const OutOfMemory: OutOfMemory;
         /**
+         * The server was shut down because the experience or place was taken down for moderation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CloseReason#Moderation)
          */
         export interface Moderation extends globalThis.EnumItem {
@@ -8823,10 +8893,14 @@ declare namespace Enum {
     }
     export type CompileTarget = CompileTarget.Client | CompileTarget.CoreScript | CompileTarget.Studio | CompileTarget.CoreScriptRaw;
     /**
+     * Controls how the Script Editor inserts or replaces text when an autocomplete suggestion is accepted with Enter or Tab.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionAcceptanceBehavior)
      */
     export namespace CompletionAcceptanceBehavior {
         /**
+         * Accepting a completion with either Enter or Tab inserts the suggestion without replacing existing text after the cursor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionAcceptanceBehavior#Insert)
          */
         export interface Insert extends globalThis.EnumItem {
@@ -8836,6 +8910,8 @@ declare namespace Enum {
         }
         export const Insert: Insert;
         /**
+         * Accepting a completion with either Enter or Tab replaces existing text after the cursor with the full suggestion text.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionAcceptanceBehavior#Replace)
          */
         export interface Replace extends globalThis.EnumItem {
@@ -8845,6 +8921,8 @@ declare namespace Enum {
         }
         export const Replace: Replace;
         /**
+         * Pressing Enter replaces existing text after the cursor; pressing Tab inserts without replacing text after the cursor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionAcceptanceBehavior#ReplaceOnEnterInsertOnTab)
          */
         export interface ReplaceOnEnterInsertOnTab extends globalThis.EnumItem {
@@ -8854,6 +8932,8 @@ declare namespace Enum {
         }
         export const ReplaceOnEnterInsertOnTab: ReplaceOnEnterInsertOnTab;
         /**
+         * Pressing Enter inserts without replacing text after the cursor; pressing Tab replaces text after the cursor. This is the default of `Studio.AutocompleteAcceptanceBehavior`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionAcceptanceBehavior#InsertOnEnterReplaceOnTab)
          */
         export interface InsertOnEnterReplaceOnTab extends globalThis.EnumItem {
@@ -9515,7 +9595,7 @@ declare namespace Enum {
      */
     export namespace ComputerMovementMode {
         /**
-         * The default is KeyboardMouse.
+         * The movement mode has not been explicitly set and behaves identically to `KeyboardMouse`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ComputerMovementMode#Default)
          */
@@ -9526,7 +9606,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * The player's character is controlled using the keyboard and mouse.
+         * The player moves their character using keyboard keys and steers the camera with the mouse.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ComputerMovementMode#KeyboardMouse)
          */
@@ -9537,7 +9617,7 @@ declare namespace Enum {
         }
         export const KeyboardMouse: KeyboardMouse;
         /**
-         * The player can right-click in the game world and their character will move there. In addition, the player can also control their character with their mouse and keyboard.
+         * The player moves their character by clicking a destination in the game world; the character automatically navigates there and jumps over surmountable obstacles.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ComputerMovementMode#ClickToMove)
          */
@@ -11104,6 +11184,8 @@ declare namespace Enum {
     }
     export type CreateOutfitFailure = CreateOutfitFailure.InvalidName | CreateOutfitFailure.OutfitLimitReached | CreateOutfitFailure.Other;
     /**
+     * Indicates whether the currently running place is owned by an individual user or a group.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreatorType)
      */
     export namespace CreatorType {
@@ -12008,10 +12090,14 @@ declare namespace Enum {
     }
     export type DebuggerStatus = DebuggerStatus.Success | DebuggerStatus.Timeout | DebuggerStatus.ConnectionLost | DebuggerStatus.InvalidResponse | DebuggerStatus.InternalError | DebuggerStatus.InvalidState | DebuggerStatus.RpcError | DebuggerStatus.InvalidArgument | DebuggerStatus.ConnectionClosed;
     /**
+     * Controls the file extension used when Studio's script sync feature saves script instances to the filesystem.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DefaultScriptSyncFileType)
      */
     export namespace DefaultScriptSyncFileType {
         /**
+         * Script files are synced to the filesystem with a `.lua` extension.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DefaultScriptSyncFileType#Lua)
          */
         export interface Lua extends globalThis.EnumItem {
@@ -12021,6 +12107,8 @@ declare namespace Enum {
         }
         export const Lua: Lua;
         /**
+         * Script files are synced to the filesystem with a `.luau` extension.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DefaultScriptSyncFileType#Luau)
          */
         export interface Luau extends globalThis.EnumItem {
@@ -12578,6 +12666,8 @@ declare namespace Enum {
         }
         export const Navigation: Navigation;
         /**
+         * Geometry mesh data for CSG objects such as `UnionOperation` and `PartOperation`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeveloperMemoryTag#GeometryCSG)
          */
         export interface GeometryCSG extends globalThis.EnumItem {
@@ -12587,6 +12677,8 @@ declare namespace Enum {
         }
         export const GeometryCSG: GeometryCSG;
         /**
+         * Rendering memory for SLIM (streamed level-of-detail instance mesh) model data.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeveloperMemoryTag#GraphicsSlimModels)
          */
         export interface GraphicsSlimModels extends globalThis.EnumItem {
@@ -14390,10 +14482,14 @@ declare namespace Enum {
     }
     export type ExplosionType = ExplosionType.NoCraters | ExplosionType.Craters;
     /**
+     * Controls whether Roblox Studio opens scripts in the operating system's default editor or in a user-selected external editor.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExternalEditorMode)
      */
     export namespace ExternalEditorMode {
         /**
+         * Studio opens scripts using the operating system's default application for the file type.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExternalEditorMode#SystemDefault)
          */
         export interface SystemDefault extends globalThis.EnumItem {
@@ -14403,6 +14499,8 @@ declare namespace Enum {
         }
         export const SystemDefault: SystemDefault;
         /**
+         * Studio opens scripts using the external editor executable specified in `Studio.ExternalEditorSelection`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExternalEditorMode#UserSelectedEditor)
          */
         export interface UserSelectedEditor extends globalThis.EnumItem {
@@ -14465,10 +14563,14 @@ declare namespace Enum {
     }
     export type FACSDataLod = FACSDataLod.LOD0 | FACSDataLod.LOD1 | FACSDataLod.LODCount;
     /**
+     * Describes the outcome of a facial age estimation inquiry initiated by `FacialAgeEstimationService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAgeEstimationResultType)
      */
     export namespace FacialAgeEstimationResultType {
         /**
+         * The facial age estimation inquiry finished successfully.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAgeEstimationResultType#Complete)
          */
         export interface Complete extends globalThis.EnumItem {
@@ -14478,6 +14580,8 @@ declare namespace Enum {
         }
         export const Complete: Complete;
         /**
+         * The facial age estimation inquiry was cancelled before it could complete.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAgeEstimationResultType#Cancel)
          */
         export interface Cancel extends globalThis.EnumItem {
@@ -14487,6 +14591,8 @@ declare namespace Enum {
         }
         export const Cancel: Cancel;
         /**
+         * The facial age estimation inquiry failed due to an error.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAgeEstimationResultType#Error)
          */
         export interface Error extends globalThis.EnumItem {
@@ -14567,10 +14673,14 @@ declare namespace Enum {
     }
     export type FacialAnimationStreamingState = FacialAnimationStreamingState.None | FacialAnimationStreamingState.Audio | FacialAnimationStreamingState.Video | FacialAnimationStreamingState.Place | FacialAnimationStreamingState.Server;
     /**
+     * Identifies a Facial Action Coding System pose for facial animation.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit)
      */
     export namespace FacsActionUnit {
         /**
+         * Moves the upper lip upward when the chin raiser is engaged.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#ChinRaiserUpperLip)
          */
         export interface ChinRaiserUpperLip extends globalThis.EnumItem {
@@ -14580,6 +14690,8 @@ declare namespace Enum {
         }
         export const ChinRaiserUpperLip: ChinRaiserUpperLip;
         /**
+         * Raises the chin and moves the lower lip upward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#ChinRaiser)
          */
         export interface ChinRaiser extends globalThis.EnumItem {
@@ -14589,6 +14701,8 @@ declare namespace Enum {
         }
         export const ChinRaiser: ChinRaiser;
         /**
+         * Moves the mouth corners inward and presses the lips against the teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#FlatPucker)
          */
         export interface FlatPucker extends globalThis.EnumItem {
@@ -14598,6 +14712,8 @@ declare namespace Enum {
         }
         export const FlatPucker: FlatPucker;
         /**
+         * Forms an O shape with the mouth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#Funneler)
          */
         export interface Funneler extends globalThis.EnumItem {
@@ -14607,6 +14723,8 @@ declare namespace Enum {
         }
         export const Funneler: Funneler;
         /**
+         * Rolls the lower lip over the teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LowerLipSuck)
          */
         export interface LowerLipSuck extends globalThis.EnumItem {
@@ -14616,6 +14734,8 @@ declare namespace Enum {
         }
         export const LowerLipSuck: LowerLipSuck;
         /**
+         * Presses the lips together.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LipPresser)
          */
         export interface LipPresser extends globalThis.EnumItem {
@@ -14625,6 +14745,8 @@ declare namespace Enum {
         }
         export const LipPresser: LipPresser;
         /**
+         * Brings the lips together relative to the jaw-drop pose.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LipsTogether)
          */
         export interface LipsTogether extends globalThis.EnumItem {
@@ -14634,6 +14756,8 @@ declare namespace Enum {
         }
         export const LipsTogether: LipsTogether;
         /**
+         * Moves the mouth to the character's left.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#MouthLeft)
          */
         export interface MouthLeft extends globalThis.EnumItem {
@@ -14643,6 +14767,8 @@ declare namespace Enum {
         }
         export const MouthLeft: MouthLeft;
         /**
+         * Moves the mouth to the character's right.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#MouthRight)
          */
         export interface MouthRight extends globalThis.EnumItem {
@@ -14652,6 +14778,8 @@ declare namespace Enum {
         }
         export const MouthRight: MouthRight;
         /**
+         * Puckers the lips into a kiss-like shape.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#Pucker)
          */
         export interface Pucker extends globalThis.EnumItem {
@@ -14661,6 +14789,8 @@ declare namespace Enum {
         }
         export const Pucker: Pucker;
         /**
+         * Rolls the upper lip over the teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#UpperLipSuck)
          */
         export interface UpperLipSuck extends globalThis.EnumItem {
@@ -14670,6 +14800,8 @@ declare namespace Enum {
         }
         export const UpperLipSuck: UpperLipSuck;
         /**
+         * Puffs the left cheek.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftCheekPuff)
          */
         export interface LeftCheekPuff extends globalThis.EnumItem {
@@ -14679,6 +14811,8 @@ declare namespace Enum {
         }
         export const LeftCheekPuff: LeftCheekPuff;
         /**
+         * Moves the left mouth corner backward to form a dimple.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftDimpler)
          */
         export interface LeftDimpler extends globalThis.EnumItem {
@@ -14688,6 +14822,8 @@ declare namespace Enum {
         }
         export const LeftDimpler: LeftDimpler;
         /**
+         * Lowers the left mouth corner into a frown.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftLipCornerDown)
          */
         export interface LeftLipCornerDown extends globalThis.EnumItem {
@@ -14697,6 +14833,8 @@ declare namespace Enum {
         }
         export const LeftLipCornerDown: LeftLipCornerDown;
         /**
+         * Lowers the left side of the lower lip to reveal the lower teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftLowerLipDepressor)
          */
         export interface LeftLowerLipDepressor extends globalThis.EnumItem {
@@ -14706,6 +14844,8 @@ declare namespace Enum {
         }
         export const LeftLowerLipDepressor: LeftLowerLipDepressor;
         /**
+         * Raises the left mouth corner into a smile.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftLipCornerPuller)
          */
         export interface LeftLipCornerPuller extends globalThis.EnumItem {
@@ -14715,6 +14855,8 @@ declare namespace Enum {
         }
         export const LeftLipCornerPuller: LeftLipCornerPuller;
         /**
+         * Stretches the left mouth corner outward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftLipStretcher)
          */
         export interface LeftLipStretcher extends globalThis.EnumItem {
@@ -14724,6 +14866,8 @@ declare namespace Enum {
         }
         export const LeftLipStretcher: LeftLipStretcher;
         /**
+         * Raises the left side of the upper lip to reveal the upper teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftUpperLipRaiser)
          */
         export interface LeftUpperLipRaiser extends globalThis.EnumItem {
@@ -14733,6 +14877,8 @@ declare namespace Enum {
         }
         export const LeftUpperLipRaiser: LeftUpperLipRaiser;
         /**
+         * Puffs the right cheek.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightCheekPuff)
          */
         export interface RightCheekPuff extends globalThis.EnumItem {
@@ -14742,6 +14888,8 @@ declare namespace Enum {
         }
         export const RightCheekPuff: RightCheekPuff;
         /**
+         * Moves the right mouth corner backward to form a dimple.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightDimpler)
          */
         export interface RightDimpler extends globalThis.EnumItem {
@@ -14751,6 +14899,8 @@ declare namespace Enum {
         }
         export const RightDimpler: RightDimpler;
         /**
+         * Lowers the right mouth corner into a frown.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightLipCornerDown)
          */
         export interface RightLipCornerDown extends globalThis.EnumItem {
@@ -14760,6 +14910,8 @@ declare namespace Enum {
         }
         export const RightLipCornerDown: RightLipCornerDown;
         /**
+         * Lowers the right side of the lower lip to reveal the lower teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightLowerLipDepressor)
          */
         export interface RightLowerLipDepressor extends globalThis.EnumItem {
@@ -14769,6 +14921,8 @@ declare namespace Enum {
         }
         export const RightLowerLipDepressor: RightLowerLipDepressor;
         /**
+         * Raises the right mouth corner into a smile.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightLipCornerPuller)
          */
         export interface RightLipCornerPuller extends globalThis.EnumItem {
@@ -14778,6 +14932,8 @@ declare namespace Enum {
         }
         export const RightLipCornerPuller: RightLipCornerPuller;
         /**
+         * Stretches the right mouth corner outward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightLipStretcher)
          */
         export interface RightLipStretcher extends globalThis.EnumItem {
@@ -14787,6 +14943,8 @@ declare namespace Enum {
         }
         export const RightLipStretcher: RightLipStretcher;
         /**
+         * Raises the right side of the upper lip to reveal the upper teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightUpperLipRaiser)
          */
         export interface RightUpperLipRaiser extends globalThis.EnumItem {
@@ -14796,6 +14954,8 @@ declare namespace Enum {
         }
         export const RightUpperLipRaiser: RightUpperLipRaiser;
         /**
+         * Lowers the jaw to open the mouth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#JawDrop)
          */
         export interface JawDrop extends globalThis.EnumItem {
@@ -14805,6 +14965,8 @@ declare namespace Enum {
         }
         export const JawDrop: JawDrop;
         /**
+         * Moves the mouth and jaw toward the character's left.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#JawLeft)
          */
         export interface JawLeft extends globalThis.EnumItem {
@@ -14814,6 +14976,8 @@ declare namespace Enum {
         }
         export const JawLeft: JawLeft;
         /**
+         * Moves the mouth and jaw toward the character's right.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#JawRight)
          */
         export interface JawRight extends globalThis.EnumItem {
@@ -14823,6 +14987,8 @@ declare namespace Enum {
         }
         export const JawRight: JawRight;
         /**
+         * Moves the left and right eyebrows inward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#Corrugator)
          */
         export interface Corrugator extends globalThis.EnumItem {
@@ -14832,6 +14998,8 @@ declare namespace Enum {
         }
         export const Corrugator: Corrugator;
         /**
+         * Lowers the left eyebrow.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftBrowLowerer)
          */
         export interface LeftBrowLowerer extends globalThis.EnumItem {
@@ -14841,6 +15009,8 @@ declare namespace Enum {
         }
         export const LeftBrowLowerer: LeftBrowLowerer;
         /**
+         * Raises the outer part of the left eyebrow.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftOuterBrowRaiser)
          */
         export interface LeftOuterBrowRaiser extends globalThis.EnumItem {
@@ -14850,6 +15020,8 @@ declare namespace Enum {
         }
         export const LeftOuterBrowRaiser: LeftOuterBrowRaiser;
         /**
+         * Raises the left nostril and wrinkles the left side of the nose.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftNoseWrinkler)
          */
         export interface LeftNoseWrinkler extends globalThis.EnumItem {
@@ -14859,6 +15031,8 @@ declare namespace Enum {
         }
         export const LeftNoseWrinkler: LeftNoseWrinkler;
         /**
+         * Raises the inner half of the left eyebrow.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftInnerBrowRaiser)
          */
         export interface LeftInnerBrowRaiser extends globalThis.EnumItem {
@@ -14868,6 +15042,8 @@ declare namespace Enum {
         }
         export const LeftInnerBrowRaiser: LeftInnerBrowRaiser;
         /**
+         * Lowers the right eyebrow.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightBrowLowerer)
          */
         export interface RightBrowLowerer extends globalThis.EnumItem {
@@ -14877,6 +15053,8 @@ declare namespace Enum {
         }
         export const RightBrowLowerer: RightBrowLowerer;
         /**
+         * Raises the outer part of the right eyebrow.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightOuterBrowRaiser)
          */
         export interface RightOuterBrowRaiser extends globalThis.EnumItem {
@@ -14886,6 +15064,8 @@ declare namespace Enum {
         }
         export const RightOuterBrowRaiser: RightOuterBrowRaiser;
         /**
+         * Raises the inner half of the right eyebrow.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightInnerBrowRaiser)
          */
         export interface RightInnerBrowRaiser extends globalThis.EnumItem {
@@ -14895,6 +15075,8 @@ declare namespace Enum {
         }
         export const RightInnerBrowRaiser: RightInnerBrowRaiser;
         /**
+         * Raises the right nostril and wrinkles the right side of the nose.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightNoseWrinkler)
          */
         export interface RightNoseWrinkler extends globalThis.EnumItem {
@@ -14904,6 +15086,8 @@ declare namespace Enum {
         }
         export const RightNoseWrinkler: RightNoseWrinkler;
         /**
+         * Moves the gaze downward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#EyesLookDown)
          */
         export interface EyesLookDown extends globalThis.EnumItem {
@@ -14913,6 +15097,8 @@ declare namespace Enum {
         }
         export const EyesLookDown: EyesLookDown;
         /**
+         * Moves the gaze to the left.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#EyesLookLeft)
          */
         export interface EyesLookLeft extends globalThis.EnumItem {
@@ -14922,6 +15108,8 @@ declare namespace Enum {
         }
         export const EyesLookLeft: EyesLookLeft;
         /**
+         * Moves the gaze upward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#EyesLookUp)
          */
         export interface EyesLookUp extends globalThis.EnumItem {
@@ -14931,6 +15119,8 @@ declare namespace Enum {
         }
         export const EyesLookUp: EyesLookUp;
         /**
+         * Moves the gaze to the right.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#EyesLookRight)
          */
         export interface EyesLookRight extends globalThis.EnumItem {
@@ -14940,6 +15130,8 @@ declare namespace Enum {
         }
         export const EyesLookRight: EyesLookRight;
         /**
+         * Raises the left cheek and squints the left eye.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftCheekRaiser)
          */
         export interface LeftCheekRaiser extends globalThis.EnumItem {
@@ -14949,6 +15141,8 @@ declare namespace Enum {
         }
         export const LeftCheekRaiser: LeftCheekRaiser;
         /**
+         * Raises the left upper eyelid to reveal more of the eye above the iris.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftEyeUpperLidRaiser)
          */
         export interface LeftEyeUpperLidRaiser extends globalThis.EnumItem {
@@ -14958,6 +15152,8 @@ declare namespace Enum {
         }
         export const LeftEyeUpperLidRaiser: LeftEyeUpperLidRaiser;
         /**
+         * Closes the left eyelid.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftEyeClosed)
          */
         export interface LeftEyeClosed extends globalThis.EnumItem {
@@ -14967,6 +15163,8 @@ declare namespace Enum {
         }
         export const LeftEyeClosed: LeftEyeClosed;
         /**
+         * Raises the right cheek and squints the right eye.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightCheekRaiser)
          */
         export interface RightCheekRaiser extends globalThis.EnumItem {
@@ -14976,6 +15174,8 @@ declare namespace Enum {
         }
         export const RightCheekRaiser: RightCheekRaiser;
         /**
+         * Raises the right upper eyelid to reveal more of the eye above the iris.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightEyeUpperLidRaiser)
          */
         export interface RightEyeUpperLidRaiser extends globalThis.EnumItem {
@@ -14985,6 +15185,8 @@ declare namespace Enum {
         }
         export const RightEyeUpperLidRaiser: RightEyeUpperLidRaiser;
         /**
+         * Closes the right eyelid.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightEyeClosed)
          */
         export interface RightEyeClosed extends globalThis.EnumItem {
@@ -14994,6 +15196,8 @@ declare namespace Enum {
         }
         export const RightEyeClosed: RightEyeClosed;
         /**
+         * Bends the tongue downward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#TongueDown)
          */
         export interface TongueDown extends globalThis.EnumItem {
@@ -15003,6 +15207,8 @@ declare namespace Enum {
         }
         export const TongueDown: TongueDown;
         /**
+         * Extends the tip of the tongue out of the mouth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#TongueOut)
          */
         export interface TongueOut extends globalThis.EnumItem {
@@ -15012,6 +15218,8 @@ declare namespace Enum {
         }
         export const TongueOut: TongueOut;
         /**
+         * Bends the tongue upward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#TongueUp)
          */
         export interface TongueUp extends globalThis.EnumItem {
@@ -16984,6 +17192,8 @@ declare namespace Enum {
     /**
      * **Deprecated:** This enum is deprecated as it is used by deprecated properties that are no longer functional. It should not be used.
      *
+     * Controls which gear genres are permitted in a place.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearGenreSetting)
      */
     export namespace GearGenreSetting {
@@ -17020,6 +17230,8 @@ declare namespace Enum {
     export type GearGenreSetting = GearGenreSetting.AllGenres | GearGenreSetting.MatchingGenreOnly;
     /**
      * **Deprecated:** This enum is deprecated because it's used by deprecated properties. Don't use it.
+     *
+     * Categorizes gear items by type for use with deprecated gear-allowlist properties.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearType)
      */
@@ -17524,10 +17736,14 @@ declare namespace Enum {
     }
     export type GraphicsMode = GraphicsMode.Automatic | GraphicsMode.Direct3D11 | GraphicsMode.OpenGL | GraphicsMode.Metal | GraphicsMode.Vulkan | GraphicsMode.NoGraphics;
     /**
+     * Specifies the player's preferred trade-off between rendering quality and frame rate when using manual graphics quality.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GraphicsOptimizationMode)
      */
     export namespace GraphicsOptimizationMode {
         /**
+         * Prefers frame rate over visual fidelity, corresponding to manual render quality levels 1–3.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GraphicsOptimizationMode#Performance)
          */
         export interface Performance extends globalThis.EnumItem {
@@ -17537,6 +17753,8 @@ declare namespace Enum {
         }
         export const Performance: Performance;
         /**
+         * Middle-ground preference, corresponding to manual render quality levels 4–7. This is the default of `UserGameSettings.GraphicsOptimizationMode`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GraphicsOptimizationMode#Balanced)
          */
         export interface Balanced extends globalThis.EnumItem {
@@ -17546,6 +17764,8 @@ declare namespace Enum {
         }
         export const Balanced: Balanced;
         /**
+         * Prefers visual fidelity over frame rate, corresponding to manual render quality levels 8–10.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GraphicsOptimizationMode#Quality)
          */
         export interface Quality extends globalThis.EnumItem {
@@ -17977,6 +18197,8 @@ declare namespace Enum {
     }
     export type HorizontalAlignment = HorizontalAlignment.Center | HorizontalAlignment.Left | HorizontalAlignment.Right;
     /**
+     * Specifies the animation speed of the hover highlight in Roblox Studio.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HoverAnimateSpeed)
      */
     export namespace HoverAnimateSpeed {
@@ -19741,10 +19963,14 @@ declare namespace Enum {
     }
     export type InternalVideoUsage = InternalVideoUsage.Default | InternalVideoUsage.WatchPage | InternalVideoUsage.HomeCarousel | InternalVideoUsage.FeatureTileAd;
     /**
+     * Controls whether the engine reduces the physics interpolation update rate for distant assemblies when the client is under load. Used by the deprecated `Workspace.InterpolationThrottling` property.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InterpolationThrottlingMode)
      */
     export namespace InterpolationThrottlingMode {
         /**
+         * The engine automatically throttles physics interpolation for distant assemblies when client frame time is high.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InterpolationThrottlingMode#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -19754,6 +19980,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Physics interpolation throttling is unconditionally disabled; all assemblies interpolate at the full rate regardless of client load.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InterpolationThrottlingMode#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -19763,6 +19991,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * Physics interpolation throttling is unconditionally enabled; distant assemblies have their interpolation update rate reduced even when the client is not under load.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InterpolationThrottlingMode#Enabled)
          */
         export interface Enabled extends globalThis.EnumItem {
@@ -24170,10 +24400,14 @@ declare namespace Enum {
     }
     export type LoadCharacterLayeredClothing = LoadCharacterLayeredClothing.Default | LoadCharacterLayeredClothing.Disabled | LoadCharacterLayeredClothing.Enabled;
     /**
+     * Specifies whether player characters load dynamic heads.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LoadDynamicHeads)
      */
     export namespace LoadDynamicHeads {
         /**
+         * Uses Roblox's default dynamic-head loading behavior.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LoadDynamicHeads#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -24183,6 +24417,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Disables loading dynamic heads.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LoadDynamicHeads#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -24192,6 +24428,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * Enables loading dynamic heads.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LoadDynamicHeads#Enabled)
          */
         export interface Enabled extends globalThis.EnumItem {
@@ -26944,13 +27182,13 @@ declare namespace Enum {
     }
     export type OutfitType = OutfitType.All | OutfitType.Avatar | OutfitType.DynamicHead | OutfitType.Shoes | OutfitType.Makeup;
     /**
-     * Sets the layout mode of the output.
+     * Specifies the orientation of the Output panel in Roblox Studio.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutputLayoutMode)
      */
     export namespace OutputLayoutMode {
         /**
-         * The output layout is horizontal (x-axis).
+         * Docks the Output panel horizontally along the top or bottom edge of the Studio window.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutputLayoutMode#Horizontal)
          */
@@ -26961,7 +27199,7 @@ declare namespace Enum {
         }
         export const Horizontal: Horizontal;
         /**
-         * The output layout is vertical (y-axis).
+         * Docks the Output panel vertically along the left or right edge of the Studio window.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutputLayoutMode#Vertical)
          */
@@ -27254,10 +27492,14 @@ declare namespace Enum {
     }
     export type PartType = PartType.Ball | PartType.Block | PartType.Cylinder | PartType.Wedge | PartType.CornerWedge;
     /**
+     * Specifies the geometric shape from which a particle emitter emits particles.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShape)
      */
     export namespace ParticleEmitterShape {
         /**
+         * Emits particles from a box-shaped region.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShape#Box)
          */
         export interface Box extends globalThis.EnumItem {
@@ -27267,6 +27509,8 @@ declare namespace Enum {
         }
         export const Box: Box;
         /**
+         * Emits particles from a sphere-shaped region.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShape#Sphere)
          */
         export interface Sphere extends globalThis.EnumItem {
@@ -27276,6 +27520,8 @@ declare namespace Enum {
         }
         export const Sphere: Sphere;
         /**
+         * Emits particles from a cylinder-shaped region.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShape#Cylinder)
          */
         export interface Cylinder extends globalThis.EnumItem {
@@ -27285,6 +27531,8 @@ declare namespace Enum {
         }
         export const Cylinder: Cylinder;
         /**
+         * Emits particles from a disc-shaped region.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShape#Disc)
          */
         export interface Disc extends globalThis.EnumItem {
@@ -27299,10 +27547,14 @@ declare namespace Enum {
     }
     export type ParticleEmitterShape = ParticleEmitterShape.Box | ParticleEmitterShape.Sphere | ParticleEmitterShape.Cylinder | ParticleEmitterShape.Disc;
     /**
+     * Controls the direction particles travel when emitted from a shaped `ParticleEmitter`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeInOut)
      */
     export namespace ParticleEmitterShapeInOut {
         /**
+         * Particles emit directed outward away from the emitter shape surface.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeInOut#Outward)
          */
         export interface Outward extends globalThis.EnumItem {
@@ -27312,6 +27564,8 @@ declare namespace Enum {
         }
         export const Outward: Outward;
         /**
+         * Particles emit directed inward toward the center of the emitter shape.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeInOut#Inward)
          */
         export interface Inward extends globalThis.EnumItem {
@@ -27321,6 +27575,8 @@ declare namespace Enum {
         }
         export const Inward: Inward;
         /**
+         * Particles emit in both outward and inward directions from the emitter shape surface, chosen randomly per particle.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeInOut#InAndOut)
          */
         export interface InAndOut extends globalThis.EnumItem {
@@ -27335,10 +27591,14 @@ declare namespace Enum {
     }
     export type ParticleEmitterShapeInOut = ParticleEmitterShapeInOut.Outward | ParticleEmitterShapeInOut.Inward | ParticleEmitterShapeInOut.InAndOut;
     /**
+     * Controls whether a `ParticleEmitter` emits particles from the surface or the volume of its shape.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeStyle)
      */
     export namespace ParticleEmitterShapeStyle {
         /**
+         * Particles emit from throughout the interior volume of the emitter shape.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeStyle#Volume)
          */
         export interface Volume extends globalThis.EnumItem {
@@ -27348,6 +27608,8 @@ declare namespace Enum {
         }
         export const Volume: Volume;
         /**
+         * Particles emit only from the outer surface of the emitter shape.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeStyle#Surface)
          */
         export interface Surface extends globalThis.EnumItem {
@@ -27483,10 +27745,14 @@ declare namespace Enum {
     }
     export type ParticleFlipbookMode = ParticleFlipbookMode.Loop | ParticleFlipbookMode.OneShot | ParticleFlipbookMode.PingPong | ParticleFlipbookMode.Random;
     /**
+     * Indicates whether a `ParticleEmitter`'s flipbook texture dimensions are compatible with the selected flipbook layout.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookTextureCompatible)
      */
     export namespace ParticleFlipbookTextureCompatible {
         /**
+         * The `ParticleEmitter`'s flipbook texture dimensions are incompatible with the active flipbook layout (the texture must be 1024×1024); flipbook playback is suppressed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookTextureCompatible#NotCompatible)
          */
         export interface NotCompatible extends globalThis.EnumItem {
@@ -27496,6 +27762,8 @@ declare namespace Enum {
         }
         export const NotCompatible: NotCompatible;
         /**
+         * The `ParticleEmitter`'s flipbook texture dimensions are confirmed compatible with the active flipbook layout; flipbook playback proceeds normally.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookTextureCompatible#Compatible)
          */
         export interface Compatible extends globalThis.EnumItem {
@@ -27505,6 +27773,8 @@ declare namespace Enum {
         }
         export const Compatible: Compatible;
         /**
+         * Compatibility has not yet been determined; this is the initial state before the engine resolves the flipbook texture dimensions.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookTextureCompatible#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -27519,10 +27789,14 @@ declare namespace Enum {
     }
     export type ParticleFlipbookTextureCompatible = ParticleFlipbookTextureCompatible.NotCompatible | ParticleFlipbookTextureCompatible.Compatible | ParticleFlipbookTextureCompatible.Unknown;
     /**
+     * Specifies how a particle's rendered geometry is oriented.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleOrientation)
      */
     export namespace ParticleOrientation {
         /**
+         * Orients particles as billboards that face the camera.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleOrientation#FacingCamera)
          */
         export interface FacingCamera extends globalThis.EnumItem {
@@ -27532,6 +27806,8 @@ declare namespace Enum {
         }
         export const FacingCamera: FacingCamera;
         /**
+         * Orients particles toward the camera while keeping them upright on the world Y axis.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleOrientation#FacingCameraWorldUp)
          */
         export interface FacingCameraWorldUp extends globalThis.EnumItem {
@@ -27541,6 +27817,8 @@ declare namespace Enum {
         }
         export const FacingCameraWorldUp: FacingCameraWorldUp;
         /**
+         * Orients particles parallel to their direction of movement.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleOrientation#VelocityParallel)
          */
         export interface VelocityParallel extends globalThis.EnumItem {
@@ -27550,6 +27828,8 @@ declare namespace Enum {
         }
         export const VelocityParallel: VelocityParallel;
         /**
+         * Orients particles perpendicular to their direction of movement.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleOrientation#VelocityPerpendicular)
          */
         export interface VelocityPerpendicular extends globalThis.EnumItem {
@@ -27944,6 +28224,8 @@ declare namespace Enum {
     }
     export type PhysicsSimulationRate = PhysicsSimulationRate.Fixed240Hz | PhysicsSimulationRate.Fixed120Hz | PhysicsSimulationRate.Fixed60Hz;
     /**
+     * Controls how the physics engine advances simulation time for assemblies in a `Workspace`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PhysicsSteppingMethod)
      */
     export namespace PhysicsSteppingMethod {
@@ -29970,11 +30252,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
         }
         export const UnknownFailure: UnknownFailure;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#UGCValidationFailed)
+         */
+        export interface UGCValidationFailed extends globalThis.EnumItem {
+            Name: "UGCValidationFailed";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const UGCValidationFailed: UGCValidationFailed;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PromptCreateOutfitResult>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PromptCreateOutfitResult | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PromptCreateOutfitResult | undefined;
     }
-    export type PromptCreateOutfitResult = PromptCreateOutfitResult.Success | PromptCreateOutfitResult.PartialSuccess | PromptCreateOutfitResult.CreationFailure | PromptCreateOutfitResult.PermissionDenied | PromptCreateOutfitResult.Timeout | PromptCreateOutfitResult.NoUserInput | PromptCreateOutfitResult.UnknownFailure;
+    export type PromptCreateOutfitResult = PromptCreateOutfitResult.Success | PromptCreateOutfitResult.PartialSuccess | PromptCreateOutfitResult.CreationFailure | PromptCreateOutfitResult.PermissionDenied | PromptCreateOutfitResult.Timeout | PromptCreateOutfitResult.NoUserInput | PromptCreateOutfitResult.UnknownFailure | PromptCreateOutfitResult.UGCValidationFailed;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreatePlatformContentResult)
      */
@@ -30221,10 +30512,14 @@ declare namespace Enum {
     }
     export type PromptPublishAssetResult = PromptPublishAssetResult.Success | PromptPublishAssetResult.PermissionDenied | PromptPublishAssetResult.Timeout | PromptPublishAssetResult.UploadFailed | PromptPublishAssetResult.NoUserInput | PromptPublishAssetResult.UnknownFailure;
     /**
+     * Indicates the validation state of a property as displayed in Roblox Studio's Properties panel.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PropertyStatus)
      */
     export namespace PropertyStatus {
         /**
+         * The property value is valid; no status indicator is shown in Studio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PropertyStatus#Ok)
          */
         export interface Ok extends globalThis.EnumItem {
@@ -30234,6 +30529,8 @@ declare namespace Enum {
         }
         export const Ok: Ok;
         /**
+         * The property value has a recoverable issue; Studio displays a warning indicator on the instance.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PropertyStatus#Warning)
          */
         export interface Warning extends globalThis.EnumItem {
@@ -30243,6 +30540,8 @@ declare namespace Enum {
         }
         export const Warning: Warning;
         /**
+         * The property value is invalid and cannot be resolved; Studio displays an error indicator on the instance.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PropertyStatus#Error)
          */
         export interface Error extends globalThis.EnumItem {
@@ -30664,6 +30963,33 @@ declare namespace Enum {
     }
     export type QualityLevel = QualityLevel.Automatic | QualityLevel.Level01 | QualityLevel.Level02 | QualityLevel.Level03 | QualityLevel.Level04 | QualityLevel.Level05 | QualityLevel.Level06 | QualityLevel.Level07 | QualityLevel.Level08 | QualityLevel.Level09 | QualityLevel.Level10 | QualityLevel.Level11 | QualityLevel.Level12 | QualityLevel.Level13 | QualityLevel.Level14 | QualityLevel.Level15 | QualityLevel.Level16 | QualityLevel.Level17 | QualityLevel.Level18 | QualityLevel.Level19 | QualityLevel.Level20 | QualityLevel.Level21;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/QueueDecision)
+     */
+    export namespace QueueDecision {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/QueueDecision#Commit)
+         */
+        export interface Commit extends globalThis.EnumItem {
+            Name: "Commit";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.QueueDecision;
+        }
+        export const Commit: Commit;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/QueueDecision#Defer)
+         */
+        export interface Defer extends globalThis.EnumItem {
+            Name: "Defer";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.QueueDecision;
+        }
+        export const Defer: Defer;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.QueueDecision>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.QueueDecision | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.QueueDecision | undefined;
+    }
+    export type QueueDecision = QueueDecision.Commit | QueueDecision.Defer;
+    /**
      * Collision behavior type for a R15 character.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/R15CollisionType)
@@ -30848,6 +31174,8 @@ declare namespace Enum {
     }
     export type ReceiptType = ReceiptType.DeveloperProduct | ReceiptType.RobuxTransferSender | ReceiptType.RobuxTransferReceiver;
     /**
+     * Describes the type of action a user took on a recommended item, used when logging action events via `RecommendationService:LogActionEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationActionType)
      */
     export namespace RecommendationActionType {
@@ -30970,6 +31298,8 @@ declare namespace Enum {
     }
     export type RecommendationDepartureIntent = RecommendationDepartureIntent.Neutral | RecommendationDepartureIntent.Positive | RecommendationDepartureIntent.Negative;
     /**
+     * Specifies the outcome of rendering a recommended item, passed to `RecommendationService:LogImpressionEvent()` to indicate whether the item was shown to the user.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationImpressionType)
      */
     export namespace RecommendationImpressionType {
@@ -31001,6 +31331,8 @@ declare namespace Enum {
     }
     export type RecommendationImpressionType = RecommendationImpressionType.View | RecommendationImpressionType.NotViewable;
     /**
+     * Describes the content type of an item registered with `RecommendationService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationItemContentType)
      */
     export namespace RecommendationItemContentType {
@@ -31043,10 +31375,14 @@ declare namespace Enum {
     }
     export type RecommendationItemContentType = RecommendationItemContentType.Static | RecommendationItemContentType.Dynamic | RecommendationItemContentType.Interactive;
     /**
+     * Controls whether a registered recommendation item is publicly discoverable or restricted to private access.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationItemVisibility)
      */
     export namespace RecommendationItemVisibility {
         /**
+         * The recommendation item is not surfaced to other players by the recommendation system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationItemVisibility#Private)
          */
         export interface Private extends globalThis.EnumItem {
@@ -31056,6 +31392,8 @@ declare namespace Enum {
         }
         export const Private: Private;
         /**
+         * The recommendation item is discoverable and may be surfaced to other players by the recommendation system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationItemVisibility#Public)
          */
         export interface Public extends globalThis.EnumItem {
@@ -31070,6 +31408,8 @@ declare namespace Enum {
     }
     export type RecommendationItemVisibility = RecommendationItemVisibility.Private | RecommendationItemVisibility.Public;
     /**
+     * Identifies the kind of entity that a preference signal targets when logged via `LogPreferenceEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationPreferenceTargetType)
      */
     export namespace RecommendationPreferenceTargetType {
@@ -31112,6 +31452,8 @@ declare namespace Enum {
     }
     export type RecommendationPreferenceTargetType = RecommendationPreferenceTargetType.User | RecommendationPreferenceTargetType.Universe | RecommendationPreferenceTargetType.CustomTag;
     /**
+     * Identifies the type of preference action (follow, unfollow, mute, or unmute) passed to `LogPreferenceEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationPreferenceType)
      */
     export namespace RecommendationPreferenceType {
@@ -31259,7 +31601,7 @@ declare namespace Enum {
      */
     export namespace RenderPriority {
         /**
-         * This should run first.
+         * The lowest reserved priority level; callbacks run before all other standard priorities.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RenderPriority#First)
          */
@@ -31270,7 +31612,7 @@ declare namespace Enum {
         }
         export const First: First;
         /**
-         * This should run as second.
+         * Runs after `First`; intended for input-processing callbacks.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RenderPriority#Input)
          */
@@ -31281,7 +31623,7 @@ declare namespace Enum {
         }
         export const Input: Input;
         /**
-         * This should run after Input.
+         * Runs after `Input`; intended for camera-update callbacks.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RenderPriority#Camera)
          */
@@ -31292,7 +31634,7 @@ declare namespace Enum {
         }
         export const Camera: Camera;
         /**
-         * This should run after Camera.
+         * Runs after `Camera`; intended for character-response callbacks.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RenderPriority#Character)
          */
@@ -31303,7 +31645,7 @@ declare namespace Enum {
         }
         export const Character: Character;
         /**
-         * This should run as last, after Character.
+         * The highest reserved priority level; callbacks run after all other standard priorities.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RenderPriority#Last)
          */
@@ -31467,10 +31809,14 @@ declare namespace Enum {
     }
     export type ResamplerMode = ResamplerMode.Default | ResamplerMode.Pixelated;
     /**
+     * Identifies the built-in reserved role assigned to a `Highlight` via its `ReservedId` property.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReservedHighlightId)
      */
     export namespace ReservedHighlightId {
         /**
+         * Marks a `Highlight` as a standard, non-reserved instance not tied to any built-in system state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReservedHighlightId#Standard)
          */
         export interface Standard extends globalThis.EnumItem {
@@ -31480,6 +31826,8 @@ declare namespace Enum {
         }
         export const Standard: Standard;
         /**
+         * Marks a `Highlight` as the last-selected object in Studio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReservedHighlightId#Active)
          */
         export interface Active extends globalThis.EnumItem {
@@ -31489,6 +31837,8 @@ declare namespace Enum {
         }
         export const Active: Active;
         /**
+         * Marks a `Highlight` as the hover-state indicator, applied to an object currently under the mouse cursor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReservedHighlightId#Hover)
          */
         export interface Hover extends globalThis.EnumItem {
@@ -31498,6 +31848,8 @@ declare namespace Enum {
         }
         export const Hover: Hover;
         /**
+         * Marks a `Highlight` as the selection-state indicator, applied to a selected object in Studio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReservedHighlightId#Selection)
          */
         export interface Selection extends globalThis.EnumItem {
@@ -31507,6 +31859,8 @@ declare namespace Enum {
         }
         export const Selection: Selection;
         /**
+         * Marks a `Highlight` used for CSG negated-part visualization in Roblox Studio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReservedHighlightId#NegatedPart)
          */
         export interface NegatedPart extends globalThis.EnumItem {
@@ -32724,10 +33078,14 @@ declare namespace Enum {
     }
     export type RotationOrder = RotationOrder.XYZ | RotationOrder.XZY | RotationOrder.YZX | RotationOrder.YXZ | RotationOrder.ZXY | RotationOrder.ZYX;
     /**
+     * Controls how a player character's body rotation is determined — relative to the camera direction or relative to the movement direction.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RotationType)
      */
     export namespace RotationType {
         /**
+         * The character's body rotation follows the direction of movement.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RotationType#MovementRelative)
          */
         export interface MovementRelative extends globalThis.EnumItem {
@@ -32737,6 +33095,8 @@ declare namespace Enum {
         }
         export const MovementRelative: MovementRelative;
         /**
+         * The character's body rotation continuously follows the camera's look direction.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RotationType#CameraRelative)
          */
         export interface CameraRelative extends globalThis.EnumItem {
@@ -32894,10 +33254,14 @@ declare namespace Enum {
     }
     export type RunContext = RunContext.Legacy | RunContext.Server | RunContext.Client | RunContext.Plugin;
     /**
+     * Specifies the current run state of Roblox Studio's simulation.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RunState)
      */
     export namespace RunState {
         /**
+         * The simulation is stopped.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RunState#Stopped)
          */
         export interface Stopped extends globalThis.EnumItem {
@@ -32907,6 +33271,8 @@ declare namespace Enum {
         }
         export const Stopped: Stopped;
         /**
+         * The simulation is running.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RunState#Running)
          */
         export interface Running extends globalThis.EnumItem {
@@ -32916,6 +33282,8 @@ declare namespace Enum {
         }
         export const Running: Running;
         /**
+         * The simulation is paused.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RunState#Paused)
          */
         export interface Paused extends globalThis.EnumItem {
@@ -35034,14 +35402,10 @@ declare namespace Enum {
     }
     export type SignalBehavior = SignalBehavior.Default | SignalBehavior.Immediate | SignalBehavior.Deferred | SignalBehavior.AncestryDeferred;
     /**
-     * Determines whether an `AudioEmitter` or `AudioListener` enables or overrides acoustic simulation effects.
-     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SimulationMode)
      */
     export namespace SimulationMode {
         /**
-         * Inherits the simulation setting from `SoundService`.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SimulationMode#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -35051,8 +35415,6 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * Enables acoustic simulation for this emitter or listener regardless of the service default.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SimulationMode#Enabled)
          */
         export interface Enabled extends globalThis.EnumItem {
@@ -35062,8 +35424,6 @@ declare namespace Enum {
         }
         export const Enabled: Enabled;
         /**
-         * Disables acoustic simulation for this emitter or listener regardless of the service default.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SimulationMode#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -36171,10 +36531,14 @@ declare namespace Enum {
     }
     export type StudioCaptureBufferStatus = StudioCaptureBufferStatus.NotStarted | StudioCaptureBufferStatus.Pending | StudioCaptureBufferStatus.Ready | StudioCaptureBufferStatus.Error;
     /**
+     * Specifies the pixel format of the image buffer stored in a `StudioScreenshotCapture` object.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioCaptureScreenshotFormat)
      */
     export namespace StudioCaptureScreenshotFormat {
         /**
+         * The buffer contains raw, uncompressed RGBA pixel data with 8 bits per channel (4 bytes per pixel).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioCaptureScreenshotFormat#RGBA8)
          */
         export interface RGBA8 extends globalThis.EnumItem {
@@ -36184,6 +36548,8 @@ declare namespace Enum {
         }
         export const RGBA8: RGBA8;
         /**
+         * The buffer contains a complete PNG-encoded image.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioCaptureScreenshotFormat#PNG)
          */
         export interface PNG extends globalThis.EnumItem {
@@ -36297,10 +36663,14 @@ declare namespace Enum {
     }
     export type StudioDataModelType = StudioDataModelType.Edit | StudioDataModelType.PlayClient | StudioDataModelType.PlayServer | StudioDataModelType.Standalone | StudioDataModelType.None;
     /**
+     * Describes why a place publish or update operation failed in Roblox Studio.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioPlaceUpdateFailureReason)
      */
     export namespace StudioPlaceUpdateFailureReason {
         /**
+         * The place publish or update failed for an unspecified or generic reason.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioPlaceUpdateFailureReason#Other)
          */
         export interface Other extends globalThis.EnumItem {
@@ -36310,6 +36680,8 @@ declare namespace Enum {
         }
         export const Other: Other;
         /**
+         * The place publish failed because a Team Create server currently holds a lock on the place.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioPlaceUpdateFailureReason#TeamCreateConflict)
          */
         export interface TeamCreateConflict extends globalThis.EnumItem {
@@ -36870,10 +37242,14 @@ declare namespace Enum {
     }
     export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin | StudioScriptEditorColorCategories.Method | StudioScriptEditorColorCategories.Property | StudioScriptEditorColorCategories.Nil | StudioScriptEditorColorCategories.Bool | StudioScriptEditorColorCategories.Function | StudioScriptEditorColorCategories.Local | StudioScriptEditorColorCategories.Self | StudioScriptEditorColorCategories.LuauKeyword | StudioScriptEditorColorCategories.FunctionName | StudioScriptEditorColorCategories.TODO | StudioScriptEditorColorCategories.Background | StudioScriptEditorColorCategories.SelectionText | StudioScriptEditorColorCategories.SelectionBackground | StudioScriptEditorColorCategories.FindSelectionBackground | StudioScriptEditorColorCategories.MatchingWordBackground | StudioScriptEditorColorCategories.Warning | StudioScriptEditorColorCategories.Error | StudioScriptEditorColorCategories.Info | StudioScriptEditorColorCategories.Hint | StudioScriptEditorColorCategories.Whitespace | StudioScriptEditorColorCategories.ActiveLine | StudioScriptEditorColorCategories.DebuggerCurrentLine | StudioScriptEditorColorCategories.DebuggerErrorLine | StudioScriptEditorColorCategories.Ruler | StudioScriptEditorColorCategories.Bracket | StudioScriptEditorColorCategories.Type | StudioScriptEditorColorCategories.MenuPrimaryText | StudioScriptEditorColorCategories.MenuSecondaryText | StudioScriptEditorColorCategories.MenuSelectedText | StudioScriptEditorColorCategories.MenuBackground | StudioScriptEditorColorCategories.MenuSelectedBackground | StudioScriptEditorColorCategories.MenuScrollbarBackground | StudioScriptEditorColorCategories.MenuScrollbarHandle | StudioScriptEditorColorCategories.MenuBorder | StudioScriptEditorColorCategories.DocViewCodeBackground | StudioScriptEditorColorCategories.AICOOverlayText | StudioScriptEditorColorCategories.AICOOverlayButtonBackground | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundHover | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundPressed | StudioScriptEditorColorCategories.IndentationRuler | StudioScriptEditorColorCategories.ReviewableChangeAddedText | StudioScriptEditorColorCategories.ReviewableChangeRemovedText;
     /**
+     * Specifies a script editor syntax-color preset in Roblox Studio.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorPresets)
      */
     export namespace StudioScriptEditorColorPresets {
         /**
+         * Uses Roblox Studio's default script editor colors.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorPresets#RobloxDefault)
          */
         export interface RobloxDefault extends globalThis.EnumItem {
@@ -36883,6 +37259,8 @@ declare namespace Enum {
         }
         export const RobloxDefault: RobloxDefault;
         /**
+         * Uses the first alternate script editor color preset.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorPresets#Extra1)
          */
         export interface Extra1 extends globalThis.EnumItem {
@@ -36892,6 +37270,8 @@ declare namespace Enum {
         }
         export const Extra1: Extra1;
         /**
+         * Uses the second alternate script editor color preset.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorPresets#Extra2)
          */
         export interface Extra2 extends globalThis.EnumItem {
@@ -36901,6 +37281,8 @@ declare namespace Enum {
         }
         export const Extra2: Extra2;
         /**
+         * Uses the creator's custom script editor colors.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorPresets#Custom)
          */
         export interface Custom extends globalThis.EnumItem {
@@ -36915,6 +37297,8 @@ declare namespace Enum {
     }
     export type StudioScriptEditorColorPresets = StudioScriptEditorColorPresets.RobloxDefault | StudioScriptEditorColorPresets.Extra1 | StudioScriptEditorColorPresets.Extra2 | StudioScriptEditorColorPresets.Custom;
     /**
+     * An enum that lists color roles used by Studio themes, passed to `StudioTheme:GetColor()` to retrieve the correct theme color for a given UI element in a plugin.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor)
      */
     export namespace StudioStyleGuideColor {
@@ -36963,6 +37347,8 @@ declare namespace Enum {
         }
         export const Tooltip: Tooltip;
         /**
+         * The background color of message box and dialog notification panels.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Notification)
          */
         export interface Notification extends globalThis.EnumItem {
@@ -37016,6 +37402,8 @@ declare namespace Enum {
         }
         export const Tab: Tab;
         /**
+         * The default background color of filter buttons in the Script Analysis widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#FilterButtonDefault)
          */
         export interface FilterButtonDefault extends globalThis.EnumItem {
@@ -37025,6 +37413,8 @@ declare namespace Enum {
         }
         export const FilterButtonDefault: FilterButtonDefault;
         /**
+         * The background color of filter buttons in the Script Analysis widget when hovered.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#FilterButtonHover)
          */
         export interface FilterButtonHover extends globalThis.EnumItem {
@@ -37034,6 +37424,8 @@ declare namespace Enum {
         }
         export const FilterButtonHover: FilterButtonHover;
         /**
+         * The background color of filter buttons in the Script Analysis widget when they are in a checked (active) state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#FilterButtonChecked)
          */
         export interface FilterButtonChecked extends globalThis.EnumItem {
@@ -37043,6 +37435,8 @@ declare namespace Enum {
         }
         export const FilterButtonChecked: FilterButtonChecked;
         /**
+         * The accent color drawn on the top and left edges of filter buttons in the Script Analysis widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#FilterButtonAccent)
          */
         export interface FilterButtonAccent extends globalThis.EnumItem {
@@ -37052,6 +37446,8 @@ declare namespace Enum {
         }
         export const FilterButtonAccent: FilterButtonAccent;
         /**
+         * The border color of filter buttons in the Script Analysis widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#FilterButtonBorder)
          */
         export interface FilterButtonBorder extends globalThis.EnumItem {
@@ -37061,6 +37457,8 @@ declare namespace Enum {
         }
         export const FilterButtonBorder: FilterButtonBorder;
         /**
+         * The border color of filter buttons in the Script Analysis widget when they are hovered or checked.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#FilterButtonBorderAlt)
          */
         export interface FilterButtonBorderAlt extends globalThis.EnumItem {
@@ -37147,6 +37545,8 @@ declare namespace Enum {
         }
         export const InputFieldBackground: InputFieldBackground;
         /**
+         * The background color of items listed in the Explorer and Properties windows.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Item)
          */
         export interface Item extends globalThis.EnumItem {
@@ -37156,6 +37556,8 @@ declare namespace Enum {
         }
         export const Item: Item;
         /**
+         * The background color of row items in table views such as the Game Settings window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#TableItem)
          */
         export interface TableItem extends globalThis.EnumItem {
@@ -37165,6 +37567,8 @@ declare namespace Enum {
         }
         export const TableItem: TableItem;
         /**
+         * The background color of category header items in the Properties widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#CategoryItem)
          */
         export interface CategoryItem extends globalThis.EnumItem {
@@ -37229,6 +37633,8 @@ declare namespace Enum {
         }
         export const ColorPickerFrame: ColorPickerFrame;
         /**
+         * The color of the current-item marker, such as the blue selection indicator in the logout menu in the Light theme.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#CurrentMarker)
          */
         export interface CurrentMarker extends globalThis.EnumItem {
@@ -37249,6 +37655,8 @@ declare namespace Enum {
         }
         export const Border: Border;
         /**
+         * The color used for drop-shadow decorations on floating panels and menus.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DropShadow)
          */
         export interface DropShadow extends globalThis.EnumItem {
@@ -37269,6 +37677,8 @@ declare namespace Enum {
         }
         export const Shadow: Shadow;
         /**
+         * The light role color from the Qt widget palette, used for the lightest shading of 3D widget effects.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Light)
          */
         export interface Light extends globalThis.EnumItem {
@@ -37278,6 +37688,8 @@ declare namespace Enum {
         }
         export const Light: Light;
         /**
+         * The dark role color from the Qt widget palette, used for the darkest shading of 3D widget effects.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Dark)
          */
         export interface Dark extends globalThis.EnumItem {
@@ -37287,6 +37699,8 @@ declare namespace Enum {
         }
         export const Dark: Dark;
         /**
+         * The mid role color from the Qt widget palette, used between the button and dark shading for 3D widget effects.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Mid)
          */
         export interface Mid extends globalThis.EnumItem {
@@ -37296,6 +37710,8 @@ declare namespace Enum {
         }
         export const Mid: Mid;
         /**
+         * The primary text color used throughout Studio's UI.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#MainText)
          */
         export interface MainText extends globalThis.EnumItem {
@@ -37305,6 +37721,8 @@ declare namespace Enum {
         }
         export const MainText: MainText;
         /**
+         * The color of secondary text such as status labels shown in the Team Create widget for offline users and place owners.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#SubText)
          */
         export interface SubText extends globalThis.EnumItem {
@@ -37314,6 +37732,8 @@ declare namespace Enum {
         }
         export const SubText: SubText;
         /**
+         * The text color displayed in dock widget title bars and Ribbon tabs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#TitlebarText)
          */
         export interface TitlebarText extends globalThis.EnumItem {
@@ -37323,6 +37743,8 @@ declare namespace Enum {
         }
         export const TitlebarText: TitlebarText;
         /**
+         * The color of text displayed inside input fields and other high-contrast contexts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#BrightText)
          */
         export interface BrightText extends globalThis.EnumItem {
@@ -37332,6 +37754,8 @@ declare namespace Enum {
         }
         export const BrightText: BrightText;
         /**
+         * The color of placeholder or dimmed text shown in empty input fields.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DimmedText)
          */
         export interface DimmedText extends globalThis.EnumItem {
@@ -37341,6 +37765,8 @@ declare namespace Enum {
         }
         export const DimmedText: DimmedText;
         /**
+         * The color of hyperlink text in Studio panels and documentation views.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#LinkText)
          */
         export interface LinkText extends globalThis.EnumItem {
@@ -37350,6 +37776,8 @@ declare namespace Enum {
         }
         export const LinkText: LinkText;
         /**
+         * The color of warning messages, such as those displayed in the Output window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#WarningText)
          */
         export interface WarningText extends globalThis.EnumItem {
@@ -37359,6 +37787,8 @@ declare namespace Enum {
         }
         export const WarningText: WarningText;
         /**
+         * The color of error messages, such as those displayed in the Output window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ErrorText)
          */
         export interface ErrorText extends globalThis.EnumItem {
@@ -37368,6 +37798,8 @@ declare namespace Enum {
         }
         export const ErrorText: ErrorText;
         /**
+         * The color of informational messages, such as those displayed in the Output window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#InfoText)
          */
         export interface InfoText extends globalThis.EnumItem {
@@ -37377,6 +37809,8 @@ declare namespace Enum {
         }
         export const InfoText: InfoText;
         /**
+         * The color used to display sensitive information text, such as certain messages in the Output window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#SensitiveText)
          */
         export interface SensitiveText extends globalThis.EnumItem {
@@ -37386,6 +37820,8 @@ declare namespace Enum {
         }
         export const SensitiveText: SensitiveText;
         /**
+         * The background color of the Script Editor's side gutter, which displays fold icons and breakpoint markers.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptSideWidget)
          */
         export interface ScriptSideWidget extends globalThis.EnumItem {
@@ -37395,6 +37831,8 @@ declare namespace Enum {
         }
         export const ScriptSideWidget: ScriptSideWidget;
         /**
+         * The background color of the Script Editor canvas.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptBackground)
          */
         export interface ScriptBackground extends globalThis.EnumItem {
@@ -37404,6 +37842,8 @@ declare namespace Enum {
         }
         export const ScriptBackground: ScriptBackground;
         /**
+         * The default text color for unclassified tokens in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptText)
          */
         export interface ScriptText extends globalThis.EnumItem {
@@ -37413,6 +37853,8 @@ declare namespace Enum {
         }
         export const ScriptText: ScriptText;
         /**
+         * The foreground text color of the active text selection in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptSelectionText)
          */
         export interface ScriptSelectionText extends globalThis.EnumItem {
@@ -37422,6 +37864,8 @@ declare namespace Enum {
         }
         export const ScriptSelectionText: ScriptSelectionText;
         /**
+         * The background color of the active text selection in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptSelectionBackground)
          */
         export interface ScriptSelectionBackground extends globalThis.EnumItem {
@@ -37431,6 +37875,8 @@ declare namespace Enum {
         }
         export const ScriptSelectionBackground: ScriptSelectionBackground;
         /**
+         * The background color of text matched by the current find query in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptFindSelectionBackground)
          */
         export interface ScriptFindSelectionBackground extends globalThis.EnumItem {
@@ -37440,6 +37886,8 @@ declare namespace Enum {
         }
         export const ScriptFindSelectionBackground: ScriptFindSelectionBackground;
         /**
+         * The background color of all occurrences of the word under the cursor highlighted as matching selections in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptMatchingWordSelectionBackground)
          */
         export interface ScriptMatchingWordSelectionBackground extends globalThis.EnumItem {
@@ -37449,6 +37897,8 @@ declare namespace Enum {
         }
         export const ScriptMatchingWordSelectionBackground: ScriptMatchingWordSelectionBackground;
         /**
+         * The color of operator symbols in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptOperator)
          */
         export interface ScriptOperator extends globalThis.EnumItem {
@@ -37458,6 +37908,8 @@ declare namespace Enum {
         }
         export const ScriptOperator: ScriptOperator;
         /**
+         * The color of numeric literals in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptNumber)
          */
         export interface ScriptNumber extends globalThis.EnumItem {
@@ -37467,6 +37919,8 @@ declare namespace Enum {
         }
         export const ScriptNumber: ScriptNumber;
         /**
+         * The color of string literals in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptString)
          */
         export interface ScriptString extends globalThis.EnumItem {
@@ -37476,6 +37930,8 @@ declare namespace Enum {
         }
         export const ScriptString: ScriptString;
         /**
+         * The color of comment text in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptComment)
          */
         export interface ScriptComment extends globalThis.EnumItem {
@@ -37485,6 +37941,8 @@ declare namespace Enum {
         }
         export const ScriptComment: ScriptComment;
         /**
+         * The color of Lua reserved keywords that don't have a more specific color role in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptKeyword)
          */
         export interface ScriptKeyword extends globalThis.EnumItem {
@@ -37494,6 +37952,8 @@ declare namespace Enum {
         }
         export const ScriptKeyword: ScriptKeyword;
         /**
+         * The color of recognized built-in global identifiers in the Script Editor, including non-function globals.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptBuiltInFunction)
          */
         export interface ScriptBuiltInFunction extends globalThis.EnumItem {
@@ -37503,6 +37963,8 @@ declare namespace Enum {
         }
         export const ScriptBuiltInFunction: ScriptBuiltInFunction;
         /**
+         * The color of warning markers and underlines in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptWarning)
          */
         export interface ScriptWarning extends globalThis.EnumItem {
@@ -37512,6 +37974,8 @@ declare namespace Enum {
         }
         export const ScriptWarning: ScriptWarning;
         /**
+         * The color of error markers and underlines in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptError)
          */
         export interface ScriptError extends globalThis.EnumItem {
@@ -37521,6 +37985,8 @@ declare namespace Enum {
         }
         export const ScriptError: ScriptError;
         /**
+         * The color of informational diagnostic markers in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptInformation)
          */
         export interface ScriptInformation extends globalThis.EnumItem {
@@ -37530,6 +37996,8 @@ declare namespace Enum {
         }
         export const ScriptInformation: ScriptInformation;
         /**
+         * The color of hint diagnostic underlines and scrollbar markers in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptHint)
          */
         export interface ScriptHint extends globalThis.EnumItem {
@@ -37539,6 +38007,8 @@ declare namespace Enum {
         }
         export const ScriptHint: ScriptHint;
         /**
+         * The color of rendered whitespace characters (spaces and tabs) when whitespace display is enabled in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptWhitespace)
          */
         export interface ScriptWhitespace extends globalThis.EnumItem {
@@ -37548,6 +38018,8 @@ declare namespace Enum {
         }
         export const ScriptWhitespace: ScriptWhitespace;
         /**
+         * The color of the column ruler line displayed in the Script Editor when the ruler is enabled.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptRuler)
          */
         export interface ScriptRuler extends globalThis.EnumItem {
@@ -37557,6 +38029,8 @@ declare namespace Enum {
         }
         export const ScriptRuler: ScriptRuler;
         /**
+         * The background color of inline code blocks in the Script Editor's documentation view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DocViewCodeBackground)
          */
         export interface DocViewCodeBackground extends globalThis.EnumItem {
@@ -37566,6 +38040,8 @@ declare namespace Enum {
         }
         export const DocViewCodeBackground: DocViewCodeBackground;
         /**
+         * The highlight color applied to the line currently paused on in the script debugger.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DebuggerCurrentLine)
          */
         export interface DebuggerCurrentLine extends globalThis.EnumItem {
@@ -37575,6 +38051,8 @@ declare namespace Enum {
         }
         export const DebuggerCurrentLine: DebuggerCurrentLine;
         /**
+         * The highlight color applied to a line that caused a debugger error or runtime exception.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DebuggerErrorLine)
          */
         export interface DebuggerErrorLine extends globalThis.EnumItem {
@@ -37584,6 +38062,8 @@ declare namespace Enum {
         }
         export const DebuggerErrorLine: DebuggerErrorLine;
         /**
+         * The text color of the file path displayed in the header row of a diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffFilePathText)
          */
         export interface DiffFilePathText extends globalThis.EnumItem {
@@ -37593,6 +38073,8 @@ declare namespace Enum {
         }
         export const DiffFilePathText: DiffFilePathText;
         /**
+         * The text color of hunk-info lines (the `@@` header rows) in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextHunkInfo)
          */
         export interface DiffTextHunkInfo extends globalThis.EnumItem {
@@ -37602,6 +38084,8 @@ declare namespace Enum {
         }
         export const DiffTextHunkInfo: DiffTextHunkInfo;
         /**
+         * The text color of unchanged context lines in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextNoChange)
          */
         export interface DiffTextNoChange extends globalThis.EnumItem {
@@ -37611,6 +38095,8 @@ declare namespace Enum {
         }
         export const DiffTextNoChange: DiffTextNoChange;
         /**
+         * The text color of added lines in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextAddition)
          */
         export interface DiffTextAddition extends globalThis.EnumItem {
@@ -37620,6 +38106,8 @@ declare namespace Enum {
         }
         export const DiffTextAddition: DiffTextAddition;
         /**
+         * The text color of deleted lines in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextDeletion)
          */
         export interface DiffTextDeletion extends globalThis.EnumItem {
@@ -37629,6 +38117,8 @@ declare namespace Enum {
         }
         export const DiffTextDeletion: DiffTextDeletion;
         /**
+         * The background color of hunk-separator rows in the diff view text area.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextSeparatorBackground)
          */
         export interface DiffTextSeparatorBackground extends globalThis.EnumItem {
@@ -37638,6 +38128,8 @@ declare namespace Enum {
         }
         export const DiffTextSeparatorBackground: DiffTextSeparatorBackground;
         /**
+         * The background color of unchanged context lines in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextNoChangeBackground)
          */
         export interface DiffTextNoChangeBackground extends globalThis.EnumItem {
@@ -37647,6 +38139,8 @@ declare namespace Enum {
         }
         export const DiffTextNoChangeBackground: DiffTextNoChangeBackground;
         /**
+         * The background color of added lines in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextAdditionBackground)
          */
         export interface DiffTextAdditionBackground extends globalThis.EnumItem {
@@ -37656,6 +38150,8 @@ declare namespace Enum {
         }
         export const DiffTextAdditionBackground: DiffTextAdditionBackground;
         /**
+         * The background color of deleted lines in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextDeletionBackground)
          */
         export interface DiffTextDeletionBackground extends globalThis.EnumItem {
@@ -37665,6 +38161,8 @@ declare namespace Enum {
         }
         export const DiffTextDeletionBackground: DiffTextDeletionBackground;
         /**
+         * The text color of line numbers in the diff view gutter.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNum)
          */
         export interface DiffLineNum extends globalThis.EnumItem {
@@ -37674,6 +38172,8 @@ declare namespace Enum {
         }
         export const DiffLineNum: DiffLineNum;
         /**
+         * The background color of line-number cells in the diff gutter for hunk-separator rows.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNumSeparatorBackground)
          */
         export interface DiffLineNumSeparatorBackground extends globalThis.EnumItem {
@@ -37683,6 +38183,8 @@ declare namespace Enum {
         }
         export const DiffLineNumSeparatorBackground: DiffLineNumSeparatorBackground;
         /**
+         * The background color of line-number cells in the diff gutter for unchanged lines.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNumNoChangeBackground)
          */
         export interface DiffLineNumNoChangeBackground extends globalThis.EnumItem {
@@ -37692,6 +38194,8 @@ declare namespace Enum {
         }
         export const DiffLineNumNoChangeBackground: DiffLineNumNoChangeBackground;
         /**
+         * The background color of line-number cells in the diff gutter for added lines.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNumAdditionBackground)
          */
         export interface DiffLineNumAdditionBackground extends globalThis.EnumItem {
@@ -37701,6 +38205,8 @@ declare namespace Enum {
         }
         export const DiffLineNumAdditionBackground: DiffLineNumAdditionBackground;
         /**
+         * The background color of line-number cells in the diff gutter for deleted lines.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNumDeletionBackground)
          */
         export interface DiffLineNumDeletionBackground extends globalThis.EnumItem {
@@ -37710,6 +38216,8 @@ declare namespace Enum {
         }
         export const DiffLineNumDeletionBackground: DiffLineNumDeletionBackground;
         /**
+         * The background color of the file-path header row in a diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffFilePathBackground)
          */
         export interface DiffFilePathBackground extends globalThis.EnumItem {
@@ -37719,6 +38227,8 @@ declare namespace Enum {
         }
         export const DiffFilePathBackground: DiffFilePathBackground;
         /**
+         * The border color of the file-path header row in a diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffFilePathBorder)
          */
         export interface DiffFilePathBorder extends globalThis.EnumItem {
@@ -37728,6 +38238,8 @@ declare namespace Enum {
         }
         export const DiffFilePathBorder: DiffFilePathBorder;
         /**
+         * The background color of incoming messages in the Studio chat widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ChatIncomingBgColor)
          */
         export interface ChatIncomingBgColor extends globalThis.EnumItem {
@@ -37737,6 +38249,8 @@ declare namespace Enum {
         }
         export const ChatIncomingBgColor: ChatIncomingBgColor;
         /**
+         * The text color of incoming messages in the Studio chat widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ChatIncomingTextColor)
          */
         export interface ChatIncomingTextColor extends globalThis.EnumItem {
@@ -37746,6 +38260,8 @@ declare namespace Enum {
         }
         export const ChatIncomingTextColor: ChatIncomingTextColor;
         /**
+         * The background color of outgoing messages in the Studio chat widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ChatOutgoingBgColor)
          */
         export interface ChatOutgoingBgColor extends globalThis.EnumItem {
@@ -37755,6 +38271,8 @@ declare namespace Enum {
         }
         export const ChatOutgoingBgColor: ChatOutgoingBgColor;
         /**
+         * The text color of outgoing messages in the Studio chat widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ChatOutgoingTextColor)
          */
         export interface ChatOutgoingTextColor extends globalThis.EnumItem {
@@ -37764,6 +38282,8 @@ declare namespace Enum {
         }
         export const ChatOutgoingTextColor: ChatOutgoingTextColor;
         /**
+         * The color used to display moderated or filtered messages in the Studio chat widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ChatModeratedMessageColor)
          */
         export interface ChatModeratedMessageColor extends globalThis.EnumItem {
@@ -37773,6 +38293,8 @@ declare namespace Enum {
         }
         export const ChatModeratedMessageColor: ChatModeratedMessageColor;
         /**
+         * The color of separator lines that divide sections within Studio panels.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Separator)
          */
         export interface Separator extends globalThis.EnumItem {
@@ -37782,6 +38304,8 @@ declare namespace Enum {
         }
         export const Separator: Separator;
         /**
+         * The border color of standard clickable buttons.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ButtonBorder)
          */
         export interface ButtonBorder extends globalThis.EnumItem {
@@ -37791,6 +38315,8 @@ declare namespace Enum {
         }
         export const ButtonBorder: ButtonBorder;
         /**
+         * The label text color of standard clickable buttons.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ButtonText)
          */
         export interface ButtonText extends globalThis.EnumItem {
@@ -37800,6 +38326,8 @@ declare namespace Enum {
         }
         export const ButtonText: ButtonText;
         /**
+         * The border color of text input fields throughout Studio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#InputFieldBorder)
          */
         export interface InputFieldBorder extends globalThis.EnumItem {
@@ -37809,6 +38337,8 @@ declare namespace Enum {
         }
         export const InputFieldBorder: InputFieldBorder;
         /**
+         * The background color of checkbox and checked-state input fields.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#CheckedFieldBackground)
          */
         export interface CheckedFieldBackground extends globalThis.EnumItem {
@@ -37818,6 +38348,8 @@ declare namespace Enum {
         }
         export const CheckedFieldBackground: CheckedFieldBackground;
         /**
+         * The border color of checkbox and checked-state input fields.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#CheckedFieldBorder)
          */
         export interface CheckedFieldBorder extends globalThis.EnumItem {
@@ -37827,6 +38359,8 @@ declare namespace Enum {
         }
         export const CheckedFieldBorder: CheckedFieldBorder;
         /**
+         * The color of the check mark or indicator drawn inside a checked input field.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#CheckedFieldIndicator)
          */
         export interface CheckedFieldIndicator extends globalThis.EnumItem {
@@ -37836,6 +38370,8 @@ declare namespace Enum {
         }
         export const CheckedFieldIndicator: CheckedFieldIndicator;
         /**
+         * The background color of section header rows in Studio widgets such as the Properties window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#HeaderSection)
          */
         export interface HeaderSection extends globalThis.EnumItem {
@@ -37845,6 +38381,8 @@ declare namespace Enum {
         }
         export const HeaderSection: HeaderSection;
         /**
+         * The midlight role color from the Qt widget palette, used between the button and light shading for 3D widget effects.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Midlight)
          */
         export interface Midlight extends globalThis.EnumItem {
@@ -37865,6 +38403,8 @@ declare namespace Enum {
         }
         export const StatusBar: StatusBar;
         /**
+         * The background color of standard buttons in modal dialog boxes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DialogButton)
          */
         export interface DialogButton extends globalThis.EnumItem {
@@ -37874,6 +38414,8 @@ declare namespace Enum {
         }
         export const DialogButton: DialogButton;
         /**
+         * The label text color of standard buttons in modal dialog boxes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DialogButtonText)
          */
         export interface DialogButtonText extends globalThis.EnumItem {
@@ -37883,6 +38425,8 @@ declare namespace Enum {
         }
         export const DialogButtonText: DialogButtonText;
         /**
+         * The border color of standard buttons in modal dialog boxes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DialogButtonBorder)
          */
         export interface DialogButtonBorder extends globalThis.EnumItem {
@@ -37892,6 +38436,8 @@ declare namespace Enum {
         }
         export const DialogButtonBorder: DialogButtonBorder;
         /**
+         * The background color of the primary action button (such as OK or Save) in modal dialog boxes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DialogMainButton)
          */
         export interface DialogMainButton extends globalThis.EnumItem {
@@ -37901,6 +38447,8 @@ declare namespace Enum {
         }
         export const DialogMainButton: DialogMainButton;
         /**
+         * The label text color of the primary action button in modal dialog boxes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DialogMainButtonText)
          */
         export interface DialogMainButtonText extends globalThis.EnumItem {
@@ -37910,6 +38458,8 @@ declare namespace Enum {
         }
         export const DialogMainButtonText: DialogMainButtonText;
         /**
+         * The background color of the warning bar that appears at the top of a widget to surface important notices.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#InfoBarWarningBackground)
          */
         export interface InfoBarWarningBackground extends globalThis.EnumItem {
@@ -37919,6 +38469,8 @@ declare namespace Enum {
         }
         export const InfoBarWarningBackground: InfoBarWarningBackground;
         /**
+         * The text color of warning messages inside the info bar warning strip.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#InfoBarWarningText)
          */
         export interface InfoBarWarningText extends globalThis.EnumItem {
@@ -37928,6 +38480,8 @@ declare namespace Enum {
         }
         export const InfoBarWarningText: InfoBarWarningText;
         /**
+         * The background highlight color applied to the line containing the cursor in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptEditorCurrentLine)
          */
         export interface ScriptEditorCurrentLine extends globalThis.EnumItem {
@@ -37937,6 +38491,8 @@ declare namespace Enum {
         }
         export const ScriptEditorCurrentLine: ScriptEditorCurrentLine;
         /**
+         * The color of function-call target identifiers in the Script Editor, including bare functions and indexed methods.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptMethod)
          */
         export interface ScriptMethod extends globalThis.EnumItem {
@@ -37946,6 +38502,8 @@ declare namespace Enum {
         }
         export const ScriptMethod: ScriptMethod;
         /**
+         * The color of property name identifiers in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptProperty)
          */
         export interface ScriptProperty extends globalThis.EnumItem {
@@ -37955,6 +38513,8 @@ declare namespace Enum {
         }
         export const ScriptProperty: ScriptProperty;
         /**
+         * The color of the `nil` literal in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptNil)
          */
         export interface ScriptNil extends globalThis.EnumItem {
@@ -37964,6 +38524,8 @@ declare namespace Enum {
         }
         export const ScriptNil: ScriptNil;
         /**
+         * The color of boolean literals (`true` and `false`) in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptBool)
          */
         export interface ScriptBool extends globalThis.EnumItem {
@@ -37973,6 +38535,8 @@ declare namespace Enum {
         }
         export const ScriptBool: ScriptBool;
         /**
+         * The color of the `function` keyword token in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptFunction)
          */
         export interface ScriptFunction extends globalThis.EnumItem {
@@ -37982,6 +38546,8 @@ declare namespace Enum {
         }
         export const ScriptFunction: ScriptFunction;
         /**
+         * The color of the `local` keyword in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptLocal)
          */
         export interface ScriptLocal extends globalThis.EnumItem {
@@ -37991,6 +38557,8 @@ declare namespace Enum {
         }
         export const ScriptLocal: ScriptLocal;
         /**
+         * The color of the `self` identifier in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptSelf)
          */
         export interface ScriptSelf extends globalThis.EnumItem {
@@ -38000,6 +38568,8 @@ declare namespace Enum {
         }
         export const ScriptSelf: ScriptSelf;
         /**
+         * The color of Luau-specific keywords (such as type annotation keywords) in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptLuauKeyword)
          */
         export interface ScriptLuauKeyword extends globalThis.EnumItem {
@@ -38009,6 +38579,8 @@ declare namespace Enum {
         }
         export const ScriptLuauKeyword: ScriptLuauKeyword;
         /**
+         * The color of function name identifiers in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptFunctionName)
          */
         export interface ScriptFunctionName extends globalThis.EnumItem {
@@ -38018,6 +38590,8 @@ declare namespace Enum {
         }
         export const ScriptFunctionName: ScriptFunctionName;
         /**
+         * The highlight color applied to TODO annotations in script comments.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptTodo)
          */
         export interface ScriptTodo extends globalThis.EnumItem {
@@ -38027,6 +38601,8 @@ declare namespace Enum {
         }
         export const ScriptTodo: ScriptTodo;
         /**
+         * The color of parentheses, braces, and square brackets in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptBracket)
          */
         export interface ScriptBracket extends globalThis.EnumItem {
@@ -38036,6 +38612,8 @@ declare namespace Enum {
         }
         export const ScriptBracket: ScriptBracket;
         /**
+         * The color of the attribute cog icon shown in the Properties widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#AttributeCog)
          */
         export interface AttributeCog extends globalThis.EnumItem {
@@ -38045,6 +38623,8 @@ declare namespace Enum {
         }
         export const AttributeCog: AttributeCog;
         /**
+         * The text color used inside the AI companion (AICO) overlay panel.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#AICOOverlayText)
          */
         export interface AICOOverlayText extends globalThis.EnumItem {
@@ -38054,6 +38634,8 @@ declare namespace Enum {
         }
         export const AICOOverlayText: AICOOverlayText;
         /**
+         * The background color of buttons in the AI companion (AICO) overlay panel.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#AICOOverlayButtonBackground)
          */
         export interface AICOOverlayButtonBackground extends globalThis.EnumItem {
@@ -38063,6 +38645,8 @@ declare namespace Enum {
         }
         export const AICOOverlayButtonBackground: AICOOverlayButtonBackground;
         /**
+         * The background color of buttons in the AI companion (AICO) overlay panel when hovered.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#AICOOverlayButtonBackgroundHover)
          */
         export interface AICOOverlayButtonBackgroundHover extends globalThis.EnumItem {
@@ -38072,6 +38656,8 @@ declare namespace Enum {
         }
         export const AICOOverlayButtonBackgroundHover: AICOOverlayButtonBackgroundHover;
         /**
+         * The background color of buttons in the AI companion (AICO) overlay panel when pressed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#AICOOverlayButtonBackgroundPressed)
          */
         export interface AICOOverlayButtonBackgroundPressed extends globalThis.EnumItem {
@@ -38081,6 +38667,8 @@ declare namespace Enum {
         }
         export const AICOOverlayButtonBackgroundPressed: AICOOverlayButtonBackgroundPressed;
         /**
+         * The overlay color used to dim non-focused areas during onboarding flows.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#OnboardingCover)
          */
         export interface OnboardingCover extends globalThis.EnumItem {
@@ -38090,6 +38678,8 @@ declare namespace Enum {
         }
         export const OnboardingCover: OnboardingCover;
         /**
+         * The highlight color used to draw attention to a UI element during onboarding flows.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#OnboardingHighlight)
          */
         export interface OnboardingHighlight extends globalThis.EnumItem {
@@ -38099,6 +38689,8 @@ declare namespace Enum {
         }
         export const OnboardingHighlight: OnboardingHighlight;
         /**
+         * The shadow color used beneath highlighted elements during onboarding flows.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#OnboardingShadow)
          */
         export interface OnboardingShadow extends globalThis.EnumItem {
@@ -38108,6 +38700,8 @@ declare namespace Enum {
         }
         export const OnboardingShadow: OnboardingShadow;
         /**
+         * The color of the breakpoint marker shown in the script editor gutter.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#BreakpointMarker)
          */
         export interface BreakpointMarker extends globalThis.EnumItem {
@@ -38117,6 +38711,8 @@ declare namespace Enum {
         }
         export const BreakpointMarker: BreakpointMarker;
         /**
+         * The text color of line numbers in the diff gutter when hovered.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNumHover)
          */
         export interface DiffLineNumHover extends globalThis.EnumItem {
@@ -38126,6 +38722,8 @@ declare namespace Enum {
         }
         export const DiffLineNumHover: DiffLineNumHover;
         /**
+         * The background color of line-number cells in the diff gutter for hunk-separator rows when hovered.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNumSeparatorBackgroundHover)
          */
         export interface DiffLineNumSeparatorBackgroundHover extends globalThis.EnumItem {
@@ -38140,10 +38738,14 @@ declare namespace Enum {
     }
     export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.FilterButtonDefault | StudioStyleGuideColor.FilterButtonHover | StudioStyleGuideColor.FilterButtonChecked | StudioStyleGuideColor.FilterButtonAccent | StudioStyleGuideColor.FilterButtonBorder | StudioStyleGuideColor.FilterButtonBorderAlt | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.DropShadow | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptInformation | StudioStyleGuideColor.ScriptHint | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DocViewCodeBackground | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo | StudioStyleGuideColor.ScriptBracket | StudioStyleGuideColor.AttributeCog | StudioStyleGuideColor.AICOOverlayText | StudioStyleGuideColor.AICOOverlayButtonBackground | StudioStyleGuideColor.AICOOverlayButtonBackgroundHover | StudioStyleGuideColor.AICOOverlayButtonBackgroundPressed | StudioStyleGuideColor.OnboardingCover | StudioStyleGuideColor.OnboardingHighlight | StudioStyleGuideColor.OnboardingShadow | StudioStyleGuideColor.BreakpointMarker | StudioStyleGuideColor.DiffLineNumHover | StudioStyleGuideColor.DiffLineNumSeparatorBackgroundHover;
     /**
+     * Specifies the interaction state of a Roblox Studio interface element.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideModifier)
      */
     export namespace StudioStyleGuideModifier {
         /**
+         * Uses the element's default state color.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideModifier#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -38153,6 +38755,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Uses the color for a selected element.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideModifier#Selected)
          */
         export interface Selected extends globalThis.EnumItem {
@@ -38162,6 +38766,8 @@ declare namespace Enum {
         }
         export const Selected: Selected;
         /**
+         * Uses the color for a pressed element.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideModifier#Pressed)
          */
         export interface Pressed extends globalThis.EnumItem {
@@ -38171,6 +38777,8 @@ declare namespace Enum {
         }
         export const Pressed: Pressed;
         /**
+         * Uses the color for a disabled element.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideModifier#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -38180,6 +38788,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * Uses the color for an element under the pointer.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideModifier#Hover)
          */
         export interface Hover extends globalThis.EnumItem {
@@ -39806,6 +40416,33 @@ declare namespace Enum {
     }
     export type TerrainSolidMergeOperation = TerrainSolidMergeOperation.None | TerrainSolidMergeOperation.Paint | TerrainSolidMergeOperation.Source | TerrainSolidMergeOperation.Union | TerrainSolidMergeOperation.Dig | TerrainSolidMergeOperation.Difference | TerrainSolidMergeOperation.Intersect | TerrainSolidMergeOperation.Cut | TerrainSolidMergeOperation.Place;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextChannelDisplayMode)
+     */
+    export namespace TextChannelDisplayMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextChannelDisplayMode#AllTextChannels)
+         */
+        export interface AllTextChannels extends globalThis.EnumItem {
+            Name: "AllTextChannels";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.TextChannelDisplayMode;
+        }
+        export const AllTextChannels: AllTextChannels;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextChannelDisplayMode#DefaultTextChannels)
+         */
+        export interface DefaultTextChannels extends globalThis.EnumItem {
+            Name: "DefaultTextChannels";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.TextChannelDisplayMode;
+        }
+        export const DefaultTextChannels: DefaultTextChannels;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextChannelDisplayMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TextChannelDisplayMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TextChannelDisplayMode | undefined;
+    }
+    export type TextChannelDisplayMode = TextChannelDisplayMode.AllTextChannels | TextChannelDisplayMode.DefaultTextChannels;
+    /**
      * Indicates the status of a `TextChatMessage`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextChatMessageStatus)
@@ -40644,7 +41281,7 @@ declare namespace Enum {
     }
     export type ThumbnailType = ThumbnailType.HeadShot | ThumbnailType.AvatarBust | ThumbnailType.AvatarThumbnail;
     /**
-     * Controls the precision of a timer.
+     * Controls the precision and performance trade-off used when sampling the current time.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TickCountSampleMethod)
      */
@@ -40661,7 +41298,7 @@ declare namespace Enum {
         }
         export const Fast: Fast;
         /**
-         * Dynamically decide between using ''Fast'' and ''Precise'' depending on performance.
+         * Dynamically decide between using `Fast` and `Precise` depending on the value of `TickCountPreciseOverride`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TickCountSampleMethod#Benchmark)
          */
@@ -40751,6 +41388,8 @@ declare namespace Enum {
     }
     export type TitleBarMode = TitleBarMode.Native | TitleBarMode.Custom;
     /**
+     * Controls which tone-mapping algorithm `ColorGradingEffect` applies to the rendered scene.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TonemapperPreset)
      */
     export namespace TonemapperPreset {
@@ -41959,11 +42598,15 @@ declare namespace Enum {
     }
     export type UIFlexMode = UIFlexMode.None | UIFlexMode.Grow | UIFlexMode.Shrink | UIFlexMode.Fill | UIFlexMode.Custom;
     /**
+     * Deprecated Studio UI color theme (`Light` or `Dark`).
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UITheme)
      */
     export namespace UITheme {
         /**
          * **Deprecated:** This option is deprecated.
+         *
+         * The light Studio UI color theme. Deprecated; has no effect.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UITheme#Light)
          */
@@ -41975,6 +42618,8 @@ declare namespace Enum {
         export const Light: Light;
         /**
          * **Deprecated:** This option is deprecated.
+         *
+         * The dark Studio UI color theme. Deprecated; has no effect.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UITheme#Dark)
          */
@@ -42776,10 +43421,14 @@ declare namespace Enum {
     }
     export type UserReturnStatus = UserReturnStatus.Unknown | UserReturnStatus.New | UserReturnStatus.Returning;
     /**
+     * Named presets for VR comfort assists such as vignette, smooth rotation, and third-person follow camera.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRComfortSetting)
      */
     export namespace VRComfortSetting {
         /**
+         * Most restrictive comfort preset: enables vignette, disables smooth rotation, and disables the third-person follow camera.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRComfortSetting#Comfort)
          */
         export interface Comfort extends globalThis.EnumItem {
@@ -42789,6 +43438,8 @@ declare namespace Enum {
         }
         export const Comfort: Comfort;
         /**
+         * Default balanced preset: enables vignette and third-person follow camera while keeping smooth rotation disabled.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRComfortSetting#Normal)
          */
         export interface Normal extends globalThis.EnumItem {
@@ -42798,6 +43449,8 @@ declare namespace Enum {
         }
         export const Normal: Normal;
         /**
+         * Least restrictive comfort preset: disables vignette and enables both smooth rotation and the third-person follow camera.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRComfortSetting#Expert)
          */
         export interface Expert extends globalThis.EnumItem {
@@ -42807,6 +43460,8 @@ declare namespace Enum {
         }
         export const Expert: Expert;
         /**
+         * Lets vignette, smooth rotation, and third-person follow camera be configured independently rather than as a fixed preset.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRComfortSetting#Custom)
          */
         export interface Custom extends globalThis.EnumItem {
