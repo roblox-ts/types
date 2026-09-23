@@ -212,7 +212,6 @@ interface Services {
     SlimReplicationService: SlimReplicationService;
     SlimService: SlimService;
     SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
-    SnippetService: SnippetService;
     SocialService: SocialService;
     SoundService: SoundService;
     SoundShimService: SoundShimService;
@@ -1250,7 +1249,7 @@ interface EditableImage extends RBXObject {
      * - `ColorBlendType` (`ImageCombineType`) which determines how the   sampled color values are blended.
      * - `FadeAngle` (number) as the angle in degrees at which the projection   begins to fade based on the surface normal. A value of `180` applies   no normal-angle fade.
      */
-    SampleImageProjected(this: EditableImage, sourceMesh: EditableMesh, sourceTexture: EditableImage, projectionConfig: object, brushConfig: object): void;
+    SampleImageProjected(this: EditableImage, projectionSource: RBXObject, sourceTexture: EditableImage, projectionConfig: object, brushConfig: object): void;
     /**
      * Writes a rectangular region of pixels into the image.
      *
@@ -4831,10 +4830,20 @@ interface AssetService extends Instance {
      */
     CreateDataModelContentAsync(this: AssetService, content: Content, options?: object): unknown;
     /**
+     * Creates a new `Decal` object using the provided `EditableImage` content maps.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetService#CreateDecalAsync)
+     * @param this A non-replicated service that handles asset-related queries to the Roblox web API.
+     * @param content Dictionary containing one or more of the following key-value pairs. Each value must be a `Content` object containing a `EditableImage`: - `TextureContent` — The decal's color texture.
+     * - `NormalMapContent` — The decal's normal map.
+     * - `MetalnessMapContent` — The decal's metalness map.
+     * - `RoughnessMapContent` — The decal's roughness map.
+     *
+     *
+     * @returns A new `Decal` instance with the given maps from the `content` parameter.
      */
     CreateDecalAsync(this: AssetService, content: object): Decal;
     /**
@@ -7891,6 +7900,12 @@ interface AudioTextToSpeech extends Instance {
      */
     readonly _nominal_AudioTextToSpeech: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech#AutoLocalize)
+     */
+    AutoLocalize: boolean;
+    /**
      * Denotes whether the `AudioTextToSpeech` object is loaded, buffered, and ready to play.
      *
      * - **ThreadSafety**: ReadSafe
@@ -10825,17 +10840,32 @@ interface WrapTarget extends BaseWrap {
      */
     get Stiffness(): number;
     /**
+     * Creates a new `EditableImage` in cage UV space from a texture in the parent `MeshPart`'s UV space.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTarget#CreateTextureInCageSpaceAsync)
+     * @param this The WrapTarget object defines a target. A target is the 3D body with only an outer surface, or an Outer Cage.
+     * @param texture The `EditableImage` in the UV space of this `WrapTarget`'s parent `MeshPart`.
+     * @param options Optional dictionary containing controls for the transfer: - `MinUVBounds` – A `Vector2` specifying the minimum cage UV   bound.
+     * - `MaxUVBounds` – A `Vector2` specifying the maximum cage UV   bound.
+     *
+     *  Each omitted bound is calculated from the cage mesh. If neither is specified, the bounds include the entire cage.
+     * @returns A new `EditableImage` in cage UV space, or `nil` if the device-specific editable memory budget is exhausted.
      */
     CreateTextureInCageSpaceAsync(this: WrapTarget, texture: EditableImage, options?: object): EditableImage;
     /**
+     * Creates a new `EditableImage` in the parent `MeshPart`'s UV space from a texture in cage UV space.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTarget#CreateTextureInTargetSpaceAsync)
+     * @param this The WrapTarget object defines a target. A target is the 3D body with only an outer surface, or an Outer Cage.
+     * @param texture The `EditableImage` in cage UV space.
+     * @param wrapTextureTransfer The `WrapTextureTransfer` associated with the same parent `MeshPart` as this `WrapTarget`.
+     * @returns A new `EditableImage` in the parent `MeshPart`'s UV space, or `nil` if the device-specific editable memory budget is exhausted.
      */
     CreateTextureInTargetSpaceAsync(this: WrapTarget, texture: EditableImage, wrapTextureTransfer: WrapTextureTransfer): EditableImage;
 }
@@ -28306,6 +28336,12 @@ interface InputAction extends Instance {
      */
     readonly _nominal_InputAction: unique symbol;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#DisplayName)
+     */
+    DisplayName: string;
+    /**
      * Determines if the `InputAction` is enabled or not.
      *
      * - **ThreadSafety**: ReadSafe
@@ -30047,7 +30083,7 @@ interface Lighting extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Lighting#LightingStyle)
      */
-    get LightingStyle(): Enum.LightingStyle;
+    LightingStyle: Enum.LightingStyle;
     /**
      * The lighting hue applied to outdoor areas.
      *
@@ -30076,7 +30112,7 @@ interface Lighting extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Lighting#PrioritizeLightingQuality)
      */
-    get PrioritizeLightingQuality(): boolean;
+    PrioritizeLightingQuality: boolean;
     /**
      * **Deprecated:** This item is deprecated and has no current functionality. Do not use it for new work.
      *
@@ -30287,11 +30323,14 @@ interface LocalizationService extends Instance {
      * Returns a `Translator` to be used for translations using the locale data loaded.
      *
      * - **ThreadSafety**: Unsafe
+     * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LocalizationService#GetTranslatorForPlayer)
      * @param this Handles automated translation.
      * @param player The `Player` that you are getting the `Translator` for.
      * @returns The `Translator` instance for the specified locale.
+     *
+     * @deprecated GetTranslatorForPlayerAsync
      */
     GetTranslatorForPlayer(this: LocalizationService, player: Player): Translator;
     /**
@@ -31243,9 +31282,13 @@ interface MarketplaceService extends Instance {
      */
     BindReceiptHandler(this: MarketplaceService, transactionType: CastsToEnum<Enum.ReceiptType>, handler: Callback, filter?: Array<unknown>): RBXScriptConnection;
     /**
+     * Opens a personalized in-game Shop for the given player.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#OpenShop)
+     * @param this The service responsible for in-experience transactions.
+     * @param player The `Player` for whom to open the shop. If called from a `LocalScript`, this must be the local player.
      */
     OpenShop(this: MarketplaceService, player: Player): void;
     /**
@@ -34916,7 +34959,7 @@ interface TriangleMeshPart extends BasePart {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart#CollisionFidelity)
      */
-    get CollisionFidelity(): Enum.CollisionFidelity;
+    CollisionFidelity: Enum.CollisionFidelity;
     /**
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
@@ -34932,7 +34975,7 @@ interface TriangleMeshPart extends BasePart {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart#FluidFidelity)
      */
-    get FluidFidelity(): Enum.FluidFidelity;
+    FluidFidelity: Enum.FluidFidelity;
     /**
      * The original size of the part's source mesh geometry, before any scaling applied through `BasePart.Size`.
      *
@@ -35073,7 +35116,7 @@ interface PartOperation extends TriangleMeshPart {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PartOperation#RenderFidelity)
      */
-    get RenderFidelity(): Enum.RenderFidelity;
+    RenderFidelity: Enum.RenderFidelity;
     /**
      * An angle in degrees which affects the smooth shading of a solid modeled part.
      *
@@ -35081,7 +35124,7 @@ interface PartOperation extends TriangleMeshPart {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PartOperation#SmoothingAngle)
      */
-    get SmoothingAngle(): number;
+    SmoothingAngle: number;
     /**
      * The number of polygons in this solid model.
      *
@@ -43726,21 +43769,6 @@ interface SmoothVoxelsUpgraderService extends Instance {
     readonly _nominal_SmoothVoxelsUpgraderService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SnippetService)
- */
-interface SnippetService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_SnippetService: unique symbol;
-}
-/**
  * Facilitates social functions that impact relationships made on the Roblox platform.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -46795,6 +46823,12 @@ interface TeleportOptions extends Instance {
      */
     ReservedServerAccessCode: string;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportOptions#ReservedServerId)
+     */
+    ReservedServerId: string;
+    /**
      * The `DataModel.JobId` of the server instance to teleport to.
      *
      * - **ThreadSafety**: ReadSafe
@@ -46810,6 +46844,12 @@ interface TeleportOptions extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportOptions#ShouldReserveServer)
      */
     ShouldReserveServer: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TeleportOptions#VipServerId)
+     */
+    VipServerId: string;
     /**
      * Returns the teleport data stored in the `TeleportOptions` instance by `TeleportOptions:SetTeleportData()`.
      *
@@ -47479,14 +47519,9 @@ interface TestService extends Instance {
      */
     Message(this: TestService, text: string, source?: Instance, line?: number): void;
     /**
-     * Registers a test case with the service and returns the resulting `TestCase`.
-     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RegisterTest)
-     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
-     * @param testOptions A dictionary describing the test, requiring the string fields `SuiteName` and `TestCaseName` and optionally a numeric `Timeout` field.
-     * @returns The registered `TestCase`, or no value when registration isn't supported in the current context.
      */
     RegisterTest(this: TestService, testOptions: object): TestCase;
     /**
@@ -47561,14 +47596,9 @@ interface TestService extends Instance {
      */
     StopTestSession(this: TestService): void;
     /**
-     * Captures a named screenshot snapshot during a test run.
-     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#TakeSnapshot)
-     * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
-     * @param snapshotname The name to associate with the captured snapshot.
-     * @param source An optional script instance whose `Suite` and `TestName` attributes name the snapshot; defaults to `nil`.
      */
     TakeSnapshot(this: TestService, snapshotname: string, source?: Instance): void;
     /**
@@ -53671,6 +53701,13 @@ interface WrapTextureTransfer extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer#UVMinBound)
      */
     UVMinBound: Vector2;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTextureTransfer#PrepareProjectionMeshDataAsync)
+     */
+    PrepareProjectionMeshDataAsync(this: WrapTextureTransfer): void;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
