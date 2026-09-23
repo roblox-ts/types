@@ -1962,10 +1962,14 @@ declare namespace Enum {
     }
     export type AnimationNodeBlend2DInputMode = AnimationNodeBlend2DInputMode.Cartesian | AnimationNodeBlend2DInputMode.Polar;
     /**
+     * Specifies how an `AnimationNodeType.OneShotNode` combines its one-shot pose with its base pose.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeBlendMode)
      */
     export namespace AnimationNodeBlendMode {
         /**
+         * Composites the one-shot pose on top of the base pose, replacing it by the current blend weight.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeBlendMode#Over)
          */
         export interface Over extends globalThis.EnumItem {
@@ -1975,6 +1979,8 @@ declare namespace Enum {
         }
         export const Over: Over;
         /**
+         * Adds the one-shot pose to the base pose as an additive layer scaled by the current blend weight.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeBlendMode#Add)
          */
         export interface Add extends globalThis.EnumItem {
@@ -1984,6 +1990,8 @@ declare namespace Enum {
         }
         export const Add: Add;
         /**
+         * Subtracts the one-shot pose from the base pose scaled by the current blend weight.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeBlendMode#Subtract)
          */
         export interface Subtract extends globalThis.EnumItem {
@@ -2329,6 +2337,8 @@ declare namespace Enum {
         }
         export const SubtractNode: SubtractNode;
         /**
+         * A layering node that plays a one-shot pose over a looping base pose on trigger, blending it in and back out.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#OneShotNode)
          */
         export interface OneShotNode extends globalThis.EnumItem {
@@ -23638,28 +23648,6 @@ declare namespace Enum {
     }
     export type KnownWindow = KnownWindow.Main;
     /**
-     * An enumeration embedded in `LocalizationService` that specifies a language context for localization operations; currently defines only `Default`.
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Language)
-     */
-    export namespace Language {
-        /**
-         * Instructs the engine to use the player's system-determined locale for language resolution rather than a fixed override.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Language#Default)
-         */
-        export interface Default extends globalThis.EnumItem {
-            Name: "Default";
-            Value: 0;
-            EnumType: typeof globalThis.Enum.Language;
-        }
-        export const Default: Default;
-        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Language>;
-        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Language | undefined;
-        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Language | undefined;
-    }
-    export type Language = Language.Default;
-    /**
      * The LeftRight Enum is used to set where the object is on the side of its parent.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LeftRight)
@@ -39848,11 +39836,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.TeleportMethod;
         }
         export const Teleport: Teleport;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportMethod#TeleportSwitchServer)
+         */
+        export interface TeleportSwitchServer extends globalThis.EnumItem {
+            Name: "TeleportSwitchServer";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.TeleportMethod;
+        }
+        export const TeleportSwitchServer: TeleportSwitchServer;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TeleportMethod>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TeleportMethod | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TeleportMethod | undefined;
     }
-    export type TeleportMethod = TeleportMethod.TeleportToSpawnByName | TeleportMethod.TeleportToPlaceInstance | TeleportMethod.TeleportToPrivateServer | TeleportMethod.TeleportPartyAsync | TeleportMethod.TeleportToVIPServer | TeleportMethod.TeleportToInstanceBack | TeleportMethod.TeleportUnknown | TeleportMethod.Teleport;
+    export type TeleportMethod = TeleportMethod.TeleportToSpawnByName | TeleportMethod.TeleportToPlaceInstance | TeleportMethod.TeleportToPrivateServer | TeleportMethod.TeleportPartyAsync | TeleportMethod.TeleportToVIPServer | TeleportMethod.TeleportToInstanceBack | TeleportMethod.TeleportUnknown | TeleportMethod.Teleport | TeleportMethod.TeleportSwitchServer;
     /**
      * Describes the result of a teleport.
      *

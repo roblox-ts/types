@@ -229,7 +229,6 @@ interface Services {
     SlimReplicationService: SlimReplicationService;
     SlimService: SlimService;
     SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
-    SnippetService: SnippetService;
     SocialService: SocialService;
     SoundService: SoundService;
     SoundShimService: SoundShimService;
@@ -9469,30 +9468,12 @@ interface TriangleMeshPart extends BasePart {
      */
     readonly _nominal_TriangleMeshPart: unique symbol;
     /**
-     * Determines the level of detail the part's physics will adhere to its mesh.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart#CollisionFidelity)
-     */
-    set CollisionFidelity(value: Enum.CollisionFidelity);
-    /**
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart#CollisionPrecision)
      */
     set CollisionPrecision(value: number);
-    /**
-     * Determines the geometric representation used to compute aerodynamic forces and torques.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart#FluidFidelity)
-     */
-    set FluidFidelity(value: Enum.FluidFidelity);
 }
 /**
  * A form of `BasePart` that includes a physically simulated custom mesh.
@@ -9532,22 +9513,6 @@ interface PartOperation extends TriangleMeshPart {
      * @deprecated
      */
     readonly _nominal_PartOperation: unique symbol;
-    /**
-     * The level of detail used to render the solid modeled part.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PartOperation#RenderFidelity)
-     */
-    set RenderFidelity(value: Enum.RenderFidelity);
-    /**
-     * An angle in degrees which affects the smooth shading of a solid modeled part.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PartOperation#SmoothingAngle)
-     */
-    set SmoothingAngle(value: number);
 }
 /**
  * Result of parts that have been intersected into a single solid model.
@@ -14021,21 +13986,6 @@ interface SmoothVoxelsUpgraderService extends Instance {
      * @deprecated
      */
     readonly _nominal_SmoothVoxelsUpgraderService: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SnippetService)
- */
-interface SnippetService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_SnippetService: unique symbol;
 }
 /**
  * Facilitates social functions that impact relationships made on the Roblox platform.
