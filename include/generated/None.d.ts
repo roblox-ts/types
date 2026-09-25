@@ -43110,15 +43110,6 @@ interface DataModel extends ServiceProvider<Services> {
      */
     readonly VIPServerOwnerId: number;
     /**
-     * A reference to the `RunService` service.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#RunService)
-     */
-    readonly RunService: RunService | undefined;
-    /**
      * A reference to the `Workspace` service.
      *
      * - **ThreadSafety**: ReadSafe
@@ -43127,6 +43118,15 @@ interface DataModel extends ServiceProvider<Services> {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#Workspace)
      */
     readonly Workspace: Workspace;
+    /**
+     * A reference to the `RunService` service.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#RunService)
+     */
+    readonly RunService: RunService | undefined;
     /**
      * Binds a function to be called before the server shuts down.
      *
