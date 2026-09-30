@@ -31,6 +31,9 @@ interface Services {
     AvatarEditorService: AvatarEditorService;
     AvatarImportService: AvatarImportService;
     AvatarSettings: AvatarSettings;
+    BackendReplicatedStorage: BackendReplicatedStorage;
+    BackendServerScriptService: BackendServerScriptService;
+    BackendServerStorage: BackendServerStorage;
     BadgeService: BadgeService;
     BranchService: BranchService;
     BugReporterService: BugReporterService;
@@ -168,6 +171,7 @@ interface Services {
     Preloaded: Preloaded;
     ProceduralBehaviorSchedulerService: ProceduralBehaviorSchedulerService;
     ProcessInstancePhysicsService: ProcessInstancePhysicsService;
+    ProjectService: ProjectService;
     ProximityPromptService: ProximityPromptService;
     PublishService: PublishService;
     QueueService: QueueService;
@@ -548,6 +552,7 @@ interface CreatableInstances {
     TextChannelWindow: TextChannelWindow;
     TextChatCommand: TextChatCommand;
     TextChatMessageProperties: TextChatMessageProperties;
+    TextDocument: TextDocument;
     TextGenerator: TextGenerator;
     TextLabel: TextLabel;
     Texture: Texture;
@@ -667,6 +672,8 @@ interface Instances extends Services, CreatableInstances {
     Feature: Feature;
     FormFactorPart: FormFactorPart;
     FriendPages: FriendPages;
+    FriendsCallingInstance: FriendsCallingInstance;
+    FriendsCallingParticipant: FriendsCallingParticipant;
     GenericSettings: GenericSettings;
     GlobalDataStore: GlobalDataStore;
     GroupImportData: GroupImportData;
@@ -1318,9 +1325,14 @@ interface EditableMesh extends RBXObject {
      */
     AddColor(this: EditableMesh, color: Color3, alpha: number): number;
     /**
+     * Adds a new triangle or quad face to the mesh and returns a face ID.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#AddFace)
+     * @param this Object which allows for the runtime creation and manipulation of meshes.
+     * @param vertexIds Array of the new face's vertex IDs, in order around the face. Provide 3 IDs to create a triangle or 4 IDs to create a quad.
+     * @returns Face ID of the new face.
      */
     AddFace(this: EditableMesh, vertexIds: Array<unknown>): number;
     /**
@@ -1344,7 +1356,7 @@ interface EditableMesh extends RBXObject {
      * @param vertexId0 ID of the first vertex of the triangle.
      * @param vertexId1 ID of the second vertex of the triangle.
      * @param vertexId2 ID of the third vertex of the triangle.
-     * @returns Face ID of the new face.
+     * @returns Stable face ID of the new face.
      */
     AddTriangle(this: EditableMesh, vertexId0: number, vertexId1: number, vertexId2: number): number;
     /**
@@ -1508,7 +1520,7 @@ interface EditableMesh extends RBXObject {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditableMesh#FindClosestPointOnSurface)
      * @param this Object which allows for the runtime creation and manipulation of meshes.
      * @param point Point position in the mesh's local object space.
-     * @returns Tuple of the face ID, point on the mesh in local object space, and the barycentric coordinate of the position within the face.
+     * @returns Tuple of the face ID, point on the mesh in local object space, the barycentric coordinate of the position within the face, and the 3 vertex IDs that the barycentric coordinate weights.
      */
     FindClosestPointOnSurface(this: EditableMesh, point: Vector3): LuaTuple<[
         number,
@@ -2085,7 +2097,7 @@ interface EditableMesh extends RBXObject {
      * @param this Object which allows for the runtime creation and manipulation of meshes.
      * @param origin Origin of the ray in the mesh's local object space.
      * @param direction Direction of the ray.
-     * @returns Tuple of the point of intersection, face ID, and barycentric coordinates.
+     * @returns Tuple of the face ID, point of intersection, barycentric coordinates, and the 3 vertex IDs that the barycentric coordinates weight.
      */
     RaycastLocal(this: EditableMesh, origin: Vector3, direction: Vector3): LuaTuple<[
         number,
@@ -9440,6 +9452,51 @@ interface AvatarSettings extends Instance {
      * @deprecated
      */
     readonly _nominal_AvatarSettings: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BackendReplicatedStorage)
+ */
+interface BackendReplicatedStorage extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_BackendReplicatedStorage: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BackendServerScriptService)
+ */
+interface BackendServerScriptService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_BackendServerScriptService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BackendServerStorage)
+ */
+interface BackendServerStorage extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_BackendServerStorage: unique symbol;
 }
 /**
  * A container object that holds a player's inventory. Any `Tool` in a player's `Backpack` will be displayed in their inventory at the bottom of the screen.
@@ -19621,6 +19678,36 @@ interface ForceField extends Instance {
     Visible: boolean;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FriendsCallingInstance)
+ */
+interface FriendsCallingInstance extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FriendsCallingInstance: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FriendsCallingParticipant)
+ */
+interface FriendsCallingParticipant extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FriendsCallingParticipant: unique symbol;
+}
+/**
  * A service associated with the legacy game pass system. Use `MarketplaceService` for all new work.
  *
  * - **Tags**: NotCreatable, Service
@@ -28336,6 +28423,8 @@ interface InputAction extends Instance {
      */
     readonly _nominal_InputAction: unique symbol;
     /**
+     * Localized display name for this action.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputAction#DisplayName)
@@ -30320,6 +30409,8 @@ interface LocalizationService extends Instance {
      */
     GetTableEntries(this: LocalizationService, instance?: Instance): Array<unknown>;
     /**
+     * **Deprecated:** This function has been deprecated by `LocalizationService:GetTranslatorForPlayerAsync()`, which functions similarly except that it yields until the cloud table has loaded. Please use it in new work instead.
+     *
      * Returns a `Translator` to be used for translations using the locale data loaded.
      *
      * - **ThreadSafety**: Unsafe
@@ -34961,6 +35052,8 @@ interface TriangleMeshPart extends BasePart {
      */
     CollisionFidelity: Enum.CollisionFidelity;
     /**
+     * Quantifies how precise or performant a `CollisionFidelity.Tunable` collision geometry is, from `0` to `1`.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -38996,6 +39089,13 @@ interface Player extends Instance {
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#GetFriendsInServerAsync)
+     */
+    GetFriendsInServerAsync(this: Player): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#GetFriendsInUniverseAsync)
      */
     GetFriendsInUniverseAsync(this: Player): Array<unknown>;
@@ -40639,6 +40739,21 @@ interface ProcessInstancePhysicsService extends Instance {
      * @deprecated
      */
     readonly _nominal_ProcessInstancePhysicsService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProjectService)
+ */
+interface ProjectService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ProjectService: unique symbol;
 }
 /**
  * An object that lets you prompt players to interact with an object in the 3D world.
@@ -47341,6 +47456,13 @@ interface TestService extends Instance {
      */
     Description: string;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Enabled)
+     */
+    readonly Enabled: boolean;
+    /**
      * Measures how many errors have been recorded in the test session.
      *
      * - **ThreadSafety**: ReadSafe
@@ -48880,6 +49002,21 @@ interface TextChatService extends Instance {
      * @returns If a `TextChatMessageProperties` is returned, those properties are merged with the `TextChatMessage` parameter to create a new `TextChatMessage` with those properties, otherwise, if `nil` is returned, then `TextChatMessage` is not changed.
      */
     OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextDocument)
+ */
+interface TextDocument extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TextDocument: unique symbol;
 }
 /**
  * Represents the result of a call to `TextService:FilterStringAsync()`, used to distribute a filtered string accordingly.

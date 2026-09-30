@@ -31,6 +31,9 @@ interface Services {
     AvatarEditorService: AvatarEditorService;
     AvatarImportService: AvatarImportService;
     AvatarSettings: AvatarSettings;
+    BackendReplicatedStorage: BackendReplicatedStorage;
+    BackendServerScriptService: BackendServerScriptService;
+    BackendServerStorage: BackendServerStorage;
     BadgeService: BadgeService;
     BranchService: BranchService;
     BugReporterService: BugReporterService;
@@ -181,6 +184,7 @@ interface Services {
     Preloaded: Preloaded;
     ProceduralBehaviorSchedulerService: ProceduralBehaviorSchedulerService;
     ProcessInstancePhysicsService: ProcessInstancePhysicsService;
+    ProjectService: ProjectService;
     ProximityPromptService: ProximityPromptService;
     PublishService: PublishService;
     QueueService: QueueService;
@@ -572,6 +576,7 @@ interface CreatableInstances {
     TextChannelWindow: TextChannelWindow;
     TextChatCommand: TextChatCommand;
     TextChatMessageProperties: TextChatMessageProperties;
+    TextDocument: TextDocument;
     TextGenerator: TextGenerator;
     TextLabel: TextLabel;
     Texture: Texture;
@@ -697,6 +702,8 @@ interface Instances extends Services, CreatableInstances {
     File: File;
     FormFactorPart: FormFactorPart;
     FriendPages: FriendPages;
+    FriendsCallingInstance: FriendsCallingInstance;
+    FriendsCallingParticipant: FriendsCallingParticipant;
     GenericSettings: GenericSettings;
     GlobalDataStore: GlobalDataStore;
     GlobalSettings: GlobalSettings;
@@ -2444,6 +2451,51 @@ interface AvatarSettings extends Instance {
      * @deprecated
      */
     readonly _nominal_AvatarSettings: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BackendReplicatedStorage)
+ */
+interface BackendReplicatedStorage extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_BackendReplicatedStorage: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BackendServerScriptService)
+ */
+interface BackendServerScriptService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_BackendServerScriptService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BackendServerStorage)
+ */
+interface BackendServerStorage extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_BackendServerStorage: unique symbol;
 }
 /**
  * A container object that holds a player's inventory. Any `Tool` in a player's `Backpack` will be displayed in their inventory at the bottom of the screen.
@@ -5869,6 +5921,36 @@ interface ForceField extends Instance {
      * @deprecated
      */
     readonly _nominal_ForceField: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FriendsCallingInstance)
+ */
+interface FriendsCallingInstance extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FriendsCallingInstance: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FriendsCallingParticipant)
+ */
+interface FriendsCallingParticipant extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FriendsCallingParticipant: unique symbol;
 }
 /**
  * A service associated with the legacy game pass system. Use `MarketplaceService` for all new work.
@@ -9468,6 +9550,8 @@ interface TriangleMeshPart extends BasePart {
      */
     readonly _nominal_TriangleMeshPart: unique symbol;
     /**
+     * Quantifies how precise or performant a `CollisionFidelity.Tunable` collision geometry is, from `0` to `1`.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -11953,6 +12037,21 @@ interface ProcessInstancePhysicsService extends Instance {
      * @deprecated
      */
     readonly _nominal_ProcessInstancePhysicsService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProjectService)
+ */
+interface ProjectService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ProjectService: unique symbol;
 }
 /**
  * An object that lets you prompt players to interact with an object in the 3D world.
@@ -17104,6 +17203,27 @@ interface TextChatService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatService#CreateDefaultTextChannels)
      */
     set CreateDefaultTextChannels(value: boolean);
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextDocument)
+ */
+interface TextDocument extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TextDocument: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextDocument#TextContent)
+     */
+    TextContent: Content;
 }
 /**
  * Represents the result of a call to `TextService:FilterStringAsync()`, used to distribute a filtered string accordingly.

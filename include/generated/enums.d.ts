@@ -2348,6 +2348,8 @@ declare namespace Enum {
         }
         export const OneShotNode: OneShotNode;
         /**
+         * A node that selects and transitions between animation states according to a state machine definition.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#StateMachineNode)
          */
         export interface StateMachineNode extends globalThis.EnumItem {
@@ -17012,6 +17014,339 @@ declare namespace Enum {
     }
     export type FriendStatus = FriendStatus.Unknown | FriendStatus.NotFriend | FriendStatus.Friend | FriendStatus.FriendRequestSent | FriendStatus.FriendRequestReceived;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason)
+     */
+    export namespace FriendsCallingEndReason {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#LocalHangup)
+         */
+        export interface LocalHangup extends globalThis.EnumItem {
+            Name: "LocalHangup";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const LocalHangup: LocalHangup;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#RemoteHangup)
+         */
+        export interface RemoteHangup extends globalThis.EnumItem {
+            Name: "RemoteHangup";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const RemoteHangup: RemoteHangup;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#Missed)
+         */
+        export interface Missed extends globalThis.EnumItem {
+            Name: "Missed";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const Missed: Missed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#Declined)
+         */
+        export interface Declined extends globalThis.EnumItem {
+            Name: "Declined";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const Declined: Declined;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#Failed)
+         */
+        export interface Failed extends globalThis.EnumItem {
+            Name: "Failed";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const Failed: Failed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#Canceled)
+         */
+        export interface Canceled extends globalThis.EnumItem {
+            Name: "Canceled";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const Canceled: Canceled;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FriendsCallingEndReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FriendsCallingEndReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendsCallingEndReason | undefined;
+    }
+    export type FriendsCallingEndReason = FriendsCallingEndReason.None | FriendsCallingEndReason.LocalHangup | FriendsCallingEndReason.RemoteHangup | FriendsCallingEndReason.Missed | FriendsCallingEndReason.Declined | FriendsCallingEndReason.Failed | FriendsCallingEndReason.Canceled;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantErrors)
+     */
+    export namespace FriendsCallingParticipantErrors {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantErrors#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantErrors;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantErrors#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantErrors;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantErrors#ConnectionFailed)
+         */
+        export interface ConnectionFailed extends globalThis.EnumItem {
+            Name: "ConnectionFailed";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantErrors;
+        }
+        export const ConnectionFailed: ConnectionFailed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantErrors#PublishFailed)
+         */
+        export interface PublishFailed extends globalThis.EnumItem {
+            Name: "PublishFailed";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantErrors;
+        }
+        export const PublishFailed: PublishFailed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantErrors#PermissionDenied)
+         */
+        export interface PermissionDenied extends globalThis.EnumItem {
+            Name: "PermissionDenied";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantErrors;
+        }
+        export const PermissionDenied: PermissionDenied;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FriendsCallingParticipantErrors>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FriendsCallingParticipantErrors | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendsCallingParticipantErrors | undefined;
+    }
+    export type FriendsCallingParticipantErrors = FriendsCallingParticipantErrors.None | FriendsCallingParticipantErrors.Unknown | FriendsCallingParticipantErrors.ConnectionFailed | FriendsCallingParticipantErrors.PublishFailed | FriendsCallingParticipantErrors.PermissionDenied;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason)
+     */
+    export namespace FriendsCallingParticipantLeaveReason {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#Hangup)
+         */
+        export interface Hangup extends globalThis.EnumItem {
+            Name: "Hangup";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const Hangup: Hangup;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#Declined)
+         */
+        export interface Declined extends globalThis.EnumItem {
+            Name: "Declined";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const Declined: Declined;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#Missed)
+         */
+        export interface Missed extends globalThis.EnumItem {
+            Name: "Missed";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const Missed: Missed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#Removed)
+         */
+        export interface Removed extends globalThis.EnumItem {
+            Name: "Removed";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const Removed: Removed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#Failed)
+         */
+        export interface Failed extends globalThis.EnumItem {
+            Name: "Failed";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const Failed: Failed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#TimedOut)
+         */
+        export interface TimedOut extends globalThis.EnumItem {
+            Name: "TimedOut";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const TimedOut: TimedOut;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FriendsCallingParticipantLeaveReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FriendsCallingParticipantLeaveReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendsCallingParticipantLeaveReason | undefined;
+    }
+    export type FriendsCallingParticipantLeaveReason = FriendsCallingParticipantLeaveReason.None | FriendsCallingParticipantLeaveReason.Hangup | FriendsCallingParticipantLeaveReason.Declined | FriendsCallingParticipantLeaveReason.Missed | FriendsCallingParticipantLeaveReason.Removed | FriendsCallingParticipantLeaveReason.Failed | FriendsCallingParticipantLeaveReason.TimedOut;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus)
+     */
+    export namespace FriendsCallingParticipantStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Invited)
+         */
+        export interface Invited extends globalThis.EnumItem {
+            Name: "Invited";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Invited: Invited;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Ringing)
+         */
+        export interface Ringing extends globalThis.EnumItem {
+            Name: "Ringing";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Ringing: Ringing;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Joined)
+         */
+        export interface Joined extends globalThis.EnumItem {
+            Name: "Joined";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Joined: Joined;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Declined)
+         */
+        export interface Declined extends globalThis.EnumItem {
+            Name: "Declined";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Declined: Declined;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Left)
+         */
+        export interface Left extends globalThis.EnumItem {
+            Name: "Left";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Left: Left;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Removed)
+         */
+        export interface Removed extends globalThis.EnumItem {
+            Name: "Removed";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Removed: Removed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Ineligible)
+         */
+        export interface Ineligible extends globalThis.EnumItem {
+            Name: "Ineligible";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Ineligible: Ineligible;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#TimedOut)
+         */
+        export interface TimedOut extends globalThis.EnumItem {
+            Name: "TimedOut";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const TimedOut: TimedOut;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Muted)
+         */
+        export interface Muted extends globalThis.EnumItem {
+            Name: "Muted";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Muted: Muted;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FriendsCallingParticipantStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FriendsCallingParticipantStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendsCallingParticipantStatus | undefined;
+    }
+    export type FriendsCallingParticipantStatus = FriendsCallingParticipantStatus.Invited | FriendsCallingParticipantStatus.Ringing | FriendsCallingParticipantStatus.Joined | FriendsCallingParticipantStatus.Declined | FriendsCallingParticipantStatus.Left | FriendsCallingParticipantStatus.Removed | FriendsCallingParticipantStatus.Ineligible | FriendsCallingParticipantStatus.TimedOut | FriendsCallingParticipantStatus.Muted;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingPhase)
+     */
+    export namespace FriendsCallingPhase {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingPhase#Idle)
+         */
+        export interface Idle extends globalThis.EnumItem {
+            Name: "Idle";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FriendsCallingPhase;
+        }
+        export const Idle: Idle;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingPhase#Ringing)
+         */
+        export interface Ringing extends globalThis.EnumItem {
+            Name: "Ringing";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FriendsCallingPhase;
+        }
+        export const Ringing: Ringing;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingPhase#Active)
+         */
+        export interface Active extends globalThis.EnumItem {
+            Name: "Active";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FriendsCallingPhase;
+        }
+        export const Active: Active;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingPhase#Ended)
+         */
+        export interface Ended extends globalThis.EnumItem {
+            Name: "Ended";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FriendsCallingPhase;
+        }
+        export const Ended: Ended;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FriendsCallingPhase>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FriendsCallingPhase | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendsCallingPhase | undefined;
+    }
+    export type FriendsCallingPhase = FriendsCallingPhase.Idle | FriendsCallingPhase.Ringing | FriendsCallingPhase.Active | FriendsCallingPhase.Ended;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrustumStreamingMode)
      */
     export namespace FrustumStreamingMode {
@@ -17663,11 +17998,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.GradientType;
         }
         export const Conical: Conical;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientType#Elliptical)
+         */
+        export interface Elliptical extends globalThis.EnumItem {
+            Name: "Elliptical";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.GradientType;
+        }
+        export const Elliptical: Elliptical;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GradientType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.GradientType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GradientType | undefined;
     }
-    export type GradientType = GradientType.Linear | GradientType.Radial | GradientType.Conical;
+    export type GradientType = GradientType.Linear | GradientType.Radial | GradientType.Conical | GradientType.Elliptical;
     /**
      * Used to set the graphics API that Roblox uses to render the game.
      *
@@ -19373,7 +19717,7 @@ declare namespace Enum {
         }
         export const Overwrite: Overwrite;
         /**
-         * Adds pixels from the source and pixels from the destination together.
+         * Adds pixels from the source and pixels from the destination together. Source RGB values are scaled by the source alpha, while source alpha is added directly to destination alpha.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ImageCombineType#Add)
          */
@@ -19417,7 +19761,7 @@ declare namespace Enum {
         }
         export const NormalMapBlend: NormalMapBlend;
         /**
-         * Subtracts pixels of the source from pixels of the destination.
+         * Subtracts pixels of the source from pixels of the destination. Source RGB values are scaled by the source alpha, while source alpha is subtracted directly from destination alpha.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ImageCombineType#Subtract)
          */
