@@ -1,6 +1,5 @@
 import { expectTypeOf, it } from "vitest";
-// Doubling finite literal strings avoids giant fixtures and exercises the public call signature.
-// These used to cause TS2589, so merely inspecting Selector.Solve is not sufficient.
+
 type Twice<S extends string> = `${S}${S}`;
 type Times16<S extends string> = Twice<Twice<Twice<Twice<S>>>>;
 type Times64<S extends string> = Twice<Twice<Times16<S>>>;
@@ -19,7 +18,6 @@ it("resolves long quoted values within the work limit", () => {
 	expectTypeOf(game.QueryDescendants(longQuotedValue)).toEqualTypeOf<Part[]>();
 });
 
-// Work limits must discard the entire partial result, including unprocessed list branches.
 declare const excessiveList: `${Times256<"Part,">}Model`;
 it("falls back when selector lists exceed the work limit", () => {
 	expectTypeOf(game.QueryDescendants(excessiveList)).toEqualTypeOf<Instance[]>();

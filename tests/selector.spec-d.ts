@@ -1,8 +1,4 @@
-import { expectTypeOf, it } from "vitest";
-
-// `game` is the DataModel global from include/roblox.d.ts.
-
-// Subject resolution: single class
+import { describe, expectTypeOf, it } from "vitest";
 
 it("resolves Part as Part[]", () => {
 	expectTypeOf(game.QueryDescendants("Part")).toEqualTypeOf<Part[]>();
@@ -40,8 +36,6 @@ it("resolves [$FuelCapacity = 75] as Instance[]", () => {
 	expectTypeOf(game.QueryDescendants("[$FuelCapacity = 75]")).toEqualTypeOf<Instance[]>();
 });
 
-// Combinators (`>` child / `>>` descendant)
-
 it("resolves Workspace > Folder > Model > Part as Part[]", () => {
 	expectTypeOf(game.QueryDescendants("Workspace > Folder > Model > Part")).toEqualTypeOf<Part[]>();
 });
@@ -64,16 +58,12 @@ it("resolves Folder > #SpecialPart as Instance[]", () => {
 	expectTypeOf(game.QueryDescendants("Folder > #SpecialPart")).toEqualTypeOf<Instance[]>();
 });
 
-// Tags / names without a class resolve to Instance
-
 it("resolves .Fruit as Instance[]", () => {
 	expectTypeOf(game.QueryDescendants(".Fruit")).toEqualTypeOf<Instance[]>();
 });
 it("resolves #MyPart as Instance[]", () => {
 	expectTypeOf(game.QueryDescendants("#MyPart")).toEqualTypeOf<Instance[]>();
 });
-
-// Selector lists (comma) union the subjects
 
 it("resolves Part, Model, SpotLight as (Part | Model | SpotLight)[]", () => {
 	expectTypeOf(game.QueryDescendants("Part, Model, SpotLight")).toEqualTypeOf<(Part | Model | SpotLight)[]>();
@@ -91,8 +81,6 @@ it("resolves Part[Anchored=true], Model > SpotLight.Bright, ImageButton, .UI as 
 		game.QueryDescendants("Part[Anchored=true], Model > SpotLight.Bright, ImageButton, .UI"),
 	).toEqualTypeOf<(Part | SpotLight | ImageButton | Instance)[]>();
 });
-
-// Pseudo-classes (`:not` / `:has`)
 
 it("resolves Part:not(.Foo) as Part[]", () => {
 	expectTypeOf(game.QueryDescendants("Part:not(.Foo)")).toEqualTypeOf<Part[]>();
@@ -153,8 +141,6 @@ it("resolves Part:not(:has(Model, Folder)):has(TextLabel), Model as (Part | Mode
 	>();
 });
 
-// Quoted attribute values
-
 it("resolves Part[Name = 'Hello, World'] as Part[]", () => {
 	expectTypeOf(game.QueryDescendants("Part[Name = 'Hello, World']")).toEqualTypeOf<Part[]>();
 });
@@ -165,8 +151,6 @@ it("resolves Model[Name = 'a], b > c'] > TextButton as TextButton[]", () => {
 	expectTypeOf(game.QueryDescendants("Model[Name = 'a], b > c'] > TextButton")).toEqualTypeOf<TextButton[]>();
 });
 
-// Dynamic (non-literal) and empty selectors fall back to Instance[]
-
 it("falls back for dynamic selectors", () => {
 	expectTypeOf(game.QueryDescendants(game.Name)).toEqualTypeOf<Instance[]>();
 });
@@ -174,67 +158,74 @@ it("falls back for empty selectors", () => {
 	expectTypeOf(game.QueryDescendants("")).toEqualTypeOf<Instance[]>();
 });
 
-// Validation: readable error strings
+describe("selector validation", () => {
+	it("accepts supported selectors", () => {
+		expectTypeOf<Selector.ValidateSelector<"Part">>().toEqualTypeOf<"Part">();
+	});
+	it("reports unsupported pseudo-classes", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part:foo(x)">
+		>().toEqualTypeOf<"Invalid selector: ':foo' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)">();
+	});
+	it("reports unsupported pseudo-classes without arguments", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part:hover">
+		>().toEqualTypeOf<"Invalid selector: ':hover' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)">();
+	});
+	it("reports trailing commas", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part,">
+		>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+	});
+	it("reports leading commas", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<", Part">
+		>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+	});
+	it("reports empty selector-list entries", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part,,Model">
+		>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+	});
+	it("ignores pseudo-class syntax in quoted values", () => {
+		expectTypeOf<Selector.ValidateSelector<"Part[Name=':foo(x)']">>().toEqualTypeOf<"Part[Name=':foo(x)']">();
+	});
+	it("ignores commas in quoted values", () => {
+		expectTypeOf<Selector.ValidateSelector<"Part[Name=',']">>().toEqualTypeOf<"Part[Name=',']">();
+	});
+	it("preserves URLs in quoted values", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part[Name='http://example.com']">
+		>().toEqualTypeOf<"Part[Name='http://example.com']">();
+	});
+	it("preserves commas in bracket values", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part[Name='Hello,World']">
+		>().toEqualTypeOf<"Part[Name='Hello,World']">();
+	});
 
-it("accepts supported selectors", () => {
-	expectTypeOf<Selector.ValidateSelector<"Part">>().toEqualTypeOf<"Part">();
+	it("rejects unsupported pseudo-classes at the call site", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part:foo(x)">
+		>().toEqualTypeOf<"Invalid selector: ':foo' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)">();
+		// @ts-expect-error
+		game.QueryDescendants("Part:foo(x)");
+	});
+	it("rejects trailing commas at the call site", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part,">
+		>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+		// @ts-expect-error
+		game.QueryDescendants("Part,");
+	});
+	it("rejects leading commas at the call site", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<", Part">
+		>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+		// @ts-expect-error
+		game.QueryDescendants(", Part");
+	});
 });
-it("reports unsupported pseudo-classes", () => {
-	expectTypeOf<
-		Selector.ValidateSelector<"Part:foo(x)">
-	>().toEqualTypeOf<"Invalid selector: ':foo' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)">();
-});
-it("reports unsupported pseudo-classes without arguments", () => {
-	expectTypeOf<
-		Selector.ValidateSelector<"Part:hover">
-	>().toEqualTypeOf<"Invalid selector: ':hover' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)">();
-});
-it("reports trailing commas", () => {
-	expectTypeOf<
-		Selector.ValidateSelector<"Part,">
-	>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
-});
-it("reports leading commas", () => {
-	expectTypeOf<
-		Selector.ValidateSelector<", Part">
-	>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
-});
-it("reports empty selector-list entries", () => {
-	expectTypeOf<
-		Selector.ValidateSelector<"Part,,Model">
-	>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
-});
-it("ignores pseudo-class syntax in quoted values", () => {
-	expectTypeOf<Selector.ValidateSelector<"Part[Name=':foo(x)']">>().toEqualTypeOf<"Part[Name=':foo(x)']">();
-});
-it("ignores commas in quoted values", () => {
-	expectTypeOf<Selector.ValidateSelector<"Part[Name=',']">>().toEqualTypeOf<"Part[Name=',']">();
-});
-it("preserves URLs in quoted values", () => {
-	expectTypeOf<
-		Selector.ValidateSelector<"Part[Name='http://example.com']">
-	>().toEqualTypeOf<"Part[Name='http://example.com']">();
-});
-it("preserves commas in bracket values", () => {
-	expectTypeOf<Selector.ValidateSelector<"Part[Name='Hello,World']">>().toEqualTypeOf<"Part[Name='Hello,World']">();
-});
-
-// Validation at call sites
-
-it('rejects game.QueryDescendants("Part:foo(x)");', () => {
-	// @ts-expect-error Invalid selector: ':foo' is not a supported pseudo-class
-	game.QueryDescendants("Part:foo(x)");
-});
-it('rejects game.QueryDescendants("Part,");', () => {
-	// @ts-expect-error Invalid selector: empty selector in list
-	game.QueryDescendants("Part,");
-});
-it('rejects game.QueryDescendants(", Part");', () => {
-	// @ts-expect-error Invalid selector: empty selector in list
-	game.QueryDescendants(", Part");
-});
-
-// Double quotes, mixed quote characters, and opaque filter contents on both parser paths.
 
 it('resolves Part[Name="O\'Brien"], Model[Name="O\'Brien"] as (Part | Model)[]', () => {
 	expectTypeOf(game.QueryDescendants(`Part[Name="O'Brien"], Model[Name="O'Brien"]`)).toEqualTypeOf<
@@ -276,8 +267,6 @@ it('resolves Part[Name="a\\\\"], Model as (Part | Model)[]', () => {
 	expectTypeOf(game.QueryDescendants('Part[Name="a\\\\"], Model')).toEqualTypeOf<(Part | Model)[]>();
 });
 
-// Dynamic templates can introduce combinators or additional selector-list branches.
-
 it("falls back when a tag is dynamic", () => {
 	expectTypeOf(game.QueryDescendants(`Part.${game.Name}`)).toEqualTypeOf<Instance[]>();
 });
@@ -307,16 +296,20 @@ it("resolves mixed template union as (Part | Instance)[]", () => {
 	expectTypeOf(game.QueryDescendants(mixedTemplateUnion)).toEqualTypeOf<(Part | Instance)[]>();
 });
 
-// Keep each union member paired with its own validation result.
-
 declare const invalidPseudoUnion: "Part" | "Model:foo(x)";
-it("rejects game.QueryDescendants(invalidPseudoUnion);", () => {
-	// @ts-expect-error Invalid selector: ':foo' is not a supported pseudo-class
+it("rejects unions containing an unsupported pseudo-class", () => {
+	expectTypeOf<Selector.ValidateSelector<typeof invalidPseudoUnion>>().toEqualTypeOf<
+		"Part" | "Invalid selector: ':foo' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)"
+	>();
+	// @ts-expect-error
 	game.QueryDescendants(invalidPseudoUnion);
 });
 declare const invalidCommaUnion: "Part" | "Model,";
-it("rejects game.QueryDescendants(invalidCommaUnion);", () => {
-	// @ts-expect-error Invalid selector: empty selector in list
+it("rejects unions containing a trailing comma", () => {
+	expectTypeOf<Selector.ValidateSelector<typeof invalidCommaUnion>>().toEqualTypeOf<
+		"Part" | "Invalid selector: empty selector in list (check for a stray or trailing comma)"
+	>();
+	// @ts-expect-error
 	game.QueryDescendants(invalidCommaUnion);
 });
 it("validates each selector union member independently", () => {
@@ -325,51 +318,79 @@ it("validates each selector union member independently", () => {
 	>();
 });
 
-// Nested list boundaries must not hide empty entries.
+describe("nested selector-list validation", () => {
+	it("rejects leading commas in :not()", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part:not(,Model)">
+		>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+		// @ts-expect-error
+		game.QueryDescendants("Part:not(,Model)");
+	});
+	it("rejects trailing commas in :not()", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part:not(Model,)">
+		>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+		// @ts-expect-error
+		game.QueryDescendants("Part:not(Model,)");
+	});
+	it("rejects empty entries in :not() selector lists", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part:not(Model,,Folder)">
+		>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+		// @ts-expect-error
+		game.QueryDescendants("Part:not(Model,,Folder)");
+	});
+	it("rejects leading commas in :has()", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part:has(,Model)">
+		>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+		// @ts-expect-error
+		game.QueryDescendants("Part:has(,Model)");
+	});
+	it("rejects trailing commas in :has()", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part:has(Model,)">
+		>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+		// @ts-expect-error
+		game.QueryDescendants("Part:has(Model,)");
+	});
+	it("rejects trailing commas in nested pseudo-classes", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part:has(:not(Model,))">
+		>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+		// @ts-expect-error
+		game.QueryDescendants("Part:has(:not(Model,))");
+	});
+	it("rejects empty :not() arguments", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part:not()">
+		>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+		// @ts-expect-error
+		game.QueryDescendants("Part:not()");
+	});
+	it("rejects whitespace-only :has() arguments", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part:has( )">
+		>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+		// @ts-expect-error
+		game.QueryDescendants("Part:has( )");
+	});
+	it("rejects unsupported pseudo-classes nested in :has()", () => {
+		expectTypeOf<
+			Selector.ValidateSelector<"Part:has(Model:foo(.x))">
+		>().toEqualTypeOf<"Invalid selector: ':foo' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)">();
+		// @ts-expect-error
+		game.QueryDescendants("Part:has(Model:foo(.x))");
+	});
+});
 
-it('rejects game.QueryDescendants("Part:not(,Model)");', () => {
-	// @ts-expect-error Invalid selector: empty selector in list
-	game.QueryDescendants("Part:not(,Model)");
-});
-it('rejects game.QueryDescendants("Part:not(Model,)");', () => {
-	// @ts-expect-error Invalid selector: empty selector in list
-	game.QueryDescendants("Part:not(Model,)");
-});
-it('rejects game.QueryDescendants("Part:not(Model,,Folder)");', () => {
-	// @ts-expect-error Invalid selector: empty selector in list
-	game.QueryDescendants("Part:not(Model,,Folder)");
-});
-it('rejects game.QueryDescendants("Part:has(,Model)");', () => {
-	// @ts-expect-error Invalid selector: empty selector in list
-	game.QueryDescendants("Part:has(,Model)");
-});
-it('rejects game.QueryDescendants("Part:has(Model,)");', () => {
-	// @ts-expect-error Invalid selector: empty selector in list
-	game.QueryDescendants("Part:has(Model,)");
-});
-it('rejects game.QueryDescendants("Part:has(:not(Model,))");', () => {
-	// @ts-expect-error Invalid selector: empty selector in list
-	game.QueryDescendants("Part:has(:not(Model,))");
-});
-it('rejects game.QueryDescendants("Part:not()");', () => {
-	// @ts-expect-error Invalid selector: empty selector in list
-	game.QueryDescendants("Part:not()");
-});
-it('rejects game.QueryDescendants("Part:has( )");', () => {
-	// @ts-expect-error Invalid selector: empty selector in list
-	game.QueryDescendants("Part:has( )");
-});
-it('rejects game.QueryDescendants("Part:has(Model:foo(.x))");', () => {
-	// @ts-expect-error Invalid selector: ':foo' is not a supported pseudo-class
-	game.QueryDescendants("Part:has(Model:foo(.x))");
-});
-// Collections-only syntax is not supported by QueryDescendants.
-it('rejects game.QueryDescendants("Part:in-radius(10, .Target)");', () => {
-	// @ts-expect-error Invalid selector: ':in-radius' is not a supported pseudo-class
+it("rejects collection-only pseudo-classes", () => {
+	expectTypeOf<
+		Selector.ValidateSelector<"Part:in-radius(10, .Target)">
+	>().toEqualTypeOf<"Invalid selector: ':in-radius' is not a supported pseudo-class (only ':not()' and ':has()' are allowed)">();
+	// @ts-expect-error
 	game.QueryDescendants("Part:in-radius(10, .Target)");
 });
-
-// Other documented forms and whitespace (whitespace is not a combinator).
 
 it("resolves Part[Material=Neon] as Part[]", () => {
 	expectTypeOf(game.QueryDescendants("Part[Material=Neon]")).toEqualTypeOf<Part[]>();
@@ -394,16 +415,20 @@ it("resolves MeshPart:has(\n> :not(SurfaceAppearance, Texture)\n) as MeshPart[]"
 		MeshPart[]
 	>();
 });
-it('rejects game.QueryDescendants("Part:not(\t,Model)");', () => {
-	// @ts-expect-error Invalid selector: empty selector in list
+it("rejects tab-only entries in nested selector lists", () => {
+	expectTypeOf<
+		Selector.ValidateSelector<"Part:not(\t,Model)">
+	>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+	// @ts-expect-error
 	game.QueryDescendants("Part:not(\t,Model)");
 });
-it('rejects game.QueryDescendants("Part:not(Model,\n)");', () => {
-	// @ts-expect-error Invalid selector: empty selector in list
+it("rejects newline-only trailing entries in nested selector lists", () => {
+	expectTypeOf<
+		Selector.ValidateSelector<"Part:not(Model,\n)">
+	>().toEqualTypeOf<"Invalid selector: empty selector in list (check for a stray or trailing comma)">();
+	// @ts-expect-error
 	game.QueryDescendants("Part:not(Model,\n)");
 });
-
-// Compatibility fallbacks for incomplete input; these are not engine-valid selectors.
 
 it("falls back for trailing combinators", () => {
 	expectTypeOf(game.QueryDescendants("Model >")).toEqualTypeOf<Instance[]>();
