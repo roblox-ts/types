@@ -1,0 +1,9 @@
+{
+	"extends": "../include/tsconfig.json",
+	"compilerOptions": {
+		"noEmit": true,
+		"rootDir": "..",
+		"skipLibCheck": true
+	},
+	"include": ["../include/**/*.d.ts", "./**/*.spec-d.ts"]
+}
