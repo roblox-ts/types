@@ -94,6 +94,7 @@ interface Services {
     FeatureRestrictionManager: FeatureRestrictionManager;
     FileManagerService: FileManagerService;
     FileSyncReplicationService: FileSyncReplicationService;
+    FriendsCallingService: FriendsCallingService;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
     GameSettings: GameSettings;
@@ -109,6 +110,7 @@ interface Services {
     HeatmapQueryService: HeatmapQueryService;
     HeatmapService: HeatmapService;
     HeightmapImporterService: HeightmapImporterService;
+    HiddenPlayerService: HiddenPlayerService;
     HttpService: HttpService;
     ILegacyStudioBridge: ILegacyStudioBridge;
     ImageScreenCaptureService: ImageScreenCaptureService;
@@ -116,6 +118,7 @@ interface Services {
     InsertService: InsertService;
     InstanceExtensionsService: InstanceExtensionsService;
     InstanceFileSyncService: InstanceFileSyncService;
+    InstanceRegistryService: InstanceRegistryService;
     IntentService: IntentService;
     InternalMessagingService: InternalMessagingService;
     InternalMessagingServiceVerifier: InternalMessagingServiceVerifier;
@@ -588,6 +591,7 @@ interface CreatableInstances {
     TremoloSoundEffect: TremoloSoundEffect;
     TrussPart: TrussPart;
     UIAspectRatioConstraint: UIAspectRatioConstraint;
+    UIBlur: UIBlur;
     UICorner: UICorner;
     UIDragDetector: UIDragDetector;
     UIFlexItem: UIFlexItem;
@@ -633,9 +637,9 @@ interface CreatableInstances {
     WrapTextureTransfer: WrapTextureTransfer;
 }
 interface Instances extends Services, CreatableInstances {
-    AnimatedImage: AnimatedImage;
     AnimationClip: AnimationClip;
     AnimationImportData: AnimationImportData;
+    AnimationPlayer: AnimationPlayer;
     AnimationStreamTrack: AnimationStreamTrack;
     AnimationTrack: AnimationTrack;
     AssetImportSession: AssetImportSession;
@@ -814,7 +818,6 @@ interface Instances extends Services, CreatableInstances {
     SyncScriptBuilder: SyncScriptBuilder;
     TeleportAsyncResult: TeleportAsyncResult;
     Terrain: Terrain;
-    TestCase: TestCase;
     TextChatConfigurations: TextChatConfigurations;
     TextChatMessage: TextChatMessage;
     TextFilterResult: TextFilterResult;
@@ -861,6 +864,12 @@ interface Objects extends Instances {
     TerrainModifyOperation: TerrainModifyOperation;
     TerrainReadOperation: TerrainReadOperation;
     TerrainWriteOperation: TerrainWriteOperation;
+    TestCase: TestCase;
+    TestExecutionContext: TestExecutionContext;
+    TestFailure: TestFailure;
+    TestResult: TestResult;
+    TestRunResult: TestRunResult;
+    TestSuite: TestSuite;
     VideoCapture: VideoCapture;
     VideoSampler: VideoSampler;
     VirtualInput: VirtualInput;
@@ -1259,7 +1268,7 @@ interface AnalyticsService extends Instance {
     readonly _nominal_AnalyticsService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, Service
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImageService)
  */
@@ -1466,6 +1475,21 @@ interface AnimationNodeDefinition extends Instance {
      * @deprecated
      */
     readonly _nominal_AnimationNodeDefinition: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationPlayer)
+ */
+interface AnimationPlayer extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationPlayer: unique symbol;
 }
 /**
  * Used to store information regarding the model an animation was authored for.
@@ -4121,7 +4145,7 @@ interface RopeConstraint extends Constraint {
     readonly _nominal_RopeConstraint: unique symbol;
 }
 /**
- * The base class for constraints that allow their attachments to slide along an axis but not rotate.
+ * The base class for constraints that allow their attachments to slide along an axis.
  *
  * - **Tags**: NotCreatable
  *
@@ -5953,6 +5977,21 @@ interface FriendsCallingParticipant extends Instance {
     readonly _nominal_FriendsCallingParticipant: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FriendsCallingService)
+ */
+interface FriendsCallingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FriendsCallingService: unique symbol;
+}
+/**
  * A service associated with the legacy game pass system. Use `MarketplaceService` for all new work.
  *
  * - **Tags**: NotCreatable, Service
@@ -6205,21 +6244,6 @@ interface GuiBase extends Instance {
      * @deprecated
      */
     readonly _nominal_GuiBase: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImage)
- */
-interface AnimatedImage extends GuiBase {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AnimatedImage: unique symbol;
 }
 /**
  * An abstract class inherited by 2D `GuiObjects`.
@@ -7263,6 +7287,21 @@ interface HeightmapImporterService extends Instance {
     readonly _nominal_HeightmapImporterService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HiddenPlayerService)
+ */
+interface HiddenPlayerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_HiddenPlayerService: unique symbol;
+}
+/**
  * Stores the precomputed hidden surface removal (HSR) data for a layered-clothing wrap, marking the mesh faces that are hidden by higher clothing layers so the engine can cull them.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HiddenSurfaceRemovalAsset)
@@ -7641,6 +7680,21 @@ interface InstanceFileSyncService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceFileSyncService#StatusChanged)
      */
     readonly StatusChanged: RBXScriptSignal<(instance: Instance, status: Enum.InstanceFileSyncStatus) => void>;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceRegistryService)
+ */
+interface InstanceRegistryService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InstanceRegistryService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -9573,15 +9627,6 @@ interface MeshPart extends TriangleMeshPart {
      * @deprecated
      */
     readonly _nominal_MeshPart: unique symbol;
-    /**
-     * The level of detail used to render the `MeshPart`.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshPart#RenderFidelity)
-     */
-    set RenderFidelity(value: Enum.RenderFidelity);
 }
 /**
  * An abstract class that all parts based on solid modeling inherit from.
@@ -9717,14 +9762,6 @@ interface Model extends PVInstance {
      * @deprecated
      */
     readonly _nominal_Model: unique symbol;
-    /**
-     * Sets the level of detail on the model for experiences with instance streaming enabled.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model#LevelOfDetail)
-     */
-    LevelOfDetail: Enum.ModelLevelOfDetail;
 }
 /**
  * An `Actor` is a container for code that can be safely split into its own thread.
@@ -9847,22 +9884,6 @@ interface Workspace extends WorldRoot {
      */
     readonly _nominal_Workspace: unique symbol;
     /**
-     * Controls whether parts that fall below `Workspace.FallenPartsDestroyHeight` are automatically destroyed.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#FallHeightEnabled)
-     */
-    set FallHeightEnabled(value: boolean);
-    /**
-     * Determines the height at which falling `BaseParts` and their ancestor `Models` are removed from `Workspace`.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#FallenPartsDestroyHeight)
-     */
-    set FallenPartsDestroyHeight(value: number);
-    /**
      * **Deprecated:** This property should not be used for new work.
      *
      * Deprecated setting that configured the interpolation throttling mode; it no longer takes effect.
@@ -9875,22 +9896,6 @@ interface Workspace extends WorldRoot {
      * @deprecated
      */
     set InterpolationThrottling(value: Enum.InterpolationThrottlingMode);
-    /**
-     * Sets the Luau type checking mode for scripts in the experience.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#LuauTypeCheckMode)
-     */
-    LuauTypeCheckMode: Enum.LuauTypeCheckMode;
-    /**
-     * Whether content streaming is enabled for the place.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#StreamingEnabled)
-     */
-    set StreamingEnabled(value: boolean);
     /**
      * Applies Roblox's recommended instance streaming settings to the `Workspace`.
      *
@@ -16920,21 +16925,6 @@ interface TerrainRegion extends Instance {
     ConvertToSmooth(this: TerrainRegion): void;
 }
 /**
- * - **Tags**: NotCreatable
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase)
- */
-interface TestCase extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_TestCase: unique symbol;
-}
-/**
  * A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
  *
  * - **Tags**: Service
@@ -17604,6 +17594,19 @@ interface UIComponent extends UIBase {
      * @deprecated
      */
     readonly _nominal_UIComponent: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIBlur)
+ */
+interface UIBlur extends UIComponent {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_UIBlur: unique symbol;
 }
 /**
  * The base class for UI constraint classes.
@@ -18781,6 +18784,96 @@ interface TerrainWriteOperation extends RBXObject {
      * @deprecated
      */
     readonly _nominal_TerrainWriteOperation: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase)
+ */
+interface TestCase extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestCase: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestExecutionContext)
+ */
+interface TestExecutionContext extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestExecutionContext: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestFailure)
+ */
+interface TestFailure extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestFailure: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestResult)
+ */
+interface TestResult extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestResult: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestRunResult)
+ */
+interface TestRunResult extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestRunResult: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestSuite)
+ */
+interface TestSuite extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestSuite: unique symbol;
 }
 /**
  * An object for sampling frames from video content.

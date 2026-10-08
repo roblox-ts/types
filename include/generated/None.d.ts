@@ -90,6 +90,7 @@ interface Services {
     FeatureRestrictionManager: FeatureRestrictionManager;
     FileManagerService: FileManagerService;
     FileSyncReplicationService: FileSyncReplicationService;
+    FriendsCallingService: FriendsCallingService;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
     GenerationService: GenerationService;
@@ -104,6 +105,7 @@ interface Services {
     HeatmapQueryService: HeatmapQueryService;
     HeatmapService: HeatmapService;
     HeightmapImporterService: HeightmapImporterService;
+    HiddenPlayerService: HiddenPlayerService;
     HttpService: HttpService;
     ILegacyStudioBridge: ILegacyStudioBridge;
     ImageScreenCaptureService: ImageScreenCaptureService;
@@ -111,6 +113,7 @@ interface Services {
     InsertService: InsertService;
     InstanceExtensionsService: InstanceExtensionsService;
     InstanceFileSyncService: InstanceFileSyncService;
+    InstanceRegistryService: InstanceRegistryService;
     IntentService: IntentService;
     InternalMessagingService: InternalMessagingService;
     InternalMessagingServiceVerifier: InternalMessagingServiceVerifier;
@@ -564,6 +567,7 @@ interface CreatableInstances {
     TremoloSoundEffect: TremoloSoundEffect;
     TrussPart: TrussPart;
     UIAspectRatioConstraint: UIAspectRatioConstraint;
+    UIBlur: UIBlur;
     UICorner: UICorner;
     UIDragDetector: UIDragDetector;
     UIFlexItem: UIFlexItem;
@@ -609,9 +613,9 @@ interface CreatableInstances {
     WrapTextureTransfer: WrapTextureTransfer;
 }
 interface Instances extends Services, CreatableInstances {
-    AnimatedImage: AnimatedImage;
     AnimationClip: AnimationClip;
     AnimationImportData: AnimationImportData;
+    AnimationPlayer: AnimationPlayer;
     AnimationStreamTrack: AnimationStreamTrack;
     AnimationTrack: AnimationTrack;
     AssetImportSession: AssetImportSession;
@@ -763,7 +767,6 @@ interface Instances extends Services, CreatableInstances {
     SyncScriptBuilder: SyncScriptBuilder;
     TeleportAsyncResult: TeleportAsyncResult;
     Terrain: Terrain;
-    TestCase: TestCase;
     TextChatConfigurations: TextChatConfigurations;
     TextChatMessage: TextChatMessage;
     TextFilterResult: TextFilterResult;
@@ -809,6 +812,12 @@ interface Objects extends Instances {
     TerrainModifyOperation: TerrainModifyOperation;
     TerrainReadOperation: TerrainReadOperation;
     TerrainWriteOperation: TerrainWriteOperation;
+    TestCase: TestCase;
+    TestExecutionContext: TestExecutionContext;
+    TestFailure: TestFailure;
+    TestResult: TestResult;
+    TestRunResult: TestRunResult;
+    TestSuite: TestSuite;
     VideoCapture: VideoCapture;
     VideoSampler: VideoSampler;
     VirtualInput: VirtualInput;
@@ -3619,7 +3628,7 @@ interface AnalyticsService extends Instance {
     GetPlayerSegmentsAsync(this: AnalyticsService, player: Player): object;
 }
 /**
- * - **Tags**: NotCreatable, Service
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImageService)
  */
@@ -4028,6 +4037,21 @@ interface AnimationNodeDefinition extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition#InputPinsChanged)
      */
     readonly InputPinsChanged: RBXScriptSignal<() => void>;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationPlayer)
+ */
+interface AnimationPlayer extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationPlayer: unique symbol;
 }
 /**
  * Used to store information regarding the model an animation was authored for.
@@ -14601,7 +14625,7 @@ interface RopeConstraint extends Constraint {
     WinchTarget: number;
 }
 /**
- * The base class for constraints that allow their attachments to slide along an axis but not rotate.
+ * The base class for constraints that allow their attachments to slide along an axis.
  *
  * - **Tags**: NotCreatable
  *
@@ -19083,6 +19107,12 @@ interface Decal extends FaceInstance {
      */
     get NormalMapContent(): Content;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#ResampleMode)
+     */
+    ResampleMode: Enum.ResamplerMode;
+    /**
      * Rotates the decal texture.
      *
      * - **ThreadSafety**: ReadSafe
@@ -19706,6 +19736,21 @@ interface FriendsCallingParticipant extends Instance {
      * @deprecated
      */
     readonly _nominal_FriendsCallingParticipant: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FriendsCallingService)
+ */
+interface FriendsCallingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FriendsCallingService: unique symbol;
 }
 /**
  * A service associated with the legacy game pass system. Use `MarketplaceService` for all new work.
@@ -20542,21 +20587,6 @@ interface GuiBase extends Instance {
      * @deprecated
      */
     readonly _nominal_GuiBase: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImage)
- */
-interface AnimatedImage extends GuiBase {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AnimatedImage: unique symbol;
 }
 /**
  * An abstract class inherited by 2D `GuiObjects`.
@@ -25488,6 +25518,21 @@ interface HeightmapImporterService extends Instance {
     readonly _nominal_HeightmapImporterService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HiddenPlayerService)
+ */
+interface HiddenPlayerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_HiddenPlayerService: unique symbol;
+}
+/**
  * Stores the precomputed hidden surface removal (HSR) data for a layered-clothing wrap, marking the mesh faces that are hidden by higher clothing layers so the engine can cull them.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HiddenSurfaceRemovalAsset)
@@ -27593,6 +27638,14 @@ interface HumanoidRigDescription extends Instance {
      */
     NeckTposeAdjustment: CFrame;
     /**
+     * Offset of the rig origin from the character model's primary part.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#OriginOffset)
+     */
+    OriginOffset: CFrame;
+    /**
      * The right ankle joint instance in the rig hierarchy.
      *
      * - **ThreadSafety**: ReadSafe
@@ -29110,6 +29163,21 @@ interface InstanceFileSyncService extends Instance {
      * @deprecated
      */
     readonly _nominal_InstanceFileSyncService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceRegistryService)
+ */
+interface InstanceRegistryService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InstanceRegistryService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -31497,6 +31565,19 @@ interface MarketplaceService extends Instance {
      */
     PromptSubscriptionPurchase(this: MarketplaceService, user: Player, subscriptionId: string): void;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#PromptVIPServerPurchase)
+     */
+    PromptVIPServerPurchase(this: MarketplaceService, player: Player): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#CanUsersTransferRobuxAsync)
+     */
+    CanUsersTransferRobuxAsync(this: MarketplaceService, sender: Player, receiverUser: User): Enum.RobuxTransferEligibility;
+    /**
      * Returns a `Pages` object which contains information for all of the current experience's developer products.
      *
      * - **ThreadSafety**: Unsafe
@@ -32559,6 +32640,12 @@ interface ModerationService extends Instance {
      */
     BindReviewableContentEventProcessor(this: ModerationService, priority: number, callback: Callback): RBXScriptConnection;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#BindViolationProcessor)
+     */
+    BindViolationProcessor(this: ModerationService, priority: number, callback: Callback): RBXScriptConnection;
+    /**
      * Returns an opaque key that identifies a screenshot or video capture for use with `CreateReviewableContentAsync()`.
      *
      * - **ThreadSafety**: Unsafe
@@ -32569,6 +32656,12 @@ interface ModerationService extends Instance {
      * @returns An opaque content key identifying the capture.
      */
     CreateReviewableContentKey(this: ModerationService, content: Content): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService#MockViolationCallbackAsync)
+     */
+    MockViolationCallbackAsync(this: ModerationService, report: object): void;
     /**
      * Registers user-generated captures for moderation review and triggers the owning clients to upload them, returning the reviewable-content ID.
      *
@@ -35160,7 +35253,7 @@ interface MeshPart extends TriangleMeshPart {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshPart#RenderFidelity)
      */
-    get RenderFidelity(): Enum.RenderFidelity;
+    RenderFidelity: Enum.RenderFidelity;
     /**
      * The texture applied to the `MeshPart`. Supports [asset URIs](../../../projects/assets/index.md#asset-uris) and `EditableImage` objects.
      *
@@ -35187,6 +35280,13 @@ interface MeshPart extends TriangleMeshPart {
      * @param meshPart The source `MeshPart` whose `MeshContent`, `TextureContent`, and collision geometry (along with `RenderFidelity`, `CollisionFidelity`, `FluidFidelity`, and `MeshSize`) are copied onto this part. The object must be a `MeshPart`, otherwise the call throws an error.
      */
     ApplyMesh(this: MeshPart, meshPart: Instance): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshPart#GetSurfaceSlotsAsync)
+     */
+    GetSurfaceSlotsAsync(this: MeshPart): Array<unknown>;
 }
 /**
  * An abstract class that all parts based on solid modeling inherit from.
@@ -35564,6 +35664,24 @@ interface Camera extends PVInstance {
      */
     readonly NearPlaneZ: number;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#OrthographicMode)
+     */
+    OrthographicMode: Enum.OrthographicMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#OrthographicSize)
+     */
+    OrthographicSize: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#ProjectionType)
+     */
+    ProjectionType: Enum.ProjectionType;
+    /**
      * Toggles whether to apply tilt and roll from the `CFrame` property while the player is using a VR device.
      *
      * - **ThreadSafety**: ReadSafe
@@ -35571,6 +35689,12 @@ interface Camera extends PVInstance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#VRTiltAndRollEnabled)
      */
     VRTiltAndRollEnabled: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Camera#ViewStretch)
+     */
+    ViewStretch: number;
     /**
      * The dimensions of the device safe area on a Roblox client.
      *
@@ -35834,6 +35958,14 @@ interface Model extends PVInstance {
      * @deprecated
      */
     readonly _nominal_Model: unique symbol;
+    /**
+     * Sets the level of detail on the model for experiences with instance streaming enabled.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model#LevelOfDetail)
+     */
+    LevelOfDetail: Enum.ModelLevelOfDetail;
     /**
      * Controls the model streaming behavior on `Models` when instance streaming is enabled.
      *
@@ -36813,7 +36945,7 @@ interface Workspace extends WorldRoot {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#FallHeightEnabled)
      */
-    get FallHeightEnabled(): boolean;
+    FallHeightEnabled: boolean;
     /**
      * Determines the height at which falling `BaseParts` and their ancestor `Models` are removed from `Workspace`.
      *
@@ -36821,7 +36953,7 @@ interface Workspace extends WorldRoot {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#FallenPartsDestroyHeight)
      */
-    get FallenPartsDestroyHeight(): number;
+    FallenPartsDestroyHeight: number;
     /**
      * Specifies the global wind vector for animated terrain grass, dynamic clouds, and particles.
      *
@@ -36861,6 +36993,26 @@ interface Workspace extends WorldRoot {
      */
     get InterpolationThrottling(): Enum.InterpolationThrottlingMode;
     /**
+     * Sets the Luau type checking mode for scripts in the experience.
+     *
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#LuauTypeCheckMode)
+     */
+    LuauTypeCheckMode: Enum.LuauTypeCheckMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#ReplicationFrequency)
+     */
+    ReplicationFrequency: Enum.ReplicationMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#ReplicationThroughput)
+     */
+    ReplicationThroughput: Enum.ReplicationMode;
+    /**
      * Controls whether animation retargeting is enabled for character animations.
      *
      * - **ThreadSafety**: ReadSafe
@@ -36881,7 +37033,7 @@ interface Workspace extends WorldRoot {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#StreamingEnabled)
      */
-    get StreamingEnabled(): boolean;
+    StreamingEnabled: boolean;
     /**
      * A reference to the `Terrain` object parented to the `Workspace`.
      *
@@ -38664,6 +38816,8 @@ interface Player extends Instance {
      */
     readonly FollowUserId: number;
     /**
+     * Controls the engine's instance streaming behavior for the player's camera view.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#FrustumStreaming)
@@ -45858,6 +46012,18 @@ interface Stats extends Instance {
      */
     GetMemoryUsageMbAllCategories(this: Stats): Array<unknown>;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Stats#GetMemoryUsageMbAllCategoriesFiltered)
+     */
+    GetMemoryUsageMbAllCategoriesFiltered(this: Stats, dmId: number, vmClass: number): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Stats#GetMemoryUsageMbFiltered)
+     */
+    GetMemoryUsageMbFiltered(this: Stats, dmId: number, vmClass: number): number;
+    /**
      * Returns the number of megabytes that are being consumed in the specified `DeveloperMemoryTag` category, or `0` if `MemoryTrackingEnabled` is `false`.
      *
      * - **ThreadSafety**: Unsafe
@@ -46680,6 +46846,12 @@ interface SurfaceAppearance extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#RoughnessMapContent)
      */
     get RoughnessMapContent(): Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#SurfaceSlot)
+     */
+    SurfaceSlot: number;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -47373,57 +47545,6 @@ interface TerrainRegion extends Instance {
     readonly SizeInCells: Vector3;
 }
 /**
- * - **Tags**: NotCreatable
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase)
- */
-interface TestCase extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_TestCase: unique symbol;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#Assert)
-     */
-    Assert(this: TestCase, condition: boolean, message?: string, source?: Instance, line?: number): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#AssertLegacy)
-     */
-    AssertLegacy(this: TestCase, condition: boolean, message?: string, source?: Instance, line?: number): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#EndTest)
-     */
-    EndTest(this: TestCase, message?: string, source?: Instance, line?: number): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#Message)
-     */
-    Message(this: TestCase, text: string, source?: Instance, line?: number): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#Require)
-     */
-    Require(this: TestCase, condition: boolean, message?: string, source?: Instance, line?: number): void;
-    /**
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#RequireLegacy)
-     */
-    RequireLegacy(this: TestCase, condition: boolean, message?: string, source?: Instance, line?: number): void;
-}
-/**
  * A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
  *
  * - **Tags**: Service
@@ -47629,6 +47750,12 @@ interface TestService extends Instance {
      */
     GetTestControls(this: TestService, providerName: string): object;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#ListTests)
+     */
+    ListTests(this: TestService): Array<unknown>;
+    /**
      * Prints `TestService:` followed by a string to the output in blue text.
      *
      * - **ThreadSafety**: Unsafe
@@ -47643,13 +47770,22 @@ interface TestService extends Instance {
     /**
      * - **ThreadSafety**: Unsafe
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RegisterTest)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RegisterSuite)
      */
-    RegisterTest(this: TestService, testOptions: object): TestCase;
+    RegisterSuite(this: TestService, suiteName: string, options?: object): TestSuite;
     /**
      * - **ThreadSafety**: Unsafe
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RegisterTest)
+     */
+    RegisterTest(this: TestService, testName: string, options?: object, callback?: Callback): TestCase;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**:
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RegisterTestLegacy)
+     *
+     * @deprecated RegisterTest
      */
     RegisterTestLegacy(this: TestService, testOptions: object): TestCase;
     /**
@@ -47671,6 +47807,12 @@ interface TestService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#ResetTestControl)
      */
     ResetTestControl(this: TestService, providerName: string, controlName: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#ResetTestRegistry)
+     */
+    ResetTestRegistry(this: TestService): void;
     /**
      * Returns a dictionary of per-scope physics simulation timings for performance testing.
      *
@@ -47778,9 +47920,30 @@ interface TestService extends Instance {
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#RunTestsAsync)
+     */
+    RunTestsAsync(this: TestService, filter?: object): TestRunResult;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#StartAudioCaptureAsync)
+     */
+    StartAudioCaptureAsync(this: TestService, artifactName?: string, options?: object): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#StartVideoCaptureAsync)
      */
     StartVideoCaptureAsync(this: TestService, artifactName?: string, options?: object): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#StopAudioCaptureAsync)
+     */
+    StopAudioCaptureAsync(this: TestService): unknown;
     /**
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
@@ -47804,6 +47967,12 @@ interface TestService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#ServerCollectResult)
      */
     readonly ServerCollectResult: RBXScriptSignal<(text: string, script: Instance, line: number) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#TestRegistryChanged)
+     */
+    readonly TestRegistryChanged: RBXScriptSignal<() => void>;
 }
 /**
  * A service that manages a user's `TextBox` state during gameplay.
@@ -49940,6 +50109,43 @@ interface UIComponent extends UIBase {
      * @deprecated
      */
     readonly _nominal_UIComponent: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIBlur)
+ */
+interface UIBlur extends UIComponent {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_UIBlur: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIBlur#Color)
+     */
+    Color: Color3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIBlur#Enabled)
+     */
+    Enabled: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIBlur#Strength)
+     */
+    Strength: Enum.UIBlurStrength;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIBlur#Transparency)
+     */
+    Transparency: number;
 }
 /**
  * The base class for UI constraint classes.
@@ -54116,6 +54322,367 @@ interface TerrainWriteOperation extends RBXObject {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainWriteOperation#GetBlock)
      */
     GetBlock(this: TerrainWriteOperation): object;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase)
+ */
+interface TestCase extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestCase: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#SuiteName)
+     */
+    readonly SuiteName: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#TestId)
+     */
+    readonly TestId: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#TestName)
+     */
+    readonly TestName: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#TimeoutSec)
+     */
+    readonly TimeoutSec: number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#Assert)
+     */
+    Assert(this: TestCase, condition: boolean, message?: string, source?: Instance, line?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#AssertLegacy)
+     */
+    AssertLegacy(this: TestCase, condition: boolean, message?: string, source?: Instance, line?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#EndTest)
+     */
+    EndTest(this: TestCase, message?: string, source?: Instance, line?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#GetTestTags)
+     */
+    GetTestTags(this: TestCase): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#Message)
+     */
+    Message(this: TestCase, text: string, source?: Instance, line?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#Require)
+     */
+    Require(this: TestCase, condition: boolean, message?: string, source?: Instance, line?: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#RequireLegacy)
+     */
+    RequireLegacy(this: TestCase, condition: boolean, message?: string, source?: Instance, line?: number): void;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestExecutionContext)
+ */
+interface TestExecutionContext extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestExecutionContext: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestFailure)
+ */
+interface TestFailure extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestFailure: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestFailure#Line)
+     */
+    readonly Line: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestFailure#Matcher)
+     */
+    readonly Matcher: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestFailure#Message)
+     */
+    readonly Message: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestFailure#StackTrace)
+     */
+    readonly StackTrace: string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestFailure#GetActual)
+     */
+    GetActual(this: TestFailure): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestFailure#GetContext)
+     */
+    GetContext(this: TestFailure): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestFailure#GetExpected)
+     */
+    GetExpected(this: TestFailure): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestFailure#GetSource)
+     */
+    GetSource(this: TestFailure): Instance | undefined;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestResult)
+ */
+interface TestResult extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestResult: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestResult#Duration)
+     */
+    readonly Duration: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestResult#FailedChecks)
+     */
+    readonly FailedChecks: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestResult#PassedChecks)
+     */
+    readonly PassedChecks: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestResult#Status)
+     */
+    readonly Status: Enum.TestCaseStatus;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestResult#SuiteName)
+     */
+    readonly SuiteName: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestResult#TestId)
+     */
+    readonly TestId: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestResult#TestName)
+     */
+    readonly TestName: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestResult#UncaughtError)
+     */
+    readonly UncaughtError: string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestResult#GetFailures)
+     */
+    GetFailures(this: TestResult): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestResult#GetTestTags)
+     */
+    GetTestTags(this: TestResult): Array<unknown>;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestRunResult)
+ */
+interface TestRunResult extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestRunResult: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestRunResult#Duration)
+     */
+    readonly Duration: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestRunResult#Failed)
+     */
+    readonly Failed: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestRunResult#Passed)
+     */
+    readonly Passed: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestRunResult#Skipped)
+     */
+    readonly Skipped: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestRunResult#Status)
+     */
+    readonly Status: Enum.TestRunStatus;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestRunResult#Summary)
+     */
+    readonly Summary: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestRunResult#Total)
+     */
+    readonly Total: number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestRunResult#GetTests)
+     */
+    GetTests(this: TestRunResult): Array<unknown>;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestSuite)
+ */
+interface TestSuite extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestSuite: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestSuite#SuiteName)
+     */
+    readonly SuiteName: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestSuite#TimeoutSec)
+     */
+    readonly TimeoutSec: number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestSuite#GetTestTags)
+     */
+    GetTestTags(this: TestSuite): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestSuite#RegisterTest)
+     */
+    RegisterTest(this: TestSuite, testName: string, options?: object, callback?: Callback): TestCase;
 }
 /**
  * An object for sampling frames from video content.
