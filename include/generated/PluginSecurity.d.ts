@@ -115,6 +115,7 @@ interface Services {
     ILegacyStudioBridge: ILegacyStudioBridge;
     ImageScreenCaptureService: ImageScreenCaptureService;
     IncrementalPatchBuilder: IncrementalPatchBuilder;
+    InputReplayService: InputReplayService;
     InsertService: InsertService;
     InstanceExtensionsService: InstanceExtensionsService;
     InstanceFileSyncService: InstanceFileSyncService;
@@ -432,6 +433,7 @@ interface CreatableInstances {
     ExplorerFilter: ExplorerFilter;
     Explosion: Explosion;
     FaceControls: FaceControls;
+    FeatureMatchingTable: FeatureMatchingTable;
     FileMesh: FileMesh;
     Fire: Fire;
     FlangeSoundEffect: FlangeSoundEffect;
@@ -497,11 +499,13 @@ interface CreatableInstances {
     Pants: Pants;
     Part: Part;
     ParticleEmitter: ParticleEmitter;
+    ParticleEmitter2D: ParticleEmitter2D;
     PartOperation: PartOperation;
     Path2D: Path2D;
     Path3D: Path3D;
     PathfindingLink: PathfindingLink;
     PathfindingModifier: PathfindingModifier;
+    PhysicsActivitySensor: PhysicsActivitySensor;
     PitchShiftSoundEffect: PitchShiftSoundEffect;
     Plane: Plane;
     PlaneConstraint: PlaneConstraint;
@@ -844,7 +848,6 @@ interface Instances extends Services, CreatableInstances {
     WorldRoot: WorldRoot;
 }
 interface Objects extends Instances {
-    AnimatedImageTrack: AnimatedImageTrack;
     AnimationNode: AnimationNode;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
@@ -893,21 +896,6 @@ interface RBXObject {
      * @deprecated
      */
     readonly _nominal_Object: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImageTrack)
- */
-interface AnimatedImageTrack extends RBXObject {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AnimatedImageTrack: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -1206,6 +1194,8 @@ interface ActivityHistoryEventService extends Instance {
     readonly _nominal_ActivityHistoryEventService: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdPlacement)
  */
 interface AdPlacement extends Instance {
@@ -1578,16 +1568,6 @@ interface Animator extends Instance {
      * @deprecated
      */
     readonly _nominal_Animator: unique symbol;
-    /**
-     * Increments the `AnimationTrack.TimePosition` of all playing `AnimationTracks` that are loaded onto the `Animator`, applying the offsets to the model associated with the `Animator`. For use in the command bar or by plugins only.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animator#StepAnimations)
-     * @param this Responsible for the playback and replication of `Animations`.
-     * @param deltaTime The amount of time in seconds animation playback is to be incremented. by.
-     */
-    StepAnimations(this: Animator, deltaTime: number): void;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Annotation)
@@ -5781,6 +5761,19 @@ interface MotorFeature extends Feature {
     readonly _nominal_MotorFeature: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeatureMatchingTable)
+ */
+interface FeatureMatchingTable extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FeatureMatchingTable: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeatureRestrictionManager)
@@ -7593,6 +7586,21 @@ interface InputObject extends Instance {
     readonly _nominal_InputObject: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputReplayService)
+ */
+interface InputReplayService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InputReplayService: unique symbol;
+}
+/**
  * Used to insert assets from the Roblox website.
  *
  * - **Tags**: NotCreatable, Service
@@ -8445,14 +8453,6 @@ interface BaseScript extends LuaSourceContainer {
      * @deprecated
      */
     readonly _nominal_BaseScript: unique symbol;
-    /**
-     * Determines the context under which the script runs.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseScript#RunContext)
-     */
-    set RunContext(value: Enum.RunContext);
 }
 /**
  * An object that contains and runs Luau code on the server.
@@ -10309,6 +10309,19 @@ interface ParticleEmitter extends Instance {
     readonly _nominal_ParticleEmitter: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D)
+ */
+interface ParticleEmitter2D extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ParticleEmitter2D: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PartyEmulatorService)
@@ -10675,6 +10688,12 @@ interface PhysicsSettings extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#DisableCSGv3ForPlugins)
      */
     DisableCSGv3ForPlugins: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#DrawShapecast)
+     */
+    DrawShapecast: boolean;
     /**
      * When set to true, forces the use of CSGv2 for solid modeling operations.
      *
@@ -13731,6 +13750,21 @@ interface FluidForceSensor extends SensorBase {
     readonly _nominal_FluidForceSensor: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsActivitySensor)
+ */
+interface PhysicsActivitySensor extends SensorBase {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PhysicsActivitySensor: unique symbol;
+}
+/**
  * Serializes and deserializes `instances` to and from the `.rbxm` format.
  *
  * - **Tags**: NotCreatable, Service
@@ -16540,7 +16574,6 @@ interface SurfaceAppearance extends Instance {
      * `Content` object that determines the color and opacity of the surface.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#ColorMapContent)
      */
@@ -16565,7 +16598,6 @@ interface SurfaceAppearance extends Instance {
      * `Content` object that determines which parts of the surface are metal or non-metal.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#MetalnessMapContent)
      */
@@ -16582,7 +16614,6 @@ interface SurfaceAppearance extends Instance {
      * `Content` object that modifies the lighting of the surface by adding bumps, dents, cracks, and curves.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#NormalMapContent)
      */
@@ -16599,7 +16630,6 @@ interface SurfaceAppearance extends Instance {
      * `Content` object that determines the apparent roughness across the surface.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#RoughnessMapContent)
      */

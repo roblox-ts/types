@@ -4037,11 +4037,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.AssetType;
         }
         export const TextDocument: TextDocument;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#AnimatedImage)
+         */
+        export interface AnimatedImage extends globalThis.EnumItem {
+            Name: "AnimatedImage";
+            Value: 95;
+            EnumType: typeof globalThis.Enum.AssetType;
+        }
+        export const AnimatedImage: AnimatedImage;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AssetType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AssetType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AssetType | undefined;
     }
-    export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.FontFamily | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.MoodAnimation | AssetType.DynamicHead | AssetType.FaceMakeup | AssetType.LipMakeup | AssetType.EyeMakeup | AssetType.AvatarBackground | AssetType.TextDocument;
+    export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.FontFamily | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.MoodAnimation | AssetType.DynamicHead | AssetType.FaceMakeup | AssetType.LipMakeup | AssetType.EyeMakeup | AssetType.AvatarBackground | AssetType.TextDocument | AssetType.AnimatedImage;
     /**
      * Determines the asset type verification mode.
      *
@@ -15215,6 +15224,69 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FacsActionUnit | undefined;
     }
     export type FacsActionUnit = FacsActionUnit.ChinRaiserUpperLip | FacsActionUnit.ChinRaiser | FacsActionUnit.FlatPucker | FacsActionUnit.Funneler | FacsActionUnit.LowerLipSuck | FacsActionUnit.LipPresser | FacsActionUnit.LipsTogether | FacsActionUnit.MouthLeft | FacsActionUnit.MouthRight | FacsActionUnit.Pucker | FacsActionUnit.UpperLipSuck | FacsActionUnit.LeftCheekPuff | FacsActionUnit.LeftDimpler | FacsActionUnit.LeftLipCornerDown | FacsActionUnit.LeftLowerLipDepressor | FacsActionUnit.LeftLipCornerPuller | FacsActionUnit.LeftLipStretcher | FacsActionUnit.LeftUpperLipRaiser | FacsActionUnit.RightCheekPuff | FacsActionUnit.RightDimpler | FacsActionUnit.RightLipCornerDown | FacsActionUnit.RightLowerLipDepressor | FacsActionUnit.RightLipCornerPuller | FacsActionUnit.RightLipStretcher | FacsActionUnit.RightUpperLipRaiser | FacsActionUnit.JawDrop | FacsActionUnit.JawLeft | FacsActionUnit.JawRight | FacsActionUnit.Corrugator | FacsActionUnit.LeftBrowLowerer | FacsActionUnit.LeftOuterBrowRaiser | FacsActionUnit.LeftNoseWrinkler | FacsActionUnit.LeftInnerBrowRaiser | FacsActionUnit.RightBrowLowerer | FacsActionUnit.RightOuterBrowRaiser | FacsActionUnit.RightInnerBrowRaiser | FacsActionUnit.RightNoseWrinkler | FacsActionUnit.EyesLookDown | FacsActionUnit.EyesLookLeft | FacsActionUnit.EyesLookUp | FacsActionUnit.EyesLookRight | FacsActionUnit.LeftCheekRaiser | FacsActionUnit.LeftEyeUpperLidRaiser | FacsActionUnit.LeftEyeClosed | FacsActionUnit.RightCheekRaiser | FacsActionUnit.RightEyeUpperLidRaiser | FacsActionUnit.RightEyeClosed | FacsActionUnit.TongueDown | FacsActionUnit.TongueOut | FacsActionUnit.TongueUp;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureChannelEncoding)
+     */
+    export namespace FeatureChannelEncoding {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureChannelEncoding#Float32)
+         */
+        export interface Float32 extends globalThis.EnumItem {
+            Name: "Float32";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FeatureChannelEncoding;
+        }
+        export const Float32: Float32;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureChannelEncoding#Float16)
+         */
+        export interface Float16 extends globalThis.EnumItem {
+            Name: "Float16";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FeatureChannelEncoding;
+        }
+        export const Float16: Float16;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FeatureChannelEncoding>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FeatureChannelEncoding | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FeatureChannelEncoding | undefined;
+    }
+    export type FeatureChannelEncoding = FeatureChannelEncoding.Float32 | FeatureChannelEncoding.Float16;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureNormalization)
+     */
+    export namespace FeatureNormalization {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureNormalization#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FeatureNormalization;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureNormalization#StandardScore)
+         */
+        export interface StandardScore extends globalThis.EnumItem {
+            Name: "StandardScore";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FeatureNormalization;
+        }
+        export const StandardScore: StandardScore;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureNormalization#UnitL2)
+         */
+        export interface UnitL2 extends globalThis.EnumItem {
+            Name: "UnitL2";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FeatureNormalization;
+        }
+        export const UnitL2: UnitL2;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FeatureNormalization>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FeatureNormalization | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FeatureNormalization | undefined;
+    }
+    export type FeatureNormalization = FeatureNormalization.None | FeatureNormalization.StandardScore | FeatureNormalization.UnitL2;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureRestrictionAbuseVector)
      */
@@ -26418,6 +26490,141 @@ declare namespace Enum {
     }
     export type MessageType = MessageType.MessageOutput | MessageType.MessageInfo | MessageType.MessageWarning | MessageType.MessageError;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType)
+     */
+    export namespace MetadataFieldType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#UInt8)
+         */
+        export interface UInt8 extends globalThis.EnumItem {
+            Name: "UInt8";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const UInt8: UInt8;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#UInt16)
+         */
+        export interface UInt16 extends globalThis.EnumItem {
+            Name: "UInt16";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const UInt16: UInt16;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#UInt32)
+         */
+        export interface UInt32 extends globalThis.EnumItem {
+            Name: "UInt32";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const UInt32: UInt32;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Float32)
+         */
+        export interface Float32 extends globalThis.EnumItem {
+            Name: "Float32";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Float32: Float32;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Int32)
+         */
+        export interface Int32 extends globalThis.EnumItem {
+            Name: "Int32";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Int32: Int32;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Int64)
+         */
+        export interface Int64 extends globalThis.EnumItem {
+            Name: "Int64";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Int64: Int64;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#UInt64)
+         */
+        export interface UInt64 extends globalThis.EnumItem {
+            Name: "UInt64";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const UInt64: UInt64;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Float64)
+         */
+        export interface Float64 extends globalThis.EnumItem {
+            Name: "Float64";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Float64: Float64;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Buffer)
+         */
+        export interface Buffer extends globalThis.EnumItem {
+            Name: "Buffer";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Buffer: Buffer;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Vector3)
+         */
+        export interface Vector3 extends globalThis.EnumItem {
+            Name: "Vector3";
+            Value: 9;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Vector3: Vector3;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#CFrame)
+         */
+        export interface CFrame extends globalThis.EnumItem {
+            Name: "CFrame";
+            Value: 10;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const CFrame: CFrame;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#ContentId)
+         */
+        export interface ContentId extends globalThis.EnumItem {
+            Name: "ContentId";
+            Value: 11;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const ContentId: ContentId;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#TagMask32)
+         */
+        export interface TagMask32 extends globalThis.EnumItem {
+            Name: "TagMask32";
+            Value: 12;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const TagMask32: TagMask32;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Vector2)
+         */
+        export interface Vector2 extends globalThis.EnumItem {
+            Name: "Vector2";
+            Value: 13;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Vector2: Vector2;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MetadataFieldType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MetadataFieldType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MetadataFieldType | undefined;
+    }
+    export type MetadataFieldType = MetadataFieldType.UInt8 | MetadataFieldType.UInt16 | MetadataFieldType.UInt32 | MetadataFieldType.Float32 | MetadataFieldType.Int32 | MetadataFieldType.Int64 | MetadataFieldType.UInt64 | MetadataFieldType.Float64 | MetadataFieldType.Buffer | MetadataFieldType.Vector3 | MetadataFieldType.CFrame | MetadataFieldType.ContentId | MetadataFieldType.TagMask32 | MetadataFieldType.Vector2;
+    /**
      * Controls the level of detail for `Models` in experiences with instance streaming enabled.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModelLevelOfDetail)
@@ -27848,6 +28055,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PartType | undefined;
     }
     export type PartType = PartType.Ball | PartType.Block | PartType.Cylinder | PartType.Wedge | PartType.CornerWedge;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitter2DEmissionMode)
+     */
+    export namespace ParticleEmitter2DEmissionMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitter2DEmissionMode#Point)
+         */
+        export interface Point extends globalThis.EnumItem {
+            Name: "Point";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ParticleEmitter2DEmissionMode;
+        }
+        export const Point: Point;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitter2DEmissionMode#BoundingBox)
+         */
+        export interface BoundingBox extends globalThis.EnumItem {
+            Name: "BoundingBox";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ParticleEmitter2DEmissionMode;
+        }
+        export const BoundingBox: BoundingBox;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ParticleEmitter2DEmissionMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ParticleEmitter2DEmissionMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ParticleEmitter2DEmissionMode | undefined;
+    }
+    export type ParticleEmitter2DEmissionMode = ParticleEmitter2DEmissionMode.Point | ParticleEmitter2DEmissionMode.BoundingBox;
     /**
      * Specifies the geometric shape from which a particle emitter emits particles.
      *
