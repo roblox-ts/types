@@ -110,6 +110,7 @@ interface Services {
     ILegacyStudioBridge: ILegacyStudioBridge;
     ImageScreenCaptureService: ImageScreenCaptureService;
     IncrementalPatchBuilder: IncrementalPatchBuilder;
+    InputReplayService: InputReplayService;
     InsertService: InsertService;
     InstanceExtensionsService: InstanceExtensionsService;
     InstanceFileSyncService: InstanceFileSyncService;
@@ -410,6 +411,7 @@ interface CreatableInstances {
     ExplorerFilter: ExplorerFilter;
     Explosion: Explosion;
     FaceControls: FaceControls;
+    FeatureMatchingTable: FeatureMatchingTable;
     FileMesh: FileMesh;
     Fire: Fire;
     FlangeSoundEffect: FlangeSoundEffect;
@@ -475,11 +477,13 @@ interface CreatableInstances {
     Pants: Pants;
     Part: Part;
     ParticleEmitter: ParticleEmitter;
+    ParticleEmitter2D: ParticleEmitter2D;
     PartOperation: PartOperation;
     Path2D: Path2D;
     Path3D: Path3D;
     PathfindingLink: PathfindingLink;
     PathfindingModifier: PathfindingModifier;
+    PhysicsActivitySensor: PhysicsActivitySensor;
     PitchShiftSoundEffect: PitchShiftSoundEffect;
     Plane: Plane;
     PlaneConstraint: PlaneConstraint;
@@ -792,7 +796,6 @@ interface Instances extends Services, CreatableInstances {
     WorldRoot: WorldRoot;
 }
 interface Objects extends Instances {
-    AnimatedImageTrack: AnimatedImageTrack;
     AnimationNode: AnimationNode;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
@@ -881,21 +884,6 @@ interface RBXObject {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Object#Changed)
      */
     readonly Changed: unknown;
-}
-/**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImageTrack)
- */
-interface AnimatedImageTrack extends RBXObject {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_AnimatedImageTrack: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -3142,6 +3130,8 @@ interface ActivityHistoryEventService extends Instance {
     readonly _nominal_ActivityHistoryEventService: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdPlacement)
  */
 interface AdPlacement extends Instance {
@@ -4067,6 +4057,12 @@ interface AnimationRigData extends Instance {
      * @deprecated
      */
     readonly _nominal_AnimationRigData: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationRigData#LoadFromModel)
+     */
+    LoadFromModel(this: AnimationRigData, model: Instance): boolean;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -4497,6 +4493,16 @@ interface Animator extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animator#RegisterEvaluationParallelCallback)
      */
     RegisterEvaluationParallelCallback(this: Animator, callback: Callback): void;
+    /**
+     * Increments the `AnimationTrack.TimePosition` of all playing `AnimationTracks` that are loaded onto the `Animator`, applying the offsets to the model associated with the `Animator`. For use in the command bar or by plugins only.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animator#StepAnimations)
+     * @param this Responsible for the playback and replication of `Animations`.
+     * @param deltaTime The amount of time in seconds animation playback is to be incremented. by.
+     */
+    StepAnimations(this: Animator, deltaTime: number): void;
     /**
      * Fires when the `Animator` starts playing an `AnimationTrack`.
      *
@@ -17743,6 +17749,12 @@ interface DigitsRigDescription extends Instance {
      * @param point World-space `Vector3` target position for the fingertip.
      */
     SetFingerTip(this: DigitsRigDescription, fingerIndex: number, point: Vector3): void;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription#SetJoint)
+     */
+    SetJoint(this: DigitsRigDescription, label: CastsToEnum<Enum.RigLabel>, joint: Instance): void;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
@@ -19411,6 +19423,32 @@ interface MotorFeature extends Feature {
      * @deprecated
      */
     readonly _nominal_MotorFeature: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeatureMatchingTable)
+ */
+interface FeatureMatchingTable extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FeatureMatchingTable: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeatureMatchingTable#SchemaName)
+     */
+    readonly SchemaName: string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeatureMatchingTable#GetSchema)
+     */
+    GetSchema(this: FeatureMatchingTable): object;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -23271,6 +23309,12 @@ interface LayerCollector extends GuiBase2d {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LayerCollector#ZIndexBehavior)
      */
     ZIndexBehavior: Enum.ZIndexBehavior;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LayerCollector#GetGuiObjectsAtPosition)
+     */
+    GetGuiObjectsAtPosition(this: LayerCollector, x: number, y: number): Array<Instance>;
 }
 /**
  * A container for `GuiObjects` that renders in 3D space facing the camera.
@@ -28086,6 +28130,12 @@ interface HumanoidRigDescription extends Instance {
      */
     WaistTposeAdjustment: CFrame;
     /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetJoint)
+     */
+    GetJoint(this: HumanoidRigDescription, label: CastsToEnum<Enum.RigLabel>): Instance | undefined;
+    /**
      * Returns the joint instance associated with the given name string.
      *
      * - **ThreadSafety**: Safe
@@ -28107,6 +28157,12 @@ interface HumanoidRigDescription extends Instance {
      */
     GetJointNames(this: HumanoidRigDescription): Array<unknown>;
     /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#GetR15JointLabels)
+     */
+    GetR15JointLabels(this: HumanoidRigDescription): Array<unknown>;
+    /**
      * Returns the 15 joint names used by R15 rigs.
      *
      * - **ThreadSafety**: Safe
@@ -28126,6 +28182,18 @@ interface HumanoidRigDescription extends Instance {
      * @returns Array
      */
     GetR6JointNames(this: HumanoidRigDescription): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#SetJoint)
+     */
+    SetJoint(this: HumanoidRigDescription, label: CastsToEnum<Enum.RigLabel>, joint: Instance): void;
+    /**
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription#SetTposeAdjustment)
+     */
+    SetTposeAdjustment(this: HumanoidRigDescription, label: CastsToEnum<Enum.RigLabel>, transform: CFrame): void;
 }
 /**
  * Specifies a control to generate a procedural animation pose using Inverse Kinematics.
@@ -28589,6 +28657,12 @@ interface InputBinding extends Instance {
      */
     ClampMagnitudeToOne: boolean;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputBinding#Deadzone)
+     */
+    Deadzone: NumberRange;
+    /**
      * Custom image asset to display for this binding.
      *
      * - **ThreadSafety**: ReadSafe
@@ -28863,6 +28937,21 @@ interface InputObject extends Instance {
      * @returns `true` if the passed in `modifierKey` is being held down; `false` otherwise.
      */
     IsModifierKeyDown(this: InputObject, modifierKey: CastsToEnum<Enum.ModifierKey>): boolean;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputReplayService)
+ */
+interface InputReplayService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InputReplayService: unique symbol;
 }
 /**
  * Used to insert assets from the Roblox website.
@@ -31116,7 +31205,7 @@ interface BaseScript extends LuaSourceContainer {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseScript#RunContext)
      */
-    get RunContext(): Enum.RunContext;
+    RunContext: Enum.RunContext;
 }
 /**
  * An object that contains and runs Luau code on the server.
@@ -31594,6 +31683,13 @@ interface MarketplaceService extends Instance {
         IconImageAssetId: number;
         Name: string;
     }>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService#GetPassOwnershipAsync)
+     */
+    GetPassOwnershipAsync(this: MarketplaceService, user: Player, gamePassId: number): object;
     /**
      * **Deprecated:** This method has been superseded by `GetProductInfoAsync()`.
      *
@@ -36845,7 +36941,7 @@ interface WorldRoot extends Model {
      * @param params An object used to specify hit eligibility in the shapecast operation. If not provided, default values are used where all other parts are considered and `Terrain` water is not ignored. The part being cast is always excluded from the results.
      * @returns Contains the result of the shapecast operation, or `nil` if no eligible `BasePart` or `Terrain` cell was hit.
      */
-    Shapecast(this: WorldRoot, part: BasePart, direction: Vector3, params?: RaycastParams): RaycastResult | undefined;
+    Shapecast(this: WorldRoot, part: BasePart, direction: Vector3, params?: RaycastParams, cframeOverride?: CFrame, sizeOverride?: Vector3): RaycastResult | undefined;
     /**
      * Casts a spherical shape in a given direction and returns a `RaycastResult` if the shape hits a `BasePart` or `Terrain` cell.
      *
@@ -37908,6 +38004,217 @@ interface ParticleEmitter extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter#OnEmitRequested)
      */
     readonly OnEmitRequested: RBXScriptSignal<(particleCount: number) => void>;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D)
+ */
+interface ParticleEmitter2D extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ParticleEmitter2D: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Acceleration)
+     */
+    Acceleration: Vector2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Blend)
+     */
+    Blend: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Brightness)
+     */
+    Brightness: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Color)
+     */
+    Color: ColorSequence;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Drag)
+     */
+    Drag: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#EmissionAngle)
+     */
+    EmissionAngle: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#EmissionMode)
+     */
+    EmissionMode: Enum.ParticleEmitter2DEmissionMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#EmissionOffset)
+     */
+    EmissionOffset: Vector2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#EmissionSpread)
+     */
+    EmissionSpread: Vector2;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Enabled)
+     */
+    Enabled: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#FlipbookBlendFrames)
+     */
+    FlipbookBlendFrames: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#FlipbookFramerate)
+     */
+    FlipbookFramerate: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#FlipbookLayout)
+     */
+    FlipbookLayout: Enum.ParticleFlipbookLayout;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#FlipbookMode)
+     */
+    FlipbookMode: Enum.ParticleFlipbookMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#FlipbookSizeX)
+     */
+    FlipbookSizeX: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#FlipbookSizeY)
+     */
+    FlipbookSizeY: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#FlipbookStartRandom)
+     */
+    FlipbookStartRandom: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Lifetime)
+     */
+    Lifetime: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#LightEmission)
+     */
+    LightEmission: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#LockedToParent)
+     */
+    LockedToParent: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Rate)
+     */
+    Rate: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#RotSpeed)
+     */
+    RotSpeed: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Rotation)
+     */
+    Rotation: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Size)
+     */
+    Size: NumberSequence;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Speed)
+     */
+    Speed: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#SpreadAngle)
+     */
+    SpreadAngle: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Squash)
+     */
+    Squash: NumberSequence;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#TextureContent)
+     */
+    TextureContent: Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#TimeScale)
+     */
+    TimeScale: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Transparency)
+     */
+    Transparency: NumberSequence;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#ZIndex)
+     */
+    ZIndex: number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Clear)
+     */
+    Clear(this: ParticleEmitter2D): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D#Emit)
+     */
+    Emit(this: ParticleEmitter2D, particleCount?: number): void;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -39539,6 +39846,12 @@ interface Player extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#Chatted)
      */
     readonly Chatted: RBXScriptSignal<(message: string, recipient?: Player) => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#EmotesLoaded)
+     */
+    readonly EmotesLoaded: RBXScriptSignal<() => void>;
     /**
      * This event fires approximately two minutes after the engine classifies the player as idle. Time is the number of seconds that have elapsed since that point.
      *
@@ -43095,6 +43408,40 @@ interface FluidForceSensor extends SensorBase {
     EvaluateAsync(this: FluidForceSensor, linearVelocity: Vector3, angularVelocity: Vector3, cframe: CFrame): unknown;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsActivitySensor)
+ */
+interface PhysicsActivitySensor extends SensorBase {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PhysicsActivitySensor: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsActivitySensor#Active)
+     */
+    readonly Active: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsActivitySensor#Position)
+     */
+    Position: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsActivitySensor#Size)
+     */
+    Size: Vector3;
+}
+/**
  * Serializes and deserializes `instances` to and from the `.rbxm` format.
  *
  * - **Tags**: NotCreatable, Service
@@ -45426,6 +45773,13 @@ interface StarterGear extends Instance {
      * @deprecated
      */
     readonly _nominal_StarterGear: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterGear#Loaded)
+     */
+    readonly Loaded: boolean;
 }
 /**
  * A container whose contents are copied into each player's `Backpack` when their player character spawns. It is generally used to hold `Tools`.
@@ -46782,7 +47136,6 @@ interface SurfaceAppearance extends Instance {
      * `Content` object that determines the color and opacity of the surface.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#ColorMapContent)
      */
@@ -46815,7 +47168,6 @@ interface SurfaceAppearance extends Instance {
      * `Content` object that determines which parts of the surface are metal or non-metal.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#MetalnessMapContent)
      */
@@ -46824,7 +47176,6 @@ interface SurfaceAppearance extends Instance {
      * `Content` object that modifies the lighting of the surface by adding bumps, dents, cracks, and curves.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#NormalMapContent)
      */
@@ -46841,7 +47192,6 @@ interface SurfaceAppearance extends Instance {
      * `Content` object that determines the apparent roughness across the surface.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#RoughnessMapContent)
      */
@@ -50487,6 +50837,12 @@ interface UIDragDetector extends UIComponent {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIDragDetector#ResponseStyle)
      */
     ResponseStyle: Enum.UIDragDetectorResponseStyle;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIDragDetector#Selectable)
+     */
+    Selectable: boolean;
     /**
      * Maximum drag speed for translation.
      *
@@ -54379,6 +54735,13 @@ interface TestCase extends RBXObject {
     AssertLegacy(this: TestCase, condition: boolean, message?: string, source?: Instance, line?: number): void;
     /**
      * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#Check)
+     */
+    Check(this: TestCase, actualValue: unknown, expectedValue: unknown, message?: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#EndTest)
      */
@@ -54397,10 +54760,11 @@ interface TestCase extends RBXObject {
     Message(this: TestCase, text: string, source?: Instance, line?: number): void;
     /**
      * - **ThreadSafety**: Unsafe
+     * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase#Require)
      */
-    Require(this: TestCase, condition: boolean, message?: string, source?: Instance, line?: number): void;
+    Require(this: TestCase, actualValue: unknown, expectedValue: unknown, message?: string): void;
     /**
      * - **ThreadSafety**: Unsafe
      *
