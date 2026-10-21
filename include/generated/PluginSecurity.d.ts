@@ -46,6 +46,7 @@ interface Services {
     ChangeHistoryStreamingService: ChangeHistoryStreamingService;
     Chat: Chat;
     ClientStorageService: ClientStorageService;
+    CloudClientService: CloudClientService;
     CloudCRUDService: CloudCRUDService;
     CloudExecutionService: CloudExecutionService;
     CollaboratorsService: CollaboratorsService;
@@ -271,6 +272,7 @@ interface Services {
     TeleportService: TeleportService;
     TemporaryCageMeshProvider: TemporaryCageMeshProvider;
     TemporaryScriptService: TemporaryScriptService;
+    TestCoordinatorService: TestCoordinatorService;
     TestService: TestService;
     TextBoxService: TextBoxService;
     TextChatService: TextChatService;
@@ -322,6 +324,7 @@ interface CreatableInstances {
     AnimationController: AnimationController;
     AnimationGraphDefinition: AnimationGraphDefinition;
     AnimationNodeDefinition: AnimationNodeDefinition;
+    AnimationPlayer: AnimationPlayer;
     AnimationRigData: AnimationRigData;
     AnimationValueNodeDefinition: AnimationValueNodeDefinition;
     AnimationValueOutputDefinition: AnimationValueOutputDefinition;
@@ -643,7 +646,6 @@ interface CreatableInstances {
 interface Instances extends Services, CreatableInstances {
     AnimationClip: AnimationClip;
     AnimationImportData: AnimationImportData;
-    AnimationPlayer: AnimationPlayer;
     AnimationStreamTrack: AnimationStreamTrack;
     AnimationTrack: AnimationTrack;
     AssetImportSession: AssetImportSession;
@@ -849,6 +851,7 @@ interface Instances extends Services, CreatableInstances {
 }
 interface Objects extends Instances {
     AnimationNode: AnimationNode;
+    AppHandle: AppHandle;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
     DataModelDiff: DataModelDiff;
@@ -860,6 +863,7 @@ interface Objects extends Instances {
     MLSession: MLSession;
     Object: RBXObject;
     OutputLink: OutputLink;
+    ParticipantHandle: ParticipantHandle;
     PluginConnection: PluginConnection;
     ScreenshotCapture: ScreenshotCapture;
     StudioActionOverride: StudioActionOverride;
@@ -911,6 +915,21 @@ interface AnimationNode extends RBXObject {
      * @deprecated
      */
     readonly _nominal_AnimationNode: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppHandle)
+ */
+interface AppHandle extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AppHandle: unique symbol;
 }
 /**
  * A class which defines a piece of content, such as a screenshot or video, taken in-experience.
@@ -1258,7 +1277,7 @@ interface AnalyticsService extends Instance {
     readonly _nominal_AnalyticsService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, Service, NotReplicated
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImageService)
  */
@@ -1467,8 +1486,6 @@ interface AnimationNodeDefinition extends Instance {
     readonly _nominal_AnimationNodeDefinition: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationPlayer)
  */
 interface AnimationPlayer extends Instance {
@@ -2956,6 +2973,18 @@ interface WrapLayer extends BaseWrap {
      */
     set ReferenceOrigin(value: CFrame);
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#RotateScaleDeformationMap)
+     */
+    set RotateScaleDeformationMap(value: Content);
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#ScaleOnlyDeformationMap)
+     */
+    set ScaleOnlyDeformationMap(value: Content);
+    /**
      * **Deprecated:**
      *
      * Allows slight shrinking/expanding of the resulting render mesh, without affecting any other layers.
@@ -2968,6 +2997,12 @@ interface WrapLayer extends BaseWrap {
      * @deprecated
      */
     set ShrinkFactor(value: number);
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#TargetShaping)
+     */
+    set TargetShaping(value: number);
 }
 /**
  * The WrapTarget object defines a target. A target is the 3D body with only an outer surface, or an Outer Cage.
@@ -3732,6 +3767,21 @@ interface CloudCRUDService extends Instance {
      * @deprecated
      */
     readonly _nominal_CloudCRUDService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CloudClientService)
+ */
+interface CloudClientService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CloudClientService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -6457,8 +6507,6 @@ interface TextBox extends GuiObject {
     readonly _nominal_TextBox: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChannelWindow)
  */
 interface TextChannelWindow extends GuiObject {
@@ -12651,17 +12699,7 @@ interface RunService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#RunState)
      */
-    RunState: Enum.RunState;
-    /**
-     * Returns whether the current environment is in `Edit` mode.
-     *
-     * - **ThreadSafety**: Safe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#IsEdit)
-     * @param this Service responsible for all runtime activity and progression of time.
-     * @returns Whether the current environment is in "edit" mode.
-     */
-    IsEdit(this: RunService): boolean;
+    set RunState(value: Enum.RunState);
     /**
      * Pauses the experience's simulation if it is running, suspending physics and scripts.
      *
@@ -13104,6 +13142,12 @@ interface ScriptDocument extends Instance {
      */
     GetLineCount(this: ScriptDocument): number;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#GetReadOnlyReasons)
+     */
+    GetReadOnlyReasons(this: ScriptDocument): Array<unknown>;
+    /**
      * Returns the underlying `LuaSourceContainer` instance, if one exists, otherwise `nil`.
      *
      * - **ThreadSafety**: Unsafe
@@ -13198,6 +13242,19 @@ interface ScriptDocument extends Instance {
      */
     IsCommandBar(this: ScriptDocument): boolean;
     /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#IsReadOnly)
+     */
+    IsReadOnly(this: ScriptDocument): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#AddReadOnlyReasonsAsync)
+     */
+    AddReadOnlyReasonsAsync(this: ScriptDocument, reasons: Array<unknown>): void;
+    /**
      * Requests that the editor associated with this document close. Yields the current thread until the editor responds to the request.
      *
      * - **ThreadSafety**: Unsafe
@@ -13251,6 +13308,13 @@ interface ScriptDocument extends Instance {
      * @returns A tuple where the first element is `true` if all edits were applied successfully, or `false` followed by a string describing the failure reason.
      */
     MultiEditTextAsync(this: ScriptDocument, edits: Array<unknown>): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#RemoveReadOnlyReasonsAsync)
+     */
+    RemoveReadOnlyReasonsAsync(this: ScriptDocument, reasons: Array<unknown>): void;
     /**
      * Asks the editor to set its cursor selection to the argument values.
      *
@@ -15304,14 +15368,6 @@ interface Studio extends Instance {
      */
     PermissionLevelShown: Enum.PermissionLevelShown;
     /**
-     * Controls whether plugin script debugging is enabled in Studio.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#PluginDebuggingEnabled)
-     */
-    PluginDebuggingEnabled: boolean;
-    /**
      * The directory where local plugins are stored.
      *
      * - **ThreadSafety**: ReadSafe
@@ -16955,6 +17011,21 @@ interface TerrainRegion extends Instance {
     ConvertToSmooth(this: TerrainRegion): void;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCoordinatorService)
+ */
+interface TestCoordinatorService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestCoordinatorService: unique symbol;
+}
+/**
  * A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
  *
  * - **Tags**: Service
@@ -17225,8 +17296,6 @@ interface TextChatService extends Instance {
     set CreateDefaultTextChannels(value: boolean);
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextDocument)
  */
 interface TextDocument extends Instance {
@@ -18674,6 +18743,21 @@ interface OutputLink extends RBXObject {
      * @deprecated
      */
     readonly _nominal_OutputLink: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticipantHandle)
+ */
+interface ParticipantHandle extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ParticipantHandle: unique symbol;
 }
 /**
  * Encapsulates a connection between the current data model and another for plugin communication.

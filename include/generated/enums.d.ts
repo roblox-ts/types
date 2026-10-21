@@ -4464,6 +4464,69 @@ declare namespace Enum {
     }
     export type AudioSimulationFidelity = AudioSimulationFidelity.None | AudioSimulationFidelity.Automatic;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType)
+     */
+    export namespace AudioSortType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#Relevance)
+         */
+        export interface Relevance extends globalThis.EnumItem {
+            Name: "Relevance";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AudioSortType;
+        }
+        export const Relevance: Relevance;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#MostUsed)
+         */
+        export interface MostUsed extends globalThis.EnumItem {
+            Name: "MostUsed";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AudioSortType;
+        }
+        export const MostUsed: MostUsed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#Trending)
+         */
+        export interface Trending extends globalThis.EnumItem {
+            Name: "Trending";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.AudioSortType;
+        }
+        export const Trending: Trending;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#RecentlyCreated)
+         */
+        export interface RecentlyCreated extends globalThis.EnumItem {
+            Name: "RecentlyCreated";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.AudioSortType;
+        }
+        export const RecentlyCreated: RecentlyCreated;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#ShortestToLongest)
+         */
+        export interface ShortestToLongest extends globalThis.EnumItem {
+            Name: "ShortestToLongest";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.AudioSortType;
+        }
+        export const ShortestToLongest: ShortestToLongest;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#LongestToShortest)
+         */
+        export interface LongestToShortest extends globalThis.EnumItem {
+            Name: "LongestToShortest";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.AudioSortType;
+        }
+        export const LongestToShortest: LongestToShortest;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioSortType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AudioSortType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioSortType | undefined;
+    }
+    export type AudioSortType = AudioSortType.Relevance | AudioSortType.MostUsed | AudioSortType.Trending | AudioSortType.RecentlyCreated | AudioSortType.ShortestToLongest | AudioSortType.LongestToShortest;
+    /**
      * The categorization of an audio asset.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSubType)
@@ -13827,11 +13890,29 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.EasingStyle;
         }
         export const Cubic: Cubic;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EasingStyle#Bezier)
+         */
+        export interface Bezier extends globalThis.EnumItem {
+            Name: "Bezier";
+            Value: 11;
+            EnumType: typeof globalThis.Enum.EasingStyle;
+        }
+        export const Bezier: Bezier;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EasingStyle#Spring)
+         */
+        export interface Spring extends globalThis.EnumItem {
+            Name: "Spring";
+            Value: 12;
+            EnumType: typeof globalThis.Enum.EasingStyle;
+        }
+        export const Spring: Spring;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EasingStyle>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.EasingStyle | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.EasingStyle | undefined;
     }
-    export type EasingStyle = EasingStyle.Linear | EasingStyle.Sine | EasingStyle.Back | EasingStyle.Quad | EasingStyle.Quart | EasingStyle.Quint | EasingStyle.Bounce | EasingStyle.Elastic | EasingStyle.Exponential | EasingStyle.Circular | EasingStyle.Cubic;
+    export type EasingStyle = EasingStyle.Linear | EasingStyle.Sine | EasingStyle.Back | EasingStyle.Quad | EasingStyle.Quart | EasingStyle.Quint | EasingStyle.Bounce | EasingStyle.Elastic | EasingStyle.Exponential | EasingStyle.Circular | EasingStyle.Cubic | EasingStyle.Bezier | EasingStyle.Spring;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EditableStatus)
      */
@@ -17122,11 +17203,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
         }
         export const Canceled: Canceled;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#NoReason)
+         */
+        export interface NoReason extends globalThis.EnumItem {
+            Name: "NoReason";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const NoReason: NoReason;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FriendsCallingEndReason>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FriendsCallingEndReason | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendsCallingEndReason | undefined;
     }
-    export type FriendsCallingEndReason = FriendsCallingEndReason.None | FriendsCallingEndReason.LocalHangup | FriendsCallingEndReason.RemoteHangup | FriendsCallingEndReason.Missed | FriendsCallingEndReason.Declined | FriendsCallingEndReason.Failed | FriendsCallingEndReason.Canceled;
+    export type FriendsCallingEndReason = FriendsCallingEndReason.None | FriendsCallingEndReason.LocalHangup | FriendsCallingEndReason.RemoteHangup | FriendsCallingEndReason.Missed | FriendsCallingEndReason.Declined | FriendsCallingEndReason.Failed | FriendsCallingEndReason.Canceled | FriendsCallingEndReason.NoReason;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantErrors)
      */
