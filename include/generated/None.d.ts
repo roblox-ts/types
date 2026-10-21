@@ -45,6 +45,7 @@ interface Services {
     ChangeHistoryStreamingService: ChangeHistoryStreamingService;
     Chat: Chat;
     ClientStorageService: ClientStorageService;
+    CloudClientService: CloudClientService;
     CloudCRUDService: CloudCRUDService;
     CloudExecutionService: CloudExecutionService;
     CollaboratorsService: CollaboratorsService;
@@ -250,6 +251,7 @@ interface Services {
     TeleportService: TeleportService;
     TemporaryCageMeshProvider: TemporaryCageMeshProvider;
     TemporaryScriptService: TemporaryScriptService;
+    TestCoordinatorService: TestCoordinatorService;
     TestService: TestService;
     TextBoxService: TextBoxService;
     TextChatService: TextChatService;
@@ -300,6 +302,7 @@ interface CreatableInstances {
     AnimationController: AnimationController;
     AnimationGraphDefinition: AnimationGraphDefinition;
     AnimationNodeDefinition: AnimationNodeDefinition;
+    AnimationPlayer: AnimationPlayer;
     AnimationRigData: AnimationRigData;
     AnimationValueNodeDefinition: AnimationValueNodeDefinition;
     AnimationValueOutputDefinition: AnimationValueOutputDefinition;
@@ -619,7 +622,6 @@ interface CreatableInstances {
 interface Instances extends Services, CreatableInstances {
     AnimationClip: AnimationClip;
     AnimationImportData: AnimationImportData;
-    AnimationPlayer: AnimationPlayer;
     AnimationStreamTrack: AnimationStreamTrack;
     AnimationTrack: AnimationTrack;
     AssetImportSession: AssetImportSession;
@@ -797,6 +799,7 @@ interface Instances extends Services, CreatableInstances {
 }
 interface Objects extends Instances {
     AnimationNode: AnimationNode;
+    AppHandle: AppHandle;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
     DataModelDiff: DataModelDiff;
@@ -808,6 +811,7 @@ interface Objects extends Instances {
     MLSession: MLSession;
     Object: RBXObject;
     OutputLink: OutputLink;
+    ParticipantHandle: ParticipantHandle;
     PluginConnection: PluginConnection;
     ScreenshotCapture: ScreenshotCapture;
     StudioActionOverride: StudioActionOverride;
@@ -899,6 +903,45 @@ interface AnimationNode extends RBXObject {
      * @deprecated
      */
     readonly _nominal_AnimationNode: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppHandle)
+ */
+interface AppHandle extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AppHandle: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppHandle#Call)
+     */
+    Call(this: AppHandle, name: string, args?: object): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppHandle#Close)
+     */
+    Close(this: AppHandle): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppHandle#ExecuteLuau)
+     */
+    ExecuteLuau(this: AppHandle, source: string): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppHandle#RunTest)
+     */
+    RunTest(this: AppHandle, testName: string, args?: object): string;
 }
 /**
  * A class which defines a piece of content, such as a screenshot or video, taken in-experience.
@@ -3618,7 +3661,7 @@ interface AnalyticsService extends Instance {
     GetPlayerSegmentsAsync(this: AnalyticsService, player: Player): object;
 }
 /**
- * - **Tags**: NotCreatable, Service, NotReplicated
+ * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImageService)
  */
@@ -4029,8 +4072,6 @@ interface AnimationNodeDefinition extends Instance {
     readonly InputPinsChanged: RBXScriptSignal<() => void>;
 }
 /**
- * - **Tags**: NotCreatable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationPlayer)
  */
 interface AnimationPlayer extends Instance {
@@ -7266,7 +7307,6 @@ interface AudioPlayer extends Instance {
      * The audio content to be loaded into the `AudioPlayer`.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioPlayer#AudioContent)
      */
@@ -7816,6 +7856,12 @@ interface AudioSearchParams extends Instance {
      */
     MaxDuration: number;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSearchParams#MaxPageSize)
+     */
+    MaxPageSize: number;
+    /**
      * The minimum duration of the audio asset.
      *
      * - **ThreadSafety**: ReadSafe
@@ -7831,6 +7877,12 @@ interface AudioSearchParams extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSearchParams#SearchKeyword)
      */
     SearchKeyword: string;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioSearchParams#SortType)
+     */
+    SortType: Enum.AudioSortType;
     /**
      * The tag of the audio asset.
      *
@@ -8587,6 +8639,90 @@ interface AvatarAccessoryRules extends Instance {
      * @deprecated
      */
     readonly _nominal_AvatarAccessoryRules: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#AccessoryMode)
+     */
+    AccessoryMode: Enum.AvatarSettingsAccessoryMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#BackAccessoryOverride)
+     */
+    BackAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#EnableEmissives)
+     */
+    EnableEmissives: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#EnableSound)
+     */
+    EnableSound: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#EnableVFX)
+     */
+    EnableVFX: boolean;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#FaceAccessoryOverride)
+     */
+    FaceAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#FrontAccessoryOverride)
+     */
+    FrontAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#HairAccessoryOverride)
+     */
+    HairAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#HeadAccessoryOverride)
+     */
+    HeadAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#LimitBounds)
+     */
+    LimitBounds: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#LimitMethod)
+     */
+    LimitMethod: Enum.AvatarSettingsAccessoryLimitMethod;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#NeckAccessoryOverride)
+     */
+    NeckAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#ShoulderAccessoryOverride)
+     */
+    ShoulderAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAccessoryRules#WaistAccessoryOverride)
+     */
+    WaistAccessoryOverride: number;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAnimationRules)
@@ -8600,6 +8736,72 @@ interface AvatarAnimationRules extends Instance {
      * @deprecated
      */
     readonly _nominal_AvatarAnimationRules: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAnimationRules#AnimationPacksMode)
+     */
+    AnimationPacksMode: Enum.AvatarSettingsAnimationPacksMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAnimationRules#ClimbAnimationOverride)
+     */
+    ClimbAnimationOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAnimationRules#FallAnimationOverride)
+     */
+    FallAnimationOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAnimationRules#IdleAltAnimationOverride)
+     */
+    IdleAltAnimationOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAnimationRules#IdleAnimationOverride)
+     */
+    IdleAnimationOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAnimationRules#JumpAnimationOverride)
+     */
+    JumpAnimationOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAnimationRules#MoodAnimationOverride)
+     */
+    MoodAnimationOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAnimationRules#RunAnimationOverride)
+     */
+    RunAnimationOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAnimationRules#SwimAnimationOverride)
+     */
+    SwimAnimationOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAnimationRules#SwimIdleAnimationOverride)
+     */
+    SwimIdleAnimationOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAnimationRules#WalkAnimationOverride)
+     */
+    WalkAnimationOverride: number;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules)
@@ -8613,6 +8815,96 @@ interface AvatarBodyRules extends Instance {
      * @deprecated
      */
     readonly _nominal_AvatarBodyRules: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#AvatarType)
+     */
+    AvatarType: Enum.GameAvatarType;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#BuildMode)
+     */
+    BuildMode: Enum.AvatarSettingsBuildMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#CustomBuildBodyType)
+     */
+    CustomBuildBodyType: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#CustomBuildHead)
+     */
+    CustomBuildHead: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#CustomBuildHeight)
+     */
+    CustomBuildHeight: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#CustomBuildProportions)
+     */
+    CustomBuildProportions: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#CustomBuildWidth)
+     */
+    CustomBuildWidth: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#CustomWorldHeight)
+     */
+    CustomWorldHeight: NumberRange;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#HeadOverride)
+     */
+    HeadOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#LeftArmOverride)
+     */
+    LeftArmOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#LeftLegOverride)
+     */
+    LeftLegOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#RightArmOverride)
+     */
+    RightArmOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#RightLegOverride)
+     */
+    RightLegOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#ScaleMode)
+     */
+    ScaleMode: Enum.AvatarSettingsScaleMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarBodyRules#TorsoOverride)
+     */
+    TorsoOverride: number;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -8641,6 +8933,90 @@ interface AvatarClothingRules extends Instance {
      * @deprecated
      */
     readonly _nominal_AvatarClothingRules: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#ClassicPantsAccessoryOverride)
+     */
+    ClassicPantsAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#ClassicShirtsAccessoryOverride)
+     */
+    ClassicShirtsAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#ClassicTShirtsAccessoryOverride)
+     */
+    ClassicTShirtsAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#ClothingMode)
+     */
+    ClothingMode: Enum.AvatarSettingsClothingMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#DressSkirtAccessoryOverride)
+     */
+    DressSkirtAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#JacketAccessoryOverride)
+     */
+    JacketAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#LeftShoesAccessoryOverride)
+     */
+    LeftShoesAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#LimitBounds)
+     */
+    LimitBounds: Vector3;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#PantsAccessoryOverride)
+     */
+    PantsAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#RightShoesAccessoryOverride)
+     */
+    RightShoesAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#ShirtAccessoryOverride)
+     */
+    ShirtAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#ShortsAccessoryOverride)
+     */
+    ShortsAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#SweaterAccessoryOverride)
+     */
+    SweaterAccessoryOverride: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarClothingRules#TShirtAccessoryOverride)
+     */
+    TShirtAccessoryOverride: number;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCollisionRules)
@@ -8654,6 +9030,24 @@ interface AvatarCollisionRules extends Instance {
      * @deprecated
      */
     readonly _nominal_AvatarCollisionRules: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCollisionRules#CollisionMode)
+     */
+    CollisionMode: Enum.AvatarSettingsCollisionMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCollisionRules#HitAndTouchDetectionMode)
+     */
+    HitAndTouchDetectionMode: Enum.AvatarSettingsHitAndTouchDetectionMode;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarCollisionRules#SingleColliderSize)
+     */
+    SingleColliderSize: Vector3;
 }
 /**
  * A service to support developer avatar creators.
@@ -10886,6 +11280,18 @@ interface WrapLayer extends BaseWrap {
      */
     readonly ReferenceOriginWorld: CFrame;
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#RotateScaleDeformationMap)
+     */
+    get RotateScaleDeformationMap(): Content;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#ScaleOnlyDeformationMap)
+     */
+    get ScaleOnlyDeformationMap(): Content;
+    /**
      * **Deprecated:**
      *
      * Allows slight shrinking/expanding of the resulting render mesh, without affecting any other layers.
@@ -10898,6 +11304,12 @@ interface WrapLayer extends BaseWrap {
      * @deprecated
      */
     get ShrinkFactor(): number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#TargetShaping)
+     */
+    get TargetShaping(): number;
 }
 /**
  * The WrapTarget object defines a target. A target is the 3D body with only an outer surface, or an Outer Cage.
@@ -13013,6 +13425,21 @@ interface CloudCRUDService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CloudClientService)
+ */
+interface CloudClientService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CloudClientService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CloudExecutionService)
  */
 interface CloudExecutionService extends Instance {
@@ -13218,6 +13645,12 @@ interface CollectionService extends Instance {
      * @returns An array of all tags that currently have at least one tagged instance in the `DataModel`.
      */
     GetAllTags(this: CollectionService): Array<string>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CollectionService#GetCollections)
+     */
+    GetCollections(this: CollectionService, instance: Instance): Array<unknown>;
     /**
      * Returns a signal that fires when a given tag is added to an instance.
      *
@@ -15715,6 +16148,13 @@ interface ControlState extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#GetState)
      */
     GetState(this: ControlState, ref?: CastsToEnum<Enum.StateReferenceFrame>): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: NotBrowsable
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState#HasField)
+     */
+    HasField(this: ControlState, name: string): boolean;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -22873,8 +23313,6 @@ interface TextBox extends GuiObject {
     readonly ReturnPressedFromOnScreenKeyboard: RBXScriptSignal<() => void>;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChannelWindow)
  */
 interface TextChannelWindow extends GuiObject {
@@ -26463,6 +26901,13 @@ interface Humanoid extends Instance {
      * @param this A special object that gives models the functionality of a character.
      */
     UnequipTools(this: Humanoid): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Humanoid#ApplyAvatarRulesAsync)
+     */
+    ApplyAvatarRulesAsync(this: Humanoid, avatarRules: unknown): void;
     /**
      * **Deprecated:** This method has been superseded by `ApplyDescriptionAsync()`.
      *
@@ -39760,6 +40205,13 @@ interface Player extends Instance {
      */
     LoadCharacterAsync(this: Player): void;
     /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Player#LoadCharacterWithAvatarRulesAsync)
+     */
+    LoadCharacterWithAvatarRulesAsync(this: Player, avatarRules: unknown): void;
+    /**
      * **Deprecated:** This method has been superseded by `LoadCharacterWithHumanoidDescriptionAsync()`.
      *
      * Spawns a player character with everything equipped in the passed in `HumanoidDescription`.
@@ -41671,6 +42123,13 @@ interface RealtimeMedia extends Instance {
      */
     readonly IsConnected: boolean;
     /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RealtimeMedia#IsConnectionWeak)
+     */
+    readonly IsConnectionWeak: boolean;
+    /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RealtimeMedia#Disconnect)
@@ -41713,6 +42172,12 @@ interface RealtimeMedia extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RealtimeMedia#AudioInputRequested)
      */
     readonly AudioInputRequested: RBXScriptSignal<() => void>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RealtimeMedia#Disconnected)
+     */
+    readonly Disconnected: RBXScriptSignal<(expected: boolean) => void>;
     /**
      * - **ThreadSafety**: Unsafe
      *
@@ -42441,6 +42906,15 @@ interface RunService extends Instance {
      */
     readonly FrameNumber: number;
     /**
+     * The current run state of the game's simulation.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#RunState)
+     */
+    get RunState(): Enum.RunState;
+    /**
      * Binds a custom function to be called at a fixed frequency before Animators update when fixed simulation is enabled, or immediately before `BindToSimulation` callbacks otherwise.
      *
      * - **ThreadSafety**: Unsafe
@@ -42499,6 +42973,16 @@ interface RunService extends Instance {
      * @returns Whether the current environment is running the client.
      */
     IsClient(this: RunService): boolean;
+    /**
+     * Returns whether the current environment is in `Edit` mode.
+     *
+     * - **ThreadSafety**: Safe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#IsEdit)
+     * @param this Service responsible for all runtime activity and progression of time.
+     * @returns Whether the current environment is in "edit" mode.
+     */
+    IsEdit(this: RunService): boolean;
     /**
      * Returns whether the client is currently in a resimulation step after a misprediction in the server authority model.
      *
@@ -44657,7 +45141,6 @@ interface Sound extends Instance {
      * A reference to an audio asset.
      *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Sound#AudioContent)
      */
@@ -45991,6 +46474,12 @@ interface StarterPlayer extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterPlayer#NameDisplayDistance)
      */
     NameDisplayDistance: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StarterPlayer#PlaceAvatarRules)
+     */
+    PlaceAvatarRules: Instance | undefined;
     /**
      * Determines if user-owned emotes are loaded when loading avatars.
      *
@@ -47895,6 +48384,61 @@ interface TerrainRegion extends Instance {
     readonly SizeInCells: Vector3;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCoordinatorService)
+ */
+interface TestCoordinatorService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestCoordinatorService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCoordinatorService#Participant)
+     */
+    Participant(this: TestCoordinatorService, id: string): ParticipantHandle;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCoordinatorService#Signal)
+     */
+    Signal(this: TestCoordinatorService, topic: string, payload?: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCoordinatorService#AwaitAllAsync)
+     */
+    AwaitAllAsync(this: TestCoordinatorService, pendingIds: Array<unknown>): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCoordinatorService#AwaitAnyAsync)
+     */
+    AwaitAnyAsync(this: TestCoordinatorService, pendingIds: Array<unknown>): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCoordinatorService#AwaitSignalAsync)
+     */
+    AwaitSignalAsync(this: TestCoordinatorService, topic: string): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCoordinatorService#BarrierAsync)
+     */
+    BarrierAsync(this: TestCoordinatorService, name: string, participantIds: Array<unknown>): void;
+}
+/**
  * A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
  *
  * - **Tags**: Service
@@ -49523,8 +50067,6 @@ interface TextChatService extends Instance {
     OnIncomingMessage: (message: TextChatMessage) => TextChatMessageProperties | undefined;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextDocument)
  */
 interface TextDocument extends Instance {
@@ -53576,6 +54118,19 @@ interface VideoCaptureService extends Instance {
      * @deprecated
      */
     readonly _nominal_VideoCaptureService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoCaptureService#ClearMockInput)
+     */
+    ClearMockInput(this: VideoCaptureService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoCaptureService#SetMockInputAsync)
+     */
+    SetMockInputAsync(this: VideoCaptureService, videoContent: Content): unknown;
 }
 /**
  * - **Tags**: NotReplicated
@@ -54543,6 +55098,57 @@ interface OutputLink extends RBXObject {
      * @deprecated
      */
     readonly _nominal_OutputLink: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticipantHandle)
+ */
+interface ParticipantHandle extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ParticipantHandle: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticipantHandle#Click)
+     */
+    Click(this: ParticipantHandle, x: number, y: number): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticipantHandle#InputText)
+     */
+    InputText(this: ParticipantHandle, text: string, enter?: boolean): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticipantHandle#Launch)
+     */
+    Launch(this: ParticipantHandle, options?: object): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticipantHandle#Screenshot)
+     */
+    Screenshot(this: ParticipantHandle, name: string): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticipantHandle#Scroll)
+     */
+    Scroll(this: ParticipantHandle, direction: string, power?: number): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticipantHandle#Shutdown)
+     */
+    Shutdown(this: ParticipantHandle): string;
 }
 /**
  * Encapsulates a connection between the current data model and another for plugin communication.
