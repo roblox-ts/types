@@ -8,6 +8,7 @@ interface Services {
     ActivityHistoryEventService: ActivityHistoryEventService;
     AdService: AdService;
     AnalyticsService: AnalyticsService;
+    AnimatedImageService: AnimatedImageService;
     AnimationClipProvider: AnimationClipProvider;
     AnimationFromVideoCreatorService: AnimationFromVideoCreatorService;
     AnimationFromVideoCreatorStudioService: AnimationFromVideoCreatorStudioService;
@@ -23,21 +24,29 @@ interface Services {
     AssetQualityService: AssetQualityService;
     AssetService: AssetService;
     AudioFocusService: AudioFocusService;
+    AuroraScriptService: AuroraScriptService;
+    AuroraService: AuroraService;
     AvatarChatService: AvatarChatService;
     AvatarCreationService: AvatarCreationService;
     AvatarEditorService: AvatarEditorService;
     AvatarImportService: AvatarImportService;
     AvatarSettings: AvatarSettings;
+    BackendReplicatedStorage: BackendReplicatedStorage;
+    BackendServerScriptService: BackendServerScriptService;
+    BackendServerStorage: BackendServerStorage;
     BadgeService: BadgeService;
+    BranchService: BranchService;
     BugReporterService: BugReporterService;
     BulkImportService: BulkImportService;
     CacheableContentProvider: CacheableContentProvider;
+    CallingService: CallingService;
     CalloutService: CalloutService;
     CaptureService: CaptureService;
     ChangeHistoryService: ChangeHistoryService;
     ChangeHistoryStreamingService: ChangeHistoryStreamingService;
     Chat: Chat;
     ClientStorageService: ClientStorageService;
+    CloudClientService: CloudClientService;
     CloudCRUDService: CloudCRUDService;
     CloudExecutionService: CloudExecutionService;
     CollaboratorsService: CollaboratorsService;
@@ -55,7 +64,6 @@ interface Services {
     CreationDBService: CreationDBService;
     CreatorStoreService: CreatorStoreService;
     CrossDMScriptChangeListener: CrossDMScriptChangeListener;
-    DataModelPatchService: DataModelPatchService;
     DataStoreService: DataStoreService;
     Debris: Debris;
     DebuggablePluginWatcher: DebuggablePluginWatcher;
@@ -65,9 +73,11 @@ interface Services {
     DebugSettings: DebugSettings;
     DeferredAssetManagerService: DeferredAssetManagerService;
     DesignFoundationsService: DesignFoundationsService;
+    DeviceDisplayService: DeviceDisplayService;
     DeviceIdService: DeviceIdService;
     DraggerService: DraggerService;
     EditableService: EditableService;
+    EditorSourceService: EditorSourceService;
     EncodingService: EncodingService;
     EventIngestService: EventIngestService;
     ExampleV2Service: ExampleV2Service;
@@ -77,6 +87,7 @@ interface Services {
     ExperienceStateCaptureService: ExperienceStateCaptureService;
     ExperienceStateRecordingService: ExperienceStateRecordingService;
     ExplorerServiceVisibilityService: ExplorerServiceVisibilityService;
+    ExternalIdentityService: ExternalIdentityService;
     FaceAnimatorService: FaceAnimatorService;
     FacialAgeEstimationService: FacialAgeEstimationService;
     FacialAnimationRecordingService: FacialAnimationRecordingService;
@@ -84,6 +95,7 @@ interface Services {
     FeatureRestrictionManager: FeatureRestrictionManager;
     FileManagerService: FileManagerService;
     FileSyncReplicationService: FileSyncReplicationService;
+    FriendsCallingService: FriendsCallingService;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
     GameSettings: GameSettings;
@@ -99,15 +111,20 @@ interface Services {
     HeatmapQueryService: HeatmapQueryService;
     HeatmapService: HeatmapService;
     HeightmapImporterService: HeightmapImporterService;
+    HiddenPlayerService: HiddenPlayerService;
     HttpService: HttpService;
     ILegacyStudioBridge: ILegacyStudioBridge;
     ImageScreenCaptureService: ImageScreenCaptureService;
     IncrementalPatchBuilder: IncrementalPatchBuilder;
+    InputReplayService: InputReplayService;
     InsertService: InsertService;
     InstanceExtensionsService: InstanceExtensionsService;
     InstanceFileSyncService: InstanceFileSyncService;
+    InstanceRegistryService: InstanceRegistryService;
+    IntentService: IntentService;
     InternalMessagingService: InternalMessagingService;
     InternalMessagingServiceVerifier: InternalMessagingServiceVerifier;
+    InternalSyncService: InternalSyncService;
     IXPService: IXPService;
     JointsService: JointsService;
     KeyframeSequenceProvider: KeyframeSequenceProvider;
@@ -122,6 +139,7 @@ interface Services {
     LogReporterService: LogReporterService;
     LogService: LogService;
     LuaSettings: LuaSettings;
+    LuauExpressionService: LuauExpressionService;
     LuauScriptAnalyzerService: LuauScriptAnalyzerService;
     MarketplaceService: MarketplaceService;
     MatchmakingService: MatchmakingService;
@@ -135,6 +153,7 @@ interface Services {
     MLModelDeliveryService: MLModelDeliveryService;
     MLService: MLService;
     ModerationService: ModerationService;
+    MomentsService: MomentsService;
     NetworkClient: NetworkClient;
     NetworkServer: NetworkServer;
     NetworkSettings: NetworkSettings;
@@ -149,6 +168,7 @@ interface Services {
     PerformanceControlService: PerformanceControlService;
     PhysicsService: PhysicsService;
     PhysicsSettings: PhysicsSettings;
+    PinShortcutService: PinShortcutService;
     PlaceAssetIdsService: PlaceAssetIdsService;
     PlacesService: PlacesService;
     PlaceStatsService: PlaceStatsService;
@@ -165,11 +185,14 @@ interface Services {
     PluginManagementService: PluginManagementService;
     PluginPolicyService: PluginPolicyService;
     PolicyService: PolicyService;
+    PopLatencyService: PopLatencyService;
     Preloaded: Preloaded;
     ProceduralBehaviorSchedulerService: ProceduralBehaviorSchedulerService;
     ProcessInstancePhysicsService: ProcessInstancePhysicsService;
+    ProjectService: ProjectService;
     ProximityPromptService: ProximityPromptService;
     PublishService: PublishService;
+    QueueService: QueueService;
     RecommendationService: RecommendationService;
     ReflectionService: ReflectionService;
     RemoteCommandService: RemoteCommandService;
@@ -178,6 +201,7 @@ interface Services {
     RenderSettings: RenderSettings;
     ReplicatedFirst: ReplicatedFirst;
     ReplicatedStorage: ReplicatedStorage;
+    RequestOrchestratorService: RequestOrchestratorService;
     RibbonNotificationService: RibbonNotificationService;
     RobloxPluginGuiService: RobloxPluginGuiService;
     RobloxServerStorage: RobloxServerStorage;
@@ -198,6 +222,7 @@ interface Services {
     ScriptEditorService: ScriptEditorService;
     ScriptProfilerService: ScriptProfilerService;
     ScriptRegistrationService: ScriptRegistrationService;
+    ScriptScannerService: ScriptScannerService;
     Selection: Selection;
     SelectionHighlightManager: SelectionHighlightManager;
     SerializationService: SerializationService;
@@ -213,7 +238,6 @@ interface Services {
     SlimReplicationService: SlimReplicationService;
     SlimService: SlimService;
     SmoothVoxelsUpgraderService: SmoothVoxelsUpgraderService;
-    SnippetService: SnippetService;
     SocialService: SocialService;
     SoundService: SoundService;
     SoundShimService: SoundShimService;
@@ -248,6 +272,7 @@ interface Services {
     TeleportService: TeleportService;
     TemporaryCageMeshProvider: TemporaryCageMeshProvider;
     TemporaryScriptService: TemporaryScriptService;
+    TestCoordinatorService: TestCoordinatorService;
     TestService: TestService;
     TextBoxService: TextBoxService;
     TextChatService: TextChatService;
@@ -277,7 +302,9 @@ interface Services {
     VRStatusService: VRStatusService;
     WebSocketService: WebSocketService;
     WebViewService: WebViewService;
+    WindowProtocolService: WindowProtocolService;
     Workspace: Workspace;
+    WrapContentProvider: WrapContentProvider;
     WrapDeformMeshProvider: WrapDeformMeshProvider;
 }
 interface CreatableInstances {
@@ -286,6 +313,7 @@ interface CreatableInstances {
     Accoutrement: Accoutrement;
     Actor: Actor;
     AdGui: AdGui;
+    AdPlacement: AdPlacement;
     AdPortal: AdPortal;
     AirController: AirController;
     AlignOrientation: AlignOrientation;
@@ -296,7 +324,10 @@ interface CreatableInstances {
     AnimationController: AnimationController;
     AnimationGraphDefinition: AnimationGraphDefinition;
     AnimationNodeDefinition: AnimationNodeDefinition;
+    AnimationPlayer: AnimationPlayer;
     AnimationRigData: AnimationRigData;
+    AnimationValueNodeDefinition: AnimationValueNodeDefinition;
+    AnimationValueOutputDefinition: AnimationValueOutputDefinition;
     Animator: Animator;
     Annotation: Annotation;
     ArcHandles: ArcHandles;
@@ -328,6 +359,8 @@ interface CreatableInstances {
     AudioSpeechToText: AudioSpeechToText;
     AudioTextToSpeech: AudioTextToSpeech;
     AudioTremolo: AudioTremolo;
+    AudioWindSynthesizer: AudioWindSynthesizer;
+    AuroraScript: AuroraScript;
     AvatarAbilityRules: AvatarAbilityRules;
     AvatarAccessoryRules: AvatarAccessoryRules;
     AvatarAnimationRules: AvatarAnimationRules;
@@ -376,6 +409,7 @@ interface CreatableInstances {
     Configuration: Configuration;
     ControllerManager: ControllerManager;
     ControllerPartSensor: ControllerPartSensor;
+    ControlState: ControlState;
     CornerWedgePart: CornerWedgePart;
     CurveAnimation: CurveAnimation;
     CustomLog: CustomLog;
@@ -402,6 +436,7 @@ interface CreatableInstances {
     ExplorerFilter: ExplorerFilter;
     Explosion: Explosion;
     FaceControls: FaceControls;
+    FeatureMatchingTable: FeatureMatchingTable;
     FileMesh: FileMesh;
     Fire: Fire;
     FlangeSoundEffect: FlangeSoundEffect;
@@ -431,9 +466,11 @@ interface CreatableInstances {
     ImageHandleAdornment: ImageHandleAdornment;
     ImageLabel: ImageLabel;
     InputAction: InputAction;
+    InputActionLabel: InputActionLabel;
     InputBinding: InputBinding;
     InputContext: InputContext;
     IntConstrainedValue: IntConstrainedValue;
+    InternalSyncItem: InternalSyncItem;
     IntersectOperation: IntersectOperation;
     IntValue: IntValue;
     Keyframe: Keyframe;
@@ -465,10 +502,13 @@ interface CreatableInstances {
     Pants: Pants;
     Part: Part;
     ParticleEmitter: ParticleEmitter;
+    ParticleEmitter2D: ParticleEmitter2D;
     PartOperation: PartOperation;
     Path2D: Path2D;
+    Path3D: Path3D;
     PathfindingLink: PathfindingLink;
     PathfindingModifier: PathfindingModifier;
+    PhysicsActivitySensor: PhysicsActivitySensor;
     PitchShiftSoundEffect: PitchShiftSoundEffect;
     Plane: Plane;
     PlaneConstraint: PlaneConstraint;
@@ -520,6 +560,8 @@ interface CreatableInstances {
     SpotLight: SpotLight;
     SpringConstraint: SpringConstraint;
     StarterGear: StarterGear;
+    StateMachineDefinition: StateMachineDefinition;
+    StateMachineTransitionDefinition: StateMachineTransitionDefinition;
     StringValue: StringValue;
     StudioAttachment: StudioAttachment;
     StudioCallout: StudioCallout;
@@ -544,6 +586,7 @@ interface CreatableInstances {
     TextChannelWindow: TextChannelWindow;
     TextChatCommand: TextChatCommand;
     TextChatMessageProperties: TextChatMessageProperties;
+    TextDocument: TextDocument;
     TextGenerator: TextGenerator;
     TextLabel: TextLabel;
     Texture: Texture;
@@ -555,6 +598,7 @@ interface CreatableInstances {
     TremoloSoundEffect: TremoloSoundEffect;
     TrussPart: TrussPart;
     UIAspectRatioConstraint: UIAspectRatioConstraint;
+    UIBlur: UIBlur;
     UICorner: UICorner;
     UIDragDetector: UIDragDetector;
     UIFlexItem: UIFlexItem;
@@ -583,6 +627,7 @@ interface CreatableInstances {
     VideoDisplay: VideoDisplay;
     VideoFrame: VideoFrame;
     VideoPlayer: VideoPlayer;
+    ViewportCamera: ViewportCamera;
     ViewportFrame: ViewportFrame;
     VisualizationMode: VisualizationMode;
     VisualizationModeCategory: VisualizationModeCategory;
@@ -655,6 +700,7 @@ interface Instances extends Services, CreatableInstances {
     DebuggerLuaResponse: DebuggerLuaResponse;
     DebuggerVariable: DebuggerVariable;
     DebuggerWatch: DebuggerWatch;
+    DisplayWakeLock: DisplayWakeLock;
     DockWidgetPluginGui: DockWidgetPluginGui;
     DynamicRotate: DynamicRotate;
     ExplorerFilterAutocompleter: ExplorerFilterAutocompleter;
@@ -666,6 +712,8 @@ interface Instances extends Services, CreatableInstances {
     File: File;
     FormFactorPart: FormFactorPart;
     FriendPages: FriendPages;
+    FriendsCallingInstance: FriendsCallingInstance;
+    FriendsCallingParticipant: FriendsCallingParticipant;
     GenericSettings: GenericSettings;
     GlobalDataStore: GlobalDataStore;
     GlobalSettings: GlobalSettings;
@@ -692,6 +740,7 @@ interface Instances extends Services, CreatableInstances {
     LuaSourceContainer: LuaSourceContainer;
     ManualSurfaceJointInstance: ManualSurfaceJointInstance;
     MaterialImportData: MaterialImportData;
+    MemoryStoreDistributedCounter: MemoryStoreDistributedCounter;
     MemoryStoreHashMap: MemoryStoreHashMap;
     MemoryStoreHashMapPages: MemoryStoreHashMapPages;
     MemoryStoreQueue: MemoryStoreQueue;
@@ -762,6 +811,7 @@ interface Instances extends Services, CreatableInstances {
     SoundEffect: SoundEffect;
     StackFrame: StackFrame;
     StandardPages: StandardPages;
+    StandardQueue: StandardQueue;
     StarterCharacterScripts: StarterCharacterScripts;
     StarterPlayerScripts: StarterPlayerScripts;
     StatsItem: StatsItem;
@@ -774,7 +824,6 @@ interface Instances extends Services, CreatableInstances {
     SyncScriptBuilder: SyncScriptBuilder;
     TeleportAsyncResult: TeleportAsyncResult;
     Terrain: Terrain;
-    TestCase: TestCase;
     TextChatConfigurations: TextChatConfigurations;
     TextChatMessage: TextChatMessage;
     TextFilterResult: TextFilterResult;
@@ -802,14 +851,19 @@ interface Instances extends Services, CreatableInstances {
 }
 interface Objects extends Instances {
     AnimationNode: AnimationNode;
+    AppHandle: AppHandle;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
+    DataModelDiff: DataModelDiff;
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
     ExecutedRemoteCommand: ExecutedRemoteCommand;
+    Logger: Logger;
+    LuauExpression: LuauExpression;
     MLSession: MLSession;
     Object: RBXObject;
     OutputLink: OutputLink;
+    ParticipantHandle: ParticipantHandle;
     PluginConnection: PluginConnection;
     ScreenshotCapture: ScreenshotCapture;
     StudioActionOverride: StudioActionOverride;
@@ -817,6 +871,12 @@ interface Objects extends Instances {
     TerrainModifyOperation: TerrainModifyOperation;
     TerrainReadOperation: TerrainReadOperation;
     TerrainWriteOperation: TerrainWriteOperation;
+    TestCase: TestCase;
+    TestExecutionContext: TestExecutionContext;
+    TestFailure: TestFailure;
+    TestResult: TestResult;
+    TestRunResult: TestRunResult;
+    TestSuite: TestSuite;
     VideoCapture: VideoCapture;
     VideoSampler: VideoSampler;
     VirtualInput: VirtualInput;
@@ -855,6 +915,21 @@ interface AnimationNode extends RBXObject {
      * @deprecated
      */
     readonly _nominal_AnimationNode: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AppHandle)
+ */
+interface AppHandle extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AppHandle: unique symbol;
 }
 /**
  * A class which defines a piece of content, such as a screenshot or video, taken in-experience.
@@ -923,6 +998,21 @@ interface ConfigSnapshot extends RBXObject {
      * @deprecated
      */
     readonly _nominal_ConfigSnapshot: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModelDiff)
+ */
+interface DataModelDiff extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_DataModelDiff: unique symbol;
 }
 /**
  * Object which allows for the runtime creation and manipulation of images.
@@ -1074,6 +1164,8 @@ interface Accessory extends Accoutrement {
 /**
  * **Deprecated:** This class has been superseded by the `Accessory` class. Do not use it for new work.
  *
+ * A deprecated accessory container superseded by `Accessory`.
+ *
  * - **Tags**:
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Hat)
@@ -1121,6 +1213,23 @@ interface ActivityHistoryEventService extends Instance {
     readonly _nominal_ActivityHistoryEventService: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdPlacement)
+ */
+interface AdPlacement extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AdPlacement: unique symbol;
+}
+/**
+ * A portal that teleports players to a sponsored experience as part of immersive ads.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdPortal)
  */
 interface AdPortal extends Instance {
@@ -1134,7 +1243,7 @@ interface AdPortal extends Instance {
     readonly _nominal_AdPortal: unique symbol;
 }
 /**
- * A class that allows the display of mobile video ads.
+ * The service responsible for in-experience advertising.
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -1166,6 +1275,21 @@ interface AnalyticsService extends Instance {
      * @deprecated
      */
     readonly _nominal_AnalyticsService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImageService)
+ */
+interface AnimatedImageService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimatedImageService: unique symbol;
 }
 /**
  * References an animation asset which can be loaded by an `AnimationController`.
@@ -1280,7 +1404,7 @@ interface AnimationClipProvider extends Instance {
      * @param assetId The content ID of the animation.
      * @returns The `AnimationClip` found.
      *
-     * @deprecated
+     * @deprecated GetAnimationClipAsync
      */
     GetAnimationClip(this: AnimationClipProvider, assetId: ContentId): AnimationClip;
     /**
@@ -1297,7 +1421,7 @@ interface AnimationClipProvider extends Instance {
      * @param useCache True if a cached version can be returned.
      * @returns The `AnimationClip` found.
      *
-     * @deprecated
+     * @deprecated GetAnimationClipAsync
      */
     GetAnimationClipById(this: AnimationClipProvider, assetId: number, useCache: boolean): AnimationClip;
 }
@@ -1347,6 +1471,8 @@ interface AnimationFromVideoCreatorStudioService extends Instance {
     readonly _nominal_AnimationFromVideoCreatorStudioService: unique symbol;
 }
 /**
+ * A single node within an animation graph, connected to other nodes through named input pins.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition)
  */
 interface AnimationNodeDefinition extends Instance {
@@ -1358,6 +1484,19 @@ interface AnimationNodeDefinition extends Instance {
      * @deprecated
      */
     readonly _nominal_AnimationNodeDefinition: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationPlayer)
+ */
+interface AnimationPlayer extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationPlayer: unique symbol;
 }
 /**
  * Used to store information regarding the model an animation was authored for.
@@ -1407,6 +1546,32 @@ interface AnimationTrack extends Instance {
     readonly _nominal_AnimationTrack: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationValueNodeDefinition)
+ */
+interface AnimationValueNodeDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationValueNodeDefinition: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationValueOutputDefinition)
+ */
+interface AnimationValueOutputDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AnimationValueOutputDefinition: unique symbol;
+}
+/**
  * Responsible for the playback and replication of `Animations`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animator)
@@ -1420,16 +1585,6 @@ interface Animator extends Instance {
      * @deprecated
      */
     readonly _nominal_Animator: unique symbol;
-    /**
-     * Increments the `AnimationTrack.TimePosition` of all playing `AnimationTracks` that are loaded onto the `Animator`, applying the offsets to the model associated with the `Animator`. For use in the command bar or by plugins only.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Animator#StepAnimations)
-     * @param this Responsible for the playback and replication of `Animations`.
-     * @param deltaTime The amount of time in seconds animation playback is to be incremented. by.
-     */
-    StepAnimations(this: Animator, deltaTime: number): void;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Annotation)
@@ -1548,6 +1703,8 @@ interface AssetCounterService extends Instance {
     readonly _nominal_AssetCounterService: unique symbol;
 }
 /**
+ * Runs a local HTTP server that serves assets to real devices.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetDeliveryProxy)
@@ -1593,6 +1750,8 @@ interface AssetManagerService extends Instance {
     readonly _nominal_AssetManagerService: unique symbol;
 }
 /**
+ * Configures a single patch asset built by `IncrementalPatchBuilder` and served through `AssetDeliveryProxy`.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AssetPatchSettings)
@@ -2079,6 +2238,21 @@ interface AudioTremolo extends Instance {
     readonly _nominal_AudioTremolo: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioWindSynthesizer)
+ */
+interface AudioWindSynthesizer extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioWindSynthesizer: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptObject)
@@ -2094,6 +2268,40 @@ interface AuroraScriptObject extends Instance {
      * @deprecated
      */
     readonly _nominal_AuroraScriptObject: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScriptService)
+ *
+ * @deprecated
+ */
+interface AuroraScriptService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AuroraScriptService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraService)
+ *
+ * @deprecated
+ */
+interface AuroraService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AuroraService: unique symbol;
 }
 /**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarAbilityRules)
@@ -2266,6 +2474,51 @@ interface AvatarSettings extends Instance {
     readonly _nominal_AvatarSettings: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BackendReplicatedStorage)
+ */
+interface BackendReplicatedStorage extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_BackendReplicatedStorage: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BackendServerScriptService)
+ */
+interface BackendServerScriptService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_BackendServerScriptService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BackendServerStorage)
+ */
+interface BackendServerStorage extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_BackendServerStorage: unique symbol;
+}
+/**
  * A container object that holds a player's inventory. Any `Tool` in a player's `Backpack` will be displayed in their inventory at the bottom of the screen.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Backpack)
@@ -2298,6 +2551,8 @@ interface BadgeService extends Instance {
     readonly _nominal_BadgeService: unique symbol;
 }
 /**
+ * Base class for the configuration objects that control individual built-in `CoreGui` elements.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseCoreGuiConfiguration)
@@ -2313,6 +2568,8 @@ interface BaseCoreGuiConfiguration extends Instance {
     readonly _nominal_BaseCoreGuiConfiguration: unique symbol;
 }
 /**
+ * Controls the built-in captures view, the `CoreGui` element that lets players browse and manage screenshots and video captures they take within an experience.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CapturesViewConfiguration)
@@ -2328,6 +2585,8 @@ interface CapturesViewConfiguration extends BaseCoreGuiConfiguration {
     readonly _nominal_CapturesViewConfiguration: unique symbol;
 }
 /**
+ * Controls the built-in player list, the `CoreGui` element that displays the players currently in the experience.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerListConfiguration)
@@ -2343,6 +2602,8 @@ interface PlayerListConfiguration extends BaseCoreGuiConfiguration {
     readonly _nominal_PlayerListConfiguration: unique symbol;
 }
 /**
+ * Controls the built-in self view, the `CoreGui` element that shows a player a preview of their own character within an experience.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SelfViewConfiguration)
@@ -2555,6 +2816,8 @@ interface StarterGui extends BasePlayerGui {
     ProcessUserInput: boolean;
 }
 /**
+ * Abstract base class inherited by `RemoteEvent` and `UnreliableRemoteEvent` for asynchronous, one-way communication across the client-server boundary.
+ *
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseRemoteEvent)
@@ -2600,6 +2863,8 @@ interface UnreliableRemoteEvent<T extends Callback = Callback> extends BaseRemot
     readonly _nominal_UnreliableRemoteEvent: unique symbol;
 }
 /**
+ * Abstract base class for `WrapTarget` and `WrapLayer` that stores cage mesh data for layered clothing deformation.
+ *
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseWrap)
@@ -2614,6 +2879,8 @@ interface BaseWrap extends Instance {
      */
     readonly _nominal_BaseWrap: unique symbol;
     /**
+     * The cage mesh this wrap uses to deform geometry, stored as a `Content` value.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseWrap#CageMeshContent)
@@ -2682,6 +2949,8 @@ interface WrapLayer extends BaseWrap {
      */
     set BindOffset(value: CFrame);
     /**
+     * The reference mesh that defines the Inner Cage of the `WrapLayer`, stored as a `Content` value.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#ReferenceMeshContent)
@@ -2704,6 +2973,20 @@ interface WrapLayer extends BaseWrap {
      */
     set ReferenceOrigin(value: CFrame);
     /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#RotateScaleDeformationMap)
+     */
+    set RotateScaleDeformationMap(value: Content);
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#ScaleOnlyDeformationMap)
+     */
+    set ScaleOnlyDeformationMap(value: Content);
+    /**
+     * **Deprecated:**
+     *
      * Allows slight shrinking/expanding of the resulting render mesh, without affecting any other layers.
      *
      * - **ThreadSafety**: ReadSafe
@@ -2714,6 +2997,12 @@ interface WrapLayer extends BaseWrap {
      * @deprecated
      */
     set ShrinkFactor(value: number);
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#TargetShaping)
+     */
+    set TargetShaping(value: number);
 }
 /**
  * The WrapTarget object defines a target. A target is the 3D body with only an outer surface, or an Outer Cage.
@@ -2730,6 +3019,8 @@ interface WrapTarget extends BaseWrap {
      */
     readonly _nominal_WrapTarget: unique symbol;
     /**
+     * **Deprecated:**
+     *
      * Defines how much the body mesh can be compressed by clothing.
      *
      * - **ThreadSafety**: ReadSafe
@@ -2816,7 +3107,7 @@ interface BodyMover extends Instance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyAngularVelocity)
  *
- * @deprecated
+ * @deprecated AngularVelocity
  */
 interface BodyAngularVelocity extends BodyMover {
     /**
@@ -2837,7 +3128,7 @@ interface BodyAngularVelocity extends BodyMover {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyForce)
  *
- * @deprecated
+ * @deprecated VectorForce
  */
 interface BodyForce extends BodyMover {
     /**
@@ -2858,7 +3149,7 @@ interface BodyForce extends BodyMover {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyGyro)
  *
- * @deprecated
+ * @deprecated AlignOrientation
  */
 interface BodyGyro extends BodyMover {
     /**
@@ -2879,7 +3170,7 @@ interface BodyGyro extends BodyMover {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyPosition)
  *
- * @deprecated
+ * @deprecated AlignPosition
  */
 interface BodyPosition extends BodyMover {
     /**
@@ -2900,7 +3191,7 @@ interface BodyPosition extends BodyMover {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyThrust)
  *
- * @deprecated
+ * @deprecated VectorForce
  */
 interface BodyThrust extends BodyMover {
     /**
@@ -2921,7 +3212,7 @@ interface BodyThrust extends BodyMover {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BodyVelocity)
  *
- * @deprecated
+ * @deprecated LinearVelocity
  */
 interface BodyVelocity extends BodyMover {
     /**
@@ -2942,7 +3233,7 @@ interface BodyVelocity extends BodyMover {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RocketPropulsion)
  *
- * @deprecated
+ * @deprecated LineForce
  */
 interface RocketPropulsion extends BodyMover {
     /**
@@ -2968,6 +3259,21 @@ interface BodyPartDescription extends Instance {
      * @deprecated
      */
     readonly _nominal_BodyPartDescription: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BranchService)
+ */
+interface BranchService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_BranchService: unique symbol;
 }
 /**
  * - **Tags**: NotReplicated
@@ -3032,6 +3338,8 @@ interface CacheableContentProvider extends Instance {
     readonly _nominal_CacheableContentProvider: unique symbol;
 }
 /**
+ * A service that fetches and caches SLIM (Scalable Lightweight Interactive Models) asset content representations for model rendering.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SlimContentProvider)
@@ -3045,6 +3353,36 @@ interface SlimContentProvider extends CacheableContentProvider {
      * @deprecated
      */
     readonly _nominal_SlimContentProvider: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapContentProvider)
+ */
+interface WrapContentProvider extends CacheableContentProvider {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WrapContentProvider: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CallingService)
+ */
+interface CallingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CallingService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -3107,33 +3445,38 @@ interface ChangeHistoryService extends Instance {
      */
     FinishRecording(this: ChangeHistoryService, identifier: string, operation: CastsToEnum<Enum.FinishRecordingOperation>, finalOptions?: object): void;
     /**
-     * Returns whether there are actions that can be redone, and, if there are, returns the last of them.
+     * Returns whether there is an action available to redo and, if so, the name of that action.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#GetCanRedo)
      * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @returns `true` followed by the name of the action that would be redone when a redo is available; otherwise `false`.
      */
     GetCanRedo(this: ChangeHistoryService): unknown;
     /**
-     * Returns whether there are actions that can be undone, and, if there are, returns the last of them.
+     * Returns whether there is an action available to undo and, if so, the name of that action.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#GetCanUndo)
      * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
+     * @returns `true` followed by the name of the action that would be undone when an undo is available; otherwise `false`.
      */
     GetCanUndo(this: ChangeHistoryService): unknown;
     /**
+     * Returns whether the plugin currently has a recording in progress, optionally checking for a specific recording identifier.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#IsRecordingInProgress)
      * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
-     * @param identifier
+     * @param identifier Optional identifier of a specific recording to check for. When omitted, the method reports whether *any* recording is in progress for the plugin.
+     * @returns `true` if a matching recording is in progress; otherwise `false`.
      */
     IsRecordingInProgress(this: ChangeHistoryService, identifier?: string): boolean;
     /**
-     * Executes the last action that was undone.
+     * Re-executes the most recently undone action, advancing forward through the undo/redo history.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -3142,7 +3485,7 @@ interface ChangeHistoryService extends Instance {
      */
     Redo(this: ChangeHistoryService): void;
     /**
-     * Clears the history, causing all undo/redo waypoints to be removed.
+     * Clears the undo/redo history by collapsing it into a single base waypoint.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -3157,7 +3500,7 @@ interface ChangeHistoryService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#SetEnabled)
      * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
-     * @param state
+     * @param state Whether to enable (`true`) or disable (`false`) the service.
      */
     SetEnabled(this: ChangeHistoryService, state: boolean): void;
     /**
@@ -3167,7 +3510,7 @@ interface ChangeHistoryService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChangeHistoryService#SetWaypoint)
      * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
-     * @param name
+     * @param name The name to assign to the new waypoint, which appears in the undo/redo history.
      */
     SetWaypoint(this: ChangeHistoryService, name: string): void;
     /**
@@ -3179,10 +3522,11 @@ interface ChangeHistoryService extends Instance {
      * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      * @param name Name of the action being performed suitable for logging and coding purposes.
      * @param displayName Name of the action being performed to display to the user.
+     * @returns A unique string identifier for the recording on success, or `nil` if the recording could not be started.
      */
     TryBeginRecording(this: ChangeHistoryService, name: string, displayName?: string): string | undefined;
     /**
-     * Undos the last action taken, for which there exists a waypoint.
+     * Reverts the most recent action, stepping backward through the undo/redo history.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -3207,7 +3551,7 @@ interface ChangeHistoryService extends Instance {
      */
     readonly OnRecordingStarted: RBXScriptSignal<(name: string, displayName?: string) => void>;
     /**
-     * Fired when the user reverses the undo command. Waypoint describes the type action that has been redone.
+     * Fires after an action is redone, reporting the name of the action that was replayed.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -3215,7 +3559,7 @@ interface ChangeHistoryService extends Instance {
      */
     readonly OnRedo: RBXScriptSignal<(waypoint: string) => void>;
     /**
-     * Fired when the user undoes an action in studio. Waypoint describes the type action that has been undone.
+     * Fires after an action is undone, reporting the name of the action that was reverted.
      *
      * - **ThreadSafety**: Unsafe
      *
@@ -3427,6 +3771,21 @@ interface CloudCRUDService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CloudClientService)
+ */
+interface CloudClientService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CloudClientService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CloudExecutionService)
  */
 interface CloudExecutionService extends Instance {
@@ -3566,6 +3925,8 @@ interface Configuration extends Instance {
     readonly _nominal_Configuration: unique symbol;
 }
 /**
+ * Configures a server's `DataModel` for a place session during game-server startup.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ConfigureServerService)
@@ -3658,7 +4019,7 @@ interface AngularVelocity extends Constraint {
     readonly _nominal_AngularVelocity: unique symbol;
 }
 /**
- * Aligns two `BaseParts` with an animate-able kinematic or force-based joint.
+ * Aligns two `BaseParts` with an animate-able kinematic or force-based joint that supports physical simulation (ragdoll, arm strength). The default joint type for R15 avatar rigs.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationConstraint)
  */
@@ -3756,7 +4117,7 @@ interface PlaneConstraint extends Constraint {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plane)
  *
- * @deprecated
+ * @deprecated PlaneConstraint
  */
 interface Plane extends PlaneConstraint {
     /**
@@ -3814,7 +4175,7 @@ interface RopeConstraint extends Constraint {
     readonly _nominal_RopeConstraint: unique symbol;
 }
 /**
- * The base class for constraints that allow their attachments to slide along an axis but not rotate.
+ * The base class for constraints that allow their attachments to slide along an axis.
  *
  * - **Tags**: NotCreatable
  *
@@ -3970,6 +4331,19 @@ interface ContextActionService extends Instance {
     readonly _nominal_ContextActionService: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState)
+ */
+interface ControlState extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ControlState: unique symbol;
+}
+/**
  * The base class for controller objects, such as the `HumanoidController` object.
  *
  * - **Tags**: NotCreatable
@@ -3987,6 +4361,8 @@ interface Controller extends Instance {
     readonly _nominal_Controller: unique symbol;
 }
 /**
+ * A `Controller` held within `ControllerService` that translates player input into movement for the user's character `Humanoid`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidController)
  */
 interface HumanoidController extends Controller {
@@ -4000,6 +4376,8 @@ interface HumanoidController extends Controller {
     readonly _nominal_HumanoidController: unique symbol;
 }
 /**
+ * Translates player input into throttle and steer axis values for a `SkateboardPlatform`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SkateboardController)
  */
 interface SkateboardController extends Controller {
@@ -4013,6 +4391,8 @@ interface SkateboardController extends Controller {
     readonly _nominal_SkateboardController: unique symbol;
 }
 /**
+ * An object responsible for translating a seated player's directional input into throttle and steering for a `VehicleSeat`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VehicleController)
  */
 interface VehicleController extends Controller {
@@ -4026,6 +4406,8 @@ interface VehicleController extends Controller {
     readonly _nominal_VehicleController: unique symbol;
 }
 /**
+ * Abstract base class for the controllers that a `ControllerManager` uses to move its character.
+ *
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControllerBase)
@@ -4041,6 +4423,8 @@ interface ControllerBase extends Instance {
     readonly _nominal_ControllerBase: unique symbol;
 }
 /**
+ * A physics character controller that governs movement while a character is airborne.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AirController)
  */
 interface AirController extends ControllerBase {
@@ -4054,6 +4438,8 @@ interface AirController extends ControllerBase {
     readonly _nominal_AirController: unique symbol;
 }
 /**
+ * A physics character controller that moves its `ControllerManager.RootPart` along a climbable surface, such as a ladder.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ClimbController)
  */
 interface ClimbController extends ControllerBase {
@@ -4067,6 +4453,8 @@ interface ClimbController extends ControllerBase {
     readonly _nominal_ClimbController: unique symbol;
 }
 /**
+ * The `ControllerBase` that moves a `ControllerManager` character while it is walking or standing on the ground.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GroundController)
  */
 interface GroundController extends ControllerBase {
@@ -4080,6 +4468,8 @@ interface GroundController extends ControllerBase {
     readonly _nominal_GroundController: unique symbol;
 }
 /**
+ * The `ControllerBase` that moves a `ControllerManager` character while it is swimming.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SwimController)
  */
 interface SwimController extends ControllerBase {
@@ -4125,6 +4515,8 @@ interface ControllerService extends Instance {
     readonly _nominal_ControllerService: unique symbol;
 }
 /**
+ * Service that groups the configuration objects controlling Roblox's built-in `CoreGui` elements.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CoreGuiConfiguration)
@@ -4170,6 +4562,8 @@ interface CreationDBService extends Instance {
     readonly _nominal_CreationDBService: unique symbol;
 }
 /**
+ * Provides methods for querying Creator Store product information and purchasing assets.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CreatorStoreService)
@@ -4200,6 +4594,8 @@ interface CrossDMScriptChangeListener extends Instance {
     readonly _nominal_CrossDMScriptChangeListener: unique symbol;
 }
 /**
+ * Internal-only instance that writes text to a file in the engine's logs directory.
+ *
  * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CustomLog)
@@ -4319,21 +4715,6 @@ interface SpecialMesh extends FileMesh {
     readonly _nominal_SpecialMesh: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModelPatchService)
- */
-interface DataModelPatchService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_DataModelPatchService: unique symbol;
-}
-/**
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModelSession)
@@ -4349,6 +4730,8 @@ interface DataModelSession extends Instance {
     readonly _nominal_DataModelSession: unique symbol;
 }
 /**
+ * Specifies additional parameters for a `GlobalDataStore:GetAsync()` call.
+ *
  * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStoreGetOptions)
@@ -4783,6 +5166,21 @@ interface DesignFoundationsService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DeviceDisplayService)
+ */
+interface DeviceDisplayService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_DeviceDisplayService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DeviceIdService)
  */
 interface DeviceIdService extends Instance {
@@ -4826,6 +5224,8 @@ interface DialogChoice extends Instance {
     readonly _nominal_DialogChoice: unique symbol;
 }
 /**
+ * Maps the 15 phalanx joints of one hand (5 fingers, 3 joints each) and exposes forward- and inverse-kinematics helpers for controlling finger poses at runtime.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DigitsRigDescription)
  */
 interface DigitsRigDescription extends Instance {
@@ -4837,6 +5237,21 @@ interface DigitsRigDescription extends Instance {
      * @deprecated
      */
     readonly _nominal_DigitsRigDescription: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DisplayWakeLock)
+ */
+interface DisplayWakeLock extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_DisplayWakeLock: unique symbol;
 }
 /**
  * A helper object used to create tools that can drag parts.
@@ -4854,6 +5269,8 @@ interface Dragger extends Instance {
     readonly _nominal_Dragger: unique symbol;
 }
 /**
+ * A service that centralizes the global dragger settings that Studio's dragging tools read so they move, snap, and highlight objects consistently.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DraggerService)
@@ -4882,6 +5299,21 @@ interface EditableService extends Instance {
      * @deprecated
      */
     readonly _nominal_EditableService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EditorSourceService)
+ */
+interface EditorSourceService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_EditorSourceService: unique symbol;
 }
 /**
  * Service providing common encoding, hashing, and compression methods.
@@ -5102,6 +5534,21 @@ interface Explosion extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ExternalIdentityService)
+ */
+interface ExternalIdentityService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ExternalIdentityService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceAnimatorService)
  */
 interface FaceAnimatorService extends Instance {
@@ -5128,456 +5575,6 @@ interface FaceControls extends Instance {
      * @deprecated
      */
     readonly _nominal_FaceControls: unique symbol;
-    /**
-     * Raises the chin up; moves the lower lip upwards.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#ChinRaiser)
-     */
-    ChinRaiser: number;
-    /**
-     * Moves the upper lip when ChinRaiser is engaged and touching the upper lip.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#ChinRaiserUpperLip)
-     */
-    ChinRaiserUpperLip: number;
-    /**
-     * Brings the left and right brows inward together.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#Corrugator)
-     */
-    Corrugator: number;
-    /**
-     * Moves gaze down. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#EyesLookDown)
-     */
-    EyesLookDown: number;
-    /**
-     * Moves gaze left. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#EyesLookLeft)
-     */
-    EyesLookLeft: number;
-    /**
-     * Moves gaze right. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#EyesLookRight)
-     */
-    EyesLookRight: number;
-    /**
-     * Moves gaze up. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#EyesLookUp)
-     */
-    EyesLookUp: number;
-    /**
-     * Also known as lip tightener; brings the corners of the mouth inward and pressing the lips back against the teeth.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#FlatPucker)
-     */
-    FlatPucker: number;
-    /**
-     * Makes a 'O' shape with the mouth.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#Funneler)
-     */
-    Funneler: number;
-    /**
-     * Lowers the jaw downward opening the mouth. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#JawDrop)
-     */
-    JawDrop: number;
-    /**
-     * Moves mouth and jaw to the left (character left).
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#JawLeft)
-     */
-    JawLeft: number;
-    /**
-     * Moves mouth and jaw to the right (character right).
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#JawRight)
-     */
-    JawRight: number;
-    /**
-     * Lowers the left brow down.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftBrowLowerer)
-     */
-    LeftBrowLowerer: number;
-    /**
-     * Puffs up the left cheek.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftCheekPuff)
-     */
-    LeftCheekPuff: number;
-    /**
-     * Squints the left eye.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftCheekRaiser)
-     */
-    LeftCheekRaiser: number;
-    /**
-     * Moves the corners of the mouth back in Z.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftDimpler)
-     */
-    LeftDimpler: number;
-    /**
-     * Closes the left eyelid. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftEyeClosed)
-     */
-    LeftEyeClosed: number;
-    /**
-     * Raises the left eyelid upwards to reveal more of the eye white above the iris.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftEyeUpperLidRaiser)
-     */
-    LeftEyeUpperLidRaiser: number;
-    /**
-     * Raises the interior half of the left brow upwards.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftInnerBrowRaiser)
-     */
-    LeftInnerBrowRaiser: number;
-    /**
-     * Lowers the corners of the mouth downwards in a frown.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftLipCornerDown)
-     */
-    LeftLipCornerDown: number;
-    /**
-     * Raises the corners of the mouth upwards in a smile. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftLipCornerPuller)
-     */
-    LeftLipCornerPuller: number;
-    /**
-     * Stretches the corners of the mouth apart. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftLipStretcher)
-     */
-    LeftLipStretcher: number;
-    /**
-     * Lowers the lower lip down away from the upper lip revealing the lower teeth. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftLowerLipDepressor)
-     */
-    LeftLowerLipDepressor: number;
-    /**
-     * Raise the left nostril, pulls the brow down slightly, and wrinkles on the side of the nose.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftNoseWrinkler)
-     */
-    LeftNoseWrinkler: number;
-    /**
-     * Raises the outer part of the left brow upwards.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftOuterBrowRaiser)
-     */
-    LeftOuterBrowRaiser: number;
-    /**
-     * Raises the left upper lip away from the lower lip revealing the upper teeth. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LeftUpperLipRaiser)
-     */
-    LeftUpperLipRaiser: number;
-    /**
-     * Presses the lips together.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LipPresser)
-     */
-    LipPresser: number;
-    /**
-     * Brings the lips together relative to JawDrop. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LipsTogether)
-     */
-    LipsTogether: number;
-    /**
-     * Rolls the lower lip up over the teeth.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#LowerLipSuck)
-     */
-    LowerLipSuck: number;
-    /**
-     * Moves the mouth left.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#MouthLeft)
-     */
-    MouthLeft: number;
-    /**
-     * Moves the mouth right.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#MouthRight)
-     */
-    MouthRight: number;
-    /**
-     * Makes a kiss-like shape with the mouth. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#Pucker)
-     */
-    Pucker: number;
-    /**
-     * Lowers the right brow down.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightBrowLowerer)
-     */
-    RightBrowLowerer: number;
-    /**
-     * Puffs up the right cheek.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightCheekPuff)
-     */
-    RightCheekPuff: number;
-    /**
-     * Squints the right eye.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightCheekRaiser)
-     */
-    RightCheekRaiser: number;
-    /**
-     * Moves the corners of the mouth back in Z.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightDimpler)
-     */
-    RightDimpler: number;
-    /**
-     * Closes the right eyelid. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightEyeClosed)
-     */
-    RightEyeClosed: number;
-    /**
-     * Raises the right eyelid upwards to reveal more of the eye white above the iris.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightEyeUpperLidRaiser)
-     */
-    RightEyeUpperLidRaiser: number;
-    /**
-     * Raises the interior half of the right brow upwards.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightInnerBrowRaiser)
-     */
-    RightInnerBrowRaiser: number;
-    /**
-     * Lowers the corners of the mouth downwards in a frown.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightLipCornerDown)
-     */
-    RightLipCornerDown: number;
-    /**
-     * Raises the corners of the mouth upwards in a smile. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightLipCornerPuller)
-     */
-    RightLipCornerPuller: number;
-    /**
-     * Stretches the corners of the mouth apart. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightLipStretcher)
-     */
-    RightLipStretcher: number;
-    /**
-     * Lowers the lower lip down away from the upper lip revealing the lower teeth. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightLowerLipDepressor)
-     */
-    RightLowerLipDepressor: number;
-    /**
-     * Raises the right nostril, pulls the brow down slightly, and wrinkles on the side of the nose.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightNoseWrinkler)
-     */
-    RightNoseWrinkler: number;
-    /**
-     * Raises the outer part of the right brow upwards.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightOuterBrowRaiser)
-     */
-    RightOuterBrowRaiser: number;
-    /**
-     * Raises the right upper lip away from the lower lip revealing the upper teeth. This is a required pose for avatars.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#RightUpperLipRaiser)
-     */
-    RightUpperLipRaiser: number;
-    /**
-     * Bends the tongue down.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#TongueDown)
-     */
-    TongueDown: number;
-    /**
-     * Extends the tip of the tongue out of the mouth.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#TongueOut)
-     */
-    TongueOut: number;
-    /**
-     * Bends the tongue up.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#TongueUp)
-     */
-    TongueUp: number;
-    /**
-     * Rolls the upper lip around the teeth.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FaceControls#UpperLipSuck)
-     */
-    UpperLipSuck: number;
 }
 /**
  * An abstract class from which the `Decal` and `Texture` classes inherit.
@@ -5612,18 +5609,30 @@ interface Decal extends FaceInstance {
     readonly _nominal_Decal: unique symbol;
     /**
      * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#EmissiveMaskContent)
+     */
+    set EmissiveMaskContent(value: Content);
+    /**
+     * Content ID that determines the metalness map of the surface.
+     *
+     * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#MetalnessMap)
      */
     MetalnessMap: ContentId;
     /**
+     * `Content` object that determines the metalness map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#MetalnessMapContent)
      */
     set MetalnessMapContent(value: Content);
     /**
+     * Content ID that determines the normal map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
      *
@@ -5631,12 +5640,16 @@ interface Decal extends FaceInstance {
      */
     NormalMap: ContentId;
     /**
+     * `Content` object that determines the normal map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#NormalMapContent)
      */
     set NormalMapContent(value: Content);
     /**
+     * Content ID that determines the roughness map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden
      *
@@ -5644,6 +5657,8 @@ interface Decal extends FaceInstance {
      */
     RoughnessMap: ContentId;
     /**
+     * `Content` object that determines the roughness map of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#RoughnessMapContent)
@@ -5794,6 +5809,19 @@ interface MotorFeature extends Feature {
      * @deprecated
      */
     readonly _nominal_MotorFeature: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeatureMatchingTable)
+ */
+interface FeatureMatchingTable extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FeatureMatchingTable: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -5962,6 +5990,51 @@ interface ForceField extends Instance {
     readonly _nominal_ForceField: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FriendsCallingInstance)
+ */
+interface FriendsCallingInstance extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FriendsCallingInstance: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FriendsCallingParticipant)
+ */
+interface FriendsCallingParticipant extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FriendsCallingParticipant: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FriendsCallingService)
+ */
+interface FriendsCallingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FriendsCallingService: unique symbol;
+}
+/**
  * A service associated with the legacy game pass system. Use `MarketplaceService` for all new work.
  *
  * - **Tags**: NotCreatable, Service
@@ -5995,7 +6068,7 @@ interface GameSettings extends Instance {
      */
     readonly _nominal_GameSettings: unique symbol;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This property is deprecated. Do not use it for new work.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**:
@@ -6107,6 +6180,8 @@ interface GlobalDataStore extends Instance {
     readonly _nominal_GlobalDataStore: unique symbol;
 }
 /**
+ * A `GlobalDataStore` that also supports versioning, key metadata, and enumerating keys.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataStore)
@@ -6248,7 +6323,7 @@ interface GuiObject extends GuiBase2d {
     readonly _nominal_GuiObject: unique symbol;
 }
 /**
- * Blends descendants as a group with color/transparency.
+ * Blends descendants as a flattened group with an optional color/transparency modification.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CanvasGroup)
  */
@@ -6372,6 +6447,21 @@ interface TextLabel extends GuiLabel {
     readonly _nominal_TextLabel: unique symbol;
 }
 /**
+ * A `GuiObject` that automatically displays the keybinding for an action as text or an image.
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputActionLabel)
+ */
+interface InputActionLabel extends GuiObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InputActionLabel: unique symbol;
+}
+/**
  * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RelativeGui)
@@ -6417,8 +6507,6 @@ interface TextBox extends GuiObject {
     readonly _nominal_TextBox: unique symbol;
 }
 /**
- * - **Tags**: NotBrowsable
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChannelWindow)
  */
 interface TextChannelWindow extends GuiObject {
@@ -6509,6 +6597,8 @@ interface BillboardGui extends LayerCollector {
     readonly _nominal_BillboardGui: unique symbol;
 }
 /**
+ * An abstract base class for GUIs that display `GuiObjects` in Roblox Studio widgets.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginGui)
@@ -6528,7 +6618,7 @@ interface PluginGui extends LayerCollector {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginGui#GetRelativeMousePosition)
-     * @param this
+     * @param this An abstract base class for GUIs that display `GuiObjects` in Roblox Studio widgets.
      * @returns The screen position of the mouse relative to the PluginGui in pixels.
      */
     GetRelativeMousePosition(this: PluginGui): Vector2;
@@ -6582,6 +6672,8 @@ interface PluginGui extends LayerCollector {
     readonly WindowFocused: RBXScriptSignal<() => void>;
 }
 /**
+ * A `PluginGui` that displays its contents in a dockable, resizable Roblox Studio window.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DockWidgetPluginGui)
@@ -6627,6 +6719,8 @@ interface ScreenGui extends LayerCollector {
     readonly _nominal_ScreenGui: unique symbol;
 }
 /**
+ * Base class for containers that render `GuiObjects` onto a face of a `BasePart` in the 3D world.
+ *
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceGuiBase)
@@ -6642,6 +6736,8 @@ interface SurfaceGuiBase extends LayerCollector {
     readonly _nominal_SurfaceGuiBase: unique symbol;
 }
 /**
+ * A surface-based GUI that displays immersive ads on a face of a `Part` in the 3D world.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AdGui)
  */
 interface AdGui extends SurfaceGuiBase {
@@ -7058,6 +7154,8 @@ interface SelectionPointLasso extends SelectionLasso {
     readonly _nominal_SelectionPointLasso: unique symbol;
 }
 /**
+ * Represents a 2D cubic spline path that renders a stroked curve under any `GuiObject`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path2D)
  */
 interface Path2D extends GuiBase {
@@ -7088,6 +7186,8 @@ interface GuiService extends Instance {
     readonly _nominal_GuiService: unique symbol;
 }
 /**
+ * An object that provides waveform-based haptic feedback (vibrations and rumbles) on supported controllers and mobile devices.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HapticEffect)
  */
 interface HapticEffect extends Instance {
@@ -7133,6 +7233,8 @@ interface HarmonyService extends Instance {
     readonly _nominal_HarmonyService: unique symbol;
 }
 /**
+ * Generates and retrieves Luau heap memory profiles from the client and server Luau virtual machines for memory debugging.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService)
@@ -7147,23 +7249,31 @@ interface HeapProfilerService extends Instance {
      */
     readonly _nominal_HeapProfilerService: unique symbol;
     /**
+     * Yields until the Luau heap profile of the specified player's client is available, then returns it as a JSON string.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService#ClientRequestDataAsync)
-     * @param this
-     * @param player
+     * @param this Generates and retrieves Luau heap memory profiles from the client and server Luau virtual machines for memory debugging.
+     * @param player The `Player` whose client Luau heap should be profiled.
+     * @returns A JSON-encoded string containing the client's Luau heap profile.
      */
     ClientRequestDataAsync(this: HeapProfilerService, player: Player): string;
     /**
+     * Yields until the server's Luau heap profile is available, then returns it as a JSON string.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService#ServerRequestDataAsync)
-     * @param this
+     * @param this Generates and retrieves Luau heap memory profiles from the client and server Luau virtual machines for memory debugging.
+     * @returns A JSON-encoded string containing the server's Luau heap profile.
      */
     ServerRequestDataAsync(this: HeapProfilerService): string;
     /**
+     * Fires on the requesting machine with the compressed Luau heap profile produced for an earlier request.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeapProfilerService#OnNewData)
@@ -7201,6 +7311,8 @@ interface HeatmapService extends Instance {
     readonly _nominal_HeatmapService: unique symbol;
 }
 /**
+ * A Studio-only service that backs the Terrain Editor's heightmap import tool, converting heightmap and colormap images into voxel `Terrain`.
+ *
  * - **Tags**: Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HeightmapImporterService)
@@ -7216,6 +7328,23 @@ interface HeightmapImporterService extends Instance {
     readonly _nominal_HeightmapImporterService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HiddenPlayerService)
+ */
+interface HiddenPlayerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_HiddenPlayerService: unique symbol;
+}
+/**
+ * Stores the precomputed hidden surface removal (HSR) data for a layered-clothing wrap, marking the mesh faces that are hidden by higher clothing layers so the engine can cull them.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HiddenSurfaceRemovalAsset)
  */
 interface HiddenSurfaceRemovalAsset extends Instance {
@@ -7304,6 +7433,8 @@ interface HumanoidDescription extends Instance {
     readonly _nominal_HumanoidDescription: unique symbol;
 }
 /**
+ * Stores the joint mapping, T-pose, and per-joint properties for a 22-joint bipedal character rig. Joints may be `AnimationConstraint`, `Motor6D`, or `Bone` instances.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/HumanoidRigDescription)
  */
 interface HumanoidRigDescription extends Instance {
@@ -7332,6 +7463,8 @@ interface IKControl extends Instance {
     readonly _nominal_IKControl: unique symbol;
 }
 /**
+ * Internal Studio-only base interface for a Studio bridge service. Declares no scriptable members.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ILegacyStudioBridge)
@@ -7422,6 +7555,8 @@ interface AssetImportSession extends ImportSession {
     readonly _nominal_AssetImportSession: unique symbol;
 }
 /**
+ * Builds signed incremental patches for hot-reloading a running client from script changes detected by a separate file watcher.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IncrementalPatchBuilder)
@@ -7497,6 +7632,21 @@ interface InputObject extends Instance {
      * @deprecated
      */
     readonly _nominal_InputObject: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InputReplayService)
+ */
+interface InputReplayService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InputReplayService: unique symbol;
 }
 /**
  * Used to insert assets from the Roblox website.
@@ -7590,6 +7740,36 @@ interface InstanceFileSyncService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InstanceRegistryService)
+ */
+interface InstanceRegistryService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InstanceRegistryService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IntentService)
+ */
+interface IntentService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_IntentService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalMessagingService)
  */
 interface InternalMessagingService extends Instance {
@@ -7616,6 +7796,36 @@ interface InternalMessagingServiceVerifier extends Instance {
      * @deprecated
      */
     readonly _nominal_InternalMessagingServiceVerifier: unique symbol;
+}
+/**
+ * - **Tags**: NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalSyncItem)
+ */
+interface InternalSyncItem extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InternalSyncItem: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalSyncService)
+ */
+interface InternalSyncService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InternalSyncService: unique symbol;
 }
 /**
  * The base class for joints.
@@ -7658,7 +7868,7 @@ interface DynamicRotate extends JointInstance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RotateP)
  *
- * @deprecated
+ * @deprecated HingeConstraint
  */
 interface RotateP extends DynamicRotate {
     /**
@@ -7673,11 +7883,13 @@ interface RotateP extends DynamicRotate {
 /**
  * **Deprecated:** This class works alongside the deprecated `SurfaceType` and should not be used for future work; use `HingeConstraint` instead.
  *
+ * Joins two parts and allows rotation driven by angular velocity from the Motor surface type.
+ *
  * - **Tags**:
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RotateV)
  *
- * @deprecated
+ * @deprecated HingeConstraint
  */
 interface RotateV extends DynamicRotate {
     /**
@@ -7698,7 +7910,7 @@ interface RotateV extends DynamicRotate {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Glue)
  *
- * @deprecated
+ * @deprecated WeldConstraint
  */
 interface Glue extends JointInstance {
     /**
@@ -7719,7 +7931,7 @@ interface Glue extends JointInstance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ManualSurfaceJointInstance)
  *
- * @deprecated
+ * @deprecated WeldConstraint
  */
 interface ManualSurfaceJointInstance extends JointInstance {
     /**
@@ -7740,7 +7952,7 @@ interface ManualSurfaceJointInstance extends JointInstance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ManualGlue)
  *
- * @deprecated
+ * @deprecated WeldConstraint
  */
 interface ManualGlue extends ManualSurfaceJointInstance {
     /**
@@ -7761,7 +7973,7 @@ interface ManualGlue extends ManualSurfaceJointInstance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ManualWeld)
  *
- * @deprecated
+ * @deprecated WeldConstraint
  */
 interface ManualWeld extends ManualSurfaceJointInstance {
     /**
@@ -7789,7 +8001,7 @@ interface Motor extends JointInstance {
     readonly _nominal_Motor: unique symbol;
 }
 /**
- * Creates an animatable joint between two `BaseParts`.
+ * Creates an animatable joint between two `BaseParts`. Superseded by `AnimationConstraint` for avatar/character rigs. Motor6D is no longer used by default for player characters when `AvatarJointUpgrade` is enabled.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Motor6D)
  */
@@ -7810,7 +8022,7 @@ interface Motor6D extends Motor {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Rotate)
  *
- * @deprecated
+ * @deprecated HingeConstraint
  */
 interface Rotate extends JointInstance {
     /**
@@ -7831,7 +8043,7 @@ interface Rotate extends JointInstance {
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Snap)
  *
- * @deprecated
+ * @deprecated WeldConstraint
  */
 interface Snap extends JointInstance {
     /**
@@ -7844,6 +8056,8 @@ interface Snap extends JointInstance {
     readonly _nominal_Snap: unique symbol;
 }
 /**
+ * A `Motor`-like `JointInstance` that forms its connection using a `MotorFeature` and a `Hole`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VelocityMotor)
  */
 interface VelocityMotor extends JointInstance {
@@ -7857,6 +8071,8 @@ interface VelocityMotor extends JointInstance {
     readonly _nominal_VelocityMotor: unique symbol;
 }
 /**
+ * Holds two `BaseParts` together in a fixed relative position, regardless of whether they're touching.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Weld)
  */
 interface Weld extends JointInstance {
@@ -7949,7 +8165,7 @@ interface KeyframeSequenceProvider extends Instance {
      * @param assetId The content ID of the animation.
      * @returns The `KeyframeSequence` found.
      *
-     * @deprecated
+     * @deprecated GetKeyframeSequenceAsync
      */
     GetKeyframeSequence(this: KeyframeSequenceProvider, assetId: ContentId): Instance | undefined;
     /**
@@ -7966,7 +8182,7 @@ interface KeyframeSequenceProvider extends Instance {
      * @param useCache True if a cached version can be returned.
      * @returns The `KeyframeSequence` found.
      *
-     * @deprecated
+     * @deprecated GetKeyframeSequenceAsync
      */
     GetKeyframeSequenceById(this: KeyframeSequenceProvider, assetId: number, useCache: boolean): Instance | undefined;
 }
@@ -8219,6 +8435,8 @@ interface LogService extends Instance {
     readonly _nominal_LogService: unique symbol;
 }
 /**
+ * Settings related to how the engine handles Luau, its dialect of Lua.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuaSettings)
@@ -8251,6 +8469,23 @@ interface LuaSourceContainer extends Instance {
     readonly _nominal_LuaSourceContainer: unique symbol;
 }
 /**
+ * - **Tags**:
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AuroraScript)
+ *
+ * @deprecated
+ */
+interface AuroraScript extends LuaSourceContainer {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AuroraScript: unique symbol;
+}
+/**
  * The base class for all script objects which run automatically.
  *
  * - **Tags**: NotCreatable
@@ -8266,14 +8501,6 @@ interface BaseScript extends LuaSourceContainer {
      * @deprecated
      */
     readonly _nominal_BaseScript: unique symbol;
-    /**
-     * Determines the context under which the script will run.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseScript#RunContext)
-     */
-    set RunContext(value: Enum.RunContext);
 }
 /**
  * An object that contains and runs Luau code on the server.
@@ -8323,6 +8550,21 @@ interface ModuleScript extends LuaSourceContainer {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuauExpressionService)
+ */
+interface LuauExpressionService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_LuauExpressionService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuauScriptAnalyzerService)
  */
 interface LuauScriptAnalyzerService extends Instance {
@@ -8351,6 +8593,8 @@ interface MLModelDeliveryService extends Instance {
     readonly _nominal_MLModelDeliveryService: unique symbol;
 }
 /**
+ * A service that runs in-engine machine learning inference by loading model bundles and creating inference sessions.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLService)
@@ -8557,6 +8801,8 @@ interface MaterialVariant extends Instance {
     RoughnessMapContent: Content;
 }
 /**
+ * Represents a live binding created by `Bind()` on `MemStorageService` that runs a callback whenever a memory-storage key changes.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemStorageConnection)
@@ -8571,12 +8817,29 @@ interface MemStorageConnection extends Instance {
      */
     readonly _nominal_MemStorageConnection: unique symbol;
     /**
+     * Ends the binding so its callback no longer runs when the associated memory-storage key changes.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemStorageConnection#Disconnect)
-     * @param this
+     * @param this Represents a live binding created by `Bind()` on `MemStorageService` that runs a callback whenever a memory-storage key changes.
      */
     Disconnect(this: MemStorageConnection): void;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MemoryStoreDistributedCounter)
+ */
+interface MemoryStoreDistributedCounter extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_MemoryStoreDistributedCounter: unique symbol;
 }
 /**
  * Provides access to a hash map within `MemoryStoreService`.
@@ -8754,6 +9017,8 @@ interface MicroProfilerService extends Instance {
     readonly _nominal_MicroProfilerService: unique symbol;
 }
 /**
+ * Server-side service for submitting player captures to content moderation review and receiving the results asynchronously.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModerationService)
@@ -8767,6 +9032,21 @@ interface ModerationService extends Instance {
      * @deprecated
      */
     readonly _nominal_ModerationService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MomentsService)
+ */
+interface MomentsService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_MomentsService: unique symbol;
 }
 /**
  * Legacy object that contains members useful for pointer input.
@@ -8882,11 +9162,13 @@ interface NetworkPeer extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkPeer#SetOutgoingKBPSLimit)
      * @param this The `NetworkPeer` object is the most basic class of the network objects.
-     * @param limit
+     * @param limit The maximum outgoing bandwidth, in kilobits per second (1,000 bits/second). The value is clamped to the range `10`–`10,000`; a value of `0` or less removes the limit entirely.
      */
     SetOutgoingKBPSLimit(this: NetworkPeer, limit: number): void;
 }
 /**
+ * A service that manages a network connection's properties server.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkClient)
@@ -8902,6 +9184,8 @@ interface NetworkClient extends NetworkPeer {
     readonly _nominal_NetworkClient: unique symbol;
 }
 /**
+ * A server-side service that manages all `NetworkReplicator` instances and handles incoming client connections.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkServer)
@@ -8934,6 +9218,8 @@ interface NetworkReplicator extends Instance {
     readonly _nominal_NetworkReplicator: unique symbol;
 }
 /**
+ * The client-side `NetworkReplicator` that manages replication of data model changes between the server and itself.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ClientReplicator)
@@ -8949,6 +9235,8 @@ interface ClientReplicator extends NetworkReplicator {
     readonly _nominal_ClientReplicator: unique symbol;
 }
 /**
+ * The server-side `NetworkReplicator` that manages replication of data model changes between the server to a single connected client.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ServerReplicator)
@@ -8980,6 +9268,8 @@ interface NetworkSettings extends Instance {
      */
     readonly _nominal_NetworkSettings: unique symbol;
     /**
+     * The total device memory, in MiB, that the client emulates when testing under a simulated device.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
      *
@@ -9098,11 +9388,13 @@ interface OmniRecommendationsService extends Instance {
 /**
  * **Deprecated:** This class is deprecated and should not be used for new work. Use `HttpService` instead and see the [In-experience HTTP requests guide](../../../cloud-services/http-service.md).
  *
+ * Deprecated Open Cloud API surface for in-experience cloud operations such as user notifications.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudApiV1)
  *
- * @deprecated
+ * @deprecated HttpService
  */
 interface OpenCloudApiV1 extends Instance {
     /**
@@ -9117,11 +9409,13 @@ interface OpenCloudApiV1 extends Instance {
 /**
  * **Deprecated:** This class is deprecated and should not be used for new work. Use `HttpService` instead and see the [In-experience HTTP requests guide](../../../cloud-services/http-service.md).
  *
+ * Deprecated. Do not use for new work; prefer `HttpService` for in-experience HTTP requests.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/OpenCloudService)
  *
- * @deprecated
+ * @deprecated HttpService
  */
 interface OpenCloudService extends Instance {
     /**
@@ -9181,6 +9475,8 @@ interface BasePart extends PVInstance {
     readonly _nominal_BasePart: unique symbol;
 }
 /**
+ * A type of `BasePart` that has a corner wedge shape.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CornerWedgePart)
  */
 interface CornerWedgePart extends BasePart {
@@ -9342,7 +9638,7 @@ interface Terrain extends BasePart {
 /**
  * Abstract intermediate class that manages physical geometry properties for PartOperations and MeshParts.
  *
- * - **Tags**: NotCreatable
+ * - **Tags**: NotCreatable, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart)
  */
@@ -9356,23 +9652,14 @@ interface TriangleMeshPart extends BasePart {
      */
     readonly _nominal_TriangleMeshPart: unique symbol;
     /**
-     * Determines the level of detail the part's physics will adhere to its mesh.
+     * Quantifies how precise or performant a `CollisionFidelity.Tunable` collision geometry is, from `0` to `1`.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart#CollisionFidelity)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart#CollisionPrecision)
      */
-    set CollisionFidelity(value: Enum.CollisionFidelity);
-    /**
-     * Determines the geometric representation used to compute aerodynamic forces and torques.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TriangleMeshPart#FluidFidelity)
-     */
-    set FluidFidelity(value: Enum.FluidFidelity);
+    set CollisionPrecision(value: number);
 }
 /**
  * A form of `BasePart` that includes a physically simulated custom mesh.
@@ -9388,23 +9675,6 @@ interface MeshPart extends TriangleMeshPart {
      * @deprecated
      */
     readonly _nominal_MeshPart: unique symbol;
-    /**
-     * Determines whether to render both faces of polygons in the mesh.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshPart#DoubleSided)
-     */
-    set DoubleSided(value: boolean);
-    /**
-     * The level of detail used to render the `MeshPart`.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: NotReplicated
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MeshPart#RenderFidelity)
-     */
-    set RenderFidelity(value: Enum.RenderFidelity);
 }
 /**
  * An abstract class that all parts based on solid modeling inherit from.
@@ -9420,22 +9690,6 @@ interface PartOperation extends TriangleMeshPart {
      * @deprecated
      */
     readonly _nominal_PartOperation: unique symbol;
-    /**
-     * The level of detail used to render the solid modeled part.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PartOperation#RenderFidelity)
-     */
-    set RenderFidelity(value: Enum.RenderFidelity);
-    /**
-     * An angle in degrees which affects the smooth shading of a solid modeled part.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PartOperation#SmoothingAngle)
-     */
-    set SmoothingAngle(value: number);
 }
 /**
  * Result of parts that have been intersected into a single solid model.
@@ -9530,6 +9784,19 @@ interface Camera extends PVInstance {
     readonly _nominal_Camera: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ViewportCamera)
+ */
+interface ViewportCamera extends Camera {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ViewportCamera: unique symbol;
+}
+/**
  * Models are container objects, meaning they group objects together. They are best used to hold collections of `BaseParts` and have a number of functions that extend their functionality.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model)
@@ -9543,14 +9810,6 @@ interface Model extends PVInstance {
      * @deprecated
      */
     readonly _nominal_Model: unique symbol;
-    /**
-     * Sets the level of detail on the model for experiences with instance streaming enabled.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Model#LevelOfDetail)
-     */
-    LevelOfDetail: Enum.ModelLevelOfDetail;
 }
 /**
  * An `Actor` is a container for code that can be safely split into its own thread.
@@ -9673,23 +9932,9 @@ interface Workspace extends WorldRoot {
      */
     readonly _nominal_Workspace: unique symbol;
     /**
-     * Controls whether parts that fall below `Workspace.FallenPartsDestroyHeight` are automatically destroyed.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#FallHeightEnabled)
-     */
-    set FallHeightEnabled(value: boolean);
-    /**
-     * Determines the height at which falling `BaseParts` and their ancestor `Models` are removed from `Workspace`.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#FallenPartsDestroyHeight)
-     */
-    set FallenPartsDestroyHeight(value: number);
-    /**
      * **Deprecated:** This property should not be used for new work.
+     *
+     * Deprecated setting that configured the interpolation throttling mode; it no longer takes effect.
      *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
@@ -9700,29 +9945,17 @@ interface Workspace extends WorldRoot {
      */
     set InterpolationThrottling(value: Enum.InterpolationThrottlingMode);
     /**
-     * Sets the Luau type checking mode for scripts in the experience.
+     * Applies Roblox's recommended instance streaming settings to the `Workspace`.
      *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#LuauTypeCheckMode)
-     */
-    LuauTypeCheckMode: Enum.LuauTypeCheckMode;
-    /**
-     * Whether content streaming is enabled for the place.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#StreamingEnabled)
-     */
-    set StreamingEnabled(value: boolean);
-    /**
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Workspace#ApplyRecommendedStreamingSettings)
+     * @param this `Workspace` houses 3D objects which are rendered to the 3D world. Objects not descending from it will not be rendered or physically interact with the world.
+     * @returns `true` if one or more streaming properties were changed; `false` if every value already matched its recommended setting.
      */
     ApplyRecommendedStreamingSettings(this: Workspace): boolean;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method is deprecated. Do not use it for new work.
      *
      * Goes through all `BaseParts` given, breaking any joints connected to these parts.
      *
@@ -9737,7 +9970,7 @@ interface Workspace extends WorldRoot {
      */
     readonly BreakJoints: never;
     /**
-     * **Deprecated:**
+     * **Deprecated:** This method is deprecated. Do not use it for new work.
      *
      * Goes through all `BaseParts` given. If any part's side has a `SurfaceType` that can make a joint it will create a joint with any adjacent parts.
      *
@@ -9762,7 +9995,7 @@ interface Workspace extends WorldRoot {
     ZoomToExtents(this: Workspace): void;
 }
 /**
- * Extends limited physics for its children on to a parent `ViewportFrame`.
+ * Extends limited physics to its children.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WorldModel)
  */
@@ -9794,6 +10027,8 @@ interface PackageLink extends Instance {
     readonly _nominal_PackageLink: unique symbol;
 }
 /**
+ * Manages Roblox Studio packages, tracking their metadata and versions and handling updates to package contents.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PackageService)
@@ -9907,6 +10142,8 @@ interface CapturesPages extends Pages {
     readonly _nominal_CapturesPages: unique symbol;
 }
 /**
+ * A special version of `Pages` that stores the results of an Avatar Editor catalog search.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CatalogPages)
@@ -10016,6 +10253,8 @@ interface FriendPages extends Pages<{
     readonly _nominal_FriendPages: unique symbol;
 }
 /**
+ * A special version of `Pages` that contains information about a specific category of a user's inventory.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InventoryPages)
@@ -10086,6 +10325,8 @@ interface RecommendationPages extends Pages {
     readonly _nominal_RecommendationPages: unique symbol;
 }
 /**
+ * A generic Pages object that can contain variable data depending on the method that returned it.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StandardPages)
@@ -10114,6 +10355,19 @@ interface ParticleEmitter extends Instance {
      * @deprecated
      */
     readonly _nominal_ParticleEmitter: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D)
+ */
+interface ParticleEmitter2D extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ParticleEmitter2D: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -10176,6 +10430,19 @@ interface Path extends Instance {
      * @deprecated
      */
     readonly _nominal_Path: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Path3D)
+ */
+interface Path3D extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Path3D: unique symbol;
 }
 /**
  * Connects two locations which otherwise by default are unconnected.
@@ -10285,6 +10552,8 @@ interface PerformanceControlService extends Instance {
     readonly _nominal_PerformanceControlService: unique symbol;
 }
 /**
+ * Service that provides methods for creating and managing collision groups, which control whether sets of `BaseParts` collide with each other.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsService)
@@ -10300,6 +10569,8 @@ interface PhysicsService extends Instance {
     readonly _nominal_PhysicsService: unique symbol;
 }
 /**
+ * Lets you view debugging features in Roblox's physics engine, found under the Physics tab in Studio's settings menu.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings)
@@ -10394,6 +10665,8 @@ interface PhysicsSettings extends Instance {
      */
     AreModelCoordsShown: boolean;
     /**
+     * When set to true, parts that are not `BasePart.Anchored` will be highlighted.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreNonAnchorsShown)
@@ -10424,6 +10697,8 @@ interface PhysicsSettings extends Instance {
      */
     AreRegionsShown: boolean;
     /**
+     * When set to true, shows terrain replication streaming regions.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#AreTerrainReplicationRegionsShown)
@@ -10454,6 +10729,8 @@ interface PhysicsSettings extends Instance {
      */
     DisableCSGv2: boolean;
     /**
+     * When set to true, disables CSGv3 for plugin solid modeling operations.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#DisableCSGv3ForPlugins)
@@ -10461,12 +10738,22 @@ interface PhysicsSettings extends Instance {
     DisableCSGv3ForPlugins: boolean;
     /**
      * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#DrawShapecast)
+     */
+    DrawShapecast: boolean;
+    /**
+     * When set to true, forces the use of CSGv2 for solid modeling operations.
+     *
+     * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#ForceCSGv2)
      */
     ForceCSGv2: boolean;
     /**
+     * When set to true, shows physics interpolation throttle information.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#IsInterpolationThrottleShown)
@@ -10520,6 +10807,21 @@ interface PhysicsSettings extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#UseCSGv2)
      */
     UseCSGv2: boolean;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PinShortcutService)
+ */
+interface PinShortcutService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PinShortcutService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service
@@ -10804,6 +11106,8 @@ interface Players extends Instance {
     TeamChat(this: Players, message: string): void;
 }
 /**
+ * The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+ *
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin)
@@ -10823,7 +11127,7 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#Activate)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param exclusiveMouse A boolean specifying whether to activate the plugin with exclusive mouse. If `true`, a `PluginMouse` can be retrieved via `GetMouse()`.
      */
     Activate(this: Plugin, exclusiveMouse: boolean): void;
@@ -10833,7 +11137,7 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#CreatePluginAction)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param actionId Must be a unique string that identifies this PluginAction from others.
      * @param text The displayed name of the action.
      * @param statusTip The displayed description of the action.
@@ -10847,7 +11151,7 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#CreatePluginMenu)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param id Unique ID for the menu.
      * @param title The text to be displayed when used as a submenu.
      * @param icon The icon to be displayed when used as a submenu.
@@ -10859,7 +11163,7 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#CreateToolbar)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param name The visible text on the toolbar, labeling the group of buttons contained within.
      */
     CreateToolbar(this: Plugin, name: string): PluginToolbar;
@@ -10869,7 +11173,7 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#Deactivate)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      */
     Deactivate(this: Plugin): void;
     /**
@@ -10878,7 +11182,7 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#GetJoinMode)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      */
     GetJoinMode(this: Plugin): Enum.JointCreationMode;
     /**
@@ -10887,7 +11191,7 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#GetMouse)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      */
     GetMouse(this: Plugin): PluginMouse;
     /**
@@ -10896,7 +11200,7 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#GetSelectedRibbonTool)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      */
     GetSelectedRibbonTool(this: Plugin): Enum.RibbonTool;
     /**
@@ -10905,8 +11209,8 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#GetSetting)
-     * @param this
-     * @param key
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param key The string key that was previously passed to `SetSetting()`.
      */
     GetSetting(this: Plugin, key: string): unknown;
     /**
@@ -10918,7 +11222,7 @@ interface Plugin extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#GetStudioUserId)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      *
      * @deprecated
      */
@@ -10929,8 +11233,8 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#Intersect)
-     * @param this
-     * @param objects
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param objects The array of `BaseParts` to intersect.
      */
     Intersect(this: Plugin, objects: Array<Instance>): Instance | undefined;
     /**
@@ -10939,7 +11243,7 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#IsActivated)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @returns A boolean indicating whether the plugin is currently active.
      */
     IsActivated(this: Plugin): boolean;
@@ -10949,7 +11253,7 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#IsActivatedWithExclusiveMouse)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @returns Whether this plugin is currently active with an exclusive mouse.
      */
     IsActivatedWithExclusiveMouse(this: Plugin): boolean;
@@ -10959,8 +11263,8 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#Negate)
-     * @param this
-     * @param objects
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param objects The array of `BaseParts` to negate.
      */
     Negate(this: Plugin, objects: Array<Instance>): Array<Instance>;
     /**
@@ -10972,9 +11276,9 @@ interface Plugin extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#OpenScript)
-     * @param this
-     * @param script
-     * @param lineNumber
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param script The `LuaSourceContainer` script instance to open.
+     * @param lineNumber The line number to navigate to in the editor. Defaults to `1`.
      *
      * @deprecated
      */
@@ -10985,8 +11289,8 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#OpenWikiPage)
-     * @param this
-     * @param url
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param url The URL of the wiki/documentation page to open.
      */
     OpenWikiPage(this: Plugin, url: string): void;
     /**
@@ -10995,7 +11299,7 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#SaveSelectedToRoblox)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      */
     SaveSelectedToRoblox(this: Plugin): void;
     /**
@@ -11004,9 +11308,9 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#SelectRibbonTool)
-     * @param this
-     * @param tool
-     * @param position
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param tool The `RibbonTool` to activate.
+     * @param position The `UDim2` screen position at which to show the tool's dialog window, if applicable.
      */
     SelectRibbonTool(this: Plugin, tool: CastsToEnum<Enum.RibbonTool>, position: UDim2): void;
     /**
@@ -11015,8 +11319,8 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#Separate)
-     * @param this
-     * @param objects
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param objects The array of `UnionOperations` to separate.
      */
     Separate(this: Plugin, objects: Array<Instance>): Array<Instance>;
     /**
@@ -11025,9 +11329,9 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#SetSetting)
-     * @param this
-     * @param key
-     * @param value
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param key The string key to store the value under.
+     * @param value The value to store. Must be JSON-serializable (string, number, boolean, table, or `nil`).
      */
     SetSetting(this: Plugin, key: string, value: unknown): void;
     /**
@@ -11036,8 +11340,8 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#StartDrag)
-     * @param this
-     * @param dragData
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param dragData A dictionary describing the drag, including fields such as `Sender`, `MimeType`, `Data`, `MouseIcon`, `DragIcon`, and `HotSpot`.
      */
     StartDrag(this: Plugin, dragData: object): void;
     /**
@@ -11046,8 +11350,8 @@ interface Plugin extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#Union)
-     * @param this
-     * @param objects
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param objects The array of `BaseParts` to union together.
      */
     Union(this: Plugin, objects: Array<BasePart>): UnionOperation;
     /**
@@ -11059,11 +11363,11 @@ interface Plugin extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#CreateDockWidgetPluginGui)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param pluginGuiId A unique and consistent identifier used to storing the widget's dock state and other internal details.
      * @param dockWidgetPluginGuiInfo Describes the `DockWidgetPluginGui` to create (initial state, size, etc).
      *
-     * @deprecated
+     * @deprecated CreateDockWidgetPluginGuiAsync
      */
     CreateDockWidgetPluginGui(this: Plugin, pluginGuiId: string, dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo): DockWidgetPluginGui;
     /**
@@ -11073,7 +11377,7 @@ interface Plugin extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#CreateDockWidgetPluginGuiAsync)
-     * @param this
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param pluginGuiId A unique and consistent identifier used to storing the widget's dock state and other internal details.
      * @param dockWidgetPluginGuiInfo Describes the `DockWidgetPluginGui` to create (initial state, size, etc).
      */
@@ -11087,11 +11391,11 @@ interface Plugin extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#ImportFbxAnimation)
-     * @param this
-     * @param rigModel
-     * @param isR15
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param rigModel The rig model that the imported animation will be applied to.
+     * @param isR15 Whether the animation file should be interpreted as an R15 rig. Defaults to `true`.
      *
-     * @deprecated
+     * @deprecated ImportFbxAnimationAsync
      */
     ImportFbxAnimation(this: Plugin, rigModel: Instance, isR15?: boolean): Instance | undefined;
     /**
@@ -11101,9 +11405,9 @@ interface Plugin extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#ImportFbxAnimationAsync)
-     * @param this
-     * @param rigModel
-     * @param isR15
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param rigModel The rig model that the imported animation will be applied to.
+     * @param isR15 Whether the animation file should be interpreted as an R15 rig. Defaults to `true`.
      */
     ImportFbxAnimationAsync(this: Plugin, rigModel: Instance, isR15?: boolean): Instance | undefined;
     /**
@@ -11115,10 +11419,10 @@ interface Plugin extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#ImportFbxRig)
-     * @param this
-     * @param isR15
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param isR15 Whether the rig file should be interpreted as R15. Defaults to `true`.
      *
-     * @deprecated
+     * @deprecated ImportFbxRigAsync
      */
     ImportFbxRig(this: Plugin, isR15?: boolean): Model;
     /**
@@ -11128,30 +11432,30 @@ interface Plugin extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#ImportFbxRigAsync)
-     * @param this
-     * @param isR15
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param isR15 Whether the rig file should be interpreted as R15. Defaults to `true`.
      */
     ImportFbxRigAsync(this: Plugin, isR15?: boolean): Instance | undefined;
     /**
-     * Opens a window in Roblox Studio which prompts the user to select an asset based on the `assetType` specified.
+     * Opens a window in Roblox Studio that prompts the user to select an existing `AssetType.Animation` asset. The `assetType` parameter must be `Animation`; other values are not supported and cause an error.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptForExistingAssetId)
-     * @param this
-     * @param assetType
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param assetType The asset type to browse. Only `Animation` is supported.
      */
     PromptForExistingAssetId(this: Plugin, assetType: string): number;
     /**
-     * Opens a window in Roblox Studio which prompts the user to select an asset based on the `assetType` specified.
+     * Opens a window in Roblox Studio that prompts the user to select an existing `AssetType.Animation` asset. The `assetType` parameter must be `Animation`; other values are not supported and cause an error.
      *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptForExistingAssetIdAsync)
-     * @param this
-     * @param assetType
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param assetType The asset type to browse. Only `Animation` is supported.
      */
     PromptForExistingAssetIdAsync(this: Plugin, assetType: string): number;
     /**
@@ -11163,10 +11467,10 @@ interface Plugin extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptSaveSelection)
-     * @param this
-     * @param suggestedFileName
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param suggestedFileName The default file name shown in the save dialog. Defaults to an empty string.
      *
-     * @deprecated
+     * @deprecated PromptSaveSelectionAsync
      */
     PromptSaveSelection(this: Plugin, suggestedFileName?: string): boolean;
     /**
@@ -11176,8 +11480,8 @@ interface Plugin extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptSaveSelectionAsync)
-     * @param this
-     * @param suggestedFileName
+     * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @param suggestedFileName The default file name shown in the save dialog. Defaults to an empty string.
      */
     PromptSaveSelectionAsync(this: Plugin, suggestedFileName?: string): boolean;
     /**
@@ -11198,6 +11502,8 @@ interface Plugin extends Instance {
     readonly Unloading: RBXScriptSignal<() => void>;
 }
 /**
+ * Represents a generic performable action in Roblox Studio that can optionally be bound to a keyboard shortcut.
+ *
  * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginAction)
@@ -11221,6 +11527,8 @@ interface PluginAction extends Instance {
     readonly Triggered: RBXScriptSignal<() => void>;
 }
 /**
+ * Declares a plugin's capabilities (the data models it targets and the permissions it requests) through a JSON manifest.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginCapabilities)
  */
 interface PluginCapabilities extends Instance {
@@ -11257,6 +11565,7 @@ interface PluginConnectionService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService#CanHaveConnectionType)
      * @param this This service is used by plugins to communicate with other instances of themselves running in other data models.
      * @param type The connection type to check.
+     * @returns Whether the current data model can potentially have connections of the given type.
      */
     CanHaveConnectionType(this: PluginConnectionService, type: CastsToEnum<Enum.PluginConnectionTargetType>): boolean;
     /**
@@ -11280,6 +11589,8 @@ interface PluginConnectionService extends Instance {
     readonly Connected: RBXScriptSignal<(conn: PluginConnection) => void>;
 }
 /**
+ * A service that holds the debuggable `Plugin` instances that are currently being debugged in Studio, parenting them into the data model.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginDebugService)
@@ -11295,6 +11606,8 @@ interface PluginDebugService extends Instance {
     readonly _nominal_PluginDebugService: unique symbol;
 }
 /**
+ * Provides information about an in-progress drag for the drag events that plugins can respond to.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginDragEvent)
@@ -11327,6 +11640,8 @@ interface PluginGuiService extends Instance {
     readonly _nominal_PluginGuiService: unique symbol;
 }
 /**
+ * Studio service that manages installed plugins; not intended for creator scripts or plugins.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginManagementService)
@@ -11342,6 +11657,8 @@ interface PluginManagementService extends Instance {
     readonly _nominal_PluginManagementService: unique symbol;
 }
 /**
+ * The singleton object returned by the global `PluginManager()` function, exposing a small set of legacy Studio plugin utilities.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginManagerInterface)
@@ -11358,29 +11675,36 @@ interface PluginManagerInterface extends Instance {
     /**
      * **Deprecated:** The steps to create a plugin have changed. To learn more, see `Plugin`.
      *
+     * Deprecated. Creates and returns a new `Plugin`; use `Plugin` instead.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginManagerInterface#CreatePlugin)
-     * @param this
+     * @param this The singleton object returned by the global `PluginManager()` function, exposing a small set of legacy Studio plugin utilities.
+     * @returns The newly created `Plugin`.
      *
      * @deprecated
      */
     CreatePlugin(this: PluginManagerInterface): Instance | undefined;
     /**
+     * Exports the entire place to an `.obj` file saved to a path chosen by the user in a file save dialog.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginManagerInterface#ExportPlace)
-     * @param this
-     * @param filePath
+     * @param this The singleton object returned by the global `PluginManager()` function, exposing a small set of legacy Studio plugin utilities.
+     * @param filePath Ignored. A file save dialog determines the export path.
      */
     ExportPlace(this: PluginManagerInterface, filePath?: string): void;
     /**
+     * Exports the current `Selection` to an `.obj` file saved to a path chosen by the user in a file save dialog.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginManagerInterface#ExportSelection)
-     * @param this
-     * @param filePath
+     * @param this The singleton object returned by the global `PluginManager()` function, exposing a small set of legacy Studio plugin utilities.
+     * @param filePath Ignored. A file save dialog determines the export path.
      */
     ExportSelection(this: PluginManagerInterface, filePath?: string): void;
 }
@@ -11479,6 +11803,8 @@ interface PluginPolicyService extends Instance {
     readonly _nominal_PluginPolicyService: unique symbol;
 }
 /**
+ * A toolbar created by `Plugin:CreateToolbar()` that groups `PluginToolbarButtons` in the Studio ribbon.
+ *
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginToolbar)
@@ -11498,7 +11824,7 @@ interface PluginToolbar extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginToolbar#CreateButton)
-     * @param this
+     * @param this A toolbar created by `Plugin:CreateToolbar()` that groups `PluginToolbarButtons` in the Studio ribbon.
      * @param buttonId A unique button ID.
      * @param tooltip The text displayed in the tooltip shown when a user hovers over the button.
      * @param iconname The asset ID of the icon displayed in the button.
@@ -11508,6 +11834,8 @@ interface PluginToolbar extends Instance {
     CreateButton(this: PluginToolbar, buttonId: string, tooltip: string, iconname: string, text?: string): PluginToolbarButton;
 }
 /**
+ * A button on a `PluginToolbar` in the Studio ribbon, created by `PluginToolbar:CreateButton()`, that fires `Click` when pressed.
+ *
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginToolbarButton)
@@ -11522,6 +11850,8 @@ interface PluginToolbarButton extends Instance {
      */
     readonly _nominal_PluginToolbarButton: unique symbol;
     /**
+     * The content of the image used as the button's icon in the toolbar. Only supports asset URIs.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -11534,8 +11864,8 @@ interface PluginToolbarButton extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginToolbarButton#SetActive)
-     * @param this
-     * @param active
+     * @param this A button on a `PluginToolbar` in the Studio ribbon, created by `PluginToolbar:CreateButton()`, that fires `Click` when pressed.
+     * @param active Whether to set the button to its active, pressed state (`true`) or its inactive state (`false`).
      */
     SetActive(this: PluginToolbarButton, active: boolean): void;
     /**
@@ -11563,6 +11893,21 @@ interface PolicyService extends Instance {
      * @deprecated
      */
     readonly _nominal_PolicyService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PopLatencyService)
+ */
+interface PopLatencyService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PopLatencyService: unique symbol;
 }
 /**
  * Base class of all 'Pose Instance' objects.
@@ -11749,6 +12094,8 @@ interface ProceduralBehaviorSchedulerService extends Instance {
     readonly _nominal_ProceduralBehaviorSchedulerService: unique symbol;
 }
 /**
+ * An internal engine service that generates collision geometry (physics data) for `MeshPart` and `PartOperation` instances that need new physics.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProcessInstancePhysicsService)
@@ -11762,6 +12109,21 @@ interface ProcessInstancePhysicsService extends Instance {
      * @deprecated
      */
     readonly _nominal_ProcessInstancePhysicsService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProjectService)
+ */
+interface ProjectService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ProjectService: unique symbol;
 }
 /**
  * An object that lets you prompt players to interact with an object in the 3D world.
@@ -11796,6 +12158,8 @@ interface ProximityPromptService extends Instance {
     readonly _nominal_ProximityPromptService: unique symbol;
 }
 /**
+ * A service that centralizes uploading assets to Roblox, including publishing cage mesh edits and creating assets or asset versions.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PublishService)
@@ -11809,6 +12173,21 @@ interface PublishService extends Instance {
      * @deprecated
      */
     readonly _nominal_PublishService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/QueueService)
+ */
+interface QueueService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_QueueService: unique symbol;
 }
 /**
  * - **Tags**: NotReplicated
@@ -11856,6 +12235,8 @@ interface RecommendationService extends Instance {
     readonly _nominal_RecommendationService: unique symbol;
 }
 /**
+ * A service that allows scripts to query the engine's API at runtime for information about classes, properties, methods, and events.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ReflectionService)
@@ -11871,6 +12252,8 @@ interface ReflectionService extends Instance {
     readonly _nominal_ReflectionService: unique symbol;
 }
 /**
+ * Team Create service that executes Luau commands sent from a Studio client on the collaborative editing server and relays their output back to that client.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteCommandService)
@@ -11901,6 +12284,8 @@ interface RemoteCursorService extends Instance {
     readonly _nominal_RemoteCursorService: unique symbol;
 }
 /**
+ * Studio service that runs the server side of Luau remote debugging over DAP; not created during normal script execution.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RemoteDebuggerServer)
@@ -11931,6 +12316,8 @@ interface RemoteFunction<T extends Callback = Callback> extends Instance {
     readonly _nominal_RemoteFunction: unique symbol;
 }
 /**
+ * A singleton settings class that exposes rendering configuration for graphics quality, framerate management, and debug visualization in Roblox Studio.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated, NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings)
@@ -11978,6 +12365,8 @@ interface RenderSettings extends Instance {
      */
     EnableFRM: boolean;
     /**
+     * Toggles whether virtual reality (VR) mode is enabled.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#Enable VR Mode)
@@ -12056,6 +12445,8 @@ interface RenderSettings extends Instance {
      */
     ShowBoundingBoxes: boolean;
     /**
+     * Studio only. Selects a debug rendering visualization overlay for the viewport.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#ViewMode)
@@ -12067,13 +12458,12 @@ interface RenderSettings extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderSettings#GetMaxQualityLevel)
-     * @param this
+     * @param this A singleton settings class that exposes rendering configuration for graphics quality, framerate management, and debug visualization in Roblox Studio.
+     * @returns The total number of quality levels available in the rendering system.
      */
     GetMaxQualityLevel(this: RenderSettings): number;
 }
 /**
- * An internal testing utility for the rendering pipeline.
- *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RenderingTest)
  */
 interface RenderingTest extends Instance {
@@ -12119,6 +12509,21 @@ interface ReplicatedStorage extends Instance {
      * @deprecated
      */
     readonly _nominal_ReplicatedStorage: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RequestOrchestratorService)
+ */
+interface RequestOrchestratorService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RequestOrchestratorService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -12287,22 +12692,14 @@ interface RunService extends Instance {
      */
     readonly _nominal_RunService: unique symbol;
     /**
+     * The current run state of the game's simulation.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#RunState)
      */
-    RunState: Enum.RunState;
-    /**
-     * Returns whether the current environment is in `Edit` mode.
-     *
-     * - **ThreadSafety**: Safe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RunService#IsEdit)
-     * @param this Service responsible for all runtime activity and progression of time.
-     * @returns Whether the current environment is in "edit" mode.
-     */
-    IsEdit(this: RunService): boolean;
+    set RunState(value: Enum.RunState);
     /**
      * Pauses the experience's simulation if it is running, suspending physics and scripts.
      *
@@ -12498,6 +12895,8 @@ interface ScriptCommitService extends Instance {
     readonly _nominal_ScriptCommitService: unique symbol;
 }
 /**
+ * A service that manages the execution of all `BaseScript` objects.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptContext)
@@ -12517,8 +12916,8 @@ interface ScriptContext extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptContext#SetTimeout)
-     * @param this
-     * @param seconds
+     * @param this A service that manages the execution of all `BaseScript` objects.
+     * @param seconds The maximum time, in seconds, that a script may run between yields before the watchdog interrupts it. A value of `0` disables the timeout.
      */
     SetTimeout(this: ScriptContext, seconds: number): void;
 }
@@ -12706,6 +13105,8 @@ interface ScriptDebuggerService extends Instance {
     OnStopped: ((stopped: object) => object) | undefined;
 }
 /**
+ * Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument)
@@ -12725,8 +13126,9 @@ interface ScriptDocument extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#GetLine)
-     * @param this
-     * @param lineIndex
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @param lineIndex The 1-indexed line number to retrieve. Defaults to the current cursor line if not provided.
+     * @returns The text content of the specified line as a string.
      */
     GetLine(this: ScriptDocument, lineIndex?: number): string;
     /**
@@ -12735,16 +13137,24 @@ interface ScriptDocument extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#GetLineCount)
-     * @param this
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @returns The total number of lines in the document.
      */
     GetLineCount(this: ScriptDocument): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#GetReadOnlyReasons)
+     */
+    GetReadOnlyReasons(this: ScriptDocument): Array<unknown>;
     /**
      * Returns the underlying `LuaSourceContainer` instance, if one exists, otherwise `nil`.
      *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#GetScript)
-     * @param this
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @returns The `LuaSourceContainer` that the document is editing, or `nil` if the document does not represent a script instance in the place (e.g. the Command Bar is not a real script instance).
      */
     GetScript(this: ScriptDocument): LuaSourceContainer;
     /**
@@ -12753,7 +13163,8 @@ interface ScriptDocument extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#GetSelectedText)
-     * @param this
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @returns The currently selected text as a string, or an empty string if nothing is selected.
      */
     GetSelectedText(this: ScriptDocument): string;
     /**
@@ -12762,7 +13173,7 @@ interface ScriptDocument extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#GetSelection)
-     * @param this
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
      * @returns CursorLine, CursorChar, AnchorLine, AnchorChar.
      */
     GetSelection(this: ScriptDocument): unknown;
@@ -12772,7 +13183,8 @@ interface ScriptDocument extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#GetSelectionEnd)
-     * @param this
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @returns A tuple of (line, character) representing the larger of the cursor and anchor positions, both 1-indexed.
      */
     GetSelectionEnd(this: ScriptDocument): unknown;
     /**
@@ -12781,7 +13193,8 @@ interface ScriptDocument extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#GetSelectionStart)
-     * @param this
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @returns A tuple of (line, character) representing the smaller of the cursor and anchor positions, both 1-indexed.
      */
     GetSelectionStart(this: ScriptDocument): unknown;
     /**
@@ -12790,11 +13203,12 @@ interface ScriptDocument extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#GetText)
-     * @param this
-     * @param startLine
-     * @param startCharacter
-     * @param endLine
-     * @param endCharacter
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @param startLine The 1-indexed line number where the text range begins. Optional; omit all arguments to get the entire document.
+     * @param startCharacter The 1-indexed UTF-8 byte offset within `startLine` where the text range begins.
+     * @param endLine The 1-indexed line number where the text range ends (exclusive). Optional; omit to read from `startLine`/`startCharacter` to the end of the document.
+     * @param endCharacter The 1-indexed UTF-8 byte offset within `endLine` where the text range ends (exclusive).
+     * @returns The text content within the specified range as a string.
      */
     GetText(this: ScriptDocument, startLine?: number, startCharacter?: number, endLine?: number, endCharacter?: number): string;
     /**
@@ -12803,7 +13217,8 @@ interface ScriptDocument extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#GetViewport)
-     * @param this
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @returns A tuple of (startLine, endLine) representing the 1-indexed range of lines currently visible in the editor.
      */
     GetViewport(this: ScriptDocument): unknown;
     /**
@@ -12812,7 +13227,8 @@ interface ScriptDocument extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#HasSelectedText)
-     * @param this
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @returns `true` if the editor has a non-empty text selection, `false` otherwise.
      */
     HasSelectedText(this: ScriptDocument): boolean;
     /**
@@ -12821,9 +13237,23 @@ interface ScriptDocument extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#IsCommandBar)
-     * @param this
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @returns `true` if this document represents the Command bar, `false` otherwise.
      */
     IsCommandBar(this: ScriptDocument): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#IsReadOnly)
+     */
+    IsReadOnly(this: ScriptDocument): boolean;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#AddReadOnlyReasonsAsync)
+     */
+    AddReadOnlyReasonsAsync(this: ScriptDocument, reasons: Array<unknown>): void;
     /**
      * Requests that the editor associated with this document close. Yields the current thread until the editor responds to the request.
      *
@@ -12831,7 +13261,8 @@ interface ScriptDocument extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#CloseAsync)
-     * @param this
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @returns A tuple where the first element is `true` if the editor closed successfully, or `false` followed by a string describing the failure reason.
      */
     CloseAsync(this: ScriptDocument): unknown;
     /**
@@ -12841,12 +13272,13 @@ interface ScriptDocument extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#EditTextAsync)
-     * @param this
-     * @param newText
-     * @param startLine
-     * @param startCharacter
-     * @param endLine
-     * @param endCharacter
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @param newText The replacement string to insert into the specified range.
+     * @param startLine The 1-indexed line number where the replacement range begins.
+     * @param startCharacter The 1-indexed UTF-8 byte offset within `startLine` where the replacement range begins.
+     * @param endLine The 1-indexed line number where the replacement range ends (exclusive).
+     * @param endCharacter The 1-indexed UTF-8 byte offset within `endLine` where the replacement range ends (exclusive).
+     * @returns A tuple where the first element is `true` if the edit was applied successfully, or `false` followed by a string describing the failure reason.
      */
     EditTextAsync(this: ScriptDocument, newText: string, startLine: number, startCharacter: number, endLine: number, endCharacter: number): unknown;
     /**
@@ -12856,22 +13288,33 @@ interface ScriptDocument extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#ForceSetSelectionAsync)
-     * @param this
-     * @param cursorLine
-     * @param cursorCharacter
-     * @param anchorLine
-     * @param anchorCharacter
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @param cursorLine The 1-indexed line number for the cursor position.
+     * @param cursorCharacter The 1-indexed UTF-8 byte offset within the line for the cursor position.
+     * @param anchorLine The 1-indexed line number for the anchor position. Defaults to `cursorLine` if not provided.
+     * @param anchorCharacter The 1-indexed UTF-8 byte offset within the line for the anchor position. Defaults to `cursorCharacter` if not provided.
+     * @returns A tuple where the first element is `true` if the cursor was updated, or `false` followed by a string explaining why the update was declined.
      */
     ForceSetSelectionAsync(this: ScriptDocument, cursorLine: number, cursorCharacter: number, anchorLine?: number, anchorCharacter?: number): unknown;
     /**
+     * Applies a batch of text edits to the document as a single atomic operation. Yields the current thread until the editor responds.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#MultiEditTextAsync)
-     * @param this
-     * @param edits
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @param edits An array of tables, each describing a text replacement with fields `NewText`, `StartLine`, `StartCharacter`, `EndLine`, and `EndCharacter`.
+     * @returns A tuple where the first element is `true` if all edits were applied successfully, or `false` followed by a string describing the failure reason.
      */
     MultiEditTextAsync(this: ScriptDocument, edits: Array<unknown>): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#RemoveReadOnlyReasonsAsync)
+     */
+    RemoveReadOnlyReasonsAsync(this: ScriptDocument, reasons: Array<unknown>): void;
     /**
      * Asks the editor to set its cursor selection to the argument values.
      *
@@ -12879,13 +13322,26 @@ interface ScriptDocument extends Instance {
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#RequestSetSelectionAsync)
-     * @param this
-     * @param cursorLine
-     * @param cursorCharacter
-     * @param anchorLine
-     * @param anchorCharacter
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @param cursorLine The 1-indexed line number for the cursor position.
+     * @param cursorCharacter The 1-indexed UTF-8 byte offset within the line for the cursor position.
+     * @param anchorLine The 1-indexed line number for the anchor position. Defaults to `cursorLine` if not provided.
+     * @param anchorCharacter The 1-indexed UTF-8 byte offset within the line for the anchor position. Defaults to `cursorCharacter` if not provided.
+     * @returns A tuple where the first element is `true` if the cursor was updated, or `false` followed by a string explaining why the update was declined.
      */
     RequestSetSelectionAsync(this: ScriptDocument, cursorLine: number, cursorCharacter: number, anchorLine?: number, anchorCharacter?: number): unknown;
+    /**
+     * Applies a batch of line-based text edits that appear in the editor as reviewable inline diffs, allowing users to accept or reject each change.
+     *
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#ReviewableTextEditsAsync)
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @param changes An array of tables, each with a `Text` field (the replacement string), a `StartLine` field (1-indexed line to insert or begin replacing at), and an optional `EndLine` field (1-indexed last line to replace, inclusive).
+     * @returns A tuple where the first element is `true` if the edits were applied successfully, or `false` followed by a string describing the failure reason.
+     */
+    ReviewableTextEditsAsync(this: ScriptDocument, changes: Array<unknown>): unknown;
     /**
      * Fires when the ScriptDocument changes, including immediately after a text change.
      *
@@ -12926,7 +13382,7 @@ interface ScriptEditorService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptEditorService#DeregisterAutocompleteCallback)
      * @param this This service is used for interacting with `ScriptDocument` instances.
-     * @param name
+     * @param name The identifier that was used when registering the callback with `ScriptEditorService:RegisterAutocompleteCallback()`.
      */
     DeregisterAutocompleteCallback(this: ScriptEditorService, name: string): void;
     /**
@@ -12936,7 +13392,7 @@ interface ScriptEditorService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptEditorService#DeregisterScriptAnalysisCallback)
      * @param this This service is used for interacting with `ScriptDocument` instances.
-     * @param name
+     * @param name The identifier that was used when registering the callback with `ScriptEditorService:RegisterScriptAnalysisCallback()`.
      */
     DeregisterScriptAnalysisCallback(this: ScriptEditorService, name: string): void;
     /**
@@ -12946,7 +13402,8 @@ interface ScriptEditorService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptEditorService#FindScriptDocument)
      * @param this This service is used for interacting with `ScriptDocument` instances.
-     * @param script
+     * @param script The `LuaSourceContainer` (such as a `Script`, `LocalScript`, or `ModuleScript`) to find the open document for.
+     * @returns The open `ScriptDocument` corresponding to the given script, or nil if the script is not currently open in the Script Editor.
      */
     FindScriptDocument(this: ScriptEditorService, script: LuaSourceContainer): ScriptDocument;
     /**
@@ -12956,7 +13413,8 @@ interface ScriptEditorService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptEditorService#GetEditorSource)
      * @param this This service is used for interacting with `ScriptDocument` instances.
-     * @param script
+     * @param script The `LuaSourceContainer` to retrieve the edit-time source text for.
+     * @returns The edit-time source text of the script as a string.
      */
     GetEditorSource(this: ScriptEditorService, script: LuaSourceContainer): string;
     /**
@@ -12966,6 +13424,7 @@ interface ScriptEditorService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptEditorService#GetScriptDocuments)
      * @param this This service is used for interacting with `ScriptDocument` instances.
+     * @returns An array of `ScriptDocument` objects representing all currently open editor tabs, including the command bar.
      */
     GetScriptDocuments(this: ScriptEditorService): Array<Instance>;
     /**
@@ -12975,9 +13434,9 @@ interface ScriptEditorService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptEditorService#RegisterAutocompleteCallback)
      * @param this This service is used for interacting with `ScriptDocument` instances.
-     * @param name
-     * @param priority
-     * @param callbackFunction
+     * @param name A unique identifier for this callback, used to deregister it later with `ScriptEditorService:DeregisterAutocompleteCallback()`.
+     * @param priority The invocation order among registered callbacks; lower values run first.
+     * @param callbackFunction The function invoked during autocomplete with the signature `(Request: table, Response: table) -> table`.
      */
     RegisterAutocompleteCallback(this: ScriptEditorService, name: string, priority: number, callbackFunction: Callback): void;
     /**
@@ -12987,9 +13446,9 @@ interface ScriptEditorService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptEditorService#RegisterScriptAnalysisCallback)
      * @param this This service is used for interacting with `ScriptDocument` instances.
-     * @param name
-     * @param priority
-     * @param callbackFunction
+     * @param name A unique identifier for this callback, used to deregister it later with `ScriptEditorService:DeregisterScriptAnalysisCallback()`.
+     * @param priority The invocation order among registered callbacks; lower values run first.
+     * @param callbackFunction The function invoked during Script Analysis with the signature `(Request: table) -> table`, returning a response containing diagnostics.
      */
     RegisterScriptAnalysisCallback(this: ScriptEditorService, name: string, priority: number, callbackFunction: Callback): void;
     /**
@@ -13000,9 +13459,12 @@ interface ScriptEditorService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptEditorService#OpenScriptDocumentAsync)
      * @param this This service is used for interacting with `ScriptDocument` instances.
-     * @param script
+     * @param script The `LuaSourceContainer` to open in the Script Editor.
      * @param options A dictionary that supports the following options: - `Temporary` — Boolean. Whether to open the script in a preview   tab. Default is false.
      * - `HighlightRange` — A nested dictionary containing a line and   character range to highlight in the editor. Example:   `HighlightRange = { Start = { Line = 10, Character = 1 }, End = { Line = 15, Character = 20 }}`.
+     *
+     *
+     * @returns A tuple where the first value is a boolean indicating success and the second is nil on success or a string describing the problem on failure.
      */
     OpenScriptDocumentAsync(this: ScriptEditorService, script: LuaSourceContainer, options?: object): unknown;
     /**
@@ -13043,6 +13505,8 @@ interface ScriptEditorService extends Instance {
     readonly TextDocumentDidOpen: RBXScriptSignal<(newDocument: ScriptDocument) => void>;
 }
 /**
+ * A service that captures sampling-based profiles of Luau script execution on the server or on a client.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptProfilerService)
@@ -13057,62 +13521,79 @@ interface ScriptProfilerService extends Instance {
      */
     readonly _nominal_ScriptProfilerService: unique symbol;
     /**
+     * Requests the current script profiling data from the specified player's client.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptProfilerService#ClientRequestData)
-     * @param this
-     * @param player
+     * @param this A service that captures sampling-based profiles of Luau script execution on the server or on a client.
+     * @param player The `Player` whose client should report its profiling data. When called on a client, this must be the local player.
      */
     ClientRequestData(this: ScriptProfilerService, player: Player): void;
     /**
+     * Begins Luau script profiling for the specified player's client.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptProfilerService#ClientStart)
-     * @param this
-     * @param player
-     * @param frequency
+     * @param this A service that captures sampling-based profiles of Luau script execution on the server or on a client.
+     * @param player The `Player` whose client should start profiling. When called on a client, this must be the local player.
+     * @param frequency Optional sampling frequency in samples per second. Defaults to `1000` and must be within the range `[1, 10000]`.
      */
     ClientStart(this: ScriptProfilerService, player: Player, frequency?: number): void;
     /**
+     * Stops Luau script profiling for the specified player's client.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptProfilerService#ClientStop)
-     * @param this
-     * @param player
+     * @param this A service that captures sampling-based profiles of Luau script execution on the server or on a client.
+     * @param player The `Player` whose client should stop profiling. When called on a client, this must be the local player.
      */
     ClientStop(this: ScriptProfilerService, player: Player): void;
     /**
+     * Parses a script-profiling JSON string into a structured Luau table.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: CustomLuaState
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptProfilerService#DeserializeJSON)
-     * @param this
-     * @param jsonString
+     * @param this A service that captures sampling-based profiles of Luau script execution on the server or on a client.
+     * @param jsonString The profiling data encoded as a JSON string, such as the value delivered by `OnNewData`.
+     * @returns A dictionary representing the parsed profiling data, including the session's categories, call nodes, and function metadata.
      */
     DeserializeJSON(this: ScriptProfilerService, jsonString?: string): object;
     /**
+     * Requests the current script profiling data from the server.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptProfilerService#ServerRequestData)
-     * @param this
+     * @param this A service that captures sampling-based profiles of Luau script execution on the server or on a client.
      */
     ServerRequestData(this: ScriptProfilerService): void;
     /**
+     * Begins Luau script profiling on the server.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptProfilerService#ServerStart)
-     * @param this
-     * @param frequency
+     * @param this A service that captures sampling-based profiles of Luau script execution on the server or on a client.
+     * @param frequency Optional sampling frequency in samples per second. Defaults to `1000` and must be within the range `[1, 10000]`.
      */
     ServerStart(this: ScriptProfilerService, frequency?: number): void;
     /**
+     * Stops Luau script profiling on the server.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptProfilerService#ServerStop)
-     * @param this
+     * @param this A service that captures sampling-based profiles of Luau script execution on the server or on a client.
      */
     ServerStop(this: ScriptProfilerService): void;
     /**
+     * Fires when a new profiling data snapshot becomes available after a data request.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptProfilerService#OnNewData)
@@ -13148,6 +13629,21 @@ interface ScriptRuntime extends Instance {
      * @deprecated
      */
     readonly _nominal_ScriptRuntime: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptScannerService)
+ */
+interface ScriptScannerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ScriptScannerService: unique symbol;
 }
 /**
  * The Selection service controls the `Instances` that are selected in Roblox Studio.
@@ -13207,6 +13703,8 @@ interface Selection extends Instance {
     Set(this: Selection, selection: Array<Instance>): void;
 }
 /**
+ * Studio service that draws selection outline highlights for the local user's selection and for Team Create collaborators' selections.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SelectionHighlightManager)
@@ -13269,6 +13767,8 @@ interface BuoyancySensor extends SensorBase {
     readonly _nominal_BuoyancySensor: unique symbol;
 }
 /**
+ * An abstract base class for `SensorBase` types that supply sensory data to a character controller.
+ *
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControllerSensor)
@@ -13314,6 +13814,23 @@ interface FluidForceSensor extends SensorBase {
     readonly _nominal_FluidForceSensor: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsActivitySensor)
+ */
+interface PhysicsActivitySensor extends SensorBase {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PhysicsActivitySensor: unique symbol;
+}
+/**
+ * Serializes and deserializes `instances` to and from the `.rbxm` format.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SerializationService)
@@ -13673,21 +14190,6 @@ interface SmoothVoxelsUpgraderService extends Instance {
     readonly _nominal_SmoothVoxelsUpgraderService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SnippetService)
- */
-interface SnippetService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_SnippetService: unique symbol;
-}
-/**
  * Facilitates social functions that impact relationships made on the Roblox platform.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -14030,6 +14532,21 @@ interface StackFrame extends Instance {
     readonly _nominal_StackFrame: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StandardQueue)
+ */
+interface StandardQueue extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StandardQueue: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StartPageService)
@@ -14143,6 +14660,34 @@ interface StartupMessageService extends Instance {
     readonly _nominal_StartupMessageService: unique symbol;
 }
 /**
+ * - **Tags**: NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StateMachineDefinition)
+ */
+interface StateMachineDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StateMachineDefinition: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StateMachineTransitionDefinition)
+ */
+interface StateMachineTransitionDefinition extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StateMachineTransitionDefinition: unique symbol;
+}
+/**
  * Performance metrics for a game.
  *
  * - **Tags**: NotCreatable, Service
@@ -14189,6 +14734,7 @@ interface StatsItem extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StatsItem#GetValue)
      * @param this A single performance metric.
+     * @returns The numeric value of the stats item.
      */
     GetValue(this: StatsItem): number;
     /**
@@ -14198,6 +14744,7 @@ interface StatsItem extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StatsItem#GetValueString)
      * @param this A single performance metric.
+     * @returns The value of the stats item formatted as a string.
      */
     GetValueString(this: StatsItem): string;
 }
@@ -14270,6 +14817,8 @@ interface TotalCountTimeIntervalItem extends StatsItem {
     readonly _nominal_TotalCountTimeIntervalItem: unique symbol;
 }
 /**
+ * Represents Roblox Studio's script editor settings.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio)
@@ -14284,18 +14833,24 @@ interface Studio extends Instance {
      */
     readonly _nominal_Studio: unique symbol;
     /**
+     * Sets the action Studio takes when stopping file sync.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#ActionOnStopSync)
      */
     ActionOnStopSync: Enum.ActionOnStopSync;
     /**
+     * Sets the color of active UI elements in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Active Color)
      */
     "Active Color": Color3;
     /**
+     * Sets the color of active UI elements when hovered in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Active Hover Over Color)
@@ -14330,36 +14885,48 @@ interface Studio extends Instance {
      */
     "Animation Skeleton Transparency": number;
     /**
+     * Controls whether trailing whitespace is automatically removed from empty lines in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Clean Empty Line)
      */
     "Auto Clean Empty Line": boolean;
     /**
+     * Controls whether the script editor automatically inserts a matching closing bracket.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Closing Brackets)
      */
     "Auto Closing Brackets": boolean;
     /**
+     * Controls whether the script editor automatically inserts a matching closing quote.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Closing Quotes)
      */
     "Auto Closing Quotes": boolean;
     /**
+     * Controls whether deleting an opening bracket or quote also removes its closing counterpart.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Delete Closing Brackets and Quotes)
      */
     "Auto Delete Closing Brackets and Quotes": boolean;
     /**
+     * Sets the rule used to determine automatic indentation in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto Indent Rule)
      */
     "Auto Indent Rule": Enum.AutoIndentRule;
     /**
+     * Controls whether Studio automatically saves recovery files at a set interval.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Auto-Recovery Enabled)
@@ -14389,6 +14956,8 @@ interface Studio extends Instance {
      */
     "Basic Objects Display Mode": Enum.ListDisplayMode;
     /**
+     * Sets the color of boolean literals in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14396,6 +14965,8 @@ interface Studio extends Instance {
      */
     "Bool Color": Color3;
     /**
+     * Sets the color of brackets in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14436,6 +15007,8 @@ interface Studio extends Instance {
      */
     "Camera Speed": number;
     /**
+     * Controls whether the camera zooms toward the mouse cursor position.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Camera Zoom to Mouse Position)
@@ -14450,6 +15023,8 @@ interface Studio extends Instance {
      */
     "Clear Output On Start": boolean;
     /**
+     * Controls whether the command bar retains its input state between sessions.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#CommandBarLocalState)
@@ -14465,6 +15040,8 @@ interface Studio extends Instance {
      */
     "Comment Color": Color3;
     /**
+     * Sets the color of the current line highlight in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14472,6 +15049,8 @@ interface Studio extends Instance {
      */
     "Current Line Highlight Color": Color3;
     /**
+     * Sets the color of the current debugger line in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14479,6 +15058,8 @@ interface Studio extends Instance {
      */
     "Debugger Current Line Color": Color3;
     /**
+     * Sets the color of debugger error lines in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14502,36 +15083,48 @@ interface Studio extends Instance {
      */
     "Enable Autocomplete": boolean;
     /**
+     * Controls whether the CoreScript debugger is available in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable CoreScript Debugger)
      */
     "Enable CoreScript Debugger": boolean;
     /**
+     * Controls whether HTTP requests from plugins are sandboxed.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Http Sandboxing)
      */
     "Enable Http Sandboxing": boolean;
     /**
+     * Controls whether internal beta features are accessible in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Internal Beta Features)
      */
     "Enable Internal Beta Features": boolean;
     /**
+     * Controls whether internal developer features are accessible in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Internal Features)
      */
     "Enable Internal Features": boolean;
     /**
+     * Controls whether opening a script creates a temporary tab that is replaced on the next open.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Temporary Tabs)
      */
     "Enable Temporary Tabs": boolean;
     /**
+     * Controls whether clicking a script in the Explorer opens it in a temporary tab.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Enable Temporary Tabs In Explorer)
@@ -14564,18 +15157,24 @@ interface Studio extends Instance {
      */
     Font: QFont;
     /**
+     * Controls whether pasted code is automatically formatted in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Format On Paste)
      */
     "Format On Paste": boolean;
     /**
+     * Controls whether code is automatically formatted as you type in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Format On Type)
      */
     "Format On Type": boolean;
     /**
+     * Sets the color of function names in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14583,18 +15182,24 @@ interface Studio extends Instance {
      */
     "Function Name Color": Color3;
     /**
+     * Controls whether the current line is highlighted in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Highlight Current Line)
      */
     "Highlight Current Line": boolean;
     /**
+     * Controls whether other occurrences of the word under the cursor are highlighted.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Highlight Occurances)
      */
     "Highlight Occurances": boolean;
     /**
+     * Sets the color of hint diagnostics in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14618,12 +15223,16 @@ interface Studio extends Instance {
      */
     "Hover Over Color": Color3;
     /**
+     * Controls whether the script editor uses spaces instead of tabs for indentation.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Indent Using Spaces)
      */
     "Indent Using Spaces": boolean;
     /**
+     * Sets the color of information diagnostics in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14656,6 +15265,8 @@ interface Studio extends Instance {
      */
     LuaDebuggerEnabled: boolean;
     /**
+     * Controls whether the Lua debugger is enabled when Studio starts.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: Hidden, NotReplicated
      *
@@ -14663,6 +15274,8 @@ interface Studio extends Instance {
      */
     readonly LuaDebuggerEnabledAtStartup: boolean;
     /**
+     * Sets the color of Luau-specific keywords in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14687,6 +15300,8 @@ interface Studio extends Instance {
      */
     "Maximum Output Lines": number;
     /**
+     * Sets the background color of menu items in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14694,6 +15309,8 @@ interface Studio extends Instance {
      */
     "Menu Item Background Color": Color3;
     /**
+     * Sets the color of method names in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14751,12 +15368,6 @@ interface Studio extends Instance {
      */
     PermissionLevelShown: Enum.PermissionLevelShown;
     /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#PluginDebuggingEnabled)
-     */
-    PluginDebuggingEnabled: boolean;
-    /**
      * The directory where local plugins are stored.
      *
      * - **ThreadSafety**: ReadSafe
@@ -14765,12 +15376,16 @@ interface Studio extends Instance {
      */
     PluginsDir: QDir;
     /**
+     * Sets the preferred font size in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#PreferredTextSize)
      */
     PreferredTextSize: Enum.PreferredTextSize;
     /**
+     * Sets the primary text color in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14778,6 +15393,8 @@ interface Studio extends Instance {
      */
     "Primary Text Color": Color3;
     /**
+     * Sets the color of property names in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14793,6 +15410,8 @@ interface Studio extends Instance {
      */
     "Respect Studio shortcuts when game has focus": boolean;
     /**
+     * Sets the color of the column ruler in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14800,12 +15419,16 @@ interface Studio extends Instance {
      */
     "Ruler Color": Color3;
     /**
+     * Sets the column positions at which vertical ruler lines are drawn in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Rulers)
      */
     Rulers: string;
     /**
+     * Sets how Studio handles undo operations during runtime playback.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#RuntimeUndoBehavior)
@@ -14820,12 +15443,16 @@ interface Studio extends Instance {
      */
     ScriptTimeoutLength: number;
     /**
+     * Sets the color preset applied to the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Script Editor Color Preset)
      */
     "Script Editor Color Preset": Enum.StudioScriptEditorColorPresets;
     /**
+     * Sets the background color of the script editor scrollbar in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14833,6 +15460,8 @@ interface Studio extends Instance {
      */
     "Script Editor Scrollbar Background Color": Color3;
     /**
+     * Sets the handle color of the script editor scrollbar in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14840,12 +15469,16 @@ interface Studio extends Instance {
      */
     "Script Editor Scrollbar Handle Color": Color3;
     /**
+     * Controls whether the script editor allows scrolling below the last line.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Scroll Past Last Line)
      */
     "Scroll Past Last Line": boolean;
     /**
+     * Sets the secondary text color in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14867,6 +15500,8 @@ interface Studio extends Instance {
      */
     "Select/Hover Color": Color3;
     /**
+     * Sets the background color of selected menu items in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14874,6 +15509,8 @@ interface Studio extends Instance {
      */
     "Selected Menu Item Background Color": Color3;
     /**
+     * Sets the color of selected text in Studio.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -14899,6 +15536,8 @@ interface Studio extends Instance {
      */
     "Selection Color": Color3;
     /**
+     * Sets whether the pivot point is repositioned when parts are imported.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Set Pivot of Imported Parts)
@@ -14951,12 +15590,16 @@ interface Studio extends Instance {
      */
     "Show Diagnostics Bar": boolean;
     /**
+     * Controls whether FileSyncService is shown in the Explorer panel.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show FileSyncService)
      */
     "Show FileSyncService": boolean;
     /**
+     * Controls whether hidden objects are visible in the Explorer panel.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show Hidden Objects in Explorer)
@@ -14987,18 +15630,24 @@ interface Studio extends Instance {
      */
     "Show Plugin GUI Service in Explorer": boolean;
     /**
+     * Controls whether whitespace characters are shown as visible glyphs in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show Whitespace)
      */
     "Show Whitespace": boolean;
     /**
+     * Controls whether a plus button appears when hovering over items in the Explorer.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Show plus button on hover in Explorer)
      */
     "Show plus button on hover in Explorer": boolean;
     /**
+     * Controls whether the cursor skips over a typed closing bracket or quote if one already exists.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#Skip Closing Brackets and Quotes)
@@ -15047,6 +15696,8 @@ interface Studio extends Instance {
      */
     Theme: StudioTheme;
     /**
+     * Sets the color of type annotations in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15076,6 +15727,8 @@ interface Studio extends Instance {
      */
     "Warning Color": Color3;
     /**
+     * Sets the color of visible whitespace characters in the script editor.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15088,7 +15741,7 @@ interface Studio extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Studio#GetAvailableThemes)
-     * @param this
+     * @param this Represents Roblox Studio's script editor settings.
      * @returns A list of themes available in Studio.
      */
     GetAvailableThemes(this: Studio): Array<unknown>;
@@ -15162,6 +15815,8 @@ interface StudioCameraService extends Instance {
     readonly _nominal_StudioCameraService: unique symbol;
 }
 /**
+ * A Studio-only service that lets plugins capture screenshots of the active place's 3D viewport.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService)
@@ -15176,26 +15831,35 @@ interface StudioCaptureService extends Instance {
      */
     readonly _nominal_StudioCaptureService: unique symbol;
     /**
+     * Returns whether a screenshot can currently be captured.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService#CanCaptureScreenshot)
-     * @param this
+     * @param this A Studio-only service that lets plugins capture screenshots of the active place's 3D viewport.
+     * @returns A boolean that is `false` when a screenshot is known to be uncapturable, or `true` otherwise.
      */
     CanCaptureScreenshot(this: StudioCaptureService): boolean;
     /**
+     * Captures a screenshot of the active place according to the provided options.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService#CaptureScreenshot)
-     * @param this
-     * @param screenshotOptions
+     * @param this A Studio-only service that lets plugins capture screenshots of the active place's 3D viewport.
+     * @param screenshotOptions A dictionary of options controlling the capture, such as `Position`, `CaptureSize`, `OutputSize`, `ResampleMode`, `Format`, and `UICaptureMode`.
+     * @returns A `StudioScreenshotCapture` that holds the requested image in the requested format.
      */
     CaptureScreenshot(this: StudioCaptureService, screenshotOptions: object): StudioScreenshotCapture;
     /**
+     * Requests the user's permission for the plugin to capture screenshots from the Studio 3D view.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioCaptureService#RequestScreenshotPermissionAsync)
-     * @param this
+     * @param this A Studio-only service that lets plugins capture screenshots of the active place's 3D viewport.
+     * @returns A boolean that is `true` if the user granted permission and `false` otherwise.
      */
     RequestScreenshotPermissionAsync(this: StudioCaptureService): boolean;
 }
@@ -15246,16 +15910,20 @@ interface StudioDeviceSimulatorService extends Instance {
      */
     readonly _nominal_StudioDeviceSimulatorService: unique symbol;
     /**
+     * Creates a custom device preset and returns its ID.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#CreateDeviceAsync)
      * @param this Service allowing you to control Studio's Device Simulator.
-     * @param config
+     * @param config A dictionary describing the new device. Required fields: `Name` (string, 1-200 characters, cannot be `"default"`), `Width` (int, 1-7680 pixels), `Height` (int, 1-4320 pixels), `PixelDensity` (int, 72-10000 DPI). Optional fields: `DeviceForm` (`DeviceForm`, default Phone), `ResolutionScale` (float, default 1.0, max 10.0), `PortraitKeyboardHeight` (int, default 0), `LandscapeKeyboardHeight` (int, default 0).
      * @returns string
      */
     CreateDeviceAsync(this: StudioDeviceSimulatorService, config: object): string;
     /**
+     * Returns the ID of the currently active device, or `"default"` if none is active.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -15265,16 +15933,20 @@ interface StudioDeviceSimulatorService extends Instance {
      */
     GetDeviceAsync(this: StudioDeviceSimulatorService): string;
     /**
+     * Returns the configuration dictionary for the specified device.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetDeviceInfoAsync)
      * @param this Service allowing you to control Studio's Device Simulator.
-     * @param deviceId
+     * @param deviceId The unique identifier of the device to query. Must be a valid ID from `GetDeviceListAsync()`; cannot be `"default"`.
      * @returns A dictionary containing the device configuration and passed to `CreateDeviceAsync` and `UpdateDeviceAsync`.
      */
     GetDeviceInfoAsync(this: StudioDeviceSimulatorService, deviceId: string): object;
     /**
+     * Returns an array of all available device IDs.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -15284,6 +15956,8 @@ interface StudioDeviceSimulatorService extends Instance {
      */
     GetDeviceListAsync(this: StudioDeviceSimulatorService): Array<unknown>;
     /**
+     * Returns the current simulated screen orientation.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -15293,6 +15967,8 @@ interface StudioDeviceSimulatorService extends Instance {
      */
     GetOrientationAsync(this: StudioDeviceSimulatorService): Enum.ScreenOrientation;
     /**
+     * Returns the current simulated pixel density in DPI.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -15302,6 +15978,8 @@ interface StudioDeviceSimulatorService extends Instance {
      */
     GetPixelDensityAsync(this: StudioDeviceSimulatorService): number;
     /**
+     * Returns the current simulated viewport resolution.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -15311,70 +15989,86 @@ interface StudioDeviceSimulatorService extends Instance {
      */
     GetResolutionAsync(this: StudioDeviceSimulatorService): Vector2;
     /**
+     * Returns how the simulated resolution currently maps to the Studio viewport.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetScalingModeAsync)
      * @param this Service allowing you to control Studio's Device Simulator.
-     * @returns DeviceSimulatorScalingMode
+     * @returns The current `DeviceSimulatorScalingMode`.
      */
     GetScalingModeAsync(this: StudioDeviceSimulatorService): Enum.DeviceSimulatorScalingMode;
     /**
+     * Removes a custom device from the catalog.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#RemoveDeviceAsync)
      * @param this Service allowing you to control Studio's Device Simulator.
-     * @param deviceId
+     * @param deviceId The unique identifier of the custom device to remove.
      */
     RemoveDeviceAsync(this: StudioDeviceSimulatorService, deviceId: string): void;
     /**
+     * Activates the specified device or stops simulation if `"default"` is passed.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetDeviceAsync)
      * @param this Service allowing you to control Studio's Device Simulator.
-     * @param deviceId
+     * @param deviceId The unique identifier of the device to activate, or `"default"` to stop simulation.
      */
     SetDeviceAsync(this: StudioDeviceSimulatorService, deviceId: string): void;
     /**
+     * Sets the simulated screen orientation.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetOrientationAsync)
      * @param this Service allowing you to control Studio's Device Simulator.
-     * @param orientation
+     * @param orientation The target screen orientation. Accepted values are `ScreenOrientation.Portrait`, `ScreenOrientation.LandscapeLeft`, or `ScreenOrientation.LandscapeRight`.
      */
     SetOrientationAsync(this: StudioDeviceSimulatorService, orientation: CastsToEnum<Enum.ScreenOrientation>): void;
     /**
+     * Overrides the simulated pixel density in DPI for the current session.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetPixelDensityAsync)
      * @param this Service allowing you to control Studio's Device Simulator.
-     * @param density
+     * @param density The pixel density override in DPI. Must be between 72 and 10000.
      */
     SetPixelDensityAsync(this: StudioDeviceSimulatorService, density: number): void;
     /**
+     * Overrides the simulated viewport resolution for the current session.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetResolutionAsync)
      * @param this Service allowing you to control Studio's Device Simulator.
-     * @param width
-     * @param height
+     * @param width The viewport width in pixels (horizontal axis in landscape orientation). Range: 1 to 7680.
+     * @param height The viewport height in pixels (vertical axis in landscape orientation). Range: 1 to 4320.
      */
     SetResolutionAsync(this: StudioDeviceSimulatorService, width: number, height: number): void;
     /**
+     * Sets how the simulated resolution maps to the Studio viewport.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetScalingModeAsync)
      * @param this Service allowing you to control Studio's Device Simulator.
-     * @param mode
+     * @param mode The scaling mode to apply. One of `DeviceSimulatorScalingMode.ScaleToPhysicalSize`, `DeviceSimulatorScalingMode.ActualResolution`, or `DeviceSimulatorScalingMode.FitToWindow`.
      */
     SetScalingModeAsync(this: StudioDeviceSimulatorService, mode: CastsToEnum<Enum.DeviceSimulatorScalingMode>): void;
     /**
+     * Stops the active device simulation.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -15383,16 +16077,20 @@ interface StudioDeviceSimulatorService extends Instance {
      */
     StopSimulationAsync(this: StudioDeviceSimulatorService): void;
     /**
+     * Updates the configuration of an existing custom device.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#UpdateDeviceAsync)
      * @param this Service allowing you to control Studio's Device Simulator.
-     * @param deviceId
-     * @param config
+     * @param deviceId The unique identifier of the custom device to update.
+     * @param config A dictionary of device fields to apply. Uses patch semantics: omitted optional fields retain their current values. Same schema as `CreateDeviceAsync()`.
      */
     UpdateDeviceAsync(this: StudioDeviceSimulatorService, deviceId: string, config: object): void;
     /**
+     * Fires when the active simulation state changes.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#ConfigurationChanged)
@@ -15445,6 +16143,8 @@ interface StudioPublishService extends Instance {
     readonly _nominal_StudioPublishService: unique symbol;
 }
 /**
+ * Represents a single screenshot captured from Studio, exposing the resulting image buffer and the parameters the capture was taken with.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture)
@@ -15459,6 +16159,8 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly _nominal_StudioScreenshotCapture: unique symbol;
     /**
+     * The pixel format of the image data returned by `GetBuffer()`.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15466,6 +16168,8 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly BufferFormat: Enum.StudioCaptureScreenshotFormat;
     /**
+     * Reflects the current state of the capture as its image data is produced.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15473,6 +16177,8 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly BufferStatus: Enum.StudioCaptureBufferStatus;
     /**
+     * The size, in pixels, of the region available for capture from `Position` to the edge of the Studio view.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15480,6 +16186,8 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly OriginalSize: Vector2;
     /**
+     * The top-left corner, in pixels, of the captured region within the Studio view.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15487,6 +16195,8 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly Position: Vector2;
     /**
+     * The pixel dimensions of the captured image.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15494,6 +16204,8 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly Resolution: Vector2;
     /**
+     * Indicates which user-interface layers were included in the capture.
+     *
      * - **ThreadSafety**: ReadSafe
      * - **Tags**: NotReplicated
      *
@@ -15501,27 +16213,36 @@ interface StudioScreenshotCapture extends Instance {
      */
     readonly UICaptureMode: Enum.UICaptureMode;
     /**
+     * Returns the captured image data as a buffer in the capture's pixel format.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#GetBuffer)
-     * @param this
+     * @param this Represents a single screenshot captured from Studio, exposing the resulting image buffer and the parameters the capture was taken with.
+     * @returns A buffer containing the captured image data in the capture's `BufferFormat`.
      */
     GetBuffer(this: StudioScreenshotCapture): buffer;
     /**
+     * Returns an array of error messages recorded during the capture.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#GetErrors)
-     * @param this
+     * @param this Represents a single screenshot captured from Studio, exposing the resulting image buffer and the parameters the capture was taken with.
+     * @returns An array of strings describing any errors that occurred during the capture.
      */
     GetErrors(this: StudioScreenshotCapture): Array<unknown>;
     /**
+     * Produces a new capture containing a resized copy of this capture's image.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioScreenshotCapture#ScaleAsync)
-     * @param this
-     * @param strategy
-     * @param newSize
+     * @param this Represents a single screenshot captured from Studio, exposing the resulting image buffer and the parameters the capture was taken with.
+     * @param strategy The `ResamplerMode` used to resample the image. `ResamplerMode.Default` applies bilinear filtering; `ResamplerMode.Pixelated` applies nearest-neighbor (point) sampling.
+     * @param newSize The width and height, in pixels, of the scaled image.
+     * @returns A new `StudioScreenshotCapture` whose image is this capture scaled to `newSize`.
      */
     ScaleAsync(this: StudioScreenshotCapture, strategy: CastsToEnum<Enum.ResamplerMode>, newSize: Vector2): StudioScreenshotCapture;
 }
@@ -15578,7 +16299,8 @@ interface StudioService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioService#GetClassIcon)
      * @param this Provides access to configuration of Roblox Studio and allows importing files from the user's file system.
-     * @param className
+     * @param className The name of the Roblox class to retrieve the Explorer window icon for.
+     * @returns A dictionary containing `Image`, `ImageRectOffset`, and `ImageRectSize` fields that can be applied to an `ImageLabel` to display the class icon.
      */
     GetClassIcon(this: StudioService, className: string): object;
     /**
@@ -15588,6 +16310,7 @@ interface StudioService extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioService#GetUserId)
      * @param this Provides access to configuration of Roblox Studio and allows importing files from the user's file system.
+     * @returns The UserId of the logged-in Studio user, or 0 if the user is not logged in.
      */
     GetUserId(this: StudioService): number;
     /**
@@ -15609,7 +16332,7 @@ interface StudioService extends Instance {
      * @param fileTypeFilter A list of file types that the user is allowed to select. File types are formatted without a period. For example, {"jpg", "png"} would allow only a JPG or PNG file to be selected. If no filter is provided, the filter is `nil` and allows the user to select any file type.
      * @returns The imported `File`. Returns `nil` if no files were selected, or if the selected file was too large (FileSize greater than 100 megabytes).
      *
-     * @deprecated
+     * @deprecated PromptImportFileAsync
      */
     PromptImportFile(this: StudioService, fileTypeFilter?: Array<unknown>): Instance | undefined;
     /**
@@ -15637,7 +16360,7 @@ interface StudioService extends Instance {
      * @param fileTypeFilter A list of file types that the user is allowed to select. File types are formatted without a period. For example, {"jpg", "png"} would allow only JPG and PNG files to be selected. If no filter is provided, the filter is `nil` and allows the user to select any file type.
      * @returns The imported `Files`. Returns an empty list if no files were selected. Returns `nil` if the user selected one or more files that were too large (FileSize greater than 100 megabytes).
      *
-     * @deprecated
+     * @deprecated PromptImportFilesAsync
      */
     PromptImportFiles(this: StudioService, fileTypeFilter?: Array<unknown>): Array<Instance>;
     /**
@@ -15670,22 +16393,29 @@ interface StudioTestService extends Instance {
      */
     readonly _nominal_StudioTestService: unique symbol;
     /**
+     * Plugin-facing. Indicates whether the session is the idle edit `DataModel` with no Studio test session running.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#EditModeActive)
      */
     EditModeActive: boolean;
     /**
+     * Launches a multiplayer test session and yields until it completes.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#ExecuteMultiplayerTestAsync)
      * @param this Service allowing plugins to automate and customize Test and Run mode testing.
-     * @param numPlayers
-     * @param args
+     * @param numPlayers The number of client DataModels to create. Must be between 1 and 8.
+     * @param args An optional Roblox-serializable value forwarded to scripts inside the test session.
+     * @returns The value passed to `StudioTestService:EndTest()`.
      */
     ExecuteMultiplayerTestAsync(this: StudioTestService, numPlayers: number, args: unknown): unknown;
     /**
+     * Starts a solo Test session and yields until it ends.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -15696,6 +16426,8 @@ interface StudioTestService extends Instance {
      */
     ExecutePlayModeAsync(this: StudioTestService, args: unknown): unknown;
     /**
+     * Starts a Run test session and yields until it ends.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
@@ -15707,6 +16439,8 @@ interface StudioTestService extends Instance {
     ExecuteRunModeAsync(this: StudioTestService, args: unknown): unknown;
 }
 /**
+ * A collection of colors that make up a Roblox Studio theme, letting a plugin query the color of a Studio UI element for the theme the user currently has active.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTheme)
@@ -15726,7 +16460,7 @@ interface StudioTheme extends Instance {
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTheme#GetColor)
-     * @param this
+     * @param this A collection of colors that make up a Roblox Studio theme, letting a plugin query the color of a Studio UI element for the theme the user currently has active.
      * @param styleguideitem The element you want to get the theme color for.
      * @param modifier The modifier you want to place on the `StyleGuideColor` element.
      * @returns The corresponding Color3 theme value.
@@ -15893,8 +16627,9 @@ interface SurfaceAppearance extends Instance {
      */
     ColorMap: ContentId;
     /**
+     * `Content` object that determines the color and opacity of the surface.
+     *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#ColorMapContent)
      */
@@ -15916,8 +16651,9 @@ interface SurfaceAppearance extends Instance {
      */
     MetalnessMap: ContentId;
     /**
+     * `Content` object that determines which parts of the surface are metal or non-metal.
+     *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#MetalnessMapContent)
      */
@@ -15931,8 +16667,9 @@ interface SurfaceAppearance extends Instance {
      */
     NormalMap: ContentId;
     /**
+     * `Content` object that modifies the lighting of the surface by adding bumps, dents, cracks, and curves.
+     *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#NormalMapContent)
      */
@@ -15946,8 +16683,9 @@ interface SurfaceAppearance extends Instance {
      */
     RoughnessMap: ContentId;
     /**
+     * `Content` object that determines the apparent roughness across the surface.
+     *
      * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#RoughnessMapContent)
      */
@@ -16244,6 +16982,8 @@ interface TerrainDetail extends Instance {
     RoughnessMapContent: Content;
 }
 /**
+ * An object that stores a chunk of terrain voxel data, produced by `Terrain:CopyRegion()` and consumed by `Terrain:PasteRegion()`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainRegion)
  */
 interface TerrainRegion extends Instance {
@@ -16264,18 +17004,18 @@ interface TerrainRegion extends Instance {
      * - **Tags**:
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainRegion#ConvertToSmooth)
-     * @param this
+     * @param this An object that stores a chunk of terrain voxel data, produced by `Terrain:CopyRegion()` and consumed by `Terrain:PasteRegion()`.
      *
      * @deprecated
      */
     ConvertToSmooth(this: TerrainRegion): void;
 }
 /**
- * - **Tags**: NotCreatable
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase)
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCoordinatorService)
  */
-interface TestCase extends Instance {
+interface TestCoordinatorService extends Instance {
     /**
      * **DO NOT USE!**
      *
@@ -16283,7 +17023,7 @@ interface TestCase extends Instance {
      * @hidden
      * @deprecated
      */
-    readonly _nominal_TestCase: unique symbol;
+    readonly _nominal_TestCoordinatorService: unique symbol;
 }
 /**
  * A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
@@ -16302,7 +17042,7 @@ interface TestService extends Instance {
      */
     readonly _nominal_TestService: unique symbol;
     /**
-     * **Deprecated:**
+     * **Deprecated:** Use `RunAsync()` instead.
      *
      * Runs scripts which are parented to `TestService`.
      *
@@ -16312,7 +17052,7 @@ interface TestService extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestService#Run)
      * @param this A service used by Roblox to run controlled tests of the engine. It is available for developers to use, to a limited degree.
      *
-     * @deprecated
+     * @deprecated RunAsync
      */
     Run(this: TestService): void;
     /**
@@ -16327,6 +17067,8 @@ interface TestService extends Instance {
     RunAsync(this: TestService): void;
 }
 /**
+ * A service that manages a user's `TextBox` state during gameplay.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextBoxService)
@@ -16489,6 +17231,8 @@ interface TextChatMessageProperties extends Instance {
     readonly _nominal_TextChatMessageProperties: unique symbol;
 }
 /**
+ * Overrides `BubbleChatConfiguration` properties for an individual bubble chat message.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BubbleChatMessageProperties)
  */
 interface BubbleChatMessageProperties extends TextChatMessageProperties {
@@ -16502,6 +17246,8 @@ interface BubbleChatMessageProperties extends TextChatMessageProperties {
     readonly _nominal_BubbleChatMessageProperties: unique symbol;
 }
 /**
+ * Customizes the appearance of an individual text chat message displayed in the chat window.
+ *
  * - **Tags**: NotCreatable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ChatWindowMessageProperties)
@@ -16550,6 +17296,27 @@ interface TextChatService extends Instance {
     set CreateDefaultTextChannels(value: boolean);
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextDocument)
+ */
+interface TextDocument extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TextDocument: unique symbol;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextDocument#TextContent)
+     */
+    TextContent: Content;
+}
+/**
+ * Represents the result of a call to `TextService:FilterStringAsync()`, used to distribute a filtered string accordingly.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextFilterResult)
@@ -16565,6 +17332,8 @@ interface TextFilterResult extends Instance {
     readonly _nominal_TextFilterResult: unique symbol;
 }
 /**
+ * Holds the filtered source text and its filtered translations produced by `TextService:FilterAndTranslateStringAsync()`.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextFilterTranslatedResult)
@@ -16926,6 +17695,19 @@ interface UIComponent extends UIBase {
     readonly _nominal_UIComponent: unique symbol;
 }
 /**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIBlur)
+ */
+interface UIBlur extends UIComponent {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_UIBlur: unique symbol;
+}
+/**
  * The base class for UI constraint classes.
  *
  * - **Tags**: NotCreatable
@@ -17033,7 +17815,7 @@ interface UIFlexItem extends UIComponent {
     readonly _nominal_UIFlexItem: unique symbol;
 }
 /**
- * Applies a color and transparency gradient to the UI elements rendered by the parent `GuiObject`.
+ * Applies a color and transparency gradient to the parent `GuiObject`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIGradient)
  */
@@ -17112,6 +17894,8 @@ interface UIListLayout extends UIGridStyleLayout {
     readonly _nominal_UIListLayout: unique symbol;
 }
 /**
+ * Positions sibling UI elements as full-size pages in a single row or column that users can scroll or animate through one page at a time.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIPageLayout)
  */
 interface UIPageLayout extends UIGridStyleLayout {
@@ -17215,6 +17999,8 @@ interface UIDragDetectorService extends Instance {
     readonly _nominal_UIDragDetectorService: unique symbol;
 }
 /**
+ * Team Create service that maps `UniqueId` to and from RFC-4122 strings; not for experience scripts.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UniqueIdLookupService)
@@ -17245,7 +18031,7 @@ interface UnvalidatedAssetService extends Instance {
     readonly _nominal_UnvalidatedAssetService: unique symbol;
 }
 /**
- * The UserGameSettings is a singleton class found inside of the `UserSettings` singleton. It holds various persistent settings relating to how the user wants to control their camera, and their character.
+ * `UserGameSettings` is a singleton class found inside of the `UserSettings` singleton. It holds various persistent settings relating to how the user wants to control their camera, and their character.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
@@ -17539,7 +18325,7 @@ interface Vector3Value extends ValueBase {
     readonly _nominal_Vector3Value: unique symbol;
 }
 /**
- * A sorted list of time-value pairs that define a curve. Used to animate a any type of value.
+ * A sorted list of time-value pairs that define a curve. Used to animate any type of value.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ValueCurve)
  */
@@ -17584,6 +18370,8 @@ interface VersionControlService extends Instance {
     readonly _nominal_VersionControlService: unique symbol;
 }
 /**
+ * Service that manages camera capture for features such as avatar facial-animation tracking. Requires `RobloxScript` security; not callable from experience scripts.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoCaptureService)
@@ -17661,6 +18449,8 @@ interface VideoService extends Instance {
     readonly _nominal_VideoService: unique symbol;
 }
 /**
+ * Service that schedules and runs viewability checks for immersive ad instances in a place.
+ *
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VisibilityCheckDispatcher)
@@ -17833,6 +18623,21 @@ interface WeldConstraint extends Instance {
     readonly _nominal_WeldConstraint: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WindowProtocolService)
+ */
+interface WindowProtocolService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_WindowProtocolService: unique symbol;
+}
+/**
  * Connects one or more `Instances` to form a processing graph of their streams. At the moment, only audio streams are supported, but this may expand in the future.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Wire)
@@ -17880,6 +18685,38 @@ interface WrapTextureTransfer extends Instance {
 /**
  * - **Tags**: NotCreatable, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Logger)
+ */
+interface Logger extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Logger: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/LuauExpression)
+ */
+interface LuauExpression extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_LuauExpression: unique symbol;
+}
+/**
+ * A machine-learning inference session that wraps a single loaded model and runs it through `MLSession:ForwardAsync()`.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MLSession)
  */
 interface MLSession extends RBXObject {
@@ -17906,6 +18743,21 @@ interface OutputLink extends RBXObject {
      * @deprecated
      */
     readonly _nominal_OutputLink: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticipantHandle)
+ */
+interface ParticipantHandle extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ParticipantHandle: unique symbol;
 }
 /**
  * Encapsulates a connection between the current data model and another for plugin communication.
@@ -18046,6 +18898,96 @@ interface TerrainWriteOperation extends RBXObject {
      * @deprecated
      */
     readonly _nominal_TerrainWriteOperation: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestCase)
+ */
+interface TestCase extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestCase: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestExecutionContext)
+ */
+interface TestExecutionContext extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestExecutionContext: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestFailure)
+ */
+interface TestFailure extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestFailure: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestResult)
+ */
+interface TestResult extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestResult: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestRunResult)
+ */
+interface TestRunResult extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestRunResult: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TestSuite)
+ */
+interface TestSuite extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_TestSuite: unique symbol;
 }
 /**
  * An object for sampling frames from video content.

@@ -460,6 +460,21 @@ declare namespace math {
 	/** The value HUGE_VAL, a value larger than or equal to any other numerical value. */
 	const huge: number;
 
+	/** The value of Euler's number, e. */
+	const e: number;
+
+	/** A NaN value, as defined by the IEEE 754 standard. Comparing directly to `math.nan` will always return false; use `math.isnan()` instead. */
+	const nan: number;
+
+	/** The value of the golden ratio. */
+	const phi: number;
+
+	/** The value of the square root of 2. */
+	const sqrt2: number;
+
+	/** The value of tau, which is defined as `2 * math.pi` */
+	const tau: number;
+
 	/** Returns the absolute value of x. */
 	function abs(n: number): number;
 
@@ -567,6 +582,15 @@ declare namespace math {
 
 	/** Returns the hyperbolic tangent of x. */
 	function tanh(n: number): number;
+
+	/** Returns true if x is NaN, otherwise false */
+	function isnan(x: number): boolean;
+
+	/** Returns true if x is infinite, otherwise false */
+	function isinf(x: number): boolean;
+
+	/** Returns true if x is a finite number (non Nan, non infinite), otherwise false */
+	function isfinite(x: number): boolean;
 }
 
 /**

@@ -54,7 +54,7 @@ function insertDeprecatedTag(comments: Array<string>, apiEntry: ApiClass | ApiMe
 	if (apiEntry.Tags) {
 		const deprecatedTagIdx = apiEntry.Tags.indexOf("Deprecated");
 		if (deprecatedTagIdx !== -1) {
-			const metadata = apiEntry.Tags.at(deprecatedTagIdx + 1);
+			const metadata = apiEntry.Tags[deprecatedTagIdx + 1];
 			if (
 				metadata &&
 				typeof metadata !== "string" &&

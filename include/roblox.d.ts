@@ -1,6 +1,7 @@
 /// <reference no-default-lib="true"/>
 /// <reference path="lua.d.ts" />
 /// <reference path="macro_math.d.ts" />
+/// <reference path="selector.d.ts" />
 /// <reference path="generated/enums.d.ts" />
 /// <reference path="generated/None.d.ts" />
 /// <reference types="@rbxts/compiler-types" />
@@ -1888,6 +1889,25 @@ interface FontConstructor {
 }
 declare const Font: FontConstructor;
 
+// InstanceHandle
+interface InstanceHandle {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_InstanceHandle: unique symbol;
+	Get(this: InstanceHandle): Instance | undefined;
+	Wait(this: InstanceHandle): Instance;
+	Wait(this: InstanceHandle, timeout: number): Instance | undefined;
+}
+interface InstanceHandleConstructor {
+	new (instance: Instance | undefined): InstanceHandle;
+}
+declare const InstanceHandle: InstanceHandleConstructor;
+
 // NumberRange
 interface NumberRange {
 	/**
@@ -1972,12 +1992,26 @@ interface OverlapParams {
 	 */
 	readonly _nominal_OverlapParams: unique symbol;
 	/**
+	 * An optional array of instances whose descendants will be excluded from the query. This property can be used simultaneously with [IncludeInstances](https://create.roblox.com/docs/reference/engine/datatypes/OverlapParams#IncludeInstances) to allow for mixed filtering, for example including a large folder but excluding specific child instances. If an instance matches both an exclude and include filter, exclusions take priority over inclusions.
+	 */
+	ExcludeInstances: Array<Instance> | undefined;
+	/**
+	 * An optional array of instances whose descendants will be included in the query. This property can be used simultaneously with [ExcludeInstances](https://create.roblox.com/docs/reference/engine/datatypes/OverlapParams#ExcludeInstances) to allow for mixed filtering. If an instance matches both an exclude and include filter, exclusions take priority over inclusions.
+	 *
+	 * Setting `IncludeInstances` to `nil` versus an empty array (`{}`) has opposite effects. `IncludeInstances = nil` is the most permissive filter (includes everything), whereas `IncludeInstances = {}` is the most restrictive filter (includes nothing).
+	 */
+	IncludeInstances: Array<Instance> | undefined;
+	/**
 	 * An array of objects whose descendants will be used in filtering.
+	 *
+	 * @deprecated Use `ExcludeInstances` and `IncludeInstances`
 	 */
 	FilterDescendantsInstances: Array<Instance>;
 	/**
 	 * `RaycastFilterType.Include` or `RaycastFilterType.Exclude`. Determines how the `FilterDescendantInstances` is
 	 * used. `Exclude` will skip the `FilterDescendantInstances`, and `Include` will exclusively include them.
+	 *
+	 * @deprecated Use `ExcludeInstances` and `IncludeInstances`
 	 */
 	FilterType: Enum.RaycastFilterType;
 	/**
@@ -2000,6 +2034,8 @@ interface OverlapParams {
 	/**
 	 * For efficiency and simplicity, this method is the preferred way to add instances to the filter.
 	 * It has the additional advantage that it allows FilterDescendantsInstances to be updated from a parallel context.
+	 *
+	 * @deprecated Use `ExcludeInstances` and `IncludeInstances`
 	 */
 	AddToFilter(this: OverlapParams, instances: Instance | Array<Instance>): void;
 }
@@ -2175,7 +2211,20 @@ interface RaycastParams {
 	 * @deprecated
 	 */
 	readonly _nominal_RaycastParams: unique symbol;
-	/** An array of objects whose descendants will be used in filtering raycasting candidates. */
+	/**
+	 * An optional array of instances whose descendants will be excluded from the query. This property can be used simultaneously with [IncludeInstances](https://create.roblox.com/docs/reference/engine/datatypes/RaycastParams#IncludeInstances) to allow for mixed filtering, for example including a large folder but excluding specific child instances. If an instance matches both an exclude and include filter, exclusions take priority over inclusions.
+	 */
+	ExcludeInstances: Array<Instance> | undefined;
+	/**
+	 * An optional array of instances whose descendants will be included in the query. This property can be used simultaneously with [ExcludeInstances](https://create.roblox.com/docs/reference/engine/datatypes/RaycastParams#ExcludeInstances) to allow for mixed filtering. If an instance matches both an exclude and include filter, exclusions take priority over inclusions.
+	 *
+	 * Setting `IncludeInstances` to `nil` versus an empty array (`{}`) has opposite effects. `IncludeInstances = nil` is the most permissive filter (includes everything), whereas `IncludeInstances = {}` is the most restrictive filter (includes nothing).
+	 */
+	IncludeInstances: Array<Instance> | undefined;
+	/** An array of objects whose descendants will be used in filtering raycasting candidates.
+	 *
+	 * @deprecated Use `ExcludeInstances` and `IncludeInstances`
+	 */
 	FilterDescendantsInstances: Array<Instance>;
 	/**
 	 * Determines how the `FilterDescendantsInstances` list will be used, depending on the
@@ -2185,6 +2234,8 @@ interface RaycastParams {
 	 * which are descendants of objects in the filter list will be considered in the raycast operation.
 	 * - `Enum.RaycastFilterType.Exclude` — Every [BasePart](https://developer.roblox.com/api-reference/class/BasePart)
 	 * in the game will be considered except those that are descendants of objects in the filter list.
+	 *
+	 * @deprecated Use `ExcludeInstances` and `IncludeInstances`
 	 */
 	FilterType: Enum.RaycastFilterType;
 	/**
@@ -2211,6 +2262,8 @@ interface RaycastParams {
 	/**
 	 * For efficiency and simplicity, this method is the preferred way to add instances to the filter.
 	 * It has the additional advantage that it allows FilterDescendantsInstances to be updated from a parallel context.
+	 *
+	 * @deprecated Use `ExcludeInstances` and `IncludeInstances`
 	 */
 	AddToFilter(this: RaycastParams, instances: Instance | Array<Instance>): void;
 }
@@ -2514,6 +2567,38 @@ interface UDim2Constructor {
 }
 
 declare const UDim2: UDim2Constructor;
+
+// User
+interface User {
+	/**
+	 * **DO NOT USE!**
+	 *
+	 * This field exists to force TypeScript to recognize this as a nominal type
+	 * @hidden
+	 * @deprecated
+	 */
+	readonly _nominal_User: unique symbol;
+	/** The domain user ID for this user within the associated domain. This is an integer that uniquely identifies the user within the specific domain type and domain ID combination. */
+	readonly Id: number;
+	/** The `Enum.DomainType` that identifies the kind of domain this domain user ID belongs to. Currently supported values are `Enum.DomainType.EXPERIENCE` and `Enum.DomainType.OAUTH`. */
+	readonly DomainType: Enum.DomainType;
+	/** The identifier of the specific domain instance that this user ID is scoped to. For `Enum.DomainType.EXPERIENCE`, this is the universe ID. For `Enum.DomainType.OAUTH`, this is the application ID. */
+	readonly DomainId: number;
+	/**
+	 * Serializes this `User` into a string that encodes the domain type, domain ID, and domain user ID. The result is stable, URL-safe, and compact. Use this when storing or transmitting user identity.
+	 * The string can be converted back to a `User` via `User.fromString()`.
+	 */
+	ToString(this: User): string;
+}
+
+interface UserConstructor {
+	/** Creates a new `User` from the given domain user ID, using the current experience as the domain. The ID must be a valid domain user ID (above the global user ID range). */
+	fromId: (domainUserId: number) => User;
+	/** Deserializes a `User` from a string previously produced by ToString(). */
+	fromString: (userString: string) => User;
+}
+
+declare const User: UserConstructor;
 
 // ValueCurveKey
 interface ValueCurveKey {
@@ -3091,8 +3176,7 @@ interface SettableCores {
 	AddAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
 	RemoveAvatarContextMenuOption: Enum.AvatarContextMenuOption | [string, BindableFunction];
 	CoreGuiChatConnections:
-		| { [name: string]: BindableEvent | BindableFunction }
-		| Map<string, BindableEvent | BindableFunction>;
+		{ [name: string]: BindableEvent | BindableFunction } | Map<string, BindableEvent | BindableFunction>;
 	VREnableControllerModels: boolean;
 	VRLaserPointerMode: "Disabled" | "Pointer" | "Navigation" | "Hidden";
 }
@@ -3119,12 +3203,15 @@ declare function type(value: unknown): keyof CheckablePrimitives;
 
 /** The strings which can be returned by typeOf and their corresponding types */
 interface CheckableTypes extends CheckablePrimitives {
+	AdReward: AdReward;
 	Axes: Axes;
 	BrickColor: BrickColor;
+	CatalogSearchParams: CatalogSearchParams;
 	CFrame: CFrame;
 	Color3: Color3;
 	ColorSequence: ColorSequence;
 	ColorSequenceKeypoint: ColorSequenceKeypoint;
+	Content: Content;
 	DateTime: DateTime;
 	DockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo;
 	Enum: Enum;
@@ -3134,10 +3221,12 @@ interface CheckableTypes extends CheckablePrimitives {
 	FloatCurveKey: FloatCurveKey;
 	Font: Font;
 	Instance: Instance;
+	InstanceHandle: InstanceHandle;
 	NumberRange: NumberRange;
 	NumberSequence: NumberSequence;
 	NumberSequenceKeypoint: NumberSequenceKeypoint;
 	OverlapParams: OverlapParams;
+	Path2DControlPoint: Path2DControlPoint;
 	PathWaypoint: PathWaypoint;
 	PhysicalProperties: PhysicalProperties;
 	Random: Random;
@@ -3149,9 +3238,15 @@ interface CheckableTypes extends CheckablePrimitives {
 	Rect: Rect;
 	Region3: Region3;
 	Region3int16: Region3int16;
+	RotationCurveKey: RotationCurveKey;
+	Secret: Secret;
+	SecurityCapabilities: SecurityCapabilities;
+	SharedTable: SharedTable;
 	TweenInfo: TweenInfo;
 	UDim: UDim;
 	UDim2: UDim2;
+	User: User;
+	ValueCurveKey: ValueCurveKey;
 	Vector2: Vector2;
 	Vector2int16: Vector2int16;
 	Vector3: Vector3;
@@ -3169,11 +3264,13 @@ type AttributeValue =
 	| Vector2
 	| Vector3
 	| CFrame
+	| InstanceHandle
 	| NumberSequence
 	| ColorSequence
 	| NumberRange
 	| Rect
 	| Font;
+type SetAttributeValue = AttributeValue | Instance;
 
 declare const enum RobloxEmoji {
 	Robux = "",

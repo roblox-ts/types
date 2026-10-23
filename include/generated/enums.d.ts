@@ -17,10 +17,14 @@ interface Enum {
 declare namespace Enum {
     export function GetEnums(this: Enums): Array<Enum>;
     /**
+     * Determines whether an `AudioDeviceInput` user ID access list acts as an allow-list or a deny-list.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AccessModifierType)
      */
     export namespace AccessModifierType {
         /**
+         * User IDs in the access list are permitted to hear the `AudioDeviceInput` - all other users are blocked.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AccessModifierType#Allow)
          */
         export interface Allow extends globalThis.EnumItem {
@@ -30,6 +34,8 @@ declare namespace Enum {
         }
         export const Allow: Allow;
         /**
+         * User IDs in the access list are blocked from hearing the `AudioDeviceInput` - all other users are permitted.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AccessModifierType#Deny)
          */
         export interface Deny extends globalThis.EnumItem {
@@ -252,6 +258,8 @@ declare namespace Enum {
         }
         export const DressSkirt: DressSkirt;
         /**
+         * A layered accessory for avatar eyebrows.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AccessoryType#Eyebrow)
          */
         export interface Eyebrow extends globalThis.EnumItem {
@@ -261,6 +269,8 @@ declare namespace Enum {
         }
         export const Eyebrow: Eyebrow;
         /**
+         * A layered accessory for avatar eyelashes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AccessoryType#Eyelash)
          */
         export interface Eyelash extends globalThis.EnumItem {
@@ -311,10 +321,14 @@ declare namespace Enum {
     }
     export type ActionOnAutoResumeSync = ActionOnAutoResumeSync.DontResume | ActionOnAutoResumeSync.KeepStudio | ActionOnAutoResumeSync.KeepLocal;
     /**
+     * Specifies how Roblox Studio handles local files when file sync stops.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnStopSync)
      */
     export namespace ActionOnStopSync {
         /**
+         * Prompts before deleting local files when file sync stops.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnStopSync#AlwaysAsk)
          */
         export interface AlwaysAsk extends globalThis.EnumItem {
@@ -324,6 +338,8 @@ declare namespace Enum {
         }
         export const AlwaysAsk: AlwaysAsk;
         /**
+         * Keeps local files when file sync stops.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnStopSync#KeepLocalFiles)
          */
         export interface KeepLocalFiles extends globalThis.EnumItem {
@@ -333,6 +349,8 @@ declare namespace Enum {
         }
         export const KeepLocalFiles: KeepLocalFiles;
         /**
+         * Deletes local files when file sync stops.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionOnStopSync#DeleteLocalFiles)
          */
         export interface DeleteLocalFiles extends globalThis.EnumItem {
@@ -347,10 +365,14 @@ declare namespace Enum {
     }
     export type ActionOnStopSync = ActionOnStopSync.AlwaysAsk | ActionOnStopSync.KeepLocalFiles | ActionOnStopSync.DeleteLocalFiles;
     /**
+     * Describes the outcome of a game action, such as winning, losing, or drawing.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionType)
      */
     export namespace ActionType {
         /**
+         * No specific game action occurred.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionType#Nothing)
          */
         export interface Nothing extends globalThis.EnumItem {
@@ -360,6 +382,8 @@ declare namespace Enum {
         }
         export const Nothing: Nothing;
         /**
+         * The game or round was paused.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionType#Pause)
          */
         export interface Pause extends globalThis.EnumItem {
@@ -369,6 +393,8 @@ declare namespace Enum {
         }
         export const Pause: Pause;
         /**
+         * The player lost the game or round.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionType#Lose)
          */
         export interface Lose extends globalThis.EnumItem {
@@ -378,6 +404,8 @@ declare namespace Enum {
         }
         export const Lose: Lose;
         /**
+         * The game or round ended in a draw with no winner.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionType#Draw)
          */
         export interface Draw extends globalThis.EnumItem {
@@ -387,6 +415,8 @@ declare namespace Enum {
         }
         export const Draw: Draw;
         /**
+         * The player won the game or round.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActionType#Win)
          */
         export interface Win extends globalThis.EnumItem {
@@ -478,13 +508,13 @@ declare namespace Enum {
     }
     export type ActivePayerStatus = ActivePayerStatus.Unknown | ActivePayerStatus.Never | ActivePayerStatus.Lapsed | ActivePayerStatus.Casual50Percent | ActivePayerStatus.Intermediate35Percent | ActivePayerStatus.Top15Percent;
     /**
-     * The CFrame value in which the body mover constraint is expressed.
+     * Determines the coordinate frame in which a mover constraint's directional properties are expressed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActuatorRelativeTo)
      */
     export namespace ActuatorRelativeTo {
         /**
-         * The constraint is expressed relative to Attachment0.
+         * The directional property is interpreted in the local coordinate frame of `Attachment0`, rotating with its parent part.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActuatorRelativeTo#Attachment0)
          */
@@ -495,7 +525,7 @@ declare namespace Enum {
         }
         export const Attachment0: Attachment0;
         /**
-         * The constraint is expressed relative to Attachment1.
+         * The directional property is interpreted in the local coordinate frame of `Attachment1`, rotating with its parent part.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActuatorRelativeTo#Attachment1)
          */
@@ -506,7 +536,7 @@ declare namespace Enum {
         }
         export const Attachment1: Attachment1;
         /**
-         * The constraint is expressed relative to the game world.
+         * The directional property is interpreted in world-space coordinates, remaining constant regardless of part orientation.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ActuatorRelativeTo#World)
          */
@@ -566,6 +596,8 @@ declare namespace Enum {
     }
     export type ActuatorType = ActuatorType.None | ActuatorType.Motor | ActuatorType.Servo;
     /**
+     * Indicates whether an ad is available or the reason it cannot be shown.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdAvailabilityResult)
      */
     export namespace AdAvailabilityResult {
@@ -656,8 +688,6 @@ declare namespace Enum {
      */
     export namespace AdEventType {
         /**
-         * **Deprecated:** This option should not be used for new work.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#VideoLoaded)
          */
         export interface VideoLoaded extends globalThis.EnumItem {
@@ -667,8 +697,6 @@ declare namespace Enum {
         }
         export const VideoLoaded: VideoLoaded;
         /**
-         * **Deprecated:** This option should not be used for new work.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#VideoRemoved)
          */
         export interface VideoRemoved extends globalThis.EnumItem {
@@ -678,8 +706,6 @@ declare namespace Enum {
         }
         export const VideoRemoved: VideoRemoved;
         /**
-         * **Deprecated:** This option should not be used for new work.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#UserCompletedVideo)
          */
         export interface UserCompletedVideo extends globalThis.EnumItem {
@@ -689,8 +715,6 @@ declare namespace Enum {
         }
         export const UserCompletedVideo: UserCompletedVideo;
         /**
-         * The event is fired when a click-to-play video ad is being served. This can be used to communicate and promote the reward to users through the UI or signage.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#RewardedAdLoaded)
          */
         export interface RewardedAdLoaded extends globalThis.EnumItem {
@@ -700,8 +724,6 @@ declare namespace Enum {
         }
         export const RewardedAdLoaded: RewardedAdLoaded;
         /**
-         * The event is fired when a user has watched the click-to-play video ad for a certain time. This can be used to grant the player a reward such as an in-game item or in-game currency. The `RewardedAdGrant` enum will only be triggered once per ad rotation.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#RewardedAdGrant)
          */
         export interface RewardedAdGrant extends globalThis.EnumItem {
@@ -711,8 +733,6 @@ declare namespace Enum {
         }
         export const RewardedAdGrant: RewardedAdGrant;
         /**
-         * The event is fired when a click-to-play video ad is rotated out. This can be used to remove any UI or signage that is promoting the reward.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdEventType#RewardedAdUnloaded)
          */
         export interface RewardedAdUnloaded extends globalThis.EnumItem {
@@ -727,11 +747,13 @@ declare namespace Enum {
     }
     export type AdEventType = AdEventType.VideoLoaded | AdEventType.VideoRemoved | AdEventType.UserCompletedVideo | AdEventType.RewardedAdLoaded | AdEventType.RewardedAdGrant | AdEventType.RewardedAdUnloaded;
     /**
+     * Specifies the format of an ad used with `AdService` methods.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdFormat)
      */
     export namespace AdFormat {
         /**
-         * The format of the rewarded video ad.
+         * A full-screen video ad that plays to completion and rewards the viewer, used as the `adFormat` argument for `AdService` methods.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdFormat#RewardedVideo)
          */
@@ -769,10 +791,14 @@ declare namespace Enum {
     }
     export type AdShape = AdShape.HorizontalRectangle;
     /**
+     * Describes the method by which a player teleports during an immersive ad portal flow.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdTeleportMethod)
      */
     export namespace AdTeleportMethod {
         /**
+         * Default uninitialized sentinel value indicating that no teleport method has been determined yet.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdTeleportMethod#Undefined)
          */
         export interface Undefined extends globalThis.EnumItem {
@@ -782,6 +808,8 @@ declare namespace Enum {
         }
         export const Undefined: Undefined;
         /**
+         * The player teleported forward to the advertiser's destination experience by walking into an `AdPortal`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdTeleportMethod#PortalForward)
          */
         export interface PortalForward extends globalThis.EnumItem {
@@ -791,6 +819,8 @@ declare namespace Enum {
         }
         export const PortalForward: PortalForward;
         /**
+         * The player initiated a return teleport to the publisher's experience by pressing the back button in the in-game menu.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdTeleportMethod#InGameMenuBackButton)
          */
         export interface InGameMenuBackButton extends globalThis.EnumItem {
@@ -800,6 +830,8 @@ declare namespace Enum {
         }
         export const InGameMenuBackButton: InGameMenuBackButton;
         /**
+         * The player initiated a return teleport to the publisher's experience by pressing a back button rendered in the ad destination's UI overlay.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdTeleportMethod#UIBackButton)
          */
         export interface UIBackButton extends globalThis.EnumItem {
@@ -814,10 +846,14 @@ declare namespace Enum {
     }
     export type AdTeleportMethod = AdTeleportMethod.Undefined | AdTeleportMethod.PortalForward | AdTeleportMethod.InGameMenuBackButton | AdTeleportMethod.UIBackButton;
     /**
+     * Describes the type of user-interaction or system event that occurred on the immersive ad UI overlay of an `AdGui`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType)
      */
     export namespace AdUIEventType {
         /**
+         * The player clicked the "Sponsored" label on the ad overlay, which opens the ad disclosure prompt showing advertiser and payer information.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#AdLabelClicked)
          */
         export interface AdLabelClicked extends globalThis.EnumItem {
@@ -827,6 +863,8 @@ declare namespace Enum {
         }
         export const AdLabelClicked: AdLabelClicked;
         /**
+         * The player clicked the volume toggle button on the ad overlay, which mutes or unmutes the video ad audio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#VolumeButtonClicked)
          */
         export interface VolumeButtonClicked extends globalThis.EnumItem {
@@ -836,6 +874,8 @@ declare namespace Enum {
         }
         export const VolumeButtonClicked: VolumeButtonClicked;
         /**
+         * The player clicked the fullscreen toggle button, which smoothly zooms the camera to a centered view of the ad surface and enables audio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#FullscreenButtonClicked)
          */
         export interface FullscreenButtonClicked extends globalThis.EnumItem {
@@ -845,6 +885,8 @@ declare namespace Enum {
         }
         export const FullscreenButtonClicked: FullscreenButtonClicked;
         /**
+         * The player clicked the play button on the ad overlay. If the ad is already in fullscreen, playback resumes; otherwise it enters fullscreen mode which also starts (or resumes) the video.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#PlayButtonClicked)
          */
         export interface PlayButtonClicked extends globalThis.EnumItem {
@@ -854,6 +896,8 @@ declare namespace Enum {
         }
         export const PlayButtonClicked: PlayButtonClicked;
         /**
+         * The player clicked the pause button while a video ad is playing in fullscreen mode, which pauses video playback.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#PauseButtonClicked)
          */
         export interface PauseButtonClicked extends globalThis.EnumItem {
@@ -863,6 +907,8 @@ declare namespace Enum {
         }
         export const PauseButtonClicked: PauseButtonClicked;
         /**
+         * The player clicked the close button on the fullscreen video ad view, which exits fullscreen mode and returns to the normal camera position.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#CloseButtonClicked)
          */
         export interface CloseButtonClicked extends globalThis.EnumItem {
@@ -872,6 +918,8 @@ declare namespace Enum {
         }
         export const CloseButtonClicked: CloseButtonClicked;
         /**
+         * The player clicked the "Why this ad?" link, which displays the EUDSA (European Digital Services Act) disclosure prompt showing the advertiser and payer names for the current ad creative.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#WhyThisAdClicked)
          */
         export interface WhyThisAdClicked extends globalThis.EnumItem {
@@ -881,6 +929,8 @@ declare namespace Enum {
         }
         export const WhyThisAdClicked: WhyThisAdClicked;
         /**
+         * A system-initiated play/resume event that clears the force-pause state and resumes video playback if the stream is open.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#PlayEventTriggered)
          */
         export interface PlayEventTriggered extends globalThis.EnumItem {
@@ -890,6 +940,8 @@ declare namespace Enum {
         }
         export const PlayEventTriggered: PlayEventTriggered;
         /**
+         * A system-initiated pause event, used when the engine needs to force-pause the video (for example, when a dropdown menu opens over the ad). Prevents viewability-based auto-play from resuming playback until a corresponding system event clears that pause.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIEventType#PauseEventTriggered)
          */
         export interface PauseEventTriggered extends globalThis.EnumItem {
@@ -904,10 +956,14 @@ declare namespace Enum {
     }
     export type AdUIEventType = AdUIEventType.AdLabelClicked | AdUIEventType.VolumeButtonClicked | AdUIEventType.FullscreenButtonClicked | AdUIEventType.PlayButtonClicked | AdUIEventType.PauseButtonClicked | AdUIEventType.CloseButtonClicked | AdUIEventType.WhyThisAdClicked | AdUIEventType.PlayEventTriggered | AdUIEventType.PauseEventTriggered;
     /**
+     * Describes the type of ad creative currently rendered by an `AdGui`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIType)
      */
     export namespace AdUIType {
         /**
+         * The `AdGui` has no ad creative loaded and is not rendering ad content.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIType#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -917,6 +973,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * The `AdGui` is rendering a static image ad creative.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIType#Image)
          */
         export interface Image extends globalThis.EnumItem {
@@ -926,6 +984,8 @@ declare namespace Enum {
         }
         export const Image: Image;
         /**
+         * The `AdGui` is rendering a video ad creative.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdUIType#Video)
          */
         export interface Video extends globalThis.EnumItem {
@@ -1006,10 +1066,14 @@ declare namespace Enum {
     }
     export type AdornCullingMode = AdornCullingMode.Automatic | AdornCullingMode.Never;
     /**
+     * Determines the shading material and render pass used to draw a handle adornment.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdornShading)
      */
     export namespace AdornShading {
         /**
+         * Draws the adornment unlit and occluded by scene geometry like an ordinary world object.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdornShading#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -1019,6 +1083,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Draws the adornment lit by scene lighting and occluded by scene geometry.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdornShading#Shaded)
          */
         export interface Shaded extends globalThis.EnumItem {
@@ -1028,6 +1094,8 @@ declare namespace Enum {
         }
         export const Shaded: Shaded;
         /**
+         * Draws the adornment unlit and visible through geometry that would otherwise occlude it.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdornShading#XRay)
          */
         export interface XRay extends globalThis.EnumItem {
@@ -1037,6 +1105,8 @@ declare namespace Enum {
         }
         export const XRay: XRay;
         /**
+         * Draws the adornment lit by scene lighting and visible through geometry that would otherwise occlude it.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdornShading#XRayShaded)
          */
         export interface XRayShaded extends globalThis.EnumItem {
@@ -1046,6 +1116,8 @@ declare namespace Enum {
         }
         export const XRayShaded: XRayShaded;
         /**
+         * Draws the adornment unlit on top of all other geometry with no depth testing.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AdornShading#AlwaysOnTop)
          */
         export interface AlwaysOnTop extends globalThis.EnumItem {
@@ -1060,10 +1132,14 @@ declare namespace Enum {
     }
     export type AdornShading = AdornShading.Default | AdornShading.Shaded | AdornShading.XRay | AdornShading.XRayShaded | AdornShading.AlwaysOnTop;
     /**
+     * Indicates whether a player has completed age verification.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AgeCheckStatus)
      */
     export namespace AgeCheckStatus {
         /**
+         * The player has not yet completed age verification.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AgeCheckStatus#Unchecked)
          */
         export interface Unchecked extends globalThis.EnumItem {
@@ -1073,6 +1149,8 @@ declare namespace Enum {
         }
         export const Unchecked: Unchecked;
         /**
+         * The player has successfully completed age verification.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AgeCheckStatus#Checked)
          */
         export interface Checked extends globalThis.EnumItem {
@@ -1225,6 +1303,8 @@ declare namespace Enum {
      */
     export namespace AnalyticsCustomFieldKeys {
         /**
+         * The first custom field key, used to provide a breakdown dimension in Roblox-provided analytics charts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsCustomFieldKeys#CustomField01)
          */
         export interface CustomField01 extends globalThis.EnumItem {
@@ -1234,6 +1314,8 @@ declare namespace Enum {
         }
         export const CustomField01: CustomField01;
         /**
+         * The second custom field key, used to provide a breakdown dimension in Roblox-provided analytics charts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsCustomFieldKeys#CustomField02)
          */
         export interface CustomField02 extends globalThis.EnumItem {
@@ -1243,6 +1325,8 @@ declare namespace Enum {
         }
         export const CustomField02: CustomField02;
         /**
+         * The third custom field key, used to provide a breakdown dimension in Roblox-provided analytics charts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsCustomFieldKeys#CustomField03)
          */
         export interface CustomField03 extends globalThis.EnumItem {
@@ -1257,6 +1341,8 @@ declare namespace Enum {
     }
     export type AnalyticsCustomFieldKeys = AnalyticsCustomFieldKeys.CustomField01 | AnalyticsCustomFieldKeys.CustomField02 | AnalyticsCustomFieldKeys.CustomField03;
     /**
+     * Describes the type of economic transaction in `AnalyticsService:FireInGameEconomyEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsEconomyAction)
      */
     export namespace AnalyticsEconomyAction {
@@ -1299,6 +1385,8 @@ declare namespace Enum {
     }
     export type AnalyticsEconomyAction = AnalyticsEconomyAction.Default | AnalyticsEconomyAction.Acquire | AnalyticsEconomyAction.Spend;
     /**
+     * Specifies the direction of currency flow in an economy event logged by `AnalyticsService:LogEconomyEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsEconomyFlowType)
      */
     export namespace AnalyticsEconomyFlowType {
@@ -1330,6 +1418,8 @@ declare namespace Enum {
     }
     export type AnalyticsEconomyFlowType = AnalyticsEconomyFlowType.Sink | AnalyticsEconomyFlowType.Source;
     /**
+     * Categorizes the context of an in-experience economic transaction for use with `AnalyticsService:LogEconomyEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsEconomyTransactionType)
      */
     export namespace AnalyticsEconomyTransactionType {
@@ -1405,6 +1495,8 @@ declare namespace Enum {
     }
     export type AnalyticsEconomyTransactionType = AnalyticsEconomyTransactionType.IAP | AnalyticsEconomyTransactionType.Shop | AnalyticsEconomyTransactionType.Gameplay | AnalyticsEconomyTransactionType.ContextualPurchase | AnalyticsEconomyTransactionType.TimedReward | AnalyticsEconomyTransactionType.Onboarding;
     /**
+     * Specifies the severity level of an analytics log event passed to `AnalyticsService:FireLogEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsLogLevel)
      */
     export namespace AnalyticsLogLevel {
@@ -1431,6 +1523,8 @@ declare namespace Enum {
         }
         export const Debug: Debug;
         /**
+         * Used for general informational messages that highlight progress or state changes during normal operation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsLogLevel#Information)
          */
         export interface Information extends globalThis.EnumItem {
@@ -1544,10 +1638,14 @@ declare namespace Enum {
     }
     export type AnalyticsProgressionStatus = AnalyticsProgressionStatus.Default | AnalyticsProgressionStatus.Begin | AnalyticsProgressionStatus.Complete | AnalyticsProgressionStatus.Abandon | AnalyticsProgressionStatus.Fail;
     /**
+     * Specifies the player's progression status in a level-progression event logged by `AnalyticsService:LogProgressionEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsProgressionType)
      */
     export namespace AnalyticsProgressionType {
         /**
+         * A custom progression status for events outside the standard start/fail/complete lifecycle.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsProgressionType#Custom)
          */
         export interface Custom extends globalThis.EnumItem {
@@ -1557,6 +1655,8 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         /**
+         * The player started the level attempt.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsProgressionType#Start)
          */
         export interface Start extends globalThis.EnumItem {
@@ -1566,6 +1666,8 @@ declare namespace Enum {
         }
         export const Start: Start;
         /**
+         * The player failed the level attempt.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsProgressionType#Fail)
          */
         export interface Fail extends globalThis.EnumItem {
@@ -1575,6 +1677,8 @@ declare namespace Enum {
         }
         export const Fail: Fail;
         /**
+         * The player completed the level successfully.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnalyticsProgressionType#Complete)
          */
         export interface Complete extends globalThis.EnumItem {
@@ -1589,10 +1693,59 @@ declare namespace Enum {
     }
     export type AnalyticsProgressionType = AnalyticsProgressionType.Custom | AnalyticsProgressionType.Start | AnalyticsProgressionType.Fail | AnalyticsProgressionType.Complete;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImageScaleType)
+     */
+    export namespace AnimatedImageScaleType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImageScaleType#Stretch)
+         */
+        export interface Stretch extends globalThis.EnumItem {
+            Name: "Stretch";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AnimatedImageScaleType;
+        }
+        export const Stretch: Stretch;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImageScaleType#Tile)
+         */
+        export interface Tile extends globalThis.EnumItem {
+            Name: "Tile";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AnimatedImageScaleType;
+        }
+        export const Tile: Tile;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImageScaleType#Fit)
+         */
+        export interface Fit extends globalThis.EnumItem {
+            Name: "Fit";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AnimatedImageScaleType;
+        }
+        export const Fit: Fit;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatedImageScaleType#Crop)
+         */
+        export interface Crop extends globalThis.EnumItem {
+            Name: "Crop";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.AnimatedImageScaleType;
+        }
+        export const Crop: Crop;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimatedImageScaleType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimatedImageScaleType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimatedImageScaleType | undefined;
+    }
+    export type AnimatedImageScaleType = AnimatedImageScaleType.Stretch | AnimatedImageScaleType.Tile | AnimatedImageScaleType.Fit | AnimatedImageScaleType.Crop;
+    /**
+     * Indicates the current status or final outcome of a video-to-animation conversion started by `AssetService:PromptImportAnimationClipFromVideoAsync()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationClipFromVideoStatus)
      */
     export namespace AnimationClipFromVideoStatus {
         /**
+         * The video-to-animation job is being set up on the server.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationClipFromVideoStatus#Initializing)
          */
         export interface Initializing extends globalThis.EnumItem {
@@ -1602,6 +1755,8 @@ declare namespace Enum {
         }
         export const Initializing: Initializing;
         /**
+         * The job has been queued on the server and is waiting for processing resources to become available.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationClipFromVideoStatus#Pending)
          */
         export interface Pending extends globalThis.EnumItem {
@@ -1611,6 +1766,8 @@ declare namespace Enum {
         }
         export const Pending: Pending;
         /**
+         * The server is actively analyzing the video and extracting motion-capture data to generate the animation clip.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationClipFromVideoStatus#Processing)
          */
         export interface Processing extends globalThis.EnumItem {
@@ -1620,6 +1777,8 @@ declare namespace Enum {
         }
         export const Processing: Processing;
         /**
+         * The server-side video processing encountered an unspecified error.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationClipFromVideoStatus#ErrorGeneric)
          */
         export interface ErrorGeneric extends globalThis.EnumItem {
@@ -1629,6 +1788,8 @@ declare namespace Enum {
         }
         export const ErrorGeneric: ErrorGeneric;
         /**
+         * The video was successfully converted into an `AnimationClip`, which is returned as the second element of the result tuple.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationClipFromVideoStatus#Success)
          */
         export interface Success extends globalThis.EnumItem {
@@ -1638,6 +1799,8 @@ declare namespace Enum {
         }
         export const Success: Success;
         /**
+         * Processing failed because the uploaded video exceeds the maximum allowed duration (15 seconds).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationClipFromVideoStatus#ErrorVideoTooLong)
          */
         export interface ErrorVideoTooLong extends globalThis.EnumItem {
@@ -1647,6 +1810,8 @@ declare namespace Enum {
         }
         export const ErrorVideoTooLong: ErrorVideoTooLong;
         /**
+         * Processing failed because no person could be detected in the video; the video must show a person fully in frame, facing the camera.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationClipFromVideoStatus#ErrorNoPersonDetected)
          */
         export interface ErrorNoPersonDetected extends globalThis.EnumItem {
@@ -1656,6 +1821,8 @@ declare namespace Enum {
         }
         export const ErrorNoPersonDetected: ErrorNoPersonDetected;
         /**
+         * Processing failed because the video is too shaky for reliable motion capture; a more stable recording is required.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationClipFromVideoStatus#ErrorVideoUnstable)
          */
         export interface ErrorVideoUnstable extends globalThis.EnumItem {
@@ -1665,6 +1832,8 @@ declare namespace Enum {
         }
         export const ErrorVideoUnstable: ErrorVideoUnstable;
         /**
+         * Processing could not be completed in time, typically due to high request volume on the video processing backend.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationClipFromVideoStatus#Timeout)
          */
         export interface Timeout extends globalThis.EnumItem {
@@ -1674,6 +1843,8 @@ declare namespace Enum {
         }
         export const Timeout: Timeout;
         /**
+         * The player declined the consent prompt or provided no input, so the video upload was not started.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationClipFromVideoStatus#Cancelled)
          */
         export interface Cancelled extends globalThis.EnumItem {
@@ -1683,6 +1854,8 @@ declare namespace Enum {
         }
         export const Cancelled: Cancelled;
         /**
+         * Processing failed because more than one person was detected in the video; the video must contain a single person fully in frame.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationClipFromVideoStatus#ErrorMultiplePeople)
          */
         export interface ErrorMultiplePeople extends globalThis.EnumItem {
@@ -1692,6 +1865,8 @@ declare namespace Enum {
         }
         export const ErrorMultiplePeople: ErrorMultiplePeople;
         /**
+         * The client-side video upload failed before the video reached the processing backend.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationClipFromVideoStatus#ErrorUploadingVideo)
          */
         export interface ErrorUploadingVideo extends globalThis.EnumItem {
@@ -1732,6 +1907,50 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationNodeBlend2DInputMode | undefined;
     }
     export type AnimationNodeBlend2DInputMode = AnimationNodeBlend2DInputMode.Cartesian | AnimationNodeBlend2DInputMode.Polar;
+    /**
+     * Specifies how an `AnimationNodeType.OneShotNode` combines its one-shot pose with its base pose.
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeBlendMode)
+     */
+    export namespace AnimationNodeBlendMode {
+        /**
+         * Composites the one-shot pose on top of the base pose, replacing it by the current blend weight.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeBlendMode#Over)
+         */
+        export interface Over extends globalThis.EnumItem {
+            Name: "Over";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AnimationNodeBlendMode;
+        }
+        export const Over: Over;
+        /**
+         * Adds the one-shot pose to the base pose as an additive layer scaled by the current blend weight.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeBlendMode#Add)
+         */
+        export interface Add extends globalThis.EnumItem {
+            Name: "Add";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AnimationNodeBlendMode;
+        }
+        export const Add: Add;
+        /**
+         * Subtracts the one-shot pose from the base pose scaled by the current blend weight.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeBlendMode#Subtract)
+         */
+        export interface Subtract extends globalThis.EnumItem {
+            Name: "Subtract";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AnimationNodeBlendMode;
+        }
+        export const Subtract: Subtract;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationNodeBlendMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationNodeBlendMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationNodeBlendMode | undefined;
+    }
+    export type AnimationNodeBlendMode = AnimationNodeBlendMode.Over | AnimationNodeBlendMode.Add | AnimationNodeBlendMode.Subtract;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeInterruptible)
      */
@@ -1877,10 +2096,41 @@ declare namespace Enum {
     }
     export type AnimationNodeTransitionType = AnimationNodeTransitionType.CrossFade | AnimationNodeTransitionType.InertialBlend | AnimationNodeTransitionType.DeadBlend;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeTransitionWhen)
+     */
+    export namespace AnimationNodeTransitionWhen {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeTransitionWhen#Finished)
+         */
+        export interface Finished extends globalThis.EnumItem {
+            Name: "Finished";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AnimationNodeTransitionWhen;
+        }
+        export const Finished: Finished;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeTransitionWhen#BeforeFinished)
+         */
+        export interface BeforeFinished extends globalThis.EnumItem {
+            Name: "BeforeFinished";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AnimationNodeTransitionWhen;
+        }
+        export const BeforeFinished: BeforeFinished;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationNodeTransitionWhen>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationNodeTransitionWhen | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationNodeTransitionWhen | undefined;
+    }
+    export type AnimationNodeTransitionWhen = AnimationNodeTransitionWhen.Finished | AnimationNodeTransitionWhen.BeforeFinished;
+    /**
+     * Specifies the type of an animation graph node, determining how it processes or combines animation data.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType)
      */
     export namespace AnimationNodeType {
         /**
+         * The default unassigned type indicating a node has not been configured.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#InvalidNode)
          */
         export interface InvalidNode extends globalThis.EnumItem {
@@ -1890,6 +2140,8 @@ declare namespace Enum {
         }
         export const InvalidNode: InvalidNode;
         /**
+         * An additive blend node that layers an additive pose on top of a base pose.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#AddNode)
          */
         export interface AddNode extends globalThis.EnumItem {
@@ -1899,6 +2151,8 @@ declare namespace Enum {
         }
         export const AddNode: AddNode;
         /**
+         * A layering node that composites an overlay pose on top of a base pose using per-joint masking.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#OverNode)
          */
         export interface OverNode extends globalThis.EnumItem {
@@ -1908,6 +2162,8 @@ declare namespace Enum {
         }
         export const OverNode: OverNode;
         /**
+         * A blend node that interpolates between multiple inputs along a single numeric axis.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#Blend1DNode)
          */
         export interface Blend1DNode extends globalThis.EnumItem {
@@ -1917,6 +2173,8 @@ declare namespace Enum {
         }
         export const Blend1DNode: Blend1DNode;
         /**
+         * A blend node that interpolates between multiple inputs using a two-dimensional position.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#Blend2DNode)
          */
         export interface Blend2DNode extends globalThis.EnumItem {
@@ -1926,6 +2184,8 @@ declare namespace Enum {
         }
         export const Blend2DNode: Blend2DNode;
         /**
+         * A leaf node that plays back an animation clip asset.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#ClipNode)
          */
         export interface ClipNode extends globalThis.EnumItem {
@@ -1935,6 +2195,8 @@ declare namespace Enum {
         }
         export const ClipNode: ClipNode;
         /**
+         * The terminal output node of an animation graph that receives the final pose.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#GraphOutput)
          */
         export interface GraphOutput extends globalThis.EnumItem {
@@ -1944,6 +2206,8 @@ declare namespace Enum {
         }
         export const GraphOutput: GraphOutput;
         /**
+         * A node that filters its input pose through a per-joint weight mask.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#MaskNode)
          */
         export interface MaskNode extends globalThis.EnumItem {
@@ -1953,6 +2217,8 @@ declare namespace Enum {
         }
         export const MaskNode: MaskNode;
         /**
+         * A state node that plays the highest-priority input whose trigger condition is true.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#PrioritySelectNode)
          */
         export interface PrioritySelectNode extends globalThis.EnumItem {
@@ -1962,6 +2228,8 @@ declare namespace Enum {
         }
         export const PrioritySelectNode: PrioritySelectNode;
         /**
+         * A sequence node that plays its inputs in a weighted random order.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#RandomSequenceNode)
          */
         export interface RandomSequenceNode extends globalThis.EnumItem {
@@ -1971,6 +2239,8 @@ declare namespace Enum {
         }
         export const RandomSequenceNode: RandomSequenceNode;
         /**
+         * A state node that plays whichever input is chosen by a string selection parameter.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#SelectNode)
          */
         export interface SelectNode extends globalThis.EnumItem {
@@ -1980,6 +2250,8 @@ declare namespace Enum {
         }
         export const SelectNode: SelectNode;
         /**
+         * A node that plays its inputs one after another in order, optionally looping.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#SequenceNode)
          */
         export interface SequenceNode extends globalThis.EnumItem {
@@ -1989,6 +2261,8 @@ declare namespace Enum {
         }
         export const SequenceNode: SequenceNode;
         /**
+         * A node that scales the playback speed of its input.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#SpeedNode)
          */
         export interface SpeedNode extends globalThis.EnumItem {
@@ -1998,6 +2272,8 @@ declare namespace Enum {
         }
         export const SpeedNode: SpeedNode;
         /**
+         * A blend node that subtracts one pose from another to produce a difference pose.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#SubtractNode)
          */
         export interface SubtractNode extends globalThis.EnumItem {
@@ -2006,11 +2282,33 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.AnimationNodeType;
         }
         export const SubtractNode: SubtractNode;
+        /**
+         * A layering node that plays a one-shot pose over a looping base pose on trigger, blending it in and back out.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#OneShotNode)
+         */
+        export interface OneShotNode extends globalThis.EnumItem {
+            Name: "OneShotNode";
+            Value: 14;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const OneShotNode: OneShotNode;
+        /**
+         * A node that selects and transitions between animation states according to a state machine definition.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeType#StateMachineNode)
+         */
+        export interface StateMachineNode extends globalThis.EnumItem {
+            Name: "StateMachineNode";
+            Value: 16;
+            EnumType: typeof globalThis.Enum.AnimationNodeType;
+        }
+        export const StateMachineNode: StateMachineNode;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationNodeType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationNodeType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationNodeType | undefined;
     }
-    export type AnimationNodeType = AnimationNodeType.InvalidNode | AnimationNodeType.AddNode | AnimationNodeType.OverNode | AnimationNodeType.Blend1DNode | AnimationNodeType.Blend2DNode | AnimationNodeType.ClipNode | AnimationNodeType.GraphOutput | AnimationNodeType.MaskNode | AnimationNodeType.PrioritySelectNode | AnimationNodeType.RandomSequenceNode | AnimationNodeType.SelectNode | AnimationNodeType.SequenceNode | AnimationNodeType.SpeedNode | AnimationNodeType.SubtractNode;
+    export type AnimationNodeType = AnimationNodeType.InvalidNode | AnimationNodeType.AddNode | AnimationNodeType.OverNode | AnimationNodeType.Blend1DNode | AnimationNodeType.Blend2DNode | AnimationNodeType.ClipNode | AnimationNodeType.GraphOutput | AnimationNodeType.MaskNode | AnimationNodeType.PrioritySelectNode | AnimationNodeType.RandomSequenceNode | AnimationNodeType.SelectNode | AnimationNodeType.SequenceNode | AnimationNodeType.SpeedNode | AnimationNodeType.SubtractNode | AnimationNodeType.OneShotNode | AnimationNodeType.StateMachineNode;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationNodeWaitFor)
      */
@@ -2127,6 +2425,33 @@ declare namespace Enum {
     }
     export type AnimationPriority = AnimationPriority.Idle | AnimationPriority.Movement | AnimationPriority.Action | AnimationPriority.Action2 | AnimationPriority.Action3 | AnimationPriority.Action4 | AnimationPriority.Core;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationValueNodeType)
+     */
+    export namespace AnimationValueNodeType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationValueNodeType#Invalid)
+         */
+        export interface Invalid extends globalThis.EnumItem {
+            Name: "Invalid";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AnimationValueNodeType;
+        }
+        export const Invalid: Invalid;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationValueNodeType#Expression)
+         */
+        export interface Expression extends globalThis.EnumItem {
+            Name: "Expression";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AnimationValueNodeType;
+        }
+        export const Expression: Expression;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationValueNodeType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationValueNodeType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationValueNodeType | undefined;
+    }
+    export type AnimationValueNodeType = AnimationValueNodeType.Invalid | AnimationValueNodeType.Expression;
+    /**
      * Animation Retargeting setting.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatorRetargetingMode)
@@ -2144,7 +2469,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * Retargeting disabled.
+         * Animation retargeting is off; animations play exactly as authored without adapting joint transforms to the character's body proportions.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatorRetargetingMode#Disabled)
          */
@@ -2155,7 +2480,7 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
-         * Retargeting enabled.
+         * Animation retargeting is always active; the Animator adapts animations to the character's body proportions regardless of the platform default.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimatorRetargetingMode#Enabled)
          */
@@ -2429,10 +2754,14 @@ declare namespace Enum {
     }
     export type AntiAliasing = AntiAliasing.Disabled | AntiAliasing.Enabled;
     /**
+     * Describes the current lifecycle state of the Roblox application as reported by `AppLifecycleObserverService:GetCurrentState()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppLifecycleManagerState)
      */
     export namespace AppLifecycleManagerState {
         /**
+         * The application has not yet started or is shutting down. This is the initial state before the lifecycle manager is created and the final state entered during application termination.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppLifecycleManagerState#Detached)
          */
         export interface Detached extends globalThis.EnumItem {
@@ -2442,6 +2771,8 @@ declare namespace Enum {
         }
         export const Detached: Detached;
         /**
+         * The application is in the foreground and has input focus. This is the normal running state where the user is actively interacting with the experience.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppLifecycleManagerState#Active)
          */
         export interface Active extends globalThis.EnumItem {
@@ -2451,6 +2782,8 @@ declare namespace Enum {
         }
         export const Active: Active;
         /**
+         * The application is visible but does not have input focus. On iOS this occurs during transitions such as incoming calls or notification center pull-down; on macOS it corresponds to the application resigning active status.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppLifecycleManagerState#Inactive)
          */
         export interface Inactive extends globalThis.EnumItem {
@@ -2460,6 +2793,8 @@ declare namespace Enum {
         }
         export const Inactive: Inactive;
         /**
+         * The application is fully in the background and not visible to the user. On mobile platforms this corresponds to the app being backgrounded; on desktop it corresponds to the window being minimized or fully occluded.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppLifecycleManagerState#Hidden)
          */
         export interface Hidden extends globalThis.EnumItem {
@@ -2672,10 +3007,14 @@ declare namespace Enum {
     }
     export type AppShellFeature = AppShellFeature.None | AppShellFeature.Chat | AppShellFeature.AvatarEditor | AppShellFeature.GamePage | AppShellFeature.HomePage | AppShellFeature.More | AppShellFeature.Landing | AppShellFeature.WatchPage;
     /**
+     * Indicates the result of an application update check performed by `AppUpdateService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppUpdateStatus)
      */
     export namespace AppUpdateStatus {
         /**
+         * The default state before any update check has been performed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppUpdateStatus#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -2685,6 +3024,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
+         * The platform does not support application updates.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppUpdateStatus#NotSupported)
          */
         export interface NotSupported extends globalThis.EnumItem {
@@ -2694,6 +3035,8 @@ declare namespace Enum {
         }
         export const NotSupported: NotSupported;
         /**
+         * The update check failed due to an error such as a network failure or missing initialization.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppUpdateStatus#Failed)
          */
         export interface Failed extends globalThis.EnumItem {
@@ -2703,6 +3046,8 @@ declare namespace Enum {
         }
         export const Failed: Failed;
         /**
+         * No update is currently required; the client is already running the latest version for its channel.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppUpdateStatus#NotAvailable)
          */
         export interface NotAvailable extends globalThis.EnumItem {
@@ -2712,6 +3057,8 @@ declare namespace Enum {
         }
         export const NotAvailable: NotAvailable;
         /**
+         * An update is available through a public channel or production deployment.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppUpdateStatus#Available)
          */
         export interface Available extends globalThis.EnumItem {
@@ -2721,6 +3068,8 @@ declare namespace Enum {
         }
         export const Available: Available;
         /**
+         * An update is available because the user is explicitly bound to a private or public channel.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppUpdateStatus#AvailableBoundChannel)
          */
         export interface AvailableBoundChannel extends globalThis.EnumItem {
@@ -2730,6 +3079,8 @@ declare namespace Enum {
         }
         export const AvailableBoundChannel: AvailableBoundChannel;
         /**
+         * An update is available because the user opted into a beta program backed by a channel.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AppUpdateStatus#AvailableBetaProgram)
          */
         export interface AvailableBetaProgram extends globalThis.EnumItem {
@@ -2743,6 +3094,39 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AppUpdateStatus | undefined;
     }
     export type AppUpdateStatus = AppUpdateStatus.Unknown | AppUpdateStatus.NotSupported | AppUpdateStatus.Failed | AppUpdateStatus.NotAvailable | AppUpdateStatus.Available | AppUpdateStatus.AvailableBoundChannel | AppUpdateStatus.AvailableBetaProgram;
+    /**
+     * Controls which part of a parent UI element a `UIShadow` applies its drop shadow to.
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ApplyShadowMode)
+     */
+    export namespace ApplyShadowMode {
+        /**
+         * The shadow is applied to the parent element's frame.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ApplyShadowMode#Shape)
+         */
+        export interface Shape extends globalThis.EnumItem {
+            Name: "Shape";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ApplyShadowMode;
+        }
+        export const Shape: Shape;
+        /**
+         * The shadow is applied to the parent element's text; no-op if the parent is not a text element.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ApplyShadowMode#Text)
+         */
+        export interface Text extends globalThis.EnumItem {
+            Name: "Text";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ApplyShadowMode;
+        }
+        export const Text: Text;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ApplyShadowMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ApplyShadowMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ApplyShadowMode | undefined;
+    }
+    export type ApplyShadowMode = ApplyShadowMode.Shape | ApplyShadowMode.Text;
     /**
      * Used by `UIStroke.ApplyStrokeMode` to determine where to apply the stroke.
      *
@@ -2810,10 +3194,14 @@ declare namespace Enum {
     }
     export type AspectType = AspectType.FitWithinMaxSize | AspectType.ScaleWithParentSize;
     /**
+     * Indicates whether an asset is owned by an individual user or a group.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetCreatorType)
      */
     export namespace AssetCreatorType {
         /**
+         * The asset is owned by an individual user; the accompanying creator ID is a user ID.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetCreatorType#User)
          */
         export interface User extends globalThis.EnumItem {
@@ -2823,6 +3211,8 @@ declare namespace Enum {
         }
         export const User: User;
         /**
+         * The asset is owned by a group; the accompanying creator ID is a group ID.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetCreatorType#Group)
          */
         export interface Group extends globalThis.EnumItem {
@@ -2837,6 +3227,8 @@ declare namespace Enum {
     }
     export type AssetCreatorType = AssetCreatorType.User | AssetCreatorType.Group;
     /**
+     * Describes the download state of an asset requested through `ContentProvider`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetFetchStatus)
      */
     export namespace AssetFetchStatus {
@@ -2945,6 +3337,8 @@ declare namespace Enum {
         }
         export const Image: Image;
         /**
+         * The asset is a classic t-shirt (a flat image applied to the avatar's torso).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#TShirt)
          */
         export interface TShirt extends globalThis.EnumItem {
@@ -3387,6 +3781,8 @@ declare namespace Enum {
         }
         export const PoseAnimation: PoseAnimation;
         /**
+         * The asset is an ear accessory.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#EarAccessory)
          */
         export interface EarAccessory extends globalThis.EnumItem {
@@ -3396,6 +3792,8 @@ declare namespace Enum {
         }
         export const EarAccessory: EarAccessory;
         /**
+         * The asset is an eye accessory.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#EyeAccessory)
          */
         export interface EyeAccessory extends globalThis.EnumItem {
@@ -3427,6 +3825,8 @@ declare namespace Enum {
         }
         export const Video: Video;
         /**
+         * The asset is a layered clothing accessory representing a t-shirt.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#TShirtAccessory)
          */
         export interface TShirtAccessory extends globalThis.EnumItem {
@@ -3440,6 +3840,8 @@ declare namespace Enum {
          */
         export const TeeShirtAccessory: TShirtAccessory;
         /**
+         * The asset is a layered clothing accessory representing a shirt.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#ShirtAccessory)
          */
         export interface ShirtAccessory extends globalThis.EnumItem {
@@ -3449,6 +3851,8 @@ declare namespace Enum {
         }
         export const ShirtAccessory: ShirtAccessory;
         /**
+         * The asset is a layered clothing accessory representing pants.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#PantsAccessory)
          */
         export interface PantsAccessory extends globalThis.EnumItem {
@@ -3458,6 +3862,8 @@ declare namespace Enum {
         }
         export const PantsAccessory: PantsAccessory;
         /**
+         * The asset is a layered clothing accessory representing a jacket.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#JacketAccessory)
          */
         export interface JacketAccessory extends globalThis.EnumItem {
@@ -3467,6 +3873,8 @@ declare namespace Enum {
         }
         export const JacketAccessory: JacketAccessory;
         /**
+         * The asset is a layered clothing accessory representing a sweater.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#SweaterAccessory)
          */
         export interface SweaterAccessory extends globalThis.EnumItem {
@@ -3476,6 +3884,8 @@ declare namespace Enum {
         }
         export const SweaterAccessory: SweaterAccessory;
         /**
+         * The asset is a layered clothing accessory representing shorts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#ShortsAccessory)
          */
         export interface ShortsAccessory extends globalThis.EnumItem {
@@ -3485,6 +3895,8 @@ declare namespace Enum {
         }
         export const ShortsAccessory: ShortsAccessory;
         /**
+         * The asset is a layered clothing accessory representing a left shoe.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#LeftShoeAccessory)
          */
         export interface LeftShoeAccessory extends globalThis.EnumItem {
@@ -3494,6 +3906,8 @@ declare namespace Enum {
         }
         export const LeftShoeAccessory: LeftShoeAccessory;
         /**
+         * The asset is a layered clothing accessory representing a right shoe.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#RightShoeAccessory)
          */
         export interface RightShoeAccessory extends globalThis.EnumItem {
@@ -3503,6 +3917,8 @@ declare namespace Enum {
         }
         export const RightShoeAccessory: RightShoeAccessory;
         /**
+         * The asset is a layered clothing accessory representing a dress or skirt.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#DressSkirtAccessory)
          */
         export interface DressSkirtAccessory extends globalThis.EnumItem {
@@ -3512,6 +3928,8 @@ declare namespace Enum {
         }
         export const DressSkirtAccessory: DressSkirtAccessory;
         /**
+         * The asset is a font family used for text rendering.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#FontFamily)
          */
         export interface FontFamily extends globalThis.EnumItem {
@@ -3521,6 +3939,8 @@ declare namespace Enum {
         }
         export const FontFamily: FontFamily;
         /**
+         * The asset is a layered eyebrow accessory.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#EyebrowAccessory)
          */
         export interface EyebrowAccessory extends globalThis.EnumItem {
@@ -3530,6 +3950,8 @@ declare namespace Enum {
         }
         export const EyebrowAccessory: EyebrowAccessory;
         /**
+         * The asset is a layered eyelash accessory.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#EyelashAccessory)
          */
         export interface EyelashAccessory extends globalThis.EnumItem {
@@ -3539,6 +3961,8 @@ declare namespace Enum {
         }
         export const EyelashAccessory: EyelashAccessory;
         /**
+         * The asset is a mood animation that defines a static facial expression for a character.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#MoodAnimation)
          */
         export interface MoodAnimation extends globalThis.EnumItem {
@@ -3548,6 +3972,8 @@ declare namespace Enum {
         }
         export const MoodAnimation: MoodAnimation;
         /**
+         * The asset is a head with facial animation support.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#DynamicHead)
          */
         export interface DynamicHead extends globalThis.EnumItem {
@@ -3557,6 +3983,8 @@ declare namespace Enum {
         }
         export const DynamicHead: DynamicHead;
         /**
+         * The asset is face makeup applied to a character's head via texture transfer.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#FaceMakeup)
          */
         export interface FaceMakeup extends globalThis.EnumItem {
@@ -3566,6 +3994,8 @@ declare namespace Enum {
         }
         export const FaceMakeup: FaceMakeup;
         /**
+         * The asset is lip makeup applied to a character's face via texture transfer.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#LipMakeup)
          */
         export interface LipMakeup extends globalThis.EnumItem {
@@ -3575,6 +4005,8 @@ declare namespace Enum {
         }
         export const LipMakeup: LipMakeup;
         /**
+         * The asset is eye makeup applied to a character's face via texture transfer.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#EyeMakeup)
          */
         export interface EyeMakeup extends globalThis.EnumItem {
@@ -3584,15 +4016,8 @@ declare namespace Enum {
         }
         export const EyeMakeup: EyeMakeup;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#VoxelFragment)
-         */
-        export interface VoxelFragment extends globalThis.EnumItem {
-            Name: "VoxelFragment";
-            Value: 91;
-            EnumType: typeof globalThis.Enum.AssetType;
-        }
-        export const VoxelFragment: VoxelFragment;
-        /**
+         * The asset is an avatar background used as a scene backdrop in avatar previews.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#AvatarBackground)
          */
         export interface AvatarBackground extends globalThis.EnumItem {
@@ -3602,6 +4027,8 @@ declare namespace Enum {
         }
         export const AvatarBackground: AvatarBackground;
         /**
+         * The asset is a text document.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#TextDocument)
          */
         export interface TextDocument extends globalThis.EnumItem {
@@ -3610,11 +4037,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.AssetType;
         }
         export const TextDocument: TextDocument;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AssetType#AnimatedImage)
+         */
+        export interface AnimatedImage extends globalThis.EnumItem {
+            Name: "AnimatedImage";
+            Value: 95;
+            EnumType: typeof globalThis.Enum.AssetType;
+        }
+        export const AnimatedImage: AnimatedImage;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AssetType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AssetType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AssetType | undefined;
     }
-    export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.FontFamily | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.MoodAnimation | AssetType.DynamicHead | AssetType.FaceMakeup | AssetType.LipMakeup | AssetType.EyeMakeup | AssetType.VoxelFragment | AssetType.AvatarBackground | AssetType.TextDocument;
+    export type AssetType = AssetType.Image | AssetType.TShirt | AssetType.Audio | AssetType.Mesh | AssetType.Lua | AssetType.Hat | AssetType.Place | AssetType.Model | AssetType.Shirt | AssetType.Pants | AssetType.Decal | AssetType.Head | AssetType.Face | AssetType.Gear | AssetType.Badge | AssetType.Animation | AssetType.Torso | AssetType.RightArm | AssetType.LeftArm | AssetType.LeftLeg | AssetType.RightLeg | AssetType.Package | AssetType.GamePass | AssetType.Plugin | AssetType.MeshPart | AssetType.HairAccessory | AssetType.FaceAccessory | AssetType.NeckAccessory | AssetType.ShoulderAccessory | AssetType.FrontAccessory | AssetType.BackAccessory | AssetType.WaistAccessory | AssetType.ClimbAnimation | AssetType.DeathAnimation | AssetType.FallAnimation | AssetType.IdleAnimation | AssetType.JumpAnimation | AssetType.RunAnimation | AssetType.SwimAnimation | AssetType.WalkAnimation | AssetType.PoseAnimation | AssetType.EarAccessory | AssetType.EyeAccessory | AssetType.EmoteAnimation | AssetType.Video | AssetType.TShirtAccessory | AssetType.ShirtAccessory | AssetType.PantsAccessory | AssetType.JacketAccessory | AssetType.SweaterAccessory | AssetType.ShortsAccessory | AssetType.LeftShoeAccessory | AssetType.RightShoeAccessory | AssetType.DressSkirtAccessory | AssetType.FontFamily | AssetType.EyebrowAccessory | AssetType.EyelashAccessory | AssetType.MoodAnimation | AssetType.DynamicHead | AssetType.FaceMakeup | AssetType.LipMakeup | AssetType.EyeMakeup | AssetType.AvatarBackground | AssetType.TextDocument | AssetType.AnimatedImage;
     /**
      * Determines the asset type verification mode.
      *
@@ -3935,6 +4371,66 @@ declare namespace Enum {
     }
     export type AudioFilterType = AudioFilterType.Peak | AudioFilterType.LowShelf | AudioFilterType.HighShelf | AudioFilterType.Lowpass12dB | AudioFilterType.Lowpass24dB | AudioFilterType.Lowpass48dB | AudioFilterType.Highpass12dB | AudioFilterType.Highpass24dB | AudioFilterType.Highpass48dB | AudioFilterType.Bandpass | AudioFilterType.Notch | AudioFilterType.Lowpass6dB;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioPositionType)
+     */
+    export namespace AudioPositionType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioPositionType#Parent)
+         */
+        export interface Parent extends globalThis.EnumItem {
+            Name: "Parent";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AudioPositionType;
+        }
+        export const Parent: Parent;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioPositionType#Instance)
+         */
+        export interface Instance extends globalThis.EnumItem {
+            Name: "Instance";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AudioPositionType;
+        }
+        export const Instance: Instance;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioPositionType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AudioPositionType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioPositionType | undefined;
+    }
+    export type AudioPositionType = AudioPositionType.Parent | AudioPositionType.Instance;
+    /**
+     * Describes the numeric format used to represent individual audio samples.
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSampleFormat)
+     */
+    export namespace AudioSampleFormat {
+        /**
+         * Samples are represented as 16-bit signed integers, ranging from `-32768` to `32767`.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSampleFormat#Int16)
+         */
+        export interface Int16 extends globalThis.EnumItem {
+            Name: "Int16";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.AudioSampleFormat;
+        }
+        export const Int16: Int16;
+        /**
+         * Samples are represented as 32-bit floating-point numbers, typically ranging from `-1.0` to `0`.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSampleFormat#Float32)
+         */
+        export interface Float32 extends globalThis.EnumItem {
+            Name: "Float32";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AudioSampleFormat;
+        }
+        export const Float32: Float32;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioSampleFormat>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AudioSampleFormat | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioSampleFormat | undefined;
+    }
+    export type AudioSampleFormat = AudioSampleFormat.Int16 | AudioSampleFormat.Float32;
+    /**
      * Enum which determines how detailed audio simulation should be for `AudioEmitters` and `AudioListeners`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSimulationFidelity)
@@ -3967,6 +4463,69 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioSimulationFidelity | undefined;
     }
     export type AudioSimulationFidelity = AudioSimulationFidelity.None | AudioSimulationFidelity.Automatic;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType)
+     */
+    export namespace AudioSortType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#Relevance)
+         */
+        export interface Relevance extends globalThis.EnumItem {
+            Name: "Relevance";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.AudioSortType;
+        }
+        export const Relevance: Relevance;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#MostUsed)
+         */
+        export interface MostUsed extends globalThis.EnumItem {
+            Name: "MostUsed";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AudioSortType;
+        }
+        export const MostUsed: MostUsed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#Trending)
+         */
+        export interface Trending extends globalThis.EnumItem {
+            Name: "Trending";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.AudioSortType;
+        }
+        export const Trending: Trending;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#RecentlyCreated)
+         */
+        export interface RecentlyCreated extends globalThis.EnumItem {
+            Name: "RecentlyCreated";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.AudioSortType;
+        }
+        export const RecentlyCreated: RecentlyCreated;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#ShortestToLongest)
+         */
+        export interface ShortestToLongest extends globalThis.EnumItem {
+            Name: "ShortestToLongest";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.AudioSortType;
+        }
+        export const ShortestToLongest: ShortestToLongest;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#LongestToShortest)
+         */
+        export interface LongestToShortest extends globalThis.EnumItem {
+            Name: "LongestToShortest";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.AudioSortType;
+        }
+        export const LongestToShortest: LongestToShortest;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AudioSortType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AudioSortType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AudioSortType | undefined;
+    }
+    export type AudioSortType = AudioSortType.Relevance | AudioSortType.MostUsed | AudioSortType.Trending | AudioSortType.RecentlyCreated | AudioSortType.ShortestToLongest | AudioSortType.LongestToShortest;
     /**
      * The categorization of an audio asset.
      *
@@ -4007,6 +4566,8 @@ declare namespace Enum {
      */
     export namespace AudioWindowSize {
         /**
+         * The smallest buffer size, providing the lowest latency at the cost of frequency resolution.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioWindowSize#Small)
          */
         export interface Small extends globalThis.EnumItem {
@@ -4016,6 +4577,8 @@ declare namespace Enum {
         }
         export const Small: Small;
         /**
+         * A mid-sized buffer that balances frequency resolution and latency.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioWindowSize#Medium)
          */
         export interface Medium extends globalThis.EnumItem {
@@ -4025,6 +4588,8 @@ declare namespace Enum {
         }
         export const Medium: Medium;
         /**
+         * The largest buffer size, providing higher frequency resolution at the cost of more latency.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioWindowSize#Large)
          */
         export interface Large extends globalThis.EnumItem {
@@ -4072,10 +4637,14 @@ declare namespace Enum {
     }
     export type AuthorityMode = AuthorityMode.Server | AuthorityMode.Automatic;
     /**
+     * Specifies how Roblox Studio automatically indents lines in the script editor.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AutoIndentRule)
      */
     export namespace AutoIndentRule {
         /**
+         * Disables automatic indentation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AutoIndentRule#Off)
          */
         export interface Off extends globalThis.EnumItem {
@@ -4085,6 +4654,8 @@ declare namespace Enum {
         }
         export const Off: Off;
         /**
+         * Indents new lines according to the script's block structure.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AutoIndentRule#Absolute)
          */
         export interface Absolute extends globalThis.EnumItem {
@@ -4094,6 +4665,8 @@ declare namespace Enum {
         }
         export const Absolute: Absolute;
         /**
+         * Indents new lines according to the script's block structure and the indentation of the reference line.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AutoIndentRule#Relative)
          */
         export interface Relative extends globalThis.EnumItem {
@@ -4569,6 +5142,8 @@ declare namespace Enum {
         }
         export const DressSkirtAccessory: DressSkirtAccessory;
         /**
+         * A layered eyebrow accessory.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarAssetType#EyebrowAccessory)
          */
         export interface EyebrowAccessory extends globalThis.EnumItem {
@@ -4578,6 +5153,8 @@ declare namespace Enum {
         }
         export const EyebrowAccessory: EyebrowAccessory;
         /**
+         * A layered eyelash accessory.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarAssetType#EyelashAccessory)
          */
         export interface EyelashAccessory extends globalThis.EnumItem {
@@ -4587,6 +5164,8 @@ declare namespace Enum {
         }
         export const EyelashAccessory: EyelashAccessory;
         /**
+         * A mood animation that drives a character's facial expression.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarAssetType#MoodAnimation)
          */
         export interface MoodAnimation extends globalThis.EnumItem {
@@ -4596,6 +5175,8 @@ declare namespace Enum {
         }
         export const MoodAnimation: MoodAnimation;
         /**
+         * A head with facial animation support.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarAssetType#DynamicHead)
          */
         export interface DynamicHead extends globalThis.EnumItem {
@@ -4605,6 +5186,8 @@ declare namespace Enum {
         }
         export const DynamicHead: DynamicHead;
         /**
+         * Face makeup applied to a character's head.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarAssetType#FaceMakeup)
          */
         export interface FaceMakeup extends globalThis.EnumItem {
@@ -4614,6 +5197,8 @@ declare namespace Enum {
         }
         export const FaceMakeup: FaceMakeup;
         /**
+         * Lip makeup applied to a character's face.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarAssetType#LipMakeup)
          */
         export interface LipMakeup extends globalThis.EnumItem {
@@ -4623,6 +5208,8 @@ declare namespace Enum {
         }
         export const LipMakeup: LipMakeup;
         /**
+         * Eye makeup applied to a character's face.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarAssetType#EyeMakeup)
          */
         export interface EyeMakeup extends globalThis.EnumItem {
@@ -4632,6 +5219,8 @@ declare namespace Enum {
         }
         export const EyeMakeup: EyeMakeup;
         /**
+         * A 2D image background displayed behind a user's avatar on their profile and thumbnail surfaces.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarAssetType#AvatarBackground)
          */
         export interface AvatarBackground extends globalThis.EnumItem {
@@ -4646,10 +5235,14 @@ declare namespace Enum {
     }
     export type AvatarAssetType = AvatarAssetType.TShirt | AvatarAssetType.Hat | AvatarAssetType.Shirt | AvatarAssetType.Pants | AvatarAssetType.Head | AvatarAssetType.Face | AvatarAssetType.Gear | AvatarAssetType.Torso | AvatarAssetType.RightArm | AvatarAssetType.LeftArm | AvatarAssetType.LeftLeg | AvatarAssetType.RightLeg | AvatarAssetType.HairAccessory | AvatarAssetType.FaceAccessory | AvatarAssetType.NeckAccessory | AvatarAssetType.ShoulderAccessory | AvatarAssetType.FrontAccessory | AvatarAssetType.BackAccessory | AvatarAssetType.WaistAccessory | AvatarAssetType.ClimbAnimation | AvatarAssetType.FallAnimation | AvatarAssetType.IdleAnimation | AvatarAssetType.JumpAnimation | AvatarAssetType.RunAnimation | AvatarAssetType.SwimAnimation | AvatarAssetType.WalkAnimation | AvatarAssetType.EmoteAnimation | AvatarAssetType.TShirtAccessory | AvatarAssetType.ShirtAccessory | AvatarAssetType.PantsAccessory | AvatarAssetType.JacketAccessory | AvatarAssetType.SweaterAccessory | AvatarAssetType.ShortsAccessory | AvatarAssetType.LeftShoeAccessory | AvatarAssetType.RightShoeAccessory | AvatarAssetType.DressSkirtAccessory | AvatarAssetType.EyebrowAccessory | AvatarAssetType.EyelashAccessory | AvatarAssetType.MoodAnimation | AvatarAssetType.DynamicHead | AvatarAssetType.FaceMakeup | AvatarAssetType.LipMakeup | AvatarAssetType.EyeMakeup | AvatarAssetType.AvatarBackground;
     /**
+     * A bitmask enum whose items represent individual avatar chat capabilities for voice and video communication within an experience.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature)
      */
     export namespace AvatarChatServiceFeature {
         /**
+         * No avatar chat features are enabled. This is the default value of the bitmask before any capabilities are resolved.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -4659,6 +5252,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * Voice chat audio is enabled at the universe level. This is a server-side setting configured by the experience creator; it must be combined with `AvatarChatServiceFeature.PlaceAudio` for audio to be active in a given place.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature#UniverseAudio)
          */
         export interface UniverseAudio extends globalThis.EnumItem {
@@ -4668,6 +5263,8 @@ declare namespace Enum {
         }
         export const UniverseAudio: UniverseAudio;
         /**
+         * Avatar video (camera-based facial animation) is enabled at the universe level. This is a server-side setting configured by the experience creator; it must be combined with `AvatarChatServiceFeature.PlaceVideo` for video to be active in a given place.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature#UniverseVideo)
          */
         export interface UniverseVideo extends globalThis.EnumItem {
@@ -4677,6 +5274,8 @@ declare namespace Enum {
         }
         export const UniverseVideo: UniverseVideo;
         /**
+         * Voice chat audio is enabled for the current place. Both this flag and `AvatarChatServiceFeature.UniverseAudio` must be set for audio to be active in the place.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature#PlaceAudio)
          */
         export interface PlaceAudio extends globalThis.EnumItem {
@@ -4686,6 +5285,8 @@ declare namespace Enum {
         }
         export const PlaceAudio: PlaceAudio;
         /**
+         * Avatar video (camera-based facial animation) is enabled for the current place. Both this flag and `AvatarChatServiceFeature.UniverseVideo` must be set for video to be active in the place.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature#PlaceVideo)
          */
         export interface PlaceVideo extends globalThis.EnumItem {
@@ -4695,6 +5296,8 @@ declare namespace Enum {
         }
         export const PlaceVideo: PlaceVideo;
         /**
+         * The user meets the requirements to use voice chat audio (age-verified, not banned, etc.). Eligibility is resolved per-player from backend permissions; it does not imply the user has opted in (see `AvatarChatServiceFeature.UserAudio`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature#UserAudioEligible)
          */
         export interface UserAudioEligible extends globalThis.EnumItem {
@@ -4704,6 +5307,8 @@ declare namespace Enum {
         }
         export const UserAudioEligible: UserAudioEligible;
         /**
+         * The user has opted in to voice chat audio. This flag is only meaningful when `AvatarChatServiceFeature.UserAudioEligible` is also set; together they indicate the user both can and has chosen to use voice.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature#UserAudio)
          */
         export interface UserAudio extends globalThis.EnumItem {
@@ -4713,6 +5318,8 @@ declare namespace Enum {
         }
         export const UserAudio: UserAudio;
         /**
+         * The user meets the requirements to use avatar video (camera-based facial animation). Eligibility is resolved per-player from backend permissions; it does not imply the user has opted in (see `AvatarChatServiceFeature.UserVideo`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature#UserVideoEligible)
          */
         export interface UserVideoEligible extends globalThis.EnumItem {
@@ -4722,6 +5329,8 @@ declare namespace Enum {
         }
         export const UserVideoEligible: UserVideoEligible;
         /**
+         * The user has opted in to avatar video (camera-based facial animation). This flag is only meaningful when `AvatarChatServiceFeature.UserVideoEligible` is also set; together they indicate the user both can and has chosen to use video.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature#UserVideo)
          */
         export interface UserVideo extends globalThis.EnumItem {
@@ -4731,6 +5340,8 @@ declare namespace Enum {
         }
         export const UserVideo: UserVideo;
         /**
+         * The user is currently banned from avatar chat features. When this flag is present in the client features mask, voice and video capabilities are unavailable to the player regardless of other eligibility flags.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature#UserBanned)
          */
         export interface UserBanned extends globalThis.EnumItem {
@@ -4740,6 +5351,8 @@ declare namespace Enum {
         }
         export const UserBanned: UserBanned;
         /**
+         * The user has completed voice verification.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarChatServiceFeature#UserVerifiedForVoice)
          */
         export interface UserVerifiedForVoice extends globalThis.EnumItem {
@@ -4754,10 +5367,14 @@ declare namespace Enum {
     }
     export type AvatarChatServiceFeature = AvatarChatServiceFeature.None | AvatarChatServiceFeature.UniverseAudio | AvatarChatServiceFeature.UniverseVideo | AvatarChatServiceFeature.PlaceAudio | AvatarChatServiceFeature.PlaceVideo | AvatarChatServiceFeature.UserAudioEligible | AvatarChatServiceFeature.UserAudio | AvatarChatServiceFeature.UserVideoEligible | AvatarChatServiceFeature.UserVideo | AvatarChatServiceFeature.UserBanned | AvatarChatServiceFeature.UserVerifiedForVoice;
     /**
+     * Options for the Avatar Context Menu, a menu that allows users to interact with other players' characters in an experience.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarContextMenuOption)
      */
     export namespace AvatarContextMenuOption {
         /**
+         * Sends a friend request to the selected user.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarContextMenuOption#Friend)
          */
         export interface Friend extends globalThis.EnumItem {
@@ -4767,6 +5384,8 @@ declare namespace Enum {
         }
         export const Friend: Friend;
         /**
+         * Opens a private conversation with the selected user in the in-game chat.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarContextMenuOption#Chat)
          */
         export interface Chat extends globalThis.EnumItem {
@@ -4776,6 +5395,8 @@ declare namespace Enum {
         }
         export const Chat: Chat;
         /**
+         * Plays a wave emote animation directed at the selected user.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarContextMenuOption#Emote)
          */
         export interface Emote extends globalThis.EnumItem {
@@ -4785,6 +5406,8 @@ declare namespace Enum {
         }
         export const Emote: Emote;
         /**
+         * Opens the Avatar Inspect Menu to view the selected user's avatar and equipped items.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarContextMenuOption#InspectMenu)
          */
         export interface InspectMenu extends globalThis.EnumItem {
@@ -4877,7 +5500,7 @@ declare namespace Enum {
      */
     export namespace AvatarItemType {
         /**
-         * Avatar assets.
+         * An individual avatar catalog item such as a hat, shirt, or accessory, identified by an asset ID.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarItemType#Asset)
          */
@@ -4888,7 +5511,7 @@ declare namespace Enum {
         }
         export const Asset: Asset;
         /**
-         * Avatar bundles.
+         * A collection of related avatar items sold together as a group, identified by a bundle ID.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarItemType#Bundle)
          */
@@ -4948,10 +5571,14 @@ declare namespace Enum {
     }
     export type AvatarPromptResult = AvatarPromptResult.Success | AvatarPromptResult.PermissionDenied | AvatarPromptResult.Failed;
     /**
+     * Determines how `AvatarAccessoryRules` enforces accessory size limits when an accessory exceeds the configured bounds.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAccessoryLimitMethod)
      */
     export namespace AvatarSettingsAccessoryLimitMethod {
         /**
+         * Scales down rigid accessories that exceed the configured bounds, or removes them if scaling would reduce them below minimum size thresholds.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAccessoryLimitMethod#Scale)
          */
         export interface Scale extends globalThis.EnumItem {
@@ -4961,6 +5588,8 @@ declare namespace Enum {
         }
         export const Scale: Scale;
         /**
+         * Destroys any rigid accessory whose bounding box exceeds the configured bounds.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAccessoryLimitMethod#Remove)
          */
         export interface Remove extends globalThis.EnumItem {
@@ -4970,6 +5599,8 @@ declare namespace Enum {
         }
         export const Remove: Remove;
         /**
+         * Reports whether an accessory would be scaled or removed for exceeding the configured bounds without actually modifying it.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAccessoryLimitMethod#PreviewScale)
          */
         export interface PreviewScale extends globalThis.EnumItem {
@@ -4979,6 +5610,8 @@ declare namespace Enum {
         }
         export const PreviewScale: PreviewScale;
         /**
+         * Reports whether an accessory would be removed for exceeding the configured bounds without actually destroying it.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAccessoryLimitMethod#PreviewRemove)
          */
         export interface PreviewRemove extends globalThis.EnumItem {
@@ -4993,10 +5626,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsAccessoryLimitMethod = AvatarSettingsAccessoryLimitMethod.Scale | AvatarSettingsAccessoryLimitMethod.Remove | AvatarSettingsAccessoryLimitMethod.PreviewScale | AvatarSettingsAccessoryLimitMethod.PreviewRemove;
     /**
+     * Determines whether `AvatarAccessoryRules` enforces custom size limits on rigid accessories worn by player avatars.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAccessoryMode)
      */
     export namespace AvatarSettingsAccessoryMode {
         /**
+         * No custom size limits are applied to rigid accessories; the player's own accessory choices are displayed without modification.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAccessoryMode#PlayerChoice)
          */
         export interface PlayerChoice extends globalThis.EnumItem {
@@ -5006,6 +5643,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         /**
+         * The experience enforces custom size limits on rigid accessories using the LimitBounds and LimitMethod properties of `AvatarAccessoryRules`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAccessoryMode#CustomLimit)
          */
         export interface CustomLimit extends globalThis.EnumItem {
@@ -5020,10 +5659,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsAccessoryMode = AvatarSettingsAccessoryMode.PlayerChoice | AvatarSettingsAccessoryMode.CustomLimit;
     /**
+     * Determines whether avatar animation clips are defined by the experience or if they are determined by `AnimationPacksMode`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAnimationClipsMode)
      */
     export namespace AvatarSettingsAnimationClipsMode {
         /**
+         * The clips determined by the `AnimationPacksMode` are used, without experience-level overrides.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAnimationClipsMode#PlayerChoice)
          */
         export interface PlayerChoice extends globalThis.EnumItem {
@@ -5033,6 +5676,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         /**
+         * The experience overrides individual animation clips using the per-clip enabled and ID properties on `AvatarAnimationRules` (for example, `CustomRunAnimationEnabled` and `CustomRunAnimationId`). Only clips whose enabled flag is true are replaced.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAnimationClipsMode#CustomClips)
          */
         export interface CustomClips extends globalThis.EnumItem {
@@ -5047,10 +5692,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsAnimationClipsMode = AvatarSettingsAnimationClipsMode.PlayerChoice | AvatarSettingsAnimationClipsMode.CustomClips;
     /**
+     * Determines which base animation pack is applied to avatar characters, controlling whether players use their own equipped animations or the experience forces a standard R15 or R6 animation set.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAnimationPacksMode)
      */
     export namespace AvatarSettingsAnimationPacksMode {
         /**
+         * The player's own equipped animation pack is used. The character's Animate script supplies the animations without experience-level overrides.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAnimationPacksMode#PlayerChoice)
          */
         export interface PlayerChoice extends globalThis.EnumItem {
@@ -5060,6 +5709,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         /**
+         * The experience forces the standard R15 animation pack on all characters, overriding player-equipped animations with a fixed set of R15 locomotion clips.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAnimationPacksMode#StandardR15)
          */
         export interface StandardR15 extends globalThis.EnumItem {
@@ -5069,6 +5720,8 @@ declare namespace Enum {
         }
         export const StandardR15: StandardR15;
         /**
+         * The experience forces the standard R6 animation pack on all (R15) characters, overriding player-equipped animations with a fixed set of R6-style locomotion clips plus additional R6-style emote and tool animations.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAnimationPacksMode#StandardR6)
          */
         export interface StandardR6 extends globalThis.EnumItem {
@@ -5083,10 +5736,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsAnimationPacksMode = AvatarSettingsAnimationPacksMode.PlayerChoice | AvatarSettingsAnimationPacksMode.StandardR15 | AvatarSettingsAnimationPacksMode.StandardR6;
     /**
+     * Determines how the avatar's body-part appearance is sourced in an experience that uses `AvatarBodyRules`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAppearanceMode)
      */
     export namespace AvatarSettingsAppearanceMode {
         /**
+         * Players keep their own avatar body parts; the experience does not override any body-part assets.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAppearanceMode#PlayerChoice)
          */
         export interface PlayerChoice extends globalThis.EnumItem {
@@ -5096,6 +5753,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         /**
+         * The experience overrides individual body parts (head, face, torso, arms, legs) using per-part asset IDs and enablement settings on `AvatarBodyRules`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAppearanceMode#CustomParts)
          */
         export interface CustomParts extends globalThis.EnumItem {
@@ -5105,6 +5764,8 @@ declare namespace Enum {
         }
         export const CustomParts: CustomParts;
         /**
+         * The experience replaces the avatar's entire body as a single unit, using `CustomBodyType` and `CustomBodyBundleId`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAppearanceMode#CustomBody)
          */
         export interface CustomBody extends globalThis.EnumItem {
@@ -5119,10 +5780,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsAppearanceMode = AvatarSettingsAppearanceMode.PlayerChoice | AvatarSettingsAppearanceMode.CustomParts | AvatarSettingsAppearanceMode.CustomBody;
     /**
+     * Determines whether players can freely scale their avatar body or whether the experience enforces custom scale ranges.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsBuildMode)
      */
     export namespace AvatarSettingsBuildMode {
         /**
+         * Players can scale their avatar body freely within the full platform-wide limits. This is the default value.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsBuildMode#PlayerChoice)
          */
         export interface PlayerChoice extends globalThis.EnumItem {
@@ -5132,6 +5797,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         /**
+         * The experience enforces creator-defined min/max ranges for avatar body scales (height, width, head, body type, and proportions), overriding the platform defaults.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsBuildMode#CustomBuild)
          */
         export interface CustomBuild extends globalThis.EnumItem {
@@ -5173,10 +5840,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsCharacterControllerMode = AvatarSettingsCharacterControllerMode.LegacyHumanoid | AvatarSettingsCharacterControllerMode.LuaCharacterController;
     /**
+     * Determines whether the experience applies a spatial bounding limit to layered clothing on player characters.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsClothingMode)
      */
     export namespace AvatarSettingsClothingMode {
         /**
+         * No spatial limit is applied to layered clothing; the player's layered clothing accessories deform without a bounding constraint.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsClothingMode#PlayerChoice)
          */
         export interface PlayerChoice extends globalThis.EnumItem {
@@ -5186,6 +5857,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         /**
+         * Applies a custom spatial limit to layered clothing based on `LimitBounds`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsClothingMode#CustomLimit)
          */
         export interface CustomLimit extends globalThis.EnumItem {
@@ -5200,10 +5873,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsClothingMode = AvatarSettingsClothingMode.PlayerChoice | AvatarSettingsClothingMode.CustomLimit;
     /**
+     * Determines the collision geometry mode for avatars managed by `AvatarCollisionRules`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCollisionMode)
      */
     export namespace AvatarSettingsCollisionMode {
         /**
+         * Each body part uses its native collision geometry. The HumanoidRootPart, UpperTorso, and LowerTorso collide while other parts do not. This is the default value for `CollisionMode`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCollisionMode#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -5213,6 +5890,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * A single box-shaped collider part replaces all per-part collision. The collider is welded to the HumanoidRootPart and sized by `SingleColliderSize` (default 2, 3, 1). All other parts become non-collidable and massless.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCollisionMode#SingleCollider)
          */
         export interface SingleCollider extends globalThis.EnumItem {
@@ -5222,6 +5901,8 @@ declare namespace Enum {
         }
         export const SingleCollider: SingleCollider;
         /**
+         * Collision geometry is determined by `LegacyCollisionMode`, which selects either inner-box colliders or R6-style colliders.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCollisionMode#Legacy)
          */
         export interface Legacy extends globalThis.EnumItem {
@@ -5236,10 +5917,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsCollisionMode = AvatarSettingsCollisionMode.Default | AvatarSettingsCollisionMode.SingleCollider | AvatarSettingsCollisionMode.Legacy;
     /**
+     * Determines whether `AvatarAccessoryRules` replaces player accessories with experience-defined custom accessories.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomAccessoryMode)
      */
     export namespace AvatarSettingsCustomAccessoryMode {
         /**
+         * No custom accessory replacement is applied; the player's own accessory choices are displayed without modification.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomAccessoryMode#PlayerChoice)
          */
         export interface PlayerChoice extends globalThis.EnumItem {
@@ -5249,6 +5934,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         /**
+         * The experience replaces player accessories with custom accessories defined by the per-slot properties on `AvatarAccessoryRules`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomAccessoryMode#CustomAccessories)
          */
         export interface CustomAccessories extends globalThis.EnumItem {
@@ -5263,10 +5950,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsCustomAccessoryMode = AvatarSettingsCustomAccessoryMode.PlayerChoice | AvatarSettingsCustomAccessoryMode.CustomAccessories;
     /**
+     * Determines whether an experience's custom body override is identified by individual asset references or by a single bundle ID.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomBodyType)
      */
     export namespace AvatarSettingsCustomBodyType {
         /**
+         * The custom body is assembled from individual per-part asset references on `AvatarBodyRules`. This is the default value.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomBodyType#AvatarReference)
          */
         export interface AvatarReference extends globalThis.EnumItem {
@@ -5276,6 +5967,8 @@ declare namespace Enum {
         }
         export const AvatarReference: AvatarReference;
         /**
+         * The custom body is sourced from a single avatar bundle, identified by the `CustomBodyBundleId` property.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomBodyType#BundleId)
          */
         export interface BundleId extends globalThis.EnumItem {
@@ -5290,10 +5983,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsCustomBodyType = AvatarSettingsCustomBodyType.AvatarReference | AvatarSettingsCustomBodyType.BundleId;
     /**
+     * Determines whether an experience overrides a player's classic 2D or layered 3D clothing with creator-specified assets or preserves the player's own clothing choices.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomClothingMode)
      */
     export namespace AvatarSettingsCustomClothingMode {
         /**
+         * Players keep their own clothing selections. The experience does not override clothing assets. This is the default value.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomClothingMode#PlayerChoice)
          */
         export interface PlayerChoice extends globalThis.EnumItem {
@@ -5303,6 +6000,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         /**
+         * The experience enforces creator-specified clothing assets from `AvatarClothingRules`, overriding each player's own equipped clothing.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomClothingMode#CustomClothing)
          */
         export interface CustomClothing extends globalThis.EnumItem {
@@ -5317,10 +6016,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsCustomClothingMode = AvatarSettingsCustomClothingMode.PlayerChoice | AvatarSettingsCustomClothingMode.CustomClothing;
     /**
+     * Determines whether hit detection and spatial queries use the individual body parts or the single collider when `CollisionMode` is `AvatarSettingsCollisionMode.SingleCollider`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsHitAndTouchDetectionMode)
      */
     export namespace AvatarSettingsHitAndTouchDetectionMode {
         /**
+         * Individual avatar body parts handle `Touched` events and spatial queries (`CanTouch` and `CanQuery` enabled on body parts) while the single collider part has `CanTouch` and `CanQuery` disabled. This is the default value for `HitAndTouchDetectionMode`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsHitAndTouchDetectionMode#UseParts)
          */
         export interface UseParts extends globalThis.EnumItem {
@@ -5330,6 +6033,8 @@ declare namespace Enum {
         }
         export const UseParts: UseParts;
         /**
+         * The single collider part handles `Touched` events and spatial queries (`CanTouch` and `CanQuery` enabled on the collider) while all individual body parts have `CanTouch` and `CanQuery` disabled.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsHitAndTouchDetectionMode#UseCollider)
          */
         export interface UseCollider extends globalThis.EnumItem {
@@ -5344,10 +6049,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsHitAndTouchDetectionMode = AvatarSettingsHitAndTouchDetectionMode.UseParts | AvatarSettingsHitAndTouchDetectionMode.UseCollider;
     /**
+     * Determines whether the avatar jump setting for an experience is configured using jump height (studs) or jump power (force).
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsJumpMode)
      */
     export namespace AvatarSettingsJumpMode {
         /**
+         * The avatar jump is configured using `Humanoid.JumpHeight`, which specifies the target jump height in studs. Corresponds to `Humanoid.UseJumpPower` being false.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsJumpMode#JumpHeight)
          */
         export interface JumpHeight extends globalThis.EnumItem {
@@ -5357,6 +6066,8 @@ declare namespace Enum {
         }
         export const JumpHeight: JumpHeight;
         /**
+         * The avatar jump is configured using `Humanoid.JumpPower`, which applies an upward force to the character. Corresponds to `Humanoid.UseJumpPower` being true.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsJumpMode#JumpPower)
          */
         export interface JumpPower extends globalThis.EnumItem {
@@ -5371,10 +6082,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsJumpMode = AvatarSettingsJumpMode.JumpHeight | AvatarSettingsJumpMode.JumpPower;
     /**
+     * Determines which legacy collision geometry is applied to R15 avatars when `AvatarSettingsCollisionMode` is set to Legacy.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsLegacyCollisionMode)
      */
     export namespace AvatarSettingsLegacyCollisionMode {
         /**
+         * Creates six invisible box collider parts welded to R15 limbs to approximate classic R6 collision geometry. The engine spawns six invisible `Part` instances (head, torso, left arm, right arm, left leg, right leg) parented to the character and welded to the corresponding R15 body parts. All original R15 mesh parts have their `BasePart.CanCollide`, `BasePart.CanTouch`, and `BasePart.CanQuery` disabled and are made massless; only the HumanoidRootPart retains mass so it remains the physics assembly root.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsLegacyCollisionMode#R6Colliders)
          */
         export interface R6Colliders extends globalThis.EnumItem {
@@ -5384,6 +6099,8 @@ declare namespace Enum {
         }
         export const R6Colliders: R6Colliders;
         /**
+         * Overrides each R15 mesh part's collision physics with inner-box geometry derived from the standard R15 scaling model. The engine recalculates every `MeshPart` in the character with collision data from the default R15 model's bounding dimensions, producing tighter collision volumes that follow the avatar's proportions without adding extra parts. This is the default value of `LegacyCollisionMode`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsLegacyCollisionMode#InnerBoxColliders)
          */
         export interface InnerBoxColliders extends globalThis.EnumItem {
@@ -5398,10 +6115,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsLegacyCollisionMode = AvatarSettingsLegacyCollisionMode.R6Colliders | AvatarSettingsLegacyCollisionMode.InnerBoxColliders;
     /**
+     * Determines whether the experience enforces a custom height range on player characters or allows players to spawn at their natural avatar height.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsScaleMode)
      */
     export namespace AvatarSettingsScaleMode {
         /**
+         * Characters spawn at their natural avatar height without any experience-level height override. This is the default value.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsScaleMode#PlayerChoice)
          */
         export interface PlayerChoice extends globalThis.EnumItem {
@@ -5411,6 +6132,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         /**
+         * The experience clamps the character's height to the range specified by `CustomHeight`, overriding the player's natural avatar height.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsScaleMode#CustomScale)
          */
         export interface CustomScale extends globalThis.EnumItem {
@@ -5458,7 +6181,7 @@ declare namespace Enum {
      */
     export namespace AvatarUnificationMode {
         /**
-         * Uses the engine-default avatar unification state.
+         * Resolves to the engine's current built-in default for avatar unification, which currently behaves the same as `Disabled`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarUnificationMode#Default)
          */
@@ -5469,7 +6192,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * Avatar unification is disabled.
+         * Disables the R6-to-R15 adapter; R6 avatars in an R6 experience load using the standard R6 rig with no adapter parts applied.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarUnificationMode#Disabled)
          */
@@ -5480,7 +6203,7 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
-         * Avatar unification is enabled.
+         * Enables the R6-to-R15 adapter; R6 avatars joining an R6 experience receive invisible R15 adapter `MeshParts` welded to their R6-named joints, preserving R6 scale while enabling R15 features such as layered clothing and animatable heads.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarUnificationMode#Enabled)
          */
@@ -5564,10 +6287,50 @@ declare namespace Enum {
     }
     export type Axis = Axis.X | Axis.Y | Axis.Z;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BasicMeshPartShape)
+     */
+    export namespace BasicMeshPartShape {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BasicMeshPartShape#Capsule)
+         */
+        export interface Capsule extends globalThis.EnumItem {
+            Name: "Capsule";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.BasicMeshPartShape;
+        }
+        export const Capsule: Capsule;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BasicMeshPartShape#Cone)
+         */
+        export interface Cone extends globalThis.EnumItem {
+            Name: "Cone";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.BasicMeshPartShape;
+        }
+        export const Cone: Cone;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BasicMeshPartShape#RoundedBox)
+         */
+        export interface RoundedBox extends globalThis.EnumItem {
+            Name: "RoundedBox";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.BasicMeshPartShape;
+        }
+        export const RoundedBox: RoundedBox;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.BasicMeshPartShape>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.BasicMeshPartShape | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.BasicMeshPartShape | undefined;
+    }
+    export type BasicMeshPartShape = BasicMeshPartShape.Capsule | BasicMeshPartShape.Cone | BasicMeshPartShape.RoundedBox;
+    /**
+     * Indicates the type of virtual benefit granted to a user when they purchase a commerce product through `CommerceService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BenefitType)
      */
     export namespace BenefitType {
         /**
+         * The benefit is a developer product whose receipt is delivered through `MarketplaceService:BindReceiptHandler()` upon purchase of a commerce product.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BenefitType#DeveloperProduct)
          */
         export interface DeveloperProduct extends globalThis.EnumItem {
@@ -5577,6 +6340,8 @@ declare namespace Enum {
         }
         export const DeveloperProduct: DeveloperProduct;
         /**
+         * The benefit is a single avatar asset granted to the user's inventory upon purchase of a commerce product.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BenefitType#AvatarAsset)
          */
         export interface AvatarAsset extends globalThis.EnumItem {
@@ -5586,6 +6351,8 @@ declare namespace Enum {
         }
         export const AvatarAsset: AvatarAsset;
         /**
+         * The benefit is an avatar bundle granted to the user's inventory upon purchase of a commerce product.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BenefitType#AvatarBundle)
          */
         export interface AvatarBundle extends globalThis.EnumItem {
@@ -6041,6 +6808,51 @@ declare namespace Enum {
     }
     export type BorderStrokePosition = BorderStrokePosition.Outer | BorderStrokePosition.Center | BorderStrokePosition.Inner;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BranchStatus)
+     */
+    export namespace BranchStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BranchStatus#Draft)
+         */
+        export interface Draft extends globalThis.EnumItem {
+            Name: "Draft";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.BranchStatus;
+        }
+        export const Draft: Draft;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BranchStatus#ReadyToMerge)
+         */
+        export interface ReadyToMerge extends globalThis.EnumItem {
+            Name: "ReadyToMerge";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.BranchStatus;
+        }
+        export const ReadyToMerge: ReadyToMerge;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BranchStatus#Merged)
+         */
+        export interface Merged extends globalThis.EnumItem {
+            Name: "Merged";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.BranchStatus;
+        }
+        export const Merged: Merged;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BranchStatus#Archived)
+         */
+        export interface Archived extends globalThis.EnumItem {
+            Name: "Archived";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.BranchStatus;
+        }
+        export const Archived: Archived;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.BranchStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.BranchStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.BranchStatus | undefined;
+    }
+    export type BranchStatus = BranchStatus.Draft | BranchStatus.ReadyToMerge | BranchStatus.Merged | BranchStatus.Archived;
+    /**
      * Reason for the breakpoint hit.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BreakReason)
@@ -6140,10 +6952,14 @@ declare namespace Enum {
     }
     export type BreakpointRemoveReason = BreakpointRemoveReason.Requested | BreakpointRemoveReason.ScriptChanged | BreakpointRemoveReason.ScriptRemoved;
     /**
+     * Determines the set of property changed events that fire when parts are moved by `WorldRoot:BulkMoveTo()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BulkMoveMode)
      */
     export namespace BulkMoveMode {
         /**
+         * Every property changed event fires for each moved part, including `CFrame`, `Position`, `Orientation`, and `Rotation`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BulkMoveMode#FireAllEvents)
          */
         export interface FireAllEvents extends globalThis.EnumItem {
@@ -6153,6 +6969,8 @@ declare namespace Enum {
         }
         export const FireAllEvents: FireAllEvents;
         /**
+         * Only the `CFrame` property changed event fires for each moved part; `Position`, `Orientation`, and `Rotation` changed events are suppressed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BulkMoveMode#FireCFrameChanged)
          */
         export interface FireCFrameChanged extends globalThis.EnumItem {
@@ -6217,6 +7035,8 @@ declare namespace Enum {
         }
         export const DynamicHead: DynamicHead;
         /**
+         * A bundle containing full body parts and a dynamic head with facial animation support.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/BundleType#DynamicHeadAvatar)
          */
         export interface DynamicHeadAvatar extends globalThis.EnumItem {
@@ -6237,7 +7057,7 @@ declare namespace Enum {
      */
     export namespace Button {
         /**
-         * The Dismount button.
+         * Represents the dismount action that can be bound on a `Controller` to detect when a player triggers the dismount input.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Button#Dismount)
          */
@@ -6248,7 +7068,7 @@ declare namespace Enum {
         }
         export const Dismount: Dismount;
         /**
-         * The Jump button.
+         * Represents the jump action that can be bound on a `Controller` to detect when a player triggers the jump input.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Button#Jump)
          */
@@ -6341,10 +7161,14 @@ declare namespace Enum {
     }
     export type ButtonStyle = ButtonStyle.Custom | ButtonStyle.RobloxButtonDefault | ButtonStyle.RobloxButton | ButtonStyle.RobloxRoundButton | ButtonStyle.RobloxRoundDefaultButton | ButtonStyle.RobloxRoundDropdownButton;
     /**
+     * Specifies which cage surface — inner or outer — to read or write on a `BaseWrap` object.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CageType)
      */
     export namespace CageType {
         /**
+         * Selects the inner cage mesh, which defines the surface that conforms to the body or underlying layer beneath the accessory.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CageType#Inner)
          */
         export interface Inner extends globalThis.EnumItem {
@@ -6354,6 +7178,8 @@ declare namespace Enum {
         }
         export const Inner: Inner;
         /**
+         * Selects the outer cage mesh, which defines the surface that the next clothing layer above this accessory conforms to.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CageType#Outer)
          */
         export interface Outer extends globalThis.EnumItem {
@@ -6401,10 +7227,14 @@ declare namespace Enum {
     }
     export type CameraMode = CameraMode.Classic | CameraMode.LockFirstPerson;
     /**
+     * Determines the camera navigation paradigm used in the Roblox Studio editor viewport.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraNavigationModel)
      */
     export namespace CameraNavigationModel {
         /**
+         * Classic Roblox Studio camera navigation model with linear zoom and focus-locked orbiting; the default value.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraNavigationModel#Roblox)
          */
         export interface Roblox extends globalThis.EnumItem {
@@ -6414,6 +7244,8 @@ declare namespace Enum {
         }
         export const Roblox: Roblox;
         /**
+         * Camera navigation model that follows industry-standard 3D application conventions, with non-linear zoom and simultaneous WASD-plus-orbit movement.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraNavigationModel#IndustryCompatible)
          */
         export interface IndustryCompatible extends globalThis.EnumItem {
@@ -6461,10 +7293,14 @@ declare namespace Enum {
     }
     export type CameraPanMode = CameraPanMode.Classic | CameraPanMode.EdgeBump;
     /**
+     * Controls which input gesture adjusts the Studio camera's fly speed while navigating.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraSpeedAdjustBinding)
      */
     export namespace CameraSpeedAdjustBinding {
         /**
+         * No input gesture is bound to camera speed adjustment; the scroll wheel always zooms.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraSpeedAdjustBinding#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -6474,6 +7310,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * Scrolling while holding the right mouse button adjusts the camera fly speed instead of zooming.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraSpeedAdjustBinding#RmbScroll)
          */
         export interface RmbScroll extends globalThis.EnumItem {
@@ -6483,6 +7321,8 @@ declare namespace Enum {
         }
         export const RmbScroll: RmbScroll;
         /**
+         * Scrolling while holding Alt adjusts the camera fly speed instead of zooming.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraSpeedAdjustBinding#AltScroll)
          */
         export interface AltScroll extends globalThis.EnumItem {
@@ -6722,10 +7562,14 @@ declare namespace Enum {
     }
     export type CanCollaborateError = CanCollaborateError.Invalid | CanCollaborateError.None | CanCollaborateError.NotAgeVerified | CanCollaborateError.OutsideAgeBucket | CanCollaborateError.TooManyCollaborators | CanCollaborateError.PCBlock | CanCollaborateError.NotFound | CanCollaborateError.OutsideOwnerAgeBucket | CanCollaborateError.NotAuthorized | CanCollaborateError.OutsideAgeBucketTcPc | CanCollaborateError.OtherCollaboratorSettingsPreventTrust | CanCollaborateError.AgeVerificationCountryBlocked | CanCollaborateError.OtherUserCannotCollaborate;
     /**
+     * Specifies the scope of permissions an experience requests for accessing the device's capture gallery.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureGalleryPermission)
      */
     export namespace CaptureGalleryPermission {
         /**
+         * Requests permission to read captures from and upload captures to the device's gallery.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureGalleryPermission#ReadAndUpload)
          */
         export interface ReadAndUpload extends globalThis.EnumItem {
@@ -6740,10 +7584,14 @@ declare namespace Enum {
     }
     export type CaptureGalleryPermission = CaptureGalleryPermission.ReadAndUpload;
     /**
+     * Indicates whether a capture is a screenshot or a video recording.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureType)
      */
     export namespace CaptureType {
         /**
+         * The capture is a screenshot image.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureType#Screenshot)
          */
         export interface Screenshot extends globalThis.EnumItem {
@@ -6753,6 +7601,8 @@ declare namespace Enum {
         }
         export const Screenshot: Screenshot;
         /**
+         * The capture is a video recording.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CaptureType#Video)
          */
         export interface Video extends globalThis.EnumItem {
@@ -6767,10 +7617,14 @@ declare namespace Enum {
     }
     export type CaptureType = CaptureType.Screenshot | CaptureType.Video;
     /**
+     * Filters Avatar Shop catalog search results by a predefined category such as Featured, Premium, or Recommended.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogCategoryFilter)
      */
     export namespace CatalogCategoryFilter {
         /**
+         * No category filter is applied; returns items from all categories. This is the default value of `CatalogSearchParams.CategoryFilter`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogCategoryFilter#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -6780,6 +7634,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * Returns only items editorially featured in the Avatar Shop catalog.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogCategoryFilter#Featured)
          */
         export interface Featured extends globalThis.EnumItem {
@@ -6789,6 +7645,10 @@ declare namespace Enum {
         }
         export const Featured: Featured;
         /**
+         * **Deprecated:**
+         *
+         * Deprecated. Previously filtered for collectible items; use `SalesTypeFilter.Collectibles` via `CatalogSearchParams.SalesTypeFilter` instead.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogCategoryFilter#Collectibles)
          */
         export interface Collectibles extends globalThis.EnumItem {
@@ -6798,6 +7658,8 @@ declare namespace Enum {
         }
         export const Collectibles: Collectibles;
         /**
+         * Returns only items created by community developers.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogCategoryFilter#CommunityCreations)
          */
         export interface CommunityCreations extends globalThis.EnumItem {
@@ -6807,6 +7669,8 @@ declare namespace Enum {
         }
         export const CommunityCreations: CommunityCreations;
         /**
+         * Returns only items available to Roblox Premium subscribers.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogCategoryFilter#Premium)
          */
         export interface Premium extends globalThis.EnumItem {
@@ -6816,6 +7680,8 @@ declare namespace Enum {
         }
         export const Premium: Premium;
         /**
+         * Returns only items recommended by the catalog for the current user.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogCategoryFilter#Recommended)
          */
         export interface Recommended extends globalThis.EnumItem {
@@ -6830,10 +7696,14 @@ declare namespace Enum {
     }
     export type CatalogCategoryFilter = CatalogCategoryFilter.None | CatalogCategoryFilter.Featured | CatalogCategoryFilter.Collectibles | CatalogCategoryFilter.CommunityCreations | CatalogCategoryFilter.Premium | CatalogCategoryFilter.Recommended;
     /**
+     * Specifies the time window over which catalog items are aggregated when sorting `CatalogSearchParams` results.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortAggregation)
      */
     export namespace CatalogSortAggregation {
         /**
+         * Aggregates catalog data from the past 12 hours when sorting search results.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortAggregation#Past12Hours)
          */
         export interface Past12Hours extends globalThis.EnumItem {
@@ -6843,6 +7713,8 @@ declare namespace Enum {
         }
         export const Past12Hours: Past12Hours;
         /**
+         * Aggregates catalog data from the past day when sorting search results.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortAggregation#PastDay)
          */
         export interface PastDay extends globalThis.EnumItem {
@@ -6852,6 +7724,8 @@ declare namespace Enum {
         }
         export const PastDay: PastDay;
         /**
+         * Aggregates catalog data from the past 3 days when sorting search results.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortAggregation#Past3Days)
          */
         export interface Past3Days extends globalThis.EnumItem {
@@ -6861,6 +7735,8 @@ declare namespace Enum {
         }
         export const Past3Days: Past3Days;
         /**
+         * Aggregates catalog data from the past week when sorting search results.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortAggregation#PastWeek)
          */
         export interface PastWeek extends globalThis.EnumItem {
@@ -6870,6 +7746,8 @@ declare namespace Enum {
         }
         export const PastWeek: PastWeek;
         /**
+         * Aggregates catalog data from the past month when sorting search results.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortAggregation#PastMonth)
          */
         export interface PastMonth extends globalThis.EnumItem {
@@ -6879,6 +7757,8 @@ declare namespace Enum {
         }
         export const PastMonth: PastMonth;
         /**
+         * Aggregates catalog data across all time when sorting search results.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortAggregation#AllTime)
          */
         export interface AllTime extends globalThis.EnumItem {
@@ -6893,10 +7773,14 @@ declare namespace Enum {
     }
     export type CatalogSortAggregation = CatalogSortAggregation.Past12Hours | CatalogSortAggregation.PastDay | CatalogSortAggregation.Past3Days | CatalogSortAggregation.PastWeek | CatalogSortAggregation.PastMonth | CatalogSortAggregation.AllTime;
     /**
+     * Specifies the sort order for catalog search results returned by `AvatarEditorService:SearchCatalogAsync()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortType)
      */
     export namespace CatalogSortType {
         /**
+         * Sorts catalog results by relevance to the search keyword or other query parameters.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortType#Relevance)
          */
         export interface Relevance extends globalThis.EnumItem {
@@ -6906,6 +7790,8 @@ declare namespace Enum {
         }
         export const Relevance: Relevance;
         /**
+         * Sorts catalog results from the highest price to the lowest price.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortType#PriceHighToLow)
          */
         export interface PriceHighToLow extends globalThis.EnumItem {
@@ -6915,6 +7801,8 @@ declare namespace Enum {
         }
         export const PriceHighToLow: PriceHighToLow;
         /**
+         * Sorts catalog results from the lowest price to the highest price.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortType#PriceLowToHigh)
          */
         export interface PriceLowToHigh extends globalThis.EnumItem {
@@ -6924,6 +7812,8 @@ declare namespace Enum {
         }
         export const PriceLowToHigh: PriceLowToHigh;
         /**
+         * Sorts catalog results by the number of times items have been favorited, with most-favorited items listed first.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortType#MostFavorited)
          */
         export interface MostFavorited extends globalThis.EnumItem {
@@ -6933,6 +7823,8 @@ declare namespace Enum {
         }
         export const MostFavorited: MostFavorited;
         /**
+         * Sorts catalog results by creation date, with the most recently created items listed first.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortType#RecentlyCreated)
          */
         export interface RecentlyCreated extends globalThis.EnumItem {
@@ -6946,6 +7838,8 @@ declare namespace Enum {
          */
         export const RecentlyUpdated: RecentlyCreated;
         /**
+         * Sorts catalog results by total sales, with best-selling items listed first.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CatalogSortType#Bestselling)
          */
         export interface Bestselling extends globalThis.EnumItem {
@@ -6960,10 +7854,14 @@ declare namespace Enum {
     }
     export type CatalogSortType = CatalogSortType.Relevance | CatalogSortType.PriceHighToLow | CatalogSortType.PriceLowToHigh | CatalogSortType.MostFavorited | CatalogSortType.RecentlyCreated | CatalogSortType.Bestselling;
     /**
+     * Deprecated enum specifying the geometric block shape of a legacy voxel terrain cell, used with the removed `Terrain:SetCell()` method.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellBlock)
      */
     export namespace CellBlock {
         /**
+         * A legacy voxel cell that is completely filled, occupying the full cell volume.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellBlock#Solid)
          */
         export interface Solid extends globalThis.EnumItem {
@@ -6973,6 +7871,8 @@ declare namespace Enum {
         }
         export const Solid: Solid;
         /**
+         * A legacy voxel cell shaped as a vertical wedge, occupying half of a full cell's volume.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellBlock#VerticalWedge)
          */
         export interface VerticalWedge extends globalThis.EnumItem {
@@ -6982,6 +7882,8 @@ declare namespace Enum {
         }
         export const VerticalWedge: VerticalWedge;
         /**
+         * A legacy voxel cell shaped as a corner wedge, occupying approximately one-third of a full cell's volume.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellBlock#CornerWedge)
          */
         export interface CornerWedge extends globalThis.EnumItem {
@@ -6991,6 +7893,8 @@ declare namespace Enum {
         }
         export const CornerWedge: CornerWedge;
         /**
+         * A legacy voxel cell shaped as an inverse corner wedge, occupying approximately two-thirds of a full cell's volume.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellBlock#InverseCornerWedge)
          */
         export interface InverseCornerWedge extends globalThis.EnumItem {
@@ -7000,6 +7904,8 @@ declare namespace Enum {
         }
         export const InverseCornerWedge: InverseCornerWedge;
         /**
+         * A legacy voxel cell shaped as a horizontal wedge, occupying half of a full cell's volume.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellBlock#HorizontalWedge)
          */
         export interface HorizontalWedge extends globalThis.EnumItem {
@@ -7014,10 +7920,14 @@ declare namespace Enum {
     }
     export type CellBlock = CellBlock.Solid | CellBlock.VerticalWedge | CellBlock.CornerWedge | CellBlock.InverseCornerWedge | CellBlock.HorizontalWedge;
     /**
+     * Material values for individual cells in the deprecated legacy voxel-based `Terrain` engine.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial)
      */
     export namespace CellMaterial {
         /**
+         * Represents an air (unfilled) cell in the legacy voxel terrain; converted to air in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#Empty)
          */
         export interface Empty extends globalThis.EnumItem {
@@ -7027,6 +7937,8 @@ declare namespace Enum {
         }
         export const Empty: Empty;
         /**
+         * A green grassy cell material in the legacy voxel terrain, converted to `Material.Grass` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#Grass)
          */
         export interface Grass extends globalThis.EnumItem {
@@ -7036,6 +7948,8 @@ declare namespace Enum {
         }
         export const Grass: Grass;
         /**
+         * A sandy cell material in the legacy voxel terrain, converted to `Material.Sand` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#Sand)
          */
         export interface Sand extends globalThis.EnumItem {
@@ -7045,6 +7959,8 @@ declare namespace Enum {
         }
         export const Sand: Sand;
         /**
+         * A red brick cell material in the legacy voxel terrain, converted to `Material.Brick` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#Brick)
          */
         export interface Brick extends globalThis.EnumItem {
@@ -7054,6 +7970,8 @@ declare namespace Enum {
         }
         export const Brick: Brick;
         /**
+         * A speckled stone cell material in the legacy voxel terrain, converted to `Material.Slate` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#Granite)
          */
         export interface Granite extends globalThis.EnumItem {
@@ -7063,6 +7981,8 @@ declare namespace Enum {
         }
         export const Granite: Granite;
         /**
+         * A dark paved road cell material in the legacy voxel terrain, converted to `Material.Asphalt` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#Asphalt)
          */
         export interface Asphalt extends globalThis.EnumItem {
@@ -7072,6 +7992,8 @@ declare namespace Enum {
         }
         export const Asphalt: Asphalt;
         /**
+         * A dark metallic cell material in the legacy voxel terrain, converted to `Material.Concrete` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#Iron)
          */
         export interface Iron extends globalThis.EnumItem {
@@ -7081,6 +8003,8 @@ declare namespace Enum {
         }
         export const Iron: Iron;
         /**
+         * A metallic silver cell material in the legacy voxel terrain, converted to `Material.Concrete` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#Aluminum)
          */
         export interface Aluminum extends globalThis.EnumItem {
@@ -7090,6 +8014,8 @@ declare namespace Enum {
         }
         export const Aluminum: Aluminum;
         /**
+         * A golden metallic cell material in the legacy voxel terrain, converted to `Material.Concrete` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#Gold)
          */
         export interface Gold extends globalThis.EnumItem {
@@ -7099,6 +8025,8 @@ declare namespace Enum {
         }
         export const Gold: Gold;
         /**
+         * A flat wooden plank cell material in the legacy voxel terrain, converted to `Material.WoodPlanks` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#WoodPlank)
          */
         export interface WoodPlank extends globalThis.EnumItem {
@@ -7108,6 +8036,8 @@ declare namespace Enum {
         }
         export const WoodPlank: WoodPlank;
         /**
+         * A round wooden log cell material in the legacy voxel terrain, converted to `Material.WoodPlanks` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#WoodLog)
          */
         export interface WoodLog extends globalThis.EnumItem {
@@ -7117,6 +8047,8 @@ declare namespace Enum {
         }
         export const WoodLog: WoodLog;
         /**
+         * A loose-stone cell material in the legacy voxel terrain, converted to `Material.Asphalt` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#Gravel)
          */
         export interface Gravel extends globalThis.EnumItem {
@@ -7126,6 +8058,8 @@ declare namespace Enum {
         }
         export const Gravel: Gravel;
         /**
+         * A rough masonry cell material in the legacy voxel terrain, converted to `Material.Concrete` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#CinderBlock)
          */
         export interface CinderBlock extends globalThis.EnumItem {
@@ -7135,6 +8069,8 @@ declare namespace Enum {
         }
         export const CinderBlock: CinderBlock;
         /**
+         * A weathered stone cell material in the legacy voxel terrain, converted to `Material.Pavement` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#MossyStone)
          */
         export interface MossyStone extends globalThis.EnumItem {
@@ -7144,6 +8080,8 @@ declare namespace Enum {
         }
         export const MossyStone: MossyStone;
         /**
+         * A gray cement cell material in the legacy voxel terrain, converted to `Material.Concrete` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#Cement)
          */
         export interface Cement extends globalThis.EnumItem {
@@ -7153,6 +8091,8 @@ declare namespace Enum {
         }
         export const Cement: Cement;
         /**
+         * A red-tinted cell material in the legacy voxel terrain, converted to `Material.Sandstone` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#RedPlastic)
          */
         export interface RedPlastic extends globalThis.EnumItem {
@@ -7162,6 +8102,8 @@ declare namespace Enum {
         }
         export const RedPlastic: RedPlastic;
         /**
+         * A blue-tinted cell material in the legacy voxel terrain, converted to `Material.Ice` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#BluePlastic)
          */
         export interface BluePlastic extends globalThis.EnumItem {
@@ -7171,6 +8113,8 @@ declare namespace Enum {
         }
         export const BluePlastic: BluePlastic;
         /**
+         * A water-filled cell in the legacy voxel terrain, converted to `Material.Water` in the modern terrain system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellMaterial#Water)
          */
         export interface Water extends globalThis.EnumItem {
@@ -7185,10 +8129,14 @@ declare namespace Enum {
     }
     export type CellMaterial = CellMaterial.Empty | CellMaterial.Grass | CellMaterial.Sand | CellMaterial.Brick | CellMaterial.Granite | CellMaterial.Asphalt | CellMaterial.Iron | CellMaterial.Aluminum | CellMaterial.Gold | CellMaterial.WoodPlank | CellMaterial.WoodLog | CellMaterial.Gravel | CellMaterial.CinderBlock | CellMaterial.MossyStone | CellMaterial.Cement | CellMaterial.RedPlastic | CellMaterial.BluePlastic | CellMaterial.Water;
     /**
+     * Specifies the corner orientation of a legacy terrain cell, used with the deprecated `Terrain:SetCell()` method.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellOrientation)
      */
     export namespace CellOrientation {
         /**
+         * Upper-left corner orientation when the cell is viewed from directly above.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellOrientation#NegZ)
          */
         export interface NegZ extends globalThis.EnumItem {
@@ -7198,6 +8146,8 @@ declare namespace Enum {
         }
         export const NegZ: NegZ;
         /**
+         * Upper-right corner orientation when the cell is viewed from directly above.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellOrientation#X)
          */
         export interface X extends globalThis.EnumItem {
@@ -7207,6 +8157,8 @@ declare namespace Enum {
         }
         export const X: X;
         /**
+         * Lower-right corner orientation when the cell is viewed from directly above.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellOrientation#Z)
          */
         export interface Z extends globalThis.EnumItem {
@@ -7216,6 +8168,8 @@ declare namespace Enum {
         }
         export const Z: Z;
         /**
+         * Lower-left corner orientation when the cell is viewed from directly above.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CellOrientation#NegX)
          */
         export interface NegX extends globalThis.EnumItem {
@@ -7275,10 +8229,14 @@ declare namespace Enum {
     }
     export type CenterDialogType = CenterDialogType.UnsolicitedDialog | CenterDialogType.PlayerInitiatedDialog | CenterDialogType.ModalDialog | CenterDialogType.QuitDialog;
     /**
+     * Specifies which character controller implementation an experience uses.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CharacterControlMode)
      */
     export namespace CharacterControlMode {
         /**
+         * Uses Roblox's default character controller selection.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CharacterControlMode#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -7288,6 +8246,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Uses the legacy character controller.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CharacterControlMode#Legacy)
          */
         export interface Legacy extends globalThis.EnumItem {
@@ -7297,6 +8257,8 @@ declare namespace Enum {
         }
         export const Legacy: Legacy;
         /**
+         * Does not load a character controller.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CharacterControlMode#NoCharacterController)
          */
         export interface NoCharacterController extends globalThis.EnumItem {
@@ -7306,6 +8268,8 @@ declare namespace Enum {
         }
         export const NoCharacterController: NoCharacterController;
         /**
+         * Uses the Luau character controller.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CharacterControlMode#LuaCharacterController)
          */
         export interface LuaCharacterController extends globalThis.EnumItem {
@@ -7320,10 +8284,14 @@ declare namespace Enum {
     }
     export type CharacterControlMode = CharacterControlMode.Default | CharacterControlMode.Legacy | CharacterControlMode.NoCharacterController | CharacterControlMode.LuaCharacterController;
     /**
+     * Identifies a hook point in the legacy Luau chat pipeline for use with `Chat:RegisterChatCallback()` and `Chat:InvokeChatCallback()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatCallbackType)
      */
     export namespace ChatCallbackType {
         /**
+         * Client-only callback invoked before the chat window is constructed, allowing custom settings to be supplied.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatCallbackType#OnCreatingChatWindow)
          */
         export interface OnCreatingChatWindow extends globalThis.EnumItem {
@@ -7333,6 +8301,8 @@ declare namespace Enum {
         }
         export const OnCreatingChatWindow: OnCreatingChatWindow;
         /**
+         * Client-only callback reserved for when the client sends a message; not currently invoked.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatCallbackType#OnClientSendingMessage)
          */
         export interface OnClientSendingMessage extends globalThis.EnumItem {
@@ -7342,6 +8312,8 @@ declare namespace Enum {
         }
         export const OnClientSendingMessage: OnClientSendingMessage;
         /**
+         * Client-only callback invoked before a message is displayed, allowing its display data to be modified.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatCallbackType#OnClientFormattingMessage)
          */
         export interface OnClientFormattingMessage extends globalThis.EnumItem {
@@ -7351,6 +8323,8 @@ declare namespace Enum {
         }
         export const OnClientFormattingMessage: OnClientFormattingMessage;
         /**
+         * Server-only callback invoked when the server receives a message from a speaker, allowing the message to be modified or suppressed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatCallbackType#OnServerReceivingMessage)
          */
         export interface OnServerReceivingMessage extends globalThis.EnumItem {
@@ -7371,7 +8345,7 @@ declare namespace Enum {
      */
     export namespace ChatColor {
         /**
-         * Blue chat color.
+         * The blue chat color; the default value passed to `Chat()` and `ChatLocal()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatColor#Blue)
          */
@@ -7382,7 +8356,7 @@ declare namespace Enum {
         }
         export const Blue: Blue;
         /**
-         * Green chat color.
+         * The green chat color, passed as the `color` argument to `Chat()` or `ChatLocal()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatColor#Green)
          */
@@ -7393,7 +8367,7 @@ declare namespace Enum {
         }
         export const Green: Green;
         /**
-         * Red chat color.
+         * The red chat color, passed as the `color` argument to `Chat()` or `ChatLocal()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatColor#Red)
          */
@@ -7404,7 +8378,7 @@ declare namespace Enum {
         }
         export const Red: Red;
         /**
-         * White chat color.
+         * The white chat color, passed as the `color` argument to `Chat()` or `ChatLocal()`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatColor#White)
          */
@@ -7420,6 +8394,8 @@ declare namespace Enum {
     }
     export type ChatColor = ChatColor.Blue | ChatColor.Green | ChatColor.Red | ChatColor.White;
     /**
+     * Describes the methods of communication available to a player.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatMode)
      */
     export namespace ChatMode {
@@ -7451,6 +8427,8 @@ declare namespace Enum {
     }
     export type ChatMode = ChatMode.Menu | ChatMode.TextAndMenu;
     /**
+     * Describes which other users a player is permitted to exchange in-game chat messages with.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatPrivacyMode)
      */
     export namespace ChatPrivacyMode {
@@ -7493,10 +8471,14 @@ declare namespace Enum {
     }
     export type ChatPrivacyMode = ChatPrivacyMode.AllUsers | ChatPrivacyMode.NoOne | ChatPrivacyMode.Friends;
     /**
+     * Describes the chat restriction status that a third-party platform reports for a user.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatRestrictionStatus)
      */
     export namespace ChatRestrictionStatus {
         /**
+         * The platform's chat restriction status for the user has not yet been determined; this is the default value for all ChatRestrictionStatus properties.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatRestrictionStatus#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -7506,6 +8488,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
+         * The third-party platform has confirmed the user has no chat restrictions in effect.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatRestrictionStatus#NotRestricted)
          */
         export interface NotRestricted extends globalThis.EnumItem {
@@ -7515,6 +8499,8 @@ declare namespace Enum {
         }
         export const NotRestricted: NotRestricted;
         /**
+         * The third-party platform has reported the user is restricted from chat, typically due to parental controls or platform communication settings.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ChatRestrictionStatus#Restricted)
          */
         export interface Restricted extends globalThis.EnumItem {
@@ -7722,6 +8708,8 @@ declare namespace Enum {
         }
         export const OutOfMemory: OutOfMemory;
         /**
+         * The server was shut down because the experience or place was taken down for moderation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CloseReason#Moderation)
          */
         export interface Moderation extends globalThis.EnumItem {
@@ -7736,10 +8724,14 @@ declare namespace Enum {
     }
     export type CloseReason = CloseReason.Unknown | CloseReason.RobloxMaintenance | CloseReason.DeveloperShutdown | CloseReason.DeveloperUpdate | CloseReason.ServerEmpty | CloseReason.OutOfMemory | CloseReason.Moderation;
     /**
+     * Describes the current editing activity of a collaborator in a Team Create session.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CollaboratorStatus)
      */
     export namespace CollaboratorStatus {
         /**
+         * The collaborator has no active editing context; this is the default status.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CollaboratorStatus#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -7749,6 +8741,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * The collaborator is actively working in the 3D viewport.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CollaboratorStatus#Editing3D)
          */
         export interface Editing3D extends globalThis.EnumItem {
@@ -7758,6 +8752,8 @@ declare namespace Enum {
         }
         export const Editing3D: Editing3D;
         /**
+         * The collaborator is editing a script that is replicated to the server.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CollaboratorStatus#Scripting)
          */
         export interface Scripting extends globalThis.EnumItem {
@@ -7767,6 +8763,8 @@ declare namespace Enum {
         }
         export const Scripting: Scripting;
         /**
+         * The collaborator is editing a script that is not replicated to the server (a local or module script not visible server-side).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CollaboratorStatus#PrivateScripting)
          */
         export interface PrivateScripting extends globalThis.EnumItem {
@@ -7831,24 +8829,30 @@ declare namespace Enum {
         }
         export const PreciseConvexDecomposition: PreciseConvexDecomposition;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CollisionFidelity#Scalable)
+         * Collision model that supports precision tuning of convex decomposition fidelity.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CollisionFidelity#Tunable)
          */
-        export interface Scalable extends globalThis.EnumItem {
-            Name: "Scalable";
+        export interface Tunable extends globalThis.EnumItem {
+            Name: "Tunable";
             Value: 4;
             EnumType: typeof globalThis.Enum.CollisionFidelity;
         }
-        export const Scalable: Scalable;
+        export const Tunable: Tunable;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CollisionFidelity>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CollisionFidelity | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CollisionFidelity | undefined;
     }
-    export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition | CollisionFidelity.Scalable;
+    export type CollisionFidelity = CollisionFidelity.Default | CollisionFidelity.Hull | CollisionFidelity.Box | CollisionFidelity.PreciseConvexDecomposition | CollisionFidelity.Tunable;
     /**
+     * Specifies the minimum security permission level required to invoke a Studio command.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CommandPermission)
      */
     export namespace CommandPermission {
         /**
+         * The command is accessible to scripts running at the standard Plugin security level.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CommandPermission#Plugin)
          */
         export interface Plugin extends globalThis.EnumItem {
@@ -7858,6 +8862,8 @@ declare namespace Enum {
         }
         export const Plugin: Plugin;
         /**
+         * The command requires the LocalUser security level, granting access to IDE-only APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CommandPermission#LocalUser)
          */
         export interface LocalUser extends globalThis.EnumItem {
@@ -7917,10 +8923,14 @@ declare namespace Enum {
     }
     export type CompileTarget = CompileTarget.Client | CompileTarget.CoreScript | CompileTarget.Studio | CompileTarget.CoreScriptRaw;
     /**
+     * Controls how the Script Editor inserts or replaces text when an autocomplete suggestion is accepted with Enter or Tab.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionAcceptanceBehavior)
      */
     export namespace CompletionAcceptanceBehavior {
         /**
+         * Accepting a completion with either Enter or Tab inserts the suggestion without replacing existing text after the cursor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionAcceptanceBehavior#Insert)
          */
         export interface Insert extends globalThis.EnumItem {
@@ -7930,6 +8940,8 @@ declare namespace Enum {
         }
         export const Insert: Insert;
         /**
+         * Accepting a completion with either Enter or Tab replaces existing text after the cursor with the full suggestion text.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionAcceptanceBehavior#Replace)
          */
         export interface Replace extends globalThis.EnumItem {
@@ -7939,6 +8951,8 @@ declare namespace Enum {
         }
         export const Replace: Replace;
         /**
+         * Pressing Enter replaces existing text after the cursor; pressing Tab inserts without replacing text after the cursor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionAcceptanceBehavior#ReplaceOnEnterInsertOnTab)
          */
         export interface ReplaceOnEnterInsertOnTab extends globalThis.EnumItem {
@@ -7948,6 +8962,8 @@ declare namespace Enum {
         }
         export const ReplaceOnEnterInsertOnTab: ReplaceOnEnterInsertOnTab;
         /**
+         * Pressing Enter inserts without replacing text after the cursor; pressing Tab replaces text after the cursor. This is the default of `Studio.AutocompleteAcceptanceBehavior`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionAcceptanceBehavior#InsertOnEnterReplaceOnTab)
          */
         export interface InsertOnEnterReplaceOnTab extends globalThis.EnumItem {
@@ -7962,10 +8978,14 @@ declare namespace Enum {
     }
     export type CompletionAcceptanceBehavior = CompletionAcceptanceBehavior.Insert | CompletionAcceptanceBehavior.Replace | CompletionAcceptanceBehavior.ReplaceOnEnterInsertOnTab | CompletionAcceptanceBehavior.InsertOnEnterReplaceOnTab;
     /**
+     * Indicates the category of a script editor autocomplete suggestion, controlling its icon and display in the completion list.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind)
      */
     export namespace CompletionItemKind {
         /**
+         * Indicates the completion item represents a plain text suggestion.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Text)
          */
         export interface Text extends globalThis.EnumItem {
@@ -7975,6 +8995,8 @@ declare namespace Enum {
         }
         export const Text: Text;
         /**
+         * Indicates the completion item represents a method on a class or object.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Method)
          */
         export interface Method extends globalThis.EnumItem {
@@ -7984,6 +9006,8 @@ declare namespace Enum {
         }
         export const Method: Method;
         /**
+         * Indicates the completion item represents a function.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Function)
          */
         export interface Function extends globalThis.EnumItem {
@@ -7993,6 +9017,8 @@ declare namespace Enum {
         }
         export const Function: Function;
         /**
+         * Indicates the completion item represents a constructor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Constructor)
          */
         export interface Constructor extends globalThis.EnumItem {
@@ -8002,6 +9028,8 @@ declare namespace Enum {
         }
         export const Constructor: Constructor;
         /**
+         * Indicates the completion item represents a field within a record or struct.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Field)
          */
         export interface Field extends globalThis.EnumItem {
@@ -8011,6 +9039,8 @@ declare namespace Enum {
         }
         export const Field: Field;
         /**
+         * Indicates the completion item represents a variable binding.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Variable)
          */
         export interface Variable extends globalThis.EnumItem {
@@ -8020,6 +9050,8 @@ declare namespace Enum {
         }
         export const Variable: Variable;
         /**
+         * Indicates the completion item represents a class or type definition.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Class)
          */
         export interface Class extends globalThis.EnumItem {
@@ -8029,6 +9061,8 @@ declare namespace Enum {
         }
         export const Class: Class;
         /**
+         * Indicates the completion item represents an interface type.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Interface)
          */
         export interface Interface extends globalThis.EnumItem {
@@ -8038,6 +9072,8 @@ declare namespace Enum {
         }
         export const Interface: Interface;
         /**
+         * Indicates the completion item represents a module.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Module)
          */
         export interface Module extends globalThis.EnumItem {
@@ -8047,6 +9083,8 @@ declare namespace Enum {
         }
         export const Module: Module;
         /**
+         * Indicates the completion item represents a property on a class or object.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Property)
          */
         export interface Property extends globalThis.EnumItem {
@@ -8056,6 +9094,8 @@ declare namespace Enum {
         }
         export const Property: Property;
         /**
+         * Indicates the completion item represents a unit of measurement or a module-level value.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Unit)
          */
         export interface Unit extends globalThis.EnumItem {
@@ -8065,6 +9105,8 @@ declare namespace Enum {
         }
         export const Unit: Unit;
         /**
+         * Indicates the completion item represents a value expression.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Value)
          */
         export interface Value extends globalThis.EnumItem {
@@ -8074,6 +9116,8 @@ declare namespace Enum {
         }
         export const Value: Value;
         /**
+         * Indicates the completion item represents an enum type.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Enum)
          */
         export interface Enum extends globalThis.EnumItem {
@@ -8083,6 +9127,8 @@ declare namespace Enum {
         }
         export const Enum: Enum;
         /**
+         * Indicates the completion item represents a language keyword.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Keyword)
          */
         export interface Keyword extends globalThis.EnumItem {
@@ -8092,6 +9138,8 @@ declare namespace Enum {
         }
         export const Keyword: Keyword;
         /**
+         * Indicates the completion item represents an insertable code snippet with tab stops.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Snippet)
          */
         export interface Snippet extends globalThis.EnumItem {
@@ -8101,6 +9149,8 @@ declare namespace Enum {
         }
         export const Snippet: Snippet;
         /**
+         * Indicates the completion item represents a color value.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Color)
          */
         export interface Color extends globalThis.EnumItem {
@@ -8110,6 +9160,8 @@ declare namespace Enum {
         }
         export const Color: Color;
         /**
+         * Indicates the completion item represents a file reference.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#File)
          */
         export interface File extends globalThis.EnumItem {
@@ -8119,6 +9171,8 @@ declare namespace Enum {
         }
         export const File: File;
         /**
+         * Indicates the completion item represents a reference to another symbol.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Reference)
          */
         export interface Reference extends globalThis.EnumItem {
@@ -8128,6 +9182,8 @@ declare namespace Enum {
         }
         export const Reference: Reference;
         /**
+         * Indicates the completion item represents a folder or directory.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Folder)
          */
         export interface Folder extends globalThis.EnumItem {
@@ -8137,6 +9193,8 @@ declare namespace Enum {
         }
         export const Folder: Folder;
         /**
+         * Indicates the completion item represents an individual enum member value.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#EnumMember)
          */
         export interface EnumMember extends globalThis.EnumItem {
@@ -8146,6 +9204,8 @@ declare namespace Enum {
         }
         export const EnumMember: EnumMember;
         /**
+         * Indicates the completion item represents a constant value.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Constant)
          */
         export interface Constant extends globalThis.EnumItem {
@@ -8155,6 +9215,8 @@ declare namespace Enum {
         }
         export const Constant: Constant;
         /**
+         * Indicates the completion item represents a struct or table type.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Struct)
          */
         export interface Struct extends globalThis.EnumItem {
@@ -8164,6 +9226,8 @@ declare namespace Enum {
         }
         export const Struct: Struct;
         /**
+         * Indicates the completion item represents an event.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Event)
          */
         export interface Event extends globalThis.EnumItem {
@@ -8173,6 +9237,8 @@ declare namespace Enum {
         }
         export const Event: Event;
         /**
+         * Indicates the completion item represents an operator.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#Operator)
          */
         export interface Operator extends globalThis.EnumItem {
@@ -8182,6 +9248,8 @@ declare namespace Enum {
         }
         export const Operator: Operator;
         /**
+         * Indicates the completion item represents a generic type parameter.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemKind#TypeParameter)
          */
         export interface TypeParameter extends globalThis.EnumItem {
@@ -8301,6 +9369,8 @@ declare namespace Enum {
         }
         export const ClientServerBoundaryViolation: ClientServerBoundaryViolation;
         /**
+         * Indicates that the completion is stale because the cursor has moved outside the item's valid replacement range, hiding it from the completion list.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemTag#Invalidated)
          */
         export interface Invalidated extends globalThis.EnumItem {
@@ -8310,6 +9380,8 @@ declare namespace Enum {
         }
         export const Invalidated: Invalidated;
         /**
+         * Instructs the editor to move the cursor to just before the nearest preceding `end` keyword after inserting the given completion, if accepted.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CompletionItemTag#PutCursorBeforeEnd)
          */
         export interface PutCursorBeforeEnd extends globalThis.EnumItem {
@@ -8553,7 +9625,7 @@ declare namespace Enum {
      */
     export namespace ComputerMovementMode {
         /**
-         * The default is KeyboardMouse.
+         * The movement mode has not been explicitly set and behaves identically to `KeyboardMouse`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ComputerMovementMode#Default)
          */
@@ -8564,7 +9636,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * The player's character is controlled using the keyboard and mouse.
+         * The player moves their character using keyboard keys and steers the camera with the mouse.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ComputerMovementMode#KeyboardMouse)
          */
@@ -8575,7 +9647,7 @@ declare namespace Enum {
         }
         export const KeyboardMouse: KeyboardMouse;
         /**
-         * The player can right-click in the game world and their character will move there. In addition, the player can also control their character with their mouse and keyboard.
+         * The player moves their character by clicking a destination in the game world; the character automatically navigates there and jumps over surmountable obstacles.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ComputerMovementMode#ClickToMove)
          */
@@ -8591,10 +9663,14 @@ declare namespace Enum {
     }
     export type ComputerMovementMode = ComputerMovementMode.Default | ComputerMovementMode.KeyboardMouse | ComputerMovementMode.ClickToMove;
     /**
+     * Describes the error state of a `ConfigSnapshot` object.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConfigSnapshotErrorState)
      */
     export namespace ConfigSnapshotErrorState {
         /**
+         * Indicates the snapshot loaded successfully with no error; this is the default state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConfigSnapshotErrorState#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -8604,6 +9680,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * Indicates the snapshot failed to load because the underlying config service was unavailable at construction time.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConfigSnapshotErrorState#LoadFailed)
          */
         export interface LoadFailed extends globalThis.EnumItem {
@@ -9579,11 +10657,74 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.ConnectionError;
         }
         export const TeleportIsTeleporting: TeleportIsTeleporting;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#TransportErrors)
+         */
+        export interface TransportErrors extends globalThis.EnumItem {
+            Name: "TransportErrors";
+            Value: 1024;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const TransportErrors: TransportErrors;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectTransportIoError)
+         */
+        export interface DisconnectTransportIoError extends globalThis.EnumItem {
+            Name: "DisconnectTransportIoError";
+            Value: 1025;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectTransportIoError: DisconnectTransportIoError;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectTransportIoInternetError)
+         */
+        export interface DisconnectTransportIoInternetError extends globalThis.EnumItem {
+            Name: "DisconnectTransportIoInternetError";
+            Value: 1026;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectTransportIoInternetError: DisconnectTransportIoInternetError;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectTransportProtocolError)
+         */
+        export interface DisconnectTransportProtocolError extends globalThis.EnumItem {
+            Name: "DisconnectTransportProtocolError";
+            Value: 1027;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectTransportProtocolError: DisconnectTransportProtocolError;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectTransportNgtcp2Error)
+         */
+        export interface DisconnectTransportNgtcp2Error extends globalThis.EnumItem {
+            Name: "DisconnectTransportNgtcp2Error";
+            Value: 1028;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectTransportNgtcp2Error: DisconnectTransportNgtcp2Error;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectTransportQuicError)
+         */
+        export interface DisconnectTransportQuicError extends globalThis.EnumItem {
+            Name: "DisconnectTransportQuicError";
+            Value: 1029;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectTransportQuicError: DisconnectTransportQuicError;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ConnectionError#DisconnectTransportRnaError)
+         */
+        export interface DisconnectTransportRnaError extends globalThis.EnumItem {
+            Name: "DisconnectTransportRnaError";
+            Value: 1030;
+            EnumType: typeof globalThis.Enum.ConnectionError;
+        }
+        export const DisconnectTransportRnaError: DisconnectTransportRnaError;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ConnectionError>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ConnectionError | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ConnectionError | undefined;
     }
-    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.ConnectErrors | ConnectionError.AlreadyConnected | ConnectionError.NoFreeIncomingConnections | ConnectionError.ConnectionBanned | ConnectionError.InvalidPassword | ConnectionError.IncompatibleProtocolVersion | ConnectionError.IPRecentlyConnected | ConnectionError.OurSystemRequiresSecurity | ConnectionError.SecurityKeyMismatch | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.DisconnectionNotification | ConnectionError.DisconnectVerboselyModeratedGame | ConnectionError.DisconnectCollaboratorNotAgeVerified | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequired | ConnectionError.DisconnectCollaboratorOwnerActionRequired | ConnectionError.DisconnectCollaboratorTooManyCollaborators | ConnectionError.DisconnectCollaboratorUnknownError | ConnectionError.DisconnectCollaboratorRequestedEviction | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequiredPC | ConnectionError.DisconnectRemoteAttestationUnsupported | ConnectionError.DisconnectRemoteAttestationGeneralFailure | ConnectionError.DisconnectRemoteAttestationTimeout | ConnectionError.DisconnectRemoteAttestationOSOutOfDate | ConnectionError.DisconnectRemoteAttestationBootValidationFailure | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchVipOwnerNotPresent | ConnectionError.PlacelaunchAgeVerificationRequired | ConnectionError.PlacelaunchParentalApprovalRequired | ConnectionError.PlacelaunchCoreGated | ConnectionError.PlacelaunchCollaborationCoreGated | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchDeviceBlock | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting;
+    export type ConnectionError = ConnectionError.OK | ConnectionError.Unknown | ConnectionError.ConnectErrors | ConnectionError.AlreadyConnected | ConnectionError.NoFreeIncomingConnections | ConnectionError.ConnectionBanned | ConnectionError.InvalidPassword | ConnectionError.IncompatibleProtocolVersion | ConnectionError.IPRecentlyConnected | ConnectionError.OurSystemRequiresSecurity | ConnectionError.SecurityKeyMismatch | ConnectionError.DisconnectErrors | ConnectionError.DisconnectBadhash | ConnectionError.DisconnectSecurityKeyMismatch | ConnectionError.DisconnectProtocolMismatch | ConnectionError.DisconnectReceivePacketError | ConnectionError.DisconnectReceivePacketStreamError | ConnectionError.DisconnectSendPacketError | ConnectionError.DisconnectIllegalTeleport | ConnectionError.DisconnectDuplicatePlayer | ConnectionError.DisconnectDuplicateTicket | ConnectionError.DisconnectTimeout | ConnectionError.DisconnectLuaKick | ConnectionError.DisconnectOnRemoteSysStats | ConnectionError.DisconnectHashTimeout | ConnectionError.DisconnectCloudEditKick | ConnectionError.DisconnectPlayerless | ConnectionError.DisconnectNewSecurityKeyMismatch | ConnectionError.DisconnectEvicted | ConnectionError.DisconnectDevMaintenance | ConnectionError.DisconnectRobloxMaintenance | ConnectionError.DisconnectRejoin | ConnectionError.DisconnectConnectionLost | ConnectionError.DisconnectIdle | ConnectionError.DisconnectRaknetErrors | ConnectionError.DisconnectWrongVersion | ConnectionError.DisconnectBySecurityPolicy | ConnectionError.DisconnectBlockedIP | ConnectionError.DisconnectClientFailure | ConnectionError.DisconnectClientRequest | ConnectionError.DisconnectPrivateServerKickout | ConnectionError.DisconnectModeratedGame | ConnectionError.ServerShutdown | ConnectionError.ReplicatorTimeout | ConnectionError.PlayerRemoved | ConnectionError.DisconnectOutOfMemoryKeepPlayingLeave | ConnectionError.DisconnectRomarkEndOfTest | ConnectionError.DisconnectCollaboratorPermissionRevoked | ConnectionError.DisconnectCollaboratorUnderage | ConnectionError.NetworkInternal | ConnectionError.NetworkSend | ConnectionError.NetworkTimeout | ConnectionError.NetworkMisbehavior | ConnectionError.NetworkSecurity | ConnectionError.ReplacementReady | ConnectionError.ServerEmpty | ConnectionError.PhantomFreeze | ConnectionError.AndroidAnticheatKick | ConnectionError.AndroidEmulatorKick | ConnectionError.AndroidRootedKick | ConnectionError.ScreentimeLockoutKick | ConnectionError.DisconnectionNotification | ConnectionError.DisconnectVerboselyModeratedGame | ConnectionError.DisconnectCollaboratorNotAgeVerified | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequired | ConnectionError.DisconnectCollaboratorOwnerActionRequired | ConnectionError.DisconnectCollaboratorTooManyCollaborators | ConnectionError.DisconnectCollaboratorUnknownError | ConnectionError.DisconnectCollaboratorRequestedEviction | ConnectionError.DisconnectCollaboratorTrustedConnectionsRequiredPC | ConnectionError.DisconnectRemoteAttestationUnsupported | ConnectionError.DisconnectRemoteAttestationGeneralFailure | ConnectionError.DisconnectRemoteAttestationTimeout | ConnectionError.DisconnectRemoteAttestationOSOutOfDate | ConnectionError.DisconnectRemoteAttestationBootValidationFailure | ConnectionError.PlacelaunchErrors | ConnectionError.PlacelaunchDisabled | ConnectionError.PlacelaunchError | ConnectionError.PlacelaunchGameEnded | ConnectionError.PlacelaunchGameFull | ConnectionError.PlacelaunchUserLeft | ConnectionError.PlacelaunchRestricted | ConnectionError.PlacelaunchUnauthorized | ConnectionError.PlacelaunchFlooded | ConnectionError.PlacelaunchHashExpired | ConnectionError.PlacelaunchHashException | ConnectionError.PlacelaunchPartyCannotFit | ConnectionError.PlacelaunchHttpError | ConnectionError.PlacelaunchUserPrivacyUnauthorized | ConnectionError.PlacelaunchVipOwnerNotPresent | ConnectionError.PlacelaunchAgeVerificationRequired | ConnectionError.PlacelaunchParentalApprovalRequired | ConnectionError.PlacelaunchCoreGated | ConnectionError.PlacelaunchCollaborationCoreGated | ConnectionError.PlacelaunchCreatorBan | ConnectionError.PlacelaunchDeviceBlock | ConnectionError.PlacelaunchCustomMessage | ConnectionError.PlacelaunchOtherError | ConnectionError.TeleportErrors | ConnectionError.TeleportFailure | ConnectionError.TeleportGameNotFound | ConnectionError.TeleportGameEnded | ConnectionError.TeleportGameFull | ConnectionError.TeleportUnauthorized | ConnectionError.TeleportFlooded | ConnectionError.TeleportIsTeleporting | ConnectionError.TransportErrors | ConnectionError.DisconnectTransportIoError | ConnectionError.DisconnectTransportIoInternetError | ConnectionError.DisconnectTransportProtocolError | ConnectionError.DisconnectTransportNgtcp2Error | ConnectionError.DisconnectTransportQuicError | ConnectionError.DisconnectTransportRnaError;
     /**
      * Used to determine the connection state of the client to the game server.
      *
@@ -9679,7 +10820,7 @@ declare namespace Enum {
      */
     export namespace ContextActionPriority {
         /**
-         * Low priority.
+         * The lowest named priority level (value 1000); an action at this level is invoked after `High` and `Medium` actions bound to the same input.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContextActionPriority#Low)
          */
@@ -9690,7 +10831,7 @@ declare namespace Enum {
         }
         export const Low: Low;
         /**
-         * Medium priority.
+         * The default priority level (value 2000); used automatically by `ContextActionService:BindAction()` and falls between `High` and `Low` in processing order.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContextActionPriority#Medium)
          */
@@ -9705,7 +10846,7 @@ declare namespace Enum {
          */
         export const Default: Medium;
         /**
-         * High priority.
+         * The highest named priority level (value 3000); an action at this level is invoked before `Medium` and `Low` actions bound to the same input.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContextActionPriority#High)
          */
@@ -9892,6 +11033,8 @@ declare namespace Enum {
         }
         export const AvatarSwitcher: AvatarSwitcher;
         /**
+         * The in-experience shop overlay that lets players browse and purchase items without leaving the experience.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CoreGuiType#ExperienceShop)
          */
         export interface ExperienceShop extends globalThis.EnumItem {
@@ -9906,10 +11049,14 @@ declare namespace Enum {
     }
     export type CoreGuiType = CoreGuiType.PlayerList | CoreGuiType.Health | CoreGuiType.Backpack | CoreGuiType.Chat | CoreGuiType.All | CoreGuiType.EmotesMenu | CoreGuiType.SelfView | CoreGuiType.Captures | CoreGuiType.AvatarSwitcher | CoreGuiType.ExperienceShop;
     /**
+     * Indicates the outcome of a call to `AssetService:CreateAssetAsync()` or `AssetService:CreateAssetVersionAsync()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateAssetResult)
      */
     export namespace CreateAssetResult {
         /**
+         * The asset was created or updated successfully.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateAssetResult#Success)
          */
         export interface Success extends globalThis.EnumItem {
@@ -9919,6 +11066,8 @@ declare namespace Enum {
         }
         export const Success: Success;
         /**
+         * The caller does not have permission to create or update an asset in the target inventory.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateAssetResult#PermissionDenied)
          */
         export interface PermissionDenied extends globalThis.EnumItem {
@@ -9928,6 +11077,8 @@ declare namespace Enum {
         }
         export const PermissionDenied: PermissionDenied;
         /**
+         * The upload request to the Roblox asset service failed for a reason other than a permission error.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateAssetResult#UploadFailed)
          */
         export interface UploadFailed extends globalThis.EnumItem {
@@ -9937,6 +11088,8 @@ declare namespace Enum {
         }
         export const UploadFailed: UploadFailed;
         /**
+         * An unexpected error occurred and the operation could not complete.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateAssetResult#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -9951,11 +11104,13 @@ declare namespace Enum {
     }
     export type CreateAssetResult = CreateAssetResult.Success | CreateAssetResult.PermissionDenied | CreateAssetResult.UploadFailed | CreateAssetResult.Unknown;
     /**
+     * Indicates the result of a `AssetService:CreateDataModelContentAsync()` call.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateContentResult)
      */
     export namespace CreateContentResult {
         /**
-         * Success.
+         * The content object was created and stored successfully.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateContentResult#Success)
          */
@@ -10015,10 +11170,14 @@ declare namespace Enum {
     }
     export type CreateContentResult = CreateContentResult.Success | CreateContentResult.PermissionDenied | CreateContentResult.UploadFailed | CreateContentResult.StorageLimitExceeded | CreateContentResult.Unknown;
     /**
+     * Indicates why a `AvatarEditorService:PromptCreateOutfit()` call failed.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateOutfitFailure)
      */
     export namespace CreateOutfitFailure {
         /**
+         * The outfit name provided by the player was rejected as invalid.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateOutfitFailure#InvalidName)
          */
         export interface InvalidName extends globalThis.EnumItem {
@@ -10028,6 +11187,8 @@ declare namespace Enum {
         }
         export const InvalidName: InvalidName;
         /**
+         * The player has reached the maximum number of saved outfits.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateOutfitFailure#OutfitLimitReached)
          */
         export interface OutfitLimitReached extends globalThis.EnumItem {
@@ -10037,6 +11198,8 @@ declare namespace Enum {
         }
         export const OutfitLimitReached: OutfitLimitReached;
         /**
+         * The outfit creation failed for an unspecified or unrecognized reason.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreateOutfitFailure#Other)
          */
         export interface Other extends globalThis.EnumItem {
@@ -10051,6 +11214,8 @@ declare namespace Enum {
     }
     export type CreateOutfitFailure = CreateOutfitFailure.InvalidName | CreateOutfitFailure.OutfitLimitReached | CreateOutfitFailure.Other;
     /**
+     * Indicates whether the currently running place is owned by an individual user or a group.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreatorType)
      */
     export namespace CreatorType {
@@ -10082,10 +11247,14 @@ declare namespace Enum {
     }
     export type CreatorType = CreatorType.User | CreatorType.Group;
     /**
+     * Specifies which creator type to include when filtering catalog search results in `CatalogSearchParams`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreatorTypeFilter)
      */
     export namespace CreatorTypeFilter {
         /**
+         * Limits catalog search results to items created by individual users.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreatorTypeFilter#User)
          */
         export interface User extends globalThis.EnumItem {
@@ -10095,6 +11264,8 @@ declare namespace Enum {
         }
         export const User: User;
         /**
+         * Limits catalog search results to items created by groups.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreatorTypeFilter#Group)
          */
         export interface Group extends globalThis.EnumItem {
@@ -10104,6 +11275,8 @@ declare namespace Enum {
         }
         export const Group: Group;
         /**
+         * Includes items from all creator types; no filtering by creator is applied.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CreatorTypeFilter#All)
          */
         export interface All extends globalThis.EnumItem {
@@ -10124,6 +11297,8 @@ declare namespace Enum {
      */
     export namespace CurrencyType {
         /**
+         * Use the default currency (Robux), equivalent to not specifying a currency.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CurrencyType#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -10203,6 +11378,51 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CustomCameraMode | undefined;
     }
     export type CustomCameraMode = CustomCameraMode.Default | CustomCameraMode.Classic | CustomCameraMode.Follow;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelChangeType)
+     */
+    export namespace DataModelChangeType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelChangeType#Add)
+         */
+        export interface Add extends globalThis.EnumItem {
+            Name: "Add";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.DataModelChangeType;
+        }
+        export const Add: Add;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelChangeType#Remove)
+         */
+        export interface Remove extends globalThis.EnumItem {
+            Name: "Remove";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.DataModelChangeType;
+        }
+        export const Remove: Remove;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelChangeType#Modify)
+         */
+        export interface Modify extends globalThis.EnumItem {
+            Name: "Modify";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.DataModelChangeType;
+        }
+        export const Modify: Modify;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelChangeType#AddPackage)
+         */
+        export interface AddPackage extends globalThis.EnumItem {
+            Name: "AddPackage";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.DataModelChangeType;
+        }
+        export const AddPackage: AddPackage;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DataModelChangeType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DataModelChangeType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DataModelChangeType | undefined;
+    }
+    export type DataModelChangeType = DataModelChangeType.Add | DataModelChangeType.Remove | DataModelChangeType.Modify | DataModelChangeType.AddPackage;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DataModelExtractorFileType)
      */
@@ -10581,10 +11801,14 @@ declare namespace Enum {
     }
     export type DebuggerEndReason = DebuggerEndReason.ClientRequest | DebuggerEndReason.Timeout | DebuggerEndReason.InvalidHost | DebuggerEndReason.Disconnected | DebuggerEndReason.ServerShutdown | DebuggerEndReason.ServerProtocolMismatch | DebuggerEndReason.ConfigurationFailed | DebuggerEndReason.RpcError;
     /**
+     * Controls when the Luau debugger pauses script execution in response to a runtime exception.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebuggerExceptionBreakMode)
      */
     export namespace DebuggerExceptionBreakMode {
         /**
+         * The debugger never pauses due to a runtime exception; execution continues normally regardless of whether the exception is caught or uncaught.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebuggerExceptionBreakMode#Never)
          */
         export interface Never extends globalThis.EnumItem {
@@ -10594,6 +11818,8 @@ declare namespace Enum {
         }
         export const Never: Never;
         /**
+         * The debugger pauses on every runtime exception, including those caught by `pcall` or `xpcall`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebuggerExceptionBreakMode#Always)
          */
         export interface Always extends globalThis.EnumItem {
@@ -10603,6 +11829,8 @@ declare namespace Enum {
         }
         export const Always: Always;
         /**
+         * The debugger pauses only on runtime exceptions that propagate without being caught by `pcall` or `xpcall`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DebuggerExceptionBreakMode#Unhandled)
          */
         export interface Unhandled extends globalThis.EnumItem {
@@ -10892,10 +12120,14 @@ declare namespace Enum {
     }
     export type DebuggerStatus = DebuggerStatus.Success | DebuggerStatus.Timeout | DebuggerStatus.ConnectionLost | DebuggerStatus.InvalidResponse | DebuggerStatus.InternalError | DebuggerStatus.InvalidState | DebuggerStatus.RpcError | DebuggerStatus.InvalidArgument | DebuggerStatus.ConnectionClosed;
     /**
+     * Controls the file extension used when Studio's script sync feature saves script instances to the filesystem.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DefaultScriptSyncFileType)
      */
     export namespace DefaultScriptSyncFileType {
         /**
+         * Script files are synced to the filesystem with a `.lua` extension.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DefaultScriptSyncFileType#Lua)
          */
         export interface Lua extends globalThis.EnumItem {
@@ -10905,6 +12137,8 @@ declare namespace Enum {
         }
         export const Lua: Lua;
         /**
+         * Script files are synced to the filesystem with a `.luau` extension.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DefaultScriptSyncFileType#Luau)
          */
         export interface Luau extends globalThis.EnumItem {
@@ -11462,6 +12696,8 @@ declare namespace Enum {
         }
         export const Navigation: Navigation;
         /**
+         * Geometry mesh data for CSG objects such as `UnionOperation` and `PartOperation`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeveloperMemoryTag#GeometryCSG)
          */
         export interface GeometryCSG extends globalThis.EnumItem {
@@ -11471,6 +12707,8 @@ declare namespace Enum {
         }
         export const GeometryCSG: GeometryCSG;
         /**
+         * Rendering memory for SLIM (streamed level-of-detail instance mesh) model data.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeveloperMemoryTag#GraphicsSlimModels)
          */
         export interface GraphicsSlimModels extends globalThis.EnumItem {
@@ -11512,10 +12750,14 @@ declare namespace Enum {
     }
     export type DeviceFeatureType = DeviceFeatureType.DeviceCapture | DeviceFeatureType.InExperienceFAE;
     /**
+     * Describes the physical form factor of a device used during Studio device emulation.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceForm)
      */
     export namespace DeviceForm {
         /**
+         * Represents a gaming console device, such as an Xbox or PlayStation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceForm#Console)
          */
         export interface Console extends globalThis.EnumItem {
@@ -11525,6 +12767,8 @@ declare namespace Enum {
         }
         export const Console: Console;
         /**
+         * Represents a mobile phone with a touchscreen.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceForm#Phone)
          */
         export interface Phone extends globalThis.EnumItem {
@@ -11534,6 +12778,8 @@ declare namespace Enum {
         }
         export const Phone: Phone;
         /**
+         * Represents a tablet with a touchscreen.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceForm#Tablet)
          */
         export interface Tablet extends globalThis.EnumItem {
@@ -11543,6 +12789,8 @@ declare namespace Enum {
         }
         export const Tablet: Tablet;
         /**
+         * Represents a desktop or laptop computer.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceForm#Desktop)
          */
         export interface Desktop extends globalThis.EnumItem {
@@ -11552,6 +12800,8 @@ declare namespace Enum {
         }
         export const Desktop: Desktop;
         /**
+         * Represents a virtual reality headset.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceForm#VR)
          */
         export interface VR extends globalThis.EnumItem {
@@ -11566,10 +12816,14 @@ declare namespace Enum {
     }
     export type DeviceForm = DeviceForm.Console | DeviceForm.Phone | DeviceForm.Tablet | DeviceForm.Desktop | DeviceForm.VR;
     /**
+     * Classifies a device's hardware capability tier.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceLevel)
      */
     export namespace DeviceLevel {
         /**
+         * Indicates a low-end device that benefits from reduced graphics or simulation quality.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceLevel#Low)
          */
         export interface Low extends globalThis.EnumItem {
@@ -11579,6 +12833,8 @@ declare namespace Enum {
         }
         export const Low: Low;
         /**
+         * Indicates a mid-range device that may benefit from moderate reductions in resource-intensive features.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceLevel#Medium)
          */
         export interface Medium extends globalThis.EnumItem {
@@ -11588,6 +12844,8 @@ declare namespace Enum {
         }
         export const Medium: Medium;
         /**
+         * Indicates a high-end device capable of running resource-intensive features at full fidelity.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceLevel#High)
          */
         export interface High extends globalThis.EnumItem {
@@ -11602,10 +12860,14 @@ declare namespace Enum {
     }
     export type DeviceLevel = DeviceLevel.Low | DeviceLevel.Medium | DeviceLevel.High;
     /**
+     * Controls how the Device Simulator viewport scales the simulated device resolution within the Studio window.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceSimulatorScalingMode)
      */
     export namespace DeviceSimulatorScalingMode {
         /**
+         * Scales the simulated viewport so that its pixels correspond to their physical size on the developer's monitor, computed from the screen DPI and an optional target DPI override.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceSimulatorScalingMode#ScaleToPhysicalSize)
          */
         export interface ScaleToPhysicalSize extends globalThis.EnumItem {
@@ -11615,6 +12877,8 @@ declare namespace Enum {
         }
         export const ScaleToPhysicalSize: ScaleToPhysicalSize;
         /**
+         * Renders the simulated viewport at a 1:1 pixel mapping with no scaling applied.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceSimulatorScalingMode#ActualResolution)
          */
         export interface ActualResolution extends globalThis.EnumItem {
@@ -11624,6 +12888,8 @@ declare namespace Enum {
         }
         export const ActualResolution: ActualResolution;
         /**
+         * Scales the simulated viewport uniformly to fill as much of the available Studio window as possible while preserving the device's aspect ratio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceSimulatorScalingMode#FitToWindow)
          */
         export interface FitToWindow extends globalThis.EnumItem {
@@ -11688,6 +12954,8 @@ declare namespace Enum {
         }
         export const Phone: Phone;
         /**
+         * The client is a TV device.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DeviceType#TV)
          */
         export interface TV extends globalThis.EnumItem {
@@ -11823,10 +13091,14 @@ declare namespace Enum {
     }
     export type DialogTone = DialogTone.Neutral | DialogTone.Friendly | DialogTone.Enemy;
     /**
+     * Specifies which hand side a `DigitsRigDescription` instance is assigned to.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DigitsRigDescriptionSide)
      */
     export namespace DigitsRigDescriptionSide {
         /**
+         * The `DigitsRigDescription` has not been assigned to a hand side and is skipped by the animation system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DigitsRigDescriptionSide#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -11836,6 +13108,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * The `DigitsRigDescription` is assigned to the left hand.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DigitsRigDescriptionSide#Left)
          */
         export interface Left extends globalThis.EnumItem {
@@ -11845,6 +13119,8 @@ declare namespace Enum {
         }
         export const Left: Left;
         /**
+         * The `DigitsRigDescription` is assigned to the right hand.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DigitsRigDescriptionSide#Right)
          */
         export interface Right extends globalThis.EnumItem {
@@ -11957,6 +13233,72 @@ declare namespace Enum {
     }
     export type DisplaySize = DisplaySize.Small | DisplaySize.Medium | DisplaySize.Large;
     /**
+     * Determines how an `AudioEmitter` attenuates (fades out) as the distance between the `AudioEmitter` and an interacting `AudioListener` increases.
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DistanceAttenuationMode)
+     */
+    export namespace DistanceAttenuationMode {
+        /**
+         * Uses the developer-supplied `DistanceAttenuation` curve for gain rolloff.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DistanceAttenuationMode#Custom)
+         */
+        export interface Custom extends globalThis.EnumItem {
+            Name: "Custom";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.DistanceAttenuationMode;
+        }
+        export const Custom: Custom;
+        /**
+         * Volume attenuates according to a hybrid model which follows the `DistanceAttenuationMode.Inverse` model when close to the lower bound of `AudioEmitter.DistanceAttenuationBounds` and the `DistanceAttenuationMode.LinearSquared` model when close to the upper bound of `AudioEmitter.DistanceAttenuationBounds`. This is done by taking the lesser of these two curves, such that the curve mostly follows an inverse relationship but tapers to silence at the maximum distance.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DistanceAttenuationMode#InverseTapered)
+         */
+        export interface InverseTapered extends globalThis.EnumItem {
+            Name: "InverseTapered";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.DistanceAttenuationMode;
+        }
+        export const InverseTapered: InverseTapered;
+        /**
+         * Volume attenuates between the bounds of `AudioEmitter.DistanceAttenuationBounds` with a linear relationship. This is done by computing (`maxDistance` - `distance`) / (`maxDistance` - `minDistance`), where distance is the `Vector3.Magnitude` between the `AudioEmitter`'s position and the `AudioListener`'s position.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DistanceAttenuationMode#Linear)
+         */
+        export interface Linear extends globalThis.EnumItem {
+            Name: "Linear";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.DistanceAttenuationMode;
+        }
+        export const Linear: Linear;
+        /**
+         * Volume attenuates between the bounds of `AudioEmitter.DistanceAttenuationBounds` with a linear-squared relationship. This is done by squaring the formula used to determine the volume when using `DistanceAttenuationMode.Linear`, which creates a parabolic curve with a steeper fade.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DistanceAttenuationMode#LinearSquared)
+         */
+        export interface LinearSquared extends globalThis.EnumItem {
+            Name: "LinearSquared";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.DistanceAttenuationMode;
+        }
+        export const LinearSquared: LinearSquared;
+        /**
+         * Volume attenuates from the lower bound of `AudioEmitter.DistanceAttenuationBounds` in an inverse manner, mirroring how sounds attenuate in the real world. This is done by computing (`minDistance`/`distance`), where `distance` is the `Vector2.Magnitude` between the `AudioEmitter`'s position and the `AudioListener`'s position.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DistanceAttenuationMode#Inverse)
+         */
+        export interface Inverse extends globalThis.EnumItem {
+            Name: "Inverse";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.DistanceAttenuationMode;
+        }
+        export const Inverse: Inverse;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DistanceAttenuationMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DistanceAttenuationMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DistanceAttenuationMode | undefined;
+    }
+    export type DistanceAttenuationMode = DistanceAttenuationMode.Custom | DistanceAttenuationMode.InverseTapered | DistanceAttenuationMode.Linear | DistanceAttenuationMode.LinearSquared | DistanceAttenuationMode.Inverse;
+    /**
      * Specifies the type of domain that a `User` is scoped to.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DomainType)
@@ -12023,10 +13365,14 @@ declare namespace Enum {
     }
     export type DominantAxis = DominantAxis.Width | DominantAxis.Height;
     /**
+     * Describes the state of a script draft tracked by `DraftsService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DraftStatusCode)
      */
     export namespace DraftStatusCode {
         /**
+         * The draft is in sync with the server's base version and has no blocking conflicts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DraftStatusCode#OK)
          */
         export interface OK extends globalThis.EnumItem {
@@ -12036,6 +13382,8 @@ declare namespace Enum {
         }
         export const OK: OK;
         /**
+         * The server version of the script has advanced beyond the base version used when the draft was created, so the draft must be updated before it can be committed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DraftStatusCode#DraftOutdated)
          */
         export interface DraftOutdated extends globalThis.EnumItem {
@@ -12045,6 +13393,8 @@ declare namespace Enum {
         }
         export const DraftOutdated: DraftOutdated;
         /**
+         * The script referenced by the draft no longer exists in the data model.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DraftStatusCode#ScriptRemoved)
          */
         export interface ScriptRemoved extends globalThis.EnumItem {
@@ -12054,6 +13404,8 @@ declare namespace Enum {
         }
         export const ScriptRemoved: ScriptRemoved;
         /**
+         * The draft was successfully committed to the server and removed from the local sandbox.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DraftStatusCode#DraftCommitted)
          */
         export interface DraftCommitted extends globalThis.EnumItem {
@@ -12266,10 +13618,14 @@ declare namespace Enum {
     }
     export type DragDetectorResponseStyle = DragDetectorResponseStyle.Geometric | DragDetectorResponseStyle.Physical | DragDetectorResponseStyle.Custom;
     /**
+     * Determines the coordinate space used when dragging objects in Studio.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DraggerCoordinateSpace)
      */
     export namespace DraggerCoordinateSpace {
         /**
+         * Dragging is performed relative to the object's local coordinate space.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DraggerCoordinateSpace#Object)
          */
         export interface Object extends globalThis.EnumItem {
@@ -12279,6 +13635,8 @@ declare namespace Enum {
         }
         export const Object: Object;
         /**
+         * Dragging is performed relative to the world coordinate space.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DraggerCoordinateSpace#World)
          */
         export interface World extends globalThis.EnumItem {
@@ -12293,10 +13651,14 @@ declare namespace Enum {
     }
     export type DraggerCoordinateSpace = DraggerCoordinateSpace.Object | DraggerCoordinateSpace.World;
     /**
+     * Controls whether `DraggerService` moves parts geometrically or with physics simulation during Studio drag operations.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DraggerMovementMode)
      */
     export namespace DraggerMovementMode {
         /**
+         * Parts are moved by directly updating their position and orientation, ignoring physics and constraints.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DraggerMovementMode#Geometric)
          */
         export interface Geometric extends globalThis.EnumItem {
@@ -12306,6 +13668,8 @@ declare namespace Enum {
         }
         export const Geometric: Geometric;
         /**
+         * Parts are moved by applying physics impulses, so constraints and collisions are respected during the drag.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DraggerMovementMode#Physical)
          */
         export interface Physical extends globalThis.EnumItem {
@@ -12526,11 +13890,29 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.EasingStyle;
         }
         export const Cubic: Cubic;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EasingStyle#Bezier)
+         */
+        export interface Bezier extends globalThis.EnumItem {
+            Name: "Bezier";
+            Value: 11;
+            EnumType: typeof globalThis.Enum.EasingStyle;
+        }
+        export const Bezier: Bezier;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EasingStyle#Spring)
+         */
+        export interface Spring extends globalThis.EnumItem {
+            Name: "Spring";
+            Value: 12;
+            EnumType: typeof globalThis.Enum.EasingStyle;
+        }
+        export const Spring: Spring;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EasingStyle>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.EasingStyle | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.EasingStyle | undefined;
     }
-    export type EasingStyle = EasingStyle.Linear | EasingStyle.Sine | EasingStyle.Back | EasingStyle.Quad | EasingStyle.Quart | EasingStyle.Quint | EasingStyle.Bounce | EasingStyle.Elastic | EasingStyle.Exponential | EasingStyle.Circular | EasingStyle.Cubic;
+    export type EasingStyle = EasingStyle.Linear | EasingStyle.Sine | EasingStyle.Back | EasingStyle.Quad | EasingStyle.Quart | EasingStyle.Quint | EasingStyle.Bounce | EasingStyle.Elastic | EasingStyle.Exponential | EasingStyle.Circular | EasingStyle.Cubic | EasingStyle.Bezier | EasingStyle.Spring;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EditableStatus)
      */
@@ -12645,10 +14027,14 @@ declare namespace Enum {
     }
     export type EmitterPositionType = EmitterPositionType.Parent | EmitterPositionType.Instance;
     /**
+     * Describes how many days a player played the current experience in the last 7 days, represented as a bucket.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngagementLevel)
      */
     export namespace EngagementLevel {
         /**
+         * Segment data is unavailable.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngagementLevel#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -12658,6 +14044,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
+         * The player did not play the experience in the last 7 days.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngagementLevel#Inactive)
          */
         export interface Inactive extends globalThis.EnumItem {
@@ -12667,6 +14055,8 @@ declare namespace Enum {
         }
         export const Inactive: Inactive;
         /**
+         * The player played the experience on 1 of the last 7 days.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngagementLevel#Low)
          */
         export interface Low extends globalThis.EnumItem {
@@ -12676,6 +14066,8 @@ declare namespace Enum {
         }
         export const Low: Low;
         /**
+         * The player played the experience on 2 or 3 of the last 7 days.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngagementLevel#Medium)
          */
         export interface Medium extends globalThis.EnumItem {
@@ -12685,6 +14077,8 @@ declare namespace Enum {
         }
         export const Medium: Medium;
         /**
+         * The player played the experience on 4 to 7 of the last 7 days.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngagementLevel#High)
          */
         export interface High extends globalThis.EnumItem {
@@ -12823,10 +14217,14 @@ declare namespace Enum {
     }
     export type EnviromentalPhysicsThrottle = EnviromentalPhysicsThrottle.DefaultAuto | EnviromentalPhysicsThrottle.Disabled | EnviromentalPhysicsThrottle.Always | EnviromentalPhysicsThrottle.Skip2 | EnviromentalPhysicsThrottle.Skip4 | EnviromentalPhysicsThrottle.Skip8 | EnviromentalPhysicsThrottle.Skip16;
     /**
+     * Describes whether a player is new, active, lapsed, or reactivated in the current experience.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceActivationStatus)
      */
     export namespace ExperienceActivationStatus {
         /**
+         * Segment data is unavailable.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceActivationStatus#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -12836,6 +14234,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
+         * The player first played the experience within the last 30 days.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceActivationStatus#New)
          */
         export interface New extends globalThis.EnumItem {
@@ -12845,6 +14245,8 @@ declare namespace Enum {
         }
         export const New: New;
         /**
+         * The player played the experience in the last 30 days and is not `New` or `Reactivated`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceActivationStatus#Active)
          */
         export interface Active extends globalThis.EnumItem {
@@ -12854,6 +14256,8 @@ declare namespace Enum {
         }
         export const Active: Active;
         /**
+         * The player has not played the experience in the last 30 days.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceActivationStatus#Lapsed)
          */
         export interface Lapsed extends globalThis.EnumItem {
@@ -12863,6 +14267,8 @@ declare namespace Enum {
         }
         export const Lapsed: Lapsed;
         /**
+         * The player returned to the experience within the last 30 days after being `Lapsed`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceActivationStatus#Reactivated)
          */
         export interface Reactivated extends globalThis.EnumItem {
@@ -12877,10 +14283,14 @@ declare namespace Enum {
     }
     export type ExperienceActivationStatus = ExperienceActivationStatus.Unknown | ExperienceActivationStatus.New | ExperienceActivationStatus.Active | ExperienceActivationStatus.Lapsed | ExperienceActivationStatus.Reactivated;
     /**
+     * Enumerates the authorization scopes an experience can request when prompting a creator for permission to access their assets.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceAuthScope)
      */
     export namespace ExperienceAuthScope {
         /**
+         * The base scope (value `0`) representing no additional permissions; used internally when no specific asset authorization is required.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceAuthScope#DefaultScope)
          */
         export interface DefaultScope extends globalThis.EnumItem {
@@ -12890,6 +14300,8 @@ declare namespace Enum {
         }
         export const DefaultScope: DefaultScope;
         /**
+         * Requests read and write access to the creator's assets; maps to the `asset:*:read,write` authorization token scope.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceAuthScope#CreatorAssetsCreate)
          */
         export interface CreatorAssetsCreate extends globalThis.EnumItem {
@@ -12904,6 +14316,8 @@ declare namespace Enum {
     }
     export type ExperienceAuthScope = ExperienceAuthScope.DefaultScope | ExperienceAuthScope.CreatorAssetsCreate;
     /**
+     * Describes the lifecycle state of a Roblox experience event as returned by `SocialService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExperienceEventStatus)
      */
     export namespace ExperienceEventStatus {
@@ -13103,6 +14517,8 @@ declare namespace Enum {
     }
     export type ExperienceStateRecordingPlaybackMode = ExperienceStateRecordingPlaybackMode.Undefined | ExperienceStateRecordingPlaybackMode.Stopped | ExperienceStateRecordingPlaybackMode.Playing | ExperienceStateRecordingPlaybackMode.Rewinding;
     /**
+     * Determines whether an `Explosion` creates craters when it detonates.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExplosionType)
      */
     export namespace ExplosionType {
@@ -13138,10 +14554,14 @@ declare namespace Enum {
     }
     export type ExplosionType = ExplosionType.NoCraters | ExplosionType.Craters;
     /**
+     * Controls whether Roblox Studio opens scripts in the operating system's default editor or in a user-selected external editor.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExternalEditorMode)
      */
     export namespace ExternalEditorMode {
         /**
+         * Studio opens scripts using the operating system's default application for the file type.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExternalEditorMode#SystemDefault)
          */
         export interface SystemDefault extends globalThis.EnumItem {
@@ -13151,6 +14571,8 @@ declare namespace Enum {
         }
         export const SystemDefault: SystemDefault;
         /**
+         * Studio opens scripts using the external editor executable specified in `Studio.ExternalEditorSelection`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ExternalEditorMode#UserSelectedEditor)
          */
         export interface UserSelectedEditor extends globalThis.EnumItem {
@@ -13169,10 +14591,14 @@ declare namespace Enum {
     }
     export type ExternalEditorMode = ExternalEditorMode.SystemDefault | ExternalEditorMode.UserSelectedEditor;
     /**
+     * Specifies the level of detail for FACS blendshape data transmitted by the face tracking system.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FACSDataLod)
      */
     export namespace FACSDataLod {
         /**
+         * Full-fidelity FACS data transmitting all 50 blendshape controls.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FACSDataLod#LOD0)
          */
         export interface LOD0 extends globalThis.EnumItem {
@@ -13182,6 +14608,8 @@ declare namespace Enum {
         }
         export const LOD0: LOD0;
         /**
+         * Reduced FACS data transmitting 6 blendshape controls: JawDrop, RightEyeClosed, LeftEyeClosed, RightLipCornerPuller, LeftLipCornerPuller, and Pucker.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FACSDataLod#LOD1)
          */
         export interface LOD1 extends globalThis.EnumItem {
@@ -13191,6 +14619,8 @@ declare namespace Enum {
         }
         export const LOD1: LOD1;
         /**
+         * Sentinel value equal to the total number of FACSDataLod levels; not a valid LOD to assign.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FACSDataLod#LODCount)
          */
         export interface LODCount extends globalThis.EnumItem {
@@ -13205,10 +14635,14 @@ declare namespace Enum {
     }
     export type FACSDataLod = FACSDataLod.LOD0 | FACSDataLod.LOD1 | FACSDataLod.LODCount;
     /**
+     * Describes the outcome of a facial age estimation inquiry initiated by `FacialAgeEstimationService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAgeEstimationResultType)
      */
     export namespace FacialAgeEstimationResultType {
         /**
+         * The facial age estimation inquiry finished successfully.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAgeEstimationResultType#Complete)
          */
         export interface Complete extends globalThis.EnumItem {
@@ -13218,6 +14652,8 @@ declare namespace Enum {
         }
         export const Complete: Complete;
         /**
+         * The facial age estimation inquiry was cancelled before it could complete.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAgeEstimationResultType#Cancel)
          */
         export interface Cancel extends globalThis.EnumItem {
@@ -13227,6 +14663,8 @@ declare namespace Enum {
         }
         export const Cancel: Cancel;
         /**
+         * The facial age estimation inquiry failed due to an error.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAgeEstimationResultType#Error)
          */
         export interface Error extends globalThis.EnumItem {
@@ -13241,10 +14679,14 @@ declare namespace Enum {
     }
     export type FacialAgeEstimationResultType = FacialAgeEstimationResultType.Complete | FacialAgeEstimationResultType.Cancel | FacialAgeEstimationResultType.Error;
     /**
+     * A bitmask enum describing which facial animation streaming capabilities are active for a user or service.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAnimationStreamingState)
      */
     export namespace FacialAnimationStreamingState {
         /**
+         * Indicates that no facial animation streaming is active.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAnimationStreamingState#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -13254,6 +14696,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * Indicates that audio-based facial animation streaming is enabled for the user.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAnimationStreamingState#Audio)
          */
         export interface Audio extends globalThis.EnumItem {
@@ -13263,6 +14707,8 @@ declare namespace Enum {
         }
         export const Audio: Audio;
         /**
+         * Indicates that video-based facial animation streaming is enabled for the user.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAnimationStreamingState#Video)
          */
         export interface Video extends globalThis.EnumItem {
@@ -13272,6 +14718,8 @@ declare namespace Enum {
         }
         export const Video: Video;
         /**
+         * Indicates that facial animation streaming is enabled at the place level.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAnimationStreamingState#Place)
          */
         export interface Place extends globalThis.EnumItem {
@@ -13281,6 +14729,8 @@ declare namespace Enum {
         }
         export const Place: Place;
         /**
+         * Indicates that facial animation streaming is enabled at the server level.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacialAnimationStreamingState#Server)
          */
         export interface Server extends globalThis.EnumItem {
@@ -13295,10 +14745,14 @@ declare namespace Enum {
     }
     export type FacialAnimationStreamingState = FacialAnimationStreamingState.None | FacialAnimationStreamingState.Audio | FacialAnimationStreamingState.Video | FacialAnimationStreamingState.Place | FacialAnimationStreamingState.Server;
     /**
+     * Identifies a Facial Action Coding System pose for facial animation.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit)
      */
     export namespace FacsActionUnit {
         /**
+         * Moves the upper lip upward when the chin raiser is engaged.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#ChinRaiserUpperLip)
          */
         export interface ChinRaiserUpperLip extends globalThis.EnumItem {
@@ -13308,6 +14762,8 @@ declare namespace Enum {
         }
         export const ChinRaiserUpperLip: ChinRaiserUpperLip;
         /**
+         * Raises the chin and moves the lower lip upward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#ChinRaiser)
          */
         export interface ChinRaiser extends globalThis.EnumItem {
@@ -13317,6 +14773,8 @@ declare namespace Enum {
         }
         export const ChinRaiser: ChinRaiser;
         /**
+         * Moves the mouth corners inward and presses the lips against the teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#FlatPucker)
          */
         export interface FlatPucker extends globalThis.EnumItem {
@@ -13326,6 +14784,8 @@ declare namespace Enum {
         }
         export const FlatPucker: FlatPucker;
         /**
+         * Forms an O shape with the mouth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#Funneler)
          */
         export interface Funneler extends globalThis.EnumItem {
@@ -13335,6 +14795,8 @@ declare namespace Enum {
         }
         export const Funneler: Funneler;
         /**
+         * Rolls the lower lip over the teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LowerLipSuck)
          */
         export interface LowerLipSuck extends globalThis.EnumItem {
@@ -13344,6 +14806,8 @@ declare namespace Enum {
         }
         export const LowerLipSuck: LowerLipSuck;
         /**
+         * Presses the lips together.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LipPresser)
          */
         export interface LipPresser extends globalThis.EnumItem {
@@ -13353,6 +14817,8 @@ declare namespace Enum {
         }
         export const LipPresser: LipPresser;
         /**
+         * Brings the lips together relative to the jaw-drop pose.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LipsTogether)
          */
         export interface LipsTogether extends globalThis.EnumItem {
@@ -13362,6 +14828,8 @@ declare namespace Enum {
         }
         export const LipsTogether: LipsTogether;
         /**
+         * Moves the mouth to the character's left.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#MouthLeft)
          */
         export interface MouthLeft extends globalThis.EnumItem {
@@ -13371,6 +14839,8 @@ declare namespace Enum {
         }
         export const MouthLeft: MouthLeft;
         /**
+         * Moves the mouth to the character's right.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#MouthRight)
          */
         export interface MouthRight extends globalThis.EnumItem {
@@ -13380,6 +14850,8 @@ declare namespace Enum {
         }
         export const MouthRight: MouthRight;
         /**
+         * Puckers the lips into a kiss-like shape.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#Pucker)
          */
         export interface Pucker extends globalThis.EnumItem {
@@ -13389,6 +14861,8 @@ declare namespace Enum {
         }
         export const Pucker: Pucker;
         /**
+         * Rolls the upper lip over the teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#UpperLipSuck)
          */
         export interface UpperLipSuck extends globalThis.EnumItem {
@@ -13398,6 +14872,8 @@ declare namespace Enum {
         }
         export const UpperLipSuck: UpperLipSuck;
         /**
+         * Puffs the left cheek.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftCheekPuff)
          */
         export interface LeftCheekPuff extends globalThis.EnumItem {
@@ -13407,6 +14883,8 @@ declare namespace Enum {
         }
         export const LeftCheekPuff: LeftCheekPuff;
         /**
+         * Moves the left mouth corner backward to form a dimple.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftDimpler)
          */
         export interface LeftDimpler extends globalThis.EnumItem {
@@ -13416,6 +14894,8 @@ declare namespace Enum {
         }
         export const LeftDimpler: LeftDimpler;
         /**
+         * Lowers the left mouth corner into a frown.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftLipCornerDown)
          */
         export interface LeftLipCornerDown extends globalThis.EnumItem {
@@ -13425,6 +14905,8 @@ declare namespace Enum {
         }
         export const LeftLipCornerDown: LeftLipCornerDown;
         /**
+         * Lowers the left side of the lower lip to reveal the lower teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftLowerLipDepressor)
          */
         export interface LeftLowerLipDepressor extends globalThis.EnumItem {
@@ -13434,6 +14916,8 @@ declare namespace Enum {
         }
         export const LeftLowerLipDepressor: LeftLowerLipDepressor;
         /**
+         * Raises the left mouth corner into a smile.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftLipCornerPuller)
          */
         export interface LeftLipCornerPuller extends globalThis.EnumItem {
@@ -13443,6 +14927,8 @@ declare namespace Enum {
         }
         export const LeftLipCornerPuller: LeftLipCornerPuller;
         /**
+         * Stretches the left mouth corner outward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftLipStretcher)
          */
         export interface LeftLipStretcher extends globalThis.EnumItem {
@@ -13452,6 +14938,8 @@ declare namespace Enum {
         }
         export const LeftLipStretcher: LeftLipStretcher;
         /**
+         * Raises the left side of the upper lip to reveal the upper teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftUpperLipRaiser)
          */
         export interface LeftUpperLipRaiser extends globalThis.EnumItem {
@@ -13461,6 +14949,8 @@ declare namespace Enum {
         }
         export const LeftUpperLipRaiser: LeftUpperLipRaiser;
         /**
+         * Puffs the right cheek.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightCheekPuff)
          */
         export interface RightCheekPuff extends globalThis.EnumItem {
@@ -13470,6 +14960,8 @@ declare namespace Enum {
         }
         export const RightCheekPuff: RightCheekPuff;
         /**
+         * Moves the right mouth corner backward to form a dimple.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightDimpler)
          */
         export interface RightDimpler extends globalThis.EnumItem {
@@ -13479,6 +14971,8 @@ declare namespace Enum {
         }
         export const RightDimpler: RightDimpler;
         /**
+         * Lowers the right mouth corner into a frown.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightLipCornerDown)
          */
         export interface RightLipCornerDown extends globalThis.EnumItem {
@@ -13488,6 +14982,8 @@ declare namespace Enum {
         }
         export const RightLipCornerDown: RightLipCornerDown;
         /**
+         * Lowers the right side of the lower lip to reveal the lower teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightLowerLipDepressor)
          */
         export interface RightLowerLipDepressor extends globalThis.EnumItem {
@@ -13497,6 +14993,8 @@ declare namespace Enum {
         }
         export const RightLowerLipDepressor: RightLowerLipDepressor;
         /**
+         * Raises the right mouth corner into a smile.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightLipCornerPuller)
          */
         export interface RightLipCornerPuller extends globalThis.EnumItem {
@@ -13506,6 +15004,8 @@ declare namespace Enum {
         }
         export const RightLipCornerPuller: RightLipCornerPuller;
         /**
+         * Stretches the right mouth corner outward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightLipStretcher)
          */
         export interface RightLipStretcher extends globalThis.EnumItem {
@@ -13515,6 +15015,8 @@ declare namespace Enum {
         }
         export const RightLipStretcher: RightLipStretcher;
         /**
+         * Raises the right side of the upper lip to reveal the upper teeth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightUpperLipRaiser)
          */
         export interface RightUpperLipRaiser extends globalThis.EnumItem {
@@ -13524,6 +15026,8 @@ declare namespace Enum {
         }
         export const RightUpperLipRaiser: RightUpperLipRaiser;
         /**
+         * Lowers the jaw to open the mouth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#JawDrop)
          */
         export interface JawDrop extends globalThis.EnumItem {
@@ -13533,6 +15037,8 @@ declare namespace Enum {
         }
         export const JawDrop: JawDrop;
         /**
+         * Moves the mouth and jaw toward the character's left.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#JawLeft)
          */
         export interface JawLeft extends globalThis.EnumItem {
@@ -13542,6 +15048,8 @@ declare namespace Enum {
         }
         export const JawLeft: JawLeft;
         /**
+         * Moves the mouth and jaw toward the character's right.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#JawRight)
          */
         export interface JawRight extends globalThis.EnumItem {
@@ -13551,6 +15059,8 @@ declare namespace Enum {
         }
         export const JawRight: JawRight;
         /**
+         * Moves the left and right eyebrows inward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#Corrugator)
          */
         export interface Corrugator extends globalThis.EnumItem {
@@ -13560,6 +15070,8 @@ declare namespace Enum {
         }
         export const Corrugator: Corrugator;
         /**
+         * Lowers the left eyebrow.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftBrowLowerer)
          */
         export interface LeftBrowLowerer extends globalThis.EnumItem {
@@ -13569,6 +15081,8 @@ declare namespace Enum {
         }
         export const LeftBrowLowerer: LeftBrowLowerer;
         /**
+         * Raises the outer part of the left eyebrow.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftOuterBrowRaiser)
          */
         export interface LeftOuterBrowRaiser extends globalThis.EnumItem {
@@ -13578,6 +15092,8 @@ declare namespace Enum {
         }
         export const LeftOuterBrowRaiser: LeftOuterBrowRaiser;
         /**
+         * Raises the left nostril and wrinkles the left side of the nose.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftNoseWrinkler)
          */
         export interface LeftNoseWrinkler extends globalThis.EnumItem {
@@ -13587,6 +15103,8 @@ declare namespace Enum {
         }
         export const LeftNoseWrinkler: LeftNoseWrinkler;
         /**
+         * Raises the inner half of the left eyebrow.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftInnerBrowRaiser)
          */
         export interface LeftInnerBrowRaiser extends globalThis.EnumItem {
@@ -13596,6 +15114,8 @@ declare namespace Enum {
         }
         export const LeftInnerBrowRaiser: LeftInnerBrowRaiser;
         /**
+         * Lowers the right eyebrow.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightBrowLowerer)
          */
         export interface RightBrowLowerer extends globalThis.EnumItem {
@@ -13605,6 +15125,8 @@ declare namespace Enum {
         }
         export const RightBrowLowerer: RightBrowLowerer;
         /**
+         * Raises the outer part of the right eyebrow.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightOuterBrowRaiser)
          */
         export interface RightOuterBrowRaiser extends globalThis.EnumItem {
@@ -13614,6 +15136,8 @@ declare namespace Enum {
         }
         export const RightOuterBrowRaiser: RightOuterBrowRaiser;
         /**
+         * Raises the inner half of the right eyebrow.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightInnerBrowRaiser)
          */
         export interface RightInnerBrowRaiser extends globalThis.EnumItem {
@@ -13623,6 +15147,8 @@ declare namespace Enum {
         }
         export const RightInnerBrowRaiser: RightInnerBrowRaiser;
         /**
+         * Raises the right nostril and wrinkles the right side of the nose.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightNoseWrinkler)
          */
         export interface RightNoseWrinkler extends globalThis.EnumItem {
@@ -13632,6 +15158,8 @@ declare namespace Enum {
         }
         export const RightNoseWrinkler: RightNoseWrinkler;
         /**
+         * Moves the gaze downward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#EyesLookDown)
          */
         export interface EyesLookDown extends globalThis.EnumItem {
@@ -13641,6 +15169,8 @@ declare namespace Enum {
         }
         export const EyesLookDown: EyesLookDown;
         /**
+         * Moves the gaze to the left.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#EyesLookLeft)
          */
         export interface EyesLookLeft extends globalThis.EnumItem {
@@ -13650,6 +15180,8 @@ declare namespace Enum {
         }
         export const EyesLookLeft: EyesLookLeft;
         /**
+         * Moves the gaze upward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#EyesLookUp)
          */
         export interface EyesLookUp extends globalThis.EnumItem {
@@ -13659,6 +15191,8 @@ declare namespace Enum {
         }
         export const EyesLookUp: EyesLookUp;
         /**
+         * Moves the gaze to the right.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#EyesLookRight)
          */
         export interface EyesLookRight extends globalThis.EnumItem {
@@ -13668,6 +15202,8 @@ declare namespace Enum {
         }
         export const EyesLookRight: EyesLookRight;
         /**
+         * Raises the left cheek and squints the left eye.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftCheekRaiser)
          */
         export interface LeftCheekRaiser extends globalThis.EnumItem {
@@ -13677,6 +15213,8 @@ declare namespace Enum {
         }
         export const LeftCheekRaiser: LeftCheekRaiser;
         /**
+         * Raises the left upper eyelid to reveal more of the eye above the iris.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftEyeUpperLidRaiser)
          */
         export interface LeftEyeUpperLidRaiser extends globalThis.EnumItem {
@@ -13686,6 +15224,8 @@ declare namespace Enum {
         }
         export const LeftEyeUpperLidRaiser: LeftEyeUpperLidRaiser;
         /**
+         * Closes the left eyelid.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#LeftEyeClosed)
          */
         export interface LeftEyeClosed extends globalThis.EnumItem {
@@ -13695,6 +15235,8 @@ declare namespace Enum {
         }
         export const LeftEyeClosed: LeftEyeClosed;
         /**
+         * Raises the right cheek and squints the right eye.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightCheekRaiser)
          */
         export interface RightCheekRaiser extends globalThis.EnumItem {
@@ -13704,6 +15246,8 @@ declare namespace Enum {
         }
         export const RightCheekRaiser: RightCheekRaiser;
         /**
+         * Raises the right upper eyelid to reveal more of the eye above the iris.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightEyeUpperLidRaiser)
          */
         export interface RightEyeUpperLidRaiser extends globalThis.EnumItem {
@@ -13713,6 +15257,8 @@ declare namespace Enum {
         }
         export const RightEyeUpperLidRaiser: RightEyeUpperLidRaiser;
         /**
+         * Closes the right eyelid.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#RightEyeClosed)
          */
         export interface RightEyeClosed extends globalThis.EnumItem {
@@ -13722,6 +15268,8 @@ declare namespace Enum {
         }
         export const RightEyeClosed: RightEyeClosed;
         /**
+         * Bends the tongue downward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#TongueDown)
          */
         export interface TongueDown extends globalThis.EnumItem {
@@ -13731,6 +15279,8 @@ declare namespace Enum {
         }
         export const TongueDown: TongueDown;
         /**
+         * Extends the tip of the tongue out of the mouth.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#TongueOut)
          */
         export interface TongueOut extends globalThis.EnumItem {
@@ -13740,6 +15290,8 @@ declare namespace Enum {
         }
         export const TongueOut: TongueOut;
         /**
+         * Bends the tongue upward.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FacsActionUnit#TongueUp)
          */
         export interface TongueUp extends globalThis.EnumItem {
@@ -13753,6 +15305,69 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FacsActionUnit | undefined;
     }
     export type FacsActionUnit = FacsActionUnit.ChinRaiserUpperLip | FacsActionUnit.ChinRaiser | FacsActionUnit.FlatPucker | FacsActionUnit.Funneler | FacsActionUnit.LowerLipSuck | FacsActionUnit.LipPresser | FacsActionUnit.LipsTogether | FacsActionUnit.MouthLeft | FacsActionUnit.MouthRight | FacsActionUnit.Pucker | FacsActionUnit.UpperLipSuck | FacsActionUnit.LeftCheekPuff | FacsActionUnit.LeftDimpler | FacsActionUnit.LeftLipCornerDown | FacsActionUnit.LeftLowerLipDepressor | FacsActionUnit.LeftLipCornerPuller | FacsActionUnit.LeftLipStretcher | FacsActionUnit.LeftUpperLipRaiser | FacsActionUnit.RightCheekPuff | FacsActionUnit.RightDimpler | FacsActionUnit.RightLipCornerDown | FacsActionUnit.RightLowerLipDepressor | FacsActionUnit.RightLipCornerPuller | FacsActionUnit.RightLipStretcher | FacsActionUnit.RightUpperLipRaiser | FacsActionUnit.JawDrop | FacsActionUnit.JawLeft | FacsActionUnit.JawRight | FacsActionUnit.Corrugator | FacsActionUnit.LeftBrowLowerer | FacsActionUnit.LeftOuterBrowRaiser | FacsActionUnit.LeftNoseWrinkler | FacsActionUnit.LeftInnerBrowRaiser | FacsActionUnit.RightBrowLowerer | FacsActionUnit.RightOuterBrowRaiser | FacsActionUnit.RightInnerBrowRaiser | FacsActionUnit.RightNoseWrinkler | FacsActionUnit.EyesLookDown | FacsActionUnit.EyesLookLeft | FacsActionUnit.EyesLookUp | FacsActionUnit.EyesLookRight | FacsActionUnit.LeftCheekRaiser | FacsActionUnit.LeftEyeUpperLidRaiser | FacsActionUnit.LeftEyeClosed | FacsActionUnit.RightCheekRaiser | FacsActionUnit.RightEyeUpperLidRaiser | FacsActionUnit.RightEyeClosed | FacsActionUnit.TongueDown | FacsActionUnit.TongueOut | FacsActionUnit.TongueUp;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureChannelEncoding)
+     */
+    export namespace FeatureChannelEncoding {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureChannelEncoding#Float32)
+         */
+        export interface Float32 extends globalThis.EnumItem {
+            Name: "Float32";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FeatureChannelEncoding;
+        }
+        export const Float32: Float32;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureChannelEncoding#Float16)
+         */
+        export interface Float16 extends globalThis.EnumItem {
+            Name: "Float16";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FeatureChannelEncoding;
+        }
+        export const Float16: Float16;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FeatureChannelEncoding>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FeatureChannelEncoding | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FeatureChannelEncoding | undefined;
+    }
+    export type FeatureChannelEncoding = FeatureChannelEncoding.Float32 | FeatureChannelEncoding.Float16;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureNormalization)
+     */
+    export namespace FeatureNormalization {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureNormalization#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FeatureNormalization;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureNormalization#StandardScore)
+         */
+        export interface StandardScore extends globalThis.EnumItem {
+            Name: "StandardScore";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FeatureNormalization;
+        }
+        export const StandardScore: StandardScore;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureNormalization#UnitL2)
+         */
+        export interface UnitL2 extends globalThis.EnumItem {
+            Name: "UnitL2";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FeatureNormalization;
+        }
+        export const UnitL2: UnitL2;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FeatureNormalization>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FeatureNormalization | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FeatureNormalization | undefined;
+    }
+    export type FeatureNormalization = FeatureNormalization.None | FeatureNormalization.StandardScore | FeatureNormalization.UnitL2;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureRestrictionAbuseVector)
      */
@@ -13808,10 +15423,14 @@ declare namespace Enum {
     }
     export type FeedbackType = FeedbackType.Feedback | FeedbackType.PlayerSupport;
     /**
+     * Determines which field-of-view angle a `Camera` holds constant when the viewport is resized.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FieldOfViewMode)
      */
     export namespace FieldOfViewMode {
         /**
+         * The camera holds its vertical field of view constant when the viewport is resized.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FieldOfViewMode#Vertical)
          */
         export interface Vertical extends globalThis.EnumItem {
@@ -13821,6 +15440,8 @@ declare namespace Enum {
         }
         export const Vertical: Vertical;
         /**
+         * The camera holds its diagonal field of view constant when the viewport is resized.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FieldOfViewMode#Diagonal)
          */
         export interface Diagonal extends globalThis.EnumItem {
@@ -13830,6 +15451,8 @@ declare namespace Enum {
         }
         export const Diagonal: Diagonal;
         /**
+         * The camera holds the field of view along the longer viewport axis constant when the viewport is resized.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FieldOfViewMode#MaxAxis)
          */
         export interface MaxAxis extends globalThis.EnumItem {
@@ -13877,10 +15500,14 @@ declare namespace Enum {
     }
     export type FillDirection = FillDirection.Horizontal | FillDirection.Vertical;
     /**
+     * Identifies the category of a parse or validation error produced by the Studio Explorer filter expression engine.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType)
      */
     export namespace FilterErrorType {
         /**
+         * A backslash at the end of a quoted string has nothing after it to escape.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#BackslashNotEscapingAnything)
          */
         export interface BackslashNotEscapingAnything extends globalThis.EnumItem {
@@ -13890,6 +15517,8 @@ declare namespace Enum {
         }
         export const BackslashNotEscapingAnything: BackslashNotEscapingAnything;
         /**
+         * A recognized bespoke filter keyword (such as `classname:`) is missing its required value, or a `query:` expression contains an invalid query string.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#BadBespokeFilter)
          */
         export interface BadBespokeFilter extends globalThis.EnumItem {
@@ -13899,6 +15528,8 @@ declare namespace Enum {
         }
         export const BadBespokeFilter: BadBespokeFilter;
         /**
+         * An unexpected token was encountered where a name or identifier was expected.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#BadName)
          */
         export interface BadName extends globalThis.EnumItem {
@@ -13908,6 +15539,8 @@ declare namespace Enum {
         }
         export const BadName: BadName;
         /**
+         * Reserved error code for an incomplete `or` expression; currently not emitted by the filter engine.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#IncompleteOr)
          */
         export interface IncompleteOr extends globalThis.EnumItem {
@@ -13917,6 +15550,8 @@ declare namespace Enum {
         }
         export const IncompleteOr: IncompleteOr;
         /**
+         * An opening parenthesis `(` in the filter expression has no matching closing parenthesis `)`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#IncompleteParenthesis)
          */
         export interface IncompleteParenthesis extends globalThis.EnumItem {
@@ -13926,6 +15561,8 @@ declare namespace Enum {
         }
         export const IncompleteParenthesis: IncompleteParenthesis;
         /**
+         * A `**` wildcard token directly follows a `*` wildcard in a dotted name path (for example, `*.**.X`), which is not allowed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#InvalidDoubleStar)
          */
         export interface InvalidDoubleStar extends globalThis.EnumItem {
@@ -13935,6 +15572,8 @@ declare namespace Enum {
         }
         export const InvalidDoubleStar: InvalidDoubleStar;
         /**
+         * A lone `~` character was found that is not part of the `~=` not-equal operator.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#InvalidTilde)
          */
         export interface InvalidTilde extends globalThis.EnumItem {
@@ -13944,6 +15583,8 @@ declare namespace Enum {
         }
         export const InvalidTilde: InvalidTilde;
         /**
+         * A comparison operator other than `=` or `~=` was used with a property type that only supports equality comparisons.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#PropertyBadOperator)
          */
         export interface PropertyBadOperator extends globalThis.EnumItem {
@@ -13953,6 +15594,8 @@ declare namespace Enum {
         }
         export const PropertyBadOperator: PropertyBadOperator;
         /**
+         * The named property does not exist on any reflected class known to the filter engine.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#PropertyDoesNotExist)
          */
         export interface PropertyDoesNotExist extends globalThis.EnumItem {
@@ -13962,6 +15605,8 @@ declare namespace Enum {
         }
         export const PropertyDoesNotExist: PropertyDoesNotExist;
         /**
+         * A sub-field index (such as `.W`) was used with a vector or color property that does not have a field by that name.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#PropertyInvalidField)
          */
         export interface PropertyInvalidField extends globalThis.EnumItem {
@@ -13971,6 +15616,8 @@ declare namespace Enum {
         }
         export const PropertyInvalidField: PropertyInvalidField;
         /**
+         * The value string provided for a property comparison cannot be parsed into the expected type for that property (for example, `Locked=notabool`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#PropertyInvalidValue)
          */
         export interface PropertyInvalidValue extends globalThis.EnumItem {
@@ -13980,6 +15627,8 @@ declare namespace Enum {
         }
         export const PropertyInvalidValue: PropertyInvalidValue;
         /**
+         * A sub-field index was used with a property type that does not support field access (for example, `X=true`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#PropertyUnsupportedFields)
          */
         export interface PropertyUnsupportedFields extends globalThis.EnumItem {
@@ -13989,6 +15638,8 @@ declare namespace Enum {
         }
         export const PropertyUnsupportedFields: PropertyUnsupportedFields;
         /**
+         * The named property exists but its type is not supported by the filter engine (for example, complex datatypes such as `CFrame` or `TweenInfo`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#PropertyUnsupportedProperty)
          */
         export interface PropertyUnsupportedProperty extends globalThis.EnumItem {
@@ -13998,6 +15649,8 @@ declare namespace Enum {
         }
         export const PropertyUnsupportedProperty: PropertyUnsupportedProperty;
         /**
+         * A `.` in a dotted name path is not followed by a valid name, number, or wildcard token.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#UnexpectedNameIndex)
          */
         export interface UnexpectedNameIndex extends globalThis.EnumItem {
@@ -14007,6 +15660,8 @@ declare namespace Enum {
         }
         export const UnexpectedNameIndex: UnexpectedNameIndex;
         /**
+         * A token that cannot be a value (such as an operator) appears where a value is expected after a comparison operator.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#UnexpectedToken)
          */
         export interface UnexpectedToken extends globalThis.EnumItem {
@@ -14016,6 +15671,8 @@ declare namespace Enum {
         }
         export const UnexpectedToken: UnexpectedToken;
         /**
+         * An `and` or `or` binary operator appears with no right-hand operand.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#UnfinishedBinaryOperator)
          */
         export interface UnfinishedBinaryOperator extends globalThis.EnumItem {
@@ -14025,6 +15682,8 @@ declare namespace Enum {
         }
         export const UnfinishedBinaryOperator: UnfinishedBinaryOperator;
         /**
+         * A quoted string was opened but not closed before the end of the filter input.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#UnfinishedQuote)
          */
         export interface UnfinishedQuote extends globalThis.EnumItem {
@@ -14034,6 +15693,8 @@ declare namespace Enum {
         }
         export const UnfinishedQuote: UnfinishedQuote;
         /**
+         * A `name:value` token uses a keyword that is not a recognized bespoke filter type (for example, `foo:Bar`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#UnknownBespokeFilter)
          */
         export interface UnknownBespokeFilter extends globalThis.EnumItem {
@@ -14043,6 +15704,8 @@ declare namespace Enum {
         }
         export const UnknownBespokeFilter: UnknownBespokeFilter;
         /**
+         * A wildcard (`*` or `**`) appears in the property portion of a dotted expression where a concrete property name is required.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FilterErrorType#WildcardInProperty)
          */
         export interface WildcardInProperty extends globalThis.EnumItem {
@@ -14117,6 +15780,8 @@ declare namespace Enum {
     }
     export type FilterType = FilterType.Exclude | FilterType.Include;
     /**
+     * Controls how `ChangeHistoryService:FinishRecording()` completes or discards a recording session.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FinishRecordingOperation)
      */
     export namespace FinishRecordingOperation {
@@ -14236,6 +15901,8 @@ declare namespace Enum {
     }
     export type FluidForces = FluidForces.Default | FluidForces.Experimental;
     /**
+     * Determines the font used to render text in GUI objects such as Class.TextLabel, Class.TextButton, and Class.TextBox. This is a legacy property. For new work, use `Font`, `FontFace`, and `FontFace` instead.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Font)
      */
     export namespace Font {
@@ -14848,6 +16515,8 @@ declare namespace Enum {
     }
     export type Font = Font.Legacy | Font.Arial | Font.ArialBold | Font.SourceSans | Font.SourceSansBold | Font.SourceSansLight | Font.SourceSansItalic | Font.Bodoni | Font.Garamond | Font.Cartoon | Font.Code | Font.Highway | Font.SciFi | Font.Arcade | Font.Fantasy | Font.Antique | Font.SourceSansSemibold | Font.Gotham | Font.GothamMedium | Font.GothamBold | Font.GothamBlack | Font.AmaticSC | Font.Bangers | Font.Creepster | Font.DenkOne | Font.Fondamento | Font.FredokaOne | Font.GrenzeGotisch | Font.IndieFlower | Font.JosefinSans | Font.Jura | Font.Kalam | Font.LuckiestGuy | Font.Merriweather | Font.Michroma | Font.Nunito | Font.Oswald | Font.PatrickHand | Font.PermanentMarker | Font.Roboto | Font.RobotoCondensed | Font.RobotoMono | Font.Sarpanch | Font.SpecialElite | Font.TitilliumWeb | Font.Ubuntu | Font.BuilderSans | Font.BuilderSansMedium | Font.BuilderSansBold | Font.BuilderSansExtraBold | Font.Arimo | Font.ArimoBold | Font.Unknown;
     /**
+     * Specifies preset font sizes for text-rendering UI objects such as `TextLabel`, `TextButton`, and `TextBox`. Prefer the `TextSize` property instead of this deprecated enum.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontSize)
      */
     export namespace FontSize {
@@ -15055,8 +16724,6 @@ declare namespace Enum {
     }
     export type FontStyle = FontStyle.Normal | FontStyle.Italic;
     /**
-     * Describes how thick a `Font` is.
-     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontWeight)
      */
     export namespace FontWeight {
@@ -15088,8 +16755,6 @@ declare namespace Enum {
         }
         export const Light: Light;
         /**
-         * The default thickness for text.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FontWeight#Regular)
          */
         export interface Regular extends globalThis.EnumItem {
@@ -15182,6 +16847,8 @@ declare namespace Enum {
     }
     export type ForceLimitMode = ForceLimitMode.Magnitude | ForceLimitMode.PerAxis;
     /**
+     * Deprecated enum that previously controlled the minimum size and resize increment of a `FormFactorPart` along each axis.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FormFactor)
      */
     export namespace FormFactor {
@@ -15327,10 +16994,14 @@ declare namespace Enum {
     }
     export type FrameStyle = FrameStyle.Custom | FrameStyle.ChatBlue | FrameStyle.RobloxSquare | FrameStyle.RobloxRound | FrameStyle.ChatGreen | FrameStyle.ChatRed | FrameStyle.DropShadow;
     /**
+     * Controls how the Frame Rate Manager (FRM) adjusts rendering quality to maintain target frame rates.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FramerateManagerMode)
      */
     export namespace FramerateManagerMode {
         /**
+         * The engine selects whether to run FRM based on hardware and platform context. This is the default.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FramerateManagerMode#Automatic)
          */
         export interface Automatic extends globalThis.EnumItem {
@@ -15340,6 +17011,8 @@ declare namespace Enum {
         }
         export const Automatic: Automatic;
         /**
+         * FRM is explicitly enabled and dynamically adjusts rendering quality to meet frame rate targets.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FramerateManagerMode#On)
          */
         export interface On extends globalThis.EnumItem {
@@ -15349,6 +17022,8 @@ declare namespace Enum {
         }
         export const On: On;
         /**
+         * FRM quality throttling is disabled; block count is fixed at the baseline level regardless of frame rate.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FramerateManagerMode#Off)
          */
         export interface Off extends globalThis.EnumItem {
@@ -15367,8 +17042,6 @@ declare namespace Enum {
      */
     export namespace FriendRequestEvent {
         /**
-         * A player invokes (sends) a friend request.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendRequestEvent#Issue)
          */
         export interface Issue extends globalThis.EnumItem {
@@ -15378,8 +17051,6 @@ declare namespace Enum {
         }
         export const Issue: Issue;
         /**
-         * A player revokes (cancels) a previously invoked (sent) friend request.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendRequestEvent#Revoke)
          */
         export interface Revoke extends globalThis.EnumItem {
@@ -15389,8 +17060,6 @@ declare namespace Enum {
         }
         export const Revoke: Revoke;
         /**
-         * A player accepts a friend request.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendRequestEvent#Accept)
          */
         export interface Accept extends globalThis.EnumItem {
@@ -15400,8 +17069,6 @@ declare namespace Enum {
         }
         export const Accept: Accept;
         /**
-         * A player denies a friend request.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendRequestEvent#Deny)
          */
         export interface Deny extends globalThis.EnumItem {
@@ -15420,8 +17087,6 @@ declare namespace Enum {
      */
     export namespace FriendStatus {
         /**
-         * The friend status of two players is unknown.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendStatus#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -15431,8 +17096,6 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
-         * Two players are not friends.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendStatus#NotFriend)
          */
         export interface NotFriend extends globalThis.EnumItem {
@@ -15442,8 +17105,6 @@ declare namespace Enum {
         }
         export const NotFriend: NotFriend;
         /**
-         * Two players are friends.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendStatus#Friend)
          */
         export interface Friend extends globalThis.EnumItem {
@@ -15453,8 +17114,6 @@ declare namespace Enum {
         }
         export const Friend: Friend;
         /**
-         * At least one of two players has sent a friend request to the other player.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendStatus#FriendRequestSent)
          */
         export interface FriendRequestSent extends globalThis.EnumItem {
@@ -15464,8 +17123,6 @@ declare namespace Enum {
         }
         export const FriendRequestSent: FriendRequestSent;
         /**
-         * At least one of two players has received a friend request sent by the other player.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendStatus#FriendRequestReceived)
          */
         export interface FriendRequestReceived extends globalThis.EnumItem {
@@ -15479,6 +17136,403 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendStatus | undefined;
     }
     export type FriendStatus = FriendStatus.Unknown | FriendStatus.NotFriend | FriendStatus.Friend | FriendStatus.FriendRequestSent | FriendStatus.FriendRequestReceived;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason)
+     */
+    export namespace FriendsCallingEndReason {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#LocalHangup)
+         */
+        export interface LocalHangup extends globalThis.EnumItem {
+            Name: "LocalHangup";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const LocalHangup: LocalHangup;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#RemoteHangup)
+         */
+        export interface RemoteHangup extends globalThis.EnumItem {
+            Name: "RemoteHangup";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const RemoteHangup: RemoteHangup;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#Missed)
+         */
+        export interface Missed extends globalThis.EnumItem {
+            Name: "Missed";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const Missed: Missed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#Declined)
+         */
+        export interface Declined extends globalThis.EnumItem {
+            Name: "Declined";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const Declined: Declined;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#Failed)
+         */
+        export interface Failed extends globalThis.EnumItem {
+            Name: "Failed";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const Failed: Failed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#Canceled)
+         */
+        export interface Canceled extends globalThis.EnumItem {
+            Name: "Canceled";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const Canceled: Canceled;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingEndReason#NoReason)
+         */
+        export interface NoReason extends globalThis.EnumItem {
+            Name: "NoReason";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.FriendsCallingEndReason;
+        }
+        export const NoReason: NoReason;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FriendsCallingEndReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FriendsCallingEndReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendsCallingEndReason | undefined;
+    }
+    export type FriendsCallingEndReason = FriendsCallingEndReason.None | FriendsCallingEndReason.LocalHangup | FriendsCallingEndReason.RemoteHangup | FriendsCallingEndReason.Missed | FriendsCallingEndReason.Declined | FriendsCallingEndReason.Failed | FriendsCallingEndReason.Canceled | FriendsCallingEndReason.NoReason;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantErrors)
+     */
+    export namespace FriendsCallingParticipantErrors {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantErrors#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantErrors;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantErrors#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantErrors;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantErrors#ConnectionFailed)
+         */
+        export interface ConnectionFailed extends globalThis.EnumItem {
+            Name: "ConnectionFailed";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantErrors;
+        }
+        export const ConnectionFailed: ConnectionFailed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantErrors#PublishFailed)
+         */
+        export interface PublishFailed extends globalThis.EnumItem {
+            Name: "PublishFailed";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantErrors;
+        }
+        export const PublishFailed: PublishFailed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantErrors#PermissionDenied)
+         */
+        export interface PermissionDenied extends globalThis.EnumItem {
+            Name: "PermissionDenied";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantErrors;
+        }
+        export const PermissionDenied: PermissionDenied;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FriendsCallingParticipantErrors>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FriendsCallingParticipantErrors | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendsCallingParticipantErrors | undefined;
+    }
+    export type FriendsCallingParticipantErrors = FriendsCallingParticipantErrors.None | FriendsCallingParticipantErrors.Unknown | FriendsCallingParticipantErrors.ConnectionFailed | FriendsCallingParticipantErrors.PublishFailed | FriendsCallingParticipantErrors.PermissionDenied;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason)
+     */
+    export namespace FriendsCallingParticipantLeaveReason {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#Hangup)
+         */
+        export interface Hangup extends globalThis.EnumItem {
+            Name: "Hangup";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const Hangup: Hangup;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#Declined)
+         */
+        export interface Declined extends globalThis.EnumItem {
+            Name: "Declined";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const Declined: Declined;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#Missed)
+         */
+        export interface Missed extends globalThis.EnumItem {
+            Name: "Missed";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const Missed: Missed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#Removed)
+         */
+        export interface Removed extends globalThis.EnumItem {
+            Name: "Removed";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const Removed: Removed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#Failed)
+         */
+        export interface Failed extends globalThis.EnumItem {
+            Name: "Failed";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const Failed: Failed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantLeaveReason#TimedOut)
+         */
+        export interface TimedOut extends globalThis.EnumItem {
+            Name: "TimedOut";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantLeaveReason;
+        }
+        export const TimedOut: TimedOut;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FriendsCallingParticipantLeaveReason>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FriendsCallingParticipantLeaveReason | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendsCallingParticipantLeaveReason | undefined;
+    }
+    export type FriendsCallingParticipantLeaveReason = FriendsCallingParticipantLeaveReason.None | FriendsCallingParticipantLeaveReason.Hangup | FriendsCallingParticipantLeaveReason.Declined | FriendsCallingParticipantLeaveReason.Missed | FriendsCallingParticipantLeaveReason.Removed | FriendsCallingParticipantLeaveReason.Failed | FriendsCallingParticipantLeaveReason.TimedOut;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus)
+     */
+    export namespace FriendsCallingParticipantStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Invited)
+         */
+        export interface Invited extends globalThis.EnumItem {
+            Name: "Invited";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Invited: Invited;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Ringing)
+         */
+        export interface Ringing extends globalThis.EnumItem {
+            Name: "Ringing";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Ringing: Ringing;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Joined)
+         */
+        export interface Joined extends globalThis.EnumItem {
+            Name: "Joined";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Joined: Joined;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Declined)
+         */
+        export interface Declined extends globalThis.EnumItem {
+            Name: "Declined";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Declined: Declined;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Left)
+         */
+        export interface Left extends globalThis.EnumItem {
+            Name: "Left";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Left: Left;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Removed)
+         */
+        export interface Removed extends globalThis.EnumItem {
+            Name: "Removed";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Removed: Removed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Ineligible)
+         */
+        export interface Ineligible extends globalThis.EnumItem {
+            Name: "Ineligible";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Ineligible: Ineligible;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#TimedOut)
+         */
+        export interface TimedOut extends globalThis.EnumItem {
+            Name: "TimedOut";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const TimedOut: TimedOut;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingParticipantStatus#Muted)
+         */
+        export interface Muted extends globalThis.EnumItem {
+            Name: "Muted";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.FriendsCallingParticipantStatus;
+        }
+        export const Muted: Muted;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FriendsCallingParticipantStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FriendsCallingParticipantStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendsCallingParticipantStatus | undefined;
+    }
+    export type FriendsCallingParticipantStatus = FriendsCallingParticipantStatus.Invited | FriendsCallingParticipantStatus.Ringing | FriendsCallingParticipantStatus.Joined | FriendsCallingParticipantStatus.Declined | FriendsCallingParticipantStatus.Left | FriendsCallingParticipantStatus.Removed | FriendsCallingParticipantStatus.Ineligible | FriendsCallingParticipantStatus.TimedOut | FriendsCallingParticipantStatus.Muted;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingPhase)
+     */
+    export namespace FriendsCallingPhase {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingPhase#Idle)
+         */
+        export interface Idle extends globalThis.EnumItem {
+            Name: "Idle";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FriendsCallingPhase;
+        }
+        export const Idle: Idle;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingPhase#Ringing)
+         */
+        export interface Ringing extends globalThis.EnumItem {
+            Name: "Ringing";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FriendsCallingPhase;
+        }
+        export const Ringing: Ringing;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingPhase#Active)
+         */
+        export interface Active extends globalThis.EnumItem {
+            Name: "Active";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FriendsCallingPhase;
+        }
+        export const Active: Active;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FriendsCallingPhase#Ended)
+         */
+        export interface Ended extends globalThis.EnumItem {
+            Name: "Ended";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FriendsCallingPhase;
+        }
+        export const Ended: Ended;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FriendsCallingPhase>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FriendsCallingPhase | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FriendsCallingPhase | undefined;
+    }
+    export type FriendsCallingPhase = FriendsCallingPhase.Idle | FriendsCallingPhase.Ringing | FriendsCallingPhase.Active | FriendsCallingPhase.Ended;
+    /**
+     * Used with `Player.FrustumStreaming` to control the engine's instance streaming behavior for their camera view
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrustumStreamingMode)
+     */
+    export namespace FrustumStreamingMode {
+        /**
+         * Default behavior, currently equivalent to `Disabled`.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrustumStreamingMode#Default)
+         */
+        export interface Default extends globalThis.EnumItem {
+            Name: "Default";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FrustumStreamingMode;
+        }
+        export const Default: Default;
+        /**
+         * Always stream camera view.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrustumStreamingMode#Enabled)
+         */
+        export interface Enabled extends globalThis.EnumItem {
+            Name: "Enabled";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FrustumStreamingMode;
+        }
+        export const Enabled: Enabled;
+        /**
+         * Disable camera view streaming.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrustumStreamingMode#Disabled)
+         */
+        export interface Disabled extends globalThis.EnumItem {
+            Name: "Disabled";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FrustumStreamingMode;
+        }
+        export const Disabled: Disabled;
+        /**
+         * Allow the engine to decide when to stream the camera view based client ability and gameplay factors.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FrustumStreamingMode#Automatic)
+         */
+        export interface Automatic extends globalThis.EnumItem {
+            Name: "Automatic";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.FrustumStreamingMode;
+        }
+        export const Automatic: Automatic;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FrustumStreamingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FrustumStreamingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FrustumStreamingMode | undefined;
+    }
+    export type FrustumStreamingMode = FrustumStreamingMode.Default | FrustumStreamingMode.Enabled | FrustumStreamingMode.Disabled | FrustumStreamingMode.Automatic;
     /**
      * Status of a single functional test run.
      *
@@ -15552,7 +17606,7 @@ declare namespace Enum {
         }
         export const R15: R15;
         /**
-         * The rig (either R6 or R15) determined by a player's character settings set on the website in the 'Edit Avatar' page.
+         * The rig (either R6 or [R15](../../../avatar/character-bodies/specifications.md#rigging) determined by a player's character settings set on the website in the 'Edit Avatar' page.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GameAvatarType#PlayerChoice)
          */
@@ -15568,10 +17622,14 @@ declare namespace Enum {
     }
     export type GameAvatarType = GameAvatarType.R6 | GameAvatarType.R15 | GameAvatarType.PlayerChoice;
     /**
+     * Identifies the hardware type of a connected gamepad controller.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GamepadType)
      */
     export namespace GamepadType {
         /**
+         * A gamepad whose hardware type could not be determined, or no gamepad has connected yet.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GamepadType#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -15581,6 +17639,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
+         * A Sony PlayStation 4 DualShock controller.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GamepadType#PS4)
          */
         export interface PS4 extends globalThis.EnumItem {
@@ -15590,6 +17650,8 @@ declare namespace Enum {
         }
         export const PS4: PS4;
         /**
+         * A Sony PlayStation 5 DualSense controller.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GamepadType#PS5)
          */
         export interface PS5 extends globalThis.EnumItem {
@@ -15599,6 +17661,8 @@ declare namespace Enum {
         }
         export const PS5: PS5;
         /**
+         * A Microsoft Xbox One controller.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GamepadType#XboxOne)
          */
         export interface XboxOne extends globalThis.EnumItem {
@@ -15614,6 +17678,8 @@ declare namespace Enum {
     export type GamepadType = GamepadType.Unknown | GamepadType.PS4 | GamepadType.PS5 | GamepadType.XboxOne;
     /**
      * **Deprecated:** This enum is deprecated as it is used by deprecated properties that are no longer functional. It should not be used.
+     *
+     * Controls which gear genres are permitted in a place.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearGenreSetting)
      */
@@ -15651,6 +17717,8 @@ declare namespace Enum {
     export type GearGenreSetting = GearGenreSetting.AllGenres | GearGenreSetting.MatchingGenreOnly;
     /**
      * **Deprecated:** This enum is deprecated because it's used by deprecated properties. Don't use it.
+     *
+     * Categorizes gear items by type for use with deprecated gear-allowlist properties.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GearType)
      */
@@ -15777,6 +17845,51 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GearType | undefined;
     }
     export type GearType = GearType.MeleeWeapons | GearType.RangedWeapons | GearType.Explosives | GearType.PowerUps | GearType.NavigationEnhancers | GearType.MusicalInstruments | GearType.SocialItems | GearType.BuildingTools | GearType.Transport;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GenerateMomentTextResult)
+     */
+    export namespace GenerateMomentTextResult {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GenerateMomentTextResult#Success)
+         */
+        export interface Success extends globalThis.EnumItem {
+            Name: "Success";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.GenerateMomentTextResult;
+        }
+        export const Success: Success;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GenerateMomentTextResult#Pending)
+         */
+        export interface Pending extends globalThis.EnumItem {
+            Name: "Pending";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.GenerateMomentTextResult;
+        }
+        export const Pending: Pending;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GenerateMomentTextResult#Failed)
+         */
+        export interface Failed extends globalThis.EnumItem {
+            Name: "Failed";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.GenerateMomentTextResult;
+        }
+        export const Failed: Failed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GenerateMomentTextResult#Filtered)
+         */
+        export interface Filtered extends globalThis.EnumItem {
+            Name: "Filtered";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.GenerateMomentTextResult;
+        }
+        export const Filtered: Filtered;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GenerateMomentTextResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.GenerateMomentTextResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GenerateMomentTextResult | undefined;
+    }
+    export type GenerateMomentTextResult = GenerateMomentTextResult.Success | GenerateMomentTextResult.Pending | GenerateMomentTextResult.Failed | GenerateMomentTextResult.Filtered;
     /**
      * **Deprecated:**
      *
@@ -15945,10 +18058,14 @@ declare namespace Enum {
     }
     export type Genre = Genre.All | Genre.TownAndCity | Genre.Fantasy | Genre.SciFi | Genre.Ninja | Genre.Scary | Genre.Pirate | Genre.Adventure | Genre.Sports | Genre.Funny | Genre.WildWest | Genre.War | Genre.SkatePark | Genre.Tutorial;
     /**
+     * Used alongside `UIGradient.TileMode` to set how the gradient repeats.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientTileMode)
      */
     export namespace GradientTileMode {
         /**
+         * Default mode where the color/transparency values at the start and end of the sequence extend infinitely, so the start values fill any area before the gradient and the end values fill any area after it.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientTileMode#Clamp)
          */
         export interface Clamp extends globalThis.EnumItem {
@@ -15958,6 +18075,8 @@ declare namespace Enum {
         }
         export const Clamp: Clamp;
         /**
+         * The gradient repeats by wrapping the color/transparency sequence tiles seamlessly from end back to start. This can produce a visible seam if the first and last color/transparency values in the sequence differ.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientTileMode#Repeat)
          */
         export interface Repeat extends globalThis.EnumItem {
@@ -15967,6 +18086,8 @@ declare namespace Enum {
         }
         export const Repeat: Repeat;
         /**
+         * The gradient reflects at each boundary so the color/transparency sequence ping-pongs. This produces a smooth repetition with no seam, since the direction reverses at each tile edge.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientTileMode#Mirror)
          */
         export interface Mirror extends globalThis.EnumItem {
@@ -15981,10 +18102,14 @@ declare namespace Enum {
     }
     export type GradientTileMode = GradientTileMode.Clamp | GradientTileMode.Repeat | GradientTileMode.Mirror;
     /**
+     * Used alongside `UIGradient.Type` to set the shape of the gradient.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientType)
      */
     export namespace GradientType {
         /**
+         * The color/transparency sequence transitions in a straight line across the element. The direction is controlled by `Rotation` and the position by `Offset`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientType#Linear)
          */
         export interface Linear extends globalThis.EnumItem {
@@ -15994,6 +18119,8 @@ declare namespace Enum {
         }
         export const Linear: Linear;
         /**
+         * The color/transparency sequence radiates outward from the element's center, optionally shifted by `Offset`. The radius is defined by the average of the element's width and height divided by two, effectively `(width+height)/4`. `Rotation` has no effect on a radial gradient.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientType#Radial)
          */
         export interface Radial extends globalThis.EnumItem {
@@ -16003,6 +18130,8 @@ declare namespace Enum {
         }
         export const Radial: Radial;
         /**
+         * The color/transparency sequence sweeps clockwise around the center of the element, optionally shifted by `Offset`. `Rotation` controls the starting angle of the sweep.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientType#Conical)
          */
         export interface Conical extends globalThis.EnumItem {
@@ -16011,11 +18140,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.GradientType;
         }
         export const Conical: Conical;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientType#Elliptical)
+         */
+        export interface Elliptical extends globalThis.EnumItem {
+            Name: "Elliptical";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.GradientType;
+        }
+        export const Elliptical: Elliptical;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.GradientType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.GradientType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.GradientType | undefined;
     }
-    export type GradientType = GradientType.Linear | GradientType.Radial | GradientType.Conical;
+    export type GradientType = GradientType.Linear | GradientType.Radial | GradientType.Conical | GradientType.Elliptical;
     /**
      * Used to set the graphics API that Roblox uses to render the game.
      *
@@ -16094,10 +18232,14 @@ declare namespace Enum {
     }
     export type GraphicsMode = GraphicsMode.Automatic | GraphicsMode.Direct3D11 | GraphicsMode.OpenGL | GraphicsMode.Metal | GraphicsMode.Vulkan | GraphicsMode.NoGraphics;
     /**
+     * Specifies the player's preferred trade-off between rendering quality and frame rate when using manual graphics quality.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GraphicsOptimizationMode)
      */
     export namespace GraphicsOptimizationMode {
         /**
+         * Prefers frame rate over visual fidelity, corresponding to manual render quality levels 1–3.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GraphicsOptimizationMode#Performance)
          */
         export interface Performance extends globalThis.EnumItem {
@@ -16107,6 +18249,8 @@ declare namespace Enum {
         }
         export const Performance: Performance;
         /**
+         * Middle-ground preference, corresponding to manual render quality levels 4–7. This is the default of `UserGameSettings.GraphicsOptimizationMode`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GraphicsOptimizationMode#Balanced)
          */
         export interface Balanced extends globalThis.EnumItem {
@@ -16116,6 +18260,8 @@ declare namespace Enum {
         }
         export const Balanced: Balanced;
         /**
+         * Prefers visual fidelity over frame rate, corresponding to manual render quality levels 8–10.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GraphicsOptimizationMode#Quality)
          */
         export interface Quality extends globalThis.EnumItem {
@@ -16185,11 +18331,13 @@ declare namespace Enum {
     }
     export type GroupMembershipStatus = GroupMembershipStatus.None | GroupMembershipStatus.Joined | GroupMembershipStatus.JoinRequestPending | GroupMembershipStatus.AlreadyMember;
     /**
+     * Describes the current interaction state of a `GuiObject`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GuiState)
      */
     export namespace GuiState {
         /**
-         * The GUI currently has no state.
+         * The GuiObject is idle — neither hovered nor pressed.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GuiState#Idle)
          */
@@ -16292,10 +18440,14 @@ declare namespace Enum {
     }
     export type GuiType = GuiType.Core | GuiType.Custom | GuiType.PlayerNameplates | GuiType.CustomBillboards | GuiType.CoreBillboards;
     /**
+     * Determines the visual style of `Handles` object handles.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HandlesStyle)
      */
     export namespace HandlesStyle {
         /**
+         * Renders `Handles` as sphere shapes for resizing an adornee along its face axes (the default style).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HandlesStyle#Resize)
          */
         export interface Resize extends globalThis.EnumItem {
@@ -16305,6 +18457,8 @@ declare namespace Enum {
         }
         export const Resize: Resize;
         /**
+         * Renders `Handles` as directional arrow shapes for translating an adornee along its face axes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HandlesStyle#Movement)
          */
         export interface Movement extends globalThis.EnumItem {
@@ -16539,6 +18693,8 @@ declare namespace Enum {
     }
     export type HorizontalAlignment = HorizontalAlignment.Center | HorizontalAlignment.Left | HorizontalAlignment.Right;
     /**
+     * Specifies the animation speed of the hover highlight in Roblox Studio.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HoverAnimateSpeed)
      */
     export namespace HoverAnimateSpeed {
@@ -16657,10 +18813,14 @@ declare namespace Enum {
     }
     export type HttpCachePolicy = HttpCachePolicy.None | HttpCachePolicy.Full | HttpCachePolicy.DataOnly | HttpCachePolicy.Default | HttpCachePolicy.InternalRedirectRefresh;
     /**
+     * Specifies the compression algorithm applied to HTTP request body sent via `HttpService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpCompression)
      */
     export namespace HttpCompression {
         /**
+         * No compression is applied to the request body. This is the default.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpCompression#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -16670,6 +18830,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * The request body is compressed using the Gzip algorithm before being sent.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpCompression#Gzip)
          */
         export interface Gzip extends globalThis.EnumItem {
@@ -16750,10 +18912,14 @@ declare namespace Enum {
     }
     export type HttpContentType = HttpContentType.ApplicationJson | HttpContentType.ApplicationXml | HttpContentType.ApplicationUrlEncoded | HttpContentType.TextPlain | HttpContentType.TextXml;
     /**
+     * Enum representing errors that can occur when making HTTP requests, unrelated to HTTP status codes returned by the server.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError)
      */
     export namespace HttpError {
         /**
+         * No error occurred; the request completed successfully. This value is unrelated to the HTTP 200 OK status code.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#OK)
          */
         export interface OK extends globalThis.EnumItem {
@@ -16763,6 +18929,8 @@ declare namespace Enum {
         }
         export const OK: OK;
         /**
+         * The request URL is malformed or otherwise invalid; depending on the platform, a bad URL might instead surface as `HttpError.DnsResolve` or `HttpError.ConnectFail`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#InvalidUrl)
          */
         export interface InvalidUrl extends globalThis.EnumItem {
@@ -16772,6 +18940,8 @@ declare namespace Enum {
         }
         export const InvalidUrl: InvalidUrl;
         /**
+         * The hostname in the request URL could not be resolved via DNS.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#DnsResolve)
          */
         export interface DnsResolve extends globalThis.EnumItem {
@@ -16781,6 +18951,8 @@ declare namespace Enum {
         }
         export const DnsResolve: DnsResolve;
         /**
+         * The client failed to establish a TCP connection to the remote host.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#ConnectFail)
          */
         export interface ConnectFail extends globalThis.EnumItem {
@@ -16790,6 +18962,8 @@ declare namespace Enum {
         }
         export const ConnectFail: ConnectFail;
         /**
+         * The client ran out of memory while processing the HTTP request or response.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#OutOfMemory)
          */
         export interface OutOfMemory extends globalThis.EnumItem {
@@ -16799,6 +18973,8 @@ declare namespace Enum {
         }
         export const OutOfMemory: OutOfMemory;
         /**
+         * The request did not receive a response within the allowed time limit.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#TimedOut)
          */
         export interface TimedOut extends globalThis.EnumItem {
@@ -16808,6 +18984,8 @@ declare namespace Enum {
         }
         export const TimedOut: TimedOut;
         /**
+         * The server returned more redirects than the client is configured to follow.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#TooManyRedirects)
          */
         export interface TooManyRedirects extends globalThis.EnumItem {
@@ -16817,6 +18995,8 @@ declare namespace Enum {
         }
         export const TooManyRedirects: TooManyRedirects;
         /**
+         * The server returned a redirect response with an invalid or malformed Location header.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#InvalidRedirect)
          */
         export interface InvalidRedirect extends globalThis.EnumItem {
@@ -16826,6 +19006,8 @@ declare namespace Enum {
         }
         export const InvalidRedirect: InvalidRedirect;
         /**
+         * A general network-level failure occurred that does not fall into a more specific error category.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#NetFail)
          */
         export interface NetFail extends globalThis.EnumItem {
@@ -16835,6 +19017,8 @@ declare namespace Enum {
         }
         export const NetFail: NetFail;
         /**
+         * The HTTP request was aborted before it could complete.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#Aborted)
          */
         export interface Aborted extends globalThis.EnumItem {
@@ -16844,6 +19028,8 @@ declare namespace Enum {
         }
         export const Aborted: Aborted;
         /**
+         * The TLS/SSL handshake with the remote server failed during connection establishment.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#SslConnectFail)
          */
         export interface SslConnectFail extends globalThis.EnumItem {
@@ -16853,6 +19039,8 @@ declare namespace Enum {
         }
         export const SslConnectFail: SslConnectFail;
         /**
+         * The server's TLS certificate could not be verified.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#SslVerificationFail)
          */
         export interface SslVerificationFail extends globalThis.EnumItem {
@@ -16862,6 +19050,8 @@ declare namespace Enum {
         }
         export const SslVerificationFail: SslVerificationFail;
         /**
+         * An error occurred that does not map to any other `HttpError` value.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -16871,6 +19061,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
+         * The connection was closed by the remote end before the full response was received, typically indicating a server or network problem.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#ConnectionClosed)
          */
         export interface ConnectionClosed extends globalThis.EnumItem {
@@ -16880,6 +19072,8 @@ declare namespace Enum {
         }
         export const ConnectionClosed: ConnectionClosed;
         /**
+         * An HTTP/2 protocol-level error was returned by the server.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#ServerProtocolError)
          */
         export interface ServerProtocolError extends globalThis.EnumItem {
@@ -16889,6 +19083,8 @@ declare namespace Enum {
         }
         export const ServerProtocolError: ServerProtocolError;
         /**
+         * The request was sent from a non-live environment (such as Studio) and the target service does not support creator environments.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#CreatorEnvironmentsNotSupportedByService)
          */
         export interface CreatorEnvironmentsNotSupportedByService extends globalThis.EnumItem {
@@ -16898,6 +19094,8 @@ declare namespace Enum {
         }
         export const CreatorEnvironmentsNotSupportedByService: CreatorEnvironmentsNotSupportedByService;
         /**
+         * A streaming request timed out because no data was transferred during the inactivity window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#InactivityTimeout)
          */
         export interface InactivityTimeout extends globalThis.EnumItem {
@@ -16907,6 +19105,8 @@ declare namespace Enum {
         }
         export const InactivityTimeout: InactivityTimeout;
         /**
+         * The request was rejected because the client has exceeded its limit for concurrent or pending requests.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#TooManyOutstandingRequests)
          */
         export interface TooManyOutstandingRequests extends globalThis.EnumItem {
@@ -16916,6 +19116,8 @@ declare namespace Enum {
         }
         export const TooManyOutstandingRequests: TooManyOutstandingRequests;
         /**
+         * The server returned an invalid response to a ranged HTTP request, such as responding with a full 200 status instead of the expected 206 Partial Content.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HttpError#InvalidRangeResponse)
          */
         export interface InvalidRangeResponse extends globalThis.EnumItem {
@@ -17123,7 +19325,7 @@ declare namespace Enum {
     }
     export type HumanoidHealthDisplayType = HumanoidHealthDisplayType.DisplayWhenDamaged | HumanoidHealthDisplayType.AlwaysOn | HumanoidHealthDisplayType.AlwaysOff;
     /**
-     * Describes whether or not a character is using the new R15 rig, or the legacy R6 rig.
+     * Describes whether or not a character is using an R15 rig or the legacy R6 rig.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidRigType)
      */
@@ -17140,7 +19342,7 @@ declare namespace Enum {
         }
         export const R6: R6;
         /**
-         * Indicates that a character is using the new R15 rig.
+         * Indicates that a character is using an R15 rig.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/HumanoidRigType#R15)
          */
@@ -17354,11 +19556,13 @@ declare namespace Enum {
     }
     export type HumanoidStateType = HumanoidStateType.FallingDown | HumanoidStateType.Ragdoll | HumanoidStateType.GettingUp | HumanoidStateType.Jumping | HumanoidStateType.Swimming | HumanoidStateType.Freefall | HumanoidStateType.Flying | HumanoidStateType.Landed | HumanoidStateType.Running | HumanoidStateType.RunningNoPhysics | HumanoidStateType.StrafingNoPhysics | HumanoidStateType.Climbing | HumanoidStateType.Seated | HumanoidStateType.PlatformStanding | HumanoidStateType.Dead | HumanoidStateType.Physics | HumanoidStateType.None;
     /**
+     * Controls which parts in the workspace participate in collision resolution when `WorldRoot:IKMoveTo()` drives a part toward a target `CFrame`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKCollisionsMode)
      */
     export namespace IKCollisionsMode {
         /**
-         * Only the part and any parts directly joined to it via joints/`constraints` be involved in the resolution, everything else in the workspace will be treated as though it doesn't exist.
+         * Only the part and any parts directly joined to it via joints/`constraints` will be involved in the resolution; everything else in the workspace will be treated as though it doesn't exist.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKCollisionsMode#NoCollisions)
          */
@@ -17369,7 +19573,7 @@ declare namespace Enum {
         }
         export const NoCollisions: NoCollisions;
         /**
-         * Only the part and any parts directly jointed to it via joints/`constraints` will be moved during resolution, but they will collide with other objects in the workspace.
+         * Only the part and any parts directly joined to it via joints/`constraints` will be moved during resolution, but they will collide with other objects in the workspace.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IKCollisionsMode#OtherMechanismsAnchored)
          */
@@ -17495,10 +19699,14 @@ declare namespace Enum {
     }
     export type IKControlType = IKControlType.Transform | IKControlType.Position | IKControlType.Rotation | IKControlType.LookAt;
     /**
+     * Describes the loading state of an IXP (in-experience experiment) layer fetch operation.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IXPLoadingStatus)
      */
     export namespace IXPLoadingStatus {
         /**
+         * The default status when the IXP controller is first constructed or after layers have been cleared.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IXPLoadingStatus#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -17508,6 +19716,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * An HTTP request to fetch layer assignments has been sent and a response is awaited.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IXPLoadingStatus#Pending)
          */
         export interface Pending extends globalThis.EnumItem {
@@ -17517,6 +19727,8 @@ declare namespace Enum {
         }
         export const Pending: Pending;
         /**
+         * The HTTP request completed successfully and layer variable values have been populated from the response.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IXPLoadingStatus#Initialized)
          */
         export interface Initialized extends globalThis.EnumItem {
@@ -17526,6 +19738,8 @@ declare namespace Enum {
         }
         export const Initialized: Initialized;
         /**
+         * The fetch failed because the requested subject (user) was invalid at the time of the request.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IXPLoadingStatus#ErrorInvalidUser)
          */
         export interface ErrorInvalidUser extends globalThis.EnumItem {
@@ -17535,6 +19749,8 @@ declare namespace Enum {
         }
         export const ErrorInvalidUser: ErrorInvalidUser;
         /**
+         * The HTTP request to fetch layer assignments failed due to a connection error.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IXPLoadingStatus#ErrorConnection)
          */
         export interface ErrorConnection extends globalThis.EnumItem {
@@ -17544,6 +19760,8 @@ declare namespace Enum {
         }
         export const ErrorConnection: ErrorConnection;
         /**
+         * The HTTP request succeeded but the response body could not be parsed as valid JSON.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IXPLoadingStatus#ErrorJsonParse)
          */
         export interface ErrorJsonParse extends globalThis.EnumItem {
@@ -17553,6 +19771,8 @@ declare namespace Enum {
         }
         export const ErrorJsonParse: ErrorJsonParse;
         /**
+         * The HTTP request to fetch layer assignments timed out before a response was received.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IXPLoadingStatus#ErrorTimedOut)
          */
         export interface ErrorTimedOut extends globalThis.EnumItem {
@@ -17639,7 +19859,7 @@ declare namespace Enum {
         }
         export const Overwrite: Overwrite;
         /**
-         * Adds pixels from the source and pixels from the destination together.
+         * Adds pixels from the source and pixels from the destination together. Source RGB values are scaled by the source alpha, while source alpha is added directly to destination alpha.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ImageCombineType#Add)
          */
@@ -17672,6 +19892,8 @@ declare namespace Enum {
         }
         export const AlphaBlend: AlphaBlend;
         /**
+         * Blends pixels from the source with the destination using alpha blending, then renormalizes the resulting RGB values as a tangent-space normal vector.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ImageCombineType#NormalMapBlend)
          */
         export interface NormalMapBlend extends globalThis.EnumItem {
@@ -17680,11 +19902,22 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.ImageCombineType;
         }
         export const NormalMapBlend: NormalMapBlend;
+        /**
+         * Subtracts pixels of the source from pixels of the destination. Source RGB values are scaled by the source alpha, while source alpha is subtracted directly from destination alpha.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ImageCombineType#Subtract)
+         */
+        export interface Subtract extends globalThis.EnumItem {
+            Name: "Subtract";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.ImageCombineType;
+        }
+        export const Subtract: Subtract;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ImageCombineType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ImageCombineType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ImageCombineType | undefined;
     }
-    export type ImageCombineType = ImageCombineType.BlendSourceOver | ImageCombineType.Overwrite | ImageCombineType.Add | ImageCombineType.Multiply | ImageCombineType.AlphaBlend | ImageCombineType.NormalMapBlend;
+    export type ImageCombineType = ImageCombineType.BlendSourceOver | ImageCombineType.Overwrite | ImageCombineType.Add | ImageCombineType.Multiply | ImageCombineType.AlphaBlend | ImageCombineType.NormalMapBlend | ImageCombineType.Subtract;
     /**
      * The InOut Enum is used to set where the object is on the side of its parent.
      *
@@ -17730,6 +19963,8 @@ declare namespace Enum {
     }
     export type InOut = InOut.Edge | InOut.Inset | InOut.Center;
     /**
+     * Specifies the type of product information returned by `MarketplaceService:GetProductInfoAsync()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InfoType)
      */
     export namespace InfoType {
@@ -17767,6 +20002,8 @@ declare namespace Enum {
         }
         export const GamePass: GamePass;
         /**
+         * The product is a subscription.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InfoType#Subscription)
          */
         export interface Subscription extends globalThis.EnumItem {
@@ -17776,6 +20013,8 @@ declare namespace Enum {
         }
         export const Subscription: Subscription;
         /**
+         * The product is a bundle.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InfoType#Bundle)
          */
         export interface Bundle extends globalThis.EnumItem {
@@ -17922,7 +20161,7 @@ declare namespace Enum {
     }
     export type InputActionType = InputActionType.Bool | InputActionType.Direction1D | InputActionType.Direction2D | InputActionType.Direction3D | InputActionType.ViewportPosition;
     /**
-     * This enum is used by `InputBinding.BindingType` to determine whether the binding responds to hardware input or is driven programmatically.
+     * This enum is used by `InputBinding.Type` to determine whether the binding responds to hardware input or is driven programmatically.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputBindingType)
      */
@@ -17955,10 +20194,14 @@ declare namespace Enum {
     }
     export type InputBindingType = InputBindingType.Automatic | InputBindingType.Scriptable;
     /**
+     * Controls how a `GuiObject` or `GuiButton` absorbs pointer and activation input events relative to GUI elements beneath it.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputSink)
      */
     export namespace InputSink {
         /**
+         * The element does not sink any input events; pointer and activation events pass through to elements beneath it.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputSink#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -17968,6 +20211,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * The element sinks activation input (button presses and taps) but allows hover, `MouseEnter`, and `MouseLeave` events to pass through to elements beneath it.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputSink#Activate)
          */
         export interface Activate extends globalThis.EnumItem {
@@ -17977,6 +20222,8 @@ declare namespace Enum {
         }
         export const Activate: Activate;
         /**
+         * The element sinks all input events, preventing them from reaching any GUI element beneath it.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InputSink#All)
          */
         export interface All extends globalThis.EnumItem {
@@ -18145,10 +20392,14 @@ declare namespace Enum {
     }
     export type InstanceFileSyncStatus = InstanceFileSyncStatus.NotSynced | InstanceFileSyncStatus.Errored | InstanceFileSyncStatus.SyncedAsRoot | InstanceFileSyncStatus.SyncedAsDescendant | InstanceFileSyncStatus.AncestorErrored;
     /**
+     * Indicates the type of result delivered via the intermediate-result callback during an asynchronous mesh-generation operation.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IntermediateMeshGenerationResult)
      */
     export namespace IntermediateMeshGenerationResult {
         /**
+         * Signals that the intermediate mesh delivered to the callback is high-quality.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/IntermediateMeshGenerationResult#HighQualityMesh)
          */
         export interface HighQualityMesh extends globalThis.EnumItem {
@@ -18193,16 +20444,29 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.InternalVideoUsage;
         }
         export const HomeCarousel: HomeCarousel;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InternalVideoUsage#FeatureTileAd)
+         */
+        export interface FeatureTileAd extends globalThis.EnumItem {
+            Name: "FeatureTileAd";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.InternalVideoUsage;
+        }
+        export const FeatureTileAd: FeatureTileAd;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.InternalVideoUsage>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.InternalVideoUsage | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.InternalVideoUsage | undefined;
     }
-    export type InternalVideoUsage = InternalVideoUsage.Default | InternalVideoUsage.WatchPage | InternalVideoUsage.HomeCarousel;
+    export type InternalVideoUsage = InternalVideoUsage.Default | InternalVideoUsage.WatchPage | InternalVideoUsage.HomeCarousel | InternalVideoUsage.FeatureTileAd;
     /**
+     * Controls whether the engine reduces the physics interpolation update rate for distant assemblies when the client is under load. Used by the deprecated `Workspace.InterpolationThrottling` property.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InterpolationThrottlingMode)
      */
     export namespace InterpolationThrottlingMode {
         /**
+         * The engine automatically throttles physics interpolation for distant assemblies when client frame time is high.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InterpolationThrottlingMode#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -18212,6 +20476,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Physics interpolation throttling is unconditionally disabled; all assemblies interpolate at the full rate regardless of client load.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InterpolationThrottlingMode#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -18221,6 +20487,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * Physics interpolation throttling is unconditionally enabled; distant assemblies have their interpolation update rate reduced even when the client is not under load.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/InterpolationThrottlingMode#Enabled)
          */
         export interface Enabled extends globalThis.EnumItem {
@@ -18356,10 +20624,14 @@ declare namespace Enum {
     }
     export type ItemLineAlignment = ItemLineAlignment.Automatic | ItemLineAlignment.Start | ItemLineAlignment.Center | ItemLineAlignment.End | ItemLineAlignment.Stretch;
     /**
+     * Identifies the context in which a player joined an experience via a deeplink.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/JoinSource)
      */
     export namespace JoinSource {
         /**
+         * The player joined by following an attribution link for an item created inside an experience.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/JoinSource#CreatedItemAttribution)
          */
         export interface CreatedItemAttribution extends globalThis.EnumItem {
@@ -18424,20 +20696,18 @@ declare namespace Enum {
      */
     export namespace KeyCode {
         /**
-         * Blank value that represents no key being pressed.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#Unknown)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#None)
          */
-        export interface Unknown extends globalThis.EnumItem {
-            Name: "Unknown";
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
             Value: 0;
             EnumType: typeof globalThis.Enum.KeyCode;
         }
-        export const Unknown: Unknown;
+        export const None: None;
         /**
-         * @deprecated renamed to Unknown
+         * @deprecated renamed to None
          */
-        export const None: Unknown;
+        export const Unknown: None;
         /**
          * The `Backspace` key.
          *
@@ -19266,6 +21536,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World0)
          */
         export interface World0 extends globalThis.EnumItem {
@@ -19276,6 +21548,8 @@ declare namespace Enum {
         export const World0: World0;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World1)
          */
@@ -19288,6 +21562,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World2)
          */
         export interface World2 extends globalThis.EnumItem {
@@ -19298,6 +21574,8 @@ declare namespace Enum {
         export const World2: World2;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World3)
          */
@@ -19310,6 +21588,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World4)
          */
         export interface World4 extends globalThis.EnumItem {
@@ -19320,6 +21600,8 @@ declare namespace Enum {
         export const World4: World4;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World5)
          */
@@ -19332,6 +21614,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World6)
          */
         export interface World6 extends globalThis.EnumItem {
@@ -19342,6 +21626,8 @@ declare namespace Enum {
         export const World6: World6;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World7)
          */
@@ -19354,6 +21640,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World8)
          */
         export interface World8 extends globalThis.EnumItem {
@@ -19364,6 +21652,8 @@ declare namespace Enum {
         export const World8: World8;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World9)
          */
@@ -19376,6 +21666,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World10)
          */
         export interface World10 extends globalThis.EnumItem {
@@ -19386,6 +21678,8 @@ declare namespace Enum {
         export const World10: World10;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World11)
          */
@@ -19398,6 +21692,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World12)
          */
         export interface World12 extends globalThis.EnumItem {
@@ -19408,6 +21704,8 @@ declare namespace Enum {
         export const World12: World12;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World13)
          */
@@ -19420,6 +21718,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World14)
          */
         export interface World14 extends globalThis.EnumItem {
@@ -19430,6 +21730,8 @@ declare namespace Enum {
         export const World14: World14;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World15)
          */
@@ -19442,6 +21744,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World16)
          */
         export interface World16 extends globalThis.EnumItem {
@@ -19452,6 +21756,8 @@ declare namespace Enum {
         export const World16: World16;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World17)
          */
@@ -19464,6 +21770,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World18)
          */
         export interface World18 extends globalThis.EnumItem {
@@ -19474,6 +21782,8 @@ declare namespace Enum {
         export const World18: World18;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World19)
          */
@@ -19486,6 +21796,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World20)
          */
         export interface World20 extends globalThis.EnumItem {
@@ -19496,6 +21808,8 @@ declare namespace Enum {
         export const World20: World20;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World21)
          */
@@ -19508,6 +21822,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World22)
          */
         export interface World22 extends globalThis.EnumItem {
@@ -19518,6 +21834,8 @@ declare namespace Enum {
         export const World22: World22;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World23)
          */
@@ -19530,6 +21848,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World24)
          */
         export interface World24 extends globalThis.EnumItem {
@@ -19540,6 +21860,8 @@ declare namespace Enum {
         export const World24: World24;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World25)
          */
@@ -19552,6 +21874,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World26)
          */
         export interface World26 extends globalThis.EnumItem {
@@ -19562,6 +21886,8 @@ declare namespace Enum {
         export const World26: World26;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World27)
          */
@@ -19574,6 +21900,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World28)
          */
         export interface World28 extends globalThis.EnumItem {
@@ -19584,6 +21912,8 @@ declare namespace Enum {
         export const World28: World28;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World29)
          */
@@ -19596,6 +21926,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World30)
          */
         export interface World30 extends globalThis.EnumItem {
@@ -19606,6 +21938,8 @@ declare namespace Enum {
         export const World30: World30;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World31)
          */
@@ -19618,6 +21952,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World32)
          */
         export interface World32 extends globalThis.EnumItem {
@@ -19628,6 +21964,8 @@ declare namespace Enum {
         export const World32: World32;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World33)
          */
@@ -19640,6 +21978,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World34)
          */
         export interface World34 extends globalThis.EnumItem {
@@ -19650,6 +21990,8 @@ declare namespace Enum {
         export const World34: World34;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World35)
          */
@@ -19662,6 +22004,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World36)
          */
         export interface World36 extends globalThis.EnumItem {
@@ -19672,6 +22016,8 @@ declare namespace Enum {
         export const World36: World36;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World37)
          */
@@ -19684,6 +22030,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World38)
          */
         export interface World38 extends globalThis.EnumItem {
@@ -19694,6 +22042,8 @@ declare namespace Enum {
         export const World38: World38;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World39)
          */
@@ -19706,6 +22056,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World40)
          */
         export interface World40 extends globalThis.EnumItem {
@@ -19716,6 +22068,8 @@ declare namespace Enum {
         export const World40: World40;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World41)
          */
@@ -19728,6 +22082,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World42)
          */
         export interface World42 extends globalThis.EnumItem {
@@ -19738,6 +22094,8 @@ declare namespace Enum {
         export const World42: World42;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World43)
          */
@@ -19750,6 +22108,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World44)
          */
         export interface World44 extends globalThis.EnumItem {
@@ -19760,6 +22120,8 @@ declare namespace Enum {
         export const World44: World44;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World45)
          */
@@ -19772,6 +22134,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World46)
          */
         export interface World46 extends globalThis.EnumItem {
@@ -19782,6 +22146,8 @@ declare namespace Enum {
         export const World46: World46;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World47)
          */
@@ -19794,6 +22160,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World48)
          */
         export interface World48 extends globalThis.EnumItem {
@@ -19804,6 +22172,8 @@ declare namespace Enum {
         export const World48: World48;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World49)
          */
@@ -19816,6 +22186,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World50)
          */
         export interface World50 extends globalThis.EnumItem {
@@ -19826,6 +22198,8 @@ declare namespace Enum {
         export const World50: World50;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World51)
          */
@@ -19838,6 +22212,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World52)
          */
         export interface World52 extends globalThis.EnumItem {
@@ -19848,6 +22224,8 @@ declare namespace Enum {
         export const World52: World52;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World53)
          */
@@ -19860,6 +22238,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World54)
          */
         export interface World54 extends globalThis.EnumItem {
@@ -19870,6 +22250,8 @@ declare namespace Enum {
         export const World54: World54;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World55)
          */
@@ -19882,6 +22264,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World56)
          */
         export interface World56 extends globalThis.EnumItem {
@@ -19892,6 +22276,8 @@ declare namespace Enum {
         export const World56: World56;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World57)
          */
@@ -19904,6 +22290,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World58)
          */
         export interface World58 extends globalThis.EnumItem {
@@ -19914,6 +22302,8 @@ declare namespace Enum {
         export const World58: World58;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World59)
          */
@@ -19926,6 +22316,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World60)
          */
         export interface World60 extends globalThis.EnumItem {
@@ -19936,6 +22328,8 @@ declare namespace Enum {
         export const World60: World60;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World61)
          */
@@ -19948,6 +22342,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World62)
          */
         export interface World62 extends globalThis.EnumItem {
@@ -19958,6 +22354,8 @@ declare namespace Enum {
         export const World62: World62;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World63)
          */
@@ -19970,6 +22368,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World64)
          */
         export interface World64 extends globalThis.EnumItem {
@@ -19980,6 +22380,8 @@ declare namespace Enum {
         export const World64: World64;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World65)
          */
@@ -19992,6 +22394,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World66)
          */
         export interface World66 extends globalThis.EnumItem {
@@ -20002,6 +22406,8 @@ declare namespace Enum {
         export const World66: World66;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World67)
          */
@@ -20014,6 +22420,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World68)
          */
         export interface World68 extends globalThis.EnumItem {
@@ -20024,6 +22432,8 @@ declare namespace Enum {
         export const World68: World68;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World69)
          */
@@ -20036,6 +22446,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World70)
          */
         export interface World70 extends globalThis.EnumItem {
@@ -20046,6 +22458,8 @@ declare namespace Enum {
         export const World70: World70;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World71)
          */
@@ -20058,6 +22472,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World72)
          */
         export interface World72 extends globalThis.EnumItem {
@@ -20068,6 +22484,8 @@ declare namespace Enum {
         export const World72: World72;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World73)
          */
@@ -20080,6 +22498,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World74)
          */
         export interface World74 extends globalThis.EnumItem {
@@ -20090,6 +22510,8 @@ declare namespace Enum {
         export const World74: World74;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World75)
          */
@@ -20102,6 +22524,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World76)
          */
         export interface World76 extends globalThis.EnumItem {
@@ -20112,6 +22536,8 @@ declare namespace Enum {
         export const World76: World76;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World77)
          */
@@ -20124,6 +22550,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World78)
          */
         export interface World78 extends globalThis.EnumItem {
@@ -20134,6 +22562,8 @@ declare namespace Enum {
         export const World78: World78;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World79)
          */
@@ -20146,6 +22576,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World80)
          */
         export interface World80 extends globalThis.EnumItem {
@@ -20156,6 +22588,8 @@ declare namespace Enum {
         export const World80: World80;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World81)
          */
@@ -20168,6 +22602,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World82)
          */
         export interface World82 extends globalThis.EnumItem {
@@ -20178,6 +22614,8 @@ declare namespace Enum {
         export const World82: World82;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World83)
          */
@@ -20190,6 +22628,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World84)
          */
         export interface World84 extends globalThis.EnumItem {
@@ -20200,6 +22640,8 @@ declare namespace Enum {
         export const World84: World84;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World85)
          */
@@ -20212,6 +22654,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World86)
          */
         export interface World86 extends globalThis.EnumItem {
@@ -20222,6 +22666,8 @@ declare namespace Enum {
         export const World86: World86;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World87)
          */
@@ -20234,6 +22680,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World88)
          */
         export interface World88 extends globalThis.EnumItem {
@@ -20244,6 +22692,8 @@ declare namespace Enum {
         export const World88: World88;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World89)
          */
@@ -20256,6 +22706,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World90)
          */
         export interface World90 extends globalThis.EnumItem {
@@ -20266,6 +22718,8 @@ declare namespace Enum {
         export const World90: World90;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World91)
          */
@@ -20278,6 +22732,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World92)
          */
         export interface World92 extends globalThis.EnumItem {
@@ -20288,6 +22744,8 @@ declare namespace Enum {
         export const World92: World92;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World93)
          */
@@ -20300,6 +22758,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * Deprecated
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World94)
          */
         export interface World94 extends globalThis.EnumItem {
@@ -20310,6 +22770,8 @@ declare namespace Enum {
         export const World94: World94;
         /**
          * **Deprecated:**
+         *
+         * Deprecated
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#World95)
          */
@@ -21478,16 +23940,86 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.KeyCode;
         }
         export const TouchPinch: TouchPinch;
+        /**
+         * TV remote `Center` button.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonCenter)
+         */
+        export interface ButtonCenter extends globalThis.EnumItem {
+            Name: "ButtonCenter";
+            Value: 1051;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const ButtonCenter: ButtonCenter;
+        /**
+         * TV remote `Back` button.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonBack)
+         */
+        export interface ButtonBack extends globalThis.EnumItem {
+            Name: "ButtonBack";
+            Value: 1052;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const ButtonBack: ButtonBack;
+        /**
+         * [MicroGamepad](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#MicroGamepad) (including TV remotes) `Up` directional button.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonUp)
+         */
+        export interface ButtonUp extends globalThis.EnumItem {
+            Name: "ButtonUp";
+            Value: 1053;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const ButtonUp: ButtonUp;
+        /**
+         * [MicroGamepad](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#MicroGamepad) (including TV remotes) `Down` directional button.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonDown)
+         */
+        export interface ButtonDown extends globalThis.EnumItem {
+            Name: "ButtonDown";
+            Value: 1054;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const ButtonDown: ButtonDown;
+        /**
+         * [MicroGamepad](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#MicroGamepad) (including TV remotes) `Left` directional button.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonLeft)
+         */
+        export interface ButtonLeft extends globalThis.EnumItem {
+            Name: "ButtonLeft";
+            Value: 1055;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const ButtonLeft: ButtonLeft;
+        /**
+         * [MicroGamepad](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#MicroGamepad) (including TV remotes) `Right` directional button.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#ButtonRight)
+         */
+        export interface ButtonRight extends globalThis.EnumItem {
+            Name: "ButtonRight";
+            Value: 1056;
+            EnumType: typeof globalThis.Enum.KeyCode;
+        }
+        export const ButtonRight: ButtonRight;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.KeyCode>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.KeyCode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.KeyCode | undefined;
     }
-    export type KeyCode = KeyCode.Unknown | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95 | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.NumLock | KeyCode.CapsLock | KeyCode.ScrollLock | KeyCode.RightShift | KeyCode.LeftShift | KeyCode.RightControl | KeyCode.LeftControl | KeyCode.RightAlt | KeyCode.LeftAlt | KeyCode.RightMeta | KeyCode.LeftMeta | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2 | KeyCode.Thumbstick1Up | KeyCode.Thumbstick1Down | KeyCode.Thumbstick1Left | KeyCode.Thumbstick1Right | KeyCode.Thumbstick2Up | KeyCode.Thumbstick2Down | KeyCode.Thumbstick2Left | KeyCode.Thumbstick2Right | KeyCode.MouseLeftButton | KeyCode.MouseRightButton | KeyCode.MouseMiddleButton | KeyCode.MouseBackButton | KeyCode.MouseNoButton | KeyCode.MouseX | KeyCode.MouseY | KeyCode.MousePosition | KeyCode.TouchPosition | KeyCode.MouseWheel | KeyCode.TrackpadPan | KeyCode.TrackpadPinch | KeyCode.MouseDelta | KeyCode.TouchDelta | KeyCode.TouchPinch;
+    export type KeyCode = KeyCode.None | KeyCode.Backspace | KeyCode.Tab | KeyCode.Clear | KeyCode.Return | KeyCode.Pause | KeyCode.Escape | KeyCode.Space | KeyCode.QuotedDouble | KeyCode.Hash | KeyCode.Dollar | KeyCode.Percent | KeyCode.Ampersand | KeyCode.Quote | KeyCode.LeftParenthesis | KeyCode.RightParenthesis | KeyCode.Asterisk | KeyCode.Plus | KeyCode.Comma | KeyCode.Minus | KeyCode.Period | KeyCode.Slash | KeyCode.Zero | KeyCode.One | KeyCode.Two | KeyCode.Three | KeyCode.Four | KeyCode.Five | KeyCode.Six | KeyCode.Seven | KeyCode.Eight | KeyCode.Nine | KeyCode.Colon | KeyCode.Semicolon | KeyCode.LessThan | KeyCode.Equals | KeyCode.GreaterThan | KeyCode.Question | KeyCode.At | KeyCode.LeftBracket | KeyCode.BackSlash | KeyCode.RightBracket | KeyCode.Caret | KeyCode.Underscore | KeyCode.Backquote | KeyCode.A | KeyCode.B | KeyCode.C | KeyCode.D | KeyCode.E | KeyCode.F | KeyCode.G | KeyCode.H | KeyCode.I | KeyCode.J | KeyCode.K | KeyCode.L | KeyCode.M | KeyCode.N | KeyCode.O | KeyCode.P | KeyCode.Q | KeyCode.R | KeyCode.S | KeyCode.T | KeyCode.U | KeyCode.V | KeyCode.W | KeyCode.X | KeyCode.Y | KeyCode.Z | KeyCode.LeftCurly | KeyCode.Pipe | KeyCode.RightCurly | KeyCode.Tilde | KeyCode.Delete | KeyCode.World0 | KeyCode.World1 | KeyCode.World2 | KeyCode.World3 | KeyCode.World4 | KeyCode.World5 | KeyCode.World6 | KeyCode.World7 | KeyCode.World8 | KeyCode.World9 | KeyCode.World10 | KeyCode.World11 | KeyCode.World12 | KeyCode.World13 | KeyCode.World14 | KeyCode.World15 | KeyCode.World16 | KeyCode.World17 | KeyCode.World18 | KeyCode.World19 | KeyCode.World20 | KeyCode.World21 | KeyCode.World22 | KeyCode.World23 | KeyCode.World24 | KeyCode.World25 | KeyCode.World26 | KeyCode.World27 | KeyCode.World28 | KeyCode.World29 | KeyCode.World30 | KeyCode.World31 | KeyCode.World32 | KeyCode.World33 | KeyCode.World34 | KeyCode.World35 | KeyCode.World36 | KeyCode.World37 | KeyCode.World38 | KeyCode.World39 | KeyCode.World40 | KeyCode.World41 | KeyCode.World42 | KeyCode.World43 | KeyCode.World44 | KeyCode.World45 | KeyCode.World46 | KeyCode.World47 | KeyCode.World48 | KeyCode.World49 | KeyCode.World50 | KeyCode.World51 | KeyCode.World52 | KeyCode.World53 | KeyCode.World54 | KeyCode.World55 | KeyCode.World56 | KeyCode.World57 | KeyCode.World58 | KeyCode.World59 | KeyCode.World60 | KeyCode.World61 | KeyCode.World62 | KeyCode.World63 | KeyCode.World64 | KeyCode.World65 | KeyCode.World66 | KeyCode.World67 | KeyCode.World68 | KeyCode.World69 | KeyCode.World70 | KeyCode.World71 | KeyCode.World72 | KeyCode.World73 | KeyCode.World74 | KeyCode.World75 | KeyCode.World76 | KeyCode.World77 | KeyCode.World78 | KeyCode.World79 | KeyCode.World80 | KeyCode.World81 | KeyCode.World82 | KeyCode.World83 | KeyCode.World84 | KeyCode.World85 | KeyCode.World86 | KeyCode.World87 | KeyCode.World88 | KeyCode.World89 | KeyCode.World90 | KeyCode.World91 | KeyCode.World92 | KeyCode.World93 | KeyCode.World94 | KeyCode.World95 | KeyCode.KeypadZero | KeyCode.KeypadOne | KeyCode.KeypadTwo | KeyCode.KeypadThree | KeyCode.KeypadFour | KeyCode.KeypadFive | KeyCode.KeypadSix | KeyCode.KeypadSeven | KeyCode.KeypadEight | KeyCode.KeypadNine | KeyCode.KeypadPeriod | KeyCode.KeypadDivide | KeyCode.KeypadMultiply | KeyCode.KeypadMinus | KeyCode.KeypadPlus | KeyCode.KeypadEnter | KeyCode.KeypadEquals | KeyCode.Up | KeyCode.Down | KeyCode.Right | KeyCode.Left | KeyCode.Insert | KeyCode.Home | KeyCode.End | KeyCode.PageUp | KeyCode.PageDown | KeyCode.F1 | KeyCode.F2 | KeyCode.F3 | KeyCode.F4 | KeyCode.F5 | KeyCode.F6 | KeyCode.F7 | KeyCode.F8 | KeyCode.F9 | KeyCode.F10 | KeyCode.F11 | KeyCode.F12 | KeyCode.F13 | KeyCode.F14 | KeyCode.F15 | KeyCode.NumLock | KeyCode.CapsLock | KeyCode.ScrollLock | KeyCode.RightShift | KeyCode.LeftShift | KeyCode.RightControl | KeyCode.LeftControl | KeyCode.RightAlt | KeyCode.LeftAlt | KeyCode.RightMeta | KeyCode.LeftMeta | KeyCode.LeftSuper | KeyCode.RightSuper | KeyCode.Mode | KeyCode.Compose | KeyCode.Help | KeyCode.Print | KeyCode.SysReq | KeyCode.Break | KeyCode.Menu | KeyCode.Power | KeyCode.Euro | KeyCode.Undo | KeyCode.ButtonX | KeyCode.ButtonY | KeyCode.ButtonA | KeyCode.ButtonB | KeyCode.ButtonR1 | KeyCode.ButtonL1 | KeyCode.ButtonR2 | KeyCode.ButtonL2 | KeyCode.ButtonR3 | KeyCode.ButtonL3 | KeyCode.ButtonStart | KeyCode.ButtonSelect | KeyCode.DPadLeft | KeyCode.DPadRight | KeyCode.DPadUp | KeyCode.DPadDown | KeyCode.Thumbstick1 | KeyCode.Thumbstick2 | KeyCode.Thumbstick1Up | KeyCode.Thumbstick1Down | KeyCode.Thumbstick1Left | KeyCode.Thumbstick1Right | KeyCode.Thumbstick2Up | KeyCode.Thumbstick2Down | KeyCode.Thumbstick2Left | KeyCode.Thumbstick2Right | KeyCode.MouseLeftButton | KeyCode.MouseRightButton | KeyCode.MouseMiddleButton | KeyCode.MouseBackButton | KeyCode.MouseNoButton | KeyCode.MouseX | KeyCode.MouseY | KeyCode.MousePosition | KeyCode.TouchPosition | KeyCode.MouseWheel | KeyCode.TrackpadPan | KeyCode.TrackpadPinch | KeyCode.MouseDelta | KeyCode.TouchDelta | KeyCode.TouchPinch | KeyCode.ButtonCenter | KeyCode.ButtonBack | KeyCode.ButtonUp | KeyCode.ButtonDown | KeyCode.ButtonLeft | KeyCode.ButtonRight;
     /**
+     * Determines the string format returned by `UserInputService:GetStringForKeyCode()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCodeStringFormat)
      */
     export namespace KeyCodeStringFormat {
         /**
+         * Default behavior which returns the full key string, for example `"LeftControl"`, `"Backspace"`, or `"Escape"`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCodeStringFormat#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -21497,6 +24029,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Returns a shortened key string when available, for example `"LCtrl"`, `"Bksp"`, or `"Esc"`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCodeStringFormat#Abbreviated)
          */
         export interface Abbreviated extends globalThis.EnumItem {
@@ -21555,14 +24089,10 @@ declare namespace Enum {
     }
     export type KeyInterpolationMode = KeyInterpolationMode.Constant | KeyInterpolationMode.Linear | KeyInterpolationMode.Cubic;
     /**
-     * Determines if a filter is 'inclusive' or 'exclusive'.
-     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeywordFilterType)
      */
     export namespace KeywordFilterType {
         /**
-         * Include the matched content.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeywordFilterType#Include)
          */
         export interface Include extends globalThis.EnumItem {
@@ -21572,8 +24102,6 @@ declare namespace Enum {
         }
         export const Include: Include;
         /**
-         * Exclude the matched content.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeywordFilterType#Exclude)
          */
         export interface Exclude extends globalThis.EnumItem {
@@ -21588,23 +24116,23 @@ declare namespace Enum {
     }
     export type KeywordFilterType = KeywordFilterType.Include | KeywordFilterType.Exclude;
     /**
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Language)
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KnownWindow)
      */
-    export namespace Language {
+    export namespace KnownWindow {
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Language#Default)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KnownWindow#Main)
          */
-        export interface Default extends globalThis.EnumItem {
-            Name: "Default";
+        export interface Main extends globalThis.EnumItem {
+            Name: "Main";
             Value: 0;
-            EnumType: typeof globalThis.Enum.Language;
+            EnumType: typeof globalThis.Enum.KnownWindow;
         }
-        export const Default: Default;
-        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.Language>;
-        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.Language | undefined;
-        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.Language | undefined;
+        export const Main: Main;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.KnownWindow>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.KnownWindow | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.KnownWindow | undefined;
     }
-    export type Language = Language.Default;
+    export type KnownWindow = KnownWindow.Main;
     /**
      * The LeftRight Enum is used to set where the object is on the side of its parent.
      *
@@ -21650,10 +24178,14 @@ declare namespace Enum {
     }
     export type LeftRight = LeftRight.Left | LeftRight.Center | LeftRight.Right;
     /**
+     * Identifies the category of a token produced when the Studio Explorer filter bar lexes a filter expression.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType)
      */
     export namespace LexemeType {
         /**
+         * End-of-input token emitted when the lexer reaches the end of the filter string.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#Eof)
          */
         export interface Eof extends globalThis.EnumItem {
@@ -21663,6 +24195,8 @@ declare namespace Enum {
         }
         export const Eof: Eof;
         /**
+         * An unquoted identifier token, such as an instance name or property key in a filter expression.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#Name)
          */
         export interface Name extends globalThis.EnumItem {
@@ -21672,6 +24206,8 @@ declare namespace Enum {
         }
         export const Name: Name;
         /**
+         * A string literal token delimited by single (`'`) or double (`"`) quotes, with backslash escape support.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#QuotedString)
          */
         export interface QuotedString extends globalThis.EnumItem {
@@ -21681,6 +24217,8 @@ declare namespace Enum {
         }
         export const QuotedString: QuotedString;
         /**
+         * A numeric literal token representing an integer or decimal value used in a comparison.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#Number)
          */
         export interface Number extends globalThis.EnumItem {
@@ -21690,6 +24228,8 @@ declare namespace Enum {
         }
         export const Number: Number;
         /**
+         * The case-insensitive keyword `and`, used to combine filter conditions with logical AND.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#And)
          */
         export interface And extends globalThis.EnumItem {
@@ -21699,6 +24239,8 @@ declare namespace Enum {
         }
         export const And: And;
         /**
+         * The case-insensitive keyword `or`, used to combine filter conditions with logical OR.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#Or)
          */
         export interface Or extends globalThis.EnumItem {
@@ -21708,6 +24250,8 @@ declare namespace Enum {
         }
         export const Or: Or;
         /**
+         * The equality comparison operator, matched as `=` or `==` in a filter expression.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#Equal)
          */
         export interface Equal extends globalThis.EnumItem {
@@ -21717,6 +24261,8 @@ declare namespace Enum {
         }
         export const Equal: Equal;
         /**
+         * The not-equal comparison operator (`~=`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#TildeEqual)
          */
         export interface TildeEqual extends globalThis.EnumItem {
@@ -21726,6 +24272,8 @@ declare namespace Enum {
         }
         export const TildeEqual: TildeEqual;
         /**
+         * The greater-than comparison operator (`>`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#GreaterThan)
          */
         export interface GreaterThan extends globalThis.EnumItem {
@@ -21735,6 +24283,8 @@ declare namespace Enum {
         }
         export const GreaterThan: GreaterThan;
         /**
+         * The greater-than-or-equal comparison operator (`>=`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#GreaterThanEqual)
          */
         export interface GreaterThanEqual extends globalThis.EnumItem {
@@ -21744,6 +24294,8 @@ declare namespace Enum {
         }
         export const GreaterThanEqual: GreaterThanEqual;
         /**
+         * The less-than comparison operator (`<`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#LessThan)
          */
         export interface LessThan extends globalThis.EnumItem {
@@ -21753,6 +24305,8 @@ declare namespace Enum {
         }
         export const LessThan: LessThan;
         /**
+         * The less-than-or-equal comparison operator (`<=`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#LessThanEqual)
          */
         export interface LessThanEqual extends globalThis.EnumItem {
@@ -21762,6 +24316,8 @@ declare namespace Enum {
         }
         export const LessThanEqual: LessThanEqual;
         /**
+         * The colon character (`:`), used as a separator in filter expressions such as `ClassName:PropertyName`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#Colon)
          */
         export interface Colon extends globalThis.EnumItem {
@@ -21771,6 +24327,8 @@ declare namespace Enum {
         }
         export const Colon: Colon;
         /**
+         * The dot character (`.`), used to navigate nested property paths in a filter expression.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#Dot)
          */
         export interface Dot extends globalThis.EnumItem {
@@ -21780,6 +24338,8 @@ declare namespace Enum {
         }
         export const Dot: Dot;
         /**
+         * The opening parenthesis character (`(`), used to begin a grouped subexpression in a filter.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#LeftParenthesis)
          */
         export interface LeftParenthesis extends globalThis.EnumItem {
@@ -21789,6 +24349,8 @@ declare namespace Enum {
         }
         export const LeftParenthesis: LeftParenthesis;
         /**
+         * The closing parenthesis character (`)`), used to end a grouped subexpression in a filter.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#RightParenthesis)
          */
         export interface RightParenthesis extends globalThis.EnumItem {
@@ -21798,6 +24360,8 @@ declare namespace Enum {
         }
         export const RightParenthesis: RightParenthesis;
         /**
+         * The single wildcard character (`*`), used to match any single name segment in a filter path.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#Star)
          */
         export interface Star extends globalThis.EnumItem {
@@ -21807,6 +24371,8 @@ declare namespace Enum {
         }
         export const Star: Star;
         /**
+         * The double wildcard token (`**`), which matches any number of path segments recursively across the instance hierarchy.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#DoubleStar)
          */
         export interface DoubleStar extends globalThis.EnumItem {
@@ -21816,6 +24382,8 @@ declare namespace Enum {
         }
         export const DoubleStar: DoubleStar;
         /**
+         * A character that is syntactically recognized but has no defined meaning in the current filter grammar.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LexemeType#ReservedSpecial)
          */
         export interface ReservedSpecial extends globalThis.EnumItem {
@@ -22099,7 +24667,7 @@ declare namespace Enum {
      */
     export namespace ListenerPositionType {
         /**
-         * Uses the parent `Instance` of the `AudioEmitter`.
+         * Uses the position and orientation of the `AudioListener`'s parent `Instance`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ListenerPositionType#Parent)
          */
@@ -22110,7 +24678,7 @@ declare namespace Enum {
         }
         export const Parent: Parent;
         /**
-         * Uses a specified `Instance`.
+         * Uses the position and orientation of the `Instance` specified by `AudioListener.PositionInstance`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ListenerPositionType#Instance)
          */
@@ -22306,10 +24874,14 @@ declare namespace Enum {
     }
     export type LoadCharacterLayeredClothing = LoadCharacterLayeredClothing.Default | LoadCharacterLayeredClothing.Disabled | LoadCharacterLayeredClothing.Enabled;
     /**
+     * Specifies whether player characters load dynamic heads.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LoadDynamicHeads)
      */
     export namespace LoadDynamicHeads {
         /**
+         * Uses Roblox's default dynamic-head loading behavior.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LoadDynamicHeads#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -22319,6 +24891,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Disables loading dynamic heads.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LoadDynamicHeads#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -22328,6 +24902,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * Enables loading dynamic heads.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LoadDynamicHeads#Enabled)
          */
         export interface Enabled extends globalThis.EnumItem {
@@ -22342,10 +24918,14 @@ declare namespace Enum {
     }
     export type LoadDynamicHeads = LoadDynamicHeads.Default | LoadDynamicHeads.Disabled | LoadDynamicHeads.Enabled;
     /**
+     * Specifies how `HeatmapService` determines a player's representative world position for heatmap data collection.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LocationType)
      */
     export namespace LocationType {
         /**
+         * Use the player's character model world position as the heatmap location (default).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LocationType#Character)
          */
         export interface Character extends globalThis.EnumItem {
@@ -22355,6 +24935,8 @@ declare namespace Enum {
         }
         export const Character: Character;
         /**
+         * Use the current workspace camera's world position as the player's heatmap location.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LocationType#Camera)
          */
         export interface Camera extends globalThis.EnumItem {
@@ -22364,6 +24946,8 @@ declare namespace Enum {
         }
         export const Camera: Camera;
         /**
+         * Use the world position of a configured target object as the player's heatmap location.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LocationType#ObjectPosition)
          */
         export interface ObjectPosition extends globalThis.EnumItem {
@@ -22433,10 +25017,14 @@ declare namespace Enum {
     }
     export type LuauTypeCheckMode = LuauTypeCheckMode.Default | LuauTypeCheckMode.NoCheck | LuauTypeCheckMode.Nonstrict | LuauTypeCheckMode.Strict;
     /**
+     * The category of makeup asset applied to an avatar through a `MakeupDescription`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MakeupType)
      */
     export namespace MakeupType {
         /**
+         * Makeup asset applied broadly across the face, such as blush or foundation; the default value of `MakeupDescription.MakeupType`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MakeupType#Face)
          */
         export interface Face extends globalThis.EnumItem {
@@ -22446,6 +25034,8 @@ declare namespace Enum {
         }
         export const Face: Face;
         /**
+         * Makeup asset targeting the lip area, such as lipstick or lip gloss.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MakeupType#Lip)
          */
         export interface Lip extends globalThis.EnumItem {
@@ -22455,6 +25045,8 @@ declare namespace Enum {
         }
         export const Lip: Lip;
         /**
+         * Makeup asset targeting the eye region, such as eyeshadow or eyeliner.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MakeupType#Eye)
          */
         export interface Eye extends globalThis.EnumItem {
@@ -22673,7 +25265,7 @@ declare namespace Enum {
      */
     export namespace MarketplaceProductType {
         /**
-         * Avatar asset
+         * A standalone avatar item (such as an accessory, clothing, or body part) sold individually in the Avatar Shop.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MarketplaceProductType#AvatarAsset)
          */
@@ -22684,7 +25276,7 @@ declare namespace Enum {
         }
         export const AvatarAsset: AvatarAsset;
         /**
-         * Avatar bundle
+         * A curated collection of avatar items sold together as a single package in the Avatar Shop.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MarketplaceProductType#AvatarBundle)
          */
@@ -23331,7 +25923,7 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * (no longer available).
+         * Legacy Builders Club membership. No longer available for purchase; retained for compatibility. Active paid memberships use `MembershipType.Premium`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MembershipType#BuildersClub)
          */
@@ -23342,7 +25934,7 @@ declare namespace Enum {
         }
         export const BuildersClub: BuildersClub;
         /**
-         * (no longer available).
+         * Legacy Turbo Builders Club membership. No longer available for purchase; retained for compatibility. Active paid memberships use `MembershipType.Premium`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MembershipType#TurboBuildersClub)
          */
@@ -23353,7 +25945,7 @@ declare namespace Enum {
         }
         export const TurboBuildersClub: TurboBuildersClub;
         /**
-         * (no longer available).
+         * Legacy Outrageous Builders Club membership. No longer available for purchase; retained for compatibility. Active paid memberships use `MembershipType.Premium`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MembershipType#OutrageousBuildersClub)
          */
@@ -23380,6 +25972,153 @@ declare namespace Enum {
     }
     export type MembershipType = MembershipType.None | MembershipType.BuildersClub | MembershipType.TurboBuildersClub | MembershipType.OutrageousBuildersClub | MembershipType.Premium;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MergeResolution)
+     */
+    export namespace MergeResolution {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MergeResolution#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.MergeResolution;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MergeResolution#UseSource)
+         */
+        export interface UseSource extends globalThis.EnumItem {
+            Name: "UseSource";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.MergeResolution;
+        }
+        export const UseSource: UseSource;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MergeResolution#UseTarget)
+         */
+        export interface UseTarget extends globalThis.EnumItem {
+            Name: "UseTarget";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.MergeResolution;
+        }
+        export const UseTarget: UseTarget;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MergeResolution#Manual)
+         */
+        export interface Manual extends globalThis.EnumItem {
+            Name: "Manual";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.MergeResolution;
+        }
+        export const Manual: Manual;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MergeResolution>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MergeResolution | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MergeResolution | undefined;
+    }
+    export type MergeResolution = MergeResolution.None | MergeResolution.UseSource | MergeResolution.UseTarget | MergeResolution.Manual;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MergeStatus)
+     */
+    export namespace MergeStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MergeStatus#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.MergeStatus;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MergeStatus#Loading)
+         */
+        export interface Loading extends globalThis.EnumItem {
+            Name: "Loading";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.MergeStatus;
+        }
+        export const Loading: Loading;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MergeStatus#Merging)
+         */
+        export interface Merging extends globalThis.EnumItem {
+            Name: "Merging";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.MergeStatus;
+        }
+        export const Merging: Merging;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MergeStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MergeStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MergeStatus | undefined;
+    }
+    export type MergeStatus = MergeStatus.None | MergeStatus.Loading | MergeStatus.Merging;
+    /**
+     * Identifies a mesh attribute when calling the batch methods on `EditableMesh`.
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshAttribute)
+     */
+    export namespace MeshAttribute {
+        /**
+         * The per-element vertex position attribute, storing a `Vector3` point in object space for each vertex.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshAttribute#Vertex)
+         */
+        export interface Vertex extends globalThis.EnumItem {
+            Name: "Vertex";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.MeshAttribute;
+        }
+        export const Vertex: Vertex;
+        /**
+         * The per-element surface normal attribute, storing a `Vector3` direction used for lighting calculations.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshAttribute#Normal)
+         */
+        export interface Normal extends globalThis.EnumItem {
+            Name: "Normal";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.MeshAttribute;
+        }
+        export const Normal: Normal;
+        /**
+         * The per-element color attribute, storing a `Color3` value and a float alpha for each color entry.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshAttribute#Color)
+         */
+        export interface Color extends globalThis.EnumItem {
+            Name: "Color";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.MeshAttribute;
+        }
+        export const Color: Color;
+        /**
+         * The per-element UV attribute, storing a `Vector2` texture coordinate for each UV entry.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshAttribute#UV)
+         */
+        export interface UV extends globalThis.EnumItem {
+            Name: "UV";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.MeshAttribute;
+        }
+        export const UV: UV;
+        /**
+         * The face attribute channel, identifying topology elements that connect vertex positions into triangles.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshAttribute#Face)
+         */
+        export interface Face extends globalThis.EnumItem {
+            Name: "Face";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.MeshAttribute;
+        }
+        export const Face: Face;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MeshAttribute>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MeshAttribute | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MeshAttribute | undefined;
+    }
+    export type MeshAttribute = MeshAttribute.Vertex | MeshAttribute.Normal | MeshAttribute.Color | MeshAttribute.UV | MeshAttribute.Face;
+    /**
      * The level of detail of `MeshParts` displayed in Studio.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshPartDetailLevel)
@@ -23397,6 +26136,8 @@ declare namespace Enum {
         }
         export const DistanceBased: DistanceBased;
         /**
+         * Forces MeshParts to render at LOD index 0, the finest detail level.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshPartDetailLevel#Level00)
          */
         export interface Level00 extends globalThis.EnumItem {
@@ -23450,6 +26191,8 @@ declare namespace Enum {
         }
         export const Level04: Level04;
         /**
+         * Forces MeshParts to render at LOD index 5.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshPartDetailLevel#Level05)
          */
         export interface Level05 extends globalThis.EnumItem {
@@ -23459,6 +26202,8 @@ declare namespace Enum {
         }
         export const Level05: Level05;
         /**
+         * Forces MeshParts to render at LOD index 6.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshPartDetailLevel#Level06)
          */
         export interface Level06 extends globalThis.EnumItem {
@@ -23468,6 +26213,8 @@ declare namespace Enum {
         }
         export const Level06: Level06;
         /**
+         * Forces MeshParts to render at LOD index 7.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshPartDetailLevel#Level07)
          */
         export interface Level07 extends globalThis.EnumItem {
@@ -23477,6 +26224,8 @@ declare namespace Enum {
         }
         export const Level07: Level07;
         /**
+         * Forces MeshParts to render at LOD index 8.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshPartDetailLevel#Level08)
          */
         export interface Level08 extends globalThis.EnumItem {
@@ -23486,6 +26235,8 @@ declare namespace Enum {
         }
         export const Level08: Level08;
         /**
+         * Forces MeshParts to render at LOD index 9, the coarsest available.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshPartDetailLevel#Level09)
          */
         export interface Level09 extends globalThis.EnumItem {
@@ -23544,10 +26295,14 @@ declare namespace Enum {
     }
     export type MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default | MeshPartHeadsAndAccessories.Disabled | MeshPartHeadsAndAccessories.Enabled;
     /**
+     * Specifies the real-world unit of length that a source 3D mesh file was authored in, used by the mesh importer to scale geometry to Roblox studs.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshScaleUnit)
      */
     export namespace MeshScaleUnit {
         /**
+         * Treats the source mesh as authored in Roblox studs, applying no unit conversion on import.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshScaleUnit#Stud)
          */
         export interface Stud extends globalThis.EnumItem {
@@ -23557,6 +26312,8 @@ declare namespace Enum {
         }
         export const Stud: Stud;
         /**
+         * Treats the source mesh as authored in meters and scales it to Roblox studs on import.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshScaleUnit#Meter)
          */
         export interface Meter extends globalThis.EnumItem {
@@ -23566,6 +26323,8 @@ declare namespace Enum {
         }
         export const Meter: Meter;
         /**
+         * Treats the source mesh as authored in centimeters and scales it to Roblox studs on import.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshScaleUnit#CM)
          */
         export interface CM extends globalThis.EnumItem {
@@ -23575,6 +26334,8 @@ declare namespace Enum {
         }
         export const CM: CM;
         /**
+         * Treats the source mesh as authored in millimeters and scales it to Roblox studs on import.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshScaleUnit#MM)
          */
         export interface MM extends globalThis.EnumItem {
@@ -23584,6 +26345,8 @@ declare namespace Enum {
         }
         export const MM: MM;
         /**
+         * Treats the source mesh as authored in feet and scales it to Roblox studs on import.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshScaleUnit#Foot)
          */
         export interface Foot extends globalThis.EnumItem {
@@ -23593,6 +26356,8 @@ declare namespace Enum {
         }
         export const Foot: Foot;
         /**
+         * Treats the source mesh as authored in inches and scales it to Roblox studs on import.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MeshScaleUnit#Inch)
          */
         export interface Inch extends globalThis.EnumItem {
@@ -23814,6 +26579,141 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MessageType | undefined;
     }
     export type MessageType = MessageType.MessageOutput | MessageType.MessageInfo | MessageType.MessageWarning | MessageType.MessageError;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType)
+     */
+    export namespace MetadataFieldType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#UInt8)
+         */
+        export interface UInt8 extends globalThis.EnumItem {
+            Name: "UInt8";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const UInt8: UInt8;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#UInt16)
+         */
+        export interface UInt16 extends globalThis.EnumItem {
+            Name: "UInt16";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const UInt16: UInt16;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#UInt32)
+         */
+        export interface UInt32 extends globalThis.EnumItem {
+            Name: "UInt32";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const UInt32: UInt32;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Float32)
+         */
+        export interface Float32 extends globalThis.EnumItem {
+            Name: "Float32";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Float32: Float32;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Int32)
+         */
+        export interface Int32 extends globalThis.EnumItem {
+            Name: "Int32";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Int32: Int32;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Int64)
+         */
+        export interface Int64 extends globalThis.EnumItem {
+            Name: "Int64";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Int64: Int64;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#UInt64)
+         */
+        export interface UInt64 extends globalThis.EnumItem {
+            Name: "UInt64";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const UInt64: UInt64;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Float64)
+         */
+        export interface Float64 extends globalThis.EnumItem {
+            Name: "Float64";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Float64: Float64;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Buffer)
+         */
+        export interface Buffer extends globalThis.EnumItem {
+            Name: "Buffer";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Buffer: Buffer;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Vector3)
+         */
+        export interface Vector3 extends globalThis.EnumItem {
+            Name: "Vector3";
+            Value: 9;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Vector3: Vector3;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#CFrame)
+         */
+        export interface CFrame extends globalThis.EnumItem {
+            Name: "CFrame";
+            Value: 10;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const CFrame: CFrame;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#ContentId)
+         */
+        export interface ContentId extends globalThis.EnumItem {
+            Name: "ContentId";
+            Value: 11;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const ContentId: ContentId;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#TagMask32)
+         */
+        export interface TagMask32 extends globalThis.EnumItem {
+            Name: "TagMask32";
+            Value: 12;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const TagMask32: TagMask32;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MetadataFieldType#Vector2)
+         */
+        export interface Vector2 extends globalThis.EnumItem {
+            Name: "Vector2";
+            Value: 13;
+            EnumType: typeof globalThis.Enum.MetadataFieldType;
+        }
+        export const Vector2: Vector2;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.MetadataFieldType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.MetadataFieldType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.MetadataFieldType | undefined;
+    }
+    export type MetadataFieldType = MetadataFieldType.UInt8 | MetadataFieldType.UInt16 | MetadataFieldType.UInt32 | MetadataFieldType.Float32 | MetadataFieldType.Int32 | MetadataFieldType.Int64 | MetadataFieldType.UInt64 | MetadataFieldType.Float64 | MetadataFieldType.Buffer | MetadataFieldType.Vector3 | MetadataFieldType.CFrame | MetadataFieldType.ContentId | MetadataFieldType.TagMask32 | MetadataFieldType.Vector2;
     /**
      * Controls the level of detail for `Models` in experiences with instance streaming enabled.
      *
@@ -24128,10 +27028,14 @@ declare namespace Enum {
     }
     export type ModerationResultLabel = ModerationResultLabel.ChildExploitation | ModerationResultLabel.SuicideSelfInjuryAndHarmfulBehavior | ModerationResultLabel.ThreatsBullyingAndHarassment | ModerationResultLabel.TerrorismAndViolentExtremism | ModerationResultLabel.DiscriminationSlursAndHateSpeech | ModerationResultLabel.RealWorldSensitiveEvents | ModerationResultLabel.ViolentContentAndGore | ModerationResultLabel.RomanticAndSexualContent | ModerationResultLabel.IllegalAndRegulatedGoodsAndActivities | ModerationResultLabel.Profanity | ModerationResultLabel.Other;
     /**
+     * Indicates the moderation review state of an avatar outfit or asset.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModerationStatus)
      */
     export namespace ModerationStatus {
         /**
+         * The content completed moderation review and was approved for use.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModerationStatus#ReviewedApproved)
          */
         export interface ReviewedApproved extends globalThis.EnumItem {
@@ -24141,6 +27045,8 @@ declare namespace Enum {
         }
         export const ReviewedApproved: ReviewedApproved;
         /**
+         * The content completed moderation review and was rejected.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModerationStatus#ReviewedRejected)
          */
         export interface ReviewedRejected extends globalThis.EnumItem {
@@ -24150,6 +27056,8 @@ declare namespace Enum {
         }
         export const ReviewedRejected: ReviewedRejected;
         /**
+         * The content has been submitted but moderation review is still pending.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModerationStatus#NotReviewed)
          */
         export interface NotReviewed extends globalThis.EnumItem {
@@ -24159,6 +27067,8 @@ declare namespace Enum {
         }
         export const NotReviewed: NotReviewed;
         /**
+         * Moderation review is not applicable to this content.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModerationStatus#NotApplicable)
          */
         export interface NotApplicable extends globalThis.EnumItem {
@@ -24168,6 +27078,8 @@ declare namespace Enum {
         }
         export const NotApplicable: NotApplicable;
         /**
+         * An unrecognized or error moderation status returned when the server response cannot be mapped to a known value.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModerationStatus#Invalid)
          */
         export interface Invalid extends globalThis.EnumItem {
@@ -24182,10 +27094,14 @@ declare namespace Enum {
     }
     export type ModerationStatus = ModerationStatus.ReviewedApproved | ModerationStatus.ReviewedRejected | ModerationStatus.NotReviewed | ModerationStatus.NotApplicable | ModerationStatus.Invalid;
     /**
+     * Identifies a keyboard modifier key for use with `InputObject:IsModifierKeyDown()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModifierKey)
      */
     export namespace ModifierKey {
         /**
+         * The Shift key (left or right Shift key).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModifierKey#Shift)
          */
         export interface Shift extends globalThis.EnumItem {
@@ -24195,6 +27111,8 @@ declare namespace Enum {
         }
         export const Shift: Shift;
         /**
+         * The Control key (left or right Ctrl key).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModifierKey#Ctrl)
          */
         export interface Ctrl extends globalThis.EnumItem {
@@ -24204,6 +27122,8 @@ declare namespace Enum {
         }
         export const Ctrl: Ctrl;
         /**
+         * The Alt key (left or right Alt/Option key).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModifierKey#Alt)
          */
         export interface Alt extends globalThis.EnumItem {
@@ -24213,6 +27133,8 @@ declare namespace Enum {
         }
         export const Alt: Alt;
         /**
+         * The Meta key (the Windows key on Windows, or the Command key on macOS).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ModifierKey#Meta)
          */
         export interface Meta extends globalThis.EnumItem {
@@ -24337,10 +27259,14 @@ declare namespace Enum {
     }
     export type MoveState = MoveState.Stopped | MoveState.Coasting | MoveState.Pushing | MoveState.Stopping | MoveState.AirFree;
     /**
+     * Describes whether a voice chat participant's microphone is actively transmitting audio.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MuteState)
      */
     export namespace MuteState {
         /**
+         * The participant's microphone is active and transmitting audio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MuteState#Unmuted)
          */
         export interface Unmuted extends globalThis.EnumItem {
@@ -24350,6 +27276,8 @@ declare namespace Enum {
         }
         export const Unmuted: Unmuted;
         /**
+         * The participant's microphone is muted and not transmitting audio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/MuteState#Muted)
          */
         export interface Muted extends globalThis.EnumItem {
@@ -24408,10 +27336,14 @@ declare namespace Enum {
     }
     export type NameOcclusion = NameOcclusion.NoOcclusion | NameOcclusion.EnemyOcclusion | NameOcclusion.OccludeAll;
     /**
+     * Records the CSG combination operation — Union or Intersection — that previously merged multiple `NegateOperation` parts, allowing the engine to restore the correct result type when those parts are later separated.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NegateOperationHiddenHistory)
      */
     export namespace NegateOperationHiddenHistory {
         /**
+         * Indicates no previous CSG combination operation is recorded for this `NegateOperation` part. This is the default value of `PreviousOperation`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NegateOperationHiddenHistory#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -24421,6 +27353,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * Indicates this `NegateOperation` was previously produced by a Union operation applied to multiple negated parts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NegateOperationHiddenHistory#NegatedUnion)
          */
         export interface NegatedUnion extends globalThis.EnumItem {
@@ -24430,6 +27364,8 @@ declare namespace Enum {
         }
         export const NegatedUnion: NegatedUnion;
         /**
+         * Indicates this `NegateOperation` was previously produced by an Intersection operation applied to multiple negated parts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NegateOperationHiddenHistory#NegatedIntersection)
          */
         export interface NegatedIntersection extends globalThis.EnumItem {
@@ -24488,10 +27424,14 @@ declare namespace Enum {
     }
     export type NetworkOwnership = NetworkOwnership.Automatic | NetworkOwnership.Manual | NetworkOwnership.OnContact;
     /**
+     * Describes the device's current network reachability state as reported by `ConnectivityService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NetworkStatus)
      */
     export namespace NetworkStatus {
         /**
+         * The network connection state has not yet been determined or is unavailable on the current platform.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NetworkStatus#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -24501,6 +27441,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
+         * The device has an active network connection.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NetworkStatus#Connected)
          */
         export interface Connected extends globalThis.EnumItem {
@@ -24510,6 +27452,8 @@ declare namespace Enum {
         }
         export const Connected: Connected;
         /**
+         * The device does not currently have a network connection.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NetworkStatus#Disconnected)
          */
         export interface Disconnected extends globalThis.EnumItem {
@@ -24524,10 +27468,14 @@ declare namespace Enum {
     }
     export type NetworkStatus = NetworkStatus.Unknown | NetworkStatus.Connected | NetworkStatus.Disconnected;
     /**
+     * Specifies the noise algorithm used by a `Noise` instance's `NoiseType` property.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NoiseType)
      */
     export namespace NoiseType {
         /**
+         * Uses an OpenSimplex2 body-centered cubic (BCC) lattice with a Gabor sinusoidal kernel for anisotropic directional noise sampling.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/NoiseType#SimplexGabor)
          */
         export interface SimplexGabor extends globalThis.EnumItem {
@@ -24733,10 +27681,59 @@ declare namespace Enum {
     }
     export type OrientationAlignmentMode = OrientationAlignmentMode.OneAttachment | OrientationAlignmentMode.TwoAttachment;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OrthographicMode)
+     */
+    export namespace OrthographicMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OrthographicMode#Vertical)
+         */
+        export interface Vertical extends globalThis.EnumItem {
+            Name: "Vertical";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.OrthographicMode;
+        }
+        export const Vertical: Vertical;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OrthographicMode#Horizontal)
+         */
+        export interface Horizontal extends globalThis.EnumItem {
+            Name: "Horizontal";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.OrthographicMode;
+        }
+        export const Horizontal: Horizontal;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OrthographicMode#Diagonal)
+         */
+        export interface Diagonal extends globalThis.EnumItem {
+            Name: "Diagonal";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.OrthographicMode;
+        }
+        export const Diagonal: Diagonal;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OrthographicMode#MaxAxis)
+         */
+        export interface MaxAxis extends globalThis.EnumItem {
+            Name: "MaxAxis";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.OrthographicMode;
+        }
+        export const MaxAxis: MaxAxis;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.OrthographicMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.OrthographicMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.OrthographicMode | undefined;
+    }
+    export type OrthographicMode = OrthographicMode.Vertical | OrthographicMode.Horizontal | OrthographicMode.Diagonal | OrthographicMode.MaxAxis;
+    /**
+     * Filters which outfits are returned by `AvatarEditorService:GetOutfitsAsync()` based on how they were obtained.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutfitSource)
      */
     export namespace OutfitSource {
         /**
+         * Return all outfits regardless of whether they were created or purchased.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutfitSource#All)
          */
         export interface All extends globalThis.EnumItem {
@@ -24746,6 +27743,8 @@ declare namespace Enum {
         }
         export const All: All;
         /**
+         * Return only outfits that the user created themselves (editable outfits).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutfitSource#Created)
          */
         export interface Created extends globalThis.EnumItem {
@@ -24755,6 +27754,8 @@ declare namespace Enum {
         }
         export const Created: Created;
         /**
+         * Return only outfits that the user purchased (non-editable outfits).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutfitSource#Purchased)
          */
         export interface Purchased extends globalThis.EnumItem {
@@ -24769,6 +27770,8 @@ declare namespace Enum {
     }
     export type OutfitSource = OutfitSource.All | OutfitSource.Created | OutfitSource.Purchased;
     /**
+     * Categorizes a saved player outfit by its content type, used to filter or specify outfit type in `AvatarEditorService` methods.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutfitType)
      */
     export namespace OutfitType {
@@ -24833,13 +27836,13 @@ declare namespace Enum {
     }
     export type OutfitType = OutfitType.All | OutfitType.Avatar | OutfitType.DynamicHead | OutfitType.Shoes | OutfitType.Makeup;
     /**
-     * Sets the layout mode of the output.
+     * Specifies the orientation of the Output panel in Roblox Studio.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutputLayoutMode)
      */
     export namespace OutputLayoutMode {
         /**
-         * The output layout is horizontal (x-axis).
+         * Docks the Output panel horizontally along the top or bottom edge of the Studio window.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutputLayoutMode#Horizontal)
          */
@@ -24850,7 +27853,7 @@ declare namespace Enum {
         }
         export const Horizontal: Horizontal;
         /**
-         * The output layout is vertical (y-axis).
+         * Docks the Output panel vertically along the left or right edge of the Studio window.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OutputLayoutMode#Vertical)
          */
@@ -24987,6 +27990,96 @@ declare namespace Enum {
     }
     export type PackagePermission = PackagePermission.None | PackagePermission.NoAccess | PackagePermission.Revoked | PackagePermission.UseView | PackagePermission.Edit | PackagePermission.Own;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PageMilestoneType)
+     */
+    export namespace PageMilestoneType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PageMilestoneType#Interactive)
+         */
+        export interface Interactive extends globalThis.EnumItem {
+            Name: "Interactive";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PageMilestoneType;
+        }
+        export const Interactive: Interactive;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PageMilestoneType#SurfaceMounted)
+         */
+        export interface SurfaceMounted extends globalThis.EnumItem {
+            Name: "SurfaceMounted";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PageMilestoneType;
+        }
+        export const SurfaceMounted: SurfaceMounted;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PageMilestoneType#FunctionallyReady)
+         */
+        export interface FunctionallyReady extends globalThis.EnumItem {
+            Name: "FunctionallyReady";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PageMilestoneType;
+        }
+        export const FunctionallyReady: FunctionallyReady;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PageMilestoneType#SurfaceReady)
+         */
+        export interface SurfaceReady extends globalThis.EnumItem {
+            Name: "SurfaceReady";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.PageMilestoneType;
+        }
+        export const SurfaceReady: SurfaceReady;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PageMilestoneType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PageMilestoneType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PageMilestoneType | undefined;
+    }
+    export type PageMilestoneType = PageMilestoneType.Interactive | PageMilestoneType.SurfaceMounted | PageMilestoneType.FunctionallyReady | PageMilestoneType.SurfaceReady;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PageType)
+     */
+    export namespace PageType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PageType#AvatarEditor)
+         */
+        export interface AvatarEditor extends globalThis.EnumItem {
+            Name: "AvatarEditor";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PageType;
+        }
+        export const AvatarEditor: AvatarEditor;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PageType#Party)
+         */
+        export interface Party extends globalThis.EnumItem {
+            Name: "Party";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PageType;
+        }
+        export const Party: Party;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PageType#ExperienceDetail)
+         */
+        export interface ExperienceDetail extends globalThis.EnumItem {
+            Name: "ExperienceDetail";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PageType;
+        }
+        export const ExperienceDetail: ExperienceDetail;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PageType#AvatarMarketplace)
+         */
+        export interface AvatarMarketplace extends globalThis.EnumItem {
+            Name: "AvatarMarketplace";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.PageType;
+        }
+        export const AvatarMarketplace: AvatarMarketplace;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PageType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PageType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PageType | undefined;
+    }
+    export type PageType = PageType.AvatarEditor | PageType.Party | PageType.ExperienceDetail | PageType.AvatarMarketplace;
+    /**
      * Controls the `Part.Shape` of an object.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PartType)
@@ -25053,10 +28146,41 @@ declare namespace Enum {
     }
     export type PartType = PartType.Ball | PartType.Block | PartType.Cylinder | PartType.Wedge | PartType.CornerWedge;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitter2DEmissionMode)
+     */
+    export namespace ParticleEmitter2DEmissionMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitter2DEmissionMode#Point)
+         */
+        export interface Point extends globalThis.EnumItem {
+            Name: "Point";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ParticleEmitter2DEmissionMode;
+        }
+        export const Point: Point;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitter2DEmissionMode#BoundingBox)
+         */
+        export interface BoundingBox extends globalThis.EnumItem {
+            Name: "BoundingBox";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ParticleEmitter2DEmissionMode;
+        }
+        export const BoundingBox: BoundingBox;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ParticleEmitter2DEmissionMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ParticleEmitter2DEmissionMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ParticleEmitter2DEmissionMode | undefined;
+    }
+    export type ParticleEmitter2DEmissionMode = ParticleEmitter2DEmissionMode.Point | ParticleEmitter2DEmissionMode.BoundingBox;
+    /**
+     * Specifies the geometric shape from which a particle emitter emits particles.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShape)
      */
     export namespace ParticleEmitterShape {
         /**
+         * Emits particles from a box-shaped region.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShape#Box)
          */
         export interface Box extends globalThis.EnumItem {
@@ -25066,6 +28190,8 @@ declare namespace Enum {
         }
         export const Box: Box;
         /**
+         * Emits particles from a sphere-shaped region.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShape#Sphere)
          */
         export interface Sphere extends globalThis.EnumItem {
@@ -25075,6 +28201,8 @@ declare namespace Enum {
         }
         export const Sphere: Sphere;
         /**
+         * Emits particles from a cylinder-shaped region.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShape#Cylinder)
          */
         export interface Cylinder extends globalThis.EnumItem {
@@ -25084,6 +28212,8 @@ declare namespace Enum {
         }
         export const Cylinder: Cylinder;
         /**
+         * Emits particles from a disc-shaped region.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShape#Disc)
          */
         export interface Disc extends globalThis.EnumItem {
@@ -25098,10 +28228,14 @@ declare namespace Enum {
     }
     export type ParticleEmitterShape = ParticleEmitterShape.Box | ParticleEmitterShape.Sphere | ParticleEmitterShape.Cylinder | ParticleEmitterShape.Disc;
     /**
+     * Controls the direction particles travel when emitted from a shaped `ParticleEmitter`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeInOut)
      */
     export namespace ParticleEmitterShapeInOut {
         /**
+         * Particles emit directed outward away from the emitter shape surface.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeInOut#Outward)
          */
         export interface Outward extends globalThis.EnumItem {
@@ -25111,6 +28245,8 @@ declare namespace Enum {
         }
         export const Outward: Outward;
         /**
+         * Particles emit directed inward toward the center of the emitter shape.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeInOut#Inward)
          */
         export interface Inward extends globalThis.EnumItem {
@@ -25120,6 +28256,8 @@ declare namespace Enum {
         }
         export const Inward: Inward;
         /**
+         * Particles emit in both outward and inward directions from the emitter shape surface, chosen randomly per particle.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeInOut#InAndOut)
          */
         export interface InAndOut extends globalThis.EnumItem {
@@ -25134,10 +28272,14 @@ declare namespace Enum {
     }
     export type ParticleEmitterShapeInOut = ParticleEmitterShapeInOut.Outward | ParticleEmitterShapeInOut.Inward | ParticleEmitterShapeInOut.InAndOut;
     /**
+     * Controls whether a `ParticleEmitter` emits particles from the surface or the volume of its shape.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeStyle)
      */
     export namespace ParticleEmitterShapeStyle {
         /**
+         * Particles emit from throughout the interior volume of the emitter shape.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeStyle#Volume)
          */
         export interface Volume extends globalThis.EnumItem {
@@ -25147,6 +28289,8 @@ declare namespace Enum {
         }
         export const Volume: Volume;
         /**
+         * Particles emit only from the outer surface of the emitter shape.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitterShapeStyle#Surface)
          */
         export interface Surface extends globalThis.EnumItem {
@@ -25282,10 +28426,14 @@ declare namespace Enum {
     }
     export type ParticleFlipbookMode = ParticleFlipbookMode.Loop | ParticleFlipbookMode.OneShot | ParticleFlipbookMode.PingPong | ParticleFlipbookMode.Random;
     /**
+     * Indicates whether a `ParticleEmitter`'s flipbook texture dimensions are compatible with the selected flipbook layout.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookTextureCompatible)
      */
     export namespace ParticleFlipbookTextureCompatible {
         /**
+         * The `ParticleEmitter`'s flipbook texture dimensions are incompatible with the active flipbook layout (the texture must be 1024×1024); flipbook playback is suppressed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookTextureCompatible#NotCompatible)
          */
         export interface NotCompatible extends globalThis.EnumItem {
@@ -25295,6 +28443,8 @@ declare namespace Enum {
         }
         export const NotCompatible: NotCompatible;
         /**
+         * The `ParticleEmitter`'s flipbook texture dimensions are confirmed compatible with the active flipbook layout; flipbook playback proceeds normally.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookTextureCompatible#Compatible)
          */
         export interface Compatible extends globalThis.EnumItem {
@@ -25304,6 +28454,8 @@ declare namespace Enum {
         }
         export const Compatible: Compatible;
         /**
+         * Compatibility has not yet been determined; this is the initial state before the engine resolves the flipbook texture dimensions.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleFlipbookTextureCompatible#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -25318,10 +28470,14 @@ declare namespace Enum {
     }
     export type ParticleFlipbookTextureCompatible = ParticleFlipbookTextureCompatible.NotCompatible | ParticleFlipbookTextureCompatible.Compatible | ParticleFlipbookTextureCompatible.Unknown;
     /**
+     * Specifies how a particle's rendered geometry is oriented.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleOrientation)
      */
     export namespace ParticleOrientation {
         /**
+         * Orients particles as billboards that face the camera.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleOrientation#FacingCamera)
          */
         export interface FacingCamera extends globalThis.EnumItem {
@@ -25331,6 +28487,8 @@ declare namespace Enum {
         }
         export const FacingCamera: FacingCamera;
         /**
+         * Orients particles toward the camera while keeping them upright on the world Y axis.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleOrientation#FacingCameraWorldUp)
          */
         export interface FacingCameraWorldUp extends globalThis.EnumItem {
@@ -25340,6 +28498,8 @@ declare namespace Enum {
         }
         export const FacingCameraWorldUp: FacingCameraWorldUp;
         /**
+         * Orients particles parallel to their direction of movement.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleOrientation#VelocityParallel)
          */
         export interface VelocityParallel extends globalThis.EnumItem {
@@ -25349,6 +28509,8 @@ declare namespace Enum {
         }
         export const VelocityParallel: VelocityParallel;
         /**
+         * Orients particles perpendicular to their direction of movement.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleOrientation#VelocityPerpendicular)
          */
         export interface VelocityPerpendicular extends globalThis.EnumItem {
@@ -25476,6 +28638,8 @@ declare namespace Enum {
         }
         export const Jump: Jump;
         /**
+         * A developer-defined custom action is needed to traverse a `PathfindingLink` to reach the next waypoint.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PathWaypointAction#Custom)
          */
         export interface Custom extends globalThis.EnumItem {
@@ -25672,10 +28836,14 @@ declare namespace Enum {
     }
     export type PermissionLevelShown = PermissionLevelShown.Game | PermissionLevelShown.RobloxGame | PermissionLevelShown.RobloxScript | PermissionLevelShown.Studio | PermissionLevelShown.Roblox;
     /**
+     * Specifies the type of physical joint created when importing a rigged asset.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PhysicalConstraintType)
      */
     export namespace PhysicalConstraintType {
         /**
+         * Import creates `AnimationConstraint` instances to connect the rig's bone joints.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PhysicalConstraintType#AnimationConstraint)
          */
         export interface AnimationConstraint extends globalThis.EnumItem {
@@ -25685,6 +28853,8 @@ declare namespace Enum {
         }
         export const AnimationConstraint: AnimationConstraint;
         /**
+         * Import creates `Motor6D` instances to connect the rig's bone joints.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PhysicalConstraintType#Motor6D)
          */
         export interface Motor6D extends globalThis.EnumItem {
@@ -25735,6 +28905,8 @@ declare namespace Enum {
     }
     export type PhysicsSimulationRate = PhysicsSimulationRate.Fixed240Hz | PhysicsSimulationRate.Fixed120Hz | PhysicsSimulationRate.Fixed60Hz;
     /**
+     * Controls how the physics engine advances simulation time for assemblies in a `Workspace`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PhysicsSteppingMethod)
      */
     export namespace PhysicsSteppingMethod {
@@ -25776,6 +28948,87 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PhysicsSteppingMethod | undefined;
     }
     export type PhysicsSteppingMethod = PhysicsSteppingMethod.Default | PhysicsSteppingMethod.Fixed | PhysicsSteppingMethod.Adaptive;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PinExperienceStatus)
+     */
+    export namespace PinExperienceStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PinExperienceStatus#Success)
+         */
+        export interface Success extends globalThis.EnumItem {
+            Name: "Success";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PinExperienceStatus;
+        }
+        export const Success: Success;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PinExperienceStatus#Failure)
+         */
+        export interface Failure extends globalThis.EnumItem {
+            Name: "Failure";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PinExperienceStatus;
+        }
+        export const Failure: Failure;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PinExperienceStatus#AlreadyExists)
+         */
+        export interface AlreadyExists extends globalThis.EnumItem {
+            Name: "AlreadyExists";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PinExperienceStatus;
+        }
+        export const AlreadyExists: AlreadyExists;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PinExperienceStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PinExperienceStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PinExperienceStatus | undefined;
+    }
+    export type PinExperienceStatus = PinExperienceStatus.Success | PinExperienceStatus.Failure | PinExperienceStatus.AlreadyExists;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PioneerSource)
+     */
+    export namespace PioneerSource {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PioneerSource#Roblox)
+         */
+        export interface Roblox extends globalThis.EnumItem {
+            Name: "Roblox";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PioneerSource;
+        }
+        export const Roblox: Roblox;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PioneerSource#DaveyBazooka)
+         */
+        export interface DaveyBazooka extends globalThis.EnumItem {
+            Name: "DaveyBazooka";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PioneerSource;
+        }
+        export const DaveyBazooka: DaveyBazooka;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PioneerSource#Oof)
+         */
+        export interface Oof extends globalThis.EnumItem {
+            Name: "Oof";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PioneerSource;
+        }
+        export const Oof: Oof;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PioneerSource#RobloxPioneerTest)
+         */
+        export interface RobloxPioneerTest extends globalThis.EnumItem {
+            Name: "RobloxPioneerTest";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.PioneerSource;
+        }
+        export const RobloxPioneerTest: RobloxPioneerTest;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PioneerSource>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PioneerSource | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PioneerSource | undefined;
+    }
+    export type PioneerSource = PioneerSource.Roblox | PioneerSource.DaveyBazooka | PioneerSource.Oof | PioneerSource.RobloxPioneerTest;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlaceContentPreference)
      */
@@ -26073,6 +29326,8 @@ declare namespace Enum {
         }
         export const UWP: UWP;
         /**
+         * The client is running on a PS5 (console).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Platform#PS5)
          */
         export interface PS5 extends globalThis.EnumItem {
@@ -26082,6 +29337,8 @@ declare namespace Enum {
         }
         export const PS5: PS5;
         /**
+         * The client is running on Meta OS (Meta Quest VR platform).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Platform#MetaOS)
          */
         export interface MetaOS extends globalThis.EnumItem {
@@ -26091,6 +29348,8 @@ declare namespace Enum {
         }
         export const MetaOS: MetaOS;
         /**
+         * The client is running in a web browser.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Platform#Web)
          */
         export interface Web extends globalThis.EnumItem {
@@ -26472,10 +29731,14 @@ declare namespace Enum {
     }
     export type PlayerExitReason = PlayerExitReason.Unknown | PlayerExitReason.PlatformKick | PlayerExitReason.CreatorKick;
     /**
+     * Describes whether a player is new, active, lapsed, or reactivated on Roblox.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformActivationStatus)
      */
     export namespace PlayerPlatformActivationStatus {
         /**
+         * Segment data is unavailable.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformActivationStatus#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -26485,6 +29748,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
+         * The player signed up for Roblox within the last 60 days.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformActivationStatus#New)
          */
         export interface New extends globalThis.EnumItem {
@@ -26494,6 +29759,8 @@ declare namespace Enum {
         }
         export const New: New;
         /**
+         * The player played on Roblox in the last 60 days and is not `New` or `Reactivated`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformActivationStatus#Active)
          */
         export interface Active extends globalThis.EnumItem {
@@ -26503,6 +29770,8 @@ declare namespace Enum {
         }
         export const Active: Active;
         /**
+         * The player has not played on Roblox in the last 60 days.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformActivationStatus#Lapsed)
          */
         export interface Lapsed extends globalThis.EnumItem {
@@ -26512,6 +29781,8 @@ declare namespace Enum {
         }
         export const Lapsed: Lapsed;
         /**
+         * The player returned to Roblox within the last 60 days after being `Lapsed`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerPlatformActivationStatus#Reactivated)
          */
         export interface Reactivated extends globalThis.EnumItem {
@@ -26570,10 +29841,14 @@ declare namespace Enum {
     }
     export type PlayerPlatformSpenderStatus = PlayerPlatformSpenderStatus.Unknown | PlayerPlatformSpenderStatus.Active | PlayerPlatformSpenderStatus.OtherPayer;
     /**
+     * Describes the data model type that the remote end of a `PluginConnection` runs in.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PluginConnectionTargetType)
      */
     export namespace PluginConnectionTargetType {
         /**
+         * The target data model is an edit-session data model which spawned this test data model.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PluginConnectionTargetType#Edit)
          */
         export interface Edit extends globalThis.EnumItem {
@@ -26583,6 +29858,8 @@ declare namespace Enum {
         }
         export const Edit: Edit;
         /**
+         * The target data model is a test (simulation/playtest) data model spawned from this edit data model.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PluginConnectionTargetType#Test)
          */
         export interface Test extends globalThis.EnumItem {
@@ -26641,11 +29918,13 @@ declare namespace Enum {
     }
     export type PoseEasingDirection = PoseEasingDirection.In | PoseEasingDirection.Out | PoseEasingDirection.InOut;
     /**
+     * Specifies the interpolation curve used when blending between keyframe `Poses` in a `KeyframeSequence`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PoseEasingStyle)
      */
     export namespace PoseEasingStyle {
         /**
-         * Poses interpolate linearly between key frames.
+         * Poses interpolate linearly between keyframes.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PoseEasingStyle#Linear)
          */
@@ -26656,7 +29935,7 @@ declare namespace Enum {
         }
         export const Linear: Linear;
         /**
-         * Poses do not interpolate but snap to the key frame indicated by the `PoseEasingDirection`.
+         * Poses do not interpolate but snap to the keyframe indicated by the `PoseEasingDirection`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PoseEasingStyle#Constant)
          */
@@ -26667,7 +29946,7 @@ declare namespace Enum {
         }
         export const Constant: Constant;
         /**
-         * Pose interpolation will overshoot like it is elastic.
+         * Pose interpolation overshoots like an elastic curve.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PoseEasingStyle#Elastic)
          */
@@ -26689,7 +29968,7 @@ declare namespace Enum {
         }
         export const Cubic: Cubic;
         /**
-         * Pose interpolation produces a bounce like effect between key frames.
+         * Pose interpolation produces a bounce-like effect between keyframes.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PoseEasingStyle#Bounce)
          */
@@ -26837,6 +30116,50 @@ declare namespace Enum {
     }
     export type PredictionStatus = PredictionStatus.Authoritative | PredictionStatus.Predicted | PredictionStatus.None;
     /**
+     * Used with `Workspace.PredictiveStreamingMode` to control whether the engine streams instances predictively.
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictiveStreamingMode)
+     */
+    export namespace PredictiveStreamingMode {
+        /**
+         * Uses the engine's current default behavior for predictive streaming.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictiveStreamingMode#Default)
+         */
+        export interface Default extends globalThis.EnumItem {
+            Name: "Default";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PredictiveStreamingMode;
+        }
+        export const Default: Default;
+        /**
+         * Enables predictive streaming, pre-fetching content in the direction of player movement to reduce pop-in.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictiveStreamingMode#Enabled)
+         */
+        export interface Enabled extends globalThis.EnumItem {
+            Name: "Enabled";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PredictiveStreamingMode;
+        }
+        export const Enabled: Enabled;
+        /**
+         * Disables predictive streaming; content is streamed based on the player's current position radius only.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PredictiveStreamingMode#Disabled)
+         */
+        export interface Disabled extends globalThis.EnumItem {
+            Name: "Disabled";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PredictiveStreamingMode;
+        }
+        export const Disabled: Disabled;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PredictiveStreamingMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PredictiveStreamingMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PredictiveStreamingMode | undefined;
+    }
+    export type PredictiveStreamingMode = PredictiveStreamingMode.Default | PredictiveStreamingMode.Enabled | PredictiveStreamingMode.Disabled;
+    /**
      * This enum is used with `UserInputService.PreferredInput` to indicate the primary input type a player is likely using.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput)
@@ -26875,11 +30198,22 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.PreferredInput;
         }
         export const Touch: Touch;
+        /**
+         * The player has connected or most recently interacted with a gamepad without a thumbstick (for example, a TV remote or another limited-input gamepad), and no standard gamepad is currently connected.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PreferredInput#MicroGamepad)
+         */
+        export interface MicroGamepad extends globalThis.EnumItem {
+            Name: "MicroGamepad";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.PreferredInput;
+        }
+        export const MicroGamepad: MicroGamepad;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PreferredInput>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PreferredInput | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PreferredInput | undefined;
     }
-    export type PreferredInput = PreferredInput.KeyboardAndMouse | PreferredInput.Gamepad | PreferredInput.Touch;
+    export type PreferredInput = PreferredInput.KeyboardAndMouse | PreferredInput.Gamepad | PreferredInput.Touch | PreferredInput.MicroGamepad;
     /**
      * This enum is used with `GuiService.PreferredTextSize` to indicate the player's preferred text size.
      *
@@ -27025,10 +30359,14 @@ declare namespace Enum {
     }
     export type PrimalPhysicsSolver = PrimalPhysicsSolver.Default | PrimalPhysicsSolver.Experimental | PrimalPhysicsSolver.Disabled;
     /**
+     * Identifies the base primitive shape of a `BasePart` node within a CSG operation graph.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrimitiveType)
      */
     export namespace PrimitiveType {
         /**
+         * Sentinel value indicating no valid primitive shape; used for uninitialized or invalid nodes in a CSG operation graph.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrimitiveType#Null)
          */
         export interface Null extends globalThis.EnumItem {
@@ -27038,6 +30376,8 @@ declare namespace Enum {
         }
         export const Null: Null;
         /**
+         * A spherical primitive shape, corresponding to the ball/sphere geometry of a `Part`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrimitiveType#Ball)
          */
         export interface Ball extends globalThis.EnumItem {
@@ -27047,6 +30387,8 @@ declare namespace Enum {
         }
         export const Ball: Ball;
         /**
+         * A cylindrical primitive shape, corresponding to the cylinder geometry of a `Part`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrimitiveType#Cylinder)
          */
         export interface Cylinder extends globalThis.EnumItem {
@@ -27056,6 +30398,8 @@ declare namespace Enum {
         }
         export const Cylinder: Cylinder;
         /**
+         * A box primitive shape, corresponding to the standard rectangular block geometry of a `Part`; the default primitive type for new Part nodes in a CSG operation graph.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrimitiveType#Block)
          */
         export interface Block extends globalThis.EnumItem {
@@ -27065,6 +30409,8 @@ declare namespace Enum {
         }
         export const Block: Block;
         /**
+         * A wedge primitive shape, corresponding to the geometry of a `WedgePart`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrimitiveType#Wedge)
          */
         export interface Wedge extends globalThis.EnumItem {
@@ -27074,6 +30420,8 @@ declare namespace Enum {
         }
         export const Wedge: Wedge;
         /**
+         * A corner wedge primitive shape, corresponding to the geometry of a `CornerWedgePart`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrimitiveType#CornerWedge)
          */
         export interface CornerWedge extends globalThis.EnumItem {
@@ -27088,8 +30436,6 @@ declare namespace Enum {
     }
     export type PrimitiveType = PrimitiveType.Null | PrimitiveType.Ball | PrimitiveType.Cylinder | PrimitiveType.Block | PrimitiveType.Wedge | PrimitiveType.CornerWedge;
     /**
-     * **Deprecated:** This enum should not be used for new work.
-     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrivilegeType)
      */
     export namespace PrivilegeType {
@@ -27144,6 +30490,8 @@ declare namespace Enum {
     }
     export type PrivilegeType = PrivilegeType.Banned | PrivilegeType.Visitor | PrivilegeType.Member | PrivilegeType.Admin | PrivilegeType.Owner;
     /**
+     * Specifies the purchase locations permitted for an avatar item.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProductLocationRestriction)
      */
     export namespace ProductLocationRestriction {
@@ -27276,10 +30624,41 @@ declare namespace Enum {
     }
     export type ProductPurchaseDecision = ProductPurchaseDecision.NotProcessedYet | ProductPurchaseDecision.PurchaseGranted;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProjectionType)
+     */
+    export namespace ProjectionType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProjectionType#Perspective)
+         */
+        export interface Perspective extends globalThis.EnumItem {
+            Name: "Perspective";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ProjectionType;
+        }
+        export const Perspective: Perspective;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProjectionType#Orthographic)
+         */
+        export interface Orthographic extends globalThis.EnumItem {
+            Name: "Orthographic";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ProjectionType;
+        }
+        export const Orthographic: Orthographic;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ProjectionType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ProjectionType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ProjectionType | undefined;
+    }
+    export type ProjectionType = ProjectionType.Perspective | ProjectionType.Orthographic;
+    /**
+     * Describes the result of a `AvatarCreationService:PromptCreateAvatarAssetAsync()` call.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAssetResult)
      */
     export namespace PromptCreateAssetResult {
         /**
+         * The asset was successfully created and published.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAssetResult#Success)
          */
         export interface Success extends globalThis.EnumItem {
@@ -27289,6 +30668,8 @@ declare namespace Enum {
         }
         export const Success: Success;
         /**
+         * The player explicitly declined the asset-creation consent prompt.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAssetResult#PermissionDenied)
          */
         export interface PermissionDenied extends globalThis.EnumItem {
@@ -27298,6 +30679,8 @@ declare namespace Enum {
         }
         export const PermissionDenied: PermissionDenied;
         /**
+         * The creation attempt timed out because the player disconnected or left the experience.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAssetResult#Timeout)
          */
         export interface Timeout extends globalThis.EnumItem {
@@ -27307,6 +30690,8 @@ declare namespace Enum {
         }
         export const Timeout: Timeout;
         /**
+         * The asset upload to the Roblox backend failed after validation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAssetResult#UploadFailed)
          */
         export interface UploadFailed extends globalThis.EnumItem {
@@ -27316,6 +30701,8 @@ declare namespace Enum {
         }
         export const UploadFailed: UploadFailed;
         /**
+         * The player did not interact with the creation prompt before it expired.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAssetResult#NoUserInput)
          */
         export interface NoUserInput extends globalThis.EnumItem {
@@ -27325,6 +30712,8 @@ declare namespace Enum {
         }
         export const NoUserInput: NoUserInput;
         /**
+         * The asset creation failed for an unspecified or unexpected reason.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAssetResult#UnknownFailure)
          */
         export interface UnknownFailure extends globalThis.EnumItem {
@@ -27334,6 +30723,8 @@ declare namespace Enum {
         }
         export const UnknownFailure: UnknownFailure;
         /**
+         * The asset failed user-generated content validation checks before upload.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAssetResult#UGCValidationFailed)
          */
         export interface UGCValidationFailed extends globalThis.EnumItem {
@@ -27343,6 +30734,8 @@ declare namespace Enum {
         }
         export const UGCValidationFailed: UGCValidationFailed;
         /**
+         * The asset name or description was rejected by Roblox moderation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAssetResult#ModeratedName)
          */
         export interface ModeratedName extends globalThis.EnumItem {
@@ -27352,6 +30745,8 @@ declare namespace Enum {
         }
         export const ModeratedName: ModeratedName;
         /**
+         * The asset could not be created because the player had insufficient Robux.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAssetResult#PurchaseFailure)
          */
         export interface PurchaseFailure extends globalThis.EnumItem {
@@ -27361,6 +30756,8 @@ declare namespace Enum {
         }
         export const PurchaseFailure: PurchaseFailure;
         /**
+         * The creation token provided to the prompt was invalid or could not be verified.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAssetResult#TokenInvalid)
          */
         export interface TokenInvalid extends globalThis.EnumItem {
@@ -27375,10 +30772,14 @@ declare namespace Enum {
     }
     export type PromptCreateAssetResult = PromptCreateAssetResult.Success | PromptCreateAssetResult.PermissionDenied | PromptCreateAssetResult.Timeout | PromptCreateAssetResult.UploadFailed | PromptCreateAssetResult.NoUserInput | PromptCreateAssetResult.UnknownFailure | PromptCreateAssetResult.UGCValidationFailed | PromptCreateAssetResult.ModeratedName | PromptCreateAssetResult.PurchaseFailure | PromptCreateAssetResult.TokenInvalid;
     /**
+     * Result codes returned by `AvatarCreationService:PromptCreateAvatarAsync()` indicating whether avatar creation succeeded or why it failed.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAvatarResult)
      */
     export namespace PromptCreateAvatarResult {
         /**
+         * The avatar was successfully created and published to the player's account.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAvatarResult#Success)
          */
         export interface Success extends globalThis.EnumItem {
@@ -27388,6 +30789,8 @@ declare namespace Enum {
         }
         export const Success: Success;
         /**
+         * The player explicitly declined the avatar creation consent prompt.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAvatarResult#PermissionDenied)
          */
         export interface PermissionDenied extends globalThis.EnumItem {
@@ -27397,6 +30800,8 @@ declare namespace Enum {
         }
         export const PermissionDenied: PermissionDenied;
         /**
+         * The avatar creation consent prompt timed out before the player responded.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAvatarResult#Timeout)
          */
         export interface Timeout extends globalThis.EnumItem {
@@ -27406,6 +30811,8 @@ declare namespace Enum {
         }
         export const Timeout: Timeout;
         /**
+         * The avatar assets passed validation but the server-side upload or bundle creation step failed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAvatarResult#UploadFailed)
          */
         export interface UploadFailed extends globalThis.EnumItem {
@@ -27415,6 +30822,8 @@ declare namespace Enum {
         }
         export const UploadFailed: UploadFailed;
         /**
+         * The player did not interact with the avatar creation consent prompt before it closed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAvatarResult#NoUserInput)
          */
         export interface NoUserInput extends globalThis.EnumItem {
@@ -27424,6 +30833,8 @@ declare namespace Enum {
         }
         export const NoUserInput: NoUserInput;
         /**
+         * The `HumanoidDescription` supplied to `AvatarCreationService:PromptCreateAvatarAsync()` was invalid and could not be used to create an avatar.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAvatarResult#InvalidHumanoidDescription)
          */
         export interface InvalidHumanoidDescription extends globalThis.EnumItem {
@@ -27433,6 +30844,8 @@ declare namespace Enum {
         }
         export const InvalidHumanoidDescription: InvalidHumanoidDescription;
         /**
+         * The avatar's geometry or content failed Roblox's UGC (User-Generated Content) validation checks.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAvatarResult#UGCValidationFailed)
          */
         export interface UGCValidationFailed extends globalThis.EnumItem {
@@ -27442,6 +30855,8 @@ declare namespace Enum {
         }
         export const UGCValidationFailed: UGCValidationFailed;
         /**
+         * The proposed avatar name or description was rejected by Roblox moderation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAvatarResult#ModeratedName)
          */
         export interface ModeratedName extends globalThis.EnumItem {
@@ -27451,6 +30866,8 @@ declare namespace Enum {
         }
         export const ModeratedName: ModeratedName;
         /**
+         * The player has reached the maximum number of outfits allowed on their Roblox account.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAvatarResult#MaxOutfits)
          */
         export interface MaxOutfits extends globalThis.EnumItem {
@@ -27460,6 +30877,8 @@ declare namespace Enum {
         }
         export const MaxOutfits: MaxOutfits;
         /**
+         * The avatar creation attempt failed because the player did not have sufficient Robux to cover the required purchase.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAvatarResult#PurchaseFailure)
          */
         export interface PurchaseFailure extends globalThis.EnumItem {
@@ -27469,6 +30888,8 @@ declare namespace Enum {
         }
         export const PurchaseFailure: PurchaseFailure;
         /**
+         * An unexpected or unclassified failure occurred during avatar creation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAvatarResult#UnknownFailure)
          */
         export interface UnknownFailure extends globalThis.EnumItem {
@@ -27478,6 +30899,8 @@ declare namespace Enum {
         }
         export const UnknownFailure: UnknownFailure;
         /**
+         * The creation token provided to `AvatarCreationService:PromptCreateAvatarAsync()` was not valid or did not match the current experience.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateAvatarResult#TokenInvalid)
          */
         export interface TokenInvalid extends globalThis.EnumItem {
@@ -27492,10 +30915,194 @@ declare namespace Enum {
     }
     export type PromptCreateAvatarResult = PromptCreateAvatarResult.Success | PromptCreateAvatarResult.PermissionDenied | PromptCreateAvatarResult.Timeout | PromptCreateAvatarResult.UploadFailed | PromptCreateAvatarResult.NoUserInput | PromptCreateAvatarResult.InvalidHumanoidDescription | PromptCreateAvatarResult.UGCValidationFailed | PromptCreateAvatarResult.ModeratedName | PromptCreateAvatarResult.MaxOutfits | PromptCreateAvatarResult.PurchaseFailure | PromptCreateAvatarResult.UnknownFailure | PromptCreateAvatarResult.TokenInvalid;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult)
+     */
+    export namespace PromptCreateOutfitResult {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#Success)
+         */
+        export interface Success extends globalThis.EnumItem {
+            Name: "Success";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const Success: Success;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#PartialSuccess)
+         */
+        export interface PartialSuccess extends globalThis.EnumItem {
+            Name: "PartialSuccess";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const PartialSuccess: PartialSuccess;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#CreationFailure)
+         */
+        export interface CreationFailure extends globalThis.EnumItem {
+            Name: "CreationFailure";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const CreationFailure: CreationFailure;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#PermissionDenied)
+         */
+        export interface PermissionDenied extends globalThis.EnumItem {
+            Name: "PermissionDenied";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const PermissionDenied: PermissionDenied;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#Timeout)
+         */
+        export interface Timeout extends globalThis.EnumItem {
+            Name: "Timeout";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const Timeout: Timeout;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#NoUserInput)
+         */
+        export interface NoUserInput extends globalThis.EnumItem {
+            Name: "NoUserInput";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const NoUserInput: NoUserInput;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#UnknownFailure)
+         */
+        export interface UnknownFailure extends globalThis.EnumItem {
+            Name: "UnknownFailure";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const UnknownFailure: UnknownFailure;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#UGCValidationFailed)
+         */
+        export interface UGCValidationFailed extends globalThis.EnumItem {
+            Name: "UGCValidationFailed";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.PromptCreateOutfitResult;
+        }
+        export const UGCValidationFailed: UGCValidationFailed;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PromptCreateOutfitResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PromptCreateOutfitResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PromptCreateOutfitResult | undefined;
+    }
+    export type PromptCreateOutfitResult = PromptCreateOutfitResult.Success | PromptCreateOutfitResult.PartialSuccess | PromptCreateOutfitResult.CreationFailure | PromptCreateOutfitResult.PermissionDenied | PromptCreateOutfitResult.Timeout | PromptCreateOutfitResult.NoUserInput | PromptCreateOutfitResult.UnknownFailure | PromptCreateOutfitResult.UGCValidationFailed;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreatePlatformContentResult)
+     */
+    export namespace PromptCreatePlatformContentResult {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreatePlatformContentResult#Success)
+         */
+        export interface Success extends globalThis.EnumItem {
+            Name: "Success";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PromptCreatePlatformContentResult;
+        }
+        export const Success: Success;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreatePlatformContentResult#PermissionDenied)
+         */
+        export interface PermissionDenied extends globalThis.EnumItem {
+            Name: "PermissionDenied";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PromptCreatePlatformContentResult;
+        }
+        export const PermissionDenied: PermissionDenied;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreatePlatformContentResult#Timeout)
+         */
+        export interface Timeout extends globalThis.EnumItem {
+            Name: "Timeout";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.PromptCreatePlatformContentResult;
+        }
+        export const Timeout: Timeout;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreatePlatformContentResult#UploadFailed)
+         */
+        export interface UploadFailed extends globalThis.EnumItem {
+            Name: "UploadFailed";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.PromptCreatePlatformContentResult;
+        }
+        export const UploadFailed: UploadFailed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreatePlatformContentResult#NoUserInput)
+         */
+        export interface NoUserInput extends globalThis.EnumItem {
+            Name: "NoUserInput";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.PromptCreatePlatformContentResult;
+        }
+        export const NoUserInput: NoUserInput;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreatePlatformContentResult#UnknownFailure)
+         */
+        export interface UnknownFailure extends globalThis.EnumItem {
+            Name: "UnknownFailure";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.PromptCreatePlatformContentResult;
+        }
+        export const UnknownFailure: UnknownFailure;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreatePlatformContentResult#UGCValidationFailed)
+         */
+        export interface UGCValidationFailed extends globalThis.EnumItem {
+            Name: "UGCValidationFailed";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.PromptCreatePlatformContentResult;
+        }
+        export const UGCValidationFailed: UGCValidationFailed;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreatePlatformContentResult#ModeratedName)
+         */
+        export interface ModeratedName extends globalThis.EnumItem {
+            Name: "ModeratedName";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.PromptCreatePlatformContentResult;
+        }
+        export const ModeratedName: ModeratedName;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreatePlatformContentResult#PurchaseFailure)
+         */
+        export interface PurchaseFailure extends globalThis.EnumItem {
+            Name: "PurchaseFailure";
+            Value: 9;
+            EnumType: typeof globalThis.Enum.PromptCreatePlatformContentResult;
+        }
+        export const PurchaseFailure: PurchaseFailure;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreatePlatformContentResult#TokenInvalid)
+         */
+        export interface TokenInvalid extends globalThis.EnumItem {
+            Name: "TokenInvalid";
+            Value: 10;
+            EnumType: typeof globalThis.Enum.PromptCreatePlatformContentResult;
+        }
+        export const TokenInvalid: TokenInvalid;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PromptCreatePlatformContentResult>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PromptCreatePlatformContentResult | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PromptCreatePlatformContentResult | undefined;
+    }
+    export type PromptCreatePlatformContentResult = PromptCreatePlatformContentResult.Success | PromptCreatePlatformContentResult.PermissionDenied | PromptCreatePlatformContentResult.Timeout | PromptCreatePlatformContentResult.UploadFailed | PromptCreatePlatformContentResult.NoUserInput | PromptCreatePlatformContentResult.UnknownFailure | PromptCreatePlatformContentResult.UGCValidationFailed | PromptCreatePlatformContentResult.ModeratedName | PromptCreatePlatformContentResult.PurchaseFailure | PromptCreatePlatformContentResult.TokenInvalid;
+    /**
+     * Indicates how the player dismissed the experience details prompt shown by `TeleportService:PromptExperienceDetailsAsync()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptExperienceDetailsResult)
      */
     export namespace PromptExperienceDetailsResult {
         /**
+         * The player dismissed the experience details prompt without choosing to teleport (value `0`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptExperienceDetailsResult#PromptClosed)
          */
         export interface PromptClosed extends globalThis.EnumItem {
@@ -27505,6 +31112,8 @@ declare namespace Enum {
         }
         export const PromptClosed: PromptClosed;
         /**
+         * The player clicked the **Join** button in the experience details prompt, initiating a teleport to the advertised experience (value `1`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptExperienceDetailsResult#TeleportAttempted)
          */
         export interface TeleportAttempted extends globalThis.EnumItem {
@@ -27555,10 +31164,14 @@ declare namespace Enum {
     }
     export type PromptLinkSharingResult = PromptLinkSharingResult.Success | PromptLinkSharingResult.PlayerLeft | PromptLinkSharingResult.InvalidLaunchData;
     /**
+     * Deprecated result enum for the `OpenPublishResultModal` event.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptPublishAssetResult)
      */
     export namespace PromptPublishAssetResult {
         /**
+         * The asset was published successfully.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptPublishAssetResult#Success)
          */
         export interface Success extends globalThis.EnumItem {
@@ -27568,6 +31181,8 @@ declare namespace Enum {
         }
         export const Success: Success;
         /**
+         * The user explicitly denied the consent prompt required to publish the asset.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptPublishAssetResult#PermissionDenied)
          */
         export interface PermissionDenied extends globalThis.EnumItem {
@@ -27577,6 +31192,8 @@ declare namespace Enum {
         }
         export const PermissionDenied: PermissionDenied;
         /**
+         * The publish flow timed out, typically because the user disconnected or left the experience during the consent prompt.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptPublishAssetResult#Timeout)
          */
         export interface Timeout extends globalThis.EnumItem {
@@ -27586,6 +31203,8 @@ declare namespace Enum {
         }
         export const Timeout: Timeout;
         /**
+         * The asset upload to the Roblox backend failed after consent was granted.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptPublishAssetResult#UploadFailed)
          */
         export interface UploadFailed extends globalThis.EnumItem {
@@ -27595,6 +31214,8 @@ declare namespace Enum {
         }
         export const UploadFailed: UploadFailed;
         /**
+         * The user did not grant or deny the consent prompt before the window expired.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptPublishAssetResult#NoUserInput)
          */
         export interface NoUserInput extends globalThis.EnumItem {
@@ -27604,6 +31225,8 @@ declare namespace Enum {
         }
         export const NoUserInput: NoUserInput;
         /**
+         * The publish failed for an unspecified or unexpected reason.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptPublishAssetResult#UnknownFailure)
          */
         export interface UnknownFailure extends globalThis.EnumItem {
@@ -27618,10 +31241,14 @@ declare namespace Enum {
     }
     export type PromptPublishAssetResult = PromptPublishAssetResult.Success | PromptPublishAssetResult.PermissionDenied | PromptPublishAssetResult.Timeout | PromptPublishAssetResult.UploadFailed | PromptPublishAssetResult.NoUserInput | PromptPublishAssetResult.UnknownFailure;
     /**
+     * Indicates the validation state of a property as displayed in Roblox Studio's Properties panel.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PropertyStatus)
      */
     export namespace PropertyStatus {
         /**
+         * The property value is valid; no status indicator is shown in Studio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PropertyStatus#Ok)
          */
         export interface Ok extends globalThis.EnumItem {
@@ -27631,6 +31258,8 @@ declare namespace Enum {
         }
         export const Ok: Ok;
         /**
+         * The property value has a recoverable issue; Studio displays a warning indicator on the instance.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PropertyStatus#Warning)
          */
         export interface Warning extends globalThis.EnumItem {
@@ -27640,6 +31269,8 @@ declare namespace Enum {
         }
         export const Warning: Warning;
         /**
+         * The property value is invalid and cannot be resolved; Studio displays an error indicator on the instance.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PropertyStatus#Error)
          */
         export interface Error extends globalThis.EnumItem {
@@ -27654,6 +31285,8 @@ declare namespace Enum {
     }
     export type PropertyStatus = PropertyStatus.Ok | PropertyStatus.Warning | PropertyStatus.Error;
     /**
+     * Controls how a `ProximityPrompt` competes with other prompts for screen visibility.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProximityPromptExclusivity)
      */
     export namespace ProximityPromptExclusivity {
@@ -27696,10 +31329,14 @@ declare namespace Enum {
     }
     export type ProximityPromptExclusivity = ProximityPromptExclusivity.OnePerButton | ProximityPromptExclusivity.OneGlobally | ProximityPromptExclusivity.AlwaysShow;
     /**
+     * Identifies the input method a player is using when a `ProximityPrompt` is shown.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProximityPromptInputType)
      */
     export namespace ProximityPromptInputType {
         /**
+         * The player is using keyboard and mouse input.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProximityPromptInputType#Keyboard)
          */
         export interface Keyboard extends globalThis.EnumItem {
@@ -27709,6 +31346,8 @@ declare namespace Enum {
         }
         export const Keyboard: Keyboard;
         /**
+         * The player is using a gamepad controller.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProximityPromptInputType#Gamepad)
          */
         export interface Gamepad extends globalThis.EnumItem {
@@ -27718,6 +31357,8 @@ declare namespace Enum {
         }
         export const Gamepad: Gamepad;
         /**
+         * The player is using a touch screen.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProximityPromptInputType#Touch)
          */
         export interface Touch extends globalThis.EnumItem {
@@ -27732,11 +31373,13 @@ declare namespace Enum {
     }
     export type ProximityPromptInputType = ProximityPromptInputType.Keyboard | ProximityPromptInputType.Gamepad | ProximityPromptInputType.Touch;
     /**
+     * Specifies the visual style of a `ProximityPrompt`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProximityPromptStyle)
      */
     export namespace ProximityPromptStyle {
         /**
-         * The default prompt UI style.
+         * Built-in Roblox CoreScript prompt UI.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProximityPromptStyle#Default)
          */
@@ -27747,7 +31390,7 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
-         * Custom prompt UI style as set by the developer. For more information, see `ProximityPrompt.Style`.
+         * Suppresses the built-in prompt UI so you can render a custom prompt (see `ProximityPrompt.Style`).
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProximityPromptStyle#Custom)
          */
@@ -27763,10 +31406,14 @@ declare namespace Enum {
     }
     export type ProximityPromptStyle = ProximityPromptStyle.Default | ProximityPromptStyle.Custom;
     /**
+     * Specifies the type of purchase option in a bulk purchase prompt.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PurchaseOption)
      */
     export namespace PurchaseOption {
         /**
+         * A timed ownership option. The `Value` field specifies the duration in seconds.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PurchaseOption#TimedOption)
          */
         export interface TimedOption extends globalThis.EnumItem {
@@ -27776,6 +31423,8 @@ declare namespace Enum {
         }
         export const TimedOption: TimedOption;
         /**
+         * A permanent ownership purchase option.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PurchaseOption#Permanent)
          */
         export interface Permanent extends globalThis.EnumItem {
@@ -28043,6 +31692,33 @@ declare namespace Enum {
     }
     export type QualityLevel = QualityLevel.Automatic | QualityLevel.Level01 | QualityLevel.Level02 | QualityLevel.Level03 | QualityLevel.Level04 | QualityLevel.Level05 | QualityLevel.Level06 | QualityLevel.Level07 | QualityLevel.Level08 | QualityLevel.Level09 | QualityLevel.Level10 | QualityLevel.Level11 | QualityLevel.Level12 | QualityLevel.Level13 | QualityLevel.Level14 | QualityLevel.Level15 | QualityLevel.Level16 | QualityLevel.Level17 | QualityLevel.Level18 | QualityLevel.Level19 | QualityLevel.Level20 | QualityLevel.Level21;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/QueueDecision)
+     */
+    export namespace QueueDecision {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/QueueDecision#Commit)
+         */
+        export interface Commit extends globalThis.EnumItem {
+            Name: "Commit";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.QueueDecision;
+        }
+        export const Commit: Commit;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/QueueDecision#Defer)
+         */
+        export interface Defer extends globalThis.EnumItem {
+            Name: "Defer";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.QueueDecision;
+        }
+        export const Defer: Defer;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.QueueDecision>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.QueueDecision | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.QueueDecision | undefined;
+    }
+    export type QueueDecision = QueueDecision.Commit | QueueDecision.Defer;
+    /**
      * Collision behavior type for a R15 character.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/R15CollisionType)
@@ -28117,10 +31793,14 @@ declare namespace Enum {
     }
     export type RaycastFilterType = RaycastFilterType.Exclude | RaycastFilterType.Include;
     /**
+     * Describes the outcome of a `CaptureService:ReadCapturesFromGalleryAsync()` call.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReadCapturesFromGalleryResult)
      */
     export namespace ReadCapturesFromGalleryResult {
         /**
+         * The read operation completed successfully and capture data has been returned.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReadCapturesFromGalleryResult#Success)
          */
         export interface Success extends globalThis.EnumItem {
@@ -28130,6 +31810,8 @@ declare namespace Enum {
         }
         export const Success: Success;
         /**
+         * The read operation failed because the experience has not been granted permission to access the user's capture gallery.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReadCapturesFromGalleryResult#NeedPermission)
          */
         export interface NeedPermission extends globalThis.EnumItem {
@@ -28183,6 +31865,8 @@ declare namespace Enum {
      */
     export namespace ReceiptType {
         /**
+         * Used for processing receipts from developer product purchases made with `PromptProductPurchase`. The receipt includes `ProductId`, `CurrencyType`, and `CurrencySpent` fields. A handler bound for this type processes developer product receipts in place of the legacy `ProcessReceipt` callback; receipts with no matching bound handler fall through to `ProcessReceipt`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReceiptType#DeveloperProduct)
          */
         export interface DeveloperProduct extends globalThis.EnumItem {
@@ -28219,6 +31903,8 @@ declare namespace Enum {
     }
     export type ReceiptType = ReceiptType.DeveloperProduct | ReceiptType.RobuxTransferSender | ReceiptType.RobuxTransferReceiver;
     /**
+     * Describes the type of action a user took on a recommended item, used when logging action events via `RecommendationService:LogActionEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationActionType)
      */
     export namespace RecommendationActionType {
@@ -28341,6 +32027,8 @@ declare namespace Enum {
     }
     export type RecommendationDepartureIntent = RecommendationDepartureIntent.Neutral | RecommendationDepartureIntent.Positive | RecommendationDepartureIntent.Negative;
     /**
+     * Specifies the outcome of rendering a recommended item, passed to `RecommendationService:LogImpressionEvent()` to indicate whether the item was shown to the user.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationImpressionType)
      */
     export namespace RecommendationImpressionType {
@@ -28372,6 +32060,8 @@ declare namespace Enum {
     }
     export type RecommendationImpressionType = RecommendationImpressionType.View | RecommendationImpressionType.NotViewable;
     /**
+     * Describes the content type of an item registered with `RecommendationService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationItemContentType)
      */
     export namespace RecommendationItemContentType {
@@ -28414,10 +32104,14 @@ declare namespace Enum {
     }
     export type RecommendationItemContentType = RecommendationItemContentType.Static | RecommendationItemContentType.Dynamic | RecommendationItemContentType.Interactive;
     /**
+     * Controls whether a registered recommendation item is publicly discoverable or restricted to private access.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationItemVisibility)
      */
     export namespace RecommendationItemVisibility {
         /**
+         * The recommendation item is not surfaced to other players by the recommendation system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationItemVisibility#Private)
          */
         export interface Private extends globalThis.EnumItem {
@@ -28427,6 +32121,8 @@ declare namespace Enum {
         }
         export const Private: Private;
         /**
+         * The recommendation item is discoverable and may be surfaced to other players by the recommendation system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationItemVisibility#Public)
          */
         export interface Public extends globalThis.EnumItem {
@@ -28441,6 +32137,8 @@ declare namespace Enum {
     }
     export type RecommendationItemVisibility = RecommendationItemVisibility.Private | RecommendationItemVisibility.Public;
     /**
+     * Identifies the kind of entity that a preference signal targets when logged via `LogPreferenceEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationPreferenceTargetType)
      */
     export namespace RecommendationPreferenceTargetType {
@@ -28483,6 +32181,8 @@ declare namespace Enum {
     }
     export type RecommendationPreferenceTargetType = RecommendationPreferenceTargetType.User | RecommendationPreferenceTargetType.Universe | RecommendationPreferenceTargetType.CustomTag;
     /**
+     * Identifies the type of preference action (follow, unfollow, mute, or unmute) passed to `LogPreferenceEvent()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RecommendationPreferenceType)
      */
     export namespace RecommendationPreferenceType {
@@ -28630,7 +32330,7 @@ declare namespace Enum {
      */
     export namespace RenderPriority {
         /**
-         * This should run first.
+         * The lowest reserved priority level; callbacks run before all other standard priorities.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RenderPriority#First)
          */
@@ -28641,7 +32341,7 @@ declare namespace Enum {
         }
         export const First: First;
         /**
-         * This should run as second.
+         * Runs after `First`; intended for input-processing callbacks.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RenderPriority#Input)
          */
@@ -28652,7 +32352,7 @@ declare namespace Enum {
         }
         export const Input: Input;
         /**
-         * This should run after Input.
+         * Runs after `Input`; intended for camera-update callbacks.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RenderPriority#Camera)
          */
@@ -28663,7 +32363,7 @@ declare namespace Enum {
         }
         export const Camera: Camera;
         /**
-         * This should run after Camera.
+         * Runs after `Camera`; intended for character-response callbacks.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RenderPriority#Character)
          */
@@ -28674,7 +32374,7 @@ declare namespace Enum {
         }
         export const Character: Character;
         /**
-         * This should run as last, after Character.
+         * The highest reserved priority level; callbacks run after all other standard priorities.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RenderPriority#Last)
          */
@@ -28805,6 +32505,51 @@ declare namespace Enum {
     }
     export type ReplicateInstanceDestroySetting = ReplicateInstanceDestroySetting.Default | ReplicateInstanceDestroySetting.Disabled | ReplicateInstanceDestroySetting.Enabled;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReplicationMode)
+     */
+    export namespace ReplicationMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReplicationMode#Automatic)
+         */
+        export interface Automatic extends globalThis.EnumItem {
+            Name: "Automatic";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ReplicationMode;
+        }
+        export const Automatic: Automatic;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReplicationMode#Low)
+         */
+        export interface Low extends globalThis.EnumItem {
+            Name: "Low";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ReplicationMode;
+        }
+        export const Low: Low;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReplicationMode#Medium)
+         */
+        export interface Medium extends globalThis.EnumItem {
+            Name: "Medium";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.ReplicationMode;
+        }
+        export const Medium: Medium;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReplicationMode#High)
+         */
+        export interface High extends globalThis.EnumItem {
+            Name: "High";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.ReplicationMode;
+        }
+        export const High: High;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ReplicationMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ReplicationMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ReplicationMode | undefined;
+    }
+    export type ReplicationMode = ReplicationMode.Automatic | ReplicationMode.Low | ReplicationMode.Medium | ReplicationMode.High;
+    /**
      * Determines the image filtering used.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ResamplerMode)
@@ -28838,10 +32583,14 @@ declare namespace Enum {
     }
     export type ResamplerMode = ResamplerMode.Default | ResamplerMode.Pixelated;
     /**
+     * Identifies the built-in reserved role assigned to a `Highlight` via its `ReservedId` property.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReservedHighlightId)
      */
     export namespace ReservedHighlightId {
         /**
+         * Marks a `Highlight` as a standard, non-reserved instance not tied to any built-in system state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReservedHighlightId#Standard)
          */
         export interface Standard extends globalThis.EnumItem {
@@ -28851,6 +32600,8 @@ declare namespace Enum {
         }
         export const Standard: Standard;
         /**
+         * Marks a `Highlight` as the last-selected object in Studio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReservedHighlightId#Active)
          */
         export interface Active extends globalThis.EnumItem {
@@ -28860,6 +32611,8 @@ declare namespace Enum {
         }
         export const Active: Active;
         /**
+         * Marks a `Highlight` as the hover-state indicator, applied to an object currently under the mouse cursor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReservedHighlightId#Hover)
          */
         export interface Hover extends globalThis.EnumItem {
@@ -28869,6 +32622,8 @@ declare namespace Enum {
         }
         export const Hover: Hover;
         /**
+         * Marks a `Highlight` as the selection-state indicator, applied to a selected object in Studio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReservedHighlightId#Selection)
          */
         export interface Selection extends globalThis.EnumItem {
@@ -28878,6 +32633,8 @@ declare namespace Enum {
         }
         export const Selection: Selection;
         /**
+         * Marks a `Highlight` used for CSG negated-part visualization in Roblox Studio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ReservedHighlightId#NegatedPart)
          */
         export interface NegatedPart extends globalThis.EnumItem {
@@ -28892,10 +32649,14 @@ declare namespace Enum {
     }
     export type ReservedHighlightId = ReservedHighlightId.Standard | ReservedHighlightId.Active | ReservedHighlightId.Hover | ReservedHighlightId.Selection | ReservedHighlightId.NegatedPart;
     /**
+     * Determines how the initial joint rest pose is established when importing a rigged 3D model.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RestPose)
      */
     export namespace RestPose {
         /**
+         * Uses the first animation clip found in the source file to define the initial joint rest pose on import.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RestPose#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -28905,6 +32666,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Resets all joint rotations to zero so that the imported rig starts from an identity rest pose.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RestPose#RotationsReset)
          */
         export interface RotationsReset extends globalThis.EnumItem {
@@ -28914,6 +32677,8 @@ declare namespace Enum {
         }
         export const RotationsReset: RotationsReset;
         /**
+         * Uses a specific animation clip, identified by its index in the file, to set the initial joint rest pose on import.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RestPose#Custom)
          */
         export interface Custom extends globalThis.EnumItem {
@@ -29347,10 +33112,14 @@ declare namespace Enum {
     }
     export type ReviewableContentState = ReviewableContentState.Pending | ReviewableContentState.Completed | ReviewableContentState.Failed;
     /**
+     * Identifies a Studio ribbon toolbar tool, used with `Plugin:GetSelectedRibbonTool()` and `Plugin:SelectRibbonTool()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RibbonTool)
      */
     export namespace RibbonTool {
         /**
+         * The **Select** tool, which selects objects in the viewport.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RibbonTool#Select)
          */
         export interface Select extends globalThis.EnumItem {
@@ -29360,6 +33129,8 @@ declare namespace Enum {
         }
         export const Select: Select;
         /**
+         * The **Scale** tool, which resizes selected parts along their axes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RibbonTool#Scale)
          */
         export interface Scale extends globalThis.EnumItem {
@@ -29369,6 +33140,8 @@ declare namespace Enum {
         }
         export const Scale: Scale;
         /**
+         * The **Rotate** tool, which rotates selected parts around the three primary axes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RibbonTool#Rotate)
          */
         export interface Rotate extends globalThis.EnumItem {
@@ -29378,6 +33151,8 @@ declare namespace Enum {
         }
         export const Rotate: Rotate;
         /**
+         * The **Move** tool, which translates selected parts along the three primary axes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RibbonTool#Move)
          */
         export interface Move extends globalThis.EnumItem {
@@ -29387,6 +33162,8 @@ declare namespace Enum {
         }
         export const Move: Move;
         /**
+         * The **Transform** tool, which provides combined move, scale, and rotate handles in a single gizmo.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RibbonTool#Transform)
          */
         export interface Transform extends globalThis.EnumItem {
@@ -29396,6 +33173,8 @@ declare namespace Enum {
         }
         export const Transform: Transform;
         /**
+         * The **Color** tool, which opens the color picker to paint the color of selected parts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RibbonTool#ColorPicker)
          */
         export interface ColorPicker extends globalThis.EnumItem {
@@ -29405,7 +33184,7 @@ declare namespace Enum {
         }
         export const ColorPicker: ColorPicker;
         /**
-         * Deprecated in favor of Material Manager. Don't use.
+         * Deprecated ribbon **Color**\/**Material** picker tool; use **Material Manager** instead.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RibbonTool#MaterialPicker)
          */
@@ -29416,6 +33195,8 @@ declare namespace Enum {
         }
         export const MaterialPicker: MaterialPicker;
         /**
+         * The **Group** tool, which groups the selected objects into a `Model`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RibbonTool#Group)
          */
         export interface Group extends globalThis.EnumItem {
@@ -29425,6 +33206,8 @@ declare namespace Enum {
         }
         export const Group: Group;
         /**
+         * The **Ungroup** tool, which dissolves a selected Model and promotes its children to the parent container.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RibbonTool#Ungroup)
          */
         export interface Ungroup extends globalThis.EnumItem {
@@ -29434,6 +33217,8 @@ declare namespace Enum {
         }
         export const Ungroup: Ungroup;
         /**
+         * Represents no ribbon tool being active.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RibbonTool#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -29443,6 +33228,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * The **Edit Pivot** tool, which repositions the pivot point of selected parts or models.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RibbonTool#PivotEditor)
          */
         export interface PivotEditor extends globalThis.EnumItem {
@@ -29844,14 +33631,10 @@ declare namespace Enum {
     }
     export type RigScale = RigScale.Default | RigScale.Rthro | RigScale.RthroNarrow;
     /**
-     * The type of rig being imported with the 3D Importer.
-     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigType)
      */
     export namespace RigType {
         /**
-         * A rig type of R15.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigType#R15)
          */
         export interface R15 extends globalThis.EnumItem {
@@ -29870,8 +33653,6 @@ declare namespace Enum {
         }
         export const CustomHumanoid: CustomHumanoid;
         /**
-         * A rig type of Custom.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigType#Custom)
          */
         export interface Custom extends globalThis.EnumItem {
@@ -29881,8 +33662,6 @@ declare namespace Enum {
         }
         export const Custom: Custom;
         /**
-         * A rig type of None.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RigType#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -29896,6 +33675,51 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RigType | undefined;
     }
     export type RigType = RigType.R15 | RigType.CustomHumanoid | RigType.Custom | RigType.None;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RobuxTransferEligibility)
+     */
+    export namespace RobuxTransferEligibility {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RobuxTransferEligibility#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.RobuxTransferEligibility;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RobuxTransferEligibility#Eligible)
+         */
+        export interface Eligible extends globalThis.EnumItem {
+            Name: "Eligible";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.RobuxTransferEligibility;
+        }
+        export const Eligible: Eligible;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RobuxTransferEligibility#SenderNotEligible)
+         */
+        export interface SenderNotEligible extends globalThis.EnumItem {
+            Name: "SenderNotEligible";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.RobuxTransferEligibility;
+        }
+        export const SenderNotEligible: SenderNotEligible;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RobuxTransferEligibility#ReceiverNotEligible)
+         */
+        export interface ReceiverNotEligible extends globalThis.EnumItem {
+            Name: "ReceiverNotEligible";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.RobuxTransferEligibility;
+        }
+        export const ReceiverNotEligible: ReceiverNotEligible;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.RobuxTransferEligibility>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.RobuxTransferEligibility | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.RobuxTransferEligibility | undefined;
+    }
+    export type RobuxTransferEligibility = RobuxTransferEligibility.Unknown | RobuxTransferEligibility.Eligible | RobuxTransferEligibility.SenderNotEligible | RobuxTransferEligibility.ReceiverNotEligible;
     /**
      * How `Sounds` parented to a `BasePart` or `Attachment` attenuate (fade out) as the distance between the listener and the parent increases.
      *
@@ -30073,10 +33897,14 @@ declare namespace Enum {
     }
     export type RotationOrder = RotationOrder.XYZ | RotationOrder.XZY | RotationOrder.YZX | RotationOrder.YXZ | RotationOrder.ZXY | RotationOrder.ZYX;
     /**
+     * Controls how a player character's body rotation is determined — relative to the camera direction or relative to the movement direction.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RotationType)
      */
     export namespace RotationType {
         /**
+         * The character's body rotation follows the direction of movement.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RotationType#MovementRelative)
          */
         export interface MovementRelative extends globalThis.EnumItem {
@@ -30086,6 +33914,8 @@ declare namespace Enum {
         }
         export const MovementRelative: MovementRelative;
         /**
+         * The character's body rotation continuously follows the camera's look direction.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RotationType#CameraRelative)
          */
         export interface CameraRelative extends globalThis.EnumItem {
@@ -30100,10 +33930,14 @@ declare namespace Enum {
     }
     export type RotationType = RotationType.MovementRelative | RotationType.CameraRelative;
     /**
+     * Indicates a player's RSVP response to a Roblox experience event.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RsvpStatus)
      */
     export namespace RsvpStatus {
         /**
+         * The player has not yet responded to the event invitation; this is the default RSVP state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RsvpStatus#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -30113,6 +33947,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * The player has accepted the event invitation and confirmed they are going.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RsvpStatus#Going)
          */
         export interface Going extends globalThis.EnumItem {
@@ -30122,6 +33958,8 @@ declare namespace Enum {
         }
         export const Going: Going;
         /**
+         * The player has declined the event invitation and indicated they are not going.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RsvpStatus#NotGoing)
          */
         export interface NotGoing extends globalThis.EnumItem {
@@ -30136,10 +33974,14 @@ declare namespace Enum {
     }
     export type RsvpStatus = RsvpStatus.None | RsvpStatus.Going | RsvpStatus.NotGoing;
     /**
+     * Controls whether right-to-left text rendering is enabled for the experience.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RtlTextSupport)
      */
     export namespace RtlTextSupport {
         /**
+         * Enables RTL text support using the engine's default behavior.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RtlTextSupport#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -30149,6 +33991,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Disables RTL text support, forcing all text to render left-to-right.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RtlTextSupport#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -30158,6 +34002,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * Explicitly enables RTL text support for right-to-left scripts such as Arabic and Hebrew.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RtlTextSupport#Enabled)
          */
         export interface Enabled extends globalThis.EnumItem {
@@ -30172,11 +34018,13 @@ declare namespace Enum {
     }
     export type RtlTextSupport = RtlTextSupport.Default | RtlTextSupport.Disabled | RtlTextSupport.Enabled;
     /**
+     * Controls the execution context of a `Script`, determining whether it runs as server, client, plugin, or legacy container-based code.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RunContext)
      */
     export namespace RunContext {
         /**
-         * Runs in legacy script containers dependent on the type of script uses such as `LocalScript` or `Script`.
+         * Runs with legacy container-based behavior that depends on the script type, such as `LocalScript` or `Script`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RunContext#Legacy)
          */
@@ -30225,10 +34073,14 @@ declare namespace Enum {
     }
     export type RunContext = RunContext.Legacy | RunContext.Server | RunContext.Client | RunContext.Plugin;
     /**
+     * Specifies the current run state of Roblox Studio's simulation.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RunState)
      */
     export namespace RunState {
         /**
+         * The simulation is stopped.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RunState#Stopped)
          */
         export interface Stopped extends globalThis.EnumItem {
@@ -30238,6 +34090,8 @@ declare namespace Enum {
         }
         export const Stopped: Stopped;
         /**
+         * The simulation is running.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RunState#Running)
          */
         export interface Running extends globalThis.EnumItem {
@@ -30247,6 +34101,8 @@ declare namespace Enum {
         }
         export const Running: Running;
         /**
+         * The simulation is paused.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RunState#Paused)
          */
         export interface Paused extends globalThis.EnumItem {
@@ -30261,10 +34117,14 @@ declare namespace Enum {
     }
     export type RunState = RunState.Stopped | RunState.Running | RunState.Paused;
     /**
+     * Controls how `ChangeHistoryService` records and handles undo history during a Studio playtest session.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RuntimeUndoBehavior)
      */
     export namespace RuntimeUndoBehavior {
         /**
+         * Rejects waypoint requests during a run session; all runtime changes accumulate into a single waypoint that is reverted together when the session stops or resets.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RuntimeUndoBehavior#Aggregate)
          */
         export interface Aggregate extends globalThis.EnumItem {
@@ -30274,6 +34134,8 @@ declare namespace Enum {
         }
         export const Aggregate: Aggregate;
         /**
+         * Accepts waypoint requests during a run session and captures a snapshot of each instance's position and velocity at every waypoint boundary so that physics state can be fully restored on undo.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RuntimeUndoBehavior#Snapshot)
          */
         export interface Snapshot extends globalThis.EnumItem {
@@ -30283,6 +34145,8 @@ declare namespace Enum {
         }
         export const Snapshot: Snapshot;
         /**
+         * Accepts waypoint requests during a run session but excludes unsolicited physics changes (position and velocity drift from simulation) from the recorded history.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/RuntimeUndoBehavior#Hybrid)
          */
         export interface Hybrid extends globalThis.EnumItem {
@@ -30330,10 +34194,14 @@ declare namespace Enum {
     }
     export type SafeAreaCompatibility = SafeAreaCompatibility.None | SafeAreaCompatibility.FullscreenExtension;
     /**
+     * Filters catalog search results by sales type.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SalesTypeFilter)
      */
     export namespace SalesTypeFilter {
         /**
+         * Returns all items regardless of sales type.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SalesTypeFilter#All)
          */
         export interface All extends globalThis.EnumItem {
@@ -30343,6 +34211,8 @@ declare namespace Enum {
         }
         export const All: All;
         /**
+         * Returns only collectible items (Limited and Limited Unique).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SalesTypeFilter#Collectibles)
          */
         export interface Collectibles extends globalThis.EnumItem {
@@ -30352,6 +34222,8 @@ declare namespace Enum {
         }
         export const Collectibles: Collectibles;
         /**
+         * Returns only items with Premium pricing.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SalesTypeFilter#Premium)
          */
         export interface Premium extends globalThis.EnumItem {
@@ -30361,6 +34233,8 @@ declare namespace Enum {
         }
         export const Premium: Premium;
         /**
+         * Returns only items that have timed options available.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SalesTypeFilter#TimedOptions)
          */
         export interface TimedOptions extends globalThis.EnumItem {
@@ -30517,10 +34391,14 @@ declare namespace Enum {
     }
     export type SaveFilter = SaveFilter.SaveWorld | SaveFilter.SaveGame | SaveFilter.SaveAll;
     /**
+     * Represents the user's saved graphics quality preference, stored in `UserGameSettings.SavedQualityLevel`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SavedQualitySetting)
      */
     export namespace SavedQualitySetting {
         /**
+         * Graphics quality is determined automatically based on device performance.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SavedQualitySetting#Automatic)
          */
         export interface Automatic extends globalThis.EnumItem {
@@ -30530,6 +34408,8 @@ declare namespace Enum {
         }
         export const Automatic: Automatic;
         /**
+         * Saved graphics quality level 1 — the lowest explicit quality setting.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SavedQualitySetting#QualityLevel1)
          */
         export interface QualityLevel1 extends globalThis.EnumItem {
@@ -30539,6 +34419,8 @@ declare namespace Enum {
         }
         export const QualityLevel1: QualityLevel1;
         /**
+         * Saved graphics quality level 2.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SavedQualitySetting#QualityLevel2)
          */
         export interface QualityLevel2 extends globalThis.EnumItem {
@@ -30548,6 +34430,8 @@ declare namespace Enum {
         }
         export const QualityLevel2: QualityLevel2;
         /**
+         * Saved graphics quality level 3.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SavedQualitySetting#QualityLevel3)
          */
         export interface QualityLevel3 extends globalThis.EnumItem {
@@ -30557,6 +34441,8 @@ declare namespace Enum {
         }
         export const QualityLevel3: QualityLevel3;
         /**
+         * Saved graphics quality level 4.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SavedQualitySetting#QualityLevel4)
          */
         export interface QualityLevel4 extends globalThis.EnumItem {
@@ -30566,6 +34452,8 @@ declare namespace Enum {
         }
         export const QualityLevel4: QualityLevel4;
         /**
+         * Saved graphics quality level 5.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SavedQualitySetting#QualityLevel5)
          */
         export interface QualityLevel5 extends globalThis.EnumItem {
@@ -30575,6 +34463,8 @@ declare namespace Enum {
         }
         export const QualityLevel5: QualityLevel5;
         /**
+         * Saved graphics quality level 6.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SavedQualitySetting#QualityLevel6)
          */
         export interface QualityLevel6 extends globalThis.EnumItem {
@@ -30584,6 +34474,8 @@ declare namespace Enum {
         }
         export const QualityLevel6: QualityLevel6;
         /**
+         * Saved graphics quality level 7.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SavedQualitySetting#QualityLevel7)
          */
         export interface QualityLevel7 extends globalThis.EnumItem {
@@ -30593,6 +34485,8 @@ declare namespace Enum {
         }
         export const QualityLevel7: QualityLevel7;
         /**
+         * Saved graphics quality level 8.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SavedQualitySetting#QualityLevel8)
          */
         export interface QualityLevel8 extends globalThis.EnumItem {
@@ -30602,6 +34496,8 @@ declare namespace Enum {
         }
         export const QualityLevel8: QualityLevel8;
         /**
+         * Saved graphics quality level 9.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SavedQualitySetting#QualityLevel9)
          */
         export interface QualityLevel9 extends globalThis.EnumItem {
@@ -30611,6 +34507,8 @@ declare namespace Enum {
         }
         export const QualityLevel9: QualityLevel9;
         /**
+         * Saved graphics quality level 10 — the highest explicit quality setting.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SavedQualitySetting#QualityLevel10)
          */
         export interface QualityLevel10 extends globalThis.EnumItem {
@@ -30642,7 +34540,7 @@ declare namespace Enum {
         }
         export const Stretch: Stretch;
         /**
-         * 9-Slice scaling: slice the image into 9 regions and apply different scaling rules to each region. The slice boundaries are determined by `ImageLabel.SliceCenter` or `ImageButton.SliceCenter`. See [UI 9-Slice Design](../../../ui/9-slice.md) for more information. .
+         * 9-Slice scaling: slice the image into 9 regions and apply different scaling rules to each region. The slice boundaries are determined by `ImageLabel.SliceCenter` or `ImageButton.SliceCenter`. See [UI 9-Slice Design](../../../ui/9-slice.md) for more information.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScaleType#Slice)
          */
@@ -30691,10 +34589,14 @@ declare namespace Enum {
     }
     export type ScaleType = ScaleType.Stretch | ScaleType.Slice | ScaleType.Tile | ScaleType.Fit | ScaleType.Crop;
     /**
+     * Indicates the outcome of an `ExperienceAuthService` scope-authorization request.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScopeCheckResult)
      */
     export namespace ScopeCheckResult {
         /**
+         * The player accepted the authorization prompt and a valid token was issued for the requested scopes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScopeCheckResult#ConsentAccepted)
          */
         export interface ConsentAccepted extends globalThis.EnumItem {
@@ -30704,6 +34606,8 @@ declare namespace Enum {
         }
         export const ConsentAccepted: ConsentAccepted;
         /**
+         * The requested scopes are not recognized or are not permitted for the calling context.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScopeCheckResult#InvalidScopes)
          */
         export interface InvalidScopes extends globalThis.EnumItem {
@@ -30713,6 +34617,8 @@ declare namespace Enum {
         }
         export const InvalidScopes: InvalidScopes;
         /**
+         * The scope-check request exceeded the configured timeout period before the player responded.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScopeCheckResult#Timeout)
          */
         export interface Timeout extends globalThis.EnumItem {
@@ -30722,6 +34628,8 @@ declare namespace Enum {
         }
         export const Timeout: Timeout;
         /**
+         * The authorization prompt was dismissed without any explicit player action, such as when the player disconnects or the UI is closed without a response.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScopeCheckResult#NoUserInput)
          */
         export interface NoUserInput extends globalThis.EnumItem {
@@ -30731,6 +34639,8 @@ declare namespace Enum {
         }
         export const NoUserInput: NoUserInput;
         /**
+         * The Roblox backend returned an error or unexpected HTTP status when exchanging the consent grant for an authorization token.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScopeCheckResult#BackendError)
          */
         export interface BackendError extends globalThis.EnumItem {
@@ -30740,6 +34650,8 @@ declare namespace Enum {
         }
         export const BackendError: BackendError;
         /**
+         * An unexpected error occurred that is not covered by a more specific result code.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScopeCheckResult#UnexpectedError)
          */
         export interface UnexpectedError extends globalThis.EnumItem {
@@ -30749,6 +34661,8 @@ declare namespace Enum {
         }
         export const UnexpectedError: UnexpectedError;
         /**
+         * One or more arguments passed to the scope-check call were invalid, such as an empty scope list, a null player instance, or a player who is no longer in the experience.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScopeCheckResult#InvalidArgument)
          */
         export interface InvalidArgument extends globalThis.EnumItem {
@@ -30758,6 +34672,8 @@ declare namespace Enum {
         }
         export const InvalidArgument: InvalidArgument;
         /**
+         * The player explicitly declined the authorization prompt.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScopeCheckResult#ConsentDenied)
          */
         export interface ConsentDenied extends globalThis.EnumItem {
@@ -30893,10 +34809,14 @@ declare namespace Enum {
     }
     export type ScreenOrientation = ScreenOrientation.LandscapeLeft | ScreenOrientation.LandscapeRight | ScreenOrientation.LandscapeSensor | ScreenOrientation.Portrait | ScreenOrientation.Sensor;
     /**
+     * Describes the result of a screenshot capture initiated by `CaptureService:TakeScreenshotCaptureAsync()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult)
      */
     export namespace ScreenshotCaptureResult {
         /**
+         * The screenshot capture completed successfully.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult#Success)
          */
         export interface Success extends globalThis.EnumItem {
@@ -30906,6 +34826,8 @@ declare namespace Enum {
         }
         export const Success: Success;
         /**
+         * The screenshot capture failed due to an unspecified error.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult#OtherError)
          */
         export interface OtherError extends globalThis.EnumItem {
@@ -30915,6 +34837,8 @@ declare namespace Enum {
         }
         export const OtherError: OtherError;
         /**
+         * The device does not support screenshot captures.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult#NoDeviceSupport)
          */
         export interface NoDeviceSupport extends globalThis.EnumItem {
@@ -30924,6 +34848,8 @@ declare namespace Enum {
         }
         export const NoDeviceSupport: NoDeviceSupport;
         /**
+         * The device does not have enough storage space to save the screenshot capture.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScreenshotCaptureResult#NoSpaceOnDevice)
          */
         export interface NoSpaceOnDevice extends globalThis.EnumItem {
@@ -30937,6 +34863,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScreenshotCaptureResult | undefined;
     }
     export type ScreenshotCaptureResult = ScreenshotCaptureResult.Success | ScreenshotCaptureResult.OtherError | ScreenshotCaptureResult.NoDeviceSupport | ScreenshotCaptureResult.NoSpaceOnDevice;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptScannerUpdateType)
+     */
+    export namespace ScriptScannerUpdateType {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptScannerUpdateType#Init)
+         */
+        export interface Init extends globalThis.EnumItem {
+            Name: "Init";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ScriptScannerUpdateType;
+        }
+        export const Init: Init;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptScannerUpdateType#Added)
+         */
+        export interface Added extends globalThis.EnumItem {
+            Name: "Added";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ScriptScannerUpdateType;
+        }
+        export const Added: Added;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScriptScannerUpdateType#Removed)
+         */
+        export interface Removed extends globalThis.EnumItem {
+            Name: "Removed";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.ScriptScannerUpdateType;
+        }
+        export const Removed: Removed;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScriptScannerUpdateType>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ScriptScannerUpdateType | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScriptScannerUpdateType | undefined;
+    }
+    export type ScriptScannerUpdateType = ScriptScannerUpdateType.Init | ScriptScannerUpdateType.Added | ScriptScannerUpdateType.Removed;
     /**
      * Describes why the debugger paused execution.
      *
@@ -31092,6 +35054,33 @@ declare namespace Enum {
     }
     export type ScrollBarInset = ScrollBarInset.None | ScrollBarInset.ScrollBar | ScrollBarInset.Always;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollState)
+     */
+    export namespace ScrollState {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollState#Idle)
+         */
+        export interface Idle extends globalThis.EnumItem {
+            Name: "Idle";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.ScrollState;
+        }
+        export const Idle: Idle;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollState#Scrolling)
+         */
+        export interface Scrolling extends globalThis.EnumItem {
+            Name: "Scrolling";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.ScrollState;
+        }
+        export const Scrolling: Scrolling;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.ScrollState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.ScrollState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.ScrollState | undefined;
+    }
+    export type ScrollState = ScrollState.Idle | ScrollState.Scrolling;
+    /**
      * This enum is used by `ScrollingFrame.ScrollingDirection` to specify the direction(s) in which scrolling is allowed.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ScrollingDirection)
@@ -31136,10 +35125,14 @@ declare namespace Enum {
     }
     export type ScrollingDirection = ScrollingDirection.X | ScrollingDirection.Y | ScrollingDirection.XY;
     /**
+     * Identifies a specific permission capability that a sandboxed script container may grant or restrict.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability)
      */
     export namespace SecurityCapability {
         /**
+         * Indicates that a script container is permitted to execute scripts on the client (`LocalScript`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RunClientScript)
          */
         export interface RunClientScript extends globalThis.EnumItem {
@@ -31149,6 +35142,8 @@ declare namespace Enum {
         }
         export const RunClientScript: RunClientScript;
         /**
+         * Indicates that a script container is permitted to execute scripts on the server (`Script`).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RunServerScript)
          */
         export interface RunServerScript extends globalThis.EnumItem {
@@ -31158,6 +35153,8 @@ declare namespace Enum {
         }
         export const RunServerScript: RunServerScript;
         /**
+         * Grants a script read-write access to instances that live outside its sandboxed container.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AccessOutsideWrite)
          */
         export interface AccessOutsideWrite extends globalThis.EnumItem {
@@ -31167,7 +35164,9 @@ declare namespace Enum {
         }
         export const AccessOutsideWrite: AccessOutsideWrite;
         /**
-         * **Deprecated:**
+         * **Deprecated:** Use `SecurityCapability.LoadUnownedAsset` instead.
+         *
+         * Deprecated. Use `SecurityCapability.LoadUnownedAsset` instead.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AssetRequire)
          */
@@ -31178,6 +35177,8 @@ declare namespace Enum {
         }
         export const AssetRequire: AssetRequire;
         /**
+         * Allows a script to use the `loadstring()` Luau built-in to compile and execute a string as code.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#LoadString)
          */
         export interface LoadString extends globalThis.EnumItem {
@@ -31187,6 +35188,8 @@ declare namespace Enum {
         }
         export const LoadString: LoadString;
         /**
+         * Allows a script to access the `shared` and `_G` shared global variable tables.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#ScriptGlobals)
          */
         export interface ScriptGlobals extends globalThis.EnumItem {
@@ -31196,6 +35199,8 @@ declare namespace Enum {
         }
         export const ScriptGlobals: ScriptGlobals;
         /**
+         * Allows a script to create new `Instance` objects using `new()`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#CreateInstances)
          */
         export interface CreateInstances extends globalThis.EnumItem {
@@ -31205,6 +35210,8 @@ declare namespace Enum {
         }
         export const CreateInstances: CreateInstances;
         /**
+         * Guards access to a broad set of general-purpose engine APIs that do not belong to a more specific capability category.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Basic)
          */
         export interface Basic extends globalThis.EnumItem {
@@ -31214,6 +35221,8 @@ declare namespace Enum {
         }
         export const Basic: Basic;
         /**
+         * Guards access to audio engine APIs such as `Sound`, `AudioPlayer`, and related classes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Audio)
          */
         export interface Audio extends globalThis.EnumItem {
@@ -31223,6 +35232,8 @@ declare namespace Enum {
         }
         export const Audio: Audio;
         /**
+         * Guards access to data store APIs such as `DataStoreService` and its associated objects.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#DataStore)
          */
         export interface DataStore extends globalThis.EnumItem {
@@ -31232,6 +35243,8 @@ declare namespace Enum {
         }
         export const DataStore: DataStore;
         /**
+         * Guards access to low-level networking APIs such as `HttpService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Network)
          */
         export interface Network extends globalThis.EnumItem {
@@ -31241,6 +35254,8 @@ declare namespace Enum {
         }
         export const Network: Network;
         /**
+         * Guards access to physics engine APIs such as `Constraint` classes and `BasePart` physics properties.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Physics)
          */
         export interface Physics extends globalThis.EnumItem {
@@ -31250,6 +35265,8 @@ declare namespace Enum {
         }
         export const Physics: Physics;
         /**
+         * Guards access to UI engine APIs such as `ScreenGui`, `Frame`, and other `GuiObject` classes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#UI)
          */
         export interface UI extends globalThis.EnumItem {
@@ -31259,6 +35276,8 @@ declare namespace Enum {
         }
         export const UI: UI;
         /**
+         * Guards access to Constructive Solid Geometry (CSG) APIs such as `UnionOperation` and `NegateOperation`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#CSG)
          */
         export interface CSG extends globalThis.EnumItem {
@@ -31268,6 +35287,8 @@ declare namespace Enum {
         }
         export const CSG: CSG;
         /**
+         * Guards access to chat engine APIs such as `TextChatService` and related chat classes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Chat)
          */
         export interface Chat extends globalThis.EnumItem {
@@ -31277,6 +35298,8 @@ declare namespace Enum {
         }
         export const Chat: Chat;
         /**
+         * Guards access to animation engine APIs such as `AnimationController` and related classes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Animation)
          */
         export interface Animation extends globalThis.EnumItem {
@@ -31286,7 +35309,9 @@ declare namespace Enum {
         }
         export const Animation: Animation;
         /**
-         * **Deprecated:**
+         * **Deprecated:** Use `SecurityCapability.AvatarAppearance` instead.
+         *
+         * Deprecated. Use `SecurityCapability.AvatarAppearance` instead.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Avatar)
          */
@@ -31297,6 +35322,8 @@ declare namespace Enum {
         }
         export const Avatar: Avatar;
         /**
+         * Guards access to user input APIs such as `UserInputService` and `ContextActionService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Input)
          */
         export interface Input extends globalThis.EnumItem {
@@ -31306,6 +35333,8 @@ declare namespace Enum {
         }
         export const Input: Input;
         /**
+         * Guards access to environment and world-setting APIs such as `Lighting` and `Atmosphere`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Environment)
          */
         export interface Environment extends globalThis.EnumItem {
@@ -31315,6 +35344,8 @@ declare namespace Enum {
         }
         export const Environment: Environment;
         /**
+         * Guards access to remote event and function APIs such as `RemoteEvent` and `RemoteFunction`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RemoteEvent)
          */
         export interface RemoteEvent extends globalThis.EnumItem {
@@ -31324,6 +35355,8 @@ declare namespace Enum {
         }
         export const RemoteEvent: RemoteEvent;
         /**
+         * Guards access to the legacy `Sound` and pre-`VoiceChatService.UseAudioApi` sound stack APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#LegacySound)
          */
         export interface LegacySound extends globalThis.EnumItem {
@@ -31333,6 +35366,8 @@ declare namespace Enum {
         }
         export const LegacySound: LegacySound;
         /**
+         * Guards access to `Players` service APIs that query or manage connected players.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Players)
          */
         export interface Players extends globalThis.EnumItem {
@@ -31342,6 +35377,8 @@ declare namespace Enum {
         }
         export const Players: Players;
         /**
+         * Guards access to the `Capabilities` and `Sandboxed` properties that configure script sandboxing.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#CapabilityControl)
          */
         export interface CapabilityControl extends globalThis.EnumItem {
@@ -31351,6 +35388,8 @@ declare namespace Enum {
         }
         export const CapabilityControl: CapabilityControl;
         /**
+         * Mirrors the legacy `Plugin` permission level, granting access to Studio plugin APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Plugin)
          */
         export interface Plugin extends globalThis.EnumItem {
@@ -31360,6 +35399,8 @@ declare namespace Enum {
         }
         export const Plugin: Plugin;
         /**
+         * Mirrors the legacy `LocalUser` permission level, granting access to IDE-only and Studio-level APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#LocalUser)
          */
         export interface LocalUser extends globalThis.EnumItem {
@@ -31369,6 +35410,8 @@ declare namespace Enum {
         }
         export const LocalUser: LocalUser;
         /**
+         * Mirrors the legacy `WritePlayer` permission level, granting the ability to modify player identity properties such as name and `UserId`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#WritePlayer)
          */
         export interface WritePlayer extends globalThis.EnumItem {
@@ -31378,6 +35421,8 @@ declare namespace Enum {
         }
         export const WritePlayer: WritePlayer;
         /**
+         * Mirrors the legacy `RobloxScript` permission level, granting access to `CoreScript` APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RobloxScript)
          */
         export interface RobloxScript extends globalThis.EnumItem {
@@ -31387,6 +35432,8 @@ declare namespace Enum {
         }
         export const RobloxScript: RobloxScript;
         /**
+         * Mirrors the legacy `RobloxEngine` permission level, granting access to internal engine-level APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RobloxEngine)
          */
         export interface RobloxEngine extends globalThis.EnumItem {
@@ -31396,6 +35443,8 @@ declare namespace Enum {
         }
         export const RobloxEngine: RobloxEngine;
         /**
+         * The default capability assigned to API members that have not been explicitly assigned to any other capability category.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Unassigned)
          */
         export interface Unassigned extends globalThis.EnumItem {
@@ -31405,6 +35454,8 @@ declare namespace Enum {
         }
         export const Unassigned: Unassigned;
         /**
+         * Restricts access to non-sensitive APIs that are intentionally kept internal.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#InternalTest)
          */
         export interface InternalTest extends globalThis.EnumItem {
@@ -31414,6 +35465,8 @@ declare namespace Enum {
         }
         export const InternalTest: InternalTest;
         /**
+         * Restricts access to APIs callable only from Studio plugin or Open Cloud Luau execution sessions.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#PluginOrOpenCloud)
          */
         export interface PluginOrOpenCloud extends globalThis.EnumItem {
@@ -31423,6 +35476,8 @@ declare namespace Enum {
         }
         export const PluginOrOpenCloud: PluginOrOpenCloud;
         /**
+         * Restricts access to APIs that may only be called from Studio Assistant execution contexts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Assistant)
          */
         export interface Assistant extends globalThis.EnumItem {
@@ -31432,6 +35487,8 @@ declare namespace Enum {
         }
         export const Assistant: Assistant;
         /**
+         * Restricts access to APIs that are executable only from Studio's `RemoteCommandService` in Team Create sessions.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#RemoteCommand)
          */
         export interface RemoteCommand extends globalThis.EnumItem {
@@ -31441,6 +35498,8 @@ declare namespace Enum {
         }
         export const RemoteCommand: RemoteCommand;
         /**
+         * Guards access to APIs that read or query asset metadata from the Roblox catalog.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AssetRead)
          */
         export interface AssetRead extends globalThis.EnumItem {
@@ -31450,6 +35509,8 @@ declare namespace Enum {
         }
         export const AssetRead: AssetRead;
         /**
+         * Guards access to asset management APIs such as `ContentProvider:PreloadAsync()` and encryption-key registration.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AssetManagement)
          */
         export interface AssetManagement extends globalThis.EnumItem {
@@ -31459,6 +35520,8 @@ declare namespace Enum {
         }
         export const AssetManagement: AssetManagement;
         /**
+         * Guards access to procedural and AI-driven content generation APIs such as `EditableMesh` and `AvatarCreationService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#DynamicGeneration)
          */
         export interface DynamicGeneration extends globalThis.EnumItem {
@@ -31468,6 +35531,8 @@ declare namespace Enum {
         }
         export const DynamicGeneration: DynamicGeneration;
         /**
+         * Guards access to platform-level avatar editing APIs provided by `AvatarEditorService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#PlatformAvatarEditing)
          */
         export interface PlatformAvatarEditing extends globalThis.EnumItem {
@@ -31477,6 +35542,8 @@ declare namespace Enum {
         }
         export const PlatformAvatarEditing: PlatformAvatarEditing;
         /**
+         * Guards access to APIs that create or update published Roblox assets.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AssetCreateUpdate)
          */
         export interface AssetCreateUpdate extends globalThis.EnumItem {
@@ -31486,6 +35553,8 @@ declare namespace Enum {
         }
         export const AssetCreateUpdate: AssetCreateUpdate;
         /**
+         * Guards access to `CaptureService` APIs that take screenshots and record video.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Capture)
          */
         export interface Capture extends globalThis.EnumItem {
@@ -31495,6 +35564,8 @@ declare namespace Enum {
         }
         export const Capture: Capture;
         /**
+         * Guards access to sensitive user input APIs such as those that can read raw keyboard or mouse data beyond normal game input.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#SensitiveInput)
          */
         export interface SensitiveInput extends globalThis.EnumItem {
@@ -31504,6 +35575,8 @@ declare namespace Enum {
         }
         export const SensitiveInput: SensitiveInput;
         /**
+         * Guards access to in-experience purchase and monetization APIs such as `MarketplaceService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Monetization)
          */
         export interface Monetization extends globalThis.EnumItem {
@@ -31513,6 +35586,8 @@ declare namespace Enum {
         }
         export const Monetization: Monetization;
         /**
+         * Allows a script to load assets that are owned by the experience's creator using `InsertService` or `require()`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#LoadOwnedAsset)
          */
         export interface LoadOwnedAsset extends globalThis.EnumItem {
@@ -31522,6 +35597,8 @@ declare namespace Enum {
         }
         export const LoadOwnedAsset: LoadOwnedAsset;
         /**
+         * Guards access to social APIs such as `SocialService`, `FriendPages`, and `ExperienceInviteOptions`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Social)
          */
         export interface Social extends globalThis.EnumItem {
@@ -31531,6 +35608,8 @@ declare namespace Enum {
         }
         export const Social: Social;
         /**
+         * Guards access to server-to-server messaging APIs such as `MessagingService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#ServerCommunication)
          */
         export interface ServerCommunication extends globalThis.EnumItem {
@@ -31540,6 +35619,8 @@ declare namespace Enum {
         }
         export const ServerCommunication: ServerCommunication;
         /**
+         * Guards access to `LogService` and logging-related APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Logging)
          */
         export interface Logging extends globalThis.EnumItem {
@@ -31549,6 +35630,8 @@ declare namespace Enum {
         }
         export const Logging: Logging;
         /**
+         * Guards access to APIs that initiate external (non-Roblox) purchase prompts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#PromptExternalPurchase)
          */
         export interface PromptExternalPurchase extends globalThis.EnumItem {
@@ -31558,6 +35641,8 @@ declare namespace Enum {
         }
         export const PromptExternalPurchase: PromptExternalPurchase;
         /**
+         * Guards access to group-related APIs such as `GroupService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Groups)
          */
         export interface Groups extends globalThis.EnumItem {
@@ -31567,6 +35652,8 @@ declare namespace Enum {
         }
         export const Groups: Groups;
         /**
+         * Guards access to teleportation APIs such as `TeleportService`, `TeleportOptions`, and `TeleportAsyncResult`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Teleport)
          */
         export interface Teleport extends globalThis.EnumItem {
@@ -31576,6 +35663,8 @@ declare namespace Enum {
         }
         export const Teleport: Teleport;
         /**
+         * Guards access to moderation and player-consequence APIs such as `Players:BanAsync()` and `ModerationService`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Consequences)
          */
         export interface Consequences extends globalThis.EnumItem {
@@ -31585,6 +35674,8 @@ declare namespace Enum {
         }
         export const Consequences: Consequences;
         /**
+         * Guards access to `MaterialService`, `MaterialVariant`, and custom material APIs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#Material)
          */
         export interface Material extends globalThis.EnumItem {
@@ -31594,6 +35685,8 @@ declare namespace Enum {
         }
         export const Material: Material;
         /**
+         * Guards access to APIs that control avatar locomotion and behavior at runtime.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AvatarBehavior)
          */
         export interface AvatarBehavior extends globalThis.EnumItem {
@@ -31603,6 +35696,8 @@ declare namespace Enum {
         }
         export const AvatarBehavior: AvatarBehavior;
         /**
+         * Guards access to APIs that read or modify avatar appearance, such as `HumanoidDescription`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#AvatarAppearance)
          */
         export interface AvatarAppearance extends globalThis.EnumItem {
@@ -31612,6 +35707,8 @@ declare namespace Enum {
         }
         export const AvatarAppearance: AvatarAppearance;
         /**
+         * Allows a script to `require()` asset IDs or call `InsertService:LoadAsset()` for assets not owned by the creator.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SecurityCapability#LoadUnownedAsset)
          */
         export interface LoadUnownedAsset extends globalThis.EnumItem {
@@ -31659,10 +35756,14 @@ declare namespace Enum {
     }
     export type SelectionBehavior = SelectionBehavior.Escape | SelectionBehavior.Stop;
     /**
+     * Controls how selected objects are highlighted in Roblox Studio.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SelectionRenderMode)
      */
     export namespace SelectionRenderMode {
         /**
+         * Renders selected objects using an outline drawn along each object's edges.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SelectionRenderMode#Outlines)
          */
         export interface Outlines extends globalThis.EnumItem {
@@ -31672,6 +35773,8 @@ declare namespace Enum {
         }
         export const Outlines: Outlines;
         /**
+         * Renders selected objects using a bounding box drawn around each object's extents.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SelectionRenderMode#BoundingBoxes)
          */
         export interface BoundingBoxes extends globalThis.EnumItem {
@@ -31681,6 +35784,8 @@ declare namespace Enum {
         }
         export const BoundingBoxes: BoundingBoxes;
         /**
+         * Renders selected objects with both outlines and bounding boxes simultaneously.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SelectionRenderMode#Both)
          */
         export interface Both extends globalThis.EnumItem {
@@ -31761,10 +35866,14 @@ declare namespace Enum {
     }
     export type SelfViewPosition = SelfViewPosition.LastPosition | SelfViewPosition.TopLeft | SelfViewPosition.TopRight | SelfViewPosition.BottomLeft | SelfViewPosition.BottomRight;
     /**
+     * Specifies whether a `ControllerPartSensor` targets floor or ladder geometry, and which detection algorithm to use.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SensorMode)
      */
     export namespace SensorMode {
         /**
+         * Detects floor surfaces below the part using the modern detection algorithm; the default value of `ControllerPartSensor.SensorMode`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SensorMode#Floor)
          */
         export interface Floor extends globalThis.EnumItem {
@@ -31774,6 +35883,8 @@ declare namespace Enum {
         }
         export const Floor: Floor;
         /**
+         * Detects ladder surfaces adjacent to the part using the modern piercing-based detection algorithm.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SensorMode#Ladder)
          */
         export interface Ladder extends globalThis.EnumItem {
@@ -31783,6 +35894,8 @@ declare namespace Enum {
         }
         export const Ladder: Ladder;
         /**
+         * Detects floor surfaces below the part using the legacy raycast-based algorithm.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SensorMode#ClassicFloor)
          */
         export interface ClassicFloor extends globalThis.EnumItem {
@@ -31792,6 +35905,8 @@ declare namespace Enum {
         }
         export const ClassicFloor: ClassicFloor;
         /**
+         * Detects ladder surfaces adjacent to the part using the legacy ladder detection algorithm.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SensorMode#ClassicLadder)
          */
         export interface ClassicLadder extends globalThis.EnumItem {
@@ -31806,10 +35921,14 @@ declare namespace Enum {
     }
     export type SensorMode = SensorMode.Floor | SensorMode.Ladder | SensorMode.ClassicFloor | SensorMode.ClassicLadder;
     /**
+     * Controls when a sensor recalculates its output properties.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SensorUpdateType)
      */
     export namespace SensorUpdateType {
         /**
+         * The sensor lazily recalculates its output the next time an output property is read and the output is marked dirty.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SensorUpdateType#OnRead)
          */
         export interface OnRead extends globalThis.EnumItem {
@@ -31819,6 +35938,8 @@ declare namespace Enum {
         }
         export const OnRead: OnRead;
         /**
+         * The sensor never automatically recalculates its output; scripts are responsible for driving output updates.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SensorUpdateType#Manual)
          */
         export interface Manual extends globalThis.EnumItem {
@@ -31869,10 +35990,14 @@ declare namespace Enum {
     }
     export type ServerLiveEditingMode = ServerLiveEditingMode.Uninitialized | ServerLiveEditingMode.Enabled | ServerLiveEditingMode.Disabled;
     /**
+     * Controls when a service is displayed in the Explorer window in Roblox Studio.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ServiceVisibility)
      */
     export namespace ServiceVisibility {
         /**
+         * The service is always visible in the Explorer window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ServiceVisibility#Always)
          */
         export interface Always extends globalThis.EnumItem {
@@ -31882,6 +36007,8 @@ declare namespace Enum {
         }
         export const Always: Always;
         /**
+         * The service is hidden from the Explorer window by default, but can still be added via the Insert Service menu.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ServiceVisibility#Off)
          */
         export interface Off extends globalThis.EnumItem {
@@ -31891,6 +36018,8 @@ declare namespace Enum {
         }
         export const Off: Off;
         /**
+         * The service is visible in the Explorer window only when it has children; it can still be added via the Insert Service menu.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ServiceVisibility#WithChildren)
          */
         export interface WithChildren extends globalThis.EnumItem {
@@ -31905,10 +36034,14 @@ declare namespace Enum {
     }
     export type ServiceVisibility = ServiceVisibility.Always | ServiceVisibility.Off | ServiceVisibility.WithChildren;
     /**
+     * Classifies the severity level of a Luau LSP diagnostic reported by a Script Analysis callback.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Severity)
      */
     export namespace Severity {
         /**
+         * Reports a critical error that indicates a definite problem in the script.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Severity#Error)
          */
         export interface Error extends globalThis.EnumItem {
@@ -31918,6 +36051,8 @@ declare namespace Enum {
         }
         export const Error: Error;
         /**
+         * Reports a potential problem that can cause incorrect behavior but does not prevent the script from running.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Severity#Warning)
          */
         export interface Warning extends globalThis.EnumItem {
@@ -31927,6 +36062,8 @@ declare namespace Enum {
         }
         export const Warning: Warning;
         /**
+         * Conveys informational context about the script without indicating a problem.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Severity#Information)
          */
         export interface Information extends globalThis.EnumItem {
@@ -31936,6 +36073,8 @@ declare namespace Enum {
         }
         export const Information: Information;
         /**
+         * Provides a subtle suggestion, such as a style improvement or an unused-variable notice.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/Severity#Hint)
          */
         export interface Hint extends globalThis.EnumItem {
@@ -31950,6 +36089,8 @@ declare namespace Enum {
     }
     export type Severity = Severity.Error | Severity.Warning | Severity.Information | Severity.Hint;
     /**
+     * Result codes returned by `AdService:ShowRewardedVideoAdAsync()` indicating whether a rewarded video ad completed successfully or why it did not.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ShowAdResult)
      */
     export namespace ShowAdResult {
@@ -32009,6 +36150,8 @@ declare namespace Enum {
         }
         export const ShowInterrupted: ShowInterrupted;
         /**
+         * The device does not have sufficient video memory available to display the ad.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ShowAdResult#InsufficientMemory)
          */
         export interface InsufficientMemory extends globalThis.EnumItem {
@@ -32158,10 +36301,14 @@ declare namespace Enum {
     }
     export type SizeConstraint = SizeConstraint.RelativeXY | SizeConstraint.RelativeXX | SizeConstraint.RelativeYY;
     /**
+     * Determines the color-coding mode used by the SLIM debug tint overlay in the Developer Console.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode)
      */
     export namespace SlimTintMode {
         /**
+         * No tint is applied. Meshes render with their normal appearance.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -32171,14 +36318,16 @@ declare namespace Enum {
         }
         export const None: None;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#LOD)
+         * Colors each mesh by its current level of detail. Blue is the coarsest, red the finest, and every rank in between maps to a fixed color. A given color always means the same LOD rank across every mesh, with the exception that each mesh's own highest available LOD is always shown red.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#LevelOfDetail)
          */
-        export interface LOD extends globalThis.EnumItem {
-            Name: "LOD";
+        export interface LevelOfDetail extends globalThis.EnumItem {
+            Name: "LevelOfDetail";
             Value: 1;
             EnumType: typeof globalThis.Enum.SlimTintMode;
         }
-        export const LOD: LOD;
+        export const LevelOfDetail: LevelOfDetail;
         /**
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#Meshes)
          */
@@ -32207,60 +36356,132 @@ declare namespace Enum {
         }
         export const ContentId: ContentId;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#Zone)
+         * Colors SLIM models by whether their DataModel instances are streamed in or out. Green indicates streamed in (full DataModel present); yellow indicates streamed out (a placeholder). Both are still rendered via SLIM.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#DataModelState)
          */
-        export interface Zone extends globalThis.EnumItem {
-            Name: "Zone";
+        export interface DataModelState extends globalThis.EnumItem {
+            Name: "DataModelState";
             Value: 5;
             EnumType: typeof globalThis.Enum.SlimTintMode;
         }
-        export const Zone: Zone;
+        export const DataModelState: DataModelState;
+        /**
+         * Colors each SLIM model by its `SlimTranscoderStatus`. Follow the link to see which color maps to each status.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTintMode#TranscoderStatus)
+         */
+        export interface TranscoderStatus extends globalThis.EnumItem {
+            Name: "TranscoderStatus";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.SlimTintMode;
+        }
+        export const TranscoderStatus: TranscoderStatus;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SlimTintMode>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SlimTintMode | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SlimTintMode | undefined;
     }
-    export type SlimTintMode = SlimTintMode.None | SlimTintMode.LOD | SlimTintMode.Meshes | SlimTintMode.MeshResourcePtr | SlimTintMode.ContentId | SlimTintMode.Zone;
+    export type SlimTintMode = SlimTintMode.None | SlimTintMode.LevelOfDetail | SlimTintMode.Meshes | SlimTintMode.MeshResourcePtr | SlimTintMode.ContentId | SlimTintMode.DataModelState | SlimTintMode.TranscoderStatus;
     /**
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolidPrimitiveType)
+     * Describes the backend transcoding state of a SLIM model, from upload through transcoding to success or failure.
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus)
      */
-    export namespace SolidPrimitiveType {
+    export namespace SlimTranscoderStatus {
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolidPrimitiveType#Capsule)
+         * The transcoding status has not yet been determined. This is the initial state before the model has been queried. Shown as yellow in the debug tint overlay.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus#Unknown)
          */
-        export interface Capsule extends globalThis.EnumItem {
-            Name: "Capsule";
-            Value: 5;
-            EnumType: typeof globalThis.Enum.SolidPrimitiveType;
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.SlimTranscoderStatus;
         }
-        export const Capsule: Capsule;
+        export const Unknown: Unknown;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolidPrimitiveType#Cone)
+         * SLIM transcoding is currently in progress on the backend. The model is expected to transition to Succeeded or Failed once transcoding completes. Shown as blue in the debug tint overlay.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus#Transcoding)
          */
-        export interface Cone extends globalThis.EnumItem {
-            Name: "Cone";
-            Value: 6;
-            EnumType: typeof globalThis.Enum.SolidPrimitiveType;
+        export interface Transcoding extends globalThis.EnumItem {
+            Name: "Transcoding";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.SlimTranscoderStatus;
         }
-        export const Cone: Cone;
+        export const Transcoding: Transcoding;
         /**
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolidPrimitiveType#RoundedBox)
+         * Transcoding completed successfully and the SLIM assets are available for streaming. Shown as green in the debug tint overlay.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus#Succeeded)
          */
-        export interface RoundedBox extends globalThis.EnumItem {
-            Name: "RoundedBox";
-            Value: 7;
-            EnumType: typeof globalThis.Enum.SolidPrimitiveType;
+        export interface Succeeded extends globalThis.EnumItem {
+            Name: "Succeeded";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.SlimTranscoderStatus;
         }
-        export const RoundedBox: RoundedBox;
-        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SolidPrimitiveType>;
-        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SolidPrimitiveType | undefined;
-        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SolidPrimitiveType | undefined;
+        export const Succeeded: Succeeded;
+        /**
+         * Transcoding did not complete successfully. Shown as red in the debug tint overlay.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimTranscoderStatus#Failed)
+         */
+        export interface Failed extends globalThis.EnumItem {
+            Name: "Failed";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.SlimTranscoderStatus;
+        }
+        export const Failed: Failed;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SlimTranscoderStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SlimTranscoderStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SlimTranscoderStatus | undefined;
     }
-    export type SolidPrimitiveType = SolidPrimitiveType.Capsule | SolidPrimitiveType.Cone | SolidPrimitiveType.RoundedBox;
+    export type SlimTranscoderStatus = SlimTranscoderStatus.Unknown | SlimTranscoderStatus.Transcoding | SlimTranscoderStatus.Succeeded | SlimTranscoderStatus.Failed;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimViewContext)
+     */
+    export namespace SlimViewContext {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimViewContext#Player)
+         */
+        export interface Player extends globalThis.EnumItem {
+            Name: "Player";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.SlimViewContext;
+        }
+        export const Player: Player;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimViewContext#Editor)
+         */
+        export interface Editor extends globalThis.EnumItem {
+            Name: "Editor";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.SlimViewContext;
+        }
+        export const Editor: Editor;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SlimViewContext#ImGui)
+         */
+        export interface ImGui extends globalThis.EnumItem {
+            Name: "ImGui";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.SlimViewContext;
+        }
+        export const ImGui: ImGui;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SlimViewContext>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SlimViewContext | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SlimViewContext | undefined;
+    }
+    export type SlimViewContext = SlimViewContext.Player | SlimViewContext.Editor | SlimViewContext.ImGui;
+    /**
+     * Specifies the metric used to identify the least-converged constraint when visualizing physics solver convergence.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolverConvergenceMetricType)
      */
     export namespace SolverConvergenceMetricType {
         /**
+         * Identifies the least-converged constraint using the estimated force change from an additional, non-applied solver iteration.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolverConvergenceMetricType#IterationBased)
          */
         export interface IterationBased extends globalThis.EnumItem {
@@ -32270,6 +36491,8 @@ declare namespace Enum {
         }
         export const IterationBased: IterationBased;
         /**
+         * Identifies the least-converged constraint using a residual-based convergence metric supported across solver algorithms.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolverConvergenceMetricType#AlgorithmAgnostic)
          */
         export interface AlgorithmAgnostic extends globalThis.EnumItem {
@@ -32284,10 +36507,14 @@ declare namespace Enum {
     }
     export type SolverConvergenceMetricType = SolverConvergenceMetricType.IterationBased | SolverConvergenceMetricType.AlgorithmAgnostic;
     /**
+     * Controls whether and at what granularity the physics solver's convergence quality is overlaid as a debug visualization in Studio.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolverConvergenceVisualizationMode)
      */
     export namespace SolverConvergenceVisualizationMode {
         /**
+         * No solver convergence visualization is rendered; the default state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolverConvergenceVisualizationMode#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -32297,6 +36524,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * Renders a single convergence metric label at the center of each simulation island displaying the velocity-stage and position-stage maxima, which may come from different constraints.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolverConvergenceVisualizationMode#PerIsland)
          */
         export interface PerIsland extends globalThis.EnumItem {
@@ -32306,6 +36535,8 @@ declare namespace Enum {
         }
         export const PerIsland: PerIsland;
         /**
+         * Renders convergence metrics as text labels on each aggregated body-pair edge between assembly root bodies.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SolverConvergenceVisualizationMode#PerEdge)
          */
         export interface PerEdge extends globalThis.EnumItem {
@@ -32320,10 +36551,14 @@ declare namespace Enum {
     }
     export type SolverConvergenceVisualizationMode = SolverConvergenceVisualizationMode.Disabled | SolverConvergenceVisualizationMode.PerIsland | SolverConvergenceVisualizationMode.PerEdge;
     /**
+     * Controls whether results are ordered from lowest to highest or from highest to lowest.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SortDirection)
      */
     export namespace SortDirection {
         /**
+         * Orders results from lowest to highest value, or from oldest to newest entry.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SortDirection#Ascending)
          */
         export interface Ascending extends globalThis.EnumItem {
@@ -32333,6 +36568,8 @@ declare namespace Enum {
         }
         export const Ascending: Ascending;
         /**
+         * Orders results from highest to lowest value, or from newest to oldest entry.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SortDirection#Descending)
          */
         export interface Descending extends globalThis.EnumItem {
@@ -32511,11 +36748,15 @@ declare namespace Enum {
     }
     export type StartCorner = StartCorner.TopLeft | StartCorner.TopRight | StartCorner.BottomLeft | StartCorner.BottomRight;
     /**
+     * Identifies the data type of a field in a deprecated `StateObject`; all values are deprecated and the enum is retained only for backward compatibility.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType)
      */
     export namespace StateObjectFieldType {
         /**
          * **Deprecated:**
+         *
+         * A boolean field.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Boolean)
          */
@@ -32528,6 +36769,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * A `CFrame` field.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#CFrame)
          */
         export interface CFrame extends globalThis.EnumItem {
@@ -32538,6 +36781,8 @@ declare namespace Enum {
         export const CFrame: CFrame;
         /**
          * **Deprecated:**
+         *
+         * A `Color3` field.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Color3)
          */
@@ -32550,6 +36795,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * A floating-point number field.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Float)
          */
         export interface Float extends globalThis.EnumItem {
@@ -32560,6 +36807,8 @@ declare namespace Enum {
         export const Float: Float;
         /**
          * **Deprecated:**
+         *
+         * An `Instance` reference field.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Instance)
          */
@@ -32572,6 +36821,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * A `Random` field.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Random)
          */
         export interface Random extends globalThis.EnumItem {
@@ -32582,6 +36833,8 @@ declare namespace Enum {
         export const Random: Random;
         /**
          * **Deprecated:**
+         *
+         * A `Vector2` field.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Vector2)
          */
@@ -32594,6 +36847,8 @@ declare namespace Enum {
         /**
          * **Deprecated:**
          *
+         * A `Vector3` field.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#Vector3)
          */
         export interface Vector3 extends globalThis.EnumItem {
@@ -32604,6 +36859,8 @@ declare namespace Enum {
         export const Vector3: Vector3;
         /**
          * **Deprecated:**
+         *
+         * An invalid or unrecognized field type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateObjectFieldType#INVALID)
          */
@@ -32618,6 +36875,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StateObjectFieldType | undefined;
     }
     export type StateObjectFieldType = StateObjectFieldType.Boolean | StateObjectFieldType.CFrame | StateObjectFieldType.Color3 | StateObjectFieldType.Float | StateObjectFieldType.Instance | StateObjectFieldType.Random | StateObjectFieldType.Vector2 | StateObjectFieldType.Vector3 | StateObjectFieldType.INVALID;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateReferenceFrame)
+     */
+    export namespace StateReferenceFrame {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateReferenceFrame#CurrentState)
+         */
+        export interface CurrentState extends globalThis.EnumItem {
+            Name: "CurrentState";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.StateReferenceFrame;
+        }
+        export const CurrentState: CurrentState;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateReferenceFrame#PreviousState)
+         */
+        export interface PreviousState extends globalThis.EnumItem {
+            Name: "PreviousState";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.StateReferenceFrame;
+        }
+        export const PreviousState: PreviousState;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StateReferenceFrame#LastObservedState)
+         */
+        export interface LastObservedState extends globalThis.EnumItem {
+            Name: "LastObservedState";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.StateReferenceFrame;
+        }
+        export const LastObservedState: LastObservedState;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StateReferenceFrame>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StateReferenceFrame | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StateReferenceFrame | undefined;
+    }
+    export type StateReferenceFrame = StateReferenceFrame.CurrentState | StateReferenceFrame.PreviousState | StateReferenceFrame.LastObservedState;
     /**
      * **Deprecated:** This enum is deprecated as it was only used by deprecated methods and events. It should not be used in new work.
      *
@@ -33057,10 +37350,14 @@ declare namespace Enum {
     }
     export type StudioCaptureBufferStatus = StudioCaptureBufferStatus.NotStarted | StudioCaptureBufferStatus.Pending | StudioCaptureBufferStatus.Ready | StudioCaptureBufferStatus.Error;
     /**
+     * Specifies the pixel format of the image buffer stored in a `StudioScreenshotCapture` object.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioCaptureScreenshotFormat)
      */
     export namespace StudioCaptureScreenshotFormat {
         /**
+         * The buffer contains raw, uncompressed RGBA pixel data with 8 bits per channel (4 bytes per pixel).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioCaptureScreenshotFormat#RGBA8)
          */
         export interface RGBA8 extends globalThis.EnumItem {
@@ -33070,6 +37367,8 @@ declare namespace Enum {
         }
         export const RGBA8: RGBA8;
         /**
+         * The buffer contains a complete PNG-encoded image.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioCaptureScreenshotFormat#PNG)
          */
         export interface PNG extends globalThis.EnumItem {
@@ -33183,10 +37482,14 @@ declare namespace Enum {
     }
     export type StudioDataModelType = StudioDataModelType.Edit | StudioDataModelType.PlayClient | StudioDataModelType.PlayServer | StudioDataModelType.Standalone | StudioDataModelType.None;
     /**
+     * Describes why a place publish or update operation failed in Roblox Studio.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioPlaceUpdateFailureReason)
      */
     export namespace StudioPlaceUpdateFailureReason {
         /**
+         * The place publish or update failed for an unspecified or generic reason.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioPlaceUpdateFailureReason#Other)
          */
         export interface Other extends globalThis.EnumItem {
@@ -33196,6 +37499,8 @@ declare namespace Enum {
         }
         export const Other: Other;
         /**
+         * The place publish failed because a Team Create server currently holds a lock on the place.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioPlaceUpdateFailureReason#TeamCreateConflict)
          */
         export interface TeamCreateConflict extends globalThis.EnumItem {
@@ -33210,10 +37515,14 @@ declare namespace Enum {
     }
     export type StudioPlaceUpdateFailureReason = StudioPlaceUpdateFailureReason.Other | StudioPlaceUpdateFailureReason.TeamCreateConflict;
     /**
+     * Color categories used to theme the Script Editor in Roblox Studio.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories)
      */
     export namespace StudioScriptEditorColorCategories {
         /**
+         * Fallback foreground color used for script text that does not match any more specific syntax category.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -33223,6 +37532,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Color applied to operator tokens such as `+`, `-`, `*`, `/`, `==`, and `..` in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Operator)
          */
         export interface Operator extends globalThis.EnumItem {
@@ -33232,6 +37543,8 @@ declare namespace Enum {
         }
         export const Operator: Operator;
         /**
+         * Color applied to numeric literal tokens in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Number)
          */
         export interface Number extends globalThis.EnumItem {
@@ -33241,6 +37554,8 @@ declare namespace Enum {
         }
         export const Number: Number;
         /**
+         * Color applied to string literal tokens, including quoted strings and long-string literals.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#String)
          */
         export interface String extends globalThis.EnumItem {
@@ -33250,6 +37565,8 @@ declare namespace Enum {
         }
         export const String: String;
         /**
+         * Color applied to comment tokens (single-line `--` and block `--[[ ]]` comments) in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Comment)
          */
         export interface Comment extends globalThis.EnumItem {
@@ -33259,6 +37576,8 @@ declare namespace Enum {
         }
         export const Comment: Comment;
         /**
+         * Color applied to Luau reserved keywords such as `if`, `then`, `else`, `do`, `end`, `return`, and `while`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Keyword)
          */
         export interface Keyword extends globalThis.EnumItem {
@@ -33268,6 +37587,8 @@ declare namespace Enum {
         }
         export const Keyword: Keyword;
         /**
+         * Color applied to Luau built-in functions and standard library identifiers in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Builtin)
          */
         export interface Builtin extends globalThis.EnumItem {
@@ -33277,6 +37598,8 @@ declare namespace Enum {
         }
         export const Builtin: Builtin;
         /**
+         * Color applied to method call identifiers in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Method)
          */
         export interface Method extends globalThis.EnumItem {
@@ -33286,6 +37609,8 @@ declare namespace Enum {
         }
         export const Method: Method;
         /**
+         * Color applied to property access identifiers (tokens following a `.` operator) in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Property)
          */
         export interface Property extends globalThis.EnumItem {
@@ -33295,6 +37620,8 @@ declare namespace Enum {
         }
         export const Property: Property;
         /**
+         * Color applied to the `nil` literal token in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Nil)
          */
         export interface Nil extends globalThis.EnumItem {
@@ -33304,6 +37631,8 @@ declare namespace Enum {
         }
         export const Nil: Nil;
         /**
+         * Foreground color used to highlight boolean literals (`true` and `false`) in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Bool)
          */
         export interface Bool extends globalThis.EnumItem {
@@ -33313,6 +37642,8 @@ declare namespace Enum {
         }
         export const Bool: Bool;
         /**
+         * Color applied to the `function` keyword token in function declarations.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Function)
          */
         export interface Function extends globalThis.EnumItem {
@@ -33322,6 +37653,8 @@ declare namespace Enum {
         }
         export const Function: Function;
         /**
+         * Color applied to the `local` keyword token in local variable and function declarations.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Local)
          */
         export interface Local extends globalThis.EnumItem {
@@ -33331,6 +37664,8 @@ declare namespace Enum {
         }
         export const Local: Local;
         /**
+         * Color applied to the `self` identifier token in method bodies.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Self)
          */
         export interface Self extends globalThis.EnumItem {
@@ -33340,6 +37675,8 @@ declare namespace Enum {
         }
         export const Self: Self;
         /**
+         * Color applied to Luau-specific type annotation keywords such as `type` and `typeof`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#LuauKeyword)
          */
         export interface LuauKeyword extends globalThis.EnumItem {
@@ -33349,6 +37686,8 @@ declare namespace Enum {
         }
         export const LuauKeyword: LuauKeyword;
         /**
+         * Color applied to the identifier that names a function in its declaration.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#FunctionName)
          */
         export interface FunctionName extends globalThis.EnumItem {
@@ -33358,6 +37697,8 @@ declare namespace Enum {
         }
         export const FunctionName: FunctionName;
         /**
+         * Color applied to `TODO` markers found inside comments in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#TODO)
          */
         export interface TODO extends globalThis.EnumItem {
@@ -33367,6 +37708,8 @@ declare namespace Enum {
         }
         export const TODO: TODO;
         /**
+         * Main background color of the Script Editor canvas.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Background)
          */
         export interface Background extends globalThis.EnumItem {
@@ -33376,6 +37719,8 @@ declare namespace Enum {
         }
         export const Background: Background;
         /**
+         * Foreground color for text within the currently selected range in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#SelectionText)
          */
         export interface SelectionText extends globalThis.EnumItem {
@@ -33385,6 +37730,8 @@ declare namespace Enum {
         }
         export const SelectionText: SelectionText;
         /**
+         * Background highlight color for the currently selected text range in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#SelectionBackground)
          */
         export interface SelectionBackground extends globalThis.EnumItem {
@@ -33394,6 +37741,8 @@ declare namespace Enum {
         }
         export const SelectionBackground: SelectionBackground;
         /**
+         * Background highlight color applied to text ranges matched by a Find or Replace operation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#FindSelectionBackground)
          */
         export interface FindSelectionBackground extends globalThis.EnumItem {
@@ -33403,6 +37752,8 @@ declare namespace Enum {
         }
         export const FindSelectionBackground: FindSelectionBackground;
         /**
+         * Background highlight color applied to all occurrences of the word under the cursor when word-highlight is active.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MatchingWordBackground)
          */
         export interface MatchingWordBackground extends globalThis.EnumItem {
@@ -33412,6 +37763,8 @@ declare namespace Enum {
         }
         export const MatchingWordBackground: MatchingWordBackground;
         /**
+         * Color used for warning-severity diagnostic markers and underlines in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Warning)
          */
         export interface Warning extends globalThis.EnumItem {
@@ -33421,6 +37774,8 @@ declare namespace Enum {
         }
         export const Warning: Warning;
         /**
+         * Color used for error-severity diagnostic markers and underlines in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Error)
          */
         export interface Error extends globalThis.EnumItem {
@@ -33430,6 +37785,8 @@ declare namespace Enum {
         }
         export const Error: Error;
         /**
+         * Color used for information-severity diagnostic markers in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Info)
          */
         export interface Info extends globalThis.EnumItem {
@@ -33439,6 +37796,8 @@ declare namespace Enum {
         }
         export const Info: Info;
         /**
+         * Color used for hint-severity diagnostic markers in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Hint)
          */
         export interface Hint extends globalThis.EnumItem {
@@ -33448,6 +37807,8 @@ declare namespace Enum {
         }
         export const Hint: Hint;
         /**
+         * Color used to render visible whitespace characters (spaces and tabs) when that display option is enabled.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Whitespace)
          */
         export interface Whitespace extends globalThis.EnumItem {
@@ -33457,6 +37818,8 @@ declare namespace Enum {
         }
         export const Whitespace: Whitespace;
         /**
+         * Background highlight color applied to the line that currently contains the text cursor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#ActiveLine)
          */
         export interface ActiveLine extends globalThis.EnumItem {
@@ -33466,6 +37829,8 @@ declare namespace Enum {
         }
         export const ActiveLine: ActiveLine;
         /**
+         * Background highlight color for the line the debugger is currently paused on.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#DebuggerCurrentLine)
          */
         export interface DebuggerCurrentLine extends globalThis.EnumItem {
@@ -33475,6 +37840,8 @@ declare namespace Enum {
         }
         export const DebuggerCurrentLine: DebuggerCurrentLine;
         /**
+         * Background highlight color for a line that caused a runtime error during a debugging session.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#DebuggerErrorLine)
          */
         export interface DebuggerErrorLine extends globalThis.EnumItem {
@@ -33484,6 +37851,8 @@ declare namespace Enum {
         }
         export const DebuggerErrorLine: DebuggerErrorLine;
         /**
+         * Color of the vertical column ruler line drawn at the configured character-width limit in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Ruler)
          */
         export interface Ruler extends globalThis.EnumItem {
@@ -33493,6 +37862,8 @@ declare namespace Enum {
         }
         export const Ruler: Ruler;
         /**
+         * Color applied to bracket characters such as `(`, `)`, `[`, `]`, `{`, and `}` in scripts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Bracket)
          */
         export interface Bracket extends globalThis.EnumItem {
@@ -33502,6 +37873,8 @@ declare namespace Enum {
         }
         export const Bracket: Bracket;
         /**
+         * Color applied to Luau type name tokens in type annotations and declarations.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#Type)
          */
         export interface Type extends globalThis.EnumItem {
@@ -33511,6 +37884,8 @@ declare namespace Enum {
         }
         export const Type: Type;
         /**
+         * Primary text color for items listed in autocomplete and context-menu popups.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuPrimaryText)
          */
         export interface MenuPrimaryText extends globalThis.EnumItem {
@@ -33520,6 +37895,8 @@ declare namespace Enum {
         }
         export const MenuPrimaryText: MenuPrimaryText;
         /**
+         * Secondary text color (for example, type annotations or documentation hints) in autocomplete popups.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuSecondaryText)
          */
         export interface MenuSecondaryText extends globalThis.EnumItem {
@@ -33529,6 +37906,8 @@ declare namespace Enum {
         }
         export const MenuSecondaryText: MenuSecondaryText;
         /**
+         * Text color of the currently highlighted item in autocomplete and context-menu popups.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuSelectedText)
          */
         export interface MenuSelectedText extends globalThis.EnumItem {
@@ -33538,6 +37917,8 @@ declare namespace Enum {
         }
         export const MenuSelectedText: MenuSelectedText;
         /**
+         * Background color for autocomplete and context-menu popups in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuBackground)
          */
         export interface MenuBackground extends globalThis.EnumItem {
@@ -33547,6 +37928,8 @@ declare namespace Enum {
         }
         export const MenuBackground: MenuBackground;
         /**
+         * Background color of the currently highlighted item in autocomplete and context-menu popups.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuSelectedBackground)
          */
         export interface MenuSelectedBackground extends globalThis.EnumItem {
@@ -33556,6 +37939,8 @@ declare namespace Enum {
         }
         export const MenuSelectedBackground: MenuSelectedBackground;
         /**
+         * Background color of the scrollbar track inside autocomplete and context-menu popups.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuScrollbarBackground)
          */
         export interface MenuScrollbarBackground extends globalThis.EnumItem {
@@ -33565,6 +37950,8 @@ declare namespace Enum {
         }
         export const MenuScrollbarBackground: MenuScrollbarBackground;
         /**
+         * Color of the scrollbar thumb (handle) inside autocomplete and context-menu popups.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuScrollbarHandle)
          */
         export interface MenuScrollbarHandle extends globalThis.EnumItem {
@@ -33574,6 +37961,8 @@ declare namespace Enum {
         }
         export const MenuScrollbarHandle: MenuScrollbarHandle;
         /**
+         * Border color for autocomplete and context-menu popups in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#MenuBorder)
          */
         export interface MenuBorder extends globalThis.EnumItem {
@@ -33583,6 +37972,8 @@ declare namespace Enum {
         }
         export const MenuBorder: MenuBorder;
         /**
+         * Background color for inline code blocks rendered in the documentation viewer panel within Studio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#DocViewCodeBackground)
          */
         export interface DocViewCodeBackground extends globalThis.EnumItem {
@@ -33592,6 +37983,8 @@ declare namespace Enum {
         }
         export const DocViewCodeBackground: DocViewCodeBackground;
         /**
+         * Text color for labels displayed in the AI Code Overlay panel.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#AICOOverlayText)
          */
         export interface AICOOverlayText extends globalThis.EnumItem {
@@ -33601,6 +37994,8 @@ declare namespace Enum {
         }
         export const AICOOverlayText: AICOOverlayText;
         /**
+         * Background color for AI Code Overlay action buttons in their default (idle) state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#AICOOverlayButtonBackground)
          */
         export interface AICOOverlayButtonBackground extends globalThis.EnumItem {
@@ -33610,6 +38005,8 @@ declare namespace Enum {
         }
         export const AICOOverlayButtonBackground: AICOOverlayButtonBackground;
         /**
+         * Background color for AI Code Overlay action buttons when the pointer hovers over them.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#AICOOverlayButtonBackgroundHover)
          */
         export interface AICOOverlayButtonBackgroundHover extends globalThis.EnumItem {
@@ -33619,6 +38016,8 @@ declare namespace Enum {
         }
         export const AICOOverlayButtonBackgroundHover: AICOOverlayButtonBackgroundHover;
         /**
+         * Background color for AI Code Overlay action buttons while they are being pressed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#AICOOverlayButtonBackgroundPressed)
          */
         export interface AICOOverlayButtonBackgroundPressed extends globalThis.EnumItem {
@@ -33628,6 +38027,8 @@ declare namespace Enum {
         }
         export const AICOOverlayButtonBackgroundPressed: AICOOverlayButtonBackgroundPressed;
         /**
+         * Color of the vertical guide lines drawn at each indentation level in the script editor gutter.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#IndentationRuler)
          */
         export interface IndentationRuler extends globalThis.EnumItem {
@@ -33636,16 +38037,38 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.StudioScriptEditorColorCategories;
         }
         export const IndentationRuler: IndentationRuler;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#ReviewableChangeAddedText)
+         */
+        export interface ReviewableChangeAddedText extends globalThis.EnumItem {
+            Name: "ReviewableChangeAddedText";
+            Value: 47;
+            EnumType: typeof globalThis.Enum.StudioScriptEditorColorCategories;
+        }
+        export const ReviewableChangeAddedText: ReviewableChangeAddedText;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorCategories#ReviewableChangeRemovedText)
+         */
+        export interface ReviewableChangeRemovedText extends globalThis.EnumItem {
+            Name: "ReviewableChangeRemovedText";
+            Value: 48;
+            EnumType: typeof globalThis.Enum.StudioScriptEditorColorCategories;
+        }
+        export const ReviewableChangeRemovedText: ReviewableChangeRemovedText;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.StudioScriptEditorColorCategories>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.StudioScriptEditorColorCategories | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.StudioScriptEditorColorCategories | undefined;
     }
-    export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin | StudioScriptEditorColorCategories.Method | StudioScriptEditorColorCategories.Property | StudioScriptEditorColorCategories.Nil | StudioScriptEditorColorCategories.Bool | StudioScriptEditorColorCategories.Function | StudioScriptEditorColorCategories.Local | StudioScriptEditorColorCategories.Self | StudioScriptEditorColorCategories.LuauKeyword | StudioScriptEditorColorCategories.FunctionName | StudioScriptEditorColorCategories.TODO | StudioScriptEditorColorCategories.Background | StudioScriptEditorColorCategories.SelectionText | StudioScriptEditorColorCategories.SelectionBackground | StudioScriptEditorColorCategories.FindSelectionBackground | StudioScriptEditorColorCategories.MatchingWordBackground | StudioScriptEditorColorCategories.Warning | StudioScriptEditorColorCategories.Error | StudioScriptEditorColorCategories.Info | StudioScriptEditorColorCategories.Hint | StudioScriptEditorColorCategories.Whitespace | StudioScriptEditorColorCategories.ActiveLine | StudioScriptEditorColorCategories.DebuggerCurrentLine | StudioScriptEditorColorCategories.DebuggerErrorLine | StudioScriptEditorColorCategories.Ruler | StudioScriptEditorColorCategories.Bracket | StudioScriptEditorColorCategories.Type | StudioScriptEditorColorCategories.MenuPrimaryText | StudioScriptEditorColorCategories.MenuSecondaryText | StudioScriptEditorColorCategories.MenuSelectedText | StudioScriptEditorColorCategories.MenuBackground | StudioScriptEditorColorCategories.MenuSelectedBackground | StudioScriptEditorColorCategories.MenuScrollbarBackground | StudioScriptEditorColorCategories.MenuScrollbarHandle | StudioScriptEditorColorCategories.MenuBorder | StudioScriptEditorColorCategories.DocViewCodeBackground | StudioScriptEditorColorCategories.AICOOverlayText | StudioScriptEditorColorCategories.AICOOverlayButtonBackground | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundHover | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundPressed | StudioScriptEditorColorCategories.IndentationRuler;
+    export type StudioScriptEditorColorCategories = StudioScriptEditorColorCategories.Default | StudioScriptEditorColorCategories.Operator | StudioScriptEditorColorCategories.Number | StudioScriptEditorColorCategories.String | StudioScriptEditorColorCategories.Comment | StudioScriptEditorColorCategories.Keyword | StudioScriptEditorColorCategories.Builtin | StudioScriptEditorColorCategories.Method | StudioScriptEditorColorCategories.Property | StudioScriptEditorColorCategories.Nil | StudioScriptEditorColorCategories.Bool | StudioScriptEditorColorCategories.Function | StudioScriptEditorColorCategories.Local | StudioScriptEditorColorCategories.Self | StudioScriptEditorColorCategories.LuauKeyword | StudioScriptEditorColorCategories.FunctionName | StudioScriptEditorColorCategories.TODO | StudioScriptEditorColorCategories.Background | StudioScriptEditorColorCategories.SelectionText | StudioScriptEditorColorCategories.SelectionBackground | StudioScriptEditorColorCategories.FindSelectionBackground | StudioScriptEditorColorCategories.MatchingWordBackground | StudioScriptEditorColorCategories.Warning | StudioScriptEditorColorCategories.Error | StudioScriptEditorColorCategories.Info | StudioScriptEditorColorCategories.Hint | StudioScriptEditorColorCategories.Whitespace | StudioScriptEditorColorCategories.ActiveLine | StudioScriptEditorColorCategories.DebuggerCurrentLine | StudioScriptEditorColorCategories.DebuggerErrorLine | StudioScriptEditorColorCategories.Ruler | StudioScriptEditorColorCategories.Bracket | StudioScriptEditorColorCategories.Type | StudioScriptEditorColorCategories.MenuPrimaryText | StudioScriptEditorColorCategories.MenuSecondaryText | StudioScriptEditorColorCategories.MenuSelectedText | StudioScriptEditorColorCategories.MenuBackground | StudioScriptEditorColorCategories.MenuSelectedBackground | StudioScriptEditorColorCategories.MenuScrollbarBackground | StudioScriptEditorColorCategories.MenuScrollbarHandle | StudioScriptEditorColorCategories.MenuBorder | StudioScriptEditorColorCategories.DocViewCodeBackground | StudioScriptEditorColorCategories.AICOOverlayText | StudioScriptEditorColorCategories.AICOOverlayButtonBackground | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundHover | StudioScriptEditorColorCategories.AICOOverlayButtonBackgroundPressed | StudioScriptEditorColorCategories.IndentationRuler | StudioScriptEditorColorCategories.ReviewableChangeAddedText | StudioScriptEditorColorCategories.ReviewableChangeRemovedText;
     /**
+     * Specifies a script editor syntax-color preset in Roblox Studio.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorPresets)
      */
     export namespace StudioScriptEditorColorPresets {
         /**
+         * Uses Roblox Studio's default script editor colors.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorPresets#RobloxDefault)
          */
         export interface RobloxDefault extends globalThis.EnumItem {
@@ -33655,6 +38078,8 @@ declare namespace Enum {
         }
         export const RobloxDefault: RobloxDefault;
         /**
+         * Uses the first alternate script editor color preset.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorPresets#Extra1)
          */
         export interface Extra1 extends globalThis.EnumItem {
@@ -33664,6 +38089,8 @@ declare namespace Enum {
         }
         export const Extra1: Extra1;
         /**
+         * Uses the second alternate script editor color preset.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorPresets#Extra2)
          */
         export interface Extra2 extends globalThis.EnumItem {
@@ -33673,6 +38100,8 @@ declare namespace Enum {
         }
         export const Extra2: Extra2;
         /**
+         * Uses the creator's custom script editor colors.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioScriptEditorColorPresets#Custom)
          */
         export interface Custom extends globalThis.EnumItem {
@@ -33687,6 +38116,8 @@ declare namespace Enum {
     }
     export type StudioScriptEditorColorPresets = StudioScriptEditorColorPresets.RobloxDefault | StudioScriptEditorColorPresets.Extra1 | StudioScriptEditorColorPresets.Extra2 | StudioScriptEditorColorPresets.Custom;
     /**
+     * An enum that lists color roles used by Studio themes, passed to `StudioTheme:GetColor()` to retrieve the correct theme color for a given UI element in a plugin.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor)
      */
     export namespace StudioStyleGuideColor {
@@ -33735,6 +38166,8 @@ declare namespace Enum {
         }
         export const Tooltip: Tooltip;
         /**
+         * The background color of message box and dialog notification panels.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Notification)
          */
         export interface Notification extends globalThis.EnumItem {
@@ -33788,6 +38221,8 @@ declare namespace Enum {
         }
         export const Tab: Tab;
         /**
+         * The default background color of filter buttons in the Script Analysis widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#FilterButtonDefault)
          */
         export interface FilterButtonDefault extends globalThis.EnumItem {
@@ -33797,6 +38232,8 @@ declare namespace Enum {
         }
         export const FilterButtonDefault: FilterButtonDefault;
         /**
+         * The background color of filter buttons in the Script Analysis widget when hovered.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#FilterButtonHover)
          */
         export interface FilterButtonHover extends globalThis.EnumItem {
@@ -33806,6 +38243,8 @@ declare namespace Enum {
         }
         export const FilterButtonHover: FilterButtonHover;
         /**
+         * The background color of filter buttons in the Script Analysis widget when they are in a checked (active) state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#FilterButtonChecked)
          */
         export interface FilterButtonChecked extends globalThis.EnumItem {
@@ -33815,6 +38254,8 @@ declare namespace Enum {
         }
         export const FilterButtonChecked: FilterButtonChecked;
         /**
+         * The accent color drawn on the top and left edges of filter buttons in the Script Analysis widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#FilterButtonAccent)
          */
         export interface FilterButtonAccent extends globalThis.EnumItem {
@@ -33824,6 +38265,8 @@ declare namespace Enum {
         }
         export const FilterButtonAccent: FilterButtonAccent;
         /**
+         * The border color of filter buttons in the Script Analysis widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#FilterButtonBorder)
          */
         export interface FilterButtonBorder extends globalThis.EnumItem {
@@ -33833,6 +38276,8 @@ declare namespace Enum {
         }
         export const FilterButtonBorder: FilterButtonBorder;
         /**
+         * The border color of filter buttons in the Script Analysis widget when they are hovered or checked.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#FilterButtonBorderAlt)
          */
         export interface FilterButtonBorderAlt extends globalThis.EnumItem {
@@ -33919,6 +38364,8 @@ declare namespace Enum {
         }
         export const InputFieldBackground: InputFieldBackground;
         /**
+         * The background color of items listed in the Explorer and Properties windows.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Item)
          */
         export interface Item extends globalThis.EnumItem {
@@ -33928,6 +38375,8 @@ declare namespace Enum {
         }
         export const Item: Item;
         /**
+         * The background color of row items in table views such as the Game Settings window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#TableItem)
          */
         export interface TableItem extends globalThis.EnumItem {
@@ -33937,6 +38386,8 @@ declare namespace Enum {
         }
         export const TableItem: TableItem;
         /**
+         * The background color of category header items in the Properties widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#CategoryItem)
          */
         export interface CategoryItem extends globalThis.EnumItem {
@@ -34001,6 +38452,8 @@ declare namespace Enum {
         }
         export const ColorPickerFrame: ColorPickerFrame;
         /**
+         * The color of the current-item marker, such as the blue selection indicator in the logout menu in the Light theme.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#CurrentMarker)
          */
         export interface CurrentMarker extends globalThis.EnumItem {
@@ -34021,6 +38474,8 @@ declare namespace Enum {
         }
         export const Border: Border;
         /**
+         * The color used for drop-shadow decorations on floating panels and menus.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DropShadow)
          */
         export interface DropShadow extends globalThis.EnumItem {
@@ -34041,6 +38496,8 @@ declare namespace Enum {
         }
         export const Shadow: Shadow;
         /**
+         * The light role color from the Qt widget palette, used for the lightest shading of 3D widget effects.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Light)
          */
         export interface Light extends globalThis.EnumItem {
@@ -34050,6 +38507,8 @@ declare namespace Enum {
         }
         export const Light: Light;
         /**
+         * The dark role color from the Qt widget palette, used for the darkest shading of 3D widget effects.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Dark)
          */
         export interface Dark extends globalThis.EnumItem {
@@ -34059,6 +38518,8 @@ declare namespace Enum {
         }
         export const Dark: Dark;
         /**
+         * The mid role color from the Qt widget palette, used between the button and dark shading for 3D widget effects.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Mid)
          */
         export interface Mid extends globalThis.EnumItem {
@@ -34068,6 +38529,8 @@ declare namespace Enum {
         }
         export const Mid: Mid;
         /**
+         * The primary text color used throughout Studio's UI.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#MainText)
          */
         export interface MainText extends globalThis.EnumItem {
@@ -34077,6 +38540,8 @@ declare namespace Enum {
         }
         export const MainText: MainText;
         /**
+         * The color of secondary text such as status labels shown in the Team Create widget for offline users and place owners.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#SubText)
          */
         export interface SubText extends globalThis.EnumItem {
@@ -34086,6 +38551,8 @@ declare namespace Enum {
         }
         export const SubText: SubText;
         /**
+         * The text color displayed in dock widget title bars and Ribbon tabs.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#TitlebarText)
          */
         export interface TitlebarText extends globalThis.EnumItem {
@@ -34095,6 +38562,8 @@ declare namespace Enum {
         }
         export const TitlebarText: TitlebarText;
         /**
+         * The color of text displayed inside input fields and other high-contrast contexts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#BrightText)
          */
         export interface BrightText extends globalThis.EnumItem {
@@ -34104,6 +38573,8 @@ declare namespace Enum {
         }
         export const BrightText: BrightText;
         /**
+         * The color of placeholder or dimmed text shown in empty input fields.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DimmedText)
          */
         export interface DimmedText extends globalThis.EnumItem {
@@ -34113,6 +38584,8 @@ declare namespace Enum {
         }
         export const DimmedText: DimmedText;
         /**
+         * The color of hyperlink text in Studio panels and documentation views.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#LinkText)
          */
         export interface LinkText extends globalThis.EnumItem {
@@ -34122,6 +38595,8 @@ declare namespace Enum {
         }
         export const LinkText: LinkText;
         /**
+         * The color of warning messages, such as those displayed in the Output window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#WarningText)
          */
         export interface WarningText extends globalThis.EnumItem {
@@ -34131,6 +38606,8 @@ declare namespace Enum {
         }
         export const WarningText: WarningText;
         /**
+         * The color of error messages, such as those displayed in the Output window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ErrorText)
          */
         export interface ErrorText extends globalThis.EnumItem {
@@ -34140,6 +38617,8 @@ declare namespace Enum {
         }
         export const ErrorText: ErrorText;
         /**
+         * The color of informational messages, such as those displayed in the Output window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#InfoText)
          */
         export interface InfoText extends globalThis.EnumItem {
@@ -34149,6 +38628,8 @@ declare namespace Enum {
         }
         export const InfoText: InfoText;
         /**
+         * The color used to display sensitive information text, such as certain messages in the Output window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#SensitiveText)
          */
         export interface SensitiveText extends globalThis.EnumItem {
@@ -34158,6 +38639,8 @@ declare namespace Enum {
         }
         export const SensitiveText: SensitiveText;
         /**
+         * The background color of the Script Editor's side gutter, which displays fold icons and breakpoint markers.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptSideWidget)
          */
         export interface ScriptSideWidget extends globalThis.EnumItem {
@@ -34167,6 +38650,8 @@ declare namespace Enum {
         }
         export const ScriptSideWidget: ScriptSideWidget;
         /**
+         * The background color of the Script Editor canvas.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptBackground)
          */
         export interface ScriptBackground extends globalThis.EnumItem {
@@ -34176,6 +38661,8 @@ declare namespace Enum {
         }
         export const ScriptBackground: ScriptBackground;
         /**
+         * The default text color for unclassified tokens in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptText)
          */
         export interface ScriptText extends globalThis.EnumItem {
@@ -34185,6 +38672,8 @@ declare namespace Enum {
         }
         export const ScriptText: ScriptText;
         /**
+         * The foreground text color of the active text selection in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptSelectionText)
          */
         export interface ScriptSelectionText extends globalThis.EnumItem {
@@ -34194,6 +38683,8 @@ declare namespace Enum {
         }
         export const ScriptSelectionText: ScriptSelectionText;
         /**
+         * The background color of the active text selection in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptSelectionBackground)
          */
         export interface ScriptSelectionBackground extends globalThis.EnumItem {
@@ -34203,6 +38694,8 @@ declare namespace Enum {
         }
         export const ScriptSelectionBackground: ScriptSelectionBackground;
         /**
+         * The background color of text matched by the current find query in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptFindSelectionBackground)
          */
         export interface ScriptFindSelectionBackground extends globalThis.EnumItem {
@@ -34212,6 +38705,8 @@ declare namespace Enum {
         }
         export const ScriptFindSelectionBackground: ScriptFindSelectionBackground;
         /**
+         * The background color of all occurrences of the word under the cursor highlighted as matching selections in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptMatchingWordSelectionBackground)
          */
         export interface ScriptMatchingWordSelectionBackground extends globalThis.EnumItem {
@@ -34221,6 +38716,8 @@ declare namespace Enum {
         }
         export const ScriptMatchingWordSelectionBackground: ScriptMatchingWordSelectionBackground;
         /**
+         * The color of operator symbols in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptOperator)
          */
         export interface ScriptOperator extends globalThis.EnumItem {
@@ -34230,6 +38727,8 @@ declare namespace Enum {
         }
         export const ScriptOperator: ScriptOperator;
         /**
+         * The color of numeric literals in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptNumber)
          */
         export interface ScriptNumber extends globalThis.EnumItem {
@@ -34239,6 +38738,8 @@ declare namespace Enum {
         }
         export const ScriptNumber: ScriptNumber;
         /**
+         * The color of string literals in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptString)
          */
         export interface ScriptString extends globalThis.EnumItem {
@@ -34248,6 +38749,8 @@ declare namespace Enum {
         }
         export const ScriptString: ScriptString;
         /**
+         * The color of comment text in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptComment)
          */
         export interface ScriptComment extends globalThis.EnumItem {
@@ -34257,6 +38760,8 @@ declare namespace Enum {
         }
         export const ScriptComment: ScriptComment;
         /**
+         * The color of Lua reserved keywords that don't have a more specific color role in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptKeyword)
          */
         export interface ScriptKeyword extends globalThis.EnumItem {
@@ -34266,6 +38771,8 @@ declare namespace Enum {
         }
         export const ScriptKeyword: ScriptKeyword;
         /**
+         * The color of recognized built-in global identifiers in the Script Editor, including non-function globals.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptBuiltInFunction)
          */
         export interface ScriptBuiltInFunction extends globalThis.EnumItem {
@@ -34275,6 +38782,8 @@ declare namespace Enum {
         }
         export const ScriptBuiltInFunction: ScriptBuiltInFunction;
         /**
+         * The color of warning markers and underlines in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptWarning)
          */
         export interface ScriptWarning extends globalThis.EnumItem {
@@ -34284,6 +38793,8 @@ declare namespace Enum {
         }
         export const ScriptWarning: ScriptWarning;
         /**
+         * The color of error markers and underlines in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptError)
          */
         export interface ScriptError extends globalThis.EnumItem {
@@ -34293,6 +38804,8 @@ declare namespace Enum {
         }
         export const ScriptError: ScriptError;
         /**
+         * The color of informational diagnostic markers in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptInformation)
          */
         export interface ScriptInformation extends globalThis.EnumItem {
@@ -34302,6 +38815,8 @@ declare namespace Enum {
         }
         export const ScriptInformation: ScriptInformation;
         /**
+         * The color of hint diagnostic underlines and scrollbar markers in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptHint)
          */
         export interface ScriptHint extends globalThis.EnumItem {
@@ -34311,6 +38826,8 @@ declare namespace Enum {
         }
         export const ScriptHint: ScriptHint;
         /**
+         * The color of rendered whitespace characters (spaces and tabs) when whitespace display is enabled in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptWhitespace)
          */
         export interface ScriptWhitespace extends globalThis.EnumItem {
@@ -34320,6 +38837,8 @@ declare namespace Enum {
         }
         export const ScriptWhitespace: ScriptWhitespace;
         /**
+         * The color of the column ruler line displayed in the Script Editor when the ruler is enabled.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptRuler)
          */
         export interface ScriptRuler extends globalThis.EnumItem {
@@ -34329,6 +38848,8 @@ declare namespace Enum {
         }
         export const ScriptRuler: ScriptRuler;
         /**
+         * The background color of inline code blocks in the Script Editor's documentation view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DocViewCodeBackground)
          */
         export interface DocViewCodeBackground extends globalThis.EnumItem {
@@ -34338,6 +38859,8 @@ declare namespace Enum {
         }
         export const DocViewCodeBackground: DocViewCodeBackground;
         /**
+         * The highlight color applied to the line currently paused on in the script debugger.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DebuggerCurrentLine)
          */
         export interface DebuggerCurrentLine extends globalThis.EnumItem {
@@ -34347,6 +38870,8 @@ declare namespace Enum {
         }
         export const DebuggerCurrentLine: DebuggerCurrentLine;
         /**
+         * The highlight color applied to a line that caused a debugger error or runtime exception.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DebuggerErrorLine)
          */
         export interface DebuggerErrorLine extends globalThis.EnumItem {
@@ -34356,6 +38881,8 @@ declare namespace Enum {
         }
         export const DebuggerErrorLine: DebuggerErrorLine;
         /**
+         * The text color of the file path displayed in the header row of a diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffFilePathText)
          */
         export interface DiffFilePathText extends globalThis.EnumItem {
@@ -34365,6 +38892,8 @@ declare namespace Enum {
         }
         export const DiffFilePathText: DiffFilePathText;
         /**
+         * The text color of hunk-info lines (the `@@` header rows) in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextHunkInfo)
          */
         export interface DiffTextHunkInfo extends globalThis.EnumItem {
@@ -34374,6 +38903,8 @@ declare namespace Enum {
         }
         export const DiffTextHunkInfo: DiffTextHunkInfo;
         /**
+         * The text color of unchanged context lines in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextNoChange)
          */
         export interface DiffTextNoChange extends globalThis.EnumItem {
@@ -34383,6 +38914,8 @@ declare namespace Enum {
         }
         export const DiffTextNoChange: DiffTextNoChange;
         /**
+         * The text color of added lines in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextAddition)
          */
         export interface DiffTextAddition extends globalThis.EnumItem {
@@ -34392,6 +38925,8 @@ declare namespace Enum {
         }
         export const DiffTextAddition: DiffTextAddition;
         /**
+         * The text color of deleted lines in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextDeletion)
          */
         export interface DiffTextDeletion extends globalThis.EnumItem {
@@ -34401,6 +38936,8 @@ declare namespace Enum {
         }
         export const DiffTextDeletion: DiffTextDeletion;
         /**
+         * The background color of hunk-separator rows in the diff view text area.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextSeparatorBackground)
          */
         export interface DiffTextSeparatorBackground extends globalThis.EnumItem {
@@ -34410,6 +38947,8 @@ declare namespace Enum {
         }
         export const DiffTextSeparatorBackground: DiffTextSeparatorBackground;
         /**
+         * The background color of unchanged context lines in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextNoChangeBackground)
          */
         export interface DiffTextNoChangeBackground extends globalThis.EnumItem {
@@ -34419,6 +38958,8 @@ declare namespace Enum {
         }
         export const DiffTextNoChangeBackground: DiffTextNoChangeBackground;
         /**
+         * The background color of added lines in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextAdditionBackground)
          */
         export interface DiffTextAdditionBackground extends globalThis.EnumItem {
@@ -34428,6 +38969,8 @@ declare namespace Enum {
         }
         export const DiffTextAdditionBackground: DiffTextAdditionBackground;
         /**
+         * The background color of deleted lines in the diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffTextDeletionBackground)
          */
         export interface DiffTextDeletionBackground extends globalThis.EnumItem {
@@ -34437,6 +38980,8 @@ declare namespace Enum {
         }
         export const DiffTextDeletionBackground: DiffTextDeletionBackground;
         /**
+         * The text color of line numbers in the diff view gutter.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNum)
          */
         export interface DiffLineNum extends globalThis.EnumItem {
@@ -34446,6 +38991,8 @@ declare namespace Enum {
         }
         export const DiffLineNum: DiffLineNum;
         /**
+         * The background color of line-number cells in the diff gutter for hunk-separator rows.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNumSeparatorBackground)
          */
         export interface DiffLineNumSeparatorBackground extends globalThis.EnumItem {
@@ -34455,6 +39002,8 @@ declare namespace Enum {
         }
         export const DiffLineNumSeparatorBackground: DiffLineNumSeparatorBackground;
         /**
+         * The background color of line-number cells in the diff gutter for unchanged lines.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNumNoChangeBackground)
          */
         export interface DiffLineNumNoChangeBackground extends globalThis.EnumItem {
@@ -34464,6 +39013,8 @@ declare namespace Enum {
         }
         export const DiffLineNumNoChangeBackground: DiffLineNumNoChangeBackground;
         /**
+         * The background color of line-number cells in the diff gutter for added lines.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNumAdditionBackground)
          */
         export interface DiffLineNumAdditionBackground extends globalThis.EnumItem {
@@ -34473,6 +39024,8 @@ declare namespace Enum {
         }
         export const DiffLineNumAdditionBackground: DiffLineNumAdditionBackground;
         /**
+         * The background color of line-number cells in the diff gutter for deleted lines.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNumDeletionBackground)
          */
         export interface DiffLineNumDeletionBackground extends globalThis.EnumItem {
@@ -34482,6 +39035,8 @@ declare namespace Enum {
         }
         export const DiffLineNumDeletionBackground: DiffLineNumDeletionBackground;
         /**
+         * The background color of the file-path header row in a diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffFilePathBackground)
          */
         export interface DiffFilePathBackground extends globalThis.EnumItem {
@@ -34491,6 +39046,8 @@ declare namespace Enum {
         }
         export const DiffFilePathBackground: DiffFilePathBackground;
         /**
+         * The border color of the file-path header row in a diff view.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffFilePathBorder)
          */
         export interface DiffFilePathBorder extends globalThis.EnumItem {
@@ -34500,6 +39057,8 @@ declare namespace Enum {
         }
         export const DiffFilePathBorder: DiffFilePathBorder;
         /**
+         * The background color of incoming messages in the Studio chat widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ChatIncomingBgColor)
          */
         export interface ChatIncomingBgColor extends globalThis.EnumItem {
@@ -34509,6 +39068,8 @@ declare namespace Enum {
         }
         export const ChatIncomingBgColor: ChatIncomingBgColor;
         /**
+         * The text color of incoming messages in the Studio chat widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ChatIncomingTextColor)
          */
         export interface ChatIncomingTextColor extends globalThis.EnumItem {
@@ -34518,6 +39079,8 @@ declare namespace Enum {
         }
         export const ChatIncomingTextColor: ChatIncomingTextColor;
         /**
+         * The background color of outgoing messages in the Studio chat widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ChatOutgoingBgColor)
          */
         export interface ChatOutgoingBgColor extends globalThis.EnumItem {
@@ -34527,6 +39090,8 @@ declare namespace Enum {
         }
         export const ChatOutgoingBgColor: ChatOutgoingBgColor;
         /**
+         * The text color of outgoing messages in the Studio chat widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ChatOutgoingTextColor)
          */
         export interface ChatOutgoingTextColor extends globalThis.EnumItem {
@@ -34536,6 +39101,8 @@ declare namespace Enum {
         }
         export const ChatOutgoingTextColor: ChatOutgoingTextColor;
         /**
+         * The color used to display moderated or filtered messages in the Studio chat widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ChatModeratedMessageColor)
          */
         export interface ChatModeratedMessageColor extends globalThis.EnumItem {
@@ -34545,6 +39112,8 @@ declare namespace Enum {
         }
         export const ChatModeratedMessageColor: ChatModeratedMessageColor;
         /**
+         * The color of separator lines that divide sections within Studio panels.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Separator)
          */
         export interface Separator extends globalThis.EnumItem {
@@ -34554,6 +39123,8 @@ declare namespace Enum {
         }
         export const Separator: Separator;
         /**
+         * The border color of standard clickable buttons.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ButtonBorder)
          */
         export interface ButtonBorder extends globalThis.EnumItem {
@@ -34563,6 +39134,8 @@ declare namespace Enum {
         }
         export const ButtonBorder: ButtonBorder;
         /**
+         * The label text color of standard clickable buttons.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ButtonText)
          */
         export interface ButtonText extends globalThis.EnumItem {
@@ -34572,6 +39145,8 @@ declare namespace Enum {
         }
         export const ButtonText: ButtonText;
         /**
+         * The border color of text input fields throughout Studio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#InputFieldBorder)
          */
         export interface InputFieldBorder extends globalThis.EnumItem {
@@ -34581,6 +39156,8 @@ declare namespace Enum {
         }
         export const InputFieldBorder: InputFieldBorder;
         /**
+         * The background color of checkbox and checked-state input fields.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#CheckedFieldBackground)
          */
         export interface CheckedFieldBackground extends globalThis.EnumItem {
@@ -34590,6 +39167,8 @@ declare namespace Enum {
         }
         export const CheckedFieldBackground: CheckedFieldBackground;
         /**
+         * The border color of checkbox and checked-state input fields.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#CheckedFieldBorder)
          */
         export interface CheckedFieldBorder extends globalThis.EnumItem {
@@ -34599,6 +39178,8 @@ declare namespace Enum {
         }
         export const CheckedFieldBorder: CheckedFieldBorder;
         /**
+         * The color of the check mark or indicator drawn inside a checked input field.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#CheckedFieldIndicator)
          */
         export interface CheckedFieldIndicator extends globalThis.EnumItem {
@@ -34608,6 +39189,8 @@ declare namespace Enum {
         }
         export const CheckedFieldIndicator: CheckedFieldIndicator;
         /**
+         * The background color of section header rows in Studio widgets such as the Properties window.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#HeaderSection)
          */
         export interface HeaderSection extends globalThis.EnumItem {
@@ -34617,6 +39200,8 @@ declare namespace Enum {
         }
         export const HeaderSection: HeaderSection;
         /**
+         * The midlight role color from the Qt widget palette, used between the button and light shading for 3D widget effects.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#Midlight)
          */
         export interface Midlight extends globalThis.EnumItem {
@@ -34637,6 +39222,8 @@ declare namespace Enum {
         }
         export const StatusBar: StatusBar;
         /**
+         * The background color of standard buttons in modal dialog boxes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DialogButton)
          */
         export interface DialogButton extends globalThis.EnumItem {
@@ -34646,6 +39233,8 @@ declare namespace Enum {
         }
         export const DialogButton: DialogButton;
         /**
+         * The label text color of standard buttons in modal dialog boxes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DialogButtonText)
          */
         export interface DialogButtonText extends globalThis.EnumItem {
@@ -34655,6 +39244,8 @@ declare namespace Enum {
         }
         export const DialogButtonText: DialogButtonText;
         /**
+         * The border color of standard buttons in modal dialog boxes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DialogButtonBorder)
          */
         export interface DialogButtonBorder extends globalThis.EnumItem {
@@ -34664,6 +39255,8 @@ declare namespace Enum {
         }
         export const DialogButtonBorder: DialogButtonBorder;
         /**
+         * The background color of the primary action button (such as OK or Save) in modal dialog boxes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DialogMainButton)
          */
         export interface DialogMainButton extends globalThis.EnumItem {
@@ -34673,6 +39266,8 @@ declare namespace Enum {
         }
         export const DialogMainButton: DialogMainButton;
         /**
+         * The label text color of the primary action button in modal dialog boxes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DialogMainButtonText)
          */
         export interface DialogMainButtonText extends globalThis.EnumItem {
@@ -34682,6 +39277,8 @@ declare namespace Enum {
         }
         export const DialogMainButtonText: DialogMainButtonText;
         /**
+         * The background color of the warning bar that appears at the top of a widget to surface important notices.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#InfoBarWarningBackground)
          */
         export interface InfoBarWarningBackground extends globalThis.EnumItem {
@@ -34691,6 +39288,8 @@ declare namespace Enum {
         }
         export const InfoBarWarningBackground: InfoBarWarningBackground;
         /**
+         * The text color of warning messages inside the info bar warning strip.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#InfoBarWarningText)
          */
         export interface InfoBarWarningText extends globalThis.EnumItem {
@@ -34700,6 +39299,8 @@ declare namespace Enum {
         }
         export const InfoBarWarningText: InfoBarWarningText;
         /**
+         * The background highlight color applied to the line containing the cursor in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptEditorCurrentLine)
          */
         export interface ScriptEditorCurrentLine extends globalThis.EnumItem {
@@ -34709,6 +39310,8 @@ declare namespace Enum {
         }
         export const ScriptEditorCurrentLine: ScriptEditorCurrentLine;
         /**
+         * The color of function-call target identifiers in the Script Editor, including bare functions and indexed methods.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptMethod)
          */
         export interface ScriptMethod extends globalThis.EnumItem {
@@ -34718,6 +39321,8 @@ declare namespace Enum {
         }
         export const ScriptMethod: ScriptMethod;
         /**
+         * The color of property name identifiers in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptProperty)
          */
         export interface ScriptProperty extends globalThis.EnumItem {
@@ -34727,6 +39332,8 @@ declare namespace Enum {
         }
         export const ScriptProperty: ScriptProperty;
         /**
+         * The color of the `nil` literal in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptNil)
          */
         export interface ScriptNil extends globalThis.EnumItem {
@@ -34736,6 +39343,8 @@ declare namespace Enum {
         }
         export const ScriptNil: ScriptNil;
         /**
+         * The color of boolean literals (`true` and `false`) in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptBool)
          */
         export interface ScriptBool extends globalThis.EnumItem {
@@ -34745,6 +39354,8 @@ declare namespace Enum {
         }
         export const ScriptBool: ScriptBool;
         /**
+         * The color of the `function` keyword token in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptFunction)
          */
         export interface ScriptFunction extends globalThis.EnumItem {
@@ -34754,6 +39365,8 @@ declare namespace Enum {
         }
         export const ScriptFunction: ScriptFunction;
         /**
+         * The color of the `local` keyword in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptLocal)
          */
         export interface ScriptLocal extends globalThis.EnumItem {
@@ -34763,6 +39376,8 @@ declare namespace Enum {
         }
         export const ScriptLocal: ScriptLocal;
         /**
+         * The color of the `self` identifier in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptSelf)
          */
         export interface ScriptSelf extends globalThis.EnumItem {
@@ -34772,6 +39387,8 @@ declare namespace Enum {
         }
         export const ScriptSelf: ScriptSelf;
         /**
+         * The color of Luau-specific keywords (such as type annotation keywords) in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptLuauKeyword)
          */
         export interface ScriptLuauKeyword extends globalThis.EnumItem {
@@ -34781,6 +39398,8 @@ declare namespace Enum {
         }
         export const ScriptLuauKeyword: ScriptLuauKeyword;
         /**
+         * The color of function name identifiers in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptFunctionName)
          */
         export interface ScriptFunctionName extends globalThis.EnumItem {
@@ -34790,6 +39409,8 @@ declare namespace Enum {
         }
         export const ScriptFunctionName: ScriptFunctionName;
         /**
+         * The highlight color applied to TODO annotations in script comments.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptTodo)
          */
         export interface ScriptTodo extends globalThis.EnumItem {
@@ -34799,6 +39420,8 @@ declare namespace Enum {
         }
         export const ScriptTodo: ScriptTodo;
         /**
+         * The color of parentheses, braces, and square brackets in the Script Editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#ScriptBracket)
          */
         export interface ScriptBracket extends globalThis.EnumItem {
@@ -34808,6 +39431,8 @@ declare namespace Enum {
         }
         export const ScriptBracket: ScriptBracket;
         /**
+         * The color of the attribute cog icon shown in the Properties widget.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#AttributeCog)
          */
         export interface AttributeCog extends globalThis.EnumItem {
@@ -34817,6 +39442,8 @@ declare namespace Enum {
         }
         export const AttributeCog: AttributeCog;
         /**
+         * The text color used inside the AI companion (AICO) overlay panel.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#AICOOverlayText)
          */
         export interface AICOOverlayText extends globalThis.EnumItem {
@@ -34826,6 +39453,8 @@ declare namespace Enum {
         }
         export const AICOOverlayText: AICOOverlayText;
         /**
+         * The background color of buttons in the AI companion (AICO) overlay panel.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#AICOOverlayButtonBackground)
          */
         export interface AICOOverlayButtonBackground extends globalThis.EnumItem {
@@ -34835,6 +39464,8 @@ declare namespace Enum {
         }
         export const AICOOverlayButtonBackground: AICOOverlayButtonBackground;
         /**
+         * The background color of buttons in the AI companion (AICO) overlay panel when hovered.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#AICOOverlayButtonBackgroundHover)
          */
         export interface AICOOverlayButtonBackgroundHover extends globalThis.EnumItem {
@@ -34844,6 +39475,8 @@ declare namespace Enum {
         }
         export const AICOOverlayButtonBackgroundHover: AICOOverlayButtonBackgroundHover;
         /**
+         * The background color of buttons in the AI companion (AICO) overlay panel when pressed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#AICOOverlayButtonBackgroundPressed)
          */
         export interface AICOOverlayButtonBackgroundPressed extends globalThis.EnumItem {
@@ -34853,6 +39486,8 @@ declare namespace Enum {
         }
         export const AICOOverlayButtonBackgroundPressed: AICOOverlayButtonBackgroundPressed;
         /**
+         * The overlay color used to dim non-focused areas during onboarding flows.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#OnboardingCover)
          */
         export interface OnboardingCover extends globalThis.EnumItem {
@@ -34862,6 +39497,8 @@ declare namespace Enum {
         }
         export const OnboardingCover: OnboardingCover;
         /**
+         * The highlight color used to draw attention to a UI element during onboarding flows.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#OnboardingHighlight)
          */
         export interface OnboardingHighlight extends globalThis.EnumItem {
@@ -34871,6 +39508,8 @@ declare namespace Enum {
         }
         export const OnboardingHighlight: OnboardingHighlight;
         /**
+         * The shadow color used beneath highlighted elements during onboarding flows.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#OnboardingShadow)
          */
         export interface OnboardingShadow extends globalThis.EnumItem {
@@ -34880,6 +39519,8 @@ declare namespace Enum {
         }
         export const OnboardingShadow: OnboardingShadow;
         /**
+         * The color of the breakpoint marker shown in the script editor gutter.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#BreakpointMarker)
          */
         export interface BreakpointMarker extends globalThis.EnumItem {
@@ -34889,6 +39530,8 @@ declare namespace Enum {
         }
         export const BreakpointMarker: BreakpointMarker;
         /**
+         * The text color of line numbers in the diff gutter when hovered.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNumHover)
          */
         export interface DiffLineNumHover extends globalThis.EnumItem {
@@ -34898,6 +39541,8 @@ declare namespace Enum {
         }
         export const DiffLineNumHover: DiffLineNumHover;
         /**
+         * The background color of line-number cells in the diff gutter for hunk-separator rows when hovered.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor#DiffLineNumSeparatorBackgroundHover)
          */
         export interface DiffLineNumSeparatorBackgroundHover extends globalThis.EnumItem {
@@ -34912,10 +39557,14 @@ declare namespace Enum {
     }
     export type StudioStyleGuideColor = StudioStyleGuideColor.MainBackground | StudioStyleGuideColor.Titlebar | StudioStyleGuideColor.Dropdown | StudioStyleGuideColor.Tooltip | StudioStyleGuideColor.Notification | StudioStyleGuideColor.ScrollBar | StudioStyleGuideColor.ScrollBarBackground | StudioStyleGuideColor.TabBar | StudioStyleGuideColor.Tab | StudioStyleGuideColor.FilterButtonDefault | StudioStyleGuideColor.FilterButtonHover | StudioStyleGuideColor.FilterButtonChecked | StudioStyleGuideColor.FilterButtonAccent | StudioStyleGuideColor.FilterButtonBorder | StudioStyleGuideColor.FilterButtonBorderAlt | StudioStyleGuideColor.RibbonTab | StudioStyleGuideColor.RibbonTabTopBar | StudioStyleGuideColor.Button | StudioStyleGuideColor.MainButton | StudioStyleGuideColor.RibbonButton | StudioStyleGuideColor.ViewPortBackground | StudioStyleGuideColor.InputFieldBackground | StudioStyleGuideColor.Item | StudioStyleGuideColor.TableItem | StudioStyleGuideColor.CategoryItem | StudioStyleGuideColor.GameSettingsTableItem | StudioStyleGuideColor.GameSettingsTooltip | StudioStyleGuideColor.EmulatorBar | StudioStyleGuideColor.EmulatorDropDown | StudioStyleGuideColor.ColorPickerFrame | StudioStyleGuideColor.CurrentMarker | StudioStyleGuideColor.Border | StudioStyleGuideColor.DropShadow | StudioStyleGuideColor.Shadow | StudioStyleGuideColor.Light | StudioStyleGuideColor.Dark | StudioStyleGuideColor.Mid | StudioStyleGuideColor.MainText | StudioStyleGuideColor.SubText | StudioStyleGuideColor.TitlebarText | StudioStyleGuideColor.BrightText | StudioStyleGuideColor.DimmedText | StudioStyleGuideColor.LinkText | StudioStyleGuideColor.WarningText | StudioStyleGuideColor.ErrorText | StudioStyleGuideColor.InfoText | StudioStyleGuideColor.SensitiveText | StudioStyleGuideColor.ScriptSideWidget | StudioStyleGuideColor.ScriptBackground | StudioStyleGuideColor.ScriptText | StudioStyleGuideColor.ScriptSelectionText | StudioStyleGuideColor.ScriptSelectionBackground | StudioStyleGuideColor.ScriptFindSelectionBackground | StudioStyleGuideColor.ScriptMatchingWordSelectionBackground | StudioStyleGuideColor.ScriptOperator | StudioStyleGuideColor.ScriptNumber | StudioStyleGuideColor.ScriptString | StudioStyleGuideColor.ScriptComment | StudioStyleGuideColor.ScriptKeyword | StudioStyleGuideColor.ScriptBuiltInFunction | StudioStyleGuideColor.ScriptWarning | StudioStyleGuideColor.ScriptError | StudioStyleGuideColor.ScriptInformation | StudioStyleGuideColor.ScriptHint | StudioStyleGuideColor.ScriptWhitespace | StudioStyleGuideColor.ScriptRuler | StudioStyleGuideColor.DocViewCodeBackground | StudioStyleGuideColor.DebuggerCurrentLine | StudioStyleGuideColor.DebuggerErrorLine | StudioStyleGuideColor.DiffFilePathText | StudioStyleGuideColor.DiffTextHunkInfo | StudioStyleGuideColor.DiffTextNoChange | StudioStyleGuideColor.DiffTextAddition | StudioStyleGuideColor.DiffTextDeletion | StudioStyleGuideColor.DiffTextSeparatorBackground | StudioStyleGuideColor.DiffTextNoChangeBackground | StudioStyleGuideColor.DiffTextAdditionBackground | StudioStyleGuideColor.DiffTextDeletionBackground | StudioStyleGuideColor.DiffLineNum | StudioStyleGuideColor.DiffLineNumSeparatorBackground | StudioStyleGuideColor.DiffLineNumNoChangeBackground | StudioStyleGuideColor.DiffLineNumAdditionBackground | StudioStyleGuideColor.DiffLineNumDeletionBackground | StudioStyleGuideColor.DiffFilePathBackground | StudioStyleGuideColor.DiffFilePathBorder | StudioStyleGuideColor.ChatIncomingBgColor | StudioStyleGuideColor.ChatIncomingTextColor | StudioStyleGuideColor.ChatOutgoingBgColor | StudioStyleGuideColor.ChatOutgoingTextColor | StudioStyleGuideColor.ChatModeratedMessageColor | StudioStyleGuideColor.Separator | StudioStyleGuideColor.ButtonBorder | StudioStyleGuideColor.ButtonText | StudioStyleGuideColor.InputFieldBorder | StudioStyleGuideColor.CheckedFieldBackground | StudioStyleGuideColor.CheckedFieldBorder | StudioStyleGuideColor.CheckedFieldIndicator | StudioStyleGuideColor.HeaderSection | StudioStyleGuideColor.Midlight | StudioStyleGuideColor.StatusBar | StudioStyleGuideColor.DialogButton | StudioStyleGuideColor.DialogButtonText | StudioStyleGuideColor.DialogButtonBorder | StudioStyleGuideColor.DialogMainButton | StudioStyleGuideColor.DialogMainButtonText | StudioStyleGuideColor.InfoBarWarningBackground | StudioStyleGuideColor.InfoBarWarningText | StudioStyleGuideColor.ScriptEditorCurrentLine | StudioStyleGuideColor.ScriptMethod | StudioStyleGuideColor.ScriptProperty | StudioStyleGuideColor.ScriptNil | StudioStyleGuideColor.ScriptBool | StudioStyleGuideColor.ScriptFunction | StudioStyleGuideColor.ScriptLocal | StudioStyleGuideColor.ScriptSelf | StudioStyleGuideColor.ScriptLuauKeyword | StudioStyleGuideColor.ScriptFunctionName | StudioStyleGuideColor.ScriptTodo | StudioStyleGuideColor.ScriptBracket | StudioStyleGuideColor.AttributeCog | StudioStyleGuideColor.AICOOverlayText | StudioStyleGuideColor.AICOOverlayButtonBackground | StudioStyleGuideColor.AICOOverlayButtonBackgroundHover | StudioStyleGuideColor.AICOOverlayButtonBackgroundPressed | StudioStyleGuideColor.OnboardingCover | StudioStyleGuideColor.OnboardingHighlight | StudioStyleGuideColor.OnboardingShadow | StudioStyleGuideColor.BreakpointMarker | StudioStyleGuideColor.DiffLineNumHover | StudioStyleGuideColor.DiffLineNumSeparatorBackgroundHover;
     /**
+     * Specifies the interaction state of a Roblox Studio interface element.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideModifier)
      */
     export namespace StudioStyleGuideModifier {
         /**
+         * Uses the element's default state color.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideModifier#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -34925,6 +39574,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Uses the color for a selected element.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideModifier#Selected)
          */
         export interface Selected extends globalThis.EnumItem {
@@ -34934,6 +39585,8 @@ declare namespace Enum {
         }
         export const Selected: Selected;
         /**
+         * Uses the color for a pressed element.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideModifier#Pressed)
          */
         export interface Pressed extends globalThis.EnumItem {
@@ -34943,6 +39596,8 @@ declare namespace Enum {
         }
         export const Pressed: Pressed;
         /**
+         * Uses the color for a disabled element.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideModifier#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -34952,6 +39607,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * Uses the color for an element under the pointer.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideModifier#Hover)
          */
         export interface Hover extends globalThis.EnumItem {
@@ -35010,11 +39667,13 @@ declare namespace Enum {
     }
     export type Style = Style.AlternatingSupports | Style.BridgeStyleSupports | Style.NoSupports;
     /**
+     * Describes the reason a user's subscription has expired.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SubscriptionExpirationReason)
      */
     export namespace SubscriptionExpirationReason {
         /**
-         * Subscription product is inactive.
+         * The subscription product is inactive.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SubscriptionExpirationReason#ProductInactive)
          */
@@ -35025,7 +39684,7 @@ declare namespace Enum {
         }
         export const ProductInactive: ProductInactive;
         /**
-         * Subscription product has been deleted.
+         * The subscription product was deleted.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SubscriptionExpirationReason#ProductDeleted)
          */
@@ -35036,7 +39695,7 @@ declare namespace Enum {
         }
         export const ProductDeleted: ProductDeleted;
         /**
-         * Subscriber has cancelled the subscription.
+         * The subscriber cancelled the subscription.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SubscriptionExpirationReason#SubscriberCancelled)
          */
@@ -35047,7 +39706,7 @@ declare namespace Enum {
         }
         export const SubscriberCancelled: SubscriberCancelled;
         /**
-         * Subscriber has been refunded.
+         * The subscriber received a refund that ended the subscription.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SubscriptionExpirationReason#SubscriberRefunded)
          */
@@ -35058,7 +39717,7 @@ declare namespace Enum {
         }
         export const SubscriberRefunded: SubscriberRefunded;
         /**
-         * Subscription has lapsed.
+         * The subscription expired because payment lapsed.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SubscriptionExpirationReason#Lapsed)
          */
@@ -35074,6 +39733,8 @@ declare namespace Enum {
     }
     export type SubscriptionExpirationReason = SubscriptionExpirationReason.ProductInactive | SubscriptionExpirationReason.ProductDeleted | SubscriptionExpirationReason.SubscriberCancelled | SubscriptionExpirationReason.SubscriberRefunded | SubscriptionExpirationReason.Lapsed;
     /**
+     * Describes the payment outcome for a single entry in a user's subscription payment history.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SubscriptionPaymentStatus)
      */
     export namespace SubscriptionPaymentStatus {
@@ -35105,10 +39766,14 @@ declare namespace Enum {
     }
     export type SubscriptionPaymentStatus = SubscriptionPaymentStatus.Paid | SubscriptionPaymentStatus.Refunded;
     /**
+     * Describes the billing period for a `MarketplaceService` subscription product.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SubscriptionPeriod)
      */
     export namespace SubscriptionPeriod {
         /**
+         * The subscription renews on a monthly billing cycle.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SubscriptionPeriod#Month)
          */
         export interface Month extends globalThis.EnumItem {
@@ -35123,6 +39788,8 @@ declare namespace Enum {
     }
     export type SubscriptionPeriod = SubscriptionPeriod.Month;
     /**
+     * Describes the current subscription state of a user's in-experience subscription product.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SubscriptionState)
      */
     export namespace SubscriptionState {
@@ -35588,10 +40255,14 @@ declare namespace Enum {
     }
     export type TableMajorAxis = TableMajorAxis.RowMajor | TableMajorAxis.ColumnMajor;
     /**
+     * Indicates the outcome of a Team Create place-upload attempt, as reported by the `TeamCreateErrorStatus` event on `TeamCreatePublishService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeamCreateErrorState)
      */
     export namespace TeamCreateErrorState {
         /**
+         * The serialized place size has exceeded the hard upload limit and the save was aborted.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeamCreateErrorState#PlaceSizeTooLarge)
          */
         export interface PlaceSizeTooLarge extends globalThis.EnumItem {
@@ -35601,6 +40272,8 @@ declare namespace Enum {
         }
         export const PlaceSizeTooLarge: PlaceSizeTooLarge;
         /**
+         * The serialized place size has reached or exceeded the public warning threshold but is still below the hard upload limit.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeamCreateErrorState#PlaceSizeApproachingLimit)
          */
         export interface PlaceSizeApproachingLimit extends globalThis.EnumItem {
@@ -35610,6 +40283,8 @@ declare namespace Enum {
         }
         export const PlaceSizeApproachingLimit: PlaceSizeApproachingLimit;
         /**
+         * Repeated upload attempts have failed due to HTTP or network errors, and the consecutive-failure count has reached the configured warning threshold.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeamCreateErrorState#PlaceUploadFailing)
          */
         export interface PlaceUploadFailing extends globalThis.EnumItem {
@@ -35619,6 +40294,8 @@ declare namespace Enum {
         }
         export const PlaceUploadFailing: PlaceUploadFailing;
         /**
+         * The place serialized and uploaded successfully with no size-limit issues detected.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeamCreateErrorState#NoError)
          */
         export interface NoError extends globalThis.EnumItem {
@@ -35899,10 +40576,14 @@ declare namespace Enum {
     }
     export type TelemetryStandardizedField = TelemetryStandardizedField.AddDatacenterId | TelemetryStandardizedField.AddPlaceId | TelemetryStandardizedField.AddUniverseId | TelemetryStandardizedField.AddPlaceInstanceId | TelemetryStandardizedField.AddPlaySessionId | TelemetryStandardizedField.AddCurrentContextName | TelemetryStandardizedField.AddOsInfo | TelemetryStandardizedField.AddArchitectureInfo | TelemetryStandardizedField.AddCpuInfo | TelemetryStandardizedField.AddMemoryInfo | TelemetryStandardizedField.AddSessionInfo;
     /**
+     * Identifies which `TeleportService` API method initiated a teleport.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportMethod)
      */
     export namespace TeleportMethod {
         /**
+         * Teleport was initiated by `TeleportService:TeleportToSpawnByName()`, which sends a player to a named `SpawnLocation` in a place.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportMethod#TeleportToSpawnByName)
          */
         export interface TeleportToSpawnByName extends globalThis.EnumItem {
@@ -35912,6 +40593,8 @@ declare namespace Enum {
         }
         export const TeleportToSpawnByName: TeleportToSpawnByName;
         /**
+         * Teleport was initiated by `TeleportService:TeleportToPlaceInstance()`, which sends a player to a specific running server instance identified by its `instanceId`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportMethod#TeleportToPlaceInstance)
          */
         export interface TeleportToPlaceInstance extends globalThis.EnumItem {
@@ -35921,6 +40604,8 @@ declare namespace Enum {
         }
         export const TeleportToPlaceInstance: TeleportToPlaceInstance;
         /**
+         * Teleport was initiated by `TeleportService:TeleportToPrivateServer()`, which sends players to a reserved server using an access code.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportMethod#TeleportToPrivateServer)
          */
         export interface TeleportToPrivateServer extends globalThis.EnumItem {
@@ -35930,6 +40615,8 @@ declare namespace Enum {
         }
         export const TeleportToPrivateServer: TeleportToPrivateServer;
         /**
+         * Teleport was initiated by `TeleportService:TeleportPartyAsync()`, which sends a group of players to a place together.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportMethod#TeleportPartyAsync)
          */
         export interface TeleportPartyAsync extends globalThis.EnumItem {
@@ -35939,6 +40626,8 @@ declare namespace Enum {
         }
         export const TeleportPartyAsync: TeleportPartyAsync;
         /**
+         * Teleport was initiated to a VIP (creator-owned private) server; the engine upgrades the method tag to this value when VIP server credentials are present at teleport time.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportMethod#TeleportToVIPServer)
          */
         export interface TeleportToVIPServer extends globalThis.EnumItem {
@@ -35948,6 +40637,8 @@ declare namespace Enum {
         }
         export const TeleportToVIPServer: TeleportToVIPServer;
         /**
+         * Teleport was initiated by back-navigation, returning a player to a specific prior place instance.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportMethod#TeleportToInstanceBack)
          */
         export interface TeleportToInstanceBack extends globalThis.EnumItem {
@@ -35957,6 +40648,8 @@ declare namespace Enum {
         }
         export const TeleportToInstanceBack: TeleportToInstanceBack;
         /**
+         * Fallback value used when the teleport method cannot be determined.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportMethod#TeleportUnknown)
          */
         export interface TeleportUnknown extends globalThis.EnumItem {
@@ -35965,11 +40658,29 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.TeleportMethod;
         }
         export const TeleportUnknown: TeleportUnknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportMethod#Teleport)
+         */
+        export interface Teleport extends globalThis.EnumItem {
+            Name: "Teleport";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.TeleportMethod;
+        }
+        export const Teleport: Teleport;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportMethod#TeleportSwitchServer)
+         */
+        export interface TeleportSwitchServer extends globalThis.EnumItem {
+            Name: "TeleportSwitchServer";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.TeleportMethod;
+        }
+        export const TeleportSwitchServer: TeleportSwitchServer;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TeleportMethod>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TeleportMethod | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TeleportMethod | undefined;
     }
-    export type TeleportMethod = TeleportMethod.TeleportToSpawnByName | TeleportMethod.TeleportToPlaceInstance | TeleportMethod.TeleportToPrivateServer | TeleportMethod.TeleportPartyAsync | TeleportMethod.TeleportToVIPServer | TeleportMethod.TeleportToInstanceBack | TeleportMethod.TeleportUnknown;
+    export type TeleportMethod = TeleportMethod.TeleportToSpawnByName | TeleportMethod.TeleportToPlaceInstance | TeleportMethod.TeleportToPrivateServer | TeleportMethod.TeleportPartyAsync | TeleportMethod.TeleportToVIPServer | TeleportMethod.TeleportToInstanceBack | TeleportMethod.TeleportUnknown | TeleportMethod.Teleport | TeleportMethod.TeleportSwitchServer;
     /**
      * Describes the result of a teleport.
      *
@@ -36175,6 +40886,8 @@ declare namespace Enum {
         }
         export const ToReservedServer: ToReservedServer;
         /**
+         * The teleport destination is a VIP (player-owned private) server instance.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportType#ToVIPServer)
          */
         export interface ToVIPServer extends globalThis.EnumItem {
@@ -36184,6 +40897,8 @@ declare namespace Enum {
         }
         export const ToVIPServer: ToVIPServer;
         /**
+         * The teleport destination is a previously-visited place instance (back navigation).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportType#ToInstanceBack)
          */
         export interface ToInstanceBack extends globalThis.EnumItem {
@@ -36198,10 +40913,14 @@ declare namespace Enum {
     }
     export type TeleportType = TeleportType.ToPlace | TeleportType.ToInstance | TeleportType.ToReservedServer | TeleportType.ToVIPServer | TeleportType.ToInstanceBack;
     /**
+     * Describes how terrain in a place was originally created or last substantially modified.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainAcquisitionMethod)
      */
     export namespace TerrainAcquisitionMethod {
         /**
+         * No terrain is present, or terrain acquisition method has not been recorded.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainAcquisitionMethod#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -36211,6 +40930,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * Terrain was deserialized from a place file that predates acquisition-method tracking.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainAcquisitionMethod#Legacy)
          */
         export interface Legacy extends globalThis.EnumItem {
@@ -36220,6 +40941,8 @@ declare namespace Enum {
         }
         export const Legacy: Legacy;
         /**
+         * Terrain was loaded from a Studio place template.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainAcquisitionMethod#Template)
          */
         export interface Template extends globalThis.EnumItem {
@@ -36229,6 +40952,8 @@ declare namespace Enum {
         }
         export const Template: Template;
         /**
+         * Terrain was created using the Studio terrain generator.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainAcquisitionMethod#Generate)
          */
         export interface Generate extends globalThis.EnumItem {
@@ -36238,6 +40963,8 @@ declare namespace Enum {
         }
         export const Generate: Generate;
         /**
+         * Terrain was created by importing a heightmap or colormap image via the Studio terrain importer.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainAcquisitionMethod#Import)
          */
         export interface Import extends globalThis.EnumItem {
@@ -36247,6 +40974,8 @@ declare namespace Enum {
         }
         export const Import: Import;
         /**
+         * Terrain was created by converting legacy smooth terrain from an older place format.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainAcquisitionMethod#Convert)
          */
         export interface Convert extends globalThis.EnumItem {
@@ -36256,6 +40985,8 @@ declare namespace Enum {
         }
         export const Convert: Convert;
         /**
+         * Terrain was created or last modified using the Studio terrain editor's Add tool.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainAcquisitionMethod#EditAddTool)
          */
         export interface EditAddTool extends globalThis.EnumItem {
@@ -36265,6 +40996,8 @@ declare namespace Enum {
         }
         export const EditAddTool: EditAddTool;
         /**
+         * Terrain was created or last modified using the Studio terrain editor's Sea Level tool.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainAcquisitionMethod#EditSeaLevelTool)
          */
         export interface EditSeaLevelTool extends globalThis.EnumItem {
@@ -36274,6 +41007,8 @@ declare namespace Enum {
         }
         export const EditSeaLevelTool: EditSeaLevelTool;
         /**
+         * Terrain was created or last modified using the Studio terrain editor's Replace tool.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainAcquisitionMethod#EditReplaceTool)
          */
         export interface EditReplaceTool extends globalThis.EnumItem {
@@ -36283,6 +41018,8 @@ declare namespace Enum {
         }
         export const EditReplaceTool: EditReplaceTool;
         /**
+         * Terrain was created or last modified using the Studio terrain editor's Fill region tool.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainAcquisitionMethod#RegionFillTool)
          */
         export interface RegionFillTool extends globalThis.EnumItem {
@@ -36292,6 +41029,8 @@ declare namespace Enum {
         }
         export const RegionFillTool: RegionFillTool;
         /**
+         * Terrain was created or last modified by pasting a previously copied terrain region in the Studio terrain editor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainAcquisitionMethod#RegionPasteTool)
          */
         export interface RegionPasteTool extends globalThis.EnumItem {
@@ -36301,6 +41040,8 @@ declare namespace Enum {
         }
         export const RegionPasteTool: RegionPasteTool;
         /**
+         * Terrain was created or modified by an untracked method, such as a third-party plugin.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainAcquisitionMethod#Other)
          */
         export interface Other extends globalThis.EnumItem {
@@ -36315,10 +41056,14 @@ declare namespace Enum {
     }
     export type TerrainAcquisitionMethod = TerrainAcquisitionMethod.None | TerrainAcquisitionMethod.Legacy | TerrainAcquisitionMethod.Template | TerrainAcquisitionMethod.Generate | TerrainAcquisitionMethod.Import | TerrainAcquisitionMethod.Convert | TerrainAcquisitionMethod.EditAddTool | TerrainAcquisitionMethod.EditSeaLevelTool | TerrainAcquisitionMethod.EditReplaceTool | TerrainAcquisitionMethod.RegionFillTool | TerrainAcquisitionMethod.RegionPasteTool | TerrainAcquisitionMethod.Other;
     /**
+     * Identifies which face direction of a terrain voxel a `TerrainDetail` object overrides.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainFace)
      */
     export namespace TerrainFace {
         /**
+         * The top (+Y) face of a terrain voxel.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainFace#Top)
          */
         export interface Top extends globalThis.EnumItem {
@@ -36328,6 +41073,8 @@ declare namespace Enum {
         }
         export const Top: Top;
         /**
+         * The horizontal (side) faces of a terrain voxel, perpendicular to the Y axis.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainFace#Side)
          */
         export interface Side extends globalThis.EnumItem {
@@ -36337,6 +41084,8 @@ declare namespace Enum {
         }
         export const Side: Side;
         /**
+         * The bottom (-Y) face of a terrain voxel.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TerrainFace#Bottom)
          */
         export interface Bottom extends globalThis.EnumItem {
@@ -36495,6 +41244,123 @@ declare namespace Enum {
     }
     export type TerrainSolidMergeOperation = TerrainSolidMergeOperation.None | TerrainSolidMergeOperation.Paint | TerrainSolidMergeOperation.Source | TerrainSolidMergeOperation.Union | TerrainSolidMergeOperation.Dig | TerrainSolidMergeOperation.Difference | TerrainSolidMergeOperation.Intersect | TerrainSolidMergeOperation.Cut | TerrainSolidMergeOperation.Place;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TestCaseStatus)
+     */
+    export namespace TestCaseStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TestCaseStatus#Pass)
+         */
+        export interface Pass extends globalThis.EnumItem {
+            Name: "Pass";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.TestCaseStatus;
+        }
+        export const Pass: Pass;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TestCaseStatus#Fail)
+         */
+        export interface Fail extends globalThis.EnumItem {
+            Name: "Fail";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.TestCaseStatus;
+        }
+        export const Fail: Fail;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TestCaseStatus#TimedOut)
+         */
+        export interface TimedOut extends globalThis.EnumItem {
+            Name: "TimedOut";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.TestCaseStatus;
+        }
+        export const TimedOut: TimedOut;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TestCaseStatus#Skipped)
+         */
+        export interface Skipped extends globalThis.EnumItem {
+            Name: "Skipped";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.TestCaseStatus;
+        }
+        export const Skipped: Skipped;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TestCaseStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TestCaseStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TestCaseStatus | undefined;
+    }
+    export type TestCaseStatus = TestCaseStatus.Pass | TestCaseStatus.Fail | TestCaseStatus.TimedOut | TestCaseStatus.Skipped;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TestRunStatus)
+     */
+    export namespace TestRunStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TestRunStatus#Pass)
+         */
+        export interface Pass extends globalThis.EnumItem {
+            Name: "Pass";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.TestRunStatus;
+        }
+        export const Pass: Pass;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TestRunStatus#Fail)
+         */
+        export interface Fail extends globalThis.EnumItem {
+            Name: "Fail";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.TestRunStatus;
+        }
+        export const Fail: Fail;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TestRunStatus#NoTests)
+         */
+        export interface NoTests extends globalThis.EnumItem {
+            Name: "NoTests";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.TestRunStatus;
+        }
+        export const NoTests: NoTests;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TestRunStatus#Skipped)
+         */
+        export interface Skipped extends globalThis.EnumItem {
+            Name: "Skipped";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.TestRunStatus;
+        }
+        export const Skipped: Skipped;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TestRunStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TestRunStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TestRunStatus | undefined;
+    }
+    export type TestRunStatus = TestRunStatus.Pass | TestRunStatus.Fail | TestRunStatus.NoTests | TestRunStatus.Skipped;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextChannelDisplayMode)
+     */
+    export namespace TextChannelDisplayMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextChannelDisplayMode#AllTextChannels)
+         */
+        export interface AllTextChannels extends globalThis.EnumItem {
+            Name: "AllTextChannels";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.TextChannelDisplayMode;
+        }
+        export const AllTextChannels: AllTextChannels;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextChannelDisplayMode#DefaultTextChannels)
+         */
+        export interface DefaultTextChannels extends globalThis.EnumItem {
+            Name: "DefaultTextChannels";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.TextChannelDisplayMode;
+        }
+        export const DefaultTextChannels: DefaultTextChannels;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TextChannelDisplayMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TextChannelDisplayMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TextChannelDisplayMode | undefined;
+    }
+    export type TextChannelDisplayMode = TextChannelDisplayMode.AllTextChannels | TextChannelDisplayMode.DefaultTextChannels;
+    /**
      * Indicates the status of a `TextChatMessage`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextChatMessageStatus)
@@ -36589,6 +41455,8 @@ declare namespace Enum {
         }
         export const MessageTooLong: MessageTooLong;
         /**
+         * Message can't be sent because the user has an active moderation timeout on chat.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextChatMessageStatus#ModerationTimeout)
          */
         export interface ModerationTimeout extends globalThis.EnumItem {
@@ -36603,10 +41471,14 @@ declare namespace Enum {
     }
     export type TextChatMessageStatus = TextChatMessageStatus.Unknown | TextChatMessageStatus.Success | TextChatMessageStatus.Sending | TextChatMessageStatus.TextFilterFailed | TextChatMessageStatus.Floodchecked | TextChatMessageStatus.InvalidPrivacySettings | TextChatMessageStatus.InvalidTextChannelPermissions | TextChatMessageStatus.MessageTooLong | TextChatMessageStatus.ModerationTimeout;
     /**
+     * Controls the base text rendering direction for `TextLabel`, `TextButton`, and `TextBox` instances.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextDirection)
      */
     export namespace TextDirection {
         /**
+         * Automatically determines text direction from the first strong directional character using the Unicode Bidirectional Algorithm.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextDirection#Auto)
          */
         export interface Auto extends globalThis.EnumItem {
@@ -36616,6 +41488,8 @@ declare namespace Enum {
         }
         export const Auto: Auto;
         /**
+         * Forces the paragraph base direction to left-to-right regardless of the text content.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextDirection#LeftToRight)
          */
         export interface LeftToRight extends globalThis.EnumItem {
@@ -36625,6 +41499,8 @@ declare namespace Enum {
         }
         export const LeftToRight: LeftToRight;
         /**
+         * Forces the paragraph base direction to right-to-left regardless of the text content.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextDirection#RightToLeft)
          */
         export interface RightToLeft extends globalThis.EnumItem {
@@ -36639,10 +41515,14 @@ declare namespace Enum {
     }
     export type TextDirection = TextDirection.Auto | TextDirection.LeftToRight | TextDirection.RightToLeft;
     /**
+     * Indicates whether text submitted to `TextService:FilterStringAsync()` or `TextService:FilterAndTranslateStringAsync()` is intended for a public or private audience, controlling the strictness of the text filtering backend.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextFilterContext)
      */
     export namespace TextFilterContext {
         /**
+         * Indicates the string will be visible to all players or a broad public audience, applying the strictest level of text filtering.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextFilterContext#PublicChat)
          */
         export interface PublicChat extends globalThis.EnumItem {
@@ -36652,6 +41532,8 @@ declare namespace Enum {
         }
         export const PublicChat: PublicChat;
         /**
+         * Indicates the string is part of a private conversation between specific users, applying filtering appropriate for one-to-one or small-group exchanges.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TextFilterContext#PrivateChat)
          */
         export interface PrivateChat extends globalThis.EnumItem {
@@ -37185,6 +42067,8 @@ declare namespace Enum {
     }
     export type ThrottlingPriority = ThrottlingPriority.Default | ThrottlingPriority.ElevatedOnServer | ThrottlingPriority.Extreme;
     /**
+     * Describes the pixel resolution of a user thumbnail returned by `Players:GetUserThumbnailAsync()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ThumbnailSize)
      */
     export namespace ThumbnailSize {
@@ -37271,6 +42155,8 @@ declare namespace Enum {
     }
     export type ThumbnailSize = ThumbnailSize.Size48x48 | ThumbnailSize.Size180x180 | ThumbnailSize.Size420x420 | ThumbnailSize.Size60x60 | ThumbnailSize.Size100x100 | ThumbnailSize.Size150x150 | ThumbnailSize.Size352x352;
     /**
+     * Describes the type of user thumbnail returned by `Players:GetUserThumbnailAsync()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ThumbnailType)
      */
     export namespace ThumbnailType {
@@ -37313,7 +42199,7 @@ declare namespace Enum {
     }
     export type ThumbnailType = ThumbnailType.HeadShot | ThumbnailType.AvatarBust | ThumbnailType.AvatarThumbnail;
     /**
-     * Controls the precision of a timer.
+     * Controls the precision and performance trade-off used when sampling the current time.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TickCountSampleMethod)
      */
@@ -37330,7 +42216,7 @@ declare namespace Enum {
         }
         export const Fast: Fast;
         /**
-         * Dynamically decide between using ''Fast'' and ''Precise'' depending on performance.
+         * Dynamically decide between using `Fast` and `Precise` depending on the value of `TickCountPreciseOverride`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TickCountSampleMethod#Benchmark)
          */
@@ -37357,6 +42243,71 @@ declare namespace Enum {
     }
     export type TickCountSampleMethod = TickCountSampleMethod.Fast | TickCountSampleMethod.Benchmark | TickCountSampleMethod.Precise;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarControlsPosition)
+     */
+    export namespace TitleBarControlsPosition {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarControlsPosition#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.TitleBarControlsPosition;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarControlsPosition#Left)
+         */
+        export interface Left extends globalThis.EnumItem {
+            Name: "Left";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.TitleBarControlsPosition;
+        }
+        export const Left: Left;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarControlsPosition#Right)
+         */
+        export interface Right extends globalThis.EnumItem {
+            Name: "Right";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.TitleBarControlsPosition;
+        }
+        export const Right: Right;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TitleBarControlsPosition>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TitleBarControlsPosition | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TitleBarControlsPosition | undefined;
+    }
+    export type TitleBarControlsPosition = TitleBarControlsPosition.Unknown | TitleBarControlsPosition.Left | TitleBarControlsPosition.Right;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarMode)
+     */
+    export namespace TitleBarMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarMode#Native)
+         */
+        export interface Native extends globalThis.EnumItem {
+            Name: "Native";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.TitleBarMode;
+        }
+        export const Native: Native;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TitleBarMode#Custom)
+         */
+        export interface Custom extends globalThis.EnumItem {
+            Name: "Custom";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.TitleBarMode;
+        }
+        export const Custom: Custom;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.TitleBarMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.TitleBarMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TitleBarMode | undefined;
+    }
+    export type TitleBarMode = TitleBarMode.Native | TitleBarMode.Custom;
+    /**
+     * Controls which tone-mapping algorithm `ColorGradingEffect` applies to the rendered scene.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TonemapperPreset)
      */
     export namespace TonemapperPreset {
@@ -37564,10 +42515,14 @@ declare namespace Enum {
     }
     export type TouchMovementMode = TouchMovementMode.Default | TouchMovementMode.Thumbstick | TouchMovementMode.DPad | TouchMovementMode.Thumbpad | TouchMovementMode.ClickToMove | TouchMovementMode.DynamicThumbstick;
     /**
+     * Status and error codes reported by the face-tracking subsystem through the `TrackerError` events on `RTAnimationTracker` and `FaceAnimatorService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerError)
      */
     export namespace TrackerError {
         /**
+         * No error; the tracker is operating normally.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerError#Ok)
          */
         export interface Ok extends globalThis.EnumItem {
@@ -37577,6 +42532,8 @@ declare namespace Enum {
         }
         export const Ok: Ok;
         /**
+         * A required engine service was unavailable when the tracker attempted to connect.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerError#NoService)
          */
         export interface NoService extends globalThis.EnumItem {
@@ -37586,6 +42543,8 @@ declare namespace Enum {
         }
         export const NoService: NoService;
         /**
+         * The tracker failed to create or initialize its tracking session.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerError#InitFailed)
          */
         export interface InitFailed extends globalThis.EnumItem {
@@ -37595,6 +42554,8 @@ declare namespace Enum {
         }
         export const InitFailed: InitFailed;
         /**
+         * Video input is unavailable because no camera device was found or the camera was disconnected.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerError#NoVideo)
          */
         export interface NoVideo extends globalThis.EnumItem {
@@ -37604,6 +42565,8 @@ declare namespace Enum {
         }
         export const NoVideo: NoVideo;
         /**
+         * A generic video error occurred during face-tracking camera input processing.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerError#VideoError)
          */
         export interface VideoError extends globalThis.EnumItem {
@@ -37613,6 +42576,8 @@ declare namespace Enum {
         }
         export const VideoError: VideoError;
         /**
+         * The user denied camera permission required for video-based face tracking.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerError#VideoNoPermission)
          */
         export interface VideoNoPermission extends globalThis.EnumItem {
@@ -37622,6 +42587,8 @@ declare namespace Enum {
         }
         export const VideoNoPermission: VideoNoPermission;
         /**
+         * Video-based face tracking is not supported on this device or platform.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerError#VideoUnsupported)
          */
         export interface VideoUnsupported extends globalThis.EnumItem {
@@ -37631,6 +42598,8 @@ declare namespace Enum {
         }
         export const VideoUnsupported: VideoUnsupported;
         /**
+         * Audio input is unavailable because `SoundService` could not be found or connected.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerError#NoAudio)
          */
         export interface NoAudio extends globalThis.EnumItem {
@@ -37640,6 +42609,8 @@ declare namespace Enum {
         }
         export const NoAudio: NoAudio;
         /**
+         * A generic audio error occurred during face-tracking audio input processing.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerError#AudioError)
          */
         export interface AudioError extends globalThis.EnumItem {
@@ -37649,6 +42620,8 @@ declare namespace Enum {
         }
         export const AudioError: AudioError;
         /**
+         * The user denied microphone permission required for audio-based face tracking.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerError#AudioNoPermission)
          */
         export interface AudioNoPermission extends globalThis.EnumItem {
@@ -37658,6 +42631,8 @@ declare namespace Enum {
         }
         export const AudioNoPermission: AudioNoPermission;
         /**
+         * The current device or platform does not support face tracking.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerError#UnsupportedDevice)
          */
         export interface UnsupportedDevice extends globalThis.EnumItem {
@@ -37672,10 +42647,14 @@ declare namespace Enum {
     }
     export type TrackerError = TrackerError.Ok | TrackerError.NoService | TrackerError.InitFailed | TrackerError.NoVideo | TrackerError.VideoError | TrackerError.VideoNoPermission | TrackerError.VideoUnsupported | TrackerError.NoAudio | TrackerError.AudioError | TrackerError.AudioNoPermission | TrackerError.UnsupportedDevice;
     /**
+     * Controls how the face-tracking pipeline extrapolates animation data between camera frames on the `TrackerLodController`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerExtrapolationFlagMode)
      */
     export namespace TrackerExtrapolationFlagMode {
         /**
+         * Disables all extrapolation so that facial animation updates only when a new camera frame is processed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerExtrapolationFlagMode#ForceDisabled)
          */
         export interface ForceDisabled extends globalThis.EnumItem {
@@ -37685,6 +42664,8 @@ declare namespace Enum {
         }
         export const ForceDisabled: ForceDisabled;
         /**
+         * Extrapolates both FACS blend-shape values and head-pose data between camera frames.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerExtrapolationFlagMode#ExtrapolateFacsAndPose)
          */
         export interface ExtrapolateFacsAndPose extends globalThis.EnumItem {
@@ -37694,6 +42675,8 @@ declare namespace Enum {
         }
         export const ExtrapolateFacsAndPose: ExtrapolateFacsAndPose;
         /**
+         * Extrapolates only FACS blend-shape values between camera frames, leaving head-pose data unchanged.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerExtrapolationFlagMode#ExtrapolateFacsOnly)
          */
         export interface ExtrapolateFacsOnly extends globalThis.EnumItem {
@@ -37703,6 +42686,8 @@ declare namespace Enum {
         }
         export const ExtrapolateFacsOnly: ExtrapolateFacsOnly;
         /**
+         * Lets the `TrackerLodController` automatically select the extrapolation strategy based on current performance conditions.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerExtrapolationFlagMode#Auto)
          */
         export interface Auto extends globalThis.EnumItem {
@@ -37717,10 +42702,14 @@ declare namespace Enum {
     }
     export type TrackerExtrapolationFlagMode = TrackerExtrapolationFlagMode.ForceDisabled | TrackerExtrapolationFlagMode.ExtrapolateFacsAndPose | TrackerExtrapolationFlagMode.ExtrapolateFacsOnly | TrackerExtrapolationFlagMode.Auto;
     /**
+     * Describes the current state of face tracking for the device camera used by `FaceAnimatorService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerFaceTrackingStatus)
      */
     export namespace TrackerFaceTrackingStatus {
         /**
+         * Face tracking is active and a face is being tracked successfully.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerFaceTrackingStatus#FaceTrackingSuccess)
          */
         export interface FaceTrackingSuccess extends globalThis.EnumItem {
@@ -37730,6 +42719,8 @@ declare namespace Enum {
         }
         export const FaceTrackingSuccess: FaceTrackingSuccess;
         /**
+         * The tracker is running but no face has been detected in the camera feed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerFaceTrackingStatus#FaceTrackingNoFaceFound)
          */
         export interface FaceTrackingNoFaceFound extends globalThis.EnumItem {
@@ -37739,6 +42730,8 @@ declare namespace Enum {
         }
         export const FaceTrackingNoFaceFound: FaceTrackingNoFaceFound;
         /**
+         * The face tracking state is indeterminate or could not be mapped to a known status.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerFaceTrackingStatus#FaceTrackingUnknown)
          */
         export interface FaceTrackingUnknown extends globalThis.EnumItem {
@@ -37748,6 +42741,8 @@ declare namespace Enum {
         }
         export const FaceTrackingUnknown: FaceTrackingUnknown;
         /**
+         * Face tracking was previously active but the face has been lost from the camera feed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerFaceTrackingStatus#FaceTrackingLost)
          */
         export interface FaceTrackingLost extends globalThis.EnumItem {
@@ -37757,6 +42752,8 @@ declare namespace Enum {
         }
         export const FaceTrackingLost: FaceTrackingLost;
         /**
+         * Face tracking is active but has encountered an error that prevents reliable pose estimation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerFaceTrackingStatus#FaceTrackingHasTrackingError)
          */
         export interface FaceTrackingHasTrackingError extends globalThis.EnumItem {
@@ -37766,6 +42763,8 @@ declare namespace Enum {
         }
         export const FaceTrackingHasTrackingError: FaceTrackingHasTrackingError;
         /**
+         * A face is detected but is partially or fully occluded, reducing tracking reliability.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerFaceTrackingStatus#FaceTrackingIsOccluded)
          */
         export interface FaceTrackingIsOccluded extends globalThis.EnumItem {
@@ -37775,6 +42774,8 @@ declare namespace Enum {
         }
         export const FaceTrackingIsOccluded: FaceTrackingIsOccluded;
         /**
+         * Face tracking has not yet been initialized; this is the default state before the tracker starts.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerFaceTrackingStatus#FaceTrackingUninitialized)
          */
         export interface FaceTrackingUninitialized extends globalThis.EnumItem {
@@ -37789,10 +42790,14 @@ declare namespace Enum {
     }
     export type TrackerFaceTrackingStatus = TrackerFaceTrackingStatus.FaceTrackingSuccess | TrackerFaceTrackingStatus.FaceTrackingNoFaceFound | TrackerFaceTrackingStatus.FaceTrackingUnknown | TrackerFaceTrackingStatus.FaceTrackingLost | TrackerFaceTrackingStatus.FaceTrackingHasTrackingError | TrackerFaceTrackingStatus.FaceTrackingIsOccluded | TrackerFaceTrackingStatus.FaceTrackingUninitialized;
     /**
+     * Controls whether a real-time face-tracker feature (audio or video) is forced on, forced off, or left to the automatic LOD system.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerLodFlagMode)
      */
     export namespace TrackerLodFlagMode {
         /**
+         * Forces the associated tracker feature disabled, regardless of the current LOD state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerLodFlagMode#ForceFalse)
          */
         export interface ForceFalse extends globalThis.EnumItem {
@@ -37802,6 +42807,8 @@ declare namespace Enum {
         }
         export const ForceFalse: ForceFalse;
         /**
+         * Forces the associated tracker feature enabled, regardless of the current LOD state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerLodFlagMode#ForceTrue)
          */
         export interface ForceTrue extends globalThis.EnumItem {
@@ -37811,6 +42818,8 @@ declare namespace Enum {
         }
         export const ForceTrue: ForceTrue;
         /**
+         * Defers the enabled/disabled decision to the automatic LOD system.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerLodFlagMode#Auto)
          */
         export interface Auto extends globalThis.EnumItem {
@@ -37825,10 +42834,14 @@ declare namespace Enum {
     }
     export type TrackerLodFlagMode = TrackerLodFlagMode.ForceFalse | TrackerLodFlagMode.ForceTrue | TrackerLodFlagMode.Auto;
     /**
+     * Controls how the video LOD level is selected for the face-tracking pipeline in `TrackerLodController`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerLodValueMode)
      */
     export namespace TrackerLodValueMode {
         /**
+         * Forces the face-tracking video pipeline to LOD level 0, the faster but less accurate processing mode.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerLodValueMode#Force0)
          */
         export interface Force0 extends globalThis.EnumItem {
@@ -37838,6 +42851,8 @@ declare namespace Enum {
         }
         export const Force0: Force0;
         /**
+         * Forces the face-tracking video pipeline to LOD level 1, the more accurate but more resource-intensive processing mode.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerLodValueMode#Force1)
          */
         export interface Force1 extends globalThis.EnumItem {
@@ -37847,6 +42862,8 @@ declare namespace Enum {
         }
         export const Force1: Force1;
         /**
+         * The LOD controller selects the video LOD level automatically based on real-time performance metrics.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerLodValueMode#Auto)
          */
         export interface Auto extends globalThis.EnumItem {
@@ -37861,10 +42878,14 @@ declare namespace Enum {
     }
     export type TrackerLodValueMode = TrackerLodValueMode.Force0 | TrackerLodValueMode.Force1 | TrackerLodValueMode.Auto;
     /**
+     * Describes the combination of input sources an `RTAnimationTracker` is currently using to drive animation.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerMode)
      */
     export namespace TrackerMode {
         /**
+         * No tracking inference is active; the tracker is idle or has not successfully started.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerMode#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -37874,6 +42895,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * Only audio-to-curve (lipsync) inference is active; no camera-based facial tracking is running.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerMode#Audio)
          */
         export interface Audio extends globalThis.EnumItem {
@@ -37883,6 +42906,8 @@ declare namespace Enum {
         }
         export const Audio: Audio;
         /**
+         * Only video-to-curve facial tracking is active; audio-based lipsync inference is not running.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerMode#Video)
          */
         export interface Video extends globalThis.EnumItem {
@@ -37892,6 +42917,8 @@ declare namespace Enum {
         }
         export const Video: Video;
         /**
+         * Both audio-to-curve lipsync inference and video-to-curve facial tracking are active simultaneously.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerMode#AudioVideo)
          */
         export interface AudioVideo extends globalThis.EnumItem {
@@ -37906,10 +42933,14 @@ declare namespace Enum {
     }
     export type TrackerMode = TrackerMode.None | TrackerMode.Audio | TrackerMode.Video | TrackerMode.AudioVideo;
     /**
+     * Indicates the type of prompt fired by the face tracker when a runtime condition requires user attention.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerPromptEvent)
      */
     export namespace TrackerPromptEvent {
         /**
+         * The LOD controller has determined that device performance is insufficient to sustain camera-based face tracking and recommends disabling camera input.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerPromptEvent#LODCameraRecommendDisable)
          */
         export interface LODCameraRecommendDisable extends globalThis.EnumItem {
@@ -37924,10 +42955,14 @@ declare namespace Enum {
     }
     export type TrackerPromptEvent = TrackerPromptEvent.LODCameraRecommendDisable;
     /**
+     * Specifies the type of motion tracking that an `RTAnimationTracker` performs.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerType)
      */
     export namespace TrackerType {
         /**
+         * No tracking type is selected; the tracking engine does not initialize, and attempting to start tracking with this type set raises `UnsupportedDevice`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerType#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -37937,6 +42972,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * Enables face tracking from a connected video device (and optionally audio) to produce FACS blendshape weights and head-orientation data each step.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerType#Face)
          */
         export interface Face extends globalThis.EnumItem {
@@ -37946,6 +42983,8 @@ declare namespace Enum {
         }
         export const Face: Face;
         /**
+         * Reserved for upper-body motion tracking. Setting this type raises `UnsupportedDevice` on initialization.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TrackerType#UpperBody)
          */
         export interface UpperBody extends globalThis.EnumItem {
@@ -37960,10 +42999,14 @@ declare namespace Enum {
     }
     export type TrackerType = TrackerType.None | TrackerType.Face | TrackerType.UpperBody;
     /**
+     * A three-state boolean enumeration used by `PolicyService` to represent a value that is explicitly `True`, explicitly `False`, or not yet resolved (`Unknown`).
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TriStateBoolean)
      */
     export namespace TriStateBoolean {
         /**
+         * Indicates the condition has not yet been determined or resolved; the default value.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TriStateBoolean#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -37973,6 +43016,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
+         * Indicates the condition is explicitly true.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TriStateBoolean#True)
          */
         export interface True extends globalThis.EnumItem {
@@ -37982,6 +43027,8 @@ declare namespace Enum {
         }
         export const True: True;
         /**
+         * Indicates the condition is explicitly false.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TriStateBoolean#False)
          */
         export interface False extends globalThis.EnumItem {
@@ -38028,6 +43075,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.TweenStatus | undefined;
     }
     export type TweenStatus = TweenStatus.Canceled | TweenStatus.Completed;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIBlurStrength)
+     */
+    export namespace UIBlurStrength {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIBlurStrength#Light)
+         */
+        export interface Light extends globalThis.EnumItem {
+            Name: "Light";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.UIBlurStrength;
+        }
+        export const Light: Light;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIBlurStrength#Medium)
+         */
+        export interface Medium extends globalThis.EnumItem {
+            Name: "Medium";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.UIBlurStrength;
+        }
+        export const Medium: Medium;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UIBlurStrength#Heavy)
+         */
+        export interface Heavy extends globalThis.EnumItem {
+            Name: "Heavy";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.UIBlurStrength;
+        }
+        export const Heavy: Heavy;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UIBlurStrength>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UIBlurStrength | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UIBlurStrength | undefined;
+    }
+    export type UIBlurStrength = UIBlurStrength.Light | UIBlurStrength.Medium | UIBlurStrength.Heavy;
     /**
      * Used to determine what UI elements should be captured with `CaptureService`.
      *
@@ -38469,11 +43552,15 @@ declare namespace Enum {
     }
     export type UIFlexMode = UIFlexMode.None | UIFlexMode.Grow | UIFlexMode.Shrink | UIFlexMode.Fill | UIFlexMode.Custom;
     /**
+     * Deprecated Studio UI color theme (`Light` or `Dark`).
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UITheme)
      */
     export namespace UITheme {
         /**
          * **Deprecated:** This option is deprecated.
+         *
+         * The light Studio UI color theme. Deprecated; has no effect.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UITheme#Light)
          */
@@ -38485,6 +43572,8 @@ declare namespace Enum {
         export const Light: Light;
         /**
          * **Deprecated:** This option is deprecated.
+         *
+         * The dark Studio UI color theme. Deprecated; has no effect.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UITheme#Dark)
          */
@@ -38500,14 +43589,10 @@ declare namespace Enum {
     }
     export type UITheme = UITheme.Light | UITheme.Dark;
     /**
-     * Controls the UI message under the `GuiService`.
-     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UiMessageType)
      */
     export namespace UiMessageType {
         /**
-         * The message error.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UiMessageType#UiMessageError)
          */
         export interface UiMessageError extends globalThis.EnumItem {
@@ -38517,8 +43602,6 @@ declare namespace Enum {
         }
         export const UiMessageError: UiMessageError;
         /**
-         * The message info.
-         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UiMessageType#UiMessageInfo)
          */
         export interface UiMessageInfo extends globalThis.EnumItem {
@@ -38587,10 +43670,14 @@ declare namespace Enum {
     }
     export type UpdateState = UpdateState.UpdateNotAvailable | UpdateState.UpdateAvailable | UpdateState.UpdateInProgress | UpdateState.UpdateReady | UpdateState.UpdateFailed;
     /**
+     * Describes the outcome of a `CaptureService:UploadCaptureAsync()` call.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult)
      */
     export namespace UploadCaptureResult {
         /**
+         * The capture was successfully uploaded and registered as an asset.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#Success)
          */
         export interface Success extends globalThis.EnumItem {
@@ -38600,6 +43687,8 @@ declare namespace Enum {
         }
         export const Success: Success;
         /**
+         * The experience has not been granted developer gallery read and upload permission, so the capture cannot be uploaded.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#NeedPermission)
          */
         export interface NeedPermission extends globalThis.EnumItem {
@@ -38609,6 +43698,8 @@ declare namespace Enum {
         }
         export const NeedPermission: NeedPermission;
         /**
+         * The capture was rejected by Roblox content moderation and cannot be uploaded.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#CaptureModerated)
          */
         export interface CaptureModerated extends globalThis.EnumItem {
@@ -38618,6 +43709,8 @@ declare namespace Enum {
         }
         export const CaptureModerated: CaptureModerated;
         /**
+         * The capture no longer exists in the user's gallery and cannot be uploaded.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#CaptureNotInGallery)
          */
         export interface CaptureNotInGallery extends globalThis.EnumItem {
@@ -38627,6 +43720,8 @@ declare namespace Enum {
         }
         export const CaptureNotInGallery: CaptureNotInGallery;
         /**
+         * The capture is not eligible for upload to this experience, either because it is a permanent system capture or the experience permissions grant was rejected.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#IneligibleCapture)
          */
         export interface IneligibleCapture extends globalThis.EnumItem {
@@ -38636,6 +43731,8 @@ declare namespace Enum {
         }
         export const IneligibleCapture: IneligibleCapture;
         /**
+         * The user has reached their daily capture upload quota and the upload was not completed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#UploadQuotaReached)
          */
         export interface UploadQuotaReached extends globalThis.EnumItem {
@@ -38645,6 +43742,8 @@ declare namespace Enum {
         }
         export const UploadQuotaReached: UploadQuotaReached;
         /**
+         * The upload is still in progress and the asset has not yet been assigned an ID; poll `CaptureService:CheckUploadCaptureStatusAsync()` again to check for completion.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#UploadPending)
          */
         export interface UploadPending extends globalThis.EnumItem {
@@ -38654,6 +43753,8 @@ declare namespace Enum {
         }
         export const UploadPending: UploadPending;
         /**
+         * The upload completed but a backend processing error occurred, so the capture was not saved as an asset.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UploadCaptureResult#UploadFailed)
          */
         export interface UploadFailed extends globalThis.EnumItem {
@@ -38695,13 +43796,145 @@ declare namespace Enum {
     }
     export type UsageContext = UsageContext.Default | UsageContext.Preview;
     /**
-     * Determines what body part is being tracked by a VR device, and what its CFrame actually is.
+     * Describes how a player first found the current experience.
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource)
+     */
+    export namespace UserAcquisitionSource {
+        /**
+         * Segment data is unavailable.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Unknown: Unknown;
+        /**
+         * The player started playing recently, and their acquisition source is not available yet.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#PendingAttribution)
+         */
+        export interface PendingAttribution extends globalThis.EnumItem {
+            Name: "PendingAttribution";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const PendingAttribution: PendingAttribution;
+        /**
+         * The player first joined from a recommendation on the Home page.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#HomeRecommendation)
+         */
+        export interface HomeRecommendation extends globalThis.EnumItem {
+            Name: "HomeRecommendation";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const HomeRecommendation: HomeRecommendation;
+        /**
+         * The player first joined from the Continue section.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#ContinueToPlay)
+         */
+        export interface ContinueToPlay extends globalThis.EnumItem {
+            Name: "ContinueToPlay";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const ContinueToPlay: ContinueToPlay;
+        /**
+         * The player first joined from content curated by Roblox, such as featured experiences or events.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Curation)
+         */
+        export interface Curation extends globalThis.EnumItem {
+            Name: "Curation";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Curation: Curation;
+        /**
+         * The player first joined through a friend.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Friends)
+         */
+        export interface Friends extends globalThis.EnumItem {
+            Name: "Friends";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Friends: Friends;
+        /**
+         * The player first joined from search results.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Search)
+         */
+        export interface Search extends globalThis.EnumItem {
+            Name: "Search";
+            Value: 6;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Search: Search;
+        /**
+         * The player first joined by teleporting from another experience.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Teleport)
+         */
+        export interface Teleport extends globalThis.EnumItem {
+            Name: "Teleport";
+            Value: 7;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Teleport: Teleport;
+        /**
+         * The player first joined from an ad, such as a sponsored ad, search ad, or portal ad.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Ads)
+         */
+        export interface Ads extends globalThis.EnumItem {
+            Name: "Ads";
+            Value: 8;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Ads: Ads;
+        /**
+         * The player first joined from a part of the Roblox app other than Home recommendations, such as Charts or Favorites.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#HomeOther)
+         */
+        export interface HomeOther extends globalThis.EnumItem {
+            Name: "HomeOther";
+            Value: 9;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const HomeOther: HomeOther;
+        /**
+         * The player first joined from another source, such as a share link, chat, or a notification.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserAcquisitionSource#Other)
+         */
+        export interface Other extends globalThis.EnumItem {
+            Name: "Other";
+            Value: 10;
+            EnumType: typeof globalThis.Enum.UserAcquisitionSource;
+        }
+        export const Other: Other;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UserAcquisitionSource>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UserAcquisitionSource | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserAcquisitionSource | undefined;
+    }
+    export type UserAcquisitionSource = UserAcquisitionSource.Unknown | UserAcquisitionSource.PendingAttribution | UserAcquisitionSource.HomeRecommendation | UserAcquisitionSource.ContinueToPlay | UserAcquisitionSource.Curation | UserAcquisitionSource.Friends | UserAcquisitionSource.Search | UserAcquisitionSource.Teleport | UserAcquisitionSource.Ads | UserAcquisitionSource.HomeOther | UserAcquisitionSource.Other;
+    /**
+     * Determines what body part is being tracked by a VR device, and what its `CFrame` actually is.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserCFrame)
      */
     export namespace UserCFrame {
         /**
-         * The CFrame of the user's head.
+         * The `CFrame` of the user's head.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserCFrame#Head)
          */
@@ -38712,7 +43945,7 @@ declare namespace Enum {
         }
         export const Head: Head;
         /**
-         * The CFrame of the user's left hand.
+         * The `CFrame` of the user's left hand.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserCFrame#LeftHand)
          */
@@ -38723,7 +43956,7 @@ declare namespace Enum {
         }
         export const LeftHand: LeftHand;
         /**
-         * The CFrame of the user's right hand.
+         * The `CFrame` of the user's right hand.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserCFrame#RightHand)
          */
@@ -38734,6 +43967,8 @@ declare namespace Enum {
         }
         export const RightHand: RightHand;
         /**
+         * The `CFrame` of the center of the floor.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserCFrame#Floor)
          */
         export interface Floor extends globalThis.EnumItem {
@@ -38747,6 +43982,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserCFrame | undefined;
     }
     export type UserCFrame = UserCFrame.Head | UserCFrame.LeftHand | UserCFrame.RightHand | UserCFrame.Floor;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserIdMode)
+     */
+    export namespace UserIdMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserIdMode#Invalid)
+         */
+        export interface Invalid extends globalThis.EnumItem {
+            Name: "Invalid";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.UserIdMode;
+        }
+        export const Invalid: Invalid;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserIdMode#Global)
+         */
+        export interface Global extends globalThis.EnumItem {
+            Name: "Global";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.UserIdMode;
+        }
+        export const Global: Global;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserIdMode#Domain)
+         */
+        export interface Domain extends globalThis.EnumItem {
+            Name: "Domain";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.UserIdMode;
+        }
+        export const Domain: Domain;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UserIdMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UserIdMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserIdMode | undefined;
+    }
+    export type UserIdMode = UserIdMode.Invalid | UserIdMode.Global | UserIdMode.Domain;
     /**
      * This enum describes the state of an input that is currently or was recently performed.
      *
@@ -39056,10 +44327,94 @@ declare namespace Enum {
     }
     export type UserInputType = UserInputType.MouseButton1 | UserInputType.MouseButton2 | UserInputType.MouseButton3 | UserInputType.MouseWheel | UserInputType.MouseMovement | UserInputType.Touch | UserInputType.Keyboard | UserInputType.Focus | UserInputType.Accelerometer | UserInputType.Gyro | UserInputType.Gamepad1 | UserInputType.Gamepad2 | UserInputType.Gamepad3 | UserInputType.Gamepad4 | UserInputType.Gamepad5 | UserInputType.Gamepad6 | UserInputType.Gamepad7 | UserInputType.Gamepad8 | UserInputType.TextInput | UserInputType.InputMethod | UserInputType.None;
     /**
+     * Describes whether a player is new to the current experience or has played it before.
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserNewReturningStatus)
+     */
+    export namespace UserNewReturningStatus {
+        /**
+         * Segment data is unavailable.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserNewReturningStatus#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.UserNewReturningStatus;
+        }
+        export const Unknown: Unknown;
+        /**
+         * The player is playing the experience for the first time.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserNewReturningStatus#New)
+         */
+        export interface New extends globalThis.EnumItem {
+            Name: "New";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.UserNewReturningStatus;
+        }
+        export const New: New;
+        /**
+         * The player has played the experience before.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserNewReturningStatus#Returning)
+         */
+        export interface Returning extends globalThis.EnumItem {
+            Name: "Returning";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.UserNewReturningStatus;
+        }
+        export const Returning: Returning;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UserNewReturningStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UserNewReturningStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserNewReturningStatus | undefined;
+    }
+    export type UserNewReturningStatus = UserNewReturningStatus.Unknown | UserNewReturningStatus.New | UserNewReturningStatus.Returning;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserReturnStatus)
+     */
+    export namespace UserReturnStatus {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserReturnStatus#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.UserReturnStatus;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserReturnStatus#New)
+         */
+        export interface New extends globalThis.EnumItem {
+            Name: "New";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.UserReturnStatus;
+        }
+        export const New: New;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/UserReturnStatus#Returning)
+         */
+        export interface Returning extends globalThis.EnumItem {
+            Name: "Returning";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.UserReturnStatus;
+        }
+        export const Returning: Returning;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.UserReturnStatus>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.UserReturnStatus | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.UserReturnStatus | undefined;
+    }
+    export type UserReturnStatus = UserReturnStatus.Unknown | UserReturnStatus.New | UserReturnStatus.Returning;
+    /**
+     * Named presets for VR comfort assists such as vignette, smooth rotation, and third-person follow camera.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRComfortSetting)
      */
     export namespace VRComfortSetting {
         /**
+         * Most restrictive comfort preset: enables vignette, disables smooth rotation, and disables the third-person follow camera.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRComfortSetting#Comfort)
          */
         export interface Comfort extends globalThis.EnumItem {
@@ -39069,6 +44424,8 @@ declare namespace Enum {
         }
         export const Comfort: Comfort;
         /**
+         * Default balanced preset: enables vignette and third-person follow camera while keeping smooth rotation disabled.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRComfortSetting#Normal)
          */
         export interface Normal extends globalThis.EnumItem {
@@ -39078,6 +44435,8 @@ declare namespace Enum {
         }
         export const Normal: Normal;
         /**
+         * Least restrictive comfort preset: disables vignette and enables both smooth rotation and the third-person follow camera.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRComfortSetting#Expert)
          */
         export interface Expert extends globalThis.EnumItem {
@@ -39087,6 +44446,8 @@ declare namespace Enum {
         }
         export const Expert: Expert;
         /**
+         * Lets vignette, smooth rotation, and third-person follow camera be configured independently rather than as a fixed preset.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRComfortSetting#Custom)
          */
         export interface Custom extends globalThis.EnumItem {
@@ -39101,10 +44462,14 @@ declare namespace Enum {
     }
     export type VRComfortSetting = VRComfortSetting.Comfort | VRComfortSetting.Normal | VRComfortSetting.Expert | VRComfortSetting.Custom;
     /**
+     * Controls whether and how the player's VR hand controller models are rendered in an experience.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRControllerModelMode)
      */
     export namespace VRControllerModelMode {
         /**
+         * The player's VR hand controller models are not rendered.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRControllerModelMode#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -39114,6 +44479,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * The player's VR hand controller models are rendered with transparency.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRControllerModelMode#Transparent)
          */
         export interface Transparent extends globalThis.EnumItem {
@@ -39182,10 +44549,14 @@ declare namespace Enum {
     }
     export type VRDeviceType = VRDeviceType.Unknown | VRDeviceType.OculusRift | VRDeviceType.HTCVive | VRDeviceType.ValveIndex | VRDeviceType.OculusQuest;
     /**
+     * Specifies the display mode of the VR laser pointer used to interact with the user interface.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRLaserPointerMode)
      */
     export namespace VRLaserPointerMode {
         /**
+         * The laser pointer is hidden and no pointer is rendered for any VR hand.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRLaserPointerMode#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -39195,6 +44566,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * A single laser pointer is shown for the primary VR hand; this is the default value of `VRService.LaserPointer`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRLaserPointerMode#Pointer)
          */
         export interface Pointer extends globalThis.EnumItem {
@@ -39204,6 +44577,8 @@ declare namespace Enum {
         }
         export const Pointer: Pointer;
         /**
+         * A laser pointer is shown for each VR hand simultaneously.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRLaserPointerMode#DualPointer)
          */
         export interface DualPointer extends globalThis.EnumItem {
@@ -39217,6 +44592,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VRLaserPointerMode | undefined;
     }
     export type VRLaserPointerMode = VRLaserPointerMode.Disabled | VRLaserPointerMode.Pointer | VRLaserPointerMode.DualPointer;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRPresentationMode)
+     */
+    export namespace VRPresentationMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRPresentationMode#Stereo)
+         */
+        export interface Stereo extends globalThis.EnumItem {
+            Name: "Stereo";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.VRPresentationMode;
+        }
+        export const Stereo: Stereo;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRPresentationMode#Flat)
+         */
+        export interface Flat extends globalThis.EnumItem {
+            Name: "Flat";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.VRPresentationMode;
+        }
+        export const Flat: Flat;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VRPresentationMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VRPresentationMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VRPresentationMode | undefined;
+    }
+    export type VRPresentationMode = VRPresentationMode.Stereo | VRPresentationMode.Flat;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRSafetyBubbleMode)
      */
@@ -39254,11 +44656,13 @@ declare namespace Enum {
     }
     export type VRSafetyBubbleMode = VRSafetyBubbleMode.NoOne | VRSafetyBubbleMode.OnlyFriends | VRSafetyBubbleMode.Anyone;
     /**
+     * Controls whether `VRService` automatically adjusts the perceived scale of the world in VR to match the player's avatar size.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRScaling)
      */
     export namespace VRScaling {
         /**
-         * Adjusts `Class.Camera.HeadScale' so that the world in VR is seen from the avatar's perspective.
+         * Adjusts `Camera.HeadScale` so that the world in VR is seen from the avatar's perspective.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRScaling#World)
          */
@@ -39269,7 +44673,7 @@ declare namespace Enum {
         }
         export const World: World;
         /**
-         * Disable VR AutomaticScaling .
+         * Disables VR automatic scaling; set `Camera.HeadScale` manually if needed.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRScaling#Off)
          */
@@ -39285,10 +44689,14 @@ declare namespace Enum {
     }
     export type VRScaling = VRScaling.World | VRScaling.Off;
     /**
+     * The lifecycle state of the active VR session, as reported by the `VRSessionState` property of `VRService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRSessionState)
      */
     export namespace VRSessionState {
         /**
+         * The VR session state is unknown or has not yet been established; the default value of `VRSessionState`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRSessionState#Undefined)
          */
         export interface Undefined extends globalThis.EnumItem {
@@ -39298,6 +44706,8 @@ declare namespace Enum {
         }
         export const Undefined: Undefined;
         /**
+         * The VR headset is connected and ready but is not yet presenting frames to the user.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRSessionState#Idle)
          */
         export interface Idle extends globalThis.EnumItem {
@@ -39307,6 +44717,8 @@ declare namespace Enum {
         }
         export const Idle: Idle;
         /**
+         * The VR session is rendering frames visible to the user but does not yet have XR input focus; haptic feedback is available.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRSessionState#Visible)
          */
         export interface Visible extends globalThis.EnumItem {
@@ -39316,6 +44728,8 @@ declare namespace Enum {
         }
         export const Visible: Visible;
         /**
+         * The VR session has full XR input focus and is rendering visible frames; haptic feedback is available.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRSessionState#Focused)
          */
         export interface Focused extends globalThis.EnumItem {
@@ -39325,6 +44739,8 @@ declare namespace Enum {
         }
         export const Focused: Focused;
         /**
+         * The VR session is in the process of stopping and will transition to an inactive state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VRSessionState#Stopping)
          */
         export interface Stopping extends globalThis.EnumItem {
@@ -39471,6 +44887,39 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VelocityConstraintMode | undefined;
     }
     export type VelocityConstraintMode = VelocityConstraintMode.Line | VelocityConstraintMode.Plane | VelocityConstraintMode.Vector;
+    /**
+     * Specifies the level of player verification required by `Player:IsVerified()`.
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerifiedLevel)
+     */
+    export namespace VerifiedLevel {
+        /**
+         * Requires the player to meet the low verification level or higher. This is the default value for `Player:IsVerified()`.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerifiedLevel#Low)
+         */
+        export interface Low extends globalThis.EnumItem {
+            Name: "Low";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.VerifiedLevel;
+        }
+        export const Low: Low;
+        /**
+         * Requires the player to meet the high verification level.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VerifiedLevel#High)
+         */
+        export interface High extends globalThis.EnumItem {
+            Name: "High";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.VerifiedLevel;
+        }
+        export const High: High;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.VerifiedLevel>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.VerifiedLevel | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.VerifiedLevel | undefined;
+    }
+    export type VerifiedLevel = VerifiedLevel.Low | VerifiedLevel.High;
     /**
      * Used by `UIGridStyleLayout.VerticalAlignment` to align the layout vertically within its parent.
      *
@@ -39626,10 +45075,14 @@ declare namespace Enum {
     }
     export type VibrationMotor = VibrationMotor.Large | VibrationMotor.Small | VibrationMotor.LeftTrigger | VibrationMotor.RightTrigger | VibrationMotor.LeftHand | VibrationMotor.RightHand;
     /**
+     * Indicates whether a video capture session ended successfully or the reason it was interrupted.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureResult)
      */
     export namespace VideoCaptureResult {
         /**
+         * Video capture ended normally without any errors.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureResult#Success)
          */
         export interface Success extends globalThis.EnumItem {
@@ -39639,6 +45092,8 @@ declare namespace Enum {
         }
         export const Success: Success;
         /**
+         * Video capture stopped due to an unspecified internal error.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureResult#OtherError)
          */
         export interface OtherError extends globalThis.EnumItem {
@@ -39648,6 +45103,8 @@ declare namespace Enum {
         }
         export const OtherError: OtherError;
         /**
+         * Video capture was interrupted because the screen dimensions changed while recording was in progress.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureResult#ScreenSizeChanged)
          */
         export interface ScreenSizeChanged extends globalThis.EnumItem {
@@ -39657,6 +45114,8 @@ declare namespace Enum {
         }
         export const ScreenSizeChanged: ScreenSizeChanged;
         /**
+         * Video capture was stopped automatically because the maximum allowed recording duration was reached.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureResult#TimeLimitReached)
          */
         export interface TimeLimitReached extends globalThis.EnumItem {
@@ -39671,10 +45130,14 @@ declare namespace Enum {
     }
     export type VideoCaptureResult = VideoCaptureResult.Success | VideoCaptureResult.OtherError | VideoCaptureResult.ScreenSizeChanged | VideoCaptureResult.TimeLimitReached;
     /**
+     * Describes the outcome of a video capture start request made through `CaptureService`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureStartedResult)
      */
     export namespace VideoCaptureStartedResult {
         /**
+         * Video capture started successfully.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureStartedResult#Success)
          */
         export interface Success extends globalThis.EnumItem {
@@ -39684,6 +45147,8 @@ declare namespace Enum {
         }
         export const Success: Success;
         /**
+         * Video capture failed due to an unspecified internal error.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureStartedResult#OtherError)
          */
         export interface OtherError extends globalThis.EnumItem {
@@ -39693,6 +45158,8 @@ declare namespace Enum {
         }
         export const OtherError: OtherError;
         /**
+         * A video capture session is already in progress and a new one cannot be started.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureStartedResult#CapturingAlready)
          */
         export interface CapturingAlready extends globalThis.EnumItem {
@@ -39702,6 +45169,8 @@ declare namespace Enum {
         }
         export const CapturingAlready: CapturingAlready;
         /**
+         * The device does not have the required capture capabilities.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureStartedResult#NoDeviceSupport)
          */
         export interface NoDeviceSupport extends globalThis.EnumItem {
@@ -39711,6 +45180,8 @@ declare namespace Enum {
         }
         export const NoDeviceSupport: NoDeviceSupport;
         /**
+         * The device does not have sufficient storage space available to begin capturing video.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoCaptureStartedResult#NoSpaceOnDevice)
          */
         export interface NoSpaceOnDevice extends globalThis.EnumItem {
@@ -39725,10 +45196,14 @@ declare namespace Enum {
     }
     export type VideoCaptureStartedResult = VideoCaptureStartedResult.Success | VideoCaptureStartedResult.OtherError | VideoCaptureStartedResult.CapturingAlready | VideoCaptureStartedResult.NoDeviceSupport | VideoCaptureStartedResult.NoSpaceOnDevice;
     /**
+     * Specifies the capture resolution and frame rate used by a `VideoDeviceInput` when reading from a camera device.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoDeviceCaptureQuality)
      */
     export namespace VideoDeviceCaptureQuality {
         /**
+         * The default capture quality.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoDeviceCaptureQuality#Default)
          */
         export interface Default extends globalThis.EnumItem {
@@ -39738,6 +45213,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * Captures at a reduced quality to lower resource usage on constrained or mobile platforms.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoDeviceCaptureQuality#Low)
          */
         export interface Low extends globalThis.EnumItem {
@@ -39747,6 +45224,8 @@ declare namespace Enum {
         }
         export const Low: Low;
         /**
+         * Captures at a balanced quality suitable for most use cases.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoDeviceCaptureQuality#Medium)
          */
         export interface Medium extends globalThis.EnumItem {
@@ -39756,6 +45235,8 @@ declare namespace Enum {
         }
         export const Medium: Medium;
         /**
+         * Captures at the highest available quality.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoDeviceCaptureQuality#High)
          */
         export interface High extends globalThis.EnumItem {
@@ -39770,10 +45251,14 @@ declare namespace Enum {
     }
     export type VideoDeviceCaptureQuality = VideoDeviceCaptureQuality.Default | VideoDeviceCaptureQuality.Low | VideoDeviceCaptureQuality.Medium | VideoDeviceCaptureQuality.High;
     /**
+     * Indicates the result of a video operation in the engine's video subsystem.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError)
      */
     export namespace VideoError {
         /**
+         * The video operation completed successfully without error.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#Ok)
          */
         export interface Ok extends globalThis.EnumItem {
@@ -39783,6 +45268,8 @@ declare namespace Enum {
         }
         export const Ok: Ok;
         /**
+         * The end of the video stream or file has been reached.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#Eof)
          */
         export interface Eof extends globalThis.EnumItem {
@@ -39792,6 +45279,8 @@ declare namespace Enum {
         }
         export const Eof: Eof;
         /**
+         * No data is available at this moment; the caller should retry the operation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#EAgain)
          */
         export interface EAgain extends globalThis.EnumItem {
@@ -39801,6 +45290,8 @@ declare namespace Enum {
         }
         export const EAgain: EAgain;
         /**
+         * An invalid or out-of-range parameter was supplied to the video operation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#BadParameter)
          */
         export interface BadParameter extends globalThis.EnumItem {
@@ -39810,6 +45301,8 @@ declare namespace Enum {
         }
         export const BadParameter: BadParameter;
         /**
+         * A memory allocation required for the video operation failed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#AllocFailed)
          */
         export interface AllocFailed extends globalThis.EnumItem {
@@ -39819,6 +45312,8 @@ declare namespace Enum {
         }
         export const AllocFailed: AllocFailed;
         /**
+         * The video codec failed to initialize.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#CodecInitFailed)
          */
         export interface CodecInitFailed extends globalThis.EnumItem {
@@ -39828,6 +45323,8 @@ declare namespace Enum {
         }
         export const CodecInitFailed: CodecInitFailed;
         /**
+         * The video codec failed to shut down cleanly.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#CodecCloseFailed)
          */
         export interface CodecCloseFailed extends globalThis.EnumItem {
@@ -39837,6 +45334,8 @@ declare namespace Enum {
         }
         export const CodecCloseFailed: CodecCloseFailed;
         /**
+         * The video decoder failed to decode a frame from the stream.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#DecodeFailed)
          */
         export interface DecodeFailed extends globalThis.EnumItem {
@@ -39846,6 +45345,8 @@ declare namespace Enum {
         }
         export const DecodeFailed: DecodeFailed;
         /**
+         * Parsing the video stream or container format failed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#ParsingFailed)
          */
         export interface ParsingFailed extends globalThis.EnumItem {
@@ -39855,6 +45356,8 @@ declare namespace Enum {
         }
         export const ParsingFailed: ParsingFailed;
         /**
+         * The requested video operation or format is not supported on this platform.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#Unsupported)
          */
         export interface Unsupported extends globalThis.EnumItem {
@@ -39864,6 +45367,8 @@ declare namespace Enum {
         }
         export const Unsupported: Unsupported;
         /**
+         * A generic or unclassified error occurred in the video subsystem.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#Generic)
          */
         export interface Generic extends globalThis.EnumItem {
@@ -39873,6 +45378,8 @@ declare namespace Enum {
         }
         export const Generic: Generic;
         /**
+         * The video asset could not be downloaded.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#DownloadFailed)
          */
         export interface DownloadFailed extends globalThis.EnumItem {
@@ -39882,6 +45389,8 @@ declare namespace Enum {
         }
         export const DownloadFailed: DownloadFailed;
         /**
+         * The requested video stream could not be found.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#StreamNotFound)
          */
         export interface StreamNotFound extends globalThis.EnumItem {
@@ -39891,6 +45400,8 @@ declare namespace Enum {
         }
         export const StreamNotFound: StreamNotFound;
         /**
+         * The video encoder failed to encode a frame.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#EncodeFailed)
          */
         export interface EncodeFailed extends globalThis.EnumItem {
@@ -39900,6 +45411,8 @@ declare namespace Enum {
         }
         export const EncodeFailed: EncodeFailed;
         /**
+         * Creating a required video resource or object failed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#CreateFailed)
          */
         export interface CreateFailed extends globalThis.EnumItem {
@@ -39909,6 +45422,8 @@ declare namespace Enum {
         }
         export const CreateFailed: CreateFailed;
         /**
+         * The video operation was denied because the required permission, such as camera access, has not been granted.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#NoPermission)
          */
         export interface NoPermission extends globalThis.EnumItem {
@@ -39918,6 +45433,8 @@ declare namespace Enum {
         }
         export const NoPermission: NoPermission;
         /**
+         * The required video service is unavailable on this device or platform.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#NoService)
          */
         export interface NoService extends globalThis.EnumItem {
@@ -39927,6 +45444,8 @@ declare namespace Enum {
         }
         export const NoService: NoService;
         /**
+         * Releasing a video resource failed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#ReleaseFailed)
          */
         export interface ReleaseFailed extends globalThis.EnumItem {
@@ -39936,6 +45455,8 @@ declare namespace Enum {
         }
         export const ReleaseFailed: ReleaseFailed;
         /**
+         * An unknown or unrecognized error occurred; this value covers errors that have no specific classification in this enum.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoError#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -39956,6 +45477,8 @@ declare namespace Enum {
      */
     export namespace VideoSampleSize {
         /**
+         * Use when the video sample is displayed on roughly a quarter of the screen.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoSampleSize#Small)
          */
         export interface Small extends globalThis.EnumItem {
@@ -39965,6 +45488,8 @@ declare namespace Enum {
         }
         export const Small: Small;
         /**
+         * Use when the video sample is displayed on roughly half the screen.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoSampleSize#Medium)
          */
         export interface Medium extends globalThis.EnumItem {
@@ -39974,6 +45499,8 @@ declare namespace Enum {
         }
         export const Medium: Medium;
         /**
+         * Use when the video sample is displayed on roughly three quarters of the screen.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoSampleSize#Large)
          */
         export interface Large extends globalThis.EnumItem {
@@ -39983,6 +45510,8 @@ declare namespace Enum {
         }
         export const Large: Large;
         /**
+         * Use when the video sample is displayed full screen.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VideoSampleSize#Full)
          */
         export interface Full extends globalThis.EnumItem {
@@ -39997,10 +45526,14 @@ declare namespace Enum {
     }
     export type VideoSampleSize = VideoSampleSize.Small | VideoSampleSize.Medium | VideoSampleSize.Large | VideoSampleSize.Full;
     /**
+     * Controls which debug rendering visualization overlay is displayed in the Studio viewport via `RenderSettings.ViewMode`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ViewMode)
      */
     export namespace ViewMode {
         /**
+         * Disables the debug rendering visualization overlay; the default value of `RenderSettings.ViewMode`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ViewMode#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -40010,6 +45543,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * Displays an overdraw visualization highlighting geometric complexity across rendered surfaces.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ViewMode#GeometryComplexity)
          */
         export interface GeometryComplexity extends globalThis.EnumItem {
@@ -40019,6 +45554,8 @@ declare namespace Enum {
         }
         export const GeometryComplexity: GeometryComplexity;
         /**
+         * Displays an overdraw visualization highlighting surfaces rendered with transparency.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ViewMode#Transparent)
          */
         export interface Transparent extends globalThis.EnumItem {
@@ -40028,6 +45565,8 @@ declare namespace Enum {
         }
         export const Transparent: Transparent;
         /**
+         * Displays an overdraw visualization highlighting surfaces rendered with decals.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ViewMode#Decal)
          */
         export interface Decal extends globalThis.EnumItem {
@@ -40086,10 +45625,14 @@ declare namespace Enum {
     }
     export type VirtualCursorMode = VirtualCursorMode.Default | VirtualCursorMode.Disabled | VirtualCursorMode.Enabled;
     /**
+     * Describes the current operational state of a `VirtualInputManager`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VirtualInputMode)
      */
     export namespace VirtualInputMode {
         /**
+         * The `VirtualInputManager` is idle and neither recording nor playing back input.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VirtualInputMode#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -40099,6 +45642,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * The `VirtualInputManager` is actively capturing input events into a sequence.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VirtualInputMode#Recording)
          */
         export interface Recording extends globalThis.EnumItem {
@@ -40108,6 +45653,8 @@ declare namespace Enum {
         }
         export const Recording: Recording;
         /**
+         * The `VirtualInputManager` is replaying a previously recorded input sequence.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VirtualInputMode#Playing)
          */
         export interface Playing extends globalThis.EnumItem {
@@ -40155,10 +45702,14 @@ declare namespace Enum {
     }
     export type VoiceChatDistanceAttenuationType = VoiceChatDistanceAttenuationType.Inverse | VoiceChatDistanceAttenuationType.Legacy;
     /**
+     * Describes the connection state of a local player's voice chat session.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceChatState)
      */
     export namespace VoiceChatState {
         /**
+         * The player is not connected to voice chat and no join attempt is in progress.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceChatState#Idle)
          */
         export interface Idle extends globalThis.EnumItem {
@@ -40168,6 +45719,8 @@ declare namespace Enum {
         }
         export const Idle: Idle;
         /**
+         * A voice chat join attempt is in progress for the first time.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceChatState#Joining)
          */
         export interface Joining extends globalThis.EnumItem {
@@ -40177,6 +45730,8 @@ declare namespace Enum {
         }
         export const Joining: Joining;
         /**
+         * A voice chat join is being retried after a previous attempt did not succeed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceChatState#JoiningRetry)
          */
         export interface JoiningRetry extends globalThis.EnumItem {
@@ -40186,6 +45741,8 @@ declare namespace Enum {
         }
         export const JoiningRetry: JoiningRetry;
         /**
+         * The player has successfully joined the voice chat session and is actively connected.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceChatState#Joined)
          */
         export interface Joined extends globalThis.EnumItem {
@@ -40195,6 +45752,8 @@ declare namespace Enum {
         }
         export const Joined: Joined;
         /**
+         * The player is in the process of disconnecting from the voice chat session.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceChatState#Leaving)
          */
         export interface Leaving extends globalThis.EnumItem {
@@ -40204,6 +45763,8 @@ declare namespace Enum {
         }
         export const Leaving: Leaving;
         /**
+         * The voice chat session has ended normally.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceChatState#Ended)
          */
         export interface Ended extends globalThis.EnumItem {
@@ -40213,6 +45774,8 @@ declare namespace Enum {
         }
         export const Ended: Ended;
         /**
+         * The voice chat session ended due to an error, such as a failure to join or a mid-session error.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceChatState#Failed)
          */
         export interface Failed extends globalThis.EnumItem {
@@ -40317,10 +45880,14 @@ declare namespace Enum {
     }
     export type VoiceClientLeaveReasons = VoiceClientLeaveReasons.Unknown | VoiceClientLeaveReasons.ClientNetworkDisconnected | VoiceClientLeaveReasons.PlayerLeft | VoiceClientLeaveReasons.ClientShutdown | VoiceClientLeaveReasons.PublishFailed | VoiceClientLeaveReasons.RejoinReceived | VoiceClientLeaveReasons.VoiceReboot | VoiceClientLeaveReasons.ImguiDebugLeave | VoiceClientLeaveReasons.LuaInitiated;
     /**
+     * Identifies which leg of a voice chat control-plane operation is being reported.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceControlPath)
      */
     export namespace VoiceControlPath {
         /**
+         * Represents the outbound audio path, through which a client sends local microphone audio to the room.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceControlPath#Publish)
          */
         export interface Publish extends globalThis.EnumItem {
@@ -40330,6 +45897,8 @@ declare namespace Enum {
         }
         export const Publish: Publish;
         /**
+         * Represents the inbound audio path, through which a client receives remote participants' audio streams.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceControlPath#Subscribe)
          */
         export interface Subscribe extends globalThis.EnumItem {
@@ -40339,6 +45908,8 @@ declare namespace Enum {
         }
         export const Subscribe: Subscribe;
         /**
+         * Represents the room-join path, through which a client establishes membership in a voice room.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/VoiceControlPath#Join)
          */
         export interface Join extends globalThis.EnumItem {
@@ -40457,6 +46028,8 @@ declare namespace Enum {
      */
     export namespace WaterDirection {
         /**
+         * The negative X-axis face direction of a voxel terrain water cell.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WaterDirection#NegX)
          */
         export interface NegX extends globalThis.EnumItem {
@@ -40466,6 +46039,8 @@ declare namespace Enum {
         }
         export const NegX: NegX;
         /**
+         * The positive X-axis face direction of a voxel terrain water cell.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WaterDirection#X)
          */
         export interface X extends globalThis.EnumItem {
@@ -40475,6 +46050,8 @@ declare namespace Enum {
         }
         export const X: X;
         /**
+         * The negative Y-axis face direction of a voxel terrain water cell.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WaterDirection#NegY)
          */
         export interface NegY extends globalThis.EnumItem {
@@ -40484,6 +46061,8 @@ declare namespace Enum {
         }
         export const NegY: NegY;
         /**
+         * The positive Y-axis face direction of a voxel terrain water cell.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WaterDirection#Y)
          */
         export interface Y extends globalThis.EnumItem {
@@ -40493,6 +46072,8 @@ declare namespace Enum {
         }
         export const Y: Y;
         /**
+         * The negative Z-axis face direction of a voxel terrain water cell.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WaterDirection#NegZ)
          */
         export interface NegZ extends globalThis.EnumItem {
@@ -40502,6 +46083,8 @@ declare namespace Enum {
         }
         export const NegZ: NegZ;
         /**
+         * The positive Z-axis face direction of a voxel terrain water cell.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WaterDirection#Z)
          */
         export interface Z extends globalThis.EnumItem {
@@ -40522,6 +46105,8 @@ declare namespace Enum {
      */
     export namespace WaterForce {
         /**
+         * No flow force on a legacy voxel terrain water cell; the water is still.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WaterForce#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -40531,6 +46116,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * A low flow force level of a legacy voxel terrain water cell.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WaterForce#Small)
          */
         export interface Small extends globalThis.EnumItem {
@@ -40540,6 +46127,8 @@ declare namespace Enum {
         }
         export const Small: Small;
         /**
+         * A moderate flow force level of a legacy voxel terrain water cell, between `WaterForce.Small` and `WaterForce.Strong`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WaterForce#Medium)
          */
         export interface Medium extends globalThis.EnumItem {
@@ -40549,6 +46138,8 @@ declare namespace Enum {
         }
         export const Medium: Medium;
         /**
+         * A high flow force level of a legacy voxel terrain water cell, one step below `WaterForce.Max`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WaterForce#Strong)
          */
         export interface Strong extends globalThis.EnumItem {
@@ -40558,6 +46149,8 @@ declare namespace Enum {
         }
         export const Strong: Strong;
         /**
+         * The maximum flow force level of a legacy voxel terrain water cell.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WaterForce#Max)
          */
         export interface Max extends globalThis.EnumItem {
@@ -40716,6 +46309,8 @@ declare namespace Enum {
     }
     export type WebStreamClientType = WebStreamClientType.SSE | WebStreamClientType.RawStream | WebStreamClientType.WebSocket;
     /**
+     * Controls which `WeldConstraints` are included in the recommendation table returned by `GeometryService:CalculateConstraintsToPreserve()`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WeldConstraintPreserve)
      */
     export namespace WeldConstraintPreserve {
@@ -40835,10 +46430,14 @@ declare namespace Enum {
     }
     export type WhenUserFirstPlayed = WhenUserFirstPlayed.Unknown | WhenUserFirstPlayed.Days0To30 | WhenUserFirstPlayed.Days31To90 | WhenUserFirstPlayed.Days91To180 | WhenUserFirstPlayed.Days181To365 | WhenUserFirstPlayed.Days366Plus;
     /**
+     * Describes which other players a player allows to initiate a whisper (direct) chat with them in an experience.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WhisperChatPrivacyMode)
      */
     export namespace WhisperChatPrivacyMode {
         /**
+         * The player allows any other player in the experience to initiate a whisper chat with them.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WhisperChatPrivacyMode#AllUsers)
          */
         export interface AllUsers extends globalThis.EnumItem {
@@ -40848,6 +46447,8 @@ declare namespace Enum {
         }
         export const AllUsers: AllUsers;
         /**
+         * The player does not allow any other player to initiate a whisper chat with them.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WhisperChatPrivacyMode#NoOne)
          */
         export interface NoOne extends globalThis.EnumItem {
@@ -40862,10 +46463,86 @@ declare namespace Enum {
     }
     export type WhisperChatPrivacyMode = WhisperChatPrivacyMode.AllUsers | WhisperChatPrivacyMode.NoOne;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindSoundProfile)
+     */
+    export namespace WindSoundProfile {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindSoundProfile#Turbulence)
+         */
+        export interface Turbulence extends globalThis.EnumItem {
+            Name: "Turbulence";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.WindSoundProfile;
+        }
+        export const Turbulence: Turbulence;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindSoundProfile#Whistle)
+         */
+        export interface Whistle extends globalThis.EnumItem {
+            Name: "Whistle";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.WindSoundProfile;
+        }
+        export const Whistle: Whistle;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindSoundProfile#Foliage)
+         */
+        export interface Foliage extends globalThis.EnumItem {
+            Name: "Foliage";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.WindSoundProfile;
+        }
+        export const Foliage: Foliage;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WindSoundProfile>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WindSoundProfile | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WindSoundProfile | undefined;
+    }
+    export type WindSoundProfile = WindSoundProfile.Turbulence | WindSoundProfile.Whistle | WindSoundProfile.Foliage;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindowState)
+     */
+    export namespace WindowState {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindowState#Normal)
+         */
+        export interface Normal extends globalThis.EnumItem {
+            Name: "Normal";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.WindowState;
+        }
+        export const Normal: Normal;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindowState#Minimized)
+         */
+        export interface Minimized extends globalThis.EnumItem {
+            Name: "Minimized";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.WindowState;
+        }
+        export const Minimized: Minimized;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WindowState#Maximized)
+         */
+        export interface Maximized extends globalThis.EnumItem {
+            Name: "Maximized";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.WindowState;
+        }
+        export const Maximized: Maximized;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.WindowState>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.WindowState | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.WindowState | undefined;
+    }
+    export type WindowState = WindowState.Normal | WindowState.Minimized | WindowState.Maximized;
+    /**
+     * Controls how automatic bone weight transfer from the body is applied to a `WrapLayer` accessory's mesh.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerAutoSkin)
      */
     export namespace WrapLayerAutoSkin {
         /**
+         * No automatic skinning transfer is applied; the accessory uses its authored skinning data as-is, and an unskinned mesh will not deform with the character.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerAutoSkin#Disabled)
          */
         export interface Disabled extends globalThis.EnumItem {
@@ -40875,6 +46552,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * Applies automatic skinning transfer only when the mesh has no existing skinning data; otherwise the authored weights are kept.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerAutoSkin#EnabledPreserve)
          */
         export interface EnabledPreserve extends globalThis.EnumItem {
@@ -40884,6 +46563,8 @@ declare namespace Enum {
         }
         export const EnabledPreserve: EnabledPreserve;
         /**
+         * Unconditionally overrides all skinning weights by running the cage-based skinning transfer algorithm, regardless of whether the mesh was originally skinned.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerAutoSkin#EnabledOverride)
          */
         export interface EnabledOverride extends globalThis.EnumItem {
@@ -40981,6 +46662,8 @@ declare namespace Enum {
         }
         export const OuterCage: OuterCage;
         /**
+         * Renders the layer's outer cage after the morph step that aligns it to the previous layer's outer cage surface, prior to HSR processing.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerDebugMode#ReferenceMeshAfterMorph)
          */
         export interface ReferenceMeshAfterMorph extends globalThis.EnumItem {
@@ -40990,6 +46673,8 @@ declare namespace Enum {
         }
         export const ReferenceMeshAfterMorph: ReferenceMeshAfterMorph;
         /**
+         * Interactive mode that highlights the render-mesh triangle under the cursor and draws the corresponding outer cage vertices on the layer above using HSR association data.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerDebugMode#HSROuterDetail)
          */
         export interface HSROuterDetail extends globalThis.EnumItem {
@@ -40999,6 +46684,8 @@ declare namespace Enum {
         }
         export const HSROuterDetail: HSROuterDetail;
         /**
+         * Highlights outer cage vertices that HSR associates with visible render-mesh faces.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerDebugMode#HSROuter)
          */
         export interface HSROuter extends globalThis.EnumItem {
@@ -41008,6 +46695,8 @@ declare namespace Enum {
         }
         export const HSROuter: HSROuter;
         /**
+         * Highlights inner cage vertices that Hidden Surface Removal (HSR) classifies as occluded by the clothing layer above, drawn at the previous layer's outer-cage positions.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerDebugMode#HSRInner)
          */
         export interface HSRInner extends globalThis.EnumItem {
@@ -41017,6 +46706,8 @@ declare namespace Enum {
         }
         export const HSRInner: HSRInner;
         /**
+         * Highlights inner cage vertices that HSR classifies as visible (not occluded), the complement of `WrapLayerDebugMode.HSRInner`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerDebugMode#HSRInnerReverse)
          */
         export interface HSRInnerReverse extends globalThis.EnumItem {
@@ -41026,6 +46717,8 @@ declare namespace Enum {
         }
         export const HSRInnerReverse: HSRInnerReverse;
         /**
+         * Renders the layer's outer cage at positions from fitting it to the base body mesh (rest pose), shown as spheres and wireframe edges.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerDebugMode#LayerCageFittedToBase)
          */
         export interface LayerCageFittedToBase extends globalThis.EnumItem {
@@ -41035,6 +46728,8 @@ declare namespace Enum {
         }
         export const LayerCageFittedToBase: LayerCageFittedToBase;
         /**
+         * Renders the layer's outer cage at positions from fitting it to the previous layer's deformed shape, shown as spheres and wireframe edges.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerDebugMode#LayerCageFittedToPrev)
          */
         export interface LayerCageFittedToPrev extends globalThis.EnumItem {
@@ -41044,6 +46739,8 @@ declare namespace Enum {
         }
         export const LayerCageFittedToPrev: LayerCageFittedToPrev;
         /**
+         * Draws each outer cage vertex that moved during deformation as a sphere at its pre-deformation position connected by a line to its post-deformation position.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerDebugMode#PreWrapDeformerOuterCage)
          */
         export interface PreWrapDeformerOuterCage extends globalThis.EnumItem {
@@ -41053,6 +46750,8 @@ declare namespace Enum {
         }
         export const PreWrapDeformerOuterCage: PreWrapDeformerOuterCage;
         /**
+         * Visualizes per-vertex skinning weight transfer for the layer mesh, drawing lines from each mesh vertex to its influencing skeleton joints.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapLayerDebugMode#SkinningTransfer)
          */
         export interface SkinningTransfer extends globalThis.EnumItem {
@@ -41161,6 +46860,8 @@ declare namespace Enum {
         }
         export const Rbf: Rbf;
         /**
+         * Visualizes outer cage vertices and related cage faces when hovering a mesh triangle in Studio.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapTargetDebugMode#OuterCageDetail)
          */
         export interface OuterCageDetail extends globalThis.EnumItem {
@@ -41170,6 +46871,8 @@ declare namespace Enum {
         }
         export const OuterCageDetail: OuterCageDetail;
         /**
+         * Renders the outer cage as wireframe with vertex markers in its pre-deformation state.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/WrapTargetDebugMode#PreWrapDeformerCage)
          */
         export interface PreWrapDeformerCage extends globalThis.EnumItem {

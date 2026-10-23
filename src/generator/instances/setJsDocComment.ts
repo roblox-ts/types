@@ -6,7 +6,9 @@ export function setJsDocComment(node: ts.Node, lines: Array<string>) {
 		.join("\n")
 		.split("\n");
 
-	while (lines.at(-1)?.trim() === "") lines.pop();
+	while (lines[lines.length - 1]?.trim() === "") {
+		lines.pop();
+	}
 
 	lines = lines.map(v => ` * ${v}`);
 

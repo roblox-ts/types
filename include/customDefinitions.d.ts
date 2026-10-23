@@ -151,14 +151,13 @@ interface CaptureService extends Instance {
 
 interface CatalogPages extends Pages<SearchCatalogResult> {}
 
-interface OutfitPages
-	extends Pages<
-		ReadonlyArray<{
-			Id: number;
-			Name: string;
-			IsEditable: boolean;
-		}>
-	> {}
+interface OutfitPages extends Pages<
+	ReadonlyArray<{
+		Id: number;
+		Name: string;
+		IsEditable: boolean;
+	}>
+> {}
 
 interface BadgeService extends Instance {
 	/** @server */
@@ -374,8 +373,13 @@ interface FloatCurve extends Instance {
 	InsertKey(this: FloatCurve, key: FloatCurveKey): [isNew: boolean, index: number];
 }
 
-interface FriendPages
-	extends Pages<{ AvatarFinal: boolean; AvatarUri: string; Id: number; Username: string; IsOnline: boolean }> {}
+interface FriendPages extends Pages<{
+	AvatarFinal: boolean;
+	AvatarUri: string;
+	Id: number;
+	Username: string;
+	IsOnline: boolean;
+}> {}
 
 interface GamepadService extends Instance {
 	EnableGamepadCursor(this: GamepadService, guiObject: GuiObject | undefined): void;
@@ -568,7 +572,6 @@ interface Instance extends RBXObject {
 	 */
 	Clone<T extends Instance>(this: T): T;
 	GetActor(this: Instance): Actor | undefined;
-	GetDescendants(this: Instance): Array<Instance>;
 	GetTags(this: Instance): Array<string>;
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
 	WaitForChild(this: Instance, childName: string | number): Instance;
@@ -582,8 +585,12 @@ interface Instance extends RBXObject {
 	FindFirstAncestorOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 	FindFirstChildOfClass<T extends keyof Instances>(this: Instance, className: T): Instances[T] | undefined;
 	GetAttribute(this: Instance, attribute: string): AttributeValue | undefined;
-	SetAttribute(this: Instance, attribute: string, value: AttributeValue | undefined): void;
+	SetAttribute(this: Instance, attribute: string, value: SetAttributeValue | undefined): void;
 	GetAttributes(this: Instance): Map<string, AttributeValue>;
+	QueryDescendants<S extends string>(
+		this: Instance,
+		selector: Selector.ValidateSelector<S> extends S ? S : Selector.ValidateSelector<S>,
+	): string extends S ? Array<Instance> : Array<Selector.Solve<S>>;
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance | undefined) => void>;
 }
 

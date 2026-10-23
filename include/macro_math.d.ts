@@ -81,3 +81,16 @@ declare interface Vector3int16 {
 	/** macro for Vector2int16 / Vector2int16 */
 	div(this: Vector3int16, v3: Vector3int16): Vector3int16;
 }
+
+declare interface vector {
+	/** macro for vector + vector */
+	add(this: vector, v: vector): vector;
+	/** macro for vector - vector */
+	sub(this: vector, v: vector): vector;
+	/** macro for vector * vector | number */
+	mul(this: vector, other: vector | number): vector;
+	/** macro for vector / vector | number */
+	div(this: vector, other: vector | number): vector;
+	/** macro for vector // vector | number */
+	idiv(this: vector, other: vector | number): vector;
+}
