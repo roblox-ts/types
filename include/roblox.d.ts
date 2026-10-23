@@ -3523,3 +3523,33 @@ interface CreateMeshPartAsyncOptions {
 	/** The value of `FluidFidelity` in the resulting part. Defaults to `Enum.FluidFidelity.Automatic` if the option is absent or the `options` table is `nil`. */
 	FluidFidelity?: Enum.FluidFidelity;
 }
+
+type CollectionSignalKeys<T extends Instance> = T extends unknown
+	? {
+			[K in keyof T]: T[K] extends RBXScriptSignal ? K : never;
+		}[keyof T]
+	: never;
+
+type CollectionSignalArguments<T extends Instance, K extends string> = T extends unknown
+	? K extends keyof T
+		? T[K] extends RBXScriptSignal<infer SignalCallback extends Callback>
+			? Parameters<SignalCallback>
+			: never
+		: never
+	: never;
+
+type CollectionSignalCallbacks<T extends Instance> = {
+	[K in CollectionSignalKeys<T> & string as `On${K}`]?: (
+		instance: T,
+		...args: CollectionSignalArguments<T, K>
+	) => void;
+};
+
+type Collection<T extends Instance = Instance> = CollectionSignalCallbacks<T> & {
+	Enabled: boolean;
+
+	OnAdded?: (item: T) => void;
+	OnRemoved?: (item: T) => void;
+	ForEach(callback: (item: T) => void): void;
+	Destroy(): void;
+};
