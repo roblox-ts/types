@@ -3550,6 +3550,6 @@ type Collection<T extends Instance = Instance> = CollectionSignalCallbacks<T> & 
 
 	OnAdded?: (item: T) => void;
 	OnRemoved?: (item: T) => void;
-	ForEach(callback: (item: T) => void): void;
-	Destroy(): void;
+	ForEach(this: Collection<T>, callback: (item: T) => void): void;
+	Destroy(this: Collection<T>): void;
 };
