@@ -240,11 +240,6 @@ interface CollectionService extends Instance {
 	RemoveTag(this: CollectionService, instance: Instance, tag: string): void;
 	RemoveTag(this: Instance, tag: string): void;
 	GetAllTags(this: CollectionService): Array<string>;
-	CreateCollection<S extends string>(
-		this: CollectionService,
-		query: Selector.ValidateSelector<S> extends S ? S : Selector.ValidateSelector<S>,
-		root?: Instance,
-	): Collection<Selector.Solve<S>>;
 }
 
 interface CompressorSoundEffect extends SoundEffect {
