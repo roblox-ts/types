@@ -37,7 +37,6 @@ interface Services {
     BadgeService: BadgeService;
     BranchService: BranchService;
     BugReporterService: BugReporterService;
-    BulkImportService: BulkImportService;
     CacheableContentProvider: CacheableContentProvider;
     CallingService: CallingService;
     CalloutService: CalloutService;
@@ -92,6 +91,7 @@ interface Services {
     FacialAgeEstimationService: FacialAgeEstimationService;
     FacialAnimationRecordingService: FacialAnimationRecordingService;
     FacialAnimationStreamingServiceV2: FacialAnimationStreamingServiceV2;
+    FeatureMatchingService: FeatureMatchingService;
     FeatureRestrictionManager: FeatureRestrictionManager;
     FileManagerService: FileManagerService;
     FileSyncReplicationService: FileSyncReplicationService;
@@ -121,6 +121,7 @@ interface Services {
     InstanceExtensionsService: InstanceExtensionsService;
     InstanceFileSyncService: InstanceFileSyncService;
     InstanceRegistryService: InstanceRegistryService;
+    IntegrityService: IntegrityService;
     IntentService: IntentService;
     InternalMessagingService: InternalMessagingService;
     InternalMessagingServiceVerifier: InternalMessagingServiceVerifier;
@@ -858,6 +859,7 @@ interface Objects extends Instances {
     EditableImage: EditableImage;
     EditableMesh: EditableMesh;
     ExecutedRemoteCommand: ExecutedRemoteCommand;
+    FeatureMatchingSession: FeatureMatchingSession;
     Logger: Logger;
     LuauExpression: LuauExpression;
     MLSession: MLSession;
@@ -1062,6 +1064,21 @@ interface ExecutedRemoteCommand extends RBXObject {
      * @deprecated
      */
     readonly _nominal_ExecutedRemoteCommand: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeatureMatchingSession)
+ */
+interface FeatureMatchingSession extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FeatureMatchingSession: unique symbol;
 }
 /**
  * `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
@@ -3306,21 +3323,6 @@ interface BugReporterService extends Instance {
     readonly _nominal_BugReporterService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BulkImportService)
- */
-interface BulkImportService extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_BulkImportService: unique symbol;
-}
-/**
  * A variant of the `ContentProvider` that caches assets that have already been received. This service is not used directly, but it is used by the services that inherit from it.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -4331,6 +4333,8 @@ interface ContextActionService extends Instance {
     readonly _nominal_ContextActionService: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ControlState)
  */
 interface ControlState extends Instance {
@@ -5811,6 +5815,21 @@ interface MotorFeature extends Feature {
     readonly _nominal_MotorFeature: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeatureMatchingService)
+ */
+interface FeatureMatchingService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FeatureMatchingService: unique symbol;
+}
+/**
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeatureMatchingTable)
  */
 interface FeatureMatchingTable extends Instance {
@@ -6521,6 +6540,8 @@ interface TextChannelWindow extends GuiObject {
 }
 /**
  * A GUI object that displays video content from a connected `VideoPlayer`.
+ *
+ * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoDisplay)
  */
@@ -7751,6 +7772,21 @@ interface InstanceRegistryService extends Instance {
      * @deprecated
      */
     readonly _nominal_InstanceRegistryService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IntegrityService)
+ */
+interface IntegrityService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_IntegrityService: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -10357,6 +10393,8 @@ interface ParticleEmitter extends Instance {
     readonly _nominal_ParticleEmitter: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ParticleEmitter2D)
  */
 interface ParticleEmitter2D extends Instance {
@@ -17296,6 +17334,8 @@ interface TextChatService extends Instance {
     set CreateDefaultTextChannels(value: boolean);
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextDocument)
  */
 interface TextDocument extends Instance {
@@ -17307,12 +17347,6 @@ interface TextDocument extends Instance {
      * @deprecated
      */
     readonly _nominal_TextDocument: unique symbol;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextDocument#TextContent)
-     */
-    TextContent: Content;
 }
 /**
  * Represents the result of a call to `TextService:FilterStringAsync()`, used to distribute a filtered string accordingly.
@@ -18403,6 +18437,8 @@ interface VideoDeviceInput extends Instance {
 }
 /**
  * Used to play video assets.
+ *
+ * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VideoPlayer)
  */

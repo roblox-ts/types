@@ -28140,11 +28140,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.PartType;
         }
         export const CornerWedge: CornerWedge;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PartType#Capsule)
+         */
+        export interface Capsule extends globalThis.EnumItem {
+            Name: "Capsule";
+            Value: 5;
+            EnumType: typeof globalThis.Enum.PartType;
+        }
+        export const Capsule: Capsule;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PartType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PartType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PartType | undefined;
     }
-    export type PartType = PartType.Ball | PartType.Block | PartType.Cylinder | PartType.Wedge | PartType.CornerWedge;
+    export type PartType = PartType.Ball | PartType.Block | PartType.Cylinder | PartType.Wedge | PartType.CornerWedge | PartType.Capsule;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ParticleEmitter2DEmissionMode)
      */
@@ -29686,6 +29695,87 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlayerDataLoadFailureBehavior | undefined;
     }
     export type PlayerDataLoadFailureBehavior = PlayerDataLoadFailureBehavior.Failure | PlayerDataLoadFailureBehavior.FallbackToDefault | PlayerDataLoadFailureBehavior.Kick;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustDecision)
+     */
+    export namespace PlayerDeviceTrustDecision {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustDecision#Accept)
+         */
+        export interface Accept extends globalThis.EnumItem {
+            Name: "Accept";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PlayerDeviceTrustDecision;
+        }
+        export const Accept: Accept;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustDecision#Reject)
+         */
+        export interface Reject extends globalThis.EnumItem {
+            Name: "Reject";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PlayerDeviceTrustDecision;
+        }
+        export const Reject: Reject;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PlayerDeviceTrustDecision>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PlayerDeviceTrustDecision | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlayerDeviceTrustDecision | undefined;
+    }
+    export type PlayerDeviceTrustDecision = PlayerDeviceTrustDecision.Accept | PlayerDeviceTrustDecision.Reject;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustLevel)
+     */
+    export namespace PlayerDeviceTrustLevel {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustLevel#Pending)
+         */
+        export interface Pending extends globalThis.EnumItem {
+            Name: "Pending";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.PlayerDeviceTrustLevel;
+        }
+        export const Pending: Pending;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustLevel#Unknown)
+         */
+        export interface Unknown extends globalThis.EnumItem {
+            Name: "Unknown";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.PlayerDeviceTrustLevel;
+        }
+        export const Unknown: Unknown;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustLevel#None)
+         */
+        export interface None extends globalThis.EnumItem {
+            Name: "None";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.PlayerDeviceTrustLevel;
+        }
+        export const None: None;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustLevel#Standard)
+         */
+        export interface Standard extends globalThis.EnumItem {
+            Name: "Standard";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.PlayerDeviceTrustLevel;
+        }
+        export const Standard: Standard;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustLevel#Full)
+         */
+        export interface Full extends globalThis.EnumItem {
+            Name: "Full";
+            Value: 4;
+            EnumType: typeof globalThis.Enum.PlayerDeviceTrustLevel;
+        }
+        export const Full: Full;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PlayerDeviceTrustLevel>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PlayerDeviceTrustLevel | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PlayerDeviceTrustLevel | undefined;
+    }
+    export type PlayerDeviceTrustLevel = PlayerDeviceTrustLevel.Pending | PlayerDeviceTrustLevel.Unknown | PlayerDeviceTrustLevel.None | PlayerDeviceTrustLevel.Standard | PlayerDeviceTrustLevel.Full;
     /**
      * An enum that specifies the reason for **Players.PlayerRemoving** signal.
      *
