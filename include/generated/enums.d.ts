@@ -2446,11 +2446,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.AnimationValueNodeType;
         }
         export const Expression: Expression;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationValueNodeType#FeatureMatching)
+         */
+        export interface FeatureMatching extends globalThis.EnumItem {
+            Name: "FeatureMatching";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.AnimationValueNodeType;
+        }
+        export const FeatureMatching: FeatureMatching;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.AnimationValueNodeType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.AnimationValueNodeType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.AnimationValueNodeType | undefined;
     }
-    export type AnimationValueNodeType = AnimationValueNodeType.Invalid | AnimationValueNodeType.Expression;
+    export type AnimationValueNodeType = AnimationValueNodeType.Invalid | AnimationValueNodeType.Expression | AnimationValueNodeType.FeatureMatching;
     /**
      * Animation Retargeting setting.
      *
@@ -15333,6 +15342,42 @@ declare namespace Enum {
     }
     export type FeatureChannelEncoding = FeatureChannelEncoding.Float32 | FeatureChannelEncoding.Float16;
     /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureMatchingSource)
+     */
+    export namespace FeatureMatchingSource {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureMatchingSource#Input)
+         */
+        export interface Input extends globalThis.EnumItem {
+            Name: "Input";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FeatureMatchingSource;
+        }
+        export const Input: Input;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureMatchingSource#Continuity)
+         */
+        export interface Continuity extends globalThis.EnumItem {
+            Name: "Continuity";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FeatureMatchingSource;
+        }
+        export const Continuity: Continuity;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureMatchingSource#Ignore)
+         */
+        export interface Ignore extends globalThis.EnumItem {
+            Name: "Ignore";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.FeatureMatchingSource;
+        }
+        export const Ignore: Ignore;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FeatureMatchingSource>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FeatureMatchingSource | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FeatureMatchingSource | undefined;
+    }
+    export type FeatureMatchingSource = FeatureMatchingSource.Input | FeatureMatchingSource.Continuity | FeatureMatchingSource.Ignore;
+    /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureNormalization)
      */
     export namespace FeatureNormalization {
@@ -15395,6 +15440,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FeatureRestrictionAbuseVector | undefined;
     }
     export type FeatureRestrictionAbuseVector = FeatureRestrictionAbuseVector.ExperienceChat | FeatureRestrictionAbuseVector.Communication;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureSelectionMode)
+     */
+    export namespace FeatureSelectionMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureSelectionMode#Nearest)
+         */
+        export interface Nearest extends globalThis.EnumItem {
+            Name: "Nearest";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.FeatureSelectionMode;
+        }
+        export const Nearest: Nearest;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeatureSelectionMode#WeightedRandom)
+         */
+        export interface WeightedRandom extends globalThis.EnumItem {
+            Name: "WeightedRandom";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.FeatureSelectionMode;
+        }
+        export const WeightedRandom: WeightedRandom;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FeatureSelectionMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FeatureSelectionMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FeatureSelectionMode | undefined;
+    }
+    export type FeatureSelectionMode = FeatureSelectionMode.Nearest | FeatureSelectionMode.WeightedRandom;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FeedbackType)
      */
@@ -15895,6 +15967,10 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.FluidForces;
         }
         export const Experimental: Experimental;
+        /**
+         * @deprecated renamed to Experimental
+         */
+        export const Enabled: Experimental;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.FluidForces>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.FluidForces | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.FluidForces | undefined;
@@ -30405,50 +30481,6 @@ declare namespace Enum {
     }
     export type PrefetchDownloadStatus = PrefetchDownloadStatus.NotStarted | PrefetchDownloadStatus.InProgress | PrefetchDownloadStatus.Completed | PrefetchDownloadStatus.Failed;
     /**
-     * Controls whether the experimental Primal Physics Solver is enabled.
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrimalPhysicsSolver)
-     */
-    export namespace PrimalPhysicsSolver {
-        /**
-         * Uses the engine-default physics solver state.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrimalPhysicsSolver#Default)
-         */
-        export interface Default extends globalThis.EnumItem {
-            Name: "Default";
-            Value: 0;
-            EnumType: typeof globalThis.Enum.PrimalPhysicsSolver;
-        }
-        export const Default: Default;
-        /**
-         * The experimental Primal Physics Solver is enabled.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrimalPhysicsSolver#Experimental)
-         */
-        export interface Experimental extends globalThis.EnumItem {
-            Name: "Experimental";
-            Value: 1;
-            EnumType: typeof globalThis.Enum.PrimalPhysicsSolver;
-        }
-        export const Experimental: Experimental;
-        /**
-         * The Primal Physics Solver is disabled.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrimalPhysicsSolver#Disabled)
-         */
-        export interface Disabled extends globalThis.EnumItem {
-            Name: "Disabled";
-            Value: 2;
-            EnumType: typeof globalThis.Enum.PrimalPhysicsSolver;
-        }
-        export const Disabled: Disabled;
-        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.PrimalPhysicsSolver>;
-        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.PrimalPhysicsSolver | undefined;
-        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.PrimalPhysicsSolver | undefined;
-    }
-    export type PrimalPhysicsSolver = PrimalPhysicsSolver.Default | PrimalPhysicsSolver.Experimental | PrimalPhysicsSolver.Disabled;
-    /**
      * Identifies the base primitive shape of a `BasePart` node within a CSG operation graph.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PrimitiveType)
@@ -36043,6 +36075,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SensorUpdateType | undefined;
     }
     export type SensorUpdateType = SensorUpdateType.OnRead | SensorUpdateType.Manual;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SerializationFormat)
+     */
+    export namespace SerializationFormat {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SerializationFormat#Binary)
+         */
+        export interface Binary extends globalThis.EnumItem {
+            Name: "Binary";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.SerializationFormat;
+        }
+        export const Binary: Binary;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SerializationFormat#Json)
+         */
+        export interface Json extends globalThis.EnumItem {
+            Name: "Json";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.SerializationFormat;
+        }
+        export const Json: Json;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/SerializationFormat#Luau)
+         */
+        export interface Luau extends globalThis.EnumItem {
+            Name: "Luau";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.SerializationFormat;
+        }
+        export const Luau: Luau;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.SerializationFormat>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.SerializationFormat | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.SerializationFormat | undefined;
+    }
+    export type SerializationFormat = SerializationFormat.Binary | SerializationFormat.Json | SerializationFormat.Luau;
     /**
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ServerLiveEditingMode)
      */

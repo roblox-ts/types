@@ -171,6 +171,7 @@ interface Services {
     PhysicsSettings: PhysicsSettings;
     PinShortcutService: PinShortcutService;
     PlaceAssetIdsService: PlaceAssetIdsService;
+    PlaceSettings: PlaceSettings;
     PlacesService: PlacesService;
     PlaceStatsService: PlaceStatsService;
     PlatformCloudStorageService: PlatformCloudStorageService;
@@ -306,7 +307,6 @@ interface Services {
     WindowProtocolService: WindowProtocolService;
     Workspace: Workspace;
     WrapContentProvider: WrapContentProvider;
-    WrapDeformMeshProvider: WrapDeformMeshProvider;
 }
 interface CreatableInstances {
     Accessory: Accessory;
@@ -860,6 +860,7 @@ interface Objects extends Instances {
     EditableMesh: EditableMesh;
     ExecutedRemoteCommand: ExecutedRemoteCommand;
     FeatureMatchingSession: FeatureMatchingSession;
+    FeatureSearchParams: FeatureSearchParams;
     Logger: Logger;
     LuauExpression: LuauExpression;
     MLSession: MLSession;
@@ -1079,6 +1080,21 @@ interface FeatureMatchingSession extends RBXObject {
      * @deprecated
      */
     readonly _nominal_FeatureMatchingSession: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FeatureSearchParams)
+ */
+interface FeatureSearchParams extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FeatureSearchParams: unique symbol;
 }
 /**
  * `Instance` is the base class for all classes in the Roblox class hierarchy which can be part of the `DataModel` tree.
@@ -10879,6 +10895,21 @@ interface PlaceAssetIdsService extends Instance {
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlaceSettings)
+ */
+interface PlaceSettings extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PlaceSettings: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlaceStatsService)
  */
 interface PlaceStatsService extends Instance {
@@ -14496,14 +14527,6 @@ interface SoundService extends Instance {
      */
     set CharacterSoundsUseNewApi(value: Enum.RolloutState);
     /**
-     * Determines where (if anywhere) to place an `AudioListener` by default.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SoundService#DefaultListenerLocation)
-     */
-    DefaultListenerLocation: Enum.ListenerLocation;
-    /**
      * Opens the attenuation curve editor in Studio for the provided `AudioEmitter` or `AudioListener` instances.
      *
      * - **ThreadSafety**: Unsafe
@@ -17316,22 +17339,6 @@ interface TextChatService extends Instance {
      * @deprecated
      */
     readonly _nominal_TextChatService: unique symbol;
-    /**
-     * Determines whether `TextChatService` should create default `TextChatCommands`.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatService#CreateDefaultCommands)
-     */
-    set CreateDefaultCommands(value: boolean);
-    /**
-     * Determines whether `TextChatService` should create default `TextChannels`.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChatService#CreateDefaultTextChannels)
-     */
-    set CreateDefaultTextChannels(value: boolean);
 }
 /**
  * - **Tags**: NotBrowsable
@@ -18687,21 +18694,6 @@ interface Wire extends Instance {
      * @deprecated
      */
     readonly _nominal_Wire: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, Service, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapDeformMeshProvider)
- */
-interface WrapDeformMeshProvider extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_WrapDeformMeshProvider: unique symbol;
 }
 /**
  * `WrapTextureTransfer` allows a parent `Decal` to be wrapped around its parent `MeshPart` based on the cage of its `WrapTarget`.
