@@ -3032,6 +3032,12 @@ declare namespace buffer {
 	/** Reads a 32-bit floating-point value from the buffer. */
 	function readf32(b: buffer, offset: number): number;
 
+	/** Reads two 32-bit floating-point values from the buffer into a vector. */
+	function readvectorf32x2(b: buffer, offset: number): vector;
+
+	/** Reads three 32-bit floating-point values from the buffer into a vector. */
+	function readvectorf32x3(b: buffer, offset: number): vector;
+
 	/** Reads a 64-bit floating-point value from the buffer. */
 	function readf64(b: buffer, offset: number): number;
 
@@ -3058,6 +3064,12 @@ declare namespace buffer {
 
 	/** Writes a 32-bit floating-point value to the buffer. */
 	function writef32(b: buffer, offset: number, value: number): void;
+
+	/** Writes two vector components as 32-bit floating-point values to the buffer. */
+	function writevectorf32x2(b: buffer, offset: number, value: vector): void;
+
+	/** Writes three vector components as 32-bit floating-point values to the buffer. */
+	function writevectorf32x3(b: buffer, offset: number, value: vector): void;
 
 	/** Writes a 64-bit floating-point value to the buffer. */
 	function writef64(b: buffer, offset: number, value: number): void;
