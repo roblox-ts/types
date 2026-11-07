@@ -2872,6 +2872,7 @@ interface QDir {}
 declare const game: DataModel;
 declare const script: LuaSourceContainer;
 declare const shared: object;
+declare const workspace: Workspace;
 
 type DelayedCallback =
 	/**
