@@ -8,7 +8,7 @@
 	"scripts": {
 		"build": "tsc && node out/index.js",
 		"check": "tsc include/**/*.d.ts --noEmit --skipLibCheck",
-		"test": "tsc && node out/runTests.js",
+		"test": "vitest --run",
 		"eslint-src": "npx eslint \"src/**/*.ts\" --max-warnings 0",
 		"eslint-include": "npx eslint \"include/*.ts\" --max-warnings 0",
 		"eslint": "npm run eslint-src && npm run eslint-include"
@@ -39,7 +39,8 @@
 		"jiti": "^2.7.0",
 		"prettier": "^3.9.6",
 		"typescript": "=5.9.3",
-		"typescript-eslint": "^8.70.0"
+		"typescript-eslint": "^8.70.0",
+		"vitest": "5.0.1"
 	},
 	"keywords": [
 		"types",
