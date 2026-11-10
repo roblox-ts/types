@@ -96,6 +96,7 @@ interface Services {
     FileManagerService: FileManagerService;
     FileSyncReplicationService: FileSyncReplicationService;
     FriendsCallingService: FriendsCallingService;
+    GameDownloaderService: GameDownloaderService;
     GamepadService: GamepadService;
     GamePassService: GamePassService;
     GameSettings: GameSettings;
@@ -153,6 +154,7 @@ interface Services {
     MicroProfilerService: MicroProfilerService;
     MLModelDeliveryService: MLModelDeliveryService;
     MLService: MLService;
+    ModelInfoService: ModelInfoService;
     ModerationService: ModerationService;
     MomentsService: MomentsService;
     NetworkClient: NetworkClient;
@@ -358,6 +360,8 @@ interface CreatableInstances {
     AudioReverb: AudioReverb;
     AudioSearchParams: AudioSearchParams;
     AudioSpeechToText: AudioSpeechToText;
+    AudioStreamReader: AudioStreamReader;
+    AudioStreamWriter: AudioStreamWriter;
     AudioTextToSpeech: AudioTextToSpeech;
     AudioTremolo: AudioTremolo;
     AudioWindSynthesizer: AudioWindSynthesizer;
@@ -368,6 +372,7 @@ interface CreatableInstances {
     AvatarBodyRules: AvatarBodyRules;
     AvatarClothingRules: AvatarClothingRules;
     AvatarCollisionRules: AvatarCollisionRules;
+    AvatarEffectDescription: AvatarEffectDescription;
     AvatarRules: AvatarRules;
     Backpack: Backpack;
     BallSocketConstraint: BallSocketConstraint;
@@ -445,6 +450,8 @@ interface CreatableInstances {
     FloorWire: FloorWire;
     FluidForceSensor: FluidForceSensor;
     Folder: Folder;
+    FollowRotationBoneBehavior: FollowRotationBoneBehavior;
+    FollowTwistBoneBehavior: FollowTwistBoneBehavior;
     ForceField: ForceField;
     Frame: Frame;
     GeneratedFolder: GeneratedFolder;
@@ -771,8 +778,6 @@ interface Instances extends Services, CreatableInstances {
     Platform: Platform;
     Player: Player;
     PlayerData: PlayerData;
-    PlayerDataRecord: PlayerDataRecord;
-    PlayerDataRecordConfig: PlayerDataRecordConfig;
     PlayerGui: PlayerGui;
     PlayerListConfiguration: PlayerListConfiguration;
     PlayerMouse: PlayerMouse;
@@ -1310,7 +1315,7 @@ interface AnalyticsService extends Instance {
     readonly _nominal_AnalyticsService: unique symbol;
 }
 /**
- * - **Tags**: NotCreatable, Service
+ * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimatedImageService)
  */
@@ -2241,6 +2246,36 @@ interface AudioSpeechToText extends Instance {
     readonly _nominal_AudioSpeechToText: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioStreamReader)
+ */
+interface AudioStreamReader extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioStreamReader: unique symbol;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioStreamWriter)
+ */
+interface AudioStreamWriter extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AudioStreamWriter: unique symbol;
+}
+/**
  * Plays text as speech audio.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioTextToSpeech)
@@ -2462,6 +2497,19 @@ interface AvatarEditorService extends Instance {
      * @deprecated
      */
     readonly _nominal_AvatarEditorService: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AvatarEffectDescription)
+ */
+interface AvatarEffectDescription extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_AvatarEffectDescription: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -2911,38 +2959,6 @@ interface BaseWrap extends Instance {
      * @deprecated
      */
     readonly _nominal_BaseWrap: unique symbol;
-    /**
-     * The cage mesh this wrap uses to deform geometry, stored as a `Content` value.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseWrap#CageMeshContent)
-     */
-    set CageMeshContent(value: Content);
-    /**
-     * Asset ID for cage mesh.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseWrap#CageMeshId)
-     */
-    set CageMeshId(value: ContentId);
-    /**
-     * Cage mesh offset relative to parent `MeshPart`.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseWrap#CageOrigin)
-     */
-    set CageOrigin(value: CFrame);
-    /**
-     * Describes where a global zero was while authoring the cage mesh in an asset creation tool.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/BaseWrap#ImportOrigin)
-     */
-    set ImportOrigin(value: CFrame);
 }
 /**
  * Allows for the real-time deformation of a `MeshPart`.
@@ -2973,38 +2989,6 @@ interface WrapLayer extends BaseWrap {
      * @deprecated
      */
     readonly _nominal_WrapLayer: unique symbol;
-    /**
-     * `CFrame` is used to adjust a binding point for clothing item mesh. Could be used to move and rotate clothing items. This property is intended for fine-tuning only and it is heavily optional.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#BindOffset)
-     */
-    set BindOffset(value: CFrame);
-    /**
-     * The reference mesh that defines the Inner Cage of the `WrapLayer`, stored as a `Content` value.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#ReferenceMeshContent)
-     */
-    set ReferenceMeshContent(value: Content);
-    /**
-     * AssetID for reference mesh used to define Inner Cage of a 3D object.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#ReferenceMeshId)
-     */
-    set ReferenceMeshId(value: ContentId);
-    /**
-     * Reference mesh offset relative to parent MeshPart (in the parent MeshPart space) Note: this property is set up automatically by the FBX importer.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#ReferenceOrigin)
-     */
-    set ReferenceOrigin(value: CFrame);
     /**
      * - **ThreadSafety**: ReadSafe
      *
@@ -3051,19 +3035,6 @@ interface WrapTarget extends BaseWrap {
      * @deprecated
      */
     readonly _nominal_WrapTarget: unique symbol;
-    /**
-     * **Deprecated:**
-     *
-     * Defines how much the body mesh can be compressed by clothing.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**:
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapTarget#Stiffness)
-     *
-     * @deprecated
-     */
-    set Stiffness(value: number);
 }
 /**
  * Connects two `Attachments` by drawing a texture between them.
@@ -5627,63 +5598,6 @@ interface Decal extends FaceInstance {
      * @deprecated
      */
     readonly _nominal_Decal: unique symbol;
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#EmissiveMaskContent)
-     */
-    set EmissiveMaskContent(value: Content);
-    /**
-     * Content ID that determines the metalness map of the surface.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#MetalnessMap)
-     */
-    MetalnessMap: ContentId;
-    /**
-     * `Content` object that determines the metalness map of the surface.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#MetalnessMapContent)
-     */
-    set MetalnessMapContent(value: Content);
-    /**
-     * Content ID that determines the normal map of the surface.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#NormalMap)
-     */
-    NormalMap: ContentId;
-    /**
-     * `Content` object that determines the normal map of the surface.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#NormalMapContent)
-     */
-    set NormalMapContent(value: Content);
-    /**
-     * Content ID that determines the roughness map of the surface.
-     *
-     * - **ThreadSafety**: ReadSafe
-     * - **Tags**: Hidden
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#RoughnessMap)
-     */
-    RoughnessMap: ContentId;
-    /**
-     * `Content` object that determines the roughness map of the surface.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Decal#RoughnessMapContent)
-     */
-    set RoughnessMapContent(value: Content);
 }
 /**
  * Applies a repeating image texture to the face of a parent `BasePart`.
@@ -6010,6 +5924,36 @@ interface GeneratedFolder extends Folder {
     readonly _nominal_GeneratedFolder: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FollowRotationBoneBehavior)
+ */
+interface FollowRotationBoneBehavior extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FollowRotationBoneBehavior: unique symbol;
+}
+/**
+ * - **Tags**: NotBrowsable
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FollowTwistBoneBehavior)
+ */
+interface FollowTwistBoneBehavior extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FollowTwistBoneBehavior: unique symbol;
+}
+/**
  * Protects a `Humanoid` from taking damage dealt through the `Humanoid:TakeDamage()` method and protects `BaseParts` from having their joints broken due to an `Explosion`.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ForceField)
@@ -6068,6 +6012,21 @@ interface FriendsCallingService extends Instance {
      * @deprecated
      */
     readonly _nominal_FriendsCallingService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GameDownloaderService)
+ */
+interface GameDownloaderService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_GameDownloaderService: unique symbol;
 }
 /**
  * A service associated with the legacy game pass system. Use `MarketplaceService` for all new work.
@@ -9069,6 +9028,21 @@ interface MicroProfilerService extends Instance {
     readonly _nominal_MicroProfilerService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ModelInfoService)
+ */
+interface ModelInfoService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ModelInfoService: unique symbol;
+}
+/**
  * Server-side service for submitting player captures to content moderation review and receiving the results asynchronously.
  *
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -11032,36 +11006,6 @@ interface PlayerData extends Instance {
      * @deprecated
      */
     readonly _nominal_PlayerData: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecord)
- */
-interface PlayerDataRecord extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_PlayerDataRecord: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PlayerDataRecordConfig)
- */
-interface PlayerDataRecordConfig extends Instance {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_PlayerDataRecordConfig: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, Service, NotReplicated
@@ -17736,6 +17680,8 @@ interface UIComponent extends UIBase {
     readonly _nominal_UIComponent: unique symbol;
 }
 /**
+ * - **Tags**: NotBrowsable
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIBlur)
  */
 interface UIBlur extends UIComponent {
@@ -18580,30 +18526,6 @@ interface VoiceChatService extends Instance {
      * @deprecated
      */
     readonly _nominal_VoiceChatService: unique symbol;
-    /**
-     * Determines which distance attenuation curve the default voice chat setup uses when `AudioDeviceInput` and `AudioEmitter` objects are generated.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatService#DefaultDistanceAttenuation)
-     */
-    DefaultDistanceAttenuation: Enum.VoiceChatDistanceAttenuationType;
-    /**
-     * Controls whether each voice-eligible player can be heard as though they were speaking through their character.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatService#EnableDefaultVoice)
-     */
-    EnableDefaultVoice: boolean;
-    /**
-     * Controls whether voice chat is represented and controlled by `AudioDeviceInput` objects.
-     *
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VoiceChatService#UseAudioApi)
-     */
-    UseAudioApi: Enum.AudioApiRollout;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
