@@ -2425,10 +2425,14 @@ declare namespace Enum {
     }
     export type AnimationPriority = AnimationPriority.Idle | AnimationPriority.Movement | AnimationPriority.Action | AnimationPriority.Action2 | AnimationPriority.Action3 | AnimationPriority.Action4 | AnimationPriority.Core;
     /**
+     * Specifies the type of an animation graph value node, determining how it computes the value it publishes.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationValueNodeType)
      */
     export namespace AnimationValueNodeType {
         /**
+         * The default unassigned type indicating a value node has not been configured.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationValueNodeType#Invalid)
          */
         export interface Invalid extends globalThis.EnumItem {
@@ -2438,6 +2442,8 @@ declare namespace Enum {
         }
         export const Invalid: Invalid;
         /**
+         * A value node that evaluates a [Luau expression](../../../animation/expressions.md) and publishes its result.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AnimationValueNodeType#Expression)
          */
         export interface Expression extends globalThis.EnumItem {
@@ -4509,10 +4515,14 @@ declare namespace Enum {
     }
     export type AudioSimulationFidelity = AudioSimulationFidelity.None | AudioSimulationFidelity.Automatic;
     /**
+     * The ordering of audio search results.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType)
      */
     export namespace AudioSortType {
         /**
+         * Orders results by relevance to the search keyword.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#Relevance)
          */
         export interface Relevance extends globalThis.EnumItem {
@@ -4522,6 +4532,8 @@ declare namespace Enum {
         }
         export const Relevance: Relevance;
         /**
+         * Orders results from most used to least used.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#MostUsed)
          */
         export interface MostUsed extends globalThis.EnumItem {
@@ -4531,6 +4543,8 @@ declare namespace Enum {
         }
         export const MostUsed: MostUsed;
         /**
+         * Orders results from most trending to least trending.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#Trending)
          */
         export interface Trending extends globalThis.EnumItem {
@@ -4540,6 +4554,8 @@ declare namespace Enum {
         }
         export const Trending: Trending;
         /**
+         * Orders results from newest to oldest.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#RecentlyCreated)
          */
         export interface RecentlyCreated extends globalThis.EnumItem {
@@ -4549,6 +4565,8 @@ declare namespace Enum {
         }
         export const RecentlyCreated: RecentlyCreated;
         /**
+         * Orders results by duration, from shortest to longest.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#ShortestToLongest)
          */
         export interface ShortestToLongest extends globalThis.EnumItem {
@@ -4558,6 +4576,8 @@ declare namespace Enum {
         }
         export const ShortestToLongest: ShortestToLongest;
         /**
+         * Orders results by duration, from longest to shortest.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AudioSortType#LongestToShortest)
          */
         export interface LongestToShortest extends globalThis.EnumItem {
@@ -5746,6 +5766,8 @@ declare namespace Enum {
      */
     export namespace AvatarSettingsAnimationClipsMode {
         /**
+         * **Deprecated:**
+         *
          * The clips determined by the `AnimationPacksMode` are used, without experience-level overrides.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAnimationClipsMode#PlayerChoice)
@@ -5757,6 +5779,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         /**
+         * **Deprecated:**
+         *
          * The experience overrides individual animation clips using the per-clip enabled and ID properties on `AvatarAnimationRules` (for example, `CustomRunAnimationEnabled` and `CustomRunAnimationId`). Only clips whose enabled flag is true are replaced.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAnimationClipsMode#CustomClips)
@@ -5823,6 +5847,8 @@ declare namespace Enum {
      */
     export namespace AvatarSettingsAppearanceMode {
         /**
+         * **Deprecated:**
+         *
          * Players keep their own avatar body parts; the experience does not override any body-part assets.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAppearanceMode#PlayerChoice)
@@ -5834,6 +5860,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         /**
+         * **Deprecated:**
+         *
          * The experience overrides individual body parts (head, face, torso, arms, legs) using per-part asset IDs and enablement settings on `AvatarBodyRules`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAppearanceMode#CustomParts)
@@ -5845,6 +5873,8 @@ declare namespace Enum {
         }
         export const CustomParts: CustomParts;
         /**
+         * **Deprecated:**
+         *
          * The experience replaces the avatar's entire body as a single unit, using `CustomBodyType` and `CustomBodyBundleId`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsAppearanceMode#CustomBody)
@@ -6004,6 +6034,8 @@ declare namespace Enum {
      */
     export namespace AvatarSettingsCustomAccessoryMode {
         /**
+         * **Deprecated:**
+         *
          * No custom accessory replacement is applied; the player's own accessory choices are displayed without modification.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomAccessoryMode#PlayerChoice)
@@ -6015,6 +6047,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         /**
+         * **Deprecated:**
+         *
          * The experience replaces player accessories with custom accessories defined by the per-slot properties on `AvatarAccessoryRules`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomAccessoryMode#CustomAccessories)
@@ -6037,6 +6071,8 @@ declare namespace Enum {
      */
     export namespace AvatarSettingsCustomBodyType {
         /**
+         * **Deprecated:**
+         *
          * The custom body is assembled from individual per-part asset references on `AvatarBodyRules`. This is the default value.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomBodyType#AvatarReference)
@@ -6048,6 +6084,8 @@ declare namespace Enum {
         }
         export const AvatarReference: AvatarReference;
         /**
+         * **Deprecated:**
+         *
          * The custom body is sourced from a single avatar bundle, identified by the `CustomBodyBundleId` property.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomBodyType#BundleId)
@@ -6070,6 +6108,8 @@ declare namespace Enum {
      */
     export namespace AvatarSettingsCustomClothingMode {
         /**
+         * **Deprecated:**
+         *
          * Players keep their own clothing selections. The experience does not override clothing assets. This is the default value.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomClothingMode#PlayerChoice)
@@ -6081,6 +6121,8 @@ declare namespace Enum {
         }
         export const PlayerChoice: PlayerChoice;
         /**
+         * **Deprecated:**
+         *
          * The experience enforces creator-specified clothing assets from `AvatarClothingRules`, overriding each player's own equipped clothing.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsCustomClothingMode#CustomClothing)
@@ -6097,12 +6139,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsCustomClothingMode = AvatarSettingsCustomClothingMode.PlayerChoice | AvatarSettingsCustomClothingMode.CustomClothing;
     /**
-     * Determines whether hit detection and spatial queries use the individual body parts or the single collider when `CollisionMode` is `AvatarSettingsCollisionMode.SingleCollider`.
+     * Determines whether hit detection and spatial queries use the individual body parts, the single collider, or a separate hitbox when `CollisionMode` is `AvatarSettingsCollisionMode.SingleCollider`.
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsHitAndTouchDetectionMode)
      */
     export namespace AvatarSettingsHitAndTouchDetectionMode {
         /**
+         * **Deprecated:**
+         *
          * Individual avatar body parts handle `Touched` events and spatial queries (`CanTouch` and `CanQuery` enabled on body parts) while the single collider part has `CanTouch` and `CanQuery` disabled. This is the default value for `HitAndTouchDetectionMode`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsHitAndTouchDetectionMode#UseParts)
@@ -6114,6 +6158,8 @@ declare namespace Enum {
         }
         export const UseParts: UseParts;
         /**
+         * **Deprecated:**
+         *
          * The single collider part handles `Touched` events and spatial queries (`CanTouch` and `CanQuery` enabled on the collider) while all individual body parts have `CanTouch` and `CanQuery` disabled.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsHitAndTouchDetectionMode#UseCollider)
@@ -6125,6 +6171,10 @@ declare namespace Enum {
         }
         export const UseCollider: UseCollider;
         /**
+         * **Deprecated:**
+         *
+         * A separate, noncolliding, massless hitbox part sized by `HitboxSize` handles `Touched` events and spatial queries (`CanTouch` and `CanQuery` enabled on the hitbox) while the single collider and all individual body parts have `CanTouch` and `CanQuery` disabled. Like the collider, the hitbox hangs from the top of the body and rests on the floor when it is taller than the body, so it can reach the floor without changing what the character stands on or steps over. The hitbox is removed when the character dies.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsHitAndTouchDetectionMode#UseHitbox)
          */
         export interface UseHitbox extends globalThis.EnumItem {
@@ -6178,6 +6228,8 @@ declare namespace Enum {
      */
     export namespace AvatarSettingsLegacyCollisionMode {
         /**
+         * **Deprecated:**
+         *
          * Creates six invisible box collider parts welded to R15 limbs to approximate classic R6 collision geometry. The engine spawns six invisible `Part` instances (head, torso, left arm, right arm, left leg, right leg) parented to the character and welded to the corresponding R15 body parts. All original R15 mesh parts have their `BasePart.CanCollide`, `BasePart.CanTouch`, and `BasePart.CanQuery` disabled and are made massless; only the HumanoidRootPart retains mass so it remains the physics assembly root.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsLegacyCollisionMode#R6Colliders)
@@ -6189,6 +6241,8 @@ declare namespace Enum {
         }
         export const R6Colliders: R6Colliders;
         /**
+         * **Deprecated:**
+         *
          * Overrides each R15 mesh part's collision physics with inner-box geometry derived from the standard R15 scaling model. The engine recalculates every `MeshPart` in the character with collision data from the default R15 model's bounding dimensions, producing tighter collision volumes that follow the avatar's proportions without adding extra parts. This is the default value of `LegacyCollisionMode`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsLegacyCollisionMode#InnerBoxColliders)
@@ -6238,10 +6292,14 @@ declare namespace Enum {
     }
     export type AvatarSettingsScaleMode = AvatarSettingsScaleMode.PlayerChoice | AvatarSettingsScaleMode.CustomScale;
     /**
+     * Determines whether touch detection and spatial queries use the individual body parts, the single collider, or a separate hitbox when `CollisionMode` is `AvatarSettingsCollisionMode.SingleCollider`.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsTouchAndQueryDetectionMode)
      */
     export namespace AvatarSettingsTouchAndQueryDetectionMode {
         /**
+         * Individual avatar body parts handle `Touched` events and spatial queries (`CanTouch` and `CanQuery` enabled on body parts) while the single collider part has `CanTouch` and `CanQuery` disabled. This is the default value for `TouchAndQueryDetectionMode`.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsTouchAndQueryDetectionMode#UseParts)
          */
         export interface UseParts extends globalThis.EnumItem {
@@ -6251,6 +6309,8 @@ declare namespace Enum {
         }
         export const UseParts: UseParts;
         /**
+         * The single collider part handles `Touched` events and spatial queries (`CanTouch` and `CanQuery` enabled on the collider) while all individual body parts have `CanTouch` and `CanQuery` disabled.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsTouchAndQueryDetectionMode#UseCollider)
          */
         export interface UseCollider extends globalThis.EnumItem {
@@ -6260,6 +6320,8 @@ declare namespace Enum {
         }
         export const UseCollider: UseCollider;
         /**
+         * A separate, noncolliding, massless hitbox part sized by `HitboxSize` handles `Touched` events and spatial queries (`CanTouch` and `CanQuery` enabled on the hitbox) while the single collider and all individual body parts have `CanTouch` and `CanQuery` disabled. Like the collider, the hitbox hangs from the top of the body and rests on the floor when it is taller than the body, so it can reach the floor without changing what the character stands on or steps over. The hitbox is removed when the character dies.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarSettingsTouchAndQueryDetectionMode#UseHitbox)
          */
         export interface UseHitbox extends globalThis.EnumItem {
@@ -6307,6 +6369,8 @@ declare namespace Enum {
      */
     export namespace AvatarUnificationMode {
         /**
+         * **Deprecated:** `Workspace.AvatarUnificationMode` no longer has an effect; R6 avatars always load as R6 rigs.
+         *
          * Resolves to the engine's current built-in default for avatar unification, which currently behaves the same as `Disabled`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarUnificationMode#Default)
@@ -6318,6 +6382,8 @@ declare namespace Enum {
         }
         export const Default: Default;
         /**
+         * **Deprecated:** `Workspace.AvatarUnificationMode` no longer has an effect; R6 avatars always load as R6 rigs.
+         *
          * Disables the R6-to-R15 adapter; R6 avatars in an R6 experience load using the standard R6 rig with no adapter parts applied.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarUnificationMode#Disabled)
@@ -6329,6 +6395,8 @@ declare namespace Enum {
         }
         export const Disabled: Disabled;
         /**
+         * **Deprecated:** `Workspace.AvatarUnificationMode` no longer has an effect; R6 avatars always load as R6 rigs.
+         *
          * Enables the R6-to-R15 adapter; R6 avatars joining an R6 experience receive invisible R15 adapter `MeshParts` welded to their R6-named joints, preserving R6 scale while enabling R15 features such as layered clothing and animatable heads.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/AvatarUnificationMode#Enabled)
@@ -7418,6 +7486,42 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CameraPanMode | undefined;
     }
     export type CameraPanMode = CameraPanMode.Classic | CameraPanMode.EdgeBump;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraRotateCursorLock)
+     */
+    export namespace CameraRotateCursorLock {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraRotateCursorLock#Never)
+         */
+        export interface Never extends globalThis.EnumItem {
+            Name: "Never";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.CameraRotateCursorLock;
+        }
+        export const Never: Never;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraRotateCursorLock#FpsOnly)
+         */
+        export interface FpsOnly extends globalThis.EnumItem {
+            Name: "FpsOnly";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.CameraRotateCursorLock;
+        }
+        export const FpsOnly: FpsOnly;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/CameraRotateCursorLock#BothModes)
+         */
+        export interface BothModes extends globalThis.EnumItem {
+            Name: "BothModes";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.CameraRotateCursorLock;
+        }
+        export const BothModes: BothModes;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.CameraRotateCursorLock>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.CameraRotateCursorLock | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.CameraRotateCursorLock | undefined;
+    }
+    export type CameraRotateCursorLock = CameraRotateCursorLock.Never | CameraRotateCursorLock.FpsOnly | CameraRotateCursorLock.BothModes;
     /**
      * Controls which input gesture adjusts the Studio camera's fly speed while navigating.
      *
@@ -10924,7 +11028,7 @@ declare namespace Enum {
         }
         export const Object: Object;
         /**
-         * A non-`nil` `Opaque` reference contained in `Content.Opaque`.
+         * Opaque content whose underlying data isn't accessible from scripts. Both `Content.Uri` and `Content.Object` are `nil`.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ContentSourceType#Opaque)
          */
@@ -13431,32 +13535,51 @@ declare namespace Enum {
      */
     export namespace DomainType {
         /**
-         * The user ID is scoped to a specific experience (universe).
+         * Indicates that the associated `User` ID is scoped to a specific experience. The domain ID corresponds to the universe ID of that experience.
          *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DomainType#EXPERIENCE)
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DomainType#Experience)
          */
-        export interface EXPERIENCE extends globalThis.EnumItem {
-            Name: "EXPERIENCE";
+        export interface Experience extends globalThis.EnumItem {
+            Name: "Experience";
             Value: 1;
             EnumType: typeof globalThis.Enum.DomainType;
         }
-        export const EXPERIENCE: EXPERIENCE;
+        export const Experience: Experience;
         /**
-         * The user ID is scoped to a specific OAuth application.
-         *
-         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DomainType#OAUTH)
+         * @deprecated renamed to Experience
          */
-        export interface OAUTH extends globalThis.EnumItem {
-            Name: "OAUTH";
+        export const EXPERIENCE: Experience;
+        /**
+         * Indicates that the associated `User` ID is scoped to a specific group (community). The domain ID corresponds to the group ID. This item is not yet supported: `User` values with this domain type can't be created.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DomainType#Group)
+         */
+        export interface Group extends globalThis.EnumItem {
+            Name: "Group";
+            Value: 2;
+            EnumType: typeof globalThis.Enum.DomainType;
+        }
+        export const Group: Group;
+        /**
+         * The user ID is scoped to a specific OAuth application. The domain ID is the application ID.
+         *
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/DomainType#OAuth)
+         */
+        export interface OAuth extends globalThis.EnumItem {
+            Name: "OAuth";
             Value: 3;
             EnumType: typeof globalThis.Enum.DomainType;
         }
-        export const OAUTH: OAUTH;
+        export const OAuth: OAuth;
+        /**
+         * @deprecated renamed to OAuth
+         */
+        export const OAUTH: OAuth;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.DomainType>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.DomainType | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.DomainType | undefined;
     }
-    export type DomainType = DomainType.EXPERIENCE | DomainType.OAUTH;
+    export type DomainType = DomainType.Experience | DomainType.Group | DomainType.OAuth;
     /**
      * Used by `UIAspectRatioConstraint.DominantAxis` for resizing the object to maintain the aspect ratio.
      *
@@ -14249,11 +14372,20 @@ declare namespace Enum {
             EnumType: typeof globalThis.Enum.EngineFolder;
         }
         export const Logs: Logs;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/EngineFolder#ClientSettings)
+         */
+        export interface ClientSettings extends globalThis.EnumItem {
+            Name: "ClientSettings";
+            Value: 3;
+            EnumType: typeof globalThis.Enum.EngineFolder;
+        }
+        export const ClientSettings: ClientSettings;
         export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.EngineFolder>;
         export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.EngineFolder | undefined;
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.EngineFolder | undefined;
     }
-    export type EngineFolder = EngineFolder.Screenshots | EngineFolder.Videos | EngineFolder.Logs;
+    export type EngineFolder = EngineFolder.Screenshots | EngineFolder.Videos | EngineFolder.Logs | EngineFolder.ClientSettings;
     /**
      * Used to control the throttle rate of Roblox's physics engine.
      *
@@ -15663,7 +15795,7 @@ declare namespace Enum {
      */
     export namespace FieldOfViewMode {
         /**
-         * The camera holds its vertical field of view constant when the viewport is resized.
+         * The camera holds its vertical field of view constant when the viewport is resized. The `ViewStretch` will apply to the horizontal axis.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FieldOfViewMode#Vertical)
          */
@@ -15674,7 +15806,7 @@ declare namespace Enum {
         }
         export const Vertical: Vertical;
         /**
-         * The camera holds its diagonal field of view constant when the viewport is resized.
+         * The camera holds its diagonal field of view constant when the viewport is resized. The `ViewStretch` will apply to the horizontal axis.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FieldOfViewMode#Diagonal)
          */
@@ -15685,7 +15817,7 @@ declare namespace Enum {
         }
         export const Diagonal: Diagonal;
         /**
-         * The camera holds the field of view along the longer viewport axis constant when the viewport is resized.
+         * The camera holds the field of view along the longer viewport axis constant when the viewport is resized. The `ViewStretch` will apply to the horizontal axis.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/FieldOfViewMode#MaxAxis)
          */
@@ -18604,6 +18736,8 @@ declare namespace Enum {
         }
         export const Conical: Conical;
         /**
+         * The color/transparency sequence radiates outward from the element's center in an ellipse, optionally shifted by `Offset`. The ellipse's horizontal and vertical radii are half the element's width and height, respectively, so the ellipse fits the element's bounds. `Rotation` rotates the ellipse's axes.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GradientType#Elliptical)
          */
         export interface Elliptical extends globalThis.EnumItem {
@@ -18794,10 +18928,14 @@ declare namespace Enum {
     }
     export type GroupMembershipStatus = GroupMembershipStatus.None | GroupMembershipStatus.Joined | GroupMembershipStatus.JoinRequestPending | GroupMembershipStatus.AlreadyMember;
     /**
+     * The possible ways in which the gui navigation can be moved.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GuiNavigationDirection)
      */
     export namespace GuiNavigationDirection {
         /**
+         * No direction. Used when no direction applies to the selection changing (e.g. if modified by a script).
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GuiNavigationDirection#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -18807,6 +18945,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * The up direction (negative `Y` in the viewport) in directional navigation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GuiNavigationDirection#Up)
          */
         export interface Up extends globalThis.EnumItem {
@@ -18816,6 +18956,8 @@ declare namespace Enum {
         }
         export const Up: Up;
         /**
+         * The down direction (positive `Y` in the viewport) in directional navigation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GuiNavigationDirection#Down)
          */
         export interface Down extends globalThis.EnumItem {
@@ -18825,6 +18967,8 @@ declare namespace Enum {
         }
         export const Down: Down;
         /**
+         * The down direction (negative `X` in the viewport) in directional navigation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GuiNavigationDirection#Left)
          */
         export interface Left extends globalThis.EnumItem {
@@ -18834,6 +18978,8 @@ declare namespace Enum {
         }
         export const Left: Left;
         /**
+         * The right direction (positive `X` in the viewport) in directional navigation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GuiNavigationDirection#Right)
          */
         export interface Right extends globalThis.EnumItem {
@@ -18843,6 +18989,8 @@ declare namespace Enum {
         }
         export const Right: Right;
         /**
+         * The forward direction in sequential navigation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GuiNavigationDirection#Forward)
          */
         export interface Forward extends globalThis.EnumItem {
@@ -18852,6 +19000,8 @@ declare namespace Enum {
         }
         export const Forward: Forward;
         /**
+         * The backward direction in sequential navigation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/GuiNavigationDirection#Backward)
          */
         export interface Backward extends globalThis.EnumItem {
@@ -24473,7 +24623,7 @@ declare namespace Enum {
          */
         export const Touch: TouchPosition;
         /**
-         * The scroll delta (change) of a mouse wheel. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         * The scroll delta (change) of a mouse wheel. Primarily used in the [Input Action System](../../../input/input-action-system.md), returning a velocity in scroll units per second (where one scroll unit is approximately equivalent to a standard mouse wheel notch) under a `Direction1D` action type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseWheel)
          */
@@ -24484,7 +24634,7 @@ declare namespace Enum {
         }
         export const MouseWheel: MouseWheel;
         /**
-         * The pan delta (change) from a trackpad two-finger pan gesture. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         * The pan delta (change) from a trackpad two-finger pan gesture. Primarily used in the [Input Action System](../../../input/input-action-system.md), returning a velocity in pixels per second under a `Direction2D` action type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#TrackpadPan)
          */
@@ -24495,7 +24645,7 @@ declare namespace Enum {
         }
         export const TrackpadPan: TrackpadPan;
         /**
-         * The scale delta (change) from a trackpad two-finger pinch gesture. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         * The scale delta (change) from a trackpad two-finger pinch gesture. Primarily used in the [Input Action System](../../../input/input-action-system.md), returning a velocity in scroll units per second (where one scroll unit is approximately equivalent to a standard mouse wheel notch) under a `Direction1D` action type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#TrackpadPinch)
          */
@@ -24506,7 +24656,7 @@ declare namespace Enum {
         }
         export const TrackpadPinch: TrackpadPinch;
         /**
-         * The movement delta (change) of the mouse cursor. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         * The movement delta (change) of the mouse cursor. Primarily used in the [Input Action System](../../../input/input-action-system.md), returning a velocity in pixels per second under a `Direction2D` action type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#MouseDelta)
          */
@@ -24517,7 +24667,7 @@ declare namespace Enum {
         }
         export const MouseDelta: MouseDelta;
         /**
-         * The movement delta (change) of a touch input. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         * The movement delta (change) of a touch input. Primarily used in the [Input Action System](../../../input/input-action-system.md), returning a velocity in pixels per second under a `Direction2D` action type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#TouchDelta)
          */
@@ -24528,7 +24678,7 @@ declare namespace Enum {
         }
         export const TouchDelta: TouchDelta;
         /**
-         * The scale delta (change) of a two-finger touch pinch gesture. Primarily used in the [Input Action System](../../../input/input-action-system.md).
+         * The scale delta (change) from a touch two-finger pinch gesture. Primarily used in the [Input Action System](../../../input/input-action-system.md), returning a velocity in pixels per second under a `Direction1D` action type.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/KeyCode#TouchPinch)
          */
@@ -24995,6 +25145,33 @@ declare namespace Enum {
         export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.LexemeType | undefined;
     }
     export type LexemeType = LexemeType.Eof | LexemeType.Name | LexemeType.QuotedString | LexemeType.Number | LexemeType.And | LexemeType.Or | LexemeType.Equal | LexemeType.TildeEqual | LexemeType.GreaterThan | LexemeType.GreaterThanEqual | LexemeType.LessThan | LexemeType.LessThanEqual | LexemeType.Colon | LexemeType.Dot | LexemeType.LeftParenthesis | LexemeType.RightParenthesis | LexemeType.Star | LexemeType.DoubleStar | LexemeType.ReservedSpecial;
+    /**
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LightAttenuationMode)
+     */
+    export namespace LightAttenuationMode {
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LightAttenuationMode#Legacy)
+         */
+        export interface Legacy extends globalThis.EnumItem {
+            Name: "Legacy";
+            Value: 0;
+            EnumType: typeof globalThis.Enum.LightAttenuationMode;
+        }
+        export const Legacy: Legacy;
+        /**
+         * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/LightAttenuationMode#Realistic)
+         */
+        export interface Realistic extends globalThis.EnumItem {
+            Name: "Realistic";
+            Value: 1;
+            EnumType: typeof globalThis.Enum.LightAttenuationMode;
+        }
+        export const Realistic: Realistic;
+        export function GetEnumItems(this: globalThis.Enum): Array<globalThis.Enum.LightAttenuationMode>;
+        export function FromName(this: globalThis.Enum, name: string): globalThis.Enum.LightAttenuationMode | undefined;
+        export function FromValue(this: globalThis.Enum, value: number): globalThis.Enum.LightAttenuationMode | undefined;
+    }
+    export type LightAttenuationMode = LightAttenuationMode.Legacy | LightAttenuationMode.Realistic;
     /**
      * Enum used by `Lighting.LightingStyle` to indicate the artistic intent behind lighting in the experience.
      *
@@ -28279,10 +28456,14 @@ declare namespace Enum {
     }
     export type OrientationAlignmentMode = OrientationAlignmentMode.OneAttachment | OrientationAlignmentMode.TwoAttachment;
     /**
+     * Sets which screen axis `OrthographicSize` is applied to.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OrthographicMode)
      */
     export namespace OrthographicMode {
         /**
+         * The screen's vertical axis will span exactly `OrthographicSize` studs. The `ViewStretch` will apply to the horizontal axis.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OrthographicMode#Vertical)
          */
         export interface Vertical extends globalThis.EnumItem {
@@ -28292,6 +28473,8 @@ declare namespace Enum {
         }
         export const Vertical: Vertical;
         /**
+         * The screen's horizontal axis will span exactly `OrthographicSize` studs. The `ViewStretch` will apply to the vertical axis.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OrthographicMode#Horizontal)
          */
         export interface Horizontal extends globalThis.EnumItem {
@@ -28301,6 +28484,8 @@ declare namespace Enum {
         }
         export const Horizontal: Horizontal;
         /**
+         * The screen diagonal will span exactly `OrthographicSize` studs. The `ViewStretch` will apply to the horizontal axis. (In the initial beta, a bug makes it apply to both axes in a complex way.)
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OrthographicMode#Diagonal)
          */
         export interface Diagonal extends globalThis.EnumItem {
@@ -28310,6 +28495,8 @@ declare namespace Enum {
         }
         export const Diagonal: Diagonal;
         /**
+         * The screen's longer axis will span exactly `OrthographicSize` studs. The `ViewStretch` will apply to the shorter axis. If both dimensions are identical, it will apply to the horizontal axis.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/OrthographicMode#MaxAxis)
          */
         export interface MaxAxis extends globalThis.EnumItem {
@@ -30213,10 +30400,14 @@ declare namespace Enum {
     }
     export type PlayerChatType = PlayerChatType.All | PlayerChatType.Team | PlayerChatType.Whisper;
     /**
+     * The decision that `IntegrityService.EvaluatePlayerDeviceTrust` returns for a player.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustDecision)
      */
     export namespace PlayerDeviceTrustDecision {
         /**
+         * The player stays in the server.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustDecision#Accept)
          */
         export interface Accept extends globalThis.EnumItem {
@@ -30226,6 +30417,8 @@ declare namespace Enum {
         }
         export const Accept: Accept;
         /**
+         * The player is disconnected from the server and sees a rejection message.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustDecision#Reject)
          */
         export interface Reject extends globalThis.EnumItem {
@@ -30240,10 +30433,14 @@ declare namespace Enum {
     }
     export type PlayerDeviceTrustDecision = PlayerDeviceTrustDecision.Accept | PlayerDeviceTrustDecision.Reject;
     /**
+     * The trust level of a player's device.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustLevel)
      */
     export namespace PlayerDeviceTrustLevel {
         /**
+         * Roblox is still checking the device. Every player starts at this level, and some players might stay at it for the whole session.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustLevel#Pending)
          */
         export interface Pending extends globalThis.EnumItem {
@@ -30253,6 +30450,8 @@ declare namespace Enum {
         }
         export const Pending: Pending;
         /**
+         * Roblox can't tell whether the device is trusted, because the player is on an unsupported platform or an error occurred on the Roblox side. The device might or might not be trustworthy.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustLevel#Unknown)
          */
         export interface Unknown extends globalThis.EnumItem {
@@ -30262,6 +30461,8 @@ declare namespace Enum {
         }
         export const Unknown: Unknown;
         /**
+         * The device failed the check, or the player is on a platform that can't be verified.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustLevel#None)
          */
         export interface None extends globalThis.EnumItem {
@@ -30271,6 +30472,8 @@ declare namespace Enum {
         }
         export const None: None;
         /**
+         * The device passed some of the checks, but not all of them.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustLevel#Standard)
          */
         export interface Standard extends globalThis.EnumItem {
@@ -30280,6 +30483,8 @@ declare namespace Enum {
         }
         export const Standard: Standard;
         /**
+         * The device passed every check.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PlayerDeviceTrustLevel#Full)
          */
         export interface Full extends globalThis.EnumItem {
@@ -31187,10 +31392,14 @@ declare namespace Enum {
     }
     export type ProductPurchaseDecision = ProductPurchaseDecision.NotProcessedYet | ProductPurchaseDecision.PurchaseGranted;
     /**
+     * Chooses between perspective and orthographic cameras.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProjectionType)
      */
     export namespace ProjectionType {
         /**
+         * The camera is perspective, and uses the field of view settings.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProjectionType#Perspective)
          */
         export interface Perspective extends globalThis.EnumItem {
@@ -31200,6 +31409,8 @@ declare namespace Enum {
         }
         export const Perspective: Perspective;
         /**
+         * The camera is orthographic, and uses the orthographic settings.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/ProjectionType#Orthographic)
          */
         export interface Orthographic extends globalThis.EnumItem {
@@ -31478,10 +31689,14 @@ declare namespace Enum {
     }
     export type PromptCreateAvatarResult = PromptCreateAvatarResult.Success | PromptCreateAvatarResult.PermissionDenied | PromptCreateAvatarResult.Timeout | PromptCreateAvatarResult.UploadFailed | PromptCreateAvatarResult.NoUserInput | PromptCreateAvatarResult.InvalidHumanoidDescription | PromptCreateAvatarResult.UGCValidationFailed | PromptCreateAvatarResult.ModeratedName | PromptCreateAvatarResult.MaxOutfits | PromptCreateAvatarResult.PurchaseFailure | PromptCreateAvatarResult.UnknownFailure | PromptCreateAvatarResult.TokenInvalid;
     /**
+     * Result codes returned by `AvatarCreationService:PromptCreateMakeupAsync()` that describe the overall makeup look creation outcome.
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult)
      */
     export namespace PromptCreateOutfitResult {
         /**
+         * All submitted makeup assets and the makeup look were created successfully.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#Success)
          */
         export interface Success extends globalThis.EnumItem {
@@ -31491,6 +31706,8 @@ declare namespace Enum {
         }
         export const Success: Success;
         /**
+         * At least one makeup asset was created, but one or more assets or the final makeup look composition did not succeed.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#PartialSuccess)
          */
         export interface PartialSuccess extends globalThis.EnumItem {
@@ -31500,6 +31717,8 @@ declare namespace Enum {
         }
         export const PartialSuccess: PartialSuccess;
         /**
+         * No makeup assets could be created, so the makeup look was not created.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#CreationFailure)
          */
         export interface CreationFailure extends globalThis.EnumItem {
@@ -31509,6 +31728,8 @@ declare namespace Enum {
         }
         export const CreationFailure: CreationFailure;
         /**
+         * The player declined the makeup creation prompt.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#PermissionDenied)
          */
         export interface PermissionDenied extends globalThis.EnumItem {
@@ -31518,6 +31739,8 @@ declare namespace Enum {
         }
         export const PermissionDenied: PermissionDenied;
         /**
+         * The makeup creation prompt timed out before the player responded.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#Timeout)
          */
         export interface Timeout extends globalThis.EnumItem {
@@ -31527,6 +31750,8 @@ declare namespace Enum {
         }
         export const Timeout: Timeout;
         /**
+         * The player did not respond to the makeup creation prompt.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#NoUserInput)
          */
         export interface NoUserInput extends globalThis.EnumItem {
@@ -31536,6 +31761,8 @@ declare namespace Enum {
         }
         export const NoUserInput: NoUserInput;
         /**
+         * An unexpected or unclassified error prevented makeup look creation.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#UnknownFailure)
          */
         export interface UnknownFailure extends globalThis.EnumItem {
@@ -31545,6 +31772,8 @@ declare namespace Enum {
         }
         export const UnknownFailure: UnknownFailure;
         /**
+         * The makeup assets or creation tokens failed validation before upload.
+         *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/PromptCreateOutfitResult#UGCValidationFailed)
          */
         export interface UGCValidationFailed extends globalThis.EnumItem {
@@ -41203,7 +41432,7 @@ declare namespace Enum {
         }
         export const TeleportToPlaceInstance: TeleportToPlaceInstance;
         /**
-         * Teleport was initiated by `TeleportService:TeleportToPrivateServer()`, which sends players to a reserved server using an access code.
+         * Teleport was initiated by `TeleportService:TeleportToPrivateServer()`, a deprecated method that sends players to a reserved server using a legacy access code.
          *
          * [Creator Hub](https://create.roblox.com/docs/reference/engine/enums/TeleportMethod#TeleportToPrivateServer)
          */
