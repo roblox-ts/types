@@ -7,7 +7,7 @@ import simpleImportSort from "eslint-plugin-simple-import-sort";
 import tseslint from "typescript-eslint";
 
 export default defineConfig(
-	{ ignores: [".github/**", "include/generated/**", "devhub-scraper-master/**", "tests/**", "out/**"] },
+	{ ignores: [".github/**", "include/generated/**", "devhub-scraper-master/**", "out/**"] },
 	js.configs.recommended,
 	...tseslint.configs.recommended,
 	prettierRecommended,
@@ -131,5 +131,9 @@ export default defineConfig(
 			"@typescript-eslint/no-unsafe-function-type": "off",
 			"@typescript-eslint/no-wrapper-object-types": "off",
 		},
+	},
+	{
+		files: ["tests/**/*.ts"],
+		languageOptions: { parserOptions: { project: "./tests/tsconfig.json" } },
 	},
 );
