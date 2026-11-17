@@ -41,6 +41,9 @@
 		"typescript": "=5.9.3",
 		"typescript-eslint": "^8.70.0"
 	},
+	"peerDependencies": {
+		"@rbxts/compiler-types": "*"
+	},
 	"keywords": [
 		"types",
 		"Roblox",
