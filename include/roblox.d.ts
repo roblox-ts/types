@@ -1890,7 +1890,7 @@ interface FontConstructor {
 declare const Font: FontConstructor;
 
 // InstanceHandle
-interface InstanceHandle {
+interface InstanceHandle<T extends Instance = Instance> {
 	/**
 	 * **DO NOT USE!**
 	 *
@@ -1899,12 +1899,12 @@ interface InstanceHandle {
 	 * @deprecated
 	 */
 	readonly _nominal_InstanceHandle: unique symbol;
-	Get(this: InstanceHandle): Instance | undefined;
-	Wait(this: InstanceHandle): Instance;
-	Wait(this: InstanceHandle, timeout: number): Instance | undefined;
+	Get(this: InstanceHandle<T>): T | undefined;
+	Wait(this: InstanceHandle<T>): T;
+	Wait(this: InstanceHandle<T>, timeout: number): T | undefined;
 }
 interface InstanceHandleConstructor {
-	new (instance: Instance | undefined): InstanceHandle;
+	new <T extends Instance>(instance: T | undefined): InstanceHandle<T>;
 }
 declare const InstanceHandle: InstanceHandleConstructor;
 
