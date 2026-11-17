@@ -94,6 +94,7 @@ interface Services {
     FeatureMatchingService: FeatureMatchingService;
     FeatureRestrictionManager: FeatureRestrictionManager;
     FileManagerService: FileManagerService;
+    FilePickerService: FilePickerService;
     FileSyncReplicationService: FileSyncReplicationService;
     FriendsCallingService: FriendsCallingService;
     GameDownloaderService: GameDownloaderService;
@@ -235,6 +236,7 @@ interface Services {
     ServiceVisibilityService: ServiceVisibilityService;
     SessionCheckService: SessionCheckService;
     SessionService: SessionService;
+    SessionStorage: SessionStorage;
     SharedTableRegistry: SharedTableRegistry;
     SlimAnimationReplicationService: SlimAnimationReplicationService;
     SlimContentProvider: SlimContentProvider;
@@ -858,6 +860,7 @@ interface Instances extends Services, CreatableInstances {
 interface Objects extends Instances {
     AnimationNode: AnimationNode;
     AppHandle: AppHandle;
+    Blob: Blob;
     Capture: Capture;
     ConfigSnapshot: ConfigSnapshot;
     DataModelDiff: DataModelDiff;
@@ -872,7 +875,9 @@ interface Objects extends Instances {
     Object: RBXObject;
     OutputLink: OutputLink;
     ParticipantHandle: ParticipantHandle;
+    PickedFile: PickedFile;
     PluginConnection: PluginConnection;
+    SceneSnapshot: SceneSnapshot;
     ScreenshotCapture: ScreenshotCapture;
     StudioActionOverride: StudioActionOverride;
     TerrainIterateOperation: TerrainIterateOperation;
@@ -938,6 +943,21 @@ interface AppHandle extends RBXObject {
      * @deprecated
      */
     readonly _nominal_AppHandle: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Blob)
+ */
+interface Blob extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Blob: unique symbol;
 }
 /**
  * A class which defines a piece of content, such as a screenshot or video, taken in-experience.
@@ -1509,7 +1529,7 @@ interface AnimationFromVideoCreatorStudioService extends Instance {
     readonly _nominal_AnimationFromVideoCreatorStudioService: unique symbol;
 }
 /**
- * A single node within an animation graph, connected to other nodes through named input pins.
+ * A single node within an animation graph that outputs an animation pose, connected to other nodes through named input pins.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationNodeDefinition)
  */
@@ -1584,6 +1604,8 @@ interface AnimationTrack extends Instance {
     readonly _nominal_AnimationTrack: unique symbol;
 }
 /**
+ * A node within an animation graph that outputs one or more values instead of an animation pose.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationValueNodeDefinition)
  */
 interface AnimationValueNodeDefinition extends Instance {
@@ -1597,6 +1619,8 @@ interface AnimationValueNodeDefinition extends Instance {
     readonly _nominal_AnimationValueNodeDefinition: unique symbol;
 }
 /**
+ * A single output endpoint produced by an `AnimationValueNodeDefinition`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AnimationValueOutputDefinition)
  */
 interface AnimationValueOutputDefinition extends Instance {
@@ -2246,6 +2270,8 @@ interface AudioSpeechToText extends Instance {
     readonly _nominal_AudioSpeechToText: unique symbol;
 }
 /**
+ * Reads audio samples from a connected audio stream into Luau buffers for custom analysis.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioStreamReader)
@@ -2261,6 +2287,8 @@ interface AudioStreamReader extends Instance {
     readonly _nominal_AudioStreamReader: unique symbol;
 }
 /**
+ * Writes audio samples from Luau buffers into an audio stream for custom synthesis.
+ *
  * - **Tags**: NotBrowsable
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/AudioStreamWriter)
@@ -2990,18 +3018,6 @@ interface WrapLayer extends BaseWrap {
      */
     readonly _nominal_WrapLayer: unique symbol;
     /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#RotateScaleDeformationMap)
-     */
-    set RotateScaleDeformationMap(value: Content);
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#ScaleOnlyDeformationMap)
-     */
-    set ScaleOnlyDeformationMap(value: Content);
-    /**
      * **Deprecated:**
      *
      * Allows slight shrinking/expanding of the resulting render mesh, without affecting any other layers.
@@ -3014,12 +3030,6 @@ interface WrapLayer extends BaseWrap {
      * @deprecated
      */
     set ShrinkFactor(value: number);
-    /**
-     * - **ThreadSafety**: ReadSafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/WrapLayer#TargetShaping)
-     */
-    set TargetShaping(value: number);
 }
 /**
  * The WrapTarget object defines a target. A target is the 3D body with only an outer surface, or an Outer Cage.
@@ -3430,7 +3440,7 @@ interface ChangeHistoryService extends Instance {
      * @param this **Must** be used by plugins to communicate to Studio how to undo and redo the changes which they make to the experience.
      * @param identifier Identifies the recording from the previous call to `TryBeginRecording()`. If the operation is `FinishRecordingOperation.Cancel`, this value is ignored, and the recording is determined by context.
      * @param operation Specifies the operation to take.
-     * @param finalOptions Optional table of values to pass to `OnFinishRecording`.
+     * @param finalOptions Optional table of values to pass to `OnRecordingFinished`.
      */
     FinishRecording(this: ChangeHistoryService, identifier: string, operation: CastsToEnum<Enum.FinishRecordingOperation>, finalOptions?: object): void;
     /**
@@ -5849,6 +5859,21 @@ interface FileManagerService extends Instance {
     readonly _nominal_FileManagerService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FilePickerService)
+ */
+interface FilePickerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_FilePickerService: unique symbol;
+}
+/**
  * - **Tags**: NotCreatable, Service
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/FileSyncReplicationService)
@@ -6501,6 +6526,8 @@ interface TextBox extends GuiObject {
     readonly _nominal_TextBox: unique symbol;
 }
 /**
+ * A GuiObject that displays chat messages from an associated TextChannel.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TextChannelWindow)
  */
 interface TextChannelWindow extends GuiObject {
@@ -7749,6 +7776,8 @@ interface InstanceRegistryService extends Instance {
     readonly _nominal_InstanceRegistryService: unique symbol;
 }
 /**
+ * A service that lets you decide how your experience responds to the device trust level of each player.
+ *
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/IntegrityService)
@@ -9810,6 +9839,8 @@ interface Camera extends PVInstance {
     readonly _nominal_Camera: unique symbol;
 }
 /**
+ * A `Camera` that replicates and is saved as authored content, for use with `ViewportFrames` or as a ThumbnailCamera.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ViewportCamera)
  */
 interface ViewportCamera extends Camera {
@@ -10765,6 +10796,8 @@ interface PhysicsSettings extends Instance {
      */
     DisableCSGv3ForPlugins: boolean;
     /**
+     * When set to true, draws the swept volume and hit result of shapecast queries.
+     *
      * - **ThreadSafety**: ReadSafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PhysicsSettings#DrawShapecast)
@@ -11156,6 +11189,7 @@ interface Plugin extends Instance {
      * @param statusTip The displayed description of the action.
      * @param iconName The name of the icon used to display the plugin.
      * @param allowBinding Whether the `PluginAction` will be hidden from Studio's shortcuts view. Useful for contextual actions. Defaults to true.
+     * @returns The created `PluginAction` instance.
      */
     CreatePluginAction(this: Plugin, actionId: string, text: string, statusTip: string, iconName?: string, allowBinding?: boolean): PluginAction;
     /**
@@ -11168,6 +11202,7 @@ interface Plugin extends Instance {
      * @param id Unique ID for the menu.
      * @param title The text to be displayed when used as a submenu.
      * @param icon The icon to be displayed when used as a submenu.
+     * @returns The created `PluginMenu` instance.
      */
     CreatePluginMenu(this: Plugin, id: string, title?: string, icon?: string): PluginMenu;
     /**
@@ -11178,6 +11213,7 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#CreateToolbar)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param name The visible text on the toolbar, labeling the group of buttons contained within.
+     * @returns The created `PluginToolbar` instance.
      */
     CreateToolbar(this: Plugin, name: string): PluginToolbar;
     /**
@@ -11196,6 +11232,7 @@ interface Plugin extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#GetJoinMode)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @returns The current `JointCreationMode` value based on the user's joint creation setting.
      */
     GetJoinMode(this: Plugin): Enum.JointCreationMode;
     /**
@@ -11205,6 +11242,7 @@ interface Plugin extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#GetMouse)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @returns A `PluginMouse` that can be used while the plugin is active.
      */
     GetMouse(this: Plugin): PluginMouse;
     /**
@@ -11214,6 +11252,7 @@ interface Plugin extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#GetSelectedRibbonTool)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @returns The currently selected `RibbonTool`.
      */
     GetSelectedRibbonTool(this: Plugin): Enum.RibbonTool;
     /**
@@ -11224,6 +11263,7 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#GetSetting)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param key The string key that was previously passed to `SetSetting()`.
+     * @returns The value previously stored under the given key, or `nil` if the key does not exist.
      */
     GetSetting(this: Plugin, key: string): unknown;
     /**
@@ -11236,6 +11276,7 @@ interface Plugin extends Instance {
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#GetStudioUserId)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
+     * @returns The logged-in Studio user's userId, or `0` if the user is not logged in.
      *
      * @deprecated
      */
@@ -11248,6 +11289,7 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#Intersect)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param objects The array of `BaseParts` to intersect.
+     * @returns The resulting `IntersectOperation` from the intersection of the given parts.
      */
     Intersect(this: Plugin, objects: Array<Instance>): Instance | undefined;
     /**
@@ -11278,6 +11320,7 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#Negate)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param objects The array of `BaseParts` to negate.
+     * @returns An array of `NegateOperations` resulting from the negation.
      */
     Negate(this: Plugin, objects: Array<Instance>): Array<Instance>;
     /**
@@ -11334,6 +11377,7 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#Separate)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param objects The array of `UnionOperations` to separate.
+     * @returns An array of the individual `BaseParts` produced by separating the unions.
      */
     Separate(this: Plugin, objects: Array<Instance>): Array<Instance>;
     /**
@@ -11365,6 +11409,7 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#Union)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param objects The array of `BaseParts` to union together.
+     * @returns The resulting `UnionOperation` from the union of the given parts.
      */
     Union(this: Plugin, objects: Array<BasePart>): UnionOperation;
     /**
@@ -11379,6 +11424,7 @@ interface Plugin extends Instance {
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param pluginGuiId A unique and consistent identifier used to storing the widget's dock state and other internal details.
      * @param dockWidgetPluginGuiInfo Describes the `DockWidgetPluginGui` to create (initial state, size, etc).
+     * @returns The created `DockWidgetPluginGui` instance.
      *
      * @deprecated CreateDockWidgetPluginGuiAsync
      */
@@ -11393,6 +11439,7 @@ interface Plugin extends Instance {
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param pluginGuiId A unique and consistent identifier used to storing the widget's dock state and other internal details.
      * @param dockWidgetPluginGuiInfo Describes the `DockWidgetPluginGui` to create (initial state, size, etc).
+     * @returns The created `DockWidgetPluginGui` instance.
      */
     CreateDockWidgetPluginGuiAsync(this: Plugin, pluginGuiId: string, dockWidgetPluginGuiInfo: DockWidgetPluginGuiInfo): DockWidgetPluginGui;
     /**
@@ -11407,6 +11454,7 @@ interface Plugin extends Instance {
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param rigModel The rig model that the imported animation will be applied to.
      * @param isR15 Whether the animation file should be interpreted as an R15 rig. Defaults to `true`.
+     * @returns The imported `KeyframeSequence` instance inserted into the `Workspace`.
      *
      * @deprecated ImportFbxAnimationAsync
      */
@@ -11421,6 +11469,7 @@ interface Plugin extends Instance {
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param rigModel The rig model that the imported animation will be applied to.
      * @param isR15 Whether the animation file should be interpreted as an R15 rig. Defaults to `true`.
+     * @returns The imported `KeyframeSequence` instance inserted into the `Workspace`.
      */
     ImportFbxAnimationAsync(this: Plugin, rigModel: Instance, isR15?: boolean): Instance | undefined;
     /**
@@ -11434,6 +11483,7 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#ImportFbxRig)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param isR15 Whether the rig file should be interpreted as R15. Defaults to `true`.
+     * @returns The generated character rig `Model` loaded into the `Workspace`.
      *
      * @deprecated ImportFbxRigAsync
      */
@@ -11447,6 +11497,7 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#ImportFbxRigAsync)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param isR15 Whether the rig file should be interpreted as R15. Defaults to `true`.
+     * @returns The generated character rig `Model` loaded into the `Workspace`.
      */
     ImportFbxRigAsync(this: Plugin, isR15?: boolean): Instance | undefined;
     /**
@@ -11458,6 +11509,7 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptForExistingAssetId)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param assetType The asset type to browse. Only `Animation` is supported.
+     * @returns The selected asset ID, or `-1` if the user closes the dialog without selecting an asset.
      */
     PromptForExistingAssetId(this: Plugin, assetType: string): number;
     /**
@@ -11469,6 +11521,7 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptForExistingAssetIdAsync)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param assetType The asset type to browse. Only `Animation` is supported.
+     * @returns The selected asset ID, or `-1` if the user closes the dialog without selecting an asset.
      */
     PromptForExistingAssetIdAsync(this: Plugin, assetType: string): number;
     /**
@@ -11482,6 +11535,7 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptSaveSelection)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param suggestedFileName The default file name shown in the save dialog. Defaults to an empty string.
+     * @returns `true` if the user completed the save, `false` otherwise.
      *
      * @deprecated PromptSaveSelectionAsync
      */
@@ -11495,6 +11549,7 @@ interface Plugin extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Plugin#PromptSaveSelectionAsync)
      * @param this The main object responsible for creating custom Studio widgets, toolbars, buttons, and other plugin UI elements.
      * @param suggestedFileName The default file name shown in the save dialog. Defaults to an empty string.
+     * @returns `true` if the user completed the save, `false` otherwise.
      */
     PromptSaveSelectionAsync(this: Plugin, suggestedFileName?: string): boolean;
     /**
@@ -13155,9 +13210,13 @@ interface ScriptDocument extends Instance {
      */
     GetLineCount(this: ScriptDocument): number;
     /**
+     * Returns the reasons the Script Editor UI is currently read-only.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#GetReadOnlyReasons)
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @returns A sorted array of strings. The array is empty if the editor isn't read-only.
      */
     GetReadOnlyReasons(this: ScriptDocument): Array<unknown>;
     /**
@@ -13255,16 +13314,24 @@ interface ScriptDocument extends Instance {
      */
     IsCommandBar(this: ScriptDocument): boolean;
     /**
+     * Returns true if the Script Editor UI is currently read-only.
+     *
      * - **ThreadSafety**: Unsafe
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#IsReadOnly)
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @returns `true` if the editor is read-only, `false` otherwise.
      */
     IsReadOnly(this: ScriptDocument): boolean;
     /**
+     * Adds reasons for the Script Editor UI to be read-only. Yields the current thread until the editor acknowledges the change.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#AddReadOnlyReasonsAsync)
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @param reasons An array of non-empty strings naming the reasons to add.
      */
     AddReadOnlyReasonsAsync(this: ScriptDocument, reasons: Array<unknown>): void;
     /**
@@ -13322,10 +13389,14 @@ interface ScriptDocument extends Instance {
      */
     MultiEditTextAsync(this: ScriptDocument, edits: Array<unknown>): unknown;
     /**
+     * Removes reasons for the Script Editor UI to be read-only. Yields the current thread until the editor acknowledges the change.
+     *
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ScriptDocument#RemoveReadOnlyReasonsAsync)
+     * @param this Represents the ephemeral state of an open document in the Studio Script Editor, providing APIs for reading and editing code.
+     * @param reasons An array of non-empty strings naming the reasons to remove.
      */
     RemoveReadOnlyReasonsAsync(this: ScriptDocument, reasons: Array<unknown>): void;
     /**
@@ -13474,7 +13545,8 @@ interface ScriptEditorService extends Instance {
      * @param this This service is used for interacting with `ScriptDocument` instances.
      * @param script The `LuaSourceContainer` to open in the Script Editor.
      * @param options A dictionary that supports the following options: - `Temporary` — Boolean. Whether to open the script in a preview   tab. Default is false.
-     * - `HighlightRange` — A nested dictionary containing a line and   character range to highlight in the editor. Example:   `HighlightRange = { Start = { Line = 10, Character = 1 }, End = { Line = 15, Character = 20 }}`.
+     * - `HighlightRange` — A nested dictionary containing a line and   character range to highlight in the editor. Example:   `HighlightRange = { Start = { Line = 10, Character = 1 }, End = { Line = 15, Character = 20 }}`.   Lines and characters are 1-based. Out-of-range positions are clamped   to the nearest valid position: a `Line` or `Character` below 1   becomes 1, a `Character` past the end of its line becomes the end of   that line, and a `Line` past the last line becomes the end of the   script. `Start` and `End` are clamped independently; if `End` is   before `Start` after clamping, they are swapped, so the same text is   highlighted with the cursor at the later position.
+     * - `InitialReadOnlyReasons` — An array of strings. Reasons to add   with `ScriptDocument:AddReadOnlyReasonsAsync()` once the   editor opens, so the script is read-only as soon as the call   returns. Example:   `InitialReadOnlyReasons = { "MyPluginTemplateScript" }`.
      *
      *
      * @returns A tuple where the first value is a boolean indicating success and the second is nil on success or a string describing the problem on failure.
@@ -13926,27 +13998,6 @@ interface DataModel extends ServiceProvider<Services> {
      */
     readonly _nominal_DataModel: unique symbol;
     /**
-     * Returns a table containing basic information about the jobs performed by the task scheduler.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#GetJobsInfo)
-     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
-     * @returns A table containing information about the jobs performed by the task scheduler, see above for the format.
-     */
-    GetJobsInfo(this: DataModel): Array<unknown>;
-    /**
-     * Returns an array of `Instances` associated with the given content URL.
-     *
-     * - **ThreadSafety**: Unsafe
-     *
-     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#GetObjects)
-     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
-     * @param url The given content URL.
-     * @returns An array of `Instances` associated with the content URL.
-     */
-    GetObjects(this: DataModel, url: ContentId): Array<Instance>;
-    /**
      * Sets the `DataModel.PlaceId` of the current game instance.
      *
      * - **ThreadSafety**: Unsafe
@@ -13966,6 +14017,27 @@ interface DataModel extends ServiceProvider<Services> {
      * @param universeId The ID to set the `DataModel.GameId` to.
      */
     SetUniverseId(this: DataModel, universeId: number): void;
+    /**
+     * Returns an array of `Instances` associated with the given content URL.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#GetObjects)
+     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
+     * @param url The given content URL.
+     * @returns An array of `Instances` associated with the content URL.
+     */
+    GetObjects(this: DataModel, url: ContentId): Array<Instance>;
+    /**
+     * Returns a table containing basic information about the jobs performed by the task scheduler.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/DataModel#GetJobsInfo)
+     * @param this The root of Roblox's parent-child hierarchy. Its direct children are services, such as `Workspace` and `Lighting`, that act as the fundamental components of a Roblox game.
+     * @returns A table containing information about the jobs performed by the task scheduler, see above for the format.
+     */
+    GetJobsInfo(this: DataModel): Array<unknown>;
 }
 /**
  * The abstract class for settings database classes.
@@ -14064,6 +14136,21 @@ interface SessionService extends Instance {
      * @deprecated
      */
     readonly _nominal_SessionService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SessionStorage)
+ */
+interface SessionStorage extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SessionStorage: unique symbol;
 }
 /**
  * Provides a global registry of named `SharedTable` objects.
@@ -17941,7 +18028,7 @@ interface UIScale extends UIComponent {
     readonly _nominal_UIScale: unique symbol;
 }
 /**
- * Renders a shadow below the parent UI instance.
+ * Renders configurable shape or text shadows for the parent UI instance.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UIShadow)
  */
@@ -18633,6 +18720,8 @@ interface WrapTextureTransfer extends Instance {
     readonly _nominal_WrapTextureTransfer: unique symbol;
 }
 /**
+ * A named logger that emits structured log entries scoped to a hierarchical path.
+ *
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Logger)
@@ -18710,6 +18799,21 @@ interface ParticipantHandle extends RBXObject {
     readonly _nominal_ParticipantHandle: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PickedFile)
+ */
+interface PickedFile extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PickedFile: unique symbol;
+}
+/**
  * Encapsulates a connection between the current data model and another for plugin communication.
  *
  * - **Tags**: NotCreatable, NotReplicated
@@ -18773,6 +18877,21 @@ interface PluginConnection extends RBXObject {
      * @param message The string or buffer to be sent.
      */
     SendMessage(this: PluginConnection, message: unknown): void;
+}
+/**
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneSnapshot)
+ */
+interface SceneSnapshot extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SceneSnapshot: unique symbol;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
