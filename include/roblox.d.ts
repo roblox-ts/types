@@ -3130,6 +3130,9 @@ declare namespace vector {
 	/** Applies `math.clamp` to every component of the input vector. */
 	function clamp(vec: vector, min: vector, max: vector): vector;
 
+	/** Returns a vector linearly interpolated between two vectors by a fractional alpha. */
+	function lerp(vec1: vector, vec2: vector, alpha: number): vector;
+
 	/** Applies `math.max` to the corresponding components of the input vectors. Equivalent to `vector.create(math.max((...).x), math.max((...).y), math.max((...).z))`. */
 	function max(...vecs: Array<vector>): vector;
 
